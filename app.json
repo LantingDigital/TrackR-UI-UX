@@ -2,6 +2,21 @@
   "expo": {
     "name": "TrackR",
     "slug": "TrackR",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F7F7F7"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.trackr.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F7F7F7"
+      },
+      "package": "com.trackr.app"
+    }
   }
 }
