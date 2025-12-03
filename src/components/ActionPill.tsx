@@ -42,15 +42,16 @@ export const ActionPill: React.FC<ActionPillProps> = ({
 
   const handlePressIn = () => {
     Animated.parallel([
-      Animated.spring(scaleAnim, { toValue: 0.96, useNativeDriver: true }),
-      Animated.timing(opacityAnim, { toValue: 0.7, duration: 100, useNativeDriver: true }),
+      // Must use useNativeDriver: false to be consistent with sizeAnim/labelOpacity
+      Animated.spring(scaleAnim, { toValue: 0.96, useNativeDriver: false }),
+      Animated.timing(opacityAnim, { toValue: 0.7, duration: 100, useNativeDriver: false }),
     ]).start();
   };
 
   const handlePressOut = () => {
     Animated.parallel([
-      Animated.spring(scaleAnim, { toValue: 1, useNativeDriver: true }),
-      Animated.timing(opacityAnim, { toValue: 1, duration: 100, useNativeDriver: true }),
+      Animated.spring(scaleAnim, { toValue: 1, useNativeDriver: false }),
+      Animated.timing(opacityAnim, { toValue: 1, duration: 100, useNativeDriver: false }),
     ]).start();
   };
 

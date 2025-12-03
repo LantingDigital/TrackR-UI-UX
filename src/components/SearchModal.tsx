@@ -12,6 +12,8 @@ import {
   Platform,
   Keyboard,
   Alert,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -44,6 +46,10 @@ interface SearchModalProps {
   // New props for split rendering (pill = input, sections float separately)
   inputOnly?: boolean;    // Only render the search input (for inside the morphing pill)
   sectionsOnly?: boolean; // Only render section cards (for floating on blur backdrop)
+  // Sticky search bar props
+  onScrollPositionChange?: (scrollY: number, topOverscroll: number, bottomOverscroll: number) => void; // Reports scroll position and overscroll to parent
+  isSticky?: boolean;     // Whether the search bar is in sticky mode (affects close button)
+  showCloseButton?: boolean; // Whether to show close/clear button inside input
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
@@ -58,6 +64,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   isEmbedded = false,
   inputOnly = false,
   sectionsOnly = false,
+  onScrollPositionChange,
+  isSticky = false,
+  showCloseButton = false,
 }) => {
   const insets = useSafeAreaInsets();
   const [searchQuery, setSearchQuery] = useState('');
@@ -153,6 +162,31 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     Alert.alert('Coming Soon', `${item.name} details page is coming soon!`);
   }, []);
 
+  // Handle scroll position changes for sticky search bar and rubber band bounce
+  const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const scrollY = event.nativeEvent.contentOffset.y;
+    const contentHeight = event.nativeEvent.contentSize.height;
+    const layoutHeight = event.nativeEvent.layoutMeasurement.height;
+    const maxScrollY = Math.max(0, contentHeight - layoutHeight);
+
+    // Top overscroll (scrollY < 0) - negative value when pulling down past top
+    const topOverscroll = scrollY < 0 ? scrollY : 0;
+
+    // Bottom overscroll (scrollY > maxScrollY) - positive value when pushing past bottom
+    const bottomOverscroll = scrollY > maxScrollY ? scrollY - maxScrollY : 0;
+
+    onScrollPositionChange?.(scrollY, topOverscroll, bottomOverscroll);
+  }, [onScrollPositionChange]);
+
+  // Handle close/clear button press (clears text first, then closes if empty)
+  const handleCloseOrClear = useCallback(() => {
+    if (searchQuery.length > 0) {
+      setSearchQuery('');
+    } else {
+      onClose();
+    }
+  }, [searchQuery, onClose]);
+
   if (!visible) return null;
 
   // =============================================
@@ -164,23 +198,44 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     // INPUT ONLY MODE: Just render the TextInput for inside the morphing pill
     if (inputOnly) {
       return (
-        <TextInput
-          ref={inputRef}
-          style={styles.inputOnlyStyle}
-          placeholder="Search rides, parks, news..."
-          placeholderTextColor="#999999"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          onSubmitEditing={handleSearch}
-          returnKeyType="search"
-          autoCorrect={false}
-          autoCapitalize="none"
-        />
+        <View style={styles.inputOnlyContainer}>
+          <TextInput
+            ref={inputRef}
+            style={styles.inputOnlyStyle}
+            placeholder="Search rides, parks, news..."
+            placeholderTextColor="#999999"
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            onSubmitEditing={handleSearch}
+            returnKeyType="search"
+            autoCorrect={false}
+            autoCapitalize="none"
+          />
+          {/* Close/Clear button - shown when sticky or when there's text */}
+          {(showCloseButton || searchQuery.length > 0) && (
+            <Pressable
+              onPress={handleCloseOrClear}
+              hitSlop={10}
+              style={styles.inputCloseButton}
+            >
+              <Ionicons
+                name={searchQuery.length > 0 ? 'close-circle' : 'close'}
+                size={20}
+                color={searchQuery.length > 0 ? '#CCCCCC' : '#999999'}
+              />
+            </Pressable>
+          )}
+        </View>
       );
     }
 
     // SECTIONS ONLY MODE: Just the floating section cards (on blur backdrop)
+    // Content scrolls UNDER the floating search bar, so we need top padding
     if (sectionsOnly) {
+      // Top padding: search bar position (60) + height (56) + gap (16) = 132
+      // This ensures content starts below the search bar
+      const searchBarPadding = 60 + 56 + 16;
+
       return (
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -188,9 +243,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         >
           <ScrollView
             style={styles.embeddedContent}
-            contentContainerStyle={styles.contentContainer}
+            contentContainerStyle={[styles.contentContainer, { paddingTop: searchBarPadding }]}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
           >
             {showAutocomplete ? (
               // Autocomplete results - render as floating card
@@ -573,11 +630,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   // Split rendering styles (inputOnly / sectionsOnly modes)
+  inputOnlyContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   inputOnlyStyle: {
     flex: 1,
     fontSize: 16,
     color: '#000000',
     paddingVertical: 0,
+  },
+  inputCloseButton: {
+    marginLeft: 8,
+    padding: 4,
   },
   sectionsOnlyContainer: {
     flex: 1,
