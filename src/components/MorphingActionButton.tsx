@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   pressable: {
-    flex: 1,
+    ...StyleSheet.absoluteFillObject,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

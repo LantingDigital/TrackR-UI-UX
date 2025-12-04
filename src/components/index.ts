@@ -8,4 +8,5 @@ export { SearchOverlay } from './SearchOverlay';
 export { SearchModal } from './SearchModal';
 export { SearchCarousel } from './SearchCarousel';
 export { SearchResultRow, SimpleSearchRow } from './SearchResultRow';
-export { QuickLogSheet } from './QuickLogSheet';
+export { LogModal } from './LogModal';
+export { LogConfirmationCard } from './LogConfirmationCard';

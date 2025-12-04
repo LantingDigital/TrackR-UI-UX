@@ -1,11 +1,15 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, NativeSyntheticEvent, NativeScrollEvent, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, NativeSyntheticEvent, NativeScrollEvent, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView, TextInput } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
 
-import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, QuickLogSheet, MorphingActionButton } from '../components';
+import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingActionButton } from '../components';
+import { LogModal } from '../components/LogModal';
+import { LogConfirmationCard } from '../components/LogConfirmationCard';
+import { WalletCardStack } from '../components/wallet';
+import { useWallet } from '../hooks/useWallet';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
 import { RECENT_SEARCHES, searchItems, getTypeIcon, SearchableItem, NEARBY_RIDES } from '../data/mockSearchData';
 
@@ -37,8 +41,19 @@ export const HomeScreen = () => {
   );
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchOrigin, setSearchOrigin] = useState<SearchOrigin>('expandedSearchBar');
-  const [quickLogVisible, setQuickLogVisible] = useState(false);
+  const [logVisible, setLogVisible] = useState(false);
+  const [logOrigin, setLogOrigin] = useState<'logPill' | 'logCircle'>('logPill');
+  const [walletVisible, setWalletVisible] = useState(false);
+  // Log confirmation card state
+  const [selectedCoaster, setSelectedCoaster] = useState<SearchableItem | null>(null);
+  const [coasterPosition, setCoasterPosition] = useState({ x: 0, y: 0, width: 120, height: 120 });
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
+
+  // Wallet context
+  const { stackTickets, setDefaultTicket, markTicketUsed } = useWallet();
   const isCollapsedRef = useRef(false);
+  // Ref for the log modal input (allows focusing from sectionsOnly mode)
+  const logInputRef = useRef<TextInput>(null);
   const lastScrollY = useRef(0);
   const lastStateChangeTime = useRef(0);
   const contentHeight = useRef(0);
@@ -73,10 +88,28 @@ export const HomeScreen = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchFocusProgress = useRef(new Animated.Value(0)).current;
 
+  // =========================================
+  // Log Modal Animation Values (mirrors search)
+  // =========================================
+  const logMorphProgress = useRef(new Animated.Value(0)).current;
+  const logBackdropOpacity = useRef(new Animated.Value(0)).current;
+  const logContentFade = useRef(new Animated.Value(0)).current;
+  const logBounceProgress = useRef(new Animated.Value(0)).current;
+  const logClosePhaseProgress = useRef(new Animated.Value(0)).current;
+
+  // Log focus state
+  const [isLogFocused, setIsLogFocused] = useState(false);
+  const logFocusProgress = useRef(new Animated.Value(0)).current;
+
   // Search query state for dropdown autocomplete
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
-  const debounceTimerRef = useRef<NodeJS.Timeout>();
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Log query state for dropdown autocomplete
+  const [logQuery, setLogQuery] = useState('');
+  const [debouncedLogQuery, setDebouncedLogQuery] = useState('');
+  const logDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Staggered cascade animation for dropdown items
   const dropdownItemAnimations = useRef<Animated.Value[]>([
@@ -473,21 +506,237 @@ export const HomeScreen = () => {
     setSearchVisible(false);
   }, []);
 
+  // =========================================
+  // Log Modal Handlers (mirrors search handlers)
+  // =========================================
+  const triggerLogOpen = useCallback((origin: 'logPill' | 'logCircle') => {
+    setLogOrigin(origin);
+
+    // Reset header to expanded state
+    isCollapsedRef.current = false;
+    Animated.spring(animProgress, {
+      toValue: 1,
+      useNativeDriver: false,
+      damping: 16,
+      stiffness: 180,
+      mass: 0.8,
+    }).start();
+
+    // Reset animation values before render
+    logContentFade.setValue(0);
+    actionButtonsOpacity.setValue(0);
+    actionButtonsScale.setValue(0.5);
+    logMorphProgress.setValue(0);
+    logBackdropOpacity.setValue(0);
+    logBounceProgress.setValue(0);
+    logClosePhaseProgress.setValue(0);
+
+    requestAnimationFrame(() => {
+      setLogVisible(true);
+
+      // Bounce animation (same as search)
+      Animated.parallel([
+        Animated.timing(logMorphProgress, {
+          toValue: 1,
+          duration: 500,
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: false,
+        }),
+        Animated.spring(logBounceProgress, {
+          toValue: 1,
+          damping: 14,
+          stiffness: 42,
+          mass: 1.2,
+          useNativeDriver: false,
+        }),
+        Animated.timing(logBackdropOpacity, {
+          toValue: 1,
+          duration: 400,
+          useNativeDriver: true,
+        }),
+        Animated.timing(logContentFade, {
+          toValue: 1,
+          duration: 250,
+          delay: 400,
+          useNativeDriver: false,
+        }),
+      ]).start();
+    });
+  }, [logMorphProgress, logBackdropOpacity, logContentFade, logBounceProgress, logClosePhaseProgress, actionButtonsOpacity, actionButtonsScale, animProgress]);
+
   const handleLogPress = useCallback(() => {
-    setQuickLogVisible(true);
+    const origin = isCollapsedRef.current ? 'logCircle' : 'logPill';
+    triggerLogOpen(origin);
+  }, [triggerLogOpen]);
+
+  const handleLogClose = useCallback(() => {
+    Keyboard.dismiss();
+    setIsLogFocused(false);
+    logFocusProgress.setValue(0);
+    setLogQuery('');
+    setDebouncedLogQuery('');
+
+    isCollapsedRef.current = false;
+    animProgress.setValue(1);
+    logClosePhaseProgress.setValue(1);
+    setLogOrigin('logPill');
+
+    Animated.sequence([
+      Animated.timing(logContentFade, {
+        toValue: 0,
+        duration: 150,
+        useNativeDriver: false,
+      }),
+      Animated.parallel([
+        Animated.timing(logMorphProgress, {
+          toValue: 0,
+          duration: 300,
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: false,
+        }),
+        Animated.timing(logBackdropOpacity, {
+          toValue: 0,
+          duration: 250,
+          useNativeDriver: true,
+        }),
+        Animated.sequence([
+          Animated.delay(150),
+          Animated.parallel([
+            Animated.timing(actionButtonsOpacity, {
+              toValue: 1,
+              duration: 250,
+              useNativeDriver: false,
+            }),
+            Animated.timing(actionButtonsScale, {
+              toValue: 1,
+              duration: 250,
+              useNativeDriver: false,
+            }),
+          ]),
+        ]),
+      ]),
+    ]).start(() => {
+      setLogVisible(false);
+    });
+  }, [animProgress, logMorphProgress, logBackdropOpacity, logContentFade, actionButtonsOpacity, actionButtonsScale, logClosePhaseProgress, logFocusProgress]);
+
+  // Log focus handlers
+  const handleLogFocus = useCallback(() => {
+    setIsLogFocused(true);
+    Animated.timing(logFocusProgress, {
+      toValue: 1,
+      duration: 250,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [logFocusProgress]);
+
+  const handleLogUnfocus = useCallback(() => {
+    Keyboard.dismiss();
+    setIsLogFocused(false);
+    Animated.timing(logFocusProgress, {
+      toValue: 0,
+      duration: 250,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [logFocusProgress]);
+
+  // Log X button handler: unfocus first, then close modal
+  const handleLogXButtonPress = useCallback(() => {
+    if (isLogFocused) {
+      handleLogUnfocus();
+    } else {
+      handleLogClose();
+    }
+  }, [isLogFocused, handleLogUnfocus, handleLogClose]);
+
+  // Log backdrop tap handler
+  const handleLogBackdropPress = useCallback(() => {
+    if (isLogFocused) {
+      handleLogUnfocus();
+    }
+  }, [isLogFocused, handleLogUnfocus]);
+
+  // Handle focus input request from sectionsOnly mode (e.g., "Add your first ride" button)
+  const handleLogInputFocus = useCallback(() => {
+    logInputRef.current?.focus();
+    handleLogFocus();
+  }, [handleLogFocus]);
+
+  // Handle log query changes
+  const handleLogQueryChange = useCallback((query: string) => {
+    setLogQuery(query);
   }, []);
 
-  const handleQuickLogClose = useCallback(() => {
-    setQuickLogVisible(false);
+  // Handle card selection from LogModal
+  const handleLogCardSelect = useCallback((item: SearchableItem, cardLayout: { x: number; y: number; width: number; height: number }) => {
+    setSelectedCoaster(item);
+    setCoasterPosition(cardLayout);
+    setConfirmationVisible(true);
   }, []);
 
-  const handleLogComplete = useCallback((coaster: any, seat: any) => {
-    console.log('Logged:', coaster.name, 'at seat', seat);
+  // Handle confirmation card close (back/cancel)
+  const handleConfirmationClose = useCallback(() => {
+    setConfirmationVisible(false);
+    setSelectedCoaster(null);
+  }, []);
+
+  // Handle successful log completion - stay on Log modal
+  const handleLogComplete = useCallback(() => {
+    setConfirmationVisible(false);
+    setSelectedCoaster(null);
+    // Keep the Log modal open so user can log more rides
   }, []);
 
   const handleScanPress = useCallback(() => {
-    console.log('Scan pressed');
-  }, []);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    // Hide action buttons immediately for hero morph effect
+    actionButtonsOpacity.setValue(0);
+    actionButtonsScale.setValue(0.5);
+    setWalletVisible(true);
+  }, [actionButtonsOpacity, actionButtonsScale]);
+
+  const handleWalletClose = useCallback(() => {
+    setWalletVisible(false);
+    // Animate action buttons back in after wallet closes
+    Animated.parallel([
+      Animated.timing(actionButtonsOpacity, {
+        toValue: 1,
+        duration: 250,
+        delay: 200, // Wait for wallet morph to complete
+        useNativeDriver: false,
+      }),
+      Animated.timing(actionButtonsScale, {
+        toValue: 1,
+        duration: 250,
+        delay: 200,
+        useNativeDriver: false,
+      }),
+    ]).start();
+  }, [actionButtonsOpacity, actionButtonsScale]);
+
+  const handleWalletAddTicket = useCallback(() => {
+    // Close wallet and navigate to Profile for adding tickets
+    setWalletVisible(false);
+    // Animate action buttons back in
+    Animated.parallel([
+      Animated.timing(actionButtonsOpacity, {
+        toValue: 1,
+        duration: 250,
+        delay: 200,
+        useNativeDriver: false,
+      }),
+      Animated.timing(actionButtonsScale, {
+        toValue: 1,
+        duration: 250,
+        delay: 200,
+        useNativeDriver: false,
+      }),
+    ]).start();
+    // TODO: Navigate to Profile screen's wallet section
+    console.log('Navigate to Profile to add ticket');
+  }, [actionButtonsOpacity, actionButtonsScale]);
 
   const handleBookmarkPress = useCallback((id: string) => {
     setBookmarkedIds(prev => {
@@ -936,9 +1185,11 @@ export const HomeScreen = () => {
     extrapolate: 'clamp',
   });
 
-  // Home search bar fades out as morphing pill becomes visible
-  // This creates seamless handoff between the two elements
-  const homeSearchBarOpacity = pillMorphProgress.interpolate({
+  // Home search bar fades out as EITHER morphing pill becomes visible
+  // This creates seamless handoff for both Search AND Log modals
+  // Combine both morph progress values so search bar fades for either modal
+  const combinedMorphProgress = Animated.add(pillMorphProgress, logMorphProgress);
+  const homeSearchBarOpacity = combinedMorphProgress.interpolate({
     inputRange: [0, 0.15],
     outputRange: [1, 0],
     extrapolate: 'clamp',
@@ -976,8 +1227,247 @@ export const HomeScreen = () => {
     extrapolate: 'clamp',
   });
 
+  // =========================================
+  // Log Modal Interpolations (mirrors search)
+  // =========================================
+  // Log pill origin position (always from Log button position)
+  const logOriginPosition = useMemo(() => {
+    const PILL_HEIGHT = 36;
+    const PILL_BORDER_RADIUS = 18;
+
+    if (logOrigin === 'logCircle') {
+      return {
+        top: insets.top + collapsedY - circleSize / 2,
+        left: collapsedPositions[0].x - circleSize / 2,
+        width: circleSize,
+        height: circleSize,
+        borderRadius: circleSize / 2,
+      };
+    }
+    // logPill - expanded state
+    return {
+      top: insets.top + expandedY - 18,
+      left: expandedPositions[0].x - pillWidth / 2,
+      width: pillWidth,
+      height: PILL_HEIGHT,
+      borderRadius: PILL_BORDER_RADIUS,
+    };
+  }, [logOrigin, insets.top, circleSize, collapsedY, collapsedPositions, expandedY, expandedPositions, pillWidth]);
+
+  // Log morph TOP position
+  const logTopBounce = logBounceProgress.interpolate({
+    inputRange: [0, 0.35, 0.7, 0.85, 1],
+    outputRange: [
+      logOriginPosition.top,
+      pillFinalTop - 60,
+      pillFinalTop,
+      pillFinalTop + 8,
+      pillFinalTop,
+    ],
+    extrapolate: 'clamp',
+  });
+
+  const logTopLinear = logMorphProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [pillInitialTop, pillFinalTop],
+    extrapolate: 'clamp',
+  });
+
+  const logMorphingPillTopBase = Animated.add(
+    Animated.multiply(logTopBounce, logClosePhaseProgress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 0],
+    })),
+    Animated.multiply(logTopLinear, logClosePhaseProgress)
+  );
+
+  const logFocusTopOffset = logFocusProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, -44],
+    extrapolate: 'clamp',
+  });
+
+  const logMorphingPillTop = Animated.add(logMorphingPillTopBase, logFocusTopOffset);
+
+  // Log morph LEFT position
+  const logLeftBounce = logBounceProgress.interpolate({
+    inputRange: [0, 0.35, 0.7, 1],
+    outputRange: [
+      logOriginPosition.left,
+      pillFinalLeft,
+      pillFinalLeft,
+      pillFinalLeft,
+    ],
+    extrapolate: 'clamp',
+  });
+
+  const logLeftLinear = logMorphProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [pillInitialLeft, pillFinalLeft],
+    extrapolate: 'clamp',
+  });
+
+  const logMorphingPillLeft = Animated.add(
+    Animated.multiply(logLeftBounce, logClosePhaseProgress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 0],
+    })),
+    Animated.multiply(logLeftLinear, logClosePhaseProgress)
+  );
+
+  // Log morph WIDTH
+  const logWidthBounce = logBounceProgress.interpolate({
+    inputRange: [0, 0.35, 0.7, 1],
+    outputRange: [
+      logOriginPosition.width,
+      logOriginPosition.width + (pillFinalWidth - logOriginPosition.width) * 0.8,
+      pillFinalWidth,
+      pillFinalWidth,
+    ],
+    extrapolate: 'clamp',
+  });
+
+  const logWidthLinear = logMorphProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [pillInitialWidth, pillFinalWidth],
+    extrapolate: 'clamp',
+  });
+
+  const logMorphingPillWidth = Animated.add(
+    Animated.multiply(logWidthBounce, logClosePhaseProgress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 0],
+    })),
+    Animated.multiply(logWidthLinear, logClosePhaseProgress)
+  );
+
+  // Log morph HEIGHT
+  const logHeightBounce = logBounceProgress.interpolate({
+    inputRange: [0, 0.35, 0.7, 1],
+    outputRange: [
+      logOriginPosition.height,
+      logOriginPosition.height + (pillFinalHeight - logOriginPosition.height) * 0.8,
+      pillFinalHeight,
+      pillFinalHeight,
+    ],
+    extrapolate: 'clamp',
+  });
+
+  const logHeightLinear = logMorphProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [pillInitialHeight, pillFinalHeight],
+    extrapolate: 'clamp',
+  });
+
+  const logMorphingPillHeight = Animated.add(
+    Animated.multiply(logHeightBounce, logClosePhaseProgress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 0],
+    })),
+    Animated.multiply(logHeightLinear, logClosePhaseProgress)
+  );
+
+  // Log morph BORDER RADIUS
+  const logBorderRadiusBounce = logBounceProgress.interpolate({
+    inputRange: [0, 0.35, 0.7, 1],
+    outputRange: [
+      logOriginPosition.borderRadius,
+      logOriginPosition.borderRadius + (pillFinalBorderRadius - logOriginPosition.borderRadius) * 0.8,
+      pillFinalBorderRadius,
+      pillFinalBorderRadius,
+    ],
+    extrapolate: 'clamp',
+  });
+
+  const logBorderRadiusLinear = logMorphProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [pillInitialBorderRadius, pillFinalBorderRadius],
+    extrapolate: 'clamp',
+  });
+
+  const logMorphingPillBorderRadius = Animated.add(
+    Animated.multiply(logBorderRadiusBounce, logClosePhaseProgress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 0],
+    })),
+    Animated.multiply(logBorderRadiusLinear, logClosePhaseProgress)
+  );
+
+  // Log section cards reveal
+  const logSectionCardsOpacity = logMorphProgress.interpolate({
+    inputRange: [0, 0.8, 1],
+    outputRange: [0, 0, 1],
+    extrapolate: 'clamp',
+  });
+
+  // Log icon crossfade: add-circle → magnifying glass
+  const logAddIconOpacity = logMorphProgress.interpolate({
+    inputRange: [0, 0.4],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
+  const logSearchIconOpacity = logMorphProgress.interpolate({
+    inputRange: [0, 0.2, 0.5],
+    outputRange: [0, 0, 1],
+    extrapolate: 'clamp',
+  });
+
+  // Log placeholder fade
+  const logPlaceholderOpacity = logMorphProgress.interpolate({
+    inputRange: [0, 0.3],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
+  // Log morphing pill opacity
+  const logMorphingPillOpacity = logMorphProgress.interpolate({
+    inputRange: [0, 0.05, 0.15],
+    outputRange: [0, 0.5, 1],
+    extrapolate: 'clamp',
+  });
+
+  // Log shadow animations
+  const logShadowOpacity = logMorphProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0.16, 0.35],
+    extrapolate: 'clamp',
+  });
+
+  const logShadowRadius = logMorphProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [24, 28],
+    extrapolate: 'clamp',
+  });
+
+  // Log focus mode interpolations
+  const logHeaderFocusOpacity = logFocusProgress.interpolate({
+    inputRange: [0, 0.5],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
+  const logSectionCardsFocusOpacity = logFocusProgress.interpolate({
+    inputRange: [0, 0.3],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
+  const logDropdownFocusOpacity = logFocusProgress.interpolate({
+    inputRange: [0.3, 1],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  });
+
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
+      {/* Main Content Wrapper */}
+      <View
+        style={[
+          styles.mainContentWrapper,
+          { paddingTop: insets.top },
+        ]}
+      >
       {/* News Feed - comes first, header floats over it */}
       <FlatList
         data={MOCK_NEWS}
@@ -1387,11 +1877,203 @@ export const HomeScreen = () => {
         </Animated.View>
       )}
 
-      {/* Quick Log Sheet */}
-      <QuickLogSheet
-        visible={quickLogVisible}
-        onClose={handleQuickLogClose}
+      </View>
+      {/* End of Main Content Wrapper */}
+
+      {/* ============================== */}
+      {/* Hero Morph Log Experience */}
+      {/* ============================== */}
+
+      {/* Log Blur Backdrop */}
+      {logVisible && (
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFill,
+            { opacity: logBackdropOpacity, zIndex: 50 },
+          ]}
+          pointerEvents={logVisible ? 'auto' : 'none'}
+        >
+          <Pressable style={StyleSheet.absoluteFill} onPress={handleLogBackdropPress}>
+            <BlurView intensity={80} tint="light" style={StyleSheet.absoluteFill} />
+          </Pressable>
+        </Animated.View>
+      )}
+
+      {/* Blur Zone Above Log Search Bar */}
+      {logVisible && (
+        <Animated.View
+          style={{
+            position: 'absolute',
+            top: insets.top,
+            left: 0,
+            right: 0,
+            height: Animated.subtract(Animated.add(logMorphingPillTop, Animated.divide(logMorphingPillHeight, 2)), insets.top),
+            zIndex: 90,
+            overflow: 'hidden',
+            opacity: logContentFade,
+          }}
+          pointerEvents="none"
+        >
+          <BlurView intensity={25} tint="light" style={StyleSheet.absoluteFill} />
+          <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(255,255,255,0.5)' }]} />
+        </Animated.View>
+      )}
+
+      {/* "L O G" Header Label */}
+      {logVisible && (
+        <Animated.Text
+          style={{
+            position: 'absolute',
+            top: insets.top + 16,
+            left: 0,
+            right: 0,
+            textAlign: 'center',
+            fontSize: 22,
+            fontWeight: '700',
+            letterSpacing: 10,
+            color: '#000000',
+            opacity: Animated.multiply(logContentFade, logHeaderFocusOpacity),
+            zIndex: 160,
+          }}
+        >
+          LOG
+        </Animated.Text>
+      )}
+
+      {/* Morphing Log Pill */}
+      {logVisible && (
+        <Animated.View
+          style={{
+            position: 'absolute',
+            top: logMorphingPillTop,
+            left: logMorphingPillLeft,
+            width: logMorphingPillWidth,
+            height: logMorphingPillHeight,
+            borderRadius: logMorphingPillBorderRadius,
+            zIndex: 150,
+            opacity: logMorphingPillOpacity,
+            shadowColor: '#323232',
+            shadowOffset: { width: 0, height: 8 },
+            shadowOpacity: logShadowOpacity,
+            shadowRadius: logShadowRadius,
+            elevation: 24,
+          }}
+        >
+          <Animated.View
+            style={{
+              flex: 1,
+              backgroundColor: '#FFFFFF',
+              borderRadius: logMorphingPillBorderRadius,
+              overflow: 'hidden',
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingHorizontal: 16,
+            }}
+          >
+            {/* Icon container - crossfade between add-circle and search icons */}
+            <View style={{ width: 20, height: 20, marginRight: 8 }}>
+              <Animated.View style={{ position: 'absolute', opacity: logAddIconOpacity }}>
+                <Ionicons name="add-circle-outline" size={20} color="#999999" />
+              </Animated.View>
+              <Animated.View style={{ position: 'absolute', opacity: logSearchIconOpacity }}>
+                <Ionicons name="search" size={20} color="#999999" />
+              </Animated.View>
+            </View>
+
+            {/* Placeholder text - fades out during morph */}
+            <Animated.Text
+              style={{
+                position: 'absolute',
+                left: 44,
+                fontSize: 16,
+                color: '#999999',
+                opacity: logPlaceholderOpacity,
+              }}
+            >
+              Log
+            </Animated.Text>
+
+            {/* Actual TextInput */}
+            <Animated.View style={{ flex: 1, opacity: logContentFade }}>
+              <LogModal
+                visible={logVisible}
+                onClose={handleLogClose}
+                morphProgress={logMorphProgress}
+                contentOpacity={logSectionCardsOpacity}
+                isEmbedded={true}
+                inputOnly={true}
+                onInputFocus={handleLogFocus}
+                onQueryChange={handleLogQueryChange}
+                onCardSelect={handleLogCardSelect}
+                externalInputRef={logInputRef}
+              />
+            </Animated.View>
+
+            {/* X Close Button */}
+            <Animated.View style={{ opacity: logContentFade }}>
+              <Pressable
+                onPress={handleLogXButtonPress}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  backgroundColor: 'rgba(0,0,0,0.08)',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: 8,
+                }}
+              >
+                <Ionicons name="close" size={24} color="#666666" />
+              </Pressable>
+            </Animated.View>
+          </Animated.View>
+        </Animated.View>
+      )}
+
+      {/* Floating Log Section Cards */}
+      {logVisible && (
+        <Animated.View
+          style={{
+            position: 'absolute',
+            top: insets.top,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 80,
+            opacity: Animated.multiply(logContentFade, logSectionCardsFocusOpacity),
+          }}
+          pointerEvents={isLogFocused ? 'none' : 'auto'}
+        >
+          <LogModal
+            visible={logVisible}
+            onClose={handleLogClose}
+            morphProgress={logMorphProgress}
+            contentOpacity={logSectionCardsOpacity}
+            isEmbedded={true}
+            sectionsOnly={true}
+            onCardSelect={handleLogCardSelect}
+            onFocusInput={handleLogInputFocus}
+          />
+        </Animated.View>
+      )}
+
+      {/* Log Confirmation Card */}
+      <LogConfirmationCard
+        visible={confirmationVisible}
+        item={selectedCoaster}
+        initialPosition={coasterPosition}
+        onClose={handleConfirmationClose}
         onLogComplete={handleLogComplete}
+      />
+
+      {/* Wallet Card Stack - Apple Pay style overlay */}
+      <WalletCardStack
+        visible={walletVisible}
+        tickets={stackTickets}
+        onClose={handleWalletClose}
+        onAddTicket={handleWalletAddTicket}
+        onSetDefault={setDefaultTicket}
+        onTicketUsed={markTicketUsed}
       />
     </View>
   );
@@ -1401,6 +2083,10 @@ export const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#1C1C1E', // Dark background visible when content scales down
+  },
+  mainContentWrapper: {
     flex: 1,
     backgroundColor: '#F7F7F7',
   },
@@ -1448,13 +2134,17 @@ const styles = StyleSheet.create({
   cardWrapper: {
     marginBottom: 12,
   },
-  // Dropdown styles for focus mode
+  // Dropdown styles for focus mode - glassmorphic individual cards
   dropdownRow: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 14,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
+    marginBottom: 8,
     borderRadius: 12,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',  // Heavy frost (95%)
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.5)',       // Light border glow
   },
   dropdownIconContainer: {
     width: 36,

@@ -14,7 +14,15 @@ import {
   Alert,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  Easing,
+  LayoutAnimation,
+  UIManager,
 } from 'react-native';
+
+// Enable LayoutAnimation for Android
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -31,6 +39,11 @@ import {
 } from '../data/mockSearchData';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+
+// Module-level state to persist cleared status across component re-mounts
+// Resets only when app is restarted (hot reload also resets it)
+let persistedRecentSearches: string[] | null = null;
+let persistedWasCleared = false;
 
 interface SearchModalProps {
   visible: boolean;
@@ -75,8 +88,26 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 }) => {
   const insets = useSafeAreaInsets();
   const [searchQuery, setSearchQuery] = useState('');
-  const [recentSearches, setRecentSearches] = useState<string[]>(RECENT_SEARCHES);
+  // Initialize from persisted state (survives component re-mounts until app restart)
+  const [recentSearches, setRecentSearches] = useState<string[]>(
+    persistedRecentSearches !== null ? persistedRecentSearches : RECENT_SEARCHES
+  );
+  const [wasRecentCleared, setWasRecentCleared] = useState(persistedWasCleared);
+  const [isAnimatingClear, setIsAnimatingClear] = useState(false);
   const inputRef = useRef<TextInput>(null);
+
+  // Animated values for reverse cascade deletion (one per row, max 5)
+  const recentRowAnimations = useRef<Animated.Value[]>([
+    new Animated.Value(1),
+    new Animated.Value(1),
+    new Animated.Value(1),
+    new Animated.Value(1),
+    new Animated.Value(1),
+  ]).current;
+
+  // Animated value for placeholder fade-in (after LayoutAnimation handles card resize)
+  // Initialize to 1 if already cleared (so placeholder shows immediately on re-mount)
+  const placeholderOpacity = useRef(new Animated.Value(persistedWasCleared ? 1 : 0)).current;
 
   // Autocomplete vs discovery content
   const showAutocomplete = searchQuery.length > 0;
@@ -152,8 +183,66 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   }, []);
 
   const handleClearRecent = useCallback(() => {
-    setRecentSearches([]);
-  }, []);
+    if (isAnimatingClear) return; // Prevent double-tap
+    setIsAnimatingClear(true);
+
+    // Get the number of visible rows (max 5)
+    const visibleCount = Math.min(recentSearches.length, 5);
+
+    // Create reverse cascade animation (bottom to top)
+    // Each row animates out with staggered delay
+    const rowAnimations = [];
+    for (let i = visibleCount - 1; i >= 0; i--) {
+      const reverseIndex = visibleCount - 1 - i; // 0 for last item, 1 for second-to-last, etc.
+      rowAnimations.push(
+        Animated.timing(recentRowAnimations[i], {
+          toValue: 0,
+          duration: 200,
+          delay: reverseIndex * 50, // Stagger from bottom to top
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: true,
+        })
+      );
+    }
+
+    // Animation sequence:
+    // 1. Rows cascade out (reverse stagger)
+    // 2. LayoutAnimation handles card resize, then placeholder fades in
+    Animated.parallel(rowAnimations).start(() => {
+      // After rows animate out, use LayoutAnimation for smooth card resize
+      LayoutAnimation.configureNext({
+        duration: 300,
+        update: {
+          type: LayoutAnimation.Types.easeInEaseOut,
+          property: LayoutAnimation.Properties.scaleY,
+        },
+      });
+
+      // Update state FIRST - this removes rows from DOM before we reset animations
+      setRecentSearches([]);
+      setWasRecentCleared(true);
+      setIsAnimatingClear(false);
+
+      // Persist to module-level state (survives re-mounts until app restart)
+      persistedRecentSearches = [];
+      persistedWasCleared = true;
+
+      // Reset row animation values AFTER state clears (rows are gone, no blink)
+      setTimeout(() => {
+        recentRowAnimations.forEach(anim => anim.setValue(1));
+      }, 0);
+
+      // Fade in placeholder after a brief delay for layout to settle
+      placeholderOpacity.setValue(0);
+      Animated.timing(placeholderOpacity, {
+        toValue: 1,
+        duration: 250,
+        delay: 100, // Small delay to let layout animation start
+        easing: Easing.out(Easing.cubic),
+        useNativeDriver: true,
+      }).start();
+    });
+  }, [isAnimatingClear, recentSearches.length, recentRowAnimations, placeholderOpacity]);
 
   const handleResultPress = useCallback((item: SearchableItem) => {
     onResultPress?.(item);
@@ -265,7 +354,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
               // Discovery content - floating section cards with staggered cascade animation
               <>
                 {/* Recent Searches - Section 0 */}
-                {recentSearches.length > 0 && (
+                {/* Show section if there are searches OR if user cleared them (to show placeholder) */}
+                {(recentSearches.length > 0 || wasRecentCleared) && (
                   <>
                     <Animated.View
                       style={[
@@ -278,18 +368,46 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     >
                       <View style={styles.sectionHeader}>
                         <Text style={styles.sectionTitle}>Recent Searches</Text>
-                        <Pressable onPress={handleClearRecent}>
-                          <Text style={styles.clearButton}>Clear All</Text>
-                        </Pressable>
+                        {recentSearches.length > 0 && (
+                          <Pressable onPress={handleClearRecent} disabled={isAnimatingClear}>
+                            <Text style={[styles.clearButton, isAnimatingClear && { opacity: 0.5 }]}>Clear All</Text>
+                          </Pressable>
+                        )}
                       </View>
-                      {recentSearches.slice(0, 5).map((search, index) => (
-                        <SimpleSearchRow
-                          key={`recent-${index}`}
-                          text={search}
-                          icon="time-outline"
-                          onPress={() => handleRecentSearchPress(search)}
-                        />
-                      ))}
+
+                      {/* Show recent searches with reverse cascade animation */}
+                      {/* Rows only render when there are searches (LayoutAnimation handles resize) */}
+                      {recentSearches.length > 0 && (
+                        <View>
+                          {recentSearches.slice(0, 5).map((search, index) => (
+                            <Animated.View
+                              key={`recent-${index}`}
+                              style={{
+                                opacity: recentRowAnimations[index],
+                                transform: [{
+                                  translateX: recentRowAnimations[index].interpolate({
+                                    inputRange: [0, 1],
+                                    outputRange: [50, 0], // Slide out to the right
+                                  }),
+                                }],
+                              }}
+                            >
+                              <SimpleSearchRow
+                                text={search}
+                                icon="time-outline"
+                                onPress={() => handleRecentSearchPress(search)}
+                              />
+                            </Animated.View>
+                          ))}
+                        </View>
+                      )}
+
+                      {/* Placeholder - only renders after clear is complete, fades in */}
+                      {wasRecentCleared && recentSearches.length === 0 && (
+                        <Animated.View style={[styles.emptyRecentContainer, { opacity: placeholderOpacity }]}>
+                          <Text style={styles.emptyRecentText}>No recent searches</Text>
+                        </Animated.View>
+                      )}
                     </Animated.View>
                     <View style={styles.frostedGap} />
                   </>
@@ -603,6 +721,18 @@ const styles = StyleSheet.create({
   noResultsText: {
     fontSize: 16,
     color: '#666666',
+  },
+  // Empty recent searches placeholder
+  emptyRecentContainer: {
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+  },
+  emptyRecentText: {
+    fontSize: 15,
+    fontStyle: 'italic',
+    color: '#999999',
+    fontWeight: '300',
   },
   // Embedded mode styles (for hero morph from HomeScreen)
   embeddedContainer: {
