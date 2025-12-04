@@ -56,13 +56,6 @@ export const HomeScreen = () => {
   const actionButtonsOpacity = useRef(new Animated.Value(1)).current;
   const actionButtonsScale = useRef(new Animated.Value(1)).current;
 
-  // Sticky search bar animation (0 = normal position, 1 = sticky at top)
-  const searchBarStickyProgress = useRef(new Animated.Value(0)).current;
-  const isSearchBarSticky = useRef(false); // Track current sticky state to avoid redundant animations
-
-  // Rubber band bounce offset - search bar follows overscroll for elastic feel
-  const searchBarBounceOffset = useRef(new Animated.Value(0)).current;
-
   // Two-stage morph for circle button: circle → pill (stage1), then pill → modal (pillMorphProgress)
   const circleStage1Progress = useRef(new Animated.Value(0)).current;
 
@@ -285,10 +278,6 @@ export const HomeScreen = () => {
 
   const handleSearchClose = useCallback(() => {
     Keyboard.dismiss();
-    // Reset sticky state and bounce offset
-    isSearchBarSticky.current = false;
-    searchBarStickyProgress.setValue(0);
-    searchBarBounceOffset.setValue(0);
 
     // GUARANTEE header is expanded when returning to home screen
     // This is critical - no matter how user got to modal, they return to expanded header
@@ -346,38 +335,12 @@ export const HomeScreen = () => {
     ]).start(() => {
       setSearchVisible(false);
     });
-  }, [animProgress, pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, searchBarStickyProgress, searchBarBounceOffset, closePhaseProgress]);
+  }, [animProgress, pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, closePhaseProgress]);
 
   const handleSearch = useCallback((query: string) => {
     console.log('Searching for:', query);
     setSearchVisible(false);
   }, []);
-
-  // Handle scroll position changes from search modal
-  // Search bar smoothly follows scroll until it reaches the top position, then stays there
-  // Also handles rubber band bounce effect when overscrolling
-  const STICKY_SCROLL_DISTANCE = 48; // Distance to scroll before bar reaches top
-
-  const handleSearchScrollPosition = useCallback((
-    scrollY: number,
-    topOverscroll: number,
-    bottomOverscroll: number
-  ) => {
-    // Calculate sticky progress: 0 = normal position, 1 = sticky at top
-    // Clamp between 0 and 1 so it doesn't overshoot
-    const progress = Math.min(Math.max(scrollY / STICKY_SCROLL_DISTANCE, 0), 1);
-    searchBarStickyProgress.setValue(progress);
-
-    // Rubber band bounce offset (physics-based: opposite direction of overscroll)
-    // Top overscroll (pulling down past top) → search bar bounces DOWN (positive offset)
-    // Bottom overscroll (pushing past bottom) → search bar bounces UP (negative offset)
-    // Damping factors tuned to match rubber band feel
-    const bounceOffset = -(topOverscroll * 0.65) - (bottomOverscroll * 0.45);
-    searchBarBounceOffset.setValue(bounceOffset);
-
-    // Track sticky state for close button visibility
-    isSearchBarSticky.current = progress > 0.5;
-  }, [searchBarStickyProgress, searchBarBounceOffset]);
 
   const handleLogPress = useCallback(() => {
     setQuickLogVisible(true);
@@ -637,22 +600,8 @@ export const HomeScreen = () => {
     Animated.multiply(topLinear, closePhaseProgress)
   );
 
-  // Sticky offset: when scrolling in search modal, bar moves back up to header position
-  // At stickyProgress=0: offset is 0 (card stays at pillFinalTop)
-  // At stickyProgress=1: offset is negative (card moves up to top search bar position)
-  // IMPORTANT: Always use pillInitialTop (the expanded search bar position) as the target
-  // This ensures identical sticky behavior regardless of which origin triggered the modal
-  const stickyTopOffset = searchBarStickyProgress.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, pillInitialTop - pillFinalTop], // Always stick to top search bar position
-    extrapolate: 'clamp',
-  });
-
-  // Final top position combines morph animation + sticky offset + rubber band bounce
-  const morphingPillTop = Animated.add(
-    Animated.add(morphingPillTopBase, stickyTopOffset),
-    searchBarBounceOffset
-  );
+  // Final top position - simplified: just the base morph animation (no sticky/bounce)
+  const morphingPillTop = morphingPillTopBase;
 
   // LEFT POSITION
   // For searchPill: Keep CENTER of pill constant as it expands
@@ -1013,10 +962,8 @@ export const HomeScreen = () => {
         </Animated.View>
       )}
 
-      {/* Blur Zone Above Search Bar - blurs content that scrolls into the area above the search bar */}
-      {/* Height is dynamic: distance from safe area top to search bar's top edge */}
-      {/* Note: Cannot use backdropOpacity here because it uses useNativeDriver: true, */}
-      {/* but height uses animated values that require useNativeDriver: false */}
+      {/* Blur Zone Above Search Bar - blurs content that scrolls above the search bar */}
+      {/* Includes white wash overlay to improve "SEARCH" text readability */}
       {searchVisible && (
         <Animated.View
           style={{
@@ -1024,15 +971,39 @@ export const HomeScreen = () => {
             top: insets.top,
             left: 0,
             right: 0,
-            // Height = distance from safe area to search bar top
-            height: Animated.subtract(morphingPillTop, insets.top),
-            zIndex: 90, // Above section cards (80), below search bar (150)
+            height: Animated.subtract(Animated.add(morphingPillTop, Animated.divide(morphingPillHeight, 2)), insets.top),
+            zIndex: 90,
             overflow: 'hidden',
+            borderBottomWidth: StyleSheet.hairlineWidth,
+            borderBottomColor: 'rgba(0,0,0,0.12)',
           }}
           pointerEvents="none"
         >
           <BlurView intensity={25} tint="light" style={StyleSheet.absoluteFill} />
+          {/* White wash overlay - reduces color visibility for better text readability */}
+          <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(255,255,255,0.5)' }]} />
         </Animated.View>
+      )}
+
+      {/* "S E A R C H" Header Label - centered above the search bar */}
+      {searchVisible && (
+        <Animated.Text
+          style={{
+            position: 'absolute',
+            top: insets.top + 16,
+            left: 0,
+            right: 0,
+            textAlign: 'center',
+            fontSize: 22,
+            fontWeight: '700',
+            letterSpacing: 10,
+            color: '#000000',
+            opacity: searchContentFade,
+            zIndex: 160,
+          }}
+        >
+          SEARCH
+        </Animated.Text>
       )}
 
       {/* Morphing Search Pill - transforms from pill to search input card ONLY */}
@@ -1107,8 +1078,26 @@ export const HomeScreen = () => {
               contentTranslateY={sectionCardsTranslateY}
               isEmbedded={true}
               inputOnly={true}
-              showCloseButton={true}
+              showCloseButton={false}
             />
+          </Animated.View>
+
+          {/* X Close Button - inside search bar */}
+          <Animated.View style={{ opacity: searchContentFade }}>
+            <Pressable
+              onPress={handleSearchClose}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 20,
+                backgroundColor: 'rgba(0,0,0,0.08)',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginLeft: 8,
+              }}
+            >
+              <Ionicons name="close" size={24} color="#666666" />
+            </Pressable>
           </Animated.View>
           </Animated.View>
         </Animated.View>
@@ -1141,50 +1130,7 @@ export const HomeScreen = () => {
             contentTranslateY={sectionCardsTranslateY}
             isEmbedded={true}
             sectionsOnly={true}
-            onScrollPositionChange={handleSearchScrollPosition}
           />
-        </Animated.View>
-      )}
-
-      {/* Close button - positioned outside the morphing card */}
-      {/* Hides when sticky (close button moves inside search bar when sticky) */}
-      {searchVisible && (
-        <Animated.View
-          style={{
-            position: 'absolute',
-            top: insets.top + 12,
-            right: 16,
-            zIndex: 200, // Above the morphing pill (150)
-            // Visible when modal is open (pillMorphProgress) AND not sticky (inverse of stickyProgress)
-            opacity: Animated.multiply(
-              pillMorphProgress,
-              searchBarStickyProgress.interpolate({
-                inputRange: [0, 1],
-                outputRange: [1, 0],
-              })
-            ),
-          }}
-          pointerEvents={isSearchBarSticky.current ? 'none' : 'auto'}
-        >
-          <Pressable
-            onPress={handleSearchClose}
-            hitSlop={20}
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 22,
-              backgroundColor: 'rgba(255,255,255,0.9)',
-              alignItems: 'center',
-              justifyContent: 'center',
-              shadowColor: '#323232',
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.12,
-              shadowRadius: 12,
-              elevation: 4,
-            }}
-          >
-            <Ionicons name="close" size={28} color="#000000" />
-          </Pressable>
         </Animated.View>
       )}
 
