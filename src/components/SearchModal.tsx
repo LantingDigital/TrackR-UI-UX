@@ -211,20 +211,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             autoCorrect={false}
             autoCapitalize="none"
           />
-          {/* Close/Clear button - shown when sticky or when there's text */}
-          {(showCloseButton || searchQuery.length > 0) && (
-            <Pressable
-              onPress={handleCloseOrClear}
-              hitSlop={10}
-              style={styles.inputCloseButton}
-            >
-              <Ionicons
-                name={searchQuery.length > 0 ? 'close-circle' : 'close'}
-                size={20}
-                color={searchQuery.length > 0 ? '#CCCCCC' : '#999999'}
-              />
-            </Pressable>
-          )}
         </View>
       );
     }

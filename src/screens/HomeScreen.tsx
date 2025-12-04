@@ -964,6 +964,7 @@ export const HomeScreen = () => {
 
       {/* Blur Zone Above Search Bar - blurs content that scrolls above the search bar */}
       {/* Includes white wash overlay to improve "SEARCH" text readability */}
+      {/* Fades out with searchContentFade to prevent clipping during close animation */}
       {searchVisible && (
         <Animated.View
           style={{
@@ -974,8 +975,7 @@ export const HomeScreen = () => {
             height: Animated.subtract(Animated.add(morphingPillTop, Animated.divide(morphingPillHeight, 2)), insets.top),
             zIndex: 90,
             overflow: 'hidden',
-            borderBottomWidth: StyleSheet.hairlineWidth,
-            borderBottomColor: 'rgba(0,0,0,0.12)',
+            opacity: searchContentFade,
           }}
           pointerEvents="none"
         >
