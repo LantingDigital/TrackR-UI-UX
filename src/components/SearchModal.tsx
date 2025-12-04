@@ -50,6 +50,9 @@ interface SearchModalProps {
   onScrollPositionChange?: (scrollY: number, topOverscroll: number, bottomOverscroll: number) => void; // Reports scroll position and overscroll to parent
   isSticky?: boolean;     // Whether the search bar is in sticky mode (affects close button)
   showCloseButton?: boolean; // Whether to show close/clear button inside input
+  // Focus mode props
+  onInputFocus?: () => void; // Called when search input is focused
+  onQueryChange?: (query: string) => void; // Called when search query changes (for dropdown autocomplete)
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
@@ -67,6 +70,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onScrollPositionChange,
   isSticky = false,
   showCloseButton = false,
+  onInputFocus,
+  onQueryChange,
 }) => {
   const insets = useSafeAreaInsets();
   const [searchQuery, setSearchQuery] = useState('');
@@ -114,16 +119,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     });
   }, [externalMorphProgress]);
 
-  // Reset search and focus input when becoming visible (embedded mode)
+  // Reset search query when becoming visible (embedded mode)
+  // Note: We no longer auto-focus the input - user must tap to enter focus mode
   useEffect(() => {
     if (visible && isEmbedded) {
       setSearchQuery('');
-      // Focus input after pill morph completes (controlled by HomeScreen)
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 350);
+      onQueryChange?.(''); // Reset parent's query state too
     }
-  }, [visible, isEmbedded]);
+  }, [visible, isEmbedded, onQueryChange]);
 
   // Simple close handler - NO animation logic, just calls parent's onClose
   // HomeScreen handles all animation orchestration
@@ -197,6 +200,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   if (isEmbedded) {
     // INPUT ONLY MODE: Just render the TextInput for inside the morphing pill
     if (inputOnly) {
+      const handleTextChange = (text: string) => {
+        setSearchQuery(text);
+        onQueryChange?.(text);
+      };
+
       return (
         <View style={styles.inputOnlyContainer}>
           <TextInput
@@ -205,8 +213,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             placeholder="Search rides, parks, news..."
             placeholderTextColor="#999999"
             value={searchQuery}
-            onChangeText={setSearchQuery}
+            onChangeText={handleTextChange}
             onSubmitEditing={handleSearch}
+            onFocus={onInputFocus}
             returnKeyType="search"
             autoCorrect={false}
             autoCapitalize="none"

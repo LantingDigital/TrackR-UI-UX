@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useRef, useMemo } from 'react';
-import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, NativeSyntheticEvent, NativeScrollEvent, Dimensions, Pressable, Keyboard, Easing } from 'react-native';
+import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
+import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, NativeSyntheticEvent, NativeScrollEvent, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
@@ -7,6 +7,7 @@ import { BlurView } from 'expo-blur';
 
 import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, QuickLogSheet, MorphingActionButton } from '../components';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
+import { RECENT_SEARCHES, searchItems, getTypeIcon, SearchableItem, NEARBY_RIDES } from '../data/mockSearchData';
 
 const COLLAPSE_THRESHOLD = 50;
 const EXPAND_THRESHOLD = 10;
@@ -66,6 +67,28 @@ export const HomeScreen = () => {
   // Close phase multiplier: 0 = use bounce curve (open), 1 = use linear curve (close)
   // This allows fancy bounce on open but simple linear slide on close
   const closePhaseProgress = useRef(new Animated.Value(0)).current;
+
+  // Search focus state: tracks whether the search input is focused
+  // When focused, search bar slides up, section cards fade out, dropdown appears
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const searchFocusProgress = useRef(new Animated.Value(0)).current;
+
+  // Search query state for dropdown autocomplete
+  const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
+  const debounceTimerRef = useRef<NodeJS.Timeout>();
+
+  // Staggered cascade animation for dropdown items
+  const dropdownItemAnimations = useRef<Animated.Value[]>([
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+  ]).current;
 
   const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
@@ -279,6 +302,12 @@ export const HomeScreen = () => {
   const handleSearchClose = useCallback(() => {
     Keyboard.dismiss();
 
+    // Reset focus state immediately so modal starts fresh next time
+    setIsSearchFocused(false);
+    searchFocusProgress.setValue(0);
+    setSearchQuery('');
+    setDebouncedQuery('');
+
     // GUARANTEE header is expanded when returning to home screen
     // This is critical - no matter how user got to modal, they return to expanded header
     isCollapsedRef.current = false;
@@ -335,7 +364,109 @@ export const HomeScreen = () => {
     ]).start(() => {
       setSearchVisible(false);
     });
-  }, [animProgress, pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, closePhaseProgress]);
+  }, [animProgress, pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, closePhaseProgress, searchFocusProgress]);
+
+  // Search focus handlers - animate search bar up/down and toggle dropdown
+  const handleSearchFocus = useCallback(() => {
+    setIsSearchFocused(true);
+    Animated.timing(searchFocusProgress, {
+      toValue: 1,
+      duration: 250,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [searchFocusProgress]);
+
+  const handleSearchUnfocus = useCallback(() => {
+    Keyboard.dismiss();
+    setIsSearchFocused(false);
+    Animated.timing(searchFocusProgress, {
+      toValue: 0,
+      duration: 250,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [searchFocusProgress]);
+
+  // X button handler: unfocus first, then close modal
+  const handleXButtonPress = useCallback(() => {
+    if (isSearchFocused) {
+      handleSearchUnfocus();
+    } else {
+      handleSearchClose();
+    }
+  }, [isSearchFocused, handleSearchUnfocus, handleSearchClose]);
+
+  // Backdrop tap handler: unfocus when focused, do nothing when unfocused
+  const handleBackdropPress = useCallback(() => {
+    if (isSearchFocused) {
+      handleSearchUnfocus();
+    }
+    // Don't close modal on backdrop tap when unfocused
+  }, [isSearchFocused, handleSearchUnfocus]);
+
+  // Handle search query changes from SearchModal
+  const handleSearchQueryChange = useCallback((query: string) => {
+    setSearchQuery(query);
+  }, []);
+
+  // Debounce effect for autocomplete - only update after 300ms typing pause
+  useEffect(() => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    debounceTimerRef.current = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+    }, 300);
+
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [searchQuery]);
+
+  // Trigger staggered cascade animation when dropdown becomes visible or content changes
+  useEffect(() => {
+    if (isSearchFocused) {
+      // Reset all item animations
+      dropdownItemAnimations.forEach(anim => anim.setValue(0));
+
+      // Stagger animate each item (50ms delay between items)
+      const staggeredAnimations = dropdownItemAnimations.map((anim, index) =>
+        Animated.timing(anim, {
+          toValue: 1,
+          duration: 200,
+          delay: index * 50,
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: true,
+        })
+      );
+
+      Animated.parallel(staggeredAnimations).start();
+    }
+  }, [isSearchFocused, debouncedQuery, dropdownItemAnimations]);
+
+  // Get dropdown items - recent searches when empty, autocomplete results when typing
+  const dropdownItems = useMemo(() => {
+    if (debouncedQuery.trim()) {
+      // Autocomplete mode - show matching items
+      return searchItems(debouncedQuery).slice(0, 8);
+    } else {
+      // Recent searches mode - convert string[] to SearchableItem[] format
+      return RECENT_SEARCHES.slice(0, 5).map((name, index) => {
+        // Try to find a matching item in NEARBY_RIDES for richer data
+        const matchingRide = NEARBY_RIDES.find(r => r.name === name);
+        return matchingRide || {
+          id: `recent-${index}`,
+          name,
+          image: '',
+          type: 'ride' as const,
+          subtitle: 'Recent search',
+        };
+      });
+    }
+  }, [debouncedQuery]);
 
   const handleSearch = useCallback((query: string) => {
     console.log('Searching for:', query);
@@ -600,8 +731,18 @@ export const HomeScreen = () => {
     Animated.multiply(topLinear, closePhaseProgress)
   );
 
-  // Final top position - simplified: just the base morph animation (no sticky/bounce)
-  const morphingPillTop = morphingPillTopBase;
+  // Focus offset - when focused, search bar moves up to where "SEARCH" text is
+  // Focused position: insets.top + 16 (where SEARCH header is)
+  // Unfocused position: pillFinalTop = insets.top + 60
+  // Offset: 60 - 16 = 44 pixels
+  const focusTopOffset = searchFocusProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, -44], // Move up 44px when focused
+    extrapolate: 'clamp',
+  });
+
+  // Final top position - base morph animation plus focus offset
+  const morphingPillTop = Animated.add(morphingPillTopBase, focusTopOffset);
 
   // LEFT POSITION
   // For searchPill: Keep CENTER of pill constant as it expands
@@ -811,6 +952,30 @@ export const HomeScreen = () => {
     extrapolate: 'clamp',
   });
 
+  // =========================================
+  // Focus Mode Interpolations
+  // =========================================
+  // "SEARCH" header fades out when focused (combined with searchContentFade)
+  const searchHeaderFocusOpacity = searchFocusProgress.interpolate({
+    inputRange: [0, 0.5],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
+  // Section cards fade out when focused
+  const sectionCardsFocusOpacity = searchFocusProgress.interpolate({
+    inputRange: [0, 0.3],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
+  // Dropdown list fades in when focused
+  const dropdownFocusOpacity = searchFocusProgress.interpolate({
+    inputRange: [0.3, 1],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  });
+
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       {/* News Feed - comes first, header floats over it */}
@@ -950,6 +1115,7 @@ export const HomeScreen = () => {
       {/* ============================== */}
 
       {/* Blur Backdrop - fades in simultaneously with pill expansion */}
+      {/* Tapping backdrop unfocuses the search bar (if focused), doesn't close modal */}
       {searchVisible && (
         <Animated.View
           style={[
@@ -958,7 +1124,9 @@ export const HomeScreen = () => {
           ]}
           pointerEvents={searchVisible ? 'auto' : 'none'}
         >
-          <BlurView intensity={80} tint="light" style={StyleSheet.absoluteFill} />
+          <Pressable style={StyleSheet.absoluteFill} onPress={handleBackdropPress}>
+            <BlurView intensity={80} tint="light" style={StyleSheet.absoluteFill} />
+          </Pressable>
         </Animated.View>
       )}
 
@@ -986,6 +1154,7 @@ export const HomeScreen = () => {
       )}
 
       {/* "S E A R C H" Header Label - centered above the search bar */}
+      {/* Fades in with modal open (searchContentFade), fades out when input focused (searchHeaderFocusOpacity) */}
       {searchVisible && (
         <Animated.Text
           style={{
@@ -998,7 +1167,7 @@ export const HomeScreen = () => {
             fontWeight: '700',
             letterSpacing: 10,
             color: '#000000',
-            opacity: searchContentFade,
+            opacity: Animated.multiply(searchContentFade, searchHeaderFocusOpacity),
             zIndex: 160,
           }}
         >
@@ -1079,13 +1248,16 @@ export const HomeScreen = () => {
               isEmbedded={true}
               inputOnly={true}
               showCloseButton={false}
+              onInputFocus={handleSearchFocus}
+              onQueryChange={handleSearchQueryChange}
             />
           </Animated.View>
 
           {/* X Close Button - inside search bar */}
+          {/* First tap unfocuses, second tap closes modal */}
           <Animated.View style={{ opacity: searchContentFade }}>
             <Pressable
-              onPress={handleSearchClose}
+              onPress={handleXButtonPress}
               style={{
                 width: 40,
                 height: 40,
@@ -1106,6 +1278,7 @@ export const HomeScreen = () => {
       {/* Floating Section Cards - render OUTSIDE the pill, directly on blur backdrop */}
       {/* Cards scroll UNDER the floating search bar (lower zIndex) */}
       {/* Note: Individual sections have their own staggered cascade animations from SearchModal */}
+      {/* Fades out when search input is focused (sectionCardsFocusOpacity) */}
       {searchVisible && (
         <Animated.View
           style={{
@@ -1115,10 +1288,10 @@ export const HomeScreen = () => {
             right: 0,
             bottom: 0,
             zIndex: 80, // BELOW the morphing pill (100) so content scrolls under it
-            opacity: searchContentFade, // Use searchContentFade for coordinated fade in/out
+            opacity: Animated.multiply(searchContentFade, sectionCardsFocusOpacity), // Fade in with modal, fade out when focused
             // Note: translateY removed - individual sections have their own staggered translateY animations
           }}
-          pointerEvents={searchVisible ? 'auto' : 'none'}
+          pointerEvents={isSearchFocused ? 'none' : 'auto'}
         >
           <SearchModal
             visible={searchVisible}
@@ -1131,6 +1304,86 @@ export const HomeScreen = () => {
             isEmbedded={true}
             sectionsOnly={true}
           />
+        </Animated.View>
+      )}
+
+      {/* Focus Mode Dropdown - appears when search input is focused */}
+      {/* Shows recent searches initially, autocomplete results when typing */}
+      {searchVisible && isSearchFocused && (
+        <Animated.View
+          style={{
+            position: 'absolute',
+            top: insets.top + 16 + 56 + 16, // SEARCH header position + search bar height + gap
+            left: 16,
+            right: 16,
+            bottom: 0,
+            zIndex: 85, // Above section cards (80), below morphing pill (150)
+            opacity: dropdownFocusOpacity,
+          }}
+          pointerEvents="auto"
+        >
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={{ paddingBottom: 100 }}
+          >
+            {dropdownItems.map((item, index) => {
+              const itemAnim = dropdownItemAnimations[index] || new Animated.Value(1);
+              const isRecentSearch = !debouncedQuery.trim();
+
+              return (
+                <Animated.View
+                  key={item.id}
+                  style={{
+                    opacity: itemAnim,
+                    transform: [{
+                      translateY: itemAnim.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [20, 0],
+                      }),
+                    }],
+                  }}
+                >
+                  <Pressable
+                    onPress={() => {
+                      console.log('Selected:', item.name);
+                      handleSearchUnfocus();
+                    }}
+                    style={({ pressed }) => [
+                      styles.dropdownRow,
+                      pressed && { backgroundColor: 'rgba(0,0,0,0.04)' },
+                    ]}
+                  >
+                    {/* Icon - clock for recent, type icon for autocomplete */}
+                    <View style={styles.dropdownIconContainer}>
+                      <Ionicons
+                        name={isRecentSearch ? 'time-outline' : (getTypeIcon(item.type) as any)}
+                        size={20}
+                        color="#666666"
+                      />
+                    </View>
+                    {/* Text content */}
+                    <View style={styles.dropdownTextContainer}>
+                      <Text style={styles.dropdownRowTitle} numberOfLines={1}>
+                        {item.name}
+                      </Text>
+                      <Text style={styles.dropdownRowSubtitle} numberOfLines={1}>
+                        {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                        {item.subtitle ? ` \u2022 ${item.subtitle}` : ''}
+                      </Text>
+                    </View>
+                  </Pressable>
+                </Animated.View>
+              );
+            })}
+
+            {/* No results message */}
+            {debouncedQuery.trim() && dropdownItems.length === 0 && (
+              <View style={styles.noResultsContainer}>
+                <Text style={styles.noResultsText}>No results found</Text>
+              </View>
+            )}
+          </ScrollView>
         </Animated.View>
       )}
 
@@ -1194,5 +1447,43 @@ const styles = StyleSheet.create({
   },
   cardWrapper: {
     marginBottom: 12,
+  },
+  // Dropdown styles for focus mode
+  dropdownRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 8,
+    borderRadius: 12,
+  },
+  dropdownIconContainer: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(0,0,0,0.06)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  dropdownTextContainer: {
+    flex: 1,
+  },
+  dropdownRowTitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#000000',
+    marginBottom: 2,
+  },
+  dropdownRowSubtitle: {
+    fontSize: 13,
+    color: '#666666',
+  },
+  noResultsContainer: {
+    paddingVertical: 40,
+    alignItems: 'center',
+  },
+  noResultsText: {
+    fontSize: 16,
+    color: '#666666',
   },
 });
