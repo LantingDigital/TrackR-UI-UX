@@ -1,14 +1,13 @@
 /**
  * ProfileScreen
  *
- * User profile and wallet management screen.
- * - Profile summary header
- * - Wallet statistics
- * - List of all tickets with filters
- * - Ticket management actions
+ * User profile hub - navigation to various profile sections.
+ * - Profile header with avatar and name
+ * - Navigation buttons to sub-screens (Wallet, Rating Criteria, etc.)
+ * - Coaster stats summary
  */
 
-import React, { useState, useCallback, useRef, useMemo } from 'react';
+import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import {
   View,
   Text,
@@ -16,8 +15,6 @@ import {
   ScrollView,
   Pressable,
   Animated,
-  Alert,
-  RefreshControl,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -26,15 +23,16 @@ import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { radius } from '../theme/radius';
 import { useWallet } from '../hooks/useWallet';
+import { WalletScreen } from './WalletScreen';
+import { CriteriaSetupScreen } from './CriteriaSetupScreen';
 import {
-  Ticket,
-  PARK_BRAND_COLORS,
-  PARK_CHAIN_LABELS,
-  PASS_TYPE_LABELS,
-  ParkChain,
-} from '../types/wallet';
+  getCreditCount,
+  getTotalRideCount,
+  hasCompletedCriteriaSetup,
+  subscribe,
+} from '../stores/rideLogStore';
 
-// Animation constants - match app patterns
+// Animation constants
 const RESPONSIVE_SPRING = {
   damping: 16,
   stiffness: 180,
@@ -42,195 +40,159 @@ const RESPONSIVE_SPRING = {
   useNativeDriver: true,
 };
 
-const PRESS_SCALE = 0.96;
-const PRESS_OPACITY = 0.7;
+const PRESS_SCALE = 0.97;
+
+type ActiveScreen = 'hub' | 'wallet' | 'criteria';
 
 export const ProfileScreen = () => {
   const insets = useSafeAreaInsets();
-  const {
-    tickets,
-    filteredTickets,
-    filterPreferences,
-    isLoading,
-    refreshTickets,
-    deleteTicket,
-    setDefaultTicket,
-    setFilterPreferences,
-    clearFilters,
-  } = useWallet();
+  const { tickets } = useWallet();
+  const [activeScreen, setActiveScreen] = useState<ActiveScreen>('hub');
 
-  const [showExpiredFilter, setShowExpiredFilter] = useState(filterPreferences.showExpired);
+  // Subscribe to ride log store
+  const [creditCount, setCreditCount] = useState(getCreditCount());
+  const [totalRides, setTotalRides] = useState(getTotalRideCount());
+  const [hasCriteriaSetup, setHasCriteriaSetup] = useState(hasCompletedCriteriaSetup());
 
-  // Statistics
-  const stats = useMemo(() => {
-    const active = tickets.filter((t) => t.status === 'active').length;
-    const expired = tickets.filter((t) => t.status === 'expired').length;
-    const total = tickets.length;
+  useEffect(() => {
+    const unsubscribe = subscribe(() => {
+      setCreditCount(getCreditCount());
+      setTotalRides(getTotalRideCount());
+      setHasCriteriaSetup(hasCompletedCriteriaSetup());
+    });
+    return unsubscribe;
+  }, []);
 
-    const parkChains = [...new Set(tickets.map((t) => t.parkChain))].length;
-
-    return { active, expired, total, parkChains };
+  // Stats
+  const activeTickets = useMemo(() => {
+    return tickets.filter((t) => t.status === 'active').length;
   }, [tickets]);
 
-  // Format date for display
-  const formatDate = useCallback((dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    });
-  }, []);
-
-  // Check if ticket is expiring soon (within 7 days)
-  const isExpiringSoon = useCallback((validUntil: string) => {
-    const now = new Date();
-    const expiry = new Date(validUntil);
-    const daysUntilExpiry = Math.ceil(
-      (expiry.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)
-    );
-    return daysUntilExpiry >= 0 && daysUntilExpiry <= 7;
-  }, []);
-
-  // Toggle expired filter
-  const handleToggleExpired = useCallback(() => {
-    const newValue = !showExpiredFilter;
-    setShowExpiredFilter(newValue);
-    setFilterPreferences({ showExpired: newValue });
+  // Navigation handlers
+  const navigateTo = useCallback((screen: ActiveScreen) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-  }, [showExpiredFilter, setFilterPreferences]);
+    setActiveScreen(screen);
+  }, []);
 
-  // Handle ticket press - show options
-  const handleTicketPress = useCallback(
-    (ticket: Ticket) => {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  const goBack = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setActiveScreen('hub');
+  }, []);
 
-      const options = [
-        {
-          text: ticket.isDefault ? '✓ Default Ticket' : 'Set as Default',
-          onPress: ticket.isDefault ? undefined : () => setDefaultTicket(ticket.id),
-        },
-        {
-          text: 'Delete',
-          style: 'destructive' as const,
-          onPress: () => {
-            Alert.alert(
-              'Delete Ticket',
-              `Are you sure you want to delete "${ticket.parkName}"?`,
-              [
-                { text: 'Cancel', style: 'cancel' },
-                {
-                  text: 'Delete',
-                  style: 'destructive',
-                  onPress: () => deleteTicket(ticket.id),
-                },
-              ]
-            );
-          },
-        },
-        { text: 'Cancel', style: 'cancel' as const },
-      ];
+  // Render sub-screens
+  if (activeScreen === 'wallet') {
+    return <WalletScreen onBack={goBack} />;
+  }
 
-      Alert.alert(ticket.parkName, PASS_TYPE_LABELS[ticket.passType], options);
-    },
-    [setDefaultTicket, deleteTicket]
-  );
+  if (activeScreen === 'criteria') {
+    return <CriteriaSetupScreen onBack={goBack} />;
+  }
 
-  // Handle refresh
-  const handleRefresh = useCallback(async () => {
-    await refreshTickets();
-  }, [refreshTickets]);
-
+  // Render hub
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={isLoading}
-            onRefresh={handleRefresh}
-            tintColor={colors.accent.primary}
-          />
-        }
       >
         {/* Profile Header */}
         <View style={styles.profileHeader}>
           <View style={styles.avatarContainer}>
-            <Ionicons name="person" size={32} color={colors.text.secondary} />
+            <Ionicons name="person" size={40} color={colors.text.secondary} />
           </View>
-          <View style={styles.profileInfo}>
-            <Text style={styles.profileName}>Coaster Enthusiast</Text>
-            <Text style={styles.profileSubtext}>TrackR Member</Text>
-          </View>
-          <Pressable style={styles.settingsButton}>
-            <Ionicons name="settings-outline" size={24} color={colors.text.secondary} />
-          </Pressable>
+          <Text style={styles.profileName}>Coaster Enthusiast</Text>
+          <Text style={styles.profileSubtext}>TrackR Member</Text>
         </View>
 
-        {/* Wallet Statistics */}
+        {/* Quick Stats */}
         <View style={styles.statsCard}>
-          <Text style={styles.sectionTitle}>My Wallet</Text>
           <View style={styles.statsRow}>
-            <StatItem label="Active" value={stats.active} color={colors.status.success} />
-            <StatItem label="Expired" value={stats.expired} color={colors.text.meta} />
-            <StatItem label="Parks" value={stats.parkChains} color={colors.accent.primary} />
+            <View style={styles.statItem}>
+              <Text style={[styles.statValue, { color: colors.accent.primary }]}>
+                {creditCount}
+              </Text>
+              <Text style={styles.statLabel}>Credits</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <Text style={[styles.statValue, { color: colors.text.primary }]}>
+                {totalRides}
+              </Text>
+              <Text style={styles.statLabel}>Total Rides</Text>
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <Text style={[styles.statValue, { color: colors.status.success }]}>
+                {activeTickets}
+              </Text>
+              <Text style={styles.statLabel}>Active Passes</Text>
+            </View>
           </View>
         </View>
 
-        {/* Filters */}
-        <View style={styles.filtersRow}>
-          <Text style={styles.ticketListTitle}>
-            Tickets {filteredTickets.length > 0 ? `(${filteredTickets.length})` : ''}
-          </Text>
-          <Pressable
-            style={[styles.filterChip, showExpiredFilter && styles.filterChipActive]}
-            onPress={handleToggleExpired}
-          >
-            <Text
-              style={[
-                styles.filterChipText,
-                showExpiredFilter && styles.filterChipTextActive,
-              ]}
-            >
-              Show Expired
-            </Text>
-          </Pressable>
+        {/* Navigation Buttons */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Profile Settings</Text>
+
+          <NavigationButton
+            icon="wallet-outline"
+            label="My Wallet"
+            description="Manage your park passes and tickets"
+            badge={activeTickets > 0 ? `${activeTickets}` : undefined}
+            onPress={() => navigateTo('wallet')}
+          />
+
+          <NavigationButton
+            icon="options-outline"
+            label="Rating Criteria"
+            description="Customize how you rate coasters"
+            badge={!hasCriteriaSetup ? 'Setup' : undefined}
+            badgeColor={!hasCriteriaSetup ? colors.accent.primary : undefined}
+            onPress={() => navigateTo('criteria')}
+          />
+
+          <NavigationButton
+            icon="stats-chart-outline"
+            label="My Rankings"
+            description="View your coaster rankings"
+            disabled
+            comingSoon
+            onPress={() => {}}
+          />
+
+          <NavigationButton
+            icon="trophy-outline"
+            label="Achievements"
+            description="Track your coaster milestones"
+            disabled
+            comingSoon
+            onPress={() => {}}
+          />
         </View>
 
-        {/* Ticket List */}
-        {filteredTickets.length > 0 ? (
-          <View style={styles.ticketList}>
-            {filteredTickets.map((ticket) => (
-              <TicketRow
-                key={ticket.id}
-                ticket={ticket}
-                onPress={() => handleTicketPress(ticket)}
-                formatDate={formatDate}
-                isExpiringSoon={isExpiringSoon}
-              />
-            ))}
-          </View>
-        ) : (
-          <View style={styles.emptyState}>
-            <Ionicons
-              name="card-outline"
-              size={48}
-              color={colors.text.meta}
-            />
-            <Text style={styles.emptyText}>
-              {tickets.length === 0
-                ? 'No tickets yet'
-                : 'No tickets match filters'}
-            </Text>
-            <Text style={styles.emptySubtext}>
-              {tickets.length === 0
-                ? 'Tap Scan on the home screen to add your first ticket'
-                : 'Try adjusting your filters'}
-            </Text>
-          </View>
-        )}
+        {/* Account Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Account</Text>
+
+          <NavigationButton
+            icon="settings-outline"
+            label="App Settings"
+            description="Notifications, appearance, and more"
+            disabled
+            comingSoon
+            onPress={() => {}}
+          />
+
+          <NavigationButton
+            icon="help-circle-outline"
+            label="Help & Support"
+            description="FAQs and contact support"
+            disabled
+            comingSoon
+            onPress={() => {}}
+          />
+        </View>
 
         {/* Bottom spacing */}
         <View style={{ height: insets.bottom + 100 }} />
@@ -240,130 +202,98 @@ export const ProfileScreen = () => {
 };
 
 // =========================================
-// Stat Item Component
+// Navigation Button Component
 // =========================================
-interface StatItemProps {
+interface NavigationButtonProps {
+  icon: keyof typeof Ionicons.glyphMap;
   label: string;
-  value: number;
-  color: string;
-}
-
-const StatItem: React.FC<StatItemProps> = ({ label, value, color }) => (
-  <View style={styles.statItem}>
-    <Text style={[styles.statValue, { color }]}>{value}</Text>
-    <Text style={styles.statLabel}>{label}</Text>
-  </View>
-);
-
-// =========================================
-// Ticket Row Component
-// =========================================
-interface TicketRowProps {
-  ticket: Ticket;
+  description: string;
+  badge?: string;
+  badgeColor?: string;
+  disabled?: boolean;
+  comingSoon?: boolean;
   onPress: () => void;
-  formatDate: (date: string) => string;
-  isExpiringSoon: (date: string) => boolean;
 }
 
-const TicketRow: React.FC<TicketRowProps> = ({
-  ticket,
+const NavigationButton: React.FC<NavigationButtonProps> = ({
+  icon,
+  label,
+  description,
+  badge,
+  badgeColor,
+  disabled,
+  comingSoon,
   onPress,
-  formatDate,
-  isExpiringSoon,
 }) => {
   const scaleAnim = useRef(new Animated.Value(1)).current;
-  const opacityAnim = useRef(new Animated.Value(1)).current;
 
   const handlePressIn = useCallback(() => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: PRESS_SCALE,
-        ...RESPONSIVE_SPRING,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: PRESS_OPACITY,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [scaleAnim, opacityAnim]);
+    if (disabled) return;
+    Animated.spring(scaleAnim, {
+      toValue: PRESS_SCALE,
+      ...RESPONSIVE_SPRING,
+    }).start();
+  }, [disabled, scaleAnim]);
 
   const handlePressOut = useCallback(() => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        ...RESPONSIVE_SPRING,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [scaleAnim, opacityAnim]);
-
-  const brandColor = PARK_BRAND_COLORS[ticket.parkChain as ParkChain] || colors.accent.primary;
-  const isExpired = ticket.status === 'expired';
-  const expiring = !isExpired && isExpiringSoon(ticket.validUntil);
+    Animated.spring(scaleAnim, {
+      toValue: 1,
+      ...RESPONSIVE_SPRING,
+    }).start();
+  }, [scaleAnim]);
 
   return (
     <Pressable
-      onPress={onPress}
+      onPress={disabled ? undefined : onPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      style={({ pressed }) => [
+        disabled && styles.buttonDisabled,
+      ]}
     >
       <Animated.View
         style={[
-          styles.ticketRow,
-          {
-            transform: [{ scale: scaleAnim }],
-            opacity: opacityAnim,
-          },
-          isExpired && styles.ticketRowExpired,
+          styles.navButton,
+          { transform: [{ scale: scaleAnim }] },
+          disabled && styles.navButtonDisabled,
         ]}
       >
-        {/* Brand Color Indicator */}
-        <View style={[styles.brandIndicator, { backgroundColor: brandColor }]} />
+        {/* Icon */}
+        <View style={[styles.navIconContainer, disabled && styles.navIconDisabled]}>
+          <Ionicons
+            name={icon}
+            size={22}
+            color={disabled ? colors.text.meta : colors.accent.primary}
+          />
+        </View>
 
-        {/* Ticket Info */}
-        <View style={styles.ticketInfo}>
-          <View style={styles.ticketHeader}>
-            <Text
-              style={[styles.ticketName, isExpired && styles.ticketNameExpired]}
-              numberOfLines={1}
-            >
-              {ticket.parkName}
+        {/* Content */}
+        <View style={styles.navContent}>
+          <View style={styles.navLabelRow}>
+            <Text style={[styles.navLabel, disabled && styles.navLabelDisabled]}>
+              {label}
             </Text>
-            {ticket.isDefault && (
-              <View style={styles.defaultBadge}>
-                <Ionicons name="star" size={10} color={colors.accent.primary} />
+            {badge && (
+              <View style={[styles.badge, badgeColor && { backgroundColor: badgeColor }]}>
+                <Text style={styles.badgeText}>{badge}</Text>
+              </View>
+            )}
+            {comingSoon && (
+              <View style={styles.comingSoonBadge}>
+                <Text style={styles.comingSoonText}>Soon</Text>
               </View>
             )}
           </View>
-          <Text style={styles.ticketType}>{PASS_TYPE_LABELS[ticket.passType]}</Text>
-          <View style={styles.ticketMeta}>
-            <Text style={styles.ticketDate}>
-              Valid until {formatDate(ticket.validUntil)}
-            </Text>
-            {expiring && (
-              <View style={styles.expiringBadge}>
-                <Text style={styles.expiringText}>Expiring soon</Text>
-              </View>
-            )}
-            {isExpired && (
-              <View style={styles.expiredBadge}>
-                <Text style={styles.expiredText}>Expired</Text>
-              </View>
-            )}
-          </View>
+          <Text style={[styles.navDescription, disabled && styles.navDescriptionDisabled]}>
+            {description}
+          </Text>
         </View>
 
         {/* Chevron */}
         <Ionicons
           name="chevron-forward"
           size={20}
-          color={colors.text.meta}
-          style={styles.ticketChevron}
+          color={disabled ? colors.text.meta : colors.text.secondary}
         />
       </Animated.View>
     </Pressable>
@@ -387,14 +317,14 @@ const styles = StyleSheet.create({
 
   // Profile Header
   profileHeader: {
-    flexDirection: 'row',
     alignItems: 'center',
     marginBottom: spacing.xl,
+    paddingTop: spacing.lg,
   },
   avatarContainer: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     backgroundColor: colors.background.card,
     alignItems: 'center',
     justifyContent: 'center',
@@ -403,28 +333,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 12,
     elevation: 4,
-  },
-  profileInfo: {
-    flex: 1,
-    marginLeft: spacing.base,
+    marginBottom: spacing.base,
   },
   profileName: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '700',
     color: colors.text.primary,
+    marginBottom: spacing.xs,
   },
   profileSubtext: {
     fontSize: 14,
     color: colors.text.secondary,
-    marginTop: 2,
-  },
-  settingsButton: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: colors.background.card,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 
   // Stats Card
@@ -439,21 +358,17 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     elevation: 4,
   },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: colors.text.primary,
-    marginBottom: spacing.base,
-  },
   statsRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    alignItems: 'center',
   },
   statItem: {
     alignItems: 'center',
+    flex: 1,
   },
   statValue: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '700',
   },
   statLabel: {
@@ -461,147 +376,104 @@ const styles = StyleSheet.create({
     color: colors.text.secondary,
     marginTop: 2,
   },
-
-  // Filters
-  filtersRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: spacing.base,
+  statDivider: {
+    width: 1,
+    height: 32,
+    backgroundColor: colors.border.subtle,
   },
-  ticketListTitle: {
-    fontSize: 16,
+
+  // Section
+  section: {
+    marginBottom: spacing.xl,
+  },
+  sectionTitle: {
+    fontSize: 13,
     fontWeight: '600',
-    color: colors.text.primary,
-  },
-  filterChip: {
-    paddingHorizontal: spacing.base,
-    paddingVertical: spacing.sm,
-    borderRadius: radius.pill,
-    backgroundColor: colors.background.card,
-    borderWidth: 1,
-    borderColor: colors.border.subtle,
-  },
-  filterChipActive: {
-    backgroundColor: colors.accent.primaryLight,
-    borderColor: colors.accent.primary,
-  },
-  filterChipText: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: colors.text.secondary,
-  },
-  filterChipTextActive: {
-    color: colors.accent.primary,
+    color: colors.text.meta,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginBottom: spacing.base,
+    marginLeft: spacing.xs,
   },
 
-  // Ticket List
-  ticketList: {
-    gap: spacing.base,
-  },
-  ticketRow: {
+  // Navigation Button
+  navButton: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.background.card,
     borderRadius: radius.lg,
-    overflow: 'hidden',
+    padding: spacing.base,
+    marginBottom: spacing.sm,
     shadowColor: colors.shadow.color,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1,
     shadowRadius: 8,
     elevation: 2,
   },
-  ticketRowExpired: {
-    opacity: 0.6,
+  navButtonDisabled: {
+    backgroundColor: colors.background.card,
   },
-  brandIndicator: {
-    width: 4,
-    alignSelf: 'stretch',
+  buttonDisabled: {
+    opacity: 0.7,
   },
-  ticketInfo: {
+  navIconContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: colors.accent.primaryLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.base,
+  },
+  navIconDisabled: {
+    backgroundColor: colors.background.page,
+  },
+  navContent: {
     flex: 1,
-    padding: spacing.base,
-    paddingLeft: spacing.lg,
   },
-  ticketHeader: {
+  navLabelRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
   },
-  ticketName: {
+  navLabel: {
     fontSize: 16,
     fontWeight: '600',
     color: colors.text.primary,
-    flex: 1,
   },
-  ticketNameExpired: {
+  navLabelDisabled: {
     color: colors.text.secondary,
   },
-  defaultBadge: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: colors.accent.primaryLight,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  ticketType: {
+  navDescription: {
     fontSize: 13,
     color: colors.text.secondary,
     marginTop: 2,
   },
-  ticketMeta: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: spacing.xs,
-    gap: spacing.sm,
-  },
-  ticketDate: {
-    fontSize: 12,
+  navDescriptionDisabled: {
     color: colors.text.meta,
   },
-  expiringBadge: {
-    backgroundColor: '#FEF3C7',
+  badge: {
+    backgroundColor: colors.status.success,
     paddingHorizontal: spacing.sm,
     paddingVertical: 2,
     borderRadius: radius.sm,
   },
-  expiringText: {
-    fontSize: 10,
+  badgeText: {
+    fontSize: 11,
     fontWeight: '600',
-    color: '#D97706',
+    color: colors.text.inverse,
   },
-  expiredBadge: {
-    backgroundColor: '#FEE2E2',
+  comingSoonBadge: {
+    backgroundColor: colors.background.page,
     paddingHorizontal: spacing.sm,
     paddingVertical: 2,
     borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: colors.border.subtle,
   },
-  expiredText: {
+  comingSoonText: {
     fontSize: 10,
-    fontWeight: '600',
-    color: colors.status.error,
-  },
-  ticketChevron: {
-    marginRight: spacing.base,
-  },
-
-  // Empty State
-  emptyState: {
-    alignItems: 'center',
-    paddingVertical: spacing.xxxl,
-  },
-  emptyText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: colors.text.secondary,
-    marginTop: spacing.lg,
-  },
-  emptySubtext: {
-    fontSize: 14,
+    fontWeight: '500',
     color: colors.text.meta,
-    textAlign: 'center',
-    marginTop: spacing.sm,
-    paddingHorizontal: spacing.xl,
   },
 });

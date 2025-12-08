@@ -101,6 +101,13 @@ export function getCriteria(): RatingCriteria[] {
 }
 
 /**
+ * Get full criteria config object
+ */
+export function getCriteriaConfig(): typeof state.criteriaConfig {
+  return state.criteriaConfig;
+}
+
+/**
  * Check if user has completed criteria setup
  */
 export function hasCompletedCriteriaSetup(): boolean {
@@ -262,6 +269,21 @@ export function updateCriteria(criteria: RatingCriteria[]): void {
       criteria,
       lastModifiedAt: new Date().toISOString(),
       hasCompletedSetup: true,
+    },
+  };
+
+  notifyListeners();
+}
+
+/**
+ * Update full criteria config
+ */
+export function updateCriteriaConfig(config: Partial<typeof state.criteriaConfig>): void {
+  state = {
+    ...state,
+    criteriaConfig: {
+      ...state.criteriaConfig,
+      ...config,
     },
   };
 

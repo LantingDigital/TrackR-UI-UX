@@ -29,6 +29,8 @@ export interface RatingCriteria {
   description?: string;
   /** Icon name from Ionicons */
   icon?: string;
+  /** Whether this criteria's weight is locked during adjustment */
+  isLocked?: boolean;
 }
 
 /**
