@@ -23,6 +23,7 @@ import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { radius } from '../theme/radius';
 import { useWallet } from '../hooks/useWallet';
+import { useTabBar } from '../contexts/TabBarContext';
 import { WalletScreen } from './WalletScreen';
 import { CriteriaSetupScreen } from './CriteriaSetupScreen';
 import {
@@ -48,6 +49,7 @@ export const ProfileScreen = () => {
   const insets = useSafeAreaInsets();
   const { tickets } = useWallet();
   const [activeScreen, setActiveScreen] = useState<ActiveScreen>('hub');
+  const tabBarContext = useTabBar();
 
   // Subscribe to ride log store
   const [creditCount, setCreditCount] = useState(getCreditCount());
@@ -62,6 +64,17 @@ export const ProfileScreen = () => {
     });
     return unsubscribe;
   }, []);
+
+  // Register reset handler for Profile screen - returns to hub when tab is pressed
+  useEffect(() => {
+    const resetHandler = () => {
+      setActiveScreen('hub');
+    };
+    tabBarContext?.registerResetHandler('Profile', resetHandler);
+    return () => {
+      tabBarContext?.unregisterResetHandler('Profile');
+    };
+  }, [tabBarContext]);
 
   // Stats
   const activeTickets = useMemo(() => {

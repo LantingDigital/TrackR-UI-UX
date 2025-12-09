@@ -1,14 +1,21 @@
+/**
+ * TabNavigator
+ *
+ * 5-tab navigation structure for TrackR V1:
+ * Home | Discover | Play | Activity | Profile
+ */
+
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Animated, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Animated, Pressable, InteractionManager } from 'react-native';
 import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-// Import screens (placeholder for now)
+// Import screens
 import { HomeScreen } from '../screens/HomeScreen';
-import { SearchScreen } from '../screens/SearchScreen';
-import { LogScreen } from '../screens/LogScreen';
 import { DiscoverScreen } from '../screens/DiscoverScreen';
+import { PlayScreen } from '../screens/PlayScreen';
+import { ActivityScreen } from '../screens/ActivityScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 
 // Import store for pending badge
@@ -22,6 +29,15 @@ const Tab = createBottomTabNavigator();
 // Tab bar height (used for animation offset)
 const TAB_BAR_HEIGHT = 49;
 
+// Tab configuration with icons
+const TAB_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; showBadge?: boolean }> = {
+  Home: { icon: 'home-outline' },
+  Discover: { icon: 'compass-outline' },
+  Play: { icon: 'game-controller-outline' },
+  Activity: { icon: 'time-outline', showBadge: true },
+  Profile: { icon: 'person-outline' },
+};
+
 /**
  * Custom hook to subscribe to pending log count changes
  */
@@ -29,7 +45,6 @@ function usePendingCount(): number {
   const [count, setCount] = useState(getPendingCount());
 
   useEffect(() => {
-    // Subscribe to store changes
     const unsubscribe = subscribe(() => {
       setCount(getPendingCount());
     });
@@ -79,28 +94,10 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navig
         const color = isFocused ? '#CF6769' : '#999999';
         const size = 24;
 
-        // Get the icon for each tab
-        let iconName: keyof typeof Ionicons.glyphMap = 'home-outline';
-        let showBadge = false;
-
-        switch (route.name) {
-          case 'Home':
-            iconName = 'home-outline';
-            break;
-          case 'Search':
-            iconName = 'search-outline';
-            break;
-          case 'Log':
-            iconName = 'add-circle-outline';
-            showBadge = pendingCount > 0;
-            break;
-          case 'Discover':
-            iconName = 'compass-outline';
-            break;
-          case 'Profile':
-            iconName = 'person-outline';
-            break;
-        }
+        // Get tab configuration
+        const config = TAB_CONFIG[route.name] || { icon: 'ellipse-outline' };
+        const iconName = config.icon;
+        const showBadge = config.showBadge && pendingCount > 0;
 
         const onPress = () => {
           const event = navigation.emit({
@@ -109,8 +106,16 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navig
             canPreventDefault: true,
           });
 
-          if (!isFocused && !event.defaultPrevented) {
+          if (isFocused) {
+            // Pressing the same tab - reset immediately
+            tabBarContext?.resetScreen(route.name);
+          } else if (!event.defaultPrevented) {
+            // Navigating to a different tab - navigate first, then reset after transition
             navigation.navigate(route.name);
+            // Defer the reset until after the navigation transition completes
+            InteractionManager.runAfterInteractions(() => {
+              tabBarContext?.resetScreen(route.name);
+            });
           }
         };
 
@@ -134,11 +139,7 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navig
             <View>
               <Ionicons name={iconName} size={size} color={color} />
               {showBadge && (
-                <View style={styles.badge}>
-                  <Text style={styles.badgeText}>
-                    {pendingCount > 9 ? '9+' : pendingCount}
-                  </Text>
-                </View>
+                <View style={styles.dotBadge} />
               )}
             </View>
             <Text style={[styles.tabLabel, { color }]}>
@@ -169,38 +170,29 @@ export const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Search"
-        component={SearchScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Log"
-        component={LogScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <View>
-              <Ionicons name="add-circle-outline" size={size} color={color} />
-              {pendingCount > 0 && (
-                <View style={styles.badge}>
-                  <Text style={styles.badgeText}>
-                    {pendingCount > 9 ? '9+' : pendingCount}
-                  </Text>
-                </View>
-              )}
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
         name="Discover"
         component={DiscoverScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="compass-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Play"
+        component={PlayScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="game-controller-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Activity"
+        component={ActivityScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="time-outline" size={size} color={color} />
           ),
         }}
       />
@@ -239,21 +231,15 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginTop: 2,
   },
-  badge: {
+  dotBadge: {
     position: 'absolute',
-    top: -4,
-    right: -8,
+    top: -2,
+    right: -2,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
     backgroundColor: '#CF6769',
-    borderRadius: 8,
-    minWidth: 16,
-    height: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 4,
-  },
-  badgeText: {
-    color: '#FFFFFF',
-    fontSize: 10,
-    fontWeight: '700',
   },
 });
+
+export default TabNavigator;

@@ -1,0 +1,14 @@
+[debug] [2025-12-09T00:19:59.487Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-09T00:19:59.488Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
+[debug] [2025-12-09T00:19:59.488Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-09T00:19:59.488Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
+[debug] [2025-12-09T00:19:59.493Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-09T00:19:59.493Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
+[debug] [2025-12-09T00:20:00.106Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-09T00:20:00.106Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
+[debug] [2025-12-09T00:20:00.107Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-09T00:20:00.107Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
+[debug] [2025-12-09T00:20:00.124Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-09T00:20:00.124Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
+[debug] [2025-12-09T00:20:00.124Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-09T00:20:00.124Z] > authorizing via signed-in user (keysbycaleb@gmail.com)

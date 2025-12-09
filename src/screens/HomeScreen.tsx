@@ -10,6 +10,7 @@ import { LogModal } from '../components/LogModal';
 import { LogConfirmationCard } from '../components/LogConfirmationCard';
 import { WalletCardStack } from '../components/wallet';
 import { useWallet } from '../hooks/useWallet';
+import { useTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
 import { RECENT_SEARCHES, searchItems, getTypeIcon, SearchableItem, NEARBY_RIDES } from '../data/mockSearchData';
 
@@ -51,6 +52,10 @@ export const HomeScreen = () => {
 
   // Wallet context
   const { stackTickets, setDefaultTicket, markTicketUsed } = useWallet();
+
+  // Tab bar context for screen reset functionality
+  const tabBarContext = useTabBar();
+
   const isCollapsedRef = useRef(false);
   // Ref for the log modal input (allows focusing from sectionsOnly mode)
   const logInputRef = useRef<TextInput>(null);
@@ -71,6 +76,30 @@ export const HomeScreen = () => {
   // This allows smooth morph-back when modal closes instead of abrupt jump
   const actionButtonsOpacity = useRef(new Animated.Value(1)).current;
   const actionButtonsScale = useRef(new Animated.Value(1)).current;
+
+  // Per-button animation values for seamless morph transitions
+  // When a button triggers a modal, it crossfades with the morphing pill
+  // while other buttons animate toward it and fade out
+  const buttonModalAnimations = useRef({
+    log: {
+      opacity: new Animated.Value(1),
+      scale: new Animated.Value(1),
+      translateX: new Animated.Value(0),
+      translateY: new Animated.Value(0),
+    },
+    search: {
+      opacity: new Animated.Value(1),
+      scale: new Animated.Value(1),
+      translateX: new Animated.Value(0),
+      translateY: new Animated.Value(0),
+    },
+    scan: {
+      opacity: new Animated.Value(1),
+      scale: new Animated.Value(1),
+      translateX: new Animated.Value(0),
+      translateY: new Animated.Value(0),
+    },
+  }).current;
 
   // Two-stage morph for circle button: circle → pill (stage1), then pill → modal (pillMorphProgress)
   const circleStage1Progress = useRef(new Animated.Value(0)).current;
@@ -179,6 +208,121 @@ export const HomeScreen = () => {
     lastScrollY.current = offsetY;
   }, [animProgress]);
 
+  // Helper function to animate action buttons during modal open
+  // Origin button crossfades with morphing pill, other buttons animate toward origin
+  const animateButtonsForModalOpen = useCallback((
+    originButton: 'log' | 'search' | 'scan',
+    targetX: number, // Center X of the morphing pill destination
+    targetY: number, // Center Y of the morphing pill destination
+  ) => {
+    const buttons = ['log', 'search', 'scan'] as const;
+
+    // Calculate button centers inline to avoid dependency on variables defined later
+    const containerWidth = SCREEN_WIDTH - (HORIZONTAL_PADDING * 2);
+    const pillWidth = (containerWidth - (GAP * 2)) / 3;
+    const expandedY = 12 + 56 + 12 + 18; // paddingTop + searchHeight + pillsContainerPaddingTop + half pill height
+
+    const buttonCenters = {
+      log: { x: HORIZONTAL_PADDING + pillWidth / 2, y: expandedY },
+      search: { x: HORIZONTAL_PADDING + pillWidth + GAP + pillWidth / 2, y: expandedY },
+      scan: { x: HORIZONTAL_PADDING + pillWidth * 2 + GAP * 2 + pillWidth / 2, y: expandedY },
+    };
+
+    // Reset all button animations
+    buttons.forEach((btn) => {
+      buttonModalAnimations[btn].opacity.setValue(1);
+      buttonModalAnimations[btn].scale.setValue(1);
+      buttonModalAnimations[btn].translateX.setValue(0);
+      buttonModalAnimations[btn].translateY.setValue(0);
+    });
+
+    // Animate each button
+    const animations: Animated.CompositeAnimation[] = [];
+
+    buttons.forEach((btn) => {
+      const isOrigin = btn === originButton;
+      const btnCenter = buttonCenters[btn];
+
+      if (isOrigin) {
+        // Origin button: INSTANT hide - no fade, no overlap
+        // The morphing pill appears at full opacity at the exact same position
+        // so hiding instantly creates a seamless "replacement" effect
+        buttonModalAnimations[btn].opacity.setValue(0);
+        // No scale animation needed - instant hide means no visual transition
+      } else {
+        // Other buttons: scale down, translate toward origin, fade out
+        const deltaX = (targetX - btnCenter.x) * 0.3; // Move 30% toward target
+        const deltaY = (targetY - btnCenter.y) * 0.3;
+
+        animations.push(
+          Animated.parallel([
+            Animated.timing(buttonModalAnimations[btn].opacity, {
+              toValue: 0,
+              duration: 200,
+              useNativeDriver: true,
+            }),
+            Animated.timing(buttonModalAnimations[btn].scale, {
+              toValue: 0.6,
+              duration: 200,
+              useNativeDriver: true,
+            }),
+            Animated.timing(buttonModalAnimations[btn].translateX, {
+              toValue: deltaX,
+              duration: 200,
+              useNativeDriver: true,
+            }),
+            Animated.timing(buttonModalAnimations[btn].translateY, {
+              toValue: deltaY,
+              duration: 200,
+              useNativeDriver: true,
+            }),
+          ])
+        );
+      }
+    });
+
+    Animated.parallel(animations).start();
+  }, [buttonModalAnimations]);
+
+  // Helper function to reset button animations when modal closes
+  const resetButtonAnimations = useCallback(() => {
+    const buttons = ['log', 'search', 'scan'] as const;
+    const animations: Animated.CompositeAnimation[] = [];
+
+    buttons.forEach((btn) => {
+      animations.push(
+        Animated.parallel([
+          Animated.timing(buttonModalAnimations[btn].opacity, {
+            toValue: 1,
+            duration: 250,
+            delay: 150, // Sync with modal close
+            useNativeDriver: true,
+          }),
+          Animated.timing(buttonModalAnimations[btn].scale, {
+            toValue: 1,
+            duration: 250,
+            delay: 150,
+            useNativeDriver: true,
+          }),
+          Animated.timing(buttonModalAnimations[btn].translateX, {
+            toValue: 0,
+            duration: 250,
+            delay: 150,
+            useNativeDriver: true,
+          }),
+          Animated.timing(buttonModalAnimations[btn].translateY, {
+            toValue: 0,
+            duration: 250,
+            delay: 150,
+            useNativeDriver: true,
+          }),
+        ])
+      );
+    });
+
+    Animated.parallel(animations).start();
+  }, [buttonModalAnimations]);
+
   // Base function to trigger search modal open animation
   // Called by per-origin press handlers after setting searchOrigin
   const triggerSearchOpen = useCallback((origin: SearchOrigin) => {
@@ -200,13 +344,27 @@ export const HomeScreen = () => {
     // This prevents flicker caused by race condition where components render
     // with stale animated values before setValue() takes effect
     searchContentFade.setValue(0);
-    actionButtonsOpacity.setValue(0);
-    actionButtonsScale.setValue(0.5); // Start scaled down for morph-back effect
     pillMorphProgress.setValue(0); // Ensure pill starts at initial position
     backdropOpacity.setValue(0); // Ensure backdrop starts hidden
     circleStage1Progress.setValue(0); // Reset 2-stage animation
     searchPillBounceProgress.setValue(0); // Reset bounce animation
     closePhaseProgress.setValue(0); // Use bounce curve for open
+
+    // Handle action button animations based on origin
+    if (origin === 'searchPill') {
+      // Crossfade animation - search button blends into morphing pill
+      // Other buttons animate toward search button and fade out
+      const targetX = SCREEN_WIDTH / 2; // Center of screen (where modal lands)
+      const targetY = insets.top + 60 + 28; // pillFinalTop + half height
+      animateButtonsForModalOpen('search', targetX, targetY);
+      // Keep container visible - individual buttons handle their own opacity
+      actionButtonsOpacity.setValue(1);
+      actionButtonsScale.setValue(1);
+    } else {
+      // For search bar origins, hide buttons with old behavior
+      actionButtonsOpacity.setValue(0);
+      actionButtonsScale.setValue(0.5);
+    }
 
     // Use requestAnimationFrame to ensure animated values are fully applied
     // to the native side before React renders the new components
@@ -317,7 +475,7 @@ export const HomeScreen = () => {
         ]).start();
       }
     });
-  }, [pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, circleStage1Progress, searchPillBounceProgress]);
+  }, [pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, circleStage1Progress, searchPillBounceProgress, animateButtonsForModalOpen, insets.top]);
 
   // Per-origin press handlers
   // Search bar press - determines origin based on current collapse state
@@ -397,7 +555,10 @@ export const HomeScreen = () => {
     ]).start(() => {
       setSearchVisible(false);
     });
-  }, [animProgress, pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, closePhaseProgress, searchFocusProgress]);
+
+    // Reset per-button animations (runs in parallel with above)
+    resetButtonAnimations();
+  }, [animProgress, pillMorphProgress, backdropOpacity, searchContentFade, actionButtonsOpacity, actionButtonsScale, closePhaseProgress, searchFocusProgress, resetButtonAnimations]);
 
   // Search focus handlers - animate search bar up/down and toggle dropdown
   const handleSearchFocus = useCallback(() => {
@@ -524,12 +685,26 @@ export const HomeScreen = () => {
 
     // Reset animation values before render
     logContentFade.setValue(0);
-    actionButtonsOpacity.setValue(0);
-    actionButtonsScale.setValue(0.5);
     logMorphProgress.setValue(0);
     logBackdropOpacity.setValue(0);
     logBounceProgress.setValue(0);
     logClosePhaseProgress.setValue(0);
+
+    // Handle action button animations based on origin
+    if (origin === 'logPill') {
+      // Crossfade animation - log button blends into morphing pill
+      // Other buttons animate toward log button and fade out
+      const targetX = SCREEN_WIDTH / 2; // Center of screen (where modal lands)
+      const targetY = insets.top + 60 + 28; // pillFinalTop + half height
+      animateButtonsForModalOpen('log', targetX, targetY);
+      // Keep container visible - individual buttons handle their own opacity
+      actionButtonsOpacity.setValue(1);
+      actionButtonsScale.setValue(1);
+    } else {
+      // For circle origin, hide buttons with old behavior
+      actionButtonsOpacity.setValue(0);
+      actionButtonsScale.setValue(0.5);
+    }
 
     requestAnimationFrame(() => {
       setLogVisible(true);
@@ -562,7 +737,7 @@ export const HomeScreen = () => {
         }),
       ]).start();
     });
-  }, [logMorphProgress, logBackdropOpacity, logContentFade, logBounceProgress, logClosePhaseProgress, actionButtonsOpacity, actionButtonsScale, animProgress]);
+  }, [logMorphProgress, logBackdropOpacity, logContentFade, logBounceProgress, logClosePhaseProgress, actionButtonsOpacity, actionButtonsScale, animProgress, animateButtonsForModalOpen, insets.top]);
 
   const handleLogPress = useCallback(() => {
     const origin = isCollapsedRef.current ? 'logCircle' : 'logPill';
@@ -618,7 +793,10 @@ export const HomeScreen = () => {
     ]).start(() => {
       setLogVisible(false);
     });
-  }, [animProgress, logMorphProgress, logBackdropOpacity, logContentFade, actionButtonsOpacity, actionButtonsScale, logClosePhaseProgress, logFocusProgress]);
+
+    // Reset per-button animations (runs in parallel with above)
+    resetButtonAnimations();
+  }, [animProgress, logMorphProgress, logBackdropOpacity, logContentFade, actionButtonsOpacity, actionButtonsScale, logClosePhaseProgress, logFocusProgress, resetButtonAnimations]);
 
   // Log focus handlers
   const handleLogFocus = useCallback(() => {
@@ -691,11 +869,16 @@ export const HomeScreen = () => {
 
   const handleScanPress = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    // Hide action buttons immediately for hero morph effect
-    actionButtonsOpacity.setValue(0);
-    actionButtonsScale.setValue(0.5);
+    // Crossfade animation - scan button blends into wallet morph
+    // Other buttons animate toward scan button and fade out
+    const targetX = SCREEN_WIDTH / 2;
+    const targetY = insets.top + 60 + 28;
+    animateButtonsForModalOpen('scan', targetX, targetY);
+    // Keep container visible - individual buttons handle their own opacity
+    actionButtonsOpacity.setValue(1);
+    actionButtonsScale.setValue(1);
     setWalletVisible(true);
-  }, [actionButtonsOpacity, actionButtonsScale]);
+  }, [actionButtonsOpacity, actionButtonsScale, animateButtonsForModalOpen, insets.top]);
 
   const handleWalletClose = useCallback(() => {
     setWalletVisible(false);
@@ -714,7 +897,9 @@ export const HomeScreen = () => {
         useNativeDriver: false,
       }),
     ]).start();
-  }, [actionButtonsOpacity, actionButtonsScale]);
+    // Reset per-button animations
+    resetButtonAnimations();
+  }, [actionButtonsOpacity, actionButtonsScale, resetButtonAnimations]);
 
   const handleWalletAddTicket = useCallback(() => {
     // Close wallet and navigate to Profile for adding tickets
@@ -734,9 +919,36 @@ export const HomeScreen = () => {
         useNativeDriver: false,
       }),
     ]).start();
+    // Reset per-button animations
+    resetButtonAnimations();
     // TODO: Navigate to Profile screen's wallet section
     console.log('Navigate to Profile to add ticket');
-  }, [actionButtonsOpacity, actionButtonsScale]);
+  }, [actionButtonsOpacity, actionButtonsScale, resetButtonAnimations]);
+
+  // Register reset handler for Home screen - animates modals closed when tab is pressed
+  // Uses the same smooth close animations as pressing X
+  useEffect(() => {
+    const resetHandler = () => {
+      // Close modals with animation (same as pressing X button)
+      if (searchVisible) {
+        handleSearchClose();
+      } else if (logVisible) {
+        handleLogClose();
+      } else if (walletVisible) {
+        handleWalletClose();
+      }
+
+      // Reset confirmation card (this is a sub-modal, close instantly)
+      if (confirmationVisible) {
+        setConfirmationVisible(false);
+        setSelectedCoaster(null);
+      }
+    };
+    tabBarContext?.registerResetHandler('Home', resetHandler);
+    return () => {
+      tabBarContext?.unregisterResetHandler('Home');
+    };
+  }, [searchVisible, logVisible, walletVisible, confirmationVisible, tabBarContext, handleSearchClose, handleLogClose, handleWalletClose]);
 
   const handleBookmarkPress = useCallback((id: string) => {
     setBookmarkedIds(prev => {
@@ -1197,11 +1409,20 @@ export const HomeScreen = () => {
 
   // Morphing pill fades in as animation begins
   // Slight delay ensures home bar is still visible during initial handoff
-  const morphingPillOpacity = pillMorphProgress.interpolate({
-    inputRange: [0, 0.05, 0.15],
-    outputRange: [0, 0.5, 1],
-    extrapolate: 'clamp',
-  });
+  // Morphing pill opacity - depends on origin
+  // For button origins (searchPill, collapsedCircle): start at full opacity immediately
+  // For search bar origins: gradual fade-in to crossfade with home search bar
+  const morphingPillOpacity = (searchOrigin === 'searchPill' || searchOrigin === 'collapsedCircle')
+    ? pillMorphProgress.interpolate({
+        inputRange: [0, 0.01],
+        outputRange: [1, 1], // Always full opacity - instant appearance
+        extrapolate: 'clamp',
+      })
+    : pillMorphProgress.interpolate({
+        inputRange: [0, 0.05, 0.15],
+        outputRange: [0, 0.5, 1], // Gradual fade for search bar crossfade
+        extrapolate: 'clamp',
+      });
 
   // =========================================
   // Focus Mode Interpolations
@@ -1420,12 +1641,20 @@ export const HomeScreen = () => {
     extrapolate: 'clamp',
   });
 
-  // Log morphing pill opacity
-  const logMorphingPillOpacity = logMorphProgress.interpolate({
-    inputRange: [0, 0.05, 0.15],
-    outputRange: [0, 0.5, 1],
-    extrapolate: 'clamp',
-  });
+  // Log morphing pill opacity - depends on origin
+  // For button origins (logPill): start at full opacity immediately
+  // For circle origin: gradual fade
+  const logMorphingPillOpacity = (logOrigin === 'logPill')
+    ? logMorphProgress.interpolate({
+        inputRange: [0, 0.01],
+        outputRange: [1, 1], // Always full opacity - instant appearance
+        extrapolate: 'clamp',
+      })
+    : logMorphProgress.interpolate({
+        inputRange: [0, 0.05, 0.15],
+        outputRange: [0, 0.5, 1], // Gradual fade for circle origin
+        extrapolate: 'clamp',
+      });
 
   // Log shadow animations
   const logShadowOpacity = logMorphProgress.interpolate({
@@ -1563,40 +1792,77 @@ export const HomeScreen = () => {
         </Animated.View>
 
         {/* Morphing Action Buttons - unified pill/circle that morphs between states */}
-        <Animated.View style={[styles.morphingButtonsContainer, { opacity: actionButtonsOpacity, transform: [{ scale: actionButtonsScale }] }]} pointerEvents={searchVisible ? 'none' : 'box-none'}>
-          <MorphingActionButton
-            icon="add-circle-outline"
-            label="Log"
-            buttonIndex={0}
-            animProgress={animProgress}
-            onPress={handleLogPress}
-            collapsedX={collapsedPositions[0].x - circleSize / 2}
-            expandedX={expandedPositions[0].x - pillWidth / 2}
-            collapsedY={collapsedPositions[0].y - circleSize / 2}
-            expandedY={expandedPositions[0].y - 18}
-          />
-          <MorphingActionButton
-            icon="search-outline"
-            label="Search"
-            buttonIndex={1}
-            animProgress={animProgress}
-            onPress={handleSearchButtonPress}
-            collapsedX={collapsedPositions[1].x - circleSize / 2}
-            expandedX={expandedPositions[1].x - pillWidth / 2}
-            collapsedY={collapsedPositions[1].y - circleSize / 2}
-            expandedY={expandedPositions[1].y - 18}
-          />
-          <MorphingActionButton
-            icon="barcode-outline"
-            label="Scan"
-            buttonIndex={2}
-            animProgress={animProgress}
-            onPress={handleScanPress}
-            collapsedX={collapsedPositions[2].x - circleSize / 2}
-            expandedX={expandedPositions[2].x - pillWidth / 2}
-            collapsedY={collapsedPositions[2].y - circleSize / 2}
-            expandedY={expandedPositions[2].y - 18}
-          />
+        {/* Each button has individual animation values for seamless morph transitions */}
+        <Animated.View style={[styles.morphingButtonsContainer, { opacity: actionButtonsOpacity, transform: [{ scale: actionButtonsScale }] }]} pointerEvents={searchVisible || logVisible ? 'none' : 'box-none'}>
+          {/* Log Button */}
+          <Animated.View
+            style={{
+              opacity: buttonModalAnimations.log.opacity,
+              transform: [
+                { scale: buttonModalAnimations.log.scale },
+                { translateX: buttonModalAnimations.log.translateX },
+                { translateY: buttonModalAnimations.log.translateY },
+              ],
+            }}
+          >
+            <MorphingActionButton
+              icon="add-circle-outline"
+              label="Log"
+              buttonIndex={0}
+              animProgress={animProgress}
+              onPress={handleLogPress}
+              collapsedX={collapsedPositions[0].x - circleSize / 2}
+              expandedX={expandedPositions[0].x - pillWidth / 2}
+              collapsedY={collapsedPositions[0].y - circleSize / 2}
+              expandedY={expandedPositions[0].y - 18}
+            />
+          </Animated.View>
+          {/* Search Button */}
+          <Animated.View
+            style={{
+              opacity: buttonModalAnimations.search.opacity,
+              transform: [
+                { scale: buttonModalAnimations.search.scale },
+                { translateX: buttonModalAnimations.search.translateX },
+                { translateY: buttonModalAnimations.search.translateY },
+              ],
+            }}
+          >
+            <MorphingActionButton
+              icon="search-outline"
+              label="Search"
+              buttonIndex={1}
+              animProgress={animProgress}
+              onPress={handleSearchButtonPress}
+              collapsedX={collapsedPositions[1].x - circleSize / 2}
+              expandedX={expandedPositions[1].x - pillWidth / 2}
+              collapsedY={collapsedPositions[1].y - circleSize / 2}
+              expandedY={expandedPositions[1].y - 18}
+            />
+          </Animated.View>
+          {/* Scan Button */}
+          <Animated.View
+            style={{
+              opacity: buttonModalAnimations.scan.opacity,
+              transform: [
+                { scale: buttonModalAnimations.scan.scale },
+                { translateX: buttonModalAnimations.scan.translateX },
+                { translateY: buttonModalAnimations.scan.translateY },
+              ],
+            }}
+          >
+            <MorphingActionButton
+              icon="barcode-outline"
+              label="Scan"
+              buttonIndex={2}
+              animProgress={animProgress}
+              onPress={handleScanPress}
+              collapsedX={collapsedPositions[2].x - circleSize / 2}
+              expandedX={expandedPositions[2].x - pillWidth / 2}
+              collapsedY={collapsedPositions[2].y - circleSize / 2}
+              expandedY={expandedPositions[2].y - 18}
+            />
+          </Animated.View>
         </Animated.View>
       </Animated.View>
 
