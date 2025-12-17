@@ -29,6 +29,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { SearchCarousel } from './SearchCarousel';
 import { SearchResultRow, SimpleSearchRow } from './SearchResultRow';
+import { RotatingPlaceholder } from './RotatingPlaceholder';
 import {
   NEARBY_RIDES,
   NEARBY_PARKS,
@@ -294,13 +295,26 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         onQueryChange?.(text);
       };
 
+      // Show rotating placeholder only when input is empty
+      const showRotatingPlaceholder = searchQuery.length === 0;
+
       return (
         <View style={styles.inputOnlyContainer}>
+          {/* Rotating placeholder - positioned behind the TextInput */}
+          {showRotatingPlaceholder && (
+            <View style={styles.rotatingPlaceholderContainer} pointerEvents="none">
+              <RotatingPlaceholder
+                interval={2500}
+                isActive={visible}
+                color="#999999"
+                fontSize={16}
+              />
+            </View>
+          )}
           <TextInput
             ref={inputRef}
-            style={styles.inputOnlyStyle}
-            placeholder="Search rides, parks, news..."
-            placeholderTextColor="#999999"
+            style={[styles.inputOnlyStyle, { backgroundColor: 'transparent' }]}
+            placeholder="" // No static placeholder - we use RotatingPlaceholder instead
             value={searchQuery}
             onChangeText={handleTextChange}
             onSubmitEditing={handleSearch}
@@ -496,7 +510,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             <TextInput
               ref={inputRef}
               style={styles.searchInput}
-              placeholder="Search rides, parks, news..."
+              placeholder="Try 'Millennium Force'..."
               placeholderTextColor="#999999"
               value={searchQuery}
               onChangeText={setSearchQuery}
@@ -765,6 +779,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000000',
     paddingVertical: 0,
+  },
+  rotatingPlaceholderContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    zIndex: 0, // Behind the TextInput
   },
   inputCloseButton: {
     marginLeft: 8,

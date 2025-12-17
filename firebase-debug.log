@@ -12,3 +12,17 @@
 [debug] [2025-12-09T00:20:00.124Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
 [debug] [2025-12-09T00:20:00.124Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
 [debug] [2025-12-09T00:20:00.124Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
+[debug] [2025-12-16T22:12:08.508Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-16T22:12:08.509Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2025-12-16T22:12:08.509Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-16T22:12:08.509Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2025-12-16T22:12:08.513Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-16T22:12:08.513Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2025-12-16T22:12:09.712Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-16T22:12:09.713Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2025-12-16T22:12:09.713Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-16T22:12:09.713Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2025-12-16T22:12:09.714Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-16T22:12:09.714Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2025-12-16T22:12:09.714Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-16T22:12:09.715Z] > authorizing via signed-in user (caleb@lantingdigital.com)

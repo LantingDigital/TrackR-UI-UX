@@ -6,6 +6,7 @@ import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
 
 import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingActionButton } from '../components';
+import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
 import { LogModal } from '../components/LogModal';
 import { LogConfirmationCard } from '../components/LogConfirmationCard';
 import { WalletCardStack } from '../components/wallet';
@@ -59,6 +60,12 @@ export const HomeScreen = () => {
   const isCollapsedRef = useRef(false);
   // Ref for the log modal input (allows focusing from sectionsOnly mode)
   const logInputRef = useRef<TextInput>(null);
+  // Ref for MorphingPill (allows triggering open from home search bar tap)
+  const morphingPillRef = useRef<MorphingPillRef>(null);
+  // Ref for Log MorphingPill (allows triggering open from log button tap)
+  const logMorphingPillRef = useRef<MorphingPillRef>(null);
+  // Ref for FlatList (allows scroll to top on Home tab tap)
+  const flatListRef = useRef<FlatList>(null);
   const lastScrollY = useRef(0);
   const lastStateChangeTime = useRef(0);
   const contentHeight = useRef(0);
@@ -125,6 +132,8 @@ export const HomeScreen = () => {
   const logContentFade = useRef(new Animated.Value(0)).current;
   const logBounceProgress = useRef(new Animated.Value(0)).current;
   const logClosePhaseProgress = useRef(new Animated.Value(0)).current;
+  // Parabolic arc offset - matches MorphingPill's arc animation
+  const logArcOffset = useRef(new Animated.Value(0)).current;
 
   // Log focus state
   const [isLogFocused, setIsLogFocused] = useState(false);
@@ -480,15 +489,31 @@ export const HomeScreen = () => {
   // Per-origin press handlers
   // Search bar press - determines origin based on current collapse state
   const handleSearchBarPress = useCallback(() => {
+    // Set origin based on current collapse state BEFORE opening
     const origin = isCollapsedRef.current ? 'collapsedSearchBar' : 'expandedSearchBar';
-    triggerSearchOpen(origin);
-  }, [triggerSearchOpen]);
+    setSearchOrigin(origin);
+
+    // Use requestAnimationFrame to ensure state update is processed before open
+    requestAnimationFrame(() => {
+      if (morphingPillRef.current) {
+        morphingPillRef.current.open();
+      }
+    });
+  }, []);
 
   // Search action button press - determines origin based on current collapse state
   const handleSearchButtonPress = useCallback(() => {
+    // Set origin based on current collapse state BEFORE opening
     const origin = isCollapsedRef.current ? 'collapsedCircle' : 'searchPill';
-    triggerSearchOpen(origin);
-  }, [triggerSearchOpen]);
+    setSearchOrigin(origin);
+
+    // Use requestAnimationFrame to ensure state update is processed before open
+    requestAnimationFrame(() => {
+      if (morphingPillRef.current) {
+        morphingPillRef.current.open();
+      }
+    });
+  }, []);
 
   const handleSearchClose = useCallback(() => {
     Keyboard.dismiss();
@@ -668,81 +693,20 @@ export const HomeScreen = () => {
   }, []);
 
   // =========================================
-  // Log Modal Handlers (mirrors search handlers)
+  // Log Modal Handlers
   // =========================================
-  const triggerLogOpen = useCallback((origin: 'logPill' | 'logCircle') => {
+  const handleLogPress = useCallback(() => {
+    // Set origin based on current collapse state BEFORE opening
+    const origin = isCollapsedRef.current ? 'logCircle' : 'logPill';
     setLogOrigin(origin);
 
-    // Reset header to expanded state
-    isCollapsedRef.current = false;
-    Animated.spring(animProgress, {
-      toValue: 1,
-      useNativeDriver: false,
-      damping: 16,
-      stiffness: 180,
-      mass: 0.8,
-    }).start();
-
-    // Reset animation values before render
-    logContentFade.setValue(0);
-    logMorphProgress.setValue(0);
-    logBackdropOpacity.setValue(0);
-    logBounceProgress.setValue(0);
-    logClosePhaseProgress.setValue(0);
-
-    // Handle action button animations based on origin
-    if (origin === 'logPill') {
-      // Crossfade animation - log button blends into morphing pill
-      // Other buttons animate toward log button and fade out
-      const targetX = SCREEN_WIDTH / 2; // Center of screen (where modal lands)
-      const targetY = insets.top + 60 + 28; // pillFinalTop + half height
-      animateButtonsForModalOpen('log', targetX, targetY);
-      // Keep container visible - individual buttons handle their own opacity
-      actionButtonsOpacity.setValue(1);
-      actionButtonsScale.setValue(1);
-    } else {
-      // For circle origin, hide buttons with old behavior
-      actionButtonsOpacity.setValue(0);
-      actionButtonsScale.setValue(0.5);
-    }
-
+    // Use requestAnimationFrame to ensure state update is processed before open
     requestAnimationFrame(() => {
-      setLogVisible(true);
-
-      // Bounce animation (same as search)
-      Animated.parallel([
-        Animated.timing(logMorphProgress, {
-          toValue: 1,
-          duration: 500,
-          easing: Easing.out(Easing.cubic),
-          useNativeDriver: false,
-        }),
-        Animated.spring(logBounceProgress, {
-          toValue: 1,
-          damping: 14,
-          stiffness: 42,
-          mass: 1.2,
-          useNativeDriver: false,
-        }),
-        Animated.timing(logBackdropOpacity, {
-          toValue: 1,
-          duration: 400,
-          useNativeDriver: true,
-        }),
-        Animated.timing(logContentFade, {
-          toValue: 1,
-          duration: 250,
-          delay: 400,
-          useNativeDriver: false,
-        }),
-      ]).start();
+      if (logMorphingPillRef.current) {
+        logMorphingPillRef.current.open();
+      }
     });
-  }, [logMorphProgress, logBackdropOpacity, logContentFade, logBounceProgress, logClosePhaseProgress, actionButtonsOpacity, actionButtonsScale, animProgress, animateButtonsForModalOpen, insets.top]);
-
-  const handleLogPress = useCallback(() => {
-    const origin = isCollapsedRef.current ? 'logCircle' : 'logPill';
-    triggerLogOpen(origin);
-  }, [triggerLogOpen]);
+  }, []);
 
   const handleLogClose = useCallback(() => {
     Keyboard.dismiss();
@@ -825,9 +789,10 @@ export const HomeScreen = () => {
     if (isLogFocused) {
       handleLogUnfocus();
     } else {
-      handleLogClose();
+      // Use MorphingPill's close method
+      logMorphingPillRef.current?.close();
     }
-  }, [isLogFocused, handleLogUnfocus, handleLogClose]);
+  }, [isLogFocused, handleLogUnfocus]);
 
   // Log backdrop tap handler
   const handleLogBackdropPress = useCallback(() => {
@@ -926,14 +891,14 @@ export const HomeScreen = () => {
   }, [actionButtonsOpacity, actionButtonsScale, resetButtonAnimations]);
 
   // Register reset handler for Home screen - animates modals closed when tab is pressed
-  // Uses the same smooth close animations as pressing X
+  // Home tab acts as X button - closes any open modal and scrolls to top
   useEffect(() => {
     const resetHandler = () => {
-      // Close modals with animation (same as pressing X button)
-      if (searchVisible) {
-        handleSearchClose();
-      } else if (logVisible) {
-        handleLogClose();
+      // Close modals with animation using MorphingPill refs
+      if (searchVisible && morphingPillRef.current) {
+        morphingPillRef.current.close();
+      } else if (logVisible && logMorphingPillRef.current) {
+        logMorphingPillRef.current.close();
       } else if (walletVisible) {
         handleWalletClose();
       }
@@ -943,12 +908,17 @@ export const HomeScreen = () => {
         setConfirmationVisible(false);
         setSelectedCoaster(null);
       }
+
+      // Scroll to top smoothly if not already at top
+      if (lastScrollY.current > 0) {
+        flatListRef.current?.scrollToOffset({ offset: 0, animated: true });
+      }
     };
     tabBarContext?.registerResetHandler('Home', resetHandler);
     return () => {
       tabBarContext?.unregisterResetHandler('Home');
     };
-  }, [searchVisible, logVisible, walletVisible, confirmationVisible, tabBarContext, handleSearchClose, handleLogClose, handleWalletClose]);
+  }, [searchVisible, logVisible, walletVisible, confirmationVisible, tabBarContext, handleWalletClose]);
 
   const handleBookmarkPress = useCallback((id: string) => {
     setBookmarkedIds(prev => {
@@ -1026,12 +996,11 @@ export const HomeScreen = () => {
     outputRange: [42, 56], // 42px collapsed (matches circle size), 56px expanded
   });
 
-  // Search bar scale bounce for overshoot effect (subtle pop when collapsed)
-  // NOTE: Scale must be exactly 1.0 when expanded (animProgress=1) to match
-  // the morphing pill dimensions and prevent size jump when search modal closes
+  // Search bar scale - must be exactly 1.0 at both ends to match MorphingPill dimensions
+  // Previously had 1.03 pop on collapsed, but this caused 3% size mismatch with MorphingPill
   const searchBarScale = animProgress.interpolate({
-    inputRange: [0, 0.15, 1],
-    outputRange: [1.03, 1, 1], // Pop only on collapsed end, 1.0 when expanded
+    inputRange: [0, 1],
+    outputRange: [1, 1], // Always 1.0 - no scale difference between real bar and MorphingPill
     extrapolate: 'clamp',
   });
 
@@ -1121,6 +1090,81 @@ export const HomeScreen = () => {
         };
     }
   }, [searchOrigin, insets.top, containerWidth, pillWidth, expandedY, expandedPositions, equalGap, collapsedSearchWidth, collapsedY, collapsedPositions, circleSize]);
+
+  // =========================================
+  // Dynamic Pill Content Based on Origin
+  // =========================================
+  // Returns appropriate content for the MorphingPill's closed state
+  // Each origin type has a different appearance to match the element being replaced
+  const searchPillContent = useMemo(() => {
+    // CRITICAL: All pillContent must use absolute positioning to fill the entire container
+    // This bypasses contentWrapper's flex behavior and ensures pixel-perfect alignment
+    // with the actual destination elements when the close animation ends
+    const absoluteFill = { position: 'absolute' as const, top: 0, left: 0, right: 0, bottom: 0 };
+
+    switch (searchOrigin) {
+      case 'searchPill':
+        // Action pill button - matches MorphingActionButton expanded state EXACTLY
+        // Uses absoluteFill + centered row layout (same as MorphingActionButton's pressable style)
+        // IMPORTANT: marginLeft must be on wrapper View, not Text, to match MorphingActionButton
+        return (
+          <View style={{ ...absoluteFill, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name="search-outline" size={16} color="#000000" />
+            <View style={{ marginLeft: 6, maxWidth: 100, overflow: 'hidden' }}>
+              <Text style={{ fontSize: 14, fontWeight: '600', color: '#000000' }} numberOfLines={1}>Search</Text>
+            </View>
+          </View>
+        );
+      case 'collapsedCircle':
+        // Circle button - matches MorphingActionButton collapsed state EXACTLY
+        // Just centered icon, no label (same as MorphingActionButton when collapsed)
+        return (
+          <View style={{ ...absoluteFill, alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name="search-outline" size={16} color="#000000" />
+          </View>
+        );
+      case 'expandedSearchBar':
+        // Full search bar - MUST MATCH real search bar EXACTLY for seamless close
+        // Uses absoluteFill + same layout as real search bar (row with padding, icon, text)
+        return (
+          <View style={{ ...absoluteFill, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
+            <View style={{ width: 20, height: 20, marginRight: 8, justifyContent: 'center', alignItems: 'center' }}>
+              <Ionicons name="globe-outline" size={20} color="#999999" />
+            </View>
+            <View style={{ flex: 1, height: '100%', justifyContent: 'center', position: 'relative' }}>
+              <Text style={{ position: 'absolute', fontSize: 16, color: '#999999' }} numberOfLines={1}>
+                Search rides, parks, news...
+              </Text>
+            </View>
+          </View>
+        );
+      case 'collapsedSearchBar':
+        // Collapsed search bar - MUST MATCH real collapsed search bar EXACTLY
+        // Uses absoluteFill + same layout as real search bar (row with padding, icon, text)
+        return (
+          <View style={{ ...absoluteFill, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
+            <View style={{ width: 20, height: 20, marginRight: 8, justifyContent: 'center', alignItems: 'center' }}>
+              <Ionicons name="globe-outline" size={20} color="#999999" />
+            </View>
+            <View style={{ flex: 1, height: '100%', justifyContent: 'center', position: 'relative' }}>
+              <Text style={{ position: 'absolute', fontSize: 16, color: '#999999' }} numberOfLines={1}>
+                Search...
+              </Text>
+            </View>
+          </View>
+        );
+      default:
+        // Default to searchPill layout (matches MorphingActionButton exactly)
+        return (
+          <View style={{ ...absoluteFill, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name="search-outline" size={16} color="#000000" />
+            <View style={{ marginLeft: 6, maxWidth: 100, overflow: 'hidden' }}>
+              <Text style={{ fontSize: 14, fontWeight: '600', color: '#000000' }} numberOfLines={1}>Search</Text>
+            </View>
+          </View>
+        );
+    }
+  }, [searchOrigin]);
 
   // =========================================
   // Intermediate Pill Position (for 2-stage circle animation)
@@ -1475,31 +1519,62 @@ export const HomeScreen = () => {
     };
   }, [logOrigin, insets.top, circleSize, collapsedY, collapsedPositions, expandedY, expandedPositions, pillWidth]);
 
-  // Log morph TOP position
-  const logTopBounce = logBounceProgress.interpolate({
-    inputRange: [0, 0.35, 0.7, 0.85, 1],
-    outputRange: [
-      logOriginPosition.top,
-      pillFinalTop - 60,
-      pillFinalTop,
-      pillFinalTop + 8,
-      pillFinalTop,
-    ],
-    extrapolate: 'clamp',
-  });
+  // =========================================
+  // Dynamic Log Pill Content Based on Origin
+  // =========================================
+  // Returns appropriate content for the Log MorphingPill's closed state
+  // Each origin type has a different appearance to match the element being replaced
+  const logPillContent = useMemo(() => {
+    // CRITICAL: All pillContent must use absolute positioning to fill the entire container
+    // This bypasses contentWrapper's flex behavior and ensures pixel-perfect alignment
+    // with the actual destination elements when the close animation ends
+    const absoluteFill = { position: 'absolute' as const, top: 0, left: 0, right: 0, bottom: 0 };
 
+    if (logOrigin === 'logCircle') {
+      // Circle button - matches MorphingActionButton collapsed state EXACTLY
+      // Just centered icon, no label (same as MorphingActionButton when collapsed)
+      return (
+        <View style={{ ...absoluteFill, alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="add-circle-outline" size={16} color="#000000" />
+        </View>
+      );
+    }
+    // logPill - Action pill button - matches MorphingActionButton expanded state EXACTLY
+    // Uses absoluteFill + centered row layout (same as MorphingActionButton's pressable style)
+    return (
+      <View style={{ ...absoluteFill, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+        <Ionicons name="add-circle-outline" size={16} color="#000000" />
+        <View style={{ marginLeft: 6, maxWidth: 100, overflow: 'hidden' }}>
+          <Text style={{ fontSize: 14, fontWeight: '600', color: '#000000' }} numberOfLines={1}>Log</Text>
+        </View>
+      </View>
+    );
+  }, [logOrigin]);
+
+  // Log morph TOP position - now uses parabolic arc like MorphingPill
+  // Base Y: linear interpolation from origin to final position
   const logTopLinear = logMorphProgress.interpolate({
     inputRange: [0, 1],
-    outputRange: [pillInitialTop, pillFinalTop],
+    outputRange: [logOriginPosition.top, pillFinalTop],
     extrapolate: 'clamp',
   });
 
+  // Bounce: spring overshoot at the end (last 30% of animation)
+  // Only active during open phase (logClosePhaseProgress = 0)
+  const logBounceOffset = logMorphProgress.interpolate({
+    inputRange: [0, 0.7, 0.85, 1.0],
+    outputRange: [0, 0,   14,   0],
+    extrapolate: 'clamp',
+  });
+
+  // Combine: base position + arc (upward) + bounce (overshoot down)
+  // Arc offset is negative (upward), bounce is positive (downward)
   const logMorphingPillTopBase = Animated.add(
-    Animated.multiply(logTopBounce, logClosePhaseProgress.interpolate({
+    Animated.add(logTopLinear, logArcOffset),
+    Animated.multiply(logBounceOffset, logClosePhaseProgress.interpolate({
       inputRange: [0, 1],
-      outputRange: [1, 0],
-    })),
-    Animated.multiply(logTopLinear, logClosePhaseProgress)
+      outputRange: [1, 0], // Bounce only during open, not close
+    }))
   );
 
   const logFocusTopOffset = logFocusProgress.interpolate({
@@ -1510,109 +1585,33 @@ export const HomeScreen = () => {
 
   const logMorphingPillTop = Animated.add(logMorphingPillTopBase, logFocusTopOffset);
 
-  // Log morph LEFT position
-  const logLeftBounce = logBounceProgress.interpolate({
-    inputRange: [0, 0.35, 0.7, 1],
-    outputRange: [
-      logOriginPosition.left,
-      pillFinalLeft,
-      pillFinalLeft,
-      pillFinalLeft,
-    ],
-    extrapolate: 'clamp',
-  });
-
-  const logLeftLinear = logMorphProgress.interpolate({
+  // Log morph LEFT position - smooth linear interpolation
+  const logMorphingPillLeft = logMorphProgress.interpolate({
     inputRange: [0, 1],
-    outputRange: [pillInitialLeft, pillFinalLeft],
+    outputRange: [logOriginPosition.left, pillFinalLeft],
     extrapolate: 'clamp',
   });
 
-  const logMorphingPillLeft = Animated.add(
-    Animated.multiply(logLeftBounce, logClosePhaseProgress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [1, 0],
-    })),
-    Animated.multiply(logLeftLinear, logClosePhaseProgress)
-  );
-
-  // Log morph WIDTH
-  const logWidthBounce = logBounceProgress.interpolate({
-    inputRange: [0, 0.35, 0.7, 1],
-    outputRange: [
-      logOriginPosition.width,
-      logOriginPosition.width + (pillFinalWidth - logOriginPosition.width) * 0.8,
-      pillFinalWidth,
-      pillFinalWidth,
-    ],
-    extrapolate: 'clamp',
-  });
-
-  const logWidthLinear = logMorphProgress.interpolate({
+  // Log morph WIDTH - smooth expansion
+  const logMorphingPillWidth = logMorphProgress.interpolate({
     inputRange: [0, 1],
-    outputRange: [pillInitialWidth, pillFinalWidth],
+    outputRange: [logOriginPosition.width, pillFinalWidth],
     extrapolate: 'clamp',
   });
 
-  const logMorphingPillWidth = Animated.add(
-    Animated.multiply(logWidthBounce, logClosePhaseProgress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [1, 0],
-    })),
-    Animated.multiply(logWidthLinear, logClosePhaseProgress)
-  );
-
-  // Log morph HEIGHT
-  const logHeightBounce = logBounceProgress.interpolate({
-    inputRange: [0, 0.35, 0.7, 1],
-    outputRange: [
-      logOriginPosition.height,
-      logOriginPosition.height + (pillFinalHeight - logOriginPosition.height) * 0.8,
-      pillFinalHeight,
-      pillFinalHeight,
-    ],
-    extrapolate: 'clamp',
-  });
-
-  const logHeightLinear = logMorphProgress.interpolate({
+  // Log morph HEIGHT - smooth expansion
+  const logMorphingPillHeight = logMorphProgress.interpolate({
     inputRange: [0, 1],
-    outputRange: [pillInitialHeight, pillFinalHeight],
+    outputRange: [logOriginPosition.height, pillFinalHeight],
     extrapolate: 'clamp',
   });
 
-  const logMorphingPillHeight = Animated.add(
-    Animated.multiply(logHeightBounce, logClosePhaseProgress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [1, 0],
-    })),
-    Animated.multiply(logHeightLinear, logClosePhaseProgress)
-  );
-
-  // Log morph BORDER RADIUS
-  const logBorderRadiusBounce = logBounceProgress.interpolate({
-    inputRange: [0, 0.35, 0.7, 1],
-    outputRange: [
-      logOriginPosition.borderRadius,
-      logOriginPosition.borderRadius + (pillFinalBorderRadius - logOriginPosition.borderRadius) * 0.8,
-      pillFinalBorderRadius,
-      pillFinalBorderRadius,
-    ],
-    extrapolate: 'clamp',
-  });
-
-  const logBorderRadiusLinear = logMorphProgress.interpolate({
+  // Log morph BORDER RADIUS - smooth transition
+  const logMorphingPillBorderRadius = logMorphProgress.interpolate({
     inputRange: [0, 1],
-    outputRange: [pillInitialBorderRadius, pillFinalBorderRadius],
+    outputRange: [logOriginPosition.borderRadius, pillFinalBorderRadius],
     extrapolate: 'clamp',
   });
-
-  const logMorphingPillBorderRadius = Animated.add(
-    Animated.multiply(logBorderRadiusBounce, logClosePhaseProgress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [1, 0],
-    })),
-    Animated.multiply(logBorderRadiusLinear, logClosePhaseProgress)
-  );
 
   // Log section cards reveal
   const logSectionCardsOpacity = logMorphProgress.interpolate({
@@ -1699,6 +1698,7 @@ export const HomeScreen = () => {
       >
       {/* News Feed - comes first, header floats over it */}
       <FlatList
+        ref={flatListRef}
         data={MOCK_NEWS}
         keyExtractor={keyExtractor}
         renderItem={renderNewsCard}
@@ -1713,8 +1713,8 @@ export const HomeScreen = () => {
       {/* Sticky Header - absolutely positioned, floats over content */}
       {/* Search bar and action buttons have SEPARATE opacity controls for smooth morph handoff */}
       <Animated.View style={[styles.stickyHeader, { height: headerHeight, overflow: 'hidden', position: 'absolute', top: insets.top, left: 0, right: 0 }]} pointerEvents={searchVisible ? 'none' : 'auto'}>
-        {/* Search Bar Row - fades out as morphing pill takes over */}
-        <Animated.View style={[styles.header, { paddingHorizontal: 0, opacity: homeSearchBarOpacity }]}>
+        {/* Search Bar Row - always visible (MorphingPill handles its own animation) */}
+        <View style={[styles.header, { paddingHorizontal: 0 }]}>
           <Pressable onPress={handleSearchBarPress}>
             <Animated.View
               style={{
@@ -1789,7 +1789,7 @@ export const HomeScreen = () => {
               </Animated.View>
             </Animated.View>
           </Pressable>
-        </Animated.View>
+        </View>
 
         {/* Morphing Action Buttons - unified pill/circle that morphs between states */}
         {/* Each button has individual animation values for seamless morph transitions */}
@@ -1817,7 +1817,8 @@ export const HomeScreen = () => {
               expandedY={expandedPositions[0].y - 18}
             />
           </Animated.View>
-          {/* Search Button */}
+          {/* Search Button - visible, MorphingPill overlays it when animating */}
+          {/* MorphingPill is invisible when closed, so this button shows through */}
           <Animated.View
             style={{
               opacity: buttonModalAnimations.search.opacity,
@@ -1889,6 +1890,8 @@ export const HomeScreen = () => {
       {/* Blur Zone Above Search Bar - blurs content that scrolls above the search bar */}
       {/* Includes white wash overlay to improve "SEARCH" text readability */}
       {/* Fades out with searchContentFade to prevent clipping during close animation */}
+      {/* Height is STATIC: 60px (pillFinalTop offset) + 28px (half search bar height) = 88px */}
+      {/* This positions the blur line exactly at the vertical center of the search bar */}
       {searchVisible && (
         <Animated.View
           style={{
@@ -1896,7 +1899,7 @@ export const HomeScreen = () => {
             top: insets.top,
             left: 0,
             right: 0,
-            height: Animated.subtract(Animated.add(morphingPillTop, Animated.divide(morphingPillHeight, 2)), insets.top),
+            height: 88, // pillFinalTop offset (60) + half search bar height (28) = vertical center
             zIndex: 90,
             overflow: 'hidden',
             opacity: searchContentFade,
@@ -1931,11 +1934,8 @@ export const HomeScreen = () => {
         </Animated.Text>
       )}
 
-      {/* Morphing Search Pill - transforms from pill to search input card ONLY */}
-      {/* Floats ON TOP of all search content with prominent shadow - SOLID WHITE */}
-      {/* Uses wrapper view for shadow (overflow: visible) and inner view for content clipping */}
-      {/* Shadow animates from home bar style → modal style for smooth transition */}
-      {searchVisible && (
+      {/* OLD Morphing Search Pill - DISABLED (swap-and-cover, not true single-element) */}
+      {false && searchVisible && (
         <Animated.View
           style={{
             position: 'absolute',
@@ -2206,96 +2206,6 @@ export const HomeScreen = () => {
         </Animated.Text>
       )}
 
-      {/* Morphing Log Pill */}
-      {logVisible && (
-        <Animated.View
-          style={{
-            position: 'absolute',
-            top: logMorphingPillTop,
-            left: logMorphingPillLeft,
-            width: logMorphingPillWidth,
-            height: logMorphingPillHeight,
-            borderRadius: logMorphingPillBorderRadius,
-            zIndex: 150,
-            opacity: logMorphingPillOpacity,
-            shadowColor: '#323232',
-            shadowOffset: { width: 0, height: 8 },
-            shadowOpacity: logShadowOpacity,
-            shadowRadius: logShadowRadius,
-            elevation: 24,
-          }}
-        >
-          <Animated.View
-            style={{
-              flex: 1,
-              backgroundColor: '#FFFFFF',
-              borderRadius: logMorphingPillBorderRadius,
-              overflow: 'hidden',
-              flexDirection: 'row',
-              alignItems: 'center',
-              paddingHorizontal: 16,
-            }}
-          >
-            {/* Icon container - crossfade between add-circle and search icons */}
-            <View style={{ width: 20, height: 20, marginRight: 8 }}>
-              <Animated.View style={{ position: 'absolute', opacity: logAddIconOpacity }}>
-                <Ionicons name="add-circle-outline" size={20} color="#999999" />
-              </Animated.View>
-              <Animated.View style={{ position: 'absolute', opacity: logSearchIconOpacity }}>
-                <Ionicons name="search" size={20} color="#999999" />
-              </Animated.View>
-            </View>
-
-            {/* Placeholder text - fades out during morph */}
-            <Animated.Text
-              style={{
-                position: 'absolute',
-                left: 44,
-                fontSize: 16,
-                color: '#999999',
-                opacity: logPlaceholderOpacity,
-              }}
-            >
-              Log
-            </Animated.Text>
-
-            {/* Actual TextInput */}
-            <Animated.View style={{ flex: 1, opacity: logContentFade }}>
-              <LogModal
-                visible={logVisible}
-                onClose={handleLogClose}
-                morphProgress={logMorphProgress}
-                contentOpacity={logSectionCardsOpacity}
-                isEmbedded={true}
-                inputOnly={true}
-                onInputFocus={handleLogFocus}
-                onQueryChange={handleLogQueryChange}
-                onCardSelect={handleLogCardSelect}
-                externalInputRef={logInputRef}
-              />
-            </Animated.View>
-
-            {/* X Close Button */}
-            <Animated.View style={{ opacity: logContentFade }}>
-              <Pressable
-                onPress={handleLogXButtonPress}
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 20,
-                  backgroundColor: 'rgba(0,0,0,0.08)',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginLeft: 8,
-                }}
-              >
-                <Ionicons name="close" size={24} color="#666666" />
-              </Pressable>
-            </Animated.View>
-          </Animated.View>
-        </Animated.View>
-      )}
-
       {/* Floating Log Section Cards */}
       {logVisible && (
         <Animated.View
@@ -2331,6 +2241,254 @@ export const HomeScreen = () => {
         onClose={handleConfirmationClose}
         onLogComplete={handleLogComplete}
       />
+
+      {/* ============================== */}
+      {/* TRUE Single-Element Log Morph - MorphingPill IS the Log button */}
+      {/* This is the actual button that morphs into the modal */}
+      {/* Position is dynamic based on logOrigin */}
+      {/* ============================== */}
+      <View
+        style={{
+          position: 'absolute',
+          top: logOriginPosition.top,
+          left: logOriginPosition.left,
+          zIndex: 200,
+        }}
+        pointerEvents={logVisible ? "box-none" : "none"}
+      >
+        <MorphingPill
+          ref={logMorphingPillRef}
+          pillWidth={logOriginPosition.width}
+          pillHeight={logOriginPosition.height}
+          pillBorderRadius={logOriginPosition.borderRadius}
+          pillContent={logPillContent}
+          expandedWidth={SCREEN_WIDTH - 32}
+          expandedHeight={56}
+          expandedBorderRadius={16}
+          expandedContent={(close) => (
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
+              {/* Search icon - for log input */}
+              <View style={{ width: 20, height: 20, marginRight: 8, justifyContent: 'center', alignItems: 'center' }}>
+                <Ionicons name="search" size={20} color="#999999" />
+              </View>
+              {/* Log input - use LogModal's inputOnly mode */}
+              <View style={{ flex: 1 }}>
+                <LogModal
+                  visible={true}
+                  onClose={close}
+                  isEmbedded={true}
+                  inputOnly={true}
+                  onInputFocus={handleLogFocus}
+                  onQueryChange={handleLogQueryChange}
+                  onCardSelect={handleLogCardSelect}
+                  externalInputRef={logInputRef}
+                />
+              </View>
+              {/* X Close Button */}
+              <Pressable
+                onPress={close}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  backgroundColor: 'rgba(0,0,0,0.08)',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: 8,
+                }}
+              >
+                <Ionicons name="close" size={24} color="#666666" />
+              </Pressable>
+            </View>
+          )}
+          showBackdrop={false}
+          onOpen={() => {
+            // Trigger the existing log modal experience
+            setLogVisible(true);
+            // Instantly set logMorphProgress to coordinate external elements
+            logMorphProgress.setValue(1);
+            // NOTE: No button animations - MorphingPill handles the morph, other buttons stay in place
+            // This matches Search behavior for consistency
+            // Backdrop fades in over first 60% of MorphingPill's animation
+            Animated.timing(logBackdropOpacity, {
+              toValue: 1,
+              duration: 600,
+              useNativeDriver: true,
+            }).start();
+            // Content fades in at same time as MorphingPill's expandedContentStyle
+            Animated.timing(logContentFade, {
+              toValue: 1,
+              duration: 330,
+              delay: 500,
+              useNativeDriver: false,
+            }).start();
+          }}
+          onClose={() => {
+            // Trigger the close sequence
+            Keyboard.dismiss();
+            setIsLogFocused(false);
+            logFocusProgress.setValue(0);
+            setLogQuery('');
+            setDebouncedLogQuery('');
+            // Fade out external content (blur zone, LOG header, section cards)
+            Animated.timing(logContentFade, {
+              toValue: 0,
+              duration: 300,
+              useNativeDriver: false,
+            }).start();
+            // Fade out backdrop in sync with close
+            Animated.timing(logBackdropOpacity, {
+              toValue: 0,
+              duration: 400,
+              useNativeDriver: true,
+            }).start();
+            // Animate logMorphProgress in sync with MorphingPill's close
+            Animated.timing(logMorphProgress, {
+              toValue: 0,
+              duration: 450,
+              easing: Easing.out(Easing.cubic),
+              useNativeDriver: false,
+            }).start();
+            // NOTE: No button animations needed - buttons stay in place (like Search)
+          }}
+          onAnimationComplete={(isOpen) => {
+            if (!isOpen) {
+              // Close animation finished - ensure final values are set
+              logMorphProgress.setValue(0);
+              setLogVisible(false);
+              // NOTE: No button state to reset - buttons stay in place (like Search)
+            }
+          }}
+        />
+      </View>
+
+      {/* ============================== */}
+      {/* TRUE Single-Element Search Morph - MorphingPill IS the Search button */}
+      {/* This is the actual button that morphs into the modal */}
+      {/* Position is dynamic based on searchOrigin */}
+      {/* ============================== */}
+      <View
+        style={{
+          position: 'absolute',
+          top: originPosition.top,
+          left: originPosition.left,
+          zIndex: 200, // Above everything including old morphing pill (150)
+        }}
+        // When search modal is open, MorphingPill needs to receive touches
+        // When closed, make wrapper completely transparent to touches so collapsed header can receive taps
+        pointerEvents={searchVisible ? "box-none" : "none"}
+      >
+        <MorphingPill
+          ref={morphingPillRef}
+          pillWidth={originPosition.width}
+          pillHeight={originPosition.height}
+          pillBorderRadius={originPosition.borderRadius}
+          pillContent={searchPillContent}
+          expandedWidth={SCREEN_WIDTH - 32}
+          expandedHeight={56}
+          expandedBorderRadius={16}
+          // No closeTargetPosition - close back to button position (no snap/jump)
+          expandedContent={(close) => (
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
+              {/* Globe icon - matches destination search bar exactly for seamless close */}
+              <View style={{ width: 20, height: 20, marginRight: 8, justifyContent: 'center', alignItems: 'center' }}>
+                <Ionicons name="globe-outline" size={20} color="#999999" />
+              </View>
+              {/* Search input - use SearchModal's inputOnly mode */}
+              {/* Note: inputOnly mode doesn't use morphProgress/contentOpacity/contentTranslateY */}
+              <View style={{ flex: 1 }}>
+                <SearchModal
+                  visible={true}
+                  onClose={close}
+                  onSearch={handleSearch}
+                  onResultPress={(item) => console.log('Selected:', item.name)}
+                  isEmbedded={true}
+                  inputOnly={true}
+                  showCloseButton={false}
+                  onInputFocus={handleSearchFocus}
+                  onQueryChange={handleSearchQueryChange}
+                />
+              </View>
+              {/* X Close Button */}
+              <Pressable
+                onPress={close}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  backgroundColor: 'rgba(0,0,0,0.08)',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: 8,
+                }}
+              >
+                <Ionicons name="close" size={24} color="#666666" />
+              </Pressable>
+            </View>
+          )}
+          showBackdrop={false}
+          onOpen={() => {
+            // Trigger the existing search modal experience
+            setSearchVisible(true);
+            // INSTANT setValue() - eliminates "two-part glitch" from competing animations
+            // MorphingPill handles ALL morph animation internally (1000ms Reanimated)
+            // We only control external elements here
+            pillMorphProgress.setValue(1); // Instantly hide header search bar
+            // Backdrop fades in over first 60% of MorphingPill's animation
+            Animated.timing(backdropOpacity, {
+              toValue: 1,
+              duration: 600, // 60% of 1000ms
+              useNativeDriver: true,
+            }).start();
+            // Content fades in at same time as MorphingPill's expandedContentStyle
+            // MorphingPill: PHASE.contentFade=0.55, PHASE.landing=0.88 (55-88% of 1000ms = 550-880ms)
+            Animated.timing(searchContentFade, {
+              toValue: 1,
+              duration: 330, // ~330ms fade
+              delay: 500,    // Start at 50% of animation
+              useNativeDriver: false,
+            }).start();
+          }}
+          onClose={() => {
+            // Trigger the close sequence - but DON'T fade content immediately
+            // MorphingPill handles its own content fade during close animation
+            Keyboard.dismiss();
+            setIsSearchFocused(false);
+            searchFocusProgress.setValue(0);
+            setSearchQuery('');
+            setDebouncedQuery('');
+            // Fade out external content (blur zone, SEARCH header, section cards)
+            Animated.timing(searchContentFade, {
+              toValue: 0,
+              duration: 300,
+              useNativeDriver: false,
+            }).start();
+            // Fade out backdrop in sync with close
+            Animated.timing(backdropOpacity, {
+              toValue: 0,
+              duration: 400,
+              useNativeDriver: true,
+            }).start();
+            // CRITICAL: Animate pillMorphProgress in sync with MorphingPill's close
+            // This makes homeSearchBarOpacity fade the real search bar back in smoothly
+            // instead of it appearing instantly when MorphingPill becomes invisible
+            Animated.timing(pillMorphProgress, {
+              toValue: 0,
+              duration: 450, // Match MorphingPill's CLOSE_DURATION
+              easing: Easing.out(Easing.cubic),
+              useNativeDriver: false,
+            }).start();
+          }}
+          onAnimationComplete={(isOpen) => {
+            // Called when MorphingPill animation ACTUALLY completes
+            if (!isOpen) {
+              // Close animation finished - ensure values are at final state
+              pillMorphProgress.setValue(0); // Ensure at 0 (animation should already be done)
+              setSearchVisible(false);
+            }
+          }}
+        />
+      </View>
 
       {/* Wallet Card Stack - Apple Pay style overlay */}
       <WalletCardStack
