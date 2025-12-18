@@ -151,7 +151,7 @@ export const WalletStorage = {
    * Save a new ticket
    */
   async saveTicket(
-    ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault'>
+    ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'>
   ): Promise<Ticket> {
     const state = await this.getWalletState();
 
@@ -160,6 +160,7 @@ export const WalletStorage = {
       id: generateId(),
       addedAt: new Date().toISOString(),
       isDefault: state.tickets.length === 0, // First ticket is default
+      isFavorite: false, // New tickets are not favorites by default
     };
 
     const updatedTickets = [...state.tickets, newTicket];

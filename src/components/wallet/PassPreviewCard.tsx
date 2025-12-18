@@ -3,11 +3,12 @@
  *
  * Mini preview card for pass carousels:
  * - Cropped hero image background (1:1 aspect ratio)
- * - Park name text overlay with gradient fade
- * - No QR/barcode - that's only in expanded view
- * - Consistent sizing for carousel display
+ * - Clean design - just card art, no text overlay in carousel
+ * - Star badge for favorited passes
+ * - Gradient fallback when no card art available
+ * - Configurable size for different sections
  *
- * Used in ScanModal sections for "Most Popular", "All Passes", etc.
+ * Used in ScanModal sections for "Favorites", "All", "Expired"
  */
 
 import React from 'react';
@@ -20,77 +21,119 @@ import {
   Animated,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
+import { Ionicons } from '@expo/vector-icons';
+import { Ticket } from '../../types/wallet';
 import { colors } from '../../theme/colors';
 import { radius } from '../../theme/radius';
 import { useSpringPress } from '../../hooks';
+import { getParkGradientColors, getParkInitials } from '../../utils/parkAssets';
 
-// Card dimensions for carousel display - 1:1 aspect ratio
-const CARD_SIZE = 140;
+// Default card size for carousel display - 1:1 aspect ratio (matches Log/Search)
+const DEFAULT_CARD_SIZE = 120;
+
+// Card sizes per section
+export const PREVIEW_CARD_SIZES = {
+  favorites: 120, // Same as Log/Search
+  all: 120,       // Same as Log/Search
+  expired: 100,   // Smaller for expired section
+};
 
 interface PassPreviewCardProps {
   ticket: Ticket;
   onPress?: () => void;
+  onLongPress?: () => void;
   style?: object;
+  /** Card size in pixels (default: 100) */
+  size?: number;
+  /** Whether to show the star badge for favorites */
+  showFavoriteBadge?: boolean;
 }
 
 export const PassPreviewCard: React.FC<PassPreviewCardProps> = ({
   ticket,
   onPress,
+  onLongPress,
   style,
+  size = DEFAULT_CARD_SIZE,
+  showFavoriteBadge = true,
 }) => {
   const { scaleValue, pressHandlers } = useSpringPress({
     scale: 0.97,
     opacity: 1,
   });
 
+  const hasHeroImage = ticket.heroImageSource || ticket.heroImageUri;
+  const gradientColors = getParkGradientColors(ticket.parkName);
+  const initials = getParkInitials(ticket.parkName);
+
+  // Dynamic styles based on size
+  const dynamicStyles = {
+    container: {
+      width: size,
+      height: size,
+    },
+    initials: {
+      fontSize: size * 0.35, // Scale initials with card size
+    },
+  };
+
   return (
     <Pressable
       onPress={onPress}
+      onLongPress={onLongPress}
+      delayLongPress={400}
       {...pressHandlers}
       style={style}
     >
       <Animated.View
         style={[
           styles.container,
+          dynamicStyles.container,
           { transform: [{ scale: scaleValue }] },
         ]}
       >
-        {/* Hero Image Background */}
-        {(ticket.heroImageSource || ticket.heroImageUri) ? (
+        {/* Hero Image Background or Gradient Fallback */}
+        {hasHeroImage ? (
           <Image
             source={ticket.heroImageSource || { uri: ticket.heroImageUri }}
             style={styles.heroImage}
             resizeMode="cover"
           />
         ) : (
-          // Placeholder when no hero image
-          <View style={styles.heroPlaceholder}>
-            <Text style={styles.placeholderInitial}>
-              {ticket.parkName.charAt(0)}
+          // Gradient fallback with park initials
+          <LinearGradient
+            colors={gradientColors}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.gradientPlaceholder}
+          >
+            <Text style={[styles.placeholderInitial, dynamicStyles.initials]}>
+              {initials}
             </Text>
+          </LinearGradient>
+        )}
+
+        {/* Star Badge for Favorites (top-left) */}
+        {showFavoriteBadge && ticket.isFavorite && (
+          <View style={styles.favoriteBadge}>
+            <Ionicons name="star" size={12} color="#FFD700" />
           </View>
         )}
 
-        {/* Pass Type Badge (top-right) */}
-        <View style={styles.badgeContainer}>
-          <Text style={styles.badgeText}>
-            {PASS_TYPE_LABELS[ticket.passType]?.split(' ')[0] || 'Pass'}
-          </Text>
-        </View>
-
-        {/* Gradient overlay for text readability */}
+        {/* Gradient banner at bottom with park name */}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.7)']}
-          style={styles.gradientOverlay}
-        />
-
-        {/* Park Name (bottom) */}
-        <View style={styles.labelContainer}>
-          <Text style={styles.parkNameText} numberOfLines={2}>
+          colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)']}
+          locations={[0, 0.5, 1]}
+          style={styles.gradientBanner}
+        >
+          <Text
+            style={[styles.parkNameText, { fontSize: size * 0.11 }]}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
             {ticket.parkName}
           </Text>
-        </View>
+        </LinearGradient>
       </Animated.View>
     </Pressable>
   );
@@ -98,8 +141,6 @@ export const PassPreviewCard: React.FC<PassPreviewCardProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: CARD_SIZE,
-    height: CARD_SIZE,
     borderRadius: radius.card,
     backgroundColor: '#E8E8E8',
     overflow: 'hidden',
@@ -116,62 +157,50 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'absolute',
   },
-  heroPlaceholder: {
+
+  // Gradient Placeholder (fallback when no card art)
+  gradientPlaceholder: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#D0D0D0',
     alignItems: 'center',
     justifyContent: 'center',
   },
   placeholderInitial: {
-    fontSize: 40,
     fontWeight: '700',
-    color: '#999999',
+    color: 'rgba(255, 255, 255, 0.9)',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
   },
 
-  // Gradient overlay for feathered text background
-  gradientOverlay: {
+  // Gradient banner at bottom with park name
+  gradientBanner: {
     position: 'absolute',
-    bottom: 0,
     left: 0,
     right: 0,
-    height: '60%',
-  },
-
-  // Pass Type Badge
-  badgeContainer: {
-    position: 'absolute',
-    top: 8,
-    right: 8,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    bottom: 0,
+    height: '35%',
+    justifyContent: 'flex-end',
+    paddingBottom: 6,
     paddingHorizontal: 6,
-    paddingVertical: 3,
-    borderRadius: 4,
-  },
-  badgeText: {
-    fontSize: 10,
-    fontWeight: '600',
-    color: '#FFFFFF',
-    textTransform: 'uppercase',
-    letterSpacing: 0.3,
-  },
-
-  // Park Name Label
-  labelContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    paddingHorizontal: 10,
-    paddingBottom: 10,
   },
   parkNameText: {
-    fontSize: 13,
     fontWeight: '600',
     color: '#FFFFFF',
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 2,
+    textAlign: 'center',
+  },
+
+  // Favorite Star Badge
+  favoriteBadge: {
+    position: 'absolute',
+    top: 6,
+    left: 6,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

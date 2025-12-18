@@ -59,7 +59,7 @@ interface AddTicketFlowProps {
   /** Called when flow is closed/cancelled */
   onClose: () => void;
   /** Called when ticket is successfully created */
-  onComplete: (ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault'>) => void;
+  onComplete: (ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'>) => void;
 }
 
 export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({

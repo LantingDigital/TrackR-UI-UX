@@ -10,7 +10,8 @@ import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingAc
 import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
 import { LogModal } from '../components/LogModal';
 import { LogConfirmationCard } from '../components/LogConfirmationCard';
-import { WalletCardStack, ScanModal } from '../components/wallet';
+import { WalletCardStack, ScanModal, QuickActionsMenu, GateModeOverlay } from '../components/wallet';
+import { Ticket } from '../types/wallet';
 import { useWallet } from '../hooks/useWallet';
 import { useTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
@@ -53,8 +54,15 @@ export const HomeScreen = () => {
   const [coasterPosition, setCoasterPosition] = useState({ x: 0, y: 0, width: 120, height: 120 });
   const [confirmationVisible, setConfirmationVisible] = useState(false);
 
+  // Quick actions menu state (for pass long press)
+  const [quickActionsVisible, setQuickActionsVisible] = useState(false);
+  const [selectedQuickActionTicket, setSelectedQuickActionTicket] = useState<Ticket | null>(null);
+  // Gate mode state (for scan action from quick menu)
+  const [gateModeVisible, setGateModeVisible] = useState(false);
+  const [gateModeTicket, setGateModeTicket] = useState<Ticket | null>(null);
+
   // Wallet context
-  const { stackTickets, setDefaultTicket, markTicketUsed } = useWallet();
+  const { stackTickets, setDefaultTicket, markTicketUsed, toggleFavorite, deleteTicket, favoriteTickets, tickets } = useWallet();
 
   // Tab bar context for screen reset functionality
   const tabBarContext = useTabBar();
@@ -665,6 +673,66 @@ export const HomeScreen = () => {
     setScanQuery(query);
   }, []);
 
+  // ===== Quick Actions Menu Handlers =====
+
+  // Handle long press on a pass card - show quick actions menu
+  const handlePassLongPress = useCallback((ticket: Ticket) => {
+    setSelectedQuickActionTicket(ticket);
+    setQuickActionsVisible(true);
+  }, []);
+
+  // Close quick actions menu
+  const handleCloseQuickActions = useCallback(() => {
+    setQuickActionsVisible(false);
+    setSelectedQuickActionTicket(null);
+  }, []);
+
+  // Quick action: Scan (open gate mode)
+  const handleQuickActionScan = useCallback((ticket: Ticket) => {
+    setGateModeTicket(ticket);
+    setGateModeVisible(true);
+    markTicketUsed(ticket.id);
+  }, [markTicketUsed]);
+
+  // Quick action: Toggle favorite
+  const handleQuickActionToggleFavorite = useCallback(async (ticket: Ticket) => {
+    try {
+      await toggleFavorite(ticket.id);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } catch (error) {
+      console.error('Failed to toggle favorite:', error);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+    }
+  }, [toggleFavorite]);
+
+  // Quick action: Edit (placeholder - would navigate to edit screen)
+  const handleQuickActionEdit = useCallback((ticket: Ticket) => {
+    console.log('Edit ticket:', ticket.id);
+    // TODO: Navigate to edit pass screen
+  }, []);
+
+  // Quick action: Delete
+  const handleQuickActionDelete = useCallback(async (ticket: Ticket) => {
+    try {
+      await deleteTicket(ticket.id);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } catch (error) {
+      console.error('Failed to delete ticket:', error);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+    }
+  }, [deleteTicket]);
+
+  // Close gate mode
+  const handleCloseGateMode = useCallback(() => {
+    setGateModeVisible(false);
+    setGateModeTicket(null);
+  }, []);
+
+  // Check if favorites limit is reached (max 3)
+  const favoritesLimitReached = useMemo(() => {
+    return favoriteTickets.length >= 3;
+  }, [favoriteTickets]);
+
   // Debounce effect for scan pass filtering - only update after 200ms typing pause
   // (Shorter than search since filtering is local and fast)
   useEffect(() => {
@@ -904,28 +972,12 @@ export const HomeScreen = () => {
   }, [actionButtonsOpacity, actionButtonsScale, resetButtonAnimations]);
 
   const handleWalletAddTicket = useCallback(() => {
-    // Close wallet and navigate to Profile for adding tickets
-    setWalletVisible(false);
-    // Animate action buttons back in
-    Animated.parallel([
-      Animated.timing(actionButtonsOpacity, {
-        toValue: 1,
-        duration: 250,
-        delay: 200,
-        useNativeDriver: false,
-      }),
-      Animated.timing(actionButtonsScale, {
-        toValue: 1,
-        duration: 250,
-        delay: 200,
-        useNativeDriver: false,
-      }),
-    ]).start();
-    // Reset per-button animations
-    resetButtonAnimations();
+    // Close wallet properly using MorphingPill's close method
+    // This ensures the search bar animates back and state is cleaned up
+    scanMorphingPillRef.current?.close();
     // TODO: Navigate to Profile screen's wallet section
     console.log('Navigate to Profile to add ticket');
-  }, [actionButtonsOpacity, actionButtonsScale, resetButtonAnimations]);
+  }, []);
 
   // Register reset handler for Home screen - animates modals closed when tab is pressed
   // Home tab acts as X button - closes any open modal and scrolls to top
@@ -2034,16 +2086,16 @@ export const HomeScreen = () => {
       )}
 
       {/* Fog Gradient Zone Above Search Bar - fog effect for content above search bar */}
-      {/* Extended container (88 + 200 = 288px) pushes gradient edge out of view */}
+      {/* Extended container covers status bar (starts at -50) and extends 200px below visible area */}
       {/* Fades out with searchContentFade to prevent clipping during close animation */}
       {searchVisible && (
         <Animated.View
           style={{
             position: 'absolute',
-            top: insets.top,
+            top: -50,
             left: 0,
             right: 0,
-            height: 288, // Extended: 88px visible area + 200px buffer
+            height: 50 + insets.top + 88 + 200, // 50px above + status bar + 88px visible + 200px buffer
             zIndex: 90,
             opacity: searchContentFade,
           }}
@@ -2072,6 +2124,7 @@ export const HomeScreen = () => {
 
       {/* "S E A R C H" Header Label - centered above the search bar */}
       {/* Fades in with modal open (searchContentFade), fades out when input focused (searchHeaderFocusOpacity) */}
+      {/* paddingLeft compensates for letterSpacing on last character to achieve true center */}
       {searchVisible && (
         <Animated.Text
           style={{
@@ -2083,6 +2136,7 @@ export const HomeScreen = () => {
             fontSize: 22,
             fontWeight: '700',
             letterSpacing: 10,
+            paddingLeft: 10, // Offset for trailing letterSpacing
             color: '#000000',
             opacity: Animated.multiply(searchContentFade, searchHeaderFocusOpacity),
             zIndex: 160,
@@ -2324,16 +2378,16 @@ export const HomeScreen = () => {
       )}
 
       {/* Fog Gradient Zone Above Log Search Bar - fog effect like Search/Scan modals */}
-      {/* Extended container (+200px) pushes gradient edge out of view */}
+      {/* Extended container covers status bar (starts at -50) and extends 200px below visible area */}
       {logVisible && (
         <Animated.View
           style={{
             position: 'absolute',
-            top: insets.top,
+            top: -50,
             left: 0,
             right: 0,
             height: Animated.add(
-              Animated.subtract(Animated.add(logMorphingPillTop, Animated.divide(logMorphingPillHeight, 2)), insets.top),
+              Animated.subtract(Animated.add(logMorphingPillTop, Animated.divide(logMorphingPillHeight, 2)), -50),
               200 // Buffer to push gradient edge out of view
             ),
             zIndex: 90,
@@ -2363,6 +2417,7 @@ export const HomeScreen = () => {
       )}
 
       {/* "L O G" Header Label */}
+      {/* paddingLeft compensates for letterSpacing on last character to achieve true center */}
       {logVisible && (
         <Animated.Text
           style={{
@@ -2374,6 +2429,7 @@ export const HomeScreen = () => {
             fontSize: 22,
             fontWeight: '700',
             letterSpacing: 10,
+            paddingLeft: 10, // Offset for trailing letterSpacing
             color: '#000000',
             opacity: Animated.multiply(logContentFade, logHeaderFocusOpacity),
             zIndex: 160,
@@ -2687,15 +2743,15 @@ export const HomeScreen = () => {
       )}
 
       {/* Fog Gradient Zone Above Scan Search Bar - fog effect like Search/Log modals */}
-      {/* Extended container (88 + 200 = 288px) pushes gradient edge out of view */}
+      {/* Extended container covers status bar (starts at -50) and extends 200px below visible area */}
       {walletVisible && (
         <Animated.View
           style={{
             position: 'absolute',
-            top: insets.top,
+            top: -50,
             left: 0,
             right: 0,
-            height: 288, // Extended: 88px visible area + 200px buffer
+            height: 50 + insets.top + 88 + 200, // 50px above + status bar + 88px visible + 200px buffer
             zIndex: 90,
             opacity: scanContentFade,
           }}
@@ -2723,6 +2779,7 @@ export const HomeScreen = () => {
       )}
 
       {/* "W A L L E T" Header Label */}
+      {/* paddingLeft compensates for letterSpacing on last character to achieve true center */}
       {walletVisible && (
         <Animated.Text
           style={{
@@ -2734,6 +2791,7 @@ export const HomeScreen = () => {
             fontSize: 22,
             fontWeight: '700',
             letterSpacing: 10,
+            paddingLeft: 10, // Offset for trailing letterSpacing
             color: '#000000',
             opacity: scanContentFade,
             zIndex: 160,
@@ -2759,11 +2817,12 @@ export const HomeScreen = () => {
           pointerEvents="auto"
         >
           <ScanModal
-            tickets={stackTickets}
+            tickets={tickets}
             onClose={() => scanMorphingPillRef.current?.close()}
             onAddTicket={handleWalletAddTicket}
             onSetDefault={setDefaultTicket}
             onTicketPress={(ticket) => console.log('Ticket pressed:', ticket.id)}
+            onTicketLongPress={handlePassLongPress}
             isEmbedded={true}
             sectionsOnly={true}
             searchQuery={debouncedScanQuery}
@@ -2865,6 +2924,25 @@ export const HomeScreen = () => {
           }}
         />
       </View>
+
+      {/* Quick Actions Menu (appears on pass long press) */}
+      <QuickActionsMenu
+        visible={quickActionsVisible}
+        ticket={selectedQuickActionTicket}
+        onClose={handleCloseQuickActions}
+        onScan={handleQuickActionScan}
+        onToggleFavorite={handleQuickActionToggleFavorite}
+        onEdit={handleQuickActionEdit}
+        onDelete={handleQuickActionDelete}
+        favoritesLimitReached={favoritesLimitReached}
+      />
+
+      {/* Gate Mode Overlay (appears when scanning from quick actions) */}
+      <GateModeOverlay
+        ticket={gateModeTicket}
+        visible={gateModeVisible}
+        onClose={handleCloseGateMode}
+      />
     </View>
   );
 };

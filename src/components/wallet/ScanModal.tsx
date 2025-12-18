@@ -5,14 +5,21 @@
  * section-based interface matching Log/Search patterns.
  *
  * Sections:
- * - Most Popular Passes: Default/frequently used passes in carousel
- * - Park Passes & Tickets: All passes alphabetically in carousel
- * - Expired Passes: Inactive passes (dimmed)
+ * - Favorites: User-pinned passes (up to 3) - 120px cards
+ * - Tickets: Day passes and multi-day tickets - 100px cards
+ * - Passes: Season passes, annual passes, VIP, memberships - 100px cards
+ * - Expired: Inactive passes (dimmed) - 100px cards, no Add button
+ *
+ * Features:
+ * - Snap-with-peek carousel scrolling
+ * - Star badge on favorited passes
+ * - Long press for quick actions menu
+ * - Empty state placeholders for all sections
+ * - Search filtering across all passes
  *
  * Modes:
  * - inputOnly: Just the TextInput for inside the MorphingPill
  * - sectionsOnly: Floating section cards with pass carousels
- * - default: Both combined (legacy, not used)
  */
 
 import React, { useState, useCallback, useMemo, useRef } from 'react';
@@ -21,7 +28,6 @@ import {
   Text,
   StyleSheet,
   Pressable,
-  Dimensions,
   ScrollView,
   TextInput,
   KeyboardAvoidingView,
@@ -30,16 +36,24 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
-import { PassPreviewCard } from './PassPreviewCard';
+import { PassPreviewCard, PREVIEW_CARD_SIZES } from './PassPreviewCard';
 import { PassDetailView } from './PassDetailView';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { radius } from '../../theme/radius';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
+// Card dimensions for each section (1:1 aspect ratio)
+const CARD_SIZES = {
+  favorites: PREVIEW_CARD_SIZES.favorites, // 120px
+  tickets: PREVIEW_CARD_SIZES.all,         // 100px
+  passes: PREVIEW_CARD_SIZES.all,          // 100px
+  expired: PREVIEW_CARD_SIZES.expired,     // 100px
+};
 
-// Card dimensions for carousel (1:1 aspect ratio)
-const CARD_SIZE = 140;
+// Pass types that are considered "tickets" (single-use/limited)
+const TICKET_PASS_TYPES = ['day_pass', 'multi_day'];
+// Pass types that are considered "passes" (recurring/membership)
+const PASS_PASS_TYPES = ['season_pass', 'annual_pass', 'vip', 'membership'];
 
 interface ScanModalProps {
   /** Array of tickets to display */
@@ -52,6 +66,8 @@ interface ScanModalProps {
   onTicketPress?: (ticket: Ticket) => void;
   /** Called when user sets a ticket as default */
   onSetDefault?: (ticketId: string) => void;
+  /** Called when user long presses a ticket (for quick actions) */
+  onTicketLongPress?: (ticket: Ticket) => void;
   /** Whether modal is embedded in MorphingPill */
   isEmbedded?: boolean;
   /** Only render the search input (for inside the MorphingPill) */
@@ -72,6 +88,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
   onAddTicket,
   onTicketPress,
   onSetDefault,
+  onTicketLongPress,
   isEmbedded = false,
   inputOnly = false,
   sectionsOnly = false,
@@ -86,6 +103,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
   // Detail view state
   const [detailViewVisible, setDetailViewVisible] = useState(false);
   const [selectedTicketIndex, setSelectedTicketIndex] = useState(0);
+  const [detailTicketList, setDetailTicketList] = useState<Ticket[]>([]);
 
   // Use local query for display, parent's searchQuery for filtering
   const displayQuery = localQuery;
@@ -106,37 +124,35 @@ export const ScanModal: React.FC<ScanModalProps> = ({
   // Determine what to show
   const showFilterResults = filterQuery.trim().length > 0;
   const hasTickets = tickets.length > 0;
-  const defaultTicket = tickets.find(t => t.isDefault);
 
-  // Split tickets into categories
-  const { popularPasses, allPasses, expiredPasses } = useMemo(() => {
+  // Split tickets into categories: Favorites, Tickets, Passes, Expired
+  const { favoritePasses, ticketItems, passItems, expiredPasses } = useMemo(() => {
     const active = tickets.filter(t => t.status === 'active');
     const expired = tickets.filter(t => t.status === 'expired');
 
-    // Popular = default + recently used (up to 5)
-    const popular = active
-      .filter(t => t.isDefault || t.lastUsedAt)
-      .sort((a, b) => {
-        if (a.isDefault) return -1;
-        if (b.isDefault) return 1;
-        const aTime = a.lastUsedAt ? new Date(a.lastUsedAt).getTime() : 0;
-        const bTime = b.lastUsedAt ? new Date(b.lastUsedAt).getTime() : 0;
-        return bTime - aTime;
-      })
-      .slice(0, 5);
+    // Favorites = user-pinned passes (up to 3)
+    const favorites = active.filter(t => t.isFavorite);
 
-    // If no popular, use default or first active
-    const finalPopular = popular.length > 0 ? popular : active.slice(0, 1);
+    // Tickets = day_pass, multi_day (single-use/limited duration)
+    const ticketsFiltered = active
+      .filter(t => TICKET_PASS_TYPES.includes(t.passType))
+      .sort((a, b) => a.parkName.localeCompare(b.parkName));
 
-    // All passes alphabetically
-    const alphabetical = [...active].sort((a, b) =>
+    // Passes = season_pass, annual_pass, vip, membership (recurring)
+    const passesFiltered = active
+      .filter(t => PASS_PASS_TYPES.includes(t.passType))
+      .sort((a, b) => a.parkName.localeCompare(b.parkName));
+
+    // Expired passes alphabetically
+    const expiredAlphabetical = [...expired].sort((a, b) =>
       a.parkName.localeCompare(b.parkName)
     );
 
     return {
-      popularPasses: finalPopular,
-      allPasses: alphabetical,
-      expiredPasses: expired,
+      favoritePasses: favorites,
+      ticketItems: ticketsFiltered,
+      passItems: passesFiltered,
+      expiredPasses: expiredAlphabetical,
     };
   }, [tickets]);
 
@@ -147,24 +163,25 @@ export const ScanModal: React.FC<ScanModalProps> = ({
   }, [onQueryChange]);
 
   // Handle ticket press - show detail view
-  const handleTicketPress = useCallback((ticket: Ticket, ticketList: Ticket[] = allPasses) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  const handleTicketPress = useCallback((ticket: Ticket, ticketList: Ticket[]) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     const index = ticketList.findIndex(t => t.id === ticket.id);
     setSelectedTicketIndex(index >= 0 ? index : 0);
+    setDetailTicketList(ticketList);
     setDetailViewVisible(true);
     onTicketPress?.(ticket);
-  }, [allPasses, onTicketPress]);
+  }, [onTicketPress]);
+
+  // Handle long press - trigger quick actions
+  const handleLongPress = useCallback((ticket: Ticket) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    onTicketLongPress?.(ticket);
+  }, [onTicketLongPress]);
 
   // Close detail view
   const handleCloseDetailView = useCallback(() => {
     setDetailViewVisible(false);
   }, []);
-
-  // Handle set default
-  const handleSetDefault = useCallback((ticketId: string) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    onSetDefault?.(ticketId);
-  }, [onSetDefault]);
 
   // Handle add ticket
   const handleAddTicket = useCallback(() => {
@@ -226,13 +243,16 @@ export const ScanModal: React.FC<ScanModalProps> = ({
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.carouselContent}
                     decelerationRate="fast"
-                    snapToInterval={CARD_SIZE + spacing.md}
+                    snapToInterval={CARD_SIZES.all + spacing.md}
                   >
                     {filteredTickets.map((ticket) => (
                       <PassPreviewCard
                         key={ticket.id}
                         ticket={ticket}
-                        onPress={() => handleTicketPress(ticket)}
+                        size={CARD_SIZES.all}
+                        onPress={() => handleTicketPress(ticket, filteredTickets)}
+                        onLongPress={() => handleLongPress(ticket)}
+                        showFavoriteBadge={true}
                       />
                     ))}
                   </ScrollView>
@@ -248,125 +268,208 @@ export const ScanModal: React.FC<ScanModalProps> = ({
                 </View>
               )}
             </View>
-          ) : hasTickets ? (
-            // ===== DISCOVERY MODE (has passes) =====
+          ) : (
+            // ===== DISCOVERY MODE (show all 3 sections always) =====
             <>
-              {/* Most Popular Passes Section */}
-              {popularPasses.length > 0 && (
-                <View style={styles.section}>
-                  <View style={styles.sectionHeader}>
-                    <Text style={styles.sectionTitle}>Most Popular</Text>
-                  </View>
+              {/* ========== FAVORITES SECTION (120px cards) ========== */}
+              <View style={styles.section}>
+                <View style={styles.sectionHeader}>
+                  <Text style={styles.sectionTitle}>Favorites</Text>
+                  {favoritePasses.length > 0 && (
+                    <Pressable onPress={handleAddTicket} hitSlop={8}>
+                      <Text style={styles.addButton}>+ Add</Text>
+                    </Pressable>
+                  )}
+                </View>
+                {favoritePasses.length > 0 ? (
                   <ScrollView
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.carouselContent}
                     decelerationRate="fast"
-                    snapToInterval={CARD_SIZE + spacing.md}
+                    snapToInterval={CARD_SIZES.favorites + spacing.md}
                   >
-                    {popularPasses.map((ticket) => (
+                    {favoritePasses.map((ticket) => (
                       <PassPreviewCard
                         key={ticket.id}
                         ticket={ticket}
-                        onPress={() => handleTicketPress(ticket)}
+                        size={CARD_SIZES.favorites}
+                        onPress={() => handleTicketPress(ticket, favoritePasses)}
+                        onLongPress={() => handleLongPress(ticket)}
+                        showFavoriteBadge={true}
                       />
                     ))}
                   </ScrollView>
-                </View>
-              )}
+                ) : (
+                  // Empty state for Favorites
+                  <View style={styles.sectionEmptyState}>
+                    <Ionicons name="star-outline" size={24} color="#CCCCCC" />
+                    <Text style={styles.sectionEmptyText}>No favorites yet</Text>
+                    <Text style={styles.sectionEmptySubtext}>
+                      Long press any pass to add to favorites
+                    </Text>
+                    {hasTickets ? null : (
+                      <Pressable
+                        onPress={handleAddTicket}
+                        style={({ pressed }) => [
+                          styles.sectionEmptyAddButton,
+                          pressed && { opacity: 0.7 },
+                        ]}
+                      >
+                        <Ionicons name="add" size={16} color={colors.accent.primary} />
+                        <Text style={styles.sectionEmptyAddText}>Add Pass</Text>
+                      </Pressable>
+                    )}
+                  </View>
+                )}
+              </View>
 
               <View style={styles.frostedGap} />
 
-              {/* All Passes Section (Alphabetical) */}
+              {/* ========== TICKETS SECTION (100px cards) ========== */}
               <View style={styles.section}>
                 <View style={styles.sectionHeader}>
-                  <Text style={styles.sectionTitle}>Park Passes & Tickets</Text>
-                  <Pressable onPress={handleAddTicket}>
+                  <Text style={styles.sectionTitle}>Tickets</Text>
+                  <Pressable onPress={handleAddTicket} hitSlop={8}>
                     <Text style={styles.addButton}>+ Add</Text>
                   </Pressable>
                 </View>
-                <ScrollView
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={styles.carouselContent}
-                  decelerationRate="fast"
-                  snapToInterval={CARD_SIZE + spacing.md}
-                >
-                  {allPasses.map((ticket) => (
-                    <PassPreviewCard
-                      key={ticket.id}
-                      ticket={ticket}
-                      onPress={() => handleTicketPress(ticket)}
-                    />
-                  ))}
-
-                  {/* Add Pass Card */}
-                  <Pressable
-                    onPress={handleAddTicket}
-                    style={({ pressed }) => [
-                      styles.addPassCard,
-                      pressed && { transform: [{ scale: 0.97 }], opacity: 0.7 },
-                    ]}
+                {ticketItems.length > 0 ? (
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.carouselContent}
+                    decelerationRate="fast"
+                    snapToInterval={CARD_SIZES.tickets + spacing.md}
                   >
-                    <View style={styles.addPassIconContainer}>
-                      <Ionicons name="add" size={32} color={colors.accent.primary} />
-                    </View>
-                    <Text style={styles.addPassText}>Add Pass</Text>
-                  </Pressable>
-                </ScrollView>
+                    {ticketItems.map((ticket) => (
+                      <PassPreviewCard
+                        key={ticket.id}
+                        ticket={ticket}
+                        size={CARD_SIZES.tickets}
+                        onPress={() => handleTicketPress(ticket, ticketItems)}
+                        onLongPress={() => handleLongPress(ticket)}
+                        showFavoriteBadge={true}
+                      />
+                    ))}
+                    {/* Add Ticket Card at end of carousel */}
+                    <Pressable
+                      onPress={handleAddTicket}
+                      style={({ pressed }) => [
+                        styles.addPassCard,
+                        { width: CARD_SIZES.tickets, height: CARD_SIZES.tickets },
+                        pressed && { transform: [{ scale: 0.97 }], opacity: 0.7 },
+                      ]}
+                    >
+                      <View style={styles.addPassIconContainer}>
+                        <Ionicons name="add" size={28} color={colors.accent.primary} />
+                      </View>
+                      <Text style={styles.addPassText}>Add Ticket</Text>
+                    </Pressable>
+                  </ScrollView>
+                ) : (
+                  // Empty state for Tickets
+                  <View style={styles.sectionEmptyState}>
+                    <Ionicons name="ticket-outline" size={24} color="#CCCCCC" />
+                    <Text style={styles.sectionEmptyText}>No tickets yet</Text>
+                    <Text style={styles.sectionEmptySubtext}>
+                      Day passes and multi-day tickets appear here
+                    </Text>
+                  </View>
+                )}
               </View>
 
-              {/* Expired Passes Section */}
-              {expiredPasses.length > 0 && (
-                <>
-                  <View style={styles.frostedGap} />
-                  <View style={[styles.section, styles.expiredSection]}>
-                    <View style={styles.sectionHeader}>
-                      <Text style={styles.sectionTitle}>Expired Passes</Text>
-                    </View>
-                    <ScrollView
-                      horizontal
-                      showsHorizontalScrollIndicator={false}
-                      contentContainerStyle={styles.carouselContent}
-                      decelerationRate="fast"
-                      snapToInterval={CARD_SIZE + spacing.md}
-                    >
-                      {expiredPasses.map((ticket) => (
-                        <View key={ticket.id} style={styles.expiredCardWrapper}>
-                          <PassPreviewCard
-                            ticket={ticket}
-                            onPress={() => handleTicketPress(ticket)}
-                          />
-                        </View>
-                      ))}
-                    </ScrollView>
-                  </View>
-                </>
-              )}
-            </>
-          ) : (
-            // ===== EMPTY STATE (no passes) =====
-            <View style={styles.section}>
-              <View style={styles.emptyStateContainer}>
-                <View style={styles.emptyStateIcon}>
-                  <Ionicons name="ticket-outline" size={32} color={colors.accent.primary} />
+              <View style={styles.frostedGap} />
+
+              {/* ========== PASSES SECTION (100px cards) ========== */}
+              <View style={styles.section}>
+                <View style={styles.sectionHeader}>
+                  <Text style={styles.sectionTitle}>Passes</Text>
+                  <Pressable onPress={handleAddTicket} hitSlop={8}>
+                    <Text style={styles.addButton}>+ Add</Text>
+                  </Pressable>
                 </View>
-                <Text style={styles.emptyStateTitle}>No passes yet</Text>
-                <Text style={styles.emptyStateSubtitle}>
-                  Add theme park passes from your Profile to quickly access them here
-                </Text>
-                <Pressable
-                  style={({ pressed }) => [
-                    styles.emptyStateCTA,
-                    pressed && { opacity: 0.9, transform: [{ scale: 0.98 }] },
-                  ]}
-                  onPress={handleAddTicket}
-                >
-                  <Text style={styles.emptyStateCTAText}>Add Your First Pass</Text>
-                  <Ionicons name="arrow-forward" size={16} color="#FFFFFF" />
-                </Pressable>
+                {passItems.length > 0 ? (
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.carouselContent}
+                    decelerationRate="fast"
+                    snapToInterval={CARD_SIZES.passes + spacing.md}
+                  >
+                    {passItems.map((ticket) => (
+                      <PassPreviewCard
+                        key={ticket.id}
+                        ticket={ticket}
+                        size={CARD_SIZES.passes}
+                        onPress={() => handleTicketPress(ticket, passItems)}
+                        onLongPress={() => handleLongPress(ticket)}
+                        showFavoriteBadge={true}
+                      />
+                    ))}
+                    {/* Add Pass Card at end of carousel */}
+                    <Pressable
+                      onPress={handleAddTicket}
+                      style={({ pressed }) => [
+                        styles.addPassCard,
+                        { width: CARD_SIZES.passes, height: CARD_SIZES.passes },
+                        pressed && { transform: [{ scale: 0.97 }], opacity: 0.7 },
+                      ]}
+                    >
+                      <View style={styles.addPassIconContainer}>
+                        <Ionicons name="add" size={28} color={colors.accent.primary} />
+                      </View>
+                      <Text style={styles.addPassText}>Add Pass</Text>
+                    </Pressable>
+                  </ScrollView>
+                ) : (
+                  // Empty state for Passes
+                  <View style={styles.sectionEmptyState}>
+                    <Ionicons name="card-outline" size={24} color="#CCCCCC" />
+                    <Text style={styles.sectionEmptyText}>No passes yet</Text>
+                    <Text style={styles.sectionEmptySubtext}>
+                      Season passes and memberships appear here
+                    </Text>
+                  </View>
+                )}
               </View>
-            </View>
+
+              <View style={styles.frostedGap} />
+
+              {/* ========== EXPIRED SECTION (100px cards, reduced opacity, no Add button) ========== */}
+              <View style={[styles.section, styles.expiredSection]}>
+                <View style={styles.sectionHeader}>
+                  <Text style={styles.sectionTitle}>Expired</Text>
+                </View>
+                {expiredPasses.length > 0 ? (
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.carouselContent}
+                    decelerationRate="fast"
+                    snapToInterval={CARD_SIZES.expired + spacing.md}
+                  >
+                    {expiredPasses.map((ticket) => (
+                      <View key={ticket.id} style={styles.expiredCardWrapper}>
+                        <PassPreviewCard
+                          ticket={ticket}
+                          size={CARD_SIZES.expired}
+                          onPress={() => handleTicketPress(ticket, expiredPasses)}
+                          onLongPress={() => handleLongPress(ticket)}
+                          showFavoriteBadge={false}
+                        />
+                      </View>
+                    ))}
+                  </ScrollView>
+                ) : (
+                  // Empty state for Expired (no Add button)
+                  <View style={styles.sectionEmptyState}>
+                    <Ionicons name="time-outline" size={24} color="#CCCCCC" />
+                    <Text style={styles.sectionEmptyText}>No expired passes</Text>
+                  </View>
+                )}
+              </View>
+            </>
           )}
 
           {/* Bottom padding for safe area */}
@@ -375,7 +478,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
 
         {/* Pass Detail View Modal */}
         <PassDetailView
-          tickets={allPasses}
+          tickets={detailTicketList.length > 0 ? detailTicketList : [...ticketItems, ...passItems]}
           initialIndex={selectedTicketIndex}
           visible={detailViewVisible}
           onClose={handleCloseDetailView}
@@ -449,7 +552,6 @@ const styles = StyleSheet.create({
     color: colors.accent.primary,
   },
 
-
   // Carousel
   carouselContent: {
     paddingHorizontal: 16,
@@ -464,10 +566,8 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
 
-  // Add Pass Card
+  // Add Pass Card (dynamically sized)
   addPassCard: {
-    width: CARD_SIZE,
-    height: CARD_SIZE,
     backgroundColor: '#FFFFFF',
     borderRadius: radius.card,
     borderWidth: 2,
@@ -477,22 +577,55 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   addPassIconContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     backgroundColor: `${colors.accent.primary}15`,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   addPassText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: colors.accent.primary,
+  },
+
+  // Section Empty States
+  sectionEmptyState: {
+    alignItems: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 24,
+  },
+  sectionEmptyText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#999999',
+    marginTop: 8,
+  },
+  sectionEmptySubtext: {
+    fontSize: 12,
+    color: '#BBBBBB',
+    marginTop: 4,
+    textAlign: 'center',
+  },
+  sectionEmptyAddButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    backgroundColor: `${colors.accent.primary}10`,
+    borderRadius: 20,
+    gap: 4,
+  },
+  sectionEmptyAddText: {
     fontSize: 13,
     fontWeight: '600',
     color: colors.accent.primary,
   },
 
-
-  // No Results
+  // No Results (search mode)
   noResultsContainer: {
     alignItems: 'center',
     paddingVertical: 40,
@@ -509,49 +642,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#999999',
     textAlign: 'center',
-  },
-
-  // Empty State (matches LogModal pattern)
-  emptyStateContainer: {
-    alignItems: 'center',
-    paddingVertical: 24,
-    paddingHorizontal: 24,
-  },
-  emptyStateIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: `${colors.accent.primary}15`,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 12,
-  },
-  emptyStateTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 4,
-  },
-  emptyStateSubtitle: {
-    fontSize: 14,
-    color: '#666666',
-    textAlign: 'center',
-    marginBottom: 16,
-    lineHeight: 20,
-  },
-  emptyStateCTA: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.accent.primary,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 24,
-    gap: 8,
-  },
-  emptyStateCTAText: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#FFFFFF',
   },
 });
 

@@ -370,7 +370,7 @@ export function getOneYearFromNowISO(): string {
 export function createDefaultTicketData(
   qrData: string,
   detection: DetectionResult
-): Omit<Ticket, 'id' | 'addedAt' | 'isDefault'> {
+): Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'> {
   const now = getTodayISO();
   const oneYearFromNow = getOneYearFromNowISO();
 

@@ -26,24 +26,27 @@ import { WalletStorage } from '../services/walletStorage';
 
 /**
  * Local pass images - bundled with the app
- * Place images in assets/passes/ folder
- *
- * For development: Using require() for local images
- * In production: These would come from user's photo library or camera
+ * Card art and logos stored in assets/wallet/parks/
  */
-const PASS_IMAGES = {
-  // Carowinds is the main test pass - replace this with your actual card image
-  // Place your image at: assets/passes/carowinds.jpg (or .png)
-  carowinds: require('../../assets/passes/carowinds.jpg'),
-  // You can add more local images as needed:
-  // cedarPoint: require('../../assets/passes/cedar-point.jpg'),
+const CARD_ART = {
+  carowinds: require('../../assets/wallet/parks/card-art/carowinds.jpg'),
+  cedarPoint: require('../../assets/wallet/parks/card-art/cedar-point.jpg'),
+  kingsIsland: require('../../assets/wallet/parks/card-art/kings-island.jpg'),
+};
+
+const LOGOS = {
+  carowinds: require('../../assets/wallet/parks/logos/carowinds.png'),
+  cedarPoint: require('../../assets/wallet/parks/logos/cedar-point.png'),
+  kingsIsland: require('../../assets/wallet/parks/logos/kings-island.png'),
 };
 
 /**
- * Mock tickets for development/testing - shows design with realistic data
- * Carowinds is set as default to showcase the design
+ * Mock tickets for development/testing
+ * Uses Cedar Point, Kings Island, Carowinds with real assets
+ * Other parks use gradient fallback
  */
 const MOCK_TICKETS: Ticket[] = [
+  // ===== PARKS WITH ASSETS (Cedar Point, Kings Island, Carowinds) =====
   {
     id: 'mock-carowinds',
     parkName: 'Carowinds',
@@ -54,107 +57,84 @@ const MOCK_TICKETS: Ticket[] = [
     validUntil: '2025-12-31',
     qrData: 'CAROWINDS-SEASON-2025-001234',
     qrFormat: 'QR_CODE',
-    heroImageSource: PASS_IMAGES.carowinds, // Local bundled image
+    heroImageSource: CARD_ART.carowinds,
+    logoImageSource: LOGOS.carowinds,
     status: 'active',
     isDefault: true,
+    isFavorite: true,
     addedAt: '2025-01-15T10:30:00Z',
     autoDetected: true,
-    lastUsedAt: '2025-12-15T14:00:00Z', // Most recently used
+    lastUsedAt: '2025-12-15T14:00:00Z',
   },
   {
-    id: 'mock-2',
+    id: 'mock-cedar-point',
+    parkName: 'Cedar Point',
+    parkChain: 'cedar_fair',
+    passType: 'season_pass',
+    passholder: 'John Smith',
+    validFrom: '2025-01-01',
+    validUntil: '2025-12-31',
+    qrData: 'CEDARPOINT-SEASON-2025-005678',
+    qrFormat: 'QR_CODE',
+    heroImageSource: CARD_ART.cedarPoint,
+    logoImageSource: LOGOS.cedarPoint,
+    status: 'active',
+    isDefault: false,
+    isFavorite: true,
+    addedAt: '2025-01-15T10:35:00Z',
+    autoDetected: true,
+  },
+  {
+    id: 'mock-kings-island',
     parkName: 'Kings Island',
     parkChain: 'cedar_fair',
     passType: 'season_pass',
     passholder: 'John Smith',
     validFrom: '2025-01-01',
     validUntil: '2025-12-31',
-    qrData: 'KINGSISLAND-SEASON-2025-005678',
+    qrData: 'KINGSISLAND-SEASON-2025-009012',
     qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/kingsisland/400/500',
+    heroImageSource: CARD_ART.kingsIsland,
+    logoImageSource: LOGOS.kingsIsland,
     status: 'active',
     isDefault: false,
-    addedAt: '2025-01-15T10:35:00Z',
+    isFavorite: true,
+    addedAt: '2025-01-20T10:00:00Z',
     autoDetected: true,
   },
+  // ===== PARKS WITHOUT ASSETS (gradient fallback) =====
   {
-    id: 'mock-3',
+    id: 'mock-sfmm',
     parkName: 'Six Flags Magic Mountain',
     parkChain: 'six_flags',
     passType: 'annual_pass',
     passholder: 'John Smith',
     validFrom: '2025-03-01',
     validUntil: '2026-02-28',
-    qrData: 'SFMM-ANNUAL-2025-009012',
+    qrData: 'SFMM-ANNUAL-2025-003456',
     qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/sixflags/400/500',
+    // No heroImageSource - will use gradient fallback
     status: 'active',
     isDefault: false,
+    isFavorite: false,
     addedAt: '2025-03-01T14:00:00Z',
     autoDetected: true,
   },
   {
-    id: 'mock-4',
+    id: 'mock-disney',
     parkName: 'Walt Disney World',
     parkChain: 'disney',
     passType: 'annual_pass',
     passholder: 'John Smith',
     validFrom: '2024-12-01',
     validUntil: '2025-11-30',
-    qrData: 'WDW-ANNUAL-PLATINUM-2024-003456',
+    qrData: 'WDW-ANNUAL-PLATINUM-2024-007890',
     qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/disney/400/500',
+    // No heroImageSource - will use gradient fallback
     status: 'active',
     isDefault: false,
+    isFavorite: false,
     addedAt: '2024-12-01T09:00:00Z',
-    autoDetected: true,
-  },
-  {
-    id: 'mock-5',
-    parkName: 'Universal Orlando',
-    parkChain: 'universal',
-    passType: 'annual_pass',
-    passholder: 'John Smith',
-    validFrom: '2025-02-15',
-    validUntil: '2026-02-14',
-    qrData: 'UOR-ANNUAL-POWER-2025-007890',
-    qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/universal/400/500',
-    status: 'active',
-    isDefault: false,
-    addedAt: '2025-02-15T11:00:00Z',
-    autoDetected: true,
-  },
-  {
-    id: 'mock-6',
-    parkName: 'SeaWorld Orlando',
-    parkChain: 'seaworld',
-    passType: 'season_pass',
-    passholder: 'Jane Smith',
-    validFrom: '2025-01-01',
-    validUntil: '2025-12-31',
-    qrData: 'SWO-SEASON-2025-002468',
-    qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/seaworld/400/500',
-    status: 'active',
-    isDefault: false,
-    addedAt: '2025-01-20T16:00:00Z',
-    autoDetected: true,
-  },
-  {
-    id: 'mock-7',
-    parkName: 'Cedar Point',
-    parkChain: 'cedar_fair',
-    passType: 'parking',
-    passholder: 'John Smith',
-    validFrom: '2025-01-01',
-    validUntil: '2025-12-31',
-    qrData: 'CEDARPOINT-PARKING-2025-001234',
-    qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/parking/400/500',
-    status: 'active',
-    isDefault: false,
-    addedAt: '2025-01-15T10:32:00Z',
     autoDetected: true,
   },
   // ===== EXPIRED PASSES (for testing expired carousel) =====
@@ -168,26 +148,10 @@ const MOCK_TICKETS: Ticket[] = [
     validUntil: '2024-12-31',
     qrData: 'BGT-ANNUAL-2024-003456',
     qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/buschgardens/400/500',
     status: 'expired',
     isDefault: false,
+    isFavorite: false,
     addedAt: '2024-01-10T09:00:00Z',
-    autoDetected: true,
-  },
-  {
-    id: 'mock-expired-2',
-    parkName: 'Dollywood',
-    parkChain: 'other',
-    passType: 'season_pass',
-    passholder: 'Jane Smith',
-    validFrom: '2023-03-01',
-    validUntil: '2024-02-28',
-    qrData: 'DOLLYWOOD-SEASON-2023-007890',
-    qrFormat: 'QR_CODE',
-    heroImageUri: 'https://picsum.photos/seed/dollywood/400/500',
-    status: 'expired',
-    isDefault: false,
-    addedAt: '2023-03-05T14:00:00Z',
     autoDetected: true,
   },
 ];
@@ -213,8 +177,12 @@ interface WalletContextValue {
   // Tickets ordered for card stack (default first)
   stackTickets: Ticket[];
 
+  // Favorite tickets (user-pinned, up to 3)
+  favoriteTickets: Ticket[];
+
   // Actions
-  addTicket: (ticket: Omit<Ticket, 'id' | 'addedAt' | 'isDefault'>) => Promise<Ticket>;
+  addTicket: (ticket: Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'>) => Promise<Ticket>;
+  toggleFavorite: (id: string) => Promise<boolean>; // Returns true if now favorite, false if unfavorited
   updateTicket: (id: string, updates: Partial<Ticket>) => Promise<void>;
   deleteTicket: (id: string) => Promise<void>;
   setDefaultTicket: (id: string) => Promise<void>;
@@ -311,7 +279,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
    * Add a new ticket
    */
   const addTicket = useCallback(
-    async (ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault'>): Promise<Ticket> => {
+    async (ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'>): Promise<Ticket> => {
       try {
         const newTicket = await WalletStorage.saveTicket(ticketData);
         setTickets((prev) => [...prev, newTicket]);
@@ -385,7 +353,10 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
    */
   const markTicketUsed = useCallback(async (id: string) => {
     try {
-      await WalletStorage.markTicketUsed(id);
+      // Only update storage if not using mock data
+      if (!USE_MOCK_DATA) {
+        await WalletStorage.markTicketUsed(id);
+      }
       const now = new Date().toISOString();
       setTickets((prev) =>
         prev.map((t) => (t.id === id ? { ...t, lastUsedAt: now } : t))
@@ -395,6 +366,43 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       // Don't throw - this is a non-critical operation
     }
   }, []);
+
+  /**
+   * Toggle favorite status for a ticket (max 3 favorites allowed)
+   * Returns true if ticket is now favorited, false if unfavorited
+   */
+  const toggleFavorite = useCallback(async (id: string): Promise<boolean> => {
+    const ticket = tickets.find((t) => t.id === id);
+    if (!ticket) {
+      throw new Error('Ticket not found');
+    }
+
+    const currentFavoriteCount = tickets.filter((t) => t.isFavorite).length;
+    const isCurrentlyFavorite = ticket.isFavorite;
+
+    // If trying to add a new favorite and already at max (3)
+    if (!isCurrentlyFavorite && currentFavoriteCount >= 3) {
+      throw new Error('Maximum of 3 favorites allowed');
+    }
+
+    const newIsFavorite = !isCurrentlyFavorite;
+
+    try {
+      // Update in storage (if not using mock data)
+      if (!USE_MOCK_DATA) {
+        await WalletStorage.updateTicket(id, { isFavorite: newIsFavorite });
+      }
+
+      setTickets((prev) =>
+        prev.map((t) => (t.id === id ? { ...t, isFavorite: newIsFavorite } : t))
+      );
+
+      return newIsFavorite;
+    } catch (err) {
+      console.error('Failed to toggle favorite:', err);
+      throw err;
+    }
+  }, [tickets]);
 
   /**
    * Update filter preferences
@@ -491,6 +499,19 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
     });
   }, [tickets, defaultTicketId]);
 
+  /**
+   * Get favorite tickets (user-pinned, up to 3)
+   * Only includes active tickets
+   */
+  const favoriteTickets = useMemo(() => {
+    return tickets
+      .filter((t) => t.isFavorite && t.status === 'active')
+      .sort((a, b) => {
+        // Sort by addedAt descending (most recently added first)
+        return new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime();
+      });
+  }, [tickets]);
+
   const value: WalletContextValue = {
     tickets,
     defaultTicket,
@@ -500,7 +521,9 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
     filteredTickets,
     filterPreferences,
     stackTickets,
+    favoriteTickets,
     addTicket,
+    toggleFavorite,
     updateTicket,
     deleteTicket,
     setDefaultTicket,

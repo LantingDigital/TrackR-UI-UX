@@ -79,8 +79,14 @@ export interface Ticket {
   /** Hero image source for bundled/local images (alternative to heroImageUri) */
   heroImageSource?: ImageSourcePropType;
 
-  /** Park logo image URI (optional, for expanded view overlay) */
+  /** Park logo image URI (optional, for expanded view overlay) - remote URL */
   logoImageUri?: string;
+
+  /** Park logo image source for bundled/local images (alternative to logoImageUri) */
+  logoImageSource?: ImageSourcePropType;
+
+  /** Whether this pass is pinned as a favorite (up to 3 allowed) */
+  isFavorite: boolean;
 
   /** Local file path to backup photo of original ticket */
   originalPhotoUri?: string;
