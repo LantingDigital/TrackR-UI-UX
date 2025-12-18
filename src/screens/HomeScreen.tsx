@@ -4,12 +4,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingActionButton } from '../components';
 import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
 import { LogModal } from '../components/LogModal';
 import { LogConfirmationCard } from '../components/LogConfirmationCard';
-import { WalletCardStack } from '../components/wallet';
+import { WalletCardStack, ScanModal } from '../components/wallet';
 import { useWallet } from '../hooks/useWallet';
 import { useTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
@@ -45,6 +46,7 @@ export const HomeScreen = () => {
   const [searchOrigin, setSearchOrigin] = useState<SearchOrigin>('expandedSearchBar');
   const [logVisible, setLogVisible] = useState(false);
   const [logOrigin, setLogOrigin] = useState<'logPill' | 'logCircle'>('logPill');
+  const [scanOrigin, setScanOrigin] = useState<'scanPill' | 'scanCircle'>('scanPill');
   const [walletVisible, setWalletVisible] = useState(false);
   // Log confirmation card state
   const [selectedCoaster, setSelectedCoaster] = useState<SearchableItem | null>(null);
@@ -64,6 +66,8 @@ export const HomeScreen = () => {
   const morphingPillRef = useRef<MorphingPillRef>(null);
   // Ref for Log MorphingPill (allows triggering open from log button tap)
   const logMorphingPillRef = useRef<MorphingPillRef>(null);
+  // Ref for Scan MorphingPill (allows triggering open from scan button tap)
+  const scanMorphingPillRef = useRef<MorphingPillRef>(null);
   // Ref for FlatList (allows scroll to top on Home tab tap)
   const flatListRef = useRef<FlatList>(null);
   const lastScrollY = useRef(0);
@@ -139,6 +143,12 @@ export const HomeScreen = () => {
   const [isLogFocused, setIsLogFocused] = useState(false);
   const logFocusProgress = useRef(new Animated.Value(0)).current;
 
+  // =========================================
+  // Scan Modal Animation Values (mirrors log/search)
+  // =========================================
+  const scanBackdropOpacity = useRef(new Animated.Value(0)).current;
+  const scanContentFade = useRef(new Animated.Value(0)).current;
+
   // Search query state for dropdown autocomplete
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
@@ -148,6 +158,11 @@ export const HomeScreen = () => {
   const [logQuery, setLogQuery] = useState('');
   const [debouncedLogQuery, setDebouncedLogQuery] = useState('');
   const logDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Scan query state for pass filtering
+  const [scanQuery, setScanQuery] = useState('');
+  const [debouncedScanQuery, setDebouncedScanQuery] = useState('');
+  const scanDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Staggered cascade animation for dropdown items
   const dropdownItemAnimations = useRef<Animated.Value[]>([
@@ -645,6 +660,28 @@ export const HomeScreen = () => {
     };
   }, [searchQuery]);
 
+  // Handle scan query changes from ScanModal
+  const handleScanQueryChange = useCallback((query: string) => {
+    setScanQuery(query);
+  }, []);
+
+  // Debounce effect for scan pass filtering - only update after 200ms typing pause
+  // (Shorter than search since filtering is local and fast)
+  useEffect(() => {
+    if (scanDebounceTimerRef.current) {
+      clearTimeout(scanDebounceTimerRef.current);
+    }
+    scanDebounceTimerRef.current = setTimeout(() => {
+      setDebouncedScanQuery(scanQuery);
+    }, 200);
+
+    return () => {
+      if (scanDebounceTimerRef.current) {
+        clearTimeout(scanDebounceTimerRef.current);
+      }
+    };
+  }, [scanQuery]);
+
   // Trigger staggered cascade animation when dropdown becomes visible or content changes
   useEffect(() => {
     if (isSearchFocused) {
@@ -833,17 +870,17 @@ export const HomeScreen = () => {
   }, []);
 
   const handleScanPress = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    // Crossfade animation - scan button blends into wallet morph
-    // Other buttons animate toward scan button and fade out
-    const targetX = SCREEN_WIDTH / 2;
-    const targetY = insets.top + 60 + 28;
-    animateButtonsForModalOpen('scan', targetX, targetY);
-    // Keep container visible - individual buttons handle their own opacity
-    actionButtonsOpacity.setValue(1);
-    actionButtonsScale.setValue(1);
-    setWalletVisible(true);
-  }, [actionButtonsOpacity, actionButtonsScale, animateButtonsForModalOpen, insets.top]);
+    // Set origin based on current collapse state BEFORE opening
+    const origin = isCollapsedRef.current ? 'scanCircle' : 'scanPill';
+    setScanOrigin(origin);
+
+    // Use requestAnimationFrame to ensure state update is processed before open
+    requestAnimationFrame(() => {
+      if (scanMorphingPillRef.current) {
+        scanMorphingPillRef.current.open();
+      }
+    });
+  }, []);
 
   const handleWalletClose = useCallback(() => {
     setWalletVisible(false);
@@ -899,8 +936,8 @@ export const HomeScreen = () => {
         morphingPillRef.current.close();
       } else if (logVisible && logMorphingPillRef.current) {
         logMorphingPillRef.current.close();
-      } else if (walletVisible) {
-        handleWalletClose();
+      } else if (walletVisible && scanMorphingPillRef.current) {
+        scanMorphingPillRef.current.close();
       }
 
       // Reset confirmation card (this is a sub-modal, close instantly)
@@ -1551,6 +1588,65 @@ export const HomeScreen = () => {
     );
   }, [logOrigin]);
 
+  // =========================================
+  // Scan Modal Interpolations (mirrors log)
+  // =========================================
+  // Scan pill origin position (always from Scan button position)
+  const scanOriginPosition = useMemo(() => {
+    const PILL_HEIGHT = 36;
+    const PILL_BORDER_RADIUS = 18;
+
+    if (scanOrigin === 'scanCircle') {
+      return {
+        top: insets.top + collapsedY - circleSize / 2,
+        left: collapsedPositions[2].x - circleSize / 2, // Scan is index 2
+        width: circleSize,
+        height: circleSize,
+        borderRadius: circleSize / 2,
+      };
+    }
+    // scanPill - expanded state
+    return {
+      top: insets.top + expandedY - 18,
+      left: expandedPositions[2].x - pillWidth / 2, // Scan is index 2
+      width: pillWidth,
+      height: PILL_HEIGHT,
+      borderRadius: PILL_BORDER_RADIUS,
+    };
+  }, [scanOrigin, insets.top, circleSize, collapsedY, collapsedPositions, expandedY, expandedPositions, pillWidth]);
+
+  // =========================================
+  // Dynamic Scan Pill Content Based on Origin
+  // =========================================
+  // Returns appropriate content for the Scan MorphingPill's closed state
+  // Each origin type has a different appearance to match the element being replaced
+  const scanPillContent = useMemo(() => {
+    // CRITICAL: All pillContent must use absolute positioning to fill the entire container
+    // This bypasses contentWrapper's flex behavior and ensures pixel-perfect alignment
+    // with the actual destination elements when the close animation ends
+    const absoluteFill = { position: 'absolute' as const, top: 0, left: 0, right: 0, bottom: 0 };
+
+    if (scanOrigin === 'scanCircle') {
+      // Circle button - matches MorphingActionButton collapsed state EXACTLY
+      // Just centered icon, no label (same as MorphingActionButton when collapsed)
+      return (
+        <View style={{ ...absoluteFill, alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="barcode-outline" size={16} color="#000000" />
+        </View>
+      );
+    }
+    // scanPill - Action pill button - matches MorphingActionButton expanded state EXACTLY
+    // Uses absoluteFill + centered row layout (same as MorphingActionButton's pressable style)
+    return (
+      <View style={{ ...absoluteFill, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+        <Ionicons name="barcode-outline" size={16} color="#000000" />
+        <View style={{ marginLeft: 6, maxWidth: 100, overflow: 'hidden' }}>
+          <Text style={{ fontSize: 14, fontWeight: '600', color: '#000000' }} numberOfLines={1}>Scan</Text>
+        </View>
+      </View>
+    );
+  }, [scanOrigin]);
+
   // Log morph TOP position - now uses parabolic arc like MorphingPill
   // Base Y: linear interpolation from origin to final position
   const logTopLinear = logMorphProgress.interpolate({
@@ -1689,20 +1785,16 @@ export const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* Main Content Wrapper */}
-      <View
-        style={[
-          styles.mainContentWrapper,
-          { paddingTop: insets.top },
-        ]}
-      >
+      {/* Main Content Wrapper - no paddingTop so content can scroll behind status bar */}
+      <View style={styles.mainContentWrapper}>
       {/* News Feed - comes first, header floats over it */}
+      {/* Content starts below status bar + header, but can scroll behind both */}
       <FlatList
         ref={flatListRef}
         data={MOCK_NEWS}
         keyExtractor={keyExtractor}
         renderItem={renderNewsCard}
-        contentContainerStyle={[styles.feedContent, { paddingTop: HEADER_HEIGHT_EXPANDED }]}
+        contentContainerStyle={[styles.feedContent, { paddingTop: insets.top + HEADER_HEIGHT_EXPANDED }]}
         showsVerticalScrollIndicator={false}
         onScroll={handleScroll}
         scrollEventThrottle={16}
@@ -1710,9 +1802,62 @@ export const HomeScreen = () => {
         onLayout={(e) => { viewportHeight.current = e.nativeEvent.layout.height; }}
       />
 
+      {/* Fog Gradient Overlay - warmer tone with longer gradual fade section */}
+      {/* Container extends 200px below header to push boundary line out of visible area */}
+      <Animated.View
+        style={{
+          position: 'absolute',
+          top: -50,
+          left: 0,
+          right: 0,
+          height: animProgress.interpolate({
+            inputRange: [0, 1],
+            outputRange: [
+              50 + insets.top + HEADER_HEIGHT_COLLAPSED + 200, // Collapsed - extended container
+              50 + insets.top + HEADER_HEIGHT_EXPANDED + 200,  // Expanded - extended container
+            ],
+          }),
+          zIndex: 5,
+          pointerEvents: 'none',
+        }}
+      >
+        <LinearGradient
+          colors={[
+            'rgba(240, 238, 235, 0.94)',   // Solid through header
+            'rgba(240, 238, 235, 0.94)',   // Status bar area
+            'rgba(240, 238, 235, 0.94)',   // Search bar area
+            'rgba(240, 238, 235, 0.88)',   // Action buttons - starts easing
+            'rgba(240, 238, 235, 0.75)',   // Gradual fade
+            'rgba(240, 238, 235, 0.55)',   // Mid fade
+            'rgba(240, 238, 235, 0.35)',   // Continue fading
+            'rgba(240, 238, 235, 0.18)',   // Getting lighter
+            'rgba(240, 238, 235, 0.08)',   // Very light
+            'rgba(240, 238, 235, 0.03)',   // Barely visible
+            'rgba(240, 238, 235, 0.01)',   // Almost invisible
+            'transparent',                  // Fully clear
+          ]}
+          locations={[0, 0.12, 0.24, 0.32, 0.38, 0.44, 0.50, 0.55, 0.60, 0.64, 0.68, 0.72]}
+          style={{ flex: 1 }}
+        />
+      </Animated.View>
+
       {/* Sticky Header - absolutely positioned, floats over content */}
-      {/* Search bar and action buttons have SEPARATE opacity controls for smooth morph handoff */}
-      <Animated.View style={[styles.stickyHeader, { height: headerHeight, overflow: 'hidden', position: 'absolute', top: insets.top, left: 0, right: 0 }]} pointerEvents={searchVisible ? 'none' : 'auto'}>
+      {/* overflow: visible allows button animations to extend beyond container */}
+      {/* No animated height - let content flow naturally, fog handles the visual boundary */}
+      <Animated.View
+        style={[
+          styles.stickyHeader,
+          {
+            position: 'absolute',
+            top: 0, // Start from very top (covers status bar)
+            left: 0,
+            right: 0,
+            paddingTop: insets.top, // Push content below status bar
+            overflow: 'visible', // Don't clip button animations
+          }
+        ]}
+        pointerEvents={searchVisible ? 'none' : 'auto'}
+      >
         {/* Search Bar Row - always visible (MorphingPill handles its own animation) */}
         <View style={[styles.header, { paddingHorizontal: 0 }]}>
           <Pressable onPress={handleSearchBarPress}>
@@ -1729,11 +1874,11 @@ export const HomeScreen = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 paddingHorizontal: 16,
-                shadowColor: '#323232',
-                shadowOffset: { width: 0, height: 8 },
-                shadowOpacity: 0.16,
-                shadowRadius: 24,
-                elevation: 8,
+                shadowColor: '#000000',
+                shadowOffset: { width: 0, height: 10 },
+                shadowOpacity: 0.30,
+                shadowRadius: 28,
+                elevation: 10,
                 transform: [{ scale: searchBarScale }],
               }}
             >
@@ -1793,7 +1938,7 @@ export const HomeScreen = () => {
 
         {/* Morphing Action Buttons - unified pill/circle that morphs between states */}
         {/* Each button has individual animation values for seamless morph transitions */}
-        <Animated.View style={[styles.morphingButtonsContainer, { opacity: actionButtonsOpacity, transform: [{ scale: actionButtonsScale }] }]} pointerEvents={searchVisible || logVisible ? 'none' : 'box-none'}>
+        <Animated.View style={[styles.morphingButtonsContainer, { top: insets.top, opacity: actionButtonsOpacity, transform: [{ scale: actionButtonsScale }] }]} pointerEvents={searchVisible || logVisible ? 'none' : 'box-none'}>
           {/* Log Button */}
           <Animated.View
             style={{
@@ -1865,6 +2010,7 @@ export const HomeScreen = () => {
             />
           </Animated.View>
         </Animated.View>
+
       </Animated.View>
 
       {/* ============================== */}
@@ -1887,11 +2033,9 @@ export const HomeScreen = () => {
         </Animated.View>
       )}
 
-      {/* Blur Zone Above Search Bar - blurs content that scrolls above the search bar */}
-      {/* Includes white wash overlay to improve "SEARCH" text readability */}
+      {/* Fog Gradient Zone Above Search Bar - fog effect for content above search bar */}
+      {/* Extended container (88 + 200 = 288px) pushes gradient edge out of view */}
       {/* Fades out with searchContentFade to prevent clipping during close animation */}
-      {/* Height is STATIC: 60px (pillFinalTop offset) + 28px (half search bar height) = 88px */}
-      {/* This positions the blur line exactly at the vertical center of the search bar */}
       {searchVisible && (
         <Animated.View
           style={{
@@ -1899,16 +2043,30 @@ export const HomeScreen = () => {
             top: insets.top,
             left: 0,
             right: 0,
-            height: 88, // pillFinalTop offset (60) + half search bar height (28) = vertical center
+            height: 288, // Extended: 88px visible area + 200px buffer
             zIndex: 90,
-            overflow: 'hidden',
             opacity: searchContentFade,
           }}
           pointerEvents="none"
         >
-          <BlurView intensity={25} tint="light" style={StyleSheet.absoluteFill} />
-          {/* White wash overlay - reduces color visibility for better text readability */}
-          <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(255,255,255,0.5)' }]} />
+          <LinearGradient
+            colors={[
+              'rgba(240, 238, 235, 0.94)',   // Solid through header area
+              'rgba(240, 238, 235, 0.94)',   // Status bar area
+              'rgba(240, 238, 235, 0.94)',   // Search bar area
+              'rgba(240, 238, 235, 0.88)',   // Below search bar - starts easing
+              'rgba(240, 238, 235, 0.75)',   // Gradual fade
+              'rgba(240, 238, 235, 0.55)',   // Mid fade
+              'rgba(240, 238, 235, 0.35)',   // Continue fading
+              'rgba(240, 238, 235, 0.18)',   // Getting lighter
+              'rgba(240, 238, 235, 0.08)',   // Very light
+              'rgba(240, 238, 235, 0.03)',   // Barely visible
+              'rgba(240, 238, 235, 0.01)',   // Almost invisible
+              'transparent',                  // Fully clear
+            ]}
+            locations={[0, 0.10, 0.22, 0.30, 0.36, 0.42, 0.48, 0.53, 0.58, 0.62, 0.66, 0.70]}
+            style={StyleSheet.absoluteFill}
+          />
         </Animated.View>
       )}
 
@@ -2165,7 +2323,8 @@ export const HomeScreen = () => {
         </Animated.View>
       )}
 
-      {/* Blur Zone Above Log Search Bar */}
+      {/* Fog Gradient Zone Above Log Search Bar - fog effect like Search/Scan modals */}
+      {/* Extended container (+200px) pushes gradient edge out of view */}
       {logVisible && (
         <Animated.View
           style={{
@@ -2173,15 +2332,33 @@ export const HomeScreen = () => {
             top: insets.top,
             left: 0,
             right: 0,
-            height: Animated.subtract(Animated.add(logMorphingPillTop, Animated.divide(logMorphingPillHeight, 2)), insets.top),
+            height: Animated.add(
+              Animated.subtract(Animated.add(logMorphingPillTop, Animated.divide(logMorphingPillHeight, 2)), insets.top),
+              200 // Buffer to push gradient edge out of view
+            ),
             zIndex: 90,
-            overflow: 'hidden',
             opacity: logContentFade,
           }}
           pointerEvents="none"
         >
-          <BlurView intensity={25} tint="light" style={StyleSheet.absoluteFill} />
-          <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(255,255,255,0.5)' }]} />
+          <LinearGradient
+            colors={[
+              'rgba(240, 238, 235, 0.94)',   // Solid through header area
+              'rgba(240, 238, 235, 0.94)',   // Status bar area
+              'rgba(240, 238, 235, 0.94)',   // Search bar area
+              'rgba(240, 238, 235, 0.88)',   // Below search bar - starts easing
+              'rgba(240, 238, 235, 0.75)',   // Gradual fade
+              'rgba(240, 238, 235, 0.55)',   // Mid fade
+              'rgba(240, 238, 235, 0.35)',   // Continue fading
+              'rgba(240, 238, 235, 0.18)',   // Getting lighter
+              'rgba(240, 238, 235, 0.08)',   // Very light
+              'rgba(240, 238, 235, 0.03)',   // Barely visible
+              'rgba(240, 238, 235, 0.01)',   // Almost invisible
+              'transparent',                  // Fully clear
+            ]}
+            locations={[0, 0.10, 0.22, 0.30, 0.36, 0.42, 0.48, 0.53, 0.58, 0.62, 0.66, 0.70]}
+            style={StyleSheet.absoluteFill}
+          />
         </Animated.View>
       )}
 
@@ -2490,15 +2667,204 @@ export const HomeScreen = () => {
         />
       </View>
 
-      {/* Wallet Card Stack - Apple Pay style overlay */}
-      <WalletCardStack
-        visible={walletVisible}
-        tickets={stackTickets}
-        onClose={handleWalletClose}
-        onAddTicket={handleWalletAddTicket}
-        onSetDefault={setDefaultTicket}
-        onTicketUsed={markTicketUsed}
-      />
+      {/* ============================== */}
+      {/* Hero Morph Scan/Wallet Experience */}
+      {/* ============================== */}
+
+      {/* Scan Blur Backdrop */}
+      {walletVisible && (
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFill,
+            { opacity: scanBackdropOpacity, zIndex: 50 },
+          ]}
+          pointerEvents={walletVisible ? 'auto' : 'none'}
+        >
+          <Pressable style={StyleSheet.absoluteFill} onPress={() => scanMorphingPillRef.current?.close()}>
+            <BlurView intensity={80} tint="light" style={StyleSheet.absoluteFill} />
+          </Pressable>
+        </Animated.View>
+      )}
+
+      {/* Fog Gradient Zone Above Scan Search Bar - fog effect like Search/Log modals */}
+      {/* Extended container (88 + 200 = 288px) pushes gradient edge out of view */}
+      {walletVisible && (
+        <Animated.View
+          style={{
+            position: 'absolute',
+            top: insets.top,
+            left: 0,
+            right: 0,
+            height: 288, // Extended: 88px visible area + 200px buffer
+            zIndex: 90,
+            opacity: scanContentFade,
+          }}
+          pointerEvents="none"
+        >
+          <LinearGradient
+            colors={[
+              'rgba(240, 238, 235, 0.94)',   // Solid through header area
+              'rgba(240, 238, 235, 0.94)',   // Status bar area
+              'rgba(240, 238, 235, 0.94)',   // Search bar area
+              'rgba(240, 238, 235, 0.88)',   // Below search bar - starts easing
+              'rgba(240, 238, 235, 0.75)',   // Gradual fade
+              'rgba(240, 238, 235, 0.55)',   // Mid fade
+              'rgba(240, 238, 235, 0.35)',   // Continue fading
+              'rgba(240, 238, 235, 0.18)',   // Getting lighter
+              'rgba(240, 238, 235, 0.08)',   // Very light
+              'rgba(240, 238, 235, 0.03)',   // Barely visible
+              'rgba(240, 238, 235, 0.01)',   // Almost invisible
+              'transparent',                  // Fully clear
+            ]}
+            locations={[0, 0.10, 0.22, 0.30, 0.36, 0.42, 0.48, 0.53, 0.58, 0.62, 0.66, 0.70]}
+            style={StyleSheet.absoluteFill}
+          />
+        </Animated.View>
+      )}
+
+      {/* "W A L L E T" Header Label */}
+      {walletVisible && (
+        <Animated.Text
+          style={{
+            position: 'absolute',
+            top: insets.top + 16,
+            left: 0,
+            right: 0,
+            textAlign: 'center',
+            fontSize: 22,
+            fontWeight: '700',
+            letterSpacing: 10,
+            color: '#000000',
+            opacity: scanContentFade,
+            zIndex: 160,
+          }}
+        >
+          WALLET
+        </Animated.Text>
+      )}
+
+      {/* Floating Scan Content Cards (sectionsOnly mode) */}
+      {/* Starts at insets.top so content can scroll behind the blur (like Log/Search) */}
+      {walletVisible && (
+        <Animated.View
+          style={{
+            position: 'absolute',
+            top: insets.top,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 80,
+            opacity: scanContentFade,
+          }}
+          pointerEvents="auto"
+        >
+          <ScanModal
+            tickets={stackTickets}
+            onClose={() => scanMorphingPillRef.current?.close()}
+            onAddTicket={handleWalletAddTicket}
+            onSetDefault={setDefaultTicket}
+            onTicketPress={(ticket) => console.log('Ticket pressed:', ticket.id)}
+            isEmbedded={true}
+            sectionsOnly={true}
+            searchQuery={debouncedScanQuery}
+          />
+        </Animated.View>
+      )}
+
+      {/* TRUE Single-Element Scan Morph - MorphingPill IS the Scan button */}
+      <View
+        style={{
+          position: 'absolute',
+          top: scanOriginPosition.top,
+          left: scanOriginPosition.left,
+          zIndex: 200,
+        }}
+        pointerEvents={walletVisible ? "box-none" : "none"}
+      >
+        <MorphingPill
+          ref={scanMorphingPillRef}
+          pillWidth={scanOriginPosition.width}
+          pillHeight={scanOriginPosition.height}
+          pillBorderRadius={scanOriginPosition.borderRadius}
+          pillContent={scanPillContent}
+          expandedWidth={SCREEN_WIDTH - 32}
+          expandedHeight={56}
+          expandedBorderRadius={16}
+          expandedContent={(close) => (
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
+              {/* Search icon */}
+              <View style={{ width: 20, height: 20, marginRight: 8, justifyContent: 'center', alignItems: 'center' }}>
+                <Ionicons name="search" size={20} color="#999999" />
+              </View>
+              {/* Search input (inputOnly mode) */}
+              <View style={{ flex: 1 }}>
+                <ScanModal
+                  tickets={stackTickets}
+                  isEmbedded={true}
+                  inputOnly={true}
+                  onQueryChange={handleScanQueryChange}
+                />
+              </View>
+              {/* X Close Button */}
+              <Pressable
+                onPress={close}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  backgroundColor: 'rgba(0,0,0,0.08)',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: 8,
+                }}
+              >
+                <Ionicons name="close" size={24} color="#666666" />
+              </Pressable>
+            </View>
+          )}
+          showBackdrop={false}
+          onOpen={() => {
+            // Trigger the wallet modal experience
+            setWalletVisible(true);
+            // Backdrop fades in over first 60% of MorphingPill's animation
+            Animated.timing(scanBackdropOpacity, {
+              toValue: 1,
+              duration: 600,
+              useNativeDriver: true,
+            }).start();
+            // Content fades in at same time as MorphingPill's expandedContentStyle
+            Animated.timing(scanContentFade, {
+              toValue: 1,
+              duration: 330,
+              delay: 500,
+              useNativeDriver: false,
+            }).start();
+          }}
+          onClose={() => {
+            // Fade out external content
+            Animated.timing(scanContentFade, {
+              toValue: 0,
+              duration: 300,
+              useNativeDriver: false,
+            }).start();
+            // Fade out backdrop in sync with close
+            Animated.timing(scanBackdropOpacity, {
+              toValue: 0,
+              duration: 400,
+              useNativeDriver: true,
+            }).start();
+          }}
+          onAnimationComplete={(isOpen) => {
+            if (!isOpen) {
+              // Close animation finished - clean up state
+              setWalletVisible(false);
+              // Reset scan query state
+              setScanQuery('');
+              setDebouncedScanQuery('');
+            }
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -2515,7 +2881,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7F7F7',
   },
   stickyHeader: {
-    backgroundColor: '#F7F7F7',
+    backgroundColor: 'transparent', // Transparent - gradient handles the fade effect
     zIndex: 10,
   },
   header: {

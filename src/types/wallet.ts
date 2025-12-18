@@ -5,6 +5,8 @@
  * The wallet stores theme park tickets locally with QR code regeneration support.
  */
 
+import { ImageSourcePropType } from 'react-native';
+
 /**
  * Supported theme park chains for ticket identification and branding
  */
@@ -70,6 +72,15 @@ export interface Ticket {
 
   /** Format of the original barcode */
   qrFormat: BarcodeFormat;
+
+  /** Hero image URI for the pass card (park-specific artwork) - remote URL */
+  heroImageUri?: string;
+
+  /** Hero image source for bundled/local images (alternative to heroImageUri) */
+  heroImageSource?: ImageSourcePropType;
+
+  /** Park logo image URI (optional, for expanded view overlay) */
+  logoImageUri?: string;
 
   /** Local file path to backup photo of original ticket */
   originalPhotoUri?: string;

@@ -29,7 +29,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { Ticket } from '../../types/wallet';
 import { WalletCard, CARD_WIDTH, CARD_HEIGHT } from './WalletCard';
 import { EmptyWalletPrompt } from './EmptyWalletPrompt';
-import { GateModeOverlay } from './GateModeOverlay';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 
@@ -527,7 +526,7 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
           {/* Cards container */}
           <View style={styles.cardsContainer}>
             {hasTickets ? (
-              <GateModeOverlay active={gateMode}>
+              <View style={gateMode ? styles.gateModeContainer : undefined}>
                 {tickets.map((ticket, index) => {
                   if (index < currentIndex || index > currentIndex + 2) {
                     return null;
@@ -561,7 +560,7 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
                     </Animated.View>
                   );
                 })}
-              </GateModeOverlay>
+              </View>
             ) : (
               <EmptyWalletPrompt onAddTicket={onAddTicket} onClose={handleClose} />
             )}
@@ -653,6 +652,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  gateModeContainer: {
+    backgroundColor: '#FFFFFF',
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   cardWrapper: {
     position: 'absolute',

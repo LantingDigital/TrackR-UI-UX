@@ -9,3 +9,7 @@ export { EmptyWalletPrompt } from './EmptyWalletPrompt';
 export { GateModeOverlay } from './GateModeOverlay';
 export { CameraScanner } from './CameraScanner';
 export { AddTicketFlow } from './AddTicketFlow';
+export { ScanModal } from './ScanModal';
+export { PassHeroCard } from './PassHeroCard';
+export { PassPreviewCard } from './PassPreviewCard';
+export { PassDetailView } from './PassDetailView';

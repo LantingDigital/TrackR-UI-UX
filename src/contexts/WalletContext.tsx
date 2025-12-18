@@ -14,6 +14,7 @@ import React, {
   useMemo,
   ReactNode,
 } from 'react';
+import { ImageSourcePropType } from 'react-native';
 import {
   Ticket,
   WalletState,
@@ -22,6 +23,177 @@ import {
   DEFAULT_FILTER_PREFERENCES,
 } from '../types/wallet';
 import { WalletStorage } from '../services/walletStorage';
+
+/**
+ * Local pass images - bundled with the app
+ * Place images in assets/passes/ folder
+ *
+ * For development: Using require() for local images
+ * In production: These would come from user's photo library or camera
+ */
+const PASS_IMAGES = {
+  // Carowinds is the main test pass - replace this with your actual card image
+  // Place your image at: assets/passes/carowinds.jpg (or .png)
+  carowinds: require('../../assets/passes/carowinds.jpg'),
+  // You can add more local images as needed:
+  // cedarPoint: require('../../assets/passes/cedar-point.jpg'),
+};
+
+/**
+ * Mock tickets for development/testing - shows design with realistic data
+ * Carowinds is set as default to showcase the design
+ */
+const MOCK_TICKETS: Ticket[] = [
+  {
+    id: 'mock-carowinds',
+    parkName: 'Carowinds',
+    parkChain: 'cedar_fair',
+    passType: 'season_pass',
+    passholder: 'John Smith',
+    validFrom: '2025-01-01',
+    validUntil: '2025-12-31',
+    qrData: 'CAROWINDS-SEASON-2025-001234',
+    qrFormat: 'QR_CODE',
+    heroImageSource: PASS_IMAGES.carowinds, // Local bundled image
+    status: 'active',
+    isDefault: true,
+    addedAt: '2025-01-15T10:30:00Z',
+    autoDetected: true,
+    lastUsedAt: '2025-12-15T14:00:00Z', // Most recently used
+  },
+  {
+    id: 'mock-2',
+    parkName: 'Kings Island',
+    parkChain: 'cedar_fair',
+    passType: 'season_pass',
+    passholder: 'John Smith',
+    validFrom: '2025-01-01',
+    validUntil: '2025-12-31',
+    qrData: 'KINGSISLAND-SEASON-2025-005678',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/kingsisland/400/500',
+    status: 'active',
+    isDefault: false,
+    addedAt: '2025-01-15T10:35:00Z',
+    autoDetected: true,
+  },
+  {
+    id: 'mock-3',
+    parkName: 'Six Flags Magic Mountain',
+    parkChain: 'six_flags',
+    passType: 'annual_pass',
+    passholder: 'John Smith',
+    validFrom: '2025-03-01',
+    validUntil: '2026-02-28',
+    qrData: 'SFMM-ANNUAL-2025-009012',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/sixflags/400/500',
+    status: 'active',
+    isDefault: false,
+    addedAt: '2025-03-01T14:00:00Z',
+    autoDetected: true,
+  },
+  {
+    id: 'mock-4',
+    parkName: 'Walt Disney World',
+    parkChain: 'disney',
+    passType: 'annual_pass',
+    passholder: 'John Smith',
+    validFrom: '2024-12-01',
+    validUntil: '2025-11-30',
+    qrData: 'WDW-ANNUAL-PLATINUM-2024-003456',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/disney/400/500',
+    status: 'active',
+    isDefault: false,
+    addedAt: '2024-12-01T09:00:00Z',
+    autoDetected: true,
+  },
+  {
+    id: 'mock-5',
+    parkName: 'Universal Orlando',
+    parkChain: 'universal',
+    passType: 'annual_pass',
+    passholder: 'John Smith',
+    validFrom: '2025-02-15',
+    validUntil: '2026-02-14',
+    qrData: 'UOR-ANNUAL-POWER-2025-007890',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/universal/400/500',
+    status: 'active',
+    isDefault: false,
+    addedAt: '2025-02-15T11:00:00Z',
+    autoDetected: true,
+  },
+  {
+    id: 'mock-6',
+    parkName: 'SeaWorld Orlando',
+    parkChain: 'seaworld',
+    passType: 'season_pass',
+    passholder: 'Jane Smith',
+    validFrom: '2025-01-01',
+    validUntil: '2025-12-31',
+    qrData: 'SWO-SEASON-2025-002468',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/seaworld/400/500',
+    status: 'active',
+    isDefault: false,
+    addedAt: '2025-01-20T16:00:00Z',
+    autoDetected: true,
+  },
+  {
+    id: 'mock-7',
+    parkName: 'Cedar Point',
+    parkChain: 'cedar_fair',
+    passType: 'parking',
+    passholder: 'John Smith',
+    validFrom: '2025-01-01',
+    validUntil: '2025-12-31',
+    qrData: 'CEDARPOINT-PARKING-2025-001234',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/parking/400/500',
+    status: 'active',
+    isDefault: false,
+    addedAt: '2025-01-15T10:32:00Z',
+    autoDetected: true,
+  },
+  // ===== EXPIRED PASSES (for testing expired carousel) =====
+  {
+    id: 'mock-expired-1',
+    parkName: 'Busch Gardens Tampa',
+    parkChain: 'seaworld',
+    passType: 'annual_pass',
+    passholder: 'John Smith',
+    validFrom: '2024-01-01',
+    validUntil: '2024-12-31',
+    qrData: 'BGT-ANNUAL-2024-003456',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/buschgardens/400/500',
+    status: 'expired',
+    isDefault: false,
+    addedAt: '2024-01-10T09:00:00Z',
+    autoDetected: true,
+  },
+  {
+    id: 'mock-expired-2',
+    parkName: 'Dollywood',
+    parkChain: 'other',
+    passType: 'season_pass',
+    passholder: 'Jane Smith',
+    validFrom: '2023-03-01',
+    validUntil: '2024-02-28',
+    qrData: 'DOLLYWOOD-SEASON-2023-007890',
+    qrFormat: 'QR_CODE',
+    heroImageUri: 'https://picsum.photos/seed/dollywood/400/500',
+    status: 'expired',
+    isDefault: false,
+    addedAt: '2023-03-05T14:00:00Z',
+    autoDetected: true,
+  },
+];
+
+// Set to true to use mock data for design testing
+const USE_MOCK_DATA = true;
 
 /**
  * Context value interface
@@ -80,6 +252,15 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       try {
         setIsLoading(true);
         setError(null);
+
+        // Use mock data for design testing
+        if (USE_MOCK_DATA) {
+          setTickets(MOCK_TICKETS);
+          setDefaultTicketId('mock-1');
+          setIsInitialized(true);
+          setIsLoading(false);
+          return;
+        }
 
         // Initialize storage directories
         await WalletStorage.initialize();
