@@ -1,10 +1,23 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, NativeSyntheticEvent, NativeScrollEvent, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, NativeSyntheticEvent, NativeScrollEvent, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView, TextInput, InteractionManager } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
+// Reanimated for smooth UI-thread animations (per CLAUDE.md: ALWAYS use Reanimated)
+import Reanimated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withSpring,
+  withDelay,
+  interpolate,
+  Extrapolation,
+  runOnJS,
+  Easing as ReanimatedEasing,
+} from 'react-native-reanimated';
 
 import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingActionButton } from '../components';
 import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
@@ -84,7 +97,76 @@ export const HomeScreen = () => {
   const viewportHeight = useRef(0);
 
   // Single animated value that drives all animations (0 = collapsed, 1 = expanded)
-  const animProgress = useRef(new Animated.Value(1)).current;
+  // DIAGNOSTIC: Using state + key to allow recreating the animated value on focus change
+  const [animProgressKey, setAnimProgressKey] = useState(0);
+  const animProgress = useMemo(() => new Animated.Value(1), [animProgressKey]);
+  // Track running animation to stop it before starting a new one (prevents accumulation)
+  const animProgressRef = useRef<Animated.CompositeAnimation | null>(null);
+
+  // REANIMATED: Shared value for UI-thread animations (fixes lag after tab switch)
+  const reanimatedProgress = useSharedValue(1);
+
+  // REANIMATED: Separate shared values for each button (enables stagger effect)
+  const buttonProgress0 = useSharedValue(1); // Log button
+  const buttonProgress1 = useSharedValue(1); // Search button
+  const buttonProgress2 = useSharedValue(1); // Scan button
+
+  // Spring config for buttons
+  const BUTTON_SPRING_CONFIG = {
+    damping: 18,
+    stiffness: 180,
+    mass: 1,
+  };
+
+  // Debug indicator style (can be removed later)
+  const reanimatedTestStyle = useAnimatedStyle(() => ({
+    width: 40 + reanimatedProgress.value * 80,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: reanimatedProgress.value > 0.5 ? '#4CAF50' : '#FF6B6B',
+  }));
+
+  // REANIMATED: Search bar animated style (runs on UI thread)
+  // Static values calculated inline since they don't depend on other hooks
+  const REANIMATED_CONTAINER_WIDTH = SCREEN_WIDTH - (HORIZONTAL_PADDING * 2);
+  const REANIMATED_COLLAPSED_SEARCH_WIDTH = SCREEN_WIDTH * 0.50;
+  const REANIMATED_CIRCLE_SIZE = 42;
+  const REANIMATED_TOTAL_CIRCLES_WIDTH = REANIMATED_CIRCLE_SIZE * 3;
+  const REANIMATED_TOTAL_CONTENT_WIDTH = REANIMATED_COLLAPSED_SEARCH_WIDTH + REANIMATED_TOTAL_CIRCLES_WIDTH;
+  const REANIMATED_REMAINING_SPACE = SCREEN_WIDTH - REANIMATED_TOTAL_CONTENT_WIDTH;
+  const REANIMATED_EQUAL_GAP = REANIMATED_REMAINING_SPACE / 4;
+
+  const searchBarAnimatedStyle = useAnimatedStyle(() => ({
+    width: interpolate(
+      reanimatedProgress.value,
+      [0, 1],
+      [REANIMATED_COLLAPSED_SEARCH_WIDTH, REANIMATED_CONTAINER_WIDTH]
+    ),
+    height: interpolate(
+      reanimatedProgress.value,
+      [0, 1],
+      [42, 56]
+    ),
+    marginLeft: interpolate(
+      reanimatedProgress.value,
+      [0, 1],
+      [REANIMATED_EQUAL_GAP, HORIZONTAL_PADDING]
+    ),
+  }));
+
+  // REANIMATED: Search bar text opacity styles
+  const searchBarFullTextStyle = useAnimatedStyle(() => ({
+    opacity: reanimatedProgress.value,
+  }));
+
+  const searchBarShortTextStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      reanimatedProgress.value,
+      [0, 0.3, 1],
+      [1, 0, 0],
+      Extrapolation.CLAMP
+    ),
+  }));
 
   // Hero morph animation values for search modal (0 = pill, 1 = full card)
   const pillMorphProgress = useRef(new Animated.Value(0)).current;
@@ -196,8 +278,147 @@ export const HomeScreen = () => {
     new Animated.Value(0),
   ]).current;
 
+  // =========================================
+  // PERF OPTIMIZATION: Direct Stagger Trigger (No Listeners)
+  // =========================================
+  // Instead of using listeners (which fire every frame and cause timeout issues),
+  // we trigger the staggered button animations directly when collapse/expand happens.
+  // This is called from handleScroll when state changes.
+  const staggerTimeoutsRef = useRef<{ t1: ReturnType<typeof setTimeout> | null; t2: ReturnType<typeof setTimeout> | null }>({ t1: null, t2: null });
+  // Track running animations to stop them before starting new ones
+  const staggerAnimsRef = useRef<{ a0: Animated.CompositeAnimation | null; a1: Animated.CompositeAnimation | null; a2: Animated.CompositeAnimation | null }>({ a0: null, a1: null, a2: null });
+
+  const triggerButtonStagger = useCallback((targetValue: number) => {
+    const SPRING_CONFIG = {
+      damping: 16,
+      stiffness: 180,
+      mass: 0.8,
+      useNativeDriver: false,
+    };
+
+    // Clear any pending timeouts from previous trigger
+    if (staggerTimeoutsRef.current.t1) clearTimeout(staggerTimeoutsRef.current.t1);
+    if (staggerTimeoutsRef.current.t2) clearTimeout(staggerTimeoutsRef.current.t2);
+
+    // Stop any running animations before starting new ones
+    if (staggerAnimsRef.current.a0) staggerAnimsRef.current.a0.stop();
+    if (staggerAnimsRef.current.a1) staggerAnimsRef.current.a1.stop();
+    if (staggerAnimsRef.current.a2) staggerAnimsRef.current.a2.stop();
+
+    // Button 0 (Log) - immediate
+    staggerAnimsRef.current.a0 = Animated.spring(staggeredButtonProgress.button0, {
+      toValue: targetValue,
+      ...SPRING_CONFIG,
+    });
+    staggerAnimsRef.current.a0.start();
+
+    // Button 1 (Search) - 50ms delay
+    staggerTimeoutsRef.current.t1 = setTimeout(() => {
+      staggerAnimsRef.current.a1 = Animated.spring(staggeredButtonProgress.button1, {
+        toValue: targetValue,
+        ...SPRING_CONFIG,
+      });
+      staggerAnimsRef.current.a1.start();
+    }, 50);
+
+    // Button 2 (Scan) - 100ms delay
+    staggerTimeoutsRef.current.t2 = setTimeout(() => {
+      staggerAnimsRef.current.a2 = Animated.spring(staggeredButtonProgress.button2, {
+        toValue: targetValue,
+        ...SPRING_CONFIG,
+      });
+      staggerAnimsRef.current.a2.start();
+    }, 100);
+  }, [staggeredButtonProgress]);
+
+  // Initialize staggered values on mount
+  useEffect(() => {
+    const currentValue = (animProgress as any).__getValue?.() ?? (animProgress as any)._value ?? 1;
+    staggeredButtonProgress.button0.setValue(currentValue);
+    staggeredButtonProgress.button1.setValue(currentValue);
+    staggeredButtonProgress.button2.setValue(currentValue);
+
+    return () => {
+      // Cleanup timeouts on unmount
+      if (staggerTimeoutsRef.current.t1) clearTimeout(staggerTimeoutsRef.current.t1);
+      if (staggerTimeoutsRef.current.t2) clearTimeout(staggerTimeoutsRef.current.t2);
+      // Stop any running animations on unmount
+      if (staggerAnimsRef.current.a0) staggerAnimsRef.current.a0.stop();
+      if (staggerAnimsRef.current.a1) staggerAnimsRef.current.a1.stop();
+      if (staggerAnimsRef.current.a2) staggerAnimsRef.current.a2.stop();
+      if (animProgressRef.current) animProgressRef.current.stop();
+    };
+  }, [staggeredButtonProgress]);
+
+  // =========================================
+  // PERF FIX: Force remount buttons when screen regains focus
+  // =========================================
+  // When navigating away and back, animated values can get into a corrupted state.
+  // Using a remount key forces the MorphingActionButton components to fully remount,
+  // which resets all their internal state and animated values.
+  const [buttonRemountKey, setButtonRemountKey] = useState(0);
+  // Track if we're ready for animations (after navigation interactions complete)
+  const isReadyForAnimations = useRef(true);
+
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused - but wait for navigation interactions to complete
+      isReadyForAnimations.current = false;
+
+      const interactionHandle = InteractionManager.runAfterInteractions(() => {
+        // Navigation is complete - now safe to animate
+        isReadyForAnimations.current = true;
+
+        // DIAGNOSTIC: Recreate animProgress by incrementing its key
+        // This creates a completely fresh Animated.Value
+        setAnimProgressKey(prev => prev + 1);
+
+        // Force remount buttons to clear any corrupted state
+        setButtonRemountKey(prev => prev + 1);
+
+        // Reset collapse state to match fresh animProgress (which starts at 1 = expanded)
+        isCollapsedRef.current = false;
+
+        // Clear any stale animation references
+        animProgressRef.current = null;
+        staggerAnimsRef.current = { a0: null, a1: null, a2: null };
+
+        // Clear any pending timeouts
+        if (staggerTimeoutsRef.current.t1) {
+          clearTimeout(staggerTimeoutsRef.current.t1);
+          staggerTimeoutsRef.current.t1 = null;
+        }
+        if (staggerTimeoutsRef.current.t2) {
+          clearTimeout(staggerTimeoutsRef.current.t2);
+          staggerTimeoutsRef.current.t2 = null;
+        }
+      });
+
+      return () => {
+        // Cancel pending interaction if screen unfocuses before it completes
+        interactionHandle.cancel();
+
+        // Screen is unfocused - stop any running animations to prevent corruption
+        if (animProgressRef.current) {
+          animProgressRef.current.stop();
+          animProgressRef.current = null;
+        }
+        if (staggerAnimsRef.current.a0) staggerAnimsRef.current.a0.stop();
+        if (staggerAnimsRef.current.a1) staggerAnimsRef.current.a1.stop();
+        if (staggerAnimsRef.current.a2) staggerAnimsRef.current.a2.stop();
+        staggerAnimsRef.current = { a0: null, a1: null, a2: null };
+      };
+    }, [])
+  );
+
   const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
+
+    // 0. Skip animations if navigation interactions haven't completed yet
+    if (!isReadyForAnimations.current) {
+      lastScrollY.current = offsetY;
+      return;
+    }
 
     // 1. Ignore negative offsets (top bounce territory)
     if (offsetY <= 0) {
@@ -227,80 +448,48 @@ export const HomeScreen = () => {
       isCollapsedRef.current = true;
       lastStateChangeTime.current = Date.now();
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      Animated.spring(animProgress, {
+      // REANIMATED: Search bar animates immediately
+      reanimatedProgress.value = withSpring(0, BUTTON_SPRING_CONFIG);
+      // REANIMATED: Buttons animate with stagger (0ms, 50ms, 100ms delays)
+      buttonProgress0.value = withSpring(0, BUTTON_SPRING_CONFIG);
+      buttonProgress1.value = withDelay(50, withSpring(0, BUTTON_SPRING_CONFIG));
+      buttonProgress2.value = withDelay(100, withSpring(0, BUTTON_SPRING_CONFIG));
+      // LEGACY RN Animated (keeping for non-migrated components)
+      if (animProgressRef.current) animProgressRef.current.stop();
+      animProgressRef.current = Animated.timing(animProgress, {
         toValue: 0,
+        duration: 250,
         useNativeDriver: false,
-        damping: 16,      // Higher = less bounce, more controlled
-        stiffness: 180,   // Higher = faster
-        mass: 0.8,        // Lower = snappier
-      }).start();
+      });
+      animProgressRef.current.start();
+      // Trigger staggered button collapse
+      triggerButtonStagger(0);
     }
     // Expand when scrolling up (with minimum delta to avoid jitter)
     else if (isScrollingUp && scrollDelta > 5 && isCollapsedRef.current) {
       isCollapsedRef.current = false;
       lastStateChangeTime.current = Date.now();
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      Animated.spring(animProgress, {
+      // REANIMATED: Search bar animates immediately
+      reanimatedProgress.value = withSpring(1, BUTTON_SPRING_CONFIG);
+      // REANIMATED: Buttons animate with stagger (0ms, 50ms, 100ms delays)
+      buttonProgress0.value = withSpring(1, BUTTON_SPRING_CONFIG);
+      buttonProgress1.value = withDelay(50, withSpring(1, BUTTON_SPRING_CONFIG));
+      buttonProgress2.value = withDelay(100, withSpring(1, BUTTON_SPRING_CONFIG));
+      // LEGACY RN Animated (keeping for non-migrated components)
+      if (animProgressRef.current) animProgressRef.current.stop();
+      animProgressRef.current = Animated.timing(animProgress, {
         toValue: 1,
+        duration: 250,
         useNativeDriver: false,
-        damping: 16,      // Higher = less bounce, more controlled
-        stiffness: 180,   // Higher = faster
-        mass: 0.8,        // Lower = snappier
-      }).start();
+      });
+      animProgressRef.current.start();
+      // Trigger staggered button expand
+      triggerButtonStagger(1);
     }
 
     lastScrollY.current = offsetY;
-  }, [animProgress]);
-
-  // =========================================
-  // PERF OPTIMIZATION: Single Consolidated Listener for Button Stagger
-  // =========================================
-  // This replaces 3 separate listeners (one per MorphingActionButton) with a single listener.
-  // Each button's stagger delay is still preserved (0ms, 50ms, 100ms) but managed centrally.
-  useEffect(() => {
-    // Initialize with current animProgress value to prevent cold start flicker
-    const currentValue = (animProgress as any).__getValue?.() ?? (animProgress as any)._value ?? 1;
-    staggeredButtonProgress.button0.setValue(currentValue);
-    staggeredButtonProgress.button1.setValue(currentValue);
-    staggeredButtonProgress.button2.setValue(currentValue);
-
-    const STAGGER_DELAYS = [0, 50, 100]; // Log, Search, Scan
-    const SPRING_CONFIG = {
-      damping: 16,
-      stiffness: 180,
-      mass: 0.8,
-      useNativeDriver: false,
-    };
-
-    // Single listener that triggers all 3 staggered springs
-    const listenerId = animProgress.addListener(({ value }) => {
-      // Button 0 (Log) - immediate
-      Animated.spring(staggeredButtonProgress.button0, {
-        toValue: value,
-        ...SPRING_CONFIG,
-      }).start();
-
-      // Button 1 (Search) - 50ms delay
-      setTimeout(() => {
-        Animated.spring(staggeredButtonProgress.button1, {
-          toValue: value,
-          ...SPRING_CONFIG,
-        }).start();
-      }, STAGGER_DELAYS[1]);
-
-      // Button 2 (Scan) - 100ms delay
-      setTimeout(() => {
-        Animated.spring(staggeredButtonProgress.button2, {
-          toValue: value,
-          ...SPRING_CONFIG,
-        }).start();
-      }, STAGGER_DELAYS[2]);
-    });
-
-    return () => {
-      animProgress.removeListener(listenerId);
-    };
-  }, [animProgress, staggeredButtonProgress]);
+  }, [animProgress, triggerButtonStagger]);
 
   // Helper function to animate action buttons during modal open
   // Origin button crossfades with morphing pill, other buttons animate toward origin
@@ -426,13 +615,16 @@ export const HomeScreen = () => {
     // ALWAYS reset header to expanded state when showing search modal
     // This ensures consistent exit animation (always returns to expanded search bar)
     isCollapsedRef.current = false;
-    Animated.spring(animProgress, {
+    // Stop any running animation before starting new one
+    if (animProgressRef.current) animProgressRef.current.stop();
+    animProgressRef.current = Animated.spring(animProgress, {
       toValue: 1,
       useNativeDriver: false,
       damping: 16,
       stiffness: 180,
       mass: 0.8,
-    }).start();
+    });
+    animProgressRef.current.start();
 
     // IMPORTANT: Reset ALL animated values BEFORE triggering React render
     // This prevents flicker caused by race condition where components render
@@ -1972,29 +2164,25 @@ export const HomeScreen = () => {
         ]}
         pointerEvents={searchVisible ? 'none' : 'auto'}
       >
-        {/* Search Bar Row - always visible (MorphingPill handles its own animation) */}
+        {/* Search Bar Row - REANIMATED for smooth UI-thread animation */}
         <View style={[styles.header, { paddingHorizontal: 0 }]}>
           <Pressable onPress={handleSearchBarPress}>
-            <Animated.View
-              style={{
-                width: searchBarWidth,
-                height: searchBarHeight,
-                marginLeft: animProgress.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [equalGap, HORIZONTAL_PADDING], // equalGap when collapsed, 16px when expanded
-                }),
-                backgroundColor: '#FFFFFF',
-                borderRadius: 28,
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingHorizontal: 16,
-                shadowColor: '#000000',
-                shadowOffset: { width: 0, height: 10 },
-                shadowOpacity: 0.30,
-                shadowRadius: 28,
-                elevation: 10,
-                transform: [{ scale: searchBarScale }],
-              }}
+            <Reanimated.View
+              style={[
+                searchBarAnimatedStyle,
+                {
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: 28,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingHorizontal: 16,
+                  shadowColor: '#000000',
+                  shadowOffset: { width: 0, height: 10 },
+                  shadowOpacity: 0.30,
+                  shadowRadius: 28,
+                  elevation: 10,
+                },
+              ]}
             >
               {/* Globe Icon - fixed size to prevent clipping */}
               <View
@@ -2009,7 +2197,7 @@ export const HomeScreen = () => {
                 <Ionicons name="globe-outline" size={20} color="#999999" />
               </View>
               {/* Placeholder text container */}
-              <Animated.View
+              <View
                 style={{
                   flex: 1,
                   height: '100%',
@@ -2019,34 +2207,35 @@ export const HomeScreen = () => {
                 pointerEvents="none"
               >
                 {/* Full placeholder - visible when expanded */}
-                <Animated.Text
-                  style={{
-                    position: 'absolute',
-                    fontSize: 16,
-                    color: '#999999',
-                    opacity: animProgress,
-                  }}
+                <Reanimated.Text
+                  style={[
+                    searchBarFullTextStyle,
+                    {
+                      position: 'absolute',
+                      fontSize: 16,
+                      color: '#999999',
+                    },
+                  ]}
                   numberOfLines={1}
                 >
                   Search rides, parks, news...
-                </Animated.Text>
+                </Reanimated.Text>
                 {/* Short placeholder - visible when collapsed */}
-                <Animated.Text
-                  style={{
-                    position: 'absolute',
-                    fontSize: 16,
-                    color: '#999999',
-                    opacity: animProgress.interpolate({
-                      inputRange: [0, 0.3, 1],
-                      outputRange: [1, 0, 0],
-                    }),
-                  }}
+                <Reanimated.Text
+                  style={[
+                    searchBarShortTextStyle,
+                    {
+                      position: 'absolute',
+                      fontSize: 16,
+                      color: '#999999',
+                    },
+                  ]}
                   numberOfLines={1}
                 >
                   Search...
-                </Animated.Text>
-              </Animated.View>
-            </Animated.View>
+                </Reanimated.Text>
+              </View>
+            </Reanimated.View>
           </Pressable>
         </View>
 
@@ -2068,8 +2257,7 @@ export const HomeScreen = () => {
               icon="add-circle-outline"
               label="Log"
               buttonIndex={0}
-              animProgress={animProgress}
-              staggeredProgress={staggeredButtonProgress.button0}
+              animProgress={buttonProgress0}
               onPress={handleLogPress}
               collapsedX={collapsedPositions[0].x - circleSize / 2}
               expandedX={expandedPositions[0].x - pillWidth / 2}
@@ -2093,8 +2281,7 @@ export const HomeScreen = () => {
               icon="search-outline"
               label="Search"
               buttonIndex={1}
-              animProgress={animProgress}
-              staggeredProgress={staggeredButtonProgress.button1}
+              animProgress={buttonProgress1}
               onPress={handleSearchButtonPress}
               collapsedX={collapsedPositions[1].x - circleSize / 2}
               expandedX={expandedPositions[1].x - pillWidth / 2}
@@ -2117,8 +2304,7 @@ export const HomeScreen = () => {
               icon="barcode-outline"
               label="Scan"
               buttonIndex={2}
-              animProgress={animProgress}
-              staggeredProgress={staggeredButtonProgress.button2}
+              animProgress={buttonProgress2}
               onPress={handleScanPress}
               collapsedX={collapsedPositions[2].x - circleSize / 2}
               expandedX={expandedPositions[2].x - pillWidth / 2}
