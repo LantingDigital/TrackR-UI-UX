@@ -123,6 +123,18 @@ export const HomeScreen = () => {
   // Two-stage morph for circle button: circle → pill (stage1), then pill → modal (pillMorphProgress)
   const circleStage1Progress = useRef(new Animated.Value(0)).current;
 
+  // =========================================
+  // PERF OPTIMIZATION: Consolidated Staggered Progress for Action Buttons
+  // =========================================
+  // Instead of 3 buttons each having their own listener + setTimeout + spring,
+  // we manage all 3 staggered values from a single parent listener.
+  // This reduces JS thread callbacks from 180/sec to 60/sec during scroll.
+  const staggeredButtonProgress = useRef({
+    button0: new Animated.Value(1), // Log button (0ms delay)
+    button1: new Animated.Value(1), // Search button (50ms delay)
+    button2: new Animated.Value(1), // Scan button (100ms delay)
+  }).current;
+
   // Bounce animation for searchPill origin - controls ONLY vertical position
   // Allows pill to arc upward, peak, then settle with a tiny bounce
   const searchPillBounceProgress = useRef(new Animated.Value(0)).current;
@@ -239,6 +251,56 @@ export const HomeScreen = () => {
 
     lastScrollY.current = offsetY;
   }, [animProgress]);
+
+  // =========================================
+  // PERF OPTIMIZATION: Single Consolidated Listener for Button Stagger
+  // =========================================
+  // This replaces 3 separate listeners (one per MorphingActionButton) with a single listener.
+  // Each button's stagger delay is still preserved (0ms, 50ms, 100ms) but managed centrally.
+  useEffect(() => {
+    // Initialize with current animProgress value to prevent cold start flicker
+    const currentValue = (animProgress as any).__getValue?.() ?? (animProgress as any)._value ?? 1;
+    staggeredButtonProgress.button0.setValue(currentValue);
+    staggeredButtonProgress.button1.setValue(currentValue);
+    staggeredButtonProgress.button2.setValue(currentValue);
+
+    const STAGGER_DELAYS = [0, 50, 100]; // Log, Search, Scan
+    const SPRING_CONFIG = {
+      damping: 16,
+      stiffness: 180,
+      mass: 0.8,
+      useNativeDriver: false,
+    };
+
+    // Single listener that triggers all 3 staggered springs
+    const listenerId = animProgress.addListener(({ value }) => {
+      // Button 0 (Log) - immediate
+      Animated.spring(staggeredButtonProgress.button0, {
+        toValue: value,
+        ...SPRING_CONFIG,
+      }).start();
+
+      // Button 1 (Search) - 50ms delay
+      setTimeout(() => {
+        Animated.spring(staggeredButtonProgress.button1, {
+          toValue: value,
+          ...SPRING_CONFIG,
+        }).start();
+      }, STAGGER_DELAYS[1]);
+
+      // Button 2 (Scan) - 100ms delay
+      setTimeout(() => {
+        Animated.spring(staggeredButtonProgress.button2, {
+          toValue: value,
+          ...SPRING_CONFIG,
+        }).start();
+      }, STAGGER_DELAYS[2]);
+    });
+
+    return () => {
+      animProgress.removeListener(listenerId);
+    };
+  }, [animProgress, staggeredButtonProgress]);
 
   // Helper function to animate action buttons during modal open
   // Origin button crossfades with morphing pill, other buttons animate toward origin
@@ -2007,6 +2069,7 @@ export const HomeScreen = () => {
               label="Log"
               buttonIndex={0}
               animProgress={animProgress}
+              staggeredProgress={staggeredButtonProgress.button0}
               onPress={handleLogPress}
               collapsedX={collapsedPositions[0].x - circleSize / 2}
               expandedX={expandedPositions[0].x - pillWidth / 2}
@@ -2031,6 +2094,7 @@ export const HomeScreen = () => {
               label="Search"
               buttonIndex={1}
               animProgress={animProgress}
+              staggeredProgress={staggeredButtonProgress.button1}
               onPress={handleSearchButtonPress}
               collapsedX={collapsedPositions[1].x - circleSize / 2}
               expandedX={expandedPositions[1].x - pillWidth / 2}
@@ -2054,6 +2118,7 @@ export const HomeScreen = () => {
               label="Scan"
               buttonIndex={2}
               animProgress={animProgress}
+              staggeredProgress={staggeredButtonProgress.button2}
               onPress={handleScanPress}
               collapsedX={collapsedPositions[2].x - circleSize / 2}
               expandedX={expandedPositions[2].x - pillWidth / 2}

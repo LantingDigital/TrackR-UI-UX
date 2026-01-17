@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import { StyleSheet, Text, Pressable, Animated, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -28,6 +28,9 @@ interface MorphingActionButtonProps {
   expandedX: number;  // X position when expanded (pill)
   collapsedY: number; // Y position when collapsed
   expandedY: number;  // Y position when expanded
+  // PERF OPTIMIZATION: Pre-staggered progress from parent (avoids per-button listener overhead)
+  // If provided, uses this instead of creating internal listener + setTimeout + spring
+  staggeredProgress?: Animated.Value;
 }
 
 export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
@@ -40,27 +43,39 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
   expandedX,
   collapsedY,
   expandedY,
+  staggeredProgress: externalStaggeredProgress, // PERF: Use parent-managed staggered progress if available
 }) => {
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const opacityAnim = useRef(new Animated.Value(1)).current;
 
-  // Stagger delay: 50ms between each button
+  // Stagger delay: 50ms between each button (only used if no external staggeredProgress)
   const staggerDelay = buttonIndex * 50;
 
   // Create a delayed/offset animation progress for this button
   // This creates the cascade effect
   // IMPORTANT: Initialize with current animProgress value to prevent "cold start" flicker
-  const delayedProgress = useRef(new Animated.Value(1)).current;
+  // NOTE: Only used as fallback when externalStaggeredProgress is not provided
+  const internalDelayedProgress = useRef(new Animated.Value(1)).current;
   const isInitialized = useRef(false);
 
+  // PERF OPTIMIZATION: Use external staggered progress if provided (managed by parent)
+  // This eliminates 3 separate listeners + 3 setTimeouts per scroll event
+  const delayedProgress = externalStaggeredProgress ?? internalDelayedProgress;
+
   useEffect(() => {
+    // If using external staggered progress, skip internal listener setup entirely
+    if (externalStaggeredProgress) {
+      return;
+    }
+
+    // FALLBACK: Internal listener logic (only runs if no external staggeredProgress)
     // CRITICAL: Immediately sync with current animProgress value on mount
     // This prevents the "unwarmed" state that causes flicker before any scroll
     if (!isInitialized.current) {
       // Access the current value of animProgress (internal API)
       const currentValue = (animProgress as any).__getValue?.() ??
                           (animProgress as any)._value ?? 1;
-      delayedProgress.setValue(currentValue);
+      internalDelayedProgress.setValue(currentValue);
       isInitialized.current = true;
     }
 
@@ -68,7 +83,7 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
     const listenerId = animProgress.addListener(({ value }) => {
       // Apply stagger by delaying the animation slightly
       setTimeout(() => {
-        Animated.spring(delayedProgress, {
+        Animated.spring(internalDelayedProgress, {
           toValue: value,
           damping: 16,      // Higher = less bounce, more controlled
           stiffness: 180,
@@ -81,7 +96,7 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
     return () => {
       animProgress.removeListener(listenerId);
     };
-  }, [animProgress, staggerDelay, delayedProgress]);
+  }, [animProgress, staggerDelay, internalDelayedProgress, externalStaggeredProgress]);
 
   const handlePressIn = () => {
     Animated.parallel([
@@ -160,6 +175,13 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
     extrapolate: 'clamp',
   });
 
+  // PERF OPTIMIZATION: Memoize Animated.multiply to avoid recreating on every render
+  // Without memoization, a new AnimatedMultiplication is created each render cycle
+  const combinedScale = useMemo(
+    () => Animated.multiply(scaleAnim, landingScale),
+    [scaleAnim, landingScale]
+  );
+
   return (
     <Animated.View
       style={[
@@ -168,7 +190,7 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
           transform: [
             { translateX },
             { translateY },
-            { scale: Animated.multiply(scaleAnim, landingScale) },
+            { scale: combinedScale },
           ],
           width,
           height,
