@@ -34,3 +34,20 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Build artifacts
+ios/
+android/
+
+# Lock files
+package-lock.json
+
+# Environment
+.env
+
+# Nested project copies (do not commit)
+TrackR/
