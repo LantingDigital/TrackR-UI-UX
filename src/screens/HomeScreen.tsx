@@ -2083,6 +2083,8 @@ export const HomeScreen = () => {
             // Bring pill wrapper above backdrop/fog (UI-thread sync)
             logPillZIndex.value = 200;
             logIsClosing.value = 0; // Not closing — prevent early z-drop
+            // Check if pill was hidden (subsequent open) before resetting
+            const isSubsequentOpen = logPillScrollHidden.value === 1;
             // Reset scroll-hidden state so pill is visible during morph
             logPillScrollHidden.value = 0;
             // Hide other frozen pills so they don't overlay this modal
@@ -2091,8 +2093,9 @@ export const HomeScreen = () => {
             searchButtonOpacity.value = 1;
             scanButtonOpacity.value = 1;
             searchBarMorphOpacity.value = 1; // Show real search bar (search pill hidden)
-            // Crossfade the pressed button out (pill fades in simultaneously)
-            logButtonOpacity.value = withTiming(0, { duration: 120 });
+            // First open: pill fades in from 0, so crossfade button out over 120ms
+            // Subsequent opens: pill is already opaque, so hide button instantly
+            logButtonOpacity.value = isSubsequentOpen ? 0 : withTiming(0, { duration: 120 });
             logMorphProgress.value = 1;
             // Backdrop fades in over first 60% of MorphingPill's animation
             logBackdropOpacity.value = withTiming(1, { duration: 510 });
@@ -2245,6 +2248,8 @@ export const HomeScreen = () => {
             // Bring pill wrapper above backdrop/fog (UI-thread sync)
             searchPillZIndex.value = 200;
             searchIsClosing.value = 0; // Not closing — prevent early z-drop
+            // Check if pill was hidden (subsequent open) before resetting
+            const isSubsequentOpen = searchPillScrollHidden.value === 1;
             // Reset scroll-hidden state so pill is visible during morph
             searchPillScrollHidden.value = 0;
             // Hide other frozen action button pills so they don't overlay this modal
@@ -2255,14 +2260,14 @@ export const HomeScreen = () => {
 
             if (isBarOrigin) {
               // Opening from SEARCH BAR — pill covers the search bar
-              // Crossfade real search bar out (pill fades in simultaneously)
-              searchBarMorphOpacity.value = withTiming(0, { duration: 120 });
+              // First open: pill fades in, so crossfade search bar out over 120ms
+              // Subsequent opens: pill is already opaque, hide search bar instantly
+              searchBarMorphOpacity.value = isSubsequentOpen ? 0 : withTiming(0, { duration: 120 });
               // Search button stays visible — fades behind backdrop naturally
-              // (same behavior as Log/Scan buttons when their modals open)
             } else {
               // Opening from SEARCH BUTTON — pill covers the action button
-              // Crossfade search button out (pill fades in simultaneously)
-              searchButtonOpacity.value = withTiming(0, { duration: 120 });
+              // First open: crossfade out over 120ms. Subsequent: instant hide
+              searchButtonOpacity.value = isSubsequentOpen ? 0 : withTiming(0, { duration: 120 });
               // Real search bar stays visible — fades behind backdrop naturally
               searchBarMorphOpacity.value = 1;
             }
@@ -2518,6 +2523,8 @@ export const HomeScreen = () => {
             // Bring pill wrapper above backdrop/fog (UI-thread sync)
             scanPillZIndex.value = 200;
             scanIsClosing.value = 0; // Not closing — prevent early z-drop
+            // Check if pill was hidden (subsequent open) before resetting
+            const isSubsequentOpen = scanPillScrollHidden.value === 1;
             // Reset scroll-hidden state so pill is visible during morph
             scanPillScrollHidden.value = 0;
             // Hide other frozen pills so they don't overlay this modal
@@ -2526,8 +2533,9 @@ export const HomeScreen = () => {
             logButtonOpacity.value = 1;
             searchButtonOpacity.value = 1;
             searchBarMorphOpacity.value = 1; // Show real search bar (search pill hidden)
-            // Crossfade the pressed button out (pill fades in simultaneously)
-            scanButtonOpacity.value = withTiming(0, { duration: 120 });
+            // First open: pill fades in from 0, so crossfade button out over 120ms
+            // Subsequent opens: pill is already opaque, so hide button instantly
+            scanButtonOpacity.value = isSubsequentOpen ? 0 : withTiming(0, { duration: 120 });
             // Backdrop fades in over first 60% of MorphingPill's animation
             // Backdrop fades in over first 60% of MorphingPill's animation
             scanBackdropOpacity.value = withTiming(1, { duration: 510 });
