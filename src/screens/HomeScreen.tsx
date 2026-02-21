@@ -121,11 +121,6 @@ export const HomeScreen = () => {
   const buttonProgress1 = useSharedValue(1); // Search button
   const buttonProgress2 = useSharedValue(1); // Scan button
 
-  // Global animation lock: prevents all press handlers from firing while any
-  // modal is animating open or closed. Eliminates race conditions from spam-pressing.
-  const modalAnimLockRef = useRef(false);
-  const releaseModalLock = useCallback(() => { modalAnimLockRef.current = false; }, []);
-
   // Scroll-driven pill hiding: when scroll triggers expand/collapse, pills must hide
   // so the real buttons' animations are visible. Reset to 0 in each pill's onOpen.
   const logPillScrollHidden = useSharedValue(0);
@@ -427,8 +422,6 @@ export const HomeScreen = () => {
   // Per-origin press handlers
   // Search bar press - determines origin based on current collapse state
   const handleSearchBarPress = useCallback(() => {
-    if (modalAnimLockRef.current) return; // Block during any modal animation
-    modalAnimLockRef.current = true;
     // Pre-hide frozen pill at previous position (prevents visible jump if switching origins)
     // e.g. pill was at button position from a previous button-origin close
     searchPillScrollHidden.value = 1;
@@ -450,8 +443,6 @@ export const HomeScreen = () => {
 
   // Search action button press - determines origin based on current collapse state
   const handleSearchButtonPress = useCallback(() => {
-    if (modalAnimLockRef.current) return; // Block during any modal animation
-    modalAnimLockRef.current = true;
     // Pre-hide frozen pill at previous position (prevents visible jump if switching origins)
     // e.g. pill was at search bar position from a previous bar-origin close
     searchPillScrollHidden.value = 1;
@@ -472,7 +463,6 @@ export const HomeScreen = () => {
   }, []);
 
   const handleSearchClose = useCallback(() => {
-    modalAnimLockRef.current = true; // Lock during close animation
     Keyboard.dismiss();
 
     // Reset focus state immediately so modal starts fresh next time
@@ -511,9 +501,8 @@ export const HomeScreen = () => {
       searchPillScrollHidden.value = 1;
       searchPillZIndex.value = 10;
       runOnJS(setSearchVisible)(false);
-      runOnJS(releaseModalLock)();
     });
-  }, [releaseModalLock]);
+  }, []);
 
   // Search focus handlers - animate search bar up/down and toggle dropdown
   const handleSearchFocus = useCallback(() => {
@@ -704,8 +693,6 @@ export const HomeScreen = () => {
   // Log Modal Handlers
   // =========================================
   const handleLogPress = useCallback(() => {
-    if (modalAnimLockRef.current) return; // Block during any modal animation
-    modalAnimLockRef.current = true;
     // Set origin based on current collapse state BEFORE opening
     const origin = isCollapsed.value ? 'logCircle' : 'logPill';
     setLogOrigin(origin);
@@ -719,7 +706,6 @@ export const HomeScreen = () => {
   }, []);
 
   const handleLogClose = useCallback(() => {
-    modalAnimLockRef.current = true; // Lock during close animation
     Keyboard.dismiss();
     setIsLogFocused(false);
     logFocusProgress.value = 0;
@@ -742,11 +728,10 @@ export const HomeScreen = () => {
       logBackdropOpacity.value = withTiming(0, { duration: 250 }, () => {
         logPillZIndex.value = 10;
         runOnJS(setLogVisible)(false);
-        runOnJS(releaseModalLock)();
       });
     });
 
-  }, [releaseModalLock]);
+  }, []);
 
   // Log focus handlers (Reanimated — UI thread)
   const handleLogFocus = useCallback(() => {
@@ -846,8 +831,6 @@ export const HomeScreen = () => {
   }, [tabBarContext]);
 
   const handleScanPress = useCallback(() => {
-    if (modalAnimLockRef.current) return; // Block during any modal animation
-    modalAnimLockRef.current = true;
     // Set origin based on current collapse state BEFORE opening
     const origin = isCollapsed.value ? 'scanCircle' : 'scanPill';
     setScanOrigin(origin);
@@ -1998,7 +1981,6 @@ export const HomeScreen = () => {
             logContentFade.value = withDelay(500, withTiming(1, { duration: 330 }));
           }}
           onClose={() => {
-            modalAnimLockRef.current = true; // Lock during close animation
             // Trigger the close sequence
             logIsClosing.value = 1; // Signal z-index style to drop z when backdrop fades
             Keyboard.dismiss();
@@ -2016,13 +1998,11 @@ export const HomeScreen = () => {
               easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
             });
           }}
-          onAnimationComplete={(isOpen) => {
-            if (isOpen) {
-              modalAnimLockRef.current = false; // Open done — allow interaction
-              return;
-            }
+          onAnimationComplete={() => {
             // GUARD: If scroll already took over (hid the pill and showed real elements),
             // don't override — scroll handler already restored everything correctly.
+            // This prevents a race where onAnimationComplete fires AFTER scroll and
+            // re-hides the button that scroll just showed (causing disappearing elements).
             if (logPillScrollHidden.value === 1) {
               logButtonOpacity.value = 1;
               return;
@@ -2034,7 +2014,6 @@ export const HomeScreen = () => {
             logButtonOpacity.value = 0.011;
           }}
           onCloseCleanup={() => {
-            modalAnimLockRef.current = false; // Close done — allow interaction
             logPillZIndex.value = 10;
             logIsClosing.value = 0;
             // Hide pill and show real button — eliminates post-close shadow stacking
@@ -2162,7 +2141,6 @@ export const HomeScreen = () => {
             searchContentFade.value = withDelay(500, withTiming(1, { duration: 330 }));
           }}
           onClose={() => {
-            modalAnimLockRef.current = true; // Lock during close animation
             // Trigger the close sequence
             searchIsClosing.value = 1; // Signal z-index style to drop z when backdrop fades
             Keyboard.dismiss();
@@ -2183,33 +2161,30 @@ export const HomeScreen = () => {
             // origin it came from (collapsed or expanded). Header state is preserved.
           }}
           onAnimationComplete={(isOpen) => {
-            if (isOpen) {
-              modalAnimLockRef.current = false; // Open done — allow interaction
-              return;
-            }
-            // GUARD: If scroll already took over (hid the pill and showed real elements),
-            // don't override — scroll handler already restored everything correctly.
-            if (searchPillScrollHidden.value === 1) {
-              searchButtonOpacity.value = 1;
-              searchBarMorphOpacity.value = 1;
-              return;
-            }
+            if (!isOpen) {
+              // GUARD: If scroll already took over (hid the pill and showed real elements),
+              // don't override — scroll handler already restored everything correctly.
+              if (searchPillScrollHidden.value === 1) {
+                searchButtonOpacity.value = 1;
+                searchBarMorphOpacity.value = 1;
+                return;
+              }
 
-            const isBarOrigin = searchOriginRef.current === 'expandedSearchBar' || searchOriginRef.current === 'collapsedSearchBar';
+              const isBarOrigin = searchOriginRef.current === 'expandedSearchBar' || searchOriginRef.current === 'collapsedSearchBar';
 
-            if (isBarOrigin) {
-              // Closed to SEARCH BAR position — "pill IS the search bar" pattern.
-              // Pill stays visible at bar position, real bar stays hidden.
-              // Search button was never hidden, just restore to be safe.
-              searchButtonOpacity.value = 1;
-            } else {
-              // Closed to SEARCH BUTTON position — "pill IS the button" pattern.
-              searchButtonOpacity.value = 0.011;
-              searchBarMorphOpacity.value = 1;
+              if (isBarOrigin) {
+                // Closed to SEARCH BAR position — "pill IS the search bar" pattern.
+                // Pill stays visible at bar position, real bar stays hidden.
+                // Search button was never hidden, just restore to be safe.
+                searchButtonOpacity.value = 1;
+              } else {
+                // Closed to SEARCH BUTTON position — "pill IS the button" pattern.
+                searchButtonOpacity.value = 0.011;
+                searchBarMorphOpacity.value = 1;
+              }
             }
           }}
           onCloseCleanup={() => {
-            modalAnimLockRef.current = false; // Close done — allow interaction
             searchPillZIndex.value = 10;
             searchIsClosing.value = 0;
             const isBarOrigin = searchOriginRef.current === 'expandedSearchBar' || searchOriginRef.current === 'collapsedSearchBar';
@@ -2420,18 +2395,13 @@ export const HomeScreen = () => {
             scanContentFade.value = withDelay(500, withTiming(1, { duration: 330 }));
           }}
           onClose={() => {
-            modalAnimLockRef.current = true; // Lock during close animation
             scanIsClosing.value = 1; // Signal z-index style to drop z when backdrop fades
             // Fade out external content (Reanimated — UI thread)
             scanContentFade.value = withTiming(0, { duration: 300 });
             // Fade out backdrop in sync with close
             scanBackdropOpacity.value = withTiming(0, { duration: 400 });
           }}
-          onAnimationComplete={(isOpen) => {
-            if (isOpen) {
-              modalAnimLockRef.current = false; // Open done — allow interaction
-              return;
-            }
+          onAnimationComplete={() => {
             // GUARD: If scroll already took over (hid the pill and showed real elements),
             // don't override — scroll handler already restored everything correctly.
             if (scanPillScrollHidden.value === 1) {
@@ -2444,7 +2414,6 @@ export const HomeScreen = () => {
             scanButtonOpacity.value = 0.011;
           }}
           onCloseCleanup={() => {
-            modalAnimLockRef.current = false; // Close done — allow interaction
             scanPillZIndex.value = 10;
             scanIsClosing.value = 0;
             // Hide pill and show real button — eliminates post-close shadow stacking
