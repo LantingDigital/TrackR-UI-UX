@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView, TextInput, InteractionManager } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
@@ -82,11 +82,29 @@ export const HomeScreen = () => {
   const [gateModeVisible, setGateModeVisible] = useState(false);
   const [gateModeTicket, setGateModeTicket] = useState<Ticket | null>(null);
 
+  // Modal animation lock — blocks all touches during open/close animations
+  const [isModalAnimating, setIsModalAnimating] = useState(false);
+  const isModalAnimatingRef = useRef(false);
+
   // Wallet context
   const { stackTickets, setDefaultTicket, markTicketUsed, toggleFavorite, deleteTicket, favoriteTickets, tickets } = useWallet();
 
   // Tab bar context for screen reset functionality
   const tabBarContext = useTabBar();
+
+  // Navigation — used for blur listener (auto-close modals on tab switch)
+  const navigation = useNavigation();
+
+  // Animation lock handlers — set/unset touch-blocking overlay during modal animations
+  const handleModalAnimStart = useCallback(() => {
+    isModalAnimatingRef.current = true;
+    setIsModalAnimating(true);
+  }, []);
+
+  const handleModalAnimEnd = useCallback(() => {
+    isModalAnimatingRef.current = false;
+    setIsModalAnimating(false);
+  }, []);
 
   // Scroll state as shared values (accessible from scroll worklet on UI thread)
   const isCollapsed = useSharedValue(0); // 0 = expanded, 1 = collapsed
@@ -330,6 +348,66 @@ export const HomeScreen = () => {
     }, [])
   );
 
+  // Auto-close modals on navigation away — prevents stale close animations on return
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('blur', () => {
+      // Reset search modal (instant — no animations)
+      if (morphingPillRef.current?.isOpen || morphingPillRef.current?.isAnimating) {
+        pillMorphProgress.value = 0;
+        searchContentFade.value = 0;
+        backdropOpacity.value = 0;
+        searchPillZIndex.value = 10;
+        searchIsClosing.value = 0;
+        searchPillScrollHidden.value = 1;
+        searchButtonOpacity.value = 1;
+        searchBarMorphOpacity.value = 1;
+        setSearchVisible(false);
+        setIsSearchFocused(false);
+        setSearchQuery('');
+        setDebouncedQuery('');
+      }
+
+      // Reset log modal
+      if (logMorphingPillRef.current?.isOpen || logMorphingPillRef.current?.isAnimating) {
+        logMorphProgress.value = 0;
+        logContentFade.value = 0;
+        logBackdropOpacity.value = 0;
+        logPillZIndex.value = 10;
+        logIsClosing.value = 0;
+        logPillScrollHidden.value = 1;
+        logButtonOpacity.value = 1;
+        setLogVisible(false);
+        setIsLogFocused(false);
+        setLogQuery('');
+        setDebouncedLogQuery('');
+      }
+
+      // Reset scan/wallet modal
+      if (scanMorphingPillRef.current?.isOpen || scanMorphingPillRef.current?.isAnimating) {
+        scanContentFade.value = 0;
+        scanBackdropOpacity.value = 0;
+        scanPillZIndex.value = 10;
+        scanIsClosing.value = 0;
+        scanPillScrollHidden.value = 1;
+        scanButtonOpacity.value = 1;
+        setWalletVisible(false);
+      }
+
+      // Reset sub-modals
+      setConfirmationVisible(false);
+      setSelectedCoaster(null);
+      setRatingModalVisible(false);
+      setRatingLog(null);
+      setRatingImageUrl('');
+
+      // Clear animation lock
+      isModalAnimatingRef.current = false;
+      setIsModalAnimating(false);
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   // Interaction handle ref — defers FlatList cell rendering during scroll animation
   const scrollInteractionRef = useRef<ReturnType<typeof InteractionManager.createInteractionHandle> | null>(null);
   const scrollInteractionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -454,6 +532,7 @@ export const HomeScreen = () => {
   // Per-origin press handlers
   // Search bar press - determines origin based on current collapse state
   const handleSearchBarPress = useCallback(() => {
+    if (isModalAnimatingRef.current) return;
     // Pre-hide frozen pill at previous position (prevents visible jump if switching origins)
     // e.g. pill was at button position from a previous button-origin close
     searchPillScrollHidden.value = 1;
@@ -475,6 +554,7 @@ export const HomeScreen = () => {
 
   // Search action button press - determines origin based on current collapse state
   const handleSearchButtonPress = useCallback(() => {
+    if (isModalAnimatingRef.current) return;
     // Pre-hide frozen pill at previous position (prevents visible jump if switching origins)
     // e.g. pill was at search bar position from a previous bar-origin close
     searchPillScrollHidden.value = 1;
@@ -725,6 +805,7 @@ export const HomeScreen = () => {
   // Log Modal Handlers
   // =========================================
   const handleLogPress = useCallback(() => {
+    if (isModalAnimatingRef.current) return;
     // Set origin based on current collapse state BEFORE opening
     const origin = isCollapsed.value ? 'logCircle' : 'logPill';
     setLogOrigin(origin);
@@ -863,6 +944,7 @@ export const HomeScreen = () => {
   }, [tabBarContext]);
 
   const handleScanPress = useCallback(() => {
+    if (isModalAnimatingRef.current) return;
     // Set origin based on current collapse state BEFORE opening
     const origin = isCollapsed.value ? 'scanCircle' : 'scanPill';
     setScanOrigin(origin);
@@ -1493,7 +1575,7 @@ export const HomeScreen = () => {
             overflow: 'visible', // Don't clip button animations
           }
         ]}
-        pointerEvents={searchVisible ? 'none' : 'auto'}
+        pointerEvents={searchVisible || logVisible || walletVisible ? 'none' : 'auto'}
       >
         {/* Search Bar Row - REANIMATED for smooth UI-thread animation */}
         <View style={[styles.header, { paddingHorizontal: 0 }]}>
@@ -2036,7 +2118,9 @@ export const HomeScreen = () => {
               easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
             });
           }}
+          onAnimationStart={handleModalAnimStart}
           onAnimationComplete={() => {
+            handleModalAnimEnd();
             // GUARD: If scroll already took over (hid the pill and showed real elements),
             // don't override — scroll handler already restored everything correctly.
             // This prevents a race where onAnimationComplete fires AFTER scroll and
@@ -2214,7 +2298,9 @@ export const HomeScreen = () => {
             // Note: Do NOT force header expansion here — pill closes to whatever
             // origin it came from (collapsed or expanded). Header state is preserved.
           }}
+          onAnimationStart={handleModalAnimStart}
           onAnimationComplete={(isOpen) => {
+            handleModalAnimEnd();
             if (!isOpen) {
               // GUARD: If scroll already took over (hid the pill and showed real elements),
               // don't override — scroll handler already restored everything correctly.
@@ -2456,7 +2542,9 @@ export const HomeScreen = () => {
             // Fade out backdrop in sync with close
             scanBackdropOpacity.value = withTiming(0, { duration: 340 });
           }}
+          onAnimationStart={handleModalAnimStart}
           onAnimationComplete={() => {
+            handleModalAnimEnd();
             // GUARD: If scroll already took over (hid the pill and showed real elements),
             // don't override — scroll handler already restored everything correctly.
             if (scanPillScrollHidden.value === 1) {
@@ -2507,6 +2595,14 @@ export const HomeScreen = () => {
           imageUrl={ratingImageUrl}
           onClose={handleRatingModalClose}
           onComplete={handleRatingComplete}
+        />
+      )}
+
+      {/* Touch-blocking overlay during modal animations — prevents glitched states */}
+      {isModalAnimating && (
+        <View
+          style={[StyleSheet.absoluteFill, { zIndex: 9999 }]}
+          pointerEvents="auto"
         />
       )}
     </View>
