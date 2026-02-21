@@ -1,15 +1,20 @@
 /**
  * TabNavigator
  *
- * 5-tab navigation structure for TrackR V1:
+ * React Navigation v7 bottom tab navigator with fade animation.
+ * Custom AnimatedTabBar preserves the existing tab bar styling.
+ *
  * Home | Discover | Play | Activity | Profile
  */
 
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Animated, Pressable, InteractionManager } from 'react-native';
-import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
+import Reanimated, { useAnimatedStyle, interpolate } from 'react-native-reanimated';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import * as Haptics from 'expo-haptics';
 
 // Import screens
 import { HomeScreen } from '../screens/HomeScreen';
@@ -22,9 +27,7 @@ import { ProfileScreen } from '../screens/ProfileScreen';
 import { getPendingCount, subscribe } from '../stores/rideLogStore';
 
 // Import tab bar context
-import { useTabBar } from '../contexts/TabBarContext';
-
-const Tab = createBottomTabNavigator();
+import { useTabBar, TAB_NAMES, TabName } from '../contexts/TabBarContext';
 
 // Tab bar height (used for animation offset)
 const TAB_BAR_HEIGHT = 49;
@@ -37,6 +40,8 @@ const TAB_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; showBad
   Activity: { icon: 'time-outline', showBadge: true },
   Profile: { icon: 'person-outline' },
 };
+
+const Tab = createBottomTabNavigator();
 
 /**
  * Custom hook to subscribe to pending log count changes
@@ -55,9 +60,10 @@ function usePendingCount(): number {
 }
 
 /**
- * Custom animated tab bar that can slide off-screen
+ * Custom animated tab bar — accepts React Navigation v7 tabBar props
+ * plus uses TabBarContext for hide/show and reset functionality
  */
-const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
+const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
   const insets = useSafeAreaInsets();
   const tabBarContext = useTabBar();
   const pendingCount = usePendingCount();
@@ -65,75 +71,59 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navig
   // Calculate total height including safe area
   const totalHeight = TAB_BAR_HEIGHT + insets.bottom;
 
-  // Get animated translate value from context
-  const translateY = tabBarContext?.tabBarTranslateY.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, totalHeight + 20], // Extra 20 for shadow
-  }) || 0;
+  // Animated translateY from context (Reanimated SharedValue)
+  const animatedTabBarStyle = useAnimatedStyle(() => {
+    if (!tabBarContext) return {};
+    const translateY = interpolate(
+      tabBarContext.tabBarTranslateY.value,
+      [0, 1],
+      [0, totalHeight + 20], // Extra 20 for shadow
+    );
+    return { transform: [{ translateY }] };
+  });
+
+  if (!tabBarContext) return null;
+
+  // Active tab from React Navigation state
+  const activeTabName = state.routes[state.index].name as TabName;
 
   return (
-    <Animated.View
+    <Reanimated.View
       style={[
         styles.tabBar,
         {
           height: totalHeight,
           paddingBottom: insets.bottom,
-          transform: [{ translateY }],
         },
+        animatedTabBarStyle,
       ]}
     >
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label = options.tabBarLabel !== undefined
-          ? options.tabBarLabel
-          : options.title !== undefined
-          ? options.title
-          : route.name;
-
-        const isFocused = state.index === index;
+      {TAB_NAMES.map((name, index) => {
+        const isFocused = activeTabName === name;
         const color = isFocused ? '#CF6769' : '#999999';
         const size = 24;
 
-        // Get tab configuration
-        const config = TAB_CONFIG[route.name] || { icon: 'ellipse-outline' };
+        const config = TAB_CONFIG[name] || { icon: 'ellipse-outline' };
         const iconName = config.icon;
         const showBadge = config.showBadge && pendingCount > 0;
 
         const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (isFocused) {
-            // Pressing the same tab - reset immediately
-            tabBarContext?.resetScreen(route.name);
-          } else if (!event.defaultPrevented) {
-            // Navigating to a different tab - navigate first, then reset after transition
-            navigation.navigate(route.name);
-            // Defer the reset until after the navigation transition completes
-            InteractionManager.runAfterInteractions(() => {
-              tabBarContext?.resetScreen(route.name);
-            });
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+          if (state.index === index) {
+            // Same tab — trigger reset
+            tabBarContext.resetScreen(name);
+          } else {
+            navigation.navigate(name);
           }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
         };
 
         return (
           <Pressable
-            key={route.key}
+            key={name}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
+            accessibilityLabel={name}
             onPress={onPress}
-            onLongPress={onLongPress}
             style={styles.tabItem}
           >
             <View>
@@ -143,68 +133,36 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navig
               )}
             </View>
             <Text style={[styles.tabLabel, { color }]}>
-              {typeof label === 'string' ? label : route.name}
+              {name}
             </Text>
           </Pressable>
         );
       })}
-    </Animated.View>
+    </Reanimated.View>
   );
 };
 
+/**
+ * Tab navigator using React Navigation v7 with fade animation
+ */
 export const TabNavigator = () => {
   return (
     <Tab.Navigator
       tabBar={(props) => <AnimatedTabBar {...props} />}
       screenOptions={{
         headerShown: false,
+        animation: 'fade',
+        transitionSpec: {
+          animation: 'timing',
+          config: { duration: 100 },
+        },
       }}
     >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Discover"
-        component={DiscoverScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="compass-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Play"
-        component={PlayScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="game-controller-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Activity"
-        component={ActivityScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="time-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
-          ),
-        }}
-      />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Discover" component={DiscoverScreen} />
+      <Tab.Screen name="Play" component={PlayScreen} />
+      <Tab.Screen name="Activity" component={ActivityScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };

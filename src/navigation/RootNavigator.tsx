@@ -1,17 +1,25 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { TabNavigator } from './TabNavigator';
 import { WalletProvider } from '../contexts/WalletContext';
 import { TabBarProvider } from '../contexts/TabBarContext';
 
+const navTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#F7F7F7',
+  },
+};
+
 export const RootNavigator = () => {
   return (
-    <WalletProvider>
-      <TabBarProvider>
-        <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
+      <WalletProvider>
+        <TabBarProvider>
           <TabNavigator />
-        </NavigationContainer>
-      </TabBarProvider>
-    </WalletProvider>
+        </TabBarProvider>
+      </WalletProvider>
+    </NavigationContainer>
   );
 };

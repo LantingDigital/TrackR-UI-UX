@@ -6,3 +6,4 @@
 
 export * from './useSpringPress';
 export * from './useMorphAnimation';
+export * from './useTabFocus';

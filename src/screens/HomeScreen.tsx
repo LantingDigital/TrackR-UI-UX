@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView, TextInput, InteractionManager } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useTabFocus } from '../hooks/useTabFocus';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
@@ -91,9 +91,6 @@ export const HomeScreen = () => {
 
   // Tab bar context for screen reset functionality
   const tabBarContext = useTabBar();
-
-  // Navigation — used for blur listener (auto-close modals on tab switch)
-  const navigation = useNavigation();
 
   // Animation lock handlers — set/unset touch-blocking overlay during modal animations
   const handleModalAnimStart = useCallback(() => {
@@ -321,92 +318,85 @@ export const HomeScreen = () => {
   // Track if we're ready for animations (shared value — accessible from scroll worklet)
   const isReadyForAnimations = useSharedValue(1); // 1 = ready, 0 = not ready
 
-  useFocusEffect(
-    useCallback(() => {
-      // Screen is focused - wait for navigation interactions to complete
-      isReadyForAnimations.value = 0;
+  // Focus handler — called when Home tab gains focus (pager animation complete)
+  const handleTabFocus = useCallback(() => {
+    // Pager animation is already complete — use rAF instead of InteractionManager
+    requestAnimationFrame(() => {
+      isReadyForAnimations.value = 1;
 
-      const interactionHandle = InteractionManager.runAfterInteractions(() => {
-        // Navigation is complete - now safe to animate
-        isReadyForAnimations.value = 1;
+      // Force remount buttons to clear any corrupted state
+      setButtonRemountKey(prev => prev + 1);
 
-        // Force remount buttons to clear any corrupted state
-        setButtonRemountKey(prev => prev + 1);
-
-        // Reset collapse state and Reanimated progress to expanded
-        isCollapsed.value = 0;
-        reanimatedProgress.value = 1;
-        buttonProgress0.value = 1;
-        buttonProgress1.value = 1;
-        buttonProgress2.value = 1;
-      });
-
-      return () => {
-        // Cancel pending interaction if screen unfocuses before it completes
-        interactionHandle.cancel();
-      };
-    }, [])
-  );
-
-  // Auto-close modals on navigation away — prevents stale close animations on return
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('blur', () => {
-      // Reset search modal (instant — no animations)
-      if (morphingPillRef.current?.isOpen || morphingPillRef.current?.isAnimating) {
-        pillMorphProgress.value = 0;
-        searchContentFade.value = 0;
-        backdropOpacity.value = 0;
-        searchPillZIndex.value = 10;
-        searchIsClosing.value = 0;
-        searchPillScrollHidden.value = 1;
-        searchButtonOpacity.value = 1;
-        searchBarMorphOpacity.value = 1;
-        setSearchVisible(false);
-        setIsSearchFocused(false);
-        setSearchQuery('');
-        setDebouncedQuery('');
-      }
-
-      // Reset log modal
-      if (logMorphingPillRef.current?.isOpen || logMorphingPillRef.current?.isAnimating) {
-        logMorphProgress.value = 0;
-        logContentFade.value = 0;
-        logBackdropOpacity.value = 0;
-        logPillZIndex.value = 10;
-        logIsClosing.value = 0;
-        logPillScrollHidden.value = 1;
-        logButtonOpacity.value = 1;
-        setLogVisible(false);
-        setIsLogFocused(false);
-        setLogQuery('');
-        setDebouncedLogQuery('');
-      }
-
-      // Reset scan/wallet modal
-      if (scanMorphingPillRef.current?.isOpen || scanMorphingPillRef.current?.isAnimating) {
-        scanContentFade.value = 0;
-        scanBackdropOpacity.value = 0;
-        scanPillZIndex.value = 10;
-        scanIsClosing.value = 0;
-        scanPillScrollHidden.value = 1;
-        scanButtonOpacity.value = 1;
-        setWalletVisible(false);
-      }
-
-      // Reset sub-modals
-      setConfirmationVisible(false);
-      setSelectedCoaster(null);
-      setRatingModalVisible(false);
-      setRatingLog(null);
-      setRatingImageUrl('');
-
-      // Clear animation lock
-      isModalAnimatingRef.current = false;
-      setIsModalAnimating(false);
+      // Reset collapse state and Reanimated progress to expanded
+      isCollapsed.value = 0;
+      reanimatedProgress.value = 1;
+      buttonProgress0.value = 1;
+      buttonProgress1.value = 1;
+      buttonProgress2.value = 1;
     });
+  }, []);
 
-    return unsubscribe;
-  }, [navigation]);
+  // Blur handler — called immediately when switching away from Home tab
+  const handleTabBlur = useCallback(() => {
+    // Reset search modal (instant — no animations)
+    if (morphingPillRef.current?.isOpen || morphingPillRef.current?.isAnimating) {
+      pillMorphProgress.value = 0;
+      searchContentFade.value = 0;
+      backdropOpacity.value = 0;
+      searchPillZIndex.value = 10;
+      searchIsClosing.value = 0;
+      searchPillScrollHidden.value = 1;
+      searchButtonOpacity.value = 1;
+      searchBarMorphOpacity.value = 1;
+      setSearchVisible(false);
+      setIsSearchFocused(false);
+      setSearchQuery('');
+      setDebouncedQuery('');
+    }
+
+    // Reset log modal
+    if (logMorphingPillRef.current?.isOpen || logMorphingPillRef.current?.isAnimating) {
+      logMorphProgress.value = 0;
+      logContentFade.value = 0;
+      logBackdropOpacity.value = 0;
+      logPillZIndex.value = 10;
+      logIsClosing.value = 0;
+      logPillScrollHidden.value = 1;
+      logButtonOpacity.value = 1;
+      setLogVisible(false);
+      setIsLogFocused(false);
+      setLogQuery('');
+      setDebouncedLogQuery('');
+    }
+
+    // Reset scan/wallet modal
+    if (scanMorphingPillRef.current?.isOpen || scanMorphingPillRef.current?.isAnimating) {
+      scanContentFade.value = 0;
+      scanBackdropOpacity.value = 0;
+      scanPillZIndex.value = 10;
+      scanIsClosing.value = 0;
+      scanPillScrollHidden.value = 1;
+      scanButtonOpacity.value = 1;
+      setWalletVisible(false);
+    }
+
+    // Reset sub-modals
+    setConfirmationVisible(false);
+    setSelectedCoaster(null);
+    setRatingModalVisible(false);
+    setRatingLog(null);
+    setRatingImageUrl('');
+
+    // Clear animation lock
+    isModalAnimatingRef.current = false;
+    setIsModalAnimating(false);
+
+    // Mark not ready for animations while away
+    isReadyForAnimations.value = 0;
+  }, []);
+
+  // Register focus/blur handlers with the tab pager system
+  useTabFocus('Home', handleTabFocus, handleTabBlur);
 
   // Interaction handle ref — defers FlatList cell rendering during scroll animation
   const scrollInteractionRef = useRef<ReturnType<typeof InteractionManager.createInteractionHandle> | null>(null);

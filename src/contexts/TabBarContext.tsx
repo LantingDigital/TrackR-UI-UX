@@ -1,9 +1,8 @@
 /**
  * Tab Bar Context
  *
- * Provides tab bar visibility control for full-screen experiences.
- * Used to hide the tab bar during confirmation modals, etc.
- * Also provides screen reset functionality for tab navigation.
+ * Provides tab bar visibility control, screen reset functionality,
+ * and shared state for the custom animated tab bar.
  */
 
 import React, {
@@ -13,25 +12,29 @@ import React, {
   useCallback,
   ReactNode,
 } from 'react';
-import { Animated } from 'react-native';
+import {
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import type { SharedValue } from 'react-native-reanimated';
+
+// Tab names and types
+export const TAB_NAMES = ['Home', 'Discover', 'Play', 'Activity', 'Profile'] as const;
+export type TabName = (typeof TAB_NAMES)[number];
 
 // Type for screen reset handlers
 type ScreenResetHandler = () => void;
 
 interface TabBarContextValue {
-  // Animated value for tab bar position (0 = visible, 1 = hidden)
-  tabBarTranslateY: Animated.Value;
-  // Hide the tab bar with animation
+  // Tab bar visibility — SharedValue (0 = visible, 1 = hidden)
+  tabBarTranslateY: SharedValue<number>;
   hideTabBar: (duration?: number) => void;
-  // Show the tab bar with animation
   showTabBar: (duration?: number) => void;
-  // Register a reset handler for a screen
+
+  // Screen reset
   registerResetHandler: (screenName: string, handler: ScreenResetHandler) => void;
-  // Unregister a reset handler
   unregisterResetHandler: (screenName: string) => void;
-  // Trigger reset for a specific screen
   resetScreen: (screenName: string) => void;
-  // Trigger reset for all screens
   resetAllScreens: () => void;
 }
 
@@ -42,26 +45,18 @@ interface TabBarProviderProps {
 }
 
 export const TabBarProvider: React.FC<TabBarProviderProps> = ({ children }) => {
-  // Animated value: 0 = visible, 1 = hidden (translated down)
-  const tabBarTranslateY = useRef(new Animated.Value(0)).current;
+  // Tab bar visibility: 0 = visible, 1 = hidden
+  const tabBarTranslateY = useSharedValue(0);
 
   // Map of screen names to their reset handlers
   const resetHandlers = useRef<Map<string, ScreenResetHandler>>(new Map());
 
   const hideTabBar = useCallback((duration: number = 300) => {
-    Animated.timing(tabBarTranslateY, {
-      toValue: 1,
-      duration,
-      useNativeDriver: true,
-    }).start();
+    tabBarTranslateY.value = withTiming(1, { duration });
   }, [tabBarTranslateY]);
 
   const showTabBar = useCallback((duration: number = 300) => {
-    Animated.timing(tabBarTranslateY, {
-      toValue: 0,
-      duration,
-      useNativeDriver: true,
-    }).start();
+    tabBarTranslateY.value = withTiming(0, { duration });
   }, [tabBarTranslateY]);
 
   const registerResetHandler = useCallback((screenName: string, handler: ScreenResetHandler) => {
