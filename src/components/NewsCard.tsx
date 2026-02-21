@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
-import { StyleSheet, View, Text, Image, Pressable, ImageSourcePropType, Animated } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, Image, Pressable, ImageSourcePropType } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
+import { useSpringPress } from '../hooks/useSpringPress';
 
 interface NewsCardProps {
   source: string;
@@ -25,30 +27,18 @@ export const NewsCard: React.FC<NewsCardProps> = ({
   onPress,
   onBookmarkPress,
 }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const opacityAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, { toValue: 0.96, useNativeDriver: true }),
-      Animated.timing(opacityAnim, { toValue: 0.9, duration: 100, useNativeDriver: true }),
-    ]).start();
-  };
-
-  const handlePressOut = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, { toValue: 1, useNativeDriver: true }),
-      Animated.timing(opacityAnim, { toValue: 1, duration: 100, useNativeDriver: true }),
-    ]).start();
-  };
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: 0.96,
+    opacity: 0.9,
+  });
 
   return (
-    <Animated.View style={{ transform: [{ scale: scaleAnim }], opacity: opacityAnim }}>
+    <Animated.View style={animatedStyle}>
       <Pressable
         style={styles.container}
         onPress={onPress}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
+        onPressIn={pressHandlers.onPressIn}
+        onPressOut={pressHandlers.onPressOut}
       >
         <View style={styles.imageContainer}>
           <Image source={imageUrl} style={styles.image} resizeMode="cover" />

@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
-import { StyleSheet, View, Text, Pressable, Animated } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { SearchableItem, getTypeIcon } from '../data/mockSearchData';
+import { useSpringPress } from '../hooks/useSpringPress';
 
 interface SearchResultRowProps {
   item: SearchableItem;
@@ -12,56 +14,20 @@ export const SearchResultRow: React.FC<SearchResultRowProps> = ({
   item,
   onPress,
 }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const opacityAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 0.98,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 0.7,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
-
-  const handlePressOut = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: 0.98,
+    opacity: 0.7,
+  });
 
   const iconName = getTypeIcon(item.type) as keyof typeof Ionicons.glyphMap;
-
-  // Get type label
   const typeLabel = item.type.charAt(0).toUpperCase() + item.type.slice(1);
 
   return (
-    <Animated.View
-      style={[
-        styles.container,
-        {
-          transform: [{ scale: scaleAnim }],
-          opacity: opacityAnim,
-        },
-      ]}
-    >
+    <Animated.View style={[styles.container, animatedStyle]}>
       <Pressable
         onPress={onPress}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
+        onPressIn={pressHandlers.onPressIn}
+        onPressOut={pressHandlers.onPressOut}
         style={styles.pressable}
       >
         <View style={styles.iconContainer}>
@@ -93,51 +59,17 @@ export const SimpleSearchRow: React.FC<SimpleSearchRowProps> = ({
   icon = 'time-outline',
   onPress,
 }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const opacityAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 0.98,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 0.7,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
-
-  const handlePressOut = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: 0.98,
+    opacity: 0.7,
+  });
 
   return (
-    <Animated.View
-      style={[
-        styles.simpleContainer,
-        {
-          transform: [{ scale: scaleAnim }],
-          opacity: opacityAnim,
-        },
-      ]}
-    >
+    <Animated.View style={[styles.simpleContainer, animatedStyle]}>
       <Pressable
         onPress={onPress}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
+        onPressIn={pressHandlers.onPressIn}
+        onPressOut={pressHandlers.onPressOut}
         style={styles.simplePressable}
       >
         <Ionicons name={icon} size={18} color="#999999" style={styles.simpleIcon} />

@@ -7,15 +7,16 @@
  * - Coaster stats summary
  */
 
-import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   Pressable,
-  Animated,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
+import { useSpringPress } from '../hooks/useSpringPress';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
@@ -32,14 +33,6 @@ import {
   hasCompletedCriteriaSetup,
   subscribe,
 } from '../stores/rideLogStore';
-
-// Animation constants
-const RESPONSIVE_SPRING = {
-  damping: 16,
-  stiffness: 180,
-  mass: 0.8,
-  useNativeDriver: true,
-};
 
 const PRESS_SCALE = 0.97;
 
@@ -238,28 +231,15 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({
   comingSoon,
   onPress,
 }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = useCallback(() => {
-    if (disabled) return;
-    Animated.spring(scaleAnim, {
-      toValue: PRESS_SCALE,
-      ...RESPONSIVE_SPRING,
-    }).start();
-  }, [disabled, scaleAnim]);
-
-  const handlePressOut = useCallback(() => {
-    Animated.spring(scaleAnim, {
-      toValue: 1,
-      ...RESPONSIVE_SPRING,
-    }).start();
-  }, [scaleAnim]);
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: PRESS_SCALE,
+  });
 
   return (
     <Pressable
       onPress={disabled ? undefined : onPress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
+      onPressIn={disabled ? undefined : pressHandlers.onPressIn}
+      onPressOut={disabled ? undefined : pressHandlers.onPressOut}
       style={({ pressed }) => [
         disabled && styles.buttonDisabled,
       ]}
@@ -267,7 +247,7 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({
       <Animated.View
         style={[
           styles.navButton,
-          { transform: [{ scale: scaleAnim }] },
+          animatedStyle,
           disabled && styles.navButtonDisabled,
         ]}
       >

@@ -7,18 +7,19 @@
  * This is a placeholder - full implementation coming in Phase 3.
  */
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   Pressable,
-  Animated,
   Image,
   RefreshControl,
   Modal,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
+import { useSpringPress } from '../hooks/useSpringPress';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
@@ -226,32 +227,20 @@ interface PendingCardProps {
 }
 
 const PendingCard: React.FC<PendingCardProps> = ({ log, onPress }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = useCallback(() => {
-    Animated.spring(scaleAnim, {
-      toValue: 0.98,
-      ...SPRINGS.responsive,
-    }).start();
-  }, [scaleAnim]);
-
-  const handlePressOut = useCallback(() => {
-    Animated.spring(scaleAnim, {
-      toValue: 1,
-      ...SPRINGS.responsive,
-    }).start();
-  }, [scaleAnim]);
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: 0.98,
+  });
 
   return (
     <Pressable
       onPress={onPress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
+      onPressIn={pressHandlers.onPressIn}
+      onPressOut={pressHandlers.onPressOut}
     >
       <Animated.View
         style={[
           styles.pendingCard,
-          { transform: [{ scale: scaleAnim }] },
+          animatedStyle,
         ]}
       >
         <Image

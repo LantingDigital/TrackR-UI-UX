@@ -14,10 +14,11 @@ import {
   StyleSheet,
   ScrollView,
   Pressable,
-  Animated,
   Alert,
   RefreshControl,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
+import { useSpringPress } from '../hooks/useSpringPress';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
@@ -32,14 +33,6 @@ import {
   PASS_TYPE_LABELS,
   ParkChain,
 } from '../types/wallet';
-
-// Animation constants - match app patterns
-const RESPONSIVE_SPRING = {
-  damping: 16,
-  stiffness: 180,
-  mass: 0.8,
-  useNativeDriver: true,
-};
 
 const PRESS_SCALE = 0.96;
 const PRESS_OPACITY = 0.7;
@@ -272,36 +265,10 @@ const TicketRow: React.FC<TicketRowProps> = ({
   formatDate,
   isExpiringSoon,
 }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const opacityAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = useCallback(() => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: PRESS_SCALE,
-        ...RESPONSIVE_SPRING,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: PRESS_OPACITY,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [scaleAnim, opacityAnim]);
-
-  const handlePressOut = useCallback(() => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        ...RESPONSIVE_SPRING,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [scaleAnim, opacityAnim]);
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: PRESS_SCALE,
+    opacity: PRESS_OPACITY,
+  });
 
   const brandColor = PARK_BRAND_COLORS[ticket.parkChain as ParkChain] || colors.accent.primary;
   const isExpired = ticket.status === 'expired';
@@ -310,16 +277,13 @@ const TicketRow: React.FC<TicketRowProps> = ({
   return (
     <Pressable
       onPress={onPress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
+      onPressIn={pressHandlers.onPressIn}
+      onPressOut={pressHandlers.onPressOut}
     >
       <Animated.View
         style={[
           styles.ticketRow,
-          {
-            transform: [{ scale: scaleAnim }],
-            opacity: opacityAnim,
-          },
+          animatedStyle,
           isExpired && styles.ticketRowExpired,
         ]}
       >

@@ -1,5 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { StyleSheet, View, ViewStyle, Animated, DimensionValue } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, View, ViewStyle, DimensionValue } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withTiming,
+  Easing,
+} from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 
 interface SkeletonLoaderProps {
@@ -15,19 +22,19 @@ export const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({
   borderRadius = 8,
   style,
 }) => {
-  const translateX = useRef(new Animated.Value(-200)).current;
+  const translateX = useSharedValue(-200);
 
   useEffect(() => {
-    const animation = Animated.loop(
-      Animated.timing(translateX, {
-        toValue: 200,
-        duration: 1500,
-        useNativeDriver: true,
-      })
+    translateX.value = withRepeat(
+      withTiming(200, { duration: 1500, easing: Easing.linear }),
+      -1, // infinite
+      false
     );
-    animation.start();
-    return () => animation.stop();
   }, []);
+
+  const shimmerStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
 
   return (
     <View
@@ -37,7 +44,7 @@ export const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({
         style,
       ]}
     >
-      <Animated.View style={[styles.shimmerContainer, { transform: [{ translateX }] }]}>
+      <Animated.View style={[styles.shimmerContainer, shimmerStyle]}>
         <LinearGradient
           colors={['#E1E1E1', '#F5F5F5', '#E1E1E1']}
           start={{ x: 0, y: 0 }}

@@ -6,7 +6,7 @@ import {
   TextInput,
   Pressable,
   ScrollView,
-  Animated,
+  Animated as RNAnimated,
   Dimensions,
   KeyboardAvoidingView,
   Platform,
@@ -14,10 +14,19 @@ import {
   Alert,
   NativeSyntheticEvent,
   NativeScrollEvent,
-  Easing,
   LayoutAnimation,
   UIManager,
 } from 'react-native';
+import Animated, {
+  SharedValue,
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withDelay,
+  interpolate as reanimatedInterpolate,
+  Extrapolation,
+  Easing,
+} from 'react-native-reanimated';
 
 // Enable LayoutAnimation for Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -46,6 +55,30 @@ const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 let persistedRecentSearches: string[] | null = null;
 let persistedWasCleared = false;
 
+// Helper component for animated recent search rows (Reanimated)
+const AnimatedRecentRow: React.FC<{
+  search: string;
+  progress: SharedValue<number>;
+  onPress: () => void;
+}> = ({ search, progress, onPress }) => {
+  const animStyle = useAnimatedStyle(() => ({
+    opacity: progress.value,
+    transform: [{
+      translateX: reanimatedInterpolate(progress.value, [0, 1], [50, 0]),
+    }],
+  }));
+
+  return (
+    <Animated.View style={animStyle}>
+      <SimpleSearchRow
+        text={search}
+        icon="time-outline"
+        onPress={onPress}
+      />
+    </Animated.View>
+  );
+};
+
 interface SearchModalProps {
   visible: boolean;
   onClose: () => void;
@@ -53,9 +86,9 @@ interface SearchModalProps {
   onResultPress?: (item: SearchableItem) => void;
   searchBarLayout?: { x: number; y: number; width: number; height: number };
   // New props for embedded mode (hero morph from HomeScreen)
-  morphProgress?: Animated.Value;
-  contentOpacity?: Animated.AnimatedInterpolation<number>;
-  contentTranslateY?: Animated.AnimatedInterpolation<number>;
+  morphProgress?: SharedValue<number>;
+  contentOpacity?: RNAnimated.AnimatedInterpolation<number>;
+  contentTranslateY?: RNAnimated.AnimatedInterpolation<number>;
   isEmbedded?: boolean;
   // New props for split rendering (pill = input, sections float separately)
   inputOnly?: boolean;    // Only render the search input (for inside the morphing pill)
@@ -97,18 +130,19 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const [isAnimatingClear, setIsAnimatingClear] = useState(false);
   const inputRef = useRef<TextInput>(null);
 
-  // Animated values for reverse cascade deletion (one per row, max 5)
-  const recentRowAnimations = useRef<Animated.Value[]>([
-    new Animated.Value(1),
-    new Animated.Value(1),
-    new Animated.Value(1),
-    new Animated.Value(1),
-    new Animated.Value(1),
-  ]).current;
+  // Shared values for reverse cascade deletion (one per row, max 5)
+  const rowAnim0 = useSharedValue(1);
+  const rowAnim1 = useSharedValue(1);
+  const rowAnim2 = useSharedValue(1);
+  const rowAnim3 = useSharedValue(1);
+  const rowAnim4 = useSharedValue(1);
+  const recentRowAnimations = [rowAnim0, rowAnim1, rowAnim2, rowAnim3, rowAnim4];
 
-  // Animated value for placeholder fade-in (after LayoutAnimation handles card resize)
-  // Initialize to 1 if already cleared (so placeholder shows immediately on re-mount)
-  const placeholderOpacity = useRef(new Animated.Value(persistedWasCleared ? 1 : 0)).current;
+  // Shared value for placeholder fade-in (after LayoutAnimation handles card resize)
+  const placeholderOpacity = useSharedValue(persistedWasCleared ? 1 : 0);
+  const placeholderAnimStyle = useAnimatedStyle(() => ({
+    opacity: placeholderOpacity.value,
+  }));
 
   // Autocomplete vs discovery content
   const showAutocomplete = searchQuery.length > 0;
@@ -118,38 +152,36 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   // Staggered Cascade Animation ("Projector Screen")
   // Each section card animates in with a delay, creating
   // a cascading "pull down" effect like a projector screen
-  // Using useMemo to create STABLE interpolation objects (fixes flickering)
+  // Uses Reanimated useAnimatedStyle for UI-thread interpolation
   // =============================================
-  const sectionAnimations = useMemo(() => {
-    if (!externalMorphProgress) {
-      // Return static values when no animation
-      return [0, 1, 2, 3].map(() => ({ opacity: 1, translateY: 0 }));
-    }
+  const defaultMorphProgress = useSharedValue(1);
+  const morphProg = externalMorphProgress || defaultMorphProgress;
 
-    // Stagger timing: each section starts 0.08 later in the animation progress
-    const staggerDelay = 0.08;
-    const animationDuration = 0.35;
-    const baseStart = 0.50;
+  // Section 0: start=0.50, end=0.85
+  const sectionAnimStyle0 = useAnimatedStyle(() => ({
+    opacity: reanimatedInterpolate(morphProg.value, [0, 0.50, 0.85, 1], [0, 0, 1, 1], Extrapolation.CLAMP),
+    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.50, 0.85, 1], [30, 30, 0, 0], Extrapolation.CLAMP) }],
+  }));
 
-    return [0, 1, 2, 3].map((sectionIndex) => {
-      const sectionStart = baseStart + (sectionIndex * staggerDelay);
-      const sectionEnd = Math.min(sectionStart + animationDuration, 1);
+  // Section 1: start=0.58, end=0.93
+  const sectionAnimStyle1 = useAnimatedStyle(() => ({
+    opacity: reanimatedInterpolate(morphProg.value, [0, 0.58, 0.93, 1], [0, 0, 1, 1], Extrapolation.CLAMP),
+    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.58, 0.93, 1], [40, 40, 0, 0], Extrapolation.CLAMP) }],
+  }));
 
-      const opacity = externalMorphProgress.interpolate({
-        inputRange: [0, sectionStart, sectionEnd, 1],
-        outputRange: [0, 0, 1, 1],
-        extrapolate: 'clamp',
-      });
+  // Section 2: start=0.66, end capped at 1.0
+  const sectionAnimStyle2 = useAnimatedStyle(() => ({
+    opacity: reanimatedInterpolate(morphProg.value, [0, 0.66, 1], [0, 0, 1], Extrapolation.CLAMP),
+    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.66, 1], [50, 50, 0], Extrapolation.CLAMP) }],
+  }));
 
-      const translateY = externalMorphProgress.interpolate({
-        inputRange: [0, sectionStart, sectionEnd, 1],
-        outputRange: [30 + (sectionIndex * 10), 30 + (sectionIndex * 10), 0, 0],
-        extrapolate: 'clamp',
-      });
+  // Section 3: start=0.74, end capped at 1.0
+  const sectionAnimStyle3 = useAnimatedStyle(() => ({
+    opacity: reanimatedInterpolate(morphProg.value, [0, 0.74, 1], [0, 0, 1], Extrapolation.CLAMP),
+    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.74, 1], [60, 60, 0], Extrapolation.CLAMP) }],
+  }));
 
-      return { opacity, translateY };
-    });
-  }, [externalMorphProgress]);
+  const sectionAnimatedStyles = [sectionAnimStyle0, sectionAnimStyle1, sectionAnimStyle2, sectionAnimStyle3];
 
   // Reset search query when becoming visible (embedded mode)
   // Note: We no longer auto-focus the input - user must tap to enter focus mode
@@ -184,33 +216,26 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   }, []);
 
   const handleClearRecent = useCallback(() => {
-    if (isAnimatingClear) return; // Prevent double-tap
+    if (isAnimatingClear) return;
     setIsAnimatingClear(true);
 
-    // Get the number of visible rows (max 5)
     const visibleCount = Math.min(recentSearches.length, 5);
 
-    // Create reverse cascade animation (bottom to top)
-    // Each row animates out with staggered delay
-    const rowAnimations = [];
+    // Reverse cascade: bottom to top with staggered delay
     for (let i = visibleCount - 1; i >= 0; i--) {
-      const reverseIndex = visibleCount - 1 - i; // 0 for last item, 1 for second-to-last, etc.
-      rowAnimations.push(
-        Animated.timing(recentRowAnimations[i], {
-          toValue: 0,
+      const reverseIndex = visibleCount - 1 - i;
+      recentRowAnimations[i].value = withDelay(
+        reverseIndex * 50,
+        withTiming(0, {
           duration: 200,
-          delay: reverseIndex * 50, // Stagger from bottom to top
           easing: Easing.out(Easing.cubic),
-          useNativeDriver: true,
         })
       );
     }
 
-    // Animation sequence:
-    // 1. Rows cascade out (reverse stagger)
-    // 2. LayoutAnimation handles card resize, then placeholder fades in
-    Animated.parallel(rowAnimations).start(() => {
-      // After rows animate out, use LayoutAnimation for smooth card resize
+    // After cascade completes, handle cleanup
+    const totalDuration = 200 + Math.max(0, visibleCount - 1) * 50 + 50;
+    setTimeout(() => {
       LayoutAnimation.configureNext({
         duration: 300,
         update: {
@@ -219,30 +244,25 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         },
       });
 
-      // Update state FIRST - this removes rows from DOM before we reset animations
       setRecentSearches([]);
       setWasRecentCleared(true);
       setIsAnimatingClear(false);
 
-      // Persist to module-level state (survives re-mounts until app restart)
       persistedRecentSearches = [];
       persistedWasCleared = true;
 
-      // Reset row animation values AFTER state clears (rows are gone, no blink)
+      // Reset row values after state clears
       setTimeout(() => {
-        recentRowAnimations.forEach(anim => anim.setValue(1));
+        recentRowAnimations.forEach(anim => { anim.value = 1; });
       }, 0);
 
-      // Fade in placeholder after a brief delay for layout to settle
-      placeholderOpacity.setValue(0);
-      Animated.timing(placeholderOpacity, {
-        toValue: 1,
+      // Fade in placeholder
+      placeholderOpacity.value = 0;
+      placeholderOpacity.value = withDelay(100, withTiming(1, {
         duration: 250,
-        delay: 100, // Small delay to let layout animation start
         easing: Easing.out(Easing.cubic),
-        useNativeDriver: true,
-      }).start();
-    });
+      }));
+    }, totalDuration);
   }, [isAnimatingClear, recentSearches.length, recentRowAnimations, placeholderOpacity]);
 
   const handleResultPress = useCallback((item: SearchableItem) => {
@@ -374,10 +394,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     <Animated.View
                       style={[
                         styles.section,
-                        {
-                          opacity: sectionAnimations[0].opacity,
-                          transform: [{ translateY: sectionAnimations[0].translateY }],
-                        },
+                        sectionAnimatedStyles[0],
                       ]}
                     >
                       <View style={styles.sectionHeader}>
@@ -394,31 +411,19 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                       {recentSearches.length > 0 && (
                         <View>
                           {recentSearches.slice(0, 5).map((search, index) => (
-                            <Animated.View
+                            <AnimatedRecentRow
                               key={`recent-${index}`}
-                              style={{
-                                opacity: recentRowAnimations[index],
-                                transform: [{
-                                  translateX: recentRowAnimations[index].interpolate({
-                                    inputRange: [0, 1],
-                                    outputRange: [50, 0], // Slide out to the right
-                                  }),
-                                }],
-                              }}
-                            >
-                              <SimpleSearchRow
-                                text={search}
-                                icon="time-outline"
-                                onPress={() => handleRecentSearchPress(search)}
-                              />
-                            </Animated.View>
+                              search={search}
+                              progress={recentRowAnimations[index]}
+                              onPress={() => handleRecentSearchPress(search)}
+                            />
                           ))}
                         </View>
                       )}
 
                       {/* Placeholder - only renders after clear is complete, fades in */}
                       {wasRecentCleared && recentSearches.length === 0 && (
-                        <Animated.View style={[styles.emptyRecentContainer, { opacity: placeholderOpacity }]}>
+                        <Animated.View style={[styles.emptyRecentContainer, placeholderAnimStyle]}>
                           <Text style={styles.emptyRecentText}>No recent searches</Text>
                         </Animated.View>
                       )}
@@ -431,10 +436,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 <Animated.View
                   style={[
                     styles.section,
-                    {
-                      opacity: sectionAnimations[recentSearches.length > 0 ? 1 : 0].opacity,
-                      transform: [{ translateY: sectionAnimations[recentSearches.length > 0 ? 1 : 0].translateY }],
-                    },
+                    sectionAnimatedStyles[recentSearches.length > 0 ? 1 : 0],
                   ]}
                 >
                   <SearchCarousel
@@ -449,10 +451,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 <Animated.View
                   style={[
                     styles.section,
-                    {
-                      opacity: sectionAnimations[recentSearches.length > 0 ? 2 : 1].opacity,
-                      transform: [{ translateY: sectionAnimations[recentSearches.length > 0 ? 2 : 1].translateY }],
-                    },
+                    sectionAnimatedStyles[recentSearches.length > 0 ? 2 : 1],
                   ]}
                 >
                   <SearchCarousel
@@ -467,10 +466,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 <Animated.View
                   style={[
                     styles.section,
-                    {
-                      opacity: sectionAnimations[recentSearches.length > 0 ? 3 : 2].opacity,
-                      transform: [{ translateY: sectionAnimations[recentSearches.length > 0 ? 3 : 2].translateY }],
-                    },
+                    sectionAnimatedStyles[recentSearches.length > 0 ? 3 : 2],
                   ]}
                 >
                   <View style={styles.sectionHeader}>

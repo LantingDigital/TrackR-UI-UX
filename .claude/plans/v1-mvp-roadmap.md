@@ -209,22 +209,22 @@ export const TIMING = {
 
 ## Implementation Phases
 
-### Phase 0: Prep Work
+### Phase 0: Prep Work ✅ COMPLETE
 **Goal**: Set up reusable architecture before building features
 
-- [ ] Extract `useMorphAnimation` hook from HomeScreen
-- [ ] Extract `useSpringPress` hook
-- [ ] Create animation constants file
-- [ ] Create BaseCard component
-- [ ] Update TabNavigator to 5-tab structure (placeholder screens)
-- [ ] Remove SearchScreen.tsx
-- [ ] Rename LogScreen → ActivityScreen (placeholder)
+- [x] Extract `useMorphAnimation` hook from HomeScreen
+- [x] Extract `useSpringPress` hook
+- [x] Create animation constants file
+- [x] Create BaseCard component
+- [x] Update TabNavigator to 5-tab structure (placeholder screens)
+- [x] Remove SearchScreen.tsx
+- [x] Rename LogScreen → ActivityScreen (placeholder)
 
 **Deliverable**: Clean foundation, new tab structure visible
 
 ---
 
-### Phase 1: Complete Log Flow
+### Phase 1: Complete Log Flow 🔄 IN PROGRESS
 **Goal**: Seamless logging with rating option from Home
 
 - [ ] Add "Quick Log" vs "Rate Now" prompt to LogConfirmationCard
@@ -431,7 +431,7 @@ src/
 
 ## Notes
 
-- **Animation Library**: Sticking with React Native Animated API (not Reanimated) for now. Migrating mid-project is risky.
+- **Animation Library**: Migrating from React Native Animated API to react-native-reanimated. Migration is in progress -- see `.claude/animation/migration-log.md`.
 - **Data Source**: RCDB integration is critical. Start with static dataset, add sync later.
 - **Monetization**: Free tier is generous. Pro tier ($29.99/year) unlocks advanced stats, shareable content, custom criteria weights, offline mode.
 - **Park Guides**: User will write first 15-20. Community can comment. Paid users can submit for review.

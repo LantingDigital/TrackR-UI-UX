@@ -10,7 +10,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.trackr.app"
+      "bundleIdentifier": "com.lantingdigital.trackr"
     },
     "android": {
       "adaptiveIcon": {

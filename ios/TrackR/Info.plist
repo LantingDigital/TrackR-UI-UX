@@ -27,7 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.trackr.app</string>
+          <string>com.lantingdigital.trackr</string>
         </array>
       </dict>
     </array>

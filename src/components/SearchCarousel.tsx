@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -6,9 +6,10 @@ import {
   ScrollView,
   Pressable,
   Image,
-  Animated,
   Dimensions,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
+import { useSpringPress } from '../hooks/useSpringPress';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SearchableItem } from '../data/mockSearchData';
 
@@ -29,51 +30,17 @@ interface CarouselCardProps {
 }
 
 const CarouselCard: React.FC<CarouselCardProps> = ({ item, onPress }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const opacityAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 0.95,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 0.9,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
-
-  const handlePressOut = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: 0.95,
+    opacity: 0.9,
+  });
 
   return (
-    <Animated.View
-      style={[
-        styles.cardContainer,
-        {
-          transform: [{ scale: scaleAnim }],
-          opacity: opacityAnim,
-        },
-      ]}
-    >
+    <Animated.View style={[styles.cardContainer, animatedStyle]}>
       <Pressable
         onPress={onPress}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
+        onPressIn={pressHandlers.onPressIn}
+        onPressOut={pressHandlers.onPressOut}
         style={styles.cardPressable}
       >
         <Image

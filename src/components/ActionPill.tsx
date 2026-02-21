@@ -1,6 +1,15 @@
-import React, { useRef, useEffect } from 'react';
-import { StyleSheet, Text, Pressable, Animated } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, Pressable } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  interpolate,
+  Extrapolation,
+} from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
+import { SPRINGS, TIMING } from '../constants/animations';
 
 interface ActionPillProps {
   icon: keyof typeof Ionicons.glyphMap;
@@ -20,59 +29,54 @@ export const ActionPill: React.FC<ActionPillProps> = ({
   parkMode = false,
   circleMode = false,
 }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const opacityAnim = useRef(new Animated.Value(1)).current;
-  const labelOpacity = useRef(new Animated.Value(1)).current;
-  const sizeAnim = useRef(new Animated.Value(PILL_HEIGHT)).current;
+  const scale = useSharedValue(1);
+  const opacity = useSharedValue(1);
+  const modeProgress = useSharedValue(circleMode ? 1 : 0);
 
-  useEffect(() => {
-    Animated.parallel([
-      Animated.timing(labelOpacity, {
-        toValue: circleMode ? 0 : 1,
-        duration: 200,
-        useNativeDriver: false,
-      }),
-      Animated.timing(sizeAnim, {
-        toValue: circleMode ? CIRCLE_SIZE : PILL_HEIGHT,
-        duration: 300,
-        useNativeDriver: false,
-      }),
-    ]).start();
+  // Animate mode transition
+  React.useEffect(() => {
+    modeProgress.value = withTiming(circleMode ? 1 : 0, { duration: 300 });
   }, [circleMode]);
 
   const handlePressIn = () => {
-    Animated.parallel([
-      // Must use useNativeDriver: false to be consistent with sizeAnim/labelOpacity
-      Animated.spring(scaleAnim, { toValue: 0.96, useNativeDriver: false }),
-      Animated.timing(opacityAnim, { toValue: 0.7, duration: 100, useNativeDriver: false }),
-    ]).start();
+    scale.value = withSpring(0.96, SPRINGS.responsive);
+    opacity.value = withTiming(0.7, { duration: TIMING.instant });
   };
 
   const handlePressOut = () => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, { toValue: 1, useNativeDriver: false }),
-      Animated.timing(opacityAnim, { toValue: 1, duration: 100, useNativeDriver: false }),
-    ]).start();
+    scale.value = withSpring(1, SPRINGS.responsive);
+    opacity.value = withTiming(1, { duration: TIMING.instant });
   };
 
-  const borderRadius = sizeAnim.interpolate({
-    inputRange: [CIRCLE_SIZE, PILL_HEIGHT],
-    outputRange: [CIRCLE_SIZE / 2, PILL_HEIGHT / 2],
-  });
+  const outerStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+    opacity: opacity.value,
+  }));
+
+  const innerStyle = useAnimatedStyle(() => ({
+    height: interpolate(modeProgress.value, [0, 1], [PILL_HEIGHT, CIRCLE_SIZE]),
+    width: modeProgress.value > 0.5 ? interpolate(modeProgress.value, [0, 1], [PILL_HEIGHT, CIRCLE_SIZE]) : undefined as any,
+    borderRadius: interpolate(
+      modeProgress.value,
+      [0, 1],
+      [PILL_HEIGHT / 2, CIRCLE_SIZE / 2],
+      Extrapolation.CLAMP
+    ),
+    paddingHorizontal: modeProgress.value > 0.5 ? 0 : 16,
+  }));
+
+  const labelStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(modeProgress.value, [0, 1], [1, 0], Extrapolation.CLAMP),
+  }));
 
   return (
-    <Animated.View style={{ transform: [{ scale: scaleAnim }], opacity: opacityAnim }}>
+    <Animated.View style={outerStyle}>
       <Pressable onPress={onPress} onPressIn={handlePressIn} onPressOut={handlePressOut}>
         <Animated.View
           style={[
             styles.container,
             parkMode && styles.parkModeContainer,
-            {
-              height: sizeAnim,
-              width: circleMode ? sizeAnim : undefined,
-              borderRadius: borderRadius,
-              paddingHorizontal: circleMode ? 0 : 16,
-            },
+            innerStyle,
           ]}
         >
           <Ionicons
@@ -82,7 +86,7 @@ export const ActionPill: React.FC<ActionPillProps> = ({
             style={circleMode ? undefined : styles.icon}
           />
           {!circleMode && (
-            <Animated.View style={{ opacity: labelOpacity }}>
+            <Animated.View style={labelStyle}>
               <Text style={styles.label}>{label}</Text>
             </Animated.View>
           )}

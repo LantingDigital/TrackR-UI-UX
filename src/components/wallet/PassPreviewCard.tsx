@@ -18,8 +18,8 @@ import {
   StyleSheet,
   Image,
   Pressable,
-  Animated,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Ticket } from '../../types/wallet';
@@ -57,7 +57,7 @@ export const PassPreviewCard: React.FC<PassPreviewCardProps> = ({
   size = DEFAULT_CARD_SIZE,
   showFavoriteBadge = true,
 }) => {
-  const { scaleValue, pressHandlers } = useSpringPress({
+  const { animatedStyle, pressHandlers } = useSpringPress({
     scale: 0.97,
     opacity: 1,
   });
@@ -89,7 +89,7 @@ export const PassPreviewCard: React.FC<PassPreviewCardProps> = ({
         style={[
           styles.container,
           dynamicStyles.container,
-          { transform: [{ scale: scaleValue }] },
+          animatedStyle,
         ]}
       >
         {/* Hero Image Background or Gradient Fallback */}

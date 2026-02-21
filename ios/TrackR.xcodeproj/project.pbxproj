@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		053DB6C9F9D635FB4EE12A24 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DFDCC284C17571128A95FE /* ExpoModulesProvider.swift */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		3BEFA1C2AAEAB8A047B04895 /* libPods-TrackR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 244280201D2884CC1C902D08 /* libPods-TrackR.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		B507B7A7F3AD2AB8C52EE863 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF1ADD936228FE978C1F451 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		D02AB885578A99F0DF784239 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C0CD4C6CD976FF5EF3572D96 /* PrivacyInfo.xcprivacy */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
-		F889C68BB4CF9634764F9850 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 442735791019F0269A8DBE65 /* PrivacyInfo.xcprivacy */; };
+		F6416DDD095CC37D3EB3D730 /* libPods-TrackR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4704D29808E528249F17986A /* libPods-TrackR.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		09DFDCC284C17571128A95FE /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-TrackR/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		0BF1ADD936228FE978C1F451 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-TrackR/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* TrackR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TrackR/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TrackR/Info.plist; sourceTree = "<group>"; };
-		244280201D2884CC1C902D08 /* libPods-TrackR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		442735791019F0269A8DBE65 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = TrackR/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		573DF4E2945ACCE19949BE71 /* Pods-TrackR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackR.debug.xcconfig"; path = "Target Support Files/Pods-TrackR/Pods-TrackR.debug.xcconfig"; sourceTree = "<group>"; };
-		87F6F5A37484E2DEFC9BF977 /* Pods-TrackR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackR.release.xcconfig"; path = "Target Support Files/Pods-TrackR/Pods-TrackR.release.xcconfig"; sourceTree = "<group>"; };
+		4704D29808E528249F17986A /* libPods-TrackR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = TrackR/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		C0CD4C6CD976FF5EF3572D96 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = TrackR/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C40B56F50099BB3FE6A6706D /* Pods-TrackR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackR.release.xcconfig"; path = "Target Support Files/Pods-TrackR/Pods-TrackR.release.xcconfig"; sourceTree = "<group>"; };
+		CE25B9E3AF98FF09824440BF /* Pods-TrackR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackR.debug.xcconfig"; path = "Target Support Files/Pods-TrackR/Pods-TrackR.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TrackR/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* TrackR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TrackR-Bridging-Header.h"; path = "TrackR/TrackR-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BEFA1C2AAEAB8A047B04895 /* libPods-TrackR.a in Frameworks */,
+				F6416DDD095CC37D3EB3D730 /* libPods-TrackR.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,15 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				442735791019F0269A8DBE65 /* PrivacyInfo.xcprivacy */,
-			);
-			name = TrackR;
-			sourceTree = "<group>";
-		};
-		1630E7F9501B42289C91F653 /* TrackR */ = {
-			isa = PBXGroup;
-			children = (
-				09DFDCC284C17571128A95FE /* ExpoModulesProvider.swift */,
+				C0CD4C6CD976FF5EF3572D96 /* PrivacyInfo.xcprivacy */,
 			);
 			name = TrackR;
 			sourceTree = "<group>";
@@ -70,7 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				244280201D2884CC1C902D08 /* libPods-TrackR.a */,
+				4704D29808E528249F17986A /* libPods-TrackR.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -89,8 +81,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				FC532FBC1C5C79542583F8B1 /* Pods */,
-				B0382372E22F7F66CC857AB1 /* ExpoModulesProviders */,
+				F506D74B53A8888EB7FAE5B8 /* Pods */,
+				C64C23A9DB7FDD3FF3A8BC57 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -105,12 +97,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B0382372E22F7F66CC857AB1 /* ExpoModulesProviders */ = {
+		BA2ADBA3A51C36663A04873E /* TrackR */ = {
 			isa = PBXGroup;
 			children = (
-				1630E7F9501B42289C91F653 /* TrackR */,
+				0BF1ADD936228FE978C1F451 /* ExpoModulesProvider.swift */,
 			);
-			name = ExpoModulesProviders;
+			name = TrackR;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -122,13 +114,20 @@
 			path = TrackR/Supporting;
 			sourceTree = "<group>";
 		};
-		FC532FBC1C5C79542583F8B1 /* Pods */ = {
+		C64C23A9DB7FDD3FF3A8BC57 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				573DF4E2945ACCE19949BE71 /* Pods-TrackR.debug.xcconfig */,
-				87F6F5A37484E2DEFC9BF977 /* Pods-TrackR.release.xcconfig */,
+				BA2ADBA3A51C36663A04873E /* TrackR */,
 			);
-			name = Pods;
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		F506D74B53A8888EB7FAE5B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE25B9E3AF98FF09824440BF /* Pods-TrackR.debug.xcconfig */,
+				C40B56F50099BB3FE6A6706D /* Pods-TrackR.release.xcconfig */,
+			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,13 +139,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "TrackR" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				9B487CDB17247B3BDF55A6AB /* [Expo] Configure project */,
+				9039D5A29A3AD66370F86DA0 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				F25693016226B6BAE43665E0 /* [CP] Embed Pods Frameworks */,
+				11006AD87825408395E53A0D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +195,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				F889C68BB4CF9634764F9850 /* PrivacyInfo.xcprivacy in Resources */,
+				D02AB885578A99F0DF784239 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +241,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		11006AD87825408395E53A0D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrackR/Pods-TrackR-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackR/Pods-TrackR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,7 +291,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackR/Pods-TrackR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9B487CDB17247B3BDF55A6AB /* [Expo] Configure project */ = {
+		9039D5A29A3AD66370F86DA0 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -294,28 +315,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-TrackR/expo-configure-project.sh\"\n";
 		};
-		F25693016226B6BAE43665E0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TrackR/Pods-TrackR-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackR/Pods-TrackR-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -324,7 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				053DB6C9F9D635FB4EE12A24 /* ExpoModulesProvider.swift in Sources */,
+				B507B7A7F3AD2AB8C52EE863 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,12 +332,13 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 573DF4E2945ACCE19949BE71 /* Pods-TrackR.debug.xcconfig */;
+			baseConfigurationReference = CE25B9E3AF98FF09824440BF /* Pods-TrackR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TrackR/TrackR.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q9H59NQ25W;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -357,7 +357,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trackr.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lantingdigital.trackr;
 				PRODUCT_NAME = TrackR;
 				SWIFT_OBJC_BRIDGING_HEADER = "TrackR/TrackR-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -369,12 +369,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87F6F5A37484E2DEFC9BF977 /* Pods-TrackR.release.xcconfig */;
+			baseConfigurationReference = C40B56F50099BB3FE6A6706D /* Pods-TrackR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TrackR/TrackR.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q9H59NQ25W;
 				INFOPLIST_FILE = TrackR/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -388,7 +389,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trackr.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lantingdigital.trackr;
 				PRODUCT_NAME = TrackR;
 				SWIFT_OBJC_BRIDGING_HEADER = "TrackR/TrackR-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

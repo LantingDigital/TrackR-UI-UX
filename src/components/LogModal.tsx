@@ -6,17 +6,22 @@ import {
   TextInput,
   Pressable,
   ScrollView,
-  Animated,
   Dimensions,
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  Easing,
   Image,
   Alert,
   LayoutAnimation,
   UIManager,
 } from 'react-native';
+import Animated, {
+  SharedValue,
+  useSharedValue,
+  useAnimatedStyle,
+  interpolate as reanimatedInterpolate,
+  Extrapolation,
+} from 'react-native-reanimated';
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -48,9 +53,7 @@ interface LogModalProps {
   visible: boolean;
   onClose: () => void;
   // New props for embedded mode (hero morph from HomeScreen)
-  morphProgress?: Animated.Value;
-  contentOpacity?: Animated.AnimatedInterpolation<number>;
-  contentTranslateY?: Animated.AnimatedInterpolation<number>;
+  morphProgress?: SharedValue<number>;
   isEmbedded?: boolean;
   // Split rendering (pill = input, sections float separately)
   inputOnly?: boolean;
@@ -70,8 +73,6 @@ export const LogModal: React.FC<LogModalProps> = ({
   visible,
   onClose,
   morphProgress: externalMorphProgress,
-  contentOpacity: externalContentOpacity,
-  contentTranslateY: externalContentTranslateY,
   isEmbedded = false,
   inputOnly = false,
   sectionsOnly = false,
@@ -189,34 +190,51 @@ export const LogModal: React.FC<LogModalProps> = ({
   }, [searchQuery]);
 
   // Staggered Cascade Animation (same as SearchModal) - now supports 4 sections
-  const sectionAnimations = useMemo(() => {
-    if (!externalMorphProgress) {
-      return [0, 1, 2, 3].map(() => ({ opacity: 1, translateY: 0 }));
-    }
+  // Uses Reanimated useAnimatedStyle for UI-thread driven animations
+  const fallbackProgress = useSharedValue(1);
+  const morphProg = externalMorphProgress ?? fallbackProgress;
 
-    const staggerDelay = 0.06; // Slightly faster stagger for 4 sections
-    const animationDuration = 0.30;
-    const baseStart = 0.50;
+  const staggerDelay = 0.06;
+  const animationDuration = 0.30;
+  const baseStart = 0.50;
 
-    return [0, 1, 2, 3].map((sectionIndex) => {
-      const sectionStart = baseStart + (sectionIndex * staggerDelay);
-      const sectionEnd = Math.min(sectionStart + animationDuration, 1);
+  const section0Style = useAnimatedStyle(() => {
+    const start = baseStart + (0 * staggerDelay);
+    const end = Math.min(start + animationDuration, 1);
+    return {
+      opacity: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [0, 0, 1, 1], Extrapolation.CLAMP),
+      transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [30, 30, 0, 0], Extrapolation.CLAMP) }],
+    };
+  });
 
-      const opacity = externalMorphProgress.interpolate({
-        inputRange: [0, sectionStart, sectionEnd, 1],
-        outputRange: [0, 0, 1, 1],
-        extrapolate: 'clamp',
-      });
+  const section1Style = useAnimatedStyle(() => {
+    const start = baseStart + (1 * staggerDelay);
+    const end = Math.min(start + animationDuration, 1);
+    return {
+      opacity: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [0, 0, 1, 1], Extrapolation.CLAMP),
+      transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [38, 38, 0, 0], Extrapolation.CLAMP) }],
+    };
+  });
 
-      const translateY = externalMorphProgress.interpolate({
-        inputRange: [0, sectionStart, sectionEnd, 1],
-        outputRange: [30 + (sectionIndex * 8), 30 + (sectionIndex * 8), 0, 0],
-        extrapolate: 'clamp',
-      });
+  const section2Style = useAnimatedStyle(() => {
+    const start = baseStart + (2 * staggerDelay);
+    const end = Math.min(start + animationDuration, 1);
+    return {
+      opacity: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [0, 0, 1, 1], Extrapolation.CLAMP),
+      transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [46, 46, 0, 0], Extrapolation.CLAMP) }],
+    };
+  });
 
-      return { opacity, translateY };
-    });
-  }, [externalMorphProgress]);
+  const section3Style = useAnimatedStyle(() => {
+    const start = baseStart + (3 * staggerDelay);
+    const end = Math.min(start + animationDuration, 1);
+    return {
+      opacity: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [0, 0, 1, 1], Extrapolation.CLAMP),
+      transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, start, end, 1], [54, 54, 0, 0], Extrapolation.CLAMP) }],
+    };
+  });
+
+  const sectionAnimatedStyles = [section0Style, section1Style, section2Style, section3Style];
 
   // Handle pending rating tap - show toast since rating flow is not built yet
   const handlePendingRatingPress = useCallback((item: SearchableItem) => {
@@ -378,10 +396,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                 <Animated.View
                   style={[
                     styles.section,
-                    {
-                      opacity: sectionAnimations[0].opacity,
-                      transform: [{ translateY: sectionAnimations[0].translateY }],
-                    },
+                    sectionAnimatedStyles[0],
                   ]}
                 >
                   {/* State 1: Empty - No logs at all */}
@@ -456,10 +471,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                 <Animated.View
                   style={[
                     styles.section,
-                    {
-                      opacity: sectionAnimations[1].opacity,
-                      transform: [{ translateY: sectionAnimations[1].translateY }],
-                    },
+                    sectionAnimatedStyles[1],
                   ]}
                 >
                   <SearchCarousel
@@ -476,10 +488,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                     <Animated.View
                       style={[
                         styles.section,
-                        {
-                          opacity: sectionAnimations[pendingRatings.length > 0 ? 2 : 1].opacity,
-                          transform: [{ translateY: sectionAnimations[pendingRatings.length > 0 ? 2 : 1].translateY }],
-                        },
+                        sectionAnimatedStyles[pendingRatings.length > 0 ? 2 : 1],
                       ]}
                     >
                       <SearchCarousel
@@ -496,10 +505,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                     <Animated.View
                       style={[
                         styles.section,
-                        {
-                          opacity: sectionAnimations[pendingRatings.length > 0 ? 2 : 1].opacity,
-                          transform: [{ translateY: sectionAnimations[pendingRatings.length > 0 ? 2 : 1].translateY }],
-                        },
+                        sectionAnimatedStyles[pendingRatings.length > 0 ? 2 : 1],
                       ]}
                     >
                       <SearchCarousel
@@ -516,10 +522,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                 <Animated.View
                   style={[
                     styles.section,
-                    {
-                      opacity: sectionAnimations[pendingRatings.length > 0 ? 3 : 2].opacity,
-                      transform: [{ translateY: sectionAnimations[pendingRatings.length > 0 ? 3 : 2].translateY }],
-                    },
+                    sectionAnimatedStyles[pendingRatings.length > 0 ? 3 : 2],
                   ]}
                 >
                   <View style={styles.sectionHeader}>

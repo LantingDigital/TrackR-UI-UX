@@ -105,10 +105,13 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
     );
 
     // Scale overshoot at destination (landing pop)
+    // Endpoints settle at 1.0 so resting size matches MorphingPill exactly.
+    // Pop zones (0.05-0.12 and 0.88-0.95) create the transient landing effect
+    // during spring-driven transitions without permanently altering size.
     const landingScale = interpolate(
       progress,
-      [0, 0.1, 0.9, 1],
-      [1.04, 1, 1, 1.02],
+      [0, 0.05, 0.12, 0.88, 0.95, 1],
+      [1.0, 1.04, 1.0, 1.0, 1.02, 1.0],
       Extrapolation.CLAMP
     );
 

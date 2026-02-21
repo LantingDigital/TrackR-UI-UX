@@ -1,6 +1,15 @@
-import React, { useRef, useEffect } from 'react';
-import { StyleSheet, TextInput, Pressable, Animated } from 'react-native';
+import React from 'react';
+import { StyleSheet, TextInput, Pressable } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  interpolate,
+  Extrapolation,
+} from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
+import { SPRINGS } from '../constants/animations';
 
 interface SearchBarProps {
   onPress?: () => void;
@@ -16,59 +25,46 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   placeholder = "Search rides, parks, news...",
   collapsed = false,
 }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const heightAnim = useRef(new Animated.Value(EXPANDED_HEIGHT)).current;
-  const textOpacity = useRef(new Animated.Value(1)).current;
+  const scale = useSharedValue(1);
+  const collapseProgress = useSharedValue(collapsed ? 1 : 0);
 
-  useEffect(() => {
-    Animated.parallel([
-      Animated.timing(heightAnim, {
-        toValue: collapsed ? COLLAPSED_HEIGHT : EXPANDED_HEIGHT,
-        duration: 300,
-        useNativeDriver: false,
-      }),
-      Animated.timing(textOpacity, {
-        toValue: collapsed ? 0 : 1,
-        duration: 200,
-        useNativeDriver: false,
-      }),
-    ]).start();
+  React.useEffect(() => {
+    collapseProgress.value = withTiming(collapsed ? 1 : 0, { duration: 300 });
   }, [collapsed]);
 
   const handlePressIn = () => {
-    Animated.spring(scaleAnim, {
-      toValue: 0.98,
-      useNativeDriver: true,
-    }).start();
+    scale.value = withSpring(0.98, SPRINGS.responsive);
   };
 
   const handlePressOut = () => {
-    Animated.spring(scaleAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
+    scale.value = withSpring(1, SPRINGS.responsive);
   };
 
-  const borderRadius = heightAnim.interpolate({
-    inputRange: [COLLAPSED_HEIGHT, EXPANDED_HEIGHT],
-    outputRange: [COLLAPSED_HEIGHT / 2, EXPANDED_HEIGHT / 2],
-  });
+  const outerStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
+  const containerStyle = useAnimatedStyle(() => ({
+    height: interpolate(collapseProgress.value, [0, 1], [EXPANDED_HEIGHT, COLLAPSED_HEIGHT]),
+    borderRadius: interpolate(
+      collapseProgress.value,
+      [0, 1],
+      [EXPANDED_HEIGHT / 2, COLLAPSED_HEIGHT / 2],
+      Extrapolation.CLAMP
+    ),
+    paddingHorizontal: collapsed ? 12 : 20,
+  }));
+
+  const textStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(collapseProgress.value, [0, 1], [1, 0], Extrapolation.CLAMP),
+  }));
 
   return (
-    <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
+    <Animated.View style={outerStyle}>
       <Pressable onPress={onPress} onPressIn={handlePressIn} onPressOut={handlePressOut}>
-        <Animated.View
-          style={[
-            styles.container,
-            {
-              height: heightAnim,
-              borderRadius: borderRadius,
-              paddingHorizontal: collapsed ? 12 : 20,
-            },
-          ]}
-        >
+        <Animated.View style={[styles.container, containerStyle]}>
           <Ionicons name="search" size={collapsed ? 16 : 20} color="#999999" style={styles.icon} />
-          <Animated.View style={{ flex: 1, opacity: textOpacity }}>
+          <Animated.View style={[{ flex: 1 }, textStyle]}>
             {!collapsed && (
               <TextInput
                 style={styles.input}

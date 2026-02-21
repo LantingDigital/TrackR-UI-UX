@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,9 +8,13 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
-  Animated,
   Modal,
 } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -52,17 +56,17 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [recentSearches, setRecentSearches] = useState(RECENT_SEARCHES);
-  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const fadeAnim = useSharedValue(0);
+
+  const fadeStyle = useAnimatedStyle(() => ({
+    opacity: fadeAnim.value,
+  }));
 
   useEffect(() => {
     if (visible) {
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: true,
-      }).start();
+      fadeAnim.value = withTiming(1, { duration: 200 });
     } else {
-      fadeAnim.setValue(0);
+      fadeAnim.value = 0;
     }
   }, [visible]);
 
@@ -102,7 +106,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
       statusBarTranslucent
       onRequestClose={handleClose}
     >
-      <Animated.View style={[styles.overlay, { paddingTop: insets.top, opacity: fadeAnim }]}>
+      <Animated.View style={[styles.overlay, { paddingTop: insets.top }, fadeStyle]}>
         <BlurView intensity={80} tint="light" style={StyleSheet.absoluteFill} />
 
         <KeyboardAvoidingView

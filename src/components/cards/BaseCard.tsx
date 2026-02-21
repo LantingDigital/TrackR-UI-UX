@@ -19,9 +19,9 @@ import {
   StyleSheet,
   ViewStyle,
   Pressable,
-  Animated,
   GestureResponderEvent,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { colors } from '../../theme/colors';
 import { radius } from '../../theme/radius';
@@ -162,7 +162,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   const scale = SCALE_MAP[pressScale];
 
   // Get press feedback (only if pressable and not disabled)
-  const { scaleValue, opacityValue, pressHandlers } = useSpringPress({
+  const { animatedStyle, pressHandlers } = useSpringPress({
     scale,
     opacity: isPressable ? 0.95 : 1,
     disabled: disabled || !isPressable,
@@ -197,10 +197,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
     <Animated.View
       style={[
         containerStyle,
-        {
-          transform: [{ scale: scaleValue }],
-          opacity: opacityValue,
-        },
+        animatedStyle,
       ]}
       testID={testID}
     >

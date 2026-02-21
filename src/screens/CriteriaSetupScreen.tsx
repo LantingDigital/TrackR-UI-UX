@@ -15,7 +15,7 @@ import {
   StyleSheet,
   ScrollView,
   Pressable,
-  Animated,
+  Animated as RNAnimated,
   TextInput,
   Alert,
   Dimensions,
@@ -29,6 +29,8 @@ import {
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
+import Animated from 'react-native-reanimated';
+import { useSpringPress } from '../hooks/useSpringPress';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
@@ -731,25 +733,13 @@ interface TemplateChipProps {
 }
 
 const TemplateChip: React.FC<TemplateChipProps> = ({ template, onPress }) => {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = useCallback(() => {
-    Animated.spring(scaleAnim, {
-      toValue: 0.95,
-      ...RESPONSIVE_SPRING,
-    }).start();
-  }, [scaleAnim]);
-
-  const handlePressOut = useCallback(() => {
-    Animated.spring(scaleAnim, {
-      toValue: 1,
-      ...RESPONSIVE_SPRING,
-    }).start();
-  }, [scaleAnim]);
+  const { pressHandlers, animatedStyle } = useSpringPress({
+    scale: 0.95,
+  });
 
   return (
-    <Pressable onPress={onPress} onPressIn={handlePressIn} onPressOut={handlePressOut}>
-      <Animated.View style={[styles.templateChip, { transform: [{ scale: scaleAnim }] }]}>
+    <Pressable onPress={onPress} onPressIn={pressHandlers.onPressIn} onPressOut={pressHandlers.onPressOut}>
+      <Animated.View style={[styles.templateChip, animatedStyle]}>
         <Ionicons name={template.icon} size={18} color={colors.accent.primary} />
         <Text style={styles.templateChipText}>{template.name}</Text>
       </Animated.View>
@@ -1017,12 +1007,12 @@ const WeightSlider: React.FC<WeightSliderProps> = ({
   }, [trackWidth]);
 
   // Animated value for thumb position (in pixels)
-  const thumbPositionPx = useRef(new Animated.Value(valueToPosition(value))).current;
+  const thumbPositionPx = useRef(new RNAnimated.Value(valueToPosition(value))).current;
 
   // Update thumb position when value changes AND not dragging
   useEffect(() => {
     if (!isDragging.current) {
-      Animated.spring(thumbPositionPx, {
+      RNAnimated.spring(thumbPositionPx, {
         toValue: valueToPosition(value),
         damping: 16,
         stiffness: 180,
@@ -1139,7 +1129,7 @@ const WeightSlider: React.FC<WeightSliderProps> = ({
     gestureDecided.current = false;
 
     // Snap back to actual value position with spring animation
-    Animated.spring(thumbPositionPx, {
+    RNAnimated.spring(thumbPositionPx, {
       toValue: valueToPosition(value),
       damping: 15,
       stiffness: 200,
@@ -1175,7 +1165,7 @@ const WeightSlider: React.FC<WeightSliderProps> = ({
       {/* Track Background */}
       <View style={[styles.sliderTrack, { width: trackWidth, marginLeft: THUMB_SIZE / 2 }]}>
         {/* Fill */}
-        <Animated.View
+        <RNAnimated.View
           style={[
             styles.sliderFill,
             { width: fillWidth },
@@ -1185,7 +1175,7 @@ const WeightSlider: React.FC<WeightSliderProps> = ({
       </View>
 
       {/* Thumb - positioned with left offset + translateX */}
-      <Animated.View
+      <RNAnimated.View
         style={[
           styles.sliderThumb,
           {

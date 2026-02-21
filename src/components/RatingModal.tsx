@@ -1,5 +1,5 @@
 /**
- * RatingModal
+ * RatingModal (Reanimated)
  *
  * Full-screen rating sheet with collapsing hero header.
  * Features:
@@ -14,13 +14,22 @@ import {
   View,
   Text,
   StyleSheet,
-  Animated,
   Pressable,
   Dimensions,
-  ScrollView,
-  KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  useAnimatedScrollHandler,
+  withSpring,
+  withTiming,
+  withSequence,
+  withDelay,
+  interpolate,
+  Extrapolation,
+  runOnJS,
+} from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
@@ -31,23 +40,9 @@ import { spacing } from '../theme/spacing';
 import { radius } from '../theme/radius';
 import { RideLog, RatingCriteria } from '../types/rideLog';
 import { getCriteriaConfig, completeRating, subscribe } from '../stores/rideLogStore';
+import { SPRINGS } from '../constants/animations';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
-
-// Animation constants
-const RESPONSIVE_SPRING = {
-  damping: 16,
-  stiffness: 180,
-  mass: 0.8,
-  useNativeDriver: false,
-};
-
-const BOUNCE_SPRING = {
-  damping: 14,
-  stiffness: 120,
-  mass: 1,
-  useNativeDriver: false,
-};
 
 // Header dimensions
 const HEADER_EXPANDED_HEIGHT = 200;
@@ -79,20 +74,18 @@ export const RatingModal: React.FC<RatingModalProps> = ({
   onComplete,
 }) => {
   const insets = useSafeAreaInsets();
-  const scrollViewRef = useRef<ScrollView>(null);
 
-  // Animation values
-  const morphProgress = useRef(new Animated.Value(0)).current;
-  const scrollY = useRef(new Animated.Value(0)).current;
-  const backdropOpacity = useRef(new Animated.Value(0)).current;
-  const successScale = useRef(new Animated.Value(0)).current;
-  const successOpacity = useRef(new Animated.Value(0)).current;
+  // Animation shared values
+  const morphProgress = useSharedValue(0);
+  const scrollY = useSharedValue(0);
+  const backdropOpacity = useSharedValue(0);
+  const successScale = useSharedValue(0);
+  const successOpacity = useSharedValue(0);
   const [showSuccess, setShowSuccess] = useState(false);
 
   // Get criteria configuration
   const [criteriaConfig, setCriteriaConfig] = useState(getCriteriaConfig());
   const [ratings, setRatings] = useState<Record<string, number>>(() => {
-    // Initialize all ratings to 5.0
     const initial: Record<string, number> = {};
     criteriaConfig.criteria.forEach((c) => {
       initial[c.id] = 5.0;
@@ -111,65 +104,44 @@ export const RatingModal: React.FC<RatingModalProps> = ({
 
   // Run enter animation
   useEffect(() => {
-    Animated.parallel([
-      Animated.spring(morphProgress, {
-        toValue: 1,
-        ...BOUNCE_SPRING,
-      }),
-      Animated.timing(backdropOpacity, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [morphProgress, backdropOpacity]);
+    morphProgress.value = withSpring(1, SPRINGS.bouncy);
+    backdropOpacity.value = withTiming(1, { duration: 300 });
+  }, []);
+
+  // Scroll handler (UI thread)
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollY.value = event.contentOffset.y;
+    },
+  });
+
+  // Callbacks for runOnJS
+  const callOnClose = useCallback(() => { onClose(); }, [onClose]);
+  const callOnComplete = useCallback(() => { onComplete(log, ratings); }, [log, ratings, onComplete]);
 
   // Handle close with reverse animation
   const handleClose = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-
-    Animated.parallel([
-      Animated.spring(morphProgress, {
-        toValue: 0,
-        ...RESPONSIVE_SPRING,
-      }),
-      Animated.timing(backdropOpacity, {
-        toValue: 0,
-        duration: 250,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      onClose();
-    });
+    morphProgress.value = withSpring(0, SPRINGS.responsive);
+    backdropOpacity.value = withTiming(0, { duration: 250 });
+    setTimeout(() => { onClose(); }, 350);
   }, [morphProgress, backdropOpacity, onClose]);
 
   // Handle submit with success animation
   const handleSubmit = useCallback(() => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-
-    // Show success overlay
     setShowSuccess(true);
-    successScale.setValue(0);
-    successOpacity.setValue(1);
+    successScale.value = 0;
+    successOpacity.value = 1;
 
-    // Animate success checkmark
-    Animated.sequence([
-      Animated.spring(successScale, {
-        toValue: 1,
-        damping: 12,
-        stiffness: 150,
-        mass: 0.8,
-        useNativeDriver: true,
-      }),
-      Animated.delay(400),
-      Animated.timing(successOpacity, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      onComplete(log, ratings);
-    });
+    successScale.value = withSpring(1, { damping: 12, stiffness: 150, mass: 0.8 });
+
+    setTimeout(() => {
+      successOpacity.value = withTiming(0, { duration: 200 });
+      setTimeout(() => {
+        onComplete(log, ratings);
+      }, 250);
+    }, 600);
   }, [log, ratings, onComplete, successScale, successOpacity]);
 
   // Update a rating value
@@ -184,79 +156,104 @@ export const RatingModal: React.FC<RatingModalProps> = ({
   const weightedScore = useMemo(() => {
     let totalWeight = 0;
     let weightedSum = 0;
-
     criteriaConfig.criteria.forEach((c) => {
       const rating = ratings[c.id] || 5.0;
       weightedSum += rating * c.weight;
       totalWeight += c.weight;
     });
-
     return totalWeight > 0 ? weightedSum / totalWeight : 5.0;
   }, [criteriaConfig.criteria, ratings]);
 
-  // Header interpolations
-  const headerHeight = scrollY.interpolate({
-    inputRange: [0, SCROLL_DISTANCE],
-    outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
-    extrapolate: 'clamp',
-  });
+  // Animated styles
+  const backdropAnimStyle = useAnimatedStyle(() => ({
+    opacity: backdropOpacity.value,
+  }));
 
-  const imageScale = scrollY.interpolate({
-    inputRange: [-50, 0, SCROLL_DISTANCE],
-    outputRange: [1.2, 1, 0.8],
-    extrapolate: 'clamp',
-  });
+  const modalAnimStyle = useAnimatedStyle(() => ({
+    transform: [
+      { scale: interpolate(morphProgress.value, [0, 1], [0.9, 1]) },
+      { translateY: interpolate(morphProgress.value, [0, 1], [50, 0]) },
+    ],
+  }));
 
-  const imageTranslateY = scrollY.interpolate({
-    inputRange: [0, SCROLL_DISTANCE],
-    outputRange: [0, -30],
-    extrapolate: 'clamp',
-  });
+  const headerAnimStyle = useAnimatedStyle(() => ({
+    height: interpolate(
+      scrollY.value,
+      [0, SCROLL_DISTANCE],
+      [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
+      Extrapolation.CLAMP
+    ),
+  }));
 
-  const imageOpacity = scrollY.interpolate({
-    inputRange: [0, SCROLL_DISTANCE * 0.7],
-    outputRange: [1, 0.3],
-    extrapolate: 'clamp',
-  });
+  const heroImageAnimStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      scrollY.value,
+      [0, SCROLL_DISTANCE * 0.7],
+      [1, 0.3],
+      Extrapolation.CLAMP
+    ),
+    transform: [
+      {
+        scale: interpolate(
+          scrollY.value,
+          [-50, 0, SCROLL_DISTANCE],
+          [1.2, 1, 0.8],
+          Extrapolation.CLAMP
+        ),
+      },
+      {
+        translateY: interpolate(
+          scrollY.value,
+          [0, SCROLL_DISTANCE],
+          [0, -30],
+          Extrapolation.CLAMP
+        ),
+      },
+    ],
+  }));
 
-  const titleScale = scrollY.interpolate({
-    inputRange: [0, SCROLL_DISTANCE],
-    outputRange: [1, 0.85],
-    extrapolate: 'clamp',
-  });
+  const titleAnimStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        scale: interpolate(
+          scrollY.value,
+          [0, SCROLL_DISTANCE],
+          [1, 0.85],
+          Extrapolation.CLAMP
+        ),
+      },
+      {
+        translateY: interpolate(
+          scrollY.value,
+          [0, SCROLL_DISTANCE],
+          [0, -20],
+          Extrapolation.CLAMP
+        ),
+      },
+    ],
+  }));
 
-  const titleTranslateY = scrollY.interpolate({
-    inputRange: [0, SCROLL_DISTANCE],
-    outputRange: [0, -20],
-    extrapolate: 'clamp',
-  });
+  const contentAnimStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      morphProgress.value,
+      [0.5, 1],
+      [0, 1],
+      Extrapolation.CLAMP
+    ),
+  }));
 
-  // Morph interpolations
-  const modalScale = morphProgress.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.9, 1],
-  });
+  const successOverlayStyle = useAnimatedStyle(() => ({
+    opacity: successOpacity.value,
+  }));
 
-  const modalTranslateY = morphProgress.interpolate({
-    inputRange: [0, 1],
-    outputRange: [50, 0],
-  });
-
-  const contentOpacity = morphProgress.interpolate({
-    inputRange: [0.5, 1],
-    outputRange: [0, 1],
-    extrapolate: 'clamp',
-  });
+  const successCircleStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: successScale.value }],
+  }));
 
   return (
     <View style={StyleSheet.absoluteFill}>
       {/* Backdrop */}
-      <Animated.View
-        style={[
-          styles.backdrop,
-          { opacity: backdropOpacity },
-        ]}
-      >
+      <Animated.View style={[styles.backdrop, backdropAnimStyle]}>
         <BlurView intensity={20} tint="dark" style={StyleSheet.absoluteFill} />
       </Animated.View>
 
@@ -264,35 +261,16 @@ export const RatingModal: React.FC<RatingModalProps> = ({
       <Animated.View
         style={[
           styles.modalContainer,
-          {
-            paddingTop: insets.top,
-            transform: [
-              { scale: modalScale },
-              { translateY: modalTranslateY },
-            ],
-          },
+          { paddingTop: insets.top },
+          modalAnimStyle,
         ]}
       >
         {/* Collapsing Hero Header */}
-        <Animated.View
-          style={[
-            styles.heroHeader,
-            { height: headerHeight },
-          ]}
-        >
+        <Animated.View style={[styles.heroHeader, headerAnimStyle]}>
           {/* Blurred Background Image */}
           <Animated.Image
             source={{ uri: imageUrl }}
-            style={[
-              styles.heroImage,
-              {
-                opacity: imageOpacity,
-                transform: [
-                  { scale: imageScale },
-                  { translateY: imageTranslateY },
-                ],
-              },
-            ]}
+            style={[styles.heroImage, heroImageAnimStyle]}
             blurRadius={3}
           />
 
@@ -310,17 +288,7 @@ export const RatingModal: React.FC<RatingModalProps> = ({
           </Pressable>
 
           {/* Title Section */}
-          <Animated.View
-            style={[
-              styles.heroTitleContainer,
-              {
-                transform: [
-                  { scale: titleScale },
-                  { translateY: titleTranslateY },
-                ],
-              },
-            ]}
-          >
+          <Animated.View style={[styles.heroTitleContainer, titleAnimStyle]}>
             <Text style={styles.heroTitle} numberOfLines={2}>
               {log.coasterName}
             </Text>
@@ -332,7 +300,6 @@ export const RatingModal: React.FC<RatingModalProps> = ({
 
         {/* Scrollable Content */}
         <Animated.ScrollView
-          ref={scrollViewRef}
           style={styles.scrollView}
           contentContainerStyle={[
             styles.scrollContent,
@@ -341,12 +308,9 @@ export const RatingModal: React.FC<RatingModalProps> = ({
           showsVerticalScrollIndicator={false}
           scrollEnabled={!isSliding}
           scrollEventThrottle={16}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-            { useNativeDriver: false }
-          )}
+          onScroll={scrollHandler}
         >
-          <Animated.View style={{ opacity: contentOpacity }}>
+          <Animated.View style={contentAnimStyle}>
             {/* Live Score Display */}
             <View style={styles.scoreCard}>
               <View style={styles.scoreRow}>
@@ -395,18 +359,8 @@ export const RatingModal: React.FC<RatingModalProps> = ({
 
         {/* Success Overlay */}
         {showSuccess && (
-          <Animated.View
-            style={[
-              styles.successOverlay,
-              { opacity: successOpacity },
-            ]}
-          >
-            <Animated.View
-              style={[
-                styles.successCircle,
-                { transform: [{ scale: successScale }] },
-              ]}
-            >
+          <Animated.View style={[styles.successOverlay, successOverlayStyle]}>
+            <Animated.View style={[styles.successCircle, successCircleStyle]}>
               <Ionicons name="checkmark" size={48} color="#FFFFFF" />
             </Animated.View>
             <Text style={styles.successText}>Rating Saved!</Text>
@@ -435,7 +389,7 @@ const RatingSliderRow: React.FC<RatingSliderRowProps> = ({
   onSlidingStart,
   onSlidingEnd,
 }) => {
-  const sliderWidth = SCREEN_WIDTH - spacing.lg * 2 - 60; // Account for padding and value display
+  const sliderWidth = SCREEN_WIDTH - spacing.lg * 2 - 60;
 
   return (
     <View style={styles.sliderRow}>
@@ -470,7 +424,7 @@ const RatingSliderRow: React.FC<RatingSliderRowProps> = ({
 };
 
 // =========================================
-// Half-Point Slider Component
+// Half-Point Slider Component (Reanimated)
 // =========================================
 interface HalfPointSliderProps {
   value: number;
@@ -480,11 +434,9 @@ interface HalfPointSliderProps {
   onSlidingEnd: () => void;
 }
 
-// Value range: 1.0 to 10.0 with 0.5 increments = 19 snap points
 const MIN_VALUE = 1.0;
 const MAX_VALUE = 10.0;
 const STEP = 0.5;
-const TOTAL_STEPS = (MAX_VALUE - MIN_VALUE) / STEP; // 18 steps
 
 const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
   value,
@@ -501,20 +453,17 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
   const lastValue = useRef(value);
   const gestureDecided = useRef(false);
 
-  // Animated value for thumb position
-  const thumbPositionPx = useRef(new Animated.Value(valueToPosition(value))).current;
+  // Shared value for thumb position
+  const thumbPosition = useSharedValue(valueToPosition(value));
 
-  // Convert value to position
   function valueToPosition(val: number): number {
     const normalized = (val - MIN_VALUE) / (MAX_VALUE - MIN_VALUE);
     return normalized * trackWidth;
   }
 
-  // Convert position to value (with half-point snapping)
   function positionToValue(pos: number): number {
     const normalized = pos / trackWidth;
     const rawValue = normalized * (MAX_VALUE - MIN_VALUE) + MIN_VALUE;
-    // Snap to nearest half-point
     const snapped = Math.round(rawValue / STEP) * STEP;
     return Math.max(MIN_VALUE, Math.min(MAX_VALUE, snapped));
   }
@@ -522,15 +471,9 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
   // Update thumb when value changes externally
   useEffect(() => {
     if (!isDragging.current) {
-      Animated.spring(thumbPositionPx, {
-        toValue: valueToPosition(value),
-        damping: 16,
-        stiffness: 180,
-        mass: 0.8,
-        useNativeDriver: false,
-      }).start();
+      thumbPosition.value = withSpring(valueToPosition(value), SPRINGS.responsive);
     }
-  }, [value, thumbPositionPx]);
+  }, [value]);
 
   const handleStartDrag = useCallback(
     (evt: { nativeEvent: { pageX: number; pageY: number } }) => {
@@ -546,7 +489,6 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
 
   const handleMoveDrag = useCallback(
     (evt: { nativeEvent: { pageX: number; pageY: number } }) => {
-      // Gesture direction detection
       if (!gestureDecided.current) {
         const deltaX = Math.abs(evt.nativeEvent.pageX - startX.current);
         const deltaY = Math.abs(evt.nativeEvent.pageY - startY.current);
@@ -556,12 +498,10 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
         gestureDecided.current = true;
 
         if (deltaY >= deltaX) {
-          // Vertical gesture - let scroll handle it
           isDragging.current = false;
           return;
         }
 
-        // Horizontal - start dragging
         isDragging.current = true;
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         onSlidingStart();
@@ -575,16 +515,15 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
       const clampedPosition = Math.max(0, Math.min(trackWidth, desiredPosition));
       const newValue = positionToValue(clampedPosition);
 
-      // Haptic feedback on value change
       if (newValue !== lastValue.current) {
         Haptics.selectionAsync();
         lastValue.current = newValue;
         onChange(newValue);
       }
 
-      thumbPositionPx.setValue(clampedPosition);
+      thumbPosition.value = clampedPosition;
     },
-    [onChange, thumbPositionPx, trackWidth, onSlidingStart]
+    [onChange, thumbPosition, trackWidth, onSlidingStart]
   );
 
   const handleEndDrag = useCallback(() => {
@@ -592,26 +531,30 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
     isDragging.current = false;
     gestureDecided.current = false;
 
-    // Snap to final value position
-    Animated.spring(thumbPositionPx, {
-      toValue: valueToPosition(value),
+    thumbPosition.value = withSpring(valueToPosition(value), {
       damping: 15,
       stiffness: 200,
       mass: 0.8,
-      useNativeDriver: false,
-    }).start();
+    });
 
     if (wasDragging) {
       onSlidingEnd();
     }
-  }, [thumbPositionPx, value, onSlidingEnd]);
+  }, [thumbPosition, value, onSlidingEnd]);
 
-  // Fill width interpolation
-  const fillWidth = thumbPositionPx.interpolate({
-    inputRange: [0, trackWidth],
-    outputRange: [0, trackWidth],
-    extrapolate: 'clamp',
-  });
+  // Animated styles for thumb and fill
+  const thumbAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: thumbPosition.value }],
+  }));
+
+  const fillAnimStyle = useAnimatedStyle(() => ({
+    width: interpolate(
+      thumbPosition.value,
+      [0, trackWidth],
+      [0, trackWidth],
+      Extrapolation.CLAMP
+    ),
+  }));
 
   return (
     <View
@@ -626,18 +569,15 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
     >
       {/* Track Background */}
       <View style={[styles.sliderTrack, { width: trackWidth, marginLeft: SLIDER_THUMB_SIZE / 2 }]}>
-        {/* Fill */}
-        <Animated.View style={[styles.sliderFill, { width: fillWidth }]} />
+        <Animated.View style={[styles.sliderFill, fillAnimStyle]} />
       </View>
 
       {/* Thumb */}
       <Animated.View
         style={[
           styles.sliderThumb,
-          {
-            left: 0,
-            transform: [{ translateX: thumbPositionPx }],
-          },
+          { left: 0 },
+          thumbAnimStyle,
         ]}
       />
     </View>

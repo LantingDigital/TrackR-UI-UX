@@ -1,20 +1,29 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import {
   StyleSheet,
   View,
   Text,
   Pressable,
-  Animated,
   Dimensions,
   Image,
 } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  withSequence,
+  withDelay,
+  runOnJS,
+  Easing,
+} from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 
 import { SearchableItem } from '../data/mockSearchData';
-import { addQuickLog } from '../stores/rideLogStore';
+import { addQuickLog, RideLog } from '../stores/rideLogStore';
 import { useTabBar } from '../contexts/TabBarContext';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -25,6 +34,7 @@ interface LogConfirmationCardProps {
   initialPosition: { x: number; y: number; width: number; height: number };
   onClose: () => void;
   onLogComplete: () => void;
+  onRateNow?: (item: SearchableItem, newLog: RideLog) => void;
 }
 
 export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
@@ -33,23 +43,24 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
   initialPosition,
   onClose,
   onLogComplete,
+  onRateNow,
 }) => {
   const insets = useSafeAreaInsets();
   const [isLogged, setIsLogged] = useState(false);
   const tabBar = useTabBar();
 
-  // Animation values
-  const cardScale = useRef(new Animated.Value(0.3)).current;
-  const cardOpacity = useRef(new Animated.Value(0)).current;
-  const cardTranslateX = useRef(new Animated.Value(0)).current;
-  const cardTranslateY = useRef(new Animated.Value(0)).current;
-  const backdropOpacity = useRef(new Animated.Value(0)).current;
+  // Animation shared values
+  const cardScale = useSharedValue(0.3);
+  const cardOpacity = useSharedValue(0);
+  const cardTranslateX = useSharedValue(0);
+  const cardTranslateY = useSharedValue(0);
+  const backdropOpacity = useSharedValue(0);
 
   // Success state animations
-  const successScale = useRef(new Animated.Value(1)).current;
-  const checkmarkOpacity = useRef(new Animated.Value(0)).current;
-  const checkmarkScale = useRef(new Animated.Value(0.5)).current;
-  const buttonOpacity = useRef(new Animated.Value(1)).current;
+  const successScale = useSharedValue(1);
+  const checkmarkOpacity = useSharedValue(0);
+  const checkmarkScale = useSharedValue(0.5);
+  const buttonOpacity = useSharedValue(1);
 
   // Final card dimensions (centered, Apple Wallet style)
   const finalWidth = SCREEN_WIDTH - 48;
@@ -66,7 +77,6 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
   const offsetY = initialCenterY - finalCenterY;
 
   // Hide tab bar when modal becomes visible
-  // (showing is handled explicitly in handleCancel and handleLogRide for better timing)
   useEffect(() => {
     if (visible) {
       tabBar?.hideTabBar(250);
@@ -76,61 +86,39 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
   // Fly-in animation when visible
   useEffect(() => {
     if (visible && item) {
-      // IMPORTANT: Reset checkmark FIRST to prevent flicker
-      checkmarkOpacity.setValue(0);
-      checkmarkScale.setValue(0.5);
+      // Reset all values
+      checkmarkOpacity.value = 0;
+      checkmarkScale.value = 0.5;
+      cardScale.value = 0.3;
+      cardOpacity.value = 0;
+      cardTranslateX.value = offsetX;
+      cardTranslateY.value = offsetY;
+      backdropOpacity.value = 0;
+      successScale.value = 1;
+      buttonOpacity.value = 1;
 
-      // Then reset other values
-      cardScale.setValue(0.3);
-      cardOpacity.setValue(0);
-      cardTranslateX.setValue(offsetX);
-      cardTranslateY.setValue(offsetY);
-      backdropOpacity.setValue(0);
-      successScale.setValue(1);
-      buttonOpacity.setValue(1);
-
-      // Reset state last
       setIsLogged(false);
 
       // Fly-in animation
-      Animated.parallel([
-        Animated.timing(backdropOpacity, {
-          toValue: 1,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-        Animated.spring(cardScale, {
-          toValue: 1,
-          damping: 18,
-          stiffness: 120,
-          mass: 1,
-          useNativeDriver: true,
-        }),
-        Animated.timing(cardOpacity, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-        Animated.spring(cardTranslateX, {
-          toValue: 0,
-          damping: 20,
-          stiffness: 150,
-          mass: 1,
-          useNativeDriver: true,
-        }),
-        Animated.spring(cardTranslateY, {
-          toValue: 0,
-          damping: 20,
-          stiffness: 150,
-          mass: 1,
-          useNativeDriver: true,
-        }),
-      ]).start();
+      backdropOpacity.value = withTiming(1, { duration: 300 });
+      cardScale.value = withSpring(1, { damping: 18, stiffness: 120, mass: 1 });
+      cardOpacity.value = withTiming(1, { duration: 200 });
+      cardTranslateX.value = withSpring(0, { damping: 20, stiffness: 150, mass: 1 });
+      cardTranslateY.value = withSpring(0, { damping: 20, stiffness: 150, mass: 1 });
     }
   }, [visible, item, offsetX, offsetY]);
 
-  // Handle log ride press
-  const handleLogRide = useCallback(() => {
+  // Callbacks wrapped for runOnJS
+  const triggerLogComplete = useCallback(() => {
+    onLogComplete();
+  }, [onLogComplete]);
+
+  const showTabBar = useCallback(() => {
+    tabBar?.showTabBar(250);
+  }, [tabBar]);
+
+  // Handle Quick Log press
+  const handleQuickLog = useCallback(() => {
     if (!item || isLogged) return;
 
     // Add to store
@@ -139,135 +127,120 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
       undefined
     );
 
-    // Set checkmark starting values BEFORE state change triggers render
-    checkmarkOpacity.setValue(0);
-    checkmarkScale.setValue(0.5);
-
     setIsLogged(true);
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
-    // Success animation - start after tiny delay to ensure render completes
+    // Success animation
     setTimeout(() => {
-      Animated.parallel([
-        // Hide button instantly
-        Animated.timing(buttonOpacity, {
-          toValue: 0,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        // Single subtle bounce (1 -> 1.03 -> 1)
-        Animated.sequence([
-          Animated.timing(successScale, {
-            toValue: 1.03,
-            duration: 150,
-            useNativeDriver: true,
-          }),
-          Animated.timing(successScale, {
-            toValue: 1,
-            duration: 150,
-            useNativeDriver: true,
-          }),
-        ]),
-        // Checkmark fade in and scale up
-        Animated.parallel([
-          Animated.timing(checkmarkOpacity, {
-            toValue: 1,
-            duration: 250,
-            useNativeDriver: true,
-          }),
-          Animated.spring(checkmarkScale, {
-            toValue: 1,
-            damping: 15,
-            stiffness: 200,
-            useNativeDriver: true,
-          }),
-        ]),
-      ]).start(() => {
-        // Hold for 1.5 seconds, then smooth fade out
-        setTimeout(() => {
-          // Show tab bar as fade-out starts
-          tabBar?.showTabBar(250);
+      // Hide buttons
+      buttonOpacity.value = withTiming(0, { duration: 100 });
 
-          Animated.parallel([
-            Animated.timing(backdropOpacity, {
-              toValue: 0,
-              duration: 300,
-              useNativeDriver: true,
-            }),
-            Animated.timing(cardScale, {
-              toValue: 0.85,
-              duration: 300,
-              useNativeDriver: true,
-            }),
-            Animated.timing(cardOpacity, {
-              toValue: 0,
-              duration: 300,
-              useNativeDriver: true,
-            }),
-            // Fade out checkmark with everything else
-            Animated.timing(checkmarkOpacity, {
-              toValue: 0,
-              duration: 300,
-              useNativeDriver: true,
-            }),
-          ]).start(() => {
-            onLogComplete();
-          });
-        }, 1500);
-      });
+      // Subtle bounce
+      successScale.value = withSequence(
+        withTiming(1.03, { duration: 150 }),
+        withTiming(1, { duration: 150 })
+      );
+
+      // Checkmark fade in and scale up
+      checkmarkOpacity.value = withTiming(1, { duration: 250 });
+      checkmarkScale.value = withSpring(1, { damping: 15, stiffness: 200 });
+
+      // Hold for 1.5 seconds, then fade out
+      setTimeout(() => {
+        tabBar?.showTabBar(250);
+
+        backdropOpacity.value = withTiming(0, { duration: 300 });
+        cardScale.value = withTiming(0.85, { duration: 300 });
+        cardOpacity.value = withTiming(0, { duration: 300 });
+        checkmarkOpacity.value = withTiming(0, { duration: 300 });
+
+        setTimeout(() => {
+          onLogComplete();
+        }, 350);
+      }, 1500);
     }, 16);
   }, [item, isLogged, onLogComplete, buttonOpacity, successScale, checkmarkOpacity, checkmarkScale, cardScale, cardOpacity, backdropOpacity, tabBar]);
 
+  // Handle Rate Now press
+  const handleRateNow = useCallback(() => {
+    if (!item || isLogged) return;
+
+    // Add to store (creates a pending log)
+    const newLog = addQuickLog(
+      { id: item.id, name: item.name, parkName: item.subtitle || '' },
+      undefined
+    );
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    // Slide card out (no checkmark) - animate card away
+    buttonOpacity.value = withTiming(0, { duration: 150 });
+    cardTranslateY.value = withTiming(-50, { duration: 250, easing: Easing.out(Easing.cubic) });
+    cardOpacity.value = withTiming(0, { duration: 250 });
+    backdropOpacity.value = withTiming(0, { duration: 300 });
+
+    // After animation, notify parent to open RatingModal
+    setTimeout(() => {
+      tabBar?.showTabBar(250);
+      if (onRateNow) {
+        onRateNow(item, newLog);
+      }
+      onLogComplete();
+    }, 300);
+  }, [item, isLogged, onLogComplete, onRateNow, buttonOpacity, cardTranslateY, cardOpacity, backdropOpacity, tabBar]);
+
   // Handle cancel/back
   const handleCancel = useCallback(() => {
-    // Show tab bar immediately when dismissing
     tabBar?.showTabBar(250);
 
     // Fly-out animation
-    Animated.parallel([
-      Animated.timing(backdropOpacity, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: true,
-      }),
-      Animated.spring(cardScale, {
-        toValue: 0.3,
-        damping: 20,
-        stiffness: 150,
-        useNativeDriver: true,
-      }),
-      Animated.timing(cardOpacity, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: true,
-      }),
-      Animated.spring(cardTranslateX, {
-        toValue: offsetX,
-        damping: 20,
-        stiffness: 150,
-        useNativeDriver: true,
-      }),
-      Animated.spring(cardTranslateY, {
-        toValue: offsetY,
-        damping: 20,
-        stiffness: 150,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
+    backdropOpacity.value = withTiming(0, { duration: 200 });
+    cardScale.value = withSpring(0.3, { damping: 20, stiffness: 150 });
+    cardOpacity.value = withTiming(0, { duration: 200 });
+    cardTranslateX.value = withSpring(offsetX, { damping: 20, stiffness: 150 });
+    cardTranslateY.value = withSpring(offsetY, { damping: 20, stiffness: 150 });
+
+    setTimeout(() => {
       onClose();
-    });
+    }, 300);
   }, [offsetX, offsetY, onClose, cardScale, cardOpacity, cardTranslateX, cardTranslateY, backdropOpacity, tabBar]);
+
+  // Animated styles
+  const backdropAnimStyle = useAnimatedStyle(() => ({
+    opacity: backdropOpacity.value,
+  }));
+
+  const cardAnimStyle = useAnimatedStyle(() => ({
+    opacity: cardOpacity.value,
+    transform: [
+      { translateX: cardTranslateX.value },
+      { translateY: cardTranslateY.value },
+      { scale: cardScale.value * successScale.value },
+    ],
+  }));
+
+  const checkmarkContainerStyle = useAnimatedStyle(() => ({
+    opacity: checkmarkOpacity.value,
+  }));
+
+  const checkmarkIconStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: checkmarkScale.value }],
+  }));
+
+  const buttonContainerStyle = useAnimatedStyle(() => ({
+    opacity: buttonOpacity.value,
+  }));
 
   if (!visible || !item) return null;
 
   return (
     <View style={styles.container} pointerEvents="box-none">
-      {/* Blurred backdrop - zIndex: 180 */}
+      {/* Blurred backdrop */}
       <Animated.View
         style={[
           StyleSheet.absoluteFill,
           styles.backdrop,
-          { opacity: backdropOpacity },
+          backdropAnimStyle,
         ]}
       >
         <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill}>
@@ -279,7 +252,7 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
         </BlurView>
       </Animated.View>
 
-      {/* Apple Wallet Style Card - zIndex: 200 */}
+      {/* Apple Wallet Style Card */}
       <Animated.View
         style={[
           styles.card,
@@ -289,13 +262,8 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
             left: finalX,
             width: finalWidth,
             height: finalHeight,
-            opacity: cardOpacity,
-            transform: [
-              { translateX: cardTranslateX },
-              { translateY: cardTranslateY },
-              { scale: Animated.multiply(cardScale, successScale) },
-            ],
           },
+          cardAnimStyle,
         ]}
       >
         {/* Hero Image - top 50% */}
@@ -323,23 +291,36 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
               {item.subtitle}
             </Text>
 
-            {/* Log Ride Button or Success Text */}
+            {/* Action Buttons or Success State */}
             {isLogged ? (
               <View style={styles.successContainer}>
                 <Ionicons name="checkmark-circle" size={24} color="#4CAF50" style={{ marginRight: 8 }} />
                 <Text style={styles.successText}>Ride Logged!</Text>
               </View>
             ) : (
-              <Animated.View style={{ opacity: buttonOpacity }}>
+              <Animated.View style={[styles.buttonRow, buttonContainerStyle]}>
+                {/* Quick Log - outlined/secondary */}
                 <Pressable
                   style={({ pressed }) => [
-                    styles.logButton,
-                    pressed && styles.logButtonPressed,
+                    styles.quickLogButton,
+                    pressed && styles.quickLogButtonPressed,
                   ]}
-                  onPress={handleLogRide}
+                  onPress={handleQuickLog}
                 >
-                  <Ionicons name="add-circle-outline" size={20} color="#FFFFFF" style={{ marginRight: 8 }} />
-                  <Text style={styles.logButtonText}>Log Ride</Text>
+                  <Ionicons name="flash-outline" size={18} color="#CF6769" style={{ marginRight: 6 }} />
+                  <Text style={styles.quickLogButtonText}>Quick Log</Text>
+                </Pressable>
+
+                {/* Rate Now - filled/primary */}
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.rateNowButton,
+                    pressed && styles.rateNowButtonPressed,
+                  ]}
+                  onPress={handleRateNow}
+                >
+                  <Ionicons name="star-outline" size={18} color="#FFFFFF" style={{ marginRight: 6 }} />
+                  <Text style={styles.rateNowButtonText}>Rate Now</Text>
                 </Pressable>
               </Animated.View>
             )}
@@ -347,19 +328,19 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
         </View>
       </Animated.View>
 
-      {/* Success Checkmark Overlay - Centered on screen, above everything */}
+      {/* Success Checkmark Overlay - Centered on screen */}
       {isLogged && (
         <Animated.View
           style={[
             styles.fullScreenCheckmark,
-            { opacity: checkmarkOpacity },
+            checkmarkContainerStyle,
           ]}
           pointerEvents="none"
         >
           <Animated.View
             style={[
               styles.checkmarkCircle,
-              { transform: [{ scale: checkmarkScale }] },
+              checkmarkIconStyle,
             ]}
           >
             <Ionicons name="checkmark" size={48} color="#FFFFFF" />
@@ -373,7 +354,7 @@ export const LogConfirmationCard: React.FC<LogConfirmationCardProps> = ({
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    zIndex: 200, // Above everything else
+    zIndex: 200,
   },
   backdrop: {
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
@@ -399,27 +380,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
-  },
-  checkmarkOverlayContainer: {
-    zIndex: 210, // Above the card
-  },
-  checkmarkOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  checkmarkCircle: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: '#4CAF50',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#4CAF50',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.4,
-    shadowRadius: 12,
   },
   closeButton: {
     position: 'absolute',
@@ -460,27 +420,57 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 24,
   },
-  logButton: {
+  // Button row with two buttons side by side
+  buttonRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 12,
+  },
+  // Quick Log - outlined style (secondary)
+  quickLogButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
+    borderWidth: 2,
+    borderColor: '#CF6769',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 28,
+    minWidth: 140,
+  },
+  quickLogButtonPressed: {
+    backgroundColor: '#FFF0F0',
+    transform: [{ scale: 0.98 }],
+  },
+  quickLogButtonText: {
+    color: '#CF6769',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  // Rate Now - filled style (primary)
+  rateNowButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#CF6769',
-    paddingVertical: 16,
-    paddingHorizontal: 32,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
     borderRadius: 28,
-    minWidth: 180,
+    minWidth: 140,
     shadowColor: '#CF6769',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
   },
-  logButtonPressed: {
+  rateNowButtonPressed: {
     backgroundColor: '#B85557',
     transform: [{ scale: 0.98 }],
   },
-  logButtonText: {
+  rateNowButtonText: {
     color: '#FFFFFF',
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: '600',
   },
   successContainer: {
@@ -498,5 +488,17 @@ const styles = StyleSheet.create({
     zIndex: 210,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  checkmarkCircle: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: '#4CAF50',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#4CAF50',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
   },
 });
