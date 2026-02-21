@@ -150,17 +150,30 @@ export const HomeScreen = () => {
     mass: 1,
   };
 
-  // REANIMATED: Fog gradient height animated style (replaces animProgress.interpolate)
-  const fogGradientAnimatedStyle = useAnimatedStyle(() => ({
-    height: interpolate(
+  // Fog gradient dimensions (fixed height, animated via transform)
+  // Using scaleY + translateY instead of animated height prevents the 12-stop
+  // LinearGradient from being redrawn every frame. The GPU scales the pre-rendered
+  // gradient texture instead — dramatically cheaper.
+  const FOG_EXPANDED_HEIGHT = 50 + insets.top + HEADER_HEIGHT_EXPANDED + 200;
+  const FOG_COLLAPSED_HEIGHT = 50 + insets.top + HEADER_HEIGHT_COLLAPSED + 200;
+  const FOG_SCALE_COLLAPSED = FOG_COLLAPSED_HEIGHT / FOG_EXPANDED_HEIGHT;
+
+  const fogGradientAnimatedStyle = useAnimatedStyle(() => {
+    const scaleY = interpolate(
       reanimatedProgress.value,
       [0, 1],
-      [
-        50 + insets.top + HEADER_HEIGHT_COLLAPSED + 200,
-        50 + insets.top + HEADER_HEIGHT_EXPANDED + 200,
-      ]
-    ),
-  }));
+      [FOG_SCALE_COLLAPSED, 1]
+    );
+    // Pin top edge: compensate for center-origin scaling
+    const translateY = -FOG_EXPANDED_HEIGHT * (1 - scaleY) / 2;
+
+    return {
+      transform: [
+        { translateY },
+        { scaleY },
+      ],
+    };
+  });
 
   // REANIMATED: Search bar animated style (runs on UI thread)
   // Static values calculated inline since they don't depend on other hooks
@@ -317,9 +330,28 @@ export const HomeScreen = () => {
     }, [])
   );
 
-  // Haptics wrapper for scroll worklet (must run on JS thread)
+  // Interaction handle ref — defers FlatList cell rendering during scroll animation
+  const scrollInteractionRef = useRef<ReturnType<typeof InteractionManager.createInteractionHandle> | null>(null);
+  const scrollInteractionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Haptics + interaction deferral wrapper for scroll worklet (must run on JS thread)
   const triggerScrollHaptic = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    // Register interaction handle — tells React Native to defer non-critical work
+    // (FlatList cell rendering, deferred callbacks) during the spring animation
+    if (scrollInteractionRef.current !== null) {
+      InteractionManager.clearInteractionHandle(scrollInteractionRef.current);
+    }
+    if (scrollInteractionTimerRef.current !== null) {
+      clearTimeout(scrollInteractionTimerRef.current);
+    }
+    scrollInteractionRef.current = InteractionManager.createInteractionHandle();
+    scrollInteractionTimerRef.current = setTimeout(() => {
+      if (scrollInteractionRef.current !== null) {
+        InteractionManager.clearInteractionHandle(scrollInteractionRef.current);
+        scrollInteractionRef.current = null;
+      }
+    }, 500); // Spring settles in ~400ms + buffer
   }, []);
 
   // REANIMATED: Scroll handler runs entirely on UI thread — no JS bridge crossing.
@@ -1400,12 +1432,17 @@ export const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
+        initialNumToRender={3}
+        maxToRenderPerBatch={3}
+        windowSize={5}
+        removeClippedSubviews={true}
         onContentSizeChange={(_w: number, h: number) => { contentHeightShared.value = h; }}
         onLayout={(e: any) => { viewportHeightShared.value = e.nativeEvent.layout.height; }}
       />
 
       {/* Fog Gradient Overlay - warmer tone with longer gradual fade section */}
-      {/* Container extends 200px below header to push boundary line out of visible area */}
+      {/* Fixed height at expanded size; scaleY transform shrinks it when collapsed. */}
+      {/* This prevents the 12-stop LinearGradient from being redrawn every frame. */}
       <Reanimated.View
         style={[
           {
@@ -1413,6 +1450,7 @@ export const HomeScreen = () => {
             top: -50,
             left: 0,
             right: 0,
+            height: FOG_EXPANDED_HEIGHT,
             zIndex: 5,
             pointerEvents: 'none',
           },

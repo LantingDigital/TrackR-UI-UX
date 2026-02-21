@@ -16,7 +16,7 @@ interface NewsCardProps {
   onBookmarkPress?: () => void;
 }
 
-export const NewsCard: React.FC<NewsCardProps> = ({
+export const NewsCard = React.memo<NewsCardProps>(({
   source,
   title,
   subtitle,
@@ -70,7 +70,7 @@ export const NewsCard: React.FC<NewsCardProps> = ({
       </Pressable>
     </Animated.View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

@@ -77,8 +77,10 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
     // Height morphs from circle to pill
     const height = interpolate(progress, [0, 1], [CIRCLE_SIZE, PILL_HEIGHT]);
 
-    // Border radius morphs from full circle to pill
-    const borderRadius = interpolate(progress, [0, 1], [CIRCLE_SIZE / 2, PILL_HEIGHT / 2]);
+    // borderRadius is static (CIRCLE_SIZE / 2 = 21) — set in StyleSheet.
+    // The renderer auto-clamps to min(width, height) / 2 at any size,
+    // which equals the interpolated value at every animation point.
+    // This saves one interpolation + native property update per frame.
 
     // X position with ease-out curve (swoop right during collapse)
     const translateX = interpolate(
@@ -121,7 +123,6 @@ export const MorphingActionButton: React.FC<MorphingActionButtonProps> = ({
     return {
       width,
       height,
-      borderRadius,
       opacity: opacityAnim.value,
       transform: [
         { translateX },
@@ -184,6 +185,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     backgroundColor: '#FFFFFF',
+    borderRadius: CIRCLE_SIZE / 2, // Static — renderer auto-clamps to pill radius at expanded size
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000000',
