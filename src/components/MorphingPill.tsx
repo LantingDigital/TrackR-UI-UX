@@ -27,6 +27,8 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
+  withSpring,
+  withSequence,
   runOnJS,
   interpolate,
   Extrapolation,
@@ -110,7 +112,26 @@ interface MorphingPillProps {
 
   // Animation options
   springType?: SpringType;
-  duration?: number;        // Override default duration
+  duration?: number;        // Override default open duration
+  closeDuration?: number;   // Override close first-phase duration (default: 550ms)
+  closeArcHeight?: number;  // Override close valley arc height in px (default: 35)
+
+  // When true, the close animation fades shadow to 0 early (~first 30%)
+  // so it's gone before the pill enters the button area during valley arc.
+  // Used for search bar only (positioned above action buttons).
+  closeShadowFade?: boolean;
+
+  // Overshoot direction (optional)
+  // Degrees clockwise from north: 0=up, 45=NE, 90=right, 315=NW
+  // When provided, the close overshoot follows this exact direction
+  // When omitted, overshoot follows the natural position math (good for search bar morphs)
+  overshootAngle?: number;
+  overshootMagnitude?: number; // Pixels of overshoot (default: 6)
+
+  // Scroll-driven hide: when the parent scrolls and expands/collapses buttons,
+  // the pill must hide so the real button's animation is visible.
+  // 0 = pill visible (normal), 1 = pill hidden (scroll took over)
+  scrollHidden?: SharedValue<number>;
 
   // External progress coordination
   externalProgress?: SharedValue<number>; // If provided, drives this instead of internal
@@ -120,6 +141,9 @@ interface MorphingPillProps {
   onClose?: () => void;
   onAnimationStart?: (isOpening: boolean) => void;
   onAnimationComplete?: (isOpen: boolean) => void;
+  // Called ~50ms after onAnimationComplete during hidden handoff
+  // Use this for state cleanup (setVisible(false), etc.) to avoid layout flash
+  onCloseCleanup?: () => void;
 }
 
 export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
@@ -139,11 +163,18 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   blurIntensity = 50,
   springType = 'liquid',
   duration = MORPH_DURATION,
+  closeDuration,
+  closeArcHeight,
+  closeShadowFade,
+  overshootAngle,
+  overshootMagnitude = 6,
+  scrollHidden,
   externalProgress,
   onOpen,
   onClose,
   onAnimationStart,
   onAnimationComplete,
+  onCloseCleanup,
 }, ref) => {
   const insets = useSafeAreaInsets();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -154,12 +185,32 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   const wrapperScreenX = useSharedValue(0);
   const wrapperScreenY = useSharedValue(0);
 
+  // Overshoot direction (SharedValues for worklet access)
+  const hasOvershootDir = useSharedValue(overshootAngle !== undefined);
+  const overshootAngleRad = useSharedValue(
+    overshootAngle !== undefined ? overshootAngle * (Math.PI / 180) : 0
+  );
+  const overshootMag = useSharedValue(overshootMagnitude);
+
+  // Close animation tuning (SharedValues for worklet access)
+  const closeArcHeightSV = useSharedValue(closeArcHeight ?? 35);
+  const closeShadowFadeSV = useSharedValue(closeShadowFade ? 1 : 0);
+  const closeDurRef = useRef(closeDuration ?? 550);
+  closeDurRef.current = closeDuration ?? 550;
+
   // Animation progress - use external if provided, otherwise internal
   const internalProgress = useSharedValue(0);
   const morphProgress = externalProgress ?? internalProgress;
 
   const backdropOpacity = useSharedValue(0);
   const isOpening = useSharedValue(true);
+  // After the first close, the pill stays opaque (acts as the button visually).
+  // This flag keeps it visible even during subsequent opens at t=0,
+  // preventing a 1-frame flash when transitioning from close → open.
+  const hasClosedBefore = useSharedValue(false);
+  // Used for opacity gating during close — stays at 1 during animation,
+  // pill is removed from tree via setIsExpanded(false) after hidden handoff
+  const closeFadeOut = useSharedValue(1);
   // Note: bounceProgress removed - spring curve is now calculated directly in outerStyle
   // This eliminates timing mismatch issues that caused the "double jump" effect
 
@@ -201,6 +252,23 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       hasCloseTarget.value = false;
     }
   }, [closeTargetPosition]);
+
+  // Update overshoot direction when prop changes
+  useEffect(() => {
+    hasOvershootDir.value = overshootAngle !== undefined;
+    overshootAngleRad.value = overshootAngle !== undefined ? overshootAngle * (Math.PI / 180) : 0;
+    overshootMag.value = overshootMagnitude;
+  }, [overshootAngle, overshootMagnitude]);
+
+  // Update close arc height when prop changes
+  useEffect(() => {
+    closeArcHeightSV.value = closeArcHeight ?? 35;
+  }, [closeArcHeight]);
+
+  // Update close shadow fade when prop changes (search bar vs button origin)
+  useEffect(() => {
+    closeShadowFadeSV.value = closeShadowFade ? 1 : 0;
+  }, [closeShadowFade]);
 
   // Handle Android back button
   useEffect(() => {
@@ -273,47 +341,130 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
 
     } else {
       // ========== CLOSING ANIMATION ==========
-      // Direct shrink back to origin - TRUE morph, no crossfade
-      const closeT = 1 - t; // 0 at start of close, 1 at end
+      // Two-phase: withTiming to -0.03 (past origin), then withSpring back to 0
+      // closeT goes 0 → 1 → 1.03 → 1. Overshoot is closeT > 1.0
+      const closeT = 1 - t;
 
-      // Smooth ease-in for natural acceleration into final position
-      const easeIn = Math.pow(closeT, 2);
+      // Position easing — clamped at 1.0 when directional overshoot is specified,
+      // unclamped (natural math overshoot) when no angle is given
+      const easeInRaw = Math.pow(closeT, 2);
+      const easeInForPos = hasOvershootDir.value ? Math.min(easeInRaw, 1.0) : easeInRaw;
+      // Size/radius: when directional overshoot is active, use steeper easing (x^3)
+      // so size is still actively shrinking near the end, creating a continuous feel.
+      // Clamped at 1.0 so base reaches button size at closeT=1.0.
+      // Overshoot scaling (> button size) is applied separately below.
+      const easeInForSize = hasOvershootDir.value
+        ? Math.min(Math.pow(closeT, 3), 1.0)
+        : Math.min(easeInRaw, 1.0);
 
+      // VALLEY ARC — clamped when directional overshoot handles direction,
+      // unclamped when using natural math overshoot
+      const arcCloseT = hasOvershootDir.value
+        ? Math.min(Math.max(closeT, 0), 1.0)
+        : closeT;
+      const arcHeight = closeArcHeightSV.value;
+      const closeArcCoeff = arcHeight / (0.5 * 0.5);
+      const closeArcOffset = closeArcCoeff * arcCloseT * (arcCloseT - 1.0);
+
+      // Size suction - pill briefly shrinks then pops back at landing
+      // When directional overshoot is active, the overshoot phase handles size effect instead
+      let sizeSuction = 1.0;
+      if (!hasOvershootDir.value) {
+        const clampedForSize = Math.min(Math.max(closeT, 0), 1.0);
+        sizeSuction = interpolate(
+          clampedForSize,
+          [0, 0.75, 0.88, 1.0],
+          [1.0, 1.0, 0.93, 1.0],
+          Extrapolation.CLAMP
+        );
+      }
+
+      // Calculate base position and size (reaches origin/target exactly at closeT=1.0)
       if (hasCloseTarget.value) {
-        // Close to specified target position
         const closeRelX = closeTargetX.value - wrapperScreenX.value;
         const closeRelY = closeTargetY.value - wrapperScreenY.value;
 
-        currentX = targetX + easeIn * (closeRelX - targetX);
-        currentY = targetY + easeIn * (closeRelY - targetY);
-        currentWidth = finalWidth + easeIn * (closeTargetW.value - finalWidth);
-        currentHeight = finalHeight + easeIn * (closeTargetH.value - finalHeight);
-        currentRadius = expandedBorderRadius + easeIn * (closeTargetR.value - expandedBorderRadius);
+        currentX = targetX + easeInForPos * (closeRelX - targetX);
+        currentY = targetY + easeInForPos * (closeRelY - targetY) - closeArcOffset;
+        currentWidth = (finalWidth + easeInForSize * (closeTargetW.value - finalWidth)) * sizeSuction;
+        currentHeight = (finalHeight + easeInForSize * (closeTargetH.value - finalHeight)) * sizeSuction;
+        currentRadius = expandedBorderRadius + easeInForSize * (closeTargetR.value - expandedBorderRadius);
       } else {
-        // Close back to pill origin (default behavior)
-        currentX = targetX * (1 - easeIn);
-        currentY = targetY * (1 - easeIn);
-        currentWidth = finalWidth - easeIn * (finalWidth - pillWidth);
-        currentHeight = finalHeight - easeIn * (finalHeight - pillHeight);
-        currentRadius = expandedBorderRadius - easeIn * (expandedBorderRadius - pillBorderRadius);
+        currentX = targetX * (1 - easeInForPos);
+        currentY = targetY * (1 - easeInForPos) - closeArcOffset;
+        currentWidth = (finalWidth - easeInForSize * (finalWidth - pillWidth)) * sizeSuction;
+        currentHeight = (finalHeight - easeInForSize * (finalHeight - pillHeight)) * sizeSuction;
+        currentRadius = expandedBorderRadius - easeInForSize * (expandedBorderRadius - pillBorderRadius);
+      }
+
+      // DIRECTIONAL OVERSHOOT — position + size
+      // Kicks in when closeT > 1.0 (pill has reached origin, now overshooting)
+      if (hasOvershootDir.value) {
+        const overshootT = Math.max(0, closeT - 1.0); // 0 during main close, ~0.04 at peak
+        const overshootNorm = Math.min(overshootT / 0.04, 1.0); // 0→1 at peak, back to 0 at settle
+
+        // Position: move in the specified compass direction
+        const overshootPx = overshootNorm * overshootMag.value;
+        currentX += Math.sin(overshootAngleRad.value) * overshootPx;
+        currentY -= Math.cos(overshootAngleRad.value) * overshootPx;
+
+        // Size: pill is still ~1.5% LARGER than button at overshoot peak
+        // At settle (overshootNorm=0): scale=1.0 → exact button size
+        // At peak (overshootNorm=1): scale=1.015 → 1.5% larger than button
+        // CENTER the scaling so it grows equally in all directions
+        const sizeScale = 1.0 + overshootNorm * 0.015;
+        const prevW = currentWidth;
+        const prevH = currentHeight;
+        currentWidth *= sizeScale;
+        currentHeight *= sizeScale;
+        currentX -= (currentWidth - prevW) / 2;
+        currentY -= (currentHeight - prevH) / 2;
       }
     }
 
-    // Opacity: Stay visible until EXACTLY at final position
-    // Use tiny threshold to eliminate any visible position difference when pill disappears
-    // At t=0.0005, we're 99.95% of the way to target - imperceptible difference
-    const pillOpacity = t <= 0.0005 ? 0 : 1;
+    // Opacity:
+    // - Initial state (never closed): invisible at t=0 so real button shows
+    // - During open: visible once t > 0.001
+    // - During/after close: always 1 (pill IS the button, no swap needed)
+    // - Subsequent opens: stays at 1 even at t=0 (hasClosedBefore prevents flash)
+    // - scrollHidden: when parent scrolls and button expands/collapses, pill hides
+    const baseOpacity = isOpening.value
+      ? (t > 0.001 ? 1 : hasClosedBefore.value ? 1 : 0)
+      : 1;
+    const scrollHide = scrollHidden ? scrollHidden.value : 0;
+    const pillOpacity = baseOpacity * closeFadeOut.value * (1 - scrollHide);
 
-    // Shadow: Fade to 0 as we approach origin during CLOSE
-    // This prevents "double shadow" effect with destination element
-    // During open (isOpening=true), use normal shadow
-    // During close, fade shadow out in last 10% of animation
+    // Shadow:
+    // - During open: fades in from 0 as pill lifts away from button position
+    // - During close: returns to button's resting shadow values
+    // Shadow overcast on action buttons is prevented structurally: buttons sit at z=11,
+    // pill wrappers at z=10, so the pill's shadow always renders BEHIND the buttons.
     let shadowOp: number;
+    let shadowOffH: number;
+    let shadowRad: number;
+    let shadowElev: number;
     if (isOpening.value) {
-      shadowOp = interpolate(t, [0, 0.5, 1], [0.12, 0.16, 0.20], Extrapolation.CLAMP);
+      shadowOp = interpolate(t, [0, 0.05, 0.5, 1], [0, 0.12, 0.16, 0.20], Extrapolation.CLAMP);
+      shadowOffH = interpolate(t, [0, 0.5, 1], [4, 8, 12], Extrapolation.CLAMP);
+      shadowRad = interpolate(t, [0, 0.5, 1], [6, 12, 20], Extrapolation.CLAMP);
+      shadowElev = interpolate(t, [0, 1], [4, 12], Extrapolation.CLAMP);
     } else {
-      // During close: fade shadow to 0 as t approaches 0
-      shadowOp = interpolate(t, [0, 0.1, 0.5, 1], [0, 0.08, 0.16, 0.20], Extrapolation.CLAMP);
+      const absT = Math.abs(t);
+      if (closeShadowFadeSV.value === 1) {
+        // Search bar: shadow dips to 0 mid-close (when pill passes through button area)
+        // then returns to resting value by end — no overcast AND no pop at swap/settle
+        // absT=1 (start) → 0.85: fade from 0.20 → 0.10
+        // absT=0.85 → 0.7: fade from 0.10 → 0 (gone before valley arc dip)
+        // absT=0.7 → 0.3: stays at 0 (pill traversing button area)
+        // absT=0.3 → 0: returns 0 → 0.30 (resting — matches normal path)
+        shadowOp = interpolate(absT, [0, 0.3, 0.7, 0.85, 1], [0.30, 0, 0, 0.10, 0.20], Extrapolation.CLAMP);
+      } else {
+        // Normal: shadow transitions to resting values
+        shadowOp = interpolate(absT, [0, 0.15, 0.5, 1], [0.30, 0.22, 0.16, 0.20], Extrapolation.CLAMP);
+      }
+      shadowOffH = interpolate(absT, [0, 0.15, 0.5, 1], [8, 8, 8, 12], Extrapolation.CLAMP);
+      shadowRad = interpolate(absT, [0, 0.15, 0.5, 1], [20, 16, 12, 20], Extrapolation.CLAMP);
+      shadowElev = interpolate(absT, [0, 0.15, 1], [8, 6, 12], Extrapolation.CLAMP);
     }
 
     return {
@@ -326,11 +477,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       backgroundColor: '#FFFFFF',
       opacity: pillOpacity,
       shadowColor: '#000',
-      shadowOffset: { width: 0, height: interpolate(t, [0, 0.5, 1], [4, 8, 12], Extrapolation.CLAMP) },
+      shadowOffset: { width: 0, height: shadowOffH },
       shadowOpacity: shadowOp,
-      shadowRadius: interpolate(t, [0, 0.5, 1], [6, 12, 20], Extrapolation.CLAMP),
-      elevation: interpolate(t, [0, 1], [4, 12], Extrapolation.CLAMP),
-      zIndex: t > 0.0005 ? 9999 : 1,
+      shadowRadius: shadowRad,
+      elevation: shadowElev,
+      zIndex: Math.abs(t) > 0.01 ? 9999 : 1,
     };
   });
 
@@ -359,12 +510,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
         ],
       };
     } else {
-      // CLOSING (1→0): pill content appears only at the very END
-      // This prevents the "shrinking/shifting" effect during animation
-      // Content only becomes visible when pill is at final destination size (last 5%)
-      // At that point, the layout matches the destination element exactly
+      // CLOSING (1→0): pill content appears only at the very last frame
+      // Matches the pillOpacity threshold (t <= 0.0005 = invisible)
+      // so content appears simultaneously with the pill becoming visible
       return {
-        opacity: interpolate(t, [0, 0.05, 0.1], [1, 0.5, 0], Extrapolation.CLAMP),
+        opacity: t <= 0.008 ? 1 : 0,
         transform: [{ scale: 1 }],
       };
     }
@@ -396,17 +546,30 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     zIndex: backdropOpacity.value > 0.01 ? 9998 : -1,
   }));
 
+  // Wrap onCloseCleanup in a ref-stable function for worklet access
+  const onCloseCleanupRef = useRef(onCloseCleanup);
+  onCloseCleanupRef.current = onCloseCleanup;
+  const fireCloseCleanup = useCallback(() => {
+    onCloseCleanupRef.current?.();
+  }, []);
+
   // Stable callback refs for animation completion
   const handleAnimationComplete = useCallback((isOpen: boolean) => {
-    setIsAnimating(false);
     if (!isOpen) {
-      setIsExpanded(false);
-      // Reset isOpening to true so pill renders at origin position with full opacity
-      // This snaps the pill back to button position, ready for next tap
-      isOpening.value = true;
+      // Close complete — pill is at exact button position with matching shadow.
+      // The pill stays fully opaque (isOpening stays false → baseOpacity = 1).
+      // No button is shown behind it → no double shadow → no blink.
+      // The pill IS the button visually until the next open.
+      hasClosedBefore.value = true; // Keep pill visible during subsequent opens
+      onAnimationComplete?.(isOpen);
+      setIsAnimating(false);
+      setIsExpanded(false); // pointerEvents → 'none', touches pass to real button
+      fireCloseCleanup();
+      return;
     }
+    setIsAnimating(false);
     onAnimationComplete?.(isOpen);
-  }, [onAnimationComplete, isOpening]);
+  }, [onAnimationComplete, fireCloseCleanup]);
 
   // Open handler
   const handleOpen = useCallback(() => {
@@ -431,6 +594,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       setIsExpanded(true);
       setIsAnimating(true);
       isOpening.value = true;
+      closeFadeOut.value = 1; // Ensure pill is fully opaque for open
       onOpen?.();
       onAnimationStart?.(true);
 
@@ -452,7 +616,10 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     });
   }, [morphProgress, backdropOpacity, isOpening, isAnimating, showBackdrop, duration, onOpen, onAnimationStart, handleAnimationComplete]);
 
-  // Close handler
+  // Close handler — two-phase close with directional overshoot
+  // Phase 1: Original-speed close to slightly past origin (withTiming, same 450ms feel)
+  // Phase 2: Quick spring back to origin (withSpring, ~100ms settle)
+  // The valley arc + position math naturally extend past origin, giving correct directional overshoot
   const handleClose = useCallback(() => {
     if (isAnimating) return;
 
@@ -465,14 +632,25 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       backdropOpacity.value = withTiming(0, { duration: CLOSE_DURATION });
     }
 
-    morphProgress.value = withTiming(0, {
-      duration: CLOSE_DURATION,
-      easing: Easing.out(Easing.cubic),
-    }, (finished) => {
-      if (finished) {
-        runOnJS(handleAnimationComplete)(false);
-      }
-    });
+    // Phase 1: Close from 1 to -0.04 (past origin) at original speed
+    // The ease-out decelerates naturally, crossing t=0 at ~460ms
+    // Then continues to -0.04 (the overshoot peak) over the remaining ~90ms
+    // Phase 2: Spring snaps from -0.04 back to 0 (~100-150ms)
+    morphProgress.value = withSequence(
+      withTiming(-0.04, {
+        duration: closeDurRef.current,
+        easing: Easing.out(Easing.cubic),
+      }),
+      withSpring(0, {
+        damping: 24,
+        stiffness: 320,
+        mass: 0.5,
+      }, (finished) => {
+        if (finished) {
+          runOnJS(handleAnimationComplete)(false);
+        }
+      })
+    );
   }, [morphProgress, backdropOpacity, isOpening, isAnimating, showBackdrop, onClose, onAnimationStart, handleAnimationComplete]);
 
   return (
