@@ -1917,7 +1917,7 @@ export const HomeScreen = () => {
           expandedWidth={SCREEN_WIDTH - 32}
           expandedHeight={56}
           expandedBorderRadius={16}
-          overshootAngle={logOrigin === 'logPill' ? 315 : 22.5}
+          overshootAngle={logOrigin === 'logPill' ? 340 : 10}
           scrollHidden={logPillScrollHidden}
           expandedContent={(close) => (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
@@ -2055,13 +2055,14 @@ export const HomeScreen = () => {
           // No closeTargetPosition - close back to button position (no snap/jump)
           // Overshoot: expanded search bar = straight up (0°), condensed search bar = natural (undefined),
           // expanded search pill = straight up (0°), condensed circle = 40°
-          overshootAngle={searchOrigin === 'collapsedSearchBar' ? undefined : searchOrigin === 'collapsedCircle' ? 40 : 0}
+          overshootAngle={searchOrigin === 'collapsedSearchBar' ? 340 : searchOrigin === 'collapsedCircle' ? 15 : 0}
           scrollHidden={searchPillScrollHidden}
           // Bar origins: slow valley arc + shadow dip (positioned above buttons)
           // Button origins: default speed, no shadow fade (same as Log/Scan)
+          closeFixedSize={searchOrigin === 'expandedSearchBar'}
           closeShadowFade={searchOrigin === 'expandedSearchBar' || searchOrigin === 'collapsedSearchBar'}
-          closeDuration={searchOrigin === 'expandedSearchBar' || searchOrigin === 'collapsedSearchBar' ? 700 : undefined}
-          closeArcHeight={searchOrigin === 'expandedSearchBar' || searchOrigin === 'collapsedSearchBar' ? 50 : undefined}
+          closeDuration={searchOrigin === 'expandedSearchBar' ? 525 : searchOrigin === 'collapsedSearchBar' ? 600 : undefined}
+          closeArcHeight={searchOrigin === 'expandedSearchBar' ? 25 : searchOrigin === 'collapsedSearchBar' ? 30 : undefined}
           expandedContent={(close) => (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
               {/* Globe icon - matches destination search bar exactly for seamless close */}
@@ -2337,7 +2338,7 @@ export const HomeScreen = () => {
           expandedWidth={SCREEN_WIDTH - 32}
           expandedHeight={56}
           expandedBorderRadius={16}
-          overshootAngle={45}
+          overshootAngle={scanOrigin === 'scanPill' ? 20 : 19}
           scrollHidden={scanPillScrollHidden}
           expandedContent={(close) => (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>

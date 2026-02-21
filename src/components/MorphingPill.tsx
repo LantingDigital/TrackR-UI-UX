@@ -116,6 +116,10 @@ interface MorphingPillProps {
   closeDuration?: number;   // Override close first-phase duration (default: 550ms)
   closeArcHeight?: number;  // Override close valley arc height in px (default: 35)
 
+  // When true, size stays fixed during close — only position and border radius animate.
+  // Used for expanded search bar (modal and search bar are similar width).
+  closeFixedSize?: boolean;
+
   // When true, the close animation fades shadow to 0 early (~first 30%)
   // so it's gone before the pill enters the button area during valley arc.
   // Used for search bar only (positioned above action buttons).
@@ -165,6 +169,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   duration = MORPH_DURATION,
   closeDuration,
   closeArcHeight,
+  closeFixedSize,
   closeShadowFade,
   overshootAngle,
   overshootMagnitude = 6,
@@ -194,6 +199,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
 
   // Close animation tuning (SharedValues for worklet access)
   const closeArcHeightSV = useSharedValue(closeArcHeight ?? 35);
+  const closeFixedSizeSV = useSharedValue(closeFixedSize ? 1 : 0);
   const closeShadowFadeSV = useSharedValue(closeShadowFade ? 1 : 0);
   const closeDurRef = useRef(closeDuration ?? 550);
   closeDurRef.current = closeDuration ?? 550;
@@ -264,6 +270,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   useEffect(() => {
     closeArcHeightSV.value = closeArcHeight ?? 35;
   }, [closeArcHeight]);
+
+  // Update close fixed size when prop changes
+  useEffect(() => {
+    closeFixedSizeSV.value = closeFixedSize ? 1 : 0;
+  }, [closeFixedSize]);
 
   // Update close shadow fade when prop changes (search bar vs button origin)
   useEffect(() => {
@@ -363,13 +374,22 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
         ? Math.min(Math.max(closeT, 0), 1.0)
         : closeT;
       const arcHeight = closeArcHeightSV.value;
+      // When closeFixedSize (expanded search bar): asymmetric arc timing.
+      // Remap so 60% of time → descent (slower dip), 40% → recovery (faster rise).
+      // Both phases meet at the parabola peak where velocity=0, so transition is seamless.
+      let arcInput = arcCloseT;
+      if (closeFixedSizeSV.value === 1) {
+        arcInput = arcCloseT < 0.75
+          ? (arcCloseT / 0.75) * 0.5         // 0→0.75 maps to 0→0.5 (descent — slow)
+          : 0.5 + ((arcCloseT - 0.75) / 0.25) * 0.5; // 0.75→1 maps to 0.5→1 (recovery — fast)
+      }
       const closeArcCoeff = arcHeight / (0.5 * 0.5);
-      const closeArcOffset = closeArcCoeff * arcCloseT * (arcCloseT - 1.0);
+      const closeArcOffset = closeArcCoeff * arcInput * (arcInput - 1.0);
 
       // Size suction - pill briefly shrinks then pops back at landing
-      // When directional overshoot is active, the overshoot phase handles size effect instead
+      // Disabled when closeFixedSize or directional overshoot is active
       let sizeSuction = 1.0;
-      if (!hasOvershootDir.value) {
+      if (!hasOvershootDir.value && closeFixedSizeSV.value !== 1) {
         const clampedForSize = Math.min(Math.max(closeT, 0), 1.0);
         sizeSuction = interpolate(
           clampedForSize,
@@ -386,18 +406,32 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
 
         currentX = targetX + easeInForPos * (closeRelX - targetX);
         currentY = targetY + easeInForPos * (closeRelY - targetY) - closeArcOffset;
-        currentWidth = (finalWidth + easeInForSize * (closeTargetW.value - finalWidth)) * sizeSuction;
-        currentHeight = (finalHeight + easeInForSize * (closeTargetH.value - finalHeight)) * sizeSuction;
-        currentRadius = expandedBorderRadius + easeInForSize * (closeTargetR.value - expandedBorderRadius);
+        if (closeFixedSizeSV.value === 1) {
+          // Fixed size: width/height stay at pill dimensions, only radius morphs
+          currentWidth = pillWidth;
+          currentHeight = pillHeight;
+          currentRadius = expandedBorderRadius + easeInForSize * (closeTargetR.value - expandedBorderRadius);
+        } else {
+          currentWidth = (finalWidth + easeInForSize * (closeTargetW.value - finalWidth)) * sizeSuction;
+          currentHeight = (finalHeight + easeInForSize * (closeTargetH.value - finalHeight)) * sizeSuction;
+          currentRadius = expandedBorderRadius + easeInForSize * (closeTargetR.value - expandedBorderRadius);
+        }
       } else {
         currentX = targetX * (1 - easeInForPos);
         currentY = targetY * (1 - easeInForPos) - closeArcOffset;
-        currentWidth = (finalWidth - easeInForSize * (finalWidth - pillWidth)) * sizeSuction;
-        currentHeight = (finalHeight - easeInForSize * (finalHeight - pillHeight)) * sizeSuction;
-        currentRadius = expandedBorderRadius - easeInForSize * (expandedBorderRadius - pillBorderRadius);
+        if (closeFixedSizeSV.value === 1) {
+          // Fixed size: width/height stay at pill dimensions, only radius morphs
+          currentWidth = pillWidth;
+          currentHeight = pillHeight;
+          currentRadius = expandedBorderRadius - easeInForSize * (expandedBorderRadius - pillBorderRadius);
+        } else {
+          currentWidth = (finalWidth - easeInForSize * (finalWidth - pillWidth)) * sizeSuction;
+          currentHeight = (finalHeight - easeInForSize * (finalHeight - pillHeight)) * sizeSuction;
+          currentRadius = expandedBorderRadius - easeInForSize * (expandedBorderRadius - pillBorderRadius);
+        }
       }
 
-      // DIRECTIONAL OVERSHOOT — position + size
+      // DIRECTIONAL OVERSHOOT — position only (+ size when closeFixedSize is off)
       // Kicks in when closeT > 1.0 (pill has reached origin, now overshooting)
       if (hasOvershootDir.value) {
         const overshootT = Math.max(0, closeT - 1.0); // 0 during main close, ~0.04 at peak
@@ -408,17 +442,16 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
         currentX += Math.sin(overshootAngleRad.value) * overshootPx;
         currentY -= Math.cos(overshootAngleRad.value) * overshootPx;
 
-        // Size: pill is still ~1.5% LARGER than button at overshoot peak
-        // At settle (overshootNorm=0): scale=1.0 → exact button size
-        // At peak (overshootNorm=1): scale=1.015 → 1.5% larger than button
-        // CENTER the scaling so it grows equally in all directions
-        const sizeScale = 1.0 + overshootNorm * 0.015;
-        const prevW = currentWidth;
-        const prevH = currentHeight;
-        currentWidth *= sizeScale;
-        currentHeight *= sizeScale;
-        currentX -= (currentWidth - prevW) / 2;
-        currentY -= (currentHeight - prevH) / 2;
+        // Size: slight scale at overshoot peak (skipped when closeFixedSize)
+        if (closeFixedSizeSV.value !== 1) {
+          const sizeScale = 1.0 + overshootNorm * 0.015;
+          const prevW = currentWidth;
+          const prevH = currentHeight;
+          currentWidth *= sizeScale;
+          currentHeight *= sizeScale;
+          currentX -= (currentWidth - prevW) / 2;
+          currentY -= (currentHeight - prevH) / 2;
+        }
       }
     }
 
