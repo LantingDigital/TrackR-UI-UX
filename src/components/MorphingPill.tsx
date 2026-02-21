@@ -66,8 +66,8 @@ const DEFAULT_PILL_RADIUS = DEFAULT_PILL_HEIGHT / 2;
 const MODAL_PADDING = 16;
 
 // Animation durations
-const MORPH_DURATION = 1000; // ms for open (10% snappier)
-const CLOSE_DURATION = 450; // ms for close - snappy return
+const MORPH_DURATION = 850; // ms for open (0.85x speed-up, proportional)
+const CLOSE_DURATION = 385; // ms for close backdrop (0.85x speed-up)
 
 export interface MorphingPillRef {
   open: () => void;
@@ -201,8 +201,8 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   const closeArcHeightSV = useSharedValue(closeArcHeight ?? 35);
   const closeFixedSizeSV = useSharedValue(closeFixedSize ? 1 : 0);
   const closeShadowFadeSV = useSharedValue(closeShadowFade ? 1 : 0);
-  const closeDurRef = useRef(closeDuration ?? 550);
-  closeDurRef.current = closeDuration ?? 550;
+  const closeDurRef = useRef(closeDuration ?? 470);
+  closeDurRef.current = closeDuration ?? 470;
 
   // Animation progress - use external if provided, otherwise internal
   const internalProgress = useSharedValue(0);

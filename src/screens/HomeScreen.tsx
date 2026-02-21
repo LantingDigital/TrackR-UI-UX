@@ -2014,9 +2014,9 @@ export const HomeScreen = () => {
             // Instantly set logMorphProgress to coordinate external elements
             logMorphProgress.value = 1;
             // Backdrop fades in over first 60% of MorphingPill's animation
-            logBackdropOpacity.value = withTiming(1, { duration: 600 });
+            logBackdropOpacity.value = withTiming(1, { duration: 510 });
             // Content fades in at same time as MorphingPill's expandedContentStyle
-            logContentFade.value = withDelay(500, withTiming(1, { duration: 330 }));
+            logContentFade.value = withDelay(425, withTiming(1, { duration: 280 }));
           }}
           onClose={() => {
             // Trigger the close sequence
@@ -2027,12 +2027,12 @@ export const HomeScreen = () => {
             setLogQuery('');
             setDebouncedLogQuery('');
             // Fade out external content (Reanimated — UI thread)
-            logContentFade.value = withTiming(0, { duration: 300 });
+            logContentFade.value = withTiming(0, { duration: 255 });
             // Fade out backdrop in sync with close
-            logBackdropOpacity.value = withTiming(0, { duration: 400 });
+            logBackdropOpacity.value = withTiming(0, { duration: 340 });
             // Animate logMorphProgress in sync with MorphingPill's close
             logMorphProgress.value = withTiming(0, {
-              duration: 450,
+              duration: 385,
               easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
             });
           }}
@@ -2099,7 +2099,7 @@ export const HomeScreen = () => {
           // Button origins: default speed, no shadow fade (same as Log/Scan)
           closeFixedSize={searchOrigin === 'expandedSearchBar'}
           closeShadowFade={searchOrigin === 'expandedSearchBar' || searchOrigin === 'collapsedSearchBar'}
-          closeDuration={searchOrigin === 'expandedSearchBar' ? 525 : searchOrigin === 'collapsedSearchBar' ? 600 : undefined}
+          closeDuration={searchOrigin === 'expandedSearchBar' ? 445 : searchOrigin === 'collapsedSearchBar' ? 510 : undefined}
           closeArcHeight={searchOrigin === 'expandedSearchBar' ? 25 : searchOrigin === 'collapsedSearchBar' ? 30 : undefined}
           expandedContent={(close) => (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
@@ -2174,10 +2174,10 @@ export const HomeScreen = () => {
             // We only control external elements here
             pillMorphProgress.value = 1; // Instantly tell SearchModal morph is open
             // Backdrop fades in over first 60% of MorphingPill's animation
-            backdropOpacity.value = withTiming(1, { duration: 600 });
+            backdropOpacity.value = withTiming(1, { duration: 510 });
             // Content fades in at same time as MorphingPill's expandedContentStyle
-            // MorphingPill: PHASE.contentFade=0.55, PHASE.landing=0.88 (55-88% of 1000ms = 550-880ms)
-            searchContentFade.value = withDelay(500, withTiming(1, { duration: 330 }));
+            // MorphingPill: PHASE.contentFade=0.55, PHASE.landing=0.88 (55-88% of 850ms = 468-748ms)
+            searchContentFade.value = withDelay(425, withTiming(1, { duration: 280 }));
           }}
           onClose={() => {
             // Trigger the close sequence
@@ -2188,12 +2188,12 @@ export const HomeScreen = () => {
             setSearchQuery('');
             setDebouncedQuery('');
             // Fade out external content (blur zone, SEARCH header, section cards)
-            searchContentFade.value = withTiming(0, { duration: 350 });
-            // Fade out backdrop in sync with close (scaled to 700ms close duration)
-            backdropOpacity.value = withTiming(0, { duration: 510 });
-            // Animate pillMorphProgress in sync with MorphingPill's close (700ms first phase)
+            searchContentFade.value = withTiming(0, { duration: 300 });
+            // Fade out backdrop in sync with close
+            backdropOpacity.value = withTiming(0, { duration: 435 });
+            // Animate pillMorphProgress in sync with MorphingPill's close
             pillMorphProgress.value = withTiming(0, {
-              duration: 570,
+              duration: 485,
               easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
             });
             // Note: Do NOT force header expansion here — pill closes to whatever
@@ -2429,16 +2429,16 @@ export const HomeScreen = () => {
             // Backdrop blur covers the other buttons + search bar naturally
             scanButtonOpacity.value = 0;
             // Backdrop fades in over first 60% of MorphingPill's animation
-            scanBackdropOpacity.value = withTiming(1, { duration: 600 });
+            scanBackdropOpacity.value = withTiming(1, { duration: 510 });
             // Content fades in at same time as MorphingPill's expandedContentStyle
-            scanContentFade.value = withDelay(500, withTiming(1, { duration: 330 }));
+            scanContentFade.value = withDelay(425, withTiming(1, { duration: 280 }));
           }}
           onClose={() => {
             scanIsClosing.value = 1; // Signal z-index style to drop z when backdrop fades
             // Fade out external content (Reanimated — UI thread)
-            scanContentFade.value = withTiming(0, { duration: 300 });
+            scanContentFade.value = withTiming(0, { duration: 255 });
             // Fade out backdrop in sync with close
-            scanBackdropOpacity.value = withTiming(0, { duration: 400 });
+            scanBackdropOpacity.value = withTiming(0, { duration: 340 });
           }}
           onAnimationComplete={() => {
             // GUARD: If scroll already took over (hid the pill and showed real elements),
