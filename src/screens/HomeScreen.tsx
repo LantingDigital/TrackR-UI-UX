@@ -1039,9 +1039,10 @@ export const HomeScreen = () => {
         };
       case 'collapsedSearchBar':
         // Smaller search bar when header is collapsed
+        // MUST use REANIMATED_EQUAL_GAP (not equalGap) to match real search bar's marginLeft
         return {
           top: insets.top + 12,
-          left: equalGap,
+          left: REANIMATED_EQUAL_GAP,
           width: collapsedSearchWidth,
           height: 42,
           borderRadius: 21,
@@ -2008,10 +2009,8 @@ export const HomeScreen = () => {
             searchButtonOpacity.value = 1;
             scanButtonOpacity.value = 1;
             searchBarMorphOpacity.value = 1; // Show real search bar (search pill hidden)
-            // Instantly hide the pressed button (prevents duplicate flash under pill)
-            // Backdrop blur covers the other buttons + search bar naturally
-            logButtonOpacity.value = 0;
-            // Instantly set logMorphProgress to coordinate external elements
+            // Crossfade the pressed button out (pill fades in simultaneously)
+            logButtonOpacity.value = withTiming(0, { duration: 120 });
             logMorphProgress.value = 1;
             // Backdrop fades in over first 60% of MorphingPill's animation
             logBackdropOpacity.value = withTiming(1, { duration: 510 });
@@ -2026,6 +2025,7 @@ export const HomeScreen = () => {
             logFocusProgress.value = 0;
             setLogQuery('');
             setDebouncedLogQuery('');
+            // Fade out external content (Reanimated — UI thread)
             // Fade out external content (Reanimated — UI thread)
             logContentFade.value = withTiming(0, { duration: 255 });
             // Fade out backdrop in sync with close
@@ -2090,6 +2090,19 @@ export const HomeScreen = () => {
           expandedWidth={SCREEN_WIDTH - 32}
           expandedHeight={56}
           expandedBorderRadius={16}
+          // Globe icon stays visible throughout open/close when opening from search bar
+          // (globe appears identically in both pill content and expanded content)
+          persistentContent={
+            (searchOrigin === 'expandedSearchBar' || searchOrigin === 'collapsedSearchBar')
+              ? (
+                <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
+                  <View style={{ width: 20, height: 20, justifyContent: 'center', alignItems: 'center' }}>
+                    <Ionicons name="globe-outline" size={20} color="#999999" />
+                  </View>
+                </View>
+              )
+              : undefined
+          }
           // No closeTargetPosition - close back to button position (no snap/jump)
           // Overshoot: expanded search bar = straight up (0°), condensed search bar = natural (undefined),
           // expanded search pill = straight up (0°), condensed circle = 40°
@@ -2158,14 +2171,14 @@ export const HomeScreen = () => {
 
             if (isBarOrigin) {
               // Opening from SEARCH BAR — pill covers the search bar
-              // Hide real search bar instantly (pill replaces it seamlessly)
-              searchBarMorphOpacity.value = 0;
+              // Crossfade real search bar out (pill fades in simultaneously)
+              searchBarMorphOpacity.value = withTiming(0, { duration: 120 });
               // Search button stays visible — fades behind backdrop naturally
               // (same behavior as Log/Scan buttons when their modals open)
             } else {
               // Opening from SEARCH BUTTON — pill covers the action button
-              // Hide search button instantly (pill replaces it)
-              searchButtonOpacity.value = 0;
+              // Crossfade search button out (pill fades in simultaneously)
+              searchButtonOpacity.value = withTiming(0, { duration: 120 });
               // Real search bar stays visible — fades behind backdrop naturally
               searchBarMorphOpacity.value = 1;
             }
@@ -2173,6 +2186,7 @@ export const HomeScreen = () => {
             // MorphingPill handles ALL morph animation internally (1000ms Reanimated)
             // We only control external elements here
             pillMorphProgress.value = 1; // Instantly tell SearchModal morph is open
+            // Backdrop fades in over first 60% of MorphingPill's animation
             // Backdrop fades in over first 60% of MorphingPill's animation
             backdropOpacity.value = withTiming(1, { duration: 510 });
             // Content fades in at same time as MorphingPill's expandedContentStyle
@@ -2187,6 +2201,7 @@ export const HomeScreen = () => {
             searchFocusProgress.value = 0;
             setSearchQuery('');
             setDebouncedQuery('');
+            // Fade out external content (blur zone, SEARCH header, section cards)
             // Fade out external content (blur zone, SEARCH header, section cards)
             searchContentFade.value = withTiming(0, { duration: 300 });
             // Fade out backdrop in sync with close
@@ -2425,9 +2440,9 @@ export const HomeScreen = () => {
             logButtonOpacity.value = 1;
             searchButtonOpacity.value = 1;
             searchBarMorphOpacity.value = 1; // Show real search bar (search pill hidden)
-            // Instantly hide the pressed button (prevents duplicate flash under pill)
-            // Backdrop blur covers the other buttons + search bar naturally
-            scanButtonOpacity.value = 0;
+            // Crossfade the pressed button out (pill fades in simultaneously)
+            scanButtonOpacity.value = withTiming(0, { duration: 120 });
+            // Backdrop fades in over first 60% of MorphingPill's animation
             // Backdrop fades in over first 60% of MorphingPill's animation
             scanBackdropOpacity.value = withTiming(1, { duration: 510 });
             // Content fades in at same time as MorphingPill's expandedContentStyle
@@ -2435,6 +2450,7 @@ export const HomeScreen = () => {
           }}
           onClose={() => {
             scanIsClosing.value = 1; // Signal z-index style to drop z when backdrop fades
+            // Fade out external content (Reanimated — UI thread)
             // Fade out external content (Reanimated — UI thread)
             scanContentFade.value = withTiming(0, { duration: 255 });
             // Fade out backdrop in sync with close

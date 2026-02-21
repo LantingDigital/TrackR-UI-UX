@@ -7,6 +7,7 @@ import Animated, {
   interpolate,
   Extrapolation,
   Easing,
+  runOnJS,
 } from 'react-native-reanimated';
 
 // Curated placeholder suggestions
@@ -72,12 +73,21 @@ export const RotatingPlaceholder: React.FC<RotatingPlaceholderProps> = ({
 
   const TRAVEL_DISTANCE = 16;
 
+  // Called from withTiming callback via runOnJS when animation reaches 1.
+  // Updates text state first, then delays the progress reset to the next frame
+  // so React has committed the new text before the shared value snaps back to 0.
   const completeTransition = useCallback(() => {
     indexRef.current = (indexRef.current + 1) % shuffledSuggestions.length;
     const newNextIndex = (indexRef.current + 1) % shuffledSuggestions.length;
-    transitionProgress.value = 0;
+    // Update texts (queues React re-render)
     setCurrentText(shuffledSuggestions[indexRef.current]);
     setNextText(shuffledSuggestions[newNextIndex]);
+    // Reset progress AFTER React renders the new text (next frame)
+    // This prevents the blink where old text flashes at position 0
+    requestAnimationFrame(() => {
+      transitionProgress.value = 0;
+      isTransitioning.current = false;
+    });
   }, [shuffledSuggestions, transitionProgress]);
 
   useEffect(() => {
@@ -113,15 +123,11 @@ export const RotatingPlaceholder: React.FC<RotatingPlaceholderProps> = ({
               transitionProgress.value = withTiming(1, {
                 duration: 400,
                 easing: Easing.inOut(Easing.cubic),
-              });
-
-              // Complete after animation duration
-              setTimeout(() => {
-                isTransitioning.current = false;
-                if (isReadyRef.current) {
-                  completeTransition();
+              }, (finished) => {
+                if (finished) {
+                  runOnJS(completeTransition)();
                 }
-              }, 420);
+              });
             };
 
             intervalTimer = setInterval(performTransition, interval);

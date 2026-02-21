@@ -137,6 +137,11 @@ interface MorphingPillProps {
   // 0 = pill visible (normal), 1 = pill hidden (scroll took over)
   scrollHidden?: SharedValue<number>;
 
+  // Content that stays visible during both open and close transitions (never fades).
+  // Used for elements like icons that appear identically in both pill and expanded states.
+  // Rendered as an absolutely-positioned layer between pill content and expanded content.
+  persistentContent?: React.ReactNode;
+
   // External progress coordination
   externalProgress?: SharedValue<number>; // If provided, drives this instead of internal
 
@@ -173,6 +178,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   closeShadowFade,
   overshootAngle,
   overshootMagnitude = 6,
+  persistentContent,
   scrollHidden,
   externalProgress,
   onOpen,
@@ -456,13 +462,12 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     }
 
     // Opacity:
-    // - Initial state (never closed): invisible at t=0 so real button shows
-    // - During open: visible once t > 0.001
-    // - During/after close: always 1 (pill IS the button, no swap needed)
+    // - First open (never closed): smooth fade-in over first 8% to crossfade with button
     // - Subsequent opens: stays at 1 even at t=0 (hasClosedBefore prevents flash)
+    // - During/after close: always 1 (pill IS the button, no swap needed)
     // - scrollHidden: when parent scrolls and button expands/collapses, pill hides
     const baseOpacity = isOpening.value
-      ? (t > 0.001 ? 1 : hasClosedBefore.value ? 1 : 0)
+      ? (hasClosedBefore.value ? 1 : interpolate(t, [0, 0.08], [0, 1], Extrapolation.CLAMP))
       : 1;
     const scrollHide = scrollHidden ? scrollHidden.value : 0;
     const pillOpacity = baseOpacity * closeFadeOut.value * (1 - scrollHide);
@@ -531,23 +536,26 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   }));
 
   // Pill content style - different timing for open vs close
+  // Key: pill content visibility must OVERLAP with expanded content visibility
+  // to create a crossfade with no blank gap
   const pillContentStyle = useAnimatedStyle(() => {
     const t = morphProgress.value;
 
     if (isOpening.value) {
-      // OPENING (0→1): pill content fades out quickly
+      // OPENING (0→1): pill content fades out, ending right as expanded content appears
+      // Expanded content starts at PHASE.contentFade (0.55), so we fade to 0 at 0.55
+      // This eliminates the blank gap between pill content vanishing and expanded content appearing
       return {
-        opacity: interpolate(t, [0, PHASE.peak * 0.8, PHASE.morphStart], [1, 0.8, 0], Extrapolation.CLAMP),
+        opacity: interpolate(t, [0, 0.2, 0.4, PHASE.contentFade], [1, 0.85, 0.3, 0], Extrapolation.CLAMP),
         transform: [
-          { scale: interpolate(t, [0, PHASE.peak * 0.4, PHASE.peak, PHASE.morphStart], [1, 1.05, 1.02, 0.9], Extrapolation.CLAMP) },
+          { scale: interpolate(t, [0, 0.15, 0.4, PHASE.contentFade], [1, 1.03, 1.0, 0.95], Extrapolation.CLAMP) },
         ],
       };
     } else {
-      // CLOSING (1→0): pill content appears only at the very last frame
-      // Matches the pillOpacity threshold (t <= 0.0005 = invisible)
-      // so content appears simultaneously with the pill becoming visible
+      // CLOSING (1→0): pill content crossfades in as expanded content fades out
+      // Expanded content gone by t=0.45, pill content starts at t=0.45 — seamless handoff
       return {
-        opacity: t <= 0.008 ? 1 : 0,
+        opacity: interpolate(t, [-0.04, 0, 0.2, 0.45], [1, 1, 0.5, 0], Extrapolation.CLAMP),
         transform: [{ scale: 1 }],
       };
     }
@@ -741,6 +749,14 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
             <Animated.View style={[StyleSheet.absoluteFillObject, pillContentStyle]}>
               {pillContent}
             </Animated.View>
+
+            {/* Persistent content — never fades during open/close transitions */}
+            {/* Used for elements (like globe icon) that appear identically in both states */}
+            {persistentContent && (
+              <View style={StyleSheet.absoluteFillObject} pointerEvents="none">
+                {persistentContent}
+              </View>
+            )}
 
             {/* Expanded content */}
             <Animated.View style={[styles.contentWrapper, styles.expandedContentWrapper, expandedContentStyle, expandedStyle]}>
