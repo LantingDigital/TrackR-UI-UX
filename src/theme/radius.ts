@@ -7,6 +7,10 @@ export const radius = {
 
   // Specific components
   card: 20,
+  modal: 24,
   searchBar: 28, // half of 56px height
   actionPill: 18, // half of 36px height
+  closeButton: 16,
+  trendingRank: 14,
+  button: 28,
 };

@@ -25,4 +25,28 @@ export const shadows = {
       elevation: 4,
     },
   }) as ViewStyle,
+
+  modal: Platform.select({
+    ios: {
+      shadowColor: '#323232',
+      shadowOffset: { width: 0, height: 16 },
+      shadowOpacity: 0.3,
+      shadowRadius: 40,
+    },
+    android: {
+      elevation: 16,
+    },
+  }) as ViewStyle,
+
+  section: Platform.select({
+    ios: {
+      shadowColor: '#323232',
+      shadowOffset: { width: 0, height: 6 },
+      shadowOpacity: 0.14,
+      shadowRadius: 20,
+    },
+    android: {
+      elevation: 6,
+    },
+  }) as ViewStyle,
 };

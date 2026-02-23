@@ -4,11 +4,20 @@ export const typography = {
   fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
 
   sizes: {
-    title: 17,
+    small: 11,
+    tabLabel: 10,
+    meta: 12,
+    caption: 13,
+    label: 14,
     subtitle: 15,
     body: 15,
-    meta: 12,
-    tabLabel: 10,
+    input: 16,
+    title: 17,
+    large: 18,
+    heading: 20,
+    hero: 24,
+    heroLarge: 26,
+    display: 32,
   },
 
   weights: {
@@ -16,6 +25,7 @@ export const typography = {
     regular: '400' as const,
     medium: '500' as const,
     semibold: '600' as const,
+    bold: '700' as const,
   },
 
   lineHeights: {

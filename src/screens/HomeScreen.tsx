@@ -1,11 +1,16 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { StyleSheet, View, FlatList, ListRenderItemInfo, Animated, Dimensions, Pressable, Keyboard, Easing, Text, ScrollView, TextInput, InteractionManager } from 'react-native';
+import { StyleSheet, View, FlatList, ListRenderItemInfo, Dimensions, Pressable, Keyboard, Text, TextInput, InteractionManager } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTabFocus } from '../hooks/useTabFocus';
+import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { colors } from '../theme/colors';
+import { spacing } from '../theme/spacing';
+import { shadows } from '../theme/shadows';
+import { haptics } from '../services/haptics';
 // Reanimated for smooth UI-thread animations (per CLAUDE.md: ALWAYS use Reanimated)
 import Reanimated, {
   useSharedValue,
@@ -23,15 +28,11 @@ import Reanimated, {
 import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingActionButton } from '../components';
 import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
 import { LogModal } from '../components/LogModal';
-import { LogConfirmationCard } from '../components/LogConfirmationCard';
-import { RatingModal } from '../components/RatingModal';
 import { WalletCardStack, ScanModal, QuickActionsMenu, GateModeOverlay } from '../components/wallet';
 import { Ticket } from '../types/wallet';
 import { useWallet } from '../hooks/useWallet';
 import { useTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
-import { RECENT_SEARCHES, searchItems, getTypeIcon, SearchableItem, NEARBY_RIDES, ALL_SEARCHABLE_ITEMS } from '../data/mockSearchData';
-import { RideLog, completeRating } from '../stores/rideLogStore';
 
 const COLLAPSE_THRESHOLD = 50;
 const EXPAND_THRESHOLD = 10;
@@ -54,8 +55,13 @@ type SearchOrigin =
   | 'collapsedSearchBar'   // Compact search bar (collapsed header)
   | 'collapsedCircle';     // Circle search button (collapsed header)
 
+
+// Tab bar height for FAB positioning
+const TAB_BAR_HEIGHT = 49;
+
 export const HomeScreen = () => {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<any>();
   const [bookmarkedIds, setBookmarkedIds] = useState<Set<string>>(
     new Set(MOCK_NEWS.filter(item => item.isSaved).map(item => item.id))
   );
@@ -65,16 +71,6 @@ export const HomeScreen = () => {
   const [logOrigin, setLogOrigin] = useState<'logPill' | 'logCircle'>('logPill');
   const [scanOrigin, setScanOrigin] = useState<'scanPill' | 'scanCircle'>('scanPill');
   const [walletVisible, setWalletVisible] = useState(false);
-  // Log confirmation card state
-  const [selectedCoaster, setSelectedCoaster] = useState<SearchableItem | null>(null);
-  const [coasterPosition, setCoasterPosition] = useState({ x: 0, y: 0, width: 120, height: 120 });
-  const [confirmationVisible, setConfirmationVisible] = useState(false);
-
-  // Rating modal state (for Rate Now flow from LogConfirmationCard)
-  const [ratingModalVisible, setRatingModalVisible] = useState(false);
-  const [ratingLog, setRatingLog] = useState<RideLog | null>(null);
-  const [ratingImageUrl, setRatingImageUrl] = useState('');
-
   // Quick actions menu state (for pass long press)
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
   const [selectedQuickActionTicket, setSelectedQuickActionTicket] = useState<Ticket | null>(null);
@@ -256,10 +252,7 @@ export const HomeScreen = () => {
 
   // Note: searchPillBounceProgress, closePhaseProgress removed — only used by deleted old morphing pill code
 
-  // Search focus state: tracks whether the search input is focused
-  // When focused, search bar slides up, section cards fade out, dropdown appears
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const searchFocusProgress = useSharedValue(0);
+  // Note: Search focus mode removed — section cards stay visible, no dropdown cascade
 
   // =========================================
   // Log Modal Animation Values (Reanimated — UI thread)
@@ -268,9 +261,7 @@ export const HomeScreen = () => {
   const logBackdropOpacity = useSharedValue(0);
   const logContentFade = useSharedValue(0);
 
-  // Log focus state
-  const [isLogFocused, setIsLogFocused] = useState(false);
-  const logFocusProgress = useSharedValue(0);
+  // Note: Log focus mode removed — section cards stay visible, no dropdown cascade
 
   // =========================================
   // Scan Modal Animation Values (Reanimated — UI thread)
@@ -278,32 +269,14 @@ export const HomeScreen = () => {
   const scanBackdropOpacity = useSharedValue(0);
   const scanContentFade = useSharedValue(0);
 
-  // Search query state for dropdown autocomplete
-  const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedQuery, setDebouncedQuery] = useState('');
-  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Log query state for dropdown autocomplete
-  const [logQuery, setLogQuery] = useState('');
-  const [debouncedLogQuery, setDebouncedLogQuery] = useState('');
-  const logDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+  // Note: Search/log query state removed — no dropdown autocomplete
 
   // Scan query state for pass filtering
   const [scanQuery, setScanQuery] = useState('');
   const [debouncedScanQuery, setDebouncedScanQuery] = useState('');
   const scanDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Staggered cascade animation for dropdown items
-  const dropdownItemAnimations = useRef<Animated.Value[]>([
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-    new Animated.Value(0),
-  ]).current;
+  // Note: Dropdown cascade animations removed — no focus mode dropdown
 
   // Note: triggerButtonStagger, staggerTimeoutsRef, staggerAnimsRef removed
   // — Reanimated buttonProgress0/1/2 with withDelay handle stagger natively
@@ -349,9 +322,6 @@ export const HomeScreen = () => {
       searchButtonOpacity.value = 1;
       searchBarMorphOpacity.value = 1;
       setSearchVisible(false);
-      setIsSearchFocused(false);
-      setSearchQuery('');
-      setDebouncedQuery('');
     }
 
     // Reset log modal
@@ -364,9 +334,6 @@ export const HomeScreen = () => {
       logPillScrollHidden.value = 1;
       logButtonOpacity.value = 1;
       setLogVisible(false);
-      setIsLogFocused(false);
-      setLogQuery('');
-      setDebouncedLogQuery('');
     }
 
     // Reset scan/wallet modal
@@ -379,13 +346,6 @@ export const HomeScreen = () => {
       scanButtonOpacity.value = 1;
       setWalletVisible(false);
     }
-
-    // Reset sub-modals
-    setConfirmationVisible(false);
-    setSelectedCoaster(null);
-    setRatingModalVisible(false);
-    setRatingLog(null);
-    setRatingImageUrl('');
 
     // Clear animation lock
     isModalAnimatingRef.current = false;
@@ -404,7 +364,7 @@ export const HomeScreen = () => {
 
   // Haptics + interaction deferral wrapper for scroll worklet (must run on JS thread)
   const triggerScrollHaptic = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     // Register interaction handle — tells React Native to defer non-critical work
     // (FlatList cell rendering, deferred callbacks) during the spring animation
     if (scrollInteractionRef.current !== null) {
@@ -567,12 +527,6 @@ export const HomeScreen = () => {
   const handleSearchClose = useCallback(() => {
     Keyboard.dismiss();
 
-    // Reset focus state immediately so modal starts fresh next time
-    setIsSearchFocused(false);
-    searchFocusProgress.value = 0;
-    setSearchQuery('');
-    setDebouncedQuery('');
-
     // GUARANTEE header is expanded when returning to home screen
     // This is critical - no matter how user got to modal, they return to expanded header
     isCollapsed.value = 0;
@@ -606,62 +560,6 @@ export const HomeScreen = () => {
     });
   }, []);
 
-  // Search focus handlers - animate search bar up/down and toggle dropdown
-  const handleSearchFocus = useCallback(() => {
-    setIsSearchFocused(true);
-    searchFocusProgress.value = withTiming(1, {
-      duration: 250,
-      easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-    });
-  }, []);
-
-  const handleSearchUnfocus = useCallback(() => {
-    Keyboard.dismiss();
-    setIsSearchFocused(false);
-    searchFocusProgress.value = withTiming(0, {
-      duration: 250,
-      easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-    });
-  }, []);
-
-  // X button handler: unfocus first, then close modal
-  const handleXButtonPress = useCallback(() => {
-    if (isSearchFocused) {
-      handleSearchUnfocus();
-    } else {
-      handleSearchClose();
-    }
-  }, [isSearchFocused, handleSearchUnfocus, handleSearchClose]);
-
-  // Backdrop tap handler: unfocus when focused, do nothing when unfocused
-  const handleBackdropPress = useCallback(() => {
-    if (isSearchFocused) {
-      handleSearchUnfocus();
-    }
-    // Don't close modal on backdrop tap when unfocused
-  }, [isSearchFocused, handleSearchUnfocus]);
-
-  // Handle search query changes from SearchModal
-  const handleSearchQueryChange = useCallback((query: string) => {
-    setSearchQuery(query);
-  }, []);
-
-  // Debounce effect for autocomplete - only update after 300ms typing pause
-  useEffect(() => {
-    if (debounceTimerRef.current) {
-      clearTimeout(debounceTimerRef.current);
-    }
-    debounceTimerRef.current = setTimeout(() => {
-      setDebouncedQuery(searchQuery);
-    }, 300);
-
-    return () => {
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
-      }
-    };
-  }, [searchQuery]);
-
   // Handle scan query changes from ScanModal
   const handleScanQueryChange = useCallback((query: string) => {
     setScanQuery(query);
@@ -692,10 +590,10 @@ export const HomeScreen = () => {
   const handleQuickActionToggleFavorite = useCallback(async (ticket: Ticket) => {
     try {
       await toggleFavorite(ticket.id);
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      haptics.success();
     } catch (error) {
       console.error('Failed to toggle favorite:', error);
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      haptics.error();
     }
   }, [toggleFavorite]);
 
@@ -709,10 +607,10 @@ export const HomeScreen = () => {
   const handleQuickActionDelete = useCallback(async (ticket: Ticket) => {
     try {
       await deleteTicket(ticket.id);
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      haptics.success();
     } catch (error) {
       console.error('Failed to delete ticket:', error);
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      haptics.error();
     }
   }, [deleteTicket]);
 
@@ -744,48 +642,6 @@ export const HomeScreen = () => {
     };
   }, [scanQuery]);
 
-  // Trigger staggered cascade animation when dropdown becomes visible or content changes
-  useEffect(() => {
-    if (isSearchFocused) {
-      // Reset all item animations
-      dropdownItemAnimations.forEach(anim => anim.setValue(0));
-
-      // Stagger animate each item (50ms delay between items)
-      const staggeredAnimations = dropdownItemAnimations.map((anim, index) =>
-        Animated.timing(anim, {
-          toValue: 1,
-          duration: 200,
-          delay: index * 50,
-          easing: Easing.out(Easing.cubic),
-          useNativeDriver: true,
-        })
-      );
-
-      Animated.parallel(staggeredAnimations).start();
-    }
-  }, [isSearchFocused, debouncedQuery, dropdownItemAnimations]);
-
-  // Get dropdown items - recent searches when empty, autocomplete results when typing
-  const dropdownItems = useMemo(() => {
-    if (debouncedQuery.trim()) {
-      // Autocomplete mode - show matching items
-      return searchItems(debouncedQuery).slice(0, 8);
-    } else {
-      // Recent searches mode - convert string[] to SearchableItem[] format
-      return RECENT_SEARCHES.slice(0, 5).map((name, index) => {
-        // Try to find a matching item in NEARBY_RIDES for richer data
-        const matchingRide = NEARBY_RIDES.find(r => r.name === name);
-        return matchingRide || {
-          id: `recent-${index}`,
-          name,
-          image: '',
-          type: 'ride' as const,
-          subtitle: 'Recent search',
-        };
-      });
-    }
-  }, [debouncedQuery]);
-
   const handleSearch = useCallback((query: string) => {
     console.log('Searching for:', query);
     setSearchVisible(false);
@@ -810,10 +666,6 @@ export const HomeScreen = () => {
 
   const handleLogClose = useCallback(() => {
     Keyboard.dismiss();
-    setIsLogFocused(false);
-    logFocusProgress.value = 0;
-    setLogQuery('');
-    setDebouncedLogQuery('');
 
     isCollapsed.value = 0;
     reanimatedProgress.value = 1; // Instant - header is behind modal anyway
@@ -836,102 +688,10 @@ export const HomeScreen = () => {
 
   }, []);
 
-  // Log focus handlers (Reanimated — UI thread)
-  const handleLogFocus = useCallback(() => {
-    setIsLogFocused(true);
-    logFocusProgress.value = withTiming(1, {
-      duration: 250,
-      easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-    });
-  }, []);
-
-  const handleLogUnfocus = useCallback(() => {
-    Keyboard.dismiss();
-    setIsLogFocused(false);
-    logFocusProgress.value = withTiming(0, {
-      duration: 250,
-      easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-    });
-  }, []);
-
-  // Log X button handler: unfocus first, then close modal
-  const handleLogXButtonPress = useCallback(() => {
-    if (isLogFocused) {
-      handleLogUnfocus();
-    } else {
-      // Use MorphingPill's close method
-      logMorphingPillRef.current?.close();
-    }
-  }, [isLogFocused, handleLogUnfocus]);
-
-  // Log backdrop tap handler
-  const handleLogBackdropPress = useCallback(() => {
-    if (isLogFocused) {
-      handleLogUnfocus();
-    }
-  }, [isLogFocused, handleLogUnfocus]);
-
   // Handle focus input request from sectionsOnly mode (e.g., "Add your first ride" button)
   const handleLogInputFocus = useCallback(() => {
     logInputRef.current?.focus();
-    handleLogFocus();
-  }, [handleLogFocus]);
-
-  // Handle log query changes
-  const handleLogQueryChange = useCallback((query: string) => {
-    setLogQuery(query);
   }, []);
-
-  // Handle card selection from LogModal
-  const handleLogCardSelect = useCallback((item: SearchableItem, cardLayout: { x: number; y: number; width: number; height: number }) => {
-    setSelectedCoaster(item);
-    setCoasterPosition(cardLayout);
-    setConfirmationVisible(true);
-  }, []);
-
-  // Handle confirmation card close (back/cancel)
-  const handleConfirmationClose = useCallback(() => {
-    setConfirmationVisible(false);
-    setSelectedCoaster(null);
-  }, []);
-
-  // Handle successful log completion - stay on Log modal
-  const handleLogComplete = useCallback(() => {
-    setConfirmationVisible(false);
-    setSelectedCoaster(null);
-    // Keep the Log modal open so user can log more rides
-  }, []);
-
-  // Handle Rate Now from LogConfirmationCard
-  const handleRateNow = useCallback((item: SearchableItem, newLog: RideLog) => {
-    // Store the log and image for the RatingModal
-    setRatingLog(newLog);
-    setRatingImageUrl(item.image || 'https://images.unsplash.com/photo-1536768139911-e290a59011e4?w=400');
-
-    // Wait 300ms for the confirmation card slide-out animation
-    setTimeout(() => {
-      setRatingModalVisible(true);
-      tabBarContext?.hideTabBar(200);
-    }, 300);
-  }, [tabBarContext]);
-
-  // Handle RatingModal close
-  const handleRatingModalClose = useCallback(() => {
-    setRatingModalVisible(false);
-    setRatingLog(null);
-    setRatingImageUrl('');
-    tabBarContext?.showTabBar(200);
-  }, [tabBarContext]);
-
-  // Handle RatingModal complete
-  const handleRatingComplete = useCallback((log: RideLog, ratings: Record<string, number>) => {
-    completeRating(log.id, ratings);
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    setRatingModalVisible(false);
-    setRatingLog(null);
-    setRatingImageUrl('');
-    tabBarContext?.showTabBar(200);
-  }, [tabBarContext]);
 
   const handleScanPress = useCallback(() => {
     if (isModalAnimatingRef.current) return;
@@ -973,19 +733,6 @@ export const HomeScreen = () => {
         scanMorphingPillRef.current.close();
       }
 
-      // Reset confirmation card (this is a sub-modal, close instantly)
-      if (confirmationVisible) {
-        setConfirmationVisible(false);
-        setSelectedCoaster(null);
-      }
-
-      // Close rating modal if open
-      if (ratingModalVisible) {
-        setRatingModalVisible(false);
-        setRatingLog(null);
-        setRatingImageUrl('');
-      }
-
       // Scroll to top smoothly if not already at top
       if (lastScrollYShared.value > 0) {
         flatListRef.current?.scrollToOffset({ offset: 0, animated: true });
@@ -995,7 +742,7 @@ export const HomeScreen = () => {
     return () => {
       tabBarContext?.unregisterResetHandler('Home');
     };
-  }, [searchVisible, logVisible, walletVisible, confirmationVisible, ratingModalVisible, tabBarContext, handleWalletClose]);
+  }, [searchVisible, logVisible, walletVisible, tabBarContext, handleWalletClose]);
 
   const handleBookmarkPress = useCallback((id: string) => {
     setBookmarkedIds(prev => {
@@ -1241,34 +988,14 @@ export const HomeScreen = () => {
     opacity: searchContentFade.value,
   }));
 
-  // "SEARCH" header: combined content fade × focus fade
+  // "SEARCH" header: content fade only (focus mode removed)
   const searchHeaderAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: searchContentFade.value * interpolate(
-      searchFocusProgress.value,
-      [0, 0.5],
-      [1, 0],
-      Extrapolation.CLAMP
-    ),
+    opacity: searchContentFade.value,
   }));
 
-  // Section cards container: combined content fade × focus fade
+  // Section cards container: content fade only (focus mode removed)
   const sectionCardsContainerStyle = useAnimatedStyle(() => ({
-    opacity: searchContentFade.value * interpolate(
-      searchFocusProgress.value,
-      [0, 0.3],
-      [1, 0],
-      Extrapolation.CLAMP
-    ),
-  }));
-
-  // Dropdown list fade in when focused
-  const dropdownFocusStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(
-      searchFocusProgress.value,
-      [0.3, 1],
-      [0, 1],
-      Extrapolation.CLAMP
-    ),
+    opacity: searchContentFade.value,
   }));
 
   // Action buttons container
@@ -1450,25 +1177,14 @@ export const HomeScreen = () => {
     opacity: logContentFade.value,
   }));
 
-  // LOG header text: contentFade * headerFocusOpacity
+  // LOG header text: content fade only (focus mode removed)
   const logHeaderAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: logContentFade.value * interpolate(
-      logFocusProgress.value, [0, 0.5], [1, 0], Extrapolation.CLAMP
-    ),
+    opacity: logContentFade.value,
   }));
 
-  // Log section cards: contentFade * sectionCardsFocusOpacity
+  // Log section cards: content fade only (focus mode removed)
   const logSectionCardsAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: logContentFade.value * interpolate(
-      logFocusProgress.value, [0, 0.3], [1, 0], Extrapolation.CLAMP
-    ),
-  }));
-
-  // Log dropdown focus style
-  const logDropdownFocusStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(
-      logFocusProgress.value, [0.3, 1], [0, 1], Extrapolation.CLAMP
-    ),
+    opacity: logContentFade.value,
   }));
 
   // =========================================
@@ -1709,7 +1425,7 @@ export const HomeScreen = () => {
           ]}
           pointerEvents={searchVisible ? 'auto' : 'none'}
         >
-          <Pressable style={StyleSheet.absoluteFill} onPress={handleBackdropPress}>
+          <Pressable style={StyleSheet.absoluteFill} onPress={() => {}}>
             <BlurView intensity={80} tint="light" style={StyleSheet.absoluteFill} />
           </Pressable>
         </Reanimated.View>
@@ -1789,7 +1505,6 @@ export const HomeScreen = () => {
             zIndex: 80, // BELOW the morphing pill (100) so content scrolls under it
             // Note: translateY removed - individual sections have their own staggered translateY animations
           }, sectionCardsContainerStyle]}
-          pointerEvents={isSearchFocused ? 'none' : 'auto'}
         >
           <SearchModal
             visible={searchVisible}
@@ -1800,85 +1515,6 @@ export const HomeScreen = () => {
             isEmbedded={true}
             sectionsOnly={true}
           />
-        </Reanimated.View>
-      )}
-
-      {/* Focus Mode Dropdown - appears when search input is focused */}
-      {/* Shows recent searches initially, autocomplete results when typing */}
-      {searchVisible && isSearchFocused && (
-        <Reanimated.View
-          style={[{
-            position: 'absolute',
-            top: insets.top + 16 + 56 + 16, // SEARCH header position + search bar height + gap
-            left: 16,
-            right: 16,
-            bottom: 0,
-            zIndex: 85, // Above section cards (80), below morphing pill (150)
-          }, dropdownFocusStyle]}
-          pointerEvents="auto"
-        >
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="handled"
-            contentContainerStyle={{ paddingBottom: 100 }}
-          >
-            {dropdownItems.map((item, index) => {
-              const itemAnim = dropdownItemAnimations[index] || new Animated.Value(1);
-              const isRecentSearch = !debouncedQuery.trim();
-
-              return (
-                <Animated.View
-                  key={item.id}
-                  style={{
-                    opacity: itemAnim,
-                    transform: [{
-                      translateY: itemAnim.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [20, 0],
-                      }),
-                    }],
-                  }}
-                >
-                  <Pressable
-                    onPress={() => {
-                      console.log('Selected:', item.name);
-                      handleSearchUnfocus();
-                    }}
-                    style={({ pressed }) => [
-                      styles.dropdownRow,
-                      pressed && { backgroundColor: 'rgba(0,0,0,0.04)' },
-                    ]}
-                  >
-                    {/* Icon - clock for recent, type icon for autocomplete */}
-                    <View style={styles.dropdownIconContainer}>
-                      <Ionicons
-                        name={isRecentSearch ? 'time-outline' : (getTypeIcon(item.type) as any)}
-                        size={20}
-                        color="#666666"
-                      />
-                    </View>
-                    {/* Text content */}
-                    <View style={styles.dropdownTextContainer}>
-                      <Text style={styles.dropdownRowTitle} numberOfLines={1}>
-                        {item.name}
-                      </Text>
-                      <Text style={styles.dropdownRowSubtitle} numberOfLines={1}>
-                        {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-                        {item.subtitle ? ` \u2022 ${item.subtitle}` : ''}
-                      </Text>
-                    </View>
-                  </Pressable>
-                </Animated.View>
-              );
-            })}
-
-            {/* No results message */}
-            {debouncedQuery.trim() && dropdownItems.length === 0 && (
-              <View style={styles.noResultsContainer}>
-                <Text style={styles.noResultsText}>No results found</Text>
-              </View>
-            )}
-          </ScrollView>
         </Reanimated.View>
       )}
 
@@ -1899,7 +1535,7 @@ export const HomeScreen = () => {
           ]}
           pointerEvents={logVisible ? 'auto' : 'none'}
         >
-          <Pressable style={StyleSheet.absoluteFill} onPress={handleLogBackdropPress}>
+          <Pressable style={StyleSheet.absoluteFill} onPress={() => {}}>
             <BlurView intensity={80} tint="light" style={StyleSheet.absoluteFill} />
           </Pressable>
         </Reanimated.View>
@@ -1979,7 +1615,6 @@ export const HomeScreen = () => {
           },
           logSectionCardsAnimatedStyle,
           ]}
-          pointerEvents={isLogFocused ? 'none' : 'auto'}
         >
           <LogModal
             visible={logVisible}
@@ -1987,21 +1622,10 @@ export const HomeScreen = () => {
             morphProgress={logMorphProgress}
             isEmbedded={true}
             sectionsOnly={true}
-            onCardSelect={handleLogCardSelect}
             onFocusInput={handleLogInputFocus}
           />
         </Reanimated.View>
       )}
-
-      {/* Log Confirmation Card */}
-      <LogConfirmationCard
-        visible={confirmationVisible}
-        item={selectedCoaster}
-        initialPosition={coasterPosition}
-        onClose={handleConfirmationClose}
-        onLogComplete={handleLogComplete}
-        onRateNow={handleRateNow}
-      />
 
       {/* ============================== */}
       {/* TRUE Single-Element Log Morph - MorphingPill IS the Log button */}
@@ -2043,9 +1667,6 @@ export const HomeScreen = () => {
                   onClose={close}
                   isEmbedded={true}
                   inputOnly={true}
-                  onInputFocus={handleLogFocus}
-                  onQueryChange={handleLogQueryChange}
-                  onCardSelect={handleLogCardSelect}
                   externalInputRef={logInputRef}
                 />
               </View>
@@ -2096,10 +1717,6 @@ export const HomeScreen = () => {
             // Trigger the close sequence
             logIsClosing.value = 1; // Signal z-index style to drop z when backdrop fades
             Keyboard.dismiss();
-            setIsLogFocused(false);
-            logFocusProgress.value = 0;
-            setLogQuery('');
-            setDebouncedLogQuery('');
             // Fade out external content (Reanimated — UI thread)
             // Fade out external content (Reanimated — UI thread)
             logContentFade.value = withTiming(0, { duration: 255 });
@@ -2208,8 +1825,6 @@ export const HomeScreen = () => {
                   isEmbedded={true}
                   inputOnly={true}
                   showCloseButton={false}
-                  onInputFocus={handleSearchFocus}
-                  onQueryChange={handleSearchQueryChange}
                 />
               </View>
               {/* X Close Button */}
@@ -2276,10 +1891,6 @@ export const HomeScreen = () => {
             // Trigger the close sequence
             searchIsClosing.value = 1; // Signal z-index style to drop z when backdrop fades
             Keyboard.dismiss();
-            setIsSearchFocused(false);
-            searchFocusProgress.value = 0;
-            setSearchQuery('');
-            setDebouncedQuery('');
             // Fade out external content (blur zone, SEARCH header, section cards)
             // Fade out external content (blur zone, SEARCH header, section cards)
             searchContentFade.value = withTiming(0, { duration: 300 });
@@ -2586,14 +2197,17 @@ export const HomeScreen = () => {
         onClose={handleCloseGateMode}
       />
 
-      {/* Rating Modal (appears after Rate Now in LogConfirmationCard) */}
-      {ratingModalVisible && ratingLog && (
-        <RatingModal
-          log={ratingLog}
-          imageUrl={ratingImageUrl}
-          onClose={handleRatingModalClose}
-          onComplete={handleRatingComplete}
-        />
+      {/* Coastle FAB — hidden when any MorphingPill modal is active */}
+      {!searchVisible && !logVisible && !walletVisible && (
+        <Pressable
+          onPress={() => { haptics.select(); navigation.navigate('Coastle'); }}
+          style={[
+            styles.coastleFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+          ]}
+        >
+          <Ionicons name="game-controller" size={24} color={colors.text.inverse} />
+        </Pressable>
       )}
 
       {/* Touch-blocking overlay during modal animations — prevents glitched states */}
@@ -2662,46 +2276,16 @@ const styles = StyleSheet.create({
   cardWrapper: {
     marginBottom: 12,
   },
-  // Dropdown styles for focus mode - glassmorphic individual cards
-  dropdownRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 14,
-    paddingHorizontal: 12,
-    marginBottom: 8,
-    borderRadius: 12,
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',  // Heavy frost (95%)
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.5)',       // Light border glow
-  },
-  dropdownIconContainer: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: 'rgba(0,0,0,0.06)',
+  coastleFab: {
+    position: 'absolute',
+    right: spacing.lg,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.accent.primary,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
-  },
-  dropdownTextContainer: {
-    flex: 1,
-  },
-  dropdownRowTitle: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#000000',
-    marginBottom: 2,
-  },
-  dropdownRowSubtitle: {
-    fontSize: 13,
-    color: '#666666',
-  },
-  noResultsContainer: {
-    paddingVertical: 40,
-    alignItems: 'center',
-  },
-  noResultsText: {
-    fontSize: 16,
-    color: '#666666',
+    zIndex: 40,
+    ...shadows.small,
   },
 });
