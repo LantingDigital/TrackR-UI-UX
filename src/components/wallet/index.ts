@@ -1,12 +1,8 @@
 /**
  * Wallet Components - Barrel Export
  *
- * Components for the digital wallet feature:
- * - Pass display (preview cards, hero cards, detail views)
- * - QR code generation
- * - Gate mode overlay
- * - Quick actions menu
- * - Add ticket flow
+ * Scan flow + supporting wallet components.
+ * Full wallet management UI will be rebuilt in Phase 2.
  */
 
 export { QRCodeDisplay } from './QRCodeDisplay';

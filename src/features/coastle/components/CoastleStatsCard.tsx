@@ -1,74 +1,35 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, Pressable, Dimensions, Share } from 'react-native';
-import Reanimated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  withTiming,
-} from 'react-native-reanimated';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
-import { shadows } from '../../../theme/shadows';
 import { haptics } from '../../../services/haptics';
-import { CoastleStats, GameStatus, MAX_GUESSES } from '../types/coastle';
+import { CoastleStats, GameStatus } from '../types/coastle';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
-interface CoastleStatsCardProps {
-  visible: boolean;
+interface CoastleStatsContentProps {
   stats: CoastleStats;
   gameStatus: GameStatus;
   shareText: string;
   onPlayAgain: () => void;
-  onClose: () => void;
+  close: () => void;
 }
 
-export const CoastleStatsCard: React.FC<CoastleStatsCardProps> = ({
-  visible,
+export const CoastleStatsContent: React.FC<CoastleStatsContentProps> = ({
   stats,
   gameStatus,
   shareText,
   onPlayAgain,
-  onClose,
+  close,
 }) => {
-  const scale = useSharedValue(0.85);
-  const opacity = useSharedValue(0);
-  const backdropOpacity = useSharedValue(0);
-
-  useEffect(() => {
-    if (visible) {
-      if (gameStatus === 'won') haptics.success();
-      else if (gameStatus === 'lost') haptics.error();
-
-      scale.value = withTiming(1, { duration: 250 });
-      opacity.value = withTiming(1, { duration: 250 });
-      backdropOpacity.value = withTiming(1, { duration: 250 });
-    } else {
-      scale.value = 0.85;
-      opacity.value = 0;
-      backdropOpacity.value = 0;
-    }
-  }, [visible]);
-
-  const cardStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-    opacity: opacity.value,
-  }));
-
-  const backdropStyle = useAnimatedStyle(() => ({
-    opacity: backdropOpacity.value,
-  }));
-
   const handleShare = async () => {
     haptics.tap();
     try {
       await Share.share({ message: shareText });
     } catch {}
   };
-
-  if (!visible) return null;
 
   const winRate = stats.gamesPlayed > 0
     ? Math.round((stats.gamesWon / stats.gamesPlayed) * 100)
@@ -77,65 +38,55 @@ export const CoastleStatsCard: React.FC<CoastleStatsCardProps> = ({
   const maxDistribution = Math.max(...stats.guessDistribution, 1);
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
-      {/* Backdrop */}
-      <Reanimated.View style={[styles.backdrop, backdropStyle]}>
-        <Pressable style={StyleSheet.absoluteFill} onPress={onClose} />
-      </Reanimated.View>
+    <View style={styles.content}>
+      {/* Title */}
+      <Text style={styles.title}>
+        {gameStatus === 'won' ? 'Congratulations!' : gameStatus === 'lost' ? 'Game Over' : 'Statistics'}
+      </Text>
 
-      {/* Card */}
-      <Reanimated.View style={[styles.cardContainer, cardStyle]}>
-        <View style={styles.card}>
-          {/* Title */}
-          <Text style={styles.title}>
-            {gameStatus === 'won' ? 'Congratulations!' : 'Game Over'}
-          </Text>
+      {/* Stats row */}
+      <View style={styles.statsRow}>
+        <StatItem label="Played" value={stats.gamesPlayed} />
+        <StatItem label="Win %" value={winRate} />
+        <StatItem label="Streak" value={stats.currentStreak} />
+        <StatItem label="Max" value={stats.maxStreak} />
+      </View>
 
-          {/* Stats row */}
-          <View style={styles.statsRow}>
-            <StatItem label="Played" value={stats.gamesPlayed} />
-            <StatItem label="Win %" value={winRate} />
-            <StatItem label="Streak" value={stats.currentStreak} />
-            <StatItem label="Max" value={stats.maxStreak} />
-          </View>
-
-          {/* Distribution */}
-          <Text style={styles.distributionTitle}>Guess Distribution</Text>
-          <View style={styles.distribution}>
-            {stats.guessDistribution.map((count, i) => (
-              <View key={i} style={styles.distRow}>
-                <Text style={styles.distLabel}>{i + 1}</Text>
-                <View style={styles.distBarContainer}>
-                  <View
-                    style={[
-                      styles.distBar,
-                      {
-                        width: `${Math.max((count / maxDistribution) * 100, 8)}%`,
-                        backgroundColor: count > 0 ? colors.coastle.correct : colors.coastle.wrong,
-                      },
-                    ]}
-                  >
-                    <Text style={styles.distCount}>{count}</Text>
-                  </View>
-                </View>
+      {/* Distribution */}
+      <Text style={styles.distributionTitle}>Guess Distribution</Text>
+      <View style={styles.distribution}>
+        {stats.guessDistribution.map((count, i) => (
+          <View key={i} style={styles.distRow}>
+            <Text style={styles.distLabel}>{i + 1}</Text>
+            <View style={styles.distBarContainer}>
+              <View
+                style={[
+                  styles.distBar,
+                  {
+                    width: `${Math.max((count / maxDistribution) * 100, 8)}%`,
+                    backgroundColor: count > 0 ? colors.coastle.correct : colors.coastle.wrong,
+                  },
+                ]}
+              >
+                <Text style={styles.distCount}>{count}</Text>
               </View>
-            ))}
+            </View>
           </View>
+        ))}
+      </View>
 
-          {/* Buttons */}
-          <View style={styles.buttons}>
-            <Pressable style={styles.shareButton} onPress={handleShare}>
-              <Text style={styles.shareText}>Share</Text>
-            </Pressable>
-            <Pressable
-              style={styles.playAgainButton}
-              onPress={() => { haptics.tap(); onPlayAgain(); }}
-            >
-              <Text style={styles.playAgainText}>Play Again</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Reanimated.View>
+      {/* Buttons */}
+      <View style={styles.buttons}>
+        <Pressable style={styles.shareButton} onPress={handleShare}>
+          <Text style={styles.shareText}>Share</Text>
+        </Pressable>
+        <Pressable
+          style={styles.playAgainButton}
+          onPress={() => { haptics.tap(); onPlayAgain(); close(); }}
+        >
+          <Text style={styles.playAgainText}>Play Again</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -148,24 +99,8 @@ const StatItem: React.FC<{ label: string; value: number }> = ({ label, value }) 
 );
 
 const styles = StyleSheet.create({
-  backdrop: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: colors.background.overlay,
-    zIndex: 200,
-  },
-  cardContainer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 201,
-    pointerEvents: 'box-none',
-  },
-  card: {
-    width: SCREEN_WIDTH - spacing.lg * 4,
-    backgroundColor: colors.background.card,
-    borderRadius: radius.card,
+  content: {
     padding: spacing.xxl,
-    ...shadows.modal,
   },
   title: {
     fontSize: typography.sizes.heading,

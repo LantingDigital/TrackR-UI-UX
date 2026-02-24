@@ -14,19 +14,60 @@ import { shadows } from '../../../theme/shadows';
 import { haptics } from '../../../services/haptics';
 import { HintReveal } from '../types/coastle';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
+// ============================================
+// CoastleHintContent — pure hint list for MorphingPill expanded content
+// ============================================
 
-interface CoastleHintModalProps {
-  visible: boolean;
+interface CoastleHintContentProps {
   hints: HintReveal[];
-  isTooltipMode: boolean;  // true = "not available yet" message, false = show hints
+  close: () => void;
+}
+
+export const CoastleHintContent: React.FC<CoastleHintContentProps> = ({
+  hints,
+  close,
+}) => {
+  return (
+    <View style={styles.content}>
+      <Ionicons name="bulb" size={28} color={colors.accent.primary} />
+      <Text style={styles.title}>
+        {hints.length === 1 ? 'Hint' : 'Hints'}
+      </Text>
+
+      <View style={styles.hintList}>
+        {hints.map((hint, i) => (
+          <View key={hint.afterGuess} style={styles.hintRow}>
+            <Text style={styles.hintNumber}>{i + 1}</Text>
+            <Text style={styles.hintText}>
+              The <Text style={styles.bold}>{hint.label}</Text> is{' '}
+              <Text style={styles.bold}>{hint.value}</Text>
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      <Pressable
+        style={styles.button}
+        onPress={() => { haptics.tap(); close(); }}
+      >
+        <Text style={styles.buttonText}>Got it</Text>
+      </Pressable>
+    </View>
+  );
+};
+
+// ============================================
+// CoastleHintTooltip — lightweight standalone overlay
+// "Hints unlock at guesses 3 & 6" with auto-dismiss
+// ============================================
+
+interface CoastleHintTooltipProps {
+  visible: boolean;
   onClose: () => void;
 }
 
-export const CoastleHintModal: React.FC<CoastleHintModalProps> = ({
+export const CoastleHintTooltip: React.FC<CoastleHintTooltipProps> = ({
   visible,
-  hints,
-  isTooltipMode,
   onClose,
 }) => {
   const scale = useSharedValue(0.9);
@@ -35,24 +76,21 @@ export const CoastleHintModal: React.FC<CoastleHintModalProps> = ({
 
   useEffect(() => {
     if (visible) {
-      if (!isTooltipMode) haptics.warning();
       scale.value = withTiming(1, { duration: 200 });
       opacity.value = withTiming(1, { duration: 200 });
       backdropOpacity.value = withTiming(1, { duration: 200 });
 
-      // Auto-dismiss tooltip mode after 2.5s
-      if (isTooltipMode) {
-        const timer = setTimeout(() => {
-          onClose();
-        }, 2500);
-        return () => clearTimeout(timer);
-      }
+      // Auto-dismiss after 2.5s
+      const timer = setTimeout(() => {
+        onClose();
+      }, 2500);
+      return () => clearTimeout(timer);
     } else {
       scale.value = withTiming(0.9, { duration: 150 });
       opacity.value = withTiming(0, { duration: 150 });
       backdropOpacity.value = withTiming(0, { duration: 150 });
     }
-  }, [visible, isTooltipMode]);
+  }, [visible]);
 
   const cardStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
@@ -65,58 +103,18 @@ export const CoastleHintModal: React.FC<CoastleHintModalProps> = ({
 
   if (!visible) return null;
 
-  // Tooltip mode — brief "not available" message
-  if (isTooltipMode) {
-    return (
-      <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
-        <Reanimated.View style={[styles.backdrop, styles.backdropLight, backdropStyle]}>
-          <Pressable style={StyleSheet.absoluteFill} onPress={onClose} />
-        </Reanimated.View>
-
-        <Reanimated.View style={[styles.cardContainer, cardStyle]}>
-          <View style={styles.tooltipCard}>
-            <Ionicons name="bulb-outline" size={24} color={colors.text.meta} />
-            <Text style={styles.tooltipText}>
-              Hints unlock at guesses 3 & 6
-            </Text>
-          </View>
-        </Reanimated.View>
-      </View>
-    );
-  }
-
-  // Hint view mode — show all available hints
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
-      <Reanimated.View style={[styles.backdrop, backdropStyle]}>
+      <Reanimated.View style={[styles.backdrop, styles.backdropLight, backdropStyle]}>
         <Pressable style={StyleSheet.absoluteFill} onPress={onClose} />
       </Reanimated.View>
 
       <Reanimated.View style={[styles.cardContainer, cardStyle]}>
-        <View style={styles.card}>
-          <Ionicons name="bulb" size={28} color={colors.accent.primary} />
-          <Text style={styles.title}>
-            {hints.length === 1 ? 'Hint' : 'Hints'}
+        <View style={styles.tooltipCard}>
+          <Ionicons name="bulb-outline" size={24} color={colors.text.meta} />
+          <Text style={styles.tooltipText}>
+            Hints unlock at guesses 3 & 6
           </Text>
-
-          <View style={styles.hintList}>
-            {hints.map((hint, i) => (
-              <View key={hint.afterGuess} style={styles.hintRow}>
-                <Text style={styles.hintNumber}>{i + 1}</Text>
-                <Text style={styles.hintText}>
-                  The <Text style={styles.bold}>{hint.label}</Text> is{' '}
-                  <Text style={styles.bold}>{hint.value}</Text>
-                </Text>
-              </View>
-            ))}
-          </View>
-
-          <Pressable
-            style={styles.button}
-            onPress={() => { haptics.tap(); onClose(); }}
-          >
-            <Text style={styles.buttonText}>Got it</Text>
-          </Pressable>
         </View>
       </Reanimated.View>
     </View>
@@ -124,6 +122,7 @@ export const CoastleHintModal: React.FC<CoastleHintModalProps> = ({
 };
 
 const styles = StyleSheet.create({
+  // Shared
   backdrop: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: colors.background.overlay,
@@ -139,28 +138,11 @@ const styles = StyleSheet.create({
     zIndex: 201,
     pointerEvents: 'box-none',
   },
-  card: {
-    width: SCREEN_WIDTH - spacing.lg * 6,
-    backgroundColor: colors.background.card,
-    borderRadius: radius.card,
+
+  // CoastleHintContent styles
+  content: {
     padding: spacing.xxl,
     alignItems: 'center',
-    ...shadows.modal,
-  },
-  tooltipCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    backgroundColor: colors.background.card,
-    borderRadius: radius.lg,
-    paddingVertical: spacing.base,
-    paddingHorizontal: spacing.xl,
-    ...shadows.small,
-  },
-  tooltipText: {
-    fontSize: typography.sizes.label,
-    fontWeight: typography.weights.medium,
-    color: colors.text.secondary,
   },
   title: {
     fontSize: typography.sizes.large,
@@ -213,5 +195,22 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.label,
     fontWeight: typography.weights.semibold,
     color: colors.text.inverse,
+  },
+
+  // CoastleHintTooltip styles
+  tooltipCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    backgroundColor: colors.background.card,
+    borderRadius: radius.lg,
+    paddingVertical: spacing.base,
+    paddingHorizontal: spacing.xl,
+    ...shadows.small,
+  },
+  tooltipText: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.medium,
+    color: colors.text.secondary,
   },
 });

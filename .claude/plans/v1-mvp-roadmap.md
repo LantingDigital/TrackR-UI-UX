@@ -1,8 +1,11 @@
-# TrackR V1 MVP Roadmap
+# TrackR V1 MVP Roadmap (RETIRED)
 
 > **Created**: December 8, 2024
-> **Status**: Active
+> **Status**: RETIRED — Replaced by `app-blueprint.md` (February 21, 2026)
 > **Goal**: Build the home base for roller coaster enthusiasts
+>
+> **NOTE**: This roadmap's Phase 0-7 structure has been replaced by a comprehensive 9-phase blueprint.
+> See `.claude/plans/app-blueprint.md` for the current source of truth.
 
 ---
 

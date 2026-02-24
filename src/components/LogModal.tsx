@@ -11,9 +11,6 @@ import {
   Platform,
   Keyboard,
   Image,
-  Alert,
-  LayoutAnimation,
-  UIManager,
 } from 'react-native';
 import Animated, {
   SharedValue,
@@ -23,13 +20,15 @@ import Animated, {
   Extrapolation,
 } from 'react-native-reanimated';
 
-// Enable LayoutAnimation on Android
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
+
+import { colors } from '../theme/colors';
+import { typography } from '../theme/typography';
+import { spacing } from '../theme/spacing';
+import { radius } from '../theme/radius';
+import { shadows } from '../theme/shadows';
+import { haptics } from '../services/haptics';
 
 import { SearchCarousel } from './SearchCarousel';
 import { SimpleSearchRow } from './SearchResultRow';
@@ -45,9 +44,6 @@ import {
 import { addQuickLog, getPendingLogs, getAllLogs, subscribe as subscribeToStore } from '../stores/rideLogStore';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
-
-// Module-level state for recently logged coasters
-let recentlyLoggedCoasters: SearchableItem[] = [];
 
 interface LogModalProps {
   visible: boolean;
@@ -89,7 +85,6 @@ export const LogModal: React.FC<LogModalProps> = ({
   const [lastParkName, setLastParkName] = useState<string>('');
   const [mostRiddenCoasters, setMostRiddenCoasters] = useState<SearchableItem[]>([]);
   const inputRef = useRef<TextInput>(null);
-  const prevPendingCountRef = useRef(0);
 
   // Subscribe to store changes to get pending ratings, last park, and most ridden
   useEffect(() => {
@@ -118,12 +113,6 @@ export const LogModal: React.FC<LogModalProps> = ({
         type: 'ride' as const,
         subtitle: log.parkName,
       }));
-
-      // Trigger LayoutAnimation when pending count changes
-      if (pendingItems.length !== prevPendingCountRef.current) {
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-        prevPendingCountRef.current = pendingItems.length;
-      }
 
       setPendingRatings(pendingItems);
 
@@ -236,15 +225,26 @@ export const LogModal: React.FC<LogModalProps> = ({
 
   const sectionAnimatedStyles = [section0Style, section1Style, section2Style, section3Style];
 
-  // Handle pending rating tap - show toast since rating flow is not built yet
+  // Handle pending rating tap — trigger rating flow via onCardSelect
   const handlePendingRatingPress = useCallback((item: SearchableItem) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    Alert.alert(
-      'Coming Soon',
-      `Rating flow for "${item.name}" is not yet available.`,
-      [{ text: 'OK' }]
-    );
-  }, []);
+    haptics.tap();
+
+    const cardLayout = {
+      x: SCREEN_WIDTH / 2 - 60,
+      y: SCREEN_HEIGHT / 2 - 60,
+      width: 120,
+      height: 120,
+    };
+
+    onCardSelect?.(item, cardLayout);
+  }, [onCardSelect]);
+
+  // Handle "Rate All" — trigger rating for first pending item
+  const handleRateAll = useCallback(() => {
+    if (pendingRatings.length === 0) return;
+    haptics.select();
+    handlePendingRatingPress(pendingRatings[0]);
+  }, [pendingRatings, handlePendingRatingPress]);
 
   // Handle trending coaster tap - open confirmation card
   const handleTrendingPress = useCallback((coaster: TrendingCoaster) => {
@@ -264,7 +264,7 @@ export const LogModal: React.FC<LogModalProps> = ({
       height: 120,
     };
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    haptics.select();
     onCardSelect?.(item, cardLayout);
   }, [onCardSelect]);
 
@@ -291,7 +291,7 @@ export const LogModal: React.FC<LogModalProps> = ({
       height: 120,
     };
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    haptics.select();
     onCardSelect?.(item, cardLayout);
   }, [onCardSelect]);
 
@@ -304,7 +304,7 @@ export const LogModal: React.FC<LogModalProps> = ({
       height: 120,
     };
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    haptics.select();
     onCardSelect?.(item, cardLayout);
   }, [onCardSelect]);
 
@@ -328,7 +328,7 @@ export const LogModal: React.FC<LogModalProps> = ({
             ref={textInputRef}
             style={styles.inputOnlyStyle}
             placeholder="Find a coaster to log..."
-            placeholderTextColor="#999999"
+            placeholderTextColor={colors.text.meta}
             value={searchQuery}
             onChangeText={handleTextChange}
             onFocus={onInputFocus}
@@ -365,7 +365,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                       onPress={() => handleDropdownItemPress(item)}
                       style={({ pressed }) => [
                         styles.autocompleteRow,
-                        pressed && { backgroundColor: 'rgba(0,0,0,0.04)' },
+                        pressed && styles.rowPressed,
                       ]}
                     >
                       <Image
@@ -380,7 +380,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                           {item.subtitle}
                         </Text>
                       </View>
-                      <Ionicons name="add-circle" size={24} color="#CF6769" />
+                      <Ionicons name="add-circle" size={24} color={colors.accent.primary} />
                     </Pressable>
                   ))
                 ) : (
@@ -403,19 +403,19 @@ export const LogModal: React.FC<LogModalProps> = ({
                   {!hasAnyLogs && (
                     <View style={styles.emptyStateContainer}>
                       <View style={styles.emptyStateIcon}>
-                        <Ionicons name="add-circle-outline" size={32} color="#CF6769" />
+                        <Ionicons name="add-circle-outline" size={32} color={colors.accent.primary} />
                       </View>
                       <Text style={styles.emptyStateTitle}>No coasters logged yet</Text>
                       <Text style={styles.emptyStateSubtitle}>Start tracking your ride credits!</Text>
                       <Pressable
                         style={styles.emptyStateCTA}
                         onPress={() => {
-                          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                          haptics.tap();
                           onFocusInput?.();
                         }}
                       >
                         <Text style={styles.emptyStateCTAText}>Add your first ride</Text>
-                        <Ionicons name="arrow-forward" size={16} color="#FFFFFF" />
+                        <Ionicons name="arrow-forward" size={16} color={colors.text.inverse} />
                       </Pressable>
                     </View>
                   )}
@@ -424,7 +424,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                   {hasAnyLogs && pendingRatings.length === 0 && (
                     <View style={styles.completeStateContainer}>
                       <View style={styles.completeStateIcon}>
-                        <Ionicons name="checkmark-circle" size={32} color="#4CAF50" />
+                        <Ionicons name="checkmark-circle" size={32} color={colors.status.successSoft} />
                       </View>
                       <Text style={styles.completeStateTitle}>All caught up!</Text>
                       <Text style={styles.completeStateSubtitle}>Your rides are fully rated</Text>
@@ -437,17 +437,17 @@ export const LogModal: React.FC<LogModalProps> = ({
                       {/* Amber Summary Banner */}
                       <Pressable
                         style={styles.pendingBanner}
-                        onPress={() => handlePendingRatingPress(pendingRatings[0])}
+                        onPress={handleRateAll}
                       >
                         <View style={styles.pendingBannerContent}>
-                          <Ionicons name="star" size={18} color="#F9A825" />
+                          <Ionicons name="star" size={18} color={colors.status.warning} />
                           <Text style={styles.pendingBannerText}>
                             {pendingRatings.length} {pendingRatings.length === 1 ? 'ride' : 'rides'} awaiting your rating
                           </Text>
                         </View>
                         <View style={styles.pendingBannerCTA}>
                           <Text style={styles.pendingBannerCTAText}>Rate All</Text>
-                          <Ionicons name="chevron-forward" size={16} color="#F9A825" />
+                          <Ionicons name="chevron-forward" size={16} color={colors.status.warning} />
                         </View>
                       </Pressable>
 
@@ -535,7 +535,7 @@ export const LogModal: React.FC<LogModalProps> = ({
                         onPress={() => handleTrendingPress(coaster)}
                         style={({ pressed }) => [
                           styles.trendingRow,
-                          pressed && { backgroundColor: 'rgba(0,0,0,0.04)' },
+                          pressed && styles.rowPressed,
                         ]}
                       >
                         <View style={styles.trendingRank}>
@@ -579,8 +579,8 @@ const styles = StyleSheet.create({
   },
   inputOnlyStyle: {
     flex: 1,
-    fontSize: 16,
-    color: '#000000',
+    fontSize: typography.sizes.input,
+    color: colors.text.primary,
     paddingVertical: 0,
   },
   sectionsOnlyContainer: {
@@ -590,47 +590,43 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
-    paddingTop: 8,
+    paddingTop: spacing.md,
   },
   section: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 20,
-    marginHorizontal: 8,
-    paddingVertical: 16,
-    shadowColor: '#323232',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.14,
-    shadowRadius: 20,
-    elevation: 5,
+    backgroundColor: colors.background.card,
+    borderRadius: radius.card,
+    marginHorizontal: spacing.md,
+    paddingVertical: spacing.lg,
+    ...shadows.section,
   },
   frostedGap: {
-    height: 16,
+    height: spacing.lg,
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingBottom: 8,
+    paddingHorizontal: spacing.lg,
+    paddingBottom: spacing.md,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#000000',
+    fontSize: typography.sizes.large,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
   },
   // Pending Ratings Banner styles
   pendingBanner: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(255, 193, 7, 0.12)',
+    backgroundColor: colors.banner.warningBg,
     borderWidth: 1,
-    borderColor: 'rgba(255, 179, 0, 0.3)',
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    marginHorizontal: 16,
-    marginBottom: 8,
+    borderColor: colors.banner.warningBorder,
+    borderRadius: radius.md,
+    paddingHorizontal: spacing.lg - 2,
+    paddingVertical: spacing.base,
+    marginHorizontal: spacing.lg,
+    marginBottom: spacing.md,
   },
   pendingBannerContent: {
     flexDirection: 'row',
@@ -638,169 +634,173 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   pendingBannerText: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#333333',
-    marginLeft: 8,
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold,
+    color: colors.banner.warningText,
+    marginLeft: spacing.md,
   },
   pendingBannerCTA: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   pendingBannerCTAText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#F9A825',
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.semibold,
+    color: colors.status.warning,
     marginRight: 2,
+  },
+  // Row press state
+  rowPressed: {
+    backgroundColor: colors.interactive.pressed,
   },
   // Empty State styles
   emptyStateContainer: {
     alignItems: 'center',
-    paddingVertical: 24,
-    paddingHorizontal: 16,
+    paddingVertical: spacing.xxl,
+    paddingHorizontal: spacing.lg,
   },
   emptyStateIcon: {
     width: 56,
     height: 56,
-    borderRadius: 28,
-    backgroundColor: 'rgba(207, 103, 105, 0.1)',
+    borderRadius: radius.button,
+    backgroundColor: colors.accent.primaryLight,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 12,
+    marginBottom: spacing.base,
   },
   emptyStateTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 4,
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
+    marginBottom: spacing.xs,
   },
   emptyStateSubtitle: {
-    fontSize: 14,
-    color: '#666666',
-    marginBottom: 16,
+    fontSize: typography.sizes.label,
+    color: colors.text.secondary,
+    marginBottom: spacing.lg,
   },
   emptyStateCTA: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#CF6769',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 24,
-    gap: 8,
+    backgroundColor: colors.accent.primary,
+    paddingVertical: spacing.base,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radius.modal,
+    gap: spacing.md,
   },
   emptyStateCTAText: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#FFFFFF',
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.inverse,
   },
   // Complete State styles
   completeStateContainer: {
     alignItems: 'center',
-    paddingVertical: 24,
-    paddingHorizontal: 16,
+    paddingVertical: spacing.xxl,
+    paddingHorizontal: spacing.lg,
   },
   completeStateIcon: {
     width: 56,
     height: 56,
-    borderRadius: 28,
+    borderRadius: radius.button,
     backgroundColor: 'rgba(76, 175, 80, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 12,
+    marginBottom: spacing.base,
   },
   completeStateTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 4,
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
+    marginBottom: spacing.xs,
   },
   completeStateSubtitle: {
-    fontSize: 14,
-    color: '#666666',
+    fontSize: typography.sizes.label,
+    color: colors.text.secondary,
   },
   noResults: {
     padding: 40,
     alignItems: 'center',
   },
   noResultsText: {
-    fontSize: 16,
-    color: '#666666',
+    fontSize: typography.sizes.input,
+    color: colors.text.secondary,
   },
   // Autocomplete row styles
   autocompleteRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: spacing.base,
+    paddingHorizontal: spacing.lg,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(0,0,0,0.08)',
+    borderBottomColor: colors.interactive.separator,
   },
   autocompleteImage: {
     width: 48,
     height: 48,
-    borderRadius: 8,
-    backgroundColor: '#F0F0F0',
+    borderRadius: radius.sm,
+    backgroundColor: colors.background.imagePlaceholder,
   },
   autocompleteTextContainer: {
     flex: 1,
-    marginLeft: 12,
+    marginLeft: spacing.base,
   },
   autocompleteTitle: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#000000',
+    fontSize: typography.sizes.input,
+    fontWeight: typography.weights.medium,
+    color: colors.text.primary,
     marginBottom: 2,
   },
   autocompleteSubtitle: {
-    fontSize: 13,
-    color: '#666666',
+    fontSize: typography.sizes.caption,
+    color: colors.text.secondary,
   },
   // Trending row styles
   trendingRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: spacing.base,
+    paddingHorizontal: spacing.lg,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(0,0,0,0.08)',
+    borderBottomColor: colors.interactive.separator,
   },
   trendingRank: {
     width: 28,
     height: 28,
-    borderRadius: 14,
-    backgroundColor: '#CF6769',
+    borderRadius: radius.trendingRank,
+    backgroundColor: colors.accent.primary,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
+    marginRight: spacing.base,
   },
   trendingRankText: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.bold,
+    color: colors.text.inverse,
   },
   trendingInfo: {
     flex: 1,
   },
   trendingName: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#000000',
+    fontSize: typography.sizes.input,
+    fontWeight: typography.weights.medium,
+    color: colors.text.primary,
     marginBottom: 2,
   },
   trendingPark: {
-    fontSize: 13,
-    color: '#666666',
+    fontSize: typography.sizes.caption,
+    color: colors.text.secondary,
   },
   trendingCount: {
     alignItems: 'flex-end',
   },
   trendingCountText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#CF6769',
+    fontSize: typography.sizes.input,
+    fontWeight: typography.weights.semibold,
+    color: colors.accent.primary,
   },
   trendingCountLabel: {
-    fontSize: 11,
-    color: '#999999',
+    fontSize: typography.sizes.small,
+    color: colors.text.meta,
   },
 });

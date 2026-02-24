@@ -4,27 +4,25 @@
  * React Navigation v7 bottom tab navigator with fade animation.
  * Custom AnimatedTabBar preserves the existing tab bar styling.
  *
- * Home | Discover | Play | Activity | Profile
+ * Home | Discover | Parks | Community | Profile
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import Reanimated, { useAnimatedStyle, interpolate } from 'react-native-reanimated';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import * as Haptics from 'expo-haptics';
 
 // Import screens
 import { HomeScreen } from '../screens/HomeScreen';
 import { DiscoverScreen } from '../screens/DiscoverScreen';
-import { PlayScreen } from '../screens/PlayScreen';
-import { ActivityScreen } from '../screens/ActivityScreen';
+import { ParksScreen } from '../screens/ParksScreen';
+import { CommunityScreen } from '../screens/CommunityScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 
-// Import store for pending badge
-import { getPendingCount, subscribe } from '../stores/rideLogStore';
+import { haptics } from '../services/haptics';
 
 // Import tab bar context
 import { useTabBar, TAB_NAMES, TabName } from '../contexts/TabBarContext';
@@ -33,31 +31,15 @@ import { useTabBar, TAB_NAMES, TabName } from '../contexts/TabBarContext';
 const TAB_BAR_HEIGHT = 49;
 
 // Tab configuration with icons
-const TAB_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; showBadge?: boolean }> = {
+const TAB_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap }> = {
   Home: { icon: 'home-outline' },
   Discover: { icon: 'compass-outline' },
-  Play: { icon: 'game-controller-outline' },
-  Activity: { icon: 'time-outline', showBadge: true },
+  Parks: { icon: 'location-outline' },
+  Community: { icon: 'chatbubbles-outline' },
   Profile: { icon: 'person-outline' },
 };
 
 const Tab = createBottomTabNavigator();
-
-/**
- * Custom hook to subscribe to pending log count changes
- */
-function usePendingCount(): number {
-  const [count, setCount] = useState(getPendingCount());
-
-  useEffect(() => {
-    const unsubscribe = subscribe(() => {
-      setCount(getPendingCount());
-    });
-    return unsubscribe;
-  }, []);
-
-  return count;
-}
 
 /**
  * Custom animated tab bar — accepts React Navigation v7 tabBar props
@@ -66,7 +48,6 @@ function usePendingCount(): number {
 const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
   const insets = useSafeAreaInsets();
   const tabBarContext = useTabBar();
-  const pendingCount = usePendingCount();
 
   // Calculate total height including safe area
   const totalHeight = TAB_BAR_HEIGHT + insets.bottom;
@@ -105,10 +86,9 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
 
         const config = TAB_CONFIG[name] || { icon: 'ellipse-outline' };
         const iconName = config.icon;
-        const showBadge = config.showBadge && pendingCount > 0;
 
         const onPress = () => {
-          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+          haptics.tap();
           if (state.index === index) {
             // Same tab — trigger reset
             tabBarContext.resetScreen(name);
@@ -128,9 +108,6 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
           >
             <View>
               <Ionicons name={iconName} size={size} color={color} />
-              {showBadge && (
-                <View style={styles.dotBadge} />
-              )}
             </View>
             <Text style={[styles.tabLabel, { color }]}>
               {name}
@@ -160,8 +137,8 @@ export const TabNavigator = () => {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Discover" component={DiscoverScreen} />
-      <Tab.Screen name="Play" component={PlayScreen} />
-      <Tab.Screen name="Activity" component={ActivityScreen} />
+      <Tab.Screen name="Parks" component={ParksScreen} />
+      <Tab.Screen name="Community" component={CommunityScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
@@ -188,15 +165,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '500',
     marginTop: 2,
-  },
-  dotBadge: {
-    position: 'absolute',
-    top: -2,
-    right: -2,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#CF6769',
   },
 });
 

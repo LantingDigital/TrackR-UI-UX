@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -14,9 +14,10 @@ import {
   CoastlePageDots,
   CoastleSearchBar,
   CoastleHintButton,
-  CoastleHintModal,
-  CoastleStatsCard,
 } from './components';
+import { CoastleHintTooltip } from './components/CoastleHintModal';
+import { CoastleDebugPanel, DEFAULT_TUNING, AnimTuning } from './components/CoastleDebugPanel';
+import type { CoastleHeaderRef } from './components/CoastleHeader';
 
 const REVEAL_DURATION = 880; // 9 cells × ~80ms stagger + flip time
 
@@ -25,15 +26,17 @@ export const CoastleScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const { game, stats, startGame, submitGuess, resetGame, generateShareText } = useCoastleStore();
 
+  const headerRef = useRef<CoastleHeaderRef>(null);
   const [activeGridIndex, setActiveGridIndex] = useState(0);
   const [isRevealing, setIsRevealing] = useState(false);
   const [revealingIndex, setRevealingIndex] = useState<number | null>(null);
-  const [showStats, setShowStats] = useState(false);
+
+  // Debug tuning
+  const [tuning, setTuning] = useState<AnimTuning>(DEFAULT_TUNING);
 
   // Hint state
   const [viewedHintIds, setViewedHintIds] = useState<number[]>([]);
-  const [showHintModal, setShowHintModal] = useState(false);
-  const [isHintTooltip, setIsHintTooltip] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   // Start a daily game on mount
   useEffect(() => {
@@ -46,15 +49,16 @@ export const CoastleScreen: React.FC = () => {
   useEffect(() => {
     if (game && game.guesses.length === 0) {
       setViewedHintIds([]);
-      setShowHintModal(false);
-      setIsHintTooltip(false);
+      setShowTooltip(false);
     }
   }, [game?.guesses.length]);
 
-  // Show stats card after game ends (brief delay for last reveal)
+  // Auto-open stats after game ends (brief delay for last reveal)
   useEffect(() => {
     if (game && (game.status === 'won' || game.status === 'lost')) {
-      const timer = setTimeout(() => setShowStats(true), REVEAL_DURATION + 300);
+      const timer = setTimeout(() => {
+        headerRef.current?.openStats();
+      }, REVEAL_DURATION + 300);
       return () => clearTimeout(timer);
     }
   }, [game?.status]);
@@ -64,21 +68,11 @@ export const CoastleScreen: React.FC = () => {
     navigation.goBack();
   }, [navigation]);
 
-  const handleSettings = useCallback(() => {
-    haptics.tap();
-    setShowStats(true);
-  }, []);
-
-  const handleCloseStats = useCallback(() => {
-    setShowStats(false);
-  }, []);
-
   const handlePlayAgain = useCallback(() => {
-    setShowStats(false);
     setActiveGridIndex(0);
     setRevealingIndex(null);
     setViewedHintIds([]);
-    setShowHintModal(false);
+    setShowTooltip(false);
     resetGame();
     startGame('practice');
   }, [resetGame, startGame]);
@@ -106,18 +100,14 @@ export const CoastleScreen: React.FC = () => {
     if (!game) return;
     // Mark all current hints as viewed
     setViewedHintIds(game.hints.map((h) => h.afterGuess));
-    setIsHintTooltip(false);
-    setShowHintModal(true);
   }, [game]);
 
   const handleShowTooltip = useCallback(() => {
-    setIsHintTooltip(true);
-    setShowHintModal(true);
+    setShowTooltip(true);
   }, []);
 
-  const handleCloseHint = useCallback(() => {
-    setShowHintModal(false);
-    setIsHintTooltip(false);
+  const handleCloseTooltip = useCallback(() => {
+    setShowTooltip(false);
   }, []);
 
   const handleActiveIndexChange = useCallback((index: number) => {
@@ -130,11 +120,18 @@ export const CoastleScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <CoastleHeader
-        onClose={handleClose}
-        onSettings={handleSettings}
-      />
+      {/* Header — zIndex ensures MorphingPill backdrop+card overlay all siblings */}
+      <View style={styles.headerWrapper}>
+        <CoastleHeader
+          ref={headerRef}
+          onClose={handleClose}
+          stats={stats}
+          gameStatus={game.status}
+          shareText={generateShareText()}
+          onPlayAgain={handlePlayAgain}
+          tuning={tuning}
+        />
+      </View>
 
       {/* Puzzle identity */}
       <Text style={styles.puzzleLabel}>
@@ -154,18 +151,21 @@ export const CoastleScreen: React.FC = () => {
         />
       </View>
 
-      {/* Top spacer */}
+      {/* Equal gap: search → grid */}
       <View style={styles.spacer} />
 
-      {/* Grid carousel — auto-height, vertically centered by equal spacers */}
+      {/* Grid carousel */}
       <CoastleGridCarousel
         guesses={game.guesses}
         revealingIndex={revealingIndex}
         onActiveIndexChange={handleActiveIndexChange}
       />
 
-      {/* Bottom spacer — hint button centered within this gap */}
-      <View style={styles.spacer}>
+      {/* Equal gap: grid → hint */}
+      <View style={styles.spacer} />
+
+      {/* Hint button — zIndex ensures MorphingPill backdrop+card overlay all siblings */}
+      <View style={styles.hintWrapper}>
         <CoastleHintButton
           guessCount={game.guesses.length}
           hints={game.hints}
@@ -176,6 +176,9 @@ export const CoastleScreen: React.FC = () => {
         />
       </View>
 
+      {/* Equal gap: hint → dots */}
+      <View style={styles.spacer} />
+
       {/* Page dots */}
       <View style={{ paddingBottom: insets.bottom + spacing.md }}>
         <CoastlePageDots
@@ -185,23 +188,14 @@ export const CoastleScreen: React.FC = () => {
         />
       </View>
 
-      {/* Hint modal / tooltip overlay */}
-      <CoastleHintModal
-        visible={showHintModal}
-        hints={game.hints}
-        isTooltipMode={isHintTooltip}
-        onClose={handleCloseHint}
+      {/* Tooltip overlay (only for "no hints yet" mode) */}
+      <CoastleHintTooltip
+        visible={showTooltip}
+        onClose={handleCloseTooltip}
       />
 
-      {/* Stats overlay */}
-      <CoastleStatsCard
-        visible={showStats}
-        stats={stats}
-        gameStatus={game.status}
-        shareText={generateShareText()}
-        onPlayAgain={handlePlayAgain}
-        onClose={handleCloseStats}
-      />
+      {/* Debug tuning panel */}
+      <CoastleDebugPanel tuning={tuning} onChange={setTuning} />
     </View>
   );
 };
@@ -211,11 +205,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background.page,
   },
+  headerWrapper: {
+    zIndex: 200,
+  },
   searchContainer: {
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.xl,
     paddingBottom: spacing.md,
     zIndex: 50,
+  },
+  hintWrapper: {
+    zIndex: 100,
   },
   puzzleLabel: {
     fontSize: typography.sizes.meta,

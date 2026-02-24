@@ -17,6 +17,7 @@ import {
   Pressable,
   Dimensions,
   Platform,
+  Image,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -24,7 +25,6 @@ import Animated, {
   useAnimatedScrollHandler,
   withSpring,
   withTiming,
-  withSequence,
   withDelay,
   interpolate,
   Extrapolation,
@@ -33,14 +33,18 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
 
 import { colors } from '../theme/colors';
+import { typography } from '../theme/typography';
 import { spacing } from '../theme/spacing';
 import { radius } from '../theme/radius';
+import { shadows } from '../theme/shadows';
+import { haptics } from '../services/haptics';
+import { SPRINGS } from '../constants/animations';
+
 import { RideLog, RatingCriteria } from '../types/rideLog';
 import { getCriteriaConfig, completeRating, subscribe } from '../stores/rideLogStore';
-import { SPRINGS } from '../constants/animations';
+import { SuccessAnimation } from './feedback/SuccessAnimation';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -79,9 +83,8 @@ export const RatingModal: React.FC<RatingModalProps> = ({
   const morphProgress = useSharedValue(0);
   const scrollY = useSharedValue(0);
   const backdropOpacity = useSharedValue(0);
-  const successScale = useSharedValue(0);
-  const successOpacity = useSharedValue(0);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   // Get criteria configuration
   const [criteriaConfig, setCriteriaConfig] = useState(getCriteriaConfig());
@@ -115,34 +118,27 @@ export const RatingModal: React.FC<RatingModalProps> = ({
     },
   });
 
-  // Callbacks for runOnJS
-  const callOnClose = useCallback(() => { onClose(); }, [onClose]);
-  const callOnComplete = useCallback(() => { onComplete(log, ratings); }, [log, ratings, onComplete]);
-
   // Handle close with reverse animation
   const handleClose = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     morphProgress.value = withSpring(0, SPRINGS.responsive);
-    backdropOpacity.value = withTiming(0, { duration: 250 });
-    setTimeout(() => { onClose(); }, 350);
+    backdropOpacity.value = withTiming(0, { duration: 250 }, (finished) => {
+      if (finished) {
+        runOnJS(onClose)();
+      }
+    });
   }, [morphProgress, backdropOpacity, onClose]);
 
   // Handle submit with success animation
   const handleSubmit = useCallback(() => {
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    haptics.success();
     setShowSuccess(true);
-    successScale.value = 0;
-    successOpacity.value = 1;
+  }, []);
 
-    successScale.value = withSpring(1, { damping: 12, stiffness: 150, mass: 0.8 });
-
-    setTimeout(() => {
-      successOpacity.value = withTiming(0, { duration: 200 });
-      setTimeout(() => {
-        onComplete(log, ratings);
-      }, 250);
-    }, 600);
-  }, [log, ratings, onComplete, successScale, successOpacity]);
+  // Called by SuccessAnimation when it finishes
+  const handleSuccessComplete = useCallback(() => {
+    onComplete(log, ratings);
+  }, [log, ratings, onComplete]);
 
   // Update a rating value
   const handleRatingChange = useCallback((criteriaId: string, value: number) => {
@@ -242,14 +238,6 @@ export const RatingModal: React.FC<RatingModalProps> = ({
     ),
   }));
 
-  const successOverlayStyle = useAnimatedStyle(() => ({
-    opacity: successOpacity.value,
-  }));
-
-  const successCircleStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: successScale.value }],
-  }));
-
   return (
     <View style={StyleSheet.absoluteFill}>
       {/* Backdrop */}
@@ -267,12 +255,19 @@ export const RatingModal: React.FC<RatingModalProps> = ({
       >
         {/* Collapsing Hero Header */}
         <Animated.View style={[styles.heroHeader, headerAnimStyle]}>
-          {/* Blurred Background Image */}
-          <Animated.Image
-            source={{ uri: imageUrl }}
-            style={[styles.heroImage, heroImageAnimStyle]}
-            blurRadius={3}
-          />
+          {/* Blurred Background Image with error fallback */}
+          {imageError ? (
+            <View style={styles.heroImagePlaceholder}>
+              <Ionicons name="image-outline" size={48} color={colors.text.meta} />
+            </View>
+          ) : (
+            <Animated.Image
+              source={{ uri: imageUrl }}
+              style={[styles.heroImage, heroImageAnimStyle]}
+              blurRadius={3}
+              onError={() => setImageError(true)}
+            />
+          )}
 
           {/* Gradient Overlay */}
           <View style={styles.heroOverlay} />
@@ -283,7 +278,7 @@ export const RatingModal: React.FC<RatingModalProps> = ({
             onPress={handleClose}
           >
             <BlurView intensity={40} tint="dark" style={styles.closeButtonBlur}>
-              <Ionicons name="close" size={22} color="#FFFFFF" />
+              <Ionicons name="close" size={22} color={colors.text.inverse} />
             </BlurView>
           </Pressable>
 
@@ -358,14 +353,12 @@ export const RatingModal: React.FC<RatingModalProps> = ({
         </View>
 
         {/* Success Overlay */}
-        {showSuccess && (
-          <Animated.View style={[styles.successOverlay, successOverlayStyle]}>
-            <Animated.View style={[styles.successCircle, successCircleStyle]}>
-              <Ionicons name="checkmark" size={48} color="#FFFFFF" />
-            </Animated.View>
-            <Text style={styles.successText}>Rating Saved!</Text>
-          </Animated.View>
-        )}
+        <SuccessAnimation
+          visible={showSuccess}
+          message="Rating Saved!"
+          size="large"
+          onComplete={handleSuccessComplete}
+        />
       </Animated.View>
     </View>
   );
@@ -503,7 +496,7 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
         }
 
         isDragging.current = true;
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        haptics.tap();
         onSlidingStart();
       }
 
@@ -516,7 +509,7 @@ const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
       const newValue = positionToValue(clampedPosition);
 
       if (newValue !== lastValue.current) {
-        Haptics.selectionAsync();
+        haptics.tick();
         lastValue.current = newValue;
         onChange(newValue);
       }
@@ -608,9 +601,15 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
+  heroImagePlaceholder: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: colors.background.imagePlaceholder,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   heroOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: colors.background.overlay,
   },
   closeButton: {
     position: 'absolute',
@@ -632,17 +631,17 @@ const styles = StyleSheet.create({
     right: spacing.lg,
   },
   heroTitle: {
-    fontSize: 26,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontSize: typography.sizes.heroLarge,
+    fontWeight: typography.weights.bold,
+    color: colors.text.inverse,
     marginBottom: spacing.xs,
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 4,
   },
   heroSubtitle: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: typography.sizes.input,
+    fontWeight: typography.weights.medium,
     color: 'rgba(255, 255, 255, 0.8)',
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: { width: 0, height: 1 },
@@ -663,11 +662,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     padding: spacing.lg,
     marginBottom: spacing.xl,
-    shadowColor: colors.shadow.color,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 12,
-    elevation: 4,
+    ...shadows.small,
   },
   scoreRow: {
     flexDirection: 'row',
@@ -676,13 +671,13 @@ const styles = StyleSheet.create({
     marginBottom: spacing.base,
   },
   scoreLabel: {
-    fontSize: 14,
-    fontWeight: '500',
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.medium,
     color: colors.text.secondary,
   },
   scoreValue: {
-    fontSize: 32,
-    fontWeight: '700',
+    fontSize: typography.sizes.display,
+    fontWeight: typography.weights.bold,
     color: colors.accent.primary,
   },
   scoreBar: {
@@ -702,8 +697,8 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   sectionTitle: {
-    fontSize: 13,
-    fontWeight: '600',
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.semibold,
     color: colors.text.meta,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
@@ -716,11 +711,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     padding: spacing.base,
     marginBottom: spacing.sm,
-    shadowColor: colors.shadow.color,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 1,
-    shadowRadius: 8,
-    elevation: 2,
+    ...shadows.small,
   },
   sliderHeader: {
     flexDirection: 'row',
@@ -730,7 +721,7 @@ const styles = StyleSheet.create({
   sliderIconContainer: {
     width: 32,
     height: 32,
-    borderRadius: 8,
+    borderRadius: radius.sm,
     backgroundColor: colors.accent.primaryLight,
     alignItems: 'center',
     justifyContent: 'center',
@@ -738,13 +729,13 @@ const styles = StyleSheet.create({
   },
   sliderName: {
     flex: 1,
-    fontSize: 15,
-    fontWeight: '600',
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold,
     color: colors.text.primary,
   },
   sliderWeight: {
-    fontSize: 13,
-    fontWeight: '500',
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.medium,
     color: colors.text.meta,
   },
   sliderContent: {
@@ -757,8 +748,8 @@ const styles = StyleSheet.create({
     marginLeft: spacing.sm,
   },
   sliderValue: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: typography.sizes.large,
+    fontWeight: typography.weights.bold,
     color: colors.accent.primary,
   },
 
@@ -819,31 +810,8 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   submitButtonText: {
-    fontSize: 17,
-    fontWeight: '600',
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.semibold,
     color: colors.text.inverse,
-  },
-
-  // Success Overlay
-  successOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 100,
-  },
-  successCircle: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: colors.status.success,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: spacing.lg,
-  },
-  successText: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#FFFFFF',
   },
 });

@@ -5,13 +5,13 @@ import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { spacing } from '../theme/spacing';
 
-export const DiscoverScreen = () => {
+export const ParksScreen = () => {
   const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Discover</Text>
+        <Text style={styles.headerTitle}>Parks</Text>
       </View>
     </View>
   );
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DiscoverScreen;
+export default ParksScreen;

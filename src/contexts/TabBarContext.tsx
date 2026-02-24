@@ -19,7 +19,7 @@ import {
 import type { SharedValue } from 'react-native-reanimated';
 
 // Tab names and types
-export const TAB_NAMES = ['Home', 'Discover', 'Play', 'Activity', 'Profile'] as const;
+export const TAB_NAMES = ['Home', 'Discover', 'Parks', 'Community', 'Profile'] as const;
 export type TabName = (typeof TAB_NAMES)[number];
 
 // Type for screen reset handlers

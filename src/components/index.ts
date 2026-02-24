@@ -9,4 +9,4 @@ export { SearchModal } from './SearchModal';
 export { SearchCarousel } from './SearchCarousel';
 export { SearchResultRow, SimpleSearchRow } from './SearchResultRow';
 export { LogModal } from './LogModal';
-export { LogConfirmationCard } from './LogConfirmationCard';
+export { Toast, ToastProvider, useToast, SuccessAnimation } from './feedback';

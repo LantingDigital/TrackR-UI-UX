@@ -5,6 +5,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { SearchableItem, getTypeIcon } from '../data/mockSearchData';
 import { useSpringPress } from '../hooks/useSpringPress';
 
+import { colors } from '../theme/colors';
+import { typography } from '../theme/typography';
+import { spacing } from '../theme/spacing';
+import { radius } from '../theme/radius';
+
 interface SearchResultRowProps {
   item: SearchableItem;
   onPress?: () => void;
@@ -31,7 +36,7 @@ export const SearchResultRow: React.FC<SearchResultRowProps> = ({
         style={styles.pressable}
       >
         <View style={styles.iconContainer}>
-          <Ionicons name={iconName} size={20} color="#666666" />
+          <Ionicons name={iconName} size={20} color={colors.text.secondary} />
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.primaryText} numberOfLines={1}>
@@ -41,7 +46,7 @@ export const SearchResultRow: React.FC<SearchResultRowProps> = ({
             {item.subtitle ? `${item.subtitle} • ${typeLabel}` : typeLabel}
           </Text>
         </View>
-        <Ionicons name="chevron-forward" size={16} color="#CCCCCC" />
+        <Ionicons name="chevron-forward" size={16} color={colors.border.subtle} />
       </Pressable>
     </Animated.View>
   );
@@ -72,7 +77,7 @@ export const SimpleSearchRow: React.FC<SimpleSearchRowProps> = ({
         onPressOut={pressHandlers.onPressOut}
         style={styles.simplePressable}
       >
-        <Ionicons name={icon} size={18} color="#999999" style={styles.simpleIcon} />
+        <Ionicons name={icon} size={18} color={colors.text.meta} style={styles.simpleIcon} />
         <Text style={styles.simpleText} numberOfLines={1}>
           {text}
         </Text>
@@ -83,11 +88,11 @@ export const SimpleSearchRow: React.FC<SimpleSearchRowProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 16,
-    marginVertical: 4,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    shadowColor: '#323232',
+    marginHorizontal: spacing.lg,
+    marginVertical: spacing.xs,
+    backgroundColor: colors.background.card,
+    borderRadius: radius.md,
+    shadowColor: colors.shadow.color,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.06,
     shadowRadius: 8,
@@ -96,48 +101,48 @@ const styles = StyleSheet.create({
   pressable: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 12,
+    padding: spacing.base,
   },
   iconContainer: {
     width: 40,
     height: 40,
-    borderRadius: 20,
-    backgroundColor: '#F5F5F5',
+    borderRadius: radius.xl,
+    backgroundColor: colors.background.input,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
+    marginRight: spacing.base,
   },
   textContainer: {
     flex: 1,
   },
   primaryText: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#000000',
+    fontSize: typography.sizes.input,
+    fontWeight: typography.weights.medium,
+    color: colors.text.primary,
     marginBottom: 2,
   },
   secondaryText: {
-    fontSize: 14,
-    color: '#666666',
+    fontSize: typography.sizes.label,
+    color: colors.text.secondary,
   },
   // Simple row styles
   simpleContainer: {
-    marginHorizontal: 16,
+    marginHorizontal: spacing.lg,
   },
   simplePressable: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 4,
+    paddingVertical: spacing.base,
+    paddingHorizontal: spacing.xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#E5E5E5',
+    borderBottomColor: colors.border.subtle,
   },
   simpleIcon: {
-    marginRight: 12,
+    marginRight: spacing.base,
   },
   simpleText: {
-    fontSize: 16,
-    color: '#000000',
+    fontSize: typography.sizes.input,
+    color: colors.text.primary,
     flex: 1,
   },
 });

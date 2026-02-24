@@ -13,6 +13,12 @@ import { useSpringPress } from '../hooks/useSpringPress';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SearchableItem } from '../data/mockSearchData';
 
+import { colors } from '../theme/colors';
+import { typography } from '../theme/typography';
+import { spacing } from '../theme/spacing';
+import { radius } from '../theme/radius';
+import { shadows } from '../theme/shadows';
+
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const CARD_WIDTH = 120;
 const CARD_HEIGHT = 120; // Square cards per user request
@@ -91,30 +97,26 @@ export const SearchCarousel: React.FC<SearchCarouselProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 8,
+    paddingVertical: spacing.md,
   },
   sectionTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#000000',
-    paddingHorizontal: 16,
-    marginBottom: 12,
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
+    paddingHorizontal: spacing.lg,
+    marginBottom: spacing.base,
   },
   scrollContent: {
-    paddingHorizontal: 16,
+    paddingHorizontal: spacing.lg,
     gap: CARD_GAP,
   },
   cardContainer: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
-    borderRadius: 16,
+    borderRadius: radius.lg,
     overflow: 'hidden',
-    backgroundColor: '#E5E5E5',
-    shadowColor: '#323232',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
-    elevation: 4,
+    backgroundColor: colors.border.subtle,
+    ...shadows.small,
   },
   cardPressable: {
     flex: 1,
@@ -139,8 +141,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   cardName: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.bold,
+    color: colors.text.inverse,
   },
 });

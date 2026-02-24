@@ -27,8 +27,10 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
+  withDelay,
   withSpring,
   withSequence,
+  cancelAnimation,
   runOnJS,
   interpolate,
   Extrapolation,
@@ -36,6 +38,7 @@ import Animated, {
   SharedValue,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { colors } from '../theme/colors';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -97,6 +100,7 @@ interface MorphingPillProps {
   expandedContent: React.ReactNode | ((close: () => void) => React.ReactNode);
   expandedWidth?: number;   // Final width (default: SCREEN_WIDTH - 32)
   expandedHeight?: number;  // Final height (default: full modal)
+  expandedY?: number;       // Final Y position (default: insets.top + 60)
   expandedBorderRadius?: number;
   expandedStyle?: ViewStyle;
 
@@ -142,6 +146,34 @@ interface MorphingPillProps {
   // Rendered as an absolutely-positioned layer between pill content and expanded content.
   persistentContent?: React.ReactNode;
 
+  // Standalone mode: pill IS the button (visible + tappable from first render).
+  // When false (default), pill starts invisible and relies on external button → ref.open().
+  standalone?: boolean;
+
+  // When true, the pill holds its collapsed circle shape during the upward arc phase (t=0→0.32).
+  // Position and size travel begin only AFTER the arc peaks, creating a clear "jump up then morph down" feel.
+  // Without this, long-distance morphs (e.g. top-right to center) show a diagonal drift instead of a visible arc.
+  holdPillDuringArc?: boolean;
+
+  // Debug tuning — overrides hardcoded animation constants when provided.
+  // Used with CoastleDebugPanel for real-time slider adjustment.
+  tuning?: {
+    arcHeight?: number;
+    arcBias?: number;
+    sizeStart?: number;
+    bounceAmount?: number;
+    overshootAmount?: number;
+    easingP1X?: number;
+    easingP1Y?: number;
+    easingP2X?: number;
+    easingP2Y?: number;
+    expandDuration?: number;
+    springDamping?: number;
+    springStiffness?: number;
+    springMass?: number;
+    duration?: number;
+  };
+
   // External progress coordination
   externalProgress?: SharedValue<number>; // If provided, drives this instead of internal
 
@@ -164,6 +196,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   expandedContent,
   expandedWidth,
   expandedHeight,
+  expandedY,
   expandedBorderRadius = 24,
   expandedStyle,
   closeTargetPosition,
@@ -178,7 +211,10 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   closeShadowFade,
   overshootAngle,
   overshootMagnitude = 6,
+  standalone = false,
+  holdPillDuringArc = false,
   persistentContent,
+  tuning,
   scrollHidden,
   externalProgress,
   onOpen,
@@ -203,6 +239,30 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   );
   const overshootMag = useSharedValue(overshootMagnitude);
 
+  // Open animation tuning
+  const holdPillDuringArcSV = useSharedValue(holdPillDuringArc ? 1 : 0);
+
+  // Debug tuning SharedValues (worklet-accessible) + ref (JS-accessible)
+  const tunArcHeight = useSharedValue(tuning?.arcHeight ?? 120);
+  const tunArcBias = useSharedValue(tuning?.arcBias ?? 0.5);
+  const tunSizeStart = useSharedValue(tuning?.sizeStart ?? 0.60);
+  const tunExpandDur = useSharedValue(tuning?.expandDuration ?? 300);
+  const tunBounceAmt = useSharedValue(tuning?.bounceAmount ?? 10);
+  const tuningRef = useRef(tuning);
+  tuningRef.current = tuning;
+
+  // Independent size animation — decoupled from arc travel
+  const sizeProgress = useSharedValue(0);
+
+  useEffect(() => {
+    tunArcHeight.value = tuning?.arcHeight ?? 120;
+    tunArcBias.value = tuning?.arcBias ?? 0.5;
+    tunSizeStart.value = tuning?.sizeStart ?? 0.60;
+    tunExpandDur.value = tuning?.expandDuration ?? 300;
+    tunBounceAmt.value = tuning?.bounceAmount ?? 10;
+  }, [tuning?.arcHeight, tuning?.arcBias, tuning?.sizeStart, tuning?.expandDuration, tuning?.bounceAmount]);
+
+
   // Close animation tuning (SharedValues for worklet access)
   const closeArcHeightSV = useSharedValue(closeArcHeight ?? 35);
   const closeFixedSizeSV = useSharedValue(closeFixedSize ? 1 : 0);
@@ -215,11 +275,14 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   const morphProgress = externalProgress ?? internalProgress;
 
   const backdropOpacity = useSharedValue(0);
-  const isOpening = useSharedValue(true);
+  // Standalone: pill starts in "post-close" state → visible with resting shadow.
+  // Non-standalone: pill starts invisible, relies on external button → ref.open().
+  const isOpening = useSharedValue(!standalone);
   // After the first close, the pill stays opaque (acts as the button visually).
   // This flag keeps it visible even during subsequent opens at t=0,
   // preventing a 1-frame flash when transitioning from close → open.
-  const hasClosedBefore = useSharedValue(false);
+  // Standalone: starts true so pill is visible from first render.
+  const hasClosedBefore = useSharedValue(standalone);
   // Used for opacity gating during close — stays at 1 during animation,
   // pill is removed from tree via setIsExpanded(false) after hidden handoff
   const closeFadeOut = useSharedValue(1);
@@ -231,10 +294,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   const finalHeight = expandedHeight ?? (SCREEN_HEIGHT - insets.top - insets.bottom - MODAL_PADDING * 2 - 100);
 
   // Modal position (shared values for worklet access)
-  // NOTE: modalYValue MUST match HomeScreen's pillFinalTop = insets.top + 60
-  // This ensures blur zone and MorphingPill final position align perfectly
-  const modalXValue = useSharedValue(MODAL_PADDING);
-  const modalYValue = useSharedValue(insets.top + 60);
+  // X auto-centers the expanded card on screen unless expandedX is explicitly provided
+  // For HomeScreen: (SCREEN_WIDTH - (SCREEN_WIDTH - 32)) / 2 = 16 (same as old MODAL_PADDING)
+  const modalXValue = useSharedValue((SCREEN_WIDTH - finalWidth) / 2);
+  // NOTE: modalYValue default (insets.top + 60) matches HomeScreen's pillFinalTop
+  const modalYValue = useSharedValue(expandedY ?? (insets.top + 60));
 
   // Close target position (shared values for worklet access)
   // If closeTargetPosition is provided, close animation goes there instead of back to pill
@@ -245,11 +309,16 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   const closeTargetR = useSharedValue(closeTargetPosition?.borderRadius ?? pillBorderRadius);
   const hasCloseTarget = useSharedValue(!!closeTargetPosition);
 
-  // Update modal Y when insets change
-  // Keep in sync with initial value: insets.top + 60 (matches HomeScreen's pillFinalTop)
+  // Update modal X when expanded width changes (auto-center)
   useEffect(() => {
-    modalYValue.value = insets.top + 60;
-  }, [insets.top, modalYValue]);
+    modalXValue.value = (SCREEN_WIDTH - finalWidth) / 2;
+  }, [finalWidth, modalXValue]);
+
+  // Update modal Y when insets change or expandedY prop changes
+  // Default: insets.top + 60 (matches HomeScreen's pillFinalTop)
+  useEffect(() => {
+    modalYValue.value = expandedY ?? (insets.top + 60);
+  }, [insets.top, expandedY, modalYValue]);
 
   // Update close target when prop changes
   useEffect(() => {
@@ -322,39 +391,93 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       // Parabolic ARC motion: element arcs UPWARD first, then descends to final position
       // This creates the iOS "liquid glass" feel with spring bounce at landing
 
-      // Smooth ease-out for the main travel (decelerates as it approaches target)
-      const easeOut = 1 - Math.pow(1 - t, 2.5);
-
       // ARC OFFSET - TRUE PARABOLIC curve for smooth arc motion
-      // Parabola equation: arcOffset = a * t * (t - endT)
-      // where endT = 0.7 (when arc ends), and we solve for 'a' to get desired peak height
-      // Peak occurs at t = endT/2 = 0.35
-      // For 70px peak: a = peakHeight / (peakT * (peakT - endT)) = 70 / (0.35 * -0.35) ≈ 571.4
       const ARC_END_T = 0.7;      // Arc completes at 70% of animation
       const ARC_PEAK_HEIGHT = 70; // Peak height in pixels (upward)
       const arcT = Math.min(t, ARC_END_T); // Clamp to arc duration
       const arcCoefficient = ARC_PEAK_HEIGHT / (0.35 * 0.35); // ≈ 571.4
-      const arcOffset = arcCoefficient * arcT * (arcT - ARC_END_T); // Results in negative value = upward arc (mountain shape)
+      const arcOffset = arcCoefficient * arcT * (arcT - ARC_END_T); // Negative = upward
 
-      // Spring bounce - FIXED PIXELS so all origins bounce identically
-      // Only activates in the last 30% of animation
-      // Pattern: overshoot down 14px, then return directly to final (no extra bounce)
-      const bounceOffset = interpolate(
-        t,
-        [0, 0.7, 0.85, 1.0],
-        [0, 0,   14,   0],
-        Extrapolation.CLAMP
-      );
+      // Bounce offset — different behavior for holdPillDuringArc vs default
+      let bounceOffset: number;
+      if (holdPillDuringArcSV.value === 1) {
+        // Coastle: bounce responds to overshoot (t > 1.0), driven by tuning slider
+        const bAmt = tunBounceAmt.value;
+        bounceOffset = interpolate(
+          t,
+          [0, 0.97, 1.0, 1.03, 1.06],
+          [0, 0,    0,   bAmt, 0],
+          Extrapolation.CLAMP
+        );
+      } else {
+        // HomeScreen: original bounce within t=0→1.0 range
+        bounceOffset = interpolate(
+          t,
+          [0, 0.7, 0.85, 1.0],
+          [0, 0,   14,   0],
+          Extrapolation.CLAMP
+        );
+      }
 
-      // Position: smooth travel + arc offset + bounce
-      // The arc makes it jump up first, then descend to target with bounce
-      currentX = easeOut * targetX;
-      currentY = easeOut * targetY + arcOffset + bounceOffset;
+      if (holdPillDuringArcSV.value === 1) {
+        // TOP-CENTER-TRACKED QUADRATIC BEZIER for long-distance morphs.
+        // All constants driven by tuning SharedValues for real-time slider adjustment.
+        const ARC_HEIGHT = tunArcHeight.value;
+        const ARC_BIAS = tunArcBias.value;
+        const SIZE_START = tunSizeStart.value;
 
-      // Size: smooth expansion from pill to final
-      currentWidth = pillWidth + easeOut * (finalWidth - pillWidth);
-      currentHeight = pillHeight + easeOut * (finalHeight - pillHeight);
-      currentRadius = pillBorderRadius + easeOut * (expandedBorderRadius - pillBorderRadius);
+        // Top-center positions
+        const topStartX = pillWidth / 2;
+        const topStartY = 0;
+        const topEndX = targetX + finalWidth / 2;
+        const topEndY = targetY;
+
+        // Delta the Bezier actually travels
+        const topDX = topEndX - topStartX;
+        const topDY = topEndY - topStartY;
+
+        const controlDX = ARC_BIAS * topDX;
+
+        // Clamp t to 1.0 for Bezier position and size — overshoot only affects bounceOffset.
+        const tc = Math.min(t, 1.0);
+
+        // Bezier weights (using clamped t)
+        const b1 = 2 * tc * (1 - tc);
+        const b2 = tc * tc;
+
+        // Top-center position along the Bezier (clamped) + bounce from raw t
+        const topCenterX = topStartX + b1 * controlDX + b2 * topDX;
+        const topCenterY = topStartY + b1 * (-ARC_HEIGHT) + b2 * topDY + bounceOffset;
+
+        // Size driven by independent sizeProgress (decoupled from arc timing).
+        // sizeProgress runs its own withTiming with its own duration.
+        const sp = sizeProgress.value;
+        if (sp <= 0.001) {
+          currentWidth = pillWidth;
+          currentHeight = pillHeight;
+          currentRadius = pillBorderRadius;
+        } else {
+          const sizeEase = 1 - Math.pow(1 - sp, 2.5);
+          currentWidth = pillWidth + sizeEase * (finalWidth - pillWidth);
+          currentHeight = pillHeight + sizeEase * (finalHeight - pillHeight);
+          currentRadius = pillBorderRadius + sizeEase * (expandedBorderRadius - pillBorderRadius);
+        }
+
+        // Convert top-center → top-left corner for React Native positioning
+        // X: centered horizontally (grows left + right)
+        // Y: anchored at top (grows downward only)
+        currentX = topCenterX - currentWidth / 2;
+        currentY = topCenterY;
+      } else {
+        // DEFAULT (HomeScreen): position and size interpolate together from t=0
+        const tSafe = Math.min(t, 1.0); // Safety clamp — default path never overshoots
+        const easeOut = 1 - Math.pow(1 - tSafe, 2.5);
+        currentX = easeOut * targetX;
+        currentY = easeOut * targetY + arcOffset + bounceOffset;
+        currentWidth = pillWidth + easeOut * (finalWidth - pillWidth);
+        currentHeight = pillHeight + easeOut * (finalHeight - pillHeight);
+        currentRadius = pillBorderRadius + easeOut * (expandedBorderRadius - pillBorderRadius);
+      }
 
     } else {
       // ========== CLOSING ANIMATION ==========
@@ -512,7 +635,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       width: currentWidth,
       height: currentHeight,
       borderRadius: currentRadius,
-      backgroundColor: '#FFFFFF',
+      backgroundColor: colors.background.card,
       opacity: pillOpacity,
       shadowColor: '#000',
       shadowOffset: { width: 0, height: shadowOffH },
@@ -532,7 +655,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     bottom: 0,
     borderRadius: interpolate(morphProgress.value, [0, 1], [pillBorderRadius, expandedBorderRadius], Extrapolation.CLAMP),
     overflow: 'hidden',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.background.card,
   }));
 
   // Pill content style - different timing for open vs close
@@ -639,20 +762,59 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       onOpen?.();
       onAnimationStart?.(true);
 
-      // Single timed animation - spring curve is calculated in outerStyle
-      // No separate bounceProgress needed - eliminates timing mismatch issues
-      morphProgress.value = withTiming(1, {
-        duration,
-        // Use bezier for controlled feel: quick start, consistent middle, snappy end
-        easing: Easing.bezier(0.25, 0.1, 0.25, 1),
-      }, (finished) => {
-        if (finished) {
-          runOnJS(handleAnimationComplete)(true);
-        }
-      });
+      if (holdPillDuringArc) {
+        // COASTLE: tuning-driven overshoot + easing + independent size animation
+        const tn = tuningRef.current;
+        const overshoot = tn?.overshootAmount ?? 1.03;
+        const eDuration = tn?.duration ?? duration;
+        const expandDur = tn?.expandDuration ?? 300;
+        const sizeStart = tn?.sizeStart ?? 0.60;
+        const easing = Easing.bezier(
+          tn?.easingP1X ?? 0.15,
+          tn?.easingP1Y ?? 0.7,
+          tn?.easingP2X ?? 0.85,
+          tn?.easingP2Y ?? 1,
+        );
 
-      if (showBackdrop) {
-        backdropOpacity.value = withTiming(1, { duration });
+        // Independent size animation: delayed start, own duration
+        cancelAnimation(sizeProgress);
+        sizeProgress.value = 0;
+        sizeProgress.value = withDelay(
+          Math.round(sizeStart * eDuration),
+          withTiming(1, { duration: expandDur, easing: Easing.out(Easing.quad) })
+        );
+
+        // Two-phase: timed travel past 1.0 (overshoot), then spring snap back
+        morphProgress.value = withSequence(
+          withTiming(overshoot, { duration: eDuration, easing }),
+          withSpring(1, {
+            damping: tn?.springDamping ?? 20,
+            stiffness: tn?.springStiffness ?? 220,
+            mass: tn?.springMass ?? 0.6,
+          }, (finished) => {
+            if (finished) {
+              runOnJS(handleAnimationComplete)(true);
+            }
+          })
+        );
+
+        if (showBackdrop) {
+          backdropOpacity.value = withTiming(1, { duration: eDuration });
+        }
+      } else {
+        // HOMESCREEN: original single withTiming to 1.0, original easing
+        morphProgress.value = withTiming(1, {
+          duration,
+          easing: Easing.bezier(0.25, 0.1, 0.25, 1),
+        }, (finished) => {
+          if (finished) {
+            runOnJS(handleAnimationComplete)(true);
+          }
+        });
+
+        if (showBackdrop) {
+          backdropOpacity.value = withTiming(1, { duration });
+        }
       }
     });
   }, [morphProgress, backdropOpacity, isOpening, isAnimating, showBackdrop, duration, onOpen, onAnimationStart, handleAnimationComplete]);
@@ -666,6 +828,10 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
 
     setIsAnimating(true);
     isOpening.value = false;
+    if (holdPillDuringArc) {
+      cancelAnimation(sizeProgress);
+      sizeProgress.value = 1; // Ensure full size before close shrinks it
+    }
     onClose?.();
     onAnimationStart?.(false);
 
@@ -674,19 +840,16 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     }
 
     // Phase 1: Close from 1 to -0.04 (past origin) at original speed
-    // The ease-out decelerates naturally, crossing t=0 at ~460ms
-    // Then continues to -0.04 (the overshoot peak) over the remaining ~90ms
-    // Phase 2: Spring snaps from -0.04 back to 0 (~100-150ms)
+    // Phase 2: Spring snaps from -0.04 back to 0
     morphProgress.value = withSequence(
       withTiming(-0.04, {
         duration: closeDurRef.current,
         easing: Easing.out(Easing.cubic),
       }),
-      withSpring(0, {
-        damping: 24,
-        stiffness: 320,
-        mass: 0.5,
-      }, (finished) => {
+      withSpring(0, holdPillDuringArc
+        ? { damping: 16, stiffness: 140, mass: 0.7 }  // Coastle: slower, softer settle
+        : { damping: 24, stiffness: 320, mass: 0.5 }, // HomeScreen: original snappy settle
+      (finished) => {
         if (finished) {
           runOnJS(handleAnimationComplete)(false);
         }
@@ -733,10 +896,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       )}
 
       {/* THE PILL */}
-      {/* pointerEvents='none' when invisible to allow touches to pass through to actual UI elements */}
+      {/* Standalone: always tappable (pill IS the button). */}
+      {/* Non-standalone: pointerEvents='none' when invisible so touches pass through to real UI elements */}
       <Animated.View
         style={[outerStyle, pillStyle]}
-        pointerEvents={isExpanded || isAnimating ? 'auto' : 'none'}
+        pointerEvents={standalone || isExpanded || isAnimating ? 'auto' : 'none'}
       >
         <Animated.View style={innerStyle}>
           <Pressable

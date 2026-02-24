@@ -1,5 +1,5 @@
-import React, { useEffect, useCallback } from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { StyleSheet, View, Text, Pressable, Dimensions, LayoutChangeEvent } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Reanimated, {
   useSharedValue,
@@ -14,8 +14,16 @@ import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
+import { shadows } from '../../../theme/shadows';
 import { haptics } from '../../../services/haptics';
+import { MorphingPill, MorphingPillRef } from '../../../components/MorphingPill';
+import { CoastleHintContent } from './CoastleHintModal';
 import { HintReveal, HINT_GUESSES, GameStatus } from '../types/coastle';
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+
+const HINT_CARD_WIDTH = SCREEN_WIDTH - 96;
+const HINT_CARD_HEIGHT = 240;
 
 interface CoastleHintButtonProps {
   guessCount: number;
@@ -36,6 +44,17 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
 }) => {
   const hasHints = hints.length > 0;
   const hasUnviewed = hints.some((h) => !viewedHintIds.includes(h.afterGuess));
+  const morphRef = useRef<MorphingPillRef>(null);
+
+  // Pill dimensions measured from hidden sizer (never affected by morph expansion)
+  const [pillSize, setPillSize] = useState({ width: 0, height: 0 });
+
+  const handleSizerLayout = useCallback((e: LayoutChangeEvent) => {
+    const { width, height } = e.nativeEvent.layout;
+    if (width > 0 && height > 0) {
+      setPillSize({ width, height });
+    }
+  }, []);
 
   // Ping animation for unviewed hint
   const pingScale = useSharedValue(1);
@@ -72,15 +91,10 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
     opacity: pingOpacity.value,
   }));
 
-  const handlePress = useCallback(() => {
-    if (hasHints) {
-      haptics.tap();
-      onViewHints();
-    } else {
-      haptics.tick();
-      onShowTooltip();
-    }
-  }, [hasHints, onViewHints, onShowTooltip]);
+  const handleMorphOpen = useCallback(() => {
+    haptics.tap();
+    onViewHints();
+  }, [onViewHints]);
 
   if (gameStatus !== 'playing') return null;
 
@@ -102,11 +116,9 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
   const isActive = hasUnviewed;
   const isTappable = hasHints;
 
-  return (
-    <Pressable
-      style={styles.button}
-      onPress={handlePress}
-    >
+  // Pill inner content (shared between sizer and MorphingPill)
+  const pillInnerContent = (
+    <>
       <View style={styles.iconWrapper}>
         {isActive && (
           <Reanimated.View style={[styles.pingRing, pingStyle]} />
@@ -120,17 +132,99 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
       <Text style={[styles.label, isActive && styles.labelActive]}>
         {labelText}
       </Text>
-    </Pressable>
+    </>
+  );
+
+  // When no hints, render as a simple pressable (no morph)
+  if (!hasHints) {
+    return (
+      <Pressable
+        style={styles.pill}
+        onPress={() => { haptics.tick(); onShowTooltip(); }}
+      >
+        {pillInnerContent}
+      </Pressable>
+    );
+  }
+
+  // When hints available, render MorphingPill with hidden sizer for measurement
+  return (
+    <View style={styles.pillContainer}>
+      {/* Hidden sizer — measures natural pill dimensions independently of morph state */}
+      <View
+        style={styles.sizer}
+        onLayout={handleSizerLayout}
+        pointerEvents="none"
+      >
+        {pillInnerContent}
+      </View>
+
+      {pillSize.width > 0 && (
+        <MorphingPill
+          ref={morphRef}
+          standalone
+          pillWidth={pillSize.width}
+          pillHeight={pillSize.height}
+          pillBorderRadius={radius.pill}
+          pillContent={
+            <View style={styles.pillInner}>
+              {pillInnerContent}
+            </View>
+          }
+          expandedWidth={HINT_CARD_WIDTH}
+          expandedHeight={HINT_CARD_HEIGHT}
+          expandedBorderRadius={radius.card}
+          expandedY={(SCREEN_HEIGHT - HINT_CARD_HEIGHT) / 2}
+          backdropType="blur"
+          showBackdrop={true}
+          overshootAngle={180}
+          overshootMagnitude={6}
+          expandedContent={(close) => (
+            <CoastleHintContent
+              hints={hints}
+              close={close}
+            />
+          )}
+          onOpen={handleMorphOpen}
+        />
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
+  pillContainer: {
+    alignSelf: 'center',
+  },
+  pill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    gap: spacing.sm,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: radius.pill,
+    backgroundColor: colors.background.card,
+    ...shadows.small,
+  },
+  // Hidden measurement wrapper — same padding/gap as the real pill
+  sizer: {
+    position: 'absolute',
+    opacity: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+  },
+  pillInner: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: spacing.sm,
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
   },
   iconWrapper: {
     width: 20,
