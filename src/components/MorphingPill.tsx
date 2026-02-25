@@ -136,6 +136,15 @@ interface MorphingPillProps {
   overshootAngle?: number;
   overshootMagnitude?: number; // Pixels of overshoot (default: 6)
 
+  // Hint button overrides (default path only — does not affect holdPillDuringArc)
+  smoothClose?: boolean;   // Single eased timing to 0 — no overshoot, no spring bounce
+  openBounce?: number;     // Landing bounce pixels on open (default: 14, set 0 to disable)
+  openArcHeight?: number;  // Parabolic arc peak in px on open (default: 70, set 0 to disable)
+
+  // Override pill screen position — bypasses measureInWindow entirely.
+  originScreenX?: number;
+  originScreenY?: number;
+
   // Scroll-driven hide: when the parent scrolls and expands/collapses buttons,
   // the pill must hide so the real button's animation is visible.
   // 0 = pill visible (normal), 1 = pill hidden (scroll took over)
@@ -211,6 +220,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   closeShadowFade,
   overshootAngle,
   overshootMagnitude = 6,
+  smoothClose = false,
+  openBounce = 14,
+  openArcHeight = 70,
+  originScreenX,
+  originScreenY,
   standalone = false,
   holdPillDuringArc = false,
   persistentContent,
@@ -229,8 +243,17 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   const wrapperRef = useRef<View>(null);
 
   // Wrapper screen position
-  const wrapperScreenX = useSharedValue(0);
-  const wrapperScreenY = useSharedValue(0);
+  const wrapperScreenX = useSharedValue(originScreenX ?? 0);
+  const wrapperScreenY = useSharedValue(originScreenY ?? 0);
+
+  // Origin screen position override — set from props so it's on the UI thread
+  // BEFORE any tap handler fires. Eliminates JS→UI race condition on first open.
+  const originXOverride = useSharedValue(originScreenX ?? -1);
+  const originYOverride = useSharedValue(originScreenY ?? -1);
+
+  // Open animation overrides (default path only)
+  const openBounceSV = useSharedValue(openBounce);
+  const openArcHeightSV = useSharedValue(openArcHeight);
 
   // Overshoot direction (SharedValues for worklet access)
   const hasOvershootDir = useSharedValue(overshootAngle !== undefined);
@@ -334,6 +357,14 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     }
   }, [closeTargetPosition]);
 
+  // Sync origin override when props change (e.g. pill resizes from label change)
+  useEffect(() => {
+    originXOverride.value = originScreenX ?? -1;
+    originYOverride.value = originScreenY ?? -1;
+    if (originScreenX !== undefined) wrapperScreenX.value = originScreenX;
+    if (originScreenY !== undefined) wrapperScreenY.value = originScreenY;
+  }, [originScreenX, originScreenY]);
+
   // Update overshoot direction when prop changes
   useEffect(() => {
     hasOvershootDir.value = overshootAngle !== undefined;
@@ -381,8 +412,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     const t = morphProgress.value;
 
     // Target position (relative to wrapper)
-    const targetX = modalXValue.value - wrapperScreenX.value;
-    const targetY = modalYValue.value - wrapperScreenY.value;
+    // Use origin override when available (set from props, always on UI thread).
+    const effectiveX = originXOverride.value >= 0 ? originXOverride.value : wrapperScreenX.value;
+    const effectiveY = originYOverride.value >= 0 ? originYOverride.value : wrapperScreenY.value;
+    const targetX = modalXValue.value - effectiveX;
+    const targetY = modalYValue.value - effectiveY;
 
     let currentX, currentY, currentWidth, currentHeight, currentRadius;
 
@@ -393,10 +427,10 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
 
       // ARC OFFSET - TRUE PARABOLIC curve for smooth arc motion
       const ARC_END_T = 0.7;      // Arc completes at 70% of animation
-      const ARC_PEAK_HEIGHT = 70; // Peak height in pixels (upward)
+      const arcPeak = openArcHeightSV.value;
       const arcT = Math.min(t, ARC_END_T); // Clamp to arc duration
-      const arcCoefficient = ARC_PEAK_HEIGHT / (0.35 * 0.35); // ≈ 571.4
-      const arcOffset = arcCoefficient * arcT * (arcT - ARC_END_T); // Negative = upward
+      const arcCoefficient = arcPeak / (0.35 * 0.35); // ≈ 571.4 at default 70px
+      const arcOffset = arcPeak > 0 ? arcCoefficient * arcT * (arcT - ARC_END_T) : 0;
 
       // Bounce offset — different behavior for holdPillDuringArc vs default
       let bounceOffset: number;
@@ -410,11 +444,11 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
           Extrapolation.CLAMP
         );
       } else {
-        // HomeScreen: original bounce within t=0→1.0 range
+        // Default: landing bounce within t=0→1.0 range
         bounceOffset = interpolate(
           t,
           [0, 0.7, 0.85, 1.0],
-          [0, 0,   14,   0],
+          [0, 0,   openBounceSV.value, 0],
           Extrapolation.CLAMP
         );
       }
@@ -745,13 +779,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       return;
     }
 
-    wrapperRef.current.measureInWindow((x, y) => {
-      // Defensive: handle null measurements
-      if (x === undefined || y === undefined) {
-        console.warn('MorphingPill: measureInWindow returned undefined');
-        return;
-      }
-
+    const startOpen = (x: number, y: number) => {
       wrapperScreenX.value = x;
       wrapperScreenY.value = y;
 
@@ -816,7 +844,25 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
           backdropOpacity.value = withTiming(1, { duration });
         }
       }
-    });
+    };
+
+    // When originScreenX/Y are provided, use them directly — no measurement needed.
+    if (originScreenX !== undefined && originScreenY !== undefined) {
+      startOpen(originScreenX, originScreenY);
+    } else if (originScreenX !== undefined || originScreenY !== undefined) {
+      wrapperRef.current.measure((_x, _y, _w, _h, pageX, pageY) => {
+        startOpen(originScreenX ?? pageX ?? 0, originScreenY ?? pageY ?? 0);
+      });
+    } else {
+      // Default: measure at tap time
+      wrapperRef.current.measureInWindow((x, y) => {
+        if (x === undefined || y === undefined) {
+          console.warn('MorphingPill: measureInWindow returned undefined');
+          return;
+        }
+        startOpen(x, y);
+      });
+    }
   }, [morphProgress, backdropOpacity, isOpening, isAnimating, showBackdrop, duration, onOpen, onAnimationStart, handleAnimationComplete]);
 
   // Close handler — two-phase close with directional overshoot
@@ -839,23 +885,35 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       backdropOpacity.value = withTiming(0, { duration: CLOSE_DURATION });
     }
 
-    // Phase 1: Close from 1 to -0.04 (past origin) at original speed
-    // Phase 2: Spring snaps from -0.04 back to 0
-    morphProgress.value = withSequence(
-      withTiming(-0.04, {
+    if (smoothClose) {
+      // Single eased timing straight to 0 — no overshoot, no spring
+      morphProgress.value = withTiming(0, {
         duration: closeDurRef.current,
         easing: Easing.out(Easing.cubic),
-      }),
-      withSpring(0, holdPillDuringArc
-        ? { damping: 16, stiffness: 140, mass: 0.7 }  // Coastle: slower, softer settle
-        : { damping: 24, stiffness: 320, mass: 0.5 }, // HomeScreen: original snappy settle
-      (finished) => {
+      }, (finished) => {
         if (finished) {
           runOnJS(handleAnimationComplete)(false);
         }
-      })
-    );
-  }, [morphProgress, backdropOpacity, isOpening, isAnimating, showBackdrop, onClose, onAnimationStart, handleAnimationComplete]);
+      });
+    } else {
+      // Phase 1: Close from 1 to -0.04 (past origin) at original speed
+      // Phase 2: Spring snaps from -0.04 back to 0
+      morphProgress.value = withSequence(
+        withTiming(-0.04, {
+          duration: closeDurRef.current,
+          easing: Easing.out(Easing.cubic),
+        }),
+        withSpring(0, holdPillDuringArc
+          ? { damping: 16, stiffness: 140, mass: 0.7 }  // Coastle: slower, softer settle
+          : { damping: 24, stiffness: 320, mass: 0.5 }, // HomeScreen: original snappy settle
+        (finished) => {
+          if (finished) {
+            runOnJS(handleAnimationComplete)(false);
+          }
+        })
+      );
+    }
+  }, [morphProgress, backdropOpacity, isOpening, isAnimating, showBackdrop, smoothClose, onClose, onAnimationStart, handleAnimationComplete]);
 
   return (
     <View

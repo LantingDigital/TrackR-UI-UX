@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState, useRef } from 'react';
+import React, { useEffect, useCallback, useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import { StyleSheet, View, Text, Pressable, Dimensions, LayoutChangeEvent } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Reanimated, {
@@ -7,6 +7,7 @@ import Reanimated, {
   withRepeat,
   withSequence,
   withTiming,
+  withSpring,
   cancelAnimation,
   Easing,
 } from 'react-native-reanimated';
@@ -19,11 +20,16 @@ import { haptics } from '../../../services/haptics';
 import { MorphingPill, MorphingPillRef } from '../../../components/MorphingPill';
 import { CoastleHintContent } from './CoastleHintModal';
 import { HintReveal, HINT_GUESSES, GameStatus } from '../types/coastle';
-
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+
+export const HINT_MORPH_DURATION = 850;
 
 const HINT_CARD_WIDTH = SCREEN_WIDTH - 96;
 const HINT_CARD_HEIGHT = 240;
+
+export interface CoastleHintButtonRef {
+  closeMorph: () => void;
+}
 
 interface CoastleHintButtonProps {
   guessCount: number;
@@ -32,19 +38,29 @@ interface CoastleHintButtonProps {
   gameStatus: GameStatus;
   onViewHints: () => void;
   onShowTooltip: () => void;
+  onMorphOpen?: () => void;
+  onMorphCloseStart?: () => void;
+  onMorphCloseComplete?: () => void;
 }
 
-export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
+export const CoastleHintButton = forwardRef<CoastleHintButtonRef, CoastleHintButtonProps>(({
   guessCount,
   hints,
   viewedHintIds,
   gameStatus,
   onViewHints,
   onShowTooltip,
-}) => {
+  onMorphOpen,
+  onMorphCloseStart,
+  onMorphCloseComplete,
+}, ref) => {
   const hasHints = hints.length > 0;
   const hasUnviewed = hints.some((h) => !viewedHintIds.includes(h.afterGuess));
   const morphRef = useRef<MorphingPillRef>(null);
+
+  useImperativeHandle(ref, () => ({
+    closeMorph: () => morphRef.current?.close(),
+  }), []);
 
   // Pill dimensions measured from hidden sizer (never affected by morph expansion)
   const [pillSize, setPillSize] = useState({ width: 0, height: 0 });
@@ -62,27 +78,32 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
 
   useEffect(() => {
     if (hasUnviewed) {
+      // Spring-based ping: expand with spring physics, then pause before repeating
       pingScale.value = withRepeat(
         withSequence(
           withTiming(1, { duration: 0 }),
-          withTiming(1.8, { duration: 800, easing: Easing.out(Easing.ease) }),
+          withSpring(1.8, { damping: 12, stiffness: 180, mass: 1 }),
+          withTiming(1.8, { duration: 600 }), // Hold at expanded (breathing room)
         ),
         -1,
         false,
       );
       pingOpacity.value = withRepeat(
         withSequence(
-          withTiming(0.6, { duration: 0 }),
-          withTiming(0, { duration: 800, easing: Easing.out(Easing.ease) }),
+          withTiming(0.55, { duration: 0 }),
+          withTiming(0, { duration: 700, easing: Easing.out(Easing.quad) }),
+          withTiming(0, { duration: 600 }), // Stay invisible during hold
         ),
         -1,
         false,
       );
     } else {
-      cancelAnimation(pingScale);
-      cancelAnimation(pingOpacity);
-      pingScale.value = 1;
-      pingOpacity.value = 0;
+      // Graceful fade-out instead of abrupt cancel
+      pingOpacity.value = withTiming(0, { duration: 200 });
+      pingScale.value = withTiming(1, { duration: 200 }, () => {
+        cancelAnimation(pingScale);
+        cancelAnimation(pingOpacity);
+      });
     }
   }, [hasUnviewed]);
 
@@ -94,7 +115,17 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
   const handleMorphOpen = useCallback(() => {
     haptics.tap();
     onViewHints();
-  }, [onViewHints]);
+    onMorphOpen?.();
+  }, [onViewHints, onMorphOpen]);
+
+  const handleMorphCloseStart = useCallback(() => {
+    haptics.tap();
+    onMorphCloseStart?.();
+  }, [onMorphCloseStart]);
+
+  const handleCloseCleanup = useCallback(() => {
+    onMorphCloseComplete?.();
+  }, [onMorphCloseComplete]);
 
   if (gameStatus !== 'playing') return null;
 
@@ -149,7 +180,7 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
 
   // When hints available, render MorphingPill with hidden sizer for measurement
   return (
-    <View style={styles.pillContainer}>
+    <View style={[styles.pillContainer, pillSize.width > 0 && { width: pillSize.width, height: pillSize.height }]}>
       {/* Hidden sizer — measures natural pill dimensions independently of morph state */}
       <View
         style={styles.sizer}
@@ -166,31 +197,29 @@ export const CoastleHintButton: React.FC<CoastleHintButtonProps> = ({
           pillWidth={pillSize.width}
           pillHeight={pillSize.height}
           pillBorderRadius={radius.pill}
-          pillContent={
-            <View style={styles.pillInner}>
-              {pillInnerContent}
-            </View>
-          }
+          originScreenX={(SCREEN_WIDTH - pillSize.width) / 2}
+          pillContent={<View style={styles.pillInner}>{pillInnerContent}</View>}
           expandedWidth={HINT_CARD_WIDTH}
           expandedHeight={HINT_CARD_HEIGHT}
           expandedBorderRadius={radius.card}
           expandedY={(SCREEN_HEIGHT - HINT_CARD_HEIGHT) / 2}
-          backdropType="blur"
-          showBackdrop={true}
-          overshootAngle={180}
-          overshootMagnitude={6}
-          expandedContent={(close) => (
-            <CoastleHintContent
-              hints={hints}
-              close={close}
-            />
-          )}
+          showBackdrop={false}
+          openArcHeight={0}
+          openBounce={0}
+          smoothClose
+          overshootAngle={0}
+          overshootMagnitude={0}
+          expandedContent={(close) => <CoastleHintContent hints={hints} close={close} />}
           onOpen={handleMorphOpen}
+          onClose={handleMorphCloseStart}
+          onCloseCleanup={handleCloseCleanup}
         />
       )}
     </View>
   );
-};
+});
+
+CoastleHintButton.displayName = 'CoastleHintButton';
 
 const styles = StyleSheet.create({
   pillContainer: {
