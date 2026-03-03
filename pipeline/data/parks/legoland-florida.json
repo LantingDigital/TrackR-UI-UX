@@ -1,0 +1,31 @@
+{
+  "id": "legoland-florida",
+  "name": "Legoland Florida Resort",
+  "formerNames": [
+    "Cypress Gardens"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Winter Haven, Florida, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2011,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 4,
+  "description": "Legoland Florida Resort is a family-friendly, multi-day vacation destination in Central Florida featuring a 150-acre Lego theme park with more than 50 rides, shows, and attractions, the Legoland Water Park, and a botanical garden.  Located 45 minutes from Orlando and Tampa, the resort also includes two on-site themed hotels—Legoland Hotel Florida and Legoland Pirate Island Hotel—with immersive Lego-themed rooms and kid-focused entertainment.  Seasonal stays are available at the Legoland Beach Retreat, offering lakefront Lego bungalows for a family getaway.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Legoland_Florida_1_(6827572795).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Florida",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:38.698Z"
+}

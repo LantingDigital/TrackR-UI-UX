@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-mexico",
+  "name": "Six Flags México",
+  "formerNames": [
+    "Reino Aventura"
+  ],
+  "country": "MX",
+  "countryName": "Mexico",
+  "region": null,
+  "continent": "North America",
+  "city": "Mexico City, Mexico",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1982,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "Six Flags México",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Six Flags México is an amusement park located in the Tlalpan forest and borough, on the southern edge of Mexico City, Mexico.  It is owned and operated by Six Flags, and is the most visited theme park in Latin America with 2. 8 million annual visitors.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_M%C3%A9xico",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:10.349Z"
+}

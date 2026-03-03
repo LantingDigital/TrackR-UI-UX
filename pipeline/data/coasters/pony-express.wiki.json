@@ -1,0 +1,64 @@
+{
+  "articleTitle": "Pony Express (roller coaster)",
+  "introSection": "Pony Express is a steel motorbike roller coaster at Knott's Berry Farm in Buena Park, California. It is the first motocoaster built by Zamperla in the United States, opening on May 22, 2008. The ride features motorbike-style seating and a flywheel launch system.",
+  "sections": [
+    {
+      "title": "Background",
+      "content": "Pony Express was a $9 million project that was added to the Ghost Town section of the park. The theme of the attraction is based on the historic Pony Express mail service. The attraction is designed to give riders the experience of being part of this delivery system, zooming over hills and around turns. Its \"out-and-back\" course shows riders views of Boot Hill and Calico River Rapids, two popular attractions also located in Ghost Town. Knott's Berry Farm has given it a thrill rating of \"high thrill\" (4 out of 5) and is enjoyable for people for all ages."
+    },
+    {
+      "title": "Design",
+      "content": "The ride lasts for 36 seconds and is made up of a 1,300 foot-long steel track that reaches speeds of up to 38 miles per hour and heights of up to 44 feet. Each train has 8 rows, with 2 seats in each row and the ride can accommodate up to 900 passengers per hour. Each rider's seat is shaped like a horse, and the rider straddles the saddle seat to create the feeling that they are riding on a horse. An automated restraint system secures the rider in their seat, pressing against his/her lower back, allowing the upper body to move fairly freely."
+    },
+    {
+      "title": "Mechanics",
+      "content": "The Pony Express was one of the first of its kind to be built in the United States. It is based on a new design called a Motocoaster. This model was manufactured by Zamperla, a roller coaster and attraction company centered in Vicenza, Italy. Riders straddle the seats like a motorcycle or horse, hence the name Motocoaster. Unlike most coasters, the ride doesn't use potential energy attained from ascending a hill via chain lift. Instead, the ride uses a flywheel and clutch system that catches a cable attached to the cars and delivers stored rotational energy, launching riders from 0 to 38 miles per hour down a straight launch track in less than 3 seconds."
+    },
+    {
+      "title": "Incident",
+      "content": "During the first two years of operation, the ride functioned smoothly without difficulties. However, on October 7, 2010, during the park's annual Knott's Scary Farm event, a train containing nine riders failed to clear the first hill, rolling backwards into the loading station and crashing into another train. The collision injured 10 people, nine in the car and one preparing to board the stationary train. All 10 were taken to the hospital, but none were reported to have major injuries. The ride reopened a few days later. Since then, no major malfunctions of the Pony Express have been reported."
+    }
+  ],
+  "fullText": "Pony Express is a steel motorbike roller coaster at Knott's Berry Farm in Buena Park, California. It is the first motocoaster built by Zamperla in the United States, opening on May 22, 2008. The ride features motorbike-style seating and a flywheel launch system.\n\nPony Express was a $9 million project that was added to the Ghost Town section of the park. The theme of the attraction is based on the historic Pony Express mail service. The attraction is designed to give riders the experience of being part of this delivery system, zooming over hills and around turns. Its \"out-and-back\" course shows riders views of Boot Hill and Calico River Rapids, two popular attractions also located in Ghost Town. Knott's Berry Farm has given it a thrill rating of \"high thrill\" (4 out of 5) and is enjoyable for people for all ages.\n\nThe ride lasts for 36 seconds and is made up of a 1,300 foot-long steel track that reaches speeds of up to 38 miles per hour and heights of up to 44 feet. Each train has 8 rows, with 2 seats in each row and the ride can accommodate up to 900 passengers per hour. Each rider's seat is shaped like a horse, and the rider straddles the saddle seat to create the feeling that they are riding on a horse. An automated restraint system secures the rider in their seat, pressing against his/her lower back, allowing the upper body to move fairly freely.\n\nThe Pony Express was one of the first of its kind to be built in the United States. It is based on a new design called a Motocoaster. This model was manufactured by Zamperla, a roller coaster and attraction company centered in Vicenza, Italy. Riders straddle the seats like a motorcycle or horse, hence the name Motocoaster. Unlike most coasters, the ride doesn't use potential energy attained from ascending a hill via chain lift. Instead, the ride uses a flywheel and clutch system that catches a cable attached to the cars and delivers stored rotational energy, launching riders from 0 to 38 miles per hour down a straight launch track in less than 3 seconds.\n\nDuring the first two years of operation, the ride functioned smoothly without difficulties. However, on October 7, 2010, during the park's annual Knott's Scary Farm event, a train containing nine riders failed to clear the first hill, rolling backwards into the loading station and crashing into another train. The collision injured 10 people, nine in the car and one preparing to board the stationary train. All 10 were taken to the hospital, but none were reported to have major injuries. The ride reopened a few days later. Since then, no major malfunctions of the Pony Express have been reported.\n\n\n\n\n",
+  "categories": [
+    "Roller coasters opened in 2008",
+    "Roller coasters operated by Six Flags",
+    "Roller coasters in California",
+    "Western (genre) amusement rides"
+  ],
+  "infoboxRaw": {
+    "name": "Pony Express",
+    "image": "Pony Express, Knott's Berry Farm.jpg",
+    "location": "Knott's Berry Farm",
+    "section": "Ghost Town",
+    "subsection": "Wild Water Wilderness",
+    "previousattraction": "Wilderness Scrambler",
+    "type2": "Motorbike",
+    "type3": "Launched",
+    "manufacturer": "Zamperla",
+    "model": "MotoCoaster",
+    "status": "Open",
+    "opened": "May 22, 2008",
+    "height_ft": "44",
+    "length_ft": "1300",
+    "speed_mph": "38",
+    "acceleration_mph": "38",
+    "acceleration_in": "3",
+    "duration": "0:36",
+    "capacity": "900",
+    "rcdb_number": "4089",
+    "restriction_in": "48",
+    "coordinates": "33.84293°N, -118.00128°W",
+    "trains": "2",
+    "carspertrain": "8",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar Fair Fast Lane availibility.svg",
+    "virtual_queue_status": "available"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Pony_Express_(roller_coaster)",
+  "wikiPageId": 15540388,
+  "fetchedAt": "2026-02-28T20:13:57.973Z",
+  "articleLength": 2642
+}

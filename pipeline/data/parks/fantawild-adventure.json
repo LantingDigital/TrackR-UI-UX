@@ -1,0 +1,29 @@
+{
+  "id": "fantawild-adventure",
+  "name": "Fantawild",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Huaqiang Group",
+  "chain": null,
+  "website": "www.fantawild.com",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Fantawild is a chain of amusement parks located in various cities of China.  The first park opened in the mid-to-late 2000s in Chongqing.  As of, 16 amusement parks operate under the Fantawild name, with seven currently under construction.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fantawild",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:31.511Z"
+}

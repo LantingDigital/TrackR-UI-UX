@@ -1,0 +1,29 @@
+{
+  "id": "happy-land",
+  "name": "Happy Land",
+  "formerNames": [],
+  "country": "TR",
+  "countryName": "Turkey",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Happy Land or Happyland may refer to:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Happy_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:47.260Z"
+}

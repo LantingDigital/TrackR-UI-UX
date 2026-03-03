@@ -1,0 +1,29 @@
+{
+  "id": "childrens-grand-park",
+  "name": "Children's Grand Park",
+  "formerNames": [],
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": null,
+  "continent": "Asia",
+  "city": "Gwangjin District, Seoul, South Korea",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.sisul.or.kr/open_content/childrenpark/",
+  "coasterCount": 1,
+  "totalCoasterCount": 4,
+  "description": "Children's Grand Park or Seoul Children's Grand Park is a park complex in Gwangjin District, Seoul, South Korea.  Facilities at Children's Grand Park include hills and hiking trails, Zoo, garden, and an amusement park.  Children's Grand Park is a leisure facility for families, offering a botanical garden, amusement facilities, and diverse performance events.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Amusement_park_in_Children%E2%80%99s_Grand_park.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Children's_Grand_Park%2C_Seoul",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:26.250Z"
+}

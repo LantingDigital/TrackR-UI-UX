@@ -1,0 +1,29 @@
+{
+  "id": "mangyongdae-funfair",
+  "name": "Mangyongdae Funfair",
+  "formerNames": [],
+  "country": "KP",
+  "countryName": "North Korea",
+  "region": null,
+  "continent": "Asia",
+  "city": "Mangyongdae-guyok",
+  "latitude": 39.00706,
+  "longitude": -125.65118,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1982,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Mangyongdae Funfair is an amusement park located in Mangyongdae-guyok, 12 kilometres from Pyongyang, North Korea.  It has an area of 70 hectares including a funfair and wading pool.  In autumn 2011 the funfair was reported to have little or no Korean patronage.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/North_Korea-Pyongyang-Mangyongdae_Funfair-02.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mangyongdae_Funfair",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:18.661Z"
+}

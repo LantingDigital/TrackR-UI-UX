@@ -1,0 +1,29 @@
+{
+  "id": "chongqing-amusement-park",
+  "name": "Chongqing Amusement Park",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "Nan'an District, Chongqing, China",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Chongqing Amusement Park, formerly known as Chongqing Popular Science Center , is the largest amusement park in Nan'an District, Chongqing, in southwestern China.  The park was created in 1991.  It cost the Chongqing government about 100 million RMB to construct facilities and import some amusement facilities from Russia and Japan.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Chongqing_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:46.567Z"
+}

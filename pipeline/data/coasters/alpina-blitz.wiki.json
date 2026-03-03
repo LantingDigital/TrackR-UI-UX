@@ -1,0 +1,48 @@
+{
+  "articleTitle": "Alpina Blitz",
+  "introSection": "Alpina Blitz is a steel roller coaster located at Nigloland in Dolancourt, France. It was manufactured by German manufacturer Mack Rides and opened on 12 April 2014. The ride reaches a height of 33 m, reaches a maximum speed of 83 km/h, and has a track length of 719 m.",
+  "sections": [
+    {
+      "title": "Ride experience",
+      "content": "Immediately after departing the station, the train begins to ascend the 33 m lift hill. Following the main drop, the train makes a banked turn to the right before ascending into a twisting hill that passes underneath the lift hill. The train then travels into a straight hill before travelling through another banked right-hand turn. The train then travels over a series of small twisting hills before entering a banked left turn. Following this turn, the train travels over three small hills before turning left into the brake run."
+    },
+    {
+      "title": "Trains",
+      "content": "Alpina Blitz uses two trains, each with four cars that seat four riders each; this allows a total of 16 riders per train."
+    },
+    {
+      "title": "Reception",
+      "content": "Following the introduction of Alpina Blitz, Nigloland reported a 7% increase in attendance compared to the previous year."
+    }
+  ],
+  "fullText": "Alpina Blitz is a steel roller coaster located at Nigloland in Dolancourt, France. It was manufactured by German manufacturer Mack Rides and opened on 12 April 2014. The ride reaches a height of 33 m, reaches a maximum speed of 83 km/h, and has a track length of 719 m.\n\n\n\nImmediately after departing the station, the train begins to ascend the 33 m lift hill. Following the main drop, the train makes a banked turn to the right before ascending into a twisting hill that passes underneath the lift hill. The train then travels into a straight hill before travelling through another banked right-hand turn. The train then travels over a series of small twisting hills before entering a banked left turn. Following this turn, the train travels over three small hills before turning left into the brake run.\n\nAlpina Blitz uses two trains, each with four cars that seat four riders each; this allows a total of 16 riders per train.\n\nFollowing the introduction of Alpina Blitz, Nigloland reported a 7% increase in attendance compared to the previous year.\n\n",
+  "categories": [
+    "Roller coasters in France"
+  ],
+  "infoboxRaw": {
+    "name": "Alpina Blitz",
+    "image": "File:Alpina Blitz-face.jpg",
+    "location": "Nigloland",
+    "coordinates": "48.2617°N, 4.6149°W",
+    "status": "Operating",
+    "opened": "12 April 2014",
+    "year": "2014",
+    "cost": "€8,000,000",
+    "manufacturer": "Mack Rides",
+    "lift": "Chain lift hill",
+    "height_m": "33",
+    "length_m": "719",
+    "speed_km/h": "83",
+    "inversions": "0",
+    "gforce": "4.3",
+    "trains": "2",
+    "carspertrain": "4",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "11056"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Alpina_Blitz",
+  "wikiPageId": 60730907,
+  "fetchedAt": "2026-02-28T20:55:31.828Z",
+  "articleLength": 1053
+}

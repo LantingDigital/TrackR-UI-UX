@@ -1,0 +1,60 @@
+{
+  "id": "tom-y-jerry-picnic-en-el-parque",
+  "name": "Tom y Jerry: Picnic en el Parque",
+  "formerNames": [
+    "Boardwalk Canyon Blaster at Six Flags Fiesta Texas"
+  ],
+  "parkId": "parque-warner-madrid",
+  "parkName": "Parque Warner Madrid",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "heightFt": 26,
+  "heightM": 7.9,
+  "speedMph": 22,
+  "speedKmh": 35.4,
+  "lengthFt": 1181,
+  "lengthM": 360,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 65,
+  "material": "Steel",
+  "type": "Family",
+  "propulsion": null,
+  "manufacturer": "Zierer",
+  "designer": null,
+  "model": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "description": "Tom y Jerry: Picnic en el Parque (Tom and Jerry: Picnic in the Park) is a Zierer Tivoli steel, sit-down family roller coaster at Parque Warner Madrid near Madrid, Spain.  The coaster is named and themed after Warner Bros. ' Tom and Jerry franchise.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tom_y_Jerry_-_Parque_Warner_Madrid.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tom_%26_Jerry_(roller_coaster)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:19:11.684Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "tom y jerry: picnic en el parque",
+    "boardwalk canyon blaster at six flags fiesta texas",
+    "parque warner madrid",
+    "zierer",
+    "family",
+    "texas"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Zierer"
+  },
+  "popularityScore": 57,
+  "popularityTier": "notable",
+  "popularityRank": 708
+}

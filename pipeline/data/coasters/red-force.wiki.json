@@ -1,0 +1,68 @@
+{
+  "articleTitle": "Red Force (roller coaster)",
+  "introSection": "Red Force is a steel launched giga roller coaster located at Ferrari Land within PortAventura World in Salou, Catalonia, Spain. The ride was manufactured by Liechtenstein-based manufacturer Intamin and opened on 7 April 2017. With a height of 112 m and a maximum speed of 180. km/h, it is Europe's only Giga coaster. From November 2024 to May 2025, Red Force was the tallest roller coaster in the world, following the closure of Kingda Ka and prior to the reopening of Top Thrill 2.",
+  "sections": [
+    {
+      "title": "Ride experience",
+      "content": "Once the train leaves the station, it is accelerated by linear synchronous motors from 0 to 180. km/h in 5 seconds. The train then ascends a 112 m tall top hat, twisting 90 degrees to the left. Once the train goes over the top hat, it descends back down, again twisting 90 degrees to the left. This sends the train travelling parallel to the launch track but in the opposite direction. The train then enters a flat brake run and then ascends a small airtime hill before entering the final set of brakes."
+    },
+    {
+      "title": "Trains",
+      "content": "Red Force has two trains with three cars per train. Each train is divided in six rows, each able to accommodate two riders. Each car seats four riders, allowing a total of twelve riders per train. The ride can accommodate approximately 1,200 riders per hour."
+    },
+    {
+      "title": "Track",
+      "content": "The steel track of Red Force is approximately 880 m long and 112 m tall. The track is dark grey and the supports are red."
+    },
+    {
+      "title": "Launch",
+      "content": "Red Force uses linear synchronous motors to accelerate the train from 0 to 180. km/h in 5 seconds. The ride uses supercapacitors to store and dissipate the energy needed to launch the train, reducing the peak load from the power grid necessary to launch the coaster."
+    },
+    {
+      "title": "See also",
+      "content": "\n * Top Thrill Dragster\n * Kingda Ka\n * Formula Rossa\n * 2017 in amusement parks"
+    }
+  ],
+  "fullText": "Red Force is a steel launched giga roller coaster located at Ferrari Land within PortAventura World in Salou, Catalonia, Spain. The ride was manufactured by Liechtenstein-based manufacturer Intamin and opened on 7 April 2017. With a height of 112 m and a maximum speed of 180. km/h, it is Europe's only Giga coaster. From November 2024 to May 2025, Red Force was the tallest roller coaster in the world, following the closure of Kingda Ka and prior to the reopening of Top Thrill 2.\n\n\n\nOnce the train leaves the station, it is accelerated by linear synchronous motors from 0 to 180. km/h in 5 seconds. The train then ascends a 112 m tall top hat, twisting 90 degrees to the left. Once the train goes over the top hat, it descends back down, again twisting 90 degrees to the left. This sends the train travelling parallel to the launch track but in the opposite direction. The train then enters a flat brake run and then ascends a small airtime hill before entering the final set of brakes.\n\nRed Force has two trains with three cars per train. Each train is divided in six rows, each able to accommodate two riders. Each car seats four riders, allowing a total of twelve riders per train. The ride can accommodate approximately 1,200 riders per hour.\n\nThe steel track of Red Force is approximately 880 m long and 112 m tall. The track is dark grey and the supports are red.\n\nRed Force uses linear synchronous motors to accelerate the train from 0 to 180. km/h in 5 seconds. The ride uses supercapacitors to store and dissipate the energy needed to launch the train, reducing the peak load from the power grid necessary to launch the coaster.\n\n\n\n\n * Top Thrill Dragster\n * Kingda Ka\n * Formula Rossa\n * 2017 in amusement parks\n\n",
+  "categories": [
+    "Gigacoasters",
+    "Steel roller coasters",
+    "Roller coasters opened in 2017",
+    "Roller coasters in Spain",
+    "Launched roller coasters",
+    "Roller coasters manufactured by Intamin",
+    "Ferrari"
+  ],
+  "infoboxRaw": {
+    "name": "Red Force",
+    "image": "File:Vertical Accelerator.jpg",
+    "caption": "Red Force's signature top hat feature",
+    "location": "Ferrari Land",
+    "coordinates": "41.0842°N, 1.1513°W",
+    "status": "Operating",
+    "opened": "April 7, 2017",
+    "type2": "Launched",
+    "manufacturer": "Intamin",
+    "lift": "LSM",
+    "height_m": "112",
+    "length_m": "880",
+    "speed_km/h": "180",
+    "sigfig_speed": "3",
+    "inversions": "0",
+    "duration": "0:39",
+    "angle": "90",
+    "capacity": "1200",
+    "acceleration_from": "0",
+    "acceleration_km/h": "180",
+    "acceleration_in": "5",
+    "restriction_cm": "140-195",
+    "carspertrain": "3",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "10698"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Red_Force_(roller_coaster)",
+  "wikiPageId": 53888119,
+  "fetchedAt": "2026-02-28T20:55:28.467Z",
+  "articleLength": 1726
+}

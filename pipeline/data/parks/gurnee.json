@@ -1,0 +1,29 @@
+{
+  "id": "gurnee",
+  "name": "Gurnee, Illinois",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Illinois",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.gurnee.il.us",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Gurnee is a village in Lake County, in the U. S.  state of Illinois.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gurnee%2C_Illinois",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:13.979Z"
+}

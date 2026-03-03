@@ -1,0 +1,29 @@
+{
+  "id": "silverwood-theme-park",
+  "name": "Silverwood Theme Park & Boulder Beach Water Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Idaho",
+  "continent": "North America",
+  "city": "Athol, Idaho, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1988,
+  "yearClosed": null,
+  "owner": "Gary Norton",
+  "chain": null,
+  "website": "silverwoodthemepark.com",
+  "coasterCount": 5,
+  "totalCoasterCount": 5,
+  "description": "Silverwood Theme Park is an amusement park located near the city of Athol in northern Idaho, United States, near the city of Coeur d'Alene, approximately 47 mi from Spokane, Washington on US 95.  The park opened on June 20, 1988.  Originally, the park included a small assortment of carnival rides, a \"main street\" with shops and eateries, and an authentic steam train that traveled in a 30-minute loop around the owner's property.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Roller_Coaster_Alley_(50039116606).jpg",
+  "imageAttribution": "Roller Coaster Alley",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Silverwood_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:33.390Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "happy-valley",
+  "name": "Happy Valley",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 22,
+  "totalCoasterCount": 28,
+  "description": "Happy Valley may refer to:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Happy_Valley",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:19.890Z"
+}

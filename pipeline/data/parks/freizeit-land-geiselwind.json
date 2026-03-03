@@ -1,0 +1,31 @@
+{
+  "id": "freizeit-land-geiselwind",
+  "name": "Freizeit-Land Geiselwind",
+  "formerNames": [
+    "Vogel-Pony-Märchenpark"
+  ],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": 49.78028,
+  "longitude": -10.4575,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1969,
+  "yearClosed": null,
+  "owner": "Matthias Mölter",
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 5,
+  "description": "Freizeit-Land Geiselwind is an amusement park near Geiselwind, Germany.  Covering 55 hectares, the park offers over 100 attractions, including 6 roller coasters.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AFreizeitland_Geiselwind.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Freizeit-Land_Geiselwind",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:09.855Z"
+}

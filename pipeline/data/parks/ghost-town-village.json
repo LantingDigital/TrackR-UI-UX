@@ -1,0 +1,31 @@
+{
+  "id": "ghost-town-village",
+  "name": "Ghost Town Village",
+  "formerNames": [
+    "Ghost Town in the Sky"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "North Carolina",
+  "continent": "North America",
+  "city": "Maggie Valley",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1961,
+  "yearClosed": 2016,
+  "owner": "Ghost Town Adventures as of May 2018",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Ghost Town Village (formerly \"Ghost Town in the Sky at Ghost Mountain Park\") is an abandoned Wild West-themed amusement park in Maggie Valley, North Carolina, United States whose status is currently, as of March 2023, the subject of an ongoing lawsuit.  It sits atop Buck Mountain, with a top elevation of 4650 ft.  Ghost Town was promoted as \"North Carolina's mile-high theme park.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Ghost_Town_Village",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:27.638Z"
+}

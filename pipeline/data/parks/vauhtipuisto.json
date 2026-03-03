@@ -1,0 +1,29 @@
+{
+  "id": "vauhtipuisto",
+  "name": "Hyvinkää",
+  "formerNames": [],
+  "country": "FI",
+  "countryName": "Finland",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": 60.63333,
+  "longitude": -24.85,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.hyvinkaa.fi/in-english/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Hyvinkää is a town in Finland, located in the southern interior of the country.  Hyvinkää is situated in the northern part of the Uusimaa region.  The population of Hyvinkää is approximately 0.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hyvink%C3%A4%C3%A4",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:50.738Z"
+}

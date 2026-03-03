@@ -1,0 +1,29 @@
+{
+  "id": "fun-spot-amusement-park-zoo",
+  "name": "Fun Spot Amusement Park & Zoo",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Angola",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1956,
+  "yearClosed": 2008,
+  "owner": "Lee Wright",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Fun Spot Amusement Park & Zoo was an amusement park located in Angola, Indiana.  Although it was small in comparison to parks in neighboring states (such as Cedar Point and Michigan's Adventure), it remained one of the largest parks in the region throughout its existence.  It also once boasted the only operating roller coaster (Afterburner) with an inversion in the state of Indiana, until Steel Hawg at Indiana Beach opened in 2008.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/FunSpotPark.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fun_Spot_Amusement_Park_%26_Zoo",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:53.774Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "f-rup-sommarland",
+  "name": "Fårup Sommarland",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": "Denmark",
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:40:23.919Z"
+}

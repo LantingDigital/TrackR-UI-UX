@@ -1,0 +1,29 @@
+{
+  "id": "himeji-central-park",
+  "name": "Himeji Central Park",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "Himeji, Hyōgo, Japan",
+  "latitude": 34.86775,
+  "longitude": -134.75206,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Himeji Central Park (姫路セントラルパーク) is a safari park in Himeji, Hyōgo, Japan.  The park opened in March 1984, and is the only safari park in Kansai region.  It has a \"sister park\" agreement with Nairobi National Park, Kenya.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Himeji_Central_Park_entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Himeji_Central_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:42.339Z"
+}

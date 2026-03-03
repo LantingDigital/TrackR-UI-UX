@@ -1,0 +1,31 @@
+{
+  "id": "idlewild-and-soak-zone",
+  "name": "Idlewild and Soak Zone",
+  "formerNames": [
+    "Idlewild Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Ligonier",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Herschend",
+  "chain": null,
+  "website": "www.idlewild.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Idlewild and Soak Zone, also known as Idlewild Park or simply Idlewild, is an amusement park in the Laurel Highlands near Ligonier, Pennsylvania, about 50 mi east of Pittsburgh.  It has won several awards, including from industry publication Amusement Today, as the best children's park in the world.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Idlewild_and_Soak_Zone_logo.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Idlewild_and_Soak_Zone",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:06.503Z"
+}

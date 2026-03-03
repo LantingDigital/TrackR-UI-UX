@@ -1,0 +1,29 @@
+{
+  "id": "chimelong-paradise",
+  "name": "Chimelong Paradise 长隆欢乐世界",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": "China",
+  "continent": "Asia",
+  "city": "Panyu, Guangzhou",
+  "latitude": 23.00436,
+  "longitude": -113.32691,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2006,
+  "yearClosed": null,
+  "owner": "Chimelong Group",
+  "chain": null,
+  "website": "https://www.chimelong.com/gz/chimelongparadise/",
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Chimelong Paradise is a major amusement park in Panyu District, Guangzhou, Guangdong, China.  Opened on April 12, 2006, Chimelong Paradise is the largest amusement park in China and boasts the 10 Inversion Roller Coaster, which prior to the opening of The Smiler at Alton Towers in Staffordshire, England, shared the record for most inversions with Colossus at Thorpe Park in Surrey, England.  It is classified as a AAAAA scenic area by the China National Tourism Administration.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/ChimelongParadiseSouth.jpg",
+  "imageAttribution": "The south entrance to Chimelong Paradise.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Chimelong_Paradise",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:50.871Z"
+}

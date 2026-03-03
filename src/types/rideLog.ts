@@ -1,8 +1,12 @@
 /**
  * Ride Log Types - Coaster Credit Tracking System
  *
- * This file contains all TypeScript interfaces for the ride logging feature.
- * Supports Quick Logs (fast check-ins) and Detailed Logs (criteria-weighted ratings).
+ * Two separate concepts:
+ * - RideLog: per-ride history entries (the verb — "I rode this")
+ * - CoasterRating: per-coaster weighted assessment (the noun — "here's my rating")
+ *
+ * Can log without rating. Rating requires at least one log.
+ * Rating is updatable anytime and not tied to a specific ride instance.
  */
 
 /**
@@ -34,7 +38,7 @@ export interface RatingCriteria {
 }
 
 /**
- * Core ride log data model
+ * Core ride log data model — per-ride history entry
  */
 export interface RideLog {
   /** Unique identifier (UUID) */
@@ -55,20 +59,44 @@ export interface RideLog {
   /** Seat position if provided */
   seat?: SeatPosition;
 
-  /** True if this log hasn't received a full criteria rating yet */
-  isPendingRating: boolean;
-
-  /** Individual criteria ratings (criteria id -> 1-10 rating) */
-  criteriaRatings?: Record<string, number>;
-
-  /** Calculated weighted score (0-100) after full rating */
-  weightedScore?: number;
-
   /** User notes about this ride */
   notes?: string;
 
+  /** Local URI of a photo taken on this ride */
+  photo?: string;
+
   /** Which re-ride this is for the same coaster on same day (1, 2, 3...) */
   rideCount: number;
+}
+
+/**
+ * Per-coaster rating — separate from individual ride logs.
+ * One rating per coaster, updatable anytime. Requires at least one log.
+ */
+export interface CoasterRating {
+  /** Coaster identifier from the database */
+  coasterId: string;
+
+  /** Display name of the coaster (denormalized for quick display) */
+  coasterName: string;
+
+  /** Display name of the park */
+  parkName: string;
+
+  /** Individual criteria ratings (criteria id → 1-10, 0.5 step) */
+  criteriaRatings: Record<string, number>;
+
+  /** Calculated weighted score (0-100) */
+  weightedScore: number;
+
+  /** When the rating was first created (ISO 8601) */
+  createdAt: string;
+
+  /** When the rating was last updated (ISO 8601) */
+  updatedAt: string;
+
+  /** Optional review notes */
+  notes?: string;
 }
 
 /**
@@ -87,8 +115,10 @@ export interface UserCriteriaConfig {
  * Ride log store state
  */
 export interface RideLogState {
-  /** All ride logs */
+  /** All ride logs (per-ride history) */
   logs: RideLog[];
+  /** Per-coaster ratings keyed by coasterId */
+  ratings: Record<string, CoasterRating>;
   /** User's criteria configuration */
   criteriaConfig: UserCriteriaConfig;
   /** Total credit count (unique coasters) */
@@ -136,6 +166,20 @@ export const DEFAULT_CRITERIA: RatingCriteria[] = [
     description: 'Flow and element variety',
     icon: 'speedometer-outline',
   },
+  {
+    id: 'inversions',
+    name: 'Inversions',
+    weight: 0,
+    description: 'Loops, rolls, and flips',
+    icon: 'sync-outline',
+  },
+  {
+    id: 'launch',
+    name: 'Launch',
+    weight: 0,
+    description: 'Launch force and excitement',
+    icon: 'rocket-outline',
+  },
 ];
 
 /**
@@ -152,6 +196,7 @@ export const DEFAULT_CRITERIA_CONFIG: UserCriteriaConfig = {
  */
 export const DEFAULT_RIDE_LOG_STATE: RideLogState = {
   logs: [],
+  ratings: {},
   criteriaConfig: DEFAULT_CRITERIA_CONFIG,
   creditCount: 0,
   totalRideCount: 0,

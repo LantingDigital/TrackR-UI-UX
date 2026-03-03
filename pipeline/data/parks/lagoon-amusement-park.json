@@ -1,0 +1,31 @@
+{
+  "id": "lagoon-amusement-park",
+  "name": "Lagoon",
+  "formerNames": [
+    "Lake Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Utah",
+  "continent": "North America",
+  "city": "Farmington",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Lagoon Corporation",
+  "chain": null,
+  "website": "www.lagoonpark.com",
+  "coasterCount": 5,
+  "totalCoasterCount": 6,
+  "description": "Lagoon is a family owned amusement park in Farmington, Utah, located about 18 miles north of Salt Lake City.  Lagoon is divided into five main areas: The Midway, containing the majority of the rides; Pioneer Village, which has several exhibits displaying pioneer buildings and artifacts; Lagoon-A-Beach, a water park; Kiddie Land, an area with several rides for small children; and X-Venture Zone, featuring more extreme upcharge rides.  Lagoon also offers an RV park, a campground, and a walking trail outside the park that stays open all year.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BFile%3ALagoonAmusementParkLogo.png%5D%5D%0ATurn_of_the_Century_-_Lagoon.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lagoon_(amusement_park)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:26.857Z"
+}

@@ -1,0 +1,49 @@
+{
+  "articleTitle": "Falcon (Duinrell)",
+  "introSection": "Falcon is a steel roller coaster at the amusement park Duinrell, located in Wassenaar, Netherlands. The roller coaster is a Gerstlauer Euro-Fighter model coaster which was opened to the public on 14 May 2009. At 97 degrees, Falcon has a steeper-than-vertical drop, and the steepest drop of any roller coaster in the Netherlands.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Soon after it opened in 1935, Duinrell had the Netherlands' first artificial ski slope. This ski slope was ultimately removed for the installation of Falcon in 2009. The municipality of Wassenaar had often had disputes with Duinrell in regards to noise levels created by the amusement park. This was true again with the proposed construction of a new coaster. The new coaster was given the code name \"Rick's Delight\" —which was a reference to Duinrell's mascot, Rick the Frog. The park was awarded when a permit from the municipality of Wassenaar over the objections of some residents and after a lengthy court battle. Noise and traffic studies were conducted and showed that the new coaster would not adversely influence these environmental factors in the area surrounding the park (results were just under the 45 decibel benchmark). A Duinrell spokesperson also stated that measures were being taken to further mitigate the noise from the park. On 14 May 2009, Mayor Hoekema van Wassenaar and the director of Duinrell, Philip van Zuylen van Nijvelt opened the ride to the public. Objections from the community, however, had delayed the coaster opening 2 years later than had originally been planned."
+    },
+    {
+      "title": "Layout",
+      "content": "Falcon has a track length of 361 m, a height of 22 m, and achieves a maximum speed of 70 kph. The coaster has three inversions: a vertical loop, a cutback and a heartline roll. The coaster layout for Falcon is particularly close to two other Euro-Fighter (model 320+) roller coasters: Rage at Adventure Island amusement park and Untamed at Canobie Lake Park."
+    }
+  ],
+  "fullText": "Falcon is a steel roller coaster at the amusement park Duinrell, located in Wassenaar, Netherlands. The roller coaster is a Gerstlauer Euro-Fighter model coaster which was opened to the public on 14 May 2009. At 97 degrees, Falcon has a steeper-than-vertical drop, and the steepest drop of any roller coaster in the Netherlands.\n\nSoon after it opened in 1935, Duinrell had the Netherlands' first artificial ski slope. This ski slope was ultimately removed for the installation of Falcon in 2009. The municipality of Wassenaar had often had disputes with Duinrell in regards to noise levels created by the amusement park. This was true again with the proposed construction of a new coaster. The new coaster was given the code name \"Rick's Delight\" —which was a reference to Duinrell's mascot, Rick the Frog. The park was awarded when a permit from the municipality of Wassenaar over the objections of some residents and after a lengthy court battle. Noise and traffic studies were conducted and showed that the new coaster would not adversely influence these environmental factors in the area surrounding the park (results were just under the 45 decibel benchmark). A Duinrell spokesperson also stated that measures were being taken to further mitigate the noise from the park. On 14 May 2009, Mayor Hoekema van Wassenaar and the director of Duinrell, Philip van Zuylen van Nijvelt opened the ride to the public. Objections from the community, however, had delayed the coaster opening 2 years later than had originally been planned.\n\nFalcon has a track length of 361 m, a height of 22 m, and achieves a maximum speed of 70 kph. The coaster has three inversions: a vertical loop, a cutback and a heartline roll. The coaster layout for Falcon is particularly close to two other Euro-Fighter (model 320+) roller coasters: Rage at Adventure Island amusement park and Untamed at Canobie Lake Park.\n\n",
+  "categories": [
+    "Roller coasters in the Netherlands",
+    "Wassenaar"
+  ],
+  "infoboxRaw": {
+    "name": "Falcon",
+    "image": "Falcon_Duinrell.jpg",
+    "location": "Duinrell",
+    "coordinates": "52.1477°N, 4.3792°W",
+    "status": "Operating",
+    "opened": "May 14, 2009",
+    "year": "2009",
+    "type2": "Euro-Fighter",
+    "manufacturer": "Gerstlauer",
+    "designer": "Werner Stengel",
+    "height_m": "22",
+    "length_m": "361",
+    "speed_km/h": "70",
+    "inversions": "3",
+    "duration": "0:42 s",
+    "angle": "97",
+    "capacity": "850",
+    "gforce": "4.5",
+    "restriction_cm": "120",
+    "trains": "3",
+    "carspertrain": "1",
+    "rowspercar": "2",
+    "ridersperrow": "4",
+    "rcdb_number": "3936"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Falcon_(Duinrell)",
+  "wikiPageId": 43614303,
+  "fetchedAt": "2026-02-28T20:55:43.418Z",
+  "articleLength": 1893
+}

@@ -1,0 +1,29 @@
+{
+  "id": "santa-cruz-beach-boardwalk",
+  "name": "Santa Cruz Beach Boardwalk",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Santa Cruz",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1907,
+  "yearClosed": null,
+  "owner": "Santa Cruz Seaside Company",
+  "chain": null,
+  "website": "https://beachboardwalk.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "The Santa Cruz Beach Boardwalk is an oceanfront amusement park in Santa Cruz, California.  Founded in 1907, it is California's oldest surviving amusement park and one of the few seaside parks on the West Coast of the United States.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Santa_Cruz_Beach_Boardwalk_-_4652510977.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Santa_Cruz_Beach_Boardwalk",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:00.876Z"
+}

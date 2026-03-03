@@ -1,0 +1,29 @@
+{
+  "id": "golden-city",
+  "name": "Golden City",
+  "formerNames": [],
+  "country": "RU",
+  "countryName": "Russia",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Golden City may refer to:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Golden_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:00.568Z"
+}

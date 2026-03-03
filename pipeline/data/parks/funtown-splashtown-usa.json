@@ -1,0 +1,33 @@
+{
+  "id": "funtown-splashtown-usa",
+  "name": "Funtown Splashtown USA",
+  "formerNames": [
+    "Marvel Drive-In",
+    "Funtown USA",
+    "Cascade Water and Amusement Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Maine",
+  "continent": "North America",
+  "city": "Saco",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1960,
+  "yearClosed": null,
+  "owner": "Violet Cormier",
+  "chain": null,
+  "website": "https://funtownsplashtownusa.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Funtown Splashtown USA, often referred to as simply Funtown, is a family-owned amusement park and water park located in Saco, Maine.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Funtown-Splashtown_USA.jpg",
+  "imageAttribution": "Funtown as viewed from above US Route 1",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Funtown_Splashtown_USA",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:53.878Z"
+}

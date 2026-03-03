@@ -1,0 +1,61 @@
+{
+  "id": "powder-keg",
+  "name": "Powder Keg",
+  "formerNames": [
+    "Buzz Saw Falls"
+  ],
+  "parkId": "silver-dollar-city",
+  "parkName": "Silver Dollar City",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "heightFt": 98,
+  "heightM": 29.9,
+  "speedMph": 64,
+  "speedKmh": 103,
+  "lengthFt": 3506,
+  "lengthM": 1068.6,
+  "dropFt": 110,
+  "dropM": 33.5,
+  "inversions": 0,
+  "gForce": 3.9,
+  "duration": 173,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "S&S Worldwide",
+  "designer": "Drew Schlie",
+  "model": null,
+  "status": "operating",
+  "yearOpened": 2005,
+  "yearClosed": null,
+  "description": "Powder Keg: A Blast Into The Wilderness (commonly referred to as Powder Keg) is a steel launched roller coaster located at Silver Dollar City in Branson, Missouri.  Manufactured by S&S – Sansei Technologies and installed by Ride Entertainment Group, the ride opened to the public in 2005.  Powder Keg has the second longest track length for an attraction at Silver Dollar City, only behind the Frisco Silver Dollar Line.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Powder_Keg_station.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Powder_Keg%3A_A_Blast_into_the_Wilderness",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:16:46.478Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "powder keg",
+    "buzz saw falls",
+    "silver dollar city",
+    "s&s worldwide",
+    "s&s",
+    "sit-down",
+    "missouri"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "S&S – Sansei Technologies"
+  },
+  "popularityScore": 63.7,
+  "popularityTier": "iconic",
+  "popularityRank": 446
+}

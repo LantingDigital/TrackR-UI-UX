@@ -1,0 +1,29 @@
+{
+  "id": "mtatsminda-park",
+  "name": "Mtatsminda Park",
+  "formerNames": [],
+  "country": "GE",
+  "countryName": "Georgia",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Mtatsminda Park is a landscaped park located at the top of Mount Mtatsminda overlooking the Georgian capital Tbilisi.  The park has carousels, water slides, a roller-coaster, dark ride, funicular, and a big Ferris wheel at the edge of the mountain, offering a splendid view over the city.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mtatsminda_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:22.554Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "expo-58",
+  "name": "Expo 58",
+  "formerNames": [],
+  "country": "BE",
+  "countryName": "Belgium",
+  "region": null,
+  "continent": "Europe",
+  "city": "Brussels",
+  "latitude": 50.89722,
+  "longitude": -4.33917,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1958,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Expo 58, also known as the 1958 Brussels World's Fair, was a world's fair held on the Heysel/Heizel Plateau in Brussels, Belgium, from 17 April to 19 October 1958.  It was the first major world's fair registered under the Bureau International des Expositions (BIE) after World War II and the fifth in Brussels overall. \n\nExpo 58 left a deep impression on Belgium.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Haarlemse_bloemenmeisjes_brengen_bezoek_aan_de_Expo%2C_Bestanddeelnr_909-5043.jpg",
+  "imageAttribution": "View of the exhibition's main avenue and gondola lift towards the Atomium",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Expo_58",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:47.915Z"
+}

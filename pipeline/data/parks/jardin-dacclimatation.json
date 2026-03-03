@@ -1,0 +1,29 @@
+{
+  "id": "jardin-dacclimatation",
+  "name": "Jardin d'Acclimatation",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Bois de Boulogne, 16th arrondissement of Paris, France",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "LVMH",
+  "chain": null,
+  "website": "https://www.jardindacclimatation.fr",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "The Jardin d'Acclimatation is a 19 ha children's amusement park in the northern part of the Bois de Boulogne in western Paris.  Opened in 1860, it features a number of attractions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Jardin_d'acclimatation_-_Fondation_Louis_Vuitton.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Jardin_d'Acclimatation",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:12.303Z"
+}

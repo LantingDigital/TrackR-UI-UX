@@ -1,0 +1,29 @@
+{
+  "id": "f-rup-sommerland",
+  "name": "Fårup Summer Park",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": "Denmark",
+  "continent": "Europe",
+  "city": "Fårup, Jammerbugt, North Jutland, Denmark",
+  "latitude": 57.27083,
+  "longitude": -9.64722,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.faarupsommerland.dk/en/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Fårup Summer Park is a theme park located in Fårup between Blokhus and Løkken in North Jutland, Denmark.  The park, as the name suggests, is open during the summer months and attracts about 600,000 people each season.  It is one of Denmark's biggest amusement parks and has the largest water park of any amusement park in the country.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Farup_Sommerland_entrance.jpg",
+  "imageAttribution": "Park entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/F%C3%A5rup_Summer_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:17.679Z"
+}

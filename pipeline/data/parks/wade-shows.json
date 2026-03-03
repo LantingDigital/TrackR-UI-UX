@@ -1,0 +1,29 @@
+{
+  "id": "wade-shows",
+  "name": "Wade Shows, Inc.",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": null,
+  "continent": "North America",
+  "city": "Livonia, Michigan",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.wadeshows.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Wade Shows, Inc.  is a traveling carnival midway company based in Livonia, Michigan.  It provides amusement rides, games and concessions for local, county and state fairs throughout the eastern and central United States.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wade_Shows",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:45.258Z"
+}

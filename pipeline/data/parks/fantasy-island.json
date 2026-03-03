@@ -1,0 +1,29 @@
+{
+  "id": "fantasy-island",
+  "name": "Fantasy Island",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Fantasy Island is an American fantasy drama television series created by Gene Levitt.  It aired on ABC from 1977 to 1984.  The series starred Ricardo Montalbán as the mysterious Mr.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Fantasy_Island_title_screen.jpg",
+  "imageAttribution": "Title card of the first installment of Fantasy Island",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fantasy_Island",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:42.058Z"
+}

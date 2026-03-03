@@ -1,0 +1,29 @@
+{
+  "id": "indianapolis-zoo",
+  "name": "Indianapolis Zoo",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Indiana",
+  "continent": "North America",
+  "city": "White River State Park, Indianapolis, Indiana, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Indianapolis Zoological Society",
+  "chain": null,
+  "website": "http://www.indianapoliszoo.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Indianapolis Zoo is a 93 acre non-profit zoo, public aquarium, and botanical garden in Indianapolis, Indiana, United States.  Incorporated in 1944, the Indianapolis Zoological Society established the first zoo at George Washington Park in 1964.  The current zoo opened in 1988 at White River State Park near downtown Indianapolis.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Indianapolis_Zoo_Entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Indianapolis_Zoo",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:23.354Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "prater",
+  "name": "Prater",
+  "formerNames": [],
+  "country": "AT",
+  "countryName": "Austria",
+  "region": null,
+  "continent": "Europe",
+  "city": "Leopoldstadt, Vienna, Austria",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "Prater: https://www.praterwien.com/en/home Green Prater: https://www.wien.gv.at/umwelt/parks/anlagen/prater.html",
+  "coasterCount": 9,
+  "totalCoasterCount": 12,
+  "description": "The Prater is a 6 km² public park in Vienna's 2nd district, Leopoldstadt.  The name \"Prater\" is often used to refer to the Wurstelprater, an amusement park within the area.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Prater",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:42.876Z"
+}

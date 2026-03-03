@@ -1,0 +1,29 @@
+{
+  "id": "brean-leisure-park",
+  "name": "Brean Leisure Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Brean",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1946,
+  "yearClosed": null,
+  "owner": "Phil Booth",
+  "chain": null,
+  "website": "www.brean.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Brean Leisure Park also known as Brean Theme Park, is an amusement park in the coastal resort of Brean, near Burnham-on-Sea, Somerset, England.  The park covers an area of 200 acre. \n\nBrean Leisure Park is open from March to November every year.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Brean_Leisure_Park.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Brean_Leisure_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:03.314Z"
+}

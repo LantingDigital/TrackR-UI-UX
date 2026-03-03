@@ -1,0 +1,29 @@
+{
+  "id": "adhari-park",
+  "name": "Adhari Park",
+  "formerNames": [],
+  "country": "BH",
+  "countryName": "Bahrain",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Adhari Park is an amusement park in the Kingdom of Bahrain based around the historic freshwater spring known as Ain Adhari which is located around the Zinj area.  In 2003, the site was remodeled and it became a major tourist attraction.  In 2006, it was remodeled at a cost of over $23,000,000 US dollars.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adhari_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:29:21.611Z"
+}

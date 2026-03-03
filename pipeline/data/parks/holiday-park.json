@@ -1,0 +1,29 @@
+{
+  "id": "holiday-park",
+  "name": "Holiday Park",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Holiday Park may refer to:\n\n\n * Resort, a vacation resort\n * Holiday Park (Durham), a defunct football ground in England\n * Holiday Park, Germany, an amusement park in Germany\n * Holiday Park, Saskatoon, a neighbourhood in Saskatoon\n * Holiday Park in Albuquerque, New Mexico, USA.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Holiday_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:57.904Z"
+}

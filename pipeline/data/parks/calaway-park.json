@@ -1,0 +1,29 @@
+{
+  "id": "calaway-park",
+  "name": "Calaway Park",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": "Alberta",
+  "continent": "North America",
+  "city": "Springbank, Alberta, Canada",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Dena Dixon",
+  "chain": null,
+  "website": "https://www.calawaypark.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Calaway Park is an amusement park and campground in Springbank, Alberta, Canada.  The park occupies approximately 160 acre of land, although the amusement park only occupies 90 acre of it.  The park is western Canada's largest amusement park, and is situated approximately 4 km west of Calgary's city limits.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Calaway_Park_-_Vortex.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Calaway_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:33.908Z"
+}

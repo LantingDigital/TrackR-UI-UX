@@ -1,0 +1,29 @@
+{
+  "id": "unknown-park",
+  "name": "Unknown Park",
+  "formerNames": [],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 32,
+  "totalCoasterCount": 36,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:09:26.787Z"
+}

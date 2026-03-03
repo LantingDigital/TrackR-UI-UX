@@ -1,0 +1,29 @@
+{
+  "id": "alton-towers",
+  "name": "Alton Towers Resort",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Alton, Staffordshire",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1980,
+  "yearClosed": null,
+  "owner": "LondonMetric Property",
+  "chain": null,
+  "website": "www.AltonTowers.com",
+  "coasterCount": 9,
+  "totalCoasterCount": 12,
+  "description": "Alton Towers (also known as Alton Towers Resort) is a historic estate, theme park and resort complex in Staffordshire, England, near the village of Alton.  The park is operated by Merlin Entertainments Group and incorporates a theme park, water park, mini golf and hotel complex. \n\nOriginally a stately home of the Earls of Shrewsbury, the Alton Towers grounds were first opened to the public in the late 19th Century.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Alton_Towers",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:06.901Z"
+}

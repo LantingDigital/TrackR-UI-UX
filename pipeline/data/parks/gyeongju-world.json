@@ -1,0 +1,29 @@
+{
+  "id": "gyeongju-world",
+  "name": "Gyeongju World",
+  "formerNames": [],
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": "South Korea",
+  "continent": "Asia",
+  "city": "Gyeongju, Gyeongsangbuk-do, South Korea",
+  "latitude": 35.837,
+  "longitude": -129.282,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1985,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Gyeongju World is a theme park in Gyeongju, Gyeongsangbuk-do, South Korea.  Gyeongju World is composed of \"X-Zone,\" \"Snow Sled Garden,\" and \"Wizard Garden. \" The X-Zone has rides such as the Phaethon, the Megadrop, the Tornado, and the Exploration of Grand Canyon.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Gyeongju_World.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gyeongju_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:11.640Z"
+}

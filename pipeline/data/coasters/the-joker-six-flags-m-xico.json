@@ -1,0 +1,62 @@
+{
+  "id": "the-joker-six-flags-m-xico",
+  "name": "The Joker",
+  "formerNames": [
+    "Tony Hawk's Big Spin at Six Flags Discovery Kingdom",
+    "Pandemonium  at Six Flags Discovery Kingdom"
+  ],
+  "parkId": "six-flags-m-xico",
+  "parkName": "Six Flags México",
+  "country": "MX",
+  "countryName": "Mexico",
+  "region": "Mexico",
+  "continent": "North America",
+  "heightFt": 48,
+  "heightM": 14.6,
+  "speedMph": 31,
+  "speedKmh": 49.9,
+  "lengthFt": 1351,
+  "lengthM": 411.8,
+  "dropFt": 27,
+  "dropM": 8.2,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Spinning",
+  "propulsion": "Chain lift",
+  "manufacturer": "Gerstlauer",
+  "designer": "Werner Stengel",
+  "model": null,
+  "status": "operating",
+  "yearOpened": 2013,
+  "yearClosed": null,
+  "description": "The Joker is a spinning roller coaster located at Six Flags México, a theme park in Mexico.  The ride was designed by Gerstlauer and Werner Stengel.  The Joker opened for the public on March 7, 2013.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Joker_at_Six_Flags_Mexico_(was_Tony_Hawks_Big_Spin%2C_then_Pandemonium%2C_at_Six_Flags_Discovery_Kingdom).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Joker_(Six_Flags_M%C3%A9xico)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:25.047Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "the joker",
+    "tony hawk's big spin at six flags discovery kingdom",
+    "pandemonium  at six flags discovery kingdom",
+    "six flags méxico",
+    "gerstlauer",
+    "spinning",
+    "mexico"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Gerstlauer"
+  },
+  "popularityScore": 57.6,
+  "popularityTier": "notable",
+  "popularityRank": 694
+}

@@ -1,0 +1,29 @@
+{
+  "id": "janfusun-fancyworld",
+  "name": "Janfusun Fancyworld 劍湖山世界",
+  "formerNames": [],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Gukeng, Yunlin, Taiwan",
+  "latitude": 23.62008,
+  "longitude": -120.57789,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1988,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.janfusun.com.tw",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Janfusun Fancyworld is an amusement park in Yongguang Village, Gukeng Township, Yunlin County, Taiwan. \n\nThe park occupies an area of approximately 60 ha and features a large ferris wheel, the Sky Wheel, a powered rollercoaster by Zamperla and two rollercoasters manufactured by Swiss company Bolliger and Mabillard (B&M).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Janfusun_Fancyworld_ferris_wheel.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Janfusun_Fancyworld",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:00.266Z"
+}

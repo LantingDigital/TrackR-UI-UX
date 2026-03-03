@@ -1,0 +1,47 @@
+{
+  "articleTitle": "Atlantis Adventure",
+  "introSection": "Atlantis Adventure is an Intamin steel roller coaster at Lotte World that opened in 2003. It is the only known Aqua Trax roller coaster in the world.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Construction of the roller coaster began around 2000. Atlantis Adventure took around 35 billion won to construct."
+    },
+    {
+      "title": "Ride experience",
+      "content": "Atlantis Adventure has three single-car trains, where riders are arranged in 2 seats across 4 rows for a total of 8 riders per train. When the train leaves the station, the train is first launched by a linear motor.\n\nAtlantis Adventure utilizes Intamin's Aqua Trax system, which features interactive water elements such as water bombs and water jets. The ride is the only Intamin Aqua Trax coaster in the world. Atlantis Adventure stands 72.2 ft tall with a track length of 2,198.1 ft, and it has a vertical angle of 72 degrees."
+    },
+    {
+      "title": "Theme",
+      "content": "Atlantis Adventure is themed around an explorer's voyage towards the lost city of Atlantis. Thus, there is a jungle setup with a waterfall as well as statues of mythical creatures throughout the ride."
+    }
+  ],
+  "fullText": "Atlantis Adventure is an Intamin steel roller coaster at Lotte World that opened in 2003. It is the only known Aqua Trax roller coaster in the world.\n\nConstruction of the roller coaster began around 2000. Atlantis Adventure took around 35 billion won to construct.\n\nAtlantis Adventure has three single-car trains, where riders are arranged in 2 seats across 4 rows for a total of 8 riders per train. When the train leaves the station, the train is first launched by a linear motor.\n\nAtlantis Adventure utilizes Intamin's Aqua Trax system, which features interactive water elements such as water bombs and water jets. The ride is the only Intamin Aqua Trax coaster in the world. Atlantis Adventure stands 72.2 ft tall with a track length of 2,198.1 ft, and it has a vertical angle of 72 degrees.\n\nAtlantis Adventure is themed around an explorer's voyage towards the lost city of Atlantis. Thus, there is a jungle setup with a waterfall as well as statues of mythical creatures throughout the ride.\n\n",
+  "categories": [
+    "Roller coasters in South Korea"
+  ],
+  "infoboxRaw": {
+    "name": "Atlantis Adventure",
+    "image": "Atlantis Adventure 2011 1.jpg",
+    "location": "Lotte World",
+    "status": "Operating",
+    "opened": "2003",
+    "year": "2003",
+    "manufacturer": "Intamin",
+    "model": "Aqua Trax",
+    "height_ft": "72.2",
+    "length_ft": "2198.1",
+    "speed_mph": "46.6",
+    "inversions": "0",
+    "duration": "1:48",
+    "angle": "72",
+    "gforce": "3.8",
+    "carspertrain": "1",
+    "rowspercar": "4",
+    "ridersperrow": "2",
+    "rcdb_number": "1646"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Atlantis_Adventure",
+  "wikiPageId": 67445277,
+  "fetchedAt": "2026-02-28T20:56:17.259Z",
+  "articleLength": 998
+}

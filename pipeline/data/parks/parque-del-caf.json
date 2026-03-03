@@ -1,0 +1,31 @@
+{
+  "id": "parque-del-caf",
+  "name": "Parque del Café",
+  "formerNames": [
+    "National Coffee Museum and Parque Nacional del Café"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": "Montenegro, Quindío, Colombia",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1995,
+  "yearClosed": null,
+  "owner": "National Federation of Coffee Growers of Colombia · Departmental Committee of Coffee Growers of Quindío",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Parque del Café (Coffee Park) is a theme park in the department of Quindío, Colombia, 4 km south-west of the town of Montenegro and 11 km west of the departmental capital city Armenia.  The park was founded by the National Federation of Coffee Growers of Colombia (La Federación Nacional de Cafeteros de Colombia) and the Departmental Committee of Coffee Growers of Quindío (El Comité Departamental de Cafeteros del Quindío), and opened on 24 February 1995.  It consists of two main areas: by the main entrance are the buildings housing the museum and exhibitions detailing the history, culture and process of growing and producing coffee in the region; and in the valley beyond is an amusement park with rides and shows.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Colombian_National_Coffee_Park_195.JPG",
+  "imageAttribution": "Plaza of the Coffee Park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parque_del_Caf%C3%A9",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:43.588Z"
+}

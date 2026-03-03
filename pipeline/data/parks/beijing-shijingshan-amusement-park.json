@@ -1,0 +1,29 @@
+{
+  "id": "beijing-shijingshan-amusement-park",
+  "name": "Beijing Shijingshan Amusement Park",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "No.25, Shijingshan Road",
+  "latitude": 39.913,
+  "longitude": -116.202,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1986,
+  "yearClosed": null,
+  "owner": "Shijingshan District Government",
+  "chain": null,
+  "website": "English website",
+  "coasterCount": 0,
+  "totalCoasterCount": 6,
+  "description": "Beijing Shijingshan Amusement Park is a theme park located in Bajiao, Shijingshan District of Beijing, China.  First opened on September 28, 1986, the park is currently owned and operated by the Shijingshan District government.  The park is served by Bajiao Amusement Park station on Line 1 of the Beijing Subway, however, the station is temporarily closed at the moment.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%E7%9F%B3%E6%99%AF%E5%B1%B1%E6%B8%B8%E4%B9%90%E5%9B%AD.jpg",
+  "imageAttribution": "Beijing Shijingshan Amusement Park's Fairy Castle.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Beijing_Shijingshan_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:44.628Z"
+}

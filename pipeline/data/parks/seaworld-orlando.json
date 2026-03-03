@@ -1,0 +1,31 @@
+{
+  "id": "seaworld-orlando",
+  "name": "SeaWorld Orlando",
+  "formerNames": [
+    "Sea World of Florida"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "7007 SeaWorld Drive, Orlando",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1973,
+  "yearClosed": null,
+  "owner": "United Parks & Resorts",
+  "chain": null,
+  "website": "https://seaworld.com/orlando/",
+  "coasterCount": 5,
+  "totalCoasterCount": 5,
+  "description": "SeaWorld Orlando is an animal theme park located just outside Orlando, Florida.  Although separately gated, it is often promoted with neighboring parks Discovery Cove and Aquatica as well as Busch Gardens Tampa Bay, all of which are owned and operated by United Parks & Resorts.  In 2022, SeaWorld Orlando hosted an estimated 4.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/SeaWorld_Orlando_001.jpg",
+  "imageAttribution": "The Port of Entry lighthouse.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/SeaWorld_Orlando",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:15.523Z"
+}

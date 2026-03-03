@@ -1,0 +1,29 @@
+{
+  "id": "nanchang-sunac-land",
+  "name": "Nanchang Sunac Land",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "Jiangxi",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2009,
+  "yearClosed": null,
+  "owner": "Sunac China Holdings",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Nanchang Sunac Land (Chinese: 南昌融创乐园; Pinyin: Nánchāng róng chuàng lèyuán) is a theme park in Nanchang, Jiangxi, China.  It opened on the 28th of May 2009.  It was the first theme park to be opened by the Sunac China Holdings group.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Nanchang_Sunac_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:34.109Z"
+}

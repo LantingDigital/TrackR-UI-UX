@@ -1,0 +1,29 @@
+{
+  "id": "lake-george-expedition-park",
+  "name": "Lake George Expedition Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1963,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Lake George Expedition Park is an amusement park located in Lake George, New York, United States along Route 9.  It opened in 2019, and incorporates the Magic Forest, which opened in 1963, along with a new attraction entitled Dino Roar Valley.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/MagicForest_2.jpg",
+  "imageAttribution": "Uncle Sam statue at Magic Forest",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lake_George_Expedition_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:33.098Z"
+}

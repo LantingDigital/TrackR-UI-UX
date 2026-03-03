@@ -1,0 +1,31 @@
+{
+  "id": "walibi-holland",
+  "name": "Walibi Holland",
+  "formerNames": [
+    "Walibi World  Six Flags Holland  Walibi Flevo"
+  ],
+  "country": "NL",
+  "countryName": "Netherlands",
+  "region": "Netherlands",
+  "continent": "Europe",
+  "city": "Biddinghuizen",
+  "latitude": 52.44,
+  "longitude": -5.7625,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1971,
+  "yearClosed": null,
+  "owner": "Compagnie des Alpes",
+  "chain": null,
+  "website": "Official website",
+  "coasterCount": 6,
+  "totalCoasterCount": 6,
+  "description": "Walibi Holland (previously called  Walibi Flevo, Six Flags Holland and Walibi World) is a theme park in Biddinghuizen, Netherlands.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Walibi_Holland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:05.157Z"
+}

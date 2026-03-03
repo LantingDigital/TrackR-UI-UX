@@ -1,0 +1,32 @@
+{
+  "id": "lihpao-land",
+  "name": "Lihpao Resort 麗寶樂園度假區",
+  "formerNames": [
+    "Yamay Recreation World",
+    "Yamay Discovery World"
+  ],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "8, Fullon Road, Houli, Taichung, Taiwan",
+  "latitude": 24.3225,
+  "longitude": -120.69556,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1998,
+  "yearClosed": null,
+  "owner": "Yamay International Development Corp.",
+  "chain": null,
+  "website": "www.lihpaoresort.com/LihpaolandApp/Multilingual/index?id=1",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Lihpao Resort is a theme park located in Houli District, Taichung, Taiwan. \n\nIt currently has two roller coasters, including Gravity Max, the world's first coaster to feature a true 90-degree drop and the world's first tilt coaster.  Besides Gravity Max, Lihpao Land has several themed areas with varied attractions, such as the Mine Express roller coaster, the Hook (a pirate ship ride), and the Wild Flume Adventure, a reversing log flume attraction.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/LIHPAO_RESORT.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lihpao_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:53.474Z"
+}

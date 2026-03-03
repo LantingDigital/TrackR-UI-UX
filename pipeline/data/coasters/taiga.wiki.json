@@ -1,0 +1,53 @@
+{
+  "articleTitle": "Taiga (roller coaster)",
+  "introSection": "Taiga is a steel roller coaster located at the Linnanmäki amusement park in Helsinki, Finland. Taiga is the tallest (52m), fastest (106km/h) and longest (1,104m) roller coaster in Finland.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Linnanmäki announced in early 2018, after a series of teaser social media posts, that the park was to build \"its greatest ride project ever\". This was to be a launched roller coaster built by Swiss manufacturer Intamin, and would surpass each of the records of height, length and speed held to date by Finnish roller coasters. The coaster replaced the park's longstanding Premier Rides water coaster, Vonkaputous. As well as the barn themed children's ride KotKot, and the park's longstanding funhouse, Vekkula, on their former locations.\n\nTaiga opened on June 18, 2019."
+    },
+    {
+      "title": "Ride experience",
+      "content": "The ride starts with a rolling LSM launch out of the station which leads into a Zero-g winder, followed by a series of banked right and left handed sweeping turns. Following these, the train arrives at the coaster's second and final launch: here the train is launched to the rides' top speed of 106.1 km/h up to a 52 m top hat, before pulling down to the right into a Zero-g stall. The train then navigates a small airtime hill before rising into a large immelman loop. A further series of right and left handed S-bends leads the coaster to its final inversion, an in-line twist after which it reaches the brake run and station."
+    },
+    {
+      "title": "Theme",
+      "content": "The name Taiga derives from a Russian word that refers to boreal or snow forests, which make up much of Finland's geography. These are areas of land that are mostly pine, spruce, and larch forests. The ride's theme is primarily based around a nesting eagle (which can be seen on the front of the train), which makes regular observation flights from its nest around the park."
+    }
+  ],
+  "fullText": "Taiga is a steel roller coaster located at the Linnanmäki amusement park in Helsinki, Finland. Taiga is the tallest (52m), fastest (106km/h) and longest (1,104m) roller coaster in Finland.\n\nLinnanmäki announced in early 2018, after a series of teaser social media posts, that the park was to build \"its greatest ride project ever\". This was to be a launched roller coaster built by Swiss manufacturer Intamin, and would surpass each of the records of height, length and speed held to date by Finnish roller coasters. The coaster replaced the park's longstanding Premier Rides water coaster, Vonkaputous. As well as the barn themed children's ride KotKot, and the park's longstanding funhouse, Vekkula, on their former locations.\n\nTaiga opened on June 18, 2019.\n\nThe ride starts with a rolling LSM launch out of the station which leads into a Zero-g winder, followed by a series of banked right and left handed sweeping turns. Following these, the train arrives at the coaster's second and final launch: here the train is launched to the rides' top speed of 106.1 km/h up to a 52 m top hat, before pulling down to the right into a Zero-g stall. The train then navigates a small airtime hill before rising into a large immelman loop. A further series of right and left handed S-bends leads the coaster to its final inversion, an in-line twist after which it reaches the brake run and station.\n\nThe name Taiga derives from a Russian word that refers to boreal or snow forests, which make up much of Finland's geography. These are areas of land that are mostly pine, spruce, and larch forests. The ride's theme is primarily based around a nesting eagle (which can be seen on the front of the train), which makes regular observation flights from its nest around the park.\n\n",
+  "categories": [
+    "Roller coasters in Finland",
+    "Linnanmäki",
+    "Roller coasters opened in 2019",
+    "Launched roller coasters",
+    "Steel roller coasters"
+  ],
+  "infoboxRaw": {
+    "name": "Taiga",
+    "image": "Taiga Linnanmäki (20190629) 10.jpg",
+    "location": "Linnanmäki",
+    "type2": "Launched",
+    "status": "Operating",
+    "opened": "June 18, 2019",
+    "previousattraction": "KotKot\nVekkula\nVonkaputous",
+    "manufacturer": "Intamin",
+    "model": "Blitz Coaster",
+    "lift": "Linear synchronous motor Launch",
+    "height_ft": "170.6",
+    "drop_ft": "105",
+    "length_ft": "3622",
+    "speed_mph": "65.9",
+    "inversions": "4",
+    "duration": "1:05",
+    "capacity": "860",
+    "gforce": "5",
+    "restriction_in": "55",
+    "rcdb_number": "16138",
+    "coordinates": "60.18851°N, 24.93908°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Taiga_(roller_coaster)",
+  "wikiPageId": 64406926,
+  "fetchedAt": "2026-02-28T20:56:32.071Z",
+  "articleLength": 1768
+}

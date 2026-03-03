@@ -1,0 +1,29 @@
+{
+  "id": "petticoat-junction",
+  "name": "Petticoat Junction",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Petticoat Junction is an American television sitcom that originally aired on CBS from September 1963 to April 1970.  The series takes place at the Shady Rest Hotel, which is run by Kate Bradley (played by Bea Benaderet); her three daughters Billie Jo, Bobbie Jo, and Betty Jo; and her uncle Joe Carson.  The series is one of three interrelated shows about rural characters produced by Paul Henning.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Petticoat_Junction_title_screen.jpg",
+  "imageAttribution": "Title screen from seasons 1–2",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Petticoat_Junction",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:06.485Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "columbus-zoo-and-aquarium",
+  "name": "Columbus Zoo and Aquarium",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Powell, Ohio, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.columbuszoo.org",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Columbus Zoo and Aquarium is a non-profit zoo located near Powell in Liberty Township, Delaware County, Ohio, United States, north of the city of Columbus.  The land lies along the eastern banks of the O'Shaughnessy Reservoir on the Scioto River, at the intersection of Riverside Drive and Powell Road.  It has a worldwide reputation, largely attributable to the efforts and promotion of director emeritus Jack Hanna.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Columbus_Zoo_-_51284639854.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Columbus_Zoo_and_Aquarium",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:23.889Z"
+}

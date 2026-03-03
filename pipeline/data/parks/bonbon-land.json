@@ -1,0 +1,29 @@
+{
+  "id": "bonbon-land",
+  "name": "BonBon-Land",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": "Denmark",
+  "continent": "Europe",
+  "city": "Holme-Olstrup, Denmark",
+  "latitude": 55.26056,
+  "longitude": -11.86389,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1991,
+  "yearClosed": null,
+  "owner": "Parques Reunidos",
+  "chain": null,
+  "website": "http://bonbonland.dk",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "BonBon Land is a 34-acre Danish amusement park located in Holme-Olstrup in the South of Zealand, approximately 100 km away from Copenhagen.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Bonbonland_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/BonBon-Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:27.190Z"
+}

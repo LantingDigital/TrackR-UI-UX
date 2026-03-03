@@ -1,0 +1,29 @@
+{
+  "id": "fte-ahrend-h-p-maier-germany-switzerland",
+  "name": "FTE Ahrend & H. P. Maier (Germany & Switzerland)",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:18:24.082Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "festivalgate",
+  "name": "Festivalgate",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Osaka Prefecture, Osaka City, Japan",
+  "latitude": 34.65007,
+  "longitude": -135.50469,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1997,
+  "yearClosed": 2007,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.festivalgate.co.jp (dead)",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Festivalgate (フェスティバルゲート) was an amusement park in the Shinsekai district of Naniwa, Osaka, Japan, just beside the Shin-Imamiya Station of the Osaka Loop Line of Nishinihon Japan Railway and Nankai Railway. \n\nOriginally the site of a train depot, the park opened in July 1997.  The city of Osaka invested in the park, but the theme park was originally managed by a private company which went bankrupt in 2004, and has since been managed by the municipal government of Osaka.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Festival_Gate.jpg",
+  "imageAttribution": "The entrance to Festival Gate",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Festivalgate",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:39.664Z"
+}

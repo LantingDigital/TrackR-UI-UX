@@ -1,0 +1,29 @@
+{
+  "id": "rocky-glen",
+  "name": "Rocky Glen Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Rocky Glen Rd., 1/4 mile off Rt. 502",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Rocky Glen Park was a trolley park located near Moosic, Pennsylvania.  Founded by Arthur Frothingham in 1886 as picnic grounds, it was transformed into an amusement park by engineer and entrepreneur Frederick Ingersoll in 1904.  The park featured rides, arcades, and restaurants until its closure in 1987.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Rocky_Glen_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:30:23.670Z"
+}

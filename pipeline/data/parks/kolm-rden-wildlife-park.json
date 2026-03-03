@@ -1,0 +1,29 @@
+{
+  "id": "kolm-rden-wildlife-park",
+  "name": "Kolmården Wildlife Park",
+  "formerNames": [],
+  "country": "SE",
+  "countryName": "Sweden",
+  "region": "Sweden",
+  "continent": "Europe",
+  "city": "Bråviken bay, Norrköping, Sweden",
+  "latitude": 58.66528,
+  "longitude": -16.46639,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Parks & Resorts Scandinavia AB",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Kolmården Wildlife Park is a zoo that opened in 1965 overlooking Bråviken bay in Sweden.  It is the largest zoo in Scandinavia, includes the first dolphinarium in Scandinavia, which opened in 1969 and has daily shows, and the world's first cable car safari.  The wildlife park also has a birds of prey display and a seal show.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Kolm%C3%A5rden_Kolm%C3%A5rdens_djurpark.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kolm%C3%A5rden_Wildlife_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:58:05.777Z"
+}

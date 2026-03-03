@@ -1,0 +1,41 @@
+{
+  "articleTitle": "Bocaraca",
+  "introSection": "Bocaraca is a steel roller coaster located at Parque de Diversiones Dr. Roberto Ortiz Brenes in San José, Costa Rica.",
+  "sections": [
+    {
+      "title": "History and design",
+      "content": "Bocaraca is a standard production model Vekoma Whirlwind double corkscrew roller coaster, featuring a 64 ft lift hill, and a pair of corkscrews separated by a turn. The overall track length is 1184 ft. It previously operated at Knoebels Amusement Resort in Elysburg, Pennsylvania, from 1993 to 2004 as Whirlwind, and before that, it opened at Playland in 1984, operating there until 1992 under the name Whirlwind as well.\n\nThe ride opened at Knoebels in 1993, replacing the Jet Star. The Whirlwind was removed after the 2004 season due to space constraints at Knoebels. After being removed, the ride was moved to Parque de Diversiones where it opened in 2005, and still operates to this day. While at Knoebels and Playland, the coaster was the only Vekoma corkscrew coaster in the United States to feature two separate corkscrew elements, as opposed to a double corkscrew."
+    }
+  ],
+  "fullText": "Bocaraca is a steel roller coaster located at Parque de Diversiones Dr. Roberto Ortiz Brenes in San José, Costa Rica.\n\nBocaraca is a standard production model Vekoma Whirlwind double corkscrew roller coaster, featuring a 64 ft lift hill, and a pair of corkscrews separated by a turn. The overall track length is 1184 ft. It previously operated at Knoebels Amusement Resort in Elysburg, Pennsylvania, from 1993 to 2004 as Whirlwind, and before that, it opened at Playland in 1984, operating there until 1992 under the name Whirlwind as well.\n\nThe ride opened at Knoebels in 1993, replacing the Jet Star. The Whirlwind was removed after the 2004 season due to space constraints at Knoebels. After being removed, the ride was moved to Parque de Diversiones where it opened in 2005, and still operates to this day. While at Knoebels and Playland, the coaster was the only Vekoma corkscrew coaster in the United States to feature two separate corkscrew elements, as opposed to a double corkscrew.\n\n",
+  "categories": [
+    "Roller coasters opened in 1993",
+    "Former roller coasters in Pennsylvania",
+    "Knoebels Amusement Resort"
+  ],
+  "infoboxRaw": {
+    "name": "Bocaraca",
+    "location": "Parque Diversiones",
+    "status": "Open",
+    "opened": "2005",
+    "year": "2005",
+    "manufacturer": "Vekoma",
+    "model": "Whirlwind",
+    "location_rcdb_number": "2956",
+    "lift": "Chain lift hill",
+    "height_ft": "64",
+    "length_ft": "1148.3",
+    "speed_mph": "37.3",
+    "inversions": "2",
+    "restriction_in": "48",
+    "previousnames": "Whirlwind",
+    "trains": "1",
+    "carspertrain": "7",
+    "rowspercar": "2",
+    "ridersperrow": "2"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bocaraca",
+  "wikiPageId": 5819699,
+  "fetchedAt": "2026-02-28T20:18:38.683Z",
+  "articleLength": 993
+}

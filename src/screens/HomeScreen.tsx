@@ -28,11 +28,20 @@ import Reanimated, {
 import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingActionButton } from '../components';
 import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
 import { LogModal } from '../components/LogModal';
+import { LogConfirmCard } from '../components/LogConfirmCard';
 import { WalletCardStack, ScanModal, QuickActionsMenu, GateModeOverlay } from '../components/wallet';
 import { Ticket } from '../types/wallet';
 import { useWallet } from '../hooks/useWallet';
 import { useTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
+import { resetOnboarding } from '../stores/settingsStore';
+import { CoasterSheet } from '../features/parks/components/CoasterSheet';
+import { EnrichedCoaster } from '../features/parks/types';
+import { COASTER_BY_ID } from '../data/coasterIndex';
+import { COASTER_DETAILS } from '../data/coasterDetails';
+import { RatingSheet } from '../components/RatingSheet';
+import { addQuickLog, getTodayRideCountForCoaster, getRatingForCoaster } from '../stores/rideLogStore';
+import { CoasterRating } from '../types/rideLog';
 
 const COLLAPSE_THRESHOLD = 50;
 const EXPAND_THRESHOLD = 10;
@@ -66,8 +75,10 @@ export const HomeScreen = () => {
     new Set(MOCK_NEWS.filter(item => item.isSaved).map(item => item.id))
   );
   const [searchVisible, setSearchVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchOrigin, setSearchOrigin] = useState<SearchOrigin>('expandedSearchBar');
   const [logVisible, setLogVisible] = useState(false);
+  const [logQuery, setLogQuery] = useState('');
   const [logOrigin, setLogOrigin] = useState<'logPill' | 'logCircle'>('logPill');
   const [scanOrigin, setScanOrigin] = useState<'scanPill' | 'scanCircle'>('scanPill');
   const [walletVisible, setWalletVisible] = useState(false);
@@ -78,9 +89,31 @@ export const HomeScreen = () => {
   const [gateModeVisible, setGateModeVisible] = useState(false);
   const [gateModeTicket, setGateModeTicket] = useState<Ticket | null>(null);
 
+  // Coaster detail sheet
+  const [coasterSheetVisible, setCoasterSheetVisible] = useState(false);
+  const [selectedCoaster, setSelectedCoaster] = useState<EnrichedCoaster | null>(null);
+
+  // Log confirmation card (inline within LogModal)
+  const [logConfirmCoaster, setLogConfirmCoaster] = useState<{
+    id: string; name: string; parkName: string; imageUrl?: string;
+  } | null>(null);
+
+  // Rating sheet
+  const [ratingSheetVisible, setRatingSheetVisible] = useState(false);
+  const [ratingCoaster, setRatingCoaster] = useState<{
+    id: string; name: string; parkName: string;
+  } | null>(null);
+  const [ratingExisting, setRatingExisting] = useState<CoasterRating | undefined>();
+
   // Modal animation lock — blocks all touches during open/close animations
   const [isModalAnimating, setIsModalAnimating] = useState(false);
   const isModalAnimatingRef = useRef(false);
+
+  // Flag: handleSearchResultPress already handled the close — skip handleSearchClose
+  const resultPressHandledCloseRef = useRef(false);
+
+  // Timer ref for delayed coaster data clear — must be cancellable to prevent race condition
+  const coasterClearTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Wallet context
   const { stackTickets, setDefaultTicket, markTicketUsed, toggleFavorite, deleteTicket, favoriteTickets, tickets } = useWallet();
@@ -322,6 +355,10 @@ export const HomeScreen = () => {
       searchButtonOpacity.value = 1;
       searchBarMorphOpacity.value = 1;
       setSearchVisible(false);
+      // Reset MorphingPill's INTERNAL state (morphProgress, isExpanded, isAnimating).
+      // Without this, internal morphProgress stays at 1 and the next open animation
+      // is a no-op (withTiming(1) when already at 1 = instant).
+      morphingPillRef.current.reset();
     }
 
     // Reset log modal
@@ -334,6 +371,7 @@ export const HomeScreen = () => {
       logPillScrollHidden.value = 1;
       logButtonOpacity.value = 1;
       setLogVisible(false);
+      logMorphingPillRef.current.reset();
     }
 
     // Reset scan/wallet modal
@@ -345,6 +383,7 @@ export const HomeScreen = () => {
       scanPillScrollHidden.value = 1;
       scanButtonOpacity.value = 1;
       setWalletVisible(false);
+      scanMorphingPillRef.current.reset();
     }
 
     // Clear animation lock
@@ -525,6 +564,13 @@ export const HomeScreen = () => {
   }, []);
 
   const handleSearchClose = useCallback(() => {
+    // If handleSearchResultPress already handled the close (CoasterSheet transition),
+    // skip the animated close — it would fade the backdrop and flash the bare home screen.
+    if (resultPressHandledCloseRef.current) {
+      resultPressHandledCloseRef.current = false;
+      return;
+    }
+
     Keyboard.dismiss();
 
     // GUARANTEE header is expanded when returning to home screen
@@ -557,6 +603,7 @@ export const HomeScreen = () => {
       searchPillScrollHidden.value = 1;
       searchPillZIndex.value = 10;
       runOnJS(setSearchVisible)(false);
+      runOnJS(setSearchQuery)('');
     });
   }, []);
 
@@ -647,6 +694,60 @@ export const HomeScreen = () => {
     setSearchVisible(false);
   }, []);
 
+  const handleSearchResultPress = useCallback((item: { id: string; type: string; name: string }) => {
+    if (item.type === 'ride') {
+      const indexEntry = COASTER_BY_ID[item.id];
+      if (indexEntry) {
+        // Merge index data with rich details (if available)
+        const details = COASTER_DETAILS[item.id];
+        const coaster: EnrichedCoaster = {
+          id: indexEntry.id,
+          name: indexEntry.name,
+          park: indexEntry.park,
+          country: indexEntry.country,
+          continent: indexEntry.continent,
+          manufacturer: indexEntry.manufacturer,
+          material: indexEntry.material as 'Wood' | 'Steel' | 'Hybrid',
+          type: indexEntry.type,
+          heightFt: indexEntry.heightFt,
+          speedMph: indexEntry.speedMph,
+          lengthFt: indexEntry.lengthFt,
+          inversions: indexEntry.inversions,
+          yearOpened: indexEntry.yearOpened,
+          dropFt: indexEntry.dropFt,
+          gForce: indexEntry.gForce,
+          duration: indexEntry.duration,
+          propulsion: indexEntry.propulsion,
+          designer: indexEntry.designer,
+          model: indexEntry.model,
+          status: indexEntry.status,
+          imageUrl: indexEntry.imageUrl,
+          ...details,
+        };
+
+        // Layer CoasterSheet on top of the search modal — don't close search.
+        // When the user dismisses the sheet, they return to the search modal.
+        // Flag prevents handleSearchClose from firing (SearchModal.handleResultPress
+        // calls both onResultPress and handleClose — we only want the sheet to open).
+        resultPressHandledCloseRef.current = true;
+        // Cancel any pending coaster-clear timer from a previous sheet close —
+        // without this, the timer fires 400ms later and nulls out the new coaster,
+        // preventing the sheet from opening.
+        if (coasterClearTimerRef.current) {
+          clearTimeout(coasterClearTimerRef.current);
+          coasterClearTimerRef.current = null;
+        }
+        Keyboard.dismiss();
+        setSelectedCoaster(coaster);
+        setCoasterSheetVisible(true);
+        isModalAnimatingRef.current = false;
+        setIsModalAnimating(false);
+      }
+    }
+    // Parks: future — navigate to park detail
+    // News: future — navigate to news article
+  }, []);
+
   // =========================================
   // Log Modal Handlers
   // =========================================
@@ -666,6 +767,8 @@ export const HomeScreen = () => {
 
   const handleLogClose = useCallback(() => {
     Keyboard.dismiss();
+    setLogQuery('');
+    setLogConfirmCoaster(null);
 
     isCollapsed.value = 0;
     reanimatedProgress.value = 1; // Instant - header is behind modal anyway
@@ -691,6 +794,57 @@ export const HomeScreen = () => {
   // Handle focus input request from sectionsOnly mode (e.g., "Add your first ride" button)
   const handleLogInputFocus = useCallback(() => {
     logInputRef.current?.focus();
+  }, []);
+
+  // =========================================
+  // Log Confirmation + Rating Handlers
+  // =========================================
+
+  // User selected a coaster from LogModal — show inline confirmation
+  const handleLogCardSelect = useCallback((item: { id: string; name: string; subtitle?: string; image?: string }) => {
+    setLogConfirmCoaster({
+      id: item.id,
+      name: item.name,
+      parkName: item.subtitle ?? '',
+      imageUrl: item.image,
+    });
+  }, []);
+
+  // User confirmed the quick log
+  const handleLogConfirm = useCallback(() => {
+    if (!logConfirmCoaster) return;
+    addQuickLog({
+      id: logConfirmCoaster.id,
+      name: logConfirmCoaster.name,
+      parkName: logConfirmCoaster.parkName,
+    });
+  }, [logConfirmCoaster]);
+
+  // User tapped "Rate this ride?" after quick log
+  const handleLogRate = useCallback(() => {
+    if (!logConfirmCoaster) return;
+    setLogConfirmCoaster(null);
+    setRatingCoaster(logConfirmCoaster);
+    setRatingExisting(getRatingForCoaster(logConfirmCoaster.id));
+    setRatingSheetVisible(true);
+  }, [logConfirmCoaster]);
+
+  // User dismissed the log confirmation card
+  const handleLogConfirmDismiss = useCallback(() => {
+    setLogConfirmCoaster(null);
+  }, []);
+
+  // Rating completed or closed
+  const handleRatingComplete = useCallback((_rating: CoasterRating) => {
+    setRatingSheetVisible(false);
+    setRatingCoaster(null);
+    setRatingExisting(undefined);
+  }, []);
+
+  const handleRatingClose = useCallback(() => {
+    setRatingSheetVisible(false);
+    setRatingCoaster(null);
+    setRatingExisting(undefined);
   }, []);
 
   const handleScanPress = useCallback(() => {
@@ -1510,10 +1664,11 @@ export const HomeScreen = () => {
             visible={searchVisible}
             onClose={handleSearchClose}
             onSearch={handleSearch}
-            onResultPress={(item) => console.log('Selected:', item.name)}
+            onResultPress={handleSearchResultPress}
             morphProgress={pillMorphProgress}
             isEmbedded={true}
             sectionsOnly={true}
+            externalQuery={searchQuery}
           />
         </Reanimated.View>
       )}
@@ -1593,7 +1748,7 @@ export const HomeScreen = () => {
             letterSpacing: 10,
             paddingLeft: 10, // Offset for trailing letterSpacing
             color: '#000000',
-            zIndex: 160,
+            zIndex: logConfirmCoaster ? 600 : 160,
           },
           logHeaderAnimatedStyle,
           ]}
@@ -1623,6 +1778,8 @@ export const HomeScreen = () => {
             isEmbedded={true}
             sectionsOnly={true}
             onFocusInput={handleLogInputFocus}
+            onCardSelect={handleLogCardSelect}
+            externalQuery={logQuery}
           />
         </Reanimated.View>
       )}
@@ -1668,11 +1825,20 @@ export const HomeScreen = () => {
                   isEmbedded={true}
                   inputOnly={true}
                   externalInputRef={logInputRef}
+                  onQueryChange={setLogQuery}
+                  externalQuery={logQuery}
                 />
               </View>
-              {/* X Close Button */}
+              {/* X Close Button — clears text first, then closes if empty */}
               <Pressable
-                onPress={close}
+                onPress={() => {
+                  if (logQuery.length > 0) {
+                    setLogQuery('');
+                    logInputRef.current?.focus();
+                  } else {
+                    close();
+                  }
+                }}
                 style={{
                   width: 40,
                   height: 40,
@@ -1821,15 +1987,23 @@ export const HomeScreen = () => {
                   visible={true}
                   onClose={close}
                   onSearch={handleSearch}
-                  onResultPress={(item) => console.log('Selected:', item.name)}
+                  onResultPress={handleSearchResultPress}
                   isEmbedded={true}
                   inputOnly={true}
                   showCloseButton={false}
+                  onQueryChange={setSearchQuery}
+                  externalQuery={searchQuery}
                 />
               </View>
-              {/* X Close Button */}
+              {/* X Close Button — clears text first, then closes if empty */}
               <Pressable
-                onPress={close}
+                onPress={() => {
+                  if (searchQuery.length > 0) {
+                    setSearchQuery('');
+                  } else {
+                    close();
+                  }
+                }}
                 style={{
                   width: 40,
                   height: 40,
@@ -1847,6 +2021,12 @@ export const HomeScreen = () => {
           showBackdrop={false}
           onOpen={() => {
             const isBarOrigin = searchOriginRef.current === 'expandedSearchBar' || searchOriginRef.current === 'collapsedSearchBar';
+
+            // Defensive: ensure shared values start at 0 so animations always
+            // visually run (stale values from an interrupted close would make
+            // withTiming(1) a no-op if already at 1).
+            searchContentFade.value = 0;
+            backdropOpacity.value = 0;
 
             // Trigger the existing search modal experience
             setSearchVisible(true);
@@ -2210,6 +2390,89 @@ export const HomeScreen = () => {
         </Pressable>
       )}
 
+      {/* Onboarding replay FAB — dev/testing button */}
+      {!searchVisible && !logVisible && !walletVisible && (
+        <Pressable
+          onPress={() => { haptics.select(); resetOnboarding(); }}
+          style={[
+            styles.onboardingFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+          ]}
+        >
+          <Ionicons name="rocket-outline" size={22} color={colors.text.inverse} />
+        </Pressable>
+      )}
+
+      {/* Battle Mode FAB — dev/testing button */}
+      {!searchVisible && !logVisible && !walletVisible && (
+        <Pressable
+          onPress={() => { haptics.select(); navigation.navigate('Battle'); }}
+          style={[
+            styles.battleFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+          ]}
+        >
+          <Ionicons name="flash-outline" size={22} color={colors.text.inverse} />
+        </Pressable>
+      )}
+
+      {/* Activity FAB — dev/testing button */}
+      {!searchVisible && !logVisible && !walletVisible && (
+        <Pressable
+          onPress={() => { haptics.select(); navigation.navigate('Activity'); }}
+          style={[
+            styles.activityFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+          ]}
+        >
+          <Ionicons name="time-outline" size={22} color={colors.text.inverse} />
+        </Pressable>
+      )}
+
+      {/* Coaster Detail Sheet — opens from search result taps */}
+      <CoasterSheet
+        coaster={selectedCoaster}
+        visible={coasterSheetVisible}
+        onClose={() => {
+          setCoasterSheetVisible(false);
+          // Delay clearing coaster data so close animation plays with data intact.
+          // Store timer ref so it can be cancelled if user opens a new sheet quickly.
+          coasterClearTimerRef.current = setTimeout(() => {
+            setSelectedCoaster(null);
+            coasterClearTimerRef.current = null;
+          }, 400);
+        }}
+      />
+
+      {/* Log Confirmation Card — blur overlay above pill (z-200), below LOG header (z-600) */}
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 500 }} pointerEvents={logConfirmCoaster ? 'auto' : 'none'}>
+        <LogConfirmCard
+          visible={!!logConfirmCoaster}
+          coasterId={logConfirmCoaster?.id ?? ''}
+          coasterName={logConfirmCoaster?.name ?? ''}
+          parkName={logConfirmCoaster?.parkName ?? ''}
+          rideNumber={logConfirmCoaster ? getTodayRideCountForCoaster(logConfirmCoaster.id) + 1 : 1}
+          imageUrl={logConfirmCoaster?.imageUrl}
+          onConfirm={handleLogConfirm}
+          onRate={handleLogRate}
+          onDismiss={handleLogConfirmDismiss}
+          onExitStart={() => setLogQuery('')}
+        />
+      </View>
+
+      {/* Rating Sheet — full criteria rating for a coaster (z-index 1000 to appear above everything) */}
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000 }} pointerEvents={ratingSheetVisible ? 'auto' : 'none'}>
+        <RatingSheet
+          visible={ratingSheetVisible}
+          coasterId={ratingCoaster?.id ?? ''}
+          coasterName={ratingCoaster?.name ?? ''}
+          parkName={ratingCoaster?.parkName ?? ''}
+          existingRating={ratingExisting}
+          onClose={handleRatingClose}
+          onComplete={handleRatingComplete}
+        />
+      </View>
+
       {/* Touch-blocking overlay during modal animations — prevents glitched states */}
       {isModalAnimating && (
         <View
@@ -2283,6 +2546,42 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 24,
     backgroundColor: colors.accent.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 40,
+    ...shadows.small,
+  },
+  onboardingFab: {
+    position: 'absolute',
+    right: spacing.lg + 48 + spacing.base,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.text.secondary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 40,
+    ...shadows.small,
+  },
+  battleFab: {
+    position: 'absolute',
+    right: spacing.lg + (48 + spacing.base) * 2,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.text.secondary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 40,
+    ...shadows.small,
+  },
+  activityFab: {
+    position: 'absolute',
+    right: spacing.lg + (48 + spacing.base) * 3,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.text.secondary,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 40,

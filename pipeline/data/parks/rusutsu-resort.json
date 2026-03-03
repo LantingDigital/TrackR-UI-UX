@@ -1,0 +1,29 @@
+{
+  "id": "rusutsu-resort",
+  "name": "Rusutsu Resort",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Rusutsu, Hokkaidō, Japan",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 5,
+  "totalCoasterCount": 6,
+  "description": "The Rusutsu Resort (ルスツリゾート) is the largest resort in Hokkaidō, Japan, operated by Kamori Kankō.  The resort is famous for its ski slopes but also offers year-round attractions including an amusement park and golf courses.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Rusutsu_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:29:55.701Z"
+}

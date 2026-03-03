@@ -33,6 +33,7 @@ import Animated, {
   cancelAnimation,
   runOnJS,
   interpolate,
+  interpolateColor,
   Extrapolation,
   Easing,
   SharedValue,
@@ -75,6 +76,8 @@ const CLOSE_DURATION = 385; // ms for close backdrop (0.85x speed-up)
 export interface MorphingPillRef {
   open: () => void;
   close: () => void;
+  /** Instantly reset to collapsed state (no animation). Use when covering with another modal. */
+  reset: () => void;
   isOpen: boolean;
   isAnimating: boolean;
 }
@@ -95,6 +98,8 @@ interface MorphingPillProps {
   pillHeight?: number;
   pillBorderRadius?: number;
   pillStyle?: ViewStyle;
+  /** Container background transitions to this color near pill size — hides white edges during close overshoot */
+  pillBackgroundColor?: string;
 
   // Expanded state (renamed from modalContent for clarity)
   expandedContent: React.ReactNode | ((close: () => void) => React.ReactNode);
@@ -180,6 +185,9 @@ interface MorphingPillProps {
     springDamping?: number;
     springStiffness?: number;
     springMass?: number;
+    closeSpringDamping?: number;
+    closeSpringStiffness?: number;
+    closeSpringMass?: number;
     duration?: number;
   };
 
@@ -202,6 +210,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   pillHeight = DEFAULT_PILL_HEIGHT,
   pillBorderRadius = DEFAULT_PILL_RADIUS,
   pillStyle,
+  pillBackgroundColor,
   expandedContent,
   expandedWidth,
   expandedHeight,
@@ -403,6 +412,17 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   useImperativeHandle(ref, () => ({
     open: handleOpen,
     close: handleClose,
+    reset: () => {
+      cancelAnimation(morphProgress);
+      cancelAnimation(backdropOpacity);
+      morphProgress.value = 0;
+      backdropOpacity.value = 0;
+      isOpening.value = false;
+      closeFadeOut.value = 1;
+      hasClosedBefore.value = true;
+      setIsExpanded(false);
+      setIsAnimating(false);
+    },
     isOpen: isExpanded,
     isAnimating,
   }), [isExpanded, isAnimating]);
@@ -669,7 +689,9 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
       width: currentWidth,
       height: currentHeight,
       borderRadius: currentRadius,
-      backgroundColor: colors.background.card,
+      backgroundColor: pillBackgroundColor
+        ? interpolateColor(Math.abs(t), [0, 0.12], [pillBackgroundColor, colors.background.card])
+        : colors.background.card,
       opacity: pillOpacity,
       shadowColor: '#000',
       shadowOffset: { width: 0, height: shadowOffH },
@@ -689,7 +711,9 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     bottom: 0,
     borderRadius: interpolate(morphProgress.value, [0, 1], [pillBorderRadius, expandedBorderRadius], Extrapolation.CLAMP),
     overflow: 'hidden',
-    backgroundColor: colors.background.card,
+    backgroundColor: pillBackgroundColor
+      ? interpolateColor(Math.abs(morphProgress.value), [0, 0.12], [pillBackgroundColor, colors.background.card])
+      : colors.background.card,
   }));
 
   // Pill content style - different timing for open vs close
@@ -780,6 +804,14 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
     }
 
     const startOpen = (x: number, y: number) => {
+      // Defensive: if morphProgress is stale (e.g. tab blur reset external values
+      // but not internal MorphingPill state), ensure we start from 0 so the
+      // withTiming(1) animation actually runs instead of being a no-op.
+      if (morphProgress.value !== 0) {
+        cancelAnimation(morphProgress);
+        morphProgress.value = 0;
+      }
+
       wrapperScreenX.value = x;
       wrapperScreenY.value = y;
 
@@ -904,7 +936,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
           easing: Easing.out(Easing.cubic),
         }),
         withSpring(0, holdPillDuringArc
-          ? { damping: 16, stiffness: 140, mass: 0.7 }  // Coastle: slower, softer settle
+          ? { damping: tuningRef.current?.closeSpringDamping ?? tuningRef.current?.springDamping ?? 16, stiffness: tuningRef.current?.closeSpringStiffness ?? tuningRef.current?.springStiffness ?? 140, mass: tuningRef.current?.closeSpringMass ?? tuningRef.current?.springMass ?? 0.7 }
           : { damping: 24, stiffness: 320, mass: 0.5 }, // HomeScreen: original snappy settle
         (finished) => {
           if (finished) {

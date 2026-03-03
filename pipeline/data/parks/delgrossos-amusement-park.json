@@ -1,0 +1,32 @@
+{
+  "id": "delgrossos-amusement-park",
+  "name": "DelGrosso's Park",
+  "formerNames": [
+    "Bland's Park",
+    "DelGrosso's Amusement Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Tipton, Pennsylvania, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1909,
+  "yearClosed": null,
+  "owner": "The DelGrosso Family of Companies",
+  "chain": null,
+  "website": "https://www.mydelgrossopark.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "DelGrosso's Park is a family-oriented amusement park located in Tipton, Pennsylvania, a northern suburb of Altoona, Pennsylvania.  The park was purchased by the DelGrosso family in 1946 and was named \"Bland's Park\" until 2000.  In 2000, the DelGrosso family decided to change its name to \"DelGrosso's Amusement Park.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/DelGrosso's_Amusement_Park_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/DelGrosso's_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:48.624Z"
+}

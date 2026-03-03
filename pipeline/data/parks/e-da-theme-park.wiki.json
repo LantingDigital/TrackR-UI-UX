@@ -1,0 +1,48 @@
+{
+  "articleTitle": "E-DA Theme Park",
+  "introSection": "The E-DA Theme Park is a theme park with Greek styling located in Dashu District, Kaohsiung, Taiwan. It claims to be south Taiwan's largest theme park.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "The theme park opened in 2010."
+    },
+    {
+      "title": "Architecture",
+      "content": "The theme park features the integration of Greek-style environment and pristine atmosphere."
+    },
+    {
+      "title": "Three main areas",
+      "content": "\n * Acropolis\n * Santorini\n * Trojan Castle"
+    },
+    {
+      "title": "Transportation",
+      "content": "The theme park is accessible by bus from Zuoying station, Gangshan station, Nanzi station or Fengshan station."
+    },
+    {
+      "title": "See also",
+      "content": "\n * List of tourist attractions in Taiwan"
+    }
+  ],
+  "fullText": "The E-DA Theme Park is a theme park with Greek styling located in Dashu District, Kaohsiung, Taiwan. It claims to be south Taiwan's largest theme park.\n\nThe theme park opened in 2010.\n\nThe theme park features the integration of Greek-style environment and pristine atmosphere.\n\n\n * Acropolis\n * Santorini\n * Trojan Castle\n\nThe theme park is accessible by bus from Zuoying station, Gangshan station, Nanzi station or Fengshan station.\n\n\n * List of tourist attractions in Taiwan\n\n\n\n\n",
+  "categories": [
+    "2010 establishments in Taiwan",
+    "Amusement parks in Kaohsiung",
+    "Amusement parks opened in 2010"
+  ],
+  "infoboxRaw": {
+    "name": "E-DA Theme Park 義大遊樂世界",
+    "logo": "EDAThemeParkLogo.png",
+    "logo_size": "220px",
+    "image": "E-Da Theme Park Monorail.jpg",
+    "image_size": "220px",
+    "location": "Dashu, Kaohsiung, Taiwan",
+    "coordinates": "22.72861°N, 120.40667°W",
+    "status": "operating",
+    "opening_date": "2010",
+    "theme": "Greek"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/E-DA_Theme_Park",
+  "wikiPageId": null,
+  "fetchedAt": "2026-02-28T22:59:21.824Z",
+  "articleLength": 481
+}

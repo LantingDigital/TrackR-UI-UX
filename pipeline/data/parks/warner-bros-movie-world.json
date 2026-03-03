@@ -1,0 +1,29 @@
+{
+  "id": "warner-bros-movie-world",
+  "name": "Warner Bros. Movie World",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "city": "Oxenford, Queensland",
+  "latitude": 27.9075,
+  "longitude": -153.3125,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1991,
+  "yearClosed": null,
+  "owner": "Village Roadshow Theme Parks, under license from Warner Bros. Discovery Global Experiences",
+  "chain": null,
+  "website": "movieworld.com.au",
+  "coasterCount": 6,
+  "totalCoasterCount": 7,
+  "description": "Warner Bros.  Movie World is a theme park on the Gold Coast in Queensland, Australia.  Owned and operated by Village Roadshow Theme Parks, the park opened on 3 June 1991.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Warner_Bros_Movie_World_-_panoramio_(5).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Warner_Bros._Movie_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:58.787Z"
+}

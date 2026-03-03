@@ -1,0 +1,29 @@
+{
+  "id": "spreepark",
+  "name": "Spreepark",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": null,
+  "continent": "Europe",
+  "city": "Berlin",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1969,
+  "yearClosed": 2002,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.spreepark.de/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Spreepark is a former amusement park in the north of the Plänterwald in the Berlin district Treptow-Köpenick (formerly part of the GDR-controlled East Berlin).  It was also known by its earlier name Kulturpark Plänterwald Berlin.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Bundesarchiv_Bild_183-1985-0404-021%2C_Berlin%2C_Kulturpark_Pl%C3%A4nterwald%2C_Riesenrad.jpg",
+  "imageAttribution": "Spreepark Ferris wheel in 1985",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Spreepark",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:24:52.000Z"
+}

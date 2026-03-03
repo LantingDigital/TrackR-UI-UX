@@ -1,0 +1,29 @@
+{
+  "id": "magic-city",
+  "name": "Magic City",
+  "formerNames": [],
+  "country": "UZ",
+  "countryName": "Uzbekistan",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Magic City may refer to:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Magic_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:29.177Z"
+}

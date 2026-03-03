@@ -1,0 +1,31 @@
+{
+  "id": "elitch-gardens",
+  "name": "Elitch Gardens",
+  "formerNames": [
+    "Elitch's Zoological Gardens"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Colorado",
+  "continent": "North America",
+  "city": "Denver",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": 1994,
+  "owner": "John Elitch and Mary Elitch Long (1890–1916) John Mulvihill (1916–1930) Gurtler family (1930–1995) Elitch Gardens (1995–2014)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Elitch Gardens was a family-owned seasonal amusement park, theater, and botanic garden in the West Highland neighborhood in northwest Denver, Colorado, United States, at 38th Avenue and Tennyson Street.  For more than a century Elitch's was one of the most popular entertainment destinations in Colorado.  It was nationally known for its luscious gardens, the Elitch Theatre, the Trocadero Ballroom, and the premier wooden roller coaster, Mister Twister.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Elitch_Zoological_Gardens_Poster.jpg",
+  "imageAttribution": "Poster for Elitch's Zoological Gardens (c. 1900)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Elitch_Gardens",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:08.967Z"
+}

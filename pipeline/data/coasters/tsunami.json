@@ -1,0 +1,62 @@
+{
+  "id": "tsunami",
+  "name": "Tsunami",
+  "formerNames": [
+    "Thriller at Gröna Lund",
+    "Taz's Texas Tornado and Texas Tornado at Six Flags AstroWorld and Zonga at Six Flags Discovery Kingdom"
+  ],
+  "parkId": "feria-nacional-de-san-marcos",
+  "parkName": "Feria Nacional de San Marcos",
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "heightFt": 115,
+  "heightM": 35.1,
+  "speedMph": 55,
+  "speedKmh": 88.5,
+  "lengthFt": 393.7,
+  "lengthM": 120,
+  "dropFt": 98,
+  "dropM": 29.9,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Schwarzkopf",
+  "designer": "Werner Stengel",
+  "model": "XP48",
+  "status": "closed",
+  "yearOpened": 2008,
+  "yearClosed": 2014,
+  "description": "Tsunami was a steel roller coaster manufactured by Anton Schwarzkopf and located at the San Marcos National Fair in Mexico.  The coaster was previously located at Six Flags Discovery Kingdom as Zonga, Six Flags AstroWorld as \"Texas Tornado\", and operated for 10 years on the German traveling funfair circuit as \"Thriller. \" After its time at Marine World, it was sold to the San Marcos National Fair, where it last operated.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Monta%C3%B1a_Rusa_Tsunami.png",
+  "imageAttribution": "Up-close shot of Tsunami going through the loops",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tsunami_(roller_coaster)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:22.937Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "tsunami",
+    "thriller at gröna lund",
+    "taz's texas tornado and texas tornado at six flags astroworld and zonga at six flags discovery kingdom",
+    "feria nacional de san marcos",
+    "schwarzkopf",
+    "sit-down",
+    "california"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Anton Schwarzkopf"
+  },
+  "popularityScore": 58.7,
+  "popularityTier": "notable",
+  "popularityRank": 663
+}

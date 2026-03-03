@@ -1,0 +1,29 @@
+{
+  "id": "hot-go-dreamworld",
+  "name": "Fushun",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.fushun.gov.cn\nwww.fsgs.gov.cn",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Fushun is a prefecture level city in Liaoning province, China, about 45 km east of Shenyang, with a total area of 11,272 km2, 714 km2 of which is the city proper.  Situated on the Hun River (\"muddy river\"), it is one of the industrial and economic development hubs in Liaoning.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fushun",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:51.099Z"
+}

@@ -1,0 +1,59 @@
+{
+  "articleTitle": "Ice Breaker (roller coaster)",
+  "introSection": "Ice Breaker is a launched steel roller coaster at SeaWorld Orlando in Orlando, Florida, United States. Manufactured by Premier Rides, Ice Breaker reaches a maximum height of 93 ft with a maximum speed of 52 mph and a total track length of 1900 ft. Originally scheduled to open for the 2020 season, its opening was delayed to 2022 due to the COVID-19 pandemic.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "In September 2019, SeaWorld Orlando revealed the name for the roller coaster, Ice Breaker. In November 2019, SeaWorld Orlando revealed the trains for the roller coaster at the International Association of Amusement Parks and Attractions (IAAPA) Exposition. In February 2020, the track work for the ride was completed.\n\nIn January 2022, it was announced that Ice Breaker would open on February 18, 2022. The height requirement was adjusted from 48 inches to 54 inches a day after opening. Following the removal of the ride's \"comfort collars\" during a maintenance period, the ride reopened on March 11, 2023 with its height requirement lowered back down to 48 inches."
+    },
+    {
+      "title": "Ride experience",
+      "content": "After leaving the station, the ride starts with a switch track, where the section of track below the train moves to the right while the train is on it. Next is a multi-pass launch, where the train is launched back and forth multiple times, building up speed. The train is first launched backwards at a slow speed over a small hill and towards a vertical spike. Next, the train is launched forwards over another small hill, going partially up a top hat. The train is then launched backwards once more, back over the small hill and up the 93 ft, 100° beyond-vertical spike. Then, the train is launched for the final time, traveling forwards over the top hat. After finishing the top hat, the train turns to the right before traversing two airtime hills. Next, the ride turns up and to the right, then drops down and twists to the left. After this, trains traverse two banked turns and an airtime hill before going up to the final brake run and turning into the station."
+    }
+  ],
+  "fullText": "Ice Breaker is a launched steel roller coaster at SeaWorld Orlando in Orlando, Florida, United States. Manufactured by Premier Rides, Ice Breaker reaches a maximum height of 93 ft with a maximum speed of 52 mph and a total track length of 1900 ft. Originally scheduled to open for the 2020 season, its opening was delayed to 2022 due to the COVID-19 pandemic.\n\nIn September 2019, SeaWorld Orlando revealed the name for the roller coaster, Ice Breaker. In November 2019, SeaWorld Orlando revealed the trains for the roller coaster at the International Association of Amusement Parks and Attractions (IAAPA) Exposition. In February 2020, the track work for the ride was completed.\n\nIn January 2022, it was announced that Ice Breaker would open on February 18, 2022. The height requirement was adjusted from 48 inches to 54 inches a day after opening. Following the removal of the ride's \"comfort collars\" during a maintenance period, the ride reopened on March 11, 2023 with its height requirement lowered back down to 48 inches.\n\nAfter leaving the station, the ride starts with a switch track, where the section of track below the train moves to the right while the train is on it. Next is a multi-pass launch, where the train is launched back and forth multiple times, building up speed. The train is first launched backwards at a slow speed over a small hill and towards a vertical spike. Next, the train is launched forwards over another small hill, going partially up a top hat. The train is then launched backwards once more, back over the small hill and up the 93 ft, 100° beyond-vertical spike. Then, the train is launched for the final time, traveling forwards over the top hat. After finishing the top hat, the train turns to the right before traversing two airtime hills. Next, the ride turns up and to the right, then drops down and twists to the left. After this, trains traverse two banked turns and an airtime hill before going up to the final brake run and turning into the station.\n\n",
+  "categories": [
+    "Roller coasters in Florida",
+    "Roller coasters opened in 2022",
+    "SeaWorld Orlando",
+    "2022 establishments in Florida"
+  ],
+  "infoboxRaw": {
+    "name": "Ice Breaker",
+    "logo": "Ice Breaker (roller coaster) Logo.png",
+    "logodimensions": "150px",
+    "image": "File:Ice Breaker 2020.jpg",
+    "imagedimensions": "220px",
+    "caption": "Ice Breaker during construction in January 2020",
+    "location": "SeaWorld Orlando",
+    "locationarticle": "SeaWorld Orlando",
+    "section": "Sea of Power",
+    "coordinates": "28.4088°N, -81.4633°W",
+    "status": "Operating",
+    "opened": "February 18, 2022",
+    "type2": "Launched",
+    "manufacturer": "Premier Rides",
+    "manufacturerarticle": "Premier Rides",
+    "model": "Sky Rocket",
+    "lift": "LSM",
+    "height_ft": "93",
+    "length_ft": "1900",
+    "speed_mph": "52",
+    "inversions": "0",
+    "duration": "1:20",
+    "angle": "100",
+    "restriction_in": "48",
+    "trains": "2",
+    "carspertrain": "3",
+    "rowspercar": "3",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Quick Queue",
+    "virtual_queue_image": "Quick Queue availability logo.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "17420"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Ice_Breaker_(roller_coaster)",
+  "wikiPageId": 63958280,
+  "fetchedAt": "2026-02-28T20:15:40.333Z",
+  "articleLength": 1998
+}

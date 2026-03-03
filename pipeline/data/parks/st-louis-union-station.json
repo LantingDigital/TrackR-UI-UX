@@ -1,0 +1,29 @@
+{
+  "id": "st-louis-union-station",
+  "name": "St. Louis, MO",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": "1820 Market Street",
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": 1978,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "St.  Louis Union Station is a National Historic Landmark and former train station in St.  Louis, Missouri, United States.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/St._Louis_Union_Station%2C_Market_Street%2C_St._Louis%2C_MO_-_53050963215.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/St._Louis_Union_Station",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:10.585Z"
+}

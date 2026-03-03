@@ -1,0 +1,29 @@
+{
+  "id": "forest-park",
+  "name": "Forest Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Illinois",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "Forest Park may refer to:\n\n\n * A type of park, see forest park",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Forest_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:42.278Z"
+}

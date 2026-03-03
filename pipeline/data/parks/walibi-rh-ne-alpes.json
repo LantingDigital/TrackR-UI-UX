@@ -1,0 +1,31 @@
+{
+  "id": "walibi-rh-ne-alpes",
+  "name": "Walibi Rhône-Alpes",
+  "formerNames": [
+    "Avenir Land"
+  ],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Les Avenières",
+  "latitude": 45.62139,
+  "longitude": -5.57028,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1979,
+  "yearClosed": null,
+  "owner": "Compagnie des Alpes",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Walibi Rhône-Alpes is a French theme park located in the commune of Les Avenières, in the Isère department.  It is the largest theme park in the Rhône-Alpes region, containing more than 33 rides and covering an area of 35 hectares.  It is a sister park to Walibi Belgium, which was created in 1975 by Eddy Meeùs, a Belgian businessman.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ALe_Boomerang.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Walibi_Rh%C3%B4ne-Alpes",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:41.736Z"
+}

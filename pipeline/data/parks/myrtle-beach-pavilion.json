@@ -1,0 +1,29 @@
+{
+  "id": "myrtle-beach-pavilion",
+  "name": "Myrtle Beach Pavilion",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "South Carolina",
+  "continent": "North America",
+  "city": "Myrtle Beach, South Carolina",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1948,
+  "yearClosed": 2006,
+  "owner": "Burroughs & Chapin",
+  "chain": null,
+  "website": "Pavilion Nostalgia Park",
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "The Myrtle Beach Pavilion was a historic pay-per-ride, no parking fee, 11-acre amusement park that was located in Myrtle Beach, South Carolina at the corner of 9th Avenue North and Ocean Boulevard.  It was just a few blocks down from another Myrtle Beach amusement park, the Family Kingdom Amusement Park; both in the \"heart\" of Myrtle Beach.  \"The Pavilion\" had well over 40 different attractions for kids and thrill-seekers alike, and included the wooden rollercoaster Hurricane: Category 5.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/MBPavilionSign.jpg",
+  "imageAttribution": "Pavilion from the main entrance.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Myrtle_Beach_Pavilion",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:14.454Z"
+}

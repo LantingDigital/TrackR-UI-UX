@@ -1,0 +1,29 @@
+{
+  "id": "walygator-parc",
+  "name": "Walygator Grand-Est",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Maizières-les-Metz, France",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": null,
+  "owner": "Aspro Parks",
+  "chain": null,
+  "website": "www.walygatorparc.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Walygator Grand-Est is an amusement park located in Maizières-les-Metz, Lorraine, France.  Since its opening in 1989, the park has had a succession of different names: Big Bang Schtroumpf (Smurf), Walibi Schtroumpf, Walibi Lorraine and now Walygator Parc.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrance_of_Walygator_Parc.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Walygator_Grand-Est",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:58:00.768Z"
+}

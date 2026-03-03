@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprint A Testing Checklist — TrackR</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #F7F7F7;
+    color: #1a1a1a;
+    padding: 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .progress-bar {
+    background: #E5E5E5;
+    border-radius: 6px;
+    height: 10px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: #CF6769;
+    height: 100%;
+    border-radius: 6px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    text-align: right;
+    font-size: 13px;
+    color: #999;
+    margin-top: -26px;
+    margin-bottom: 24px;
+    padding-right: 4px;
+  }
+  .section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-badge {
+    font-size: 12px;
+    font-weight: 600;
+    background: #CF676715;
+    color: #CF6769;
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+  .section-badge.done {
+    background: #4CAF5015;
+    color: #4CAF50;
+  }
+  .chevron {
+    font-size: 18px;
+    color: #999;
+    transition: transform 0.2s;
+  }
+  .section.collapsed .section-body { display: none; }
+  .section.collapsed .chevron { transform: rotate(-90deg); }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    accent-color: #CF6769;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .check-item.checked label {
+    color: #999;
+    text-decoration: line-through;
+  }
+  .check-item label { cursor: pointer; flex: 1; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .tag.haptic { background: #E3F2FD; color: #1565C0; }
+  .tag.animation { background: #FFF3E0; color: #E65100; }
+  .tag.visual { background: #F3E5F5; color: #7B1FA2; }
+  .tag.flow { background: #E8F5E9; color: #2E7D32; }
+  .tag.error { background: #FFEBEE; color: #C62828; }
+  .tag.perf { background: #FFF8E1; color: #F57F17; }
+  .notes {
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+    padding-left: 28px;
+  }
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+  .legend .tag { margin-left: 0; }
+  footer {
+    text-align: center;
+    color: #bbb;
+    font-size: 12px;
+    margin-top: 40px;
+    padding-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Sprint A Testing Checklist</h1>
+<p class="subtitle">Polish All HomeScreen Modals to Production-Perfect &mdash; TrackR</p>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="progress-label" id="progressLabel">0 / 0</div>
+
+<div class="legend">
+  <span><span class="tag haptic">haptic</span> Haptic feedback</span>
+  <span><span class="tag animation">anim</span> Animation quality</span>
+  <span><span class="tag visual">visual</span> Visual / theme</span>
+  <span><span class="tag flow">flow</span> User flow</span>
+  <span><span class="tag error">error</span> Error handling</span>
+  <span><span class="tag perf">perf</span> Performance</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: Global / Infrastructure -->
+<!-- ============================================ -->
+<div class="section" id="sec-global">
+  <div class="section-header" onclick="toggleSection('sec-global')">
+    <span class="section-title">Global / Infrastructure <span class="section-badge" id="badge-sec-global">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="g1"><label for="g1">App launches without crash after all changes <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="g2"><label for="g2">ToastProvider wraps the entire app (toasts appear on every screen) <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="g3"><label for="g3">No TypeScript errors in modified files (<code>npx tsc --noEmit</code>) <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="g4"><label for="g4">No yellow-box warnings related to LayoutAnimation or legacy Animated <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="g5"><label for="g5">Tab switching doesn't leave orphaned modals or overlays <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="g6"><label for="g6">Tab switching doesn't cause ghost flash (existing behavior preserved) <span class="tag visual">visual</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: Theme Tokens -->
+<!-- ============================================ -->
+<div class="section" id="sec-theme">
+  <div class="section-header" onclick="toggleSection('sec-theme')">
+    <span class="section-title">Theme Tokens <span class="section-badge" id="badge-sec-theme">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="t1"><label for="t1">Section cards use consistent white background + section shadow <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="t2"><label for="t2">All font sizes match design (no visually different sizes compared to before) <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="t3"><label for="t3">Pending banner uses amber/warning color scheme <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="t4"><label for="t4">Accent color (#CF6769) consistent across all buttons, icons, badges <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="t5"><label for="t5">Row separators are subtle (rgba 0.08 opacity) <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="t6"><label for="t6">Press states visible on all tappable rows (slight background tint) <span class="tag visual">visual</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: HapticService -->
+<!-- ============================================ -->
+<div class="section" id="sec-haptics">
+  <div class="section-header" onclick="toggleSection('sec-haptics')">
+    <span class="section-title">Haptic Feedback <span class="section-badge" id="badge-sec-haptics">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="h1"><label for="h1"><b>LogModal</b> &mdash; tap on: CTA button, trending row, autocomplete row, pending rating row <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h2"><label for="h2"><b>LogModal</b> &mdash; select (medium) on: carousel card, "Rate All" banner <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h3"><label for="h3"><b>LogConfirmationCard</b> &mdash; select on card fly-in, tap on cancel/close <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h4"><label for="h4"><b>LogConfirmationCard</b> &mdash; success on Quick Log, select on Rate Now <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h5"><label for="h5"><b>SearchModal</b> &mdash; tap on: search result, recent search, clear all, submit, trending <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h6"><label for="h6"><b>SearchModal</b> &mdash; select on: carousel card press <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h7"><label for="h7"><b>RatingModal</b> &mdash; tap on close, tick on slider drag, success on submit <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h8"><label for="h8"><b>HomeScreen dropdown</b> &mdash; tap on each row press <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="h9"><label for="h9"><b>HomeScreen</b> &mdash; scroll collapse/expand still triggers light haptic <span class="tag haptic">haptic</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: Toast System -->
+<!-- ============================================ -->
+<div class="section" id="sec-toast">
+  <div class="section-header" onclick="toggleSection('sec-toast')">
+    <span class="section-title">Toast System <span class="section-badge" id="badge-sec-toast">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="to1"><label for="to1">Success toast appears after completing a rating (green accent bar) <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="to2"><label for="to2">Toast slides in from top with spring animation <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="to3"><label for="to3">Toast auto-dismisses after ~2.5 seconds <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="to4"><label for="to4">Toast doesn't block user interaction (pointerEvents="none") <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="to5"><label for="to5">Toast positioned below safe area (not clipped by notch) <span class="tag visual">visual</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: SuccessAnimation -->
+<!-- ============================================ -->
+<div class="section" id="sec-success">
+  <div class="section-header" onclick="toggleSection('sec-success')">
+    <span class="section-title">SuccessAnimation <span class="section-badge" id="badge-sec-success">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="s1"><label for="s1"><b>LogConfirmationCard</b> &mdash; checkmark burst plays on Quick Log <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="s2"><label for="s2"><b>LogConfirmationCard</b> &mdash; card auto-dismisses after success animation completes <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="s3"><label for="s3"><b>RatingModal</b> &mdash; "Rating Saved!" overlay with checkmark on submit <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="s4"><label for="s4"><b>RatingModal</b> &mdash; modal closes after success animation completes <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="s5"><label for="s5">Checkmark scales from 0&rarr;1 with spring bounce (damping 12) <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="s6"><label for="s6">Success haptic fires on checkmark appear <span class="tag haptic">haptic</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: LogModal -->
+<!-- ============================================ -->
+<div class="section" id="sec-log">
+  <div class="section-header" onclick="toggleSection('sec-log')">
+    <span class="section-title">LogModal <span class="section-badge" id="badge-sec-log">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="l1"><label for="l1">Opens from pill with smooth morph at 60fps <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l2"><label for="l2">4 section cards cascade in with staggered animation <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l3"><label for="l3">"Rate All" banner triggers rating flow for first pending item <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l4"><label for="l4">Each pending rating row taps through to rating flow <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l5"><label for="l5">Empty state shows "No coasters logged yet" with CTA <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l6"><label for="l6">Complete state shows "All caught up!" with green checkmark <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l7"><label for="l7">Autocomplete dropdown shows ride results when typing <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l8"><label for="l8">Trending rows show rank badge, name, park, log count <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="l9"><label for="l9">Closes smoothly back to pill position <span class="tag animation">anim</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: LogConfirmationCard -->
+<!-- ============================================ -->
+<div class="section" id="sec-confirm">
+  <div class="section-header" onclick="toggleSection('sec-confirm')">
+    <span class="section-title">LogConfirmationCard <span class="section-badge" id="badge-sec-confirm">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Flies in from card origin with spring bounce <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Blurred backdrop appears behind card <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Hero image loads in top half, info in bottom half <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="c4"><label for="c4"><b>Quick Log</b> &rarr; success checkmark &rarr; auto-close (no setTimeout jank) <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="c5"><label for="c5"><b>Rate Now</b> &rarr; card slides out &rarr; RatingModal opens <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="c6"><label for="c6">Cancel/backdrop tap flies card back to origin <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="c7"><label for="c7">Tab bar hides on open, shows on close <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="c8"><label for="c8">Error toast appears if addQuickLog throws (simulate by disconnecting) <span class="tag error">error</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: SearchModal -->
+<!-- ============================================ -->
+<div class="section" id="sec-search">
+  <div class="section-header" onclick="toggleSection('sec-search')">
+    <span class="section-title">SearchModal <span class="section-badge" id="badge-sec-search">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="sm1"><label for="sm1">Opens from search bar with smooth morph at 60fps <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm2"><label for="sm2">Rotating placeholder cycles through suggestions <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm3"><label for="sm3">Recent Searches section shows with "Clear All" button <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm4"><label for="sm4">"Clear All" triggers reverse cascade (bottom-to-top) then placeholder fades in <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm5"><label for="sm5">Clear animation uses Reanimated callbacks (no LayoutAnimation jank) <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm6"><label for="sm6">Nearby Rides carousel scrolls horizontally with snap <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm7"><label for="sm7">Nearby Parks carousel scrolls horizontally with snap <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm8"><label for="sm8">Trending section shows search suggestions <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm9"><label for="sm9">Typing shows autocomplete results, clearing returns to discovery <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="sm10"><label for="sm10">Closes smoothly back to search bar <span class="tag animation">anim</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: RatingModal -->
+<!-- ============================================ -->
+<div class="section" id="sec-rating">
+  <div class="section-header" onclick="toggleSection('sec-rating')">
+    <span class="section-title">RatingModal <span class="section-badge" id="badge-sec-rating">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="r1"><label for="r1">Morphs in with scale + translateY spring <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r2"><label for="r2">Hero image loads with blur; collapses on scroll <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r3"><label for="r3">Image error shows placeholder with icon (break URL to test) <span class="tag error">error</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r4"><label for="r4">Rating sliders snap to half-points (1.0, 1.5, 2.0 ... 10.0) <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r5"><label for="r5">Slider drag produces tick haptic on each value change <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r6"><label for="r6">Live weighted score updates in real time <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r7"><label for="r7">"Complete Rating" triggers success overlay + auto-close <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r8"><label for="r8">Close button (X) reverse-animates back smoothly <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="r9"><label for="r9">Scroll doesn't conflict with slider drag (gesture arbitration works) <span class="tag perf">perf</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: HomeScreen Dropdown -->
+<!-- ============================================ -->
+<div class="section" id="sec-dropdown">
+  <div class="section-header" onclick="toggleSection('sec-dropdown')">
+    <span class="section-title">HomeScreen Dropdown <span class="section-badge" id="badge-sec-dropdown">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="d1"><label for="d1">Dropdown items stagger in with 50ms delay (Reanimated, not legacy Animated) <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="d2"><label for="d2">Items translateY from 20&rarr;0 and fade in <span class="tag animation">anim</span></label></div>
+    <div class="check-item"><input type="checkbox" id="d3"><label for="d3">Recent searches show clock icon, autocomplete shows type icon <span class="tag visual">visual</span></label></div>
+    <div class="check-item"><input type="checkbox" id="d4"><label for="d4">Each row press has visible press state + haptic tap <span class="tag haptic">haptic</span></label></div>
+    <div class="check-item"><input type="checkbox" id="d5"><label for="d5">Typing updates dropdown results in real-time <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="d6"><label for="d6">"No results found" message appears for non-matching queries <span class="tag visual">visual</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: End-to-End Flows -->
+<!-- ============================================ -->
+<div class="section" id="sec-e2e">
+  <div class="section-header" onclick="toggleSection('sec-e2e')">
+    <span class="section-title">End-to-End Flows <span class="section-badge" id="badge-sec-e2e">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="e1"><label for="e1"><b>Quick Log full flow:</b> Open Log &rarr; tap coaster &rarr; Quick Log &rarr; success checkmark &rarr; auto-close &rarr; pending count updates <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="e2"><label for="e2"><b>Rate Now full flow:</b> Open Log &rarr; tap coaster &rarr; Rate Now &rarr; RatingModal opens &rarr; adjust sliders &rarr; Complete Rating &rarr; success &rarr; toast "Rating saved!" <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="e3"><label for="e3"><b>Rate All flow:</b> Open Log &rarr; tap "Rate All" banner &rarr; first pending item opens for rating <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="e4"><label for="e4"><b>Search flow:</b> Tap search bar &rarr; morph opens &rarr; type query &rarr; see results &rarr; close &rarr; morph back <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="e5"><label for="e5"><b>Rapid open/close:</b> Open and close modals quickly 10+ times &mdash; no stuck overlays, no animation glitches <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="e6"><label for="e6"><b>Tab switch during modal:</b> Switch tabs while a modal is open &mdash; returns to clean HomeScreen <span class="tag flow">flow</span></label></div>
+    <div class="check-item"><input type="checkbox" id="e7"><label for="e7"><b>Scroll collapse + modal:</b> Scroll down (collapsed header) &rarr; open Log from circle button &rarr; close &rarr; header restored to expanded <span class="tag flow">flow</span></label></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: Performance -->
+<!-- ============================================ -->
+<div class="section" id="sec-perf">
+  <div class="section-header" onclick="toggleSection('sec-perf')">
+    <span class="section-title">Performance (Physical Device) <span class="section-badge" id="badge-sec-perf">0/0</span></span>
+    <span class="chevron">&#9662;</span>
+  </div>
+  <div class="section-body">
+    <div class="check-item"><input type="checkbox" id="p1"><label for="p1">All morph open/close animations run at 60fps (no dropped frames) <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="p2"><label for="p2">Carousel scroll is smooth during morph-open <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="p3"><label for="p3">Rating sliders respond instantly to touch (no lag) <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="p4"><label for="p4">Dropdown stagger animation doesn't cause frame drops <span class="tag perf">perf</span></label></div>
+    <div class="check-item"><input type="checkbox" id="p5"><label for="p5">No JS thread warnings in Expo dev tools during animations <span class="tag perf">perf</span></label></div>
+  </div>
+</div>
+
+<footer>Sprint A &mdash; TrackR &mdash; Generated by Claude Code</footer>
+
+<script>
+  // Persistence via localStorage
+  const STORAGE_KEY = 'sprintA_checklist_v1';
+
+  function loadState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        if (saved[cb.id]) {
+          cb.checked = true;
+          cb.closest('.check-item').classList.add('checked');
+        }
+      });
+    } catch(e) {}
+  }
+
+  function saveState() {
+    const state = {};
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      if (cb.checked) state[cb.id] = true;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('input[type="checkbox"]');
+    const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    const pct = all.length ? Math.round((checked.length / all.length) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = checked.length + ' / ' + all.length + ' (' + pct + '%)';
+
+    // Per-section badges
+    document.querySelectorAll('.section').forEach(sec => {
+      const total = sec.querySelectorAll('input[type="checkbox"]').length;
+      const done = sec.querySelectorAll('input[type="checkbox"]:checked').length;
+      const badge = document.getElementById('badge-' + sec.id);
+      if (badge) {
+        badge.textContent = done + '/' + total;
+        badge.className = 'section-badge' + (done === total && total > 0 ? ' done' : '');
+      }
+    });
+  }
+
+  function toggleSection(id) {
+    document.getElementById(id).classList.toggle('collapsed');
+  }
+
+  // Wire up checkboxes
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      cb.closest('.check-item').classList.toggle('checked', cb.checked);
+      saveState();
+      updateProgress();
+    });
+  });
+
+  loadState();
+  updateProgress();
+</script>
+</body>
+</html>

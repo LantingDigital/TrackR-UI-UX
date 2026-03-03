@@ -1,0 +1,29 @@
+{
+  "id": "energylandia",
+  "name": "Energylandia",
+  "formerNames": [],
+  "country": "PL",
+  "countryName": "Poland",
+  "region": "Poland",
+  "continent": "Europe",
+  "city": "Zator",
+  "latitude": 50.00012,
+  "longitude": -19.40908,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2014,
+  "yearClosed": null,
+  "owner": "Marek Goczał",
+  "chain": null,
+  "website": "https://energylandia.pl/en",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Energylandia is an amusement park located in Zator, Lesser Poland, in southern Poland.  It is approximately 50 km away from Kraków and 335 km away from Warsaw, Poland's capital city.  Energylandia is the largest amusement park in the country, at 70 ha.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Energylandia_-_Entrance_(2018).jpg",
+  "imageAttribution": "The main entrance to Energylandia",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Energylandia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:53.178Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "west-view-park",
+  "name": "West View Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "West View",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1906,
+  "yearClosed": 1977,
+  "owner": "T.M. Harton Company via West View Park Company",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "West View Park was an amusement park, located in West View, Pennsylvania.  It was owned by T. M.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3A1912_circa_West_View_Park_postcard.jpg",
+  "imageAttribution": "West View Park, circa 1912",
+  "wikiUrl": "https://en.wikipedia.org/wiki/West_View_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:54.300Z"
+}

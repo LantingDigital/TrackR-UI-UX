@@ -1,0 +1,29 @@
+{
+  "id": "whalom-park",
+  "name": "Whalom Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Massachusetts",
+  "continent": "North America",
+  "city": "Lunenburg",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": 2000,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Whalom Park was an amusement park located on Lake Whalom in Lunenburg, Massachusetts, that operated from 1893 to 2000.  The site was redeveloped into a 240-unit apartment complex.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Whalom_Lake_postcard.jpg",
+  "imageAttribution": "Whalom Park, circa 1915",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Whalom_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:57.918Z"
+}

@@ -1,0 +1,49 @@
+{
+  "articleTitle": "Thunderbolt Express",
+  "introSection": "The Thunderbolt Express was a looping shuttle roller coaster located at Camden Park. Originally named Screamin' Demon (and later just Demon) when it operated at Kings Island from 1977 to 1987, the roller coaster was built and designed by Arrow Dynamics. It was sold to Camden Park following the 1987 season, and reopened at its new location in 1988. Following an electrical issue in 1999, the ride was closed indefinitely for a period of time. An announcement surfaced that the ride would reopen in 2002, but the roller coaster was dismantled following the 2004 season and replaced by a miniature golf course.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Anton Schwarzkopf and Intamin co-developed the first shuttle loop design, which opened as King Kobra at Kings Dominion in 1977. A total of six shuttle loop roller coasters opened that same year throughout the United States, including Screamin' Demon at Kings Island. It had the distinction of being the first from Arrow Development to open to the public. Unlike the vertical track used as a reverse point at one end of King Kobra, Arrow used loading platforms on both sides instead.\n\nAt the end of the 1987 season, the ride was sold and relocated to Camden Park in West Virginia where it was renamed Thunderbolt Express. It was closed in 1999 after a circuit board malfunctioned and never reopened. It was eventually scrapped in 2004."
+    },
+    {
+      "title": "Ride experience",
+      "content": "After riders board the train in the loading station, they are launched forward into an immediate drop. The propulsion system consists of an electric motor and pulley system. The drop leads into a vertical loop as riders experience a maximum of 4 g. The train exits the loop and ascends to a horizontal section of track similar in length to the loading station's track. After coming to complete stop for a brief moment, the train is launched in reverse to repeat the course and return to the loading station."
+    }
+  ],
+  "fullText": "The Thunderbolt Express was a looping shuttle roller coaster located at Camden Park. Originally named Screamin' Demon (and later just Demon) when it operated at Kings Island from 1977 to 1987, the roller coaster was built and designed by Arrow Dynamics. It was sold to Camden Park following the 1987 season, and reopened at its new location in 1988. Following an electrical issue in 1999, the ride was closed indefinitely for a period of time. An announcement surfaced that the ride would reopen in 2002, but the roller coaster was dismantled following the 2004 season and replaced by a miniature golf course.\n\nAnton Schwarzkopf and Intamin co-developed the first shuttle loop design, which opened as King Kobra at Kings Dominion in 1977. A total of six shuttle loop roller coasters opened that same year throughout the United States, including Screamin' Demon at Kings Island. It had the distinction of being the first from Arrow Development to open to the public. Unlike the vertical track used as a reverse point at one end of King Kobra, Arrow used loading platforms on both sides instead.\n\nAt the end of the 1987 season, the ride was sold and relocated to Camden Park in West Virginia where it was renamed Thunderbolt Express. It was closed in 1999 after a circuit board malfunctioned and never reopened. It was eventually scrapped in 2004.\n\nAfter riders board the train in the loading station, they are launched forward into an immediate drop. The propulsion system consists of an electric motor and pulley system. The drop leads into a vertical loop as riders experience a maximum of 4 g. The train exits the loop and ascends to a horizontal section of track similar in length to the loading station's track. After coming to complete stop for a brief moment, the train is launched in reverse to repeat the course and return to the loading station.\n\n",
+  "categories": [
+    "Former roller coasters in West Virginia",
+    "Shuttle roller coasters"
+  ],
+  "infoboxRaw": {
+    "name": "Thunderbolt Express",
+    "image": "Demon (Kings Island) 1978.jpg",
+    "caption": "View of Kings Island and the Demon in 1978.",
+    "previousnames": "Screamin' Demon (1977–?) Demon (?–1987)",
+    "location": "Camden Park",
+    "locationarticle": "Camden Park (amusement park)",
+    "type2": "Shuttle",
+    "status": "Removed",
+    "opened": "1988",
+    "closed": "1999",
+    "manufacturer": "Arrow Dynamics",
+    "model": "Launched Loop",
+    "height_ft": "56",
+    "drop_ft": "47",
+    "length_ft": "635",
+    "speed_mph": "45",
+    "inversions": "1",
+    "duration": "1:06",
+    "gforce": "4",
+    "trains": "1",
+    "carspertrain": "5",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "314"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Thunderbolt_Express",
+  "wikiPageId": 18499081,
+  "fetchedAt": "2026-02-28T20:18:03.643Z",
+  "articleLength": 1856
+}

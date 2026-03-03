@@ -1,0 +1,29 @@
+{
+  "id": "erlebnispark-tripsdrill",
+  "name": "Erlebnispark Tripsdrill",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Cleebronn",
+  "latitude": 49.03528,
+  "longitude": -9.0525,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1929,
+  "yearClosed": null,
+  "owner": "Fischer family",
+  "chain": null,
+  "website": "www.tripsdrill.de",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Erlebnispark Tripsdrill is a wildlife and theme park near Cleebronn in Southern Germany.  Covering 77 ha in total, the park offers 29 attractions, including museums, animal petting and feeding, roller coasters, playgrounds, and a theatre.  Opened in 1929, it is Germany's oldest amusement park and is still owned and managed by the same family.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tripsdrill_Badewannenfahrt.jpg",
+  "imageAttribution": "Bathtub flume ride",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Erlebnispark_Tripsdrill",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:23.939Z"
+}

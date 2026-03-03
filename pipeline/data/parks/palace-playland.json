@@ -1,0 +1,29 @@
+{
+  "id": "palace-playland",
+  "name": "Palace Playland",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Maine",
+  "continent": "North America",
+  "city": "Old Orchard Beach",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1902,
+  "yearClosed": null,
+  "owner": "John Golder<BR>Paul Golder",
+  "chain": null,
+  "website": "https://www.palaceplayland.com/",
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Palace Playland is a seasonal amusement park located in Old Orchard Beach, Maine.  It has operated on the same site since 1902.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Palace_Playland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:25:33.267Z"
+}

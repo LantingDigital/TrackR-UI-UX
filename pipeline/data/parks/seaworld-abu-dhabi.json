@@ -1,0 +1,29 @@
+{
+  "id": "seaworld-abu-dhabi",
+  "name": "SeaWorld Abu Dhabi",
+  "formerNames": [],
+  "country": "AE",
+  "countryName": "United Arab Emirates",
+  "region": null,
+  "continent": "Asia",
+  "city": "Yas Island",
+  "latitude": 24.48567,
+  "longitude": -54.61854,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Miral, under license from United Parks & Resorts",
+  "chain": null,
+  "website": "seaworldabudhabi.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "SeaWorld Abu Dhabi is a marine life theme park and animal researching, rescue & rehabilitation center that opened on May 23, 2023, on Yas Island in Abu Dhabi, the capital of the United Arab Emirates.  It is the first SeaWorld park outside of the United States and the first park without orcas.  The Abu Dhabi–based company Miral Asset Management is the owner and operator of SeaWorld Abu Dhabi under a license from United Parks & Resorts.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/SeaWorld_Abu_Dhabi",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:40.601Z"
+}

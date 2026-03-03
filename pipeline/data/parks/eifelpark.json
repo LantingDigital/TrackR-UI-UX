@@ -1,0 +1,29 @@
+{
+  "id": "eifelpark",
+  "name": "Eifelpark\nWild und Freizeit",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": 49.96278,
+  "longitude": -6.6175,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Nadine Löwenthal, Alexander Goetzke",
+  "chain": null,
+  "website": "Eifelpark Gondorf",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Eifelpark is a wildlife and leisure park in Gondorf near Bitburg in the Eifel mountains of Germany.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Eifelpark_Gondorf_Alpensteinbock.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Eifelpark",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:10.772Z"
+}

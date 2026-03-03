@@ -11,6 +11,7 @@
 import {
   RideLog,
   RideLogState,
+  CoasterRating,
   SeatPosition,
   RatingCriteria,
   DEFAULT_RIDE_LOG_STATE,
@@ -63,20 +64,6 @@ export function getState(): RideLogState {
  */
 export function getAllLogs(): RideLog[] {
   return state.logs;
-}
-
-/**
- * Get pending (unrated) logs
- */
-export function getPendingLogs(): RideLog[] {
-  return state.logs.filter((log) => log.isPendingRating);
-}
-
-/**
- * Get count of pending logs (for badge)
- */
-export function getPendingCount(): number {
-  return state.logs.filter((log) => log.isPendingRating).length;
 }
 
 /**
@@ -164,7 +151,6 @@ export function addQuickLog(
     parkName: coaster.parkName,
     timestamp: new Date().toISOString(),
     seat,
-    isPendingRating: true,
     rideCount: todayCount + 1,
   };
 
@@ -179,39 +165,98 @@ export function addQuickLog(
   return newLog;
 }
 
-/**
- * Complete a pending log with full criteria rating
- * @param logId - Log ID to complete
- * @param ratings - Criteria ratings (criteria id -> 1-10 rating)
- * @param notes - Optional notes
- */
-export function completeRating(
-  logId: string,
-  ratings: Record<string, number>,
-  notes?: string
-): void {
-  const logIndex = state.logs.findIndex((log) => log.id === logId);
-  if (logIndex === -1) return;
+// ============================================
+// Rating Getters (per-coaster ratings)
+// ============================================
 
+/**
+ * Get rating for a specific coaster
+ */
+export function getRatingForCoaster(coasterId: string): CoasterRating | undefined {
+  return state.ratings[coasterId];
+}
+
+/**
+ * Get all coaster ratings as array
+ */
+export function getAllRatings(): CoasterRating[] {
+  return Object.values(state.ratings);
+}
+
+/**
+ * Get coasters that have logs but no rating
+ */
+export function getUnratedCoasters(): Array<{ coasterId: string; coasterName: string; parkName: string }> {
+  const ratedIds = new Set(Object.keys(state.ratings));
+  const seen = new Set<string>();
+  const unrated: Array<{ coasterId: string; coasterName: string; parkName: string }> = [];
+
+  for (const log of state.logs) {
+    if (!ratedIds.has(log.coasterId) && !seen.has(log.coasterId)) {
+      seen.add(log.coasterId);
+      unrated.push({
+        coasterId: log.coasterId,
+        coasterName: log.coasterName,
+        parkName: log.parkName,
+      });
+    }
+  }
+  return unrated;
+}
+
+/**
+ * Check if a coaster has been logged at least once
+ */
+export function hasLogForCoaster(coasterId: string): boolean {
+  return state.logs.some((log) => log.coasterId === coasterId);
+}
+
+// ============================================
+// Rating Actions
+// ============================================
+
+/**
+ * Create or update a coaster rating
+ */
+export function upsertCoasterRating(
+  coaster: { id: string; name: string; parkName: string },
+  criteriaRatings: Record<string, number>,
+  notes?: string,
+): CoasterRating {
   const weightedScore = calculateWeightedScore(
-    ratings,
-    state.criteriaConfig.criteria
+    criteriaRatings,
+    state.criteriaConfig.criteria,
   );
 
-  const updatedLogs = [...state.logs];
-  updatedLogs[logIndex] = {
-    ...updatedLogs[logIndex],
-    isPendingRating: false,
-    criteriaRatings: ratings,
+  const existing = state.ratings[coaster.id];
+  const now = new Date().toISOString();
+
+  const rating: CoasterRating = {
+    coasterId: coaster.id,
+    coasterName: coaster.name,
+    parkName: coaster.parkName,
+    criteriaRatings,
     weightedScore,
-    notes: notes || updatedLogs[logIndex].notes,
+    createdAt: existing?.createdAt ?? now,
+    updatedAt: now,
+    notes: notes ?? existing?.notes,
   };
 
   state = {
     ...state,
-    logs: updatedLogs,
+    ratings: { ...state.ratings, [coaster.id]: rating },
   };
 
+  notifyListeners();
+  return rating;
+}
+
+/**
+ * Delete a coaster rating
+ */
+export function deleteRating(coasterId: string): void {
+  const { [coasterId]: _, ...remaining } = state.ratings;
+  state = { ...state, ratings: remaining };
   notifyListeners();
 }
 
@@ -331,20 +376,31 @@ export function useRideLogStore() {
   // useSyncExternalStore or useState + useEffect
   // For now, components can import functions directly
   return {
-    // State
+    // Log state
     logs: getAllLogs(),
-    pendingLogs: getPendingLogs(),
-    pendingCount: getPendingCount(),
     creditCount: getCreditCount(),
     totalRideCount: getTotalRideCount(),
+
+    // Rating state
+    ratings: getAllRatings(),
+    unratedCoasters: getUnratedCoasters(),
+
+    // Criteria state
     criteria: getCriteria(),
     hasCompletedCriteriaSetup: hasCompletedCriteriaSetup(),
 
-    // Actions
+    // Log actions
     addQuickLog,
-    completeRating,
     updateLogNotes,
     deleteLog,
+
+    // Rating actions
+    upsertCoasterRating,
+    getRatingForCoaster,
+    deleteRating,
+    hasLogForCoaster,
+
+    // Criteria actions
     updateCriteria,
     completeCriteriaSetup,
     resetStore,
@@ -355,4 +411,4 @@ export function useRideLogStore() {
 }
 
 // Export types for convenience
-export type { RideLog, SeatPosition, RatingCriteria };
+export type { RideLog, CoasterRating, SeatPosition, RatingCriteria };

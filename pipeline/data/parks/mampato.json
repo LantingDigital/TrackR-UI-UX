@@ -1,0 +1,29 @@
+{
+  "id": "mampato",
+  "name": "Mampato",
+  "formerNames": [],
+  "country": "CL",
+  "countryName": "Chile",
+  "region": null,
+  "continent": "South America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Mampato is a Chilean adventure and science fiction comic strip created by cartoonist Eduardo Armstrong (cartoonist) and illustrator Oskar (cafrtoonist).  Since the third installment, the comic has been developed mainly by Themo Lobos.  The comic strip follows the adventures of Mampato, a boy who saves a stranded alien named Xsé, and helps Xsé to save his home planet from the invasion of another alien species called the greenies and their cruel leader Mong.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mampato",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:18.708Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "feria-nacional-de-san-marcos",
+  "name": "Feria Nacional de San Marcos",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "The Feria Nacional de San Marcos (National Fair of Saint Mark) is a national fair held in the Mexican state of Aguascalientes every year for three (or sometimes four) weeks.  Most of the events occur in the city of Aguascalientes, the state capital.  The exact date of the fair varies every year, but is set around April 25, the Feast Day of St.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Feria_Nacional_de_San_Marcos",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:31.711Z"
+}

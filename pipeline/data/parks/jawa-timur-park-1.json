@@ -1,0 +1,29 @@
+{
+  "id": "jawa-timur-park-1",
+  "name": "Jawa Timur Park 1",
+  "formerNames": [],
+  "country": "ID",
+  "countryName": "Indonesia",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:27:33.754Z"
+}

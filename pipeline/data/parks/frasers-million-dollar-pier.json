@@ -1,0 +1,29 @@
+{
+  "id": "frasers-million-dollar-pier",
+  "name": "Fraser's Million Dollar Pier",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Ocean Park, California",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Fraser's Million Dollar Pier was a 20th-century amusement park in Ocean Park, California in the United States.  The pier was located between Pier Avenue and Marine Street, in a community situated between Santa Monica and Venice in Los Angeles County.  Developed by Alexander R.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Venice-Oceanpark-PierFire-1912.jpg",
+  "imageAttribution": "Destruction of Fraser's Million Dollar Pier on the evening of Tuesday, September 3, 1912 (Los Angeles Public Library photo collection)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fraser's_Million_Dollar_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:13.835Z"
+}

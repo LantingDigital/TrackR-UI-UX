@@ -1,0 +1,29 @@
+{
+  "id": "national-amusement-park",
+  "name": "National Amusement Park",
+  "formerNames": [],
+  "country": "MN",
+  "countryName": "Mongolia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Sükhbaatar, Ulaanbaatar, Mongolia",
+  "latitude": 47.90986,
+  "longitude": -106.92192,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1969,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The National Amusement Park is an amusement park in Sükhbaatar District, Ulaanbaatar, Mongolia.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/National_Amusement_Park_in_Ulaanbaatar.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/National_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:00.925Z"
+}

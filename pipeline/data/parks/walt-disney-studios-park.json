@@ -1,0 +1,29 @@
+{
+  "id": "walt-disney-studios-park",
+  "name": "Walt Disney Studios Park",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Disneyland Paris",
+  "latitude": 48.86722,
+  "longitude": -2.77917,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "owner": "Disney Experiences\n(The Walt Disney Company)",
+  "chain": null,
+  "website": "Official website",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Walt Disney Studios Park (French: Parc Walt Disney Studios) is the second of two theme parks built at Disneyland Paris in Marne-la-Vallée, France.  The park opened on 16 March 2002, and it is owned and operated by the Walt Disney Company through its Experiences division.  Upon opening, it was dedicated to show business, movie themes, production, and behind-the-scenes.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Walt_Disney_Studios_Park_001_(4480783275).jpg",
+  "imageAttribution": "Walt Disney Studios Park entrance with Earffel Tower in background",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Walt_Disney_Studios_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:51.806Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "kids-world",
+  "name": "DreamWorks Experience",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "DreamWorks Experience was a themed land at the Dreamworld theme park on the Gold Coast, Queensland, Australia.  It contained attractions themed to DreamWorks Animation films.  Prior, the land was formerly themed to Nickelodeon properties.",
+  "imageUrl": null,
+  "imageAttribution": "Logo used from 2012 to 2023",
+  "wikiUrl": "https://en.wikipedia.org/wiki/DreamWorks_Experience",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:36:01.821Z"
+}

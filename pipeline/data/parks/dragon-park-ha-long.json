@@ -1,0 +1,29 @@
+{
+  "id": "dragon-park-ha-long",
+  "name": "Dragon Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "South Carolina",
+  "continent": "North America",
+  "city": "Ha Long, Quang Ninh, Vietnam",
+  "latitude": 20.95548,
+  "longitude": -107.04965,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2017,
+  "yearClosed": null,
+  "owner": "Sun Group",
+  "chain": null,
+  "website": "http://www.sundragonpark.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Dragon Park is the largest theme park in Southeast Asia located in Ha Long, Quang Ninh, Vietnam.  It opened on January 25, 2017.  The amusement park is part of a large resort complex known as Sun World Halong Complex that includes an aerial tramway called the Queen Cable Car, Sun Wheel — a large observation wheel, as well as gardens, restaurants, a shopping district and a family entertainment center with arcade games.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sun_World_Ha_Long_Park_(49370121263).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dragon_Park_Ha_Long",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:47.357Z"
+}

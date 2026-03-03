@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useRef, useCallback } from 'react';
+import React, { forwardRef, useRef, useCallback } from 'react';
 import { StyleSheet, View, Text, Pressable, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,24 +8,18 @@ import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { haptics } from '../../../services/haptics';
 import { MorphingPill, MorphingPillRef } from '../../../components/MorphingPill';
-import { CoastleStatsContent } from './CoastleStatsCard';
+import { CoastleSettingsContent } from './CoastleSettingsContent';
 import { CoastleStats, GameStatus } from '../types/coastle';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const STATS_CARD_WIDTH = SCREEN_WIDTH - 64;
-const STATS_CARD_HEIGHT = 420;
-
-export interface CoastleHeaderRef {
-  openStats: () => void;
-}
+const STATS_CARD_HEIGHT = 500;
 
 interface CoastleHeaderProps {
   onClose: () => void;
   stats: CoastleStats;
   gameStatus: GameStatus;
-  shareText: string;
-  onPlayAgain: () => void;
   onStatsOpen?: () => void;
   tuning?: {
     arcHeight?: number;
@@ -44,42 +38,20 @@ interface CoastleHeaderProps {
   };
 }
 
-export const CoastleHeader = forwardRef<CoastleHeaderRef, CoastleHeaderProps>(({
+export const CoastleHeader: React.FC<CoastleHeaderProps> = ({
   onClose,
   stats,
   gameStatus,
-  shareText,
-  onPlayAgain,
   onStatsOpen,
   tuning,
-}, ref) => {
+}) => {
   const insets = useSafeAreaInsets();
   const morphRef = useRef<MorphingPillRef>(null);
-  const pendingPlayAgain = useRef(false);
-
-  useImperativeHandle(ref, () => ({
-    openStats: () => morphRef.current?.open(),
-  }), []);
 
   const handleOpen = useCallback(() => {
-    if (gameStatus === 'won') haptics.success();
-    else if (gameStatus === 'lost') haptics.error();
-    else haptics.tap();
+    haptics.tap();
     onStatsOpen?.();
-  }, [gameStatus, onStatsOpen]);
-
-  // Called by CoastleStatsContent's Play Again button — sets flag, then closes morph
-  const handlePlayAgainRequest = useCallback(() => {
-    pendingPlayAgain.current = true;
-  }, []);
-
-  // Called after morph close animation completes — only resets game if Play Again was pressed
-  const handleCloseCleanup = useCallback(() => {
-    if (pendingPlayAgain.current) {
-      pendingPlayAgain.current = false;
-      onPlayAgain();
-    }
-  }, [onPlayAgain]);
+  }, [onStatsOpen]);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + spacing.xs }]}>
@@ -121,22 +93,16 @@ export const CoastleHeader = forwardRef<CoastleHeaderRef, CoastleHeaderProps>(({
         overshootMagnitude={6}
         tuning={tuning}
         expandedContent={(close) => (
-          <CoastleStatsContent
+          <CoastleSettingsContent
             stats={stats}
-            gameStatus={gameStatus}
-            shareText={shareText}
-            onPlayAgain={handlePlayAgainRequest}
             close={close}
           />
         )}
         onOpen={handleOpen}
-        onCloseCleanup={handleCloseCleanup}
       />
     </View>
   );
-});
-
-CoastleHeader.displayName = 'CoastleHeader';
+};
 
 const styles = StyleSheet.create({
   container: {

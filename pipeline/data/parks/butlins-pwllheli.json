@@ -1,0 +1,31 @@
+{
+  "id": "butlins-pwllheli",
+  "name": "Butlin's Pwllheli",
+  "formerNames": [
+    "Butlin's Pwllheli  Pwllheli Holiday World  Starcoast World"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Pwllheli, Wales",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": 1998,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.haven.com/parks/wales/Hafan_Y_Mor/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Butlin's Pwllheli was a holiday camp located near Pwllheli in Wales.  The site is now used by Haven Holidays for a caravan park and has been renamed Hafan y Môr.  When originally opened in 1947, it was named Butlin's Pwllheli.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Mynedfa_newydd_Hafan_y_M%C3%B4r_New_Entrance_-_geograph.org.uk_-_463132.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Butlin's_Pwllheli",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:53.398Z"
+}

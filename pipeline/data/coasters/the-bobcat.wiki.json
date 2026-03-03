@@ -1,0 +1,47 @@
+{
+  "articleTitle": "Bobcat (roller coaster)",
+  "introSection": "Bobcat is a wooden roller coaster at Six Flags Great Escape and Hurricane Harbor in Queensbury, New York. Located in the Fest Area section, it was manufactured by The Gravity Group. The park announced plans for the coaster on August 30, 2023. Bobcat was the park's first roller coaster since 2005 and the first wooden roller coaster built in the state of New York since 1999. Construction on the wooden roller coaster started in December 2023. Bobcat opened on June 1, 2024.",
+  "sections": [
+    {
+      "title": "External links",
+      "content": "\n * Official website"
+    }
+  ],
+  "fullText": "Bobcat is a wooden roller coaster at Six Flags Great Escape and Hurricane Harbor in Queensbury, New York. Located in the Fest Area section, it was manufactured by The Gravity Group. The park announced plans for the coaster on August 30, 2023. Bobcat was the park's first roller coaster since 2005 and the first wooden roller coaster built in the state of New York since 1999. Construction on the wooden roller coaster started in December 2023. Bobcat opened on June 1, 2024.\n\n\n\n\n\n\n\n\n * Official website",
+  "categories": [
+    "The Great Escape and Hurricane Harbor",
+    "Roller coasters in New York (state)",
+    "Roller coasters operated by Six Flags"
+  ],
+  "infoboxRaw": {
+    "name": "The Bobcat",
+    "logodimensions": "180px",
+    "image": "Bobcat-Great-Escape-3.jpg",
+    "location": "Six Flags Great Escape and Hurricane Harbor",
+    "section": "Fest Area",
+    "status": "Operating",
+    "opened": "June 1, 2024",
+    "previousattraction": "Alpine Bobsled",
+    "type2": "Family",
+    "manufacturer": "Gravitykraft Corporation",
+    "designer": "The Gravity Group",
+    "model": "Wooden Coaster",
+    "track": "Out and back",
+    "lift": "Chain lift hill",
+    "height_ft": "55.4",
+    "length_ft": "1412",
+    "speed_mph": "40",
+    "restriction_in": "42",
+    "trains": "2",
+    "carspertrain": "6",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Go Fast Pass",
+    "virtual_queue_status": "available",
+    "rcdb_number": "21145"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bobcat_(roller_coaster)",
+  "wikiPageId": 77380885,
+  "fetchedAt": "2026-02-28T20:17:14.527Z",
+  "articleLength": 502
+}

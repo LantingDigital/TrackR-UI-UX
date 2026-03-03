@@ -1,0 +1,29 @@
+{
+  "id": "terra-m-tica",
+  "name": "Terra Mítica",
+  "formerNames": [],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": null,
+  "continent": "Europe",
+  "city": "Benidorm, Comunitat Valenciana, Spain",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2000,
+  "yearClosed": null,
+  "owner": "Aqualandia-Mundomar",
+  "chain": null,
+  "website": "terramiticapark.com",
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "Terra Mítica is a theme park located in Benidorm, Comunitat Valenciana, Spain.  The park is divided into five themed zones: Egypt, Greece, Rome, Iberia, and the Islands (of the Mediterranean).  The park opened in 2000.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BFile%3ATerra_Mitica_logo.svg%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Terra_M%C3%ADtica",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:14.215Z"
+}

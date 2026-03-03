@@ -1,0 +1,31 @@
+{
+  "id": "little-amerricka",
+  "name": "Little Amerricka Amusement Park",
+  "formerNames": [
+    "Little A-Merrick-A"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Wisconsin",
+  "continent": "North America",
+  "city": "Marshall",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1991,
+  "yearClosed": null,
+  "owner": "Lee Merrick",
+  "chain": null,
+  "website": "LittleAmerricka.com",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Little Amerricka is an amusement park located in Marshall, Wisconsin, United States. \n\nIt features numerous attractions, notably including a  gauge 1/3 size rail road called the Whiskey River Railway with over 3 mi, in addition to 24 rides and an 18-hole miniature golf course.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/LittleAmerrickaScrambler.jpg",
+  "imageAttribution": "Scrambler ride at Little Amerricka",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Little_Amerricka",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:40.187Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "linnanm-ki",
+  "name": "Linnanmäki",
+  "formerNames": [],
+  "country": "FI",
+  "countryName": "Finland",
+  "region": "Finland",
+  "continent": "Europe",
+  "city": "Helsinki",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1950,
+  "yearClosed": null,
+  "owner": "Children's Day Foundation",
+  "chain": null,
+  "website": null,
+  "coasterCount": 7,
+  "totalCoasterCount": 8,
+  "description": "Linnanmäki (, colloquially Lintsi, lit.  'Hill Of The Castle') is an amusement park in Helsinki, Finland.  It was opened on 27 May 1950 and is owned by the non-profit Children's Day Foundation, which operates the park to raise funds for Finnish child welfare work.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Linnanm%C3%A4ki_ilmasta_27.5.2017.jpg",
+  "imageAttribution": "Aerial view of Linnanmäki in 2017",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Linnanm%C3%A4ki",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:37.341Z"
+}

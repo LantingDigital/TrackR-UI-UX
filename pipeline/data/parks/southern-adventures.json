@@ -1,0 +1,29 @@
+{
+  "id": "southern-adventures",
+  "name": "Southern Adventures",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Alabama",
+  "continent": "North America",
+  "city": "Huntsville, Alabama, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1998,
+  "yearClosed": 2018,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Southern Adventures was an amusement park in Huntsville, Alabama.  The amusement park had many rides, such as roller coaster named L'il Renegade, bumper cars, kiddie rides, and an arcade.  It also had a water park called Adventure Island Water Park which includes flume slides and kiddie slides.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Southern_Adventures",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:31.052Z"
+}

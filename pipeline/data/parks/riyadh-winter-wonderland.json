@@ -1,0 +1,29 @@
+{
+  "id": "riyadh-winter-wonderland",
+  "name": "Riyadh Winter Wonderland",
+  "formerNames": [],
+  "country": "SA",
+  "countryName": "Saudi Arabia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Riyadh, Saudi Arabia",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Riyadh Winter Wonderland, simply at times Winter Wonderland, is an annual carnival held during the Riyadh Season entertainment festival in a 93-acres theme park located in King Abdullah Financial District of Riyadh, Saudi Arabia.  It was inaugurated in October 2019 during the first edition of Riyadh Season.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Riyadh_Winter_Wonderland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:29:40.369Z"
+}

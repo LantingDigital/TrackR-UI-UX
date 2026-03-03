@@ -1,0 +1,29 @@
+{
+  "id": "joyland-amusement-park",
+  "name": "Joyland Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "500 Canyon Lake Drive, Lubbock, Texas United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Joyland Amusement Park was a small family-owned traditional amusement park, located in Lubbock, Texas, United States within Lubbock's Mackenzie Park.  It typically operated from March to September of each year, opening six days a week but only during the evening on weeknights.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Joyland_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:25:27.159Z"
+}

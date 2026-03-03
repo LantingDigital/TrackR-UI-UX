@@ -1,0 +1,29 @@
+{
+  "id": "adventureland-iowa",
+  "name": "Adventureland",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Iowa",
+  "continent": "North America",
+  "city": "Altoona",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1974,
+  "yearClosed": null,
+  "owner": "Herschend",
+  "chain": null,
+  "website": "www.adventurelandresort.com",
+  "coasterCount": 5,
+  "totalCoasterCount": 6,
+  "description": "Adventureland Resort (often referred to as Adventureland for short) is a theme park in Altoona, Iowa (just northeast of Des Moines).  It is marketed as the Home of Iowa's Best Thrills.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Adventureland_Resort_logo.jpg",
+  "imageAttribution": "Current Adventureland Park logo.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adventureland_(Iowa)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:46.422Z"
+}

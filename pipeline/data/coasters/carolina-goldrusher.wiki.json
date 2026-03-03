@@ -1,0 +1,50 @@
+{
+  "articleTitle": "Carolina Goldrusher",
+  "introSection": "Carolina Goldrusher is a steel roller coaster made by Arrow Dynamics of Mountain View, California. The coaster is located in the Carolina Boardwalk area of Carowinds in Charlotte, North Carolina. It was the park's first roller coaster and one of only four original rides that still operate in the park today.\n\nIn 2023, a gold train debuted on the roller coaster to commemorate its 50-year anniversary.",
+  "sections": [
+    {
+      "title": "External links",
+      "content": "\n * Official Carolina Goldrusher page\n * Carolina Goldrusher at RCDB"
+    }
+  ],
+  "fullText": "Carolina Goldrusher is a steel roller coaster made by Arrow Dynamics of Mountain View, California. The coaster is located in the Carolina Boardwalk area of Carowinds in Charlotte, North Carolina. It was the park's first roller coaster and one of only four original rides that still operate in the park today.\n\nIn 2023, a gold train debuted on the roller coaster to commemorate its 50-year anniversary.\n\n\n * Official Carolina Goldrusher page\n * Carolina Goldrusher at RCDB",
+  "categories": [
+    "Roller coasters in North Carolina",
+    "Roller coasters in South Carolina",
+    "Roller coasters operated by Six Flags",
+    "Roller coasters opened in 1973",
+    "Carowinds"
+  ],
+  "infoboxRaw": {
+    "name": "Carolina Goldrusher",
+    "image": "Carolina Goldrusher entrance sign.jpg",
+    "caption": "Entrance sign",
+    "location": "Carowinds",
+    "section": "Carolina Boardwalk",
+    "status": "Open",
+    "opened": "March 31, 1973",
+    "manufacturer": "Arrow Dynamics",
+    "designer": "Ron Toomer",
+    "model": "Mine Train",
+    "lift": "Two chain lift hills",
+    "height_ft": "43",
+    "drop_ft": "34",
+    "length_ft": "2397",
+    "speed_mph": "30",
+    "inversions": "0",
+    "duration": "2:17",
+    "restriction_in": "48",
+    "capacity": "2,000",
+    "trains": "3",
+    "gforce": "2.4",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar_Fair_Fast_Lane_availability_icon.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "83",
+    "coordinates": "35.1025°N, -80.942°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Carolina_Goldrusher",
+  "wikiPageId": 18640715,
+  "fetchedAt": "2026-02-28T20:17:30.196Z",
+  "articleLength": 471
+}

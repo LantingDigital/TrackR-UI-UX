@@ -1,0 +1,31 @@
+{
+  "id": "wonderland-eurasia",
+  "name": "Wonderland Eurasia",
+  "formerNames": [
+    "Ankapark"
+  ],
+  "country": "TR",
+  "countryName": "Turkey",
+  "region": null,
+  "continent": "Europe",
+  "city": "Ankara, Turkey",
+  "latitude": 39.9449,
+  "longitude": -32.7886,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 2019,
+  "yearClosed": 2020,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 9,
+  "description": "Wonderland Eurasia, previously known as Ankapark, is an abandoned amusement park in Ankara, Turkey.  Opened in 2019, the park had 17 roller coasters, the second-most worldwide.  It was closed permanently in February 2020, though most of the permanent rides, and structures remain largely intact.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wonderland_Eurasia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:45.248Z"
+}

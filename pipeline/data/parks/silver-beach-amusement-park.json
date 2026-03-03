@@ -1,0 +1,29 @@
+{
+  "id": "silver-beach-amusement-park",
+  "name": "Silver Beach Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Michigan",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Silver Beach County Park is a park located in St.  Joseph, Michigan at the mouth of the St.  Joseph River.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Silver_Beach_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:03.827Z"
+}

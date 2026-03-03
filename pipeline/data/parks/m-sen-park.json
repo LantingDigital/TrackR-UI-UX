@@ -1,0 +1,29 @@
+{
+  "id": "m-sen-park",
+  "name": "Đầm Sen Park",
+  "formerNames": [],
+  "country": "VN",
+  "countryName": "Vietnam",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Dam Sen Cultural Park is an amusement park located in District 11, Ho Chi Minh City, Vietnam.  The park has an area of 50 hectares, of which 20% comprises lakes and 60% trees and gardens.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/%C4%90%E1%BA%A7m_Sen_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:23.540Z"
+}

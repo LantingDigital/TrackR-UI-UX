@@ -1,0 +1,29 @@
+{
+  "id": "bagatelle",
+  "name": "Bagatelle",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "Bagatelle (from the Château de Bagatelle) is a billiards-derived indoor table game, the object of which is to get a number of balls (set at nine in the 19th century; 4 whites, 4 reds and 1 black) past wooden pins (which act as obstacles) into holes that are guarded by wooden pegs; penalties are incurred if the pegs are knocked over.  It probably developed from the table made with raised sides for trou madame, which was also played with ivory balls and continued to be popular into the later 19th century, after which it developed into bar billiards, with influences from the French/Belgian game billard russe (with supposed Russian origins).  A bagatelle variant using fixed metal pins, billard japonais, eventually led to the development of pachinko and pinball.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bagatelle",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:46.689Z"
+}

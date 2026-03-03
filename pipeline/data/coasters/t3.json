@@ -1,0 +1,61 @@
+{
+  "id": "t3",
+  "name": "T3",
+  "formerNames": [
+    "T2"
+  ],
+  "parkId": "kentucky-kingdom",
+  "parkName": "Kentucky Kingdom",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Kentucky",
+  "continent": "North America",
+  "heightFt": 101.7,
+  "heightM": 31,
+  "speedMph": 49.7,
+  "speedKmh": 80,
+  "lengthFt": 2171.9,
+  "lengthM": 662,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 5,
+  "gForce": null,
+  "duration": 96,
+  "material": "Steel",
+  "type": "Inverted",
+  "propulsion": "Chain lift",
+  "manufacturer": "Vekoma",
+  "designer": null,
+  "model": "SLC (662m Prototype)",
+  "status": "closed",
+  "yearOpened": 1995,
+  "yearClosed": 2022,
+  "description": "T3 (stylized as T3; pronounced \"T-three\", \"T-cubed\", or \"Terror to the third power\") was an inverted roller coaster located at Kentucky Kingdom in Louisville, Kentucky.  The Suspended Looping Coaster model manufactured by Vekoma originally opened as T2 on April 7, 1995.  Following the amusement park's closure in 2009 due to financial difficulties, the ride sat idle for several years.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AT3_at_Kentucky_Kingdom_-_Jeremy_Thompson.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/T3_(roller_coaster)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:16:19.463Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "t3",
+    "t2",
+    "kentucky kingdom",
+    "vekoma",
+    "slc (662m prototype)",
+    "inverted",
+    "kentucky"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Vekoma"
+  },
+  "popularityScore": 62.6,
+  "popularityTier": "iconic",
+  "popularityRank": 494
+}

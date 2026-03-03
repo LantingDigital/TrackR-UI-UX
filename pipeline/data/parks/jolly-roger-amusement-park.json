@@ -1,0 +1,29 @@
+{
+  "id": "jolly-roger-amusement-park",
+  "name": "Jolly Roger",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Maryland",
+  "continent": "North America",
+  "city": "Ocean City",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1964,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://jollyrogerpark.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Jolly Roger Amusement Park is an amusement park located in Ocean City, Maryland.  The park features two locations in Ocean City: one at the pier on the Ocean City boardwalk and one further uptown at 30th Street.  Both locations feature numerous thrill rides, including a looping roller coaster at the pier, bumper cars, a ferris wheel, a carousel, and kiddie rides, among others.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AOceancitymd_inlet.JPG",
+  "imageAttribution": "Jolly Roger at The Pier",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Jolly_Roger_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:00.284Z"
+}

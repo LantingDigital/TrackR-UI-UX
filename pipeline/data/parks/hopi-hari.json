@@ -1,0 +1,31 @@
+{
+  "id": "hopi-hari",
+  "name": "Hopi Hari",
+  "formerNames": [
+    "Playcenter Great Adventure"
+  ],
+  "country": "BR",
+  "countryName": "Brazil",
+  "region": "Brazil",
+  "continent": "South America",
+  "city": "Vinhedo, São Paulo, Brazil",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.hopihari.com.br/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Hopi Hari is a Brazilian theme park located at Km 72 of Bandeirantes Highway, Vinhedo, in the state of São Paulo.  It is located 30 km away from Campinas and 72 km away from São Paulo.  Covering an area of 0.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Hopi_Hari2.jpg",
+  "imageAttribution": "Hopi Hari's Skyline",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hopi_Hari",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:44.784Z"
+}

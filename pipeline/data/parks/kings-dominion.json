@@ -1,0 +1,32 @@
+{
+  "id": "kings-dominion",
+  "name": "Kings Dominion",
+  "formerNames": [
+    "Paramount's Kings Dominion",
+    "1993–2006"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Virginia",
+  "continent": "North America",
+  "city": "Doswell",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "sixflags.com/kingsdominion",
+  "coasterCount": 10,
+  "totalCoasterCount": 14,
+  "description": "Kings Dominion is an amusement park in Doswell, Virginia, United States, 20 mi north of Richmond and 75 mi south of Washington, D. C.  Owned and operated by Six Flags, the 280 acre park opened to the public on May 3, 1975, featuring over 60 rides, shows and attractions including 13 roller coasters and a 20 acre water park.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Kings_Dominion_logo.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kings_Dominion",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:58.859Z"
+}

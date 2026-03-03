@@ -1,0 +1,29 @@
+{
+  "id": "nara-dreamland",
+  "name": "Nara Dreamland",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "2 Chōme-1 Hōrensahoyama-chō, Nara",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1961,
+  "yearClosed": 2006,
+  "owner": "Daiei (former Nippon Dream Kanko)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 4,
+  "description": "Nara Dreamland (奈良ドリームランド), or just simply Dreamland, was a theme park near Nara, Japan, heavily inspired by Disneyland in California.  It opened in 1961 and was successful till the opening of Tokyo Disneyland in 1983 which caused attendance to drop.  Then Tokyo Disney sea and universal studios opened in 2001 leading to its permanent closure in 2006 as a result of falling attendance due to the overwhelming popularity of newer amusement parks in Japan.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Nara_dreamland_castle.jpg",
+  "imageAttribution": "Ran-chan, one of the park's mascots, standing near the castle, modeled after Sleeping Beauty Castle, at Nara Dreamland, less than a year before the park’s closure",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Nara_Dreamland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:37.752Z"
+}

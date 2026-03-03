@@ -1,0 +1,29 @@
+{
+  "id": "window-on-china-theme-park",
+  "name": "Window on World Theme Park 小人國主題樂園",
+  "formerNames": [],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Longtan, Taoyuan, Taiwan",
+  "latitude": 24.83194,
+  "longitude": -121.18583,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1984,
+  "yearClosed": null,
+  "owner": "Chu Chung-hung",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "The Window on World Theme Park is an amusement park in Longtan District, Taoyuan City, Taiwan.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/TW_Win-On-China_fdr.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Window_on_World_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:06.677Z"
+}

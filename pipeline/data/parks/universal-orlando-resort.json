@@ -1,0 +1,29 @@
+{
+  "id": "universal-orlando-resort",
+  "name": "Universal Orlando Resort",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Orlando, Florida, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Universal City Development Partners, LTD",
+  "chain": "Universal Destinations & Experiences",
+  "website": "https://www.universalorlando.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 4,
+  "description": "Universal Orlando, officially the Universal Orlando Resort, is an entertainment resort complex in Orlando, Florida composed of three theme parks, one water park, and eleven resort hotels.  Spanning 1,291 acres, it is the flagship of the Universal Destinations & Experiences theme park chain. \n\nFollowing the success of Universal Studios Florida, which opened in 1990, NBCUniversal shifted into transforming the area into a large resort with the intention of competing with Walt Disney World Resort.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AOrlando_-_USA_(36829593404).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Orlando",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:45.362Z"
+}

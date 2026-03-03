@@ -1,0 +1,29 @@
+{
+  "id": "clementon-park-and-splash-world",
+  "name": "Clementon Park & Splash World",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "144 Berlin Road, P.O. Box 125",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1907,
+  "yearClosed": null,
+  "owner": "IB Parks & Entertainment",
+  "chain": null,
+  "website": "http://www.clementonpark.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Clementon Park and Splash World is a mid-sized combination theme park and water park in Clementon, Camden County, New Jersey, United States.  Also known as Clementon Lake Park, it is one of the world's oldest operating amusement parks and is one of only thirteen trolley parks that are still in the United States.  It was owned and operated by Clementon Lake Holdings LLC a subsidiary of Premier Parks, LLC.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrance_to_Clementon_Park%2C_NJ%2C_Feb._2025.jpg",
+  "imageAttribution": "Entrance to the park in 2025",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Clementon_Park_and_Splash_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:48.231Z"
+}

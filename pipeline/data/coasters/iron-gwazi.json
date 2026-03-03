@@ -1,0 +1,62 @@
+{
+  "id": "iron-gwazi",
+  "name": "Iron Gwazi",
+  "formerNames": [
+    "Gwazi"
+  ],
+  "parkId": "busch-gardens-tampa-bay",
+  "parkName": "Busch Gardens Tampa Bay",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "heightFt": 206,
+  "heightM": 62.8,
+  "speedMph": 76,
+  "speedKmh": 122.3,
+  "lengthFt": 4075,
+  "lengthM": 1242.1,
+  "dropFt": 206,
+  "dropM": 62.8,
+  "inversions": 2,
+  "gForce": null,
+  "duration": 110,
+  "material": "Hybrid",
+  "type": "Hyper",
+  "propulsion": "Chain lift",
+  "manufacturer": "Rocky Mountain Construction",
+  "designer": "Alan Schilke",
+  "model": "I-Box track",
+  "status": "operating",
+  "yearOpened": 2022,
+  "yearClosed": null,
+  "description": "Iron Gwazi (formerly called Gwazi) is a steel-track hybrid roller coaster at Busch Gardens Tampa Bay, a theme park in Tampa, Florida, United States.  The renovated ride opened to the public on March 11, 2022, following a passholder soft-opening a month earlier on February 13.  Development of the original Gwazi began in July 1998, when Busch Gardens announced that it would build a wooden roller coaster on land formerly occupied by the Anheuser-Busch brewery.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Iron_Gwazi_(11).jpg",
+  "imageAttribution": "Iron Gwazi's lift hill and barrel roll downdrop",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Iron_Gwazi",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:13.732Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "iron gwazi",
+    "gwazi",
+    "busch gardens tampa bay",
+    "rocky mountain construction",
+    "rmc",
+    "i-box track",
+    "hyper",
+    "florida"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Rocky Mountain Construction"
+  },
+  "popularityScore": 74.4,
+  "popularityTier": "iconic",
+  "popularityRank": 71
+}

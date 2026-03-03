@@ -1,0 +1,55 @@
+{
+  "articleTitle": "Tantrum (roller coaster)",
+  "introSection": "Tantrum is a steel roller coaster located at Six Flags Darien Lake in Darien Center, New York. It is a Euro-Fighter model, built by German manufacturer Gerstlauer, and it opened on May 25, 2018. Tantrum features a maximum height of 98.4 feet (30 m), with a maximum speed of 52.8 mph and a total track length of 1246.7 ft. It was the first roller coaster in the state of New York to feature a beyond-vertical drop, with a drop angle of 97 degrees, and it was the park's first new roller coaster since 2008.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "In November 2017, local news reported that Six Flags Darien Lake had submitted plans to build a new roller coaster to the planning board of Genesee County. It was reported that the ride would be a Gerstlauer Euro-Fighter. The announcement came one year after the park was purchased by EPR Properties. The ride would replace Thunder Rapids, the park's log flume. The ride name was announced to be Tantrum in November, and the park planned on an opening in May 2018. The ride was recommended by the county planning board, and sent to the planning board of the town of Darien.\n\nThe Darien town planning board reviewed the plan on November 20, 2017, but requested further information on the site plan. At the December 18, 2017 meeting, the park provided additional drawings and paperwork, and the plan was approved by the board. It was announced that construction would cost around $5,000,000 USD. By early May, hard hat tours were given of the project site, showing the progress of construction. The ride opened to the public on May 25, 2018, just before Memorial Day weekend. Tantrum opened as the first roller coaster in New York state to feature a beyond-vertical drop, as well as the park's eighth operating roller coaster and its first in ten years."
+    },
+    {
+      "title": "Ride experience",
+      "content": "Immediately upon leaving the station, the car turns slightly to the left, and ascends the 98.4 ft vertical lift hill. The car then descends a 97-degree beyond-vertical drop, reaching top speeds of 52.8 mph. The car traverses an Immelmann loop before traveling through a curved drop to the right. It then enters a cutback, followed by an inclined loop, before pulling into the brake run. It then turns left into the station. A ride cycle lasts approximately one minute."
+    },
+    {
+      "title": "Characteristics",
+      "content": "Tantrum was manufactured by German manufacturer Gerstlauer, and features only a lap bar as opposed to over-the-shoulder restraints. The ride was installed by the Ride Entertainment Group, and features the same layout as Iron Shark at Galveston Island Historic Pleasure Pier, as well as Kráter at Parque del Café. The ride was purchased with three trains, and has the ability to run one, two, or three at a time. The trains feature four across seating with two rows, for a total of eight riders per train. The ride has green track with orange supports, causing the ride to \"[stand out] among the park's great coaster collection\" according to Andreas Simonis of Gerstlauer."
+    }
+  ],
+  "fullText": "Tantrum is a steel roller coaster located at Six Flags Darien Lake in Darien Center, New York. It is a Euro-Fighter model, built by German manufacturer Gerstlauer, and it opened on May 25, 2018. Tantrum features a maximum height of 98.4 feet (30 m), with a maximum speed of 52.8 mph and a total track length of 1246.7 ft. It was the first roller coaster in the state of New York to feature a beyond-vertical drop, with a drop angle of 97 degrees, and it was the park's first new roller coaster since 2008.\n\nIn November 2017, local news reported that Six Flags Darien Lake had submitted plans to build a new roller coaster to the planning board of Genesee County. It was reported that the ride would be a Gerstlauer Euro-Fighter. The announcement came one year after the park was purchased by EPR Properties. The ride would replace Thunder Rapids, the park's log flume. The ride name was announced to be Tantrum in November, and the park planned on an opening in May 2018. The ride was recommended by the county planning board, and sent to the planning board of the town of Darien.\n\nThe Darien town planning board reviewed the plan on November 20, 2017, but requested further information on the site plan. At the December 18, 2017 meeting, the park provided additional drawings and paperwork, and the plan was approved by the board. It was announced that construction would cost around $5,000,000 USD. By early May, hard hat tours were given of the project site, showing the progress of construction. The ride opened to the public on May 25, 2018, just before Memorial Day weekend. Tantrum opened as the first roller coaster in New York state to feature a beyond-vertical drop, as well as the park's eighth operating roller coaster and its first in ten years.\n\nImmediately upon leaving the station, the car turns slightly to the left, and ascends the 98.4 ft vertical lift hill. The car then descends a 97-degree beyond-vertical drop, reaching top speeds of 52.8 mph. The car traverses an Immelmann loop before traveling through a curved drop to the right. It then enters a cutback, followed by an inclined loop, before pulling into the brake run. It then turns left into the station. A ride cycle lasts approximately one minute.\n\nTantrum was manufactured by German manufacturer Gerstlauer, and features only a lap bar as opposed to over-the-shoulder restraints. The ride was installed by the Ride Entertainment Group, and features the same layout as Iron Shark at Galveston Island Historic Pleasure Pier, as well as Kráter at Parque del Café. The ride was purchased with three trains, and has the ability to run one, two, or three at a time. The trains feature four across seating with two rows, for a total of eight riders per train. The ride has green track with orange supports, causing the ride to \"[stand out] among the park's great coaster collection\" according to Andreas Simonis of Gerstlauer.\n\n",
+  "categories": [
+    "Roller coasters in New York (state)",
+    "Six Flags Darien Lake",
+    "Roller coasters operated by Six Flags"
+  ],
+  "infoboxRaw": {
+    "name": "Tantrum",
+    "image": "Tantrum (roller coaster).jpg",
+    "location": "Six Flags Darien Lake",
+    "status": "Operating",
+    "opened": "May 25, 2018",
+    "year": "2018",
+    "cost": "US$5,000,000",
+    "previousattraction": "Thunder Rapids",
+    "manufacturer": "Gerstlauer",
+    "model": "Euro-Fighter",
+    "lift": "Chain lift hill",
+    "height_ft": "98.4",
+    "length_ft": "1246.7",
+    "speed_mph": "52.8",
+    "inversions": "3",
+    "duration": "1:00",
+    "angle": "97",
+    "restriction_in": "48-76",
+    "trains": "3",
+    "carspertrain": "1",
+    "rowspercar": "2",
+    "ridersperrow": "4",
+    "rcdb_number": "15603",
+    "virtual_queue_name": "Go Fast Pass",
+    "virtual_queue_status": "available"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tantrum_(roller_coaster)",
+  "wikiPageId": 59654630,
+  "fetchedAt": "2026-02-28T20:17:20.526Z",
+  "articleLength": 2903
+}

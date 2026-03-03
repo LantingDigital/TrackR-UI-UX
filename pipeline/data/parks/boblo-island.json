@@ -1,0 +1,29 @@
+{
+  "id": "boblo-island",
+  "name": "Bois Blanc Island",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": null,
+  "continent": "North America",
+  "city": "Detroit River",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Bois Blanc Island, commonly referred to as Boblo Island, is an island in the Detroit River on the Canadian side of the border and is part of Amherstburg, Ontario.  The island is about 2. 5 mi long, 0.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bois_Blanc_Island_(Ontario)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:18.269Z"
+}

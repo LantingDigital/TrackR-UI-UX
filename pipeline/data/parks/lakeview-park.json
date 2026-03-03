@@ -1,0 +1,29 @@
+{
+  "id": "lakeview-park",
+  "name": "Loughgall F.C.",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Michigan",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://loughgallfc.co.uk/",
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Loughgall Football Club, also referred to as simply Loughgall, or The Villagers, is a semi-professional Northern Irish football club currently playing in the NIFL Championship.  Loughgall are a part of the Mid-Ulster Football Association.  The club plays in the Irish Cup.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Loughgall_Football_Club_badge.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Loughgall_F.C.",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:29:50.568Z"
+}

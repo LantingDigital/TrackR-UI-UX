@@ -1,0 +1,29 @@
+{
+  "id": "gardaland",
+  "name": "Gardaland Resort",
+  "formerNames": [],
+  "country": "IT",
+  "countryName": "Italy",
+  "region": "Italy",
+  "continent": "Europe",
+  "city": "Castelnuovo del Garda",
+  "latitude": 45.45444,
+  "longitude": -10.71389,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "www.gardaland.it/",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Gardaland Resort is an amusement park resort in Castelnuovo del Garda, Province of Verona, Italy.  Opened on 19 July 1975, the resort includes Gardaland Park, Gardaland Sea-Life, Legoland Waterpark, Gardaland Hotel, Adventure Hotel and Magic Hotel.  It is adjacent to Lake Garda.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Gardaland-Resort.png_Entrance_of_Gardaland.jpg",
+  "imageAttribution": "Gardaland's entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gardaland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:02.197Z"
+}

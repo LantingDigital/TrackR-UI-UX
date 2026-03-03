@@ -1,0 +1,31 @@
+{
+  "id": "seaworld-san-antonio",
+  "name": "SeaWorld San Antonio",
+  "formerNames": [
+    "Sea World of Texas"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "10500 Sea World Drive\nSan Antonio",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1988,
+  "yearClosed": null,
+  "owner": "United Parks & Resorts",
+  "chain": null,
+  "website": "https://seaworld.com/san-antonio/",
+  "coasterCount": 4,
+  "totalCoasterCount": 5,
+  "description": "SeaWorld San Antonio is a 416 acre marine mammal park, oceanarium and animal theme park in the Westover Hills District of San Antonio, Texas, on the city's west side.  It is the largest of the three parks in the SeaWorld chain owned and operated by United Parks & Resorts.  As North America's largest marine-life theme park, and one of the world's largest marine-life theme parks, it is focused on conservation, education and animal rescue.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrance_to_Sea_World%2C_San_Antonio%2C_Texas%2C_June_4%2C_2007.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/SeaWorld_San_Antonio",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:19.116Z"
+}

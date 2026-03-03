@@ -1,0 +1,29 @@
+{
+  "id": "mgm-grand-adventures-theme-park",
+  "name": "MGM Grand Adventures",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Nevada",
+  "continent": "North America",
+  "city": "Paradise, Nevada",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1993,
+  "yearClosed": 2000,
+  "owner": "MGM Grand, Inc.",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "MGM Grand Adventures was a theme park adjacent to the MGM Grand, a hotel and casino located on the Las Vegas Strip in Paradise, Nevada, United States.  The theme park and resort were both developed by MGM Grand, Inc.  Construction began in October 1991, and both projects opened on December 18, 1993.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/MGMGrandAdventuresLogo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/MGM_Grand_Adventures",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:35.560Z"
+}

@@ -1,0 +1,132 @@
+{
+  "generatedAt": "2026-02-28T23:13:04.815Z",
+  "summary": {
+    "totalCoasters": 2949,
+    "wikipediaOnly": 140,
+    "coasterpediaOnly": 2123,
+    "bothSources": 686
+  },
+  "matchQuality": {
+    "exact": 603,
+    "name_only": 113,
+    "former_name": 23,
+    "fuzzy": 31,
+    "new": 2130
+  },
+  "fetchStats": {
+    "errors": 0,
+    "skipped": 276
+  },
+  "dataQuality": {
+    "verified": 1478,
+    "partial": 587,
+    "stub": 884
+  },
+  "conflicts": {
+    "total": 278,
+    "byField": {
+      "speedMph": 34,
+      "speedKmh": 34,
+      "lengthFt": 26,
+      "lengthM": 25,
+      "duration": 44,
+      "heightFt": 33,
+      "heightM": 30,
+      "dropFt": 18,
+      "dropM": 18,
+      "inversions": 16
+    }
+  },
+  "missingFields": {
+    "heightFt": 1013,
+    "speedMph": 1293,
+    "lengthFt": 1008,
+    "manufacturer": 247,
+    "yearOpened": 120
+  },
+  "countryCoverage": {
+    "totalCountries": 84,
+    "top20": [
+      {
+        "country": "United States",
+        "count": 1157
+      },
+      {
+        "country": "United Kingdom",
+        "count": 290
+      },
+      {
+        "country": "Japan",
+        "count": 178
+      },
+      {
+        "country": "China",
+        "count": 174
+      },
+      {
+        "country": "Germany",
+        "count": 163
+      },
+      {
+        "country": "France",
+        "count": 117
+      },
+      {
+        "country": "Netherlands",
+        "count": 59
+      },
+      {
+        "country": "Italy",
+        "count": 53
+      },
+      {
+        "country": "Canada",
+        "count": 53
+      },
+      {
+        "country": "Spain",
+        "count": 45
+      },
+      {
+        "country": "Australia",
+        "count": 44
+      },
+      {
+        "country": "Denmark",
+        "count": 41
+      },
+      {
+        "country": "Belgium",
+        "count": 39
+      },
+      {
+        "country": "Sweden",
+        "count": 33
+      },
+      {
+        "country": "Mexico",
+        "count": 32
+      },
+      {
+        "country": "South Korea",
+        "count": 31
+      },
+      {
+        "country": "Poland",
+        "count": 30
+      },
+      {
+        "country": "Finland",
+        "count": 29
+      },
+      {
+        "country": "United Arab Emirates",
+        "count": 28
+      },
+      {
+        "country": "Brazil",
+        "count": 26
+      }
+    ]
+  }
+}

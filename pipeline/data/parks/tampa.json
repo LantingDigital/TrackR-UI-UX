@@ -1,0 +1,29 @@
+{
+  "id": "tampa",
+  "name": "Tampa",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://tampa.gov",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Tampa is a major city in Hillsborough County on the Gulf Coast of the U. S.  state of Florida.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tampa%2C_Florida",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:19.799Z"
+}

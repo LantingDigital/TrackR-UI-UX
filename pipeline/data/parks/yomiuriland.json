@@ -1,0 +1,29 @@
+{
+  "id": "yomiuriland",
+  "name": "Yomiuriland",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "Inagi",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1964,
+  "yearClosed": null,
+  "owner": "Yomiuriland Co., Ltd.",
+  "chain": null,
+  "website": "https://www.yomiuriland.com/en/",
+  "coasterCount": 1,
+  "totalCoasterCount": 4,
+  "description": "Yomiuriland (よみうりランド) is an amusement park in Inagi, Tokyo and Tama-ku, Kawasaki, Kanagawa Prefecture, Japan that first opened on 19 March 1964.  It is situated on hillsides, and features rides such as roller coasters and water flumes.  It is home to Yomiuri Giants Stadium, one of the training fields for the Yomiuri Giants baseball team, and was the primary training ground before Tokyo Dome was completed.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Yomiuriland-20100411.jpg",
+  "imageAttribution": "White Canyon at Yomiuriland in 2010. This ride closed in 2013, three years after this photo was taken.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Yomiuriland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:04.771Z"
+}

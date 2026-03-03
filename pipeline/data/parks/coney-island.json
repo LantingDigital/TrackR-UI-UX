@@ -1,0 +1,29 @@
+{
+  "id": "coney-island",
+  "name": "Coney Island",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 6,
+  "description": "Coney Island is a neighborhood and entertainment area in the southwestern section of the New York City borough of Brooklyn.  The neighborhood is bounded by Brighton Beach to its east, Lower New York Bay to the south and west, and Gravesend to the north and includes the subsection of Sea Gate on its west.  More broadly, the Coney Island peninsula consists of Coney Island proper, Sea Gate, Brighton Beach, and Manhattan Beach.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Coney_Island",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:50.352Z"
+}

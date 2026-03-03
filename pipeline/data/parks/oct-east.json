@@ -1,0 +1,29 @@
+{
+  "id": "oct-east",
+  "name": "OCT East",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": "China",
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "OCT East is a major entertainment and resort complex in Yantian, Shenzhen, China.  It was constructed at a cost of CNY 3. 5 billion and covers an area of nearly 9 km2.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/OCT_East",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:38.425Z"
+}

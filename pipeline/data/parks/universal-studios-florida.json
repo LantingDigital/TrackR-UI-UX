@@ -1,0 +1,29 @@
+{
+  "id": "universal-studios-florida",
+  "name": "Universal Studios Florida",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Orlando",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1990,
+  "yearClosed": null,
+  "owner": "NBCUniversal",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 4,
+  "description": "Universal Studios Florida is a theme park located in Orlando, Florida, United States.  Owned and operated by NBCUniversal, it opened the public on June 7, 1990, and features numerous rides, shows, and attractions that are primarily themed to movies, television, and other aspects of the entertainment industry.  Universal Studios Florida was the first theme park to open at Universal Orlando Resort, joined later by Universal Islands of Adventure (1999), Universal Volcano Bay (2017), and Universal Epic Universe (2025).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/USF_Entrance.jpg",
+  "imageAttribution": "Entrance to the theme park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Studios_Florida",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:08.010Z"
+}

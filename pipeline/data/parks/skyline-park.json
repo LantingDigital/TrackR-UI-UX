@@ -1,0 +1,29 @@
+{
+  "id": "skyline-park",
+  "name": "Skyline Park",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": null,
+  "continent": "Europe",
+  "city": "Bad Wörishofen",
+  "latitude": 48.04306,
+  "longitude": -10.59125,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "owner": "Joachim Löwenthal",
+  "chain": null,
+  "website": "https://www.skylinepark.de",
+  "coasterCount": 5,
+  "totalCoasterCount": 5,
+  "description": "Skyline Park (also known as Allgäu Skyline Park) is a 35 ha amusement park in Bad Wörishofen, Bavaria, Germany.  The facility includes several thrill rides, family attractions, and playground amenities.  The park is run by the Löwenthal family of showmen.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Skyline_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:40.185Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "bertrand-island",
+  "name": "Bertrand Island",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Bertrand Island, New Jersey, is a small peninsula in Lake Hopatcong, part of the community of Mount Arlington.  It is best known as the former site of the Bertrand Island Amusement Park which existed from prior to World War I as a picnic ground to 1983, as well as being the place of origin for Bette Cooper, Miss America 1937. \n\nIn 1925, Bertland Island gained popularity as it offered 20 rides, including a rollercoaster and boardwalk games.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bertrand_Island%2C_New_Jersey",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:38:40.866Z"
+}

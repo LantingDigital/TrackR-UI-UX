@@ -1,0 +1,29 @@
+{
+  "id": "old-chicago",
+  "name": "Old Chicago",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Illinois",
+  "continent": "North America",
+  "city": "555 S Bolingbrook Dr",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1975,
+  "yearClosed": 1980,
+  "owner": "Robert Brindle",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Old Chicago was a combination shopping mall and indoor amusement park that existed in the southwest Chicago suburb of Bolingbrook, Illinois from 1975 until 1980.  It was billed as \"The world's first indoor amusement park\", and it was intended to draw visitors all year round, rain or shine.  It opened to great fanfare and over 15,000 visitors on June 17, 1975, with an enormous building that housed major rides, such as three roller coasters and a Ferris wheel, as well as a turn-of-the-century-themed shopping mall with design reminiscent of the architecture of Louis Sullivan, such as his work for the 1893 World's Columbian Exposition in Chicago.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3AOldChicagoLogo.png%7C200px%5D%5D",
+  "imageAttribution": "Logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Old_Chicago",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:54.815Z"
+}

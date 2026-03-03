@@ -1,0 +1,29 @@
+{
+  "id": "space-world",
+  "name": "Space World",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1990,
+  "yearClosed": 2018,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Space World (スペースワールド) was a theme park in Yahatahigashi-ku, Kitakyushu, Fukuoka, Japan, Japan.  It had six roller coasters: Black Hole Scramble, Venus GP, Zaturn, Boogie-woogie Space Coaster, Titan Max, and Clipper. \n\nIn 2016, the park officially announced that it would close at the end of the following year.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Space_World_01.jpg",
+  "imageAttribution": "Venus GP",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Space_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:29.217Z"
+}

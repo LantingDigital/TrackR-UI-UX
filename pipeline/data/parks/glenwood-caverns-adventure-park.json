@@ -1,0 +1,31 @@
+{
+  "id": "glenwood-caverns-adventure-park",
+  "name": "Glenwood Caverns Adventure Park",
+  "formerNames": [
+    "Glenwood Caverns"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": "Glenwood Springs",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "owner": "Steve and Jeanne Beckley",
+  "chain": null,
+  "website": "https://www.glenwoodcaverns.com/",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Glenwood Caverns Adventure Park is a summer-themed adventure park located near Glenwood Springs, Colorado.  It is located approximately 160 miles (260 km) west of Denver at an altitude of 7,132 feet and is within the Mountain Standard Time Zone (GMT+7). \n\nIn December 2023, Interior Secretary Deb Haaland designated Glenwood Caverns and Iron Mountain Hot Springs as a national landmark.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Glenwood_Caverns_Adventure_Park_Logo_2017.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Glenwood_Caverns_Adventure_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:24.365Z"
+}

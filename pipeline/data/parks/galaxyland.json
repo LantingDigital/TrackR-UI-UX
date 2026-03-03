@@ -1,0 +1,33 @@
+{
+  "id": "galaxyland",
+  "name": "Galaxyland Powered by Hasbro",
+  "formerNames": [
+    "Fantasyland",
+    "Galaxyland",
+    "Galaxyland Powered by Hasbro"
+  ],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": "Alberta",
+  "continent": "North America",
+  "city": "West Edmonton Mall",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1983,
+  "yearClosed": null,
+  "owner": "Triple Five Group",
+  "chain": null,
+  "website": "https://www.wem.ca/play/attractions/galaxyland",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Galaxyland Powered by Hasbro (formerly Galaxyland, Fantasyland) is an indoor amusement park located in the West Edmonton Mall in Edmonton, Alberta, Canada.  It was home to the world's tallest (14 stories) and longest indoor roller coaster, the Mindbender.  It is also home to the Space Shot, the world's tallest indoor tower ride at the time of opening, at 36.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/West_Edmonton_Mall%2C_Edmonton%2C_Alberta_(21485641783).jpg",
+  "imageAttribution": "Interior of Galaxyland",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Galaxyland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:42.627Z"
+}

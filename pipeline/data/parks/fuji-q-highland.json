@@ -1,0 +1,29 @@
+{
+  "id": "fuji-q-highland",
+  "name": "Fuji-Q Highland",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "5 Chome-6-1 Shinnishihara, Fujiyoshida-shi",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1968,
+  "yearClosed": null,
+  "owner": "Fujikyu Highland Co., Ltd. (Fuji Kyuko)",
+  "chain": null,
+  "website": "http://www.fujiq.jp/en/",
+  "coasterCount": 3,
+  "totalCoasterCount": 6,
+  "description": "Fuji-Q Highland (富士急ハイランド) is an amusement park in Fujiyoshida, Yamanashi, Japan, owned and operated by the namesake Fuji Kyuko Co.  It opened on 2 March 1968. \n\nThe park is near the base of Mount Fuji.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/FujiQ_Highland_MainGate.JPG",
+  "imageAttribution": "Front gate of the theme park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fuji-Q_Highland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:43.857Z"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "six-flags-new-england",
+  "name": "Six Flags New England",
+  "formerNames": [
+    "Gallup's Grove",
+    "Riverside Grove",
+    "Riverside Park",
+    "Riverside: The Great Escape"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Massachusetts",
+  "continent": "North America",
+  "city": "Agawam, Massachusetts",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "www.sixflags.com/newengland",
+  "coasterCount": 6,
+  "totalCoasterCount": 8,
+  "description": "Six Flags New England, formerly known as Gallup's Grove (1870–1886), Riverside Grove (1887–1911), Riverside Park (1912–1995) and Riverside: The Great Escape (1996–1999), is an amusement park located in Agawam, Massachusetts.  Opening in the late 19th century, it is the oldest amusement park in the Six Flags chain, acquired by Premier Parks in 1996 and rebranded Six Flags New England in 2000.  Superman The Ride is among the park's most notable rides, having appeared as a highly ranked roller coaster in the annual Golden Ticket Awards from Amusement Today since the ride opened in 2000.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/FNE_2019_CoasterLogo_Color_reduced_res.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_New_England",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:01.987Z"
+}

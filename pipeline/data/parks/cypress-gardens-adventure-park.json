@@ -1,0 +1,31 @@
+{
+  "id": "cypress-gardens-adventure-park",
+  "name": "Cypress Gardens",
+  "formerNames": [
+    "Cypress Gardens Adventure Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Winter Haven, Florida, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1936,
+  "yearClosed": 2009,
+  "owner": "Adventure Parks Group",
+  "chain": null,
+  "website": "cypressgardens.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Cypress Gardens was a botanical garden and theme park near Winter Haven, Florida that operated from 1936 to 2009.  As of 2011, the botanical garden portion had been preserved inside Legoland Florida.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/WIKI_CG_01.jpg",
+  "imageAttribution": "The Gazebo and a Southern belle of Cypress Gardens",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cypress_Gardens",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:17.355Z"
+}

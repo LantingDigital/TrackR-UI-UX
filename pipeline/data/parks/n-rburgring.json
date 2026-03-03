@@ -1,0 +1,29 @@
+{
+  "id": "n-rburgring",
+  "name": "Nürburgring",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Nürburg, Germany",
+  "latitude": 50.33556,
+  "longitude": -6.9475,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "The Nürburgring is a 150,000-person capacity motorsports complex located in the town of Nürburg, Rhineland-Palatinate, Germany.  It features a Grand Prix race track built in 1984, and a long Nordschleife configuration, built in the 1920s, around the village and medieval castle of Nürburg in the Eifel mountains.  The north loop is 20.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/N%C3%BCrburgring_-_Grand-Prix_Stecke.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/N%C3%BCrburgring",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:02.851Z"
+}

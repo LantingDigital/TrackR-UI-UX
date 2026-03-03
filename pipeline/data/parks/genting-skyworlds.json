@@ -1,0 +1,32 @@
+{
+  "id": "genting-skyworlds",
+  "name": "Genting SkyWorlds Theme Park",
+  "formerNames": [
+    "Genting Outdoor Theme Park (closed on September 26",
+    "2013)"
+  ],
+  "country": "MY",
+  "countryName": "Malaysia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Resorts World Genting, Pahang, Malaysia",
+  "latitude": 3.4219,
+  "longitude": -101.7945,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2022,
+  "yearClosed": null,
+  "owner": "Genting Group",
+  "chain": null,
+  "website": "https://www.gentingskyworlds.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 4,
+  "description": "Genting SkyWorlds Theme Park is an 11 hectare (26 acre) themed amusement park at Resorts World Genting, Genting Highlands, Malaysia.  Initially, the park was to debut as 20th Century Fox World Malaysia, until The Walt Disney Company's acquisition of 21st Century Fox; the park was then renamed Genting SkyWorlds upon reaching a settlement between 20th Century Fox and The Walt Disney Company.  As a result of the settlement, some of the themed sections and attractions featuring 20th Century Studios and Blue Sky Studios IP (intellectual property) were altered, while some were successfully retained through licensing agreements with Disney; other attractions still in-development at the time were reconfigured into different, new or original concepts.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Genting_SkyWorlds_Theme_Park.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Genting_SkyWorlds",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:47.805Z"
+}

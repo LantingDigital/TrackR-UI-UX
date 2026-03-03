@@ -1,0 +1,29 @@
+{
+  "id": "superland",
+  "name": "Superland",
+  "formerNames": [],
+  "country": "IL",
+  "countryName": "Israel",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1991,
+  "yearClosed": null,
+  "owner": "Entertainment Town Ltd.",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Superland is an amusement park in Rishon LeZion, Israel.  Superland covers an area of about 19. 8 acres and has three roller coasters, three wet and dry facilities, a cablecar, and a bungee jumping \"Skycoaster.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/WikiAir_IL-13-06_005-B.JPG",
+  "imageAttribution": "Superland, 2013",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Superland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:18.169Z"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "freizeitpark-plohn",
+  "name": "Freizeitpark Plohn",
+  "formerNames": [
+    "Märchen- und Erlebnispark Forellenhof Plohn"
+  ],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Lengenfeld",
+  "latitude": 50.56661,
+  "longitude": -12.39708,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1996,
+  "yearClosed": null,
+  "owner": "Freizeitpark Plohn GmbH",
+  "chain": null,
+  "website": "https://www.freizeitpark-plohn.de/en/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Freizeitpark Plohn (also known as Plohni; formerly Märchen- und Erlebnispark Forellenhof Plohn) is a seasonal amusement park in Lengenfeld, Saxony, Germany.  It has about 350,000 visitors a year and 79 attractions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Eingang_des_Freizeitparks_Plohn.jpg",
+  "imageAttribution": "Entrance area since 2016",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Freizeitpark_Plohn",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:50.899Z"
+}

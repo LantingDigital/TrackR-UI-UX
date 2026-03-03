@@ -1,0 +1,31 @@
+{
+  "id": "jenkinsons-boardwalk",
+  "name": "Jenkinson's Boardwalk",
+  "formerNames": [
+    "Jenkinson's South"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "Point Pleasant Beach, New Jersey, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1928,
+  "yearClosed": null,
+  "owner": "Storino family",
+  "chain": null,
+  "website": "http://www.jenkinsons.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Jenkinson's Boardwalk (colloquially Jenk's) is a boardwalk in Point Pleasant Beach, New Jersey.  It has been owned by the Storino family since 1976.  Jenkinson's has a ropes course, four amusement arcades, boardwalk games, an amusement park, a beach, two mini golf courses, and an aquarium.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/2025-08-23_11_26_19_View_south_along_Jenkinson's_Boardwalk_at_Parkway_in_Point_Pleasant_Beach%2C_Ocean_County%2C_New_Jersey.jpg",
+  "imageAttribution": "Jenkinson's Boardwalk facing south",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Jenkinson's_Boardwalk",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:32.973Z"
+}

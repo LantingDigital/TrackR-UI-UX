@@ -1,0 +1,31 @@
+{
+  "id": "barrys-amusements",
+  "name": "Curry's Fun Park",
+  "formerNames": [
+    "Barry's"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "16 Eglinton Street, Portrush",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1925,
+  "yearClosed": 2019,
+  "owner": "Trufelli family (former)",
+  "chain": null,
+  "website": "www.barrysamusements.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Barry's Amusements was an amusement park in Northern Ireland.  Located in the centre of Portrush, County Antrim, on the north coast, it was founded in 1925.  The owners offered it for sale in 2019 and it was reported to be sold for redevelopment in 2021.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Barry's_Amusements",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:41.921Z"
+}

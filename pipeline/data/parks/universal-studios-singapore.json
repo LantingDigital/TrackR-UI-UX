@@ -1,0 +1,29 @@
+{
+  "id": "universal-studios-singapore",
+  "name": "Universal Studios Singapore",
+  "formerNames": [],
+  "country": "SG",
+  "countryName": "Singapore",
+  "region": "Singapore",
+  "continent": "Asia",
+  "city": "Sentosa",
+  "latitude": 1.254,
+  "longitude": -103.824,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2010,
+  "yearClosed": null,
+  "owner": "Genting Singapore (under a license from NBCUniversal)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Universal Studios Singapore (abbreviation: USS) is a theme park located within the Resorts World Sentosa integrated resort at Sentosa in Singapore.  It features 24 rides, shows, and attractions in seven themed zones.  It is one of the five Universal Studios theme parks around the world.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Universal_Studios_Singapore_Gate.jpg",
+  "imageAttribution": "Universal Studios Singapore entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Studios_Singapore",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:01.180Z"
+}

@@ -1,0 +1,45 @@
+{
+  "articleTitle": "ISpeed",
+  "introSection": "iSpeed is a steel roller coaster at Mirabilandia in Italy. It opened on May 20, 2009, and is the second blitz coaster to be made by Intamin following Maverick at Cedar Point in Sandusky, Ohio.",
+  "sections": [
+    {
+      "title": "Background",
+      "content": "The coaster is Italy's tallest and fastest launch coaster. The coaster starts with a 68 MPH launch in 2.2 seconds into a top hat where it climbs to 180 feet and then plummets to the ground. Following this is a barrage of airtime hills, tight turns, and inversions. The ride is open to passengers aged 12 and over.\n\nIn certain spots around the ride, copper alloy fins have been placed to create a magnetic field that regulates the coaster's speed.\n\nIn 2025, a 14-year-old child became seriously ill after riding iSpeed. The attraction was checked for maintenance and found to be in working order."
+    }
+  ],
+  "fullText": "iSpeed is a steel roller coaster at Mirabilandia in Italy. It opened on May 20, 2009, and is the second blitz coaster to be made by Intamin following Maverick at Cedar Point in Sandusky, Ohio.\n\nThe coaster is Italy's tallest and fastest launch coaster. The coaster starts with a 68 MPH launch in 2.2 seconds into a top hat where it climbs to 180 feet and then plummets to the ground. Following this is a barrage of airtime hills, tight turns, and inversions. The ride is open to passengers aged 12 and over.\n\nIn certain spots around the ride, copper alloy fins have been placed to create a magnetic field that regulates the coaster's speed.\n\nIn 2025, a 14-year-old child became seriously ill after riding iSpeed. The attraction was checked for maintenance and found to be in working order.\n\n\n\n\n",
+  "categories": [
+    "Roller coasters in Italy",
+    "Roller coasters opened in 2009"
+  ],
+  "infoboxRaw": {
+    "image": "ISpeed02.JPG",
+    "name": "iSpeed",
+    "location": "Mirabilandia",
+    "locationarticle": "Mirabilandia (Italy)",
+    "coordinates": "44.33667°N, 12.26167°W",
+    "type2": "Launched",
+    "status": "Operating",
+    "opened": "May 20, 2009",
+    "previousattraction": "Sierra Tonante",
+    "manufacturer": "Intamin",
+    "model": "Blitz Coaster",
+    "designer": "Werner Stengel",
+    "track": "Twister",
+    "lift": "Linear synchronous motor Launch",
+    "cost": "€15,000,000",
+    "height_ft": "180",
+    "drop_ft": "180.5",
+    "acceleration": "0 to 68 mph in 2.2 seconds",
+    "speed_mph": "74.6",
+    "angle": "90",
+    "inversions": "2 (Corkscrew, Inline Twist)",
+    "duration": "approx. 1 minute",
+    "restriction_in": "55",
+    "rcdb_number": "4147"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/ISpeed",
+  "wikiPageId": 23326819,
+  "fetchedAt": "2026-02-28T20:56:00.175Z",
+  "articleLength": 794
+}

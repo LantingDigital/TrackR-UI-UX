@@ -1,0 +1,29 @@
+{
+  "id": "beech-bend",
+  "name": "Beech Bend",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Kentucky",
+  "continent": "North America",
+  "city": "Warren County, in Bowling Green",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Charlotte Gonzalez",
+  "chain": null,
+  "website": "Website",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Beech Bend is an amusement park, campground and automobile race track located in Warren County, in the U. S.  state of Kentucky, just outside the limits of the city of Bowling Green.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Beech-Bend-Park.jpg",
+  "imageAttribution": "Overlooking the lake at Beech Bend Park in 2016",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Beech_Bend",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:52.537Z"
+}

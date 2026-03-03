@@ -1,0 +1,29 @@
+{
+  "id": "butlins-skegness",
+  "name": "Butlins Skegness",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Ingoldmells, Skegness, Lincolnshire, England",
+  "latitude": 53.18,
+  "longitude": -0.35,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.butlins.com https://www.butlinsskegnesscaravans.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Butlins Skegness (officially Butlins Resort Skegness), formerly Butlin's Skegness or Funcoast World, is a holiday camp located in Ingoldmells near Skegness in Lincolnshire, England.  Billy Butlin conceived of its creation based on his experiences at a Canadian summer camp in his youth and by observation of the actions of other holiday accommodation providers, both in seaside resort lodging houses and in earlier smaller holiday camps. \n\nConstruction of the camp began in 1935 and it was opened in 1936, when it quickly proved to be a success with a need for expansion.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Butlins_Skegness_-_geograph.org.uk_-_1762469.jpg",
+  "imageAttribution": "Butlins Skegness looking toward the Skyline pavilion.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Butlins_Skegness",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:55.924Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "astroworld",
+  "name": "AstroWorld",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Astroworld may refer to:\n * Six Flags AstroWorld, a former theme park in Houston, Texas, U. S.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Astroworld",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:06.000Z"
+}

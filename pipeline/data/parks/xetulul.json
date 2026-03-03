@@ -1,0 +1,29 @@
+{
+  "id": "xetulul",
+  "name": "Xetulul Theme Park",
+  "formerNames": [],
+  "country": "GT",
+  "countryName": "Guatemala",
+  "region": null,
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "owner": "IRTRA",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Xetulul is a theme park in Guatemala.  It is located in the Retalhuleu Department in the southwest of the country.  Opening in 2002, Xetulul is the third-largest amusement park in Latin America, after Beto Carrero World in Penha, Santa Catarina, Brazil and Six Flags México near Mexico City, Mexico.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Xetulul_Guatemala.jpg",
+  "imageAttribution": "View of the Xetulul Theme Park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Xetulul_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:49.269Z"
+}

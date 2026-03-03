@@ -1,0 +1,29 @@
+{
+  "id": "galveston-island-historic-pleasure-pier",
+  "name": "Galveston Island Historic Pleasure Pier",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "Galveston, Texas, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2012,
+  "yearClosed": null,
+  "owner": "Landrys, Inc.",
+  "chain": null,
+  "website": "http://www.pleasurepier.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Galveston Island Historic Pleasure Pier is a pleasure pier in Galveston, Texas, United States.  Opened in the summer of 2012, it has a roller coaster, 15 rides, carnival games and souvenir shops.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Pleasure_Pier_in_Galveston%2C_Texas.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Galveston_Island_Historic_Pleasure_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:15.920Z"
+}

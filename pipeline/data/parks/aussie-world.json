@@ -1,0 +1,29 @@
+{
+  "id": "aussie-world",
+  "name": "Aussie World",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": null,
+  "continent": "Oceania",
+  "city": "Sunshine Coast",
+  "latitude": 26.75022,
+  "longitude": -153.04657,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.aussieworld.com.au",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Aussie World is a privately owned, medium-sized, family theme park on the Sunshine Coast, Queensland, Australia.  It has over 30 rides and attractions. \n\nIt is located at 1 Downunder Drive, just off the Bruce Highway at Palmview.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AAussie_World_Logo.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Aussie_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:48.266Z"
+}

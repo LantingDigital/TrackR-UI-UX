@@ -1,0 +1,29 @@
+{
+  "id": "alabama-adventure-and-splash-adventure",
+  "name": "Alabama Adventure and Splash Adventure",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Alabama",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:15:34.321Z"
+}

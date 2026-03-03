@@ -1,0 +1,29 @@
+{
+  "id": "paragon-park",
+  "name": "Paragon Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Massachusetts",
+  "continent": "North America",
+  "city": "Nantasket Beach",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1905,
+  "yearClosed": 1984,
+  "owner": "Larry & Phyllis Stone",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Paragon Park was an amusement park located on Nantasket Beach in Hull, Massachusetts.  It opened in 1905 and closed in 1984.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/View_of_Paragon_Park.jpg",
+  "imageAttribution": "Paragon Park circa 1914",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Paragon_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:38:16.603Z"
+}

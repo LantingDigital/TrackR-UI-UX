@@ -1,0 +1,32 @@
+{
+  "id": "chessington-world-of-adventures",
+  "name": "Chessington World of Adventures Resort",
+  "formerNames": [
+    "Chessington Zoo",
+    "Chessington World of Adventures & Zoo"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Leatherhead Road, Chessington KT9 2NE, Greater London",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1931,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "www.chessington.com",
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "Chessington World of Adventures Resort is a 128 acre theme park, zoo and hotel complex in Chessington, Greater London, England, around 12 mi southwest of Central London.  The complex originally opened as Chessington Zoo in 1931; the theme park aspect was developed by The Tussauds Group, debuting on 7 July 1987 as one of the first combined animal-amusement parks in the UK.  The theme park, which features over 40 rides, is owned by Merlin Entertainments, following its merger with The Tussauds Group in 2007.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/CWOAResort2024.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Chessington_World_of_Adventures",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:46.998Z"
+}

@@ -1,0 +1,55 @@
+{
+  "articleTitle": "Cobra (La Ronde)",
+  "introSection": "Cobra was a stand-up roller coaster located at La Ronde amusement park in Montreal, Quebec, Canada. Built by Intamin, Cobra opened to the public in 1988 at Skara Sommarland amusement park, where it operated until 1994. It reopened at La Ronde the following season in 1995 and was one of only three stand-up roller coasters manufactured by Intamin. Cobra was removed from the park's website in 2016 and then demolished in 2018.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "The roller coaster was relocated in 1994 from the Skara Sommarland amusement park in Sweden, where it was known as the Stand Up. In 2007, it was announced that a colony of Townsend's big-eared bats had settled in the ride's engine room. Le Cobra was a clone of the Shockwave coaster that was at Six Flags Magic Mountain, Six Flags Great Adventure and later at Six Flags AstroWorld as Batman The Escape. Cobra only had one inversion (a vertical loop), a turnaround dive hill and a helix through the only loop."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Cobra at La Ronde Official Website"
+    }
+  ],
+  "fullText": "Cobra was a stand-up roller coaster located at La Ronde amusement park in Montreal, Quebec, Canada. Built by Intamin, Cobra opened to the public in 1988 at Skara Sommarland amusement park, where it operated until 1994. It reopened at La Ronde the following season in 1995 and was one of only three stand-up roller coasters manufactured by Intamin. Cobra was removed from the park's website in 2016 and then demolished in 2018.\n\nThe roller coaster was relocated in 1994 from the Skara Sommarland amusement park in Sweden, where it was known as the Stand Up. In 2007, it was announced that a colony of Townsend's big-eared bats had settled in the ride's engine room. Le Cobra was a clone of the Shockwave coaster that was at Six Flags Magic Mountain, Six Flags Great Adventure and later at Six Flags AstroWorld as Batman The Escape. Cobra only had one inversion (a vertical loop), a turnaround dive hill and a helix through the only loop.\n\n\n\n\n * Cobra at La Ronde Official Website",
+  "categories": [
+    "La Ronde (amusement park)",
+    "Stand-up roller coasters",
+    "Roller coasters manufactured by Intamin",
+    "Roller coasters opened in 1995",
+    "Roller coasters in Quebec"
+  ],
+  "infoboxRaw": {
+    "name": "Cobra",
+    "image": "La Ronde - Manèges.JPG",
+    "location": "La Ronde",
+    "coordinates": "45.5219°N, -73.5382°W",
+    "previousnames": "Stand Up (1988-1994)",
+    "status": "Removed",
+    "opened": "1995",
+    "year": "1988",
+    "closed": "2016",
+    "type2": "Stand-up",
+    "manufacturer": "Intamin",
+    "model": "Stand-up roller coaster",
+    "lift": "Chain lift hill",
+    "height_ft": "87",
+    "drop_ft": "87",
+    "length_ft": "2575",
+    "speed_mph": "48",
+    "inversions": "1",
+    "restriction_in": "54",
+    "trains": "2",
+    "carspertrain": "6",
+    "rowspercar": "1",
+    "ridersperrow": "4",
+    "rcdb_number": "189",
+    "virtual_queue_name": "Flash Pass",
+    "virtual_queue_image": "Fastpass availability icon.svg",
+    "virtual_queue_status": "Available"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cobra_(La_Ronde)",
+  "wikiPageId": 6923413,
+  "fetchedAt": "2026-02-28T20:44:24.673Z",
+  "articleLength": 978
+}

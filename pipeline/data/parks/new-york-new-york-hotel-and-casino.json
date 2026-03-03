@@ -1,0 +1,29 @@
+{
+  "id": "new-york-new-york-hotel-and-casino",
+  "name": "New York-New York",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Nevada",
+  "continent": "North America",
+  "city": "Paradise, Nevada, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": "3790 South Las Vegas Boulevard",
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Vici Properties",
+  "chain": null,
+  "website": "newyorknewyork.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "New York-New York Hotel and Casino is a casino hotel on the Las Vegas Strip in Paradise, Nevada, United States.  It is owned by Vici Properties and operated by MGM Resorts International, and is designed to evoke New York City in its architecture and other aspects.  The design features downsized replicas of numerous city landmarks such as the Statue of Liberty.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/2019.10.11_Las_Vegas_-_48955419271.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/New_York-New_York_Hotel_and_Casino",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:08.277Z"
+}

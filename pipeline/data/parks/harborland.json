@@ -1,0 +1,29 @@
+{
+  "id": "harborland",
+  "name": "Harborland",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Harborland (神戸ハーバーランド) is a shopping district in Chuo-ku, Kobe, Japan.  Kobe Port Tower is located there. \n\nThis shopping district was made on the site of the former freight yard, Minatogawa Kamotsu Station of the Japanese National Railways.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Harborland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:35.544Z"
+}

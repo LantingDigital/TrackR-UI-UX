@@ -1,0 +1,29 @@
+{
+  "id": "adventureland-new-york",
+  "name": "Adventureland",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "East Farmingdale",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1962,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.adventureland.us",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Adventureland is an amusement park in East Farmingdale, New York, located on Route 110 (Broad Hollow Road).  Adventureland has been operating since 1962 and is a popular attraction for children, schools, and day camps on Long Island. \n\nThere are more than 30 rides, including three roller coasters and two water rides.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Adventureland_from_NB_NY_110.JPG",
+  "imageAttribution": "Adventureland as seen from NY 110.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adventureland_(New_York)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:32.303Z"
+}

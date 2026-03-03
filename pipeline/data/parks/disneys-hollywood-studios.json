@@ -1,0 +1,31 @@
+{
+  "id": "disneys-hollywood-studios",
+  "name": "Disney's Hollywood Studios",
+  "formerNames": [
+    "Disney-MGM Studios Theme Park"
+  ],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Walt Disney World",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": null,
+  "owner": "Disney Experiences\n(The Walt Disney Company)",
+  "chain": null,
+  "website": "https://disneyworld.com/hollywoodstudios",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Disney's Hollywood Studios is a theme park at the Walt Disney World Resort in Bay Lake, Florida, near Orlando.  It is owned and operated by the Walt Disney Company through its Experiences division.  Based on a concept by Marty Sklar, Randy Bright, and Michael Eisner, the park opened on May 1, 1989, as the Disney–MGM Studios Theme Park, and was the third of four theme parks built at Walt Disney World.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/The_Twilight_Zone_Tower_of_Terror%2C_2024.jpg",
+  "imageAttribution": "The Hollywood Tower Hotel, the icon of the park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Disney's_Hollywood_Studios",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:53.347Z"
+}

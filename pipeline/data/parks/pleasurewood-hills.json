@@ -1,0 +1,32 @@
+{
+  "id": "pleasurewood-hills",
+  "name": "Pleasurewood Hills Family Theme Park",
+  "formerNames": [
+    "New Pleasurewood Hills and",
+    "Pleasurewood Hills American Theme Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Lowestoft, Suffolk",
+  "latitude": 52.50707,
+  "longitude": -1.74443,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1983,
+  "yearClosed": null,
+  "owner": "Premier Attractions",
+  "chain": null,
+  "website": "pleasurewoodhills.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Pleasurewood Hills is a theme park on a 59 acre site between Corton and Gunton, near Lowestoft, Suffolk.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Pleasurewood_Hills_006.jpg",
+  "imageAttribution": "Entrance to the park in late 2000s",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Pleasurewood_Hills",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:21.341Z"
+}

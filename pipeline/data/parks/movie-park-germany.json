@@ -1,0 +1,31 @@
+{
+  "id": "movie-park-germany",
+  "name": "Movie Park Germany",
+  "formerNames": [
+    "Kirchhellener Märchenwald  Traumlandpark  Das Neue Traumland  Bavaria Filmpark Bottrop  Warner Bros. Movie World Germany"
+  ],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Bottrop, North Rhine-Westphalia",
+  "latitude": 51.62,
+  "longitude": -6.9725,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1996,
+  "yearClosed": 2004,
+  "owner": "Parques Reunidos",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Movie Park Germany is a theme park in Bottrop-Kirchhellen in western Germany, 50 km north of Düsseldorf, with an area of 40 ha.  It consists of 7 areas based on movies and TV series.  Nearby the park are several film studios.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Moviepark-Tor.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Movie_Park_Germany",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:18.633Z"
+}

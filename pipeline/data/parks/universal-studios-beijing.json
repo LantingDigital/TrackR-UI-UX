@@ -1,0 +1,29 @@
+{
+  "id": "universal-studios-beijing",
+  "name": "Universal Studios Beijing",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "Wenjing Subdistrict, Tongzhou District, Beijing",
+  "latitude": 39.85632,
+  "longitude": -116.67886,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2021,
+  "yearClosed": null,
+  "owner": "Beijing Shouhuan Cultural Tourism Investment NBCUniversal (Comcast)",
+  "chain": null,
+  "website": "Official site",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Universal Studios Beijing is a theme park in Beijing, China, that opened in 2021, as part of Universal Beijing Resort.  It is the seventh Universal-built park, and third in Asia, after Universal Studios Japan and Universal Studios Singapore. \n\nThe project began in 2014 with the plan to invest 20 billion RMB (US$3.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AEntrance_of_Universal_Studios_Beijing_(20210907121707).jpg",
+  "imageAttribution": "Entrance to the theme park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Studios_Beijing",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:32.709Z"
+}

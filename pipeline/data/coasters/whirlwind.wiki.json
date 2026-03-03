@@ -1,0 +1,51 @@
+{
+  "articleTitle": "Whirlwind (Seabreeze)",
+  "introSection": "The Whirlwind is a steel spinning roller coaster at Seabreeze Amusement Park in Rochester, New York. It is where Quantum Loop stood until Winter 2004 when the Whirlwind was added.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "The Whirlwind was manufactured in 2000 and originally operated as a traveling roller coaster in Spain with Family Fraguas. It was painted orange and silver and operated under the name \"Cyber Space\". The roller coaster was seized by debt collectors and placed in the hands of a depository. When Fraguas was able to collect the coaster, it had already been stolen, sold and exported to the United States. Before arriving at Seabreeze it was repainted to be blue and yellow.\n\nIn December 2003, park management announced that a Maurer AG spinning roller coaster would be installed for 2004, the park's 125th season. To make way for the new attraction, the Quantum Loop, a Soquet roller coaster installed in 1994, was removed. Quantum Loop has since reopened as Double Loop at Salitre Magico in Bogota, Colombia. At the time of installation, Whirlwind was the only Maurer Rides SC2000 on the East Coast, and only second in the United States. It was repainted once again before the 2011 season to be blue and orange, which remains as the current color scheme."
+    },
+    {
+      "title": "Design",
+      "content": "The Whirlwind operates 4 single car trains with 2 rows for a total of 4 riders per train. Each row seats passengers in bucket seats facing back-to-back, with riders secured by individual between the leg lap restraints.\n\nThe cars are specially designed by Maurer AG and are known as the \"S-Car\". These cars feature a pivot bearing between the passenger car and undercarriage. The pivot bearing, combined with the weight distribution in the car, allows the car to convert the centrifugal forces that are generated as it maneuvers throughout the curves of the track. This gives the S-Car its unique spinning motions that change with each ride. All cars contain an on-board braking system that ensures riders are not spun at an unsafe level (Whirlwind's threshold is 20 spins per minute ). The brakes are released by special track sections to allow the car to freely rotate and will gradually auto engage as needed if the spinning motion approaches dangerous levels, without fully stopping or forcefully jolting riders (riders remain unaware of this feature throughout the ride). The spin brake is reactivated fully after the train repositions itself via bumpers at the final brake run to allow smooth entrance into the loading and unloading station."
+    }
+  ],
+  "fullText": "The Whirlwind is a steel spinning roller coaster at Seabreeze Amusement Park in Rochester, New York. It is where Quantum Loop stood until Winter 2004 when the Whirlwind was added.\n\nThe Whirlwind was manufactured in 2000 and originally operated as a traveling roller coaster in Spain with Family Fraguas. It was painted orange and silver and operated under the name \"Cyber Space\". The roller coaster was seized by debt collectors and placed in the hands of a depository. When Fraguas was able to collect the coaster, it had already been stolen, sold and exported to the United States. Before arriving at Seabreeze it was repainted to be blue and yellow.\n\nIn December 2003, park management announced that a Maurer AG spinning roller coaster would be installed for 2004, the park's 125th season. To make way for the new attraction, the Quantum Loop, a Soquet roller coaster installed in 1994, was removed. Quantum Loop has since reopened as Double Loop at Salitre Magico in Bogota, Colombia. At the time of installation, Whirlwind was the only Maurer Rides SC2000 on the East Coast, and only second in the United States. It was repainted once again before the 2011 season to be blue and orange, which remains as the current color scheme.\n\nThe Whirlwind operates 4 single car trains with 2 rows for a total of 4 riders per train. Each row seats passengers in bucket seats facing back-to-back, with riders secured by individual between the leg lap restraints.\n\nThe cars are specially designed by Maurer AG and are known as the \"S-Car\". These cars feature a pivot bearing between the passenger car and undercarriage. The pivot bearing, combined with the weight distribution in the car, allows the car to convert the centrifugal forces that are generated as it maneuvers throughout the curves of the track. This gives the S-Car its unique spinning motions that change with each ride. All cars contain an on-board braking system that ensures riders are not spun at an unsafe level (Whirlwind's threshold is 20 spins per minute ). The brakes are released by special track sections to allow the car to freely rotate and will gradually auto engage as needed if the spinning motion approaches dangerous levels, without fully stopping or forcefully jolting riders (riders remain unaware of this feature throughout the ride). The spin brake is reactivated fully after the train repositions itself via bumpers at the final brake run to allow smooth entrance into the loading and unloading station.\n\n",
+  "categories": [
+    "Entertainment venues in Rochester, New York",
+    "Roller coasters in New York (state)",
+    "Roller coasters opened in 2004"
+  ],
+  "infoboxRaw": {
+    "name": "Whirlwind",
+    "image": "Whirlwind_-_Seabreeze_Amusement_Park.jpg",
+    "location": "Seabreeze Amusement Park",
+    "type2": "Spinning",
+    "status": "Open",
+    "opened": "2004",
+    "manufacturer": "Maurer AG",
+    "designer": "Maurer Söhne",
+    "model": "Xtended SC 2000",
+    "track": "Steel",
+    "lift": "Chain",
+    "height_ft": "50.8",
+    "length_ft": "1391",
+    "speed_mph": "37.3",
+    "inversions": "0",
+    "duration": "1:10",
+    "angle": "50",
+    "capacity": "930",
+    "cost": "$2,000,000",
+    "restriction_in": "48",
+    "rcdb_number": "2315",
+    "trains": "4",
+    "carspertrain": "1",
+    "rowspercar": "2",
+    "ridersperrow": "2"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Whirlwind_(Seabreeze)",
+  "wikiPageId": 5254820,
+  "fetchedAt": "2026-02-28T20:17:23.062Z",
+  "articleLength": 2484
+}

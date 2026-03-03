@@ -1,0 +1,29 @@
+{
+  "id": "williams-grove-amusement-park",
+  "name": "Williams Grove Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Williams Grove, Pennsylvania",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": 2005,
+  "owner": "Williams family (1850-1918)\nCharles Markley (1918-1924)\nRichwine family (1924-1972)\nHughes family (1972-present)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Williams Grove Amusement Park is an abandoned amusement park in Williams Grove, Pennsylvania.  The park operated from 1850 until 2005.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Williams_Grove_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:04.077Z"
+}

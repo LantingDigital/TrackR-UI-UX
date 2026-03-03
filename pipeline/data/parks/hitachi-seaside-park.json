@@ -1,0 +1,29 @@
+{
+  "id": "hitachi-seaside-park",
+  "name": "Hitachi Seaside Park",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Hitachinaka, Ibaraki, Japan",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Hitachi Seaside Park (国営ひたち海浜公園) is a public park in Hitachinaka, Ibaraki, Japan.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hitachi_Seaside_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:22.986Z"
+}

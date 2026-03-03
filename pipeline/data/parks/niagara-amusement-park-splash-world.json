@@ -1,0 +1,34 @@
+{
+  "id": "niagara-amusement-park-splash-world",
+  "name": "Niagara Amusement Park and Splash World",
+  "formerNames": [
+    "Fantasy Island (1961–1992",
+    "2016–2019)",
+    "Two Flags Over Niagara Fun Park",
+    "Martin's Fantasy Island"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "2400 Grand Island Boulevard",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1961,
+  "yearClosed": null,
+  "owner": "IB Parks & Entertainment",
+  "chain": null,
+  "website": "Official website",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Niagara Amusement Park & Splash World (formerly Fantasy Island, Two Flags Over Niagara Fun Park, and Martin's Fantasy Island) is an 85 acre amusement park in Grand Island, New York near Niagara Falls.  It features an amusement park and a water park.  The park is owned and operated by IB Parks & Entertainment.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Niagara_Amusement_Park_%26_Splash_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:09.963Z"
+}

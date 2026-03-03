@@ -58,11 +58,14 @@ export interface CoastleGuess {
   isCorrect: boolean;
 }
 
+export type HintType = 'first_letter' | 'park_pattern';
+
 export interface HintReveal {
   afterGuess: number;
-  attributeKey: keyof CoastleCoaster;
+  hintType: HintType;
   label: string;
   value: string;
+  attributeKey?: keyof CoastleCoaster; // kept for backward-compat with persisted data
 }
 
 export type GameMode = 'daily' | 'practice';
@@ -84,6 +87,7 @@ export interface CoastleStats {
   currentStreak: number;
   maxStreak: number;
   guessDistribution: number[];
+  recentGames: { won: boolean; guesses: number }[]; // last 10, newest last
 }
 
 export const MAX_GUESSES = 7;

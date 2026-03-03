@@ -1,0 +1,29 @@
+{
+  "id": "gullivers-land",
+  "name": "Gulliver's Land",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Milton Keynes",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "undefined",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Gulliver's Land is a children's theme park in Milton Keynes, England.  It opened in March 1999 and is the third park to be opened by Gulliver's.  (The other two parks are Gulliver's World and Gulliver's Kingdom).",
+  "imageUrl": null,
+  "imageAttribution": "Gulliver's Land logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gulliver's_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:49.138Z"
+}

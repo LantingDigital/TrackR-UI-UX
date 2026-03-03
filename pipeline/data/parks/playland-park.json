@@ -1,0 +1,29 @@
+{
+  "id": "playland-park",
+  "name": "Playland Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 5,
+  "description": "Playland Park may refer to:\n\n\n * Playland (New York), an amusement park in Rye, New York\n * Playland Park (Indiana), a former amusement park in South Bend, Indiana\n * Playland Park (Houston, Texas), a former amusement park in Houston\n * Playland Park (San Antonio, Texas), a former amusement park in San Antonio",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Playland_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:01.352Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "idora-park",
+  "name": "Idora Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Oakland",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1904,
+  "yearClosed": 1929,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Idora Park was a 17. 5 acre Victorian era trolley park in north Oakland, California constructed in 1904 on the site of an informal park setting called Ayala Park on the north banks of Temescal Creek.  It was leased by the Ingersoll Pleasure and Amusement Park Company that ran several Eastern pleasure parks.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Crowds_at_Idora_Park_in_Oakland.png",
+  "imageAttribution": "Idora Park crowds, c. 1912",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Idora_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:50.263Z"
+}

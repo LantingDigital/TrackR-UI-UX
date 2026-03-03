@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Reanimated, {
   useSharedValue,
@@ -6,6 +6,7 @@ import Reanimated, {
   withTiming,
   withDelay,
   Easing,
+  runOnJS,
 } from 'react-native-reanimated';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
@@ -19,6 +20,7 @@ interface CoastleCellProps {
   cellIndex: number; // 0-8, for stagger
   size: number;
   shouldReveal: boolean;
+  skipAnimation?: boolean; // true when loaded from storage — jump straight to StaticCell
 }
 
 const STAGGER_DELAY = 80;
@@ -33,11 +35,48 @@ function getIconColor(result: ComparisonResult): string {
   }
 }
 
-export const CoastleCell: React.FC<CoastleCellProps> = ({
+function getWatermarkIcon(
+  result: ComparisonResult,
+  direction: Direction,
+): React.FC<{ size: number; color: string }> {
+  if (result === 'correct') return CheckIcon;
+  if (direction === 'higher') return ArrowUpIcon;
+  if (direction === 'lower') return ArrowDownIcon;
+  if (result === 'wrong') return CrossIcon;
+  return CrossIcon;
+}
+
+// ============================================
+// Static cell — zero Reanimated overhead, rendered after flip completes
+// ============================================
+
+const StaticCell: React.FC<{ cell: CellComparison; size: number }> = ({ cell, size }) => {
+  const iconColor = getIconColor(cell.result);
+  const WatermarkIcon = getWatermarkIcon(cell.result, cell.direction);
+
+  return (
+    <View style={[styles.wrapper, { width: size, height: size }]}>
+      <View style={[styles.cell, styles.cellBack, { width: size, height: size }]}>
+        <View style={styles.watermark} pointerEvents="none">
+          <WatermarkIcon size={size} color={iconColor} />
+        </View>
+        <Text style={styles.label} numberOfLines={1}>{cell.label}</Text>
+        <Text style={styles.value} numberOfLines={1} adjustsFontSizeToFit>{cell.displayValue}</Text>
+      </View>
+    </View>
+  );
+};
+
+// ============================================
+// Animated cell — flip animation with two Reanimated layers
+// ============================================
+
+const AnimatedCell: React.FC<CoastleCellProps & { onSettled: () => void }> = ({
   cell,
   cellIndex,
   size,
   shouldReveal,
+  onSettled,
 }) => {
   const flipProgress = useSharedValue(0);
   const hasRevealed = useSharedValue(false);
@@ -49,7 +88,11 @@ export const CoastleCell: React.FC<CoastleCellProps> = ({
 
       flipProgress.value = withDelay(
         delay,
-        withTiming(1, { duration: FLIP_HALF_DURATION * 2, easing: Easing.inOut(Easing.ease) }),
+        withTiming(1, { duration: FLIP_HALF_DURATION * 2, easing: Easing.inOut(Easing.ease) }, (finished) => {
+          if (finished) {
+            runOnJS(onSettled)();
+          }
+        }),
       );
 
       setTimeout(() => {
@@ -79,9 +122,6 @@ export const CoastleCell: React.FC<CoastleCellProps> = ({
   });
 
   const iconColor = getIconColor(cell.result);
-
-  // Choose watermark icon based on result + direction
-  const iconSize = size;
   const WatermarkIcon = getWatermarkIcon(cell.result, cell.direction);
 
   return (
@@ -108,12 +148,9 @@ export const CoastleCell: React.FC<CoastleCellProps> = ({
           backStyle,
         ]}
       >
-        {/* Watermark icon — centered, behind text */}
         <View style={styles.watermark} pointerEvents="none">
-          <WatermarkIcon size={iconSize} color={iconColor} />
+          <WatermarkIcon size={size} color={iconColor} />
         </View>
-
-        {/* Text content — on top of watermark */}
         <Text style={styles.label} numberOfLines={1}>{cell.label}</Text>
         <Text style={styles.value} numberOfLines={1} adjustsFontSizeToFit>{cell.displayValue}</Text>
       </Reanimated.View>
@@ -121,18 +158,21 @@ export const CoastleCell: React.FC<CoastleCellProps> = ({
   );
 };
 
-function getWatermarkIcon(
-  result: ComparisonResult,
-  direction: Direction,
-): React.FC<{ size: number; color: string }> {
-  if (result === 'correct') return CheckIcon;
-  if (direction === 'higher') return ArrowUpIcon;
-  if (direction === 'lower') return ArrowDownIcon;
-  if (result === 'wrong') return CrossIcon;
-  // Close without direction — use a subtle check-like or no watermark
-  // For now use ArrowUpIcon as a placeholder; close non-directional is rare
-  return CrossIcon;
-}
+// ============================================
+// CoastleCell — switches from animated to static after flip completes
+// ============================================
+
+export const CoastleCell: React.FC<CoastleCellProps> = (props) => {
+  // If loaded from storage (skipAnimation) and already revealed, skip straight to static.
+  // This avoids 63 simultaneous flip animations on cold start with a saved game.
+  const [isSettled, setIsSettled] = useState(() => !!(props.skipAnimation && props.shouldReveal));
+
+  if (isSettled) {
+    return <StaticCell cell={props.cell} size={props.size} />;
+  }
+
+  return <AnimatedCell {...props} onSettled={() => setIsSettled(true)} />;
+};
 
 const styles = StyleSheet.create({
   wrapper: {

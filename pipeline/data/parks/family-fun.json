@@ -1,0 +1,29 @@
+{
+  "id": "family-fun",
+  "name": "FamilyFun",
+  "formerNames": [],
+  "country": "IQ",
+  "countryName": "Iraq",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "FamilyFun was a family magazine published 8 times annually by Dotdash Meredith (formerly Meredith Corporation).",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/FamilyFun",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:32.267Z"
+}

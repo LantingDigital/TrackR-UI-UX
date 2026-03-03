@@ -1,0 +1,29 @@
+{
+  "id": "butlins-filey",
+  "name": "Butlin's Filey",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Filey Holiday Camp was a Butlin's holiday camp near Filey, North Yorkshire, England, built for Billy Butlin's holiday organisation.  Construction of the camp began in 1939.  From 1939 to 1945, the camp was used as a military training base, as RAF Hunmanby Moor.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Butlin's_Filey",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:37.109Z"
+}

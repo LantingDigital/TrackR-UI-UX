@@ -1,0 +1,29 @@
+{
+  "id": "parc-ast-rix",
+  "name": "Parc Astérix",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Plailly",
+  "latitude": 49.13444,
+  "longitude": -2.57028,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": null,
+  "owner": "Compagnie des Alpes",
+  "chain": null,
+  "website": "www.parcasterix.fr/en",
+  "coasterCount": 5,
+  "totalCoasterCount": 5,
+  "description": "Parc Astérix is a theme park in France based on the comic book series Asterix by Albert Uderzo and René Goscinny.  In 2023, the park welcomed over 2. 8 million visitors, making it the second most visited park in France behind Disneyland Paris and the eighth most visited park in Europe.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Oziris_tunnel.png",
+  "imageAttribution": "OzIris, one of the park's coasters",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parc_Ast%C3%A9rix",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:21.721Z"
+}

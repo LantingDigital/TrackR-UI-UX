@@ -1,0 +1,29 @@
+{
+  "id": "butlins-minehead",
+  "name": "Butlins Resort Minehead",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Minehead, Somerset, UK",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Butlins Resort Minehead is a holiday camp operated by Butlins, located in Minehead in Somerset, England.  It opened in 1962 and remains in use today.  It was known as Butlin's Minehead until 1987, and as Somerwest World from then until 1999, when it reopened as Butlins Minehead Resort.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Skyline_Pavilion%2C_Minehead%2C_Somerset.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Butlin's_Minehead",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:44.741Z"
+}

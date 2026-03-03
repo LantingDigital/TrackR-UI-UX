@@ -1,0 +1,29 @@
+{
+  "id": "parque-de-la-ciudad",
+  "name": "Parque de la Ciudad",
+  "formerNames": [],
+  "country": "AR",
+  "countryName": "Argentina",
+  "region": null,
+  "continent": "South America",
+  "city": "🇦🇷 Argentina, Villa Soldati, Buenos Aires",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "municipal website",
+  "coasterCount": 1,
+  "totalCoasterCount": 4,
+  "description": "The Parque de la Ciudad is a public park and former amusement park in the Villa Soldati neighborhood of Buenos Aires, Argentina.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Playa_Parque_Roca_(8413494877).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parque_de_la_Ciudad",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:47.293Z"
+}

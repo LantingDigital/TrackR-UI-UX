@@ -1,0 +1,29 @@
+{
+  "id": "beihai-park",
+  "name": "Beihai Park",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "Beijing, China",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Beijing Municipal Administration Center of Parks",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Beihai Park is a public park and former imperial garden immediately northwest of the Forbidden City in Beijing, China. \n\nFirst built in the 12th century, Beihai is among the largest of all surviving Chinese gardens and contains numerous historically important structures, palaces, and temples.  Once part of the Imperial City, it has been open to the public since 1925.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Beihai_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:56.055Z"
+}

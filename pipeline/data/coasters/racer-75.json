@@ -1,0 +1,62 @@
+{
+  "id": "racer-75",
+  "name": "Racer 75",
+  "formerNames": [
+    "Rebel Yell"
+  ],
+  "parkId": "kings-dominion",
+  "parkName": "Kings Dominion",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Virginia",
+  "continent": "North America",
+  "heightFt": null,
+  "heightM": null,
+  "speedMph": null,
+  "speedKmh": null,
+  "lengthFt": null,
+  "lengthM": null,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "Philadelphia Toboggan Coasters",
+  "designer": "John C. Allen",
+  "model": "Wooden",
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "description": "Racer 75 is a wooden racing roller coaster at Kings Dominion in Doswell, Virginia.  Designed by John C.  Allen, the ride opened with the park in 1975 as Rebel Yell.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/PKD-Rebel_Yell.jpg",
+  "imageAttribution": "Racer 75 lift hill when it was Rebel Yell in 2005",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Racer_75",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:14:39.973Z",
+  "dataQuality": "stub",
+  "searchTerms": [
+    "racer 75",
+    "rebel yell",
+    "kings dominion",
+    "philadelphia toboggan coasters",
+    "ptc",
+    "wooden",
+    "sit-down",
+    "virginia"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Philadelphia Toboggan Coasters"
+  },
+  "popularityScore": 54.4,
+  "popularityTier": "notable",
+  "popularityRank": 755
+}

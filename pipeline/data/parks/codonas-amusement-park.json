@@ -1,0 +1,29 @@
+{
+  "id": "codonas-amusement-park",
+  "name": "Codona's Amusement Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Aberdeen",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1970,
+  "yearClosed": null,
+  "owner": "Alfred Codona",
+  "chain": null,
+  "website": "http://www.codonas.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Codona's Amusement Park is an amusement park located in Aberdeen, Scotland.  Established by the Codona family in 1970, it continues to operate under family management. \n\nThe park is located on Beach Boulevard at Aberdeen Beach, adjacent to the Queens Links, on the coast of the North Sea.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Codonas_Logo.png",
+  "imageAttribution": "Most recent logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Codona's_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:27.202Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "six-flags-over-texas",
+  "name": "Six Flags Over Texas",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "Arlington",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1961,
+  "yearClosed": null,
+  "owner": "Texas Flags, Ltd. (51%)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 7,
+  "totalCoasterCount": 8,
+  "description": "Six Flags Over Texas is a 212-acre (86 ha) amusement park, in Arlington, Texas, east of Fort Worth and west of Dallas.  It is the first amusement park in the Six Flags chain, and features themed areas and attractions.  The park opened on August 5, 1961, after a year of construction and an initial investment of US$10 million by real estate developer Angus G.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ASFOT_Main_Park_Entrance.JPG",
+  "imageAttribution": "The park's main entrance in 2011",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Over_Texas",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:59.796Z"
+}

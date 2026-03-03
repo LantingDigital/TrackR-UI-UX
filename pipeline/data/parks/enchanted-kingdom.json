@@ -1,0 +1,29 @@
+{
+  "id": "enchanted-kingdom",
+  "name": "Enchanted Kingdom",
+  "formerNames": [],
+  "country": "PH",
+  "countryName": "Philippines",
+  "region": null,
+  "continent": "Asia",
+  "city": "San Lorenzo South, Santa Rosa",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1995,
+  "yearClosed": null,
+  "owner": "Enchanted Kingdom, Inc.",
+  "chain": null,
+  "website": "http://enchantedkingdom.ph/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Enchanted Kingdom (abbreviated as EK), is a theme park in the Philippines.  It is located along RSBS Boulevard (San Lorenzo Road) in Santa Rosa, Laguna.  It has a land area of 25 ha.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/EK-no-eldar.svg%0A%5B%5BFile%3AEnchanted_Kingdom_theme_park_(San_Lorenzo_Road%2C_Santa_Rosa%2C_Laguna)(2018-08-26).jpg%7C250px%5D%5D",
+  "imageAttribution": "The front gate of the theme park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Enchanted_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:30:36.942Z"
+}

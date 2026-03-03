@@ -1,0 +1,68 @@
+{
+  "articleTitle": "Booster Bike",
+  "introSection": "\n * Note: For 'Booster bicycle' see Electric bicycle\n\nBooster Bike is a steel roller coaster located at Toverland in the Netherlands. It is the prototype of a motorbike rollercoaster, built by Vekoma.",
+  "sections": [
+    {
+      "title": "Design and construction",
+      "content": "In 2003, Vekoma premiered the Motorbike Coaster at the IAAPA Expo. The reception was good, as it received the Award for \"Best Idea Euro Amusement Show 2004 – Paris\" at the Euro Amusement Show in Paris. The major difference with the normal sitdown rollercoaster is the positioning of the rider. Instead of the normal sitting seats, the rider takes place in a seat that is more leaning forward, like an actual motorbike. The rider can hold on to the 'steering wheel', and the rider is secured using a harness that pushes down on the back of the rider."
+    },
+    {
+      "title": "Ride layout",
+      "content": "The ride layout is Out and Back, characterized by the long, stretching launch and the hills parallel to the launch. The ride starts with an S-curve, after which the train will be stopped before the launch. When the train is launched to 75 km/h (46.6 mph), it takes a stretched hill, which is followed by a turn to the right and the horseshoe. Then the horizontal loop and a left turn follow. The last part consists of two hills. After those, the ride ends with a brake run and a corner left."
+    },
+    {
+      "title": "Similar rides",
+      "content": "After this motorbike coaster, two more were built. In Flamingoland, a custom model was built, with a different positioning of the helix parts."
+    },
+    {
+      "title": "Merchandise",
+      "content": "In July 2024, to promote the coaster's 20th anniversary, the park offered a handful of special items for sale. These included customized airbrushed motorcycle helmets for €1,495 each, plastic riding motorcycles for children at €94,95 each, and a selection of used coaster wheels, which are occasionally sold off by the park when in stock."
+    }
+  ],
+  "fullText": "\n * Note: For 'Booster bicycle' see Electric bicycle\n\nBooster Bike is a steel roller coaster located at Toverland in the Netherlands. It is the prototype of a motorbike rollercoaster, built by Vekoma.\n\nIn 2003, Vekoma premiered the Motorbike Coaster at the IAAPA Expo. The reception was good, as it received the Award for \"Best Idea Euro Amusement Show 2004 – Paris\" at the Euro Amusement Show in Paris. The major difference with the normal sitdown rollercoaster is the positioning of the rider. Instead of the normal sitting seats, the rider takes place in a seat that is more leaning forward, like an actual motorbike. The rider can hold on to the 'steering wheel', and the rider is secured using a harness that pushes down on the back of the rider.\n\nThe ride layout is Out and Back, characterized by the long, stretching launch and the hills parallel to the launch. The ride starts with an S-curve, after which the train will be stopped before the launch. When the train is launched to 75 km/h (46.6 mph), it takes a stretched hill, which is followed by a turn to the right and the horseshoe. Then the horizontal loop and a left turn follow. The last part consists of two hills. After those, the ride ends with a brake run and a corner left.\n\nAfter this motorbike coaster, two more were built. In Flamingoland, a custom model was built, with a different positioning of the helix parts.\n\nIn July 2024, to promote the coaster's 20th anniversary, the park offered a handful of special items for sale. These included customized airbrushed motorcycle helmets for €1,495 each, plastic riding motorcycles for children at €94,95 each, and a selection of used coaster wheels, which are occasionally sold off by the park when in stock.\n\n",
+  "categories": [
+    "Roller coasters in the Netherlands"
+  ],
+  "infoboxRaw": {
+    "name": "Booster Bike",
+    "image": "Booster-Bike.jpg",
+    "caption": "The horseshoes of Booster Bike",
+    "location": "Toverland",
+    "type2": "Motorbike",
+    "type3": "Launched",
+    "status": "Operating",
+    "opened": "July 27, 2004",
+    "year": "2004",
+    "manufacturer": "Vekoma",
+    "designer": "Vekoma",
+    "model": "Motorbike Coaster (600m)",
+    "track": "Out and Back",
+    "height_ft": "50",
+    "height_m": "15",
+    "length_ft": "1949",
+    "length_m": "594",
+    "speed_mph": "46.6",
+    "speed_km/h": "75",
+    "inversions": "0",
+    "duration": "1:08",
+    "acceleration": "\"0 to 46.6 mph (0 to 75 km/h) in 3 seconds\".",
+    "acceleration_from": "0",
+    "acceleration_mph": "46.6",
+    "acceleration_km/h": "75",
+    "acceleration_in": "3 seconds",
+    "gforce": "2.5",
+    "trains": "1",
+    "carspertrain": "8",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "restriction_in": "55",
+    "rcdb_number": "2747",
+    "custom_label_1": "Layout",
+    "custom_value_1": "[[Image:Layout boosterbike simple.gif|200px]]",
+    "coordinates": "51.3975°N, 5.98417°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Booster_Bike",
+  "wikiPageId": 28332429,
+  "fetchedAt": "2026-02-28T20:55:41.429Z",
+  "articleLength": 1730
+}

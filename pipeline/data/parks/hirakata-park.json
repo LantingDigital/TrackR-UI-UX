@@ -1,0 +1,29 @@
+{
+  "id": "hirakata-park",
+  "name": "Hirakata Park",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Hirakata Park (ひらかたパーク) is an amusement park in Hirakata, Osaka, Japan, nicknamed \"Hirapah\".  The park is managed by Keihan Leisure Service and is located on the Keihan line at Hirakata-kōen Station (枚方公園駅).  It takes advantage of its hilly landscape to site 43 attractions on 160000 sqm.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hirakata_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:50.612Z"
+}

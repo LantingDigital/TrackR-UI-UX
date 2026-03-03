@@ -1,0 +1,29 @@
+{
+  "id": "massachusetts-museum-of-contemporary-art",
+  "name": "Arnold Print Works",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Massachusetts",
+  "continent": "North America",
+  "city": "87 Marshall St., North Adams, Massachusetts",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "The Massachusetts Museum of Contemporary Art (MASS MoCA) is a museum within the converted Arnold Print Works factory building complex in North Adams, Massachusetts.  It is one of the largest centers for contemporary visual art and performing arts in the United States. \n\nBuilt by the Arnold Print Works, which operated on the site from 1860 to 1942, the complex was used by the Sprague Electric company before its conversion.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Arnold_Print_Works_(MASS_MoCA)_3.jpg",
+  "imageAttribution": "Buildings of the Arnold Print Works, now MASS MoCA, along a tributary of the Hoosic River (2012)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Massachusetts_Museum_of_Contemporary_Art",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:55.472Z"
+}

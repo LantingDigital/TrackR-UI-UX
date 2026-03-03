@@ -1,0 +1,29 @@
+{
+  "id": "house-of-frankenstein",
+  "name": "House of Frankenstein",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": null,
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "House of Frankenstein may refer to:\n\n\n * House of Frankenstein (film), a 1944 horror film produced by Universal Studios\n * House of Frankenstein (miniseries), a 1997 television miniseries featuring characters from the Universal Studios horror films\n * House of Franckenstein, the German noble family",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/House_of_Frankenstein",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:24:24.632Z"
+}

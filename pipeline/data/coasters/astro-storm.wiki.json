@@ -1,0 +1,52 @@
+{
+  "articleTitle": "Astro Storm",
+  "introSection": "Astro Storm is an enclosed steel roller coaster at Brean Leisure Park in Brean, England. It was built by Zierer and opened on 23 July 2011. It was originally located at Pleasure Beach Resort (better known as Blackpool Pleasure Beach) in Blackpool, England, where it was known as Space Invader 2.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Space Invader opened at Pleasure Beach Resort on 21 August 1984, and was the park's fourth steel roller coaster. In 2000, a young boy died on the ride after reportedly unbuckling his seatbelt in a panic. The ride was refurbished by KumbaK, and reopened in 2004 as Space Invader 2. In September 2008, the ride closed following a failed evacuation during operating hours. It remained standing but not operating from 2009 to 2010. It was removed in June 2010, and announced to have been sold to Brean Leisure Park in July 2010. The ride was refurbished and renamed Astro Storm prior to its opening in 2011."
+    },
+    {
+      "title": "Ride experience",
+      "content": "Upon dispatch from the station, the car makes a 90° turn to the right and is carried to the top of a chain lift hill. The car then descends an 18 metre (60 ft) drop at an incline angle of 36°. The car then traverses several drops, banked turns and helixes, before entering the brake run and returning to the station. The ride has top speeds of 64 km/h (40 mph) and is 450 metres (1,490 ft) long. A full ride experience on Astro Storm lasts one minute and 35 seconds.\n\nAstro Storm operates with single car trains. Riders are arranged in three rows for a total of three riders per car, and are restrained by a lap bar. When it operated at Pleasure Beach Resort, the ride used four-person cars, and riders were restrained by a seatbelt."
+    },
+    {
+      "title": "Incident",
+      "content": "On 21 July 2000, 11-year-old Christopher Sharett fell out of his ride vehicle after he panicked and unbuckled his seatbelt, before being hit by another cart, which killed him. Authorities ruled his death as accidental."
+    }
+  ],
+  "fullText": "Astro Storm is an enclosed steel roller coaster at Brean Leisure Park in Brean, England. It was built by Zierer and opened on 23 July 2011. It was originally located at Pleasure Beach Resort (better known as Blackpool Pleasure Beach) in Blackpool, England, where it was known as Space Invader 2.\n\nSpace Invader opened at Pleasure Beach Resort on 21 August 1984, and was the park's fourth steel roller coaster. In 2000, a young boy died on the ride after reportedly unbuckling his seatbelt in a panic. The ride was refurbished by KumbaK, and reopened in 2004 as Space Invader 2. In September 2008, the ride closed following a failed evacuation during operating hours. It remained standing but not operating from 2009 to 2010. It was removed in June 2010, and announced to have been sold to Brean Leisure Park in July 2010. The ride was refurbished and renamed Astro Storm prior to its opening in 2011.\n\nUpon dispatch from the station, the car makes a 90° turn to the right and is carried to the top of a chain lift hill. The car then descends an 18 metre (60 ft) drop at an incline angle of 36°. The car then traverses several drops, banked turns and helixes, before entering the brake run and returning to the station. The ride has top speeds of 64 km/h (40 mph) and is 450 metres (1,490 ft) long. A full ride experience on Astro Storm lasts one minute and 35 seconds.\n\nAstro Storm operates with single car trains. Riders are arranged in three rows for a total of three riders per car, and are restrained by a lap bar. When it operated at Pleasure Beach Resort, the ride used four-person cars, and riders were restrained by a seatbelt.\n\nOn 21 July 2000, 11-year-old Christopher Sharett fell out of his ride vehicle after he panicked and unbuckled his seatbelt, before being hit by another cart, which killed him. Authorities ruled his death as accidental.\n\n",
+  "categories": [
+    "Blackpool Pleasure Beach",
+    "Roller coasters opened in 1984",
+    "Roller coasters in the United Kingdom",
+    "Amusement rides closed in 2008"
+  ],
+  "infoboxRaw": {
+    "name": "Astro Storm",
+    "image": "Space Invader 2 (Pleasure Beach, Blackpool).jpg",
+    "caption": "An aerial shot of Space Invader 2 in 2007 at Pleasure Beach Resort",
+    "location": "Brean Leisure Park",
+    "type2": "Enclosed",
+    "status": "Open",
+    "opened": "July 23, 2011",
+    "year": "2011",
+    "manufacturer": "Zierer",
+    "designer": "Werner Stengel",
+    "model": "Four Man Bob",
+    "lift": "Chain lift hill",
+    "drop_ft": "60",
+    "length_ft": "1490",
+    "speed_mph": "40",
+    "inversions": "0",
+    "duration": "1:35",
+    "angle": "36",
+    "gforce": "3.0",
+    "restriction_in": "48",
+    "location_rcdb_number": "9283"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Astro_Storm",
+  "wikiPageId": 12618437,
+  "fetchedAt": "2026-02-28T20:43:16.436Z",
+  "articleLength": 1857
+}

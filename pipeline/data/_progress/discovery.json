@@ -1,0 +1,4350 @@
+{
+  "countries": {
+    "US": {
+      "status": "complete",
+      "regions": {
+        "Alabama": {
+          "category": "Category:Roller coasters in Alabama",
+          "articles": [
+            {
+              "title": "Rampage (roller coaster)",
+              "pageid": 15697387
+            },
+            {
+              "title": "Cannonball Run (roller coaster)",
+              "pageid": 22691366
+            },
+            {
+              "title": "Recoil (Wonderla Hyderabad)",
+              "pageid": 15697709
+            }
+          ]
+        },
+        "Arkansas": {
+          "category": "Category:Roller coasters in Arkansas",
+          "articles": [
+            {
+              "title": "Arkansas Twister",
+              "pageid": 6326577
+            },
+            {
+              "title": "The Gauntlet (roller coaster)",
+              "pageid": 64229706
+            },
+            {
+              "title": "X-Coaster",
+              "pageid": 35998701
+            }
+          ]
+        },
+        "California": {
+          "category": "Category:Roller coasters in California",
+          "articles": [
+            {
+              "title": "Apocalypse: The Ride",
+              "pageid": 20626963
+            },
+            {
+              "title": "Batman: The Ride",
+              "pageid": 1761700
+            },
+            {
+              "title": "Boomerang: Coast to Coaster",
+              "pageid": 5181481
+            },
+            {
+              "title": "Coast Rider",
+              "pageid": 37514821
+            },
+            {
+              "title": "Demon (roller coaster)",
+              "pageid": 4057980
+            },
+            {
+              "title": "Electric Eel (roller coaster)",
+              "pageid": 67070186
+            },
+            {
+              "title": "Emperor (roller coaster)",
+              "pageid": 60041071
+            },
+            {
+              "title": "Fast & Furious: Hollywood Drift",
+              "pageid": 76991787
+            },
+            {
+              "title": "The Flash: Vertical Velocity (Six Flags Discovery Kingdom)",
+              "pageid": 5656689
+            },
+            {
+              "title": "Flight Deck (California's Great America)",
+              "pageid": 5231231
+            },
+            {
+              "title": "Full Throttle (roller coaster)",
+              "pageid": 35569660
+            },
+            {
+              "title": "GhostRider (roller coaster)",
+              "pageid": 1796138
+            },
+            {
+              "title": "Giant Dipper (Santa Cruz Beach Boardwalk)",
+              "pageid": 3732914
+            },
+            {
+              "title": "Gold Striker",
+              "pageid": 35609408
+            },
+            {
+              "title": "Goliath (Six Flags Magic Mountain)",
+              "pageid": 4881144
+            },
+            {
+              "title": "Goofy's Sky School",
+              "pageid": 29705106
+            },
+            {
+              "title": "Green Lantern: First Flight (roller coaster)",
+              "pageid": 29287904
+            },
+            {
+              "title": "The Grizzly",
+              "pageid": 34791224
+            },
+            {
+              "title": "HangTime (roller coaster)",
+              "pageid": 54931274
+            },
+            {
+              "title": "Incredicoaster",
+              "pageid": 1037300
+            },
+            {
+              "title": "Jaguar!",
+              "pageid": 9572288
+            },
+            {
+              "title": "The Joker (Six Flags Discovery Kingdom)",
+              "pageid": 47713019
+            },
+            {
+              "title": "Lego Technic Test Track",
+              "pageid": 35118524
+            },
+            {
+              "title": "Magic Flyer",
+              "pageid": 4881279
+            },
+            {
+              "title": "Manta (SeaWorld San Diego)",
+              "pageid": 30815250
+            },
+            {
+              "title": "Medusa (Six Flags Discovery Kingdom)",
+              "pageid": 9015199
+            },
+            {
+              "title": "MonteZOOMa: The Forbidden Fortress",
+              "pageid": 2525851
+            },
+            {
+              "title": "Ninja (Six Flags Magic Mountain)",
+              "pageid": 4881446
+            },
+            {
+              "title": "Patriot (California's Great America)",
+              "pageid": 5943526
+            },
+            {
+              "title": "Pony Express (roller coaster)",
+              "pageid": 15540388
+            },
+            {
+              "title": "RailBlazer",
+              "pageid": 54924135
+            },
+            {
+              "title": "Revenge of the Mummy",
+              "pageid": 37660297
+            },
+            {
+              "title": "The New Revolution",
+              "pageid": 4881522
+            },
+            {
+              "title": "Rewind Racers",
+              "pageid": 66673135
+            },
+            {
+              "title": "The Riddler's Revenge",
+              "pageid": 2320334
+            },
+            {
+              "title": "Road Runner Express (Six Flags Magic Mountain)",
+              "pageid": 28220770
+            },
+            {
+              "title": "Santa Monica West Coaster",
+              "pageid": 61748450
+            },
+            {
+              "title": "Scream (roller coaster)",
+              "pageid": 4881592
+            },
+            {
+              "title": "Sierra Sidewinder",
+              "pageid": 13280053
+            },
+            {
+              "title": "Silver Bullet (Knott's Berry Farm)",
+              "pageid": 8268129
+            },
+            {
+              "title": "Super Grover's Box Car Derby",
+              "pageid": 47421460
+            },
+            {
+              "title": "Superman: Escape from Krypton",
+              "pageid": 2228330
+            },
+            {
+              "title": "Superman: Ultimate Flight (Six Flags Discovery Kingdom)",
+              "pageid": 32942031
+            },
+            {
+              "title": "Tatsu",
+              "pageid": 3838565
+            },
+            {
+              "title": "Twisted Colossus",
+              "pageid": 4356521
+            },
+            {
+              "title": "Undertow (roller coaster)",
+              "pageid": 36843884
+            },
+            {
+              "title": "Viper (Six Flags Magic Mountain)",
+              "pageid": 4881648
+            },
+            {
+              "title": "West Coast Racers",
+              "pageid": 58332156
+            },
+            {
+              "title": "Wonder Woman Flight of Courage",
+              "pageid": 69081745
+            },
+            {
+              "title": "Woodstock's Express (California's Great America)",
+              "pageid": 48880060
+            },
+            {
+              "title": "X2 (roller coaster)",
+              "pageid": 2597060
+            },
+            {
+              "title": "Xcelerator",
+              "pageid": 4743091
+            },
+            {
+              "title": "Big Thunder Mountain Railroad",
+              "pageid": 1313394
+            },
+            {
+              "title": "Big Thunder Mountain Railroad (Disneyland)",
+              "pageid": 30816035
+            },
+            {
+              "title": "Matterhorn Bobsleds",
+              "pageid": 1203925
+            },
+            {
+              "title": "Space Mountain (Disneyland)",
+              "pageid": 12996321
+            },
+            {
+              "title": "Batman The Escape",
+              "pageid": 12767582
+            },
+            {
+              "title": "Boomerang (roller coaster)",
+              "pageid": 2616376
+            },
+            {
+              "title": "The Caution Zone",
+              "pageid": 53625893
+            },
+            {
+              "title": "Colossus (Six Flags Magic Mountain)",
+              "pageid": 43682574
+            },
+            {
+              "title": "Corkscrew (Knott's Berry Farm)",
+              "pageid": 8191647
+            },
+            {
+              "title": "Déjà Vu (roller coaster)",
+              "pageid": 32805740
+            },
+            {
+              "title": "Flashback (Six Flags Magic Mountain)",
+              "pageid": 4880892
+            },
+            {
+              "title": "Greased Lightnin' (Six Flags Discovery Kingdom)",
+              "pageid": 5655541
+            },
+            {
+              "title": "Gulf Coaster",
+              "pageid": 4771661
+            },
+            {
+              "title": "Invertigo (California's Great America)",
+              "pageid": 32937676
+            },
+            {
+              "title": "Pandemonium (roller coaster)",
+              "pageid": 31341317
+            },
+            {
+              "title": "Psyclone (roller coaster)",
+              "pageid": 2993350
+            },
+            {
+              "title": "Roar (roller coaster)",
+              "pageid": 5468518
+            },
+            {
+              "title": "Tsunami (roller coaster)",
+              "pageid": 10487883
+            },
+            {
+              "title": "La Vibora",
+              "pageid": 5842938
+            },
+            {
+              "title": "Vortex (Great America)",
+              "pageid": 14624858
+            },
+            {
+              "title": "Whizzer (roller coaster)",
+              "pageid": 2178454
+            },
+            {
+              "title": "Windjammer Surf Racers",
+              "pageid": 6587139
+            }
+          ]
+        },
+        "Colorado": {
+          "category": "Category:Roller coasters in Colorado",
+          "articles": [
+            {
+              "title": "Boomerang: Coast to Coaster",
+              "pageid": 5181481
+            },
+            {
+              "title": "Cliffhanger (Colorado roller coaster)",
+              "pageid": 34932033
+            },
+            {
+              "title": "Cyclone (Lakeside Amusement Park)",
+              "pageid": 61684080
+            },
+            {
+              "title": "Defiance (roller coaster)",
+              "pageid": 68409067
+            },
+            {
+              "title": "Half Pipe (roller coaster)",
+              "pageid": 5668065
+            },
+            {
+              "title": "Lakeside Amusement Park",
+              "pageid": 1164263
+            },
+            {
+              "title": "Sidewinder (Elitch Gardens)",
+              "pageid": 5668421
+            },
+            {
+              "title": "Twister III: Storm Chaser",
+              "pageid": 5668609
+            },
+            {
+              "title": "Wild West Express Coaster",
+              "pageid": 35039730
+            },
+            {
+              "title": "Cactus Coaster",
+              "pageid": 39178398
+            },
+            {
+              "title": "Flying Coaster (Elitch Gardens)",
+              "pageid": 17742663
+            },
+            {
+              "title": "Wild Kitty",
+              "pageid": 5667831
+            }
+          ]
+        },
+        "Connecticut": {
+          "category": "Category:Roller coasters in Connecticut",
+          "articles": [
+            {
+              "title": "Boulder Dash (roller coaster)",
+              "pageid": 6237405
+            },
+            {
+              "title": "Wildcat (Lake Compounce)",
+              "pageid": 6237424
+            },
+            {
+              "title": "Wooden Warrior",
+              "pageid": 39488931
+            },
+            {
+              "title": "Zoomerang (Lake Compounce)",
+              "pageid": 6237421
+            },
+            {
+              "title": "Thunderbolt (Savin Rock)",
+              "pageid": 54215277
+            }
+          ]
+        },
+        "Florida": {
+          "category": "Category:Roller coasters in Florida",
+          "articles": [
+            {
+              "title": "Arkansas Twister",
+              "pageid": 6326577
+            },
+            {
+              "title": "Cheetah Hunt",
+              "pageid": 29182483
+            },
+            {
+              "title": "Cobra's Curse",
+              "pageid": 46823589
+            },
+            {
+              "title": "Fast & Furious: Hollywood Drift",
+              "pageid": 76991787
+            },
+            {
+              "title": "Flight of the Hippogriff",
+              "pageid": 24370101
+            },
+            {
+              "title": "Freedom Flyer",
+              "pageid": 44356469
+            },
+            {
+              "title": "Hagrid's Magical Creatures Motorbike Adventure",
+              "pageid": 55720038
+            },
+            {
+              "title": "Harry Potter and the Escape from Gringotts",
+              "pageid": 39424794
+            },
+            {
+              "title": "Hollywood Rip Ride Rockit",
+              "pageid": 16404790
+            },
+            {
+              "title": "Ice Breaker (roller coaster)",
+              "pageid": 63958280
+            },
+            {
+              "title": "The Incredible Hulk Coaster",
+              "pageid": 3298053
+            },
+            {
+              "title": "Journey to Atlantis",
+              "pageid": 1892647
+            },
+            {
+              "title": "Kraken (roller coaster)",
+              "pageid": 4436117
+            },
+            {
+              "title": "Kumba (roller coaster)",
+              "pageid": 2479481
+            },
+            {
+              "title": "Lego Technic Test Track",
+              "pageid": 35118524
+            },
+            {
+              "title": "Mako (roller coaster)",
+              "pageid": 46814498
+            },
+            {
+              "title": "Manta (SeaWorld Orlando)",
+              "pageid": 17671997
+            },
+            {
+              "title": "Mine Blower",
+              "pageid": 53661108
+            },
+            {
+              "title": "Montu (roller coaster)",
+              "pageid": 3791752
+            },
+            {
+              "title": "Phoenix Rising (roller coaster)",
+              "pageid": 77578636
+            },
+            {
+              "title": "Pipeline: The Surf Coaster",
+              "pageid": 72043114
+            },
+            {
+              "title": "Revenge of the Mummy",
+              "pageid": 37660297
+            },
+            {
+              "title": "Sand Serpent",
+              "pageid": 6144298
+            },
+            {
+              "title": "Scorpion (roller coaster)",
+              "pageid": 6140642
+            },
+            {
+              "title": "Seven Dwarfs Mine Train",
+              "pageid": 31215824
+            },
+            {
+              "title": "SheiKra",
+              "pageid": 30864813
+            },
+            {
+              "title": "Super Grover's Box Car Derby",
+              "pageid": 47421460
+            },
+            {
+              "title": "Tigris (roller coaster)",
+              "pageid": 59465959
+            },
+            {
+              "title": "Tron Lightcycle Power Run",
+              "pageid": 49344501
+            },
+            {
+              "title": "VelociCoaster",
+              "pageid": 66244940
+            },
+            {
+              "title": "White Lightning (roller coaster)",
+              "pageid": 40008591
+            },
+            {
+              "title": "Afterburner (Fun Spot)",
+              "pageid": 5925056
+            },
+            {
+              "title": "Dragon Challenge",
+              "pageid": 64832698
+            },
+            {
+              "title": "Dueling Dragons",
+              "pageid": 1884484
+            },
+            {
+              "title": "Flying Unicorn",
+              "pageid": 3661773
+            },
+            {
+              "title": "Primeval Whirl",
+              "pageid": 1955952
+            },
+            {
+              "title": "Python (Busch Gardens Tampa Bay)",
+              "pageid": 6548215
+            },
+            {
+              "title": "Woody Woodpecker's Nuthouse Coaster",
+              "pageid": 27836785
+            },
+            {
+              "title": "Guardians of the Galaxy: Cosmic Rewind",
+              "pageid": 54871504
+            },
+            {
+              "title": "Air Grover",
+              "pageid": 26165970
+            },
+            {
+              "title": "Iron Gwazi",
+              "pageid": 4652926
+            }
+          ]
+        },
+        "Georgia": {
+          "category": "Category:Roller coasters in Georgia (U.S. state)",
+          "articles": [
+            {
+              "title": "ArieForce One",
+              "pageid": 69284479
+            },
+            {
+              "title": "Batman: The Ride",
+              "pageid": 1761700
+            },
+            {
+              "title": "Blue Hawk (roller coaster)",
+              "pageid": 5671393
+            },
+            {
+              "title": "Cannon Ball (roller coaster)",
+              "pageid": 20172177
+            },
+            {
+              "title": "Dahlonega Mine Train",
+              "pageid": 5681867
+            },
+            {
+              "title": "Dare Devil Dive",
+              "pageid": 28669683
+            },
+            {
+              "title": "Georgia Scorcher",
+              "pageid": 4112883
+            },
+            {
+              "title": "Georgia Gold Rusher",
+              "pageid": 77506064
+            },
+            {
+              "title": "Goliath (Six Flags Over Georgia)",
+              "pageid": 4872674
+            },
+            {
+              "title": "Great American Scream Machine (Six Flags Over Georgia)",
+              "pageid": 5552138
+            },
+            {
+              "title": "The Joker Funhouse Coaster",
+              "pageid": 5682335
+            },
+            {
+              "title": "Kid Flash Cosmic Coaster",
+              "pageid": 74317473
+            },
+            {
+              "title": "The Riddler Mindbender",
+              "pageid": 5682113
+            },
+            {
+              "title": "Superman: Ultimate Flight",
+              "pageid": 4218376
+            },
+            {
+              "title": "Swamp Thing (Wild Adventures)",
+              "pageid": 27037076
+            },
+            {
+              "title": "Twisted Cyclone",
+              "pageid": 3506148
+            },
+            {
+              "title": "Twisted Typhoon",
+              "pageid": 61820008
+            },
+            {
+              "title": "Cheetah (Wild Adventures)",
+              "pageid": 24135466
+            },
+            {
+              "title": "Déjà Vu (roller coaster)",
+              "pageid": 32805740
+            },
+            {
+              "title": "Flashback (Six Flags Magic Mountain)",
+              "pageid": 4880892
+            }
+          ]
+        },
+        "Idaho": {
+          "category": "Category:Roller coasters in Idaho",
+          "articles": [
+            {
+              "title": "Corkscrew (Silverwood)",
+              "pageid": 8191742
+            },
+            {
+              "title": "Stunt Pilot (roller coaster)",
+              "pageid": 65979055
+            },
+            {
+              "title": "Timber Terror",
+              "pageid": 23472000
+            },
+            {
+              "title": "Tremors (roller coaster)",
+              "pageid": 23471861
+            }
+          ]
+        },
+        "Illinois": {
+          "category": "Category:Roller coasters in Illinois",
+          "articles": [
+            {
+              "title": "American Eagle (roller coaster)",
+              "pageid": 4631819
+            },
+            {
+              "title": "Batman: The Ride",
+              "pageid": 1761700
+            },
+            {
+              "title": "The Dark Knight Coaster",
+              "pageid": 33865294
+            },
+            {
+              "title": "Demon (roller coaster)",
+              "pageid": 4057980
+            },
+            {
+              "title": "The Flash: Vertical Velocity (Six Flags Great America)",
+              "pageid": 5588211
+            },
+            {
+              "title": "The Joker (Six Flags Great America)",
+              "pageid": 68871549
+            },
+            {
+              "title": "Little Dipper (Six Flags Great America)",
+              "pageid": 25201999
+            },
+            {
+              "title": "Maxx Force",
+              "pageid": 58332219
+            },
+            {
+              "title": "Ragin' Cajun (roller coaster)",
+              "pageid": 5577297
+            },
+            {
+              "title": "Raging Bull (roller coaster)",
+              "pageid": 2185378
+            },
+            {
+              "title": "Sprocket Rockets",
+              "pageid": 5577878
+            },
+            {
+              "title": "Superman: Ultimate Flight",
+              "pageid": 4218376
+            },
+            {
+              "title": "Viper (Six Flags Great America)",
+              "pageid": 5578145
+            },
+            {
+              "title": "Whizzer (roller coaster)",
+              "pageid": 2178454
+            },
+            {
+              "title": "Wrath of Rakshasa",
+              "pageid": 77630223
+            },
+            {
+              "title": "X-Flight",
+              "pageid": 32942101
+            },
+            {
+              "title": "The Bobs (roller coaster)",
+              "pageid": 2348637
+            },
+            {
+              "title": "Déjà Vu (roller coaster)",
+              "pageid": 32805740
+            },
+            {
+              "title": "Gulf Coaster",
+              "pageid": 4771661
+            },
+            {
+              "title": "Iron Wolf (roller coaster)",
+              "pageid": 32994253
+            },
+            {
+              "title": "Jetstream (roller coaster)",
+              "pageid": 7011847
+            },
+            {
+              "title": "Shockwave (Six Flags Great America)",
+              "pageid": 5850933
+            }
+          ]
+        },
+        "Indiana": {
+          "category": "Category:Roller coasters in Indiana",
+          "articles": [
+            {
+              "title": "Afterburner (Fun Spot)",
+              "pageid": 5925056
+            },
+            {
+              "title": "Cornball Express",
+              "pageid": 12944093
+            },
+            {
+              "title": "Dragon Wagon (Indiana Beach)",
+              "pageid": 41924988
+            },
+            {
+              "title": "Good Gravy! (roller coaster)",
+              "pageid": 78513619
+            },
+            {
+              "title": "Hoosier Hurricane",
+              "pageid": 12951176
+            },
+            {
+              "title": "The Howler",
+              "pageid": 8520331
+            },
+            {
+              "title": "The Legend (roller coaster)",
+              "pageid": 8519731
+            },
+            {
+              "title": "Lost Coaster of Superstition Mountain",
+              "pageid": 18753014
+            },
+            {
+              "title": "Raven (roller coaster)",
+              "pageid": 5504428
+            },
+            {
+              "title": "Steel Hawg",
+              "pageid": 14782309
+            },
+            {
+              "title": "Thunderbird (Holiday World)",
+              "pageid": 43388951
+            },
+            {
+              "title": "Tig'rr Coaster",
+              "pageid": 21862982
+            },
+            {
+              "title": "The Voyage (roller coaster)",
+              "pageid": 4819031
+            }
+          ]
+        },
+        "Iowa": {
+          "category": "Category:Roller coasters in Iowa",
+          "articles": [
+            {
+              "title": "Dragon Slayer (roller coaster)",
+              "pageid": 66067361
+            },
+            {
+              "title": "Fire Runner (roller coaster)",
+              "pageid": 81939831
+            },
+            {
+              "title": "Matugani",
+              "pageid": 13214312
+            },
+            {
+              "title": "The Monster (Adventureland)",
+              "pageid": 47204379
+            },
+            {
+              "title": "Outlaw (roller coaster)",
+              "pageid": 5274017
+            },
+            {
+              "title": "Tornado (Adventureland)",
+              "pageid": 4989270
+            },
+            {
+              "title": "Underground (roller coaster)",
+              "pageid": 54553997
+            },
+            {
+              "title": "Dragon (Adventureland)",
+              "pageid": 5159604
+            }
+          ]
+        },
+        "Kentucky": {
+          "category": "Category:Roller coasters in Kentucky",
+          "articles": [
+            {
+              "title": "Hollyhock and Roll",
+              "pageid": 5450691
+            },
+            {
+              "title": "Kentucky Flyer",
+              "pageid": 66299971
+            },
+            {
+              "title": "Kentucky Rumbler",
+              "pageid": 5960740
+            },
+            {
+              "title": "Lightning Run",
+              "pageid": 43200045
+            },
+            {
+              "title": "T3 (roller coaster)",
+              "pageid": 5451104
+            },
+            {
+              "title": "Wild Mouse (Beech Bend Park)",
+              "pageid": 45386795
+            },
+            {
+              "title": "Wind Chaser",
+              "pageid": 5451844
+            },
+            {
+              "title": "Woodland Run",
+              "pageid": 5451413
+            },
+            {
+              "title": "Chang (roller coaster)",
+              "pageid": 28841085
+            },
+            {
+              "title": "Road Runner Express (Six Flags Kentucky Kingdom)",
+              "pageid": 30332200
+            },
+            {
+              "title": "T2 (roller coaster)",
+              "pageid": 45012248
+            }
+          ]
+        },
+        "Louisiana": {
+          "category": "Category:Roller coasters in Louisiana",
+          "articles": [
+            {
+              "title": "The Jester (roller coaster)",
+              "pageid": 5870186
+            },
+            {
+              "title": "Zydeco Scream",
+              "pageid": 28262458
+            },
+            {
+              "title": "Batman: The Ride",
+              "pageid": 1761700
+            },
+            {
+              "title": "Mega Zeph",
+              "pageid": 24156320
+            },
+            {
+              "title": "Muskrat Scrambler",
+              "pageid": 28262215
+            },
+            {
+              "title": "Road Runner Express (Six Flags New Orleans)",
+              "pageid": 28133193
+            }
+          ]
+        },
+        "Maine": {
+          "category": "Category:Roller coasters in Maine",
+          "articles": [
+            {
+              "title": "Excalibur (Funtown Splashtown USA)",
+              "pageid": 7232601
+            }
+          ]
+        },
+        "Maryland": {
+          "category": "Category:Roller coasters in Maryland",
+          "articles": [
+            {
+              "title": "Batwing (roller coaster)",
+              "pageid": 5466087
+            },
+            {
+              "title": "Firebird (roller coaster)",
+              "pageid": 3593478
+            },
+            {
+              "title": "The Joker's Jinx",
+              "pageid": 5466872
+            },
+            {
+              "title": "Ragin' Cajun (roller coaster)",
+              "pageid": 5577297
+            },
+            {
+              "title": "Roar (roller coaster)",
+              "pageid": 5468518
+            },
+            {
+              "title": "Ride of Steel",
+              "pageid": 945407
+            },
+            {
+              "title": "The Wild One (roller coaster)",
+              "pageid": 5479098
+            },
+            {
+              "title": "Lightnin' Loops",
+              "pageid": 12848016
+            },
+            {
+              "title": "Two Face: The Flip Side",
+              "pageid": 5469094
+            },
+            {
+              "title": "Whirl Pool Dips",
+              "pageid": 43252806
+            }
+          ]
+        },
+        "Massachusetts": {
+          "category": "Category:Roller coasters in Massachusetts",
+          "articles": [
+            {
+              "title": "Comet (Lincoln Park)",
+              "pageid": 3126511
+            },
+            {
+              "title": "Flyer Comet (Whalom Park)",
+              "pageid": 8137188
+            },
+            {
+              "title": "Gotham City Gauntlet: Escape from Arkham Asylum",
+              "pageid": 5453378
+            },
+            {
+              "title": "The Joker (Six Flags New England)",
+              "pageid": 68871560
+            },
+            {
+              "title": "Pandemonium (roller coaster)",
+              "pageid": 31341317
+            },
+            {
+              "title": "Quantum Accelerator (roller coaster)",
+              "pageid": 77639321
+            },
+            {
+              "title": "Superman The Ride",
+              "pageid": 14772806
+            },
+            {
+              "title": "Thunderbolt (Six Flags New England)",
+              "pageid": 5249206
+            },
+            {
+              "title": "Wicked Cyclone",
+              "pageid": 5249792
+            },
+            {
+              "title": "Cyclone (Revere Beach)",
+              "pageid": 28078728
+            },
+            {
+              "title": "Cyclone (Six Flags New England)",
+              "pageid": 43680615
+            },
+            {
+              "title": "The Dark Knight Coaster",
+              "pageid": 33865294
+            },
+            {
+              "title": "Derby Racer",
+              "pageid": 27902439
+            },
+            {
+              "title": "Goliath (Six Flags New England)",
+              "pageid": 55940947
+            },
+            {
+              "title": "Lightning (Revere Beach)",
+              "pageid": 28224810
+            },
+            {
+              "title": "The Wild One (roller coaster)",
+              "pageid": 5479098
+            }
+          ]
+        },
+        "Michigan": {
+          "category": "Category:Roller coasters in Michigan",
+          "articles": [
+            {
+              "title": "Corkscrew (Michigan's Adventure)",
+              "pageid": 15391257
+            },
+            {
+              "title": "Mad Mouse (Michigan's Adventure)",
+              "pageid": 15729560
+            },
+            {
+              "title": "Shivering Timbers",
+              "pageid": 14446769
+            },
+            {
+              "title": "Thunderhawk (Michigan's Adventure)",
+              "pageid": 6514196
+            },
+            {
+              "title": "Wolverine Wildcat",
+              "pageid": 15723670
+            },
+            {
+              "title": "Woodstock Express (Michigan's Adventure)",
+              "pageid": 15724219
+            },
+            {
+              "title": "Zach's Zoomer",
+              "pageid": 15817683
+            }
+          ]
+        },
+        "Minnesota": {
+          "category": "Category:Roller coasters in Minnesota",
+          "articles": [
+            {
+              "title": "Corkscrew (Valleyfair)",
+              "pageid": 5681661
+            },
+            {
+              "title": "Excalibur (Valleyfair)",
+              "pageid": 11804554
+            },
+            {
+              "title": "Fairly Odd Coaster",
+              "pageid": 9102831
+            },
+            {
+              "title": "High Roller (Valleyfair)",
+              "pageid": 11804390
+            },
+            {
+              "title": "Mad Mouse (Valleyfair)",
+              "pageid": 51562820
+            },
+            {
+              "title": "Pepsi Orange Streak",
+              "pageid": 14759404
+            },
+            {
+              "title": "Renegade (roller coaster)",
+              "pageid": 7096343
+            },
+            {
+              "title": "SpongeBob SquarePants Rock Bottom Plunge",
+              "pageid": 14183838
+            },
+            {
+              "title": "Steel Venom (Valleyfair)",
+              "pageid": 5866681
+            },
+            {
+              "title": "Wild Thing (Valleyfair)",
+              "pageid": 2095186
+            },
+            {
+              "title": "Mild Thing",
+              "pageid": 5815591
+            }
+          ]
+        },
+        "Missouri": {
+          "category": "Category:Roller coasters in Missouri",
+          "articles": [
+            {
+              "title": "American Thunder (roller coaster)",
+              "pageid": 13457078
+            },
+            {
+              "title": "Batman: The Ride",
+              "pageid": 1761700
+            },
+            {
+              "title": "Boomerang (Six Flags St. Louis)",
+              "pageid": 8777747
+            },
+            {
+              "title": "The Boss (roller coaster)",
+              "pageid": 5180139
+            },
+            {
+              "title": "Cosmic Coaster (Worlds of Fun)",
+              "pageid": 5708991
+            },
+            {
+              "title": "Fire in the Hole (1972 roller coaster)",
+              "pageid": 7712713
+            },
+            {
+              "title": "Fire in the Hole (2024 roller coaster)",
+              "pageid": 75690312
+            },
+            {
+              "title": "Grand Exposition Coaster",
+              "pageid": 7696721
+            },
+            {
+              "title": "Mamba (roller coaster)",
+              "pageid": 2616343
+            },
+            {
+              "title": "Mr. Freeze (roller coaster)",
+              "pageid": 32156860
+            },
+            {
+              "title": "Ninja (Six Flags St. Louis)",
+              "pageid": 5438547
+            },
+            {
+              "title": "Outlaw Run",
+              "pageid": 36674829
+            },
+            {
+              "title": "Pandemonium (roller coaster)",
+              "pageid": 31341317
+            },
+            {
+              "title": "Patriot (Worlds of Fun)",
+              "pageid": 3474593
+            },
+            {
+              "title": "Powder Keg: A Blast into the Wilderness",
+              "pageid": 7700398
+            },
+            {
+              "title": "Prowler (roller coaster)",
+              "pageid": 19141237
+            },
+            {
+              "title": "River King Mine Train",
+              "pageid": 5438995
+            },
+            {
+              "title": "Screamin' Eagle",
+              "pageid": 4748707
+            },
+            {
+              "title": "Spinning Dragons",
+              "pageid": 2616429
+            },
+            {
+              "title": "Thunderation",
+              "pageid": 7696979
+            },
+            {
+              "title": "Timber Wolf (roller coaster)",
+              "pageid": 2616210
+            },
+            {
+              "title": "Time Traveler (roller coaster)",
+              "pageid": 54954172
+            },
+            {
+              "title": "Wildfire (Silver Dollar City)",
+              "pageid": 7704284
+            },
+            {
+              "title": "Zambezi Zinger (2023)",
+              "pageid": 73782540
+            },
+            {
+              "title": "Jack Rabbit (Celebration City)",
+              "pageid": 7704726
+            },
+            {
+              "title": "Montaña Rusa (Parque del Café)",
+              "pageid": 19649722
+            },
+            {
+              "title": "Orient Express (roller coaster)",
+              "pageid": 5846900
+            },
+            {
+              "title": "Ozark Wildcat",
+              "pageid": 6230123
+            },
+            {
+              "title": "Runaway Ore Cart",
+              "pageid": 7700540
+            },
+            {
+              "title": "Schussboomer",
+              "pageid": 22816496
+            },
+            {
+              "title": "Thunderbolt (Celebration City)",
+              "pageid": 26453402
+            },
+            {
+              "title": "Viper (Six Flags AstroWorld)",
+              "pageid": 5358531
+            }
+          ]
+        },
+        "Nebraska": {
+          "category": "Category:Roller coasters in Nebraska",
+          "articles": [
+            {
+              "title": "Big Ohhhh...",
+              "pageid": 24427724
+            }
+          ]
+        },
+        "Nevada": {
+          "category": "Category:Roller coasters in Nevada",
+          "articles": [
+            {
+              "title": "Desperado (roller coaster)",
+              "pageid": 5659518
+            },
+            {
+              "title": "Canyon Blaster (Adventuredome)",
+              "pageid": 4498046
+            },
+            {
+              "title": "High Roller (Stratosphere)",
+              "pageid": 14312905
+            },
+            {
+              "title": "El Loco (Adventuredome)",
+              "pageid": 43656153
+            },
+            {
+              "title": "Big Apple Coaster",
+              "pageid": 9986041
+            },
+            {
+              "title": "Speed – The Ride",
+              "pageid": 10745198
+            },
+            {
+              "title": "Lightning Bolt (roller coaster)",
+              "pageid": 61864019
+            }
+          ]
+        },
+        "New Hampshire": {
+          "category": "Category:Roller coasters in New Hampshire",
+          "articles": [
+            {
+              "title": "Roar-O-Saurus",
+              "pageid": 59095672
+            },
+            {
+              "title": "Untamed (Canobie Lake Park)",
+              "pageid": 30499736
+            },
+            {
+              "title": "Yankee Cannonball",
+              "pageid": 9902098
+            },
+            {
+              "title": "Canobie Corkscrew",
+              "pageid": 11576117
+            }
+          ]
+        },
+        "New Jersey": {
+          "category": "Category:Roller coasters in New Jersey",
+          "articles": [
+            {
+              "title": "Batman: The Ride",
+              "pageid": 1761700
+            },
+            {
+              "title": "The Dark Knight Coaster",
+              "pageid": 33865294
+            },
+            {
+              "title": "The Great White (Morey's Piers)",
+              "pageid": 36376702
+            },
+            {
+              "title": "Green Lantern (Six Flags Great Adventure)",
+              "pageid": 2320131
+            },
+            {
+              "title": "Harley Quinn Crazy Train",
+              "pageid": 4153758
+            },
+            {
+              "title": "Hell Cat",
+              "pageid": 6433658
+            },
+            {
+              "title": "Hydrus (roller coaster)",
+              "pageid": 54193985
+            },
+            {
+              "title": "Jersey Devil Coaster",
+              "pageid": 64024770
+            },
+            {
+              "title": "The Joker (Six Flags Great Adventure)",
+              "pageid": 52957798
+            },
+            {
+              "title": "Kingda Ka",
+              "pageid": 1037139
+            },
+            {
+              "title": "Lil' Devil Coaster",
+              "pageid": 4213220
+            },
+            {
+              "title": "Medusa (Six Flags Great Adventure)",
+              "pageid": 4153995
+            },
+            {
+              "title": "Nickelodeon Slime Streak",
+              "pageid": 66374675
+            },
+            {
+              "title": "Nitro (Six Flags Great Adventure)",
+              "pageid": 654674
+            },
+            {
+              "title": "Runaway Tram",
+              "pageid": 67844942
+            },
+            {
+              "title": "Sandy's Blasting Bronco",
+              "pageid": 66327319
+            },
+            {
+              "title": "Sea Serpent (Morey's Piers)",
+              "pageid": 42595062
+            },
+            {
+              "title": "Skull Mountain",
+              "pageid": 4678620
+            },
+            {
+              "title": "Superman: Ultimate Flight",
+              "pageid": 4218376
+            },
+            {
+              "title": "The Flash: Vertical Velocity (Six Flags Great Adventure)",
+              "pageid": 74718779
+            },
+            {
+              "title": "TMNT Shellraiser",
+              "pageid": 62256918
+            },
+            {
+              "title": "El Toro (Six Flags Great Adventure)",
+              "pageid": 2825518
+            },
+            {
+              "title": "Alpen Blitz",
+              "pageid": 13261446
+            },
+            {
+              "title": "Alpine Bobsled",
+              "pageid": 5167420
+            },
+            {
+              "title": "Batman & Robin: The Chiller",
+              "pageid": 3054738
+            },
+            {
+              "title": "Batman The Escape",
+              "pageid": 12767582
+            },
+            {
+              "title": "Cyclone (Palisades Amusement Park)",
+              "pageid": 54168824
+            },
+            {
+              "title": "Flitzer",
+              "pageid": 28519537
+            },
+            {
+              "title": "Great American Scream Machine (Six Flags Great Adventure)",
+              "pageid": 2047202
+            },
+            {
+              "title": "Jet Star (Casino Pier)",
+              "pageid": 54493991
+            },
+            {
+              "title": "Jet Star (Luna Park)",
+              "pageid": 36740852
+            },
+            {
+              "title": "Jumbo Jet (Morey's Piers)",
+              "pageid": 36722284
+            },
+            {
+              "title": "Lightnin' Loops",
+              "pageid": 12848016
+            },
+            {
+              "title": "Loop the Loop (Young's Pier)",
+              "pageid": 40474216
+            },
+            {
+              "title": "Rolling Thunder (roller coaster)",
+              "pageid": 4157412
+            },
+            {
+              "title": "Star Jet",
+              "pageid": 54193261
+            },
+            {
+              "title": "Ultra Twister (Six Flags)",
+              "pageid": 11851587
+            },
+            {
+              "title": "Viper (Six Flags Great Adventure)",
+              "pageid": 12297896
+            },
+            {
+              "title": "Wild Rider (Six Flags Great Adventure)",
+              "pageid": 13247350
+            }
+          ]
+        },
+        "New Mexico": {
+          "category": "Category:Roller coasters in New Mexico",
+          "articles": [
+            {
+              "title": "New Mexico Rattler",
+              "pageid": 45348927
+            }
+          ]
+        },
+        "New York": {
+          "category": "Category:Roller coasters in New York (state)",
+          "articles": [
+            {
+              "title": "Alpine Bobsled",
+              "pageid": 5167420
+            },
+            {
+              "title": "Bobcat (roller coaster)",
+              "pageid": 77380885
+            },
+            {
+              "title": "Bobsleds",
+              "pageid": 68759617
+            },
+            {
+              "title": "Boomerang: Coast to Coaster",
+              "pageid": 5181481
+            },
+            {
+              "title": "Canyon Blaster (Six Flags Great Escape)",
+              "pageid": 5166997
+            },
+            {
+              "title": "The Comet (Six Flags Great Escape)",
+              "pageid": 4502430
+            },
+            {
+              "title": "Coney Island Cyclone",
+              "pageid": 2031441
+            },
+            {
+              "title": "Dragon Coaster (Playland)",
+              "pageid": 13569988
+            },
+            {
+              "title": "Flashback (Six Flags Great Escape)",
+              "pageid": 77380670
+            },
+            {
+              "title": "Frankie's Mine Train",
+              "pageid": 5168221
+            },
+            {
+              "title": "Hoot N Holler",
+              "pageid": 5181263
+            },
+            {
+              "title": "Jack Rabbit (Seabreeze)",
+              "pageid": 6214925
+            },
+            {
+              "title": "Moto Coaster (Six Flags Darien Lake)",
+              "pageid": 15351162
+            },
+            {
+              "title": "The Predator (roller coaster)",
+              "pageid": 5180315
+            },
+            {
+              "title": "Silver Comet (roller coaster)",
+              "pageid": 12925089
+            },
+            {
+              "title": "Soarin' Eagle",
+              "pageid": 5667697
+            },
+            {
+              "title": "Steamin' Demon",
+              "pageid": 5168344
+            },
+            {
+              "title": "Tantrum (roller coaster)",
+              "pageid": 59654630
+            },
+            {
+              "title": "Thunderbolt (2014 roller coaster)",
+              "pageid": 41096004
+            },
+            {
+              "title": "Turbulence (roller coaster)",
+              "pageid": 66583984
+            },
+            {
+              "title": "Viper (Six Flags Darien Lake)",
+              "pageid": 5180725
+            },
+            {
+              "title": "Whirlwind (Seabreeze)",
+              "pageid": 5254820
+            },
+            {
+              "title": "Drop the Dip",
+              "pageid": 54377229
+            },
+            {
+              "title": "Flip Flap Railway",
+              "pageid": 40431373
+            },
+            {
+              "title": "Loop the Loop (Coney Island)",
+              "pageid": 40447996
+            },
+            {
+              "title": "Nightmare at Crack Axle Canyon",
+              "pageid": 5168149
+            },
+            {
+              "title": "Rough Riders (roller coaster)",
+              "pageid": 13730633
+            },
+            {
+              "title": "Skyliner (roller coaster)",
+              "pageid": 6260680
+            },
+            {
+              "title": "Switchback Railway",
+              "pageid": 6169769
+            },
+            {
+              "title": "Thunderbolt (1925 roller coaster)",
+              "pageid": 10662492
+            },
+            {
+              "title": "Tornado (Coney Island)",
+              "pageid": 23797381
+            }
+          ]
+        },
+        "North Carolina": {
+          "category": "Category:Roller coasters in North Carolina",
+          "articles": [
+            {
+              "title": "Carolina Cyclone",
+              "pageid": 17910827
+            },
+            {
+              "title": "Carolina Goldrusher",
+              "pageid": 18640715
+            },
+            {
+              "title": "The Flying Cobras",
+              "pageid": 20224971
+            },
+            {
+              "title": "Hurler (roller coaster)",
+              "pageid": 6143874
+            },
+            {
+              "title": "Ricochet (Carowinds)",
+              "pageid": 12048001
+            },
+            {
+              "title": "Vortex (Carowinds)",
+              "pageid": 17910945
+            },
+            {
+              "title": "Flying Super Saturator",
+              "pageid": 17916298
+            },
+            {
+              "title": "Thunder Road (roller coaster)",
+              "pageid": 5214049
+            }
+          ]
+        },
+        "Ohio": {
+          "category": "Category:Roller coasters in Ohio",
+          "articles": [
+            {
+              "title": "Adventure Express",
+              "pageid": 6835286
+            },
+            {
+              "title": "Backlot Stunt Coaster",
+              "pageid": 13426191
+            },
+            {
+              "title": "Banshee (roller coaster)",
+              "pageid": 38649666
+            },
+            {
+              "title": "The Bat (Kings Island; opened 1993)",
+              "pageid": 6136755
+            },
+            {
+              "title": "The Beast (roller coaster)",
+              "pageid": 1275231
+            },
+            {
+              "title": "Blue Streak (Cedar Point)",
+              "pageid": 4505937
+            },
+            {
+              "title": "Cedar Creek Mine Ride",
+              "pageid": 4520734
+            },
+            {
+              "title": "Corkscrew (Cedar Point)",
+              "pageid": 2185130
+            },
+            {
+              "title": "Diamondback (Kings Island)",
+              "pageid": 18610364
+            },
+            {
+              "title": "Flight of Fear",
+              "pageid": 34600062
+            },
+            {
+              "title": "GateKeeper (roller coaster)",
+              "pageid": 35607279
+            },
+            {
+              "title": "Gemini (roller coaster)",
+              "pageid": 4604601
+            },
+            {
+              "title": "The Great Pumpkin Coaster",
+              "pageid": 32151637
+            },
+            {
+              "title": "Invertigo (Kings Island)",
+              "pageid": 6033442
+            },
+            {
+              "title": "Iron Dragon (roller coaster)",
+              "pageid": 4521004
+            },
+            {
+              "title": "Little Dipper (Memphis Kiddie Park)",
+              "pageid": 5915505
+            },
+            {
+              "title": "Magnum XL-200",
+              "pageid": 1882946
+            },
+            {
+              "title": "Maverick (roller coaster)",
+              "pageid": 6745116
+            },
+            {
+              "title": "Millennium Force",
+              "pageid": 1491965
+            },
+            {
+              "title": "The Mind Eraser (Geauga Lake)",
+              "pageid": 66269728
+            },
+            {
+              "title": "Mystic Timbers",
+              "pageid": 51193872
+            },
+            {
+              "title": "Python (Coney Island, Cincinnati, Ohio)",
+              "pageid": 19309718
+            },
+            {
+              "title": "The Racer (Kings Island)",
+              "pageid": 6033131
+            },
+            {
+              "title": "Raptor (Cedar Point)",
+              "pageid": 3025463
+            },
+            {
+              "title": "Rougarou (roller coaster)",
+              "pageid": 2317685
+            },
+            {
+              "title": "Sea Dragon (roller coaster)",
+              "pageid": 17814588
+            },
+            {
+              "title": "Siren's Curse",
+              "pageid": 77914843
+            },
+            {
+              "title": "Steel Vengeance",
+              "pageid": 4521048
+            },
+            {
+              "title": "Top Thrill 1",
+              "pageid": 81061787
+            },
+            {
+              "title": "Top Thrill 2",
+              "pageid": 712654
+            },
+            {
+              "title": "Top Thrill Dragster",
+              "pageid": 74498894
+            },
+            {
+              "title": "Valravn (roller coaster)",
+              "pageid": 47766575
+            },
+            {
+              "title": "Vortex (Kings Island)",
+              "pageid": 5943496
+            },
+            {
+              "title": "Wilderness Run",
+              "pageid": 4696578
+            },
+            {
+              "title": "Woodstock Express (Cedar Point)",
+              "pageid": 4739062
+            },
+            {
+              "title": "Woodstock Express (Kings Island)",
+              "pageid": 6222326
+            },
+            {
+              "title": "Woodstock's Air Rail",
+              "pageid": 28795118
+            },
+            {
+              "title": "Aero Dips",
+              "pageid": 53648857
+            },
+            {
+              "title": "The Bat (Kings Island; opened 1981)",
+              "pageid": 4951658
+            },
+            {
+              "title": "Big Dipper (Geauga Lake)",
+              "pageid": 6074725
+            },
+            {
+              "title": "Disaster Transport",
+              "pageid": 4520960
+            },
+            {
+              "title": "Dominator (roller coaster)",
+              "pageid": 4672622
+            },
+            {
+              "title": "Double Loop (Geauga Lake)",
+              "pageid": 6434798
+            },
+            {
+              "title": "Figure Eight (Euclid Beach Park)",
+              "pageid": 33968128
+            },
+            {
+              "title": "Firehawk (roller coaster)",
+              "pageid": 9326549
+            },
+            {
+              "title": "Flying Turns (Euclid Beach Park)",
+              "pageid": 53649117
+            },
+            {
+              "title": "Head Spin (roller coaster)",
+              "pageid": 5995557
+            },
+            {
+              "title": "Jumbo Jet (Cedar Point)",
+              "pageid": 53895912
+            },
+            {
+              "title": "King Cobra (roller coaster)",
+              "pageid": 18499166
+            },
+            {
+              "title": "Loop the Loop (Olentangy Park)",
+              "pageid": 40437450
+            },
+            {
+              "title": "Racing Coaster",
+              "pageid": 33968194
+            },
+            {
+              "title": "Raging Wolf Bobs",
+              "pageid": 6462869
+            },
+            {
+              "title": "Roller Coaster (Papéa Parc)",
+              "pageid": 7232788
+            },
+            {
+              "title": "Scenic Railway (Euclid Beach Park)",
+              "pageid": 33968159
+            },
+            {
+              "title": "Scooby's Ghoster Coaster",
+              "pageid": 18502248
+            },
+            {
+              "title": "Screamin' Demon",
+              "pageid": 18499081
+            },
+            {
+              "title": "Son of Beast",
+              "pageid": 1680862
+            },
+            {
+              "title": "Steel Venom (Geauga Lake)",
+              "pageid": 5857613
+            },
+            {
+              "title": "Switchback Railway (Euclid Beach Park)",
+              "pageid": 33968060
+            },
+            {
+              "title": "The Thriller (roller coaster)",
+              "pageid": 33968212
+            },
+            {
+              "title": "Thunderhawk (Michigan's Adventure)",
+              "pageid": 6514196
+            },
+            {
+              "title": "Villain (roller coaster)",
+              "pageid": 6462209
+            },
+            {
+              "title": "Wicked Twister",
+              "pageid": 2184936
+            },
+            {
+              "title": "WildCat (Cedar Point)",
+              "pageid": 5381892
+            },
+            {
+              "title": "X-Flight (Geauga Lake)",
+              "pageid": 5869205
+            }
+          ]
+        },
+        "Oklahoma": {
+          "category": "Category:Roller coasters in Oklahoma",
+          "articles": [
+            {
+              "title": "Frankie's Mine Train",
+              "pageid": 5168221
+            },
+            {
+              "title": "Lightnin' Loops",
+              "pageid": 12848016
+            },
+            {
+              "title": "Silver Bullet (Frontier City)",
+              "pageid": 61814449
+            },
+            {
+              "title": "Steel Lasso",
+              "pageid": 16769293
+            },
+            {
+              "title": "Wildcat (Frontier City)",
+              "pageid": 59755320
+            },
+            {
+              "title": "Wild Kitty",
+              "pageid": 5667831
+            }
+          ]
+        },
+        "Oregon": {
+          "category": "Category:Roller coasters in Oregon",
+          "articles": [
+            {
+              "title": "Adrenaline Peak",
+              "pageid": 66569232
+            },
+            {
+              "title": "Zip (roller coaster)",
+              "pageid": 54168893
+            }
+          ]
+        },
+        "Pennsylvania": {
+          "category": "Category:Roller coasters in Pennsylvania",
+          "articles": [
+            {
+              "title": "Black Diamond (roller coaster)",
+              "pageid": 23154562
+            },
+            {
+              "title": "Candymonium",
+              "pageid": 61368273
+            },
+            {
+              "title": "Comet (Hersheypark)",
+              "pageid": 5632934
+            },
+            {
+              "title": "Comet (Waldameer)",
+              "pageid": 32140034
+            },
+            {
+              "title": "Cosmic Coaster (Valleyfair)",
+              "pageid": 8885730
+            },
+            {
+              "title": "Fahrenheit (roller coaster)",
+              "pageid": 13480302
+            },
+            {
+              "title": "Flying Turns (Knoebels)",
+              "pageid": 5815541
+            },
+            {
+              "title": "Great Bear (roller coaster)",
+              "pageid": 4680548
+            },
+            {
+              "title": "Hydra the Revenge",
+              "pageid": 5791725
+            },
+            {
+              "title": "Impulse (roller coaster)",
+              "pageid": 46729511
+            },
+            {
+              "title": "Iron Menace",
+              "pageid": 74565999
+            },
+            {
+              "title": "Jack Rabbit (Kennywood)",
+              "pageid": 5924273
+            },
+            {
+              "title": "Jolly Rancher Remix",
+              "pageid": 5987398
+            },
+            {
+              "title": "Kingdom Coaster",
+              "pageid": 6259864
+            },
+            {
+              "title": "Laff Trakk",
+              "pageid": 46777641
+            },
+            {
+              "title": "Leap-The-Dips",
+              "pageid": 2411539
+            },
+            {
+              "title": "Lightning Racer",
+              "pageid": 5948678
+            },
+            {
+              "title": "Little Dipper (Conneaut Lake Park)",
+              "pageid": 31852661
+            },
+            {
+              "title": "Little Leaper",
+              "pageid": 6267921
+            },
+            {
+              "title": "Merlin's Mayhem",
+              "pageid": 66345204
+            },
+            {
+              "title": "Phantom's Revenge",
+              "pageid": 5273132
+            },
+            {
+              "title": "Possessed (roller coaster)",
+              "pageid": 13484893
+            },
+            {
+              "title": "Racer (Kennywood)",
+              "pageid": 2619936
+            },
+            {
+              "title": "Ravine Flyer II",
+              "pageid": 17821406
+            },
+            {
+              "title": "Rollo Coaster",
+              "pageid": 5556647
+            },
+            {
+              "title": "Sky Rocket",
+              "pageid": 27915923
+            },
+            {
+              "title": "Skyliner (roller coaster)",
+              "pageid": 6260680
+            },
+            {
+              "title": "Skyrush",
+              "pageid": 32193094
+            },
+            {
+              "title": "SooperDooperLooper",
+              "pageid": 5948508
+            },
+            {
+              "title": "Steel Curtain (roller coaster)",
+              "pageid": 57943602
+            },
+            {
+              "title": "Steel Dragon (Waldameer)",
+              "pageid": 32132123
+            },
+            {
+              "title": "Steel Force",
+              "pageid": 2317763
+            },
+            {
+              "title": "Storm Runner",
+              "pageid": 5643534
+            },
+            {
+              "title": "Talon (roller coaster)",
+              "pageid": 5791960
+            },
+            {
+              "title": "Thunderbolt (Kennywood)",
+              "pageid": 2039351
+            },
+            {
+              "title": "Thunderhawk (Dorney Park)",
+              "pageid": 5920399
+            },
+            {
+              "title": "Toboggan (Lakemont Park)",
+              "pageid": 6268629
+            },
+            {
+              "title": "Trailblazer (roller coaster)",
+              "pageid": 6802723
+            },
+            {
+              "title": "Twister (Knoebels Amusement Resort)",
+              "pageid": 5815523
+            },
+            {
+              "title": "Wild Cat (Hersheypark)",
+              "pageid": 5949364
+            },
+            {
+              "title": "Wild Mouse (Hersheypark)",
+              "pageid": 6526099
+            },
+            {
+              "title": "Wild Mouse (Idlewild)",
+              "pageid": 11853727
+            },
+            {
+              "title": "Wildcat's Revenge",
+              "pageid": 5948764
+            },
+            {
+              "title": "Blue Streak (Conneaut Lake)",
+              "pageid": 5451513
+            },
+            {
+              "title": "Bocaraca",
+              "pageid": 5819699
+            },
+            {
+              "title": "Dragon Coaster (Dorney Park)",
+              "pageid": 34782912
+            },
+            {
+              "title": "Hercules (roller coaster)",
+              "pageid": 6150830
+            },
+            {
+              "title": "High Speed Thrill Coaster",
+              "pageid": 5815562
+            },
+            {
+              "title": "Jet Star (Luna Park)",
+              "pageid": 36740852
+            },
+            {
+              "title": "Mini-Comet",
+              "pageid": 32571173
+            },
+            {
+              "title": "Roller Soaker",
+              "pageid": 6802652
+            },
+            {
+              "title": "Steel First",
+              "pageid": 6160270
+            },
+            {
+              "title": "Stinger (roller coaster)",
+              "pageid": 15568464
+            },
+            {
+              "title": "Toboggan (Conneaut Lake Park)",
+              "pageid": 31852487
+            },
+            {
+              "title": "Wildcat (Hersheypark)",
+              "pageid": 72167043
+            }
+          ]
+        },
+        "South Carolina": {
+          "category": "Category:Roller coasters in South Carolina",
+          "articles": [
+            {
+              "title": "Afterburn (roller coaster)",
+              "pageid": 19744221
+            },
+            {
+              "title": "Carolina Goldrusher",
+              "pageid": 18640715
+            },
+            {
+              "title": "Dragon's Run",
+              "pageid": 13930500
+            },
+            {
+              "title": "Nighthawk (roller coaster)",
+              "pageid": 5222237
+            },
+            {
+              "title": "Snoopy's Racing Railway",
+              "pageid": 77559073
+            },
+            {
+              "title": "Swamp Fox (roller coaster)",
+              "pageid": 27734186
+            },
+            {
+              "title": "Thunder Striker",
+              "pageid": 24119293
+            },
+            {
+              "title": "Vortex (Carowinds)",
+              "pageid": 17910945
+            },
+            {
+              "title": "Wilderness Run (Carowinds)",
+              "pageid": 32050043
+            },
+            {
+              "title": "Woodstock Express (Carowinds)",
+              "pageid": 6222407
+            },
+            {
+              "title": "Woodstock's Air Rail",
+              "pageid": 28795118
+            },
+            {
+              "title": "Hurricane: Category 5",
+              "pageid": 6018775
+            },
+            {
+              "title": "Mad Mouse (Pavilion)",
+              "pageid": 6021200
+            },
+            {
+              "title": "Thunder Road (roller coaster)",
+              "pageid": 5214049
+            }
+          ]
+        },
+        "Tennessee": {
+          "category": "Category:Roller coasters in Tennessee",
+          "articles": [
+            {
+              "title": "Big Bear Mountain (roller coaster)",
+              "pageid": 72293931
+            },
+            {
+              "title": "Dragonflier",
+              "pageid": 66338091
+            },
+            {
+              "title": "FireChaser Express",
+              "pageid": 40313335
+            },
+            {
+              "title": "Lightning Rod (roller coaster)",
+              "pageid": 47456165
+            },
+            {
+              "title": "Mystery Mine",
+              "pageid": 9682727
+            },
+            {
+              "title": "Tennessee Tornado",
+              "pageid": 6521987
+            },
+            {
+              "title": "Thunderhead (roller coaster)",
+              "pageid": 6231931
+            },
+            {
+              "title": "Wild Eagle",
+              "pageid": 32983742
+            },
+            {
+              "title": "Rock n' Roller Coaster (Opryland)",
+              "pageid": 8667741
+            },
+            {
+              "title": "Wabash Cannonball (roller coaster)",
+              "pageid": 8667392
+            }
+          ]
+        },
+        "Texas": {
+          "category": "Category:Roller coasters in Texas",
+          "articles": [
+            {
+              "title": "Aquaman: Power Wave",
+              "pageid": 64638018
+            },
+            {
+              "title": "Batgirl Coaster Chase",
+              "pageid": 6113354
+            },
+            {
+              "title": "Batman: The Ride",
+              "pageid": 1761700
+            },
+            {
+              "title": "Batman: The Ride (S&S Free Spin)",
+              "pageid": 43680506
+            },
+            {
+              "title": "Boardwalk Bullet",
+              "pageid": 20400308
+            },
+            {
+              "title": "Boomerang: Coast to Coaster",
+              "pageid": 5181481
+            },
+            {
+              "title": "Chupacabra (roller coaster)",
+              "pageid": 13930586
+            },
+            {
+              "title": "Dr. Diabolical's Cliffhanger",
+              "pageid": 68347719
+            },
+            {
+              "title": "Galaxi",
+              "pageid": 10157404
+            },
+            {
+              "title": "The Great White (SeaWorld San Antonio)",
+              "pageid": 9740055
+            },
+            {
+              "title": "Hornet (roller coaster)",
+              "pageid": 12767206
+            },
+            {
+              "title": "Iron Rattler",
+              "pageid": 5180104
+            },
+            {
+              "title": "Iron Shark",
+              "pageid": 34531862
+            },
+            {
+              "title": "The Joker (Six Flags Over Texas)",
+              "pageid": 68871543
+            },
+            {
+              "title": "Journey to Atlantis",
+              "pageid": 1892647
+            },
+            {
+              "title": "Judge Roy Scream",
+              "pageid": 5777099
+            },
+            {
+              "title": "Kid Flash Cosmic Coaster",
+              "pageid": 74317473
+            },
+            {
+              "title": "Mr. Freeze (roller coaster)",
+              "pageid": 32156860
+            },
+            {
+              "title": "New Texas Giant",
+              "pageid": 5859108
+            },
+            {
+              "title": "Pandemonium (roller coaster)",
+              "pageid": 31341317
+            },
+            {
+              "title": "Poltergeist (roller coaster)",
+              "pageid": 6112743
+            },
+            {
+              "title": "Road Runner Express (Six Flags Fiesta Texas)",
+              "pageid": 6113144
+            },
+            {
+              "title": "Runaway Mine Train (Six Flags Over Texas)",
+              "pageid": 5843452
+            },
+            {
+              "title": "Shock Wave (Six Flags Over Texas)",
+              "pageid": 5857416
+            },
+            {
+              "title": "Steel Eel",
+              "pageid": 9744058
+            },
+            {
+              "title": "Super Grover's Box Car Derby",
+              "pageid": 47421460
+            },
+            {
+              "title": "Superman: Krypton Coaster",
+              "pageid": 2997183
+            },
+            {
+              "title": "Texas Stingray",
+              "pageid": 62338023
+            },
+            {
+              "title": "Texas Tornado (roller coaster)",
+              "pageid": 27296900
+            },
+            {
+              "title": "Titan (Six Flags Over Texas)",
+              "pageid": 6089451
+            },
+            {
+              "title": "La Vibora",
+              "pageid": 5842938
+            },
+            {
+              "title": "Wave Breaker: The Rescue Coaster",
+              "pageid": 52244367
+            },
+            {
+              "title": "Wonder Woman Golden Lasso Coaster",
+              "pageid": 54743938
+            },
+            {
+              "title": "Batman The Escape",
+              "pageid": 12767582
+            },
+            {
+              "title": "Boardwalk Canyon Blaster",
+              "pageid": 35390300
+            },
+            {
+              "title": "Flashback (Six Flags Over Texas)",
+              "pageid": 36875373
+            },
+            {
+              "title": "Pipeline Express",
+              "pageid": 9616723
+            },
+            {
+              "title": "Serpent (roller coaster)",
+              "pageid": 20174577
+            },
+            {
+              "title": "Texas Cyclone",
+              "pageid": 3194301
+            },
+            {
+              "title": "Ultra Twister (Six Flags)",
+              "pageid": 11851587
+            },
+            {
+              "title": "Viper (Six Flags AstroWorld)",
+              "pageid": 5358531
+            },
+            {
+              "title": "XLR-8",
+              "pageid": 3513687
+            }
+          ]
+        },
+        "Utah": {
+          "category": "Category:Roller coasters in Utah",
+          "articles": [
+            {
+              "title": "Bat (Lagoon)",
+              "pageid": 4951428
+            },
+            {
+              "title": "BomBora (Lagoon)",
+              "pageid": 43757338
+            },
+            {
+              "title": "Cannibal (roller coaster)",
+              "pageid": 43632853
+            },
+            {
+              "title": "Colossus the Fire Dragon",
+              "pageid": 7440691
+            },
+            {
+              "title": "Jet Star 2 (Lagoon)",
+              "pageid": 43135731
+            },
+            {
+              "title": "Lagoon (amusement park)",
+              "pageid": 744322
+            },
+            {
+              "title": "Primordial (roller coaster)",
+              "pageid": 75583735
+            },
+            {
+              "title": "Roller Coaster (Lagoon)",
+              "pageid": 37489463
+            },
+            {
+              "title": "Spider (roller coaster)",
+              "pageid": 26239061
+            },
+            {
+              "title": "Wicked (roller coaster)",
+              "pageid": 14997142
+            },
+            {
+              "title": "Wild Mouse (Lagoon)",
+              "pageid": 43401203
+            }
+          ]
+        },
+        "Virginia": {
+          "category": "Category:Roller coasters in Virginia",
+          "articles": [
+            {
+              "title": "Alpengeist",
+              "pageid": 2248348
+            },
+            {
+              "title": "Anaconda (Kings Dominion)",
+              "pageid": 8134864
+            },
+            {
+              "title": "Apollo's Chariot",
+              "pageid": 2247625
+            },
+            {
+              "title": "Apple Zapple (Kings Dominion)",
+              "pageid": 14007840
+            },
+            {
+              "title": "Backlot Stunt Coaster",
+              "pageid": 13426191
+            },
+            {
+              "title": "Big Bad Wolf (roller coaster)",
+              "pageid": 6160236
+            },
+            {
+              "title": "Big Bad Wolf: The Wolf's Revenge",
+              "pageid": 79101395
+            },
+            {
+              "title": "DarKoaster: Escape The Storm",
+              "pageid": 73577528
+            },
+            {
+              "title": "Dominator (roller coaster)",
+              "pageid": 4672622
+            },
+            {
+              "title": "Flight of Fear",
+              "pageid": 34600062
+            },
+            {
+              "title": "Griffon (roller coaster)",
+              "pageid": 6543763
+            },
+            {
+              "title": "Grizzly (Kings Dominion)",
+              "pageid": 14682956
+            },
+            {
+              "title": "InvadR",
+              "pageid": 50595511
+            },
+            {
+              "title": "Loch Ness Monster (roller coaster)",
+              "pageid": 5231567
+            },
+            {
+              "title": "Pantheon (roller coaster)",
+              "pageid": 61697773
+            },
+            {
+              "title": "Pantherian",
+              "pageid": 24056080
+            },
+            {
+              "title": "Racer 75",
+              "pageid": 5593444
+            },
+            {
+              "title": "Rapterra",
+              "pageid": 77516468
+            },
+            {
+              "title": "Reptilian (ride)",
+              "pageid": 14007831
+            },
+            {
+              "title": "Tempesto",
+              "pageid": 46207287
+            },
+            {
+              "title": "Tumbili",
+              "pageid": 68467252
+            },
+            {
+              "title": "Twisted Timbers",
+              "pageid": 54828157
+            },
+            {
+              "title": "Verbolten",
+              "pageid": 33118869
+            },
+            {
+              "title": "Woodstock Express (Kings Dominion)",
+              "pageid": 6222292
+            },
+            {
+              "title": "Drachen Fire",
+              "pageid": 2335206
+            },
+            {
+              "title": "Glissade (roller coaster)",
+              "pageid": 24967378
+            },
+            {
+              "title": "Hurler (roller coaster)",
+              "pageid": 6143874
+            },
+            {
+              "title": "Hypersonic XLC",
+              "pageid": 4275624
+            },
+            {
+              "title": "Shockwave (Kings Dominion)",
+              "pageid": 6923375
+            },
+            {
+              "title": "Volcano: The Blast Coaster",
+              "pageid": 5233363
+            },
+            {
+              "title": "Wilde maus",
+              "pageid": 6149009
+            }
+          ]
+        },
+        "West Virginia": {
+          "category": "Category:Roller coasters in West Virginia",
+          "articles": [
+            {
+              "title": "Big Dipper (Camden Park)",
+              "pageid": 67439474
+            },
+            {
+              "title": "Thunderbolt Express",
+              "pageid": 22985909
+            }
+          ]
+        },
+        "Wisconsin": {
+          "category": "Category:Roller coasters in Wisconsin",
+          "articles": [
+            {
+              "title": "Cyclops (roller coaster)",
+              "pageid": 6232168
+            },
+            {
+              "title": "Hades 360",
+              "pageid": 6236132
+            },
+            {
+              "title": "Pegasus (Mt. Olympus Water and Theme Park)",
+              "pageid": 6236178
+            },
+            {
+              "title": "Zeus (roller coaster)",
+              "pageid": 6236215
+            },
+            {
+              "title": "Zippin Pippin",
+              "pageid": 3073861
+            }
+          ]
+        }
+      },
+      "articleCount": 633
+    },
+    "GB": {
+      "status": "complete",
+      "regions": {
+        "United Kingdom": {
+          "category": "Category:Roller coasters in the United Kingdom",
+          "articles": [
+            {
+              "title": "Accelerator (roller coaster)",
+              "pageid": 30087479
+            },
+            {
+              "title": "Astro Storm",
+              "pageid": 12618437
+            },
+            {
+              "title": "Avalanche (Blackpool Pleasure Beach)",
+              "pageid": 16865139
+            },
+            {
+              "title": "Beastie (Alton Towers)",
+              "pageid": 4786506
+            },
+            {
+              "title": "Big Dipper (Blackpool Pleasure Beach)",
+              "pageid": 10977316
+            },
+            {
+              "title": "The Big One (roller coaster)",
+              "pageid": 1749172
+            },
+            {
+              "title": "Black Hole (roller coaster)",
+              "pageid": 10036918
+            },
+            {
+              "title": "Blue Flyer",
+              "pageid": 20330656
+            },
+            {
+              "title": "Bulldog Coaster (Brean Leisure Park)",
+              "pageid": 7773647
+            },
+            {
+              "title": "Cannonball Express (roller coaster)",
+              "pageid": 22945219
+            },
+            {
+              "title": "Centrifugal railway",
+              "pageid": 28018378
+            },
+            {
+              "title": "Clown Coaster",
+              "pageid": 18499424
+            },
+            {
+              "title": "Colossus (Thorpe Park)",
+              "pageid": 3923527
+            },
+            {
+              "title": "Corkscrew (Alton Towers)",
+              "pageid": 4802493
+            },
+            {
+              "title": "Dragon's Fury (roller coaster)",
+              "pageid": 6329654
+            },
+            {
+              "title": "Flying Fish (roller coaster)",
+              "pageid": 5475149
+            },
+            {
+              "title": "G Force (roller coaster)",
+              "pageid": 7564942
+            },
+            {
+              "title": "Galactica (roller coaster)",
+              "pageid": 4786100
+            },
+            {
+              "title": "Gold Rush (Drayton Manor)",
+              "pageid": 77454814
+            },
+            {
+              "title": "Grand National (roller coaster)",
+              "pageid": 3492540
+            },
+            {
+              "title": "Hyperia (roller coaster)",
+              "pageid": 74988975
+            },
+            {
+              "title": "Icon (roller coaster)",
+              "pageid": 53774747
+            },
+            {
+              "title": "Infusion (roller coaster)",
+              "pageid": 9110632
+            },
+            {
+              "title": "Jormungandr (roller coaster)",
+              "pageid": 76719892
+            },
+            {
+              "title": "Klondike Gold Mine",
+              "pageid": 8003637
+            },
+            {
+              "title": "Knightmare (roller coaster)",
+              "pageid": 33367890
+            },
+            {
+              "title": "Kumali",
+              "pageid": 12303535
+            },
+            {
+              "title": "Lego Technic Test Track",
+              "pageid": 35118524
+            },
+            {
+              "title": "Megafobia",
+              "pageid": 5799907
+            },
+            {
+              "title": "Millennium Roller Coaster",
+              "pageid": 19989733
+            },
+            {
+              "title": "Mumbo Jumbo (roller coaster)",
+              "pageid": 21443243
+            },
+            {
+              "title": "Nemesis Inferno",
+              "pageid": 5156070
+            },
+            {
+              "title": "Nemesis Reborn",
+              "pageid": 2394033
+            },
+            {
+              "title": "Nickelodeon Streak",
+              "pageid": 16865293
+            },
+            {
+              "title": "Oblivion (roller coaster)",
+              "pageid": 4288877
+            },
+            {
+              "title": "Octonauts Rollercoaster Adventure",
+              "pageid": 47551039
+            },
+            {
+              "title": "The Odyssey (roller coaster)",
+              "pageid": 19875575
+            },
+            {
+              "title": "Rage (roller coaster)",
+              "pageid": 16162089
+            },
+            {
+              "title": "Raptor Attack",
+              "pageid": 27635905
+            },
+            {
+              "title": "Rattlesnake (roller coaster)",
+              "pageid": 6332820
+            },
+            {
+              "title": "Revolution (Blackpool Pleasure Beach)",
+              "pageid": 7048042
+            },
+            {
+              "title": "Rita (roller coaster)",
+              "pageid": 2340734
+            },
+            {
+              "title": "Roller Coaster (Great Yarmouth Pleasure Beach)",
+              "pageid": 21862680
+            },
+            {
+              "title": "Runaway Mine Train (Alton Towers)",
+              "pageid": 4786670
+            },
+            {
+              "title": "Saw – The Ride",
+              "pageid": 19755756
+            },
+            {
+              "title": "Scenic Railway (Dreamland Margate)",
+              "pageid": 898878
+            },
+            {
+              "title": "Scorpion Express",
+              "pageid": 40981211
+            },
+            {
+              "title": "Sik (roller coaster)",
+              "pageid": 70965054
+            },
+            {
+              "title": "Skytrak",
+              "pageid": 33444678
+            },
+            {
+              "title": "The Smiler",
+              "pageid": 35210167
+            },
+            {
+              "title": "Speed: No Limits",
+              "pageid": 7139960
+            },
+            {
+              "title": "Spinball Whizzer",
+              "pageid": 4786289
+            },
+            {
+              "title": "Stealth (roller coaster)",
+              "pageid": 3923825
+            },
+            {
+              "title": "Steeplechase (Blackpool Pleasure Beach)",
+              "pageid": 23019574
+            },
+            {
+              "title": "Storm Chaser (Paultons Park)",
+              "pageid": 67344356
+            },
+            {
+              "title": "The Swarm (roller coaster)",
+              "pageid": 29148654
+            },
+            {
+              "title": "Thirteen (roller coaster)",
+              "pageid": 24478520
+            },
+            {
+              "title": "Twist n' Shout",
+              "pageid": 9004697
+            },
+            {
+              "title": "The Ultimate (roller coaster)",
+              "pageid": 6530405
+            },
+            {
+              "title": "Vampire (roller coaster)",
+              "pageid": 6329788
+            },
+            {
+              "title": "The Walking Dead: The Ride",
+              "pageid": 4444919
+            },
+            {
+              "title": "The Wave (Drayton Manor)",
+              "pageid": 7616653
+            },
+            {
+              "title": "Wicker Man (roller coaster)",
+              "pageid": 50780916
+            },
+            {
+              "title": "Wild Mouse (Blackpool Pleasure Beach)",
+              "pageid": 11736459
+            },
+            {
+              "title": "Wipeout (roller coaster)",
+              "pageid": 26268351
+            }
+          ]
+        }
+      },
+      "articleCount": 65
+    },
+    "DE": {
+      "status": "complete",
+      "regions": {
+        "Germany": {
+          "category": "Category:Roller coasters in Germany",
+          "articles": [
+            {
+              "title": "Alpenexpress Enzian",
+              "pageid": 50371551
+            },
+            {
+              "title": "Atlantica SuperSplash",
+              "pageid": 62293667
+            },
+            {
+              "title": "Black Mamba (roller coaster)",
+              "pageid": 11678108
+            },
+            {
+              "title": "Blue Fire",
+              "pageid": 20953202
+            },
+            {
+              "title": "Colorado Adventure",
+              "pageid": 15721865
+            },
+            {
+              "title": "Colossos - Kampf der Giganten",
+              "pageid": 5581526
+            },
+            {
+              "title": "Crazy Bats",
+              "pageid": 15721892
+            },
+            {
+              "title": "Dynamite (Freizeitpark Plohn)",
+              "pageid": 67740006
+            },
+            {
+              "title": "Escape of Novgorod",
+              "pageid": 23422377
+            },
+            {
+              "title": "Euro-Mir",
+              "pageid": 13212695
+            },
+            {
+              "title": "Eurosat - CanCan Coaster",
+              "pageid": 46519914
+            },
+            {
+              "title": "Expedition GeForce",
+              "pageid": 13204545
+            },
+            {
+              "title": "F.L.Y. (roller coaster)",
+              "pageid": 67438931
+            },
+            {
+              "title": "Huracan (Belantis)",
+              "pageid": 43599070
+            },
+            {
+              "title": "Karacho",
+              "pageid": 39932908
+            },
+            {
+              "title": "Krake",
+              "pageid": 36292101
+            },
+            {
+              "title": "Lego Technic Test Track",
+              "pageid": 35118524
+            },
+            {
+              "title": "The Oath of Kärnan",
+              "pageid": 44187370
+            },
+            {
+              "title": "Raik",
+              "pageid": 59891216
+            },
+            {
+              "title": "Ring Racer",
+              "pageid": 15834862
+            },
+            {
+              "title": "Silver Star (roller coaster)",
+              "pageid": 11225725
+            },
+            {
+              "title": "Star Trek: Operation Enterprise",
+              "pageid": 59814503
+            },
+            {
+              "title": "Taron (roller coaster)",
+              "pageid": 47757471
+            },
+            {
+              "title": "Van Helsing's Factory",
+              "pageid": 38212498
+            },
+            {
+              "title": "Voltron Nevera",
+              "pageid": 75589864
+            },
+            {
+              "title": "Winja's Fear & Force",
+              "pageid": 13345009
+            },
+            {
+              "title": "Wodan Timbur Coaster",
+              "pageid": 35234962
+            }
+          ]
+        }
+      },
+      "articleCount": 27
+    },
+    "JP": {
+      "status": "complete",
+      "regions": {
+        "Japan": {
+          "category": "Category:Roller coasters in Japan",
+          "articles": [
+            {
+              "title": "Acrobat (roller coaster)",
+              "pageid": 52674109
+            },
+            {
+              "title": "Bandit (Yomiuriland)",
+              "pageid": 6063299
+            },
+            {
+              "title": "Daidarasaurus",
+              "pageid": 6530099
+            },
+            {
+              "title": "Diavlo",
+              "pageid": 14019235
+            },
+            {
+              "title": "Do-Dodonpa",
+              "pageid": 2510505
+            },
+            {
+              "title": "Eejanaika (roller coaster)",
+              "pageid": 5697656
+            },
+            {
+              "title": "Fujiyama (roller coaster)",
+              "pageid": 2510367
+            },
+            {
+              "title": "Giant Coaster (Fuji-Q Highland)",
+              "pageid": 61876291
+            },
+            {
+              "title": "Hakugei (roller coaster)",
+              "pageid": 23914584
+            },
+            {
+              "title": "Hollywood Dream – The Ride",
+              "pageid": 10293890
+            },
+            {
+              "title": "Jupiter (roller coaster)",
+              "pageid": 36800152
+            },
+            {
+              "title": "Looping Star (Nagashima Spa Land)",
+              "pageid": 27868190
+            },
+            {
+              "title": "Momonga Standing and Loop Coaster",
+              "pageid": 68791588
+            },
+            {
+              "title": "Moonsault Scramble",
+              "pageid": 27768095
+            },
+            {
+              "title": "Panic Coaster – Back Daaan",
+              "pageid": 67330479
+            },
+            {
+              "title": "Pyrenees (roller coaster)",
+              "pageid": 14092064
+            },
+            {
+              "title": "Shuttle Loop (Nagashima Spa Land)",
+              "pageid": 37549380
+            },
+            {
+              "title": "Steel Dragon 2000",
+              "pageid": 4276029
+            },
+            {
+              "title": "Takabisha",
+              "pageid": 32396769
+            },
+            {
+              "title": "Thunder Dolphin",
+              "pageid": 6722758
+            },
+            {
+              "title": "Titan (Space World)",
+              "pageid": 6071825
+            },
+            {
+              "title": "Twist Coaster Robin",
+              "pageid": 43649738
+            },
+            {
+              "title": "Ultra Twister (Nagashima Spa Land)",
+              "pageid": 28004358
+            },
+            {
+              "title": "White Canyon (roller coaster)",
+              "pageid": 27976845
+            },
+            {
+              "title": "Big Thunder Mountain Railroad",
+              "pageid": 1313394
+            },
+            {
+              "title": "Big Thunder Mountain Railroad (Tokyo Disneyland)",
+              "pageid": 31000242
+            },
+            {
+              "title": "Chip 'n' Dale's Gadgetcoaster",
+              "pageid": 4133356
+            },
+            {
+              "title": "Space Mountain (Tokyo Disneyland)",
+              "pageid": 12996353
+            }
+          ]
+        }
+      },
+      "articleCount": 28
+    },
+    "CA": {
+      "status": "complete",
+      "regions": {
+        "Alberta": {
+          "category": "Category:Roller coasters in Alberta",
+          "articles": [
+            {
+              "title": "Mindbender (Galaxyland)",
+              "pageid": 2003633
+            },
+            {
+              "title": "Vortex (Calaway Park)",
+              "pageid": 43000536
+            }
+          ]
+        },
+        "British Columbia": {
+          "category": "Category:Roller coasters in British Columbia",
+          "articles": [
+            {
+              "title": "Corkscrew (Playland)",
+              "pageid": 6137156
+            },
+            {
+              "title": "ThunderVolt",
+              "pageid": 66658546
+            },
+            {
+              "title": "Wooden Roller Coaster (Playland)",
+              "pageid": 54965279
+            }
+          ]
+        },
+        "Nova Scotia": {
+          "category": "Category:Roller coasters in Nova Scotia",
+          "articles": [
+            {
+              "title": "Tree Topper",
+              "pageid": 24570641
+            }
+          ]
+        },
+        "Ontario": {
+          "category": "Category:Roller coasters in Ontario",
+          "articles": [
+            {
+              "title": "AlpenFury",
+              "pageid": 77576928
+            },
+            {
+              "title": "Backlot Stunt Coaster",
+              "pageid": 13426191
+            },
+            {
+              "title": "The Bat (Canada's Wonderland)",
+              "pageid": 42704038
+            },
+            {
+              "title": "Behemoth (roller coaster)",
+              "pageid": 12980499
+            },
+            {
+              "title": "Crystal Beach Cyclone",
+              "pageid": 11801396
+            },
+            {
+              "title": "Dragon Fyre",
+              "pageid": 23539124
+            },
+            {
+              "title": "Dragon Mountain",
+              "pageid": 6063724
+            },
+            {
+              "title": "Flight Deck (Canada's Wonderland)",
+              "pageid": 6456308
+            },
+            {
+              "title": "Freestyle (roller coaster)",
+              "pageid": 1509752
+            },
+            {
+              "title": "Ghoster Coaster (Canada's Wonderland)",
+              "pageid": 18118965
+            },
+            {
+              "title": "Leviathan (Canada's Wonderland)",
+              "pageid": 32785421
+            },
+            {
+              "title": "Mighty Canadian Minebuster",
+              "pageid": 4268882
+            },
+            {
+              "title": "Snoopy's Racing Railway",
+              "pageid": 77559073
+            },
+            {
+              "title": "Thunder Run (Canada's Wonderland)",
+              "pageid": 3355608
+            },
+            {
+              "title": "Time Warp (roller coaster)",
+              "pageid": 27584406
+            },
+            {
+              "title": "Vortex (Canada's Wonderland)",
+              "pageid": 5943513
+            },
+            {
+              "title": "Wilde Beast",
+              "pageid": 1506553
+            },
+            {
+              "title": "Yukon Striker",
+              "pageid": 58150083
+            }
+          ]
+        },
+        "Quebec": {
+          "category": "Category:Roller coasters in Quebec",
+          "articles": [
+            {
+              "title": "Cobra (La Ronde)",
+              "pageid": 6923413
+            },
+            {
+              "title": "Ednör – L'Attaque",
+              "pageid": 16781905
+            },
+            {
+              "title": "Goliath (La Ronde)",
+              "pageid": 5885714
+            },
+            {
+              "title": "Le Monstre",
+              "pageid": 11193270
+            },
+            {
+              "title": "Super Manège",
+              "pageid": 30339866
+            },
+            {
+              "title": "Le Vampire",
+              "pageid": 11220205
+            }
+          ]
+        }
+      },
+      "articleCount": 30
+    },
+    "CN": {
+      "status": "complete",
+      "regions": {
+        "China": {
+          "category": "Category:Roller coasters in China",
+          "articles": [
+            {
+              "title": "10 Inversion Roller Coaster",
+              "pageid": 6333115
+            },
+            {
+              "title": "Dinoconda",
+              "pageid": 51104244
+            },
+            {
+              "title": "Dive Coaster (Chimelong Paradise)",
+              "pageid": 14285356
+            },
+            {
+              "title": "Diving Coaster",
+              "pageid": 38149621
+            },
+            {
+              "title": "Family Inverted Coaster (Happy Valley Shanghai)",
+              "pageid": 52674140
+            },
+            {
+              "title": "Fly Over Mediterranean",
+              "pageid": 52859230
+            },
+            {
+              "title": "Golden Wings in Snowfield",
+              "pageid": 52848898
+            },
+            {
+              "title": "Harpy (Xishuangbanna Theme Park)",
+              "pageid": 52674131
+            },
+            {
+              "title": "Parrot Coaster",
+              "pageid": 37937951
+            },
+            {
+              "title": "Seven Dwarfs Mine Train",
+              "pageid": 31215824
+            },
+            {
+              "title": "Sky Scrapper",
+              "pageid": 38148842
+            },
+            {
+              "title": "Tron Lightcycle Power Run",
+              "pageid": 49344501
+            },
+            {
+              "title": "Wood Coaster (Mountain Flyer)",
+              "pageid": 39525111
+            },
+            {
+              "title": "Wooden Coaster - Fireball",
+              "pageid": 39487132
+            },
+            {
+              "title": "Hair Raiser",
+              "pageid": 36325820
+            }
+          ]
+        }
+      },
+      "articleCount": 15
+    },
+    "ES": {
+      "status": "complete",
+      "regions": {
+        "Spain": {
+          "category": "Category:Roller coasters in Spain",
+          "articles": [
+            {
+              "title": "Dragon Khan",
+              "pageid": 2038273
+            },
+            {
+              "title": "Furius Baco",
+              "pageid": 9504325
+            },
+            {
+              "title": "Montaña Suiza",
+              "pageid": 25513531
+            },
+            {
+              "title": "Muntanya Russa (Tibidabo Amusement Park)",
+              "pageid": 23763223
+            },
+            {
+              "title": "Red Force (roller coaster)",
+              "pageid": 53888119
+            },
+            {
+              "title": "Shadows of Arkham",
+              "pageid": 13972267
+            },
+            {
+              "title": "Shambhala (roller coaster)",
+              "pageid": 34830376
+            },
+            {
+              "title": "Stampida",
+              "pageid": 12363080
+            },
+            {
+              "title": "Superman: La Atracción de Acero",
+              "pageid": 14092211
+            },
+            {
+              "title": "Tom & Jerry (roller coaster)",
+              "pageid": 25661444
+            },
+            {
+              "title": "Tornado (Parque de Atracciones de Madrid)",
+              "pageid": 38327748
+            }
+          ]
+        }
+      },
+      "articleCount": 11
+    },
+    "FR": {
+      "status": "complete",
+      "regions": {
+        "France": {
+          "category": "Category:Roller coasters in France",
+          "articles": [
+            {
+              "title": "Alpina Blitz",
+              "pageid": 60730907
+            },
+            {
+              "title": "Centrifugal railway",
+              "pageid": 28018378
+            },
+            {
+              "title": "Goudurix",
+              "pageid": 13345136
+            },
+            {
+              "title": "Krampus Expédition",
+              "pageid": 68266875
+            },
+            {
+              "title": "Mahuka",
+              "pageid": 77202197
+            },
+            {
+              "title": "The Monster (Walygator Parc)",
+              "pageid": 32348893
+            },
+            {
+              "title": "Mystic (roller coaster)",
+              "pageid": 66353535
+            },
+            {
+              "title": "Objectif Mars",
+              "pageid": 66308965
+            },
+            {
+              "title": "OzIris",
+              "pageid": 35374772
+            },
+            {
+              "title": "Pégase Express",
+              "pageid": 66660976
+            },
+            {
+              "title": "Tiger Express (roller coaster)",
+              "pageid": 28218309
+            },
+            {
+              "title": "Tonnerre 2 Zeus",
+              "pageid": 2982541
+            },
+            {
+              "title": "Toutatis (roller coaster)",
+              "pageid": 71374253
+            },
+            {
+              "title": "Triops (roller coaster)",
+              "pageid": 35503502
+            },
+            {
+              "title": "Big Thunder Mountain Railroad",
+              "pageid": 1313394
+            },
+            {
+              "title": "Indiana Jones and the Temple of Peril",
+              "pageid": 8056659
+            },
+            {
+              "title": "Star Wars Hyperspace Mountain",
+              "pageid": 12996382
+            },
+            {
+              "title": "Avengers Assemble: Flight Force",
+              "pageid": 71267969
+            },
+            {
+              "title": "Crush's Coaster",
+              "pageid": 12797323
+            },
+            {
+              "title": "RC Racer",
+              "pageid": 28873149
+            },
+            {
+              "title": "Rock 'n' Roller Coaster Starring Aerosmith",
+              "pageid": 1606874
+            }
+          ]
+        }
+      },
+      "articleCount": 21
+    },
+    "NL": {
+      "status": "complete",
+      "regions": {
+        "Netherlands": {
+          "category": "Category:Roller coasters in the Netherlands",
+          "articles": [
+            {
+              "title": "Baron 1898",
+              "pageid": 44120739
+            },
+            {
+              "title": "Boomerang (roller coaster)",
+              "pageid": 2616376
+            },
+            {
+              "title": "Booster Bike",
+              "pageid": 28332429
+            },
+            {
+              "title": "Condor (roller coaster)",
+              "pageid": 28218253
+            },
+            {
+              "title": "De Vliegende Hollander",
+              "pageid": 8756497
+            },
+            {
+              "title": "Dragonfly (roller coaster)",
+              "pageid": 50591962
+            },
+            {
+              "title": "Falcon (Duinrell)",
+              "pageid": 43614303
+            },
+            {
+              "title": "Fēnix (roller coaster)",
+              "pageid": 58548649
+            },
+            {
+              "title": "Gold Rush (Slagharen)",
+              "pageid": 66715958
+            },
+            {
+              "title": "Goliath (Walibi Holland)",
+              "pageid": 20797046
+            },
+            {
+              "title": "Joris en de Draak",
+              "pageid": 27904174
+            },
+            {
+              "title": "Kikkerachtbaan",
+              "pageid": 50591129
+            },
+            {
+              "title": "Lost Gravity",
+              "pageid": 51546657
+            },
+            {
+              "title": "Max & Moritz (roller coaster)",
+              "pageid": 61697898
+            },
+            {
+              "title": "Pegasus (Efteling)",
+              "pageid": 11735353
+            },
+            {
+              "title": "Python (Efteling)",
+              "pageid": 11505904
+            },
+            {
+              "title": "Speed of Sound (roller coaster)",
+              "pageid": 20876386
+            },
+            {
+              "title": "Swiss Bob",
+              "pageid": 11734555
+            },
+            {
+              "title": "Troy (roller coaster)",
+              "pageid": 59484420
+            },
+            {
+              "title": "Untamed (Walibi Holland)",
+              "pageid": 49809116
+            },
+            {
+              "title": "Vogel Rok",
+              "pageid": 11666507
+            },
+            {
+              "title": "Xpress: Platform 13",
+              "pageid": 12151312
+            }
+          ]
+        }
+      },
+      "articleCount": 22
+    },
+    "SE": {
+      "status": "complete",
+      "regions": {
+        "Sweden": {
+          "category": "Category:Roller coasters in Sweden",
+          "articles": [
+            {
+              "title": "Balder (roller coaster)",
+              "pageid": 4693555
+            },
+            {
+              "title": "Helix (roller coaster)",
+              "pageid": 41539174
+            },
+            {
+              "title": "Insane (Gröna Lund)",
+              "pageid": 31247470
+            },
+            {
+              "title": "Jetline (roller coaster)",
+              "pageid": 6658504
+            },
+            {
+              "title": "Kanonen",
+              "pageid": 69908754
+            },
+            {
+              "title": "Kvasten",
+              "pageid": 28795189
+            },
+            {
+              "title": "Lisebergbanan",
+              "pageid": 7038496
+            },
+            {
+              "title": "Monster (Gröna Lund)",
+              "pageid": 67774660
+            },
+            {
+              "title": "Valkyria (roller coaster)",
+              "pageid": 52590226
+            },
+            {
+              "title": "Vildare Musen",
+              "pageid": 7133803
+            },
+            {
+              "title": "Wildfire (Kolmården Wildlife Park)",
+              "pageid": 44158643
+            }
+          ]
+        }
+      },
+      "articleCount": 11
+    },
+    "DK": {
+      "status": "complete",
+      "regions": {
+        "Denmark": {
+          "category": "Category:Roller coasters in Denmark",
+          "articles": [
+            {
+              "title": "Cobra (Tivoli Friheden)",
+              "pageid": 5801190
+            },
+            {
+              "title": "Dæmonen",
+              "pageid": 4414946
+            },
+            {
+              "title": "Fønix (roller coaster)",
+              "pageid": 68173471
+            },
+            {
+              "title": "Hundeprutterutchebane",
+              "pageid": 43595597
+            },
+            {
+              "title": "Lego Technic Test Track",
+              "pageid": 35118524
+            },
+            {
+              "title": "Orkanen",
+              "pageid": 67099057
+            },
+            {
+              "title": "Polar X-plorer",
+              "pageid": 33392234
+            }
+          ]
+        }
+      },
+      "articleCount": 7
+    },
+    "IT": {
+      "status": "complete",
+      "regions": {
+        "Italy": {
+          "category": "Category:Roller coasters in Italy",
+          "articles": [
+            {
+              "title": "Blue Tornado (roller coaster)",
+              "pageid": 5767821
+            },
+            {
+              "title": "Desmo Race",
+              "pageid": 60372493
+            },
+            {
+              "title": "ISpeed",
+              "pageid": 23326819
+            },
+            {
+              "title": "Katun (roller coaster)",
+              "pageid": 5786172
+            },
+            {
+              "title": "Shaman (roller coaster)",
+              "pageid": 5782454
+            },
+            {
+              "title": "Mammut (roller coaster)",
+              "pageid": 18065951
+            },
+            {
+              "title": "Oblivion: The Black Hole",
+              "pageid": 45038290
+            },
+            {
+              "title": "Raptor (Gardaland)",
+              "pageid": 29645881
+            },
+            {
+              "title": "Sierra Tonante",
+              "pageid": 7433158
+            }
+          ]
+        }
+      },
+      "articleCount": 9
+    },
+    "AU": {
+      "status": "complete",
+      "regions": {
+        "Australia": {
+          "category": "Category:Roller coasters in Australia",
+          "articles": [
+            {
+              "title": "Abyss (roller coaster)",
+              "pageid": 40088181
+            },
+            {
+              "title": "Arkham Asylum – Shock Therapy",
+              "pageid": 5412782
+            },
+            {
+              "title": "Big Dipper (Luna Park Sydney, 1935)",
+              "pageid": 4452765
+            },
+            {
+              "title": "Big Dipper (Luna Park Sydney, 2021)",
+              "pageid": 81130375
+            },
+            {
+              "title": "The Bush Beast",
+              "pageid": 724718
+            },
+            {
+              "title": "DC Rivals HyperCoaster",
+              "pageid": 54274994
+            },
+            {
+              "title": "Dragon Express",
+              "pageid": 27961844
+            },
+            {
+              "title": "Eureka Mountain Mine Ride",
+              "pageid": 16347647
+            },
+            {
+              "title": "The Flash: Speed Force",
+              "pageid": 27883527
+            },
+            {
+              "title": "The Gold Coaster",
+              "pageid": 16187408
+            },
+            {
+              "title": "The Great Scenic Railway",
+              "pageid": 69128295
+            },
+            {
+              "title": "Green Lantern Coaster",
+              "pageid": 33112796
+            },
+            {
+              "title": "Jet Rescue",
+              "pageid": 27237351
+            },
+            {
+              "title": "Jungle Rush",
+              "pageid": 75117996
+            },
+            {
+              "title": "Kenny's Forest Flyer",
+              "pageid": 23519258
+            },
+            {
+              "title": "Leviathan (Sea World)",
+              "pageid": 67061095
+            },
+            {
+              "title": "Motocoaster (Dreamworld)",
+              "pageid": 14098013
+            },
+            {
+              "title": "Road Runner Rollercoaster",
+              "pageid": 22757204
+            },
+            {
+              "title": "Scooby-Doo Spooky Coaster",
+              "pageid": 3034423
+            },
+            {
+              "title": "Sea Viper (roller coaster)",
+              "pageid": 27237361
+            },
+            {
+              "title": "Steel Taipan",
+              "pageid": 65987769
+            },
+            {
+              "title": "Storm Coaster",
+              "pageid": 37728982
+            },
+            {
+              "title": "Superman Escape",
+              "pageid": 2559243
+            },
+            {
+              "title": "Recoil (Wonderla Hyderabad)",
+              "pageid": 15697709
+            },
+            {
+              "title": "Thrillseeker (roller coaster)",
+              "pageid": 27675750
+            },
+            {
+              "title": "Thunderbolt (Dreamworld)",
+              "pageid": 16535460
+            },
+            {
+              "title": "Tower of Terror II",
+              "pageid": 5725927
+            },
+            {
+              "title": "Turbo Mountain",
+              "pageid": 27961787
+            },
+            {
+              "title": "Wild Mouse (Luna Park Sydney)",
+              "pageid": 81288761
+            }
+          ]
+        }
+      },
+      "articleCount": 29
+    },
+    "KR": {
+      "status": "complete",
+      "regions": {
+        "South Korea": {
+          "category": "Category:Roller coasters in South Korea",
+          "articles": [
+            {
+              "title": "Atlantis Adventure",
+              "pageid": 67445277
+            },
+            {
+              "title": "Comet Express",
+              "pageid": 24178163
+            },
+            {
+              "title": "Draken (roller coaster)",
+              "pageid": 74478719
+            },
+            {
+              "title": "Eagle Fortress",
+              "pageid": 67445644
+            },
+            {
+              "title": "Giant Digger",
+              "pageid": 80191460
+            },
+            {
+              "title": "Herky and Timmy's Racing Coaster",
+              "pageid": 74891509
+            },
+            {
+              "title": "Phaethon (roller coaster)",
+              "pageid": 14043156
+            },
+            {
+              "title": "Template:Roller coasters in South Korea",
+              "pageid": 24176860
+            },
+            {
+              "title": "Rolling-X Train",
+              "pageid": 52848772
+            },
+            {
+              "title": "T Express",
+              "pageid": 18170089
+            }
+          ]
+        }
+      },
+      "articleCount": 10
+    },
+    "AE": {
+      "status": "complete",
+      "regions": {
+        "United Arab Emirates": {
+          "category": "Category:Roller coasters in the United Arab Emirates",
+          "articles": [
+            {
+              "title": "Fiorano GT Challenge",
+              "pageid": 25060593
+            },
+            {
+              "title": "Flying Aces (roller coaster)",
+              "pageid": 59613128
+            },
+            {
+              "title": "Formula Rossa",
+              "pageid": 24812976
+            },
+            {
+              "title": "Mission Ferrari",
+              "pageid": 75617126
+            }
+          ]
+        }
+      },
+      "articleCount": 4
+    },
+    "SG": {
+      "status": "complete",
+      "regions": {
+        "Singapore": {
+          "category": "Category:Roller coasters in Singapore",
+          "articles": [
+            {
+              "title": "Battlestar Galactica: Human vs. Cylon",
+              "pageid": 24968835
+            },
+            {
+              "title": "Revenge of the Mummy",
+              "pageid": 37660297
+            }
+          ]
+        }
+      },
+      "articleCount": 2
+    },
+    "MY": {
+      "status": "complete",
+      "regions": {
+        "Malaysia": {
+          "category": "Category:Roller coasters in Malaysia",
+          "articles": []
+        }
+      },
+      "articleCount": 0
+    },
+    "MX": {
+      "status": "complete",
+      "regions": {
+        "Mexico": {
+          "category": "Category:Roller coasters in Mexico",
+          "articles": [
+            {
+              "title": "All American Triple Loop",
+              "pageid": 12928143
+            },
+            {
+              "title": "Batgirl Batarang",
+              "pageid": 34364464
+            },
+            {
+              "title": "The Dark Knight Coaster",
+              "pageid": 33865294
+            },
+            {
+              "title": "The Joker (Six Flags México)",
+              "pageid": 36938106
+            },
+            {
+              "title": "Medusa Steel Coaster",
+              "pageid": 34354698
+            },
+            {
+              "title": "Montaña Rusa (La Feria Chapultepec Mágico)",
+              "pageid": 12972590
+            },
+            {
+              "title": "Superman El Último Escape",
+              "pageid": 34344407
+            },
+            {
+              "title": "Superman: Krypton Coaster (Six Flags Mexico)",
+              "pageid": 60618860
+            },
+            {
+              "title": "Tsunami (roller coaster)",
+              "pageid": 10487883
+            }
+          ]
+        }
+      },
+      "articleCount": 9
+    },
+    "BR": {
+      "status": "complete",
+      "regions": {
+        "Brazil": {
+          "category": "Category:Roller coasters in Brazil",
+          "articles": [
+            {
+              "title": "Monte Makaya",
+              "pageid": 7939109
+            },
+            {
+              "title": "Montezum",
+              "pageid": 25545906
+            },
+            {
+              "title": "Vurang",
+              "pageid": 52860742
+            }
+          ]
+        }
+      },
+      "articleCount": 3
+    },
+    "FI": {
+      "status": "complete",
+      "regions": {
+        "Finland": {
+          "category": "Category:Roller coasters in Finland",
+          "articles": [
+            {
+              "title": "Cobra (PowerPark)",
+              "pageid": 15219614
+            },
+            {
+              "title": "Junker (roller coaster)",
+              "pageid": 64413157
+            },
+            {
+              "title": "Kirnu",
+              "pageid": 12129671
+            },
+            {
+              "title": "Linnunrata",
+              "pageid": 15212933
+            },
+            {
+              "title": "Pikajuna",
+              "pageid": 15213150
+            },
+            {
+              "title": "Pitts Special (roller coaster)",
+              "pageid": 64637776
+            },
+            {
+              "title": "Salama (roller coaster)",
+              "pageid": 15219754
+            },
+            {
+              "title": "Taiga (roller coaster)",
+              "pageid": 64406926
+            },
+            {
+              "title": "Thunderbird (PowerPark)",
+              "pageid": 6231729
+            },
+            {
+              "title": "Tulireki",
+              "pageid": 15213000
+            },
+            {
+              "title": "Vonkaputous",
+              "pageid": 15212805
+            },
+            {
+              "title": "Vuoristorata",
+              "pageid": 9017355
+            }
+          ]
+        }
+      },
+      "articleCount": 12
+    },
+    "PL": {
+      "status": "complete",
+      "regions": {
+        "Poland": {
+          "category": "Category:Roller coasters in Poland",
+          "articles": [
+            {
+              "title": "Abyssus",
+              "pageid": 69130300
+            },
+            {
+              "title": "Formuła (Energylandia)",
+              "pageid": 59658413
+            },
+            {
+              "title": "Hyperion (roller coaster)",
+              "pageid": 59377605
+            },
+            {
+              "title": "Lech Coaster",
+              "pageid": 59644805
+            },
+            {
+              "title": "Zadra (roller coaster)",
+              "pageid": 60416115
+            }
+          ]
+        }
+      },
+      "articleCount": 5
+    },
+    "AT": {
+      "status": "complete",
+      "regions": {
+        "Austria": {
+          "category": "Category:Roller coasters in Austria",
+          "articles": []
+        }
+      },
+      "articleCount": 0
+    },
+    "BE": {
+      "status": "complete",
+      "regions": {
+        "Belgium": {
+          "category": "Category:Roller coasters in Belgium",
+          "articles": [
+            {
+              "title": "Dawson Duel",
+              "pageid": 66580147
+            },
+            {
+              "title": "Dreamcatcher (roller coaster)",
+              "pageid": 42554907
+            },
+            {
+              "title": "Fury (roller coaster)",
+              "pageid": 61464304
+            },
+            {
+              "title": "Kondaa",
+              "pageid": 66280008
+            },
+            {
+              "title": "Pulsar (roller coaster)",
+              "pageid": 60294413
+            },
+            {
+              "title": "The Ride to Happiness",
+              "pageid": 67313857
+            },
+            {
+              "title": "Tiki-Waka (roller coaster)",
+              "pageid": 66566579
+            },
+            {
+              "title": "Typhoon (Bobbejaanland)",
+              "pageid": 43612483
+            },
+            {
+              "title": "Wakala (roller coaster)",
+              "pageid": 66391541
+            }
+          ]
+        }
+      },
+      "articleCount": 9
+    },
+    "TW": {
+      "status": "complete",
+      "regions": {
+        "Taiwan": {
+          "category": "Category:Roller coasters in Taiwan",
+          "articles": [
+            {
+              "title": "Crazy Coaster",
+              "pageid": 13916149
+            },
+            {
+              "title": "Diving Machine G5",
+              "pageid": 13878582
+            }
+          ]
+        }
+      },
+      "articleCount": 2
+    },
+    "IN": {
+      "status": "complete",
+      "regions": {
+        "India": {
+          "category": "Category:Roller coasters in India",
+          "articles": [
+            {
+              "title": "Deep Space (roller coaster)",
+              "pageid": 42911030
+            },
+            {
+              "title": "Nitro (Imagicaa)",
+              "pageid": 39063935
+            },
+            {
+              "title": "Recoil (Wonderla Hyderabad)",
+              "pageid": 15697709
+            }
+          ]
+        }
+      },
+      "articleCount": 3
+    }
+  },
+  "stats": {
+    "totalArticles": 169,
+    "countriesComplete": 25,
+    "lastRun": "2026-02-28T20:52:19.415Z"
+  }
+}

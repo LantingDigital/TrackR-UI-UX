@@ -1,0 +1,39 @@
+{
+  "articleTitle": "Lake George Expedition Park",
+  "introSection": "\n\nLake George Expedition Park is an amusement park located in Lake George, New York, United States along Route 9. It opened in 2019, and incorporates the Magic Forest, which opened in 1963, along with a new attraction entitled Dino Roar Valley.",
+  "sections": [
+    {
+      "title": "Magic Forest",
+      "content": "The Magic Forest was originally opened in 1963 by Arthur Gillette.\n\nAs a separate park, it featured the largest Uncle Sam statue in the world (as of May 9, 2019, the statue has since moved back home to Danbury, Connecticut), a magic show, and cottages and attractions which tell the story of the Three Little Pigs, Jack Sprat, Hansel and Gretel, various princesses, Paul Bunyan, Pecos Bill, the Statue of Liberty, and the Spider Man. The park's famous Santa Claus overlooks the parking lot. Magic Forest also has a small petting zoo where children can feed the animals."
+    },
+    {
+      "title": "Dino Roar Valley",
+      "content": "The other part of the park is Dino Roar Valley, which opened in 2019 and features animatronic dinosaurs."
+    }
+  ],
+  "fullText": "\n\nLake George Expedition Park is an amusement park located in Lake George, New York, United States along Route 9. It opened in 2019, and incorporates the Magic Forest, which opened in 1963, along with a new attraction entitled Dino Roar Valley.\n\nThe Magic Forest was originally opened in 1963 by Arthur Gillette.\n\nAs a separate park, it featured the largest Uncle Sam statue in the world (as of May 9, 2019, the statue has since moved back home to Danbury, Connecticut), a magic show, and cottages and attractions which tell the story of the Three Little Pigs, Jack Sprat, Hansel and Gretel, various princesses, Paul Bunyan, Pecos Bill, the Statue of Liberty, and the Spider Man. The park's famous Santa Claus overlooks the parking lot. Magic Forest also has a small petting zoo where children can feed the animals.\n\nThe other part of the park is Dino Roar Valley, which opened in 2019 and features animatronic dinosaurs.\n\n\n\n\n",
+  "categories": [
+    "Amusement parks in New York (state)",
+    "1963 establishments in New York (state)",
+    "2019 establishments in New York (state)",
+    "Amusement parks opened in 1963",
+    "Amusement parks opened in 2019"
+  ],
+  "infoboxRaw": {
+    "name": "Lake George Expedition Park",
+    "image": "MagicForest 2.jpg",
+    "caption": "Uncle Sam statue at Magic Forest",
+    "resort": "Lake George, New York, USA",
+    "coordinates": "43.3959°N, -73.7031°W",
+    "opening_date": "1963",
+    "season": "May-September",
+    "rides": "25",
+    "coasters": "1",
+    "water_rides": "0",
+    "status": "Open"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lake_George_Expedition_Park",
+  "wikiPageId": null,
+  "fetchedAt": "2026-02-28T23:01:33.099Z",
+  "articleLength": 926
+}

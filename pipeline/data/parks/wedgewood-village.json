@@ -1,0 +1,29 @@
+{
+  "id": "wedgewood-village",
+  "name": "Wedgewood Village Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Oklahoma",
+  "continent": "North America",
+  "city": "63rd and N.W. Expressway, Oklahoma City, Oklahoma",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1955,
+  "yearClosed": 1969,
+  "owner": "Maurice Woods",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Wedgewood Village Amusement Park was an amusement park in Oklahoma City, Oklahoma.  It was originally started in 1955 by Maurice Woods and located at May and NW 58th street, where it was known as Duffys Golf.  Maurice started to notice that wives and children were sitting in their cars while their husbands used the driving range.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Wedgewood_logo.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wedgewood_Village_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:19.223Z"
+}

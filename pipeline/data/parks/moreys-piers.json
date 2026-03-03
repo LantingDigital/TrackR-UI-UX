@@ -1,0 +1,32 @@
+{
+  "id": "moreys-piers",
+  "name": "Morey's Piers & Beachfront Waterparks",
+  "formerNames": [
+    "Wilbert Morey",
+    "Bill Morey"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "3501 Boardwalk",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1969,
+  "yearClosed": null,
+  "owner": "Wilbert Morey II",
+  "chain": null,
+  "website": "https://www.moreyspiers.com",
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "Morey's Piers & Beachfront Waterparks is a seaside amusement park located on The Wildwoods' boardwalk in Wildwood and North Wildwood, New Jersey.  The park has been family owned and operated since 1969 and was run by second generation Morey Brothers, Will and Jack.  Morey's Piers has more than 100 rides and attractions across its three amusement piers and two beachfront waterparks.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Morey's_Piers",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:21.981Z"
+}

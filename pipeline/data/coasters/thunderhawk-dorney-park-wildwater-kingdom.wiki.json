@@ -1,0 +1,57 @@
+{
+  "articleTitle": "Thunderhawk (Dorney Park)",
+  "introSection": "Thunderhawk is a wooden roller coaster with an out-and-back layout located at Dorney Park & Wildwater Kingdom in Allentown, Pennsylvania. Originally opening as The Coaster in 1924, Thunderhawk is the oldest operating roller coaster in the Cedar Fair chain, and one of the oldest in the world still in operation. It was manufactured by Philadelphia Toboggan Coasters (PTC) and designed by Herbert Paul Schmeck.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Thunderhawk was designed by Herbert Paul Schmeck and built by Philadelphia Toboggan Coasters. When Thunderhawk opened on March 30,1924, it was known simply as \"The Coaster.\" It was renamed Thunderhawk in 1989.\n\nOriginally, The Coaster was an out-and-back coaster, meaning it went straight out from the first drop, turned around, and came straight back through several smaller hills. The ride was reconfigured in 1930 to its present design with a figure-eight twister section in the middle of the ride. Over the years, the ride has seen many cosmetic changes. At one point the ride featured a bright yellow paint job, which has since been painted over with an off-white color.\n\nThe original station pavilion featured a separate bumper car ride, which the line for The Coaster wrapped around, providing some entertainment to those waiting in line. Originally, the ride began with a tunneled section and ended with another tunneled section, as the train went under the portion of the pavilion devoted to the bumper cars. The bumper cars were removed following Cedar Fair's purchase of the park in 1993. In addition, a set of brakes was placed in the middle of the return bunny hills, causing the train to slow down and lose much of its airtime.\n\nFor the 2016 season, Dorney Park announced major renovations to Thunderhawk. Among the changes were new trains designed by PTC, featuring an open-air design, with individual ratcheting lap bars (as opposed to the previous \"buzz bars\"). The ride also received a new coat of white paint, reminiscent of the coaster's original color, and a new white lighting package to outline the entire ride.\n\nIn 2021, the American Coaster Enthusiasts (ACE) gave Thunderhawk an ACE Coaster Landmark plaque.\n\nIn 2024, Thunderhawk was given a new and refurbished train, decorated with a \"100th Anniversary\" insignia to commemorate its 100th year of operation."
+    },
+    {
+      "title": "Incidents",
+      "content": "On July 21, 1990, two trains on Thunderhawk collided at the bottom of the lift hill. 17 people were taken to local hospitals to receive treatment for minor injuries. It is unknown what caused the accident, as certified ride operators tested the ride after the accident and found nothing mechanically or physically wrong with it; however, the parks spokeswomen said that operator error may have caused the accident. The ride was closed immediately after the accident happened and re-opened the next day."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Official page"
+    }
+  ],
+  "fullText": "Thunderhawk is a wooden roller coaster with an out-and-back layout located at Dorney Park & Wildwater Kingdom in Allentown, Pennsylvania. Originally opening as The Coaster in 1924, Thunderhawk is the oldest operating roller coaster in the Cedar Fair chain, and one of the oldest in the world still in operation. It was manufactured by Philadelphia Toboggan Coasters (PTC) and designed by Herbert Paul Schmeck.\n\nThunderhawk was designed by Herbert Paul Schmeck and built by Philadelphia Toboggan Coasters. When Thunderhawk opened on March 30,1924, it was known simply as \"The Coaster.\" It was renamed Thunderhawk in 1989.\n\nOriginally, The Coaster was an out-and-back coaster, meaning it went straight out from the first drop, turned around, and came straight back through several smaller hills. The ride was reconfigured in 1930 to its present design with a figure-eight twister section in the middle of the ride. Over the years, the ride has seen many cosmetic changes. At one point the ride featured a bright yellow paint job, which has since been painted over with an off-white color.\n\nThe original station pavilion featured a separate bumper car ride, which the line for The Coaster wrapped around, providing some entertainment to those waiting in line. Originally, the ride began with a tunneled section and ended with another tunneled section, as the train went under the portion of the pavilion devoted to the bumper cars. The bumper cars were removed following Cedar Fair's purchase of the park in 1993. In addition, a set of brakes was placed in the middle of the return bunny hills, causing the train to slow down and lose much of its airtime.\n\nFor the 2016 season, Dorney Park announced major renovations to Thunderhawk. Among the changes were new trains designed by PTC, featuring an open-air design, with individual ratcheting lap bars (as opposed to the previous \"buzz bars\"). The ride also received a new coat of white paint, reminiscent of the coaster's original color, and a new white lighting package to outline the entire ride.\n\nIn 2021, the American Coaster Enthusiasts (ACE) gave Thunderhawk an ACE Coaster Landmark plaque.\n\nIn 2024, Thunderhawk was given a new and refurbished train, decorated with a \"100th Anniversary\" insignia to commemorate its 100th year of operation.\n\nOn July 21, 1990, two trains on Thunderhawk collided at the bottom of the lift hill. 17 people were taken to local hospitals to receive treatment for minor injuries. It is unknown what caused the accident, as certified ride operators tested the ride after the accident and found nothing mechanically or physically wrong with it; however, the parks spokeswomen said that operator error may have caused the accident. The ride was closed immediately after the accident happened and re-opened the next day.\n\n\n\n\n * Official page",
+  "categories": [
+    "Roller coasters operated by Six Flags",
+    "Roller coasters in Pennsylvania"
+  ],
+  "infoboxRaw": {
+    "name": "Thunderhawk",
+    "previousnames": "\"The Coaster\"",
+    "image": "DP-Thunderhawk.jpg",
+    "caption": "Thunderhawk's lift hill and station at Dorney Park & Wildwater Kingdom",
+    "location": "Dorney Park & Wildwater Kingdom",
+    "status": "Operating",
+    "opened": "March 30, 1924",
+    "manufacturer": "Philadelphia Toboggan Coasters",
+    "designer": "Herbert Paul Schmeck",
+    "track": "Out and Back / Twister",
+    "lift": "Chain lift hill",
+    "height_ft": "80",
+    "drop_ft": "65",
+    "length_ft": "2767",
+    "speed_mph": "45",
+    "inversions": "0",
+    "duration": "1:18",
+    "angle": "45",
+    "restriction_in": "48",
+    "trains": "2",
+    "carspertrain": "4",
+    "rowspercar": "3",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar_Fair_Fast_Lane_availability_icon.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "239",
+    "coordinates": "40.5798°N, -75.5355°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Thunderhawk_(Dorney_Park)",
+  "wikiPageId": 5920399,
+  "fetchedAt": "2026-02-28T20:18:32.550Z",
+  "articleLength": 2819
+}

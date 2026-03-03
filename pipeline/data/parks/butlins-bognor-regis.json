@@ -1,0 +1,29 @@
+{
+  "id": "butlins-bognor-regis",
+  "name": "Butlin’s Bognor Regis",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Bognor Regis, West Sussex, UK",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "Butlins.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Butlin's Bognor Regis is a holiday camp in the seaside resort of Bognor Regis, West Sussex, England.  It lies 55. 5 mi south southwest of London.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Butlins_Bognor_Resort_in_2009.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Butlins_Bognor_Regis",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:35.605Z"
+}

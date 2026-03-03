@@ -1,0 +1,31 @@
+{
+  "id": "dreamland-margate",
+  "name": "Dreamland",
+  "formerNames": [
+    "Bembom Brothers White Knuckle Theme Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Margate, Kent",
+  "latitude": 51.3863,
+  "longitude": -1.3759,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Sands Heritage Ltd.",
+  "chain": null,
+  "website": "http://www.dreamland.co.uk/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Dreamland Margate is an amusement park and entertainment centre based on a traditional English seaside funfair located in Margate, Kent, England.  The site of the park was first used for amusement rides in 1880, although the Dreamland name was not used until 1920 when the park's Grade II* listed (particularly significant building of more than local interest) Scenic Railway wooden rollercoaster was opened. \n\nThe number of amusements at the park increased during the 1960s and 1970s, and in 1981 the site was sold to the Dutch Bembom brothers, who renamed it \"Bembom Brothers White Knuckle Theme Park\".",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Midweek_Birthday_Margate_Mini-Break-3220160816_(29052138755).jpg",
+  "imageAttribution": "Dreamland in 2016",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dreamland_Margate",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:07.542Z"
+}

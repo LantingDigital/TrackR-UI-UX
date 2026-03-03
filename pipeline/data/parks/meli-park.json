@@ -1,0 +1,29 @@
+{
+  "id": "meli-park",
+  "name": "Meli Park",
+  "formerNames": [],
+  "country": "BE",
+  "countryName": "Belgium",
+  "region": null,
+  "continent": "Europe",
+  "city": "Adinkerke",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1935,
+  "yearClosed": 1999,
+  "owner": "Family Florizoone",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Meli Park was a theme park which was opened in 1935 in Adinkerke in the municipality of De Panne on the Belgian coast.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Abeille_Apirama_exposition_Meli_Park.jpg",
+  "imageAttribution": "The Meli bee, from the Apirama dark ride",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Meli_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:46.969Z"
+}

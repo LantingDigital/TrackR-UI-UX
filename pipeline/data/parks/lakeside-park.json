@@ -1,0 +1,29 @@
+{
+  "id": "lakeside-park",
+  "name": "Lakeside Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Virginia",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Lakeside Park may refer to:\n\n\n * In Australia\n * Lakeside Park, formerly Lakeside International Raceway, an Australian motor racing facility\n\n\n * In Canada\n * Lakeside Park, in St Catharines, Ontario, Canada\n\n\n * In England\n * Lakeside Park, Guildford, a Local Nature Reserve in England\n\n\n * In Slovakia\n * Lakeside Park (Bratislava), an office complex in the capital of Slovakia\n\n\n * In United States\n * Lakeside Park, Indiana, an unincorporated community in the United States\n * Lakeside Park (Cant",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lakeside_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:29:09.395Z"
+}

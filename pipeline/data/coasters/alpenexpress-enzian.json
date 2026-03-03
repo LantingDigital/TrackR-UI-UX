@@ -1,0 +1,60 @@
+{
+  "id": "alpenexpress-enzian",
+  "name": "Alpenexpress Enzian",
+  "formerNames": [
+    "Grottenblitz"
+  ],
+  "parkId": "europa-park",
+  "parkName": "Europa-Park",
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "heightFt": 19.7,
+  "heightM": 6,
+  "speedMph": 28,
+  "speedKmh": 45,
+  "lengthFt": 866.1,
+  "lengthM": 264,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 100,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Mack Rides",
+  "designer": null,
+  "model": "Grottenblitz",
+  "status": "closed",
+  "yearOpened": 1984,
+  "yearClosed": 2023,
+  "description": "Alpenexpress Enzian (Alpine Express Gentian in English), formerly Grottenblitz, is a powered roller coaster with optional virtual reality ride experience manufactured by Mack Rides and located at Europa-Park in Rust, Germany.  It is located in the Austria-themed section of the park.  Opening in 1984, Alpenexpress was the first roller coaster built at the park.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Europapark_Alpenexpress.jpg",
+  "imageAttribution": "The old ride, dipping below the log flume",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Alpenexpress_Enzian",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:43:47.787Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "alpenexpress enzian",
+    "grottenblitz",
+    "europa-park",
+    "mack rides",
+    "sit-down",
+    "germany"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Mack Rides"
+  },
+  "popularityScore": 61.7,
+  "popularityTier": "notable",
+  "popularityRank": 539
+}

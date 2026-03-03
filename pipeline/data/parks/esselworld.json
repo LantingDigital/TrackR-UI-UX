@@ -1,0 +1,29 @@
+{
+  "id": "esselworld",
+  "name": "EsselWorld",
+  "formerNames": [],
+  "country": "IN",
+  "countryName": "India",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "EsselWorld is an amusement park located in Gorai on Dharavi island, Mumbai.  It is operated by Pan India Pariyatan Ltd.  It covers an area of 65 acres along with Water Kingdom, and was opened to the public in 1989.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Thunder%2C_Esselworld.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/EsselWorld",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:11.230Z"
+}

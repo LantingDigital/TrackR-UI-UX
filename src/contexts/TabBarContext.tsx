@@ -19,7 +19,7 @@ import {
 import type { SharedValue } from 'react-native-reanimated';
 
 // Tab names and types
-export const TAB_NAMES = ['Home', 'Discover', 'Parks', 'Community', 'Profile'] as const;
+export const TAB_NAMES = ['Home', 'Parks', 'Logbook', 'Community', 'Profile'] as const;
 export type TabName = (typeof TAB_NAMES)[number];
 
 // Type for screen reset handlers
@@ -48,15 +48,22 @@ export const TabBarProvider: React.FC<TabBarProviderProps> = ({ children }) => {
   // Tab bar visibility: 0 = visible, 1 = hidden
   const tabBarTranslateY = useSharedValue(0);
 
+  // Reference count — bar only shows when all hiders have released
+  const hideCount = useRef(0);
+
   // Map of screen names to their reset handlers
   const resetHandlers = useRef<Map<string, ScreenResetHandler>>(new Map());
 
   const hideTabBar = useCallback((duration: number = 300) => {
+    hideCount.current += 1;
     tabBarTranslateY.value = withTiming(1, { duration });
   }, [tabBarTranslateY]);
 
   const showTabBar = useCallback((duration: number = 300) => {
-    tabBarTranslateY.value = withTiming(0, { duration });
+    hideCount.current = Math.max(0, hideCount.current - 1);
+    if (hideCount.current === 0) {
+      tabBarTranslateY.value = withTiming(0, { duration });
+    }
   }, [tabBarTranslateY]);
 
   const registerResetHandler = useCallback((screenName: string, handler: ScreenResetHandler) => {

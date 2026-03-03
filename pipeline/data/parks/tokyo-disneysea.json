@@ -1,0 +1,29 @@
+{
+  "id": "tokyo-disneysea",
+  "name": "Tokyo DisneySea",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Urayasu",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2001,
+  "yearClosed": null,
+  "owner": "The Oriental Land Company",
+  "chain": null,
+  "website": "Tokyo DisneySea official website (English)",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Tokyo DisneySea (東京ディズニーシー) is a theme park at the Tokyo Disney Resort located in Urayasu, Chiba Prefecture, Japan, just next to Tokyo.  It opened on 4 September 2001, at a cost of 335 billion yen.  The Oriental Land Company owns the park and licenses intellectual property from the Walt Disney Company.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Mt_Prometheus_at_Tokyo_DisneySea.jpg",
+  "imageAttribution": "Mount Prometheus, the park icon of Tokyo DisneySea",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tokyo_DisneySea",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:40.634Z"
+}

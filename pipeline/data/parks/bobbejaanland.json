@@ -1,0 +1,29 @@
+{
+  "id": "bobbejaanland",
+  "name": "Bobbejaanland",
+  "formerNames": [],
+  "country": "BE",
+  "countryName": "Belgium",
+  "region": "Belgium",
+  "continent": "Europe",
+  "city": null,
+  "latitude": 51.20101,
+  "longitude": -4.90353,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1961,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.bobbejaanland.be",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Bobbejaanland is a theme park in Lichtaart, Belgium.  The park was founded by Bobbejaan Schoepen, a Flemish singer, guitarist, and entertainer who enjoyed international success in the 1950s and early 1960s.  In 1959, he bought a 30-hectare marsh, had it drained and built a 1,000-capacity venue that opened in December 1961 as Bobbejaanland.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Bobbejaanland_Logo.png_Bobbejaanland_1988_tom_schoepen.jpg",
+  "imageAttribution": "Morning at Bobbejaanland in 1988.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bobbejaanland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:13.670Z"
+}

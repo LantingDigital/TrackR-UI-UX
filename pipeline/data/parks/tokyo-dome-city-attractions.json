@@ -1,0 +1,31 @@
+{
+  "id": "tokyo-dome-city-attractions",
+  "name": "Tokyo Dome City Attractions",
+  "formerNames": [
+    "Korakuen Yuenchi"
+  ],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "Bunkyō, Tokyo",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1958,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Tokyo Dome City Attractions (東京ドームシティアトラクションズ) is an amusement park located next to the Tokyo Dome in Bunkyō, Tokyo, Japan, and forms a part of the Tokyo Dome City entertainment complex.  It opened in 1958, and was formerly known as Korakuen Amusement Park (後楽園ゆうえんち) until April 2003.  It was one of the most popular amusement parks in Tokyo.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sky-flower_from_Tokyodomecityattractions.jpg",
+  "imageAttribution": "\"Sky Flower\" at Tokyo Dome City Attractions",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tokyo_Dome_City_Attractions",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:50.692Z"
+}

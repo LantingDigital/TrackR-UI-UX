@@ -1,0 +1,29 @@
+{
+  "id": "la-mer-de-sable",
+  "name": "La Mer de Sable",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Ermenonville Forest, Oise, France",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1963,
+  "yearClosed": null,
+  "owner": "Looping Group",
+  "chain": null,
+  "website": "Official Website",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "La Mer de Sable is an amusement park founded in 1963 and is located in Ermenonville Forest.  The park is close to the commune of Ermenonville in the Oise department of northern France.  The park is owned and operated by the Looping Group.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/La_Mer_de_sable_01.jpg",
+  "imageAttribution": "Entrance to the park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/La_Mer_de_Sable",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:31.587Z"
+}

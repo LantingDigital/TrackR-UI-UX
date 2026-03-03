@@ -1,0 +1,29 @@
+{
+  "id": "gillians-wonderland-pier",
+  "name": "Gillian's Wonderland Pier",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "6th and Boardwalk, Ocean City, New Jersey",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1965,
+  "yearClosed": 2024,
+  "owner": "Jay Gillian",
+  "chain": null,
+  "website": "gillians.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Gillian's Wonderland Pier is a closed historic amusement park in Ocean City, New Jersey.  It was founded in 1965 by Roy Gillian, son of David Gillian who first came to Ocean City in 1914.  It was located near the beginning of the commercial boardwalk on 6th street.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Gillian's_Wonderland_(7498562368).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gillian's_Wonderland_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:23.112Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "bellewaerde-park",
+  "name": "Bellewaerde",
+  "formerNames": [
+    "1972 - 2013: Bellewaerde Park",
+    "1969 - 1971: Safari Bellewaerde 1954 - 1968: Touristic Center Bellewaerde"
+  ],
+  "country": "BE",
+  "countryName": "Belgium",
+  "region": null,
+  "continent": "Europe",
+  "city": "Zillebeke",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1954,
+  "yearClosed": null,
+  "owner": "Compagnie des Alpes",
+  "chain": null,
+  "website": "http://www.bellewaerde.be",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Bellewaerde is a theme park in the West Flemish countryside at Zonnebeke near Ypres, Belgium (it is physically located just inside the Ypres municipality boundary).  It was established in 1954, on the grounds of the World War I Battle of Bellewaarde.  Named after an old castle in its territory that still stands near the main entrance, Bellewaerde is the oldest operating theme park in Belgium.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Bellewaerde_(ingang_1).jpg",
+  "imageAttribution": "Main Entrance, 2018",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bellewaerde",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:28.241Z"
+}

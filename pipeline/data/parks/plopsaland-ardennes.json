@@ -1,0 +1,31 @@
+{
+  "id": "plopsaland-ardennes",
+  "name": "Plopsaland Ardennes",
+  "formerNames": [
+    "Télécoo and Plopsa Coo"
+  ],
+  "country": "BE",
+  "countryName": "Belgium",
+  "region": null,
+  "continent": "Europe",
+  "city": "Stavelot",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "owner": "Plopsa",
+  "chain": null,
+  "website": "www.plopsa.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Plopsaland Ardennes, formerly known as Télécoo and Plopsa Coo, is a themepark in Wallonia near the waterfalls of Coo in Stavelot, owned and operated by Plopsa.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3ACoo_(Stavelot)_-_Plopsa_Coo%2C_vue_du_parc_depuis_le_t%C3%A9l%C3%A9si%C3%A8ge_(20).JPG%7C200px%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Plopsaland_Ardennes",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:42.552Z"
+}

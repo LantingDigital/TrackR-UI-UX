@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-kentucky-kingdom",
+  "name": "Kentucky Kingdom",
+  "formerNames": [
+    "Six Flags Kentucky Kingdom"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Kentucky",
+  "continent": "North America",
+  "city": "Louisville",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1987,
+  "yearClosed": null,
+  "owner": "Kentucky State Fair Board",
+  "chain": null,
+  "website": "kentuckykingdom.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Kentucky Kingdom, formerly known as Six Flags Kentucky Kingdom, is a theme park in Louisville, Kentucky, United States.  The 67 acre park includes a collection of amusement rides and the Hurricane Bay water park.  Kentucky Kingdom is at the intersection of Interstate 65 and Interstate 264, sharing a parking lot with the Kentucky Exposition Center.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Kentucky_Kingdom_-_Entrance_Fountain_2021.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kentucky_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:58.685Z"
+}

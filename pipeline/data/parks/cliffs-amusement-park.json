@@ -1,0 +1,31 @@
+{
+  "id": "cliffs-amusement-park",
+  "name": "Cliff's Amusement Park",
+  "formerNames": [
+    "Uncle Cliff's Kiddieland  Uncle Cliff's Amusement Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Mexico",
+  "continent": "North America",
+  "city": "4800 Osuna Road NE",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1959,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.cliffsamusementpark.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Cliff's Amusement Park (previously known as Uncle Cliff's Amusement Park prior to 1991) is a combination amusement park and water park in Albuquerque, New Mexico, United States.  It opened in 1959 by Cliff and Zella Hammond.  It features 24 rides for all ages, food, and carnival style games.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Cliff's_Amusement_Park_entrance_gate.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cliff's_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:47.116Z"
+}

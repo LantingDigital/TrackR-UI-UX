@@ -1,0 +1,29 @@
+{
+  "id": "kemah-boardwalk",
+  "name": "Kemah Boardwalk",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "Kemah",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1997,
+  "yearClosed": null,
+  "owner": "Landrys, Inc.",
+  "chain": null,
+  "website": "http://www.kemahboardwalk.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Kemah Boardwalk is a 60-acre Texas Gulf Coast theme park in Kemah, Texas, approximately 30 miles southeast of Downtown Houston, Texas.  The Boardwalk is built entirely along the shores of Galveston Bay and Clear Lake.  The complex is owned and operated by Landry's, Inc.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BFile%3AKemah_Broadwalk.svg%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kemah_Boardwalk",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:15.775Z"
+}

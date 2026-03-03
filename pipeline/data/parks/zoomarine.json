@@ -1,0 +1,29 @@
+{
+  "id": "zoomarine",
+  "name": "Zoomarine ROME - Italy",
+  "formerNames": [],
+  "country": "IT",
+  "countryName": "Italy",
+  "region": null,
+  "continent": "Europe",
+  "city": "Torvajanica, Rome, Italy",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2005,
+  "yearClosed": null,
+  "owner": "Dolphin Discovery",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Zoomarine Rome-Italy is a zoological park, oceanarium, amusement park and water park, located in Lazio, southwest of Rome, in Torvajanica, Pomezia.  Inaugurated in September 2005, it is owned by Dolphin Discovery from August 2015.  It includes one of three Italian dolphinariums, with a dedicated area \"Island of dolphins\".",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Zoomarine_roma_pomezia_piscina_delfini.jpg",
+  "imageAttribution": "The view of the park from the Dolphin Discovery Stadium.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Zoomarine",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:26.966Z"
+}

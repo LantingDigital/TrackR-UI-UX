@@ -1,0 +1,1948 @@
+[
+  {
+    "coaster": "10-inversion-roller-coaster",
+    "field": "speedMph",
+    "wikipedia": 45,
+    "coasterpedia": 49.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "10-inversion-roller-coaster",
+    "field": "speedKmh",
+    "wikipedia": 72.4,
+    "coasterpedia": 80,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "accelerator",
+    "field": "lengthFt",
+    "wikipedia": 590.6,
+    "coasterpedia": 643,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "accelerator",
+    "field": "lengthM",
+    "wikipedia": 180,
+    "coasterpedia": 196,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "arkham-asylum-shock-therapy",
+    "field": "speedMph",
+    "wikipedia": 54.7,
+    "coasterpedia": 49.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "arkham-asylum-shock-therapy",
+    "field": "speedKmh",
+    "wikipedia": 88,
+    "coasterpedia": 80,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "astro-storm",
+    "field": "duration",
+    "wikipedia": 95,
+    "coasterpedia": 90,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "atlantica-supersplash",
+    "field": "duration",
+    "wikipedia": 200,
+    "coasterpedia": 215,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "baron-1898",
+    "field": "heightFt",
+    "wikipedia": 123,
+    "coasterpedia": 98.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "batwing",
+    "field": "duration",
+    "wikipedia": 122,
+    "coasterpedia": 140,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-bad-wolf",
+    "field": "heightFt",
+    "wikipedia": 113,
+    "coasterpedia": 100,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-bad-wolf",
+    "field": "heightM",
+    "wikipedia": 34.4,
+    "coasterpedia": 30.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-bad-wolf",
+    "field": "dropFt",
+    "wikipedia": 99,
+    "coasterpedia": 80,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-bad-wolf",
+    "field": "dropM",
+    "wikipedia": 30.2,
+    "coasterpedia": 24.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-dipper-pleasure-beach-resort",
+    "field": "heightFt",
+    "wikipedia": 65,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-dipper-pleasure-beach-resort",
+    "field": "heightM",
+    "wikipedia": 19.8,
+    "coasterpedia": 18.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "bobsleds",
+    "field": "dropFt",
+    "wikipedia": 16,
+    "coasterpedia": 28,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "bobsleds",
+    "field": "dropM",
+    "wikipedia": 4.9,
+    "coasterpedia": 8.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "booster-bike",
+    "field": "duration",
+    "wikipedia": 68,
+    "coasterpedia": 55,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cliffhanger",
+    "field": "heightFt",
+    "wikipedia": 56,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cliffhanger",
+    "field": "heightM",
+    "wikipedia": 17.1,
+    "coasterpedia": 18.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cobra-tivoli-friheden",
+    "field": "heightFt",
+    "wikipedia": 82,
+    "coasterpedia": 68.9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cobra-tivoli-friheden",
+    "field": "heightM",
+    "wikipedia": 25,
+    "coasterpedia": 21,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cobra-tivoli-friheden",
+    "field": "speedMph",
+    "wikipedia": 43.5,
+    "coasterpedia": 40.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cobra-tivoli-friheden",
+    "field": "speedKmh",
+    "wikipedia": 70,
+    "coasterpedia": 65,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "corkscrew-valleyfair",
+    "field": "speedMph",
+    "wikipedia": 50,
+    "coasterpedia": 45,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "corkscrew-valleyfair",
+    "field": "speedKmh",
+    "wikipedia": 80.5,
+    "coasterpedia": 72.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "crazy-bats",
+    "field": "lengthFt",
+    "wikipedia": 3851.7,
+    "coasterpedia": 4274.9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "crazy-bats",
+    "field": "lengthM",
+    "wikipedia": 1174,
+    "coasterpedia": 1303,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cyclone",
+    "field": "heightFt",
+    "wikipedia": 90,
+    "coasterpedia": 80,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cyclone",
+    "field": "heightM",
+    "wikipedia": 27.4,
+    "coasterpedia": 24.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cyclone",
+    "field": "dropFt",
+    "wikipedia": 89,
+    "coasterpedia": 80,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "cyclone",
+    "field": "dropM",
+    "wikipedia": 27.1,
+    "coasterpedia": 24.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "coney-island-cyclone",
+    "field": "lengthFt",
+    "wikipedia": 2640,
+    "coasterpedia": 2850.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "coney-island-cyclone",
+    "field": "lengthM",
+    "wikipedia": 804.7,
+    "coasterpedia": 868.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "coney-island-cyclone",
+    "field": "duration",
+    "wikipedia": 150,
+    "coasterpedia": 110,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "dahlonega-mine-train",
+    "field": "speedMph",
+    "wikipedia": 29,
+    "coasterpedia": 35,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "dahlonega-mine-train",
+    "field": "speedKmh",
+    "wikipedia": 46.7,
+    "coasterpedia": 56.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "excalibur-funtown-splashtown-usa",
+    "field": "duration",
+    "wikipedia": 118,
+    "coasterpedia": 110,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "flight-of-fear",
+    "field": "duration",
+    "wikipedia": 60,
+    "coasterpedia": 144,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "flyer-comet",
+    "field": "speedMph",
+    "wikipedia": 40,
+    "coasterpedia": 35,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "flyer-comet",
+    "field": "speedKmh",
+    "wikipedia": 64.4,
+    "coasterpedia": 56.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "frankie-s-mine-train",
+    "field": "lengthFt",
+    "wikipedia": 262.5,
+    "coasterpedia": 279,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "frankie-s-mine-train",
+    "field": "lengthM",
+    "wikipedia": 80,
+    "coasterpedia": 85,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "gatekeeper",
+    "field": "speedMph",
+    "wikipedia": 63,
+    "coasterpedia": 67,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "gatekeeper",
+    "field": "speedKmh",
+    "wikipedia": 101.4,
+    "coasterpedia": 107.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "gatekeeper",
+    "field": "duration",
+    "wikipedia": 120,
+    "coasterpedia": 160,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "giant-dipper",
+    "field": "dropFt",
+    "wikipedia": 65,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "giant-dipper",
+    "field": "dropM",
+    "wikipedia": 19.8,
+    "coasterpedia": 18.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "giant-dipper",
+    "field": "duration",
+    "wikipedia": 112,
+    "coasterpedia": 105,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "gold-striker",
+    "field": "duration",
+    "wikipedia": 150,
+    "coasterpedia": 133,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "great-american-scream-machine",
+    "field": "lengthFt",
+    "wikipedia": 3800,
+    "coasterpedia": 3450,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "great-american-scream-machine",
+    "field": "lengthM",
+    "wikipedia": 1158.2,
+    "coasterpedia": 1051.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "grizzly",
+    "field": "speedMph",
+    "wikipedia": 51,
+    "coasterpedia": 55,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "grizzly",
+    "field": "speedKmh",
+    "wikipedia": 82.1,
+    "coasterpedia": 88.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "grizzly",
+    "field": "duration",
+    "wikipedia": 150,
+    "coasterpedia": 160,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "hangtime",
+    "field": "duration",
+    "wikipedia": 75,
+    "coasterpedia": 150,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "high-roller",
+    "field": "speedMph",
+    "wikipedia": 50,
+    "coasterpedia": 47,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "high-roller",
+    "field": "speedKmh",
+    "wikipedia": 80.5,
+    "coasterpedia": 75.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "hornet",
+    "field": "heightFt",
+    "wikipedia": 28,
+    "coasterpedia": 35.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "hornet",
+    "field": "heightM",
+    "wikipedia": 8.5,
+    "coasterpedia": 10.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "hornet",
+    "field": "lengthFt",
+    "wikipedia": 1148,
+    "coasterpedia": 1345.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "hornet",
+    "field": "lengthM",
+    "wikipedia": 349.9,
+    "coasterpedia": 410,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "incredicoaster",
+    "field": "duration",
+    "wikipedia": 160,
+    "coasterpedia": 100,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "infusion",
+    "field": "duration",
+    "wikipedia": 105,
+    "coasterpedia": 83,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "insane",
+    "field": "heightFt",
+    "wikipedia": 116.5,
+    "coasterpedia": 108.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "insane",
+    "field": "heightM",
+    "wikipedia": 35.5,
+    "coasterpedia": 33,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "insane",
+    "field": "lengthFt",
+    "wikipedia": 1049.9,
+    "coasterpedia": 810.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "insane",
+    "field": "lengthM",
+    "wikipedia": 320,
+    "coasterpedia": 247,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "iron-dragon",
+    "field": "duration",
+    "wikipedia": 160,
+    "coasterpedia": 120,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "iron-menace",
+    "field": "inversions",
+    "wikipedia": 4,
+    "coasterpedia": 3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "iron-shark",
+    "field": "inversions",
+    "wikipedia": 4,
+    "coasterpedia": 3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "ispeed",
+    "field": "speedMph",
+    "wikipedia": 74.6,
+    "coasterpedia": 68.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "ispeed",
+    "field": "speedKmh",
+    "wikipedia": 120.1,
+    "coasterpedia": 110,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jack-rabbit-seabreeze-amusement-park",
+    "field": "heightFt",
+    "wikipedia": 75,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jack-rabbit-seabreeze-amusement-park",
+    "field": "heightM",
+    "wikipedia": 22.9,
+    "coasterpedia": 18.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jack-rabbit-seabreeze-amusement-park",
+    "field": "speedMph",
+    "wikipedia": 42,
+    "coasterpedia": 50,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jack-rabbit-seabreeze-amusement-park",
+    "field": "speedKmh",
+    "wikipedia": 67.6,
+    "coasterpedia": 80.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jet-star",
+    "field": "heightFt",
+    "wikipedia": 44.3,
+    "coasterpedia": 56,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jet-star",
+    "field": "heightM",
+    "wikipedia": 13.5,
+    "coasterpedia": 17.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jet-star-2",
+    "field": "heightFt",
+    "wikipedia": 44.3,
+    "coasterpedia": 47.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "jet-star-2",
+    "field": "heightM",
+    "wikipedia": 13.5,
+    "coasterpedia": 14.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "heightFt",
+    "wikipedia": 95,
+    "coasterpedia": 100,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "heightM",
+    "wikipedia": 29,
+    "coasterpedia": 30.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "speedMph",
+    "wikipedia": 42,
+    "coasterpedia": 50,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "speedKmh",
+    "wikipedia": 67.6,
+    "coasterpedia": 80.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "dropFt",
+    "wikipedia": 70,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "dropM",
+    "wikipedia": 21.3,
+    "coasterpedia": 18.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "duration",
+    "wikipedia": 325,
+    "coasterpedia": 356,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "heightFt",
+    "wikipedia": 95,
+    "coasterpedia": 100,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "heightM",
+    "wikipedia": 29,
+    "coasterpedia": 30.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "speedMph",
+    "wikipedia": 42,
+    "coasterpedia": 47,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "speedKmh",
+    "wikipedia": 67.6,
+    "coasterpedia": 75.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "duration",
+    "wikipedia": 325,
+    "coasterpedia": 210,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "dropFt",
+    "wikipedia": 70,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "dropM",
+    "wikipedia": 21.3,
+    "coasterpedia": 18.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "journey-to-atlantis",
+    "field": "duration",
+    "wikipedia": 325,
+    "coasterpedia": 300,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "karacho",
+    "field": "speedMph",
+    "wikipedia": 62.1,
+    "coasterpedia": 55.9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "karacho",
+    "field": "speedKmh",
+    "wikipedia": 100,
+    "coasterpedia": 90,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "kennys-forest-flyer",
+    "field": "speedMph",
+    "wikipedia": 26,
+    "coasterpedia": 29.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "kennys-forest-flyer",
+    "field": "speedKmh",
+    "wikipedia": 41.8,
+    "coasterpedia": 47.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "kingdom-coaster",
+    "field": "lengthFt",
+    "wikipedia": 2200,
+    "coasterpedia": 2000,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "kingdom-coaster",
+    "field": "lengthM",
+    "wikipedia": 670.6,
+    "coasterpedia": 609.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "kirnu",
+    "field": "duration",
+    "wikipedia": 60,
+    "coasterpedia": 42,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "linnunrata-extra",
+    "field": "duration",
+    "wikipedia": 60,
+    "coasterpedia": 50,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "lisebergbanan",
+    "field": "lengthFt",
+    "wikipedia": 5078.7,
+    "coasterpedia": 4397,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "lisebergbanan",
+    "field": "lengthM",
+    "wikipedia": 1548,
+    "coasterpedia": 1340.2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "lost-gravity",
+    "field": "duration",
+    "wikipedia": 153,
+    "coasterpedia": 143,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "maxx-force",
+    "field": "inversions",
+    "wikipedia": 4,
+    "coasterpedia": 5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "montu",
+    "field": "speedMph",
+    "wikipedia": 65,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "montu",
+    "field": "speedKmh",
+    "wikipedia": 104.6,
+    "coasterpedia": 96.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "montu",
+    "field": "dropFt",
+    "wikipedia": 151,
+    "coasterpedia": 128,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "montu",
+    "field": "dropM",
+    "wikipedia": 46,
+    "coasterpedia": 39,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "lengthFt",
+    "wikipedia": 4200,
+    "coasterpedia": 4920,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "lengthM",
+    "wikipedia": 1280.2,
+    "coasterpedia": 1499.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pandemonium",
+    "field": "heightFt",
+    "wikipedia": 48,
+    "coasterpedia": 42,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pandemonium",
+    "field": "heightM",
+    "wikipedia": 14.6,
+    "coasterpedia": 12.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pandemonium",
+    "field": "heightFt",
+    "wikipedia": 48,
+    "coasterpedia": 53,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pandemonium",
+    "field": "heightM",
+    "wikipedia": 14.6,
+    "coasterpedia": 16.2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pandemonium",
+    "field": "duration",
+    "wikipedia": 90,
+    "coasterpedia": 111,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pantheon",
+    "field": "duration",
+    "wikipedia": 120,
+    "coasterpedia": 150,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "patriot",
+    "field": "speedMph",
+    "wikipedia": 45,
+    "coasterpedia": 40,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "patriot",
+    "field": "speedKmh",
+    "wikipedia": 72.4,
+    "coasterpedia": 64.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pepsi-orange-streak",
+    "field": "speedMph",
+    "wikipedia": 40,
+    "coasterpedia": 30,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "pepsi-orange-streak",
+    "field": "speedKmh",
+    "wikipedia": 64.4,
+    "coasterpedia": 48.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "polar-x-plorer",
+    "field": "heightFt",
+    "wikipedia": 65.6,
+    "coasterpedia": 62.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "red-force",
+    "field": "duration",
+    "wikipedia": 39,
+    "coasterpedia": 24,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "renegade",
+    "field": "heightFt",
+    "wikipedia": 108,
+    "coasterpedia": 97.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "renegade",
+    "field": "heightM",
+    "wikipedia": 32.9,
+    "coasterpedia": 29.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "rita",
+    "field": "heightFt",
+    "wikipedia": 60.4,
+    "coasterpedia": 68.9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "rita",
+    "field": "heightM",
+    "wikipedia": 18.4,
+    "coasterpedia": 21,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "roar",
+    "field": "lengthFt",
+    "wikipedia": 3468,
+    "coasterpedia": 3291,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "roar",
+    "field": "lengthM",
+    "wikipedia": 1057,
+    "coasterpedia": 1003.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "rougarou",
+    "field": "duration",
+    "wikipedia": 160,
+    "coasterpedia": 150,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "runaway-mine-train",
+    "field": "speedMph",
+    "wikipedia": 35,
+    "coasterpedia": 27,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "runaway-mine-train",
+    "field": "speedKmh",
+    "wikipedia": 56.3,
+    "coasterpedia": 43.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "runaway-mine-train",
+    "field": "duration",
+    "wikipedia": 190,
+    "coasterpedia": 180,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "salama",
+    "field": "speedMph",
+    "wikipedia": 37.3,
+    "coasterpedia": 34.2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "salama",
+    "field": "speedKmh",
+    "wikipedia": 60,
+    "coasterpedia": 55,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "saw-the-ride",
+    "field": "lengthFt",
+    "wikipedia": 2362,
+    "coasterpedia": 2231,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "saw-the-ride",
+    "field": "lengthM",
+    "wikipedia": 719.9,
+    "coasterpedia": 680,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "seven-dwarfs-mine-train",
+    "field": "dropFt",
+    "wikipedia": 39,
+    "coasterpedia": 41,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "seven-dwarfs-mine-train",
+    "field": "dropM",
+    "wikipedia": 11.9,
+    "coasterpedia": 12.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "seven-dwarfs-mine-train",
+    "field": "speedMph",
+    "wikipedia": 34,
+    "coasterpedia": 28.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "seven-dwarfs-mine-train",
+    "field": "speedKmh",
+    "wikipedia": 54.7,
+    "coasterpedia": 46.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "seven-dwarfs-mine-train",
+    "field": "duration",
+    "wikipedia": 170,
+    "coasterpedia": 200,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "shaman",
+    "field": "lengthFt",
+    "wikipedia": 2296.7,
+    "coasterpedia": 2460.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "shaman",
+    "field": "lengthM",
+    "wikipedia": 700,
+    "coasterpedia": 750,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "shuttle-loop",
+    "field": "lengthFt",
+    "wikipedia": 863,
+    "coasterpedia": 722.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "shuttle-loop",
+    "field": "lengthM",
+    "wikipedia": 263,
+    "coasterpedia": 220.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "skull-mountain",
+    "field": "duration",
+    "wikipedia": 84,
+    "coasterpedia": 90,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "skyliner",
+    "field": "duration",
+    "wikipedia": 100,
+    "coasterpedia": 120,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "skyrush",
+    "field": "dropFt",
+    "wikipedia": 212,
+    "coasterpedia": 186,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "skyrush",
+    "field": "dropM",
+    "wikipedia": 64.6,
+    "coasterpedia": 56.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "sooperdooperlooper",
+    "field": "heightFt",
+    "wikipedia": 70,
+    "coasterpedia": 75,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "sooperdooperlooper",
+    "field": "heightM",
+    "wikipedia": 21.3,
+    "coasterpedia": 22.9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "sooperdooperlooper",
+    "field": "dropFt",
+    "wikipedia": 75,
+    "coasterpedia": 70,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "sooperdooperlooper",
+    "field": "dropM",
+    "wikipedia": 22.9,
+    "coasterpedia": 21.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "speed-no-limits",
+    "field": "dropFt",
+    "wikipedia": 110,
+    "coasterpedia": 95.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "speed-no-limits",
+    "field": "dropM",
+    "wikipedia": 33.5,
+    "coasterpedia": 29,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "star-wars-hyperspace-mountain",
+    "field": "lengthFt",
+    "wikipedia": 3281,
+    "coasterpedia": 2509.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "star-wars-hyperspace-mountain",
+    "field": "lengthM",
+    "wikipedia": 1000,
+    "coasterpedia": 765,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "star-wars-hyperspace-mountain",
+    "field": "duration",
+    "wikipedia": 135,
+    "coasterpedia": 125,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "steel-curtain",
+    "field": "inversions",
+    "wikipedia": 8,
+    "coasterpedia": 9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "superman-the-ride",
+    "field": "heightFt",
+    "wikipedia": 208,
+    "coasterpedia": 197,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "superman-the-ride",
+    "field": "heightM",
+    "wikipedia": 63.4,
+    "coasterpedia": 60,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "superman-the-ride",
+    "field": "speedMph",
+    "wikipedia": 77,
+    "coasterpedia": 73,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "superman-the-ride",
+    "field": "speedKmh",
+    "wikipedia": 123.9,
+    "coasterpedia": 117.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "superman-the-ride",
+    "field": "dropFt",
+    "wikipedia": 221,
+    "coasterpedia": 205,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "superman-the-ride",
+    "field": "dropM",
+    "wikipedia": 67.4,
+    "coasterpedia": 62.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "superman-the-ride",
+    "field": "duration",
+    "wikipedia": 155,
+    "coasterpedia": 130,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "swamp-fox",
+    "field": "lengthFt",
+    "wikipedia": 2400,
+    "coasterpedia": 2640,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "swamp-fox",
+    "field": "lengthM",
+    "wikipedia": 731.5,
+    "coasterpedia": 804.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "heightFt",
+    "wikipedia": 153,
+    "coasterpedia": 143,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "heightM",
+    "wikipedia": 46.6,
+    "coasterpedia": 43.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "lengthFt",
+    "wikipedia": 4200,
+    "coasterpedia": 4920,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "lengthM",
+    "wikipedia": 1280.2,
+    "coasterpedia": 1499.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "dropFt",
+    "wikipedia": 147,
+    "coasterpedia": 137,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "new-texas-giant",
+    "field": "dropM",
+    "wikipedia": 44.8,
+    "coasterpedia": 41.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "thunder-striker",
+    "field": "speedMph",
+    "wikipedia": 80,
+    "coasterpedia": 75,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "thunder-striker",
+    "field": "speedKmh",
+    "wikipedia": 128.7,
+    "coasterpedia": 120.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "timber-terror",
+    "field": "duration",
+    "wikipedia": 92,
+    "coasterpedia": 102,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "top-thrill-2",
+    "field": "lengthFt",
+    "wikipedia": 3422,
+    "coasterpedia": 2800,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "top-thrill-2",
+    "field": "lengthM",
+    "wikipedia": 1043,
+    "coasterpedia": 853.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "toutatis",
+    "field": "duration",
+    "wikipedia": 123,
+    "coasterpedia": 100,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "valkyria",
+    "field": "lengthFt",
+    "wikipedia": 2296.6,
+    "coasterpedia": 2460.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "valkyria",
+    "field": "lengthM",
+    "wikipedia": 700,
+    "coasterpedia": 750,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "verbolten",
+    "field": "dropFt",
+    "wikipedia": 80,
+    "coasterpedia": 88,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "verbolten",
+    "field": "dropM",
+    "wikipedia": 24.4,
+    "coasterpedia": 26.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "verbolten",
+    "field": "duration",
+    "wikipedia": 118,
+    "coasterpedia": 205,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "vogel-rok",
+    "field": "heightFt",
+    "wikipedia": 82,
+    "coasterpedia": 65.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "vogel-rok",
+    "field": "heightM",
+    "wikipedia": 25,
+    "coasterpedia": 20,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "vogel-rok",
+    "field": "lengthFt",
+    "wikipedia": 2296,
+    "coasterpedia": 2109.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "vogel-rok",
+    "field": "lengthM",
+    "wikipedia": 699.8,
+    "coasterpedia": 643,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "voltron-nevera",
+    "field": "inversions",
+    "wikipedia": 7,
+    "coasterpedia": 8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "the-walking-dead-the-ride",
+    "field": "speedMph",
+    "wikipedia": 30,
+    "coasterpedia": 27.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "the-walking-dead-the-ride",
+    "field": "speedKmh",
+    "wikipedia": 48.3,
+    "coasterpedia": 44.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "the-walking-dead-the-ride",
+    "field": "duration",
+    "wikipedia": 130,
+    "coasterpedia": 120,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "the-wave",
+    "field": "speedMph",
+    "wikipedia": 56,
+    "coasterpedia": 53,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "the-wave",
+    "field": "speedKmh",
+    "wikipedia": 90.1,
+    "coasterpedia": 85.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "whizzer",
+    "field": "speedMph",
+    "wikipedia": 45,
+    "coasterpedia": 42,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "whizzer",
+    "field": "speedKmh",
+    "wikipedia": 72.4,
+    "coasterpedia": 67.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "whizzer",
+    "field": "speedMph",
+    "wikipedia": 45,
+    "coasterpedia": 42,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "whizzer",
+    "field": "speedKmh",
+    "wikipedia": 72.4,
+    "coasterpedia": 67.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wicker-man",
+    "field": "duration",
+    "wikipedia": 110,
+    "coasterpedia": 210,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wild-mouse-hersheypark",
+    "field": "duration",
+    "wikipedia": 118,
+    "coasterpedia": 110,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wilde-beast",
+    "field": "duration",
+    "wikipedia": 180,
+    "coasterpedia": 122,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wooden-warrior",
+    "field": "heightFt",
+    "wikipedia": 35,
+    "coasterpedia": 32,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wooden-warrior",
+    "field": "heightM",
+    "wikipedia": 10.7,
+    "coasterpedia": 9.8,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wooden-warrior",
+    "field": "dropFt",
+    "wikipedia": 45,
+    "coasterpedia": 36,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wooden-warrior",
+    "field": "dropM",
+    "wikipedia": 13.7,
+    "coasterpedia": 11,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "woodstock-express-carowinds",
+    "field": "duration",
+    "wikipedia": 60,
+    "coasterpedia": 90,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "woodstock-express-cedar-point",
+    "field": "heightFt",
+    "wikipedia": 38,
+    "coasterpedia": 42.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "woodstock-express-cedar-point",
+    "field": "heightM",
+    "wikipedia": 11.6,
+    "coasterpedia": 13,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "woodstock-express-cedar-point",
+    "field": "speedMph",
+    "wikipedia": 25,
+    "coasterpedia": 28.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "woodstock-express-cedar-point",
+    "field": "speedKmh",
+    "wikipedia": 40.2,
+    "coasterpedia": 45.9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "woodstock-express-cedar-point",
+    "field": "duration",
+    "wikipedia": 70,
+    "coasterpedia": 66,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "xlr-8",
+    "field": "speedMph",
+    "wikipedia": 34.1,
+    "coasterpedia": 31.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "xlr-8",
+    "field": "speedKmh",
+    "wikipedia": 54.9,
+    "coasterpedia": 50.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "xlr-8",
+    "field": "duration",
+    "wikipedia": 180,
+    "coasterpedia": 131,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "zippin-pippin",
+    "field": "duration",
+    "wikipedia": 118,
+    "coasterpedia": 90,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "zippin-pippin",
+    "field": "lengthFt",
+    "wikipedia": 2347,
+    "coasterpedia": 2865,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "zippin-pippin",
+    "field": "lengthM",
+    "wikipedia": 715.4,
+    "coasterpedia": 873.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "zippin-pippin",
+    "field": "dropFt",
+    "wikipedia": 63,
+    "coasterpedia": 70,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "zippin-pippin",
+    "field": "dropM",
+    "wikipedia": 19.2,
+    "coasterpedia": 21.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "avalanche",
+    "field": "lengthFt",
+    "wikipedia": 1161,
+    "coasterpedia": 1460,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "avalanche",
+    "field": "lengthM",
+    "wikipedia": 353.9,
+    "coasterpedia": 445,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-thunder-mountain-railroad",
+    "field": "heightFt",
+    "wikipedia": 104,
+    "coasterpedia": 50,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-thunder-mountain-railroad",
+    "field": "heightM",
+    "wikipedia": 31.7,
+    "coasterpedia": 15.2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-thunder-mountain-railroad",
+    "field": "speedMph",
+    "wikipedia": 35,
+    "coasterpedia": 28,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "big-thunder-mountain-railroad",
+    "field": "speedKmh",
+    "wikipedia": 56.3,
+    "coasterpedia": 45.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "corkscrew-michigans-adventure",
+    "field": "heightFt",
+    "wikipedia": 70,
+    "coasterpedia": 79,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "corkscrew-michigans-adventure",
+    "field": "heightM",
+    "wikipedia": 21.3,
+    "coasterpedia": 24.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "corkscrew-michigans-adventure",
+    "field": "lengthFt",
+    "wikipedia": 1250,
+    "coasterpedia": 2350,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "corkscrew-michigans-adventure",
+    "field": "lengthM",
+    "wikipedia": 381,
+    "coasterpedia": 716.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "dragon-coaster",
+    "field": "duration",
+    "wikipedia": 100,
+    "coasterpedia": 120,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "el-loco",
+    "field": "inversions",
+    "wikipedia": 0,
+    "coasterpedia": 2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "fast-furious-hollywood-drift",
+    "field": "inversions",
+    "wikipedia": 4,
+    "coasterpedia": 0,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "freestyle",
+    "field": "lengthFt",
+    "wikipedia": 1282.8,
+    "coasterpedia": 2210,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "freestyle",
+    "field": "lengthM",
+    "wikipedia": 390.99,
+    "coasterpedia": 673.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "giant-coaster",
+    "field": "heightFt",
+    "wikipedia": 82,
+    "coasterpedia": 131.2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "giant-coaster",
+    "field": "heightM",
+    "wikipedia": 25,
+    "coasterpedia": 40,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "hades-360",
+    "field": "inversions",
+    "wikipedia": 0,
+    "coasterpedia": 1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "hydrus",
+    "field": "inversions",
+    "wikipedia": 3,
+    "coasterpedia": 2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "kikkerachtbaan",
+    "field": "heightFt",
+    "wikipedia": 8,
+    "coasterpedia": 26.2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "kikkerachtbaan",
+    "field": "lengthFt",
+    "wikipedia": 360,
+    "coasterpedia": 1181.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "leap-the-dips",
+    "field": "speedMph",
+    "wikipedia": 10,
+    "coasterpedia": 18,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "leap-the-dips",
+    "field": "speedKmh",
+    "wikipedia": 16.1,
+    "coasterpedia": 29,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "manta-seaworld-orlando",
+    "field": "inversions",
+    "wikipedia": 0,
+    "coasterpedia": 4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "manta-seaworld-orlando",
+    "field": "duration",
+    "wikipedia": 156,
+    "coasterpedia": 145,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "mission-ferrari",
+    "field": "inversions",
+    "wikipedia": 2,
+    "coasterpedia": 0,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "monster-gr-na-lund",
+    "field": "inversions",
+    "wikipedia": 3,
+    "coasterpedia": 4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "rolling-thunder",
+    "field": "heightFt",
+    "wikipedia": 22.2,
+    "coasterpedia": 96,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "rolling-thunder",
+    "field": "heightM",
+    "wikipedia": 6.8,
+    "coasterpedia": 29.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "rolling-thunder",
+    "field": "speedMph",
+    "wikipedia": 17.9,
+    "coasterpedia": 56,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "rolling-thunder",
+    "field": "speedKmh",
+    "wikipedia": 28.8,
+    "coasterpedia": 90.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "sea-serpent",
+    "field": "heightFt",
+    "wikipedia": 125,
+    "coasterpedia": 116.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "sea-serpent",
+    "field": "heightM",
+    "wikipedia": 38.1,
+    "coasterpedia": 35.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "sirens-curse",
+    "field": "inversions",
+    "wikipedia": 2,
+    "coasterpedia": 4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "snoopys-racing-railway",
+    "field": "heightFt",
+    "wikipedia": 29.5,
+    "coasterpedia": 39.4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "snoopys-racing-railway",
+    "field": "heightM",
+    "wikipedia": 9,
+    "coasterpedia": 12,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "son-of-beast",
+    "field": "inversions",
+    "wikipedia": 1,
+    "coasterpedia": 0,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "space-mountain",
+    "field": "heightFt",
+    "wikipedia": 76,
+    "coasterpedia": 100,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "space-mountain",
+    "field": "heightM",
+    "wikipedia": 23.2,
+    "coasterpedia": 30.5,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "super-grovers-box-car-derby",
+    "field": "heightFt",
+    "wikipedia": 31,
+    "coasterpedia": 13.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "super-grovers-box-car-derby",
+    "field": "heightM",
+    "wikipedia": 9.4,
+    "coasterpedia": 4,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "super-grovers-box-car-derby",
+    "field": "speedMph",
+    "wikipedia": 28,
+    "coasterpedia": 14.9,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "super-grovers-box-car-derby",
+    "field": "speedKmh",
+    "wikipedia": 45.1,
+    "coasterpedia": 24,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "super-grovers-box-car-derby",
+    "field": "lengthFt",
+    "wikipedia": 800,
+    "coasterpedia": 229.7,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "super-grovers-box-car-derby",
+    "field": "lengthM",
+    "wikipedia": 243.8,
+    "coasterpedia": 70,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "tower-of-terror-ii",
+    "field": "dropFt",
+    "wikipedia": 355.3,
+    "coasterpedia": 328.1,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "tower-of-terror-ii",
+    "field": "dropM",
+    "wikipedia": 108.3,
+    "coasterpedia": 100,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "twisted-cyclone",
+    "field": "dropFt",
+    "wikipedia": 78.5,
+    "coasterpedia": 96,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "twisted-cyclone",
+    "field": "dropM",
+    "wikipedia": 23.9,
+    "coasterpedia": 29.3,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wind-chaser",
+    "field": "inversions",
+    "wikipedia": 3,
+    "coasterpedia": 2,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wipeout",
+    "field": "speedMph",
+    "wikipedia": 50,
+    "coasterpedia": 47,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wipeout",
+    "field": "speedKmh",
+    "wikipedia": 80.5,
+    "coasterpedia": 75.6,
+    "chosen": "wikipedia"
+  },
+  {
+    "coaster": "wipeout",
+    "field": "inversions",
+    "wikipedia": 6,
+    "coasterpedia": 3,
+    "chosen": "wikipedia"
+  }
+]

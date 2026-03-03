@@ -1,0 +1,35 @@
+{
+  "id": "dollywood",
+  "name": "Dollywood",
+  "formerNames": [
+    "Rebel Railroad",
+    "Goldrush Junction",
+    "Goldrush",
+    "Silver Dollar City",
+    "Tennessee"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Tennessee",
+  "continent": "North America",
+  "city": "2700 Dollywood Parks Blvd, Pigeon Forge, Tennessee",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1961,
+  "yearClosed": null,
+  "owner": "Dolly Parton Productions (50%) Herschend (50%)",
+  "chain": null,
+  "website": "http://www.dollywood.com/",
+  "coasterCount": 8,
+  "totalCoasterCount": 8,
+  "description": "Dollywood is a theme park that is jointly owned by Herschend and country singer-songwriter Dolly Parton through her entertainment company, Dolly Parton Productions.  It is located in the Knoxville metropolitan area in Pigeon Forge, Tennessee, near the gateway to The Great Smoky Mountains.  Hosting nearly 3 million guests in a typical season from mid-March to the Christmas holidays, Dollywood is the biggest ticketed tourist attraction in Tennessee.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Dollywoodsign1.jpg",
+  "imageAttribution": "Entrance sign to Dollywood",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dollywood",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:08.863Z"
+}

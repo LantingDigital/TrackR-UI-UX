@@ -1,0 +1,31 @@
+{
+  "source": "coasterpedia",
+  "articleTitle": "Meteor",
+  "introSection": "Meteor is a wooden roller coaster located at Little Amerricka in Marshall, Wisconsin, USA. It was built by Philadelphia Toboggan Coasters.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "The ride was purchased at an auction for $9,000 after Hillcrest Park closed."
+    },
+    {
+      "title": "Trains",
+      "content": "Single train with 4 cars. Riders are arranged 2 across in 2 rows for a total of 16 riders."
+    }
+  ],
+  "fullText": "Meteor is a wooden roller coaster located at Little Amerricka in Marshall, Wisconsin, USA. It was built by Philadelphia Toboggan Coasters.\n\nThe ride was purchased at an auction for $9,000 after Hillcrest Park closed.\n\n\n\nSingle train with 4 cars. Riders are arranged 2 across in 2 rows for a total of 16 riders.\n\n",
+  "categories": [
+    "Pages_with_short_description",
+    "Pages_using_Details_parser_tag",
+    "Roller_coasters_by_name",
+    "Operating_roller_coasters",
+    "Roller_coasters_in_Wisconsin",
+    "Wooden_roller_coasters",
+    "Pages_with_park_navbox",
+    "Roller_coasters_opened_in_1953",
+    "ACE_Coaster_Classic"
+  ],
+  "url": "https://coasterpedia.net/wiki/Meteor_(Little_Amerricka)",
+  "pageId": 2769,
+  "fetchedAt": "2026-02-28T22:10:05.273Z",
+  "articleLength": 312
+}

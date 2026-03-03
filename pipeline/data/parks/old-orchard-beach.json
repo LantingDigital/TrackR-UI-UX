@@ -1,0 +1,29 @@
+{
+  "id": "old-orchard-beach",
+  "name": "Old Orchard Beach",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Maine",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.oobmaine.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Old Orchard Beach is a resort town in York County, Maine, United States.  The population was 8,960 at the 2020 census.  It is part of the Portland-South Portland-Biddeford metropolitan area.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Old_Orchard_Beach%2C_Maine",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:34.470Z"
+}

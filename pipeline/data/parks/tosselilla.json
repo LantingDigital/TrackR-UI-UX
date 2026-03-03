@@ -1,0 +1,31 @@
+{
+  "id": "tosselilla",
+  "name": "Tosselilla Summer Park",
+  "formerNames": [
+    "Tomelilla Summer Park"
+  ],
+  "country": "SE",
+  "countryName": "Sweden",
+  "region": null,
+  "continent": "Europe",
+  "city": "Tomelilla",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1984,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Tosselilla Summer Park or Tosselilla Amusement Park, previously Tomelilla Summer Park, is an amusement park outside Tomelilla, Sweden.  It was opened on 26 May 1984.  There are 86 Activities at Tosselilla, including a zipline, swimming pools, roller coasters, water coasters, canoes and bumper cars.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tosselilla_1.jpg",
+  "imageAttribution": "Tosselilla Summer Park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tosselilla_Summer_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:24:19.082Z"
+}

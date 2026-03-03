@@ -1,0 +1,29 @@
+{
+  "id": "misaki-park",
+  "name": "Misaki Park",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": 34.32804,
+  "longitude": -135.16116,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1957,
+  "yearClosed": 2020,
+  "owner": "Nankai Electric Railway",
+  "chain": null,
+  "website": "http://www.howto-osaka.com/en/special/other/misakipark/ (English) http://www.nankai.co.jp/misaki/ (Japanese)",
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Misaki Park (みさき公園) was an amusement park located in the town of Misaki in Osaka Prefecture, Japan, operated by Nankai Electric Railway Co. , Ltd.  The park was opened on April 1, 1957, as the 70th anniversary of Nankai Railway.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Misaki-koen.jpg",
+  "imageAttribution": "Masaki Park in 2010",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Misaki_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:08.316Z"
+}

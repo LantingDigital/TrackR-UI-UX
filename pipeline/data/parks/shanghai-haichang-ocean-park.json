@@ -1,0 +1,31 @@
+{
+  "id": "shanghai-haichang-ocean-park",
+  "name": "Shanghai Haichang Ocean Park",
+  "formerNames": [
+    "Shanghai Haichang Polar Ocean World"
+  ],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "Nanhui New City, Pudong, Shanghai",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2018,
+  "yearClosed": null,
+  "owner": "Haichang Ocean Park Holdings",
+  "chain": null,
+  "website": "https://www.haichangoceanpark.com/shanghai",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Shanghai Haichang Ocean Park is a theme park owned by Haichang Ocean Park Holdings and located in the Chinese municipality of Shanghai.  The grand opening of the park took place on November 16, 2018.  The park is Haichang Ocean Park Holdings' second theme park in the country.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Shanghai_Haichang_Ocean_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:20.921Z"
+}

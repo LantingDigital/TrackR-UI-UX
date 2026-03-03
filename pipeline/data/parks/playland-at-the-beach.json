@@ -1,0 +1,31 @@
+{
+  "id": "playland-at-the-beach",
+  "name": "Playland",
+  "formerNames": [
+    "Mooneysville-by-the-Sea · Chutes at the Beach · Playland at the Beach · Whitney's Playland"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Ocean Beach San Francisco, California",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1913,
+  "yearClosed": 1972,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Playland (also known as Playland-at-the-Beach and Whitney's Playland, beginning in 1928 – some say 1926 ) was a 10 acre seaside amusement park located next to Ocean Beach, in the Richmond District on the West Side of San Francisco, California, along Great Highway, bounded by Balboa and Fulton streets.  It began as a collection of amusement rides and concessions in the late 19th century, and was preceded by Chutes at the Beach, opened in 1921.  Playland closed Labor Day weekend in 1972.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Playland_San_Francisco_1918_a.jpg",
+  "imageAttribution": "Playland in 1918",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Playland_(San_Francisco)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:29.155Z"
+}

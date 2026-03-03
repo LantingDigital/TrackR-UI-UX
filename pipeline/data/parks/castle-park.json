@@ -1,0 +1,31 @@
+{
+  "id": "castle-park",
+  "name": "Castle Park",
+  "formerNames": [
+    "Castle Amusement Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Riverside",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "owner": "Lucky Strike Entertainment Corporation",
+  "chain": null,
+  "website": "Castle Park",
+  "coasterCount": 1,
+  "totalCoasterCount": 3,
+  "description": "Castle Park, formerly Castle Amusement Park, is a 25-acre amusement park and family amusement center located in Riverside, California.  The park utilizes a medieval \"castle\" theme and includes attractions such as a miniature golf course, arcade, and 21 amusement rides including one roller coaster, Merlin's Revenge, a junior rollercoaster.  The main \"castle\" themed building, houses the arcade.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Castle_Park_(amusement_park)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:37.152Z"
+}

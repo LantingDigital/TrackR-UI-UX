@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-magic-mountain",
+  "name": "Six Flags Magic Mountain",
+  "formerNames": [
+    "Magic Mountain"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "26101 Magic Mountain Parkway\nValencia, California 91355",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1971,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": null,
+  "coasterCount": 16,
+  "totalCoasterCount": 21,
+  "description": "Six Flags Magic Mountain, formerly known and colloquially referred to as simply Magic Mountain, is a 209 acre amusement park located in Valencia, California, 35 mi northwest of downtown Los Angeles.  It opened on May 29, 1971, as a development of the Newhall Land and Farming Company and Sea World Inc.  In 1979, Six Flags purchased the park and added \"Six Flags\" to the park's name.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Magic_Mountain_(13208988393).jpg",
+  "imageAttribution": "The entrance archway to the park in 2014",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Magic_Mountain",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:59.298Z"
+}

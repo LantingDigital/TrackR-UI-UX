@@ -1,0 +1,29 @@
+{
+  "id": "trans-studio-cibubur",
+  "name": "Trans Studio Cibubur",
+  "formerNames": [],
+  "country": "ID",
+  "countryName": "Indonesia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Depok",
+  "latitude": 6.37566,
+  "longitude": -106.90174,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2019,
+  "yearClosed": null,
+  "owner": "CT Corp",
+  "chain": null,
+  "website": "https://transshoppingmall.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Trans Studio Cibubur is a mixed development complex at Depok, West Java, within the Jakarta metropolitan area of Indonesia.  Built on 4. 1 ha land, the complex consists of a shopping mall, an indoor amusement park, three apartment towers, and a luxury hotel.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Trans_Studio_Cibubur.jpg",
+  "imageAttribution": "The amusement park section",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Trans_Studio_Cibubur",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:06.902Z"
+}

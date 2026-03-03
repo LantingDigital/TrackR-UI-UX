@@ -1,0 +1,29 @@
+{
+  "id": "chester-park",
+  "name": "Chester Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Chester Park may refer to:\n\n\n * Chester Park, Bristol, a residential area in Bristol, England\n * Chester Park, Duluth, a neighborhood in Duluth, Minnesota, U. S. \n * Chester State Park, a state park of South Carolina, U.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Chester_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:20.333Z"
+}

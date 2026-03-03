@@ -1,0 +1,60 @@
+{
+  "id": "everland",
+  "name": "Everland",
+  "formerNames": [
+    "Yongin Farmland"
+  ],
+  "parkId": "yongin",
+  "parkName": "Yongin",
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": "South Korea",
+  "continent": "Asia",
+  "heightFt": null,
+  "heightM": null,
+  "speedMph": null,
+  "speedKmh": null,
+  "lengthFt": null,
+  "lengthM": null,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Unknown",
+  "designer": null,
+  "model": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "description": "Everland is South Korea's largest theme park.  It is located at the Everland Resort in Yongin, Gyeonggi Province.  In 2018, it received 5.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/T_Express_Everland_Resort.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Everland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:21.178Z",
+  "dataQuality": "stub",
+  "searchTerms": [
+    "everland",
+    "yongin farmland",
+    "yongin",
+    "unknown",
+    "sit-down",
+    "south korea"
+  ],
+  "_meta": {
+    "manufacturerMatched": false,
+    "manufacturerRaw": ""
+  },
+  "popularityScore": 55.5,
+  "popularityTier": "notable",
+  "popularityRank": 737
+}

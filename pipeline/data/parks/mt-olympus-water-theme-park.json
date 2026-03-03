@@ -1,0 +1,36 @@
+{
+  "id": "mt-olympus-water-theme-park",
+  "name": "Mt. Olympus Water & Theme Park Resort",
+  "formerNames": [
+    "Big Chief's Karts and Coasters",
+    "Family Land",
+    "Bay of Dreams",
+    "Treasure Island Resort",
+    "Pleasant View Motel",
+    "Copa Cabana"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Wisconsin",
+  "continent": "North America",
+  "city": "Wisconsin Dells",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1990,
+  "yearClosed": null,
+  "owner": "Nick Laskaris and family",
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Mt.  Olympus Water and Theme Park Resort is a theme park and water park resort complex in Wisconsin Dells, Wisconsin.  The resort is themed after Ancient Greece, particularly its mythology and gods, and is named after the mountain in Greece where those gods were said to live.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Mt._Olympus_Water_%26_Theme_Park_logo.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mt._Olympus_Water_%26_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:38.390Z"
+}

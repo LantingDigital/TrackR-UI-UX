@@ -1,0 +1,29 @@
+{
+  "id": "royal-adelaide-show",
+  "name": "Royal Adelaide Show",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": null,
+  "continent": "Oceania",
+  "city": "Adelaide Showground, Wayville, South Australia, Australia",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.theshow.com.au/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Royal Adelaide Show is an annual carnival and agricultural show run by the Royal Agricultural and Horticultural Society of South Australia.  It is held at the Adelaide Showground, a dedicated venue located in Wayville, a suburb of Adelaide, South Australia. \n\nCore to the show are the competitive entries, such as livestock, pets, arts, food, beverages, and displays of skill.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Royal_Adelaide_Show.jpg",
+  "imageAttribution": "The showground in 2005",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Royal_Adelaide_Show",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:50.942Z"
+}

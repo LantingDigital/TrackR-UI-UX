@@ -1,0 +1,31 @@
+{
+  "id": "oakwood-theme-park",
+  "name": "Oakwood Theme Park",
+  "formerNames": [
+    "Oakwood Leisure Park Oakwood Coaster Country Oakwood Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Canaston Bridge",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1987,
+  "yearClosed": 2025,
+  "owner": "Aspro Parks",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Oakwood Theme Park (formerly Oakwood Leisure Park, Oakwood Coaster Country and Oakwood Park) was an amusement park located in Pembrokeshire, Wales. \n\nOakwood Theme Park opened on 14 April 1987 as a small family-owned park with minimal attractions.  The park later began to incorporate larger thrill rides, including Megafobia, which has been praised by coaster enthusiasts, Vertigo, Drenched (originally Hydro), and Speed: No Limits, which opened as the steepest coaster in the United Kingdom.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Oakwood_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:39.643Z"
+}

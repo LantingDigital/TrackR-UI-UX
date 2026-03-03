@@ -1,0 +1,29 @@
+{
+  "id": "thorpe-park",
+  "name": "Thorpe Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Chertsey and Staines, Surrey, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1979,
+  "yearClosed": null,
+  "owner": "LondonMetric Property",
+  "chain": null,
+  "website": "www.ThorpePark.com",
+  "coasterCount": 7,
+  "totalCoasterCount": 7,
+  "description": "Thorpe Park (formerly known as Thorpe Park Resort) is a theme park located in the village of Thorpe between the towns of Chertsey and Staines-upon-Thames in Surrey, England, 20 mi west-southwest of Central London.  It is operated by Merlin Entertainments and features rides, themed cabins, live events, and Hyperia, the United Kingdom's tallest and fastest rollercoaster at over 236 feet (72m) and 129 km/h (80 mph).  The ride also includes Europe's tallest element and the world's first outer-banked airtime hill.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Thorpe_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:27.416Z"
+}

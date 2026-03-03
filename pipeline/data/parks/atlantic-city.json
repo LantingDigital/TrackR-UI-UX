@@ -1,0 +1,29 @@
+{
+  "id": "atlantic-city",
+  "name": "Atlantic City, New Jersey",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.acnj.gov/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Atlantic City, sometimes referred to by its initials A. C. , is a Jersey Shore seaside resort city in Atlantic County, in the U.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Atlantic_City%2C_New_Jersey",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:38.035Z"
+}

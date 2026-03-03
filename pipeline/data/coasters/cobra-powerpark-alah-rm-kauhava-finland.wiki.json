@@ -1,0 +1,37 @@
+{
+  "articleTitle": "Cobra (PowerPark)",
+  "introSection": "Cobra is a roller coaster located at PowerPark in Kauhava, Southern Ostrobothnia, Finland. Cobra was the first Vekoma Boomerang to use the new MK1211 open sided train.\n\nIn 2018, the ride stalled after experiencing technical difficulties, forcing passengers to be evacuated.",
+  "sections": [],
+  "fullText": "Cobra is a roller coaster located at PowerPark in Kauhava, Southern Ostrobothnia, Finland. Cobra was the first Vekoma Boomerang to use the new MK1211 open sided train.\n\nIn 2018, the ride stalled after experiencing technical difficulties, forcing passengers to be evacuated.\n\n",
+  "categories": [
+    "Roller coasters in Finland",
+    "Roller coasters opened in 2005",
+    "Kauhava"
+  ],
+  "infoboxRaw": {
+    "name": "Cobra",
+    "image": "Cobra Powerpark.JPG",
+    "caption": "Cobra in the PowerPark amusement park.",
+    "location": "PowerPark, Alahärmä, Kauhava, Finland",
+    "type2": "Shuttle",
+    "status": "Open",
+    "opened": "2005",
+    "manufacturer": "RCS GmbH",
+    "designer": "Vekoma",
+    "model": "Boomerang",
+    "length_ft": "935",
+    "speed_mph": "47",
+    "inversions": "3",
+    "duration": "1:48",
+    "capacity": "760",
+    "gforce": "5.2",
+    "restriction_cm": "130 - 195",
+    "rcdb_number": "2951",
+    "coordinates": "63.22985°N, 22.85869°W",
+    "height_m": "35.5"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cobra_(PowerPark)",
+  "wikiPageId": 15219614,
+  "fetchedAt": "2026-02-28T20:56:28.657Z",
+  "articleLength": 275
+}

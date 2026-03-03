@@ -1,0 +1,29 @@
+{
+  "id": "spring-park",
+  "name": "Spring Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Alabama",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Spring Park can refer to several different places:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Spring_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:38.732Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "expoland",
+  "name": "Expoland",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "1-１ Senribanpakukoen",
+  "latitude": 34.80556,
+  "longitude": -135.535,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1969,
+  "yearClosed": 2009,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Expoland, located in Suita, Japan was opened as the amusement zone at the International Exposition in 1970 (Expo '70) in Osaka and thrived for over 30 years as an amusement park.  There were more than 40 rides and attractions (including eight roller coasters ) and 19 restaurants and shops.  The park was permanently closed in 2009.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/VistaLiner.jpg",
+  "imageAttribution": "Senyo VistaLiner of Expoland",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Expoland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:38.832Z"
+}

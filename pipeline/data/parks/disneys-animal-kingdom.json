@@ -1,0 +1,29 @@
+{
+  "id": "disneys-animal-kingdom",
+  "name": "Disney's Animal Kingdom\nTheme Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Walt Disney World",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1998,
+  "yearClosed": null,
+  "owner": "Disney Experiences\n(The Walt Disney Company)",
+  "chain": null,
+  "website": "Animal Kingdom",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Disney's Animal Kingdom Theme Park is a zoological theme park at Walt Disney World in Bay Lake, Florida, near Orlando.  Owned and operated by the Walt Disney Company through its Experiences division, it was the largest theme park in the world upon opening, covering 580 acres.  The park opened on Earth Day, April 22, 1998, and was the fourth theme park built at the resort.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tree_of_Life%2C_Disney's_Animal_Kingdom.jpg",
+  "imageAttribution": "The Tree of Life, the icon of Animal Kingdom",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Disney's_Animal_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:54.358Z"
+}

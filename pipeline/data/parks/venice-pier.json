@@ -1,0 +1,29 @@
+{
+  "id": "venice-pier",
+  "name": "Venice",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://laparks.org/venice",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Venice is a neighborhood of the City of Los Angeles within the Westside region of Los Angeles County, California, United States. \n\nVenice was founded by Abbot Kinney in 1905 as a seaside resort town.  It was an independent city until 1926, when it was annexed by the city of Los Angeles.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Venice%2C_Los_Angeles",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:43.984Z"
+}

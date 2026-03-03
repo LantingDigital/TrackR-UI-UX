@@ -1,0 +1,62 @@
+{
+  "id": "canyon-blaster-six-flags-great-escape-and-hurricane-harbor",
+  "name": "Canyon Blaster",
+  "formerNames": [
+    "Timber Topper at Opryland USA",
+    "Rock n' Roller Coaster at Opryland USA"
+  ],
+  "parkId": "six-flags-great-escape-and-hurricane-harbor",
+  "parkName": "Six Flags Great Escape and Hurricane Harbor",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Tennessee",
+  "continent": "North America",
+  "heightFt": 56,
+  "heightM": 17.1,
+  "speedMph": 45,
+  "speedKmh": 72.4,
+  "lengthFt": 2036,
+  "lengthM": 620.6,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Mine Train",
+  "propulsion": "Chain lift",
+  "manufacturer": "Arrow Dynamics",
+  "designer": null,
+  "model": "Mine Train",
+  "status": "operating",
+  "yearOpened": 2003,
+  "yearClosed": null,
+  "description": "Canyon Blaster is a steel roller coaster located at Six Flags Great Escape and Hurricane Harbor in Queensbury, New York.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Canyon_Blaster_1.JPG",
+  "imageAttribution": "Loading station, both lift hills with flume of the Desperado Plunge in right foreground.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Canyon_Blaster_(Six_Flags_Great_Escape)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:18:55.022Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "canyon blaster",
+    "timber topper at opryland usa",
+    "rock n' roller coaster at opryland usa",
+    "six flags great escape and hurricane harbor",
+    "arrow dynamics",
+    "mine train",
+    "tennessee"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Arrow Development"
+  },
+  "popularityScore": 56.6,
+  "popularityTier": "notable",
+  "popularityRank": 720
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tivoli-world",
+  "name": "Benalmádena",
+  "formerNames": [],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.benalmadena.es",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Benalmádena is a town in Andalusia in southern Spain, 12 km west of Málaga, on the Costa del Sol between Torremolinos and Fuengirola. \n\nBenalmádena is rich in attractive beaches and interesting places like the Colomares Castle, the 33-metre-tall Buddhist Benalmádena Stupa, the largest Buddhist stupa in Europe, the Benalmádena Marina and the Benalmádena Cable Car. \n\nBenalmádena covers an area of just over 27 km2 that extends from the summits of the Sierra de Mijas to the sea, falling in some places as a cliff.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Benalm%C3%A1dena",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:38:54.273Z"
+}

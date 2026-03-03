@@ -1,0 +1,29 @@
+{
+  "id": "tokyo-disneyland",
+  "name": "Tokyo Disneyland",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "Urayasu",
+  "latitude": 35.63278,
+  "longitude": -139.88056,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1983,
+  "yearClosed": null,
+  "owner": "The Oriental Land Company",
+  "chain": null,
+  "website": "Tokyo Disneyland official website (English)",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Tokyo Disneyland (東京ディズニーランド) is a 126 acre theme park at the Tokyo Disney Resort in Urayasu, near Tokyo in Chiba Prefecture, Japan Its main gate is directly adjacent to both Maihama Station and Tokyo Disneyland Station.  It was the first Disney park to be built outside the United States and it opened on April 15, 1983.  The park was constructed by WED Enterprises in the same style as Disneyland in California and Magic Kingdom in Florida.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tokyo_Disneyland_Cinderella_Castle_2023-07-02.jpg",
+  "imageAttribution": "Cinderella Castle, the icon of Tokyo Disneyland, in 2023.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tokyo_Disneyland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:16.610Z"
+}

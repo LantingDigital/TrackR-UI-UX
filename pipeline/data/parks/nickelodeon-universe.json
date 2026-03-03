@@ -1,0 +1,33 @@
+{
+  "id": "nickelodeon-universe",
+  "name": "Nickelodeon Universe Mall of America",
+  "formerNames": [
+    "Knott's Camp Snoopy",
+    "Camp Snoopy",
+    "The Park at MOA"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Minnesota",
+  "continent": "North America",
+  "city": "Bloomington, Minnesota",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1992,
+  "yearClosed": null,
+  "owner": "Triple Five Group / Mall of America\n(under license from Paramount Skydance Corporation)",
+  "chain": null,
+  "website": "http://www.nickelodeonuniverse.com/home/",
+  "coasterCount": 6,
+  "totalCoasterCount": 6,
+  "description": "Nickelodeon Universe is the name of two indoor amusement parks located at Mall of America in Bloomington, Minnesota and American Dream in East Rutherford, New Jersey, with a third location under construction at the Mall of China in Chongqing, China.  The parks consist of attractions and rides based on Nickelodeon’s popular franchises.  The amusement parks are owned and operated by the Triple Five Group with licensing rights from Paramount Skydance Corporation, which owns Nickelodeon.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Nickelodeon_Universe_at_MOA.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Nickelodeon_Universe",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:54.945Z"
+}

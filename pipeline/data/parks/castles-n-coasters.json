@@ -1,0 +1,31 @@
+{
+  "id": "castles-n-coasters",
+  "name": "Castles ~N~ Coasters",
+  "formerNames": [
+    "Golf n' Stuff"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Arizona",
+  "continent": "North America",
+  "city": "9445 North Metro Parkway East",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Castles N' Coasters is an amusement park and family amusement center located in Phoenix, Arizona.  The approximately 14 acre park features four outdoor 18-hole miniature golf courses, several rides, and an indoor video game arcade.  The park was built in 1976, and is designed in a Middle-Eastern motif though other eras are featured such as the Wild West-themed miniature golf course and log flume ride.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ACastles_n_Coasters_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Castles_N'_Coasters",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:40.195Z"
+}

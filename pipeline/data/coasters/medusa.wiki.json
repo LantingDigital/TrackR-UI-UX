@@ -1,0 +1,63 @@
+{
+  "articleTitle": "Medusa (Six Flags Discovery Kingdom)",
+  "introSection": "Medusa is a steel roller coaster located at Six Flags Discovery Kingdom in Vallejo, California. Built by Bolliger & Mabillard, Medusa opened in 2000 as the first floorless roller coaster on the West Coast. The roller coaster features seven inversions, a 150 ft-tall lift hill with a 150 ft drop, and the first sea serpent roll element ever built on a B&M roller coaster. The ride is the longest coaster in Northern California at 3937 ft long and is notable as having one of the largest vertical loops in the world at 128 ft. It also shares the height record in Northern California with another two rides in the same park, The Flash: Vertical Velocity, and Superman: Ultimate Flight at 150 ft high.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "On November 10, 1999, Six Flags Discovery Kingdom (then Six Flags Marine World) announced that Medusa would be added to the park. It would be a custom floorless coaster built by Bolliger & Mabillard. The ride officially opened on March 18, 2000. It was built over the park's original parking lot, directly in front of the park."
+    },
+    {
+      "title": "Ride experience",
+      "content": "After the floor drops and the front gate opens, the train is dispatched from the station into a large left-hand turnaround before ascending the 150 ft lift hill. At the top, the train traverses a pre-drop to alleviate tension to the chain, followed by the drop, which descends into a below-ground trench. The train then enters a 128 ft vertical loop, followed by a dive loop to the left, and a zero-g roll. Afterwards, the ride then enters a two-inversion sea serpent roll. After a mid-course brake run, the train descends into a left-hand drop under the brake run, followed by a corkscrews, after which the on-ride photo is taken. The train then travels through an inclined helix to the left before entering the second corkscrew, a right-hand helix, and an S-turn and into the final brake run before returning to the station."
+    },
+    {
+      "title": "See also",
+      "content": "\n * Medusa (Six Flags Great Adventure), a floorless roller coaster at Six Flags Great Adventure formerly known as Bizarro"
+    }
+  ],
+  "fullText": "Medusa is a steel roller coaster located at Six Flags Discovery Kingdom in Vallejo, California. Built by Bolliger & Mabillard, Medusa opened in 2000 as the first floorless roller coaster on the West Coast. The roller coaster features seven inversions, a 150 ft-tall lift hill with a 150 ft drop, and the first sea serpent roll element ever built on a B&M roller coaster. The ride is the longest coaster in Northern California at 3937 ft long and is notable as having one of the largest vertical loops in the world at 128 ft. It also shares the height record in Northern California with another two rides in the same park, The Flash: Vertical Velocity, and Superman: Ultimate Flight at 150 ft high.\n\nOn November 10, 1999, Six Flags Discovery Kingdom (then Six Flags Marine World) announced that Medusa would be added to the park. It would be a custom floorless coaster built by Bolliger & Mabillard. The ride officially opened on March 18, 2000. It was built over the park's original parking lot, directly in front of the park.\n\nAfter the floor drops and the front gate opens, the train is dispatched from the station into a large left-hand turnaround before ascending the 150 ft lift hill. At the top, the train traverses a pre-drop to alleviate tension to the chain, followed by the drop, which descends into a below-ground trench. The train then enters a 128 ft vertical loop, followed by a dive loop to the left, and a zero-g roll. Afterwards, the ride then enters a two-inversion sea serpent roll. After a mid-course brake run, the train descends into a left-hand drop under the brake run, followed by a corkscrews, after which the on-ride photo is taken. The train then travels through an inclined helix to the left before entering the second corkscrew, a right-hand helix, and an S-turn and into the final brake run before returning to the station.\n\n\n * Medusa (Six Flags Great Adventure), a floorless roller coaster at Six Flags Great Adventure formerly known as Bizarro\n\n",
+  "categories": [
+    "Roller coasters opened in 2000",
+    "Roller coasters in California",
+    "Six Flags Discovery Kingdom",
+    "Roller coasters operated by Six Flags",
+    "Floorless Coaster roller coasters manufactured by Bolliger & Mabillard"
+  ],
+  "infoboxRaw": {
+    "name": "Medusa",
+    "image": "Medusa (Six Flags Discovery Kingdom) 01.JPG",
+    "caption": "Medusa's loop.",
+    "location": "Six Flags Discovery Kingdom",
+    "section": "Sky",
+    "type2": "Floorless Coaster",
+    "manufacturer": "Bolliger & Mabillard",
+    "designer": "Werner Stengel",
+    "model": "Floorless Coaster",
+    "lift": "Chain lift hill",
+    "status": "Open",
+    "opened": "March 18, 2000",
+    "height_ft": "150",
+    "drop_ft": "150",
+    "length_ft": "3937",
+    "speed_mph": "65",
+    "duration": "3:15",
+    "inversions": "7",
+    "cost": "$15,000,000 USD",
+    "gforce": "4.5",
+    "capacity": "1600",
+    "restriction_in": "54",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar_Fair_Fast_Lane_availability_icon.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "617",
+    "coordinates": "38.14056°N, -122.23361°W",
+    "ridersperrow": "4",
+    "carspertrain": "8",
+    "rowspercar": "1",
+    "trains": "3"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Medusa_(Six_Flags_Discovery_Kingdom)",
+  "wikiPageId": 9015199,
+  "fetchedAt": "2026-02-28T20:13:57.330Z",
+  "articleLength": 1979
+}

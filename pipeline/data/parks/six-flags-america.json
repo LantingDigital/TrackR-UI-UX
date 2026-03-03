@@ -1,0 +1,34 @@
+{
+  "id": "six-flags-america",
+  "name": "Six Flags America",
+  "formerNames": [
+    "The Wildlife Preserve",
+    "Wild Country",
+    "Wild World",
+    "Adventure World"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Maryland",
+  "continent": "North America",
+  "city": "Woodmore",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1974,
+  "yearClosed": 2025,
+  "owner": "ABC Attractions (1974–1978)\n\nJim Fowler (1978–1980)\n\nWild World (1980–1992)\n\nPremier Parks (1992–1998)\n\nSix Flags (1998–2025)",
+  "chain": null,
+  "website": "www.sixflags.com/america (archived)",
+  "coasterCount": 1,
+  "totalCoasterCount": 8,
+  "description": "Six Flags America is a decommissioned 131 acre amusement park in Woodmore, Maryland, United States.  Owned by Six Flags, it is located near Upper Marlboro, Maryland, and in the Washington, DC, metropolitan area.  It had a water park named Hurricane Harbor Maryland.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/SixFlagsAmerica-Maraboro.jpg",
+  "imageAttribution": "An aerial view of the park in 2016",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_America",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:06.358Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "terra-encantada",
+  "name": "Terra Encantada",
+  "formerNames": [],
+  "country": "BR",
+  "countryName": "Brazil",
+  "region": "Brazil",
+  "continent": "South America",
+  "city": "Rio de Janeiro",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1998,
+  "yearClosed": 2010,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Terra Encantada was an amusement park in Barra da Tijuca, Rio de Janeiro, Brazil, It operated from 1998 to 2010.  The park, which spanned over an area of 200 square kilometers, was dedicated to the celebration of Brazilian culture and its diverse origins, including indigenous, African, and European influences.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Terra_Encantada",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:44.284Z"
+}

@@ -1,0 +1,54 @@
+{
+  "articleTitle": "The Grizzly",
+  "introSection": "The Grizzly is a wooden roller coaster located at California's Great America in Santa Clara, California. The ride was designed by Curtis D. Summers and manufactured by Kings Island Construction. It uses traditional tracks with steel wheels on the cars, and, therefore, is designed to maintain positive-g loading on the cars and riders throughout its course.",
+  "sections": [
+    {
+      "title": "Reputation",
+      "content": "Opened in 1986, the Grizzly is a typical 'out and back' wooden coaster. The ride was retracked by Great Coasters International in 2014 and in 2017. As a result, the Grizzly has a faster and smoother ride."
+    },
+    {
+      "title": "See also",
+      "content": "\n * The Bush Beast\n * Grizzly (Kings Dominion)\n * Wilde Beast"
+    }
+  ],
+  "fullText": "The Grizzly is a wooden roller coaster located at California's Great America in Santa Clara, California. The ride was designed by Curtis D. Summers and manufactured by Kings Island Construction. It uses traditional tracks with steel wheels on the cars, and, therefore, is designed to maintain positive-g loading on the cars and riders throughout its course.\n\nOpened in 1986, the Grizzly is a typical 'out and back' wooden coaster. The ride was retracked by Great Coasters International in 2014 and in 2017. As a result, the Grizzly has a faster and smoother ride.\n\n\n * The Bush Beast\n * Grizzly (Kings Dominion)\n * Wilde Beast\n\n\n\n\n",
+  "categories": [
+    "California's Great America",
+    "Roller coasters operated by Six Flags",
+    "Roller coasters in California",
+    "1986 establishments in California"
+  ],
+  "infoboxRaw": {
+    "name": "The Grizzly",
+    "image": "Great America 1 2013-07-11.jpg",
+    "location": "California's Great America",
+    "section": "NorCal County Fair",
+    "coordinates": "37.39299°N, -121.97137°W",
+    "status": "Operating",
+    "opened": "1986",
+    "year": "1986",
+    "manufacturer": "Kings Island",
+    "designer": "Curtis D. Summers",
+    "track": "Double out and back",
+    "lift": "Chain",
+    "height_ft": "91",
+    "drop_ft": "88",
+    "length_ft": "3250",
+    "speed_mph": "55",
+    "inversions": "0",
+    "duration": "2:40",
+    "restriction_in": "48",
+    "trains": "2",
+    "carspertrain": "7",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar Fair Fast Lane availibility.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "77"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Grizzly",
+  "wikiPageId": 34791224,
+  "fetchedAt": "2026-02-28T20:13:56.112Z",
+  "articleLength": 631
+}

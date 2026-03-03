@@ -1,0 +1,29 @@
+{
+  "id": "worlds-of-fun",
+  "name": "Worlds of Fun",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": "Kansas City, Missouri, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "https://www.sixflags.com/worldsoffun",
+  "coasterCount": 7,
+  "totalCoasterCount": 8,
+  "description": "Worlds of Fun is a 235 acre theme park located in Kansas City, Missouri, United States.  Owned and operated by Six Flags, it was founded by American businessmen Lamar Hunt and Jack Steadman under the ownership of Hunt's company, Mid-America Enterprises in 1973.  Oceans of Fun is a water park that opened in 1982 and is next to the amusement park.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Worlds_of_Fun_and_Oceans_of_Fun_Aerial_(52469718251).jpg",
+  "imageAttribution": "Aerial view of the Worlds of Fun and Oceans of Fun parks (Worlds of Fun is the upper one)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Worlds_of_Fun",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:34.939Z"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "the-big-one",
+  "name": "The Big One",
+  "formerNames": [
+    "Pepsi Max Big One"
+  ],
+  "parkId": "pleasure-beach-resort",
+  "parkName": "Pleasure Beach Resort",
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "heightFt": 213,
+  "heightM": 64.9,
+  "speedMph": 74,
+  "speedKmh": 119.1,
+  "lengthFt": 5497,
+  "lengthM": 1675.5,
+  "dropFt": 205,
+  "dropM": 62.5,
+  "inversions": 0,
+  "gForce": 3.5,
+  "duration": 180,
+  "material": "Steel",
+  "type": "Hyper",
+  "propulsion": "Chain lift",
+  "manufacturer": "Arrow Dynamics",
+  "designer": "Ron Toomer",
+  "model": "Hyper Coaster",
+  "status": "operating",
+  "yearOpened": 1994,
+  "yearClosed": 2003,
+  "description": "The Big One (formerly Pepsi Max Big One) is a steel hypercoaster at Pleasure Beach Resort (better known as Blackpool Pleasure Beach) in Blackpool, England.  Designed by Ron Toomer and manufactured by Arrow Dynamics, the ride opened to the public on 28 May 1994 as the tallest roller coaster in the world, featuring a height of 65 metres (213 ft).  It held the title as the tallest until Fujiyama opened in 1996.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Big_One_First_Drop.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Big_One_(roller_coaster)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:51.343Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "the big one",
+    "pepsi max big one",
+    "pleasure beach resort",
+    "arrow dynamics",
+    "hyper coaster",
+    "hyper",
+    "united kingdom"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Arrow Dynamics"
+  },
+  "popularityScore": 71.7,
+  "popularityTier": "iconic",
+  "popularityRank": 136
+}

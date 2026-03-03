@@ -1,0 +1,31 @@
+{
+  "id": "quassy-amusement-park",
+  "name": "Quassy Amusement & Waterpark",
+  "formerNames": [
+    "Lake Quassapaug"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Connecticut",
+  "continent": "North America",
+  "city": "Middlebury",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1908,
+  "yearClosed": null,
+  "owner": "George Frantzis II Eric Anderson",
+  "chain": null,
+  "website": "http://www.quassy.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Quassy Amusement Park is an amusement and waterpark in Middlebury, Connecticut, and is one of only 11 trolley parks still operating in the United States.  It has 20 rides on its 20 acre.  Quassy consists of a full-fledged amusement park plus a waterpark called Splash Away Bay.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Quassy_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:38.860Z"
+}

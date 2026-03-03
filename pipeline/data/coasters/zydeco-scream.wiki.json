@@ -1,0 +1,53 @@
+{
+  "articleTitle": "Zydeco Scream",
+  "introSection": "Zydeco Scream was a steel roller coaster located at the now defunct Six Flags New Orleans in New Orleans, Louisiana. Manufactured by Vekoma, the Boomerang coaster model opened to the public on June 10, 2000. Following the devastation to the amusement park in August 2005 by Hurricane Katrina, the roller coaster ceased operation following the park's closure but remained standing until its demolition in 2024. Prior to Six Flags New Orleans, the ride operated at Parc de Montjuic in Barcelona, Spain from 1990 to 1998.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Zydeco Scream first started at the former Parc de Montjuic in Barcelona, Spain as Boomerang from 1990 to 1998, with white tracks and green supports. The roller coaster was relocated to Jazzland as Zydeco Scream in 2000 (Jazzland also opened that same year). A couple years after Six Flags took over the park, Hurricane Katrina hit the park on August 29, 2005, and the park was severely flooded from the Hurricane.\n\nIn 2007, Six Flags began to remove rides out of the park. Batman: The Ride was removed in 2007 and taken to Six Flags Fiesta Texas where it was refurbished and reopened as Chupacabra in 2008. Bayou Blaster and Sonic Slam were removed in 2008 and relocated to Great Escape in Queensbury, New York, where it was refurbished and reopened as Sasquatch in 2009. The Road Runner Express was removed in 2009 and relocated to Six Flags Magic Mountain in Valencia, California, where it was refurbished and reopened in 2011 under the same name. The coaster remained standing but not operating (SBNO) until it was demolished in 2024."
+    },
+    {
+      "title": "Ride experience",
+      "content": "The train was dispatched from the station, beginning a slow reverse climb up the lift tower via a cable winch system. When the train reached the top, it was released from the lift and descended the drop, traveling through the station, and entering a cobra roll followed by a vertical loop. After the loop, the train traveled back up the lift tower and connected with a chain lift. Once at the peak again, the lift chain detached, allowing the train to drop and travel the same course in reverse, resulting in 6 total inversions through 3 elements. As the train re-entered the station in reverse, it was slowed by the station brakes, slightly traveled back up the initial lift hill, and traveled back into the station to park. The layout and ride experience is the standard Vekoma Boomerang roller coaster design found at forty-three different amusement parks worldwide."
+    }
+  ],
+  "fullText": "Zydeco Scream was a steel roller coaster located at the now defunct Six Flags New Orleans in New Orleans, Louisiana. Manufactured by Vekoma, the Boomerang coaster model opened to the public on June 10, 2000. Following the devastation to the amusement park in August 2005 by Hurricane Katrina, the roller coaster ceased operation following the park's closure but remained standing until its demolition in 2024. Prior to Six Flags New Orleans, the ride operated at Parc de Montjuic in Barcelona, Spain from 1990 to 1998.\n\nZydeco Scream first started at the former Parc de Montjuic in Barcelona, Spain as Boomerang from 1990 to 1998, with white tracks and green supports. The roller coaster was relocated to Jazzland as Zydeco Scream in 2000 (Jazzland also opened that same year). A couple years after Six Flags took over the park, Hurricane Katrina hit the park on August 29, 2005, and the park was severely flooded from the Hurricane.\n\nIn 2007, Six Flags began to remove rides out of the park. Batman: The Ride was removed in 2007 and taken to Six Flags Fiesta Texas where it was refurbished and reopened as Chupacabra in 2008. Bayou Blaster and Sonic Slam were removed in 2008 and relocated to Great Escape in Queensbury, New York, where it was refurbished and reopened as Sasquatch in 2009. The Road Runner Express was removed in 2009 and relocated to Six Flags Magic Mountain in Valencia, California, where it was refurbished and reopened in 2011 under the same name. The coaster remained standing but not operating (SBNO) until it was demolished in 2024.\n\nThe train was dispatched from the station, beginning a slow reverse climb up the lift tower via a cable winch system. When the train reached the top, it was released from the lift and descended the drop, traveling through the station, and entering a cobra roll followed by a vertical loop. After the loop, the train traveled back up the lift tower and connected with a chain lift. Once at the peak again, the lift chain detached, allowing the train to drop and travel the same course in reverse, resulting in 6 total inversions through 3 elements. As the train re-entered the station in reverse, it was slowed by the station brakes, slightly traveled back up the initial lift hill, and traveled back into the station to park. The layout and ride experience is the standard Vekoma Boomerang roller coaster design found at forty-three different amusement parks worldwide.\n\n",
+  "categories": [
+    "Roller coasters in Louisiana",
+    "Amusement rides closed in 1998",
+    "Roller coasters operated by Six Flags",
+    "Six Flags New Orleans"
+  ],
+  "infoboxRaw": {
+    "name": "Zydeco Scream",
+    "image": "Boomerang-rollercoaster.jpg",
+    "caption": "Zydeco Scream",
+    "previousnames": "Boomerang at Parc de Montjuic (1990-1998)",
+    "location": "Six Flags New Orleans",
+    "section": "Pontchartrain Beach",
+    "type2": "Boomerang",
+    "status": "Demolished",
+    "opened": "June 10, 2000",
+    "closed": "August 21, 2005",
+    "manufacturer": "Vekoma",
+    "designer": "Arrow Dynamics",
+    "model": "Boomerang",
+    "height_ft": "116.5",
+    "length_ft": "935",
+    "speed_mph": "47",
+    "inversions": "3",
+    "duration": "1:48",
+    "capacity": "760",
+    "gforce": "5.2",
+    "restriction_in": "48",
+    "rcdb_number": "590",
+    "trains": "1",
+    "carspertrain": "7",
+    "rowspercar": "2",
+    "ridersperrow": "2"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Zydeco_Scream",
+  "wikiPageId": 28262458,
+  "fetchedAt": "2026-02-28T20:16:22.891Z",
+  "articleLength": 2430
+}

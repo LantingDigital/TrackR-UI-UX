@@ -1,0 +1,29 @@
+{
+  "id": "happy-hollow-park-and-zoo",
+  "name": "Happy Hollow Park & Zoo",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "1300 Senter Rd\nSan Jose, California, 95112",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.hhpz.org",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Happy Hollow Park & Zoo is a small 16 acre zoo and amusement park in San Jose, California, which originally opened in 1961.  It was closed in 2008 for major renovations, and opened its gates again on March 20, 2010. \n\nHappy Hollow Park & Zoo is an accredited member of the Association of Zoos and Aquariums (AZA) and a member of the International Association of Amusement Parks and Attractions (IAAPA).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Happy_Hollow_Park_%26_Zoo_-San_Jose%2C_California%2C_USA-2Oct2011_(1).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Happy_Hollow_Park_%26_Zoo",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:29.943Z"
+}

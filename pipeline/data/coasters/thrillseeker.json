@@ -1,0 +1,61 @@
+{
+  "id": "thrillseeker",
+  "name": "Thrillseeker",
+  "formerNames": [
+    "Wild Wave Rollercoaster"
+  ],
+  "parkId": "sea-world",
+  "parkName": "Sea World",
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "heightFt": 45.9,
+  "heightM": 14,
+  "speedMph": 40.4,
+  "speedKmh": 65,
+  "lengthFt": 3280.8,
+  "lengthM": 1000,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 120,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "S.D.C.",
+  "designer": null,
+  "model": "Galaxi",
+  "status": "closed",
+  "yearOpened": 1982,
+  "yearClosed": 2002,
+  "description": "The Thrillseeker was a steel roller coaster located at Sea World on the Gold Coast, Queensland, Australia.  Designed by S. D.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Thrillseeker_(roller_coaster)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:14.891Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "thrillseeker",
+    "wild wave rollercoaster",
+    "sea world",
+    "s.d.c.",
+    "galaxi",
+    "sit-down",
+    "australia"
+  ],
+  "_meta": {
+    "manufacturerMatched": false,
+    "manufacturerRaw": "S.D.C."
+  },
+  "popularityScore": 54.9,
+  "popularityTier": "notable",
+  "popularityRank": 748
+}

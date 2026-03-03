@@ -1,0 +1,29 @@
+{
+  "id": "cannon-hill-park",
+  "name": "Cannon Hill Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Birmingham, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Birmingham City Council",
+  "chain": null,
+  "website": "birmingham.gov.uk/cannonhillpark",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Cannon Hill Park is a park located in Moseley, a suburb in south Birmingham, England.  It is the most popular park in the city, covering 250 acres consisting of formal, conservation, woodland and sports areas.  Recreational activities at the park include boating, fishing, bowls, tennis, putting, and picnic areas.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cannon_Hill_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:07.269Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "playcenter-s-o-paulo",
+  "name": "Teststrecke",
+  "formerNames": [],
+  "country": "BR",
+  "countryName": "Brazil",
+  "region": null,
+  "continent": "South America",
+  "city": "Germany",
+  "latitude": 51,
+  "longitude": -9,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2009,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Teststrecke, meaning Test Track in German, is a portable steel roller coaster owned by the German showman partnership Meyer & Rosenzweig.  It was imported from Dorney Park & Wildwater Kingdom in 2008 and mostly tours in Germany, with occasional visits to the Netherlands. \n\nDesigned by renowned ride engineer Anton Schwarzkopf, the ride was previously named Laser and Colossus.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Teststrecke_Karlsruhe.JPG",
+  "imageAttribution": "Teststrecke at Karlsruhe",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Teststrecke",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:12.075Z"
+}

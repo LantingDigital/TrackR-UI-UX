@@ -1,0 +1,29 @@
+{
+  "id": "carousel-gardens-amusement-park",
+  "name": "Carousel Gardens Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Louisiana",
+  "continent": "North America",
+  "city": "New Orleans",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1928,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://neworleanscitypark.com/in-the-park/carousel-gardens",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Carousel Gardens is a seasonally operated amusement park located in New Orleans, Louisiana at City Park.  It features many rides, including the Live Oak Ladybug Rollercoaster, a ferris wheel, a drop tower called the Coney Tower, and a miniature train that tours the park.  It is also home to the New Orleans City Park Carousel one of the oldest carousels in the US and also known as the \"Flying Horses\".",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/NOCityParkCarouselGGate.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Carousel_Gardens_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:05.724Z"
+}

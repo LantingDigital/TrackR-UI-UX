@@ -1,0 +1,29 @@
+{
+  "id": "rainbows-end",
+  "name": "Rainbow's End",
+  "formerNames": [],
+  "country": "NZ",
+  "countryName": "New Zealand",
+  "region": null,
+  "continent": "Oceania",
+  "city": "Manukau, New Zealand",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1982,
+  "yearClosed": null,
+  "owner": "Rainbow's End Theme Park Limited (subsidiary of Rangatira Limited)",
+  "chain": null,
+  "website": "http://www.rainbowsend.co.nz",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Rainbow's End is a theme park in Manukau, Auckland, New Zealand.  Rainbow's End has an area of 9. 3 ha and includes the main theme park and also Kidz Kingdom, a family entertainment centre for children 8 years and under.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Rainbow's_End_Pillars.jpg",
+  "imageAttribution": "Park entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Rainbow's_End_(theme_park)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:56.335Z"
+}

@@ -1,5 +1,5 @@
 export { CoastleHeader } from './CoastleHeader';
-export type { CoastleHeaderRef } from './CoastleHeader';
+export { CoastleResultCard } from './CoastleResultCard';
 export { CoastleCell } from './CoastleCell';
 export { CoastleGrid } from './CoastleGrid';
 export { CoastleGridCarousel } from './CoastleGridCarousel';
@@ -8,3 +8,4 @@ export { CoastleSearchBar } from './CoastleSearchBar';
 export { CoastleHintButton } from './CoastleHintButton';
 export { CoastleHintContent, CoastleHintTooltip } from './CoastleHintModal';
 export { CoastleStatsContent } from './CoastleStatsCard';
+export { CoastleSettingsContent } from './CoastleSettingsContent';

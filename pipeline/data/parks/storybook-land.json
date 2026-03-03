@@ -1,0 +1,29 @@
+{
+  "id": "storybook-land",
+  "name": "Storybook Land",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1955,
+  "yearClosed": null,
+  "owner": "Fricano family",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Storybook Land is a 20 acres family amusement park located in Egg Harbor Township, in the U. S.  state of New Jersey.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3AStorybookLand.jpg%7C200px%5D%5D",
+  "imageAttribution": "Storybook Land Castle Entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Storybook_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:05.754Z"
+}

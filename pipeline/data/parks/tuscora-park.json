@@ -1,0 +1,29 @@
+{
+  "id": "tuscora-park",
+  "name": "New Philadelphia, Ohio",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.newphilaoh.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "New Philadelphia is a city in Tuscarawas County, Ohio, United States, and its county seat.  The county's largest city, New Philadelphia lies along the Tuscarawas River.  Its population was 17,677 at the 2020 census.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/New_Philadelphia%2C_Ohio",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:19.938Z"
+}

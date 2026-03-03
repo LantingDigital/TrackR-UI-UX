@@ -1,0 +1,29 @@
+{
+  "id": "cedar-point",
+  "name": "Cedar Point",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Sandusky, Ohio, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "https://www.sixflags.com/cedarpoint",
+  "coasterCount": 18,
+  "totalCoasterCount": 21,
+  "description": "Cedar Point is a 364 acre amusement park located on a Lake Erie peninsula in Sandusky, Ohio, United States, owned and operated by Six Flags.  It opened in 1870 and is considered the second-oldest operating amusement park in the US behind Lake Compounce.  Prior to the merger with Six Flags in 2024, Cedar Point served as the \"flagship park\" of the Cedar Fair amusement park chain and hosted the corporate headquarters.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cedar_Point",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:15.335Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "peppa-pig-theme-park",
+  "name": "Peppa Pig",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Peppa Pig is a British preschool animated children's television series created by Neville Astley and Mark Baker.  Produced by Hasbro Entertainment and Karrot Animation and formerly Astley Baker Davies, the series follows Peppa, an anthropomorphic piglet, and her family and friends portrayed as other animals.  The show first aired on 31 May 2004.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Peppa_Pig_logo.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Peppa_Pig",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:20.504Z"
+}

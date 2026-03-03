@@ -1,0 +1,29 @@
+{
+  "id": "bakken",
+  "name": "Bakken",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 5,
+  "totalCoasterCount": 6,
+  "description": "Bakken may refer to:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bakken",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:36:39.395Z"
+}

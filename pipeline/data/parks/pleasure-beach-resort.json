@@ -1,0 +1,29 @@
+{
+  "id": "pleasure-beach-resort",
+  "name": "Pleasure Beach Resort",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "South Shore, Blackpool",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Thompson family",
+  "chain": null,
+  "website": "Pleasure Beach Resort",
+  "coasterCount": 10,
+  "totalCoasterCount": 11,
+  "description": "Pleasure Beach Resort, best known by its former name Blackpool Pleasure Beach, is an amusement park situated on Blackpool's South Shore, in the county of Lancashire, North West England.  The park was founded in 1896 by A.  W.",
+  "imageUrl": null,
+  "imageAttribution": "Pleasure Beach Resort from South Beach",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Blackpool_Pleasure_Beach",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:03.798Z"
+}

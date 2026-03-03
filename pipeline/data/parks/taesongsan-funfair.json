@@ -1,0 +1,29 @@
+{
+  "id": "taesongsan-funfair",
+  "name": "Taesongsan Funfair",
+  "formerNames": [],
+  "country": "KP",
+  "countryName": "North Korea",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": 39.07444,
+  "longitude": -125.82833,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1977,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Taesongsan Funfair is an amusement park located in Taesong-guyok, 12 kilometers from Pyongyang, North Korea.  It was opened in 1977 and is at the foot of Mount Taesong.  Total area is 180,000m2, and contains 16 different rides.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/May_Day_at_the_Taesongsan_Fun_Fair.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Taesongsan_Funfair",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:50.497Z"
+}

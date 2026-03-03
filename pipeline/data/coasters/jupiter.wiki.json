@@ -1,0 +1,48 @@
+{
+  "articleTitle": "Jupiter (roller coaster)",
+  "introSection": "Jupiter (ジュピター) is a wooden roller coaster located at Kijima Kogen amusement park in Beppu, Ōita Prefecture, Japan. Manufactured by Intamin and designed by Curtis D. Summers, the ride opened to the public on July 21, 1992.\n\nJupiter was the first wooden roller coaster in Japan and the only one until White Canyon at Yomiuriland and White Cyclone at Nagashima Spa Land both opened in 1994. At over 1600 m in length, Jupiter is the 7th longest wooden roller coaster in the world.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Although Japan has had numerous notable roller coasters—including coasters that have held the record of world's longest, world's fastest, and world's tallest roller coaster—it has had relatively few wooden roller coasters. This resulted from Japanese earthquake engineering regulations that restricted the construction of tall wooden structures. It was not until after these restrictions were modified that Jupiter (and later White Canyon and White Cyclone) could be constructed.\n\nJupiter was built by Intamin out of Norway spruce lumber and it cost a total of 2.5 billion yen to construct. The coaster was also the last to be designed by noted roller coaster designer Curtis D. Summers before his death in 1992 and it was one of only two coasters that he produced with Intamin.\n\nThe roller coaster Jupiter is also notable for briefly appearing in the 1994 science fiction kaiju movie, Godzilla vs. SpaceGodzilla."
+    },
+    {
+      "title": "Ride experience and theme",
+      "content": "While it is reported to be the most popular ride at Kijima Kogen, Jupiter is described by a number of sources as having a rough and somewhat uncomfortable ride experience. Single rides on Jupiter cost 1,300 yen.\n\nOutside the ride is an example roller coaster train car, as well as a small \"Jupiter\" shrine in a Shinto motif."
+    }
+  ],
+  "fullText": "Jupiter (ジュピター) is a wooden roller coaster located at Kijima Kogen amusement park in Beppu, Ōita Prefecture, Japan. Manufactured by Intamin and designed by Curtis D. Summers, the ride opened to the public on July 21, 1992.\n\nJupiter was the first wooden roller coaster in Japan and the only one until White Canyon at Yomiuriland and White Cyclone at Nagashima Spa Land both opened in 1994. At over 1600 m in length, Jupiter is the 7th longest wooden roller coaster in the world.\n\nAlthough Japan has had numerous notable roller coasters—including coasters that have held the record of world's longest, world's fastest, and world's tallest roller coaster—it has had relatively few wooden roller coasters. This resulted from Japanese earthquake engineering regulations that restricted the construction of tall wooden structures. It was not until after these restrictions were modified that Jupiter (and later White Canyon and White Cyclone) could be constructed.\n\nJupiter was built by Intamin out of Norway spruce lumber and it cost a total of 2.5 billion yen to construct. The coaster was also the last to be designed by noted roller coaster designer Curtis D. Summers before his death in 1992 and it was one of only two coasters that he produced with Intamin.\n\nThe roller coaster Jupiter is also notable for briefly appearing in the 1994 science fiction kaiju movie, Godzilla vs. SpaceGodzilla.\n\nWhile it is reported to be the most popular ride at Kijima Kogen, Jupiter is described by a number of sources as having a rough and somewhat uncomfortable ride experience. Single rides on Jupiter cost 1,300 yen.\n\nOutside the ride is an example roller coaster train car, as well as a small \"Jupiter\" shrine in a Shinto motif.\n\n",
+  "categories": [
+    "Roller coasters in Japan"
+  ],
+  "infoboxRaw": {
+    "name": "Jupiter",
+    "image": "Jupiter roller coaster at Kijima Kogen.jpg",
+    "location": "Kijima Kogen",
+    "status": "Operating",
+    "opened": "July 21, 1992",
+    "year": "1992",
+    "cost": "2.5 billion yen",
+    "manufacturer": "Intamin",
+    "designer": "Curtis D. Summers",
+    "height_m": "42",
+    "sigfig_height": "4",
+    "length_m": "1600",
+    "sigfig_length": "5",
+    "speed_km/h": "91",
+    "sigfig_speed": "3",
+    "inversions": "0",
+    "duration": "2:34",
+    "angle": "45",
+    "gforce": "2.7",
+    "restriction_cm": "120",
+    "carspertrain": "7",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "1254"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Jupiter_(roller_coaster)",
+  "wikiPageId": 36800152,
+  "fetchedAt": "2026-02-28T20:44:05.473Z",
+  "articleLength": 1720
+}

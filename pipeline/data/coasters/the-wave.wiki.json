@@ -1,0 +1,52 @@
+{
+  "articleTitle": "The Wave (Drayton Manor)",
+  "introSection": "The Wave is a steel roller coaster, located at Drayton Manor Resort in Tamworth in the United Kingdom. It was manufactured by Intamin and originally opened in 1994 as The 7up Shockwave, later simply The Shockwave, featuring stand-up trains. For the 2024 season, it was renamed The Wave and given sit-down trains.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "The Wave was originally manufactured by Intamin, opening in 1994 as a stand-up roller coaster called The 7up Shockwave, later renamed simply The Shockwave. It was the only stand-up roller coaster with a zero-g roll.\n\nShockwave was retired as a stand-up coaster on 5 November 2023 to have a new sit down train manufactured by ART Engineering for the 2024 season, and the height limit was lowered from 1.4m to 1.2m to allow a younger audience experience the ride."
+    },
+    {
+      "title": "Ride Experience",
+      "content": "Once riders are seated and secured, the train exits the station where kicker wheels slowly takes the train down a straight section of track. The train then makes a small dip into the 120 ft lift hill. Once riders are at the top the train gradually descends down to the left and drops into the first inversion, a vertical loop. After completing the loop riders immediately enter a zero-g roll. Riders then bend slightly to the left onto a straight section of track where the left hand side on ride photo is taken before entering the final two inversions, a double left hand corkscrew. Immediately after the corkscrews, the train turns right towards where the right hand on ride photo is taken. Trains then travel down another straight section before entering the ride's final brake run."
+    }
+  ],
+  "fullText": "The Wave is a steel roller coaster, located at Drayton Manor Resort in Tamworth in the United Kingdom. It was manufactured by Intamin and originally opened in 1994 as The 7up Shockwave, later simply The Shockwave, featuring stand-up trains. For the 2024 season, it was renamed The Wave and given sit-down trains.\n\nThe Wave was originally manufactured by Intamin, opening in 1994 as a stand-up roller coaster called The 7up Shockwave, later renamed simply The Shockwave. It was the only stand-up roller coaster with a zero-g roll.\n\nShockwave was retired as a stand-up coaster on 5 November 2023 to have a new sit down train manufactured by ART Engineering for the 2024 season, and the height limit was lowered from 1.4m to 1.2m to allow a younger audience experience the ride.\n\nOnce riders are seated and secured, the train exits the station where kicker wheels slowly takes the train down a straight section of track. The train then makes a small dip into the 120 ft lift hill. Once riders are at the top the train gradually descends down to the left and drops into the first inversion, a vertical loop. After completing the loop riders immediately enter a zero-g roll. Riders then bend slightly to the left onto a straight section of track where the left hand side on ride photo is taken before entering the final two inversions, a double left hand corkscrew. Immediately after the corkscrews, the train turns right towards where the right hand on ride photo is taken. Trains then travel down another straight section before entering the ride's final brake run.\n\n",
+  "categories": [
+    "Stand-up roller coasters",
+    "Roller coasters in the United Kingdom",
+    "Roller coasters opened in 1994"
+  ],
+  "infoboxRaw": {
+    "name": "The Wave",
+    "image": "DraytonManor Shockwave.jpg",
+    "location": "Drayton Manor Resort",
+    "section": "Adventure Cove",
+    "status": "Operating",
+    "opened": "1994",
+    "manufacturer": "Intamin",
+    "designer": "Werner Stengel",
+    "model": "Sit-Down/Looping",
+    "lift": "Chain lift hill",
+    "height_ft": "120",
+    "drop_ft": "105",
+    "length_ft": "1640.4",
+    "speed_mph": "56",
+    "inversions": "4",
+    "duration": "1:40",
+    "cost": "£4.2 million",
+    "gforce": "4",
+    "restriction_cm": "120",
+    "trains": "1",
+    "carspertrain": "6",
+    "rowspercar": "1",
+    "ridersperrow": "4",
+    "location_rcdb_number": "814",
+    "virtual_queue_name": "Fast Pass (Platinum only) & Easy Pass",
+    "virtual_queue_status": "available"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Wave_(Drayton_Manor)",
+  "wikiPageId": 7616653,
+  "fetchedAt": "2026-02-28T20:43:45.976Z",
+  "articleLength": 1564
+}

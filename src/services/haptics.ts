@@ -1,4 +1,5 @@
 import * as Haptics from 'expo-haptics';
+import { getHapticsEnabled } from '../stores/settingsStore';
 
 /**
  * Centralized haptic feedback service.
@@ -10,26 +11,26 @@ import * as Haptics from 'expo-haptics';
  */
 export const haptics = {
   /** Light impact — menu items, small buttons */
-  tap: () => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light),
+  tap: () => { if (getHapticsEnabled()) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); },
 
   /** Medium impact — card selection, important presses */
-  select: () => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium),
+  select: () => { if (getHapticsEnabled()) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); },
 
   /** Heavy impact — destructive actions, confirmations */
-  heavy: () => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy),
+  heavy: () => { if (getHapticsEnabled()) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy); },
 
   /** Notification success — log complete, rating saved */
-  success: () => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success),
+  success: () => { if (getHapticsEnabled()) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); },
 
   /** Notification error — failures */
-  error: () => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error),
+  error: () => { if (getHapticsEnabled()) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error); },
 
   /** Notification warning */
-  warning: () => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning),
+  warning: () => { if (getHapticsEnabled()) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning); },
 
   /** Selection tick — slider movement, picker change */
-  tick: () => Haptics.selectionAsync(),
+  tick: () => { if (getHapticsEnabled()) Haptics.selectionAsync(); },
 
   /** Light impact — toggle, snap-to-grid */
-  snap: () => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light),
+  snap: () => { if (getHapticsEnabled()) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); },
 };

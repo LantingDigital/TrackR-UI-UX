@@ -1,0 +1,29 @@
+{
+  "id": "six-flags-over-georgia",
+  "name": "Six Flags Over Georgia",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Georgia",
+  "continent": "North America",
+  "city": "Mableton",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1967,
+  "yearClosed": null,
+  "owner": "Six Flags Over Georgia, Ltd.",
+  "chain": null,
+  "website": null,
+  "coasterCount": 10,
+  "totalCoasterCount": 10,
+  "description": "Six Flags Over Georgia is a 290 acre amusement park in Mableton, Georgia, United States.  Opened in 1967, it is the second park in the Six Flags chain following the original Six Flags Over Texas, which opened in 1961. \n\nSix Flags Over Georgia is one of three parks in the Six Flags chain to have been founded by Angus G.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Over_Georgia_new_entrance_gate.jpg",
+  "imageAttribution": "The park's main entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Over_Georgia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:14.382Z"
+}

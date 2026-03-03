@@ -1,0 +1,29 @@
+{
+  "id": "six-gun-territory",
+  "name": "Six Gun Territory",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Ocala",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1963,
+  "yearClosed": 1984,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 4,
+  "description": "Six Gun Territory was a Western-themed theme park in Ocala, Florida, United States.  It opened on February 2, 1963 and closed on January 1, 1984.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/05_El_Sombrero_Cafeteria_6_Gun_Territory.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Gun_Territory",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:13.670Z"
+}

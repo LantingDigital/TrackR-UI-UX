@@ -1,0 +1,61 @@
+{
+  "id": "cosmic-coaster",
+  "name": "Cosmic Coaster",
+  "formerNames": [
+    "Dragon Coaster at Dorney Park & Wildwater Kingdom"
+  ],
+  "parkId": "valleyfair",
+  "parkName": "Valleyfair",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "heightFt": 14,
+  "heightM": 4.3,
+  "speedMph": 15,
+  "speedKmh": 24.1,
+  "lengthFt": 215,
+  "lengthM": 65.5,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 150,
+  "material": "Steel",
+  "type": "Kiddie",
+  "propulsion": null,
+  "manufacturer": "Zamperla",
+  "designer": null,
+  "model": "Powered Coaster",
+  "status": "operating",
+  "yearOpened": 2011,
+  "yearClosed": null,
+  "description": "Cosmic Coaster is a steel junior roller coaster at Valleyfair. \n\nThe ride was originally known as Dragon Coaster when it was located at Dorney Park & Wildwater Kingdom in Allentown, Pennsylvania.  It was built in 1986 and operated from 1992 through 2010.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Cosmic_Coaster_(Valleyfair)_1.jpg",
+  "imageAttribution": "Cosmic Coaster's helix",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cosmic_Coaster_(Valleyfair)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:14:33.690Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "cosmic coaster",
+    "dragon coaster at dorney park & wildwater kingdom",
+    "valleyfair",
+    "zamperla",
+    "powered coaster",
+    "kiddie",
+    "pennsylvania"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Zamperla"
+  },
+  "popularityScore": 55.3,
+  "popularityTier": "notable",
+  "popularityRank": 743
+}

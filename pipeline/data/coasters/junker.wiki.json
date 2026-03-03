@@ -1,0 +1,55 @@
+{
+  "articleTitle": "Junker (roller coaster)",
+  "introSection": "Junker is a steel roller coaster located at PowerPark in Alahärmä, Western Finland. When opened in 2015 it was Gerstlauer's third Infinity Coaster installation after The Smiler at Alton Towers and Karacho at Tripsdrill.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "In early 2015 Powerpark announced via a press release that it would be opening \"the most thrilling coaster in Northern Europe\" which would also feature an underwater tunnel. The coaster was confirmed to have been designed by the German manufacturer Gerstlauer and would feature 3 inversions as well as an LSM launch. Construction was completed in April 2015, and testing was underway in early May."
+    },
+    {
+      "title": "Ride experience",
+      "content": "After dispatching from the station, the train navigates a short left-hand turn before rolling into the first and only LSM launch, accelerating riders from 0 to 64.9 mph in 1.9 seconds. The train ascends a 131.3 ft top hat, before pulling up into a large airtime hill followed by the Junker's signature Finnish loop. A mid-course brake run follows, after which a series of left and right-handed bends lead into the second inversion, a dive loop. The coaster then dips into an underground trench before rising back up into the last inversion, a corkscrew. A right turn subsequently takes the train into the brake run, and back to the station."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Ride page on PowerPark's official website (in English)"
+    }
+  ],
+  "fullText": "Junker is a steel roller coaster located at PowerPark in Alahärmä, Western Finland. When opened in 2015 it was Gerstlauer's third Infinity Coaster installation after The Smiler at Alton Towers and Karacho at Tripsdrill.\n\nIn early 2015 Powerpark announced via a press release that it would be opening \"the most thrilling coaster in Northern Europe\" which would also feature an underwater tunnel. The coaster was confirmed to have been designed by the German manufacturer Gerstlauer and would feature 3 inversions as well as an LSM launch. Construction was completed in April 2015, and testing was underway in early May.\n\nAfter dispatching from the station, the train navigates a short left-hand turn before rolling into the first and only LSM launch, accelerating riders from 0 to 64.9 mph in 1.9 seconds. The train ascends a 131.3 ft top hat, before pulling up into a large airtime hill followed by the Junker's signature Finnish loop. A mid-course brake run follows, after which a series of left and right-handed bends lead into the second inversion, a dive loop. The coaster then dips into an underground trench before rising back up into the last inversion, a corkscrew. A right turn subsequently takes the train into the brake run, and back to the station.\n\n\n * Ride page on PowerPark's official website (in English)",
+  "categories": [
+    "Amusement parks in Finland",
+    "Kauhava",
+    "Buildings and structures in South Ostrobothnia",
+    "Tourist attractions in South Ostrobothnia",
+    "Roller coasters in Finland",
+    "Roller coasters opened in 2015",
+    "Launched roller coasters",
+    "Steel roller coasters"
+  ],
+  "infoboxRaw": {
+    "name": "Junker",
+    "image": "Junker_PowerPark.jpg",
+    "caption": "Junker in operation at PowerPark.",
+    "location": "PowerPark",
+    "type2": "Launched",
+    "status": "Open",
+    "opened": "30 May 2015",
+    "manufacturer": "Gerstlauer",
+    "model": "Infinity Coaster",
+    "lift": "Linear synchronous motor Launch",
+    "height_ft": "131.3",
+    "length_ft": "2821.5",
+    "speed_mph": "64.9",
+    "inversions": "3",
+    "duration": "1:00",
+    "acceleration_km/h": "104.4",
+    "acceleration_in": "1.9",
+    "gforce": "4.5",
+    "restriction_cm": "130",
+    "rcdb_number": "12027"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Junker_(roller_coaster)",
+  "wikiPageId": 64413157,
+  "fetchedAt": "2026-02-28T20:56:29.057Z",
+  "articleLength": 1320
+}

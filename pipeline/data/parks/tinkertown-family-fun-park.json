@@ -1,0 +1,29 @@
+{
+  "id": "tinkertown-family-fun-park",
+  "name": "Tinkertown Family Fun Park",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": null,
+  "continent": "North America",
+  "city": "Springfield",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Randy Saluk",
+  "chain": null,
+  "website": "tinkertownfunpark.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Tinkertown Family Fun Park is an outdoor amusement park located in Springfield, Manitoba, just outside of Winnipeg.  It is a seasonal amusement park, only being open in the summer.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tinkertown_Family_Fun_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:08.070Z"
+}

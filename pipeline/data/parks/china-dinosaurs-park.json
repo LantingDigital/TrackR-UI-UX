@@ -1,0 +1,29 @@
+{
+  "id": "china-dinosaurs-park",
+  "name": "China Dinosaurs Park",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": "China",
+  "continent": "Asia",
+  "city": "Changzhou, Jiangsu, China",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2000,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "China Dinosaurs Park (中华恐龙园), also called China Dinosaurs Land is a theme park located in Changzhou, Jiangsu, China.  It has been open since September 2000.  The park covers more than 600 mu (0.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/China_dinosaur_park_for_nnu.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/China_Dinosaurs_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:42.860Z"
+}

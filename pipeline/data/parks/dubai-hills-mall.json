@@ -1,0 +1,29 @@
+{
+  "id": "dubai-hills-mall",
+  "name": "Dubai Hills Mall",
+  "formerNames": [],
+  "country": "AE",
+  "countryName": "United Arab Emirates",
+  "region": null,
+  "continent": "Asia",
+  "city": "Dubai Hills, Dubai, United Arab Emirates",
+  "latitude": 25.10125,
+  "longitude": -55.23795,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2022,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "emaar.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Dubai Hills Mall is a retail, leisure, and entertainment complex situated in Dubai, United Arab Emirates.  Located in the Dubai Hills Estate, at an intersection between Al Khail and Umm Suqeim.  Dubai Hills Estate constitutes as one of the first stages in the development of Mohammed bin Rashid City (MBR City) and Dubai Hills Mall will be the primary regional mall in the area.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Dubai_Hills_Mall_Arcade.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dubai_Hills_Mall",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:24.941Z"
+}

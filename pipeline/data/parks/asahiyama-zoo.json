@@ -1,0 +1,29 @@
+{
+  "id": "asahiyama-zoo",
+  "name": "Asahiyama Zoo",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Asahikawa, Hokkaidō, Japan",
+  "latitude": 43.76805,
+  "longitude": -142.47978,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.city.asahikawa.hokkaido.jp/asahiyamazoo/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "The Asahiyama Zoo (旭山動物園) is a municipal zoo that opened in July 1967 in Asahikawa, Hokkaidō, Japan, and is the northernmost zoo in the country.  In August 2004, over 320,000 people had visited the zoo, the second-highest number of visitors among all the zoos in Japan.  Located in Higashi Asahikawa, on the outskirts of Asahikawa, the Asahiyama Zoo is accredited by the Japanese Association of Zoos and Aquariums (JAZA).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Asahiyama_zoo_entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Asahiyama_Zoo",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:30:58.188Z"
+}

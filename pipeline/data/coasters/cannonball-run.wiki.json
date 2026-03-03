@@ -1,0 +1,42 @@
+{
+  "articleTitle": "Cannonball Run (roller coaster)",
+  "introSection": "Cannonball Run was a wooden roller coaster located at Waterville USA in Gulf Shores, Alabama. It opened in 1995 and closed in 2018.",
+  "sections": [
+    {
+      "title": "Track layout",
+      "content": "The ride featured a 65-foot lift hill and runs over and next to the park's parking lot. It was an out and back design, meaning the course went out away from the station, turns around, then headed back to the station. Each ride cycle usually consisted of two laps around the course."
+    },
+    {
+      "title": "Trains",
+      "content": "Cannonball Run operated with one train from Philadelphia Toboggan Coasters. The train was made up of five cars, with each car seating four people (twenty riders total). The train featured a seatbelt for each row and a single position lap bar."
+    }
+  ],
+  "fullText": "Cannonball Run was a wooden roller coaster located at Waterville USA in Gulf Shores, Alabama. It opened in 1995 and closed in 2018.\n\nThe ride featured a 65-foot lift hill and runs over and next to the park's parking lot. It was an out and back design, meaning the course went out away from the station, turns around, then headed back to the station. Each ride cycle usually consisted of two laps around the course.\n\nCannonball Run operated with one train from Philadelphia Toboggan Coasters. The train was made up of five cars, with each car seating four people (twenty riders total). The train featured a seatbelt for each row and a single position lap bar.\n\n",
+  "categories": [
+    "Buildings and structures in Baldwin County, Alabama",
+    "Former roller coasters in Alabama",
+    "Roller coasters opened in 1995",
+    "Amusement rides closed in 2018"
+  ],
+  "infoboxRaw": {
+    "name": "Cannonball Run",
+    "image": "Cannonball Run (Waterville USA) 1.jpg",
+    "location": "Waterville USA",
+    "manufacturer": "Custom Coasters International",
+    "track": "Out & Back",
+    "status": "Removed",
+    "opened": "1995",
+    "closed": "September 30, 2018",
+    "height_ft": "65",
+    "lift": "Chain lift hill",
+    "length_ft": "1700",
+    "speed_mph": "43",
+    "restriction_in": "42",
+    "rcdb_number": "360",
+    "coordinates": "30.25846°N, -87.68586°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cannonball_Run_(roller_coaster)",
+  "wikiPageId": 22691366,
+  "fetchedAt": "2026-02-28T20:13:52.418Z",
+  "articleLength": 660
+}

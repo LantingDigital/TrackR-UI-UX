@@ -1,0 +1,29 @@
+{
+  "id": "legoland-windsor",
+  "name": "Legoland Windsor Resort",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Winkfield Road, Windsor, Berkshire, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "www.legoland.co.uk",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Legoland Windsor Resort, styled and also known as Legoland Windsor, is a theme park and resort in Windsor, Berkshire in England, themed around the Lego brand.  The park opened on 17 March 1996 and is currently operated by Merlin Entertainments.  The park's attractions consist of a mixture of Lego-themed rides, models, and building workshops targeted at children between three and twelve.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Windsor_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:23.042Z"
+}

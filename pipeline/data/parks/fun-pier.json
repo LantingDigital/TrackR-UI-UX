@@ -1,0 +1,31 @@
+{
+  "id": "fun-pier",
+  "name": "Fun Pier",
+  "formerNames": [
+    "Kiddieland"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "Wildwood, New Jersey, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1957,
+  "yearClosed": 1987,
+  "owner": "Joe Barnes",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Fun Pier is a defunct amusement park that ran from 1957 to 1987 on a pier on the beach in Wildwood, New Jersey.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Fun_Pier_Wildwood_NJ_logo.gif",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fun_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:30:30.779Z"
+}

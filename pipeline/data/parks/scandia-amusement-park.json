@@ -1,0 +1,29 @@
+{
+  "id": "scandia-amusement-park",
+  "name": "Scandia Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Scandia is a brand name of Scandinavian-themed family amusement centers in California.  Although each location shares a similar name, nearly each location is owned and operated by different companies.  Scandia Fun Center in Sacramento and Scandia Family Fun Center in Victorville are owned by Scandia Amusements.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Scandia_(theme_parks)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:39.683Z"
+}

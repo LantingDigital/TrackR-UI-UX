@@ -1,0 +1,29 @@
+{
+  "id": "kaeson-youth-park",
+  "name": "Kaeson Youth Park",
+  "formerNames": [],
+  "country": "KP",
+  "countryName": "North Korea",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": 39.04778,
+  "longitude": -125.75806,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1984,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "The Kaeson Youth Park is an amusement park located in Pyongyang, North Korea.  The park, located near the Kim Il Sung Stadium and in the west foot of Moran Hill was opened in 1984, the park was opened as part of the Triumphal Arch dedication.  It included a carousel, fun house and amusement park rides like the Ferris wheel, comprising an area of 40 ha.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3AKaeson_Fun_Fair.jpg%7C220px%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kaeson_Youth_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:30:12.052Z"
+}

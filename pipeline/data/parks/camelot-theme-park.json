@@ -1,0 +1,29 @@
+{
+  "id": "camelot-theme-park",
+  "name": "Camelot Theme Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Charnock Richard, Chorley, Lancashire, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1983,
+  "yearClosed": 2012,
+  "owner": "The Story Group",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Camelot Theme Park was a resort and theme park located in Charnock Richard, Lancashire, England.  The park's theme was the legend of Camelot, and the park decor incorporated pseudo-medieval elements.  It was located on a 140 acre site owned by The Story Group and was operated by Knights Leisure.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Camelot_Theme_Park_logo.jpg",
+  "imageAttribution": "Camelot's logo (2006–2012)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Camelot_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:27.464Z"
+}

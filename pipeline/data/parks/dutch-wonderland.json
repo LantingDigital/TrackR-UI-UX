@@ -1,0 +1,29 @@
+{
+  "id": "dutch-wonderland",
+  "name": "Dutch Wonderland",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "East Lampeter Township",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Herschend",
+  "chain": null,
+  "website": "www.dutchwonderland.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Dutch Wonderland is a 48 acre theme park just east of Lancaster, Pennsylvania in East Lampeter Township, appealing primarily to families with small children. \n\nThe park's theme is a \"Kingdom for Kids\".  Its entrance has a stone imitation castle façade, which was built by Earl Clark, a potato farmer, before he opened the park in 1963.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Dutch_Wonderland_w_spider_LanCo.jpg",
+  "imageAttribution": "Dutch Wonderland entrance decorated for Halloween in 2018.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dutch_Wonderland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:24.989Z"
+}

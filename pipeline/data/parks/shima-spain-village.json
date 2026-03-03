@@ -1,0 +1,29 @@
+{
+  "id": "shima-spain-village",
+  "name": "Shima Spain Village",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "Shima, Mie Prefecture, Japan",
+  "latitude": 34.36034,
+  "longitude": -136.84494,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1994,
+  "yearClosed": null,
+  "owner": "Shima Spain Village Co., Ltd.\n(Kintetsu Group Holdings)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Shima Spain Village (志摩スペイン村) is a theme park in Shima, Mie Prefecture, Japan, opened in April 1994.  As the name suggests, the theme park is dedicated exclusively to Spain.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/La_Villa_Espa%C3%B1ola_de_Shima%2C_Parque_Espa%C3%B1a_-_Plaza_de_Mayor.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Shima_Spain_Village",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:54.766Z"
+}

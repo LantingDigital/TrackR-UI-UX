@@ -1,0 +1,61 @@
+{
+  "id": "scorpion-express",
+  "name": "Scorpion Express",
+  "formerNames": [
+    "Runaway Train"
+  ],
+  "parkId": "chessington-world-of-adventures",
+  "parkName": "Chessington World of Adventures",
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "heightFt": 15.5,
+  "heightM": 4.7,
+  "speedMph": 22.4,
+  "speedKmh": 36,
+  "lengthFt": 849.7,
+  "lengthM": 259,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Mack Rides",
+  "designer": null,
+  "model": "Blauer Enzian",
+  "status": "closed",
+  "yearOpened": 1987,
+  "yearClosed": 2022,
+  "description": "Scorpion Express (originally the Runaway Train) was a mine train themed powered roller coaster at Chessington World of Adventures in Greater London, England.  It opened with the theme park in 1987 as the Runaway Train.  The original ride was closed in 2012 for refurbishment and reopened on 14 March 2014, with the same track layout but new name and theming.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ACWOAScorpionRide.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Scorpion_Express",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:53.096Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "scorpion express",
+    "runaway train",
+    "chessington world of adventures",
+    "mack rides",
+    "blauer enzian",
+    "sit-down",
+    "united kingdom"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Mack Rides"
+  },
+  "popularityScore": 61.1,
+  "popularityTier": "notable",
+  "popularityRank": 579
+}

@@ -1,0 +1,31 @@
+{
+  "id": "waterville-usa",
+  "name": "Waterville USA",
+  "formerNames": [
+    "Waterville U.S.A. - Gulf Shores Station"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Alabama",
+  "continent": "North America",
+  "city": "906 Gulf Shores Pkwy\nGulf Shores, Alabama 36542",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Joe Warrington",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Waterville USA, often called simply Waterville, is a 20 acre water park and amusement park located a quarter-mile from the Gulf of Mexico in the city of Gulf Shores, Alabama.  The park opened in 1986, and since has added numerous water and amusement attractions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Waterville_USA_Logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Waterville_USA",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:21.817Z"
+}

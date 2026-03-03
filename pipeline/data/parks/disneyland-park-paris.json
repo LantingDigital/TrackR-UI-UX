@@ -1,0 +1,31 @@
+{
+  "id": "disneyland-park-paris",
+  "name": "Disneyland Park",
+  "formerNames": [
+    "Euro Disneyland Park"
+  ],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Disneyland Paris",
+  "latitude": 48.87261,
+  "longitude": -2.77675,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1992,
+  "yearClosed": null,
+  "owner": "Disney Experiences\n(The Walt Disney Company)",
+  "chain": null,
+  "website": "Official website",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Disneyland Park, originally Euro Disneyland Park, is a theme park found at Disneyland Paris in Marne-la-Vallée, France.  The park opened on 12 April 1992, as the first of the two parks built at the resort.  Designed and built by Walt Disney Imagineering, its layout is similar to Disneyland Park in California and Magic Kingdom Park at Walt Disney World in Florida.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/SleepingBeautyCastleDisneylandParisl.jpg",
+  "imageAttribution": "Sleeping Beauty Castle, icon of Disneyland Park, in 2002",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:27.748Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "south-parade-pier",
+  "name": "South Parade Pier",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The South Parade Pier is a pier in Portsmouth, England.  It is one of two piers in the city, the other being Clarence Pier.  The pier once had a long hall down its centre which housed a seating area and a small restaurant.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/South_Parade_Pier%2C_Southsea.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/South_Parade_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:14.671Z"
+}

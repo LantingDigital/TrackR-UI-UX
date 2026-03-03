@@ -1,0 +1,29 @@
+{
+  "id": "ok-corral",
+  "name": "Gunfight at the O.K. Corral",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "The gunfight at the O. K.  Corral pitted lawmen against members of a loosely organized group of cattle rustlers and horse thieves called the Cochise County Cowboys on October 26, 1881.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tombstone_(probably_in_1881)_(cropped).jpg",
+  "imageAttribution": "Tombstone in 1881",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gunfight_at_the_O.K._Corral",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:40.353Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "mattel-adventure-park",
+  "name": "Mattel Adventure Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Arizona",
+  "continent": "North America",
+  "city": "Glendale, Arizona, United States Bonner Springs, Kansas City, Kansas, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2031,
+  "yearClosed": null,
+  "owner": "Epic Resort Destinations",
+  "chain": null,
+  "website": "matteladventurepark.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Mattel Adventure Park is an upcoming theme park under construction in Glendale, Arizona, a suburb in the metropolitan area of Phoenix, as well as in Bonner Springs, Kansas.  In Phoenix, it is planned to be an addition of the nearby VAI Resort.  It will be the first real-world attraction to feature properties adapted from toys and games manufactured by Mattel, as well as Arizona's first fully themed indoor/outdoor amusement park.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mattel_Adventure_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:25.215Z"
+}

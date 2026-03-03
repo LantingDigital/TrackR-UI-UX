@@ -1,0 +1,31 @@
+{
+  "id": "adventure-coast-southport",
+  "name": "Adventure Coast Southport",
+  "formerNames": [
+    "Southport Pleasureland"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Southport, Merseyside, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1913,
+  "yearClosed": null,
+  "owner": "Funporium",
+  "chain": null,
+  "website": "https://www.adventurecoastsouthport.co.uk/",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Adventure Coast Southport is an amusement park located in Southport, Merseyside, England.  The park originally operated from 1913 to 2006 as Pleasureland Theme Park under the ownership of the Blackpool Pleasure Beach company.  In 2007, the park re-opened under the ownership of Norman Wallis, operating as Southport Pleasureland until 2024.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adventure_Coast_Southport",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:58.541Z"
+}

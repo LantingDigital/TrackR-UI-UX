@@ -1,0 +1,29 @@
+{
+  "id": "happy-valley-beijing",
+  "name": "Happy Valley",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": "China",
+  "continent": "Asia",
+  "city": "Jinchan West Road (金蝉西路), Chaoyang District",
+  "latitude": 39.86642,
+  "longitude": -116.48863,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2006,
+  "yearClosed": null,
+  "owner": "Beijing OCT",
+  "chain": null,
+  "website": "bj.happyvalley.cn",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Happy Valley Beijing is an amusement park in Beijing, constructed and operated by Beijing OCT, which is part of the Overseas Chinese Town Company.  The park is located in Chaoyang District in eastern Beijing.  Opened in July 2006, it is the second part of the Happy Valley theme park chain.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/HappyValley.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Happy_Valley_Beijing",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:01.394Z"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "celebration-city",
+  "name": "Celebration City",
+  "formerNames": [
+    "Branson USA"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": "Branson",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1999,
+  "yearClosed": 2001,
+  "owner": "Herschend Family Entertainment",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Celebration City was a theme park located in Branson, Missouri, United States.  It was themed after America in the 20th century, with areas based on Route 66, Small-town America in the 1900s, and a beachside boardwalk in the 1920s.  As a \"sister park\" to Herschend Family Entertainment's Silver Dollar City theme park located nearby, It was meant to continue the day where Silver Dollar City's 19th century theming left off.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Celebration_City_Gate.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Celebration_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:50.174Z"
+}

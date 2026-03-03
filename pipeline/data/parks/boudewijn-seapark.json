@@ -1,0 +1,29 @@
+{
+  "id": "boudewijn-seapark",
+  "name": "Boudewijn Seapark",
+  "formerNames": [],
+  "country": "BE",
+  "countryName": "Belgium",
+  "region": null,
+  "continent": "Europe",
+  "city": "Sint-Michiels, Bruges, Belgium",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Aspro Parks",
+  "chain": null,
+  "website": "www.boudewijnseapark.be",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Boudewijn Seapark is a marine mammal park and theme park located in Sint-Michiels, Bruges, Belgium.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Dolphinarium_Boudewjinpark.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Boudewijn_Seapark",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:12.154Z"
+}

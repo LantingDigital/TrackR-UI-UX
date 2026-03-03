@@ -1,0 +1,31 @@
+{
+  "id": "dennlys-parc",
+  "name": "Dennlys Parc",
+  "formerNames": [
+    "Le moulin de la Tour"
+  ],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Dennebrœucq, Pas-de-Calais, France",
+  "latitude": 50.57056,
+  "longitude": -2.15417,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1983,
+  "yearClosed": null,
+  "owner": "The Crunelle Family",
+  "chain": null,
+  "website": "www.dennlys-parc.com",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Dennlys Parc is a theme park in Dennebrœucq, Pas-de-Calais.  The park's mascot is Denno the tortoise.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3Adennlysentree.JPG%7C200px%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dennlys_Parc",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:25:13.981Z"
+}

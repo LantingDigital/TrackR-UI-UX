@@ -1,0 +1,33 @@
+{
+  "id": "ferrari-land",
+  "name": "PortAventura World Parks & Resort",
+  "formerNames": [
+    "* Universal Mediterranea",
+    "* PortAventura",
+    "* PortAventura: European Destination Resort"
+  ],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": "Spain",
+  "continent": "Europe",
+  "city": "Salou and Vila-seca",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "owner": "Investindustrial KKR",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "PortAventura World is an entertainment resort in Salou and Vila-seca, Tarragona, on the Costa Daurada in Catalonia, Spain.  It was built around the PortAventura Park theme park, which attracts around 5. 3 million visitors per year, making it the most visited theme park in Spain and the sixth most visited theme park in Europe.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/PortAventura_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:52.308Z"
+}

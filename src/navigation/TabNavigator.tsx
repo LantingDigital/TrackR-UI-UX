@@ -4,7 +4,7 @@
  * React Navigation v7 bottom tab navigator with fade animation.
  * Custom AnimatedTabBar preserves the existing tab bar styling.
  *
- * Home | Discover | Parks | Community | Profile
+ * Home | Parks | Logbook | Community | Profile
  */
 
 import React from 'react';
@@ -17,9 +17,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // Import screens
 import { HomeScreen } from '../screens/HomeScreen';
-import { DiscoverScreen } from '../screens/DiscoverScreen';
+import { LogbookScreen } from '../screens/LogbookScreen';
 import { ParksScreen } from '../screens/ParksScreen';
-import { CommunityScreen } from '../screens/CommunityScreen';
+// Community is a transparent modal overlay in RootNavigator, not a tab screen
+const CommunityPlaceholder = () => <View style={{ flex: 1 }} />;
 import { ProfileScreen } from '../screens/ProfileScreen';
 
 import { haptics } from '../services/haptics';
@@ -33,8 +34,8 @@ const TAB_BAR_HEIGHT = 49;
 // Tab configuration with icons
 const TAB_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap }> = {
   Home: { icon: 'home-outline' },
-  Discover: { icon: 'compass-outline' },
   Parks: { icon: 'location-outline' },
+  Logbook: { icon: 'book-outline' },
   Community: { icon: 'chatbubbles-outline' },
   Profile: { icon: 'person-outline' },
 };
@@ -89,6 +90,11 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
 
         const onPress = () => {
           haptics.tap();
+          if (name === 'Community') {
+            // Open as transparent modal overlay (so Home stays visible behind)
+            navigation.navigate('CommunityOverlay');
+            return;
+          }
           if (state.index === index) {
             // Same tab — trigger reset
             tabBarContext.resetScreen(name);
@@ -128,17 +134,12 @@ export const TabNavigator = () => {
       tabBar={(props) => <AnimatedTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        animation: 'fade',
-        transitionSpec: {
-          animation: 'timing',
-          config: { duration: 100 },
-        },
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Discover" component={DiscoverScreen} />
       <Tab.Screen name="Parks" component={ParksScreen} />
-      <Tab.Screen name="Community" component={CommunityScreen} />
+      <Tab.Screen name="Logbook" component={LogbookScreen} />
+      <Tab.Screen name="Community" component={CommunityPlaceholder} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

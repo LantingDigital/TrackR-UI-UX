@@ -1,0 +1,29 @@
+{
+  "id": "city-forum",
+  "name": "City Forum",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Tennessee",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "City Forum was a Hong Kong public forum held weekly on Sunday at the Bandstand of Victoria Park, Causeway Bay.  The forum brought together politicians, academics and prominent public figures to discuss current issues, and also included a public Q&A session.  Each week, a number of secondary schools were invited to bring pupils to the forum to ask questions and debated on current issues.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/City_Forum",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:25.525Z"
+}

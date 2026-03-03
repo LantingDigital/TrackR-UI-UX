@@ -1,0 +1,31 @@
+{
+  "id": "wonderland-park-texas",
+  "name": "Wonderland Park",
+  "formerNames": [
+    "Kiddieland Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "2601 Dumas Drive, Amarillo, Texas",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1951,
+  "yearClosed": null,
+  "owner": "Roads family Borchardt family",
+  "chain": null,
+  "website": "www.wonderlandpark.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Wonderland Park is an amusement park located in Thompson Memorial Park, Amarillo, Texas, United States.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wonderland_Park_(Texas)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:23.111Z"
+}

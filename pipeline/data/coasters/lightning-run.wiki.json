@@ -1,0 +1,50 @@
+{
+  "articleTitle": "Lightning Run",
+  "introSection": "Lightning Run is a custom Hyper GT-X steel roller coaster, created and manufactured by Chance Rides, located at Kentucky Kingdom in Louisville, Kentucky. Since its opening on May 24, 2014, Lightning Run is, to-date, the only operating Hyper GT-X model roller coaster in the world.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "In February 2010, Six Flags permanently closed Kentucky Kingdom after a negotiation could not be reached with the Kentucky State Fair Board for a new lease needed for the park. In May 2010, Local Investor Ed Hart returned to the fold to operate the park again almost 13 years after selling the park to Six Flags. However, after over one year of trying to negotiate with the fair board over a lease, negotiations with Hart abruptly ended in September 2011. At the start of 2012, the owners of Holiday World expressed interest in running the park and renaming it to Bluegrass Boardwalk, but those plans ended without success in June 2012. In August 2012, Ed Hart returned to the Fair Board with a new proposal which included a US$15 million Bolliger & Mabillard roller coaster, but the plans were slightly changed to a US$7 million roller coaster and a different manufacturer. Chance Rides was then hired to build a brand new coaster model for the park."
+    },
+    {
+      "title": "Reception",
+      "content": "Lightning Run was ranked in the Amusement Today's Golden Ticket Awards for best new ride of 2014 with 9% of the vote, to come in fifth place."
+    }
+  ],
+  "fullText": "Lightning Run is a custom Hyper GT-X steel roller coaster, created and manufactured by Chance Rides, located at Kentucky Kingdom in Louisville, Kentucky. Since its opening on May 24, 2014, Lightning Run is, to-date, the only operating Hyper GT-X model roller coaster in the world.\n\nIn February 2010, Six Flags permanently closed Kentucky Kingdom after a negotiation could not be reached with the Kentucky State Fair Board for a new lease needed for the park. In May 2010, Local Investor Ed Hart returned to the fold to operate the park again almost 13 years after selling the park to Six Flags. However, after over one year of trying to negotiate with the fair board over a lease, negotiations with Hart abruptly ended in September 2011. At the start of 2012, the owners of Holiday World expressed interest in running the park and renaming it to Bluegrass Boardwalk, but those plans ended without success in June 2012. In August 2012, Ed Hart returned to the Fair Board with a new proposal which included a US$15 million Bolliger & Mabillard roller coaster, but the plans were slightly changed to a US$7 million roller coaster and a different manufacturer. Chance Rides was then hired to build a brand new coaster model for the park.\n\nLightning Run was ranked in the Amusement Today's Golden Ticket Awards for best new ride of 2014 with 9% of the vote, to come in fifth place.\n\n",
+  "categories": [
+    "Hypercoasters",
+    "Kentucky Kingdom",
+    "Roller coasters in Kentucky",
+    "Roller coasters opened in 2014",
+    "2014 establishments in Kentucky"
+  ],
+  "infoboxRaw": {
+    "image": "File:Lightning Run at Kentucky Kingdom – Jeremy Thompson.jpg",
+    "name": "Lightning Run",
+    "status": "Operating",
+    "location": "Kentucky Kingdom",
+    "opened": "May 24, 2014",
+    "section": "Front of Park",
+    "previousattraction": "Greezed Lightnin'",
+    "manufacturer": "Chance Rides",
+    "model": "Hyper GT-X Coaster",
+    "drop_ft": "100",
+    "length_ft": "2500",
+    "speed_mph": "55",
+    "inversions": "0",
+    "duration": "2:00",
+    "angle": "80",
+    "capacity": "800",
+    "trains": "2",
+    "carspertrain": "5",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "restriction_in": "48",
+    "rcdb_number": "7982"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lightning_Run",
+  "wikiPageId": 43200045,
+  "fetchedAt": "2026-02-28T20:16:18.919Z",
+  "articleLength": 1378
+}

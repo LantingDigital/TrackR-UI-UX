@@ -1,0 +1,48 @@
+{
+  "articleTitle": "Zoomerang (Lake Compounce)",
+  "introSection": "Zoomerang is a steel shuttle roller coaster located at Lake Compounce in Bristol, Connecticut. A Boomerang model manufactured by Vekoma, it contains a cobra roll and a vertical loop. Zoomerang was the first boomerang coaster to receive a Vekoma-designed train. Earlier models used trains designed by Arrow Dynamics. In September 2007, due to paint deterioration, the ride was repainted with a new color scheme featuring purple tracks and teal supports.",
+  "sections": [
+    {
+      "title": "Ride experience",
+      "content": "The train begins its backwards climb up the first of the ride's two 116-foot lift hills, both of which are placed diagonally towards each other. The train continues to slowly rise for thirty seconds before dropping at 47 miles per hour through the station and through the coaster's first inversion, a cobra roll, exerting as many as 5.2 Gs on riders throughout the two elements. The train then goes through a loop before entering the second lift section. The second lift pulls riders upwards for a few seconds, then releases, sending riders backwards. The train encounters the loop first this time, only to then go through the cobra roll once again, which leads riders back through the station and partially up the first lift section again. The train then slowly lowers back down into the station, having sent riders through 935 feet of three inversions in total, both forwards and backwards."
+    },
+    {
+      "title": "Incidents",
+      "content": "On June 14, 2001, the sensor on Zoomerang failed to communicate properly with the ride's automatic braking system, allowing the train of cars to continue on its own energy until it came to rest in a section of track 60 feet in the air, in the low point of the ride's cobra roll. 26 passengers were left stranded in their seats until firefighters evacuated the ride. None of the passengers were injured. Investigators determined that the incident was caused by a sensor malfunction."
+    }
+  ],
+  "fullText": "Zoomerang is a steel shuttle roller coaster located at Lake Compounce in Bristol, Connecticut. A Boomerang model manufactured by Vekoma, it contains a cobra roll and a vertical loop. Zoomerang was the first boomerang coaster to receive a Vekoma-designed train. Earlier models used trains designed by Arrow Dynamics. In September 2007, due to paint deterioration, the ride was repainted with a new color scheme featuring purple tracks and teal supports.\n\nThe train begins its backwards climb up the first of the ride's two 116-foot lift hills, both of which are placed diagonally towards each other. The train continues to slowly rise for thirty seconds before dropping at 47 miles per hour through the station and through the coaster's first inversion, a cobra roll, exerting as many as 5.2 Gs on riders throughout the two elements. The train then goes through a loop before entering the second lift section. The second lift pulls riders upwards for a few seconds, then releases, sending riders backwards. The train encounters the loop first this time, only to then go through the cobra roll once again, which leads riders back through the station and partially up the first lift section again. The train then slowly lowers back down into the station, having sent riders through 935 feet of three inversions in total, both forwards and backwards.\n\nOn June 14, 2001, the sensor on Zoomerang failed to communicate properly with the ride's automatic braking system, allowing the train of cars to continue on its own energy until it came to rest in a section of track 60 feet in the air, in the low point of the ride's cobra roll. 26 passengers were left stranded in their seats until firefighters evacuated the ride. None of the passengers were injured. Investigators determined that the incident was caused by a sensor malfunction.\n\n",
+  "categories": [
+    "Roller coasters opened in 1997",
+    "Boomerang roller coasters",
+    "Roller coasters in the United States",
+    "Roller coasters in Connecticut"
+  ],
+  "infoboxRaw": {
+    "name": "Zoomerang",
+    "image": "Zoomerang.jpg",
+    "logo_width": "250px",
+    "caption": "Zoomerang's old color scheme from 1997–2007",
+    "location": "Lake Compounce",
+    "type2": "Boomerang",
+    "manufacturer": "Vekoma",
+    "designer": "Vekoma",
+    "model": "Boomerang",
+    "status": "Open",
+    "opened": "June 27, 1997",
+    "height_ft": "116.5",
+    "length_ft": "935",
+    "speed_mph": "47",
+    "duration": "1:48",
+    "inversions": "3",
+    "capacity": "760",
+    "gforce": "5.2",
+    "restriction_in": "48",
+    "rcdb_number": "432",
+    "coordinates": "41.64296°N, -72.92295°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Zoomerang_(Lake_Compounce)",
+  "wikiPageId": 6237421,
+  "fetchedAt": "2026-02-28T20:14:07.418Z",
+  "articleLength": 1831
+}

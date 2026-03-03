@@ -1,0 +1,29 @@
+{
+  "id": "parken-zoo",
+  "name": "Parken Zoo",
+  "formerNames": [],
+  "country": "SE",
+  "countryName": "Sweden",
+  "region": null,
+  "continent": "Europe",
+  "city": "Eskilstuna\nSweden",
+  "latitude": 59.3733,
+  "longitude": -16.4822,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Eskilstuna Municipality",
+  "chain": null,
+  "website": "http://www.parkenzoo.se",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Parken Zoo is a combined amusement park and zoo in the town of Eskilstuna in Sweden. \n\nThe amusement park was founded in 1898, and there was a display of animals from the beginning of the fifties.  In 1954 Parken Zoo started to charge visitors an entrance fee.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Parken_Zoo_entrance.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parken_Zoo",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:36:58.116Z"
+}

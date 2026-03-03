@@ -1,0 +1,29 @@
+{
+  "id": "pontchartrain-beach",
+  "name": "Pontchartrain Beach",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Louisiana",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1928,
+  "yearClosed": 1983,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Pontchartrain Beach was an amusement park located in New Orleans, Louisiana, on the south shore of Lake Pontchartrain.  It was founded by Harry J.  Batt Sr.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3APontchartrain_Beach_Laff_in_the_Dark.jpg",
+  "imageAttribution": "Pontchartrain Beach c. early 1960s",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Pontchartrain_Beach",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:53.355Z"
+}

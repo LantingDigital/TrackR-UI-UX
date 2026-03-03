@@ -1,0 +1,29 @@
+{
+  "id": "lakeside-colorado",
+  "name": "Lakeside, Colorado",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Colorado",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Town of Lakeside is a statutory town in Jefferson County, Colorado, United States.  The town population was 16 at the 2020 United States census, making Lakeside the least populous municipality in Colorado.  Lakeside is immediately west of the City and County of Denver, the most populous municipality in the state.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lakeside%2C_Colorado",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:32.437Z"
+}

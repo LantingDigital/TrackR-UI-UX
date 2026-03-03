@@ -1,0 +1,29 @@
+{
+  "id": "beto-carrero-world",
+  "name": "Beto Carrero World",
+  "formerNames": [],
+  "country": "BR",
+  "countryName": "Brazil",
+  "region": null,
+  "continent": "South America",
+  "city": "Penha, Santa Catarina, Brazil",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1991,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "betocarrero.com.br",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Beto Carrero World is a theme park located in Penha, Santa Catarina, Brazil.  The park is part of Santa Catarina's signature amusement parks.  It is the largest theme park in Latin America, occupying 14 km2 divided into seven different theme areas.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Castelo_das_Na%C3%A7%C3%B5es_no_Beto_Carrero_World%2C_Penha_SC.JPG",
+  "imageAttribution": "Castelo das Nações in Beto Carrero World",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Beto_Carrero_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:38.107Z"
+}

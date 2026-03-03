@@ -1,0 +1,31 @@
+{
+  "id": "wild-adventures",
+  "name": "Wild Adventures",
+  "formerNames": [
+    "Liberty Farms"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Georgia",
+  "continent": "North America",
+  "city": "Valdosta",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1996,
+  "yearClosed": null,
+  "owner": "Herschend",
+  "chain": null,
+  "website": "http://www.wildadventures.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Wild Adventures (formerly known as Liberty Farms) is a zoological theme park located in Clyattville, Georgia, 5 mi south of Valdosta, Georgia.  The park is owned by Herschend and has been managed by Jon Vigue since October 2020.  Wild Adventures has rides, exotic animals, the Splash Island water park, and live shows.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wild_Adventures",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:23.857Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "johns-incredible-pizza",
+  "name": "John's Incredible Pizza Company",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Rancho Santa Margarita, California",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.johnspizza.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "John's Incredible Pizza Company is an American all-you-can-eat buffet restaurant, arcade, and family entertainment center business founded by John Parlet in 1997.  The company has 9 locations on the West Coast of the United States as of October 2025 (8 in California, 1 in Nevada).  Its corporate office is located in Rancho Santa Margarita, California.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/John's_Inc_IncrediBear_Boogie.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/John's_Incredible_Pizza_Company",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:06.297Z"
+}

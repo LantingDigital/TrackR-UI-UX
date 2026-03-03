@@ -1,0 +1,29 @@
+{
+  "id": "formosa-fun-coast",
+  "name": "Formosa Fun Coast",
+  "formerNames": [],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Bali, New Taipei, Taiwan",
+  "latitude": 25.14472,
+  "longitude": -121.38889,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": 2015,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Formosa Fun Coast (, also known as ) was a theme park in Bali District, New Taipei, Taiwan.  It closed in the aftermath of 2015 New Taipei water park fire.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%E5%85%AB%E4%BB%99%E6%B0%B4%E4%B8%8A%E6%A8%82%E5%9C%921.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Formosa_Fun_Coast",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:07.738Z"
+}

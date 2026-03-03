@@ -1,0 +1,29 @@
+{
+  "id": "brighton-palace-pier",
+  "name": "Brighton Palace Pier",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Eclectic Bar Group",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "The Brighton Palace Pier, commonly known as Brighton Pier or the Palace Pier, is a Grade II* listed pleasure pier in Brighton, England, located in the city centre opposite the Old Steine.  Established in 1899, it was the third pier to be constructed in Brighton after the Royal Suspension Chain Pier and the West Pier, but is now the only one still in operation.  It is managed and operated by the Eclectic Bar Group.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Brighton_Pier%2C_Brighton%2C_East_Sussex%2C_England-2Oct2011_(1).jpg",
+  "imageAttribution": "Brighton Palace Pier in October 2011",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Brighton_Palace_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:44.085Z"
+}

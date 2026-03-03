@@ -1,0 +1,31 @@
+{
+  "id": "hansa-park",
+  "name": "Hansa-Park",
+  "formerNames": [
+    "Hansaland - 1977 to 1987"
+  ],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Sierksdorf, Schleswig-Holstein",
+  "latitude": 54.0769,
+  "longitude": -10.78,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1977,
+  "yearClosed": null,
+  "owner": "Leicht family",
+  "chain": null,
+  "website": "www.hansapark.de",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Hansa-Park is a seasonal amusement park in Sierksdorf, Schleswig-Holstein, Germany off the Baltic Sea.  It was opened on May 15, 1977 under the name Hansaland and renamed Hansa-Park in 1987.  It currently spans 113 acre and includes more than 125 attractions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Hansapark1.jpg",
+  "imageAttribution": "View from Holstein Tower (2004)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hansa-Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:51.891Z"
+}

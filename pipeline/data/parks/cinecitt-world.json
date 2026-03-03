@@ -1,0 +1,29 @@
+{
+  "id": "cinecitt-world",
+  "name": "Cinecittà World Resort",
+  "formerNames": [],
+  "country": "IT",
+  "countryName": "Italy",
+  "region": null,
+  "continent": "Europe",
+  "city": "Rome",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2014,
+  "yearClosed": null,
+  "owner": "Cinecitta Parks",
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Cinecittà World is a theme park located in Rome, Italy.  With the creation of the sets by Dante Ferretti it is made up of 40 attractions, 6 shows staged in theaters and outdoors and 7 thematic areas developed on a total area of 300,000 m2.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/CCW_animazione.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cinecitt%C3%A0_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:01.843Z"
+}

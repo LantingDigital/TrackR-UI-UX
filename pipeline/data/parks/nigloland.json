@@ -1,0 +1,29 @@
+{
+  "id": "nigloland",
+  "name": "Nigloland",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Dolancourt, Aube",
+  "latitude": 48.2633,
+  "longitude": -4.607,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1987,
+  "yearClosed": null,
+  "owner": "SARL Gélis frères",
+  "chain": null,
+  "website": "www.nigloland.fr/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Nigloland is an amusement park in Dolancourt in the French county Aube.  It is one of the most visited parks in France after Disneyland Paris and Parc Astérix. \n\nNigloland was created by two brothers, Patrice and Philippe Gélis.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entr%C3%A9eNigloland.jpg",
+  "imageAttribution": "Park entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Nigloland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:55.204Z"
+}

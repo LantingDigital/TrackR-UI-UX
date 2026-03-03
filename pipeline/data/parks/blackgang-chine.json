@@ -1,0 +1,29 @@
+{
+  "id": "blackgang-chine",
+  "name": "Blackgang Chine",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Blackgang, Isle of Wight",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Alexander Dabell/Vectis Ventures Ltd/The Dabell Family",
+  "chain": null,
+  "website": "Blackgangchine.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Blackgang Chine is an amusement park in Blackgang, Isle of Wight, United Kingdom.  It was opened in 1843 and is the oldest amusement park in the United Kingdom.  The park includes multiple themed \"lands\", including Pirate Cove, Restricted Area 5, Fairy Land and Village, and Cowboy Town.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ABlackgang_Chine%2C_IW%2C_UK.jpg",
+  "imageAttribution": "Entrance to Blackgang Chine amusement park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Blackgang_Chine",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:01.572Z"
+}

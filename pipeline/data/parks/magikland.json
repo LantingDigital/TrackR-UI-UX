@@ -1,0 +1,29 @@
+{
+  "id": "magikland",
+  "name": "Magikland",
+  "formerNames": [],
+  "country": "PT",
+  "countryName": "Portugal",
+  "region": null,
+  "continent": "Europe",
+  "city": "Sitio Cabug, Brgy. Guinhalaran, Silay",
+  "latitude": 10.78035,
+  "longitude": -122.97252,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2019,
+  "yearClosed": null,
+  "owner": "Aton Land and Leisure",
+  "chain": null,
+  "website": "http://www.magiklandpark.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Magikland is a Filipino amusement park located in Silay, Negros Occidental.  It is also known as the first outdoor theme park in the Visayas.  The park is owned and operated by Aton Land and Leisure, Inc.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Magikland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:06.359Z"
+}

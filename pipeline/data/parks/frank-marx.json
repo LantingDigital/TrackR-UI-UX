@@ -1,0 +1,29 @@
+{
+  "id": "frank-marx",
+  "name": "Deweare",
+  "formerNames": [],
+  "country": "LU",
+  "countryName": "Luxembourg",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "MySpace page",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Franck Deweare (pronounced \"de-vair\"), also known by his stage name Deweare, and previously as Franck Marx, is a musician native to Verdun, France, who has been based out of Montreal, Quebec since 2004.  Deweare's style, both lyrically and vocally, has been compared to that of Serge Gainsbourg, due to his rough yet seductive voice and dark lyrics.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Deweare",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:22.123Z"
+}

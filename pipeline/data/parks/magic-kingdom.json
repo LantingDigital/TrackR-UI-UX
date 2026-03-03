@@ -1,0 +1,29 @@
+{
+  "id": "magic-kingdom",
+  "name": "Magic Kingdom Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Walt Disney World",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1971,
+  "yearClosed": null,
+  "owner": "Disney Experiences\n(The Walt Disney Company)",
+  "chain": null,
+  "website": "Magic Kingdom",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Magic Kingdom Park, or simply the Magic Kingdom, is a theme park at the Walt Disney World Resort in Bay Lake, Florida.  It opened on October 1, 1971, and is owned and operated by the Walt Disney Company through its Experiences division.  The park was initiated by Walt Disney and designed by WED Enterprises.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Cinderella_Castle%2C_Magic_Kingdom_Walt_Disney_World_(2024).jpg",
+  "imageAttribution": "Cinderella Castle, the icon of the Magic Kingdom",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Magic_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:08.452Z"
+}

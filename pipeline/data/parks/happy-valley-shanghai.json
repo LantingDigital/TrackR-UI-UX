@@ -1,0 +1,29 @@
+{
+  "id": "happy-valley-shanghai",
+  "name": "Happy Valley Shanghai",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": "China",
+  "continent": "Asia",
+  "city": "Shanghai",
+  "latitude": 31.0983,
+  "longitude": -121.2137,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2009,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://sh.happyvalley.cn",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Happy Valley Shanghai is an amusement park in Shanghai, China.  The park is located in Songjiang District, approximately 40 km from downtown Shanghai.  It covers an area of 863500 sqm.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/HappyValley.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Happy_Valley_Shanghai",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:43.387Z"
+}

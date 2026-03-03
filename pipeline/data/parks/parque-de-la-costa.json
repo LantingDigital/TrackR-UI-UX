@@ -1,0 +1,29 @@
+{
+  "id": "parque-de-la-costa",
+  "name": "Parque de la Costa",
+  "formerNames": [],
+  "country": "AR",
+  "countryName": "Argentina",
+  "region": null,
+  "continent": "South America",
+  "city": "Tigre, Buenos Aires\n🇦🇷",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.parquedelacosta.com.ar",
+  "coasterCount": 4,
+  "totalCoasterCount": 5,
+  "description": "Parque de la Costa is an amusement park located in Tigre, a northern suburb of Buenos Aires, Argentina.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/J34_893_%C2%BBParque_de_la_Costa%C2%AB.jpg",
+  "imageAttribution": "The park next to the Luján River",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parque_de_la_Costa",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:41.350Z"
+}

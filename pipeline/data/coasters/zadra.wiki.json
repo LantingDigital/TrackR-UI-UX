@@ -1,0 +1,51 @@
+{
+  "articleTitle": "Zadra (roller coaster)",
+  "introSection": "Zadra (English: Splinter) is a steel roller coaster located at Energylandia in Zator, Poland. It was built and designed by American manufacturer Rocky Mountain Construction (RMC). The ride opened in 2019. It uses RMC's patented I-Box Track, which consists of a steel track on wooden supports. It is the first coaster to be built from the ground up using the I-Box Track, rather than using an existing structure. Zadra reaches a height of 62.8 m making it tie for the tallest RMC steel rollercoaster in the world alongside Iron Gwazi, which has a similar layout. It has a maximum speed of 121 km/h, and features three inversions.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "In December 2018, Zadra's first wooden support structures were erected. On the night of 10–11 March 2019, part of the unfinished structure was damaged by strong winds. However, this did not affect the ride's planned opening date. Zadra was supposed to open as a new ride for Energylandia's 2020 season, but opened ahead of schedule on 22 August 2019."
+    }
+  ],
+  "fullText": "Zadra (English: Splinter) is a steel roller coaster located at Energylandia in Zator, Poland. It was built and designed by American manufacturer Rocky Mountain Construction (RMC). The ride opened in 2019. It uses RMC's patented I-Box Track, which consists of a steel track on wooden supports. It is the first coaster to be built from the ground up using the I-Box Track, rather than using an existing structure. Zadra reaches a height of 62.8 m making it tie for the tallest RMC steel rollercoaster in the world alongside Iron Gwazi, which has a similar layout. It has a maximum speed of 121 km/h, and features three inversions.\n\nIn December 2018, Zadra's first wooden support structures were erected. On the night of 10–11 March 2019, part of the unfinished structure was damaged by strong winds. However, this did not affect the ride's planned opening date. Zadra was supposed to open as a new ride for Energylandia's 2020 season, but opened ahead of schedule on 22 August 2019.\n\n",
+  "categories": [
+    "Roller coasters in Poland",
+    "Hybrid roller coasters",
+    "2019 establishments in Poland"
+  ],
+  "infoboxRaw": {
+    "name": "Zadra",
+    "image": "File:Zadra (Energylandia) - First Drop.jpg",
+    "caption": "Zadra's first drop and steel truss support",
+    "location": "Energylandia",
+    "section": "Dragon Zone",
+    "coordinates": "50.00194°N, 19.40306°W",
+    "status": "Operating",
+    "opened": "22 August 2019",
+    "year": "2019",
+    "cost": "PLN 61,500,000",
+    "type2": "Hybrid",
+    "manufacturer": "Rocky Mountain Construction",
+    "model": "IBox Track",
+    "lift": "Chain lift hill",
+    "height_m": "62.8",
+    "length_m": "1,316",
+    "speed_km/h": "121",
+    "duration": "1:50",
+    "inversions": "3",
+    "angle": "90",
+    "capacity": "1,050",
+    "gforce": "4",
+    "trains": "2",
+    "carspertrain": "6",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "restriction_cm": "140",
+    "rcdb_number": "16184",
+    "video": "Zadra Energylandia RMC Hybrid Coaster POVs.webm"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Zadra_(roller_coaster)",
+  "wikiPageId": 60416115,
+  "fetchedAt": "2026-02-28T20:56:36.261Z",
+  "articleLength": 982
+}

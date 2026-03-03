@@ -1,0 +1,74 @@
+{
+  "articleTitle": "Gemini (roller coaster)",
+  "introSection": "Gemini is a racing roller coaster with a wooden structure and steel track located at Cedar Point in Sandusky, Ohio, United States. Built in 1978 by Arrow Dynamics and designed by Ron Toomer, it is one of the oldest roller coasters still operating at the park, with only Blue Streak, Cedar Creek Mine Ride, and Corkscrew being older. Cedar Point marketed the ride as the tallest, fastest, and steepest roller coaster in the world, despite taller and faster coasters that had opened earlier.",
+  "sections": [
+    {
+      "title": "Ride experience",
+      "content": "The ride is considered a steel-tracked hybrid due to the track's use of tubular steel which sits on a wooden support structure. Two trains, red and blue, are dispatched on two tracks that run side-by-side throughout most of the ride until briefly diverging into separate helices and coming back together to finish the ride. It is common for riders on each train to give high fives through curves. The coaster's 125 ft lift hill sends riders down a 118 ft drop at a 55-degree angle up to 60 mph. The layout consists mostly of a series of elevated turns connected by stretches of airtime hills, with the finale consisting of a banked upward helix into the brake run.\n\nGemini has one of the highest capacities of any ride in the park. Gemini's station previously featured a double-sided entry, allowing guests to enter the station from both the front and the back. Eventually modified to have guests only enter from the back of the station, the stairway formerly used for the queue at the front of the station still remains, and was later adapted to become the Fast Lane entrance.\n\nOriginally, Gemini operated 3 trains on each side of the roller coaster for a total of 6 trains. Gemini currently operates with 4 trains (2 on each side)."
+    },
+    {
+      "title": "Record claims",
+      "content": "Cedar Point claimed Gemini was the tallest, fastest, and steepest roller coaster in the world during its marketing campaign. However, the taller Loch Ness Monster at Busch Gardens Williamsburg in Virginia opened earlier the same year, featuring the same drop angle and maximum speed but a slightly shorter drop length. Screamin' Eagle at Six Flags St. Louis opened two years earlier in 1976 and was marketed with a faster top speed of 62 mph, although its height and drop are smaller than Gemini."
+    },
+    {
+      "title": "Incidents",
+      "content": "On June 22, 1986, four riders suffered minor injuries when two trains collided. They were taken to a nearby hospital and released."
+    }
+  ],
+  "fullText": "Gemini is a racing roller coaster with a wooden structure and steel track located at Cedar Point in Sandusky, Ohio, United States. Built in 1978 by Arrow Dynamics and designed by Ron Toomer, it is one of the oldest roller coasters still operating at the park, with only Blue Streak, Cedar Creek Mine Ride, and Corkscrew being older. Cedar Point marketed the ride as the tallest, fastest, and steepest roller coaster in the world, despite taller and faster coasters that had opened earlier.\n\nThe ride is considered a steel-tracked hybrid due to the track's use of tubular steel which sits on a wooden support structure. Two trains, red and blue, are dispatched on two tracks that run side-by-side throughout most of the ride until briefly diverging into separate helices and coming back together to finish the ride. It is common for riders on each train to give high fives through curves. The coaster's 125 ft lift hill sends riders down a 118 ft drop at a 55-degree angle up to 60 mph. The layout consists mostly of a series of elevated turns connected by stretches of airtime hills, with the finale consisting of a banked upward helix into the brake run.\n\nGemini has one of the highest capacities of any ride in the park. Gemini's station previously featured a double-sided entry, allowing guests to enter the station from both the front and the back. Eventually modified to have guests only enter from the back of the station, the stairway formerly used for the queue at the front of the station still remains, and was later adapted to become the Fast Lane entrance.\n\nOriginally, Gemini operated 3 trains on each side of the roller coaster for a total of 6 trains. Gemini currently operates with 4 trains (2 on each side).\n\nCedar Point claimed Gemini was the tallest, fastest, and steepest roller coaster in the world during its marketing campaign. However, the taller Loch Ness Monster at Busch Gardens Williamsburg in Virginia opened earlier the same year, featuring the same drop angle and maximum speed but a slightly shorter drop length. Screamin' Eagle at Six Flags St. Louis opened two years earlier in 1976 and was marketed with a faster top speed of 62 mph, although its height and drop are smaller than Gemini.\n\nOn June 22, 1986, four riders suffered minor injuries when two trains collided. They were taken to a nearby hospital and released.\n\n\n\n\n",
+  "categories": [
+    "Cedar Point",
+    "Roller coasters in Ohio",
+    "Roller coasters operated by Six Flags",
+    "Hybrid roller coasters",
+    "1978 establishments in Ohio"
+  ],
+  "infoboxRaw": {
+    "name": "Gemini",
+    "logo": "Gemini Logo.png",
+    "image": "Gemini Cedar Point.JPG",
+    "caption": "Two trains race to the finish on Gemini",
+    "location": "Cedar Point",
+    "section": "Gemini Midway",
+    "coordinates": "41.48632°N, -82.68965°W",
+    "type2": "Dueling",
+    "type3": "Racing",
+    "status": "Operating",
+    "opened": "June 17, 1978",
+    "manufacturer": "Arrow Dynamics",
+    "designer": "Ron Toomer",
+    "model": "Special Coaster Systems/Hybrid",
+    "lift": "Chain",
+    "name1": "Red",
+    "name2": "Blue",
+    "height1_ft": "125",
+    "height2_ft": "125",
+    "drop1_ft": "118",
+    "drop2_ft": "118",
+    "length1_ft": "3935",
+    "length2_ft": "3935",
+    "speed1_mph": "60",
+    "speed2_mph": "60",
+    "inversions1": "0",
+    "inversions2": "0",
+    "duration1": "2:40",
+    "duration2": "2:40",
+    "angle1": "55",
+    "angle2": "55",
+    "capacity": "3,300",
+    "cost": "$3.4 million",
+    "restriction_in": "48",
+    "trains": "4",
+    "carspertrain": "5",
+    "rowspercar": "3",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar Fair Fast Lane availibility.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "14"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gemini_(roller_coaster)",
+  "wikiPageId": 4604601,
+  "fetchedAt": "2026-02-28T20:17:39.807Z",
+  "articleLength": 2359
+}

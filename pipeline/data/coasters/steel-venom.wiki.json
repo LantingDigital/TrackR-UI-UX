@@ -1,0 +1,58 @@
+{
+  "articleTitle": "Steel Venom (Valleyfair)",
+  "introSection": "Steel Venom is an inverted launched roller coaster located at Valleyfair amusement park in Shakopee, Minnesota, United States. The Impulse Coaster model from Intamin, which opened in 2003, reaches a height of 185 ft and a maximum speed of 68 mph.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Valleyfair unveiled Steel Venom in September 2002, a new roller coaster for the 2003 season manufactured by Intamin. It is an Impulse Coaster model, compact by design, and is also both Valleyfair’s and Minnesota’s first and only launch coaster. Steel Venom opened to the public on May 17, 2003."
+    },
+    {
+      "title": "Ride description",
+      "content": "The coaster's single seven-car (28-passenger) train runs along a 200 m (656 ft) U-shaped track, incorporating two 185 ft vertical spikes. The forward spike incorporates a twisted spiral, and the rearward spike provides a straight freefall. The 20 m (65 ft) train, propelled by linear induction motors (LIMs,) is accelerated in less than four seconds to 68 mph toward the forward tower before dropping back down through the station house and up the rearward tower. A holding brake is incorporated on the rear straight tower and is able to suspend the train momentarily (usually on the final ascent during each ride) before dropping it back down to the station house."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Official page"
+    }
+  ],
+  "fullText": "Steel Venom is an inverted launched roller coaster located at Valleyfair amusement park in Shakopee, Minnesota, United States. The Impulse Coaster model from Intamin, which opened in 2003, reaches a height of 185 ft and a maximum speed of 68 mph.\n\nValleyfair unveiled Steel Venom in September 2002, a new roller coaster for the 2003 season manufactured by Intamin. It is an Impulse Coaster model, compact by design, and is also both Valleyfair’s and Minnesota’s first and only launch coaster. Steel Venom opened to the public on May 17, 2003.\n\nThe coaster's single seven-car (28-passenger) train runs along a 200 m (656 ft) U-shaped track, incorporating two 185 ft vertical spikes. The forward spike incorporates a twisted spiral, and the rearward spike provides a straight freefall. The 20 m (65 ft) train, propelled by linear induction motors (LIMs,) is accelerated in less than four seconds to 68 mph toward the forward tower before dropping back down through the station house and up the rearward tower. A holding brake is incorporated on the rear straight tower and is able to suspend the train momentarily (usually on the final ascent during each ride) before dropping it back down to the station house.\n\n\n\n\n * Official page",
+  "categories": [
+    "Roller coasters operated by Six Flags",
+    "Roller coasters in Minnesota",
+    "Valleyfair"
+  ],
+  "infoboxRaw": {
+    "name": "Steel Venom",
+    "image": "Steel Venom VF Sign.jpg",
+    "caption": "Steel Venom's sign",
+    "location": "Valleyfair",
+    "type2": "Inverted",
+    "type3": "Launched",
+    "status": "Operating",
+    "opened": "May 17, 2003",
+    "manufacturer": "Intamin",
+    "model": "Impulse Coaster",
+    "lift": "LIM Launch Track",
+    "height_ft": "185",
+    "drop_ft": "175",
+    "length_ft": "630",
+    "speed_mph": "68",
+    "inversions": "0",
+    "angle": "90",
+    "capacity": "950",
+    "cost": "$8,500,000 USD",
+    "restriction_in": "52-78",
+    "trains": "1",
+    "carspertrain": "7",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar_Fair_Fast_Lane_availability_icon.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "1920"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Steel_Venom_(Valleyfair)",
+  "wikiPageId": 5866681,
+  "fetchedAt": "2026-02-28T20:16:40.453Z",
+  "articleLength": 1230
+}

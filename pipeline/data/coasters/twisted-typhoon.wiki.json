@@ -1,0 +1,47 @@
+{
+  "articleTitle": "Twisted Typhoon",
+  "introSection": "Twisted Typhoon is an inverted roller coaster currently operating at Wild Adventures in Valdosta, Georgia. Manufactured by Vekoma, the ride opened at the park in 1999 under the name Hangman, becoming Twisted Typhoon after 2011.",
+  "sections": [
+    {
+      "title": "External links",
+      "content": "\n * Official page\n * Page on the Roller Coaster Database\n * Entry on CoasterBuzz"
+    }
+  ],
+  "fullText": "Twisted Typhoon is an inverted roller coaster currently operating at Wild Adventures in Valdosta, Georgia. Manufactured by Vekoma, the ride opened at the park in 1999 under the name Hangman, becoming Twisted Typhoon after 2011.\n\n\n * Official page\n * Page on the Roller Coaster Database\n * Entry on CoasterBuzz",
+  "categories": [
+    "Roller coasters in Georgia (U.S. state)",
+    "Wild Adventures",
+    "Roller coasters operated by Herschend Family Entertainment"
+  ],
+  "infoboxRaw": {
+    "name": "Twisted Typhoon",
+    "image": "Twisted Typhoon 2012.JPG",
+    "location": "Wild Adventures",
+    "coordinates": "30.71807°N, -83.32425°W",
+    "status": "Operating",
+    "opened": "May 8, 1999",
+    "year": "1999",
+    "type2": "Inverted",
+    "manufacturer": "Vekoma",
+    "model": "Suspended Looping Coaster (689m Standard)",
+    "lift": "Chain lift hill",
+    "height_ft": "109.3",
+    "drop_ft": "95",
+    "length_ft": "2,260.5",
+    "speed_mph": "49.7",
+    "inversions": "5",
+    "duration": "1:36",
+    "angle": "59",
+    "capacity": "1,040",
+    "restriction_in": "52-78",
+    "trains": "2",
+    "carspertrain": "10",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "rcdb_number": "561"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Twisted_Typhoon",
+  "wikiPageId": 61820008,
+  "fetchedAt": "2026-02-28T20:15:58.859Z",
+  "articleLength": 309
+}

@@ -1,0 +1,29 @@
+{
+  "id": "discoveryland",
+  "name": "Tomorrowland",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Tomorrowland is one of the many \"themed lands\" featured at all of the Magic Kingdom styled Disney theme parks around the world owned or licensed by the Walt Disney Company.  Each version of the land is different and features numerous attractions that depict views of the future.  Disneyland Park in Paris includes a similar area called Discoveryland, which shares some elements with other Tomorrowlands but emphasizes visions of the future inspired by Jules Verne.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/DL_tomorrowland_entrance_at_night.jpg",
+  "imageAttribution": "Disneyland's Tomorrowland at night",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tomorrowland_(Disney_Parks)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:31.533Z"
+}

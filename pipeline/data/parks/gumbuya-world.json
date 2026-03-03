@@ -1,0 +1,31 @@
+{
+  "id": "gumbuya-world",
+  "name": "Gumbuya World",
+  "formerNames": [
+    "Gumbuya Park"
+  ],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": null,
+  "continent": "Oceania",
+  "city": "Tynong North",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1978,
+  "yearClosed": null,
+  "owner": "Gerry Ryan Wal Pisciotta Ray Weinzierl Adam Campbell Brett Murray",
+  "chain": null,
+  "website": "https://gumbuya.com.au",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Gumbuya World (formerly Gumbuya Park) is an amusement park in Tynong North in Victoria, Australia.  The park was opened in 1978 and its investors include Gerry Ryan (founder and owner of Jayco Australia) and Wal Pisciotta (owner of Carsales). \n\nThe park contains various rides and attractions ranging from water slides to roller coasters and wildlife exhibits.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gumbuya_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:47.566Z"
+}

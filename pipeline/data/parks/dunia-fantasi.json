@@ -1,0 +1,29 @@
+{
+  "id": "dunia-fantasi",
+  "name": "PT Pembangunan Jaya Ancol Tbk",
+  "formerNames": [],
+  "country": "ID",
+  "countryName": "Indonesia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Jl. Lodan Timur 7 Jakarta, Indonesia\n Ancol",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Government of Jakarta (72%)\nPT Pembangunan Jaya (18%)\nPublic float (10%)",
+  "chain": null,
+  "website": "www.ancol.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Taman Impian Jaya Ancol also known as Ancol Dreamland is an integral part of Ancol Bay City, a resort destination located along Jakarta's waterfront, in Ancol (Kelurahan), Pademangan, North Jakarta.  It is owned by PT.  Pembangunan Jaya Ancol Tbk, a subsidiary of Pembangunan Jaya Group.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Ancol_Dreamland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:32.610Z"
+}

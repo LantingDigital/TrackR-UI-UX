@@ -1,0 +1,31 @@
+{
+  "id": "barry-island-pleasure-park",
+  "name": "Barry Island Pleasure Park",
+  "formerNames": [
+    "The New Evesham Pleasure Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Barry Island Pleasure Park",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Henry Danter",
+  "chain": null,
+  "website": "www.barryislandpleasurepark.wales/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Barry Island Pleasure Park is an amusement park situated on the coast at Barry Island in the Vale of Glamorgan, about 10 mi south west of the capital city Cardiff, Wales. \n\nThe park opens annually at weekends from Easter onwards and daily during the school summer holidays, until the first weekend in September. \n\nThe pleasure park is located opposite the sandy beachfront at Barry and contains a variety of amusements including fairground rides, attractions & food outlets.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Barry_Island_main_gates.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Barry_Island_Pleasure_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:10.906Z"
+}

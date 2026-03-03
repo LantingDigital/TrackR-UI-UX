@@ -1,0 +1,31 @@
+{
+  "id": "trans-studio-bandung",
+  "name": "Trans Studio Mall Bandung",
+  "formerNames": [
+    "Bandung Supermall"
+  ],
+  "country": "ID",
+  "countryName": "Indonesia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Bandung",
+  "latitude": 6.92619,
+  "longitude": -107.63622,
+  "address": "Jalan Jenderal Gatot Subroto no. 289",
+  "status": "operating",
+  "yearOpened": 2001,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://transshoppingmall.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Trans Studio Bandung is a mixed-use development in Jalan Gatot Subroto of Bandung, Indonesia, built on a land with size of 4. 2 ha.  It is part of the CT Corp, owned by Chairul Tanjung.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Bandung%2C_Bandung_City%2C_West_Java%2C_Indonesia_-_panoramio_(3).jpg",
+  "imageAttribution": "Trans Studio Mall in 2014",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Trans_Studio_Bandung",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:45.437Z"
+}

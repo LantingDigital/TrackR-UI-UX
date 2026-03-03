@@ -1,0 +1,29 @@
+{
+  "id": "belle-isle-park",
+  "name": "Belle Isle Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Oklahoma",
+  "continent": "North America",
+  "city": "Detroit, Michigan, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "State of Michigan",
+  "chain": null,
+  "website": "http://www.belleislepark.org/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Belle Isle Park, known simply as Belle Isle, is a 982 acre island park in Detroit, Michigan, developed in the late 19th century.  It consists of Belle Isle, an island in the Detroit River, as well as several surrounding islets.  The U.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Belle_Isle_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:21.935Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "marineland-of-canada",
+  "name": "Marineland of Canada Inc.",
+  "formerNames": [
+    "Marine Wonderland and Animal Farm",
+    "Marineland and Game Farm"
+  ],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": "Ontario",
+  "continent": "North America",
+  "city": "7657 Portage Road\nNiagara Falls, Ontario, Canada\nL2E 6X8",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1961,
+  "yearClosed": 2024,
+  "owner": "John Holer (1961–2018)\n\nHoler Family Amusements (2018–2024)",
+  "chain": null,
+  "website": "https://www.marineland.ca/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Marineland (official name Marineland of Canada Inc. ) is a closed themed zoo and amusement park in Niagara Falls, Ontario, Canada that operated from 1961 until 2024. \n\nIt was founded and operated by John Holer, a Slovenian immigrant, from 1961 until his death in 2018.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/DSC09168_-_Next_Stop_-_Marineland_(37049799562).jpg",
+  "imageAttribution": "Sky Screamer, 2017",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Marineland_of_Canada",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:46.000Z"
+}

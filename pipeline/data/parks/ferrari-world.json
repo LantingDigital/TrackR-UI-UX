@@ -1,0 +1,29 @@
+{
+  "id": "ferrari-world",
+  "name": "Ferrari World Abu Dhabi",
+  "formerNames": [],
+  "country": "AE",
+  "countryName": "United Arab Emirates",
+  "region": "United Arab Emirates",
+  "continent": "Asia",
+  "city": "Yas Island, Abu Dhabi, United Arab Emirates",
+  "latitude": 24.4838,
+  "longitude": -54.607,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2010,
+  "yearClosed": null,
+  "owner": "Miral, under license from Ferrari",
+  "chain": null,
+  "website": "ferrariworldabudhabi.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Ferrari World Abu Dhabi  is a mostly indoors theme park located on Yas Island in Abu Dhabi, United Arab Emirates.  It is the world's first Ferrari-themed park and is the home of Formula Rossa, which held the record for the world’s fastest roller coaster from 2010 till the opening of Falcons Flight\n\nThe foundation stone for the park was laid on 3 November 2007.  Developed by Aldar Properties and constructed by BESIX Group subsidiary Six Construct, it took three years to develop the park until it was officially opened to the public on 4 November 2010.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Ferrariworld_by_Flo_Ness.jpg",
+  "imageAttribution": "Ferrari World on Yas Island. Next to it is the Yas Marina Circuit, which hosts the Abu Dhabi Grand Prix.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Ferrari_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:18.178Z"
+}

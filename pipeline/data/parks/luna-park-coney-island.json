@@ -1,0 +1,29 @@
+{
+  "id": "luna-park-coney-island",
+  "name": "Luna Park, Coney Island",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Luna Park may refer to one of two parks located in Coney Island:\n * Luna Park (Coney Island, 1903)\n * Luna Park (Coney Island, 2010)",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Luna_Park_(Coney_Island)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:30.802Z"
+}

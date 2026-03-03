@@ -1,0 +1,29 @@
+{
+  "id": "world-joyland",
+  "name": "World Joyland",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": "China",
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2011,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "World Joyland is a theme park located in Changzhou, in southern Jiangsu province of the People's Republic of China.  The park's theme is inspired by the video game series World of Warcraft and StarCraft.  It reportedly cost $48m (£30m) to build, and is not officially licensed or endorsed by Activision Blizzard.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/World_Joyland_entrance.jpg",
+  "imageAttribution": "Park entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/World_Joyland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:14.494Z"
+}

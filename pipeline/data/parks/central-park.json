@@ -1,0 +1,29 @@
+{
+  "id": "central-park",
+  "name": "Central Park",
+  "formerNames": [],
+  "country": "UZ",
+  "countryName": "Uzbekistan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Manhattan, New York City, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "NYC Parks",
+  "chain": null,
+  "website": "Official websites: Central Park Conservancy and NYC Parks",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Central Park is an urban park between the Upper West Side and Upper East Side neighborhoods of Manhattan in New York City, and the first landscaped park in the United States.  It is the sixth-largest park in the city, containing 843 acre, and the most visited urban park in the United States, with an estimated 42 million visitors annually as of 2016.  Central Park is owned by the New York City Department of Parks and Recreation but has been managed by the Central Park Conservancy since 1998 under a contract with the government of New York City in a public–private partnership.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Central_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:21.740Z"
+}

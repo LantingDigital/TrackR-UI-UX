@@ -1,0 +1,29 @@
+{
+  "id": "crystal-beach-park",
+  "name": "Crystal Beach Park",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": "Ontario",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": 1989,
+  "owner": "John E. Rebstock (1888-1908)\nLake Erie Excursion Co. (1908-1924)\nGeorge C. Hall (1924-1972)\nVan Hall (1972-1983)\nCanadian Imperial Bank of Commerce (1983-1984)\nCrystal Beach Park Limited (1984-1989)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Crystal Beach Park was an amusement park in Crystal Beach, Ontario, from 1888 to 1989.  It was serviced by the Canadiana passenger ferry in Buffalo, making it a popular tourist destination for both Canadians and Americans. \n\nThe park was known for its innovative roller coasters, most notably Backety-Back Scenic Railway, the Cyclone, and The Comet.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Crystal_Beach_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:35.504Z"
+}

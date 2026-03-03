@@ -1,0 +1,61 @@
+{
+  "id": "the-riddler-mindbender",
+  "name": "The Riddler Mindbender",
+  "formerNames": [
+    "Mindbender"
+  ],
+  "parkId": "six-flags-over-georgia",
+  "parkName": "Six Flags Over Georgia",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Georgia",
+  "continent": "North America",
+  "heightFt": 80,
+  "heightM": 24.4,
+  "speedMph": 50,
+  "speedKmh": 80.5,
+  "lengthFt": 3253,
+  "lengthM": 991.5,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 2,
+  "gForce": null,
+  "duration": 153,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "Schwarzkopf",
+  "designer": "Werner Stengel",
+  "model": "Custom design",
+  "status": "operating",
+  "yearOpened": 1978,
+  "yearClosed": null,
+  "description": "The Riddler Mindbender, previously named Mind Bender, is a steel roller coaster located at Six Flags Over Georgia near Atlanta, Georgia.  Billed as \"the world's first triple-loop roller coaster\" when it opened on March 31, 1978, Mindbender has maintained its popularity since its opening.  In its 30th anniversary season in 2008, Mindbender was ranked #15 by Amusement Today magazine in its annual Golden Ticket Awards, and was one of only two roller coasters built before 1980 on the list; the other was its \"fraternal twin,\" Shockwave, at Six Flags Over Texas.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Mind_Bender_(Six_Flags_Over_Georgia)_04.jpg",
+  "imageAttribution": "Mindbender's second drop",
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Riddler_Mindbender",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:15:57.876Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "the riddler mindbender",
+    "mindbender",
+    "six flags over georgia",
+    "schwarzkopf",
+    "custom design",
+    "sit-down",
+    "georgia"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Anton Schwarzkopf"
+  },
+  "popularityScore": 65.2,
+  "popularityTier": "iconic",
+  "popularityRank": 384
+}

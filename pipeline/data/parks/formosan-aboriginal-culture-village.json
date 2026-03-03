@@ -1,0 +1,29 @@
+{
+  "id": "formosan-aboriginal-culture-village",
+  "name": "Formosan Aboriginal Culture Village 九族文化村",
+  "formerNames": [],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Yuchi, Nantou County, Taiwan",
+  "latitude": 23.86806,
+  "longitude": -120.94778,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1986,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://nine.com.tw/",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "The Formosan Aboriginal Culture Village is an amusement park in Yuchi Township, Nantou County, Taiwan which has been in operation since 1986.  It is distinctive for its Formosan aboriginal culture theme.  The park contains the tallest free-fall ride in Taiwan as well as Taiwan's largest European gardens and bell tower.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Turnstile_entrance_to_the_Formosan_Aboriginal_Culture_Village.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Formosan_Aboriginal_Culture_Village",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:35.718Z"
+}

@@ -11,11 +11,9 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  Alert,
+
   NativeSyntheticEvent,
   NativeScrollEvent,
-  LayoutAnimation,
-  UIManager,
 } from 'react-native';
 import Animated, {
   SharedValue,
@@ -26,12 +24,11 @@ import Animated, {
   interpolate as reanimatedInterpolate,
   Extrapolation,
   Easing,
+  FadeIn,
+  FadeInDown,
+  FadeOut,
+  LinearTransition,
 } from 'react-native-reanimated';
-
-// Enable LayoutAnimation for Android
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -42,11 +39,11 @@ import { RotatingPlaceholder } from './RotatingPlaceholder';
 import {
   NEARBY_RIDES,
   NEARBY_PARKS,
-  RECENT_SEARCHES,
   TRENDING_SEARCHES,
   searchItems,
   SearchableItem,
 } from '../data/mockSearchData';
+import { COASTER_BY_ID } from '../data/coasterIndex';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -100,6 +97,7 @@ interface SearchModalProps {
   // Focus mode props
   onInputFocus?: () => void; // Called when search input is focused
   onQueryChange?: (query: string) => void; // Called when search query changes (for dropdown autocomplete)
+  externalQuery?: string; // Query text from external source (for split rendering sync)
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
@@ -119,16 +117,31 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   showCloseButton = false,
   onInputFocus,
   onQueryChange,
+  externalQuery,
 }) => {
   const insets = useSafeAreaInsets();
   const [searchQuery, setSearchQuery] = useState('');
   // Initialize from persisted state (survives component re-mounts until app restart)
   const [recentSearches, setRecentSearches] = useState<string[]>(
-    persistedRecentSearches !== null ? persistedRecentSearches : RECENT_SEARCHES
+    persistedRecentSearches !== null ? persistedRecentSearches : []
   );
   const [wasRecentCleared, setWasRecentCleared] = useState(persistedWasCleared);
   const [isAnimatingClear, setIsAnimatingClear] = useState(false);
   const inputRef = useRef<TextInput>(null);
+
+  // Sync external query (from inputOnly → parent → sectionsOnly)
+  useEffect(() => {
+    if (externalQuery !== undefined) {
+      setSearchQuery(externalQuery);
+    }
+  }, [externalQuery]);
+
+  // Clear query when modal closes
+  useEffect(() => {
+    if (!visible && !sectionsOnly) {
+      setSearchQuery('');
+    }
+  }, [visible, sectionsOnly]);
 
   // Shared values for reverse cascade deletion (one per row, max 5)
   const rowAnim0 = useSharedValue(1);
@@ -138,11 +151,25 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const rowAnim4 = useSharedValue(1);
   const recentRowAnimations = [rowAnim0, rowAnim1, rowAnim2, rowAnim3, rowAnim4];
 
-  // Shared value for placeholder fade-in (after LayoutAnimation handles card resize)
+  // Shared value for placeholder fade-in (after rows collapse)
   const placeholderOpacity = useSharedValue(persistedWasCleared ? 1 : 0);
   const placeholderAnimStyle = useAnimatedStyle(() => ({
     opacity: placeholderOpacity.value,
   }));
+
+  // Unified height animation for rows → placeholder transition
+  // -1 = natural (unconstrained), positive = constrained height
+  const recentContentHeight = useSharedValue(-1);
+  const recentContentNaturalHeight = useSharedValue(0); // measured via onLayout when unconstrained
+  const PLACEHOLDER_HEIGHT = 68; // emptyRecentContainer: paddingVertical 24*2 + text ~20px
+
+  const recentContentStyle = useAnimatedStyle(() => {
+    if (recentContentHeight.value < 0) return {};
+    return {
+      height: recentContentHeight.value,
+      overflow: 'hidden' as const,
+    };
+  });
 
   // Autocomplete vs discovery content
   const showAutocomplete = searchQuery.length > 0;
@@ -201,15 +228,21 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   const handleSearch = useCallback(() => {
     if (searchQuery.trim()) {
-      // Add to recent searches
-      setRecentSearches(prev => {
-        const updated = [searchQuery, ...prev.filter(s => s !== searchQuery)].slice(0, 10);
-        return updated;
-      });
+      // Update persistence first (survives unmount)
+      const currentSearches = persistedRecentSearches || [];
+      const updated = [searchQuery, ...currentSearches.filter(s => s !== searchQuery)].slice(0, 10);
+      persistedRecentSearches = updated;
+      persistedWasCleared = false;
+
+      // Release any height constraint from a previous clear
+      recentContentHeight.value = -1;
+
+      setRecentSearches(updated);
+      setWasRecentCleared(false);
       onSearch?.(searchQuery);
       handleClose();
     }
-  }, [searchQuery, onSearch, handleClose]);
+  }, [searchQuery, onSearch, handleClose, recentContentHeight]);
 
   const handleRecentSearchPress = useCallback((search: string) => {
     setSearchQuery(search);
@@ -233,47 +266,76 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       );
     }
 
-    // After cascade completes, handle cleanup
+    // After cascade completes, smooth height transition: rows height → placeholder height
     const totalDuration = 200 + Math.max(0, visibleCount - 1) * 50 + 50;
     setTimeout(() => {
-      LayoutAnimation.configureNext({
-        duration: 300,
-        update: {
-          type: LayoutAnimation.Types.easeInEaseOut,
-          property: LayoutAnimation.Properties.scaleY,
-        },
-      });
+      // Step 1: Freeze container at current rows height
+      recentContentHeight.value = recentContentNaturalHeight.value;
 
-      setRecentSearches([]);
-      setWasRecentCleared(true);
-      setIsAnimatingClear(false);
-
-      persistedRecentSearches = [];
-      persistedWasCleared = true;
-
-      // Reset row values after state clears
+      // Step 2: After freeze takes effect (one frame), swap content + animate
       setTimeout(() => {
-        recentRowAnimations.forEach(anim => { anim.value = 1; });
-      }, 0);
+        // Swap rows → placeholder
+        setRecentSearches([]);
+        setWasRecentCleared(true);
+        persistedRecentSearches = [];
+        persistedWasCleared = true;
 
-      // Fade in placeholder
-      placeholderOpacity.value = 0;
-      placeholderOpacity.value = withDelay(100, withTiming(1, {
-        duration: 250,
-        easing: Easing.out(Easing.cubic),
-      }));
+        // DON'T reset row animations here — they're still in the tree for one
+        // render frame. Resetting them would flash the rows back to visible.
+
+        // Animate container from rows height → placeholder height
+        recentContentHeight.value = withTiming(PLACEHOLDER_HEIGHT, {
+          duration: 300,
+          easing: Easing.inOut(Easing.cubic),
+        });
+
+        // Fade in placeholder content
+        placeholderOpacity.value = 0;
+        placeholderOpacity.value = withDelay(50, withTiming(1, {
+          duration: 250,
+          easing: Easing.out(Easing.cubic),
+        }));
+
+        // Step 3: Release height constraint after animation settles
+        setTimeout(() => {
+          recentContentHeight.value = -1; // Back to natural layout
+          setIsAnimatingClear(false);
+          // Safe to reset row animations now — rows are long gone from the tree
+          recentRowAnimations.forEach(anim => { anim.value = 1; });
+        }, 350);
+      }, 16); // One frame delay for freeze to take effect
     }, totalDuration);
-  }, [isAnimatingClear, recentSearches.length, recentRowAnimations, placeholderOpacity]);
+  }, [isAnimatingClear, recentSearches.length, recentRowAnimations, placeholderOpacity, recentContentHeight, recentContentNaturalHeight]);
 
   const handleResultPress = useCallback((item: SearchableItem) => {
+    // Open the detail sheet immediately
     onResultPress?.(item);
     handleClose();
-  }, [onResultPress, handleClose]);
+
+    // Delay adding to recent searches — the search modal stays open underneath
+    // the CoasterSheet, so updating immediately would visibly flash the new entry
+    // before the sheet covers it. Wait for the sheet to be fully visible.
+    setTimeout(() => {
+      // Update module-level persistence FIRST — this survives even if the
+      // component unmounts before React processes the state update.
+      const currentSearches = persistedRecentSearches || [];
+      const updated = [item.name, ...currentSearches.filter(s => s !== item.name)].slice(0, 10);
+      persistedRecentSearches = updated;
+      persistedWasCleared = false;
+
+      // Release any height constraint (e.g., stuck at PLACEHOLDER_HEIGHT after a clear)
+      recentContentHeight.value = -1;
+
+      // Update component state (no-op if unmounted, but persistence is already done)
+      setRecentSearches(updated);
+      setWasRecentCleared(false);
+    }, 600);
+  }, [onResultPress, handleClose, recentContentHeight]);
 
   // Carousel card tap shows toast instead of navigating
   const handleCarouselCardPress = useCallback((item: SearchableItem) => {
-    Alert.alert('Coming Soon', `${item.name} details page is coming soon!`);
-  }, []);
+    handleResultPress(item);
+  }, [handleResultPress]);
 
   // Handle scroll position changes for sticky search bar and rubber band bounce
   const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -368,20 +430,148 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             scrollEventThrottle={16}
           >
             {showAutocomplete ? (
-              // Autocomplete results - render as floating card
-              <View style={styles.section}>
+              // Autocomplete: hero card (top match) + compact list
+              <View style={styles.autocompleteContainer}>
                 {autocompleteResults.length > 0 ? (
-                  autocompleteResults.map(item => (
-                    <SearchResultRow
-                      key={item.id}
-                      item={item}
-                      onPress={() => handleResultPress(item)}
-                    />
-                  ))
+                  <>
+                    {/* Hero card — top result with stats preview */}
+                    {(() => {
+                      const hero = autocompleteResults[0];
+                      const coasterData = hero.type === 'ride' ? COASTER_BY_ID[hero.id] : null;
+                      return (
+                        <Animated.View
+                          key={hero.id}
+                          entering={FadeInDown.duration(350).easing(Easing.out(Easing.cubic))}
+                          exiting={FadeOut.duration(200)}
+                          layout={LinearTransition.duration(250).easing(Easing.out(Easing.cubic))}
+                        >
+                          <Pressable
+                            onPress={() => handleResultPress(hero)}
+                            style={styles.heroCard}
+                          >
+                            <View style={styles.heroHeader}>
+                              <View style={styles.heroIconContainer}>
+                                <Ionicons
+                                  name={hero.type === 'ride' ? 'flash' : 'location'}
+                                  size={16}
+                                  color="#FFFFFF"
+                                />
+                              </View>
+                              <View style={styles.heroTextContainer}>
+                                <Text style={styles.heroName} numberOfLines={1}>{hero.name}</Text>
+                                {hero.subtitle && (
+                                  <Text style={styles.heroSubtitle} numberOfLines={1}>{hero.subtitle}</Text>
+                                )}
+                              </View>
+                              {coasterData?.status && (
+                                <View style={[
+                                  styles.heroStatusBadge,
+                                  coasterData.status === 'Operating'
+                                    ? styles.heroStatusOperating
+                                    : styles.heroStatusClosed,
+                                ]}>
+                                  <Text style={[
+                                    styles.heroStatusText,
+                                    coasterData.status === 'Operating'
+                                      ? { color: '#28A745' }
+                                      : { color: '#999999' },
+                                  ]}>
+                                    {coasterData.status}
+                                  </Text>
+                                </View>
+                              )}
+                            </View>
+                            {coasterData && (
+                              <View style={styles.heroStats}>
+                                {coasterData.heightFt > 0 && (
+                                  <View style={styles.heroStatChip}>
+                                    <Text style={styles.heroStatValue}>{coasterData.heightFt}</Text>
+                                    <Text style={styles.heroStatLabel}>ft</Text>
+                                  </View>
+                                )}
+                                {coasterData.speedMph > 0 && (
+                                  <View style={styles.heroStatChip}>
+                                    <Text style={styles.heroStatValue}>{coasterData.speedMph}</Text>
+                                    <Text style={styles.heroStatLabel}>mph</Text>
+                                  </View>
+                                )}
+                                {coasterData.inversions > 0 && (
+                                  <View style={styles.heroStatChip}>
+                                    <Text style={styles.heroStatValue}>{coasterData.inversions}</Text>
+                                    <Text style={styles.heroStatLabel}>inv</Text>
+                                  </View>
+                                )}
+                                {coasterData.lengthFt > 0 && (
+                                  <View style={styles.heroStatChip}>
+                                    <Text style={styles.heroStatValue}>{coasterData.lengthFt.toLocaleString()}</Text>
+                                    <Text style={styles.heroStatLabel}>ft long</Text>
+                                  </View>
+                                )}
+                              </View>
+                            )}
+                            <View style={styles.heroTapHint}>
+                              <Text style={styles.heroTapHintText}>View details</Text>
+                              <Ionicons name="chevron-forward" size={14} color="#AAAAAA" />
+                            </View>
+                          </Pressable>
+                        </Animated.View>
+                      );
+                    })()}
+
+                    {/* Compact list — remaining results */}
+                    {autocompleteResults.length > 1 && (
+                      <Animated.View
+                        layout={LinearTransition.duration(200).easing(Easing.out(Easing.cubic))}
+                        style={styles.compactList}
+                      >
+                        {autocompleteResults.slice(1, 7).map((item, index) => (
+                          <Animated.View
+                            key={item.id}
+                            entering={FadeIn.duration(180).easing(Easing.out(Easing.cubic))}
+                            exiting={FadeOut.duration(100)}
+                            layout={LinearTransition.duration(180).easing(Easing.out(Easing.cubic))}
+                          >
+                            <Pressable
+                              onPress={() => handleResultPress(item)}
+                              style={[
+                                styles.compactRow,
+                                index < Math.min(autocompleteResults.length - 2, 5) && styles.compactRowBorder,
+                              ]}
+                            >
+                              <Ionicons
+                                name={item.type === 'ride' ? 'flash-outline' : 'location-outline'}
+                                size={16}
+                                color="#999999"
+                                style={styles.compactIcon}
+                              />
+                              <Text style={styles.compactName} numberOfLines={1}>{item.name}</Text>
+                              {item.subtitle && (
+                                <Text style={styles.compactSubtitle} numberOfLines={1}>{item.subtitle}</Text>
+                              )}
+                            </Pressable>
+                          </Animated.View>
+                        ))}
+                        {autocompleteResults.length > 7 && (
+                          <Animated.View
+                            key="more-hint"
+                            layout={LinearTransition.duration(180)}
+                          >
+                            <Text style={styles.moreResultsText}>
+                              +{autocompleteResults.length - 7} more
+                            </Text>
+                          </Animated.View>
+                        )}
+                      </Animated.View>
+                    )}
+                  </>
                 ) : (
-                  <View style={styles.noResults}>
+                  <Animated.View
+                    entering={FadeIn.duration(200).easing(Easing.out(Easing.cubic))}
+                    style={styles.noResultsCard}
+                  >
+                    <Ionicons name="search-outline" size={28} color="#CCCCCC" />
                     <Text style={styles.noResultsText}>No results found</Text>
-                  </View>
+                  </Animated.View>
                 )}
               </View>
             ) : (
@@ -406,33 +596,43 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                         )}
                       </View>
 
-                      {/* Show recent searches with reverse cascade animation */}
-                      {/* Rows only render when there are searches (LayoutAnimation handles resize) */}
-                      {recentSearches.length > 0 && (
-                        <View>
-                          {recentSearches.slice(0, 5).map((search, index) => (
-                            <AnimatedRecentRow
-                              key={`recent-${index}`}
-                              search={search}
-                              progress={recentRowAnimations[index]}
-                              onPress={() => handleRecentSearchPress(search)}
-                            />
-                          ))}
-                        </View>
-                      )}
+                      {/* Content area with unified height animation (rows → placeholder) */}
+                      <Animated.View
+                        style={recentContentStyle}
+                        onLayout={(e) => {
+                          // Only measure when unconstrained (natural layout)
+                          if (recentContentHeight.value < 0) {
+                            recentContentNaturalHeight.value = e.nativeEvent.layout.height;
+                          }
+                        }}
+                      >
+                        {/* Recent search rows */}
+                        {recentSearches.length > 0 && (
+                          <View>
+                            {recentSearches.slice(0, 5).map((search, index) => (
+                              <AnimatedRecentRow
+                                key={`recent-${index}`}
+                                search={search}
+                                progress={recentRowAnimations[index]}
+                                onPress={() => handleRecentSearchPress(search)}
+                              />
+                            ))}
+                          </View>
+                        )}
 
-                      {/* Placeholder - only renders after clear is complete, fades in */}
-                      {wasRecentCleared && recentSearches.length === 0 && (
-                        <Animated.View style={[styles.emptyRecentContainer, placeholderAnimStyle]}>
-                          <Text style={styles.emptyRecentText}>No recent searches</Text>
-                        </Animated.View>
-                      )}
+                        {/* Placeholder — fades in after rows are cleared */}
+                        {wasRecentCleared && recentSearches.length === 0 && (
+                          <Animated.View style={[styles.emptyRecentContainer, placeholderAnimStyle]}>
+                            <Text style={styles.emptyRecentText}>No recent searches</Text>
+                          </Animated.View>
+                        )}
+                      </Animated.View>
                     </Animated.View>
                     <View style={styles.frostedGap} />
                   </>
                 )}
 
-                {/* Nearby Rides Carousel - Section 1 (or 0 if no recent searches) */}
+                {/* Popular Rides Carousel - Section 1 (or 0 if no recent searches) */}
                 <Animated.View
                   style={[
                     styles.section,
@@ -440,14 +640,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   ]}
                 >
                   <SearchCarousel
-                    title="Nearby Rides"
+                    title="Popular Rides"
                     items={NEARBY_RIDES}
                     onItemPress={handleCarouselCardPress}
                   />
                 </Animated.View>
                 <View style={styles.frostedGap} />
 
-                {/* Nearby Parks Carousel - Section 2 (or 1 if no recent searches) */}
+                {/* Popular Parks Carousel - Section 2 (or 1 if no recent searches) */}
                 <Animated.View
                   style={[
                     styles.section,
@@ -455,7 +655,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   ]}
                 >
                   <SearchCarousel
-                    title="Nearby Parks"
+                    title="Popular Parks"
                     items={NEARBY_PARKS}
                     onItemPress={handleCarouselCardPress}
                   />
@@ -579,10 +779,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 </>
               )}
 
-              {/* Nearby Rides Carousel */}
+              {/* Popular Rides Carousel */}
               <View style={styles.section}>
                 <SearchCarousel
-                  title="Nearby Rides"
+                  title="Popular Rides"
                   items={NEARBY_RIDES}
                   onItemPress={handleCarouselCardPress}
                 />
@@ -590,10 +790,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
               <View style={styles.frostedGap} />
 
-              {/* Nearby Parks Carousel */}
+              {/* Popular Parks Carousel */}
               <View style={styles.section}>
                 <SearchCarousel
-                  title="Nearby Parks"
+                  title="Popular Parks"
                   items={NEARBY_PARKS}
                   onItemPress={handleCarouselCardPress}
                 />
@@ -724,9 +924,162 @@ const styles = StyleSheet.create({
   frostedGap: {
     height: 16,
   },
+  autocompleteContainer: {
+    paddingBottom: 16,
+    gap: 10,
+  },
+  // Hero card — top result
+  heroCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 18,
+    marginHorizontal: 8,
+    padding: 16,
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    elevation: 5,
+  },
+  heroHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  heroIconContainer: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    backgroundColor: '#1C1C1E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  heroTextContainer: {
+    flex: 1,
+  },
+  heroName: {
+    fontSize: 17,
+    fontWeight: '700',
+    color: '#000000',
+    letterSpacing: -0.2,
+  },
+  heroSubtitle: {
+    fontSize: 13,
+    color: '#888888',
+    marginTop: 1,
+  },
+  heroStatusBadge: {
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    marginLeft: 8,
+  },
+  heroStatusOperating: {
+    backgroundColor: 'rgba(40, 167, 69, 0.10)',
+  },
+  heroStatusClosed: {
+    backgroundColor: 'rgba(153, 153, 153, 0.10)',
+  },
+  heroStatusText: {
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  heroStats: {
+    flexDirection: 'row',
+    marginTop: 12,
+    gap: 8,
+  },
+  heroStatChip: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    backgroundColor: '#F5F5F5',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    gap: 3,
+  },
+  heroStatValue: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#1C1C1E',
+  },
+  heroStatLabel: {
+    fontSize: 11,
+    fontWeight: '500',
+    color: '#999999',
+  },
+  heroTapHint: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginTop: 10,
+    gap: 2,
+  },
+  heroTapHintText: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: '#AAAAAA',
+  },
+  // Compact list — remaining results
+  compactList: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    marginHorizontal: 8,
+    paddingHorizontal: 14,
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.06,
+    shadowRadius: 10,
+    elevation: 2,
+  },
+  compactRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+  },
+  compactRowBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#E8E8E8',
+  },
+  compactIcon: {
+    marginRight: 10,
+    width: 16,
+  },
+  compactName: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#1C1C1E',
+    flex: 1,
+  },
+  compactSubtitle: {
+    fontSize: 13,
+    color: '#999999',
+    marginLeft: 8,
+    flexShrink: 0,
+  },
+  moreResultsText: {
+    textAlign: 'center',
+    fontSize: 12,
+    fontWeight: '500',
+    color: '#AAAAAA',
+    paddingVertical: 10,
+  },
   noResults: {
     padding: 40,
     alignItems: 'center',
+  },
+  noResultsCard: {
+    alignItems: 'center',
+    paddingVertical: 40,
+    paddingHorizontal: 24,
+    marginHorizontal: 8,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    elevation: 3,
+    gap: 8,
   },
   noResultsText: {
     fontSize: 16,

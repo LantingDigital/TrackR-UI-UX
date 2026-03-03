@@ -1,0 +1,60 @@
+{
+  "id": "lagoon",
+  "name": "Lagoon",
+  "formerNames": [
+    "Lake Park"
+  ],
+  "parkId": "farmington",
+  "parkName": "Farmington",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Utah",
+  "continent": "North America",
+  "heightFt": null,
+  "heightM": null,
+  "speedMph": null,
+  "speedKmh": null,
+  "lengthFt": null,
+  "lengthM": null,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Unknown",
+  "designer": null,
+  "model": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "description": "Lagoon is a family owned amusement park in Farmington, Utah, located about 18 miles north of Salt Lake City.  Lagoon is divided into five main areas: The Midway, containing the majority of the rides; Pioneer Village, which has several exhibits displaying pioneer buildings and artifacts; Lagoon-A-Beach, a water park; Kiddie Land, an area with several rides for small children; and X-Venture Zone, featuring more extreme upcharge rides.  Lagoon also offers an RV park, a campground, and a walking trail outside the park that stays open all year.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BFile%3ALagoonAmusementParkLogo.png%5D%5D%0ATurn_of_the_Century_-_Lagoon.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lagoon_(amusement_park)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:14:38.530Z",
+  "dataQuality": "stub",
+  "searchTerms": [
+    "lagoon",
+    "lake park",
+    "farmington",
+    "unknown",
+    "sit-down",
+    "utah"
+  ],
+  "_meta": {
+    "manufacturerMatched": false,
+    "manufacturerRaw": ""
+  },
+  "popularityScore": 56.5,
+  "popularityTier": "notable",
+  "popularityRank": 725
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tweetsie-railroad",
+  "name": "Tweetsie Railroad",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "North Carolina",
+  "continent": "North America",
+  "city": "Blowing Rock, North Carolina, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1957,
+  "yearClosed": null,
+  "owner": "Tweetsie Railroad, Inc.",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Tweetsie Railroad is a family-oriented Wild West theme park located between Boone and Blowing Rock, North Carolina, United States.  The centerpiece of the park is a 3 mi ride on a train pulled by one of Tweetsie Railroad's two historic narrow-gauge steam locomotives. \n\nThe park also features a variety of amusement rides, live shows, a zoo and other attractions geared towards families with children.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Trrlogo.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tweetsie_Railroad",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:02.327Z"
+}

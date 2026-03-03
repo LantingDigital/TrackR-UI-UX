@@ -1,0 +1,29 @@
+{
+  "id": "sea-world-australia",
+  "name": "Sea World",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "city": "Main Beach, Queensland",
+  "latitude": 27.9559,
+  "longitude": -153.4257,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1971,
+  "yearClosed": null,
+  "owner": "Village Roadshow Theme Parks",
+  "chain": null,
+  "website": "www.seaworld.com.au",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Sea World is a marine mammal park, oceanarium, and theme park located on the Gold Coast, Queensland, Australia.  It offers attractions such as rides and animal exhibits and promotes conservation through education and the rescue and rehabilitation of sick, injured or orphaned wildlife.  The park is commercially linked to Warner Bros.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sea_world_australia.jpg",
+  "imageAttribution": "The entrance to Sea World",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sea_World_(Australia)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:31.839Z"
+}

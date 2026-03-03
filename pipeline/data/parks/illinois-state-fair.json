@@ -1,0 +1,29 @@
+{
+  "id": "illinois-state-fair",
+  "name": "Illinois State Fair",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Illinois",
+  "continent": "North America",
+  "city": "Springfield, Illinois",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "agr.state.il.us/isf/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Illinois State Fair is an annual festival, centering on the theme of agriculture, hosted by the U. S.  state of Illinois in the state capital, Springfield.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Illinois_State_Fair",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:52.140Z"
+}

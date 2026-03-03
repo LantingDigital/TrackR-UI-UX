@@ -1,0 +1,31 @@
+{
+  "id": "hersheypark",
+  "name": "Hersheypark",
+  "formerNames": [
+    "Hershey Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Hershey, Pennsylvania, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1906,
+  "yearClosed": null,
+  "owner": "Hershey Entertainment and Resorts Company",
+  "chain": null,
+  "website": "https://www.hersheypark.com/",
+  "coasterCount": 14,
+  "totalCoasterCount": 17,
+  "description": "Hersheypark (known as Hershey Park until 1970) is a family theme park in Hershey, Pennsylvania, United States, about 15 mi east of Harrisburg, and 95 mi west of Philadelphia.  The park was founded in 1906, by Milton S.  Hershey as a leisure park for the employees of the Hershey Chocolate Company.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Hersheypark_Entrance_10-2-2022.jpg",
+  "imageAttribution": "Hersheypark Entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hersheypark",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:20.386Z"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "conneaut-lake-park",
+  "name": "Conneaut Lake Park",
+  "formerNames": [
+    "Exposition Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Conneaut Lake, Pennsylvania, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Keldon Holdings, LLC\nTodd Joseph Fenstermacher",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "Conneaut Lake Park is a summer resort and event venue located in Conneaut Lake, Pennsylvania, United States.  It has long served as a regional tourist destination, and was noted by roller coaster enthusiasts for its classic Blue Streak coaster, which was classified as \"historic\" by the American Coaster Enthusiasts group in 2010.  Conneaut Lake is Pennsylvania's largest natural (glacier) lake, and is a popular summer destination for recreational boaters due to there being no horsepower limit on the lake.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/CLPFG.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Conneaut_Lake_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:14.879Z"
+}

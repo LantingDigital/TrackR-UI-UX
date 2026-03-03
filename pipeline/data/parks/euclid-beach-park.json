@@ -1,0 +1,29 @@
+{
+  "id": "euclid-beach-park",
+  "name": "Euclid Beach Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Cleveland",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": 1969,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 4,
+  "description": "Euclid Beach Park was an amusement park located on the southern shore of Lake Erie in the Collinwood neighborhood of Cleveland, Ohio, which operated from 1895 to 1969. \n\nOriginally incorporated by investors from Cleveland and patterned after New York's Coney Island, the park was managed by William R.  Ryan Sr.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Euclidbeach.jpg",
+  "imageAttribution": "Euclid Beach post card, circa 1915, featuring the roller coaster Derby Racer (later renamed the Racing Coaster)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Euclid_Beach_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:53.354Z"
+}

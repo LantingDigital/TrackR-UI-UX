@@ -1,0 +1,29 @@
+{
+  "id": "magic-springs-crystal-falls",
+  "name": "Magic Springs Theme and Water Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Arkansas",
+  "continent": "North America",
+  "city": "Hot Springs",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1978,
+  "yearClosed": null,
+  "owner": "EPR Properties",
+  "chain": null,
+  "website": "www.magicsprings.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Magic Springs Theme and Water Park, known as Magic Springs, is an amusement park and water park located in Hot Springs, Arkansas, about 50 mile from Little Rock.  The park opened in 1978, closed in 1995, and reopened in 2000.  It features 38 attractions, including five roller coasters.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Magic_Springs_Theme_Park_entrance_(1)_-_Jeremy_Thompson.jpg",
+  "imageAttribution": "The entrance to Magic Springs Theme and Water Park.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Magic_Springs",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:46.738Z"
+}

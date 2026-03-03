@@ -1,0 +1,61 @@
+{
+  "id": "apocalypse-the-ride",
+  "name": "Apocalypse: The Ride",
+  "formerNames": [
+    "Terminator Salvation: The Ride"
+  ],
+  "parkId": "six-flags-magic-mountain",
+  "parkName": "Six Flags Magic Mountain",
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "heightFt": 95,
+  "heightM": 29,
+  "speedMph": 50.1,
+  "speedKmh": 80.6,
+  "lengthFt": 2877,
+  "lengthM": 876.9,
+  "dropFt": 87.3,
+  "dropM": 26.6,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 180,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "Great Coasters International",
+  "designer": "Jeff Pike",
+  "model": null,
+  "status": "operating",
+  "yearOpened": 2009,
+  "yearClosed": null,
+  "description": "Apocalypse: The Ride, formerly known as Terminator Salvation: The Ride, is a wooden roller coaster located at Six Flags Magic Mountain in Valencia, California.  Manufactured by Great Coasters International, the roller coaster opened to the public on May 23, 2009.  It is located in The Underground section of the amusement park on a plot of land formerly occupied by the Psyclone (1991–2007), Shockwave (1986–1988) and Sarajevo Bobsleds (1984–1986).",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Apocalypse_at_Six_Flags_Magic_Mountain.jpg",
+  "imageAttribution": "Apocalypse running a train in 2011",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Apocalypse%3A_The_Ride",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:13:53.191Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "apocalypse: the ride",
+    "terminator salvation: the ride",
+    "six flags magic mountain",
+    "great coasters international",
+    "gci",
+    "sit-down",
+    "california"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Great Coasters International"
+  },
+  "popularityScore": 71.1,
+  "popularityTier": "iconic",
+  "popularityRank": 155
+}

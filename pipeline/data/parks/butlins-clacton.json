@@ -1,0 +1,29 @@
+{
+  "id": "butlins-clacton",
+  "name": "Clacton",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Clacton-on-Sea",
+  "latitude": 51.7812,
+  "longitude": -1.1388,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": 1983,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Butlin's Clacton was a holiday camp located in Clacton-on-Sea in England.  It opened in 1938 and closed in 1983.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Butlin's_Clacton",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:41.177Z"
+}

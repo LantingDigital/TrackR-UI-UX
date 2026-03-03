@@ -1,0 +1,57 @@
+{
+  "articleTitle": "Pegasus (Efteling)",
+  "introSection": "Pegasus was a wooden roller coaster located at the Efteling amusement park in the Netherlands. Designed by Curtis D. Summers and manufactured by the Dinn Corporation, the roller coaster opened to the public on July 1, 1991.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "In an attempt to open prior to the grand opening of Disneyland Paris, the entire project was completed in seven months. Curtis D. Summers worked with the Dinn Corporation to design and manufacture the ride, which used southern yellow pine imported from the United States. During construction, workers from the Dinn Corporation went on strike, and the project was finished by Intamin. The ride consisted of two trains with five cars per train. Each car had two rows with two riders each for a capacity of four passengers. Following its debut, it was the only wooden roller coaster in the Netherlands."
+    },
+    {
+      "title": "Ride experience",
+      "content": "After leaving the station, the train made a 180-degree turn into the lift hill that climbed to a height of 49.3 ft. After the first drop, it entered a 220-degree turnaround to the right, followed by another drop and a double-up incline. The train then made a 220-degree turn to the left, followed by a double-dip and a 180-degree turn to the left. After entering another incline, the train traversed a bunny hill before entering the final brake run and returning to the station. In total, the ride had four curves, nine ascents, and eight descents."
+    },
+    {
+      "title": "Closing",
+      "content": "On June 19, 2009, Efteling announced the permanent closure of the ride. It was replaced by a wooden dueling roller coaster called Joris en de Draak (George and the Dragon)."
+    }
+  ],
+  "fullText": "Pegasus was a wooden roller coaster located at the Efteling amusement park in the Netherlands. Designed by Curtis D. Summers and manufactured by the Dinn Corporation, the roller coaster opened to the public on July 1, 1991.\n\nIn an attempt to open prior to the grand opening of Disneyland Paris, the entire project was completed in seven months. Curtis D. Summers worked with the Dinn Corporation to design and manufacture the ride, which used southern yellow pine imported from the United States. During construction, workers from the Dinn Corporation went on strike, and the project was finished by Intamin. The ride consisted of two trains with five cars per train. Each car had two rows with two riders each for a capacity of four passengers. Following its debut, it was the only wooden roller coaster in the Netherlands.\n\nAfter leaving the station, the train made a 180-degree turn into the lift hill that climbed to a height of 49.3 ft. After the first drop, it entered a 220-degree turnaround to the right, followed by another drop and a double-up incline. The train then made a 220-degree turn to the left, followed by a double-dip and a 180-degree turn to the left. After entering another incline, the train traversed a bunny hill before entering the final brake run and returning to the station. In total, the ride had four curves, nine ascents, and eight descents.\n\nOn June 19, 2009, Efteling announced the permanent closure of the ride. It was replaced by a wooden dueling roller coaster called Joris en de Draak (George and the Dragon).\n\n",
+  "categories": [
+    "Roller coasters in the Netherlands",
+    "Efteling",
+    "1991 establishments in the Netherlands",
+    "20th-century architecture in the Netherlands"
+  ],
+  "infoboxRaw": {
+    "name": "Pegasus",
+    "image": "De Efteling Pegasus.jpg",
+    "location": "Efteling",
+    "section": "Ruig Rijk",
+    "coordinates": "51.64694°N, 5.05194°W",
+    "replacement": "Joris en de Draak",
+    "status": "Removed",
+    "opened": "July 1, 1991",
+    "closed": "June 19, 2009",
+    "manufacturer": "Dinn Corporation",
+    "designer": "Curtis D. Summers",
+    "track": "Wood",
+    "lift": "Chain lift hill",
+    "height_ft": "49.3",
+    "drop_ft": "39.4",
+    "length_ft": "1615",
+    "speed_mph": "34.2",
+    "inversions": "0",
+    "duration": "1:43",
+    "capacity": "1400",
+    "gforce": "3.5",
+    "trains": "2",
+    "carspertrain": "5",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "898"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Pegasus_(Efteling)",
+  "wikiPageId": 11735353,
+  "fetchedAt": "2026-02-28T20:55:47.430Z",
+  "articleLength": 1550
+}

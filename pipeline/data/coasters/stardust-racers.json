@@ -1,0 +1,69 @@
+{
+  "id": "stardust-racers",
+  "name": "Stardust Racers",
+  "formerNames": [],
+  "parkId": "universal-epic-universe",
+  "parkName": "Universal Epic Universe",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "heightFt": 133,
+  "heightM": 40.5,
+  "speedMph": 62,
+  "speedKmh": 99.8,
+  "lengthFt": 5000,
+  "lengthM": 1524,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 1,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "LSM launch",
+  "manufacturer": "Mack Rides",
+  "designer": "Universal Creative",
+  "model": "Launch Coaster",
+  "status": "operating",
+  "yearOpened": 2025,
+  "yearClosed": null,
+  "description": "Stardust Racers is a dual-tracked launched roller coaster in Celestial Park at Universal Epic Universe. Manufactured by Mack Rides, it features two racing tracks — Photon and Pulsar — that reach speeds of 62 mph via LSM launch. The ride is the longest coaster ever built by Mack Rides and features a signature Celestial Spin maneuver where both coaster vehicles perform an inverted crisscross.",
+  "history": null,
+  "notableFeatures": [
+    "Dual-tracked racing coaster (Photon and Pulsar)",
+    "LSM launch with mid-course boost",
+    "Celestial Spin inverted crisscross element",
+    "Onboard sound system",
+    "Barrel Roll Downdrop (Photon) / Zero-G Roll (Pulsar)"
+  ],
+  "records": [
+    "Longest roller coaster built by Mack Rides",
+    "Longest roller coaster at Universal Orlando Resort"
+  ],
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Stardust_Racers",
+  "dataSource": [
+    "manual"
+  ],
+  "lastUpdated": "2026-03-02T23:18:45.339Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "stardust racers",
+    "universal epic universe",
+    "mack rides",
+    "launch coaster",
+    "sit-down",
+    "florida"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Mack Rides",
+    "manualAddition": true,
+    "notes": "Missing from category-based discovery because Wikipedia article was created after pipeline last ran. Park infobox confirms 4 coasters at Epic Universe; only 3 were captured."
+  },
+  "popularityScore": 46,
+  "popularityTier": "standard",
+  "popularityRank": 812
+}

@@ -1,0 +1,29 @@
+{
+  "id": "yongin",
+  "name": "Yongin",
+  "formerNames": [],
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": "South Korea",
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "yongin.go.kr",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Yongin is a city in the Seoul Metropolitan Area, the largest in Gyeonggi Province, South Korea.  With a population over 1 million, the city has developed rapidly since the 21st century, recording the highest population growth of any city in the country.  Yongin is a multi-nuclear city with multiple urban centers, not a single nuclear structure, and Giheung District crosses the Yeongdong Expressway and Dongbaek, while Suji District crosses Pungdeokcheon Stream and Jukjeon.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Yongin",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:17.153Z"
+}

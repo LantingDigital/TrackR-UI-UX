@@ -1,0 +1,31 @@
+{
+  "id": "camel-creek-adventure-park",
+  "name": "Camel Creek Family Theme Park",
+  "formerNames": [
+    "Cornwall's Crealy Adventure Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Wadebridge",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": null,
+  "owner": "Royale Life",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Camel Creek Family Theme Park is an adventure park located in Wadebridge in Cornwall, England.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Camel_Creek_Adventure_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:31.069Z"
+}

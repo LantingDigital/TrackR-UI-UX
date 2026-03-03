@@ -1,0 +1,60 @@
+{
+  "id": "escape-of-novgorod",
+  "name": "Escape of Novgorod",
+  "formerNames": [
+    "Curse of Novgorod"
+  ],
+  "parkId": "hansa-park",
+  "parkName": "Hansa-Park",
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "heightFt": 131.2,
+  "heightM": 40,
+  "speedMph": 62.1,
+  "speedKmh": 100,
+  "lengthFt": 2296.6,
+  "lengthM": 700,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 1,
+  "gForce": 4.3,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Gerstlauer",
+  "designer": null,
+  "model": null,
+  "status": "operating",
+  "yearOpened": 2009,
+  "yearClosed": null,
+  "description": "The Escape of Novgorod, formerly Curse of Novgorod , is a steel roller coaster at Hansa-Park, Schleswig-Holstein, Germany manufactured by Gerstlauer.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Fluch_von_Novgorod_-_Totale.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Escape_of_Novgorod",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:43:51.708Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "escape of novgorod",
+    "curse of novgorod",
+    "hansa-park",
+    "gerstlauer",
+    "sit-down",
+    "germany"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Gerstlauer"
+  },
+  "popularityScore": 61.2,
+  "popularityTier": "notable",
+  "popularityRank": 569
+}

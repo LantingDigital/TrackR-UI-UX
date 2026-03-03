@@ -1,0 +1,31 @@
+{
+  "id": "wonderla",
+  "name": "Wonderla",
+  "formerNames": [
+    "Veegaland at Kochi"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Alabama",
+  "continent": "North America",
+  "city": "Kochi\n\nHyderabad\n\nBengaluru\n\nBhubaneswar\n\nChennai",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2000,
+  "yearClosed": null,
+  "owner": "Kochouseph Chittilappilly\n\nArun Chittilappilly",
+  "chain": null,
+  "website": "http://www.wonderla.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Wonderla is the largest chain of amusement parks in India.  It is owned and operated by Wonderla Holidays Limited which is headquartered near Bidadi, 28 km from Bengaluru, Karnataka.  It operates 5 amusement parks in Kochi, Bangalore, Hyderabad, Bhubaneswar and Chennai.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wonderla",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:59.794Z"
+}

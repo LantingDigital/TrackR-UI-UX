@@ -1,0 +1,31 @@
+{
+  "id": "hydro-adventures",
+  "name": "Hydro Adventures",
+  "formerNames": [
+    "Bluff Falls Water Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": "Poplar Bluff, Missouri, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 2003,
+  "yearClosed": 2020,
+  "owner": "United Parks, LLC",
+  "chain": null,
+  "website": "https://hydroadventures.com/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Hydro Adventures was an amusement park, waterpark and family entertainment center located in Poplar Bluff, Missouri, and owned by national amusement park operator, United Parks.  Hydro Adventures' Water Park operated from May through September, and the Dry Park was open year-round.  According to the website, the park consisted of 7 water attractions and 8 dry attractions of varying “thrill levels.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hydro_Adventures",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:25.941Z"
+}

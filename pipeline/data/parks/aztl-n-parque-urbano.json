@@ -1,0 +1,29 @@
+{
+  "id": "aztl-n-parque-urbano",
+  "name": "Aztlán Parque Urbano",
+  "formerNames": [],
+  "country": "MX",
+  "countryName": "Mexico",
+  "region": null,
+  "continent": "North America",
+  "city": "Chapultepec, Mexico City",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2024,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Aztlán Parque Urbano is an amusement park in Chapultepec, Mexico City, Mexico.  The park first opened on March 20, 2024, and replaced the amusement park La Feria de Chapultepec that closed in 2019.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Vista_a%C3%A9rea_de_la_Ciudad_de_M%C3%A9xico_desde_el_Parque_Aztl%C3%A1n_02.jpg",
+  "imageAttribution": "Aztlán 360 Ferris wheel",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Aztl%C3%A1n_Parque_Urbano",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:06.194Z"
+}

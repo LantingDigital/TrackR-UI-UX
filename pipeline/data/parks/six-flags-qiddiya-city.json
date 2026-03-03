@@ -1,0 +1,29 @@
+{
+  "id": "six-flags-qiddiya-city",
+  "name": "Six Flags Qiddiya City ستة أعلام مدينة القدية",
+  "formerNames": [],
+  "country": "SA",
+  "countryName": "Saudi Arabia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Qiddiya City",
+  "latitude": 24.58878,
+  "longitude": -46.33267,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2025,
+  "yearClosed": null,
+  "owner": "Qiddiya Investment Company",
+  "chain": null,
+  "website": null,
+  "coasterCount": 5,
+  "totalCoasterCount": 5,
+  "description": "Six Flags Qiddiya City is an amusement park located in Qiddiya City in Riyadh Province, Saudi Arabia.  It is the first Six Flags theme park in Asia and features Falcons Flight, the world's tallest, fastest, and longest roller coaster.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Qiddiya_Theme_Park%2C_Saudi_Arabia_(2025).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Qiddiya_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:48.350Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "babylon-park",
+  "name": "Babylon Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Babylon Park is a spoof of Babylon 5 and South Park that debuted on the internet in 1998, created by Christopher Russo.  It presents the Babylon 5 cast with South Park character designs.  It spawned several short films, including later productions with actual cast and crew from Babylon 5.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Babylon_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:52.844Z"
+}

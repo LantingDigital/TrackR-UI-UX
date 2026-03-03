@@ -1,0 +1,29 @@
+{
+  "id": "revere-beach",
+  "name": "Revere Beach Reservation",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Massachusetts",
+  "continent": "North America",
+  "city": "Revere, Massachusetts, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "Revere Beach is a public beach in Revere, Massachusetts, measuring over 3 mi long and located about 5 mi north of downtown Boston.  In 1875, a rail link was constructed to the beach, leading to its increasing popularity as a summer recreation area.  In 1896, the land was claimed for public use and redeveloped to accommodate large crowds while maintaining the natural scenery, thereby becoming the first public beach in the United States.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sunset-after-rain-revere-beach-causevic.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Revere_Beach",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:37.327Z"
+}

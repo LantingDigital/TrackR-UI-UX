@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-fiesta-texas",
+  "name": "Six Flags Fiesta Texas",
+  "formerNames": [
+    "Fiesta Texas"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "La Cantera, San Antonio",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1992,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "Official website",
+  "coasterCount": 8,
+  "totalCoasterCount": 8,
+  "description": "Six Flags Fiesta Texas, formerly known and colloquially referred to as simply Fiesta Texas, is an amusement park in San Antonio, Texas, United States.  It opened on March 14, 1992, in the La Cantera master-planned development and district as the first business in that development.  Spanning 200 acres, the park was originally built to become a destination musical show park with its focus on the musical culture of the state of Texas.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Boomerang_(Six_Flags_Fiesta_Texas).JPG",
+  "imageAttribution": "Boomerang, the visual centerpiece of the park.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Fiesta_Texas",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:05.314Z"
+}

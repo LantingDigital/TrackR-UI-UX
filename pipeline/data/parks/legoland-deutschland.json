@@ -1,0 +1,29 @@
+{
+  "id": "legoland-deutschland",
+  "name": "Legoland Deutschland Resort",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": null,
+  "continent": "Europe",
+  "city": "Günzburg",
+  "latitude": 48.42444,
+  "longitude": -10.29972,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "http://www.legoland.de",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Legoland Deutschland Resort (known in English as Legoland Germany) is a Legoland park located in Günzburg in Bavaria, roughly halfway between Munich and Stuttgart, which opened in 2002.  At opening it was 43. 5 hectares (107 acres) in area, and it is one of the four most popular theme parks in Germany.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Legoland_de_Entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:26.608Z"
+}

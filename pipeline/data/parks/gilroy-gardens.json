@@ -1,0 +1,31 @@
+{
+  "id": "gilroy-gardens",
+  "name": "Gilroy Gardens Family Theme Park",
+  "formerNames": [
+    "Bonfante Gardens"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "3050 Hecker Pass Hwy. Gilroy",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2001,
+  "yearClosed": null,
+  "owner": "City of Gilroy, California",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Gilroy Gardens Family Theme Park, often shortened to Gilroy Gardens, is a horticulture-themed amusement park located in Gilroy, California, United States.  Designed and built by Michael Bonfante, the park originally opened as Bonfante Gardens in 2001.  The 536 acre is owned by the city of Gilroy and operated by Gilroy Gardens, Inc.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Gilroy_Gardens_Logo.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gilroy_Gardens",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:39.282Z"
+}

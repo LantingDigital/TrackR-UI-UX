@@ -1,0 +1,49 @@
+{
+  "articleTitle": "BomBora (Lagoon)",
+  "introSection": "BomBora is a family steel roller coaster currently operating at Lagoon in Farmington, Utah. It is located just outside Lagoon-A-Beach, Lagoon's water park. The name of the coaster comes from an indigenous Australian term for \"a submerged reef\" or \"a turbulent area of sea over such a reef.\"",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Construction started in 2010, after lockers for Lagoon-A-Beach were demolished. The roller coaster opened in 2011."
+    },
+    {
+      "title": "Ride experience",
+      "content": "The ride starts with a left turn out of the station and into the lift hill. At the top of the lift hill, riders fall down the highest drop in the ride and enter a series of drops and twists, while surf rock music plays, before reaching the final brake run and returning to the station."
+    }
+  ],
+  "fullText": "BomBora is a family steel roller coaster currently operating at Lagoon in Farmington, Utah. It is located just outside Lagoon-A-Beach, Lagoon's water park. The name of the coaster comes from an indigenous Australian term for \"a submerged reef\" or \"a turbulent area of sea over such a reef.\"\n\nConstruction started in 2010, after lockers for Lagoon-A-Beach were demolished. The roller coaster opened in 2011.\n\nThe ride starts with a left turn out of the station and into the lift hill. At the top of the lift hill, riders fall down the highest drop in the ride and enter a series of drops and twists, while surf rock music plays, before reaching the final brake run and returning to the station.\n\n\n\n\n",
+  "categories": [
+    "Lagoon (amusement park)",
+    "2011 establishments in Utah"
+  ],
+  "infoboxRaw": {
+    "name": "BomBora",
+    "image": "BomBora Lagoon.jpg",
+    "imagedimensions": "250px",
+    "caption": "BomBora, as viewed from the exit of Lagoon-A-Beach, July 2011",
+    "location": "Lagoon",
+    "locationarticle": "Lagoon (amusement park)",
+    "section": "Kiddie Land",
+    "coordinates": "40.9855°N, -111.8923°W",
+    "status": "Operating",
+    "opened": "April 2, 2011",
+    "year": "2011",
+    "manufacturer": "Lagoon",
+    "manufacturerarticle": "Lagoon (amusement park)",
+    "designer": "ART Engineering",
+    "height_ft": "45",
+    "length_ft": "1040",
+    "speed_mph": "31",
+    "restriction_in": "36",
+    "rcdb_number": "9223",
+    "trains": "2",
+    "carspertrain": "8",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "website": "http://www.lagoonpark.com/ride/bombora/"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/BomBora_(Lagoon)",
+  "wikiPageId": 43757338,
+  "fetchedAt": "2026-02-28T20:19:15.750Z",
+  "articleLength": 698
+}

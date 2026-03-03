@@ -1,0 +1,31 @@
+{
+  "id": "family-kingdom-amusement-park",
+  "name": "Family Kingdom Amusement Park",
+  "formerNames": [
+    "Grand Strand Amusement Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "South Carolina",
+  "continent": "North America",
+  "city": "300 Ocean Blvd\nMyrtle Beach, South Carolina 29577, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1966,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.FamilyKingdomFun.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Family Kingdom Amusement Park is a seaside amusement park in Myrtle Beach, South Carolina.  Located on Ocean Boulevard in Myrtle Beach, the amusement park has 37 rides for adults and children of all ages, including thrill rides, family rides, kiddie rides and go karts.  In 2008 TripAdvisor ranked it at number five on its list of the top 10 amusement parks outside Orlando.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Family_Kingdom_Amusement_Park_3.jpg",
+  "imageAttribution": "Family Kingdom Amusement Park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Family_Kingdom_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:22.655Z"
+}

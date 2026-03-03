@@ -1,0 +1,29 @@
+{
+  "id": "sea-lion-park",
+  "name": "Sea Lion Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "Coney Island, Brooklyn",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": 1903,
+  "owner": "Paul Boyton",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Sea Lion Park was a 16 acre amusement park started in 1895 on Coney Island by Paul Boyton.  He fenced the property and charged admission, the park becoming the first enclosed and permanent amusement park in North America.  Up until the establishment of this park, amusement areas around the country consisted of pay-as-you-go concessions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Flip_Flap_Railway_Sea_Lion_Park.png",
+  "imageAttribution": "Flip Flap Railway in Sea Lion Park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sea_Lion_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:57.388Z"
+}

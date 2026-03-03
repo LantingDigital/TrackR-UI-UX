@@ -1,0 +1,57 @@
+{
+  "articleTitle": "Runaway Mine Train (Alton Towers)",
+  "introSection": "The Runaway Mine Train is a powered steel roller coaster made by MACK Rides of Germany. The ride is located in the Katanga Canyon area of Alton Towers in Staffordshire, England.\n\nThe train normally completes two circuits for each ride, although it occasionally completes three circuits on off-peak days.\n\nThe ride runs alongside the Congo River Rapids and shares a tunnel section. Passengers must be at least 1.1 m tall to ride, and passengers between 1.1m and 1.3m tall must be accompanied by an adult.\n\nIt is currently the park's oldest roller coaster, after The Beastie was removed prior to the 2013 season.",
+  "sections": [
+    {
+      "title": "Incident",
+      "content": "On 20 July 2006, the failure of a coupling on the train caused it to split into two sections, which then collided in the tunnel. 20 people were injured, six of whom were hospitalised."
+    }
+  ],
+  "fullText": "The Runaway Mine Train is a powered steel roller coaster made by MACK Rides of Germany. The ride is located in the Katanga Canyon area of Alton Towers in Staffordshire, England.\n\nThe train normally completes two circuits for each ride, although it occasionally completes three circuits on off-peak days.\n\nThe ride runs alongside the Congo River Rapids and shares a tunnel section. Passengers must be at least 1.1 m tall to ride, and passengers between 1.1m and 1.3m tall must be accompanied by an adult.\n\nIt is currently the park's oldest roller coaster, after The Beastie was removed prior to the 2013 season.\n\nOn 20 July 2006, the failure of a coupling on the train caused it to split into two sections, which then collided in the tunnel. 20 people were injured, six of whom were hospitalised.\n\n\n\n\n",
+  "categories": [
+    "Roller coasters in the United Kingdom",
+    "Roller coasters operated by Merlin Entertainments",
+    "Roller coasters opened in 1992",
+    "Alton Towers",
+    "Rides designed by John Wardley"
+  ],
+  "infoboxRaw": {
+    "name": "Runaway Mine Train",
+    "image": "Runaway Mine Train (Alton Towers) 01.jpg",
+    "location": "Alton Towers",
+    "section": "Katanga Canyon",
+    "type2": "Powered",
+    "type3": "Mine Train",
+    "status": "Operating",
+    "opened": "March 21, 1992",
+    "manufacturer": "Mack Rides",
+    "model": "Powered Coaster",
+    "track": "Steel",
+    "lift": "Onboard motors",
+    "height_ft": "36",
+    "drop_ft": "36",
+    "length_ft": "1000",
+    "speed_mph": "22.4",
+    "inversions": "0",
+    "duration": "1:50 (2 laps)",
+    "angle": "29",
+    "capacity": "1062",
+    "cost": "£1,000,000",
+    "gforce": "2.4",
+    "trains": "1",
+    "carspertrain": "12",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Fastrack",
+    "virtual_queue_image": "AltonTowersFastTrack.svg",
+    "virtual_queue_status": "available",
+    "restriction_cm": "110",
+    "rcdb_number": "800",
+    "coordinates": "52.98967°N, -1.88561°W",
+    "restraint_type": "lap bar"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Runaway_Mine_Train_(Alton_Towers)",
+  "wikiPageId": 4786670,
+  "fetchedAt": "2026-02-28T20:43:36.974Z",
+  "articleLength": 800
+}

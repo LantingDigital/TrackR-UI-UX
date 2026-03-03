@@ -1,0 +1,34 @@
+{
+  "id": "busch-gardens-williamsburg",
+  "name": "Busch Gardens Williamsburg",
+  "formerNames": [
+    "Busch Gardens: The Old Country",
+    "Busch Gardens Williamsburg (1993–2005",
+    "2008–present)",
+    "Busch Gardens Europe"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Virginia",
+  "continent": "North America",
+  "city": "James City County",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "owner": "United Parks & Resorts",
+  "chain": null,
+  "website": "Busch Gardens Williamsburg Home Page",
+  "coasterCount": 10,
+  "totalCoasterCount": 13,
+  "description": "Busch Gardens Williamsburg (formerly Busch Gardens Europe and Busch Gardens: The Old Country) is a 422 acre amusement park in James City County near Williamsburg, Virginia, United States, located approximately 60 mi northwest of Virginia Beach.  The park was developed by Anheuser-Busch (A-B) and is owned by United Parks & Resorts as one of the two currently operating Busch Gardens parks. \n\nThe park opened on May 16, 1975, adjacent to Anheuser-Busch's brewery and near its other developments, including the Kingsmill Resort complex.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Busch_Gardens_Williamsburg",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:56.863Z"
+}

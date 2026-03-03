@@ -1,0 +1,29 @@
+{
+  "id": "disneyland-paris",
+  "name": "Disneyland Paris",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Marne-la-Vallée, France",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Disney Experiences",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Disneyland Paris is an entertainment resort in Marne-la-Vallée, France, located about 32 km east of the city centre of Paris.  It encompasses two theme parks, seven Disney-owned hotels, two convention centers, a golf course, an arena, and a shopping, dining and entertainment complex.  Opened on 12 April 1992, the resort is operated by Disney Experiences, a division of the Walt Disney Company.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Disneyland_Paris",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:06.653Z"
+}

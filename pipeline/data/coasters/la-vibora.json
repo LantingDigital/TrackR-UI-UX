@@ -1,0 +1,63 @@
+{
+  "id": "la-vibora",
+  "name": "La Vibora",
+  "formerNames": [
+    "Sarajevo Bobsleds at Magic Mountain",
+    "Avalanche at Over Texas"
+  ],
+  "parkId": "six-flags-over-texas",
+  "parkName": "Six Flags Over Texas",
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "heightFt": 60,
+  "heightM": 18.3,
+  "speedMph": 32,
+  "speedKmh": 51.5,
+  "lengthFt": 1490,
+  "lengthM": 454.2,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 90,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Intamin",
+  "designer": null,
+  "model": "Swiss Bob",
+  "status": "closed",
+  "yearOpened": 1986,
+  "yearClosed": 2024,
+  "description": "La Vibora (The Viper) was a steel bobsled roller coaster at Six Flags Over Texas in Arlington, Texas, United States.  The roller coaster had operated at the park from 1986 to 2024.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/SFOT-La_Vibora.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/La_Vibora",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:14:04.695Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "la vibora",
+    "sarajevo bobsleds at magic mountain",
+    "avalanche at over texas",
+    "six flags over texas",
+    "intamin",
+    "swiss bob",
+    "sit-down",
+    "california"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Intamin"
+  },
+  "popularityScore": 64.1,
+  "popularityTier": "iconic",
+  "popularityRank": 426
+}

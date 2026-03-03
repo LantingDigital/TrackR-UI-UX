@@ -1,0 +1,31 @@
+{
+  "id": "carowinds",
+  "name": "Carowinds",
+  "formerNames": [
+    "Paramount's Carowinds"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "South Carolina",
+  "continent": "North America",
+  "city": "Charlotte, North Carolina and Fort Mill, South Carolina",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1973,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "www.sixflags.com/carowinds",
+  "coasterCount": 11,
+  "totalCoasterCount": 14,
+  "description": "Carowinds is a 407 acre amusement park primarily located in Charlotte, North Carolina.  The park is owned and operated by Six Flags.  Carowinds straddles the state line between North and South Carolina, adjacent to Interstate 77, with a portion of the park located in Fort Mill, South Carolina.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Carowinds_aerial_view%2C_September_2017.JPG",
+  "imageAttribution": "An aerial view of the park in 2017",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Carowinds",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:53.384Z"
+}

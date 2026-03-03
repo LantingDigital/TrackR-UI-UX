@@ -1,0 +1,58 @@
+{
+  "articleTitle": "Le Monstre",
+  "introSection": "Le Monstre (French for \"The Monster\") is a wooden roller coaster at La Ronde amusement park in Montreal, Quebec, Canada. Le Monstre is the largest wooden roller coaster in Canada and is also the tallest two-track wooden roller coaster in the world.",
+  "sections": [
+    {
+      "title": "Ride experience",
+      "content": "Standing at 39.9 m tall, Le Monstre is the second-tallest roller coaster in the park behind Goliath. It includes a hard first drop, airtime hills and has a top speed of 59.7 mph. Riders are seated 2 across in 2 rows spanning 5 cars, for a total of 20 riders per train. Le Monstre has four trains, two on each track. Riders must be over 1.32 m to ride the coaster."
+    },
+    {
+      "title": "History",
+      "content": "The ride was constructed by Martin & Vleminckx. The first track of the ride opened in 1985, but a second track was built for the 1986 season. This newer track does not run parallel to the first and instead gives a different ride experience. La Ronde once replaced the seats for new seats with safety belts, but were removed to classic bars at the request of riders. The seats have one lap bar for each row, as well as an individual seatbelt that attaches to the seat divider instead of the seat. This allows riders to \"float\" during airtime because the seatbelt does not come down to the seat even when fully tightened. New trains built by Philadelphia Toboggan Coasters were added in 2013."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Description of Monstre at La Ronde official website\n * Rollercoaster database"
+    }
+  ],
+  "fullText": "Le Monstre (French for \"The Monster\") is a wooden roller coaster at La Ronde amusement park in Montreal, Quebec, Canada. Le Monstre is the largest wooden roller coaster in Canada and is also the tallest two-track wooden roller coaster in the world.\n\nStanding at 39.9 m tall, Le Monstre is the second-tallest roller coaster in the park behind Goliath. It includes a hard first drop, airtime hills and has a top speed of 59.7 mph. Riders are seated 2 across in 2 rows spanning 5 cars, for a total of 20 riders per train. Le Monstre has four trains, two on each track. Riders must be over 1.32 m to ride the coaster.\n\nThe ride was constructed by Martin & Vleminckx. The first track of the ride opened in 1985, but a second track was built for the 1986 season. This newer track does not run parallel to the first and instead gives a different ride experience. La Ronde once replaced the seats for new seats with safety belts, but were removed to classic bars at the request of riders. The seats have one lap bar for each row, as well as an individual seatbelt that attaches to the seat divider instead of the seat. This allows riders to \"float\" during airtime because the seatbelt does not come down to the seat even when fully tightened. New trains built by Philadelphia Toboggan Coasters were added in 2013.\n\n\n * Description of Monstre at La Ronde official website\n * Rollercoaster database",
+  "categories": [
+    "La Ronde (amusement park)",
+    "Roller coasters in Quebec",
+    "Roller coasters operated by Six Flags",
+    "1985 establishments in Quebec"
+  ],
+  "infoboxRaw": {
+    "name": "Le Monstre",
+    "image": "monstrelaronde.jpg",
+    "location": "La Ronde (amusement park)",
+    "coordinates": "45.525°N, -73.53333°W",
+    "type2": "Racing",
+    "status": "Operating",
+    "opened": "July 20, 1985 (one side)\n1986 (other side)",
+    "year": "1985",
+    "manufacturer": "Martin & Vleminckx",
+    "designer": "William Cobb & Associates",
+    "lift": "Chain",
+    "name1": "Track 1",
+    "name2": "Track 2",
+    "height1_ft": "130.9",
+    "height2_ft": "130.9",
+    "length1_ft": "3,996.1",
+    "length2_ft": "4,025.6",
+    "speed1_mph": "59.7",
+    "speed2_mph": "59.7",
+    "inversions1": "0",
+    "inversions2": "0",
+    "restriction_in": "48",
+    "trains": "4",
+    "carspertrain": "5",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "186"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Le_Monstre",
+  "wikiPageId": 11193270,
+  "fetchedAt": "2026-02-28T20:44:26.237Z",
+  "articleLength": 1388
+}

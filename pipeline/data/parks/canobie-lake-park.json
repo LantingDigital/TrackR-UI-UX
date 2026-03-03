@@ -1,0 +1,29 @@
+{
+  "id": "canobie-lake-park",
+  "name": "Canobie Lake Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Hampshire",
+  "continent": "North America",
+  "city": "Salem",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1902,
+  "yearClosed": null,
+  "owner": "Family-owned",
+  "chain": null,
+  "website": "canobie.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Canobie Lake Park is an amusement park in Salem, New Hampshire, located about 31 mi north of Boston.  It was founded as a trolley park on the shore of Canobie Lake in 1902.  Three local families currently run the park, which draws visitors from throughout the New England and Mid-Atlantic regions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Canobie_Lake_Park_logo.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Canobie_Lake_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:22.365Z"
+}

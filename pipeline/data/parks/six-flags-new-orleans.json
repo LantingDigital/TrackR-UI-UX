@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-new-orleans",
+  "name": "Six Flags New Orleans",
+  "formerNames": [
+    "Jazzland"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Louisiana",
+  "continent": "North America",
+  "city": "New Orleans",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2000,
+  "yearClosed": 2005,
+  "owner": "City of New Orleans",
+  "chain": null,
+  "website": "Official website (archived)",
+  "coasterCount": 0,
+  "totalCoasterCount": 4,
+  "description": "Six Flags New Orleans was a theme park located near the intersection of Interstate 10 and Interstate 510 in New Orleans.  It first opened as Jazzland in 2000, and a 75-year lease agreement was established with Six Flags in 2002 following the previous operator's bankruptcy proceedings.  Six Flags invested $20 million in upgrades, and the park reopened as Six Flags New Orleans in 2003.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_New_Orleans_2004_-_Main_Gate.jpg",
+  "imageAttribution": "Six Flags New Orleans' entrance in June 2004",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_New_Orleans",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:39.127Z"
+}

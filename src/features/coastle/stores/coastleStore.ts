@@ -32,6 +32,7 @@ let stats: CoastleStats = {
   currentStreak: 0,
   maxStreak: 0,
   guessDistribution: [0, 0, 0, 0, 0, 0, 0],
+  recentGames: [],
 };
 let initialized = false;
 
@@ -48,7 +49,12 @@ function notify() {
 async function loadStats(): Promise<CoastleStats> {
   try {
     const raw = await AsyncStorage.getItem(STORAGE_STATS);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const parsed = JSON.parse(raw) as CoastleStats;
+      // Backwards-compatible: default recentGames if missing
+      if (!parsed.recentGames) parsed.recentGames = [];
+      return parsed;
+    }
   } catch {}
   return stats;
 }
@@ -152,6 +158,10 @@ function submitGuess(coaster: CoastleCoaster): boolean {
     stats.currentStreak++;
     stats.maxStreak = Math.max(stats.maxStreak, stats.currentStreak);
     stats.guessDistribution[game.guesses.length - 1]++;
+    stats.recentGames = [
+      ...(stats.recentGames ?? []).slice(-9),
+      { won: true, guesses: game.guesses.length },
+    ];
     saveStats();
     if (game.mode === 'daily') saveDaily();
     notify();
@@ -163,6 +173,10 @@ function submitGuess(coaster: CoastleCoaster): boolean {
     game.status = 'lost';
     stats.gamesPlayed++;
     stats.currentStreak = 0;
+    stats.recentGames = [
+      ...(stats.recentGames ?? []).slice(-9),
+      { won: false, guesses: game.guesses.length },
+    ];
     saveStats();
     if (game.mode === 'daily') saveDaily();
     notify();
@@ -198,17 +212,22 @@ function generateShareText(): string {
     : `X/${MAX_GUESSES}`;
 
   const rows = game.guesses.map((guess) => {
-    return guess.cells
+    const cells = guess.cells
       .sort((a, b) => a.row * 3 + a.col - (b.row * 3 + b.col))
       .map((cell) => {
         if (cell.result === 'correct') return '🟩';
         if (cell.result === 'close') return '🟨';
         return '⬜';
-      })
-      .join('');
+      });
+    // Format as 3×3 grid (3 attributes per row)
+    return [
+      cells.slice(0, 3).join(''),
+      cells.slice(3, 6).join(''),
+      cells.slice(6, 9).join(''),
+    ].join('\n');
   });
 
-  return `${puzzleLabel} ${result}\n\n${rows.join('\n')}`;
+  return `${puzzleLabel} ${result}\n\n${rows.join('\n\n')}`;
 }
 
 // ============================================

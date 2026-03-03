@@ -1,0 +1,29 @@
+{
+  "id": "dream-island",
+  "name": "Dream Island",
+  "formerNames": [],
+  "country": "RU",
+  "countryName": "Russia",
+  "region": null,
+  "continent": "Europe",
+  "city": "Antarctica",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Dream Island is an island lying 0. 7 km south-east of Cape Monaco, off the south-west coast of Anvers Island in Wylie Bay, in the Palmer Archipelago of Antarctica.  It was surveyed by the British Naval Hydrographic Survey Unit in 1956-1957 and named by the UK Antarctic Place-Names Committee for its natural features including a cave and, in summer, a small waterfall, with mossy patches and grass.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dream_Island",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:29:14.983Z"
+}

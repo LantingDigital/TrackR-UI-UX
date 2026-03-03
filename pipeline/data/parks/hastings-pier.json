@@ -1,0 +1,29 @@
+{
+  "id": "hastings-pier",
+  "name": "Hastings Pier",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Abid Gulzar",
+  "chain": null,
+  "website": "http://hastingspier.org.uk",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Hastings Pier is a public pleasure pier in Hastings, East Sussex, England.  Built in 1872 and enjoying its prime in the 1930s, it became a popular music venue in the 1960s.  The structure suffered major storm damage in 1990, and was closed to the public for a time before closing completely in 2008, and 95% destroyed by a fire in 2010.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Hastings_Pier_geograph-5972693-by-N-Chadwick.jpg",
+  "imageAttribution": "Image taken in June 2018",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hastings_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:10.641Z"
+}

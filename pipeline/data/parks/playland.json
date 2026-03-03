@@ -1,0 +1,29 @@
+{
+  "id": "playland",
+  "name": "Playland",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": "British Columbia",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "Playland may refer to:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Playland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:32.811Z"
+}

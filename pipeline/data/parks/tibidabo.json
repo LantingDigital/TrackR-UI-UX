@@ -1,0 +1,29 @@
+{
+  "id": "tibidabo",
+  "name": "Tibidabo",
+  "formerNames": [],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": null,
+  "continent": "Europe",
+  "city": "Barcelona, Catalonia, Spain",
+  "latitude": 41.4225,
+  "longitude": -2.11861,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Tibidabo is a hill overlooking Barcelona, Catalonia, Spain.  At 512 m, it is the tallest hill in the Serra de Collserola.  Rising sharply to the north-west, it has views over the city and the surrounding coastline.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tibidabo",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:01.821Z"
+}

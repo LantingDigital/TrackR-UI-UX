@@ -1,0 +1,60 @@
+{
+  "id": "hopi-hari",
+  "name": "Hopi Hari",
+  "formerNames": [
+    "Playcenter Great Adventure"
+  ],
+  "parkId": "vinhedo-s-o-paulo-brazil",
+  "parkName": "Vinhedo, São Paulo, Brazil",
+  "country": "BR",
+  "countryName": "Brazil",
+  "region": "Brazil",
+  "continent": "South America",
+  "heightFt": null,
+  "heightM": null,
+  "speedMph": null,
+  "speedKmh": null,
+  "lengthFt": null,
+  "lengthM": null,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Unknown",
+  "designer": null,
+  "model": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "description": "Hopi Hari is a Brazilian theme park located at Km 72 of Bandeirantes Highway, Vinhedo, in the state of São Paulo.  It is located 30 km away from Campinas and 72 km away from São Paulo.  Covering an area of 0.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Hopi_Hari2.jpg",
+  "imageAttribution": "Hopi Hari's Skyline",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Hopi_Hari",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:28.376Z",
+  "dataQuality": "stub",
+  "searchTerms": [
+    "hopi hari",
+    "playcenter great adventure",
+    "vinhedo, são paulo, brazil",
+    "unknown",
+    "sit-down",
+    "brazil"
+  ],
+  "_meta": {
+    "manufacturerMatched": false,
+    "manufacturerRaw": ""
+  },
+  "popularityScore": 52.2,
+  "popularityTier": "notable",
+  "popularityRank": 777
+}

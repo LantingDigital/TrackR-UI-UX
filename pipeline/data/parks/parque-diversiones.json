@@ -1,0 +1,29 @@
+{
+  "id": "parque-diversiones",
+  "name": "Parque Diversiones Dr. Roberto Ortiz Brenes",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "San José, Costa Rica",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1981,
+  "yearClosed": null,
+  "owner": "Asociación Pro-Hospital Nacional de Niños",
+  "chain": null,
+  "website": "https://www.parquediversiones.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "El Parque Diversiones Dr.  Roberto Ortiz Brenes (, also known as Parque Diversiones or “fun park”), is an amusement park located in San José, Costa Rica.  The park's motto is \"healthy children help sick children\".",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parque_Diversiones",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:16.282Z"
+}

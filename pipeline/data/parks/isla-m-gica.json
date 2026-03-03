@@ -1,0 +1,32 @@
+{
+  "id": "isla-m-gica",
+  "name": "Isla Mágica",
+  "formerNames": [
+    "Cartuja",
+    "El parque de los descubrimientos"
+  ],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": null,
+  "continent": "Europe",
+  "city": "Seville, Andalusia, Spain",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1997,
+  "yearClosed": null,
+  "owner": "Looping Group",
+  "chain": null,
+  "website": "Official website",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Isla Mágica (, Magic Island) is a theme park at the Isla de La Cartuja, in Seville, Andalusia in Spain.  The park has six themed areas and a water park called Agua Mágica. \n\nThe theme was built after the Expo '92 Universal Exhibition on part of the grounds where it was held.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrada_a_Isla_M%C3%A1gica.JPG",
+  "imageAttribution": "Main entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Isla_M%C3%A1gica",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:19.730Z"
+}

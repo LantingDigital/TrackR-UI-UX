@@ -1,0 +1,29 @@
+{
+  "id": "disney-california-adventure",
+  "name": "Disney California Adventure",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Disneyland Resort",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2001,
+  "yearClosed": null,
+  "owner": "Disney Experiences\n(The Walt Disney Company)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Disney California Adventure is a theme park at the Disneyland Resort in Anaheim, California.  It is owned and operated by the Walt Disney Company through its Experiences division.  The 72 acre park is themed after Disney's interpretation of California, by the use of Disney Animation, Pixar and Marvel properties.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Pixarpiersunset2019_(cropped)_(cropped).jpg",
+  "imageAttribution": "The Pixar Pal-A-Round, the icon of Disney California Adventure, pictured in 2019",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Disney_California_Adventure",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:02.922Z"
+}

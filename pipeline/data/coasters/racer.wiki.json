@@ -1,0 +1,62 @@
+{
+  "articleTitle": "Racer (Kennywood)",
+  "introSection": "Racer is a wooden racing roller coaster located at Kennywood amusement park in West Mifflin, Pennsylvania. Built by Charlie Mach and designed by John A. Miller, Racer opened to the public in 1927 and is one of the oldest operating roller coasters in the world.\n\nIt features a Möbius loop layout, in which both of its trains travel along one continuous track. Each train returns to the opposite side of the station from which it began. It is one of only two surviving wooden coasters to feature a Möbius loop layout (the other being Grand National at Pleasure Beach Resort).",
+  "sections": [
+    {
+      "title": "Predecessor",
+      "content": "The first Kennywood Racer was a side friction roller coaster built in 1910 by Frederick Ingersoll. It was a twin-track racing coaster designed by John Miller that cost nearly $50,000. When it was built, it was the largest racing coaster in the world.\n\nThe original Racer had two trains which raced side by side on two separate tracks. The wooden coaster lacked underfriction wheels, a limitation of side-friction designs, which resulted in a layout with gentle curves and dips. The trains consisted of three-seat cars with a seating capacity of eighteen. It was demolished in 1926 and replaced by Kiddieland."
+    },
+    {
+      "title": "Modern-day Racer",
+      "content": "In 1927, a second Racer was designed by John A. Miller and built by Charlie Mach. Because of interest in Miller's previous work, Kennywood hired Miller to build a new racing roller coaster. Park manager Brady McSwigan wanted a \"snappy ride that wasn't too much for mothers and children to ride.\" It cost more than $75,000 to construct. The cost was higher than expected due to issues with topography in Miller's design, which was not as effectively used as it was in Miller's previous installations, such as Jack Rabbit and Pippin.\n\nThe Möbius layout is caused by the setup of the station, where the trains turn away from each other upon dispatch. When the trains meet again at the lift hill, they are on the opposite sides from where they dispatched, and the tracks do not split for the remainder of the ride. The updated iteration of Racer added a third set of underfriction wheels, which attached beneath the track, securing the trains in a manner that permitted faster speeds, sharper turns, and steeper drops.\n\nIn 1949, Andy Vettel removed the final hill from the track layout. The loading platform's facade was redesigned on two occasions. The first occurred in 1946 and was done by Hindenach. The second happened in 1960, helmed by architect Bernard Liff. In 1990, the facade was restored to its original appearance."
+    },
+    {
+      "title": "Awards",
+      "content": "The nonprofit organization American Coaster Enthusiasts (ACE) designated Racer as an \"ACE Roller Coaster Landmark\" in June 2010. It is also a contributing structure to the Kennywood Park historic district, listed on the National Register of Historic Places."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Kennywood's website"
+    }
+  ],
+  "fullText": "Racer is a wooden racing roller coaster located at Kennywood amusement park in West Mifflin, Pennsylvania. Built by Charlie Mach and designed by John A. Miller, Racer opened to the public in 1927 and is one of the oldest operating roller coasters in the world.\n\nIt features a Möbius loop layout, in which both of its trains travel along one continuous track. Each train returns to the opposite side of the station from which it began. It is one of only two surviving wooden coasters to feature a Möbius loop layout (the other being Grand National at Pleasure Beach Resort).\n\n\n\nThe first Kennywood Racer was a side friction roller coaster built in 1910 by Frederick Ingersoll. It was a twin-track racing coaster designed by John Miller that cost nearly $50,000. When it was built, it was the largest racing coaster in the world.\n\nThe original Racer had two trains which raced side by side on two separate tracks. The wooden coaster lacked underfriction wheels, a limitation of side-friction designs, which resulted in a layout with gentle curves and dips. The trains consisted of three-seat cars with a seating capacity of eighteen. It was demolished in 1926 and replaced by Kiddieland.\n\nIn 1927, a second Racer was designed by John A. Miller and built by Charlie Mach. Because of interest in Miller's previous work, Kennywood hired Miller to build a new racing roller coaster. Park manager Brady McSwigan wanted a \"snappy ride that wasn't too much for mothers and children to ride.\" It cost more than $75,000 to construct. The cost was higher than expected due to issues with topography in Miller's design, which was not as effectively used as it was in Miller's previous installations, such as Jack Rabbit and Pippin.\n\nThe Möbius layout is caused by the setup of the station, where the trains turn away from each other upon dispatch. When the trains meet again at the lift hill, they are on the opposite sides from where they dispatched, and the tracks do not split for the remainder of the ride. The updated iteration of Racer added a third set of underfriction wheels, which attached beneath the track, securing the trains in a manner that permitted faster speeds, sharper turns, and steeper drops.\n\nIn 1949, Andy Vettel removed the final hill from the track layout. The loading platform's facade was redesigned on two occasions. The first occurred in 1946 and was done by Hindenach. The second happened in 1960, helmed by architect Bernard Liff. In 1990, the facade was restored to its original appearance.\n\nThe nonprofit organization American Coaster Enthusiasts (ACE) designated Racer as an \"ACE Roller Coaster Landmark\" in June 2010. It is also a contributing structure to the Kennywood Park historic district, listed on the National Register of Historic Places.\n\n\n\n\n\n\n * Kennywood's website",
+  "categories": [
+    "Kennywood",
+    "Pittsburgh History & Landmarks Foundation Historic Landmarks",
+    "Roller coasters in Pennsylvania",
+    "1927 establishments in Pennsylvania"
+  ],
+  "infoboxRaw": {
+    "name": "Racer",
+    "image": "KW-Racer.jpg",
+    "location": "Kennywood",
+    "section": "The Lagoon",
+    "type2": "Racing",
+    "status": "Operating",
+    "opened": "1927",
+    "coordinates": "40.38694°N, -79.86194°W",
+    "manufacturer": "Charlie Mach",
+    "designer": "John A. Miller",
+    "model": "Racing",
+    "track": "Möbius Loop",
+    "lift": "Chain lift",
+    "height_ft": "72.5",
+    "drop_ft": "50",
+    "length_ft": "4500",
+    "speed_mph": "40",
+    "inversions": "0",
+    "duration": "1:32",
+    "capacity": "1400",
+    "cost": "$75,000",
+    "restriction_in": "46",
+    "rcdb_number": "121",
+    "trains": "3",
+    "carspertrain": "4",
+    "rowspercar": "3",
+    "ridersperrow": "2"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Racer_(Kennywood)",
+  "wikiPageId": 2619936,
+  "fetchedAt": "2026-02-28T20:18:24.940Z",
+  "articleLength": 2798
+}

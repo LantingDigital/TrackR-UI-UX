@@ -18,6 +18,7 @@ import Animated, {
   useAnimatedStyle,
   interpolate as reanimatedInterpolate,
   Extrapolation,
+  withTiming,
 } from 'react-native-reanimated';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -41,7 +42,7 @@ import {
   getRidesForPark,
   ALL_SEARCHABLE_ITEMS,
 } from '../data/mockSearchData';
-import { addQuickLog, getPendingLogs, getAllLogs, subscribe as subscribeToStore } from '../stores/rideLogStore';
+import { addQuickLog, getUnratedCoasters, getAllLogs, subscribe as subscribeToStore } from '../stores/rideLogStore';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -63,6 +64,8 @@ interface LogModalProps {
   onFocusInput?: () => void;
   // External ref for the input (allows parent to focus it)
   externalInputRef?: React.RefObject<TextInput>;
+  // Synced query from parent (keeps inputOnly + sectionsOnly in sync)
+  externalQuery?: string;
 }
 
 export const LogModal: React.FC<LogModalProps> = ({
@@ -77,6 +80,7 @@ export const LogModal: React.FC<LogModalProps> = ({
   onCardSelect,
   onFocusInput,
   externalInputRef,
+  externalQuery,
 }) => {
   const insets = useSafeAreaInsets();
   const [searchQuery, setSearchQuery] = useState('');
@@ -86,32 +90,30 @@ export const LogModal: React.FC<LogModalProps> = ({
   const [mostRiddenCoasters, setMostRiddenCoasters] = useState<SearchableItem[]>([]);
   const inputRef = useRef<TextInput>(null);
 
+  // Sync internal query with external query (keeps inputOnly + sectionsOnly in sync)
+  useEffect(() => {
+    if (externalQuery !== undefined && externalQuery !== searchQuery) {
+      setSearchQuery(externalQuery);
+    }
+  }, [externalQuery]);
+
   // Subscribe to store changes to get pending ratings, last park, and most ridden
   useEffect(() => {
     const updateLogData = () => {
-      const pendingLogs = getPendingLogs();
+      const unratedCoasters = getUnratedCoasters();
       const allLogs = getAllLogs();
 
       // Track if user has any logs at all
       setHasAnyLogs(allLogs.length > 0);
 
-      // 1. Pending Ratings - deduplicate by coaster ID (unique rides only)
-      const seenCoasterIds = new Set<string>();
-      const uniquePendingLogs = pendingLogs.filter(log => {
-        if (seenCoasterIds.has(log.coasterId)) {
-          return false;
-        }
-        seenCoasterIds.add(log.coasterId);
-        return true;
-      });
-
-      const pendingItems: SearchableItem[] = uniquePendingLogs.slice(0, 5).map((log) => ({
-        id: log.coasterId,
-        name: log.coasterName,
-        image: ALL_SEARCHABLE_ITEMS.find(r => r.id === log.coasterId)?.image ||
+      // 1. Pending Ratings - coasters with logs but no rating
+      const pendingItems: SearchableItem[] = unratedCoasters.slice(0, 5).map((c) => ({
+        id: c.coasterId,
+        name: c.coasterName,
+        image: ALL_SEARCHABLE_ITEMS.find(r => r.id === c.coasterId)?.image ||
                'https://images.unsplash.com/photo-1536768139911-e290a59011e4?w=400',
         type: 'ride' as const,
-        subtitle: log.parkName,
+        subtitle: c.parkName,
       }));
 
       setPendingRatings(pendingItems);
@@ -174,9 +176,42 @@ export const LogModal: React.FC<LogModalProps> = ({
   const showAutocomplete = searchQuery.length > 0;
   const autocompleteResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
-    // Filter to only rides for logging
     return searchItems(searchQuery).filter(item => item.type === 'ride');
   }, [searchQuery]);
+
+  // Crossfade: cache last results + fade out overlay when query clears
+  const cachedResultsRef = useRef<SearchableItem[]>([]);
+  const [fadingOut, setFadingOut] = useState(false);
+  const autocompleteFade = useSharedValue(1);
+  const autocompleteFadeStyle = useAnimatedStyle(() => ({
+    opacity: autocompleteFade.value,
+  }));
+
+  // Keep cached results up to date while searching
+  if (autocompleteResults.length > 0) {
+    cachedResultsRef.current = autocompleteResults;
+  }
+
+  // Detect autocomplete → discovery transition
+  const wasAutocomplete = useRef(showAutocomplete);
+  if (wasAutocomplete.current && !showAutocomplete && !fadingOut) {
+    // Query just cleared — start fade out of cached results
+    setFadingOut(true);
+    autocompleteFade.value = 1;
+    autocompleteFade.value = withTiming(0, { duration: 800 });
+  }
+  wasAutocomplete.current = showAutocomplete;
+
+  // Clean up fadingOut state after animation completes
+  useEffect(() => {
+    if (fadingOut) {
+      const timer = setTimeout(() => {
+        setFadingOut(false);
+        cachedResultsRef.current = [];
+      }, 850);
+      return () => clearTimeout(timer);
+    }
+  }, [fadingOut]);
 
   // Staggered Cascade Animation (same as SearchModal) - now supports 4 sections
   // Uses Reanimated useAnimatedStyle for UI-thread driven animations
@@ -297,6 +332,7 @@ export const LogModal: React.FC<LogModalProps> = ({
 
   // Handle dropdown item press
   const handleDropdownItemPress = useCallback((item: SearchableItem) => {
+    Keyboard.dismiss();
     const cardLayout = {
       x: SCREEN_WIDTH / 2 - 60,
       y: SCREEN_HEIGHT / 2 - 60,
@@ -355,42 +391,11 @@ export const LogModal: React.FC<LogModalProps> = ({
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
           >
-            {showAutocomplete ? (
-              // Autocomplete results - render as floating card
-              <View style={styles.section}>
-                {autocompleteResults.length > 0 ? (
-                  autocompleteResults.map(item => (
-                    <Pressable
-                      key={item.id}
-                      onPress={() => handleDropdownItemPress(item)}
-                      style={({ pressed }) => [
-                        styles.autocompleteRow,
-                        pressed && styles.rowPressed,
-                      ]}
-                    >
-                      <Image
-                        source={{ uri: item.image }}
-                        style={styles.autocompleteImage}
-                      />
-                      <View style={styles.autocompleteTextContainer}>
-                        <Text style={styles.autocompleteTitle} numberOfLines={1}>
-                          {item.name}
-                        </Text>
-                        <Text style={styles.autocompleteSubtitle} numberOfLines={1}>
-                          {item.subtitle}
-                        </Text>
-                      </View>
-                      <Ionicons name="add-circle" size={24} color={colors.accent.primary} />
-                    </Pressable>
-                  ))
-                ) : (
-                  <View style={styles.noResults}>
-                    <Text style={styles.noResultsText}>No coasters found</Text>
-                  </View>
-                )}
-              </View>
-            ) : (
-              // Discovery content - 4 floating section cards
+            {/* Wrapper for discovery + autocomplete overlay */}
+            <View style={{ position: 'relative' }}>
+
+            {/* Discovery sections — always rendered underneath */}
+            <View pointerEvents={showAutocomplete ? 'none' : 'auto'}>
               <>
                 {/* Section 1: Status Card - Always visible, three states */}
                 <Animated.View
@@ -554,11 +559,58 @@ export const LogModal: React.FC<LogModalProps> = ({
                   </View>
                 </Animated.View>
               </>
+            </View>
+
+            {/* Autocomplete overlay — fades out when query clears, using cached results */}
+            {(showAutocomplete || fadingOut) && (
+              <Animated.View
+                style={[
+                  { position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10 },
+                  fadingOut ? autocompleteFadeStyle : undefined,
+                ]}
+                pointerEvents={fadingOut ? 'none' : 'auto'}
+              >
+                <View style={styles.section}>
+                  {(showAutocomplete ? autocompleteResults : cachedResultsRef.current).length > 0 ? (
+                    (showAutocomplete ? autocompleteResults : cachedResultsRef.current).map(item => (
+                      <Pressable
+                        key={item.id}
+                        onPress={() => handleDropdownItemPress(item)}
+                        style={({ pressed }) => [
+                          styles.autocompleteRow,
+                          pressed && styles.rowPressed,
+                        ]}
+                      >
+                        <Image
+                          source={{ uri: item.image }}
+                          style={styles.autocompleteImage}
+                        />
+                        <View style={styles.autocompleteTextContainer}>
+                          <Text style={styles.autocompleteTitle} numberOfLines={1}>
+                            {item.name}
+                          </Text>
+                          <Text style={styles.autocompleteSubtitle} numberOfLines={1}>
+                            {item.subtitle}
+                          </Text>
+                        </View>
+                        <Ionicons name="add-circle" size={24} color={colors.accent.primary} />
+                      </Pressable>
+                    ))
+                  ) : (
+                    <View style={styles.noResults}>
+                      <Text style={styles.noResultsText}>No coasters found</Text>
+                    </View>
+                  )}
+                </View>
+              </Animated.View>
             )}
+
+            </View>{/* end relative wrapper */}
 
             {/* Bottom padding for keyboard */}
             <View style={{ height: 100 }} />
           </ScrollView>
+
         </KeyboardAvoidingView>
       );
     }
@@ -804,3 +856,4 @@ const styles = StyleSheet.create({
     color: colors.text.meta,
   },
 });
+

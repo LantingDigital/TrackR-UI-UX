@@ -1,0 +1,29 @@
+{
+  "id": "chakazoolu-indoor-theme-park",
+  "name": "Chakazoolu Indoor Theme Park",
+  "formerNames": [],
+  "country": "BH",
+  "countryName": "Bahrain",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:32:00.104Z"
+}

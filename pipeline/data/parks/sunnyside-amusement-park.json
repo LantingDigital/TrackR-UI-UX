@@ -1,0 +1,29 @@
+{
+  "id": "sunnyside-amusement-park",
+  "name": "Sunnyside Amusement Park",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": null,
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Sunnyside Amusement Park (also known as Sunnyside Beach Park) was a popular amusement park in Toronto, Ontario, Canada, that ran from 1922 to 1955, demolished in 1955 to make way for the Metro Toronto Gardiner Expressway.  It was located on the Lake Ontario waterfront at the foot of Roncesvalles Avenue, west of downtown Toronto. \n\nThe name 'Sunnyside' was the name of a local farm owned by John George Howard, which was situated just to the north, on the location of the current St.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sunnyside_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:43.099Z"
+}

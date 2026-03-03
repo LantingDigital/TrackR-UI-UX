@@ -1,0 +1,29 @@
+{
+  "id": "waldameer-water-world",
+  "name": "Waldameer & Water World",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Erie, Pennsylvania, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Erie Electric Motor Company (1896–1920s)\n\nMarine Bank (1920s–1945)\n\nAlex Moeller (1945–1965)\n\nLydia Ruth Moeller (1965–1978)\n\nPaul Nelson (1978–2023)\n\nLaine Nelson (2023–present)",
+  "chain": null,
+  "website": "http://www.waldameer.com",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Waldameer & Water World is an amusement park and water park at the base of Presque Isle in Erie, Pennsylvania.  Waldameer is the fourth oldest amusement park in Pennsylvania, the sixth oldest in the nation, and one of only thirteen trolley parks still operating in the country.  It is home to several notable rides, including the Ravine Flyer II roller coaster.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AWaldameer_overview.png",
+  "imageAttribution": "Water World and a portion of the amusement park as seen from the Tom Ridge Environmental Center in 2021",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Waldameer_%26_Water_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:29.341Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "lincoln-park",
+  "name": "Lincoln Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Massachusetts",
+  "continent": "North America",
+  "city": "Chicago",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Chicago Park District",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Lincoln Park is a 1208 acre park along Lake Michigan on the North Side of Chicago, Illinois.  Named after US president Abraham Lincoln, it is the city's largest public park and stretches for 7 mi from Grand Avenue (500 N), on the south, to near Ardmore Avenue (5800 N) on the north, just north of the DuSable Lake Shore Drive terminus at Hollywood Avenue.  Two museums and a zoo are located in the oldest part of the park between North Avenue (1600 N) and Diversey Parkway (2800 N) in the eponymous neighborhood.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lincoln_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:28.817Z"
+}

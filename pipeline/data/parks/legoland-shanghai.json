@@ -1,0 +1,29 @@
+{
+  "id": "legoland-shanghai",
+  "name": "Legoland Shanghai Resort",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "🇨🇳 Fengjing, Jinshan disctrict, Shanghai",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2025,
+  "yearClosed": null,
+  "owner": "Shanghai Jinshan Urban Investment Group and Merlin Entertainments",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Legoland Shanghai Resort is a theme park located in Fengjing, Jinshan disctrict, Shanghai, China.  It is operated by Merlin Entertainments of the United Kingdom.  Construction began on November 17, 2021, and the park opened on July 5, 2025.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ALegoland_Shanghai_April_2025.jpeg",
+  "imageAttribution": "Legoland under construction with the Legoland hotel building (April 2025)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Shanghai",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:56.493Z"
+}

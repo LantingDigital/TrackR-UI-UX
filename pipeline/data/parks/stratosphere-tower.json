@@ -1,0 +1,29 @@
+{
+  "id": "stratosphere-tower",
+  "name": "The Strat",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Nevada",
+  "continent": "North America",
+  "city": "Las Vegas, Nevada, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": "2000 South Las Vegas Boulevard",
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "The Strat (formerly the Stratosphere) is a hotel and casino in Las Vegas, Nevada, United States.  It includes a 1149 ft observation tower, the tallest in the United States.  It is also the second-tallest observation tower in the Western Hemisphere, surpassed only by the CN Tower in Toronto, Ontario.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Aerial_view_Casino_Stratosphere_LAS_09_2017_4912.jpg",
+  "imageAttribution": "The Strat tower and resort in 2017",
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Strat",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:10.398Z"
+}

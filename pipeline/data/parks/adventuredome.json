@@ -1,0 +1,31 @@
+{
+  "id": "adventuredome",
+  "name": "Adventuredome",
+  "formerNames": [
+    "Grand Slam Canyon"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Nevada",
+  "continent": "North America",
+  "city": "Winchester",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1993,
+  "yearClosed": null,
+  "owner": "Phil Ruffin",
+  "chain": null,
+  "website": "https://www.circuscircus.com/the-adventuredome",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Adventuredome (formerly Grand Slam Canyon) is a 5 acre indoor amusement park at Circus Circus in Winchester, Nevada on the Las Vegas Strip.  It is owned by Phil Ruffin.  It is contained within a large glass dome, and offers various rides and attractions including the Canyon Blaster and El Loco roller coasters, a rock climbing wall, an 18-hole miniature golf course, a video game arcade, and carnival-type games.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Circus_Circus_Hotel_%26_Casino_LAS_09_2017_4915.jpg",
+  "imageAttribution": "The pink-colored Adventuredome, part of the Circus Circus property (2017)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adventuredome",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:22.902Z"
+}

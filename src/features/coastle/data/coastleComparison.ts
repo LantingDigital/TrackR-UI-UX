@@ -117,31 +117,39 @@ export function getRandomCoaster(excludeId?: string): CoastleCoaster {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-/** Generate a hint — reveals one correct attribute the player hasn't found yet */
+/** Generate a hint based on guess count — reveals the coaster initial or park pattern */
 export function generateHint(
   target: CoastleCoaster,
   guesses: CoastleGuess[],
 ): HintReveal | null {
-  // Collect all attributes already correct in any guess
-  const correctKeys = new Set<string>();
-  guesses.forEach((g) => {
-    g.cells.forEach((c) => {
-      if (c.result === 'correct') correctKeys.add(c.key);
-    });
-  });
+  const guessCount = guesses.length;
 
-  // Find attributes not yet correct
-  const uncorrect = GRID_ATTRIBUTES.filter((attr) => !correctKeys.has(attr.key));
-  if (uncorrect.length === 0) return null;
+  if (guessCount === 3) {
+    return {
+      afterGuess: guessCount,
+      hintType: 'first_letter',
+      label: 'First letter of the coaster name',
+      value: target.name[0].toUpperCase(),
+    };
+  }
 
-  // Pick a random un-guessed attribute
-  const attr = uncorrect[Math.floor(Math.random() * uncorrect.length)];
-  const value = target[attr.key];
+  if (guessCount === 6) {
+    // Build word-by-word pattern: first letter of first word revealed, rest underscored
+    const parkPattern = target.park
+      .split(' ')
+      .map((word, i) =>
+        i === 0
+          ? word[0].toUpperCase() + '_'.repeat(Math.max(0, word.length - 1))
+          : '_'.repeat(word.length),
+      )
+      .join(' ');
+    return {
+      afterGuess: guessCount,
+      hintType: 'park_pattern',
+      label: 'Park name pattern',
+      value: parkPattern,
+    };
+  }
 
-  return {
-    afterGuess: guesses.length,
-    attributeKey: attr.key,
-    label: attr.label,
-    value: formatDisplayValue(attr.key, value, attr.unit),
-  };
+  return null;
 }

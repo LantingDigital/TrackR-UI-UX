@@ -1,0 +1,29 @@
+{
+  "id": "ramona-park",
+  "name": "Ramona Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Michigan",
+  "continent": "North America",
+  "city": "East Grand Rapids",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": 1955,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Ramona Park was an amusement park located in the city of East Grand Rapids, Michigan between 1881 and 1955.  The Park included a double track wooden roller coaster, a theater pavilion, a ridable miniature railway and boat livery.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Ramona_Park_Pavilion%2C_Grand_Rapids%2C_MI._Postcard_-_040_-_041.jpeg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Ramona_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:08.916Z"
+}

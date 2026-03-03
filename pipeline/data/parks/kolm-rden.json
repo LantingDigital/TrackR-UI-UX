@@ -1,0 +1,29 @@
+{
+  "id": "kolm-rden",
+  "name": "Kolmården",
+  "formerNames": [],
+  "country": "SE",
+  "countryName": "Sweden",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Kolmården is a long and wide densely forested rocky ridge that separates the Swedish provinces of Södermanland and Östergötland, two of the country's main agricultural areas, from each other, and in historic times, along with Tylöskog and Tiveden, formed the border between the land of the Swedes and the land of the Geats.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kolm%C3%A5rden",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:38.110Z"
+}

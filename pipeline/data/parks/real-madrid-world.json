@@ -1,0 +1,29 @@
+{
+  "id": "real-madrid-world",
+  "name": "Real Madrid World",
+  "formerNames": [],
+  "country": "AE",
+  "countryName": "United Arab Emirates",
+  "region": null,
+  "continent": "Asia",
+  "city": "Dubai",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2016,
+  "yearClosed": 2022,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Real Madrid World (formerly Bollywood Park Dubai) is a theme park located in Dubai, United Arab Emirates, part of Dubai Parks and Resorts.  It originally opened in November 2016 as Bollywood Parks Dubai, before closing on 22 March 2022.  Over the next three years the park was rethemed to the football club Real Madrid, reopening on 8 April 2024.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Real_Madrid_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:07.606Z"
+}

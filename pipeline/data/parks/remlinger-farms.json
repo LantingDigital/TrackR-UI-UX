@@ -1,0 +1,29 @@
+{
+  "id": "remlinger-farms",
+  "name": "Remlinger Farms",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Washington",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Remlinger Farms is a 350 acre working farm located in Carnation, Washington, and listed in the Library of Congress Local Legacies Project.  It is open to the public for six months of the year with amusement rides, entertainment, u-pick fields and corn mazes specializing in local produce.  It was originally created from the Remlinger family farm, owned by Floyd Remlinger, before being taken over by his son, Gary Remlinger.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Remlinger_Farms",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:24.559Z"
+}

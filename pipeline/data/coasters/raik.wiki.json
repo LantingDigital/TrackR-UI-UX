@@ -1,0 +1,49 @@
+{
+  "articleTitle": "Raik",
+  "introSection": "Raik is a boomerang steel roller coaster manufactured by Vekoma located at Phantasialand in Germany. Raik opened on 30 June 2016 alongside neighbouring roller coaster Taron, a multi-launch steel roller coaster.\n\nThe ride is situated in the 'Klugheim' area of the theme park, a mythical village reflecting Old Norse cultures. The coaster sits in a canyon of basalt rock at the edge of the village. Also within the canyon is a new-for-2016. Klugheim replaced the former Silver City themed area of the park.",
+  "sections": [
+    {
+      "title": "Ride experience",
+      "content": "Upon departure from the station, the train is driven in reverse up a drive tyre lift hill. Once reaching its maximum height, the train is held for three seconds before being released. The train drops back down the incline passing through the station and over a small air time hump, banking and dropping right. It passes back under itself, banking upwards and left onto a parallel incline to the lift hill. Gravity pulls the train back down this incline in reverse, completing the layout in this direction before passing through the station, partially up the lift hill and slowly back to the station platform."
+    },
+    {
+      "title": "World records",
+      "content": "When opened on June 30, 2016, Raik held records for:\n\n\n * Fastest family boomerang roller coaster.\n * Longest family boomerang roller coaster."
+    }
+  ],
+  "fullText": "Raik is a boomerang steel roller coaster manufactured by Vekoma located at Phantasialand in Germany. Raik opened on 30 June 2016 alongside neighbouring roller coaster Taron, a multi-launch steel roller coaster.\n\nThe ride is situated in the 'Klugheim' area of the theme park, a mythical village reflecting Old Norse cultures. The coaster sits in a canyon of basalt rock at the edge of the village. Also within the canyon is a new-for-2016. Klugheim replaced the former Silver City themed area of the park.\n\nUpon departure from the station, the train is driven in reverse up a drive tyre lift hill. Once reaching its maximum height, the train is held for three seconds before being released. The train drops back down the incline passing through the station and over a small air time hump, banking and dropping right. It passes back under itself, banking upwards and left onto a parallel incline to the lift hill. Gravity pulls the train back down this incline in reverse, completing the layout in this direction before passing through the station, partially up the lift hill and slowly back to the station platform.\n\nWhen opened on June 30, 2016, Raik held records for:\n\n\n * Fastest family boomerang roller coaster.\n * Longest family boomerang roller coaster.\n\n",
+  "categories": [
+    "Steel roller coasters",
+    "Roller coasters in Germany",
+    "Roller coasters opened in 2016",
+    "Roller coasters manufactured by Vekoma"
+  ],
+  "infoboxRaw": {
+    "name": "Raik",
+    "image": "Raik-3.jpg",
+    "location": "Phantasialand",
+    "section": "Klugheim",
+    "type2": "Shuttle",
+    "status": "Open",
+    "opened": "30 June 2016",
+    "previousattraction": "Silvermine",
+    "manufacturer": "Vekoma",
+    "model": "Junior Boomerang",
+    "lift": "Drive tire lift hill",
+    "height_ft": "82",
+    "length_ft": "689",
+    "inversions": "0",
+    "capacity": "720",
+    "speed_mph": "38.5",
+    "trains": "1",
+    "carspertrain": "10",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "rcdb_number": "13689",
+    "coordinates": "50.79962°N, 6.88281°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Raik",
+  "wikiPageId": 59891216,
+  "fetchedAt": "2026-02-28T20:43:56.196Z",
+  "articleLength": 1260
+}

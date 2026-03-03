@@ -1,0 +1,31 @@
+{
+  "id": "canadas-wonderland",
+  "name": "Canada's Wonderland",
+  "formerNames": [
+    "Paramount Canada's Wonderland"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Vaughan",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1981,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "http://www.sixflags.com/canadaswonderland",
+  "coasterCount": 12,
+  "totalCoasterCount": 13,
+  "description": "Canada's Wonderland, formerly known as Paramount Canada's Wonderland, is a 330 acre amusement park located in Vaughan, Ontario, a municipality within the Greater Toronto Area (GTA).  Opened in 1981 by the Taft Broadcasting Company and the Great-West Life Assurance Company, it was the first major theme park in Canada and remains the country's largest.  Cedar Fair (merged into Six Flags on July 1, 2024) bought the park from Paramount Parks in 2006, and has owned and operated the park since then.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Canada's_Wonderland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:04.444Z"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "moto-coaster",
+  "name": "Moto Coaster",
+  "formerNames": [
+    "Orange County Choppers MotoCoaster"
+  ],
+  "parkId": "six-flags-darien-lake",
+  "parkName": "Six Flags Darien Lake",
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "heightFt": 44,
+  "heightM": 13.4,
+  "speedMph": 38,
+  "speedKmh": 61.2,
+  "lengthFt": 1198,
+  "lengthM": 365.2,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Flywheel Launch",
+  "manufacturer": "Zamperla",
+  "designer": "Werner Stengel",
+  "model": "Motocoaster",
+  "status": "operating",
+  "yearOpened": 2008,
+  "yearClosed": null,
+  "description": "Moto Coaster is a motorbike roller coaster at Six Flags Darien Lake in Darien, New York.  It was the park's first launch coaster, and was the first MotoCoaster built by Zamperla to be installed in the United States. \n\nThe coaster was originally named Orange County Choppers Motocoaster when it first opened on May 3, 2008.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/OCC_Motocoaster.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Moto_Coaster_(Six_Flags_Darien_Lake)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:14:24.296Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "moto coaster",
+    "orange county choppers motocoaster",
+    "six flags darien lake",
+    "zamperla",
+    "motocoaster",
+    "sit-down",
+    "new york"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Zamperla"
+  },
+  "popularityScore": 59.4,
+  "popularityTier": "notable",
+  "popularityRank": 636
+}

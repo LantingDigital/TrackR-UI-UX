@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { StyleSheet, View, Text, Pressable, Dimensions } from 'react-native';
+// RNGH ScrollView bypasses the native Pressable responder in MorphingPill's expandedContent
+import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import Reanimated, {
   useSharedValue,
@@ -14,8 +16,48 @@ import { shadows } from '../../../theme/shadows';
 import { haptics } from '../../../services/haptics';
 import { HintReveal } from '../types/coastle';
 
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const PAGE_WIDTH = SCREEN_WIDTH - 96; // matches HINT_CARD_WIDTH in CoastleHintButton
+
 // ============================================
-// CoastleHintContent — pure hint list for MorphingPill expanded content
+// HintPage — one hint's full content, explicitly sized to fill the scroll view
+// ============================================
+
+interface HintPageProps {
+  hint: HintReveal;
+  index: number;
+  total: number;
+  width: number;
+}
+
+const HintPage: React.FC<HintPageProps> = ({ hint, index, total, width }) => {
+  const isFirstLetter = hint.hintType === 'first_letter';
+  const label = isFirstLetter
+    ? 'The first letter of this coaster is'
+    : 'The park name starts with';
+
+  return (
+    <View style={[styles.page, { width }]}>
+      {/* Counter travels with this page — same position as its sibling pages */}
+      <Text style={styles.pageCounter}>Hint {index + 1}/{total}</Text>
+      {/* Content centered in the remaining space */}
+      <View style={styles.pageContentArea}>
+        <Text style={styles.hintLabel}>{label}</Text>
+        {isFirstLetter ? (
+          <Text style={styles.hintLetter}>{hint.value}</Text>
+        ) : (
+          <Text style={[styles.hintPattern, { width: width - spacing.xl * 2 }]}>
+            <Text style={styles.hintPatternFirst}>{hint.value[0]}</Text>
+            <Text style={styles.hintPatternRest}>{hint.value.slice(1)}</Text>
+          </Text>
+        )}
+      </View>
+    </View>
+  );
+};
+
+// ============================================
+// CoastleHintContent — paginated hint display inside MorphingPill card
 // ============================================
 
 interface CoastleHintContentProps {
@@ -27,38 +69,75 @@ export const CoastleHintContent: React.FC<CoastleHintContentProps> = ({
   hints,
   close,
 }) => {
+  const scrollRef = useRef<ScrollView>(null);
+  const initialScrollDone = useRef(false);
+
+  // After the RNGH ScrollView lays out, jump to the newest hint instantly
+  const handleScrollLayout = useCallback(() => {
+    if (hints.length > 1 && !initialScrollDone.current) {
+      initialScrollDone.current = true;
+      scrollRef.current?.scrollTo({ x: (hints.length - 1) * PAGE_WIDTH, animated: false });
+    }
+  }, [hints.length]);
+
   return (
     <View style={styles.content}>
-      <Ionicons name="bulb" size={28} color={colors.accent.primary} />
-      <Text style={styles.title}>
-        {hints.length === 1 ? 'Hint' : 'Hints'}
-      </Text>
-
-      <View style={styles.hintList}>
-        {hints.map((hint, i) => (
-          <View key={hint.afterGuess} style={styles.hintRow}>
-            <Text style={styles.hintNumber}>{i + 1}</Text>
-            <Text style={styles.hintText}>
-              The <Text style={styles.bold}>{hint.label}</Text> is{' '}
-              <Text style={styles.bold}>{hint.value}</Text>
-            </Text>
-          </View>
-        ))}
+      {/* RNGH ScrollView fills the full content area; each page carries its own counter */}
+      <View style={styles.scrollWrapper}>
+        <ScrollView
+          ref={scrollRef}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          onLayout={handleScrollLayout}
+          style={styles.scrollView}
+          bounces={false}
+        >
+          {hints.map((hint, i) => (
+            <HintPage
+              key={hint.afterGuess}
+              hint={hint}
+              index={i}
+              total={hints.length}
+              width={PAGE_WIDTH}
+            />
+          ))}
+        </ScrollView>
       </View>
 
-      <Pressable
-        style={styles.button}
-        onPress={() => { haptics.tap(); close(); }}
-      >
-        <Text style={styles.buttonText}>Got it</Text>
-      </Pressable>
+      {/* Footer — locked at bottom, same position on every page */}
+      <View style={styles.footer}>
+        <Pressable
+          style={styles.button}
+          onPress={() => { haptics.tap(); close(); }}
+        >
+          <Text style={styles.buttonText}>Got it</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
 
 // ============================================
-// CoastleHintTooltip — lightweight standalone overlay
-// "Hints unlock at guesses 3 & 6" with auto-dismiss
+// CoastleHintPreContent — shown when hints haven't unlocked yet
+// ============================================
+
+interface CoastleHintPreContentProps {
+  close: () => void;
+}
+
+export const CoastleHintPreContent: React.FC<CoastleHintPreContentProps> = ({ close }) => (
+  <View style={styles.preContent}>
+    <Ionicons name="bulb-outline" size={28} color={colors.text.meta} />
+    <Text style={styles.preHintText}>Hints unlock at guesses 3 & 6</Text>
+    <Pressable style={styles.button} onPress={() => { haptics.tap(); close(); }}>
+      <Text style={styles.buttonText}>Got it</Text>
+    </Pressable>
+  </View>
+);
+
+// ============================================
+// CoastleHintTooltip — lightweight standalone overlay with auto-dismiss
 // ============================================
 
 interface CoastleHintTooltipProps {
@@ -80,7 +159,6 @@ export const CoastleHintTooltip: React.FC<CoastleHintTooltipProps> = ({
       opacity.value = withTiming(1, { duration: 200 });
       backdropOpacity.value = withTiming(1, { duration: 200 });
 
-      // Auto-dismiss after 2.5s
       const timer = setTimeout(() => {
         onClose();
       }, 2500);
@@ -105,16 +183,13 @@ export const CoastleHintTooltip: React.FC<CoastleHintTooltipProps> = ({
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
-      <Reanimated.View style={[styles.backdrop, styles.backdropLight, backdropStyle]}>
+      <Reanimated.View style={[styles.tooltipBackdrop, backdropStyle]}>
         <Pressable style={StyleSheet.absoluteFill} onPress={onClose} />
       </Reanimated.View>
-
       <Reanimated.View style={[styles.cardContainer, cardStyle]}>
         <View style={styles.tooltipCard}>
           <Ionicons name="bulb-outline" size={24} color={colors.text.meta} />
-          <Text style={styles.tooltipText}>
-            Hints unlock at guesses 3 & 6
-          </Text>
+          <Text style={styles.tooltipText}>Hints unlock at guesses 3 & 6</Text>
         </View>
       </Reanimated.View>
     </View>
@@ -122,66 +197,68 @@ export const CoastleHintTooltip: React.FC<CoastleHintTooltipProps> = ({
 };
 
 const styles = StyleSheet.create({
-  // Shared
-  backdrop: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: colors.background.overlay,
-    zIndex: 200,
+  // ── CoastleHintContent ──────────────────────────────
+  content: {
+    flex: 1,
+    paddingBottom: spacing.xl,
+    gap: spacing.sm,
   },
-  backdropLight: {
-    backgroundColor: 'rgba(0,0,0,0.15)',
+  scrollWrapper: {
+    flex: 1,
   },
-  cardContainer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 201,
-    pointerEvents: 'box-none',
+  scrollView: {
+    flex: 1,
   },
 
-  // CoastleHintContent styles
-  content: {
-    padding: spacing.xxl,
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: typography.sizes.large,
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
-    marginTop: spacing.md,
-    marginBottom: spacing.lg,
-  },
-  hintList: {
+  // ── HintPage ─────────────────────────────────────────
+  page: {
     alignSelf: 'stretch',
-    gap: spacing.base,
-    marginBottom: spacing.xl,
+    paddingTop: spacing.xl,
+    paddingHorizontal: spacing.xl,
+    gap: spacing.sm,
   },
-  hintRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: spacing.base,
+  pageCounter: {
+    fontSize: typography.sizes.meta,
+    fontWeight: typography.weights.medium,
+    color: colors.text.meta,
+    textAlign: 'center',
   },
-  hintNumber: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: colors.accent.primary,
-    color: colors.text.inverse,
-    fontSize: typography.sizes.small,
+  pageContentArea: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.lg,
+  },
+  hintLabel: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.medium,
+    color: colors.text.secondary,
+    textAlign: 'center',
+    lineHeight: typography.sizes.label * 1.4,
+  },
+  hintLetter: {
+    fontSize: 80,
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
+    lineHeight: 88,
+  },
+  hintPattern: {
+    fontSize: 22,
     fontWeight: typography.weights.bold,
     textAlign: 'center',
-    lineHeight: 20,
-    overflow: 'hidden',
+    letterSpacing: 1.5,
+    lineHeight: 32,
   },
-  hintText: {
-    flex: 1,
-    fontSize: typography.sizes.body,
+  hintPatternFirst: {
+    color: colors.accent.primary,
+  },
+  hintPatternRest: {
     color: colors.text.secondary,
-    lineHeight: typography.sizes.body * typography.lineHeights.relaxed,
   },
-  bold: {
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
+
+  // ── Shared footer ─────────────────────────────────────
+  footer: {
+    alignItems: 'center',
   },
   button: {
     height: 40,
@@ -197,7 +274,35 @@ const styles = StyleSheet.create({
     color: colors.text.inverse,
   },
 
-  // CoastleHintTooltip styles
+  // ── CoastleHintPreContent ────────────────────────────
+  preContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: spacing.lg,
+    paddingHorizontal: spacing.xxl,
+    paddingBottom: spacing.lg,
+  },
+  preHintText: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.medium,
+    color: colors.text.secondary,
+    textAlign: 'center',
+  },
+
+  // ── CoastleHintTooltip ───────────────────────────────
+  tooltipBackdrop: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.15)',
+    zIndex: 200,
+  },
+  cardContainer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 201,
+    pointerEvents: 'box-none',
+  },
   tooltipCard: {
     flexDirection: 'row',
     alignItems: 'center',

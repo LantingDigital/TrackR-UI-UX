@@ -1,0 +1,29 @@
+{
+  "id": "phantasialand",
+  "name": "Phantasialand",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Brühl, North Rhine-Westphalia, Germany",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1967,
+  "yearClosed": null,
+  "owner": "Schmidt-Löffelhardt GmbH & Co. KG",
+  "chain": null,
+  "website": null,
+  "coasterCount": 7,
+  "totalCoasterCount": 7,
+  "description": "Phantasialand is a theme park in Brühl, North Rhine-Westphalia, Germany that attracts approximately 2 million visitors annually.  It was opened in 1967 by Gottlieb Löffelhardt and Richard Schmidt.  Although starting as a family-oriented park, it has added thrill rides, especially in recent years.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AThemenwelt_Berlin.jpg",
+  "imageAttribution": "Kaiserplatz in the Berlin themed area",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Phantasialand",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:13.829Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "js-amusement-park",
+  "name": "J's Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "J's Amusement Park was a theme park located in Guerneville, California.  Opened in 1969, the park was founded by Jay Skaggs, and later run by his son, Michael.  The park featured a roller coaster, a mad mouse, and several other attractions, including a mini race track.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/J's_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:36:03.370Z"
+}

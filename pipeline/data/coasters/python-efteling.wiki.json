@@ -1,0 +1,62 @@
+{
+  "articleTitle": "Python (Efteling)",
+  "introSection": "Python is a double-loop corkscrew roller coaster in the Efteling amusement park in the Netherlands. It opened as the largest steel roller coaster on the European mainland.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "With Python, Efteling started the implementation of a new strategy: development from a fairy-tale forest into an all-round amusement park. This change led to many problems with the local community. Environmentalists tried to get the building permit withdrawn, and the park's neighbors feared problems arising from growing visitor numbers. Because of the likely noise pollution, the highest court of public justice ordered the construction to be stopped. After some time, construction recommenced, but legal problems continued for several more years.\n\nIn 1989, a real Porsche 944 S2 was attached to one of the coaster's trains for the filming of a Porsche commercial.\n\nIn 1995, when operating hours were extended until 10 pm, the coaster's 45-decibel noise level became a problem once more. Plans were submitted to the local municipality, describing an extension and complete renovation of the coaster, which would reduce the noise substantially. Due to the high cost, the funds were allocated to the construction of a new enclosed (to reduce noise problems for the park's surroundings) roller coaster, 'Vogel Rok'.\n\nEfteling hoped to get a night license for Python with some small renovations (new trains and a chain lift), but only with a change in the permit could Python remain open until 10 pm.\n\nIn 2005 the trains were replaced by Kumbak Coasters designed by Karel Willemen and in December 2011 with Vekoma MK1212 trains.\n\nIn 2017 Efteling decided to rebuild the old coaster, because the quality of the steel was deteriorating. While the general layout remained the same, the track was redesigned to provide a smoother ride. In 2018 Efteling demolished the old track. The station, lift hill, first drop, and brake-run remained. The Belgian company CSM produced the new track. The ride reopened on the 31 March 2018."
+    },
+    {
+      "title": "Characteristics",
+      "content": "In January 2012, Python was given new trains with vest restraints to provide a more comfortable, smoother ride experience."
+    },
+    {
+      "title": "Incidents",
+      "content": "\n * In September 2005, a wheel broke loose and an employee got slightly injured.\n * On 30 July 2007, the ride became stuck almost halfway over the top of the lift hill. One staff member started evacuating the train while another tried to pull the car back. After having evacuated the back two cars, the train's centre of mass shifted to the front and the train started moving again, completing the rest of the circuit. One staff member was injured. The safety belt of one passenger was open at the time, but they were able to close it in time. Since the incident the evacuation protocol has been revised. Visitors will always be evacuated by the park's own fire brigade and the train will always be fixed before evacuation."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Video of the accident"
+    }
+  ],
+  "fullText": "Python is a double-loop corkscrew roller coaster in the Efteling amusement park in the Netherlands. It opened as the largest steel roller coaster on the European mainland.\n\nWith Python, Efteling started the implementation of a new strategy: development from a fairy-tale forest into an all-round amusement park. This change led to many problems with the local community. Environmentalists tried to get the building permit withdrawn, and the park's neighbors feared problems arising from growing visitor numbers. Because of the likely noise pollution, the highest court of public justice ordered the construction to be stopped. After some time, construction recommenced, but legal problems continued for several more years.\n\nIn 1989, a real Porsche 944 S2 was attached to one of the coaster's trains for the filming of a Porsche commercial.\n\nIn 1995, when operating hours were extended until 10 pm, the coaster's 45-decibel noise level became a problem once more. Plans were submitted to the local municipality, describing an extension and complete renovation of the coaster, which would reduce the noise substantially. Due to the high cost, the funds were allocated to the construction of a new enclosed (to reduce noise problems for the park's surroundings) roller coaster, 'Vogel Rok'.\n\nEfteling hoped to get a night license for Python with some small renovations (new trains and a chain lift), but only with a change in the permit could Python remain open until 10 pm.\n\nIn 2005 the trains were replaced by Kumbak Coasters designed by Karel Willemen and in December 2011 with Vekoma MK1212 trains.\n\nIn 2017 Efteling decided to rebuild the old coaster, because the quality of the steel was deteriorating. While the general layout remained the same, the track was redesigned to provide a smoother ride. In 2018 Efteling demolished the old track. The station, lift hill, first drop, and brake-run remained. The Belgian company CSM produced the new track. The ride reopened on the 31 March 2018.\n\nIn January 2012, Python was given new trains with vest restraints to provide a more comfortable, smoother ride experience.\n\n\n * In September 2005, a wheel broke loose and an employee got slightly injured.\n * On 30 July 2007, the ride became stuck almost halfway over the top of the lift hill. One staff member started evacuating the train while another tried to pull the car back. After having evacuated the back two cars, the train's centre of mass shifted to the front and the train started moving again, completing the rest of the circuit. One staff member was injured. The safety belt of one passenger was open at the time, but they were able to close it in time. Since the incident the evacuation protocol has been revised. Visitors will always be evacuated by the park's own fire brigade and the train will always be fixed before evacuation.\n\n\n\n\n * Video of the accident",
+  "categories": [
+    "Efteling",
+    "Roller coasters in the Netherlands",
+    "Roller coasters opened in 1981"
+  ],
+  "infoboxRaw": {
+    "name": "Python",
+    "image": "Roller coasters in the evening Efteling.jpg",
+    "location": "Efteling",
+    "section": "Ruigrijk",
+    "status": "operating",
+    "opened": "April 12, 1981",
+    "manufacturer": "Vekoma",
+    "designer": "Vekoma",
+    "model": "Double Loop Corkscrew",
+    "trains": "2",
+    "carspertrain": "7",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "lift": "Chain lift",
+    "height_m": "29",
+    "drop_m": "22",
+    "length_m": "750",
+    "speed_km/h": "75",
+    "inversions": "4",
+    "duration": "2:08",
+    "capacity": "1400",
+    "cost": "€ 9,4 million",
+    "gforce": "3.5",
+    "restriction_cm": "120",
+    "rcdb_number": "897",
+    "coordinates": "51.64694°N, 5.05361°W",
+    "caption": "Python as seen in 2018",
+    "single_rider": "available"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Python_(Efteling)",
+  "wikiPageId": 11505904,
+  "fetchedAt": "2026-02-28T20:55:47.939Z",
+  "articleLength": 2871
+}

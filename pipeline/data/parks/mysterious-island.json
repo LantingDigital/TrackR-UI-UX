@@ -1,0 +1,29 @@
+{
+  "id": "mysterious-island",
+  "name": "The Mysterious Island",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "The Mysterious Island is a novel by Jules Verne, serialised from August 1874 to September 1875 and then published in book form in November 1875.  The first edition, published by Hetzel, contains illustrations by Jules Férat.  The novel is a crossover sequel to Verne's famous Twenty Thousand Leagues Under the Seas (1870) and In Search of the Castaways (1867–68), though its themes are vastly different from those books.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Ile_Mysterieuse_02.jpg",
+  "imageAttribution": "Cover page of The Mysterious Island",
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Mysterious_Island",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:36:31.256Z"
+}

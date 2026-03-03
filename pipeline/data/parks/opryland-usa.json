@@ -1,0 +1,29 @@
+{
+  "id": "opryland-usa",
+  "name": "Opryland USA",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Tennessee",
+  "continent": "North America",
+  "city": "Nashville, Tennessee, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1972,
+  "yearClosed": 1997,
+  "owner": "Gaylord Entertainment Company",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Opryland USA (later called Opryland Themepark and colloquially known as Opryland) was a theme park in Nashville, Tennessee, United States.  The 120 acre park was located between the Cumberland River and Briley Parkway.  It operated seasonally (generally March to October) from 1972 to 1997, and for a special Christmas-themed engagement every December from 1993 to 1997.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/OprylandUSA1990sLogo.jpg",
+  "imageAttribution": "Opryland USA logo used from the late 1980s to 1997",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Opryland_USA",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:34.411Z"
+}

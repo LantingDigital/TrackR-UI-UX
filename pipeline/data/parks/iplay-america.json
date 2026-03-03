@@ -1,0 +1,29 @@
+{
+  "id": "iplay-america",
+  "name": "Freehold Township, New Jersey",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.twp.freehold.nj.us",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Freehold Township is a township in western Monmouth County, in the U. S.  state of New Jersey.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Freehold_Township%2C_New_Jersey",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:24:27.176Z"
+}

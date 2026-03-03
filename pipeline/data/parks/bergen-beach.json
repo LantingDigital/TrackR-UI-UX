@@ -1,0 +1,29 @@
+{
+  "id": "bergen-beach",
+  "name": "Bergen Beach",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Bergen Beach is a residential neighborhood in the borough of Brooklyn, New York City.  It is located on a peninsula abutting Jamaica Bay in the southeastern portion of the borough, and is bordered by Mill Basin and the neighborhood of the same name to the south and west; the neighborhood of Flatlands to the northwest; Paerdegat Basin and the neighborhood of Canarsie to the northeast; and Jamaica Bay and the Belt Parkway to the east.  Bergen Beach contains a sub-neighborhood named Georgetown.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bergen_Beach%2C_Brooklyn",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:58.612Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "duinrell",
+  "name": "Duinrell",
+  "formerNames": [],
+  "country": "NL",
+  "countryName": "Netherlands",
+  "region": "Netherlands",
+  "continent": "Europe",
+  "city": "Wassenaar, Netherlands",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1935,
+  "yearClosed": null,
+  "owner": "Van Zuylen van Nijevelt family",
+  "chain": null,
+  "website": "https://www.duinrell.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Duinrell is an amusement park situated in the town of Wassenaar, Netherlands on the estate of the counts Van Zuylen van Nijevelt.  In addition to the main amusement park sporting about 40 different attractions, Duinrell has been critically acclaimed for its water park with swimming pool (the Tikibad), which boasts 21 waterslides and a kids' water park.  The grounds also include campsites, lodges, and some sporting facilities.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrance_to_Duinrell%2C_Wassenaar_(2022)_02.jpg",
+  "imageAttribution": "Entrance to Duinrell",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Duinrell",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:11.416Z"
+}

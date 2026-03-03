@@ -1,0 +1,29 @@
+{
+  "id": "kuwait-entertainment-city",
+  "name": "Kuwait Entertainment City",
+  "formerNames": [],
+  "country": "KW",
+  "countryName": "Kuwait",
+  "region": null,
+  "continent": "Asia",
+  "city": "Doha",
+  "latitude": 29.348,
+  "longitude": -47.8166,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1984,
+  "yearClosed": 2016,
+  "owner": "Amiri Diwan of Kuwait",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Kuwait Entertainment City (Arabic: مدينة الكويت الترفيهية) was an amusement park located in the western outskirts of Kuwait City, the capital of Kuwait.  It first opened on March 14, 1984 and was run by the Kuwait-based Touristic Enterprises Company.  Some of the park's attractions, such as its large Bolliger & Mabillard inverted roller coaster and its narrow gauge railway, are common features in large-scale amusement parks in the United States, but were very rare in amusement parks in the Middle East.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tele_003.jpg",
+  "imageAttribution": "The Tornado ride within the park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kuwait_Entertainment_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:57.437Z"
+}

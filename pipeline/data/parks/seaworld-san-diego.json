@@ -1,0 +1,31 @@
+{
+  "id": "seaworld-san-diego",
+  "name": "SeaWorld San Diego",
+  "formerNames": [
+    "SeaWorld of California and SeaWorld Adventure Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "500 Sea World Drive, San Diego, California, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1964,
+  "yearClosed": null,
+  "owner": "United Parks & Resorts",
+  "chain": null,
+  "website": "SeaWorld San Diego",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "SeaWorld San Diego is a theme park in Mission Bay Park in San Diego, California.  It is a marine mammal park, oceanarium, public aquarium, and marine animal rehabilitation center.  It opened in 1964 as the first theme park in the SeaWorld chain.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/SeaWorld_San_Diego",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:51.409Z"
+}

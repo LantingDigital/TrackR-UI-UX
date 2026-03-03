@@ -1,0 +1,29 @@
+{
+  "id": "universal-kids-resort",
+  "name": "Universal Kids Resort",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "Frisco",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "NBCUniversal (Comcast)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Universal Kids Resort is an upcoming 32 acre children's theme park and entertainment resort under construction in Frisco, Texas, United States.  Scheduled to open in late 2026, it will be the sixth Universal Studios Resort, and the third in the United States.  The park will feature several themed areas based on Gabby's Dollhouse, Trolls, Shrek (also Puss in Boots), Jurassic World Camp Cretaceous, SpongeBob SquarePants, and Despicable Me.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Universal_Kids_Resort_Concept_Art.jpg",
+  "imageAttribution": "Concept art",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Kids_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:03.185Z"
+}

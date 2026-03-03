@@ -1,0 +1,35 @@
+{
+  "id": "geauga-lake-wildwater-kingdom",
+  "name": "Geauga Lake",
+  "formerNames": [
+    "Geauga Lake (1887–2000",
+    "2004)",
+    "Six Flags Ohio",
+    "Six Flags Worlds of Adventure",
+    "Geauga Lake & Wildwater Kingdom"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Bainbridge Township and Aurora, Ohio, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": 2007,
+  "owner": "Funtime, Inc. (1969–1995)\nPremier Parks/Six Flags (1995–2003)\nCedar Fair (2004–2007)",
+  "chain": null,
+  "website": "www.geaugalake.com (archived)",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Geauga Lake was an amusement park in Bainbridge Township and Aurora, Ohio.  It was established in 1887, in what had been a local recreation area adjacent to a lake of the same name.  The first amusement ride was added in 1889, and the park's first roller coaster – the Big Dipper – was built in 1925.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/GL-Entrance.jpg",
+  "imageAttribution": "Park entrance, 2005",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Geauga_Lake",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:48.525Z"
+}

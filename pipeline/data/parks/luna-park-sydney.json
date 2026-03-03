@@ -1,0 +1,29 @@
+{
+  "id": "luna-park-sydney",
+  "name": "Luna Park Precinct",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "city": null,
+  "latitude": 33.8476,
+  "longitude": -151.21,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Luna Park Reserve Trust",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Luna Park Sydney is a heritage-listed amusement park located in Milsons Point, New South Wales, Australia, on the northern shore of Sydney Harbour.  It is one of Sydney's most famous landmarks and has had a significant impact on culture through the years, including being featured as a filming location for several movies and television shows. \n\nThe site is owned by the Luna Park Reserve Trust, an agency of the Government of New South Wales, and the amusement park is operated by hospitality company Oscars Group.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Luna_Park_Sydney",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:01.731Z"
+}

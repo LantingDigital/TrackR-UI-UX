@@ -1,0 +1,29 @@
+{
+  "id": "santas-village",
+  "name": "Santa's Village",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Illinois",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 5,
+  "totalCoasterCount": 6,
+  "description": "Santa's Village may refer to:\n * The mythological Santa's workshop\n\nIn the United States:\n * Santa's Village AZoosment Park, an amusement park in East Dundee, Illinois\n * Santa's Village (Jefferson, New Hampshire), an amusement park\n * Santa's Village (Lake Arrowhead), a tourist attraction in Lake Arrowhead, California\n * Santa's Village (Scotts Valley), a former tourist attraction in Scotts Valley, California\n\nIn Finland:\n * Santa Claus Village, located along the Arctic Circle, about 8 km north",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Santa's_Village",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:02.813Z"
+}

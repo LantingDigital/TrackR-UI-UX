@@ -1,0 +1,29 @@
+{
+  "id": "al-qasba",
+  "name": "Sharjah",
+  "formerNames": [],
+  "country": "AE",
+  "countryName": "United Arab Emirates",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": 25.3575,
+  "longitude": -55.39083,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Sharjah ( , Gulf Arabic: aš-Šārja ) is a major port city and the third-most populous city in the United Arab Emirates, after Dubai and Abu Dhabi.  It is the capital of the Emirate of Sharjah and forms part of the Dubai-Sharjah-Ajman metropolitan area.  The emirate shares legal, political, military and economic functions with the other emirates of the UAE within a federal framework.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sharjah",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:37.746Z"
+}

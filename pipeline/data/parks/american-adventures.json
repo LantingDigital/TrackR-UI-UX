@@ -1,0 +1,29 @@
+{
+  "id": "american-adventures",
+  "name": "Six Flags White Water",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Georgia",
+  "continent": "North America",
+  "city": "East Cobb, Georgia, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1984,
+  "yearClosed": null,
+  "owner": "Six Flags Over Georgia, Ltd.",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Six Flags White Water is a 69 acre water park located northwest of Atlanta, in East Cobb, Georgia.  Originally opening in 1984 as White Water Atlanta, the park became part of the Six Flags family of parks in 1999.  Today, it is marketed as a second gate to Six Flags Over Georgia, and the two parks often cross-promote each other.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_White_Water",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:17.628Z"
+}

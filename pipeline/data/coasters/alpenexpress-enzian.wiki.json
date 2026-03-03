@@ -1,0 +1,63 @@
+{
+  "articleTitle": "Alpenexpress Enzian",
+  "introSection": "Alpenexpress Enzian (Alpine Express Gentian in English), formerly Grottenblitz, is a powered roller coaster with optional virtual reality ride experience manufactured by Mack Rides and located at Europa-Park in Rust, Germany. It is located in the Austria-themed section of the park. Opening in 1984, Alpenexpress was the first roller coaster built at the park. In June 2023 a fire destroyed the building containing the dark ride section of Alpenexpress, as well as the adjacent log flume Tiroler Wildwasserbahn. The roller coaster was entirely scrapped except for it's station building and then rebuilt, reopening in the summer of 2024.",
+  "sections": [
+    {
+      "title": "Specifications",
+      "content": "Alpenexpress opened at Europa-Park in 1984 under the name of Grottenblitz. Its former name was derived from the grotto theme inside the darkride section, which made up around half of the ride. Its current name references the Alps, as the coaster and its surroundings were integrated in the parks Austria section. After the 2023 fire the grotto was not rebuilt but replaced with an open-air mountainous theme.\n\nThe Alpenexpress train has 10 cars of which 9 can seat four people, whereas the Locomotive-themed front car can seat only two, making for a total of 38 guests per train. Each car is equipped with an electric motor which draws power from rails situated between the tracks. The motors drive wheels which run on a third rail in the center of the tracks. The ride is 250 m in length and has a speed of approximately 45 km/h. It has a capacity of 1100 people per hour and a ride time of 1 minute 40 seconds."
+    },
+    {
+      "title": "Virtual reality",
+      "content": "Alpenexpress Coastiality is an optional, pay-per-ride virtual reality experience on Alpenexpress. The system was developed by Mack Rides and VR Coaster and was introduced in September 2015. Each ride at opening cost an extra €4 per person. Riders wear wireless Samsung Gear VR headsets with a selection of four experiences."
+    },
+    {
+      "title": "Layout",
+      "content": "Initially the ride turns sharply right, then into a left-hand downward helix. Rising up from the helix it transitions into a downward right-hand helix. It rises up again and is led back to the station in a long right-hand turn, dipping below the adjacent Log Flume. Normally the ride operates for two laps. Before the 2023 fire the ride's grotto covered the second helix and parts of the transitions into and out of it."
+    },
+    {
+      "title": "External links",
+      "content": "\n * The roller coaster database lists the original and the rebuilt Alpenexpress as two fully separate roller coasters\n * OnRide video from 2011 of the original Alpenexpress (YouTube)\n * OnRide video from 2024 of the rebuilt Alpenexpress (YouTube)"
+    }
+  ],
+  "fullText": "Alpenexpress Enzian (Alpine Express Gentian in English), formerly Grottenblitz, is a powered roller coaster with optional virtual reality ride experience manufactured by Mack Rides and located at Europa-Park in Rust, Germany. It is located in the Austria-themed section of the park. Opening in 1984, Alpenexpress was the first roller coaster built at the park. In June 2023 a fire destroyed the building containing the dark ride section of Alpenexpress, as well as the adjacent log flume Tiroler Wildwasserbahn. The roller coaster was entirely scrapped except for it's station building and then rebuilt, reopening in the summer of 2024.\n\nAlpenexpress opened at Europa-Park in 1984 under the name of Grottenblitz. Its former name was derived from the grotto theme inside the darkride section, which made up around half of the ride. Its current name references the Alps, as the coaster and its surroundings were integrated in the parks Austria section. After the 2023 fire the grotto was not rebuilt but replaced with an open-air mountainous theme.\n\nThe Alpenexpress train has 10 cars of which 9 can seat four people, whereas the Locomotive-themed front car can seat only two, making for a total of 38 guests per train. Each car is equipped with an electric motor which draws power from rails situated between the tracks. The motors drive wheels which run on a third rail in the center of the tracks. The ride is 250 m in length and has a speed of approximately 45 km/h. It has a capacity of 1100 people per hour and a ride time of 1 minute 40 seconds.\n\nAlpenexpress Coastiality is an optional, pay-per-ride virtual reality experience on Alpenexpress. The system was developed by Mack Rides and VR Coaster and was introduced in September 2015. Each ride at opening cost an extra €4 per person. Riders wear wireless Samsung Gear VR headsets with a selection of four experiences.\n\nInitially the ride turns sharply right, then into a left-hand downward helix. Rising up from the helix it transitions into a downward right-hand helix. It rises up again and is led back to the station in a long right-hand turn, dipping below the adjacent Log Flume. Normally the ride operates for two laps. Before the 2023 fire the ride's grotto covered the second helix and parts of the transitions into and out of it.\n\n\n\n\n * The roller coaster database lists the original and the rebuilt Alpenexpress as two fully separate roller coasters\n * OnRide video from 2011 of the original Alpenexpress (YouTube)\n * OnRide video from 2024 of the rebuilt Alpenexpress (YouTube)",
+  "categories": [
+    "Roller coasters in Germany",
+    "Roller coasters opened in 1984",
+    "Roller coasters closed in 2023",
+    "Rides at Europa-Park"
+  ],
+  "infoboxRaw": {
+    "name": "Alpenexpress Enzian",
+    "image": "Europapark_Alpenexpress.jpg",
+    "caption": "The old ride, dipping below the log flume",
+    "previousnames": "Grottenblitz",
+    "location": "Europa-Park",
+    "section": "Austria",
+    "coordinates": "48.26208°N, 7.72283°W",
+    "status": "closed",
+    "opened": "1984",
+    "year": "1984",
+    "closed": "June 19, 2023",
+    "replacement": "A rebuilt Alpenexpress Enzian (2024)",
+    "type2": "Powered",
+    "type3": "Virtual reality",
+    "manufacturer": "Mack Rides",
+    "model": "Grottenblitz",
+    "height_m": "6",
+    "length_m": "264",
+    "speed_km/h": "45",
+    "inversions": "0",
+    "duration": "1:40",
+    "capacity": "1100",
+    "restriction_cm": "100",
+    "trains": "1",
+    "carspertrain": "10",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "975"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Alpenexpress_Enzian",
+  "wikiPageId": 50371551,
+  "fetchedAt": "2026-02-28T20:43:47.788Z",
+  "articleLength": 2546
+}

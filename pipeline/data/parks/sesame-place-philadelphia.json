@@ -1,0 +1,29 @@
+{
+  "id": "sesame-place-philadelphia",
+  "name": "Sesame Place Philadelphia",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Middletown Township, Bucks County, Pennsylvania, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1980,
+  "yearClosed": null,
+  "owner": "United Parks & Resorts",
+  "chain": null,
+  "website": "Sesame Place Philadelphia Homepage",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Sesame Place Philadelphia is a children's theme park and water park based on the children's educational television program Sesame Street.  It is one of the two Sesame Place theme parks owned and operated by United Parks & Resorts under an exclusive license from Sesame Workshop, the non-profit owner of Sesame Street.  Located outside of Philadelphia in Middletown Township, Bucks County, Pennsylvania (with a Langhorne mailing address), it is the older of the two Sesame Street theme parks in the United States (the other being Sesame Place San Diego).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sesame_Place_(54062957549).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sesame_Place_Philadelphia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:26.999Z"
+}

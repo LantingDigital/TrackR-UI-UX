@@ -1,0 +1,29 @@
+{
+  "id": "sela-saudi-arabia",
+  "name": "Sela",
+  "formerNames": [],
+  "country": "SA",
+  "countryName": "Saudi Arabia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Medina, Saudi Arabia",
+  "latitude": 24.475,
+  "longitude": -39.59944,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Selaʾ is a mountain in Medina in modern Saudi Arabia.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sela_(Saudi_Arabia)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:34.492Z"
+}

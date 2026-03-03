@@ -1,0 +1,29 @@
+{
+  "id": "magic-castle",
+  "name": "The Magic Castle",
+  "formerNames": [],
+  "country": "ZA",
+  "countryName": "South Africa",
+  "region": null,
+  "continent": "Africa",
+  "city": "7001 Franklin Avenue, Hollywood, California, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.magiccastle.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Magic Castle is a performance venue, restaurant, and clubhouse for the Academy of Magical Arts for magicians and magic enthusiasts in the Hollywood district of Los Angeles, California, United States.  The Academy was started in 1952 by William Larsen Sr. , who founded Genii magazine in 1936.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Magic_Castle_Franklin_Blvd.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Magic_Castle",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:50.926Z"
+}

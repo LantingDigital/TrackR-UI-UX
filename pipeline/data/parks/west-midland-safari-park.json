@@ -1,0 +1,29 @@
+{
+  "id": "west-midland-safari-park",
+  "name": "West Midlands Safari Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Bewdley, Worcestershire, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Groupe looping",
+  "chain": null,
+  "website": "wmsp.co.uk/index.php",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "West Midlands Safari Park is a safari park located in Bewdley, Worcestershire, England.  It was opened under the name of West Midland Safari Park in Spring 1973. \n\nThe park holds over 165 species of exotic animals and features other attractions such as a small theme park.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Giraffes_at_west_midlands_safari_park.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/West_Midlands_Safari_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:54.810Z"
+}

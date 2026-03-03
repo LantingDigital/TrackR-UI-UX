@@ -1,0 +1,61 @@
+{
+  "articleTitle": "HangTime (roller coaster)",
+  "introSection": "HangTime is a steel roller coaster at Knott's Berry Farm in Buena Park, California. The Infinity Coaster was manufactured by Gerstlauer on the former site of Boomerang and Riptide. On opening, it had the steepest drop on a rollercoaster in California, at 96°. HangTime was also marketed by the park as the first Dive Coaster in California. It opened on May 18, 2018.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "On August 16, 2017, Knott's Berry Farm announced that they would be adding HangTime. It would be replacing Boomerang, and Riptide. It would also be the second Gerstlauer Infinity Coaster in the United States, with the first one being The Monster at Adventureland in Altoona, Iowa.\n\nVertical construction of HangTime began in November 2017 with the lift hill supports rising.\n\nIn January 2018, the track layout was complete. HangTime performed its first test runs two months later in March 2018. Much like The Smiler at Alton Towers, the trains would have four rows that carry 16 riders.\n\nHangTime opened to season passholders on May 11, 2018, and to the general public a week later on May 18, 2018."
+    },
+    {
+      "title": "Theme",
+      "content": "The theme of the ride is a throwback to the days of surfing the California coast in the 1960s. Most of the ride is surf or nautical themed."
+    },
+    {
+      "title": "Ride experience",
+      "content": "The train leaves the station and starts climbing the 150 ft vertical lift hill. Upon reaching the top, the train is held for five seconds before plunging at a 96-degree angle. The train reaches a max speed of 57 mph and heads through a negative-g stall loop, a one-of-a-kind inversion. This inversion is similar to a Norwegian loop, except the train enters a non-inverted dive loop followed by a sidewinder before exiting in the opposite direction. The train moves through a corkscrew and a cutback. Following the cutback, the train goes through a small ejector airtime hump. The train then enters a cobra roll located in front of the negative-g stall loop. After exiting the cobra roll, the train passes the on-ride camera, which takes photos of the riders. The train slows down on the brake run, turns right and heads back into the station."
+    }
+  ],
+  "fullText": "HangTime is a steel roller coaster at Knott's Berry Farm in Buena Park, California. The Infinity Coaster was manufactured by Gerstlauer on the former site of Boomerang and Riptide. On opening, it had the steepest drop on a rollercoaster in California, at 96°. HangTime was also marketed by the park as the first Dive Coaster in California. It opened on May 18, 2018.\n\nOn August 16, 2017, Knott's Berry Farm announced that they would be adding HangTime. It would be replacing Boomerang, and Riptide. It would also be the second Gerstlauer Infinity Coaster in the United States, with the first one being The Monster at Adventureland in Altoona, Iowa.\n\nVertical construction of HangTime began in November 2017 with the lift hill supports rising.\n\nIn January 2018, the track layout was complete. HangTime performed its first test runs two months later in March 2018. Much like The Smiler at Alton Towers, the trains would have four rows that carry 16 riders.\n\nHangTime opened to season passholders on May 11, 2018, and to the general public a week later on May 18, 2018.\n\nThe theme of the ride is a throwback to the days of surfing the California coast in the 1960s. Most of the ride is surf or nautical themed.\n\nThe train leaves the station and starts climbing the 150 ft vertical lift hill. Upon reaching the top, the train is held for five seconds before plunging at a 96-degree angle. The train reaches a max speed of 57 mph and heads through a negative-g stall loop, a one-of-a-kind inversion. This inversion is similar to a Norwegian loop, except the train enters a non-inverted dive loop followed by a sidewinder before exiting in the opposite direction. The train moves through a corkscrew and a cutback. Following the cutback, the train goes through a small ejector airtime hump. The train then enters a cobra roll located in front of the negative-g stall loop. After exiting the cobra roll, the train passes the on-ride camera, which takes photos of the riders. The train slows down on the brake run, turns right and heads back into the station.\n\n\n\n\n\n\n",
+  "categories": [
+    "Roller coasters in California",
+    "Roller coasters operated by Six Flags"
+  ],
+  "infoboxRaw": {
+    "name": "HangTime",
+    "image": "File:Hangtime 14.jpg",
+    "location": "Knott's Berry Farm",
+    "section": "The Boardwalk",
+    "previousattraction": "Boomerang, Riptide",
+    "coordinates": "33.84475°N, -118.00146°W",
+    "status": "Operating",
+    "opened": "May 18, 2018",
+    "year": "2018",
+    "type2": "Infinity Coaster",
+    "manufacturer": "Gerstlauer",
+    "model": "Infinity Coaster",
+    "track": "Custom - Infinity Coaster",
+    "lift": "Vertical chain lift hill",
+    "height_ft": "150",
+    "length_ft": "2198",
+    "speed_mph": "57",
+    "inversions": "5",
+    "duration": "1:15",
+    "angle": "96",
+    "capacity": "800",
+    "restriction_in": "48-77",
+    "trains": "3",
+    "carspertrain": "4",
+    "rowspercar": "1",
+    "ridersperrow": "4",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar Fair Fast Lane availibility.svg",
+    "virtual_queue_status": "available",
+    "accessible": "yes",
+    "transfer_accessible": "yes",
+    "rcdb_number": "15413"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/HangTime_(roller_coaster)",
+  "wikiPageId": 54931274,
+  "fetchedAt": "2026-02-28T20:13:56.247Z",
+  "articleLength": 2058
+}

@@ -1,0 +1,31 @@
+{
+  "id": "leofoo-village-theme-park",
+  "name": "Leofoo Village Theme Park",
+  "formerNames": [
+    "Leofoo Wildlife Park"
+  ],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Guanxi, Hsinchu County, Taiwan",
+  "latitude": 24.82111,
+  "longitude": -121.18167,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1979,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "The Leofoo Village Theme Park is a theme park and a safari located in Guanxi Township, Hsinchu County, Taiwan.  It features three roller coasters, including an inverted shuttle coaster, Screaming Condor, an Intamin twist-and-turn coaster dubbed Sahara Twist, as well as a Vekoma Roller Skater (335m) in the Wild West section of the park, Little Rattler, themed to an old mining railway.  There is also the Nairobi Express, a narrow gauge railway built by Severn Lamb.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/LeofooVillage_MainEntrance_Back.jpg",
+  "imageAttribution": "Leofoo Village Theme Park main entrance.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Leofoo_Village_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:07.577Z"
+}

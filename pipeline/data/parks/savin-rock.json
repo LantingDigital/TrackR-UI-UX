@@ -1,0 +1,29 @@
+{
+  "id": "savin-rock",
+  "name": "Savin Rock",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Connecticut",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Savin Rock is a section of West Haven, Connecticut, named after the rocky outcropping at the shorefront in Bradley Point Park. \n\nIt was the site of the Savin Rock Amusement Park, which began in the late 19th century as a regionally renowned seaside resort.  It evolved into a general amusement park in the 20th century and eventually closed in 1966.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Savin_Rock",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:27.654Z"
+}

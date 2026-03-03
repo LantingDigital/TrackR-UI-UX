@@ -1,0 +1,29 @@
+{
+  "id": "parque-de-atracciones-de-madrid",
+  "name": "Parque de Atracciones de Madrid",
+  "formerNames": [],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": "Spain",
+  "continent": "Europe",
+  "city": "Madrid",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1969,
+  "yearClosed": null,
+  "owner": "Madrid City Council",
+  "chain": null,
+  "website": "parquedeatracciones.es",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Parque de Atracciones de Madrid (in English: Madrid’s Amusement Park) is a 20 ha amusement park located in the Casa de Campo in Madrid (Spain).  Opened in 1969, it is the third-oldest operating amusement park in Spain behind Parc d'Atraccions Tibidabo (opened in 1901) and Parque de Atracciones Monte Igueldo (opened in 1911).  It is the flagship park of Parques Reunidos, which operates the park under Madrid municipal government concession until 2039.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrada_Parque_de_Atracciones_de_Madrid.jpg",
+  "imageAttribution": "Park’s principal entrance.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parque_de_Atracciones_de_Madrid",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:58:02.765Z"
+}

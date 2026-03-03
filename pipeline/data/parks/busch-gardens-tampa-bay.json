@@ -1,0 +1,29 @@
+{
+  "id": "busch-gardens-tampa-bay",
+  "name": "Busch Gardens Tampa Bay",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Tampa",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1959,
+  "yearClosed": null,
+  "owner": "United Parks & Resorts",
+  "chain": null,
+  "website": null,
+  "coasterCount": 8,
+  "totalCoasterCount": 12,
+  "description": "Busch Gardens Tampa Bay is a 335 acre animal theme park located in Tampa, Florida, United States, with the entire park landscaped and designed around themes of Africa.  Owned and operated by United Parks & Resorts, the park opened on March 31, 1959.  The park has an annual attendance consistently exceeding 4 million, often ranking second among United Parks & Resorts parks behind SeaWorld Orlando.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Edge-of-africa-giraffes.jpg",
+  "imageAttribution": "A view of the Serengeti Plains in 2006",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Busch_Gardens_Tampa_Bay",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:23.503Z"
+}

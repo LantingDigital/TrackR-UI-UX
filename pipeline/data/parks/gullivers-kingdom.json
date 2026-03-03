@@ -1,0 +1,29 @@
+{
+  "id": "gullivers-kingdom",
+  "name": "Gulliver's Kingdom",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Matlock Bath",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1978,
+  "yearClosed": null,
+  "owner": "Phillips family",
+  "chain": null,
+  "website": "https://www.gulliverskingdomresort.co.uk",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Gulliver's Kingdom (also known as Gulliver's Matlock Bath) is a theme park aimed at children aged 3-13 in the Derbyshire village of Matlock Bath, England.  The park was founded in 1978 by Ray and Hilary Phillips as a model village, before later expanding to include a small train and some second hand rides.  The Philips Family still own Gulliver's Kingdom in the present day.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AGulliver%2527sLand.png",
+  "imageAttribution": "Gulliver's Kingdom",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gulliver's_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:12.128Z"
+}

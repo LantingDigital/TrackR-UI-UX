@@ -1,0 +1,32 @@
+{
+  "id": "trimpers-rides",
+  "name": "Trimper Rides Of Ocean City",
+  "formerNames": [
+    "Trimper’s Rides",
+    "Windsor Resort"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Maryland",
+  "continent": "North America",
+  "city": "Ocean City, Maryland",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Windsor Resorts",
+  "chain": null,
+  "website": "https://www.trimperrides.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Trimper Rides Of Ocean City is an amusement park located near the inlet at South First Street and the boardwalk in Ocean City, Maryland, United States.  It was founded in 1893 as The Windsor Resort.  It is located at the south end of the boardwalk and consists of three outdoor lots and an indoor section.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Ocean_City_MD_Boardwalk_August_2009_2.jpg",
+  "imageAttribution": "Trimper Rides from the boardwalk",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Trimper's_Rides",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:25.424Z"
+}

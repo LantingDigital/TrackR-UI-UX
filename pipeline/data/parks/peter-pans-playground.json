@@ -1,0 +1,29 @@
+{
+  "id": "peter-pans-playground",
+  "name": "Peter Pans Playground",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Worthing",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1951,
+  "yearClosed": 2010,
+  "owner": "Worthing Borough Council",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 4,
+  "description": "Peter Pan's Playground was an amusement park in the coastal resort of Worthing, West Sussex, England for young children under 11 years of age (children had to be accompanied by an adult)",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Peter_Pan's_Playground",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:31.338Z"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "dragon-challenge",
+  "name": "Dragon Challenge",
+  "formerNames": [
+    "Dueling Dragons"
+  ],
+  "parkId": "universal-orlando-resort",
+  "parkName": "Universal Orlando Resort",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "heightFt": null,
+  "heightM": null,
+  "speedMph": null,
+  "speedKmh": null,
+  "lengthFt": null,
+  "lengthM": null,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Inverted",
+  "propulsion": "Chain lift",
+  "manufacturer": "Bolliger & Mabillard",
+  "designer": "Werner Stengel",
+  "model": "Inverted Coaster",
+  "status": "closed",
+  "yearOpened": 1999,
+  "yearClosed": 2017,
+  "description": "Dragon Challenge, formerly named Dueling Dragons (1999–2010), was a pair of intertwined inverted roller coasters in the Wizarding World of Harry Potter area of Islands of Adventure in Orlando, Florida, United States.  Designed by Bolliger & Mabillard of Switzerland, the ride was a dueling roller coaster featuring two tracks – one side was called Chinese Fireball and the other Hungarian Horntail – that were themed as two chasing dragons.  Its layout involved two trains sharing adjacent lift hills, with each traversing unique courses.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/DragonChallengeEntrance.JPG",
+  "imageAttribution": "Entrance to Dragon Challenge",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dragon_Challenge",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:15:48.904Z",
+  "dataQuality": "stub",
+  "searchTerms": [
+    "dragon challenge",
+    "dueling dragons",
+    "universal orlando resort",
+    "bolliger & mabillard",
+    "b&m",
+    "inverted coaster",
+    "inverted",
+    "florida"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Bolliger & Mabillard"
+  },
+  "popularityScore": 56.9,
+  "popularityTier": "notable",
+  "popularityRank": 709
+}

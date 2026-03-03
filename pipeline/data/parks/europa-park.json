@@ -1,0 +1,29 @@
+{
+  "id": "europa-park",
+  "name": "Europa-Park",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Europa-Park-Straße 2\n77977 Rust",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Mack Family",
+  "chain": null,
+  "website": "www.europapark.de",
+  "coasterCount": 7,
+  "totalCoasterCount": 8,
+  "description": "Europa-Park is a theme park in Rust, Baden-Württemberg, Germany.  Covering a total area of 95 hectares, twenty themed areas offer around a hundred attractions, including shows and fourteen roller coasters.  The park also includes six hotels, a camping site, a tepee village, a cinema and a conference center.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/EuropaPark_logo.svg%0AHaupteingang_(main_entrance)_Europa-Park_Rust.JPG",
+  "imageAttribution": "Europa-Park's main entrance in 2012",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Europa-Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:54.841Z"
+}

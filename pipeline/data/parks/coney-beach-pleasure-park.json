@@ -1,0 +1,29 @@
+{
+  "id": "coney-beach-pleasure-park",
+  "name": "Coney Beach Pleasure Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Eastern Promenade",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1918,
+  "yearClosed": null,
+  "owner": "Evans family",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Coney Beach Pleasure Park was a small amusement park in Porthcawl, Mid Glamorgan in Wales, opened in 1918 and in operation from the end of February until 5 November.  The park was permanently shut down on 5 October 2025.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Coney_Beach_Pleasure_Park_-_geograph.org.uk_-_269973.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Coney_Beach_Pleasure_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:00.775Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "yellowstone-bear-world",
+  "name": "Yellowstone Bear World",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Idaho",
+  "continent": "North America",
+  "city": "Rexburg, Idaho, U.S.A.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "yellowstonebearworld.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Yellowstone Bear World is a privately owned drive-thru wildlife park.  It is located in Rexburg, Idaho, 80 miles from Yellowstone National Park.  It was established in 1998.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Yellowstone_Bear_World_Entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Yellowstone_Bear_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:13.621Z"
+}

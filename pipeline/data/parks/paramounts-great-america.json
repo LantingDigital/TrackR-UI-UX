@@ -1,0 +1,37 @@
+{
+  "id": "paramounts-great-america",
+  "name": "California's Great America",
+  "formerNames": [
+    "* Marriott's Great America",
+    "*",
+    "* Great America",
+    "* (198592",
+    "2007)",
+    "* Paramount's Great America",
+    "*"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Santa Clara, California",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "http://www.sixflags.com/cagreatamerica",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "California's Great America is a 112 acre amusement park located in Santa Clara, California, United States.  Owned and operated by Six Flags, it originally opened in 1976 as one of two Americana-themed parks built by the Marriott Corporation.  Great America features over 40 rides and attractions, with Gold Striker among its most notable, which has ranked as a top wooden roller coaster in the world in the annual Golden Ticket Awards publication from Amusement Today.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/California's_Great_America_2.JPG",
+  "imageAttribution": "The Carousel Columbia, the park's centerpiece attraction (pictured in 2015)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/California's_Great_America",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:56.608Z"
+}

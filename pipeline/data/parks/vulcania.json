@@ -1,0 +1,29 @@
+{
+  "id": "vulcania",
+  "name": "Vulcania",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Route de Mazayes",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Regional Council of Auvergne",
+  "chain": null,
+  "website": "www.vulcania.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Vulcania, the \"European Park of Volcanism\", is an educational French amusement park and museum with a volcano theme.  Situated in Saint-Ours-les-Roches, Auvergne, 15 km north-west of Clermont-Ferrand, it was officially inaugurated in 2002.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AVulcania_exterieur_5.jpg",
+  "imageAttribution": "Outdoor area",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Vulcania",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:35.227Z"
+}

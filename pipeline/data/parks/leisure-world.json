@@ -1,0 +1,29 @@
+{
+  "id": "leisure-world",
+  "name": "Leisure World",
+  "formerNames": [],
+  "country": "LK",
+  "countryName": "Sri Lanka",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Leisure World may refer to:\n\n\n * Leisure World, Arizona\n * Laguna Woods Village, Laguna Woods, California, formerly known as Leisure World\n * Leisure World, Seal Beach, California\n * Leisure World, Maryland\n * MV Leisure World, a cruise ship",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Leisure_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:02.722Z"
+}

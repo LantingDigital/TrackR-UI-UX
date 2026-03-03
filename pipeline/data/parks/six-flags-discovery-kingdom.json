@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-discovery-kingdom",
+  "name": "Six Flags Discovery Kingdom",
+  "formerNames": [
+    "Marine World  Marine World Africa USA  The New Marine World Theme Park  Six Flags Marine World"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Vallejo",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1968,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Six Flags Discovery Kingdom (formerly known as Six Flags Marine World, Marine World, The New Marine World Theme Park, and Marine World Africa USA) is a 135-acre (55 ha) animal theme park located in Vallejo, California, off of Interstate 80 between San Francisco and Sacramento.  The park includes a variety of roller coasters and other amusement rides.  Six Flags Discovery Kingdom has been part of the Six Flags chain of amusement parks since 1999.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Discovery_Kingdom_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Discovery_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:38.662Z"
+}

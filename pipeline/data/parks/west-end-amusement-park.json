@@ -1,0 +1,31 @@
+{
+  "id": "west-end-amusement-park",
+  "name": "Frontierland Western Theme Park",
+  "formerNames": [
+    "West End Amusement Park Fun City Morecambe Pleasure Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Morecambe, Lancashire, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1909,
+  "yearClosed": 1999,
+  "owner": "BPB.Ltd (1909–1999) Morrisons Plc (2001–2009)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Frontierland Western Theme Park was a theme park in Morecambe, Lancashire, England, situated on Marine Road West, which operated from 1906 to 7 November 1999, with a final year consisting of only travelling rides in 2000.  Frontierland originally operated as West End Amusement Park, Fun City and Morecambe Pleasure Park from 1906 to 1986 before being transformed into Frontierland for the 1987 season, in an attempt to defeat dwindling visitor numbers. \n\nIn 2000, Frontierland was officially closed down by Geoffrey Thompson, managing director of Blackpool Pleasure Beach.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3AFrontierland_entrance_sign_2005.jpg%7C200px%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Frontierland%2C_Morecambe",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:20.513Z"
+}

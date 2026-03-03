@@ -1,0 +1,80 @@
+{
+  "articleTitle": "Manta (SeaWorld San Diego)",
+  "introSection": "Manta is a steel launched roller coaster at SeaWorld in San Diego, California, United States. The ride was manufactured by MACK Rides and opened to the public on May 26, 2012. It utilizes the same ride system that was used in Blue Fire which opened in 2009 at Europa Park.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "Rumors about a new roller coaster for SeaWorld San Diego date back to mid October 2007 when details of a possible 2010 project were leaked. This plan was canceled in mid-2008. In early January 2011, construction documents were discovered which detailed the plans for a $10 million manta ray-themed ride and animal exhibit due to open in 2012. On February 9, 2011, SeaWorld San Diego announced that they would be opening a Mack launched roller coaster called Manta in 2012.\n\nIn late 2018, SeaWorld San Diego premiered a Christmas overlay of the attraction called Merry Manta. The first launch area would feature holiday music and dynamic lightning that created three different shows. Riders would also twist through a sea of glowing Christmas trees while the cool holiday air rushed by."
+    },
+    {
+      "title": "Ride",
+      "content": "Manta features two launches. Riders reach speeds of up to 43 mph on the two-minute, 2800 ft long ride. The ride stands at a height of 30 ft and features a drop including an underground portion of 54 ft. The limited height was required due to height restrictions in place by the California Coastal Commission."
+    },
+    {
+      "title": "Trains",
+      "content": "Manta's four trains each feature manta ray shaped fronts. The 5-car trains each seat riders 2 across in 2 rows for a total of 20 riders per train. There is also elevated seating for the second row of each car."
+    },
+    {
+      "title": "Media",
+      "content": "Manta begins with a 270 degree projected media experience at the first launch. The train rocks forward and backward in synchronization with the projected film of a coral reef and school of rays. The media tunnel and film was produced by Falcon's Treehouse. For Electric Ocean, Manta changes after 7PM to Manta re-charged. The film projection for Manta re-charged features an array of colored lights projected on the screen. Various versions of this launch re-purpose Rick McKee's soundtrack from the Mako coaster at SeaWorld Orlando."
+    },
+    {
+      "title": "Animal exhibit",
+      "content": "The previously existing Forbidden Reef exhibit was incorporated into the attraction, featuring a touch pool above and an aquarium below The 100000 USgal exhibit features 65 Bat rays, 10 Shovelnose guitarfish, 2 White sturgeons and more than 400 other fish."
+    },
+    {
+      "title": "See also",
+      "content": "\n * 2012 in amusement parks\n * Manta (SeaWorld Orlando)\n * Texas Stingray (SeaWorld San Antonio)"
+    },
+    {
+      "title": "External links",
+      "content": "\n * Concept pictures and information at NewsPlusNotes\n * Manta Official Site on SeaWorld Parks at SeaWorldparks.com"
+    }
+  ],
+  "fullText": "Manta is a steel launched roller coaster at SeaWorld in San Diego, California, United States. The ride was manufactured by MACK Rides and opened to the public on May 26, 2012. It utilizes the same ride system that was used in Blue Fire which opened in 2009 at Europa Park.\n\nRumors about a new roller coaster for SeaWorld San Diego date back to mid October 2007 when details of a possible 2010 project were leaked. This plan was canceled in mid-2008. In early January 2011, construction documents were discovered which detailed the plans for a $10 million manta ray-themed ride and animal exhibit due to open in 2012. On February 9, 2011, SeaWorld San Diego announced that they would be opening a Mack launched roller coaster called Manta in 2012.\n\nIn late 2018, SeaWorld San Diego premiered a Christmas overlay of the attraction called Merry Manta. The first launch area would feature holiday music and dynamic lightning that created three different shows. Riders would also twist through a sea of glowing Christmas trees while the cool holiday air rushed by.\n\nManta features two launches. Riders reach speeds of up to 43 mph on the two-minute, 2800 ft long ride. The ride stands at a height of 30 ft and features a drop including an underground portion of 54 ft. The limited height was required due to height restrictions in place by the California Coastal Commission.\n\nManta's four trains each feature manta ray shaped fronts. The 5-car trains each seat riders 2 across in 2 rows for a total of 20 riders per train. There is also elevated seating for the second row of each car.\n\nManta begins with a 270 degree projected media experience at the first launch. The train rocks forward and backward in synchronization with the projected film of a coral reef and school of rays. The media tunnel and film was produced by Falcon's Treehouse. For Electric Ocean, Manta changes after 7PM to Manta re-charged. The film projection for Manta re-charged features an array of colored lights projected on the screen. Various versions of this launch re-purpose Rick McKee's soundtrack from the Mako coaster at SeaWorld Orlando.\n\nThe previously existing Forbidden Reef exhibit was incorporated into the attraction, featuring a touch pool above and an aquarium below The 100000 USgal exhibit features 65 Bat rays, 10 Shovelnose guitarfish, 2 White sturgeons and more than 400 other fish.\n\n\n * 2012 in amusement parks\n * Manta (SeaWorld Orlando)\n * Texas Stingray (SeaWorld San Antonio)\n\n\n\n\n * Concept pictures and information at NewsPlusNotes\n * Manta Official Site on SeaWorld Parks at SeaWorldparks.com",
+  "categories": [
+    "SeaWorld San Diego",
+    "Roller coasters operated by United Parks & Resorts",
+    "Roller coasters in California"
+  ],
+  "infoboxRaw": {
+    "name": "Manta",
+    "logo_width": "250px",
+    "image": "MantaEntranceSanDiego.jpg",
+    "imagedimensions": "250px",
+    "caption": "The entrance.",
+    "location": "SeaWorld San Diego",
+    "soft_opened": "May 23, 2012",
+    "opened": "May 26, 2012",
+    "year": "2012",
+    "type2": "Launched",
+    "type3": "Family",
+    "status": "Operating",
+    "manufacturer": "Mack Rides",
+    "designer": "PGAV Destinations",
+    "lift": "LSM",
+    "height_ft": "30",
+    "drop_ft": "54",
+    "length_ft": "2800",
+    "speed_mph": "43",
+    "inversions": "0",
+    "duration": "1:56",
+    "capacity": "1400",
+    "acceleration_from": "0",
+    "acceleration_mph": "43",
+    "gforce": "Between 3 and 4 Gs",
+    "restriction_in": "48",
+    "trains": "4",
+    "carspertrain": "5",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Quick Queue",
+    "virtual_queue_image": "Quick Queue availability logo.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "9819"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Manta_(SeaWorld_San_Diego)",
+  "wikiPageId": 30815250,
+  "fetchedAt": "2026-02-28T20:13:57.184Z",
+  "articleLength": 2590
+}

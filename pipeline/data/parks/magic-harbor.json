@@ -1,0 +1,29 @@
+{
+  "id": "magic-harbor",
+  "name": "Magic Harbor",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "South Carolina",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Magic Harbor was an amusement park located south of Myrtle Beach, South Carolina that operated from 1954 until the mid-1990s.  Originally called PirateLand, it was renamed for its 1975 re-opening with a revamped British theme.  The site is now occupied by two campgrounds.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Magic_Harbor",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:09.582Z"
+}

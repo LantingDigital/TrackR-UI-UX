@@ -1,0 +1,29 @@
+{
+  "id": "travelling",
+  "name": "Travelling",
+  "formerNames": [],
+  "country": null,
+  "countryName": null,
+  "region": null,
+  "continent": null,
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Travel is the movement of people between distant geographical locations.  Travel can be done by foot, bicycle, automobile, train, boat, bus, airplane, ship or other means, with or without luggage, and can be one way or round trip.  Travel can also include relatively short stays between successive movements, as in the case of tourism.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Travel",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:59.363Z"
+}

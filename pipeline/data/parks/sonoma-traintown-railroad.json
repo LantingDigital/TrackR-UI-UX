@@ -1,0 +1,29 @@
+{
+  "id": "sonoma-traintown-railroad",
+  "name": "Sonoma TrainTown Railroad",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Sonoma, California",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1968,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.traintown.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Sonoma TrainTown Railroad (commonly called \"Sonoma Train Town\") is a tourist railroad and 10 acre amusement park in Sonoma, California.  Its main feature is a gauge miniature railway, which closely corresponds to a 1:4 scale model of a  standard gauge railroad.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sonoma_TrainTown_Railroad_logo.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sonoma_TrainTown_Railroad",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:23.062Z"
+}

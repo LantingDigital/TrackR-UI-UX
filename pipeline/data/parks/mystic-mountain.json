@@ -1,0 +1,29 @@
+{
+  "id": "mystic-mountain",
+  "name": "Mystic Mountain",
+  "formerNames": [],
+  "country": "JM",
+  "countryName": "Jamaica",
+  "region": null,
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Mystic Mountain is a photograph and a term for a region in the Carina Nebula imaged by the Hubble Space Telescope.  The view was captured by the then-new Wide Field Camera 3, though the region was also viewed by the previous generation instrument.  The new view celebrated the telescope's 20th anniversary of being in space in 2010.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mystic_Mountain",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:49.577Z"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "the-flying-cobras",
+  "name": "The Flying Cobras",
+  "formerNames": [
+    "The Mind Eraser at Geauga Lake/Six Flags Ohio/Six Flags Worlds of Adventure  Head Spin at Geauga Lake  Carolina Cobra at Carowinds"
+  ],
+  "parkId": "carowinds",
+  "parkName": "Carowinds",
+  "country": "US",
+  "countryName": "United States",
+  "region": "North Carolina",
+  "continent": "North America",
+  "heightFt": 116.5,
+  "heightM": 35.5,
+  "speedMph": 47,
+  "speedKmh": 75.6,
+  "lengthFt": 935,
+  "lengthM": 285,
+  "dropFt": 108,
+  "dropM": 32.9,
+  "inversions": 3,
+  "gForce": 5.2,
+  "duration": 108,
+  "material": "Steel",
+  "type": "Shuttle",
+  "propulsion": "Chain lift",
+  "manufacturer": "Vekoma",
+  "designer": null,
+  "model": "Boomerang",
+  "status": "operating",
+  "yearOpened": 2009,
+  "yearClosed": null,
+  "description": "The Flying Cobras is a steel boomerang roller coaster manufactured by Vekoma.  It is located at Carowinds in Charlotte, North Carolina, in the County Fair section of the park.  The Flying Cobras was the first roller coaster addition to Carowinds following the park's purchase by Cedar Fair in 2006.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Head_Spin_Geauga_Lake_train.png",
+  "imageAttribution": "Top: Former logo at Carowinds. Bottom: The Flying Cobras when it was Head Spin at Geauga Lake",
+  "wikiUrl": "https://en.wikipedia.org/wiki/The_Flying_Cobras",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:17:30.696Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "the flying cobras",
+    "the mind eraser at geauga lake/six flags ohio/six flags worlds of adventure  head spin at geauga lake  carolina cobra at carowinds",
+    "carowinds",
+    "vekoma",
+    "boomerang",
+    "shuttle",
+    "north carolina"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Vekoma"
+  },
+  "popularityScore": 64,
+  "popularityTier": "iconic",
+  "popularityRank": 428
+}

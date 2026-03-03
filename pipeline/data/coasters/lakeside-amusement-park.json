@@ -1,0 +1,60 @@
+{
+  "id": "lakeside-amusement-park",
+  "name": "Lakeside Amusement Park",
+  "formerNames": [
+    "White City"
+  ],
+  "parkId": "lakeside-colorado",
+  "parkName": "Lakeside, Colorado",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Colorado",
+  "continent": "North America",
+  "heightFt": null,
+  "heightM": null,
+  "speedMph": null,
+  "speedKmh": null,
+  "lengthFt": null,
+  "lengthM": null,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": null,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": null,
+  "manufacturer": "Unknown",
+  "designer": null,
+  "model": null,
+  "status": "operating",
+  "yearOpened": 1908,
+  "yearClosed": null,
+  "description": "Lakeside Amusement Park is a family-owned amusement park in Lakeside, Colorado, adjacent to Denver.  Opened in 1908, it is the oldest amusement park in Colorado still operating in its original location, and is the lone remaining White City park in the United States.  The park, occupying nearly half of the Town of Lakeside that it was responsible for creating in 1907, features the landmark Tower of Jewels and the 1940 Cyclone roller coaster.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ATower_of_Jewels%2C_Lakeside_Amusement_Park%2C_Lakeside%2C_Colorado%2C_USA.jpg",
+  "imageAttribution": "Tower of Jewels at Lakeside Amusement Park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lakeside_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:14:05.936Z",
+  "dataQuality": "stub",
+  "searchTerms": [
+    "lakeside amusement park",
+    "white city",
+    "lakeside, colorado",
+    "unknown",
+    "sit-down",
+    "colorado"
+  ],
+  "_meta": {
+    "manufacturerMatched": false,
+    "manufacturerRaw": ""
+  },
+  "popularityScore": 54.4,
+  "popularityTier": "notable",
+  "popularityRank": 754
+}

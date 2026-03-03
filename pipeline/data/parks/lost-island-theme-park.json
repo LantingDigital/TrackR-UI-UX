@@ -1,0 +1,29 @@
+{
+  "id": "lost-island-theme-park",
+  "name": "Lost Island Theme Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Iowa",
+  "continent": "North America",
+  "city": "Waterloo",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2022,
+  "yearClosed": null,
+  "owner": "The Bertch Family",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Lost Island Theme Park is a theme park in Waterloo, Iowa.  The 90 acre park includes five themed lands, which feature numerous attractions; including three roller coasters.  Lost Island Theme Park is owned by the Bertch family, who operate the Lost Island Waterpark, which is located next to the site of the theme park.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Lost_Island_Theme_Park_Gate.jpg",
+  "imageAttribution": "Park entrance gate",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lost_Island_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:56.425Z"
+}

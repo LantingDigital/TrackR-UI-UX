@@ -1,0 +1,29 @@
+{
+  "id": "tibidabo-amusement-park",
+  "name": "Tibidabo",
+  "formerNames": [],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": "Spain",
+  "continent": "Europe",
+  "city": "Barcelona",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "City Council of Barcelona",
+  "chain": null,
+  "website": "https://www.tibidabo.cat/ca/parc-datraccions",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Tibidabo Amusement Park (Catalan: Parc d'Atraccions Tibidabo) is an amusement park located on Tibidabo in the Collserola Ridge in Barcelona.  The park was built in 1899 by the entrepreneur Salvador Andreu and opened in 1905.  The park is among the oldest in the world still functioning.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ATibidaboBlocks.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tibidabo_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:46.782Z"
+}

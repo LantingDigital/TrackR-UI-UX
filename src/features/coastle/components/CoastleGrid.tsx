@@ -19,6 +19,7 @@ interface CoastleGridProps {
   guessNumber: number;
   shouldReveal: boolean;
   isEmpty?: boolean; // show question-mark placeholder grid
+  skipAnimation?: boolean; // skip flip animation for cells loaded from storage
 }
 
 export const CoastleGrid: React.FC<CoastleGridProps> = ({
@@ -26,6 +27,7 @@ export const CoastleGrid: React.FC<CoastleGridProps> = ({
   guessNumber,
   shouldReveal,
   isEmpty,
+  skipAnimation,
 }) => {
   if (isEmpty || !guess) {
     // Empty grid with question marks
@@ -75,6 +77,7 @@ export const CoastleGrid: React.FC<CoastleGridProps> = ({
                   cellIndex={row * 3 + colIdx}
                   size={CELL_SIZE}
                   shouldReveal={shouldReveal}
+                  skipAnimation={skipAnimation}
                 />
               ))}
           </View>

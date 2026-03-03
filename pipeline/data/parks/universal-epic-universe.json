@@ -1,0 +1,29 @@
+{
+  "id": "universal-epic-universe",
+  "name": "Universal Epic Universe",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Orlando, Florida, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2025,
+  "yearClosed": null,
+  "owner": "NBCUniversal",
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Universal Epic Universe is a theme park located in Orlando, Florida, United States.  It opened to the public on May 22, 2025.  Epic Universe is the third theme park, and fourth overall, to open at Universal Orlando Resort.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Chronos_Tower_Front_Epic_Universe.jpg",
+  "imageAttribution": "Universal Epic Universe entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Epic_Universe",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:12.577Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "belantis",
+  "name": "Belantis",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": null,
+  "latitude": 51.25181,
+  "longitude": -12.31528,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2003,
+  "yearClosed": null,
+  "owner": "Compagnie des Alpes",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Belantis is an amusement park next to Leipzig, Germany.  Covering 27 hectares, the park offers over 60 attractions, including four roller coasters.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Eingangstor-belantis.jpg",
+  "imageAttribution": "Belantis entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Belantis",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:13.925Z"
+}

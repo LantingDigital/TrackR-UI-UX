@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { StyleSheet, View, Text, Pressable, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
+  runOnJS,
 } from 'react-native-reanimated';
 import { colors } from '../../theme/colors';
 import { typography } from '../../theme/typography';
@@ -21,11 +22,11 @@ import {
   CoastleSearchBar,
 } from './components';
 import { CoastleHintButton, HINT_MORPH_DURATION } from './components/CoastleHintButton';
-import { CoastleHintTooltip } from './components/CoastleHintModal';
+import { CoastleResultCard } from './components/CoastleResultCard';
 import { DEFAULT_TUNING } from './components/CoastleDebugPanel';
-import type { CoastleHeaderRef } from './components/CoastleHeader';
 import type { CoastleHintButtonRef } from './components/CoastleHintButton';
 
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const REVEAL_DURATION = 880; // 9 cells × ~80ms stagger + flip time
 const HINT_BACKDROP_CLOSE_DURATION = 470;
 
@@ -34,16 +35,31 @@ export const CoastleScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const { game, stats, startGame, submitGuess, resetGame, generateShareText } = useCoastleStore();
 
-  const headerRef = useRef<CoastleHeaderRef>(null);
   const hintButtonRef = useRef<CoastleHintButtonRef>(null);
-  const [activeGridIndex, setActiveGridIndex] = useState(0);
+  const activeGridIndex = useSharedValue(0);
+  const slideX = useSharedValue(0);
   const [isRevealing, setIsRevealing] = useState(false);
   const [revealingIndex, setRevealingIndex] = useState<number | null>(null);
 
   // Hint state
   const [viewedHintIds, setViewedHintIds] = useState<number[]>([]);
-  const [showTooltip, setShowTooltip] = useState(false);
   const [isHintMorphOpen, setIsHintMorphOpen] = useState(false);
+
+  // Result card state
+  const [resultMounted, setResultMounted] = useState(false);
+  const isResultShowingRef = useRef(false); // ref-based guard — keeps showResult stable
+  // Frozen snapshot of game data at the moment the result card appears.
+  // This prevents the card content from changing when resetGame() fires during Play Again.
+  const [resultSnapshot, setResultSnapshot] = useState<{
+    coasterName: string;
+    gameStatus: 'won' | 'lost';
+    guessCount: number;
+    shareText: string;
+  } | null>(null);
+  const gridScale = useSharedValue(1);
+  const gridOpacity = useSharedValue(1);
+  const resultOpacity = useSharedValue(0);
+  const resultCardScale = useSharedValue(0.88);
 
   // Start a daily game on mount
   useEffect(() => {
@@ -56,32 +72,85 @@ export const CoastleScreen: React.FC = () => {
   useEffect(() => {
     if (game && game.guesses.length === 0) {
       setViewedHintIds([]);
-      setShowTooltip(false);
     }
   }, [game?.guesses.length]);
 
-  // Auto-open stats after game ends (brief delay for last reveal)
+  // Auto-show result card after game ends
   useEffect(() => {
     if (game && (game.status === 'won' || game.status === 'lost')) {
-      const timer = setTimeout(() => {
-        headerRef.current?.openStats();
-      }, REVEAL_DURATION + 300);
+      // Freeze game data now — stays correct even after resetGame() fires during Play Again
+      setResultSnapshot({
+        coasterName: game.target.name,
+        gameStatus: game.status,
+        guessCount: game.guesses.length,
+        shareText: generateShareText(),
+      });
+      const timer = setTimeout(showResult, REVEAL_DURATION + 300);
       return () => clearTimeout(timer);
     }
   }, [game?.status]);
+
+  // ── Result card animations ──────────────────────────────
+
+  // Runs on the JS thread (via runOnJS from animation callback) so the ref is correctly updated.
+  // Setting isResultShowingRef.current inside a worklet only updates the UI-thread copy — not JS.
+  const onDismissComplete = useCallback(() => {
+    isResultShowingRef.current = false;
+    setResultMounted(false);
+  }, []);
+
+  // showResult has stable empty deps. The ref guard (on JS thread) prevents double-calls.
+  // Keeping it stable means onGridTap never changes reference → carousel never re-renders.
+  const showResult = useCallback(() => {
+    if (isResultShowingRef.current) return;
+    isResultShowingRef.current = true;
+    setResultMounted(true);
+    gridScale.value = withTiming(0.88, { duration: 220 });
+    gridOpacity.value = withTiming(0, { duration: 200 });
+    resultOpacity.value = withTiming(1, { duration: 160 });
+    resultCardScale.value = withTiming(1, { duration: 200 });
+  }, []); // intentionally empty — ref guard on JS thread
+
+  const dismissResult = useCallback(() => {
+    resultOpacity.value = withTiming(0, { duration: 160 });
+    resultCardScale.value = withTiming(0.88, { duration: 160 });
+    gridScale.value = withTiming(1, { duration: 220 });
+    // runOnJS ensures the ref and state are reset on the JS thread, not the UI thread
+    gridOpacity.value = withTiming(1, { duration: 220 }, (finished) => {
+      if (finished) runOnJS(onDismissComplete)();
+    });
+  }, []); // intentionally empty — onDismissComplete is stable
 
   const handleClose = useCallback(() => {
     haptics.tap();
     navigation.goBack();
   }, [navigation]);
 
-  const handlePlayAgain = useCallback(() => {
-    setActiveGridIndex(0);
+  // Play Again transition — blink-free:
+  // The result overlay (frosted white) stays visible the entire time — it IS the "white screen."
+  // We reset the game behind it, then fade the overlay out to reveal the new board.
+  // The overlay never moves off-screen, so the navigation background is never exposed.
+  const handlePlayAgainFromResult = useCallback(() => {
+    // Reset shared values (board invisible behind overlay — no flash)
+    gridScale.value = 1;
+    gridOpacity.value = 1;
+    resultCardScale.value = 0.88;
+    isResultShowingRef.current = false;
+
+    // Reset React state + game — overlay still fully opaque so this is invisible
     setRevealingIndex(null);
     setViewedHintIds([]);
-    setShowTooltip(false);
+    activeGridIndex.value = 0;
     resetGame();
     startGame('practice');
+
+    // After React commits: fade the overlay out to reveal the new board.
+    // No slideX involved = nothing ever goes off-screen = zero blink.
+    setTimeout(() => {
+      resultOpacity.value = withTiming(0, { duration: 400 }, (finished) => {
+        if (finished) runOnJS(setResultMounted)(false);
+      });
+    }, 60);
   }, [resetGame, startGame]);
 
   const handleGuess = useCallback(
@@ -105,30 +174,33 @@ export const CoastleScreen: React.FC = () => {
   // Hint handlers
   const handleViewHints = useCallback(() => {
     if (!game) return;
-    // Mark all current hints as viewed
     setViewedHintIds(game.hints.map((h) => h.afterGuess));
   }, [game]);
 
-  const handleShowTooltip = useCallback(() => {
-    setShowTooltip(true);
-  }, []);
-
-  const handleCloseTooltip = useCallback(() => {
-    setShowTooltip(false);
-  }, []);
-
-  const handleActiveIndexChange = useCallback((index: number) => {
-    setActiveGridIndex(index);
-  }, []);
-
-  // Screen-level backdrop for hint morph — rendered at screen root for correct z-ordering.
-  // MorphingPill's internal backdrop can't cover siblings with higher zIndex (header at 200),
-  // so we render the blur here at zIndex 250 (above header, below hintWrapper at 300).
+  // Screen-level backdrop for hint morph
   const hintBackdropOpacity = useSharedValue(0);
   const [hintBackdropMounted, setHintBackdropMounted] = useState(false);
 
   const hintBackdropStyle = useAnimatedStyle(() => ({
     opacity: hintBackdropOpacity.value,
+  }));
+
+  const slideStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: slideX.value }],
+  }));
+
+  const gridAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: gridScale.value }],
+    opacity: gridOpacity.value,
+  }));
+
+  const resultOverlayStyle = useAnimatedStyle(() => ({
+    opacity: resultOpacity.value,
+  }));
+
+  const resultCardStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: resultCardScale.value }],
+    opacity: resultOpacity.value,
   }));
 
   const handleHintMorphOpen = useCallback(() => {
@@ -146,21 +218,20 @@ export const CoastleScreen: React.FC = () => {
     setHintBackdropMounted(false);
   }, []);
 
-  if (!game) return <View style={styles.container} />;
+  const shareText = useMemo(() => generateShareText(), [game?.guesses.length, game?.status]);
+
+  if (!game) return <Animated.View style={[styles.container, slideStyle]} />;
 
   const excludeIds = game.guesses.map((g) => g.coaster.id);
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, slideStyle]}>
       {/* Header — zIndex ensures MorphingPill backdrop+card overlay all siblings */}
       <View style={styles.headerWrapper}>
         <CoastleHeader
-          ref={headerRef}
           onClose={handleClose}
           stats={stats}
           gameStatus={game.status}
-          shareText={generateShareText()}
-          onPlayAgain={handlePlayAgain}
           tuning={DEFAULT_TUNING}
         />
       </View>
@@ -172,26 +243,33 @@ export const CoastleScreen: React.FC = () => {
           : 'Practice'}
       </Text>
 
-      {/* Search bar */}
-      <View style={styles.searchContainer}>
-        <CoastleSearchBar
-          excludeIds={excludeIds}
-          gameStatus={game.status}
-          targetName={game.target.name}
-          onSelect={handleGuess}
-          disabled={isRevealing}
-        />
-      </View>
+      {/* Search bar — hidden once game ends */}
+      {game.status === 'playing' && (
+        <View style={styles.searchContainer}>
+          <CoastleSearchBar
+            excludeIds={excludeIds}
+            onSelect={handleGuess}
+            disabled={isRevealing}
+          />
+        </View>
+      )}
 
       {/* Equal gap: search → grid */}
       <View style={styles.spacer} />
 
-      {/* Grid carousel */}
-      <CoastleGridCarousel
-        guesses={game.guesses}
-        revealingIndex={revealingIndex}
-        onActiveIndexChange={handleActiveIndexChange}
-      />
+      {/* Game zone — grid carousel */}
+      <View style={styles.gameZone}>
+        <Animated.View style={gridAnimStyle}>
+          <CoastleGridCarousel
+            guesses={game.guesses}
+            revealingIndex={revealingIndex}
+            activeIndex={activeGridIndex}
+            onGridTap={
+              (game.status === 'won' || game.status === 'lost') ? showResult : undefined
+            }
+          />
+        </Animated.View>
+      </View>
 
       {/* Equal gap: grid → hint */}
       <View style={styles.spacer} />
@@ -205,7 +283,6 @@ export const CoastleScreen: React.FC = () => {
           viewedHintIds={viewedHintIds}
           gameStatus={game.status}
           onViewHints={handleViewHints}
-          onShowTooltip={handleShowTooltip}
           onMorphOpen={handleHintMorphOpen}
           onMorphCloseStart={handleHintMorphCloseStart}
           onMorphCloseComplete={handleHintMorphCloseComplete}
@@ -224,8 +301,29 @@ export const CoastleScreen: React.FC = () => {
         />
       </View>
 
-      {/* Screen-level blur backdrop for hint morph — renders above header (z200) but below hint card (z300).
-          MorphingPill's internal backdrop can't escape its parent's stacking context, so we render here. */}
+      {/* Screen-level result overlay — sits above everything except the header */}
+      {resultMounted && resultSnapshot && (
+        <Animated.View
+          style={[StyleSheet.absoluteFill, styles.resultOverlay, resultOverlayStyle]}
+          pointerEvents="box-none"
+        >
+          {/* Backdrop — tappable to dismiss */}
+          <Pressable style={StyleSheet.absoluteFill} onPress={dismissResult} />
+          {/* Card — centered */}
+          <Animated.View style={[styles.resultCardWrapper, resultCardStyle]} pointerEvents="box-none">
+            <CoastleResultCard
+              coasterName={resultSnapshot.coasterName}
+              gameStatus={resultSnapshot.gameStatus}
+              guessCount={resultSnapshot.guessCount}
+              shareText={resultSnapshot.shareText}
+              onPlayAgain={handlePlayAgainFromResult}
+              onDismiss={dismissResult}
+            />
+          </Animated.View>
+        </Animated.View>
+      )}
+
+      {/* Screen-level blur backdrop for hint morph */}
       {hintBackdropMounted && (
         <Animated.View
           style={[styles.hintBackdrop, hintBackdropStyle]}
@@ -240,13 +338,7 @@ export const CoastleScreen: React.FC = () => {
         </Animated.View>
       )}
 
-      {/* Tooltip overlay (only for "no hints yet" mode) */}
-      <CoastleHintTooltip
-        visible={showTooltip}
-        onClose={handleCloseTooltip}
-      />
-
-    </View>
+    </Animated.View>
   );
 };
 
@@ -263,6 +355,19 @@ const styles = StyleSheet.create({
     paddingTop: spacing.xl,
     paddingBottom: spacing.md,
     zIndex: 50,
+  },
+  gameZone: {
+    flex: 0,
+  },
+  resultOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(247,247,247,0.88)',
+  },
+  resultCardWrapper: {
+    width: SCREEN_WIDTH - 80,
   },
   hintWrapper: {
     zIndex: 100,

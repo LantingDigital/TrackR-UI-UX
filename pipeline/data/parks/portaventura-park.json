@@ -1,0 +1,34 @@
+{
+  "id": "portaventura-park",
+  "name": "PortAventura Park",
+  "formerNames": [
+    "* Port Aventura",
+    "* Universal's Port Aventura",
+    "* Universal Studios Port Aventura",
+    "* Port Aventura"
+  ],
+  "country": "ES",
+  "countryName": "Spain",
+  "region": "Spain",
+  "continent": "Europe",
+  "city": "Salou and Vila-seca",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1995,
+  "yearClosed": null,
+  "owner": "InvestIndustrial (50.1%) KKR (49.1%)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "PortAventura Park is a theme park located in the PortAventura World Resort, 85 km southwest of Barcelona, Catalonia, Spain, in the municipalities of Salou and Vila-seca, on the Costa Daurada.  The park opened on 1 May 1995 under the management of the Tussauds Group which had a 40. 01% share in the park, La Caixa (33.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Port_aventura.png%0AShambala_%26_Dragon_Khan2.jpg",
+  "imageAttribution": "Shambhala and Dragon Khan roller coasters",
+  "wikiUrl": "https://en.wikipedia.org/wiki/PortAventura_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:10.702Z"
+}

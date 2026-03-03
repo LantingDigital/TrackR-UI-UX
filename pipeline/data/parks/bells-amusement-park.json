@@ -1,0 +1,29 @@
+{
+  "id": "bells-amusement-park",
+  "name": "Bell's Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Oklahoma",
+  "continent": "North America",
+  "city": "Tulsa",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1951,
+  "yearClosed": 2006,
+  "owner": "Robert Bell",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Bell's Amusement Park was an amusement park located in Tulsa's Expo Square, part of the Tulsa State Fairgrounds in Oklahoma.  It operated for 55 years before closing in 2006.  It was especially known for its large wooden roller coaster, called Zingo, designed by John C.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bell's_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:03.601Z"
+}

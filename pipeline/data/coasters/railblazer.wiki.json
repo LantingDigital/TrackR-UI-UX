@@ -1,0 +1,65 @@
+{
+  "articleTitle": "RailBlazer",
+  "introSection": "RailBlazer is a steel roller coaster at California's Great America in Santa Clara, California. Manufactured by Rocky Mountain Construction, the single-rail roller coaster opened in June 2018. RailBlazer is the ninth roller coaster at California's Great America, and features a 90-degree drop, three inversions, and an off-roading adventure theme.\n\nRailBlazer was one of two prototype single-rail coasters to open in 2018, the other being the Wonder Woman Golden Lasso Coaster at sister park Six Flags Fiesta Texas, whose layout is a mirror image of RailBlazer's.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "California's Great America announced RailBlazer on August 16, 2017, and accompanied it with an official groundbreaking ceremony. On the same day, the park released a simulated POV of the roller coaster. RailBlazer opened to passholders on June 9, 2018, and opened to the public 5 days later."
+    },
+    {
+      "title": "Ride experience",
+      "content": "The ride begins by exiting the station and ascending a 106 ft tall chain lift. The train then banks left making a 180 degree turn and entering a 106 ft tall 90 degree drop, diving into a tunnel and reaching a maximum speed of 52 mph before entering a dive loop. The train then rises up to the right into an off-axis airtime hill, followed by a right-facing upwards helix. After the helix, the train makes a left turn and quickly drops, entering a right-facing cutback and a corkscrew. Finally, riders go through an over-banked turn to the left before hitting the brake run."
+    },
+    {
+      "title": "Characteristics",
+      "content": "The roller coaster is themed to California State Route 1. It is meant to reflect an off-road adventure around the San Francisco Bay Area and California central coast. Multiple large rocks surround the ride, as well as a pool of water, which the queue interacts with. The trains are also built to resemble all-terrain vehicles (ATVs) with handlebars, grille, headlights and bumper."
+    }
+  ],
+  "fullText": "RailBlazer is a steel roller coaster at California's Great America in Santa Clara, California. Manufactured by Rocky Mountain Construction, the single-rail roller coaster opened in June 2018. RailBlazer is the ninth roller coaster at California's Great America, and features a 90-degree drop, three inversions, and an off-roading adventure theme.\n\nRailBlazer was one of two prototype single-rail coasters to open in 2018, the other being the Wonder Woman Golden Lasso Coaster at sister park Six Flags Fiesta Texas, whose layout is a mirror image of RailBlazer's.\n\nCalifornia's Great America announced RailBlazer on August 16, 2017, and accompanied it with an official groundbreaking ceremony. On the same day, the park released a simulated POV of the roller coaster. RailBlazer opened to passholders on June 9, 2018, and opened to the public 5 days later.\n\nThe ride begins by exiting the station and ascending a 106 ft tall chain lift. The train then banks left making a 180 degree turn and entering a 106 ft tall 90 degree drop, diving into a tunnel and reaching a maximum speed of 52 mph before entering a dive loop. The train then rises up to the right into an off-axis airtime hill, followed by a right-facing upwards helix. After the helix, the train makes a left turn and quickly drops, entering a right-facing cutback and a corkscrew. Finally, riders go through an over-banked turn to the left before hitting the brake run.\n\nThe roller coaster is themed to California State Route 1. It is meant to reflect an off-road adventure around the San Francisco Bay Area and California central coast. Multiple large rocks surround the ride, as well as a pool of water, which the queue interacts with. The trains are also built to resemble all-terrain vehicles (ATVs) with handlebars, grille, headlights and bumper.\n\n\n\n\n",
+  "categories": [
+    "Single-rail roller coasters",
+    "Roller coasters in California",
+    "Roller coasters operated by Six Flags"
+  ],
+  "infoboxRaw": {
+    "name": "RailBlazer",
+    "logo": "RailBlazer logo.png",
+    "logodimensions": "200px",
+    "image": "File:RailBlazer (44990050352).jpg",
+    "imagedimensions": "250px",
+    "caption": "RailBlazer's entrance",
+    "location": "California's Great America",
+    "section": "NorCal County Fair",
+    "status": "Open",
+    "opened": "June 14, 2018",
+    "soft_opened": "June 9, 2018",
+    "previousattraction": "Invertigo",
+    "manufacturer": "Rocky Mountain Construction",
+    "designer": "Alan Schilke",
+    "model": "Raptor - Prototype (Mirror)",
+    "lift": "Chain lift hill",
+    "height_ft": "106",
+    "drop_ft": "100",
+    "length_ft": "1800",
+    "speed_mph": "52",
+    "inversions": "3",
+    "angle": "90",
+    "capacity": "600",
+    "restriction_in": "48",
+    "trains": "3",
+    "carspertrain": "8",
+    "rowspercar": "1",
+    "ridersperrow": "1",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar Fair Fast Lane availability icon.svg",
+    "virtual_queue_status": "available",
+    "single_rider": "Available",
+    "website": "Official website",
+    "rcdb_number": "15412",
+    "coordinates": "37.3951°N, -121.9737°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/RailBlazer",
+  "wikiPageId": 54924135,
+  "fetchedAt": "2026-02-28T20:13:58.124Z",
+  "articleLength": 1817
+}

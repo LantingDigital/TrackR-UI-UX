@@ -1,0 +1,29 @@
+{
+  "id": "tusenfryd",
+  "name": "Tusenfryd",
+  "formerNames": [],
+  "country": "NO",
+  "countryName": "Norway",
+  "region": null,
+  "continent": "Europe",
+  "city": "Vinterbro",
+  "latitude": 59.74823,
+  "longitude": -10.77702,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1988,
+  "yearClosed": null,
+  "owner": "Parques Reunidos",
+  "chain": null,
+  "website": "www.tusenfryd.no",
+  "coasterCount": 7,
+  "totalCoasterCount": 8,
+  "description": "Tusenfryd (lit.  \"Thousand Joys\", also Common Daisy) is an amusement park at Vinterbro, Norway.  The park is located 20 kilometers south of Oslo.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tusenfryd_logo.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tusenfryd",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:38.560Z"
+}

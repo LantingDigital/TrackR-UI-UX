@@ -1,0 +1,29 @@
+{
+  "id": "farglory-ocean-park",
+  "name": "Farglory Ocean Park 遠雄海洋公園",
+  "formerNames": [],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Shoufeng, Hualien County, Taiwan",
+  "latitude": 23.90111,
+  "longitude": -121.60139,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Farglory Ocean Park or Hualien Ocean Park is a water theme park in Yanliao Village, Shoufeng Township, Hualien, Taiwan.  It is the first marine theme park in Taiwan.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Jumping_dolphins_at_Dolphin_Lagoon%2C_Farglory_Ocean_Park_20090615a.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Farglory_Ocean_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:06.303Z"
+}

@@ -1,0 +1,621 @@
+{
+  "continents": {
+    "Asia": {
+      "countries": {
+        "CN": {
+          "name": "China",
+          "regions": [
+            "China"
+          ],
+          "parkCount": 96,
+          "coasterCount": 174
+        },
+        "JP": {
+          "name": "Japan",
+          "regions": [
+            "Japan"
+          ],
+          "parkCount": 80,
+          "coasterCount": 178
+        },
+        "UZ": {
+          "name": "Uzbekistan",
+          "regions": [],
+          "parkCount": 3,
+          "coasterCount": 3
+        },
+        "KR": {
+          "name": "South Korea",
+          "regions": [
+            "South Korea"
+          ],
+          "parkCount": 15,
+          "coasterCount": 31
+        },
+        "MY": {
+          "name": "Malaysia",
+          "regions": [],
+          "parkCount": 6,
+          "coasterCount": 10
+        },
+        "SA": {
+          "name": "Saudi Arabia",
+          "regions": [],
+          "parkCount": 8,
+          "coasterCount": 12
+        },
+        "IQ": {
+          "name": "Iraq",
+          "regions": [],
+          "parkCount": 6,
+          "coasterCount": 8
+        },
+        "QA": {
+          "name": "Qatar",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "PH": {
+          "name": "Philippines",
+          "regions": [],
+          "parkCount": 7,
+          "coasterCount": 8
+        },
+        "ID": {
+          "name": "Indonesia",
+          "regions": [],
+          "parkCount": 13,
+          "coasterCount": 17
+        },
+        "TW": {
+          "name": "Taiwan",
+          "regions": [
+            "Taiwan"
+          ],
+          "parkCount": 10,
+          "coasterCount": 19
+        },
+        "IN": {
+          "name": "India",
+          "regions": [
+            "India"
+          ],
+          "parkCount": 9,
+          "coasterCount": 12
+        },
+        "AE": {
+          "name": "United Arab Emirates",
+          "regions": [
+            "United Arab Emirates"
+          ],
+          "parkCount": 17,
+          "coasterCount": 28
+        },
+        "SG": {
+          "name": "Singapore",
+          "regions": [
+            "Singapore"
+          ],
+          "parkCount": 2,
+          "coasterCount": 6
+        },
+        "KZ": {
+          "name": "Kazakhstan",
+          "regions": [],
+          "parkCount": 3,
+          "coasterCount": 4
+        },
+        "TH": {
+          "name": "Thailand",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 4
+        },
+        "KG": {
+          "name": "Kyrgyzstan",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "KW": {
+          "name": "Kuwait",
+          "regions": [],
+          "parkCount": 5,
+          "coasterCount": 5
+        },
+        "IL": {
+          "name": "Israel",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "OM": {
+          "name": "Oman",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 2
+        },
+        "VN": {
+          "name": "Vietnam",
+          "regions": [],
+          "parkCount": 5,
+          "coasterCount": 11
+        },
+        "TM": {
+          "name": "Turkmenistan",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "BD": {
+          "name": "Bangladesh",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 2
+        },
+        "BH": {
+          "name": "Bahrain",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "KP": {
+          "name": "North Korea",
+          "regions": [],
+          "parkCount": 4,
+          "coasterCount": 5
+        },
+        "MN": {
+          "name": "Mongolia",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "LK": {
+          "name": "Sri Lanka",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "PK": {
+          "name": "Pakistan",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "JO": {
+          "name": "Jordan",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        }
+      }
+    },
+    "Europe": {
+      "countries": {
+        "DE": {
+          "name": "Germany",
+          "regions": [
+            "Germany"
+          ],
+          "parkCount": 69,
+          "coasterCount": 163
+        },
+        "FR": {
+          "name": "France",
+          "regions": [
+            "France"
+          ],
+          "parkCount": 53,
+          "coasterCount": 117
+        },
+        "ES": {
+          "name": "Spain",
+          "regions": [
+            "Spain"
+          ],
+          "parkCount": 17,
+          "coasterCount": 45
+        },
+        "PL": {
+          "name": "Poland",
+          "regions": [
+            "Poland"
+          ],
+          "parkCount": 7,
+          "coasterCount": 29
+        },
+        "GB": {
+          "name": "United Kingdom",
+          "regions": [
+            "England",
+            "United Kingdom"
+          ],
+          "parkCount": 153,
+          "coasterCount": 290
+        },
+        "NL": {
+          "name": "Netherlands",
+          "regions": [
+            "Netherlands"
+          ],
+          "parkCount": 24,
+          "coasterCount": 59
+        },
+        "CH": {
+          "name": "Switzerland",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 5
+        },
+        "IT": {
+          "name": "Italy",
+          "regions": [
+            "Italy"
+          ],
+          "parkCount": 21,
+          "coasterCount": 53
+        },
+        "HR": {
+          "name": "Croatia",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "BE": {
+          "name": "Belgium",
+          "regions": [
+            "Belgium"
+          ],
+          "parkCount": 15,
+          "coasterCount": 39
+        },
+        "TR": {
+          "name": "Turkey",
+          "regions": [],
+          "parkCount": 9,
+          "coasterCount": 21
+        },
+        "RU": {
+          "name": "Russia",
+          "regions": [],
+          "parkCount": 14,
+          "coasterCount": 20
+        },
+        "SE": {
+          "name": "Sweden",
+          "regions": [
+            "Sweden"
+          ],
+          "parkCount": 11,
+          "coasterCount": 33
+        },
+        "NO": {
+          "name": "Norway",
+          "regions": [],
+          "parkCount": 4,
+          "coasterCount": 13
+        },
+        "GR": {
+          "name": "Greece",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "AT": {
+          "name": "Austria",
+          "regions": [],
+          "parkCount": 7,
+          "coasterCount": 21
+        },
+        "DK": {
+          "name": "Denmark",
+          "regions": [
+            "Denmark"
+          ],
+          "parkCount": 11,
+          "coasterCount": 41
+        },
+        "IE": {
+          "name": "Ireland",
+          "regions": [],
+          "parkCount": 5,
+          "coasterCount": 11
+        },
+        "FI": {
+          "name": "Finland",
+          "regions": [
+            "Finland"
+          ],
+          "parkCount": 6,
+          "coasterCount": 29
+        },
+        "UA": {
+          "name": "Ukraine",
+          "regions": [],
+          "parkCount": 4,
+          "coasterCount": 4
+        },
+        "AZ": {
+          "name": "Azerbaijan",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "HU": {
+          "name": "Hungary",
+          "regions": [],
+          "parkCount": 3,
+          "coasterCount": 3
+        },
+        "PT": {
+          "name": "Portugal",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 3
+        },
+        "BG": {
+          "name": "Bulgaria",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "GE": {
+          "name": "Georgia",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "CZ": {
+          "name": "Czech Republic",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "EE": {
+          "name": "Estonia",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "LU": {
+          "name": "Luxembourg",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "MT": {
+          "name": "Malta",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        }
+      }
+    },
+    "North America": {
+      "countries": {
+        "US": {
+          "name": "United States",
+          "regions": [
+            "Alabama",
+            "Alaska",
+            "Arizona",
+            "Arkansas",
+            "California",
+            "Colorado",
+            "Connecticut",
+            "Florida",
+            "Georgia",
+            "Idaho",
+            "Illinois",
+            "Indiana",
+            "Iowa",
+            "Kansas",
+            "Kentucky",
+            "Louisiana",
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Michigan",
+            "Minnesota",
+            "Mississippi",
+            "Missouri",
+            "Montana",
+            "Nebraska",
+            "Nevada",
+            "New Hampshire",
+            "New Jersey",
+            "New Mexico",
+            "New York",
+            "North Carolina",
+            "Ohio",
+            "Oklahoma",
+            "Oregon",
+            "Pennsylvania",
+            "Puerto Rico",
+            "South Carolina",
+            "South Dakota",
+            "Tennessee",
+            "Texas",
+            "Utah",
+            "Virginia",
+            "Washington",
+            "West Virginia",
+            "Wisconsin"
+          ],
+          "parkCount": 401,
+          "coasterCount": 1157
+        },
+        "MX": {
+          "name": "Mexico",
+          "regions": [
+            "Mexico"
+          ],
+          "parkCount": 15,
+          "coasterCount": 32
+        },
+        "CA": {
+          "name": "Canada",
+          "regions": [
+            "Alberta",
+            "British Columbia",
+            "Ontario",
+            "Quebec"
+          ],
+          "parkCount": 21,
+          "coasterCount": 53
+        },
+        "GT": {
+          "name": "Guatemala",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 5
+        },
+        "CR": {
+          "name": "Costa Rica",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 3
+        },
+        "JM": {
+          "name": "Jamaica",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "DO": {
+          "name": "Dominican Republic",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "CU": {
+          "name": "Cuba",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        }
+      }
+    },
+    "Oceania": {
+      "countries": {
+        "AU": {
+          "name": "Australia",
+          "regions": [
+            "Australia"
+          ],
+          "parkCount": 16,
+          "coasterCount": 44
+        },
+        "NZ": {
+          "name": "New Zealand",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 4
+        }
+      }
+    },
+    "South America": {
+      "countries": {
+        "AR": {
+          "name": "Argentina",
+          "regions": [],
+          "parkCount": 4,
+          "coasterCount": 11
+        },
+        "CO": {
+          "name": "Colombia",
+          "regions": [],
+          "parkCount": 5,
+          "coasterCount": 9
+        },
+        "CL": {
+          "name": "Chile",
+          "regions": [],
+          "parkCount": 3,
+          "coasterCount": 7
+        },
+        "BR": {
+          "name": "Brazil",
+          "regions": [
+            "Brazil"
+          ],
+          "parkCount": 19,
+          "coasterCount": 26
+        },
+        "VE": {
+          "name": "Venezuela",
+          "regions": [],
+          "parkCount": 4,
+          "coasterCount": 4
+        },
+        "PE": {
+          "name": "Peru",
+          "regions": [],
+          "parkCount": 3,
+          "coasterCount": 3
+        },
+        "EC": {
+          "name": "Ecuador",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "BO": {
+          "name": "Bolivia",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "UY": {
+          "name": "Uruguay",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        }
+      }
+    },
+    "Africa": {
+      "countries": {
+        "EG": {
+          "name": "Egypt",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 3
+        },
+        "DZ": {
+          "name": "Algeria",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 2
+        },
+        "ZA": {
+          "name": "South Africa",
+          "regions": [],
+          "parkCount": 2,
+          "coasterCount": 4
+        },
+        "MA": {
+          "name": "Morocco",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "TN": {
+          "name": "Tunisia",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 1
+        },
+        "AO": {
+          "name": "Angola",
+          "regions": [],
+          "parkCount": 1,
+          "coasterCount": 2
+        }
+      }
+    }
+  },
+  "lastUpdated": "2026-02-28T23:40:58.511Z"
+}

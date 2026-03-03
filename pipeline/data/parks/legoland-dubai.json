@@ -1,0 +1,29 @@
+{
+  "id": "legoland-dubai",
+  "name": "Legoland Dubai Resort",
+  "formerNames": [],
+  "country": "AE",
+  "countryName": "United Arab Emirates",
+  "region": null,
+  "continent": "Asia",
+  "city": "Dubai",
+  "latitude": 24.91678,
+  "longitude": -55.01139,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2016,
+  "yearClosed": null,
+  "owner": "Dubai Parks and Resorts",
+  "chain": null,
+  "website": "legoland.com/dubai/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Legoland Dubai Resort is a theme park in Dubai.  It opened on October 31, 2016.  It is the first Legoland park in the Middle East and was the seventh worldwide.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Legoland_Dubai%2C_Entrance.jpg",
+  "imageAttribution": "Legoland Dubai main entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Dubai",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:23.417Z"
+}

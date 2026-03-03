@@ -1,0 +1,29 @@
+{
+  "id": "zoosafari-fasanolandia",
+  "name": "Zoosafari Fasanolandia",
+  "formerNames": [],
+  "country": "IT",
+  "countryName": "Italy",
+  "region": null,
+  "continent": "Europe",
+  "city": "Flag of Italy.svg Fasano, Italy",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.zoosafari.it",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Zoosafari Fasanolandia is an animal attraction and theme park in Fasano in Southern Italy.  The park includes a drive-through safari park in the visitor's vehicle as well as walk around animal areas, animal shows, and several rides.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Fasano_-_Zoosafari-_Fasanolandia_01.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Zoosafari_Fasanolandia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:05.249Z"
+}

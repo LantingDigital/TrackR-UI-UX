@@ -1,0 +1,61 @@
+{
+  "id": "raptor-attack",
+  "name": "Raptor Attack",
+  "formerNames": [
+    "Sewer Rat and Rat Ride"
+  ],
+  "parkId": "lightwater-valley",
+  "parkName": "Lightwater Valley",
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "heightFt": 50,
+  "heightM": 15.2,
+  "speedMph": 40,
+  "speedKmh": 64.4,
+  "lengthFt": 1837,
+  "lengthM": 559.9,
+  "dropFt": 35,
+  "dropM": 10.7,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 85,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "Schwarzkopf",
+  "designer": "Werner Stengel",
+  "model": "Wildcat (45m)",
+  "status": "closed",
+  "yearOpened": 1987,
+  "yearClosed": null,
+  "description": "Raptor Attack was an enclosed steel roller coaster at the Lightwater Valley theme park in North Yorkshire, United Kingdom.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/RaptorAttack.jpg",
+  "imageAttribution": "Mineshaft and ride entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Raptor_Attack",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:43:34.454Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "raptor attack",
+    "sewer rat and rat ride",
+    "lightwater valley",
+    "schwarzkopf",
+    "wildcat (45m)",
+    "sit-down",
+    "united kingdom"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Anton Schwarzkopf"
+  },
+  "popularityScore": 58.9,
+  "popularityTier": "notable",
+  "popularityRank": 652
+}

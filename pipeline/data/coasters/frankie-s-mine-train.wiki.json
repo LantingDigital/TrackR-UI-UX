@@ -1,0 +1,48 @@
+{
+  "articleTitle": "Frankie's Mine Train",
+  "introSection": "Frankie's Mine Train is a steel roller coaster located at two Six Flags theme parks in the United States.",
+  "sections": [
+    {
+      "title": "Frontier City",
+      "content": "The park was reacquired by Six Flags in 2018, which brought the end of their former kids area to a new Timbertown for the 2019 season. Frontier City announced that the Wild Kitty a similar style roller coaster, was to be removed in advance for the new attractions. Frankie's Mine Train was then built at the former location of Wild Kitty, the same model that is found at Six Flags Great Escape."
+    },
+    {
+      "title": "Six Flags Great Escape",
+      "content": "In 2005 The Great Escape debuted the Looney Tunes National Park: a Looney Tunes themed children's area which included eight new children's rides, including Road Runner Express the park's seventh roller coaster, and a re-themed restaurant as well as a cartoon walk-through. Replaces the old Jungleland area. In late 2010, Six Flags began the process of removing licensed theming from attractions. The Great Escape terminated several licenses including their license with Looney Tunes. Looney Tunes National Park was renamed and rethemed to Timbertown, including a new name for Road Runner Express."
+    }
+  ],
+  "fullText": "Frankie's Mine Train is a steel roller coaster located at two Six Flags theme parks in the United States.\n\n\n\nThe park was reacquired by Six Flags in 2018, which brought the end of their former kids area to a new Timbertown for the 2019 season. Frontier City announced that the Wild Kitty a similar style roller coaster, was to be removed in advance for the new attractions. Frankie's Mine Train was then built at the former location of Wild Kitty, the same model that is found at Six Flags Great Escape.\n\nIn 2005 The Great Escape debuted the Looney Tunes National Park: a Looney Tunes themed children's area which included eight new children's rides, including Road Runner Express the park's seventh roller coaster, and a re-themed restaurant as well as a cartoon walk-through. Replaces the old Jungleland area. In late 2010, Six Flags began the process of removing licensed theming from attractions. The Great Escape terminated several licenses including their license with Looney Tunes. Looney Tunes National Park was renamed and rethemed to Timbertown, including a new name for Road Runner Express.\n\n",
+  "categories": [
+    "Roller coasters opened in 2005",
+    "Roller coasters opened in 2019",
+    "Roller coasters operated by Six Flags",
+    "The Great Escape and Hurricane Harbor",
+    "Frontier City",
+    "Steel roller coasters",
+    "Roller coasters manufactured by Zamperla",
+    "Roller coasters in New York (state)",
+    "Roller coasters in Oklahoma"
+  ],
+  "infoboxRaw": {
+    "name": "Frankie’s Mine Train",
+    "image": "Road-runner-express-great-escape.jpg",
+    "caption": "Frankie's Mine Train at Six Flags Great Escape and Hurricane Harbor.",
+    "type2": "Junior",
+    "manufacturer": "Zamperla",
+    "model": "Family Coaster",
+    "lift": "Chain lift hill",
+    "height_ft": "13",
+    "length_ft": "262.5",
+    "trains": "1",
+    "carspertrain": "6",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "restriction_in": "42",
+    "virtual_queue_name": "Go Fast Pass",
+    "virtual_queue_status": "Available at Frontier City"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Frankie's_Mine_Train",
+  "wikiPageId": 5168221,
+  "fetchedAt": "2026-02-28T20:14:30.456Z",
+  "articleLength": 1103
+}

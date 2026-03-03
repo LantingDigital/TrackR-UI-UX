@@ -1,0 +1,29 @@
+{
+  "id": "frontier-city",
+  "name": "Frontier City",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Oklahoma",
+  "continent": "North America",
+  "city": "Oklahoma City",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1958,
+  "yearClosed": null,
+  "owner": "EPR Properties",
+  "chain": null,
+  "website": "Frontier City",
+  "coasterCount": 3,
+  "totalCoasterCount": 5,
+  "description": "Frontier City is a western-themed amusement park in Oklahoma City, Oklahoma, U. S.  It is owned by EPR and operated by Six Flags.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Frontier_City_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Frontier_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:09.471Z"
+}

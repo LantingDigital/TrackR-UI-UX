@@ -1,0 +1,29 @@
+{
+  "id": "amigoland",
+  "name": "Amigoland",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Amigoland is the first novel by American author Oscar Cásares and a follow-up to his book of short stories, Brownsville.  It was published in 2009 by Little Brown and Company.  The plot centers on two estranged elderly brothers who reunite after many years to break the elder brother, Don Fidencio, out of his nursing home in Brownsville, Texas and head to Mexico on a quest to solve the mystery of how their family came to America.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Amigoland_-_Casares.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Amigoland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:34.795Z"
+}

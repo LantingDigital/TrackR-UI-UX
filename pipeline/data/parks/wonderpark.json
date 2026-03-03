@@ -1,0 +1,29 @@
+{
+  "id": "wonderpark",
+  "name": "WonderPark",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Puerto Rico",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:13:26.486Z"
+}

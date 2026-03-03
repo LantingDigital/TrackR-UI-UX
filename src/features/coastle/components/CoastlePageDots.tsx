@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Reanimated, {
+  SharedValue,
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedReaction,
   withSpring,
   interpolateColor,
 } from 'react-native-reanimated';
@@ -13,7 +15,7 @@ import { MAX_GUESSES } from '../types/coastle';
 
 interface CoastlePageDotsProps {
   guessCount: number;
-  activeIndex: number;
+  activeIndex: SharedValue<number>;
   totalSlots: number;
 }
 
@@ -28,16 +30,25 @@ const COLOR_UNFILLED = colors.border.subtle;    // #E5E5E5
 const COLOR_FILLED = colors.text.meta;           // #999999
 const COLOR_ACTIVE = colors.accent.primary;      // #CF6769
 
-const Dot: React.FC<{ index: number; activeIndex: number; isFilled: boolean }> = ({
+const Dot: React.FC<{ index: number; activeIndex: SharedValue<number>; isFilled: boolean }> = React.memo(({
   index,
   activeIndex,
   isFilled,
 }) => {
-  const progress = useSharedValue(index === activeIndex ? 1 : 0);
+  const progress = useSharedValue(0);
 
-  useEffect(() => {
-    progress.value = withSpring(index === activeIndex ? 1 : 0, SPRING_CONFIG);
-  }, [activeIndex]);
+  // React to activeIndex changes entirely on the UI thread — no React re-renders
+  useAnimatedReaction(
+    () => (activeIndex.value === index ? 1 : 0),
+    (target, prev) => {
+      if (prev === null) {
+        // Initial mount: set immediately (no spring)
+        progress.value = target;
+      } else if (target !== prev) {
+        progress.value = withSpring(target, SPRING_CONFIG);
+      }
+    },
+  );
 
   const baseColor = isFilled ? COLOR_FILLED : COLOR_UNFILLED;
 
@@ -56,9 +67,9 @@ const Dot: React.FC<{ index: number; activeIndex: number; isFilled: boolean }> =
       style={[styles.dot, animStyle]}
     />
   );
-};
+});
 
-export const CoastlePageDots: React.FC<CoastlePageDotsProps> = ({
+export const CoastlePageDots: React.FC<CoastlePageDotsProps> = React.memo(({
   guessCount,
   activeIndex,
   totalSlots,
@@ -78,7 +89,7 @@ export const CoastlePageDots: React.FC<CoastlePageDotsProps> = ({
       <Text style={styles.counter}>{guessCount}/{MAX_GUESSES}</Text>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

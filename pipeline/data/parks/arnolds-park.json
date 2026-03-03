@@ -1,0 +1,29 @@
+{
+  "id": "arnolds-park",
+  "name": "Arnolds Park, Iowa",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Iowa",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.arnoldsparkcity.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Arnolds Park is a city in Dickinson County, Iowa, United States.  The population was 1,110 in the 2020 census, a decline from the 1,162 population in the 2000 census.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Arnolds_Park%2C_Iowa",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:58.306Z"
+}

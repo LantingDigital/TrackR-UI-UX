@@ -1,0 +1,29 @@
+{
+  "id": "legoland-new-york",
+  "name": "Legoland New York Resort",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "Goshen, New York",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2021,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "https://www.legoland.com/new-york/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Legoland New York Resort is a theme park in Goshen, New York, owned by Merlin Entertainments.  Consisting 150 acres of seven Lego themed lands on a property of 500 acres.  The park contains numerous structures and attractions made of Lego or designed to resemble Lego.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/LEGOLAND_New_York.jpg",
+  "imageAttribution": "Legoland New York main entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_New_York",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:22.511Z"
+}

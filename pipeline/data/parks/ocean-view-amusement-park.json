@@ -1,0 +1,29 @@
+{
+  "id": "ocean-view-amusement-park",
+  "name": "Ocean View Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Virginia",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Ocean View Amusement Park was an amusement park at the end of Granby Street at Ocean View Avenue in Norfolk, Virginia, USA, opened in 1905 and operated by Jack L.  Greenspoon and Dudley Cooper.  The amusement park and its wooden coaster, the Rocket, appeared in the 1977 movie Rollercoaster but closed on 4 September 1978.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Ocean_View_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:28.191Z"
+}

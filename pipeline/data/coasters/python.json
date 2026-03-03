@@ -1,0 +1,61 @@
+{
+  "id": "python",
+  "name": "Python",
+  "formerNames": [
+    "The Python"
+  ],
+  "parkId": "busch-gardens-tampa-bay",
+  "parkName": "Busch Gardens Tampa Bay",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "heightFt": 72,
+  "heightM": 21.9,
+  "speedMph": 40,
+  "speedKmh": 64.4,
+  "lengthFt": 1200,
+  "lengthM": 365.8,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 2,
+  "gForce": null,
+  "duration": 68,
+  "material": "Steel",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "Arrow Dynamics",
+  "designer": "Ron Toomer",
+  "model": "Corkscrew",
+  "status": "closed",
+  "yearOpened": 1976,
+  "yearClosed": 2006,
+  "description": "Python was a steel roller coaster located at Busch Gardens Tampa Bay theme park in Tampa, Florida.  Built by Arrow Development and opened on July 1, 1976, it was the first roller coaster at Busch Gardens since the park opened in 1959.  The roller coaster was located in the Congo section of the park near Stanley Falls Flume and later the Congo River Rapids.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Python_(Busch_Gardens_Africa)_01.jpg",
+  "imageAttribution": "Python's double-corkscrew element (chain lift and first drop in background)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Python_(Busch_Gardens_Tampa_Bay)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:15:50.885Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "python",
+    "the python",
+    "busch gardens tampa bay",
+    "arrow dynamics",
+    "corkscrew",
+    "sit-down",
+    "florida"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Arrow Development"
+  },
+  "popularityScore": 64.3,
+  "popularityTier": "iconic",
+  "popularityRank": 414
+}

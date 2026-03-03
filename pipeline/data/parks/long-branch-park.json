@@ -1,0 +1,29 @@
+{
+  "id": "long-branch-park",
+  "name": "Long Branch Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "3813 Long Branch Road on north shore of Onondaga Lake\nGeddes, New York",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Long Branch Park is a public park in Onondaga County outside of Syracuse, New York, located in the town of Geddes, New York, on Long Branch Road near NYS Route 370 and John Glenn Boulevard.  The park is situated on the northern shore of Onondaga Lake and is often misidentified as an extension of Onondaga Lake Park which wraps around the eastern shore of the lake to the south shore. \n\nFounded in 1882 by Ben and George Maurer, Long Branch Amusement Park was originally an amusement park with boxing arenas, an arcade and a trolley.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Long_Branch_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:11.861Z"
+}

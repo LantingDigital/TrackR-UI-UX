@@ -1,0 +1,29 @@
+{
+  "id": "legoland-billund",
+  "name": "Legoland Billund Resort",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": "Denmark",
+  "continent": "Europe",
+  "city": "Billund",
+  "latitude": 55.73556,
+  "longitude": -9.12611,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "http://www.legoland.dk/en/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Legoland Billund Resort (also known as Legoland Denmark), the original Legoland park, opened on 7 June 1968 in Billund, Denmark.  The park is located next to the original Lego factory and Billund Airport, Denmark's second-busiest airport.  Over 1.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ABillund_Legoland_24.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Billund_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:49.815Z"
+}

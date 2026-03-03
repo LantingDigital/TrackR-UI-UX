@@ -1,0 +1,29 @@
+{
+  "id": "silver-dollar-city",
+  "name": "Silver Dollar City",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": "Branson, Missouri, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1960,
+  "yearClosed": null,
+  "owner": "Herschend",
+  "chain": null,
+  "website": "silverdollarcity.com",
+  "coasterCount": 7,
+  "totalCoasterCount": 8,
+  "description": "Silver Dollar City is a 61 acre theme park in Stone County, Missouri, near the cities of Branson and Branson West.  The park is located off of Missouri Route 76 on the Indian Point peninsula of Table Rock Lake.  Silver Dollar City opened on May 1, 1960.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Silver_Dollar_City_Primary_Logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Silver_Dollar_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:55.929Z"
+}

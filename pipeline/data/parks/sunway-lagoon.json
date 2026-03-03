@@ -1,0 +1,29 @@
+{
+  "id": "sunway-lagoon",
+  "name": "Sunway Lagoon",
+  "formerNames": [],
+  "country": "MY",
+  "countryName": "Malaysia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Sunway City, Subang Jaya, Selangor, Malaysia",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1993,
+  "yearClosed": null,
+  "owner": "Jeffrey Cheah",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Sunway Lagoon is an amusement park in Sunway City, Subang Jaya, Selangor, Malaysia.  Owned by the Sunway Group, it officially opened on 29 April 1993.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sunway_Lagoon_(220711).jpg",
+  "imageAttribution": "View from Sunway Resort Hotel.",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sunway_Lagoon",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:51.743Z"
+}

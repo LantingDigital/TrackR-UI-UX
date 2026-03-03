@@ -1,0 +1,31 @@
+{
+  "id": "futuroscope",
+  "name": "Futuroscope",
+  "formerNames": [
+    "Planète Futuroscope"
+  ],
+  "country": "FR",
+  "countryName": "France",
+  "region": "France",
+  "continent": "Europe",
+  "city": "Chasseneuil-du-Poitou and Jaunay-Clan, Nouvelle-Aquitaine, France",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1987,
+  "yearClosed": null,
+  "owner": "Compagnie des Alpes",
+  "chain": null,
+  "website": "https://www.futuroscope.com/en/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Futuroscope, or Parc du Futuroscope, formerly known as Planète Futuroscope, is a French theme park based upon multimedia, cinematographic, and audiovisual techniques.  It has several 3D cinemas and a few 4D cinemas along with other attractions and shows, some of which are the only examples in the world. \n\nIt is located in the department of Vienne, Nouvelle-Aquitaine, 10 km north of Poitiers, in the communes of Chasseneuil-du-Poitou and Jaunay-Clan.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Futuroscope_(France_2014)_06_View_from_the_Gyrotour.JPG",
+  "imageAttribution": "Futuroscope view from the Gyrotour",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Futuroscope",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:47.764Z"
+}

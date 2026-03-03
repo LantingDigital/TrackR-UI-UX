@@ -1,0 +1,29 @@
+{
+  "id": "wicksteed-park",
+  "name": "Wicksteed Park",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Kettering, Northamptonshire",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1921,
+  "yearClosed": null,
+  "owner": "Wicksteed Charitable Trust",
+  "chain": null,
+  "website": "https://wicksteedpark.org/",
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "Wicksteed Park is a Grade II listed park described as a unique urban park with rides in Kettering, Northamptonshire, England.  The park is located in the south-east of Kettering, on the western edge of Barton Seagrave village.  The park is owned by the Wicksteed Charitable Trust, with the urban park being run by its trading subsidiary company Wicksteed Park Ltd (replaced by Wicksteed Trading Ltd after going into administration in 2020).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Merlin_(geograph_3513474).jpg",
+  "imageAttribution": "Locomotive \"Merlin\" hauling a passenger train on the Wicksteed Park Railway",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wicksteed_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:30.611Z"
+}

@@ -1,0 +1,45 @@
+{
+  "articleTitle": "Swamp Thing (Wild Adventures)",
+  "introSection": "Swamp Thing is a steel roller coaster located at Wild Adventures in Valdosta, Georgia. It opened at Wild Adventures in 2003 mainly as an introduction coaster for children. Swamp Thing is a standard Vekoma Suspended Family Coaster with alligator-themed scenery.",
+  "sections": [
+    {
+      "title": "External links",
+      "content": "\n * Swamp Thing at www.wildadventures.net"
+    }
+  ],
+  "fullText": "Swamp Thing is a steel roller coaster located at Wild Adventures in Valdosta, Georgia. It opened at Wild Adventures in 2003 mainly as an introduction coaster for children. Swamp Thing is a standard Vekoma Suspended Family Coaster with alligator-themed scenery.\n\n\n\n\n * Swamp Thing at www.wildadventures.net",
+  "categories": [
+    "Roller coasters in Georgia (U.S. state)",
+    "Roller coasters opened in 2003",
+    "Suspended Family Coaster roller coasters",
+    "Wild Adventures",
+    "Roller coasters operated by Herschend Family Entertainment"
+  ],
+  "infoboxRaw": {
+    "name": "Swamp Thing",
+    "image": "Swamp Thing, Wild Adventures 2016.JPG",
+    "location": "Wild Adventures",
+    "type2": "Inverted",
+    "type3": "Family",
+    "status": "Open",
+    "opened": "2003",
+    "manufacturer": "Vekoma",
+    "model": "Suspended Family Coaster (342m)",
+    "height_ft": "48",
+    "length_ft": "1122",
+    "speed_mph": "26",
+    "inversions": "0",
+    "duration": "1:30",
+    "gforce": "2.2",
+    "restriction_in": "44",
+    "rcdb_number": "1572",
+    "trains": "1",
+    "carspertrain": "10",
+    "rowspercar": "1",
+    "ridersperrow": "2"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Swamp_Thing_(Wild_Adventures)",
+  "wikiPageId": 27037076,
+  "fetchedAt": "2026-02-28T20:14:11.504Z",
+  "articleLength": 305
+}

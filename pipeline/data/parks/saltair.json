@@ -1,0 +1,29 @@
+{
+  "id": "saltair",
+  "name": "Saltair",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Utah",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Saltair or Saltaire or salt air or variant, may refer to:",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Saltair",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:30.132Z"
+}

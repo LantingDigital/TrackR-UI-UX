@@ -1,0 +1,29 @@
+{
+  "id": "casino-pier",
+  "name": "Casino Pier",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "Seaside Heights",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1932,
+  "yearClosed": null,
+  "owner": "Storino Family",
+  "chain": null,
+  "website": "http://www.casinopiernj.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 3,
+  "description": "Casino Pier is an amusement park situated on a pier, in Seaside Heights, New Jersey.  The pier opened in 1932 under the ownership of Linus R Gilbert, an industrialist.  Gilbert acquired the property between Grant and Sherman Avenue extending east from the Boulevard to the Atlantic Ocean and oversaw the construction of the pier under his company, LR Gilbert Construction.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Casino_Pier_Familyfunandsunresort.JPG",
+  "imageAttribution": "Casino Pier as seen from the south prior to Hurricane Sandy",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Casino_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:14.954Z"
+}

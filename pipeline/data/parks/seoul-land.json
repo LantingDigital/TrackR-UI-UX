@@ -1,0 +1,29 @@
+{
+  "id": "seoul-land",
+  "name": "Seoul Land",
+  "formerNames": [],
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": null,
+  "continent": "Asia",
+  "city": "Gwacheon, South Korea",
+  "latitude": 37.43421,
+  "longitude": -127.01998,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1988,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "English page",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Seoul Land is an amusement park opened in 1988, in Gwacheon, a city in Gyeonggi-do province, South Korea.  Located in the Seoul Grand Park complex, it opened just before the 1988 Summer Olympics.  It has about 40 rides, including roller coasters and movie theaters.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Seoul_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:04.047Z"
+}

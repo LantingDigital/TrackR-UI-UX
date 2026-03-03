@@ -1,0 +1,29 @@
+{
+  "id": "daguan-park",
+  "name": "Daguan Park",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Daguan Park is a lakeside park located in the southwestern suburb of Kunming, Yunnan, China.  Today many locals come to sit, drink tea, fly kites, and go boating.  Among shady walks and pools, Daguan's focal point is Daguan Lou, a square, three-storeyed pavilion built to better the Kangxi Emperor's enjoyment of the distant Western Hills and now a storehouse of calligraphy extolling the area's charms.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Daguan_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:24.760Z"
+}

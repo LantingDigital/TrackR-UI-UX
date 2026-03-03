@@ -1,0 +1,50 @@
+{
+  "articleTitle": "Dragonfly (roller coaster)",
+  "introSection": "Dragonfly is a steel roller coaster in the Dutch amusement park Duinrell.",
+  "sections": [
+    {
+      "title": "Information",
+      "content": "On the front of the trains, the logo of the coaster is visible. The coaster operates a single train with two riders on each of the twelve rows, giving it a capacity of 24 people for each ride. The coaster was built by the German company Gerstlauer and was opened on 31 March 2012."
+    },
+    {
+      "title": "External links",
+      "content": "\n * |utmccn=%28organic%29|utmcmd=organic|utmctr=%28not%20provided%29&__utmv=-&__utmk=99463838 Dragonfly at duinrell.com"
+    },
+    {
+      "title": "References",
+      "content": "\n * Info at RCDB.com"
+    }
+  ],
+  "fullText": "Dragonfly is a steel roller coaster in the Dutch amusement park Duinrell.\n\nOn the front of the trains, the logo of the coaster is visible. The coaster operates a single train with two riders on each of the twelve rows, giving it a capacity of 24 people for each ride. The coaster was built by the German company Gerstlauer and was opened on 31 March 2012.\n\n\n * |utmccn=%28organic%29|utmcmd=organic|utmctr=%28not%20provided%29&__utmv=-&__utmk=99463838 Dragonfly at duinrell.com\n\n\n * Info at RCDB.com",
+  "categories": [
+    "Roller coasters in the Netherlands"
+  ],
+  "infoboxRaw": {
+    "name": "Dragonfly",
+    "image": "Dragon_Fly,_Duirell.JPG",
+    "location": "Duinrell",
+    "coordinates": "52.14717°N, 4.37852°W",
+    "status": "Operating",
+    "opened": "March 31, 2012",
+    "year": "2012",
+    "manufacturer": "Gerstlauer",
+    "height_m": "15",
+    "length_m": "361",
+    "speed_km/h": "50",
+    "inversions": "0",
+    "duration": "1:23 minutes",
+    "angle": "97",
+    "capacity": "750",
+    "gforce": "2.9",
+    "restriction_cm": "100",
+    "trains": "1",
+    "carspertrain": "1",
+    "rowspercar": "1",
+    "ridersperrow": "4",
+    "rcdb_number": "9298"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dragonfly_(roller_coaster)",
+  "wikiPageId": 50591962,
+  "fetchedAt": "2026-02-28T20:55:42.921Z",
+  "articleLength": 498
+}

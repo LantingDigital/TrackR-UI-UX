@@ -1,0 +1,29 @@
+{
+  "id": "knotts-berry-farm",
+  "name": "Knott's Berry Farm",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "8039 Beach Boulevard Buena Park, California 90620, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1920,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "sixflags.com/knotts",
+  "coasterCount": 8,
+  "totalCoasterCount": 10,
+  "description": "Knott's Berry Farm is a 57 acre amusement park in Buena Park, California, United States, owned and operated by Six Flags.  In March 2015, it was ranked as the twelfth-most-visited theme park in North America, while averaging approximately 4 million visitors per year.  The park features over 40 rides, including roller coasters, family rides, dark rides, and water rides.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Knott's_Berry_Farm%2C_2025.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Knott's_Berry_Farm",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:24.985Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "universal-studios-hollywood",
+  "name": "Universal Studios Hollywood",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Universal City, California",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1912,
+  "yearClosed": null,
+  "owner": "NBCUniversal\n(Comcast)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Universal Studios Hollywood is a film studio and theme park located in Universal City, California, near Hollywood, Los Angeles.  It is one of the oldest and most famous Hollywood film studios still in use.  Its official marketing headline is \"The Entertainment Capital of LA\".",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Universal_archway_2019.jpg",
+  "imageAttribution": "Entrance to the theme park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Studios_Hollywood",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:55.473Z"
+}

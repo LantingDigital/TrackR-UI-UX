@@ -1,0 +1,29 @@
+{
+  "id": "adventure-world",
+  "name": "Adventure World",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Adventure World may refer to:\n\n\n * Adventure World (amusement park) in Perth, Australia\n * Former name of Six Flags America amusement park in Maryland, United States\n * American Adventure World, a former theme park in East Midlands, United Kingdom\n * Indiana Jones Adventure World, a video game\n * Adventure World (Japan), a mega theme park with a safari park, aquarium and amusement park",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adventure_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:52.601Z"
+}

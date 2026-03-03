@@ -1,0 +1,29 @@
+{
+  "id": "knuthenborg-safaripark",
+  "name": "Knuthenborg Safaripark",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": null,
+  "continent": "Europe",
+  "city": "near Bandholm, Lolland, Denmark",
+  "latitude": 54.82361,
+  "longitude": -11.50583,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://knuthenborg.dk/en/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Knuthenborg Safaripark is a safari park on the island of Lolland in the southeast of Denmark.  It is located 5 km to the north of Maribo, near Bandholm.  It is one of Lolland's major tourist attractions with over 300,000 visitors annually, and is the largest safari park in northern Europe.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Knuthenborg_Safaripark_entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Knuthenborg_Safaripark",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:30.082Z"
+}

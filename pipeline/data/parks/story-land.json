@@ -1,0 +1,31 @@
+{
+  "id": "story-land",
+  "name": "Story Land",
+  "formerNames": [
+    "Story Town"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Hampshire",
+  "continent": "North America",
+  "city": "Glen, New Hampshire, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1954,
+  "yearClosed": null,
+  "owner": "Herschend",
+  "chain": null,
+  "website": "www.storylandnh.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Story Land is a fairy tale theme park in Glen, New Hampshire.  Opened in 1954, the 35 acre park is meant to appeal to children up to the pre-teen ages.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Cinderella's_Castle%2C_Story_Land_theme_park_in_Glen%2C_NH.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Story_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:44.105Z"
+}

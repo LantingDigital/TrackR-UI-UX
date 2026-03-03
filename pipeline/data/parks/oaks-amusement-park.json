@@ -1,0 +1,29 @@
+{
+  "id": "oaks-amusement-park",
+  "name": "Oaks Amusement Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Oregon",
+  "continent": "North America",
+  "city": "7805 SE Oaks Park Way Portland, Oregon, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Oaks Park Association",
+  "chain": null,
+  "website": "www.oakspark.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Oaks Park is a small amusement park located 3. 5 mi south of downtown Portland, Oregon, United States.  Opened in May 1905, it is one of the oldest continually operating amusement parks in the country.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Oaks_Amusement_Park_entrance_Portland_Oregon.jpg",
+  "imageAttribution": "Entrance to Oaks Park (remodeled in 2001)",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Oaks_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:52.276Z"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "denos-wonder-wheel-amusement-park",
+  "name": "Deno's Wonder Wheel Amusement Park",
+  "formerNames": [
+    "Ward's Kiddie Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "Coney Island",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1920,
+  "yearClosed": null,
+  "owner": "Dennis Vourderis and Steve Vourderis",
+  "chain": null,
+  "website": "http://www.denoswonderwheel.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Deno's Wonder Wheel Amusement Park is a family-owned amusement park located at Coney Island, Brooklyn, New York City.  It features six adult rides and 16 kiddie rides, including a dozen family rides that parents and children can ride together.  The park is named for its main attraction, the Wonder Wheel, a 150 ft eccentric wheel built in 1920.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Wonder_Wheel_(7082366245).jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Deno's_Wonder_Wheel_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:36.484Z"
+}

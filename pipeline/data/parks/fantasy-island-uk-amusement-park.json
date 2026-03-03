@@ -1,0 +1,29 @@
+{
+  "id": "fantasy-island-uk-amusement-park",
+  "name": "Fantasy Island Resort",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Ingoldmells",
+  "latitude": 53.192,
+  "longitude": -0.347,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1995,
+  "yearClosed": null,
+  "owner": "Mellors Group",
+  "chain": null,
+  "website": "www.FantasyIslandResort.co.uk",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Fantasy Island Resort is a resort theme park located in Ingoldmells on the east coast of Lincolnshire, UK.  It opened in 1995 and is owned by the Mellors Group.  The park features an outdoor selection of rides as well as an indoor entertainment complex situated in a steel pyramid.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Fantasy_Island_Ingoldmells.jpg",
+  "imageAttribution": "Fantasy Island in 2020",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fantasy_Island_(amusement_park)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:25.142Z"
+}

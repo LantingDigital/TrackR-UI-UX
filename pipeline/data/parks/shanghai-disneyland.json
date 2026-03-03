@@ -1,0 +1,29 @@
+{
+  "id": "shanghai-disneyland",
+  "name": "Shanghai Disneyland",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Pudong, Shanghai",
+  "latitude": 31.144,
+  "longitude": -121.657,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Shanghai Shendi Group (57%) The Walt Disney Company (43%)",
+  "chain": null,
+  "website": "Shanghai Disneyland",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Shanghai Disneyland (Pinyin: Shànghǎi díshìní lèyuán, Shanghainese: Zaon-he Diq-zy-nyi Loq-yoe) is a theme park located in Chuansha New Town, Pudong, Shanghai, China, that is part of the Shanghai Disney Resort.  The park is operated by Disney Experiences and Shanghai Shendi Group, through a joint venture between the Walt Disney Company and Shendi.  Construction began on April 8, 2011.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/18-03-12_ShanghaiDisney_013.jpg",
+  "imageAttribution": "The Enchanted Storybook Castle, landmark of Shanghai Disneyland",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Shanghai_Disneyland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:30.266Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "gullivers-world",
+  "name": "Gulliver's World Theme Park Resort",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "England",
+  "continent": "Europe",
+  "city": "Warrington",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": null,
+  "owner": "Gulliver's Theme Parks",
+  "chain": null,
+  "website": "https://www.gulliversworldresort.co.uk",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Gulliver's World is a theme park located in Warrington, England, loosely based on the world of Lilliput from Gulliver's Travels.  It consists of the themed areas: Lilliput Land, Wonderland, Western World, Gully's Cartoon Studios, Smuggler's Wharf, Safari Kingdom, Gully Town and Lost World.  The park's attractions were designed for children between the ages of 2 and 13.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Gulliver's_World_Tree_Top_Swings_Ride.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gulliver's_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:19.180Z"
+}

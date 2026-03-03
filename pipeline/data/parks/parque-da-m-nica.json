@@ -1,0 +1,29 @@
+{
+  "id": "parque-da-m-nica",
+  "name": "Monica's Theme Park",
+  "formerNames": [],
+  "country": "BR",
+  "countryName": "Brazil",
+  "region": null,
+  "continent": "South America",
+  "city": "São Paulo, SP",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1993,
+  "yearClosed": 2010,
+  "owner": "Mauricio de Sousa Produções",
+  "chain": null,
+  "website": "parquedamonica.com.br",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Parque da Mônica is a amusement park themed with the characters created by Maurício de Sousa.  The first park had been designed by Maurício in 1993 at the Shopping Eldorado Paulistano, having operated until February 2010 when it closed for good its activities due to contractual problems with the mall's administrators and debts.  Since then, Maurício has been in negotiations to reopen it at another location.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parque_da_M%C3%B4nica",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:06.863Z"
+}

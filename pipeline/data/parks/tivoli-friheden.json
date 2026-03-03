@@ -1,0 +1,29 @@
+{
+  "id": "tivoli-friheden",
+  "name": "Tivoli Friheden",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": "Denmark",
+  "continent": "Europe",
+  "city": "Aarhus, Denmark",
+  "latitude": 56.13716,
+  "longitude": -10.19585,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1903,
+  "yearClosed": null,
+  "owner": "Tivoli Friheden A/S",
+  "chain": null,
+  "website": "Friheden.dk",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Tivoli Friheden is an amusement park located in Aarhus, Denmark.  The park was visited by more than 365,000 visitors in 2009, and the figure is rising.  The park is situated about 2 km to the south of the city centre.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3ATivoli_friheden.JPG%7C250px%5D%5D",
+  "imageAttribution": "Main entrance to Tivoli Friheden",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tivoli_Friheden",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:04.633Z"
+}

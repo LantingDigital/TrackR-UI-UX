@@ -1,0 +1,31 @@
+{
+  "id": "lakemont-park",
+  "name": "Lakemont Park",
+  "formerNames": [
+    "Boyertown USA"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Altoona",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Lakemont Park Center, LLC",
+  "chain": null,
+  "website": "https://www.lakemontparkfun.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "Lakemont Park is an amusement park located in Altoona, Pennsylvania.  The park opened in 1894 as a trolley park and became an amusement park in 1899.  It is one of only thirteen trolley parks still operating, and the 8th oldest amusement park in the United States.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Skyliner01.jpg",
+  "imageAttribution": "Skyliner roller coaster",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lakemont_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:33.462Z"
+}

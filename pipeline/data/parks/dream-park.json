@@ -1,0 +1,29 @@
+{
+  "id": "dream-park",
+  "name": "Dream Park",
+  "formerNames": [],
+  "country": "JO",
+  "countryName": "Jordan",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Dream Park is a 1981 sci-fi/murder mystery novel by American writers Larry Niven and Steven Barnes, set in a futuristic amusement park of the same name.  It was nominated for the 1982 Locus Award and later expanded into a series of cyberpunk murder mysteries: The Barsoom Project (1989), The California Voodoo Game (1992), and The Moon Maze Game (2011).  The books describe a futuristic form of live action role-playing games (LARPs), although the term was not in use when the original novel was published.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ADreamParkNiven.jpg",
+  "imageAttribution": "First (limited) edition",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dream_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:17.663Z"
+}

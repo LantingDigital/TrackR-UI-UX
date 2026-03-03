@@ -1,0 +1,29 @@
+{
+  "id": "liseberg",
+  "name": "Liseberg",
+  "formerNames": [],
+  "country": "SE",
+  "countryName": "Sweden",
+  "region": "Sweden",
+  "continent": "Europe",
+  "city": "Gothenburg",
+  "latitude": 57.69556,
+  "longitude": -11.99,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1923,
+  "yearClosed": null,
+  "owner": "Göteborgs stad",
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Liseberg is an amusement park located in Gothenburg, Sweden, that opened in 1923.  It is the second most visited theme park in Scandinavia, with around three million visitors annually.  Among the noteworthy attractions is the wooden roller coaster Balder, twice (2003 and 2005) voted as the Best Wooden Tracked Roller Coaster in the world in a major international poll.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Lisebergsportal_kv%C3%A4ll.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Liseberg",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:56:59.732Z"
+}

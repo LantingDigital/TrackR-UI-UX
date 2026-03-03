@@ -1,0 +1,32 @@
+{
+  "id": "greenwood-forest-park",
+  "name": "GreenWood Forest Park",
+  "formerNames": [
+    "GreenWood Forest Park",
+    "The GreenWood Centre"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Y Felinheli",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1993,
+  "yearClosed": null,
+  "owner": "Continuum Attractions",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "GreenWood (Welsh: Gelli Gyffwrdd), formerly GreenWood Forest Park and The GreenWood Centre, is a family fun park at Y Felinheli in Gwynedd, Wales.  The park was opened by Stephen and Andrea Bristow in 1993 and attracts around 150,000 visitors a year.  It is now owned by Continuum Attractions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BFile%3AGreenWood_Forest_Park_logo.png%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/GreenWood",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:58.030Z"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "salitre-m-gico",
+  "name": "Salitre Magico",
+  "formerNames": [
+    "Parque El Salitre"
+  ],
+  "country": "CO",
+  "countryName": "Colombia",
+  "region": null,
+  "continent": "South America",
+  "city": "Parque El Salitre",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2000,
+  "yearClosed": null,
+  "owner": "Corporación Interamericana de Entretenimiento - Operadora de Centros de Espectáculos, S.A. de C.V. Ocesa, México",
+  "chain": null,
+  "website": "salitremagico.com.co",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Salitre Mágico is an amusement park located in Bogotá, Colombia, inside the territory of the Parque el Salitre.  Currently it features 39 mechanical attractions including roller coasters, bumping cars, and the unique \"Castillo del Terror\" (Castle of Horror).  It is one of the most important and classic amusement parks in the city, as well as the largest, among others such as the Mundo Aventura and Cici Aquapark.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Parque_Salitre.JPG",
+  "imageAttribution": "Diversion Extrema",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Salitre_M%C3%A1gico",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:26.457Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "enchanted-forest",
+  "name": "Enchanted Forest",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Oregon",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "In folklore and fantasy, an enchanted forest is a forest under, or containing, enchantments.  Such forests are described in the oldest folklore from regions where forests are common and occur throughout the centuries to modern works of fantasy.  They represent places unknown to the characters, and situations of liminality and transformation.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Enchanted_forest",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:02.533Z"
+}

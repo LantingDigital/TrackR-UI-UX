@@ -1,0 +1,29 @@
+{
+  "id": "sun-park",
+  "name": "Sun Park",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Sun Park (born 3 January 1981) is a South Korean-Australian singer, actress, entertainer and former member of the children's entertainment group Hi-5 as well as the television series of the same name from 2006 to 2008.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sun_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:24:42.886Z"
+}

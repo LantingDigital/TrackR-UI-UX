@@ -1,0 +1,29 @@
+{
+  "id": "zdts-amusement-park",
+  "name": "Switchback",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "ZDT's Amusement Park",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 2015,
+  "yearClosed": 2025,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "ZDT's Amusement Park was a 10 acre family amusement park located in Seguin, Texas.  The park opened in 2007 and featured 12 attractions, three of which were water rides, along with an arcade.  It was open year-round, with the exception of its water rides, which operated from March through September.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ASwitchback_ZDTs_2015.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/ZDT's_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:09.047Z"
+}

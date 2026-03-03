@@ -1,0 +1,29 @@
+{
+  "id": "tokyo-dome-city",
+  "name": "Tokyo Dome City",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "Tokyo Dome City (東京ドームシティ), referred to as Big Egg City before January 1, 2000, is an entertainment complex in Bunkyō, Tokyo, Japan. \n\nIt also includes the world's largest roofed baseball stadium, known as Tokyo Dome (AKA \"Big Egg\"); an amusement park known as Tokyo Dome City Attractions (formerly Kōrakuen Yūenchi); and Korakuen Hall.  In May 2003, a spa resort known as LaQua opened for business near Tokyo Dome City Attractions.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tokyo_Dome_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:24.049Z"
+}

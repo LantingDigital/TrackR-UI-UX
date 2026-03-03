@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-03-02T23:19:05.268Z",
+  "summary": {
+    "totalParksAudited": 1,
+    "parksWithDiscrepancy": 0,
+    "parksWithMentions": 1,
+    "totalMissingCoasters": 0,
+    "totalMentionedNotInDb": 3
+  },
+  "discrepancies": [
+    {
+      "parkId": "universal-epic-universe",
+      "parkName": "Universal Epic Universe",
+      "country": "US",
+      "wikiCoasterCount": 4,
+      "actualCoasterCount": 4,
+      "missing": 0,
+      "existingCoasters": [
+        "Curse of the Werewolf",
+        "Hiccup's Wing Gliders",
+        "Mine-Cart Madness",
+        "Stardust Racers"
+      ],
+      "mentionedRidesNotInDb": [
+        "and Stardust Racers",
+        "r featured ride is Curse of the Werewolf",
+        "Frankenstein Experiment"
+      ],
+      "severity": "low"
+    }
+  ],
+  "mentionedRidesNotInDb": [
+    {
+      "parkId": "universal-epic-universe",
+      "parkName": "Universal Epic Universe",
+      "rideName": "and Stardust Racers",
+      "context": "...ide similar to the SeaGlass Carousel in New York, and Stardust Racers, a dual-tracked launched roller coaster manufactu..."
+    },
+    {
+      "parkId": "universal-epic-universe",
+      "parkName": "Universal Epic Universe",
+      "rideName": "r featured ride is Curse of the Werewolf",
+      "context": "...ent, a dark ride using KUKA arm technology. Another featured ride is Curse of the Werewolf, a launched spinning coaster manufactured by Mack..."
+    },
+    {
+      "parkId": "universal-epic-universe",
+      "parkName": "Universal Epic Universe",
+      "rideName": "Frankenstein Experiment",
+      "context": "...attle at the Ministry and Monsters Unchained: The Frankenstein Experiment, a dual-tracked racing roller coaster called Star..."
+    }
+  ]
+}

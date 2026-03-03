@@ -1,0 +1,49 @@
+{
+  "articleTitle": "Belantis",
+  "introSection": "Belantis is an amusement park next to Leipzig, Germany. Covering 27 hectares, the park offers over 60 attractions, including four roller coasters.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "The park was previously run by Parques Reunidos from 2018 to 2025; in April it was announced that Compagnie des Alpes had taken over ownership. They announced in December 2025 that they will convert it into a Parc Astérix."
+    },
+    {
+      "title": "List of roller coasters",
+      "content": "Huracan has a steeper-than-vertical first hill and five inversions."
+    },
+    {
+      "title": "List of water rides",
+      "content": "The water ride Fluch des Pharao starts from a pyramid with a height of 38 m."
+    },
+    {
+      "title": "Further attractions",
+      "content": "This list is incomplete."
+    },
+    {
+      "title": "External links",
+      "content": "\n * Official website\n * List of attractions at freizeitpark-welt.de"
+    }
+  ],
+  "fullText": "Belantis is an amusement park next to Leipzig, Germany. Covering 27 hectares, the park offers over 60 attractions, including four roller coasters.\n\nThe park was previously run by Parques Reunidos from 2018 to 2025; in April it was announced that Compagnie des Alpes had taken over ownership. They announced in December 2025 that they will convert it into a Parc Astérix.\n\nHuracan has a steeper-than-vertical first hill and five inversions.\n\nThe water ride Fluch des Pharao starts from a pyramid with a height of 38 m.\n\nThis list is incomplete.\n\n\n\n\n\n\n * Official website\n * List of attractions at freizeitpark-welt.de",
+  "categories": [
+    "Amusement parks in Germany",
+    "Amusement parks opened in 2003",
+    "Tourist attractions in Saxony"
+  ],
+  "infoboxRaw": {
+    "name": "Belantis",
+    "image": "Eingangstor-belantis.jpg",
+    "caption": "Belantis entrance",
+    "coordinates": "51.25181°N, 12.31528°W",
+    "owner": "Compagnie des Alpes",
+    "status": "operating",
+    "opening_date": "2003",
+    "visitors": "600,000",
+    "area_ha": "27",
+    "coasters": "4",
+    "water_rides": "4"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Belantis",
+  "wikiPageId": null,
+  "fetchedAt": "2026-02-28T20:46:13.926Z",
+  "articleLength": 616
+}

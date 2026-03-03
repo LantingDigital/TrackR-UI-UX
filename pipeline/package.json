@@ -1,0 +1,21 @@
+{
+  "name": "trackr-data-pipeline",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "discover": "node scripts/01-discover.mjs",
+    "fetch": "node scripts/02-fetch-coasters.mjs",
+    "parks": "node scripts/03-fetch-parks.mjs",
+    "geography": "node scripts/04-build-geography.mjs",
+    "validate": "node scripts/05-validate.mjs",
+    "pipeline": "node scripts/01-discover.mjs && node scripts/02-fetch-coasters.mjs && node scripts/03-fetch-parks.mjs && node scripts/04-build-geography.mjs && node scripts/05-validate.mjs",
+    "cp:discover": "node scripts/06-discover-coasterpedia.mjs",
+    "cp:enrich": "node scripts/07-enrich-coasterpedia.mjs",
+    "cp:reconcile": "node scripts/08-reconcile.mjs",
+    "cp:pipeline": "node scripts/06-discover-coasterpedia.mjs && node scripts/07-enrich-coasterpedia.mjs && node scripts/08-reconcile.mjs",
+    "rank": "node scripts/09-rank-popularity.mjs"
+  },
+  "dependencies": {
+    "wtf_wikipedia": "^10.3.0"
+  }
+}

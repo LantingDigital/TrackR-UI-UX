@@ -1,0 +1,29 @@
+{
+  "id": "toverland",
+  "name": "Attractiepark Toverland",
+  "formerNames": [],
+  "country": "NL",
+  "countryName": "Netherlands",
+  "region": "Netherlands",
+  "continent": "Europe",
+  "city": "Sevenum, Netherlands",
+  "latitude": 51.396,
+  "longitude": -5.986,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2001,
+  "yearClosed": null,
+  "owner": "Gelissen Group",
+  "chain": null,
+  "website": "Attractiepark Toverland",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Attractiepark Toverland is an amusement park located in Sevenum, the Netherlands.  It first opened in 2001 as an indoor family entertainment centre, operated by the Gelissen Group.  Toverland won the European Star Award for the Best Theme Park in 2018.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Toverland_hoofdentree.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Toverland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:02.685Z"
+}

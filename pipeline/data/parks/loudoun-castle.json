@@ -1,0 +1,29 @@
+{
+  "id": "loudoun-castle",
+  "name": "Loudoun Castle",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Galston",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1995,
+  "yearClosed": 2010,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Loudoun Castle was a theme park set around the ruins of the 19th century Loudoun Castle near Galston, in the Loudoun area of Ayrshire, Scotland.  The park opened in 1995, and closed at the end of the 2010 season.  The park's mascot was Rory the Lion.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Loudoun-Logo.jpg",
+  "imageAttribution": "Loudoun Park's logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Loudoun_Castle_(theme_park)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:10.287Z"
+}

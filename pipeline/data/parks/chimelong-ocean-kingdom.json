@@ -1,0 +1,29 @@
+{
+  "id": "chimelong-ocean-kingdom",
+  "name": "Zhuhai Chimelong Ocean Kingdom\n珠海长隆海洋王国",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "Fuxiang Bay, Hengqin",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2014,
+  "yearClosed": null,
+  "owner": "Chimelong Group",
+  "chain": null,
+  "website": "https://www.chimelong.com/zh/oceankingdom/",
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": "Chimelong Ocean Kingdom is a theme park situated in Hengqin, Zhuhai, People's Republic of China.  It was designed by PGAV Destinations.  The park broke ground on 28 November 2010 and soft-opened on 28 January 2014.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/11144-Ocean-Kingdom.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Chimelong_Ocean_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:41.923Z"
+}

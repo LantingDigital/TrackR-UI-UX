@@ -1,0 +1,29 @@
+{
+  "id": "luna-park",
+  "name": "Luna Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Luna Park is a name shared by dozens of currently operating and defunct amusement parks.  They are named after, and partly based on, the first Luna Park, which opened in 1903 during the heyday of large Coney Island parks.  Luna parks are small-scale attraction parks, easily accessed, potentially addressed to the permanent or temporary residential market, and located in the suburbs or even near the town center.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Luna_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:18.400Z"
+}

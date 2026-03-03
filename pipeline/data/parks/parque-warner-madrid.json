@@ -1,0 +1,32 @@
+{
+  "id": "parque-warner-madrid",
+  "name": "Parque Warner Madrid",
+  "formerNames": [
+    "Warner Bros. Movie World Madrid",
+    "Warner Bros. Park Madrid"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "San Martín de la Vega",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "owner": "Parques Reunidos (95%)\nWarner Bros. Discovery Global Experiences (5%)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Parque Warner Madrid is a theme park located 23 km southeast of Madrid, Spain, in the municipality of San Martín de la Vega.  The park opened as Warner Bros.  Movie World Madrid/Warner Bros.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrada-parque-warner.jpg",
+  "imageAttribution": "Parque Warner Madrid main entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parque_Warner_Madrid",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:29.777Z"
+}

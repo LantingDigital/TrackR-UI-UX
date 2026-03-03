@@ -1,0 +1,35 @@
+{
+  "id": "fun-spot-america-kissimmee",
+  "name": "Fun Spot America Theme Parks",
+  "formerNames": [
+    "Fun N Wheels",
+    "Fun Spot Action Park",
+    "Fun Spot USA",
+    "Dixieland Fun Park",
+    "Fun Junction USA"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Orlando, Florida\n\nKissimmee, Florida\n\nFayetteville, Georgia\n\nUnited States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1979,
+  "yearClosed": null,
+  "owner": "Arie family",
+  "chain": null,
+  "website": "http://fun-spot.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Fun Spot America Theme Parks is a group of amusement parks.  Since 1979, the group has owned and operated a number of small amusement parks over the years and currently has three locations in Orlando, Florida; Kissimmee, Florida; and Fayetteville, Georgia.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Fun_Spot_America_Theme_Parks_Logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fun_Spot_America_Theme_Parks",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:43.124Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "wonderland-park",
+  "name": "Wonderland Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Wonderland Park was the third and final album of Los Angeles band Ednaswap.  It had a much more pop-oriented sound than any of their other releases.  It was released after the band's label, Island, underwent a reorganization that threatened Ednaswap's signed status.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wonderland_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:13.403Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "fantasilandia",
+  "name": "Fantasilandia",
+  "formerNames": [],
+  "country": "CL",
+  "countryName": "Chile",
+  "region": null,
+  "continent": "South America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1978,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 5,
+  "description": "Fantasilandia is a Chilean amusement park.  The park opened in 1978 and is located in a corner of O'Higgins Park in Santiago, Chile.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Fantasilandia_Logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fantasilandia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:32.771Z"
+}

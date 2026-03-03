@@ -1,0 +1,33 @@
+{
+  "id": "rides-at-adventure-cove",
+  "name": "Rides at Adventure Cove",
+  "formerNames": [
+    "Gooding Zoo Park",
+    "Wyandot Lake",
+    "Jungle Jack's Landing"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Powell, Ohio",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2008,
+  "yearClosed": null,
+  "owner": "Columbus Zoo and Aquarium",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Rides at Adventure Cove is a small amusement park area that is part of and owned by the Columbus Zoo and Aquarium in Powell, Ohio.  The park was originally part of Wyandot Lake before the zoo purchased the property in 2006, splitting it into two separate sections after the 2006 season.  The water park became known as Zoombezi Bay while the dry ride area became Jungle Jack's Landing.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Rides_At_Adventure_Cove",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:07.935Z"
+}

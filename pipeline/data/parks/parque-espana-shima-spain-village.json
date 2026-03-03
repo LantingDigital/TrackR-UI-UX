@@ -1,0 +1,29 @@
+{
+  "id": "parque-espana-shima-spain-village",
+  "name": "Shima",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": 34.33333,
+  "longitude": -136.83333,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Shima (志摩市) is a city in Mie Prefecture, Japan.  As of 31 January 2024, the city had an estimated population of 45,073 in 22,511 households and a population density of 251 persons per km2.  The total area of the city is 179.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Shima%2C_Mie",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:44.852Z"
+}

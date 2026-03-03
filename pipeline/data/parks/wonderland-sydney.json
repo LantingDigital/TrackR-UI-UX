@@ -1,0 +1,29 @@
+{
+  "id": "wonderland-sydney",
+  "name": "Wonderland Sydney",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "city": "Eastern Creek, New South Wales, Australia",
+  "latitude": 33.80119,
+  "longitude": -150.84754,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1985,
+  "yearClosed": 2004,
+  "owner": "Kings Entertainment Company (1985–1996)\n\nSunway Group (1997–2004)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Wonderland Sydney (originally known as Australia's Wonderland) was an amusement park in Eastern Creek, Sydney, Australia.  Officially opened in December 1985 by the Premier of New South Wales, Neville Wran, the park was the largest in the southern hemisphere.  It remained open for over 18 years and was the premier theme park in New South Wales for much of its life until its closure in 2004.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wonderland_Sydney",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:59.794Z"
+}

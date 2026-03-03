@@ -1,0 +1,29 @@
+{
+  "id": "legoland-korea",
+  "name": "Legoland Korea Resort",
+  "formerNames": [],
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": null,
+  "continent": "Asia",
+  "city": "Jungdo Island, Chuncheon, Gangwon Province",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2022,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "https://www.legoland.kr/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Legoland Korea is a theme park in Chuncheon, Gangwon Province, South Korea.  It opened on May 5, 2022.  Legoland Korea Resort covers 280,000 square meters (3.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3A20231226_%EB%A0%88%EA%B3%A0%EB%9E%9C%EB%93%9C%EC%BD%94%EB%A6%AC%EC%95%84_%EC%A0%95%EB%AC%B8_%EC%A0%84%EA%B2%BD.jpg",
+  "imageAttribution": "Entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Korea_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:36:58.633Z"
+}

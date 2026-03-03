@@ -1,0 +1,29 @@
+{
+  "id": "washington-state-fair",
+  "name": "Washington State Fair",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Washington",
+  "continent": "North America",
+  "city": "110 9th Ave SW Puyallup, Washington, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.thefair.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "The Washington State Fair, formerly the Puyallup Fair, is the largest single attraction held annually in the U. S.  state of Washington.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Aerial_view_of_Washington_State_Fair%2C_Puyallup%2C_Washington%2C_August_16%2C_2023_(cropped).jpg",
+  "imageAttribution": "Fair Grounds in August 2023",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Washington_State_Fair",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:27.023Z"
+}

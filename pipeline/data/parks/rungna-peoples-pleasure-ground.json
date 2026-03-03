@@ -1,0 +1,29 @@
+{
+  "id": "rungna-peoples-pleasure-ground",
+  "name": "Rungra People's Pleasure Ground",
+  "formerNames": [],
+  "country": "KP",
+  "countryName": "North Korea",
+  "region": null,
+  "continent": "Asia",
+  "city": "Rungra Island, Pyongyang, North Korea",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2012,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Rungra People's Pleasure Ground is an amusement park located in Rungra Island, Pyongyang, North Korea.  It was opened in 2012 in a ceremony with Kim Jong Un and his wife Ri Sol-ju.  It has a dolphinarium, swimming pool, arcade, mini golf course, fun fair, and courts for tennis, badminton, and volleyball.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Rungra_People's_Pleasure_Ground",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:49.987Z"
+}

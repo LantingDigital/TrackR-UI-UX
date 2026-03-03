@@ -1,0 +1,29 @@
+{
+  "id": "suzuka-circuit",
+  "name": "Suzuka International Racing Course",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Suzuka, Mie Prefecture, Japan",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1962,
+  "yearClosed": null,
+  "owner": "Honda Motor Co., Ltd. (1962–present)",
+  "chain": null,
+  "website": "www.suzukacircuit.jp",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "The Suzuka International Racing Course (鈴鹿国際レーシングコース), a. k. a.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Suzuka_circuit_map--2005.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Suzuka_Circuit",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:57:51.305Z"
+}

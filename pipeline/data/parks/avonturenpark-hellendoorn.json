@@ -1,0 +1,29 @@
+{
+  "id": "avonturenpark-hellendoorn",
+  "name": "Avonturenpark Hellendoorn",
+  "formerNames": [],
+  "country": "NL",
+  "countryName": "Netherlands",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 4,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:11:13.983Z"
+}

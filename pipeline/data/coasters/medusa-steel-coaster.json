@@ -1,0 +1,62 @@
+{
+  "id": "medusa-steel-coaster",
+  "name": "Medusa Steel Coaster",
+  "formerNames": [
+    "Medusa"
+  ],
+  "parkId": "six-flags-m-xico",
+  "parkName": "Six Flags México",
+  "country": "MX",
+  "countryName": "Mexico",
+  "region": "Mexico",
+  "continent": "North America",
+  "heightFt": 82,
+  "heightM": 25,
+  "speedMph": 58,
+  "speedKmh": 93.3,
+  "lengthFt": 3000,
+  "lengthM": 914.4,
+  "dropFt": 118,
+  "dropM": 36,
+  "inversions": 3,
+  "gForce": null,
+  "duration": 105,
+  "material": "Hybrid",
+  "type": "Sit-down",
+  "propulsion": "Chain lift",
+  "manufacturer": "Rocky Mountain Construction",
+  "designer": "Alan Schilke",
+  "model": "I-Box",
+  "status": "operating",
+  "yearOpened": 2000,
+  "yearClosed": 2013,
+  "description": "Medusa Steel Coaster, formerly known as simply Medusa, is a steel roller coaster located at Six Flags México in Mexico City.  Manufactured by Rocky Mountain Construction (RMC) and designed by Alan Schilke, the ride opened to the public on 14 June 2014.  It was originally a wooden coaster constructed by Custom Coasters International that debuted in June 2000.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Medusa_Steel_Coaster_1.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Medusa_Steel_Coaster",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:02:54.452Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "medusa steel coaster",
+    "medusa",
+    "six flags méxico",
+    "rocky mountain construction",
+    "rmc",
+    "i-box",
+    "sit-down",
+    "mexico"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Rocky Mountain Construction"
+  },
+  "popularityScore": 61.3,
+  "popularityTier": "notable",
+  "popularityRank": 564
+}

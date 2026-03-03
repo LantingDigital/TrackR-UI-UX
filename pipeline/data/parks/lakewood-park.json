@@ -1,0 +1,29 @@
+{
+  "id": "lakewood-park",
+  "name": "Lakewood Park, Florida",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Georgia",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Lakewood Park is a Census-designated place in St.  Lucie County, Florida, United States.  The population was 11,323 at the 2010 census.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lakewood_Park%2C_Florida",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:00.007Z"
+}

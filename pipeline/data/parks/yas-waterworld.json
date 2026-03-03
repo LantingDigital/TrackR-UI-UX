@@ -1,0 +1,29 @@
+{
+  "id": "yas-waterworld",
+  "name": "Yas Waterworld",
+  "formerNames": [],
+  "country": "AE",
+  "countryName": "United Arab Emirates",
+  "region": null,
+  "continent": "Asia",
+  "city": "Yas Island, Abu Dhabi, United Arab Emirates",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2013,
+  "yearClosed": null,
+  "owner": "Miral",
+  "chain": null,
+  "website": "https://www.yaswaterworld.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Yas Waterworld Abu Dhabi is an Emirati-themed waterpark located on Yas Island in Abu Dhabi, United Arab Emirates, that is home to 45 rides, slides, and attractions, and various seasonal events and shows.  The waterpark is just minutes away from Ferrari World Abu Dhabi, Warner Bros.  World Abu Dhabi, and CLYMB Abu Dhabi.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Yas_Waterworld_Abu_Dhabi.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Yas_Waterworld_Abu_Dhabi",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:55.313Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "clarence-pier",
+  "name": "Clarence Pier",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Portsmouth, England",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://clarencepier.co.uk",
+  "coasterCount": 2,
+  "totalCoasterCount": 5,
+  "description": "Clarence Pier is an amusement pier in Portsmouth, Hampshire.  It is located next to Southsea Hoverport.  Unlike most seaside piers in the UK, the pier does not extend very far out to sea and instead goes along the coast.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Clarence_Pier%2C_Pier_Road%2C_Southsea_(September_2024)_(7).jpg",
+  "imageAttribution": "The pier in September 2024",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Clarence_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:44.735Z"
+}

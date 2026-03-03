@@ -1,0 +1,42 @@
+{
+  "articleTitle": "Fiorano GT Challenge",
+  "introSection": "Fiorano GT Challenge is a steel dueling roller coaster at Ferrari World in Abu Dhabi, United Arab Emirates. The roller coaster features two, 1.08 km tracks, each of which has four LSM launches and four magnetic brake sections, immersing passengers into the twisting, head-to-head varying speeds and accelerations of GT racing. Power for the ride system is provided via two flywheel motor generator sets, isolating the surge requirements of the launches from the electrical grid. The trains' 3 cars have been modeled after the styling of Ferrari F430 Spiders.",
+  "sections": [],
+  "fullText": "Fiorano GT Challenge is a steel dueling roller coaster at Ferrari World in Abu Dhabi, United Arab Emirates. The roller coaster features two, 1.08 km tracks, each of which has four LSM launches and four magnetic brake sections, immersing passengers into the twisting, head-to-head varying speeds and accelerations of GT racing. Power for the ride system is provided via two flywheel motor generator sets, isolating the surge requirements of the launches from the electrical grid. The trains' 3 cars have been modeled after the styling of Ferrari F430 Spiders.\n\n",
+  "categories": [
+    "Roller coasters in the United Arab Emirates",
+    "Roller coasters opened in 2010",
+    "Ferrari World Abu Dhabi"
+  ],
+  "infoboxRaw": {
+    "name": "Fiorano GT Challenge",
+    "image": "FioranoGTStation.jpg",
+    "caption": "Fiorano GT Challenge's station",
+    "location": "Ferrari World",
+    "type2": "Launched",
+    "type3": "Dueling",
+    "status": "Operating",
+    "opened": "November 4, 2010",
+    "manufacturer": "Maurer AG",
+    "designer": "Jack Rouse Associates",
+    "coordinates": "24.48641°N, 54.60424°W",
+    "length1_ft": "3543",
+    "length2_ft": "3543",
+    "speed1_mph": "59",
+    "speed2_mph": "59",
+    "inversions1": "0",
+    "inversions2": "0",
+    "gforce1": "1.5",
+    "gforce2": "1.5",
+    "restriction_in": "51",
+    "trains": "4",
+    "carspertrain": "3",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "4245"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fiorano_GT_Challenge",
+  "wikiPageId": 25060593,
+  "fetchedAt": "2026-02-28T20:56:22.053Z",
+  "articleLength": 560
+}

@@ -1,0 +1,35 @@
+{
+  "source": "coasterpedia",
+  "articleTitle": "Classic Coaster",
+  "introSection": "Classic Coaster is a wooden roller coaster located at Washington State Fair in Puyallup, Washington, USA.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "The coaster originally opened as a side friction coaster, and used the trains from the Scenic Railway at Oaks Amusement Park. The coaster got an overhaul in 1950, turning it into a normal wooden coaster with trains made by Prior & Church. These trains where purchased from the defunct Giant Dipper at Happyland Park."
+    },
+    {
+      "title": "Trains",
+      "content": "3 trains with 8 cars per train. Riders are arranged 2 across in a single row for a total of 16 riders per train."
+    }
+  ],
+  "fullText": "Classic Coaster is a wooden roller coaster located at Washington State Fair in Puyallup, Washington, USA.\n\nThe coaster originally opened as a side friction coaster, and used the trains from the Scenic Railway at Oaks Amusement Park. The coaster got an overhaul in 1950, turning it into a normal wooden coaster with trains made by Prior & Church. These trains where purchased from the defunct Giant Dipper at Happyland Park.\n\n\n\n3 trains with 8 cars per train. Riders are arranged 2 across in a single row for a total of 16 riders per train.\n\n",
+  "categories": [
+    "Pages_with_short_description",
+    "Pages_using_Details_parser_tag",
+    "Infoboxes_using_placeholder_image",
+    "Roller_coasters_by_name",
+    "Operating_roller_coasters",
+    "Roller_coasters_in_Washington",
+    "Wooden_roller_coasters",
+    "Roller_coasters_with_a_out_and_back_layout",
+    "Pages_with_park_navbox",
+    "Roller_coasters_opened_in_1935",
+    "John_A._Miller",
+    "Coasters_with_Prior_&_Church_trains",
+    "ACE_Coaster_Classic"
+  ],
+  "url": "https://coasterpedia.net/wiki/Classic_Coaster_(Washington_State_Fair)",
+  "pageId": 31039,
+  "fetchedAt": "2026-02-28T21:37:56.969Z",
+  "articleLength": 541
+}

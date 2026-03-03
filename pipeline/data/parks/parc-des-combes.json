@@ -1,0 +1,29 @@
+{
+  "id": "parc-des-combes",
+  "name": "Parc des Combes",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Le Creusot",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1990,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://www.parcdescombes.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Parc des Combes is an amusement park located in Le Creusot, in Burgundy, France.  The wooded park is a part of the Les Chemins de Fer du Creusot (\"Creusot Railways\" in English) tourist attraction, served by the Train des Combes tourist train.  The French word Combe can be translated as anticlinal valley, given that the park is located on an old Morvan valley.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Parc_des_Combes",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:38.899Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "valleyfair",
+  "name": "Valleyfair",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Minnesota",
+  "continent": "North America",
+  "city": "One Valleyfair Drive Shakopee",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "http://www.sixflags.com/valleyfair",
+  "coasterCount": 9,
+  "totalCoasterCount": 10,
+  "description": "Valleyfair is a 90 acre amusement park in Shakopee, Minnesota, United States.  Owned by Six Flags, the park opened in 1976 and features over 75 rides and attractions including eight roller coasters.  Valleyfair also has a water park called Soak City which is included with the price of admission.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Valleyfair%2C_Shakopee%2C_Minnesota_(52358528378).jpg",
+  "imageAttribution": "Aerial view of Valleyfair",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Valleyfair",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:33.926Z"
+}

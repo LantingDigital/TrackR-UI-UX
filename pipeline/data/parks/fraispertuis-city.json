@@ -1,0 +1,29 @@
+{
+  "id": "fraispertuis-city",
+  "name": "Fraispertuis City",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Jeanménil, Vosges, France",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1966,
+  "yearClosed": null,
+  "owner": "The Fleurent Family",
+  "chain": null,
+  "website": "www.fraispertuis-city.fr",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Fraispertuis City is a theme park in Jeanménil, France.  It opened in 1966. \n\nIts roller coaster Timber Drop, created by S&S Power, was the steepest in the world when it opened on July 2, 2011, but it lost the record with the opening on July 16, 2011, of Takabisha at Fuji-Q Highland in Japan.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fraispertuis_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:28:05.074Z"
+}

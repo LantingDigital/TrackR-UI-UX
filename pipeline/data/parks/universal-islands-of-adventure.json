@@ -1,0 +1,29 @@
+{
+  "id": "universal-islands-of-adventure",
+  "name": "Universal Islands of Adventure",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Orlando",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "owner": "NBCUniversal",
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Universal Islands of Adventure, often shortened to Islands of Adventure, is a theme park located in Orlando, Florida, United States.  It originally opened as Universal Studios Islands of Adventure on May 28, 1999, along with Universal CityWalk, as part of a major expansion that transformed Universal Studios Florida into Universal Orlando Resort.  The investment was Universal's largest since the resort's founding in 1990.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Universal_Islands_of_Adventure%2C_Orlando.jpg",
+  "imageAttribution": "Pharos Lighthouse featuring the park's original logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Islands_of_Adventure",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:56.986Z"
+}

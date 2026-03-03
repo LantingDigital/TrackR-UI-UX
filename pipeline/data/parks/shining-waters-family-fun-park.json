@@ -1,0 +1,29 @@
+{
+  "id": "shining-waters-family-fun-park",
+  "name": "Cavendish, Prince Edward Island",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": null,
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "http://cavendishbeachpei.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Cavendish is an unincorporated rural community in the township of Lot 23, Queens County, Prince Edward Island, Canada. \n\nThe community's primary industries are tourism and agriculture supporting a very small year-round population.  Cavendish is the largest seasonal resort area in Prince Edward Island with an average daily population in the months of July and August of approximately 7,500 residents.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cavendish%2C_Prince_Edward_Island",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:08.277Z"
+}

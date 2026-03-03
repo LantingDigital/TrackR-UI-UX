@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-great-america",
+  "name": "Six Flags Great America",
+  "formerNames": [
+    "Marriott's Great America"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Illinois",
+  "continent": "North America",
+  "city": "Gurnee",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "https://www.sixflags.com/greatamerica",
+  "coasterCount": 9,
+  "totalCoasterCount": 10,
+  "description": "Six Flags Great America (formerly known as Marriott's Great America) is an amusement park in Gurnee, Illinois, United States, between Chicago and Milwaukee.  Owned and operated by Six Flags, the park features 45 attractions, including 16 roller coasters, and an adjacent water park named Hurricane Harbor Chicago.  It frequently ranks as one of the top 20 most-visited amusement parks in North America, with an estimated 3.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Great_America_Aerial_View_-_January_2026.jpg",
+  "imageAttribution": "An aerial view of the park in 2026",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Great_America",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:57.916Z"
+}

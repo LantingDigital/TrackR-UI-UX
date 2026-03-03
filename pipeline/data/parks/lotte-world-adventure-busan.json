@@ -1,0 +1,29 @@
+{
+  "id": "lotte-world-adventure-busan",
+  "name": "Lotte World Adventure Busan",
+  "formerNames": [],
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": "South Korea",
+  "continent": "Asia",
+  "city": "Gijang County",
+  "latitude": 35.19639,
+  "longitude": -129.215,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2022,
+  "yearClosed": null,
+  "owner": "Lotte Corporation",
+  "chain": null,
+  "website": "http://www.adventurebusan.lotteworld.com/kor/main/index.do/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Lotte World Adventure Busan is a theme park in Gijang County, Busan, South Korea.  It opened in March 2022.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%EB%B6%80%EC%82%B0_%EB%A1%AF%EB%8D%B0%EC%9B%94%EB%93%9C_%EB%B6%84%EC%88%98.jpg",
+  "imageAttribution": "Lotte World and Lotte World Tower",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lotte_World_Adventure_Busan",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:20.669Z"
+}

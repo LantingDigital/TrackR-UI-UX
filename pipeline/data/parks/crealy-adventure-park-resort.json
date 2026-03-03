@@ -1,0 +1,33 @@
+{
+  "id": "crealy-adventure-park-resort",
+  "name": "Crealy Theme Park & Resort",
+  "formerNames": [
+    "Crealy the Great Farm Adventure",
+    "Crealy Country",
+    "Crealy Adventure Park & Resort"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Exeter, Devon, United Kingdom",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1989,
+  "yearClosed": null,
+  "owner": "Maximum Fun Devon Limited",
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Crealy Theme Park & Resort, formerly Crealy Adventure Park & Resort, is a family theme park in Southwest England with over 60 rides, attractions, live shows, animal attractions and Sooty Land.  Just outside Exeter in over 100 acres of countryside, it also has a large lodge, campsites and variety of entertainment and sport facilities.  The park opened in 1989.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Crealy_Theme_Park_%26_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:37:00.166Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "legoland-malaysia",
+  "name": "Legoland Malaysia Resort",
+  "formerNames": [],
+  "country": "MY",
+  "countryName": "Malaysia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Iskandar Puteri",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2012,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": "www.legoland.com.my",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Legoland Malaysia Resort is a theme park in Iskandar Puteri, Johor, Malaysia.  It opened on 15 September 2012 with over 40 interactive rides, shows and attractions.  It is the first Legoland theme park in Asia and sixth in the world upon its establishment.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrance_Legoland_Malaysia.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Malaysia_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:21.977Z"
+}

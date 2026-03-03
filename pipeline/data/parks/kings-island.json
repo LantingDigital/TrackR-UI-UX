@@ -1,0 +1,31 @@
+{
+  "id": "kings-island",
+  "name": "Kings Island",
+  "formerNames": [
+    "Paramount's Kings Island"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Mason, Ohio, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1972,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "www.sixflags.com/kingsisland",
+  "coasterCount": 10,
+  "totalCoasterCount": 17,
+  "description": "Kings Island is a 364 acre amusement park located 24 mi northeast of Cincinnati in Mason, Ohio, United States.  Owned and operated by Six Flags, the park was built by Taft Broadcasting and opened in 1972.  It was part of a larger effort to move and expand Coney Island, a popular resort destination along the banks of the Ohio River that was prone to frequent flooding.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Kings_Island_International_Street.jpg",
+  "imageAttribution": "Kings Island's original fountains with Eiffel Tower",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kings_Island",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:52.895Z"
+}

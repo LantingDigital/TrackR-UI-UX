@@ -1,0 +1,29 @@
+{
+  "id": "ocean-park-hong-kong",
+  "name": "Ocean Park Hong Kong",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": "China",
+  "continent": "Asia",
+  "city": "Wong Chuk Hang, Hong Kong Island",
+  "latitude": 22.24586,
+  "longitude": -114.17592,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1977,
+  "yearClosed": null,
+  "owner": "Ocean Park Corporation",
+  "chain": null,
+  "website": "https://www.oceanpark.com.hk/en",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Ocean Park Hong Kong, commonly known simply as Ocean Park, is an animal theme park in Hong Kong.  Covering an area of 91. 5 ha in Wong Chuk Hang, it is the largest theme park by area in Hong Kong, and is also the city's second oldest theme park, after the now-defunct Lai Chi Kok Amusement Park.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Ocean_Park_Hong_Kong.jpg",
+  "imageAttribution": "Main entrance in 2018",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Ocean_Park_Hong_Kong",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:04.028Z"
+}

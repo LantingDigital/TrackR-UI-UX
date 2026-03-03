@@ -1,0 +1,31 @@
+{
+  "id": "lesourdsville-lake-amusement-park",
+  "name": "LeSourdsville Lake Amusement Park",
+  "formerNames": [
+    "Americana Amusement Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Monroe",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1922,
+  "yearClosed": 2002,
+  "owner": "Edgar Streifthau (1922–1960) Howard Berni (1960–1990) Leisure International, Inc (1990–1996) Park River II (1996–2000) Jerry Couch (2000–2017) City of Monroe (2017-present)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "LeSourdsville Lake Amusement Park was an amusement park located in Monroe, Ohio.  Founded by Edgar Streifthau, the park originally opened in 1922 as a family picnic destination with swimming amenities.  Throughout the 1940s, LeSourdsville Lake transformed into an amusement park with the addition of rides, attractions, and an arcade.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/LeSourdsville_Lake_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:30:19.677Z"
+}

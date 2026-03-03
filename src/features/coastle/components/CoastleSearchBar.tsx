@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { StyleSheet, View, Text, TextInput, Pressable, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../../theme/colors';
@@ -7,21 +7,17 @@ import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { haptics } from '../../../services/haptics';
-import { CoastleCoaster, GameStatus } from '../types/coastle';
+import { CoastleCoaster } from '../types/coastle';
 import { searchCoasters } from '../data/coastleDatabase';
 
 interface CoastleSearchBarProps {
   excludeIds: string[];
-  gameStatus: GameStatus;
-  targetName?: string;
   onSelect: (coaster: CoastleCoaster) => void;
   disabled?: boolean;
 }
 
 export const CoastleSearchBar: React.FC<CoastleSearchBarProps> = ({
   excludeIds,
-  gameStatus,
-  targetName,
   onSelect,
   disabled,
 }) => {
@@ -29,6 +25,22 @@ export const CoastleSearchBar: React.FC<CoastleSearchBarProps> = ({
   const [results, setResults] = useState<CoastleCoaster[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const inputRef = useRef<TextInput>(null);
+  // Synchronous guard — prevents double-submission when onPress fires twice
+  // (a known Pressable-inside-FlatList quirk on iOS where state hasn't committed yet)
+  const submittingRef = useRef(false);
+
+  // When a guess starts revealing (disabled flips to true), force-clear the dropdown.
+  // This guarantees the search is always in a clean state by the time the flip animation plays,
+  // regardless of whether handleSelect successfully closed it.
+  useEffect(() => {
+    if (disabled) {
+      setQuery('');
+      setResults([]);
+      setShowDropdown(false);
+    }
+    // Reset the guard whenever disabled changes (true = new guess started, false = reveal done)
+    submittingRef.current = false;
+  }, [disabled]);
 
   const handleChangeText = useCallback(
     (text: string) => {
@@ -47,6 +59,9 @@ export const CoastleSearchBar: React.FC<CoastleSearchBarProps> = ({
 
   const handleSelect = useCallback(
     (coaster: CoastleCoaster) => {
+      // Ref check is synchronous — blocks even if React state hasn't committed yet
+      if (submittingRef.current) return;
+      submittingRef.current = true;
       haptics.tap();
       setQuery('');
       setResults([]);
@@ -63,26 +78,6 @@ export const CoastleSearchBar: React.FC<CoastleSearchBarProps> = ({
     setResults([]);
     setShowDropdown(false);
   }, []);
-
-  // Game over states
-  if (gameStatus === 'won') {
-    return (
-      <View style={[styles.inputRow, styles.inputCard]}>
-        <Ionicons name="trophy" size={20} color={colors.coastle.correct} />
-        <Text style={styles.resultText}>You got it!</Text>
-      </View>
-    );
-  }
-
-  if (gameStatus === 'lost') {
-    return (
-      <View style={[styles.inputRow, styles.inputCard]}>
-        <Text style={styles.resultText}>
-          It was <Text style={styles.resultBold}>{targetName}</Text>
-        </Text>
-      </View>
-    );
-  }
 
   return (
     <View style={styles.container}>
@@ -187,13 +182,5 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.meta,
     color: colors.text.secondary,
     marginTop: 2,
-  },
-  resultText: {
-    fontSize: typography.sizes.body,
-    color: colors.text.secondary,
-  },
-  resultBold: {
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
   },
 });

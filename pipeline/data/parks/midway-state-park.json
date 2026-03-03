@@ -1,0 +1,29 @@
+{
+  "id": "midway-state-park",
+  "name": "Midway Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "NY 430, Maple Springs, New York",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Midway State Park, located in Maple Springs, New York, was established in 1898 by the Jamestown & Lake Erie Railway as a picnic ground.  Today, it is recognized as the fifteenth-oldest continually operating amusement park in the United States, and the fifth-oldest remaining trolley park of the thirteen still operating in the United States.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Carousel_Midway_Park_Jul_12.jpg",
+  "imageAttribution": "Carousel (1946), July 2012",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Midway_State_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:48.351Z"
+}

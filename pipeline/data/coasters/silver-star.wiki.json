@@ -1,0 +1,50 @@
+{
+  "articleTitle": "Silver Star (roller coaster)",
+  "introSection": "Silver Star is a steel roller coaster located at Europa-Park, a theme park in Rust, Baden-Württemberg, Germany. The coaster has a height of 73 m and a drop of 67 metres (220 ft), placing it in the hyper coaster category. At the time of its opening, Silver Star was the tallest coaster constructed by Bolliger & Mabillard (B&M), as well as the tallest and fastest coaster in Europe. It also had the longest drop in Europe. All of these records have been broken, with the current record holders being Fury 325 at Carowinds (tallest B&M coaster) and Red Force in Ferrari Land (tallest and fastest in Europe).",
+  "sections": [
+    {
+      "title": "The ride",
+      "content": "Silver Star features no inversions, but many camelback hills:\n\n\n * 1) After the first drop, the train travels to the left and up onto the first camelback. It then goes down a smaller drop and then through a second camelback.\n * 2) The train performs a 180° return in the horseshoe element.\n * 3) The train then continues onto another camelback before a mid-course brake-run.\n * 4) A 270° upwards turn brings the train back under the lift hill and onto one last camelback.\n * 5) An S-bend has the train passing by the camera for candid on-ride photos before the final brake run.\n\nNearly every camelback is fitted with brake trims to regulate the trains’ speed. The original friction-brake trims made the ride uncomfortable for some riders ; these were refitted with magnetic trims.\n\n\n\nThere are 3 trains which seat 36 people each, giving an hourly capacity of 1,750 passengers."
+    },
+    {
+      "title": "Theming",
+      "content": "Silver Star's station is inside a building that was initially named the 'Mercedes-Benz Hall', after german car manufacturer Mercedes-Benz, with the name of the coaster referencing the logo of the manufacturer. Most of the ride's layout covers Europa-Park's parking lot and is visible from the Autobahn, making for a simple 'high speed' theming.\n\nUntil the 2026 season the ride's entrance was located in the 'France' section of the park. However, the station and it's surrounding will be included in the new 'Monacco' area."
+    }
+  ],
+  "fullText": "Silver Star is a steel roller coaster located at Europa-Park, a theme park in Rust, Baden-Württemberg, Germany. The coaster has a height of 73 m and a drop of 67 metres (220 ft), placing it in the hyper coaster category. At the time of its opening, Silver Star was the tallest coaster constructed by Bolliger & Mabillard (B&M), as well as the tallest and fastest coaster in Europe. It also had the longest drop in Europe. All of these records have been broken, with the current record holders being Fury 325 at Carowinds (tallest B&M coaster) and Red Force in Ferrari Land (tallest and fastest in Europe).\n\nSilver Star features no inversions, but many camelback hills:\n\n\n * 1) After the first drop, the train travels to the left and up onto the first camelback. It then goes down a smaller drop and then through a second camelback.\n * 2) The train performs a 180° return in the horseshoe element.\n * 3) The train then continues onto another camelback before a mid-course brake-run.\n * 4) A 270° upwards turn brings the train back under the lift hill and onto one last camelback.\n * 5) An S-bend has the train passing by the camera for candid on-ride photos before the final brake run.\n\nNearly every camelback is fitted with brake trims to regulate the trains’ speed. The original friction-brake trims made the ride uncomfortable for some riders ; these were refitted with magnetic trims.\n\n\n\nThere are 3 trains which seat 36 people each, giving an hourly capacity of 1,750 passengers.\n\nSilver Star's station is inside a building that was initially named the 'Mercedes-Benz Hall', after german car manufacturer Mercedes-Benz, with the name of the coaster referencing the logo of the manufacturer. Most of the ride's layout covers Europa-Park's parking lot and is visible from the Autobahn, making for a simple 'high speed' theming.\n\nUntil the 2026 season the ride's entrance was located in the 'France' section of the park. However, the station and it's surrounding will be included in the new 'Monacco' area.\n\n\n\n",
+  "categories": [
+    "Roller coasters in Germany",
+    "Roller coasters opened in 2002",
+    "Rides at Europa-Park",
+    "2002 establishments in Germany",
+    "Hypercoasters manufactured by Bolliger & Mabillard"
+  ],
+  "infoboxRaw": {
+    "name": "Silver Star",
+    "image": "Europa-Park Silver Star.jpg",
+    "caption": "Silver Star's first drop",
+    "location": "Europa-Park",
+    "status": "Open",
+    "opened": "23 March 2002",
+    "manufacturer": "Bolliger & Mabillard",
+    "model": "Hyper Coaster",
+    "track": "Out and Back",
+    "lift": "Chain lift hill",
+    "height_m": "73",
+    "drop_m": "67",
+    "length_m": "1620",
+    "speed_km/h": "127",
+    "inversions": "0",
+    "angle": "68.5",
+    "capacity": "1,750",
+    "gforce": "4",
+    "restriction_cm": "140",
+    "rcdb_number": "1414",
+    "coordinates": "48.268°N, 7.72004°W",
+    "logo": "Entrée du Silver Star.JPG"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Silver_Star_(roller_coaster)",
+  "wikiPageId": 11225725,
+  "fetchedAt": "2026-02-28T20:43:57.209Z",
+  "articleLength": 2011
+}

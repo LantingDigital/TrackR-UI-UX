@@ -1,0 +1,5966 @@
+{
+  "chimelong-paradise": {
+    "status": "success",
+    "id": "chimelong-paradise",
+    "parkName": "Chimelong Paradise",
+    "fetchedAt": "2026-02-28T20:44:50.873Z"
+  },
+  "drayton-manor-resort": {
+    "status": "success",
+    "id": "drayton-manor-resort",
+    "parkName": "Drayton Manor Resort",
+    "fetchedAt": "2026-02-28T20:44:51.328Z"
+  },
+  "nagashima-spa-land": {
+    "status": "success",
+    "id": "nagashima-spa-land",
+    "parkName": "Nagashima Spa Land",
+    "fetchedAt": "2026-02-28T20:44:51.741Z"
+  },
+  "oaks-amusement-park": {
+    "status": "success",
+    "id": "oaks-amusement-park",
+    "parkName": "Oaks Amusement Park",
+    "fetchedAt": "2026-02-28T20:44:52.277Z"
+  },
+  "kings-island": {
+    "status": "success",
+    "id": "kings-island",
+    "parkName": "Kings Island",
+    "fetchedAt": "2026-02-28T20:44:52.896Z"
+  },
+  "carowinds": {
+    "status": "success",
+    "id": "carowinds",
+    "parkName": "Carowinds",
+    "fetchedAt": "2026-02-28T20:44:53.385Z"
+  },
+  "fun-spot-amusement-park-zoo": {
+    "status": "success",
+    "id": "fun-spot-amusement-park-zoo",
+    "parkName": "Fun Spot Amusement Park & Zoo",
+    "fetchedAt": "2026-02-28T20:44:53.775Z"
+  },
+  "six-flags-great-adventure": {
+    "status": "success",
+    "id": "six-flags-great-adventure",
+    "parkName": "Six Flags Great Adventure",
+    "fetchedAt": "2026-02-28T20:44:54.387Z"
+  },
+  "europa-park": {
+    "status": "success",
+    "id": "europa-park",
+    "parkName": "Europa-Park",
+    "fetchedAt": "2026-02-28T20:44:54.842Z"
+  },
+  "canada-s-wonderland": {
+    "status": "stub",
+    "id": "canada-s-wonderland",
+    "parkName": "Canada’s Wonderland",
+    "fetchedAt": "2026-02-28T23:09:48.075Z"
+  },
+  "busch-gardens-williamsburg": {
+    "status": "success",
+    "id": "busch-gardens-williamsburg",
+    "parkName": "Busch Gardens Williamsburg",
+    "fetchedAt": "2026-02-28T20:44:56.864Z"
+  },
+  "six-flags-great-escape-and-hurricane-harbor": {
+    "status": "success",
+    "id": "six-flags-great-escape-and-hurricane-harbor",
+    "parkName": "Six Flags Great Escape and Hurricane Harbor",
+    "fetchedAt": "2026-02-28T20:44:57.302Z"
+  },
+  "six-flags-great-america": {
+    "status": "success",
+    "id": "six-flags-great-america",
+    "parkName": "Six Flags Great America",
+    "fetchedAt": "2026-02-28T20:44:57.917Z"
+  },
+  "six-flags-st-louis": {
+    "status": "success",
+    "id": "six-flags-st-louis",
+    "parkName": "Six Flags St. Louis",
+    "fetchedAt": "2026-02-28T20:44:58.371Z"
+  },
+  "kings-dominion": {
+    "status": "success",
+    "id": "kings-dominion",
+    "parkName": "Kings Dominion",
+    "fetchedAt": "2026-02-28T20:44:58.861Z"
+  },
+  "six-flags-magic-mountain": {
+    "status": "success",
+    "id": "six-flags-magic-mountain",
+    "parkName": "Six Flags Magic Mountain",
+    "fetchedAt": "2026-02-28T20:44:59.300Z"
+  },
+  "six-flags-over-texas": {
+    "status": "success",
+    "id": "six-flags-over-texas",
+    "parkName": "Six Flags Over Texas",
+    "fetchedAt": "2026-02-28T20:44:59.798Z"
+  },
+  "fun-spot-america-atlanta": {
+    "status": "stub",
+    "id": "fun-spot-america-atlanta",
+    "parkName": "Fun Spot America Atlanta",
+    "fetchedAt": "2026-02-28T23:10:34.792Z"
+  },
+  "unknown-park": {
+    "status": "stub",
+    "id": "unknown-park",
+    "parkName": "Unknown Park",
+    "fetchedAt": "2026-02-28T23:09:26.789Z"
+  },
+  "brean-leisure-park": {
+    "status": "success",
+    "id": "brean-leisure-park",
+    "parkName": "Brean Leisure Park",
+    "fetchedAt": "2026-02-28T20:45:03.316Z"
+  },
+  "pleasure-beach-resort": {
+    "status": "success",
+    "id": "pleasure-beach-resort",
+    "parkName": "Pleasure Beach Resort",
+    "fetchedAt": "2026-02-28T20:45:03.799Z"
+  },
+  "canadas-wonderland": {
+    "status": "success",
+    "id": "canadas-wonderland",
+    "parkName": "Canada's Wonderland",
+    "fetchedAt": "2026-02-28T20:45:04.446Z"
+  },
+  "yomiuriland": {
+    "status": "success",
+    "id": "yomiuriland",
+    "parkName": "Yomiuriland",
+    "fetchedAt": "2026-02-28T20:45:04.772Z"
+  },
+  "six-flags-fiesta-texas": {
+    "status": "success",
+    "id": "six-flags-fiesta-texas",
+    "parkName": "Six Flags Fiesta Texas",
+    "fetchedAt": "2026-02-28T20:45:05.316Z"
+  },
+  "six-flags-astroworld": {
+    "status": "success",
+    "id": "six-flags-astroworld",
+    "parkName": "Six Flags AstroWorld",
+    "fetchedAt": "2026-02-28T20:45:05.827Z"
+  },
+  "six-flags-america": {
+    "status": "success",
+    "id": "six-flags-america",
+    "parkName": "Six Flags America",
+    "fetchedAt": "2026-02-28T20:45:06.359Z"
+  },
+  "alton-towers": {
+    "status": "success",
+    "id": "alton-towers",
+    "parkName": "Alton Towers",
+    "fetchedAt": "2026-02-28T20:45:06.902Z"
+  },
+  "new-york-new-york-hotel-and-casino": {
+    "status": "success",
+    "id": "new-york-new-york-hotel-and-casino",
+    "parkName": "New York-New York Hotel and Casino",
+    "fetchedAt": "2026-02-28T20:45:08.278Z"
+  },
+  "dollywood": {
+    "status": "success",
+    "id": "dollywood",
+    "parkName": "Dollywood",
+    "fetchedAt": "2026-02-28T20:45:08.864Z"
+  },
+  "loudoun-castle": {
+    "status": "success",
+    "id": "loudoun-castle",
+    "parkName": "Loudoun Castle",
+    "fetchedAt": "2026-02-28T20:45:10.288Z"
+  },
+  "camden-park": {
+    "status": "success",
+    "id": "camden-park",
+    "parkName": "Camden Park",
+    "fetchedAt": "2026-02-28T20:45:11.776Z"
+  },
+  "geauga-lake": {
+    "status": "success",
+    "id": "geauga-lake",
+    "parkName": "Geauga Lake",
+    "fetchedAt": "2026-02-28T20:45:12.396Z"
+  },
+  "disneyland": {
+    "status": "success",
+    "id": "disneyland",
+    "parkName": "Disneyland",
+    "fetchedAt": "2026-02-28T20:45:12.931Z"
+  },
+  "knoebels-amusement-resort": {
+    "status": "success",
+    "id": "knoebels-amusement-resort",
+    "parkName": "Knoebels Amusement Resort",
+    "fetchedAt": "2026-02-28T20:45:13.386Z"
+  },
+  "phantasialand": {
+    "status": "success",
+    "id": "phantasialand",
+    "parkName": "Phantasialand",
+    "fetchedAt": "2026-02-28T20:45:13.830Z"
+  },
+  "six-flags-over-georgia": {
+    "status": "success",
+    "id": "six-flags-over-georgia",
+    "parkName": "Six Flags Over Georgia",
+    "fetchedAt": "2026-02-28T20:45:14.383Z"
+  },
+  "conneaut-lake-park": {
+    "status": "success",
+    "id": "conneaut-lake-park",
+    "parkName": "Conneaut Lake Park",
+    "fetchedAt": "2026-02-28T20:45:14.880Z"
+  },
+  "cedar-point": {
+    "status": "success",
+    "id": "cedar-point",
+    "parkName": "Cedar Point",
+    "fetchedAt": "2026-02-28T20:45:15.337Z"
+  },
+  "kemah-boardwalk": {
+    "status": "success",
+    "id": "kemah-boardwalk",
+    "parkName": "Kemah Boardwalk",
+    "fetchedAt": "2026-02-28T20:45:15.776Z"
+  },
+  "parque-diversiones": {
+    "status": "success",
+    "id": "parque-diversiones",
+    "parkName": "Parque Diversiones",
+    "fetchedAt": "2026-02-28T20:45:16.284Z"
+  },
+  "lagoon": {
+    "status": "success",
+    "id": "lagoon",
+    "parkName": "Lagoon",
+    "fetchedAt": "2026-02-28T20:45:17.775Z"
+  },
+  "lake-compounce": {
+    "status": "success",
+    "id": "lake-compounce",
+    "parkName": "Lake Compounce",
+    "fetchedAt": "2026-02-28T20:45:18.346Z"
+  },
+  "tampa": {
+    "status": "success",
+    "id": "tampa",
+    "parkName": "Tampa",
+    "fetchedAt": "2026-02-28T20:45:19.802Z"
+  },
+  "hersheypark": {
+    "status": "success",
+    "id": "hersheypark",
+    "parkName": "Hersheypark",
+    "fetchedAt": "2026-02-28T20:45:20.388Z"
+  },
+  "lake-winnepesaukah": {
+    "status": "success",
+    "id": "lake-winnepesaukah",
+    "parkName": "Lake Winnepesaukah",
+    "fetchedAt": "2026-02-28T20:45:20.868Z"
+  },
+  "pleasurewood-hills": {
+    "status": "success",
+    "id": "pleasurewood-hills",
+    "parkName": "Pleasurewood Hills",
+    "fetchedAt": "2026-02-28T20:45:21.342Z"
+  },
+  "waterville-usa": {
+    "status": "success",
+    "id": "waterville-usa",
+    "parkName": "Waterville USA",
+    "fetchedAt": "2026-02-28T20:45:21.818Z"
+  },
+  "canobie-lake-park": {
+    "status": "success",
+    "id": "canobie-lake-park",
+    "parkName": "Canobie Lake Park",
+    "fetchedAt": "2026-02-28T20:45:22.367Z"
+  },
+  "adventuredome": {
+    "status": "success",
+    "id": "adventuredome",
+    "parkName": "Adventuredome",
+    "fetchedAt": "2026-02-28T20:45:22.903Z"
+  },
+  "busch-gardens-tampa-bay": {
+    "status": "success",
+    "id": "busch-gardens-tampa-bay",
+    "parkName": "Busch Gardens Tampa Bay",
+    "fetchedAt": "2026-02-28T20:45:23.504Z"
+  },
+  "wild-adventures": {
+    "status": "success",
+    "id": "wild-adventures",
+    "parkName": "Wild Adventures",
+    "fetchedAt": "2026-02-28T20:45:23.859Z"
+  },
+  "glenwood-caverns-adventure-park": {
+    "status": "success",
+    "id": "glenwood-caverns-adventure-park",
+    "parkName": "Glenwood Caverns Adventure Park",
+    "fetchedAt": "2026-02-28T20:45:24.367Z"
+  },
+  "knotts-berry-farm": {
+    "status": "success",
+    "id": "knotts-berry-farm",
+    "parkName": "Knott's Berry Farm",
+    "fetchedAt": "2026-02-28T20:45:24.986Z"
+  },
+  "la-ronde": {
+    "status": "success",
+    "id": "la-ronde",
+    "parkName": "La Ronde",
+    "fetchedAt": "2026-02-28T20:45:26.097Z"
+  },
+  "heide-park": {
+    "status": "success",
+    "id": "heide-park",
+    "parkName": "Heide Park",
+    "fetchedAt": "2026-02-28T20:45:26.369Z"
+  },
+  "lagoon-amusement-park": {
+    "status": "success",
+    "id": "lagoon-amusement-park",
+    "parkName": "Lagoon Amusement Park",
+    "fetchedAt": "2026-02-28T20:45:26.858Z"
+  },
+  "thorpe-park": {
+    "status": "success",
+    "id": "thorpe-park",
+    "parkName": "Thorpe Park",
+    "fetchedAt": "2026-02-28T20:45:27.417Z"
+  },
+  "lincoln-park": {
+    "status": "success",
+    "id": "lincoln-park",
+    "parkName": "Lincoln Park",
+    "fetchedAt": "2026-02-28T20:45:28.820Z"
+  },
+  "waldameer-water-world": {
+    "status": "success",
+    "id": "waldameer-water-world",
+    "parkName": "Waldameer & Water World",
+    "fetchedAt": "2026-02-28T20:45:29.343Z"
+  },
+  "luna-park-coney-island": {
+    "status": "success",
+    "id": "luna-park-coney-island",
+    "parkName": "Luna Park, Coney Island",
+    "fetchedAt": "2026-02-28T20:45:30.803Z"
+  },
+  "michigans-adventure": {
+    "status": "success",
+    "id": "michigans-adventure",
+    "parkName": "Michigan's Adventure",
+    "fetchedAt": "2026-02-28T20:45:31.387Z"
+  },
+  "playland": {
+    "status": "success",
+    "id": "playland",
+    "parkName": "Playland",
+    "fetchedAt": "2026-02-28T20:45:32.812Z"
+  },
+  "silverwood-theme-park": {
+    "status": "success",
+    "id": "silverwood-theme-park",
+    "parkName": "Silverwood Theme Park",
+    "fetchedAt": "2026-02-28T20:45:33.392Z"
+  },
+  "valleyfair": {
+    "status": "success",
+    "id": "valleyfair",
+    "parkName": "Valleyfair",
+    "fetchedAt": "2026-02-28T20:45:33.928Z"
+  },
+  "indiana-beach": {
+    "status": "success",
+    "id": "indiana-beach",
+    "parkName": "Indiana Beach",
+    "fetchedAt": "2026-02-28T20:45:34.435Z"
+  },
+  "worlds-of-fun": {
+    "status": "success",
+    "id": "worlds-of-fun",
+    "parkName": "Worlds of Fun",
+    "fetchedAt": "2026-02-28T20:45:34.941Z"
+  },
+  "crystal-beach-park": {
+    "status": "success",
+    "id": "crystal-beach-park",
+    "parkName": "Crystal Beach Park",
+    "fetchedAt": "2026-02-28T20:45:35.507Z"
+  },
+  "palisades-amusement-park": {
+    "status": "success",
+    "id": "palisades-amusement-park",
+    "parkName": "Palisades Amusement Park",
+    "fetchedAt": "2026-02-28T20:45:35.957Z"
+  },
+  "revere-beach": {
+    "status": "success",
+    "id": "revere-beach",
+    "parkName": "Revere Beach",
+    "fetchedAt": "2026-02-28T20:45:37.329Z"
+  },
+  "lakeside-amusement-park": {
+    "status": "success",
+    "id": "lakeside-amusement-park",
+    "parkName": "Lakeside Amusement Park",
+    "fetchedAt": "2026-02-28T20:45:37.883Z"
+  },
+  "mt-olympus-water-theme-park": {
+    "status": "success",
+    "id": "mt-olympus-water-theme-park",
+    "parkName": "Mt. Olympus Water & Theme Park",
+    "fetchedAt": "2026-02-28T20:45:38.391Z"
+  },
+  "expoland": {
+    "status": "success",
+    "id": "expoland",
+    "parkName": "Expoland",
+    "fetchedAt": "2026-02-28T20:45:38.833Z"
+  },
+  "californias-great-america": {
+    "status": "success",
+    "id": "californias-great-america",
+    "parkName": "California's Great America",
+    "fetchedAt": "2026-02-28T20:45:39.512Z"
+  },
+  "buffalo-bills-hotel-and-casino": {
+    "status": "stub",
+    "id": "buffalo-bills-hotel-and-casino",
+    "parkName": "Buffalo Bill's Hotel and Casino",
+    "fetchedAt": "2026-02-28T23:19:25.869Z"
+  },
+  "himeji-central-park": {
+    "status": "success",
+    "id": "himeji-central-park",
+    "parkName": "Himeji Central Park",
+    "fetchedAt": "2026-02-28T20:45:42.340Z"
+  },
+  "china-dinosaurs-park": {
+    "status": "success",
+    "id": "china-dinosaurs-park",
+    "parkName": "China Dinosaurs Park",
+    "fetchedAt": "2026-02-28T20:45:42.862Z"
+  },
+  "happy-valley-shanghai": {
+    "status": "success",
+    "id": "happy-valley-shanghai",
+    "parkName": "Happy Valley Shanghai",
+    "fetchedAt": "2026-02-28T20:45:43.389Z"
+  },
+  "fuji-q-highland": {
+    "status": "success",
+    "id": "fuji-q-highland",
+    "parkName": "Fuji-Q Highland",
+    "fetchedAt": "2026-02-28T20:45:43.858Z"
+  },
+  "universal-orlando-resort": {
+    "status": "success",
+    "id": "universal-orlando-resort",
+    "parkName": "Universal Orlando Resort",
+    "fetchedAt": "2026-02-28T20:45:45.364Z"
+  },
+  "marineland-of-canada": {
+    "status": "success",
+    "id": "marineland-of-canada",
+    "parkName": "Marineland of Canada",
+    "fetchedAt": "2026-02-28T20:45:46.001Z"
+  },
+  "adventureland-iowa": {
+    "status": "success",
+    "id": "adventureland-iowa",
+    "parkName": "Adventureland (Iowa)",
+    "fetchedAt": "2026-02-28T20:45:46.424Z"
+  },
+  "chessington-world-of-adventures": {
+    "status": "success",
+    "id": "chessington-world-of-adventures",
+    "parkName": "Chessington World of Adventures",
+    "fetchedAt": "2026-02-28T20:45:46.999Z"
+  },
+  "dragon-park-ha-long": {
+    "status": "success",
+    "id": "dragon-park-ha-long",
+    "parkName": "Dragon Park Ha Long",
+    "fetchedAt": "2026-02-28T20:45:47.358Z"
+  },
+  "drayton-bassett-tamworth-staffordshire": {
+    "status": "stub",
+    "id": "drayton-bassett-tamworth-staffordshire",
+    "parkName": "Drayton Bassett, Tamworth, Staffordshire",
+    "fetchedAt": "2026-02-28T23:20:26.437Z"
+  },
+  "coney-island": {
+    "status": "success",
+    "id": "coney-island",
+    "parkName": "Coney Island",
+    "fetchedAt": "2026-02-28T20:45:50.356Z"
+  },
+  "freizeitpark-plohn": {
+    "status": "success",
+    "id": "freizeitpark-plohn",
+    "parkName": "Freizeitpark Plohn",
+    "fetchedAt": "2026-02-28T20:45:50.900Z"
+  },
+  "seaworld-san-diego": {
+    "status": "success",
+    "id": "seaworld-san-diego",
+    "parkName": "SeaWorld San Diego",
+    "fetchedAt": "2026-02-28T20:45:51.410Z"
+  },
+  "hansa-park": {
+    "status": "success",
+    "id": "hansa-park",
+    "parkName": "Hansa-Park",
+    "fetchedAt": "2026-02-28T20:45:51.892Z"
+  },
+  "cleveland": {
+    "status": "success",
+    "id": "cleveland",
+    "parkName": "Cleveland",
+    "fetchedAt": "2026-02-28T20:45:53.354Z"
+  },
+  "funtown-splashtown-usa": {
+    "status": "success",
+    "id": "funtown-splashtown-usa",
+    "parkName": "Funtown Splashtown USA",
+    "fetchedAt": "2026-02-28T20:45:53.879Z"
+  },
+  "plopsaland-deutschland": {
+    "status": "success",
+    "id": "plopsaland-deutschland",
+    "parkName": "Plopsaland Deutschland",
+    "fetchedAt": "2026-02-28T20:45:54.364Z"
+  },
+  "nickelodeon-universe": {
+    "status": "success",
+    "id": "nickelodeon-universe",
+    "parkName": "Nickelodeon Universe",
+    "fetchedAt": "2026-02-28T20:45:54.947Z"
+  },
+  "universal-studios-hollywood": {
+    "status": "success",
+    "id": "universal-studios-hollywood",
+    "parkName": "Universal Studios Hollywood",
+    "fetchedAt": "2026-02-28T20:45:55.475Z"
+  },
+  "silver-dollar-city": {
+    "status": "success",
+    "id": "silver-dollar-city",
+    "parkName": "Silver Dollar City",
+    "fetchedAt": "2026-02-28T20:45:55.931Z"
+  },
+  "lost-island-theme-park": {
+    "status": "success",
+    "id": "lost-island-theme-park",
+    "parkName": "Lost Island Theme Park",
+    "fetchedAt": "2026-02-28T20:45:56.427Z"
+  },
+  "universal-islands-of-adventure": {
+    "status": "success",
+    "id": "universal-islands-of-adventure",
+    "parkName": "Universal Islands of Adventure",
+    "fetchedAt": "2026-02-28T20:45:56.987Z"
+  },
+  "sea-lion-park": {
+    "status": "success",
+    "id": "sea-lion-park",
+    "parkName": "Sea Lion Park",
+    "fetchedAt": "2026-02-28T20:45:57.388Z"
+  },
+  "whalom-park": {
+    "status": "success",
+    "id": "whalom-park",
+    "parkName": "Whalom Park",
+    "fetchedAt": "2026-02-28T20:45:57.920Z"
+  },
+  "fun-spot-america": {
+    "status": "success",
+    "id": "fun-spot-america",
+    "parkName": "Fun Spot America",
+    "fetchedAt": "2026-02-28T20:45:58.399Z"
+  },
+  "cavallino-matto": {
+    "status": "success",
+    "id": "cavallino-matto",
+    "parkName": "Cavallino Matto",
+    "fetchedAt": "2026-02-28T20:45:58.904Z"
+  },
+  "orlando-florida-kissimmee-florida-fayetteville-georgia-united-states": {
+    "status": "stub",
+    "id": "orlando-florida-kissimmee-florida-fayetteville-georgia-united-states",
+    "parkName": "Orlando, Florida\n\nKissimmee, Florida\n\nFayetteville, Georgia\n\nUnited States",
+    "fetchedAt": "2026-02-28T23:25:05.745Z"
+  },
+  "santa-cruz-beach-boardwalk": {
+    "status": "success",
+    "id": "santa-cruz-beach-boardwalk",
+    "parkName": "Santa Cruz Beach Boardwalk",
+    "fetchedAt": "2026-02-28T20:46:00.878Z"
+  },
+  "happy-valley-beijing": {
+    "status": "success",
+    "id": "happy-valley-beijing",
+    "parkName": "Happy Valley Beijing",
+    "fetchedAt": "2026-02-28T20:46:01.395Z"
+  },
+  "six-flags-new-england": {
+    "status": "success",
+    "id": "six-flags-new-england",
+    "parkName": "Six Flags New England",
+    "fetchedAt": "2026-02-28T20:46:01.988Z"
+  },
+  "holiday-world-splashin-safari": {
+    "status": "success",
+    "id": "holiday-world-splashin-safari",
+    "parkName": "Holiday World & Splashin' Safari",
+    "fetchedAt": "2026-02-28T20:46:02.485Z"
+  },
+  "disney-california-adventure": {
+    "status": "success",
+    "id": "disney-california-adventure",
+    "parkName": "Disney California Adventure",
+    "fetchedAt": "2026-02-28T20:46:02.924Z"
+  },
+  "epcot": {
+    "status": "success",
+    "id": "epcot",
+    "parkName": "Epcot",
+    "fetchedAt": "2026-02-28T20:46:03.482Z"
+  },
+  "ocean-park-hong-kong": {
+    "status": "success",
+    "id": "ocean-park-hong-kong",
+    "parkName": "Ocean Park Hong Kong",
+    "fetchedAt": "2026-02-28T20:46:04.029Z"
+  },
+  "s-rk-nniemi": {
+    "status": "success",
+    "id": "s-rk-nniemi",
+    "parkName": "Särkänniemi",
+    "fetchedAt": "2026-02-28T20:46:04.427Z"
+  },
+  "chengdu-sichuan-china": {
+    "status": "stub",
+    "id": "chengdu-sichuan-china",
+    "parkName": "Chengdu, Sichuan, China",
+    "fetchedAt": "2026-02-28T23:28:27.877Z"
+  },
+  "xishuangbanna-theme-park": {
+    "status": "stub",
+    "id": "xishuangbanna-theme-park",
+    "parkName": "Xishuangbanna Theme Park",
+    "fetchedAt": "2026-02-28T23:28:29.369Z"
+  },
+  "universal-studios-florida": {
+    "status": "success",
+    "id": "universal-studios-florida",
+    "parkName": "Universal Studios Florida",
+    "fetchedAt": "2026-02-28T20:46:08.011Z"
+  },
+  "clementon-amusement-park": {
+    "status": "success",
+    "id": "clementon-amusement-park",
+    "parkName": "Clementon Amusement Park",
+    "fetchedAt": "2026-02-28T20:46:08.464Z"
+  },
+  "dorney-park-wildwater-kingdom": {
+    "status": "success",
+    "id": "dorney-park-wildwater-kingdom",
+    "parkName": "Dorney Park & Wildwater Kingdom",
+    "fetchedAt": "2026-02-28T20:46:08.992Z"
+  },
+  "stratosphere-tower": {
+    "status": "success",
+    "id": "stratosphere-tower",
+    "parkName": "Stratosphere Tower",
+    "fetchedAt": "2026-02-28T20:46:10.401Z"
+  },
+  "kentucky-kingdom": {
+    "status": "success",
+    "id": "kentucky-kingdom",
+    "parkName": "Kentucky Kingdom",
+    "fetchedAt": "2026-02-28T20:46:11.055Z"
+  },
+  "universal-studios-japan": {
+    "status": "success",
+    "id": "universal-studios-japan",
+    "parkName": "Universal Studios Japan",
+    "fetchedAt": "2026-02-28T20:46:11.471Z"
+  },
+  "six-flags-darien-lake": {
+    "status": "success",
+    "id": "six-flags-darien-lake",
+    "parkName": "Six Flags Darien Lake",
+    "fetchedAt": "2026-02-28T20:46:12.048Z"
+  },
+  "wonderland-park": {
+    "status": "success",
+    "id": "wonderland-park",
+    "parkName": "Wonderland Park",
+    "fetchedAt": "2026-02-28T20:46:13.404Z"
+  },
+  "belantis": {
+    "status": "success",
+    "id": "belantis",
+    "parkName": "Belantis",
+    "fetchedAt": "2026-02-28T20:46:13.926Z"
+  },
+  "myrtle-beach-pavilion": {
+    "status": "success",
+    "id": "myrtle-beach-pavilion",
+    "parkName": "Myrtle Beach Pavilion",
+    "fetchedAt": "2026-02-28T20:46:14.456Z"
+  },
+  "casino-pier": {
+    "status": "success",
+    "id": "casino-pier",
+    "parkName": "Casino Pier",
+    "fetchedAt": "2026-02-28T20:46:14.955Z"
+  },
+  "seaworld-orlando": {
+    "status": "success",
+    "id": "seaworld-orlando",
+    "parkName": "SeaWorld Orlando",
+    "fetchedAt": "2026-02-28T20:46:15.524Z"
+  },
+  "galveston-island-historic-pleasure-pier": {
+    "status": "success",
+    "id": "galveston-island-historic-pleasure-pier",
+    "parkName": "Galveston Island Historic Pleasure Pier",
+    "fetchedAt": "2026-02-28T20:46:15.922Z"
+  },
+  "seabreeze-amusement-park": {
+    "status": "success",
+    "id": "seabreeze-amusement-park",
+    "parkName": "Seabreeze Amusement Park",
+    "fetchedAt": "2026-02-28T20:46:16.464Z"
+  },
+  "kennywood": {
+    "status": "success",
+    "id": "kennywood",
+    "parkName": "Kennywood",
+    "fetchedAt": "2026-02-28T20:46:17.047Z"
+  },
+  "luna-park": {
+    "status": "success",
+    "id": "luna-park",
+    "parkName": "Luna Park",
+    "fetchedAt": "2026-02-28T20:46:18.401Z"
+  },
+  "riverview-park": {
+    "status": "success",
+    "id": "riverview-park",
+    "parkName": "Riverview Park",
+    "fetchedAt": "2026-02-28T20:46:19.915Z"
+  },
+  "chelyuskintsev-park": {
+    "status": "stub",
+    "id": "chelyuskintsev-park",
+    "parkName": "Chelyuskintsev Park",
+    "fetchedAt": "2026-02-28T23:31:37.320Z"
+  },
+  "moreys-piers": {
+    "status": "success",
+    "id": "moreys-piers",
+    "parkName": "Morey's Piers",
+    "fetchedAt": "2026-02-28T20:46:21.982Z"
+  },
+  "kijima-kogen": {
+    "status": "stub",
+    "id": "kijima-kogen",
+    "parkName": "Kijima Kogen",
+    "fetchedAt": "2026-02-28T23:27:38.814Z"
+  },
+  "erlebnispark-tripsdrill": {
+    "status": "success",
+    "id": "erlebnispark-tripsdrill",
+    "parkName": "Erlebnispark Tripsdrill",
+    "fetchedAt": "2026-02-28T20:46:23.941Z"
+  },
+  "beech-bend-park": {
+    "status": "success",
+    "id": "beech-bend-park",
+    "parkName": "Beech Bend Park",
+    "fetchedAt": "2026-02-28T20:46:24.485Z"
+  },
+  "dutch-wonderland": {
+    "status": "success",
+    "id": "dutch-wonderland",
+    "parkName": "Dutch Wonderland",
+    "fetchedAt": "2026-02-28T20:46:24.991Z"
+  },
+  "mason-ohio-u-s": {
+    "status": "stub",
+    "id": "mason-ohio-u-s",
+    "parkName": "Mason, Ohio, U.S.",
+    "fetchedAt": "2026-02-28T23:33:18.295Z"
+  },
+  "funland-hayling-island": {
+    "status": "success",
+    "id": "funland-hayling-island",
+    "parkName": "Funland Hayling Island",
+    "fetchedAt": "2026-02-28T20:46:27.017Z"
+  },
+  "camelot-theme-park": {
+    "status": "success",
+    "id": "camelot-theme-park",
+    "parkName": "Camelot Theme Park",
+    "fetchedAt": "2026-02-28T20:46:27.465Z"
+  },
+  "flamingo-land": {
+    "status": "success",
+    "id": "flamingo-land",
+    "parkName": "Flamingo Land",
+    "fetchedAt": "2026-02-28T20:46:28.048Z"
+  },
+  "farmington": {
+    "status": "success",
+    "id": "farmington",
+    "parkName": "Farmington",
+    "fetchedAt": "2026-02-28T20:46:29.428Z"
+  },
+  "altoona": {
+    "status": "success",
+    "id": "altoona",
+    "parkName": "Altoona",
+    "fetchedAt": "2026-02-28T20:46:30.951Z"
+  },
+  "lakeside-colorado": {
+    "status": "success",
+    "id": "lakeside-colorado",
+    "parkName": "Lakeside, Colorado",
+    "fetchedAt": "2026-02-28T20:46:32.439Z"
+  },
+  "la-ronde-amusement-park": {
+    "status": "success",
+    "id": "la-ronde-amusement-park",
+    "parkName": "La Ronde (amusement park)",
+    "fetchedAt": "2026-02-28T20:46:33.066Z"
+  },
+  "lakemont-park": {
+    "status": "success",
+    "id": "lakemont-park",
+    "parkName": "Lakemont Park",
+    "fetchedAt": "2026-02-28T20:46:33.464Z"
+  },
+  "legoland-california": {
+    "status": "success",
+    "id": "legoland-california",
+    "parkName": "Legoland California",
+    "fetchedAt": "2026-02-28T20:46:34.090Z"
+  },
+  "mgm-grand-adventures-theme-park": {
+    "status": "success",
+    "id": "mgm-grand-adventures-theme-park",
+    "parkName": "MGM Grand Adventures Theme Park",
+    "fetchedAt": "2026-02-28T20:46:35.561Z"
+  },
+  "memphis-kiddie-park": {
+    "status": "success",
+    "id": "memphis-kiddie-park",
+    "parkName": "Memphis Kiddie Park",
+    "fetchedAt": "2026-02-28T20:46:36.025Z"
+  },
+  "olentangy-park": {
+    "status": "success",
+    "id": "olentangy-park",
+    "parkName": "Olentangy Park",
+    "fetchedAt": "2026-02-28T20:46:36.509Z"
+  },
+  "atlantic-city": {
+    "status": "success",
+    "id": "atlantic-city",
+    "parkName": "Atlantic City",
+    "fetchedAt": "2026-02-28T20:46:38.036Z"
+  },
+  "six-flags-discovery-kingdom": {
+    "status": "success",
+    "id": "six-flags-discovery-kingdom",
+    "parkName": "Six Flags Discovery Kingdom",
+    "fetchedAt": "2026-02-28T20:46:38.664Z"
+  },
+  "six-flags-new-orleans": {
+    "status": "success",
+    "id": "six-flags-new-orleans",
+    "parkName": "Six Flags New Orleans",
+    "fetchedAt": "2026-02-28T20:46:39.128Z"
+  },
+  "oakwood-theme-park": {
+    "status": "success",
+    "id": "oakwood-theme-park",
+    "parkName": "Oakwood Theme Park",
+    "fetchedAt": "2026-02-28T20:46:39.645Z"
+  },
+  "fantasy-island": {
+    "status": "success",
+    "id": "fantasy-island",
+    "parkName": "Fantasy Island",
+    "fetchedAt": "2026-02-28T20:46:42.059Z"
+  },
+  "galaxyland": {
+    "status": "success",
+    "id": "galaxyland",
+    "parkName": "Galaxyland",
+    "fetchedAt": "2026-02-28T20:46:42.628Z"
+  },
+  "fun-spot-america-kissimmee": {
+    "status": "success",
+    "id": "fun-spot-america-kissimmee",
+    "parkName": "Fun Spot America (Kissimmee)",
+    "fetchedAt": "2026-02-28T20:46:43.125Z"
+  },
+  "parque-del-caf": {
+    "status": "success",
+    "id": "parque-del-caf",
+    "parkName": "Parque del Café",
+    "fetchedAt": "2026-02-28T20:46:43.591Z"
+  },
+  "3501-boardwalk": {
+    "status": "stub",
+    "id": "3501-boardwalk",
+    "parkName": "3501 Boardwalk",
+    "fetchedAt": "2026-02-28T23:39:17.505Z"
+  },
+  "flamingo-land-resort": {
+    "status": "success",
+    "id": "flamingo-land-resort",
+    "parkName": "Flamingo Land Resort",
+    "fetchedAt": "2026-02-28T20:46:46.776Z"
+  },
+  "cliffs-amusement-park": {
+    "status": "success",
+    "id": "cliffs-amusement-park",
+    "parkName": "Cliff's Amusement Park",
+    "fetchedAt": "2026-02-28T20:46:47.116Z"
+  },
+  "great-escape": {
+    "status": "success",
+    "id": "great-escape",
+    "parkName": "Great Escape",
+    "fetchedAt": "2026-02-28T20:46:49.673Z"
+  },
+  "celebration-city": {
+    "status": "success",
+    "id": "celebration-city",
+    "parkName": "Celebration City",
+    "fetchedAt": "2026-02-28T20:46:50.176Z"
+  },
+  "tokyo-dome-city-attractions": {
+    "status": "success",
+    "id": "tokyo-dome-city-attractions",
+    "parkName": "Tokyo Dome City Attractions",
+    "fetchedAt": "2026-02-28T20:46:50.693Z"
+  },
+  "chime-long-ocean-kingdom": {
+    "status": "success",
+    "id": "chime-long-ocean-kingdom",
+    "parkName": "Chime-Long Ocean Kingdom",
+    "fetchedAt": "2026-02-28T20:46:51.243Z"
+  },
+  "boardwalk-fun-park": {
+    "status": "success",
+    "id": "boardwalk-fun-park",
+    "parkName": "Boardwalk Fun Park",
+    "fetchedAt": "2026-02-28T20:46:52.697Z"
+  },
+  "disneys-animal-kingdom": {
+    "status": "success",
+    "id": "disneys-animal-kingdom",
+    "parkName": "Disney's Animal Kingdom",
+    "fetchedAt": "2026-02-28T20:46:54.359Z"
+  },
+  "shima-spain-village": {
+    "status": "success",
+    "id": "shima-spain-village",
+    "parkName": "Shima Spain Village",
+    "fetchedAt": "2026-02-28T20:46:54.767Z"
+  },
+  "adventure-island": {
+    "status": "success",
+    "id": "adventure-island",
+    "parkName": "Adventure Island",
+    "fetchedAt": "2026-02-28T20:46:56.240Z"
+  },
+  "alabama-splash-adventure": {
+    "status": "success",
+    "id": "alabama-splash-adventure",
+    "parkName": "Alabama Splash Adventure",
+    "fetchedAt": "2026-02-28T20:46:57.864Z"
+  },
+  "lightwater-valley": {
+    "status": "success",
+    "id": "lightwater-valley",
+    "parkName": "Lightwater Valley",
+    "fetchedAt": "2026-02-28T20:46:58.402Z"
+  },
+  "wonderla": {
+    "status": "success",
+    "id": "wonderla",
+    "parkName": "Wonderla",
+    "fetchedAt": "2026-02-28T20:46:59.795Z"
+  },
+  "adventure-city": {
+    "status": "success",
+    "id": "adventure-city",
+    "parkName": "Adventure City",
+    "fetchedAt": "2026-02-28T20:47:00.321Z"
+  },
+  "n-rburgring": {
+    "status": "success",
+    "id": "n-rburgring",
+    "parkName": "Nürburgring",
+    "fetchedAt": "2026-02-28T20:47:02.854Z"
+  },
+  "great-yarmouth-pleasure-beach": {
+    "status": "success",
+    "id": "great-yarmouth-pleasure-beach",
+    "parkName": "Great Yarmouth Pleasure Beach",
+    "fetchedAt": "2026-02-28T20:47:03.427Z"
+  },
+  "pap-a-parc": {
+    "status": "stub",
+    "id": "pap-a-parc",
+    "parkName": "Papéa Parc",
+    "fetchedAt": "2026-02-28T23:15:38.366Z"
+  },
+  "idlewild-and-soak-zone": {
+    "status": "success",
+    "id": "idlewild-and-soak-zone",
+    "parkName": "Idlewild and Soak Zone",
+    "fetchedAt": "2026-02-28T20:47:06.504Z"
+  },
+  "pacific-park": {
+    "status": "success",
+    "id": "pacific-park",
+    "parkName": "Pacific Park",
+    "fetchedAt": "2026-02-28T20:47:06.962Z"
+  },
+  "dreamland-margate": {
+    "status": "success",
+    "id": "dreamland-margate",
+    "parkName": "Dreamland Margate",
+    "fetchedAt": "2026-02-28T20:47:07.544Z"
+  },
+  "rides-at-adventure-cove": {
+    "status": "success",
+    "id": "rides-at-adventure-cove",
+    "parkName": "Rides At Adventure Cove",
+    "fetchedAt": "2026-02-28T20:47:07.937Z"
+  },
+  "magic-kingdom": {
+    "status": "success",
+    "id": "magic-kingdom",
+    "parkName": "Magic Kingdom",
+    "fetchedAt": "2026-02-28T20:47:08.454Z"
+  },
+  "elitch-gardens": {
+    "status": "success",
+    "id": "elitch-gardens",
+    "parkName": "Elitch Gardens",
+    "fetchedAt": "2026-02-28T20:47:08.968Z"
+  },
+  "frontier-city": {
+    "status": "success",
+    "id": "frontier-city",
+    "parkName": "Frontier City",
+    "fetchedAt": "2026-02-28T20:47:09.472Z"
+  },
+  "niagara-amusement-park-splash-world": {
+    "status": "success",
+    "id": "niagara-amusement-park-splash-world",
+    "parkName": "Niagara Amusement Park & Splash World",
+    "fetchedAt": "2026-02-28T20:47:09.964Z"
+  },
+  "branson-missouri-u-s": {
+    "status": "stub",
+    "id": "branson-missouri-u-s",
+    "parkName": "Branson, Missouri, U.S.",
+    "fetchedAt": "2026-02-28T20:57:56.238Z"
+  },
+  "gurnee": {
+    "status": "success",
+    "id": "gurnee",
+    "parkName": "Gurnee",
+    "fetchedAt": "2026-02-28T20:47:13.981Z"
+  },
+  "world-joyland": {
+    "status": "success",
+    "id": "world-joyland",
+    "parkName": "World Joyland",
+    "fetchedAt": "2026-02-28T20:47:14.495Z"
+  },
+  "granada-studios-tour": {
+    "status": "success",
+    "id": "granada-studios-tour",
+    "parkName": "Granada Studios Tour",
+    "fetchedAt": "2026-02-28T20:47:15.019Z"
+  },
+  "tokyo-disneyland": {
+    "status": "success",
+    "id": "tokyo-disneyland",
+    "parkName": "Tokyo Disneyland",
+    "fetchedAt": "2026-02-28T20:47:16.611Z"
+  },
+  "akita-plaza": {
+    "status": "stub",
+    "id": "akita-plaza",
+    "parkName": "Akita Plaza",
+    "fetchedAt": "2026-02-28T20:57:57.771Z"
+  },
+  "movie-park-germany": {
+    "status": "success",
+    "id": "movie-park-germany",
+    "parkName": "Movie Park Germany",
+    "fetchedAt": "2026-02-28T20:47:18.634Z"
+  },
+  "seaworld-san-antonio": {
+    "status": "success",
+    "id": "seaworld-san-antonio",
+    "parkName": "SeaWorld San Antonio",
+    "fetchedAt": "2026-02-28T20:47:19.117Z"
+  },
+  "paultons-park": {
+    "status": "success",
+    "id": "paultons-park",
+    "parkName": "Paultons Park",
+    "fetchedAt": "2026-02-28T20:47:19.646Z"
+  },
+  "glen-new-hampshire-u-s": {
+    "status": "stub",
+    "id": "glen-new-hampshire-u-s",
+    "parkName": "Glen, New Hampshire, U.S.",
+    "fetchedAt": "2026-02-28T20:57:59.244Z"
+  },
+  "family-kingdom-amusement-park": {
+    "status": "success",
+    "id": "family-kingdom-amusement-park",
+    "parkName": "Family Kingdom Amusement Park",
+    "fetchedAt": "2026-02-28T20:47:22.657Z"
+  },
+  "wonderland-park-texas": {
+    "status": "success",
+    "id": "wonderland-park-texas",
+    "parkName": "Wonderland Park (Texas)",
+    "fetchedAt": "2026-02-28T20:47:23.111Z"
+  },
+  "magic-springs": {
+    "status": "success",
+    "id": "magic-springs",
+    "parkName": "Magic Springs",
+    "fetchedAt": "2026-02-28T20:47:23.616Z"
+  },
+  "fantasy-island-uk-amusement-park": {
+    "status": "success",
+    "id": "fantasy-island-uk-amusement-park",
+    "parkName": "Fantasy Island (UK amusement park)",
+    "fetchedAt": "2026-02-28T20:47:25.143Z"
+  },
+  "alton-towers-resort": {
+    "status": "success",
+    "id": "alton-towers-resort",
+    "parkName": "Alton Towers Resort",
+    "fetchedAt": "2026-02-28T20:47:25.787Z"
+  },
+  "thorpe-park-resort": {
+    "status": "success",
+    "id": "thorpe-park-resort",
+    "parkName": "Thorpe Park Resort",
+    "fetchedAt": "2026-02-28T20:47:26.305Z"
+  },
+  "savin-rock": {
+    "status": "success",
+    "id": "savin-rock",
+    "parkName": "Savin Rock",
+    "fetchedAt": "2026-02-28T20:47:27.655Z"
+  },
+  "space-world": {
+    "status": "success",
+    "id": "space-world",
+    "parkName": "Space World",
+    "fetchedAt": "2026-02-28T20:47:29.219Z"
+  },
+  "parque-warner-madrid": {
+    "status": "success",
+    "id": "parque-warner-madrid",
+    "parkName": "Parque Warner Madrid",
+    "fetchedAt": "2026-02-28T20:47:29.778Z"
+  },
+  "shanghai-disneyland": {
+    "status": "success",
+    "id": "shanghai-disneyland",
+    "parkName": "Shanghai Disneyland",
+    "fetchedAt": "2026-02-28T20:47:30.268Z"
+  },
+  "feria-nacional-de-san-marcos": {
+    "status": "success",
+    "id": "feria-nacional-de-san-marcos",
+    "parkName": "Feria Nacional de San Marcos",
+    "fetchedAt": "2026-02-28T20:47:31.712Z"
+  },
+  "adventureland-new-york": {
+    "status": "success",
+    "id": "adventureland-new-york",
+    "parkName": "Adventureland (New York)",
+    "fetchedAt": "2026-02-28T20:47:32.307Z"
+  },
+  "calaway-park": {
+    "status": "success",
+    "id": "calaway-park",
+    "parkName": "Calaway Park",
+    "fetchedAt": "2026-02-28T20:47:33.911Z"
+  },
+  "opryland-usa": {
+    "status": "success",
+    "id": "opryland-usa",
+    "parkName": "Opryland USA",
+    "fetchedAt": "2026-02-28T20:47:34.414Z"
+  },
+  "tolchester-beach-park": {
+    "status": "stub",
+    "id": "tolchester-beach-park",
+    "parkName": "Tolchester Beach Park",
+    "fetchedAt": "2026-02-28T20:58:04.275Z"
+  },
+  "oct-east": {
+    "status": "success",
+    "id": "oct-east",
+    "parkName": "OCT East",
+    "fetchedAt": "2026-02-28T20:47:38.427Z"
+  },
+  "quassy-amusement-park": {
+    "status": "success",
+    "id": "quassy-amusement-park",
+    "parkName": "Quassy Amusement Park",
+    "fetchedAt": "2026-02-28T20:47:38.862Z"
+  },
+  "magic-springs-and-crystal-falls": {
+    "status": "success",
+    "id": "magic-springs-and-crystal-falls",
+    "parkName": "Magic Springs and Crystal Falls",
+    "fetchedAt": "2026-02-28T20:47:39.411Z"
+  },
+  "bay-beach-amusement-park": {
+    "status": "success",
+    "id": "bay-beach-amusement-park",
+    "parkName": "Bay Beach Amusement Park",
+    "fetchedAt": "2026-02-28T20:47:39.867Z"
+  },
+  "adventure-world": {
+    "status": "success",
+    "id": "adventure-world",
+    "parkName": "Adventure World",
+    "fetchedAt": "2026-02-28T20:56:52.606Z"
+  },
+  "energylandia": {
+    "status": "success",
+    "id": "energylandia",
+    "parkName": "Energylandia",
+    "fetchedAt": "2026-02-28T20:56:53.179Z"
+  },
+  "nigloland": {
+    "status": "success",
+    "id": "nigloland",
+    "parkName": "Nigloland",
+    "fetchedAt": "2026-02-28T20:56:55.205Z"
+  },
+  "warner-bros-movie-world": {
+    "status": "success",
+    "id": "warner-bros-movie-world",
+    "parkName": "Warner Bros. Movie World",
+    "fetchedAt": "2026-02-28T20:56:58.788Z"
+  },
+  "lotte-world": {
+    "status": "success",
+    "id": "lotte-world",
+    "parkName": "Lotte World",
+    "fetchedAt": "2026-02-28T20:56:59.163Z"
+  },
+  "liseberg": {
+    "status": "success",
+    "id": "liseberg",
+    "parkName": "Liseberg",
+    "fetchedAt": "2026-02-28T20:56:59.733Z"
+  },
+  "efteling": {
+    "status": "success",
+    "id": "efteling",
+    "parkName": "Efteling",
+    "fetchedAt": "2026-02-28T20:57:00.246Z"
+  },
+  "six-flags-m-xico": {
+    "status": "success",
+    "id": "six-flags-m-xico",
+    "parkName": "Six Flags México",
+    "fetchedAt": "2026-02-28T20:57:00.681Z"
+  },
+  "universal-studios-singapore": {
+    "status": "success",
+    "id": "universal-studios-singapore",
+    "parkName": "Universal Studios Singapore",
+    "fetchedAt": "2026-02-28T20:57:01.182Z"
+  },
+  "luna-park-sydney": {
+    "status": "success",
+    "id": "luna-park-sydney",
+    "parkName": "Luna Park Sydney",
+    "fetchedAt": "2026-02-28T20:57:01.732Z"
+  },
+  "gardaland": {
+    "status": "success",
+    "id": "gardaland",
+    "parkName": "Gardaland",
+    "fetchedAt": "2026-02-28T20:57:02.198Z"
+  },
+  "toverland": {
+    "status": "success",
+    "id": "toverland",
+    "parkName": "Toverland",
+    "fetchedAt": "2026-02-28T20:57:02.687Z"
+  },
+  "powerpark-alah-rm-kauhava-finland": {
+    "status": "stub",
+    "id": "powerpark-alah-rm-kauhava-finland",
+    "parkName": "PowerPark, Alahärmä, Kauhava, Finland",
+    "fetchedAt": "2026-02-28T23:16:29.195Z"
+  },
+  "tivoli-friheden": {
+    "status": "success",
+    "id": "tivoli-friheden",
+    "parkName": "Tivoli Friheden",
+    "fetchedAt": "2026-02-28T20:57:04.635Z"
+  },
+  "walibi-holland": {
+    "status": "success",
+    "id": "walibi-holland",
+    "parkName": "Walibi Holland",
+    "fetchedAt": "2026-02-28T20:57:05.158Z"
+  },
+  "disneyland-paris": {
+    "status": "success",
+    "id": "disneyland-paris",
+    "parkName": "Disneyland Paris",
+    "fetchedAt": "2026-02-28T20:57:06.657Z"
+  },
+  "tivoli-gardens": {
+    "status": "success",
+    "id": "tivoli-gardens",
+    "parkName": "Tivoli Gardens",
+    "fetchedAt": "2026-02-28T20:57:07.186Z"
+  },
+  "bellewaerde": {
+    "status": "success",
+    "id": "bellewaerde",
+    "parkName": "Bellewaerde",
+    "fetchedAt": "2026-02-28T20:57:07.703Z"
+  },
+  "adlabs-imagica": {
+    "status": "success",
+    "id": "adlabs-imagica",
+    "parkName": "Adlabs Imagica",
+    "fetchedAt": "2026-02-28T20:57:08.153Z"
+  },
+  "mirabilandia-italy": {
+    "status": "success",
+    "id": "mirabilandia-italy",
+    "parkName": "Mirabilandia (Italy)",
+    "fetchedAt": "2026-02-28T20:57:08.649Z"
+  },
+  "portaventura-park": {
+    "status": "success",
+    "id": "portaventura-park",
+    "parkName": "PortAventura Park",
+    "fetchedAt": "2026-02-28T20:57:10.705Z"
+  },
+  "duinrell": {
+    "status": "success",
+    "id": "duinrell",
+    "parkName": "Duinrell",
+    "fetchedAt": "2026-02-28T20:57:11.418Z"
+  },
+  "gyeongju-world": {
+    "status": "success",
+    "id": "gyeongju-world",
+    "parkName": "Gyeongju World",
+    "fetchedAt": "2026-02-28T20:57:11.642Z"
+  },
+  "bobbejaanland": {
+    "status": "success",
+    "id": "bobbejaanland",
+    "parkName": "Bobbejaanland",
+    "fetchedAt": "2026-02-28T20:57:13.671Z"
+  },
+  "everland": {
+    "status": "success",
+    "id": "everland",
+    "parkName": "Everland",
+    "fetchedAt": "2026-02-28T20:57:14.192Z"
+  },
+  "dreamworld": {
+    "status": "success",
+    "id": "dreamworld",
+    "parkName": "Dreamworld",
+    "fetchedAt": "2026-02-28T20:57:15.643Z"
+  },
+  "yongin": {
+    "status": "success",
+    "id": "yongin",
+    "parkName": "Yongin",
+    "fetchedAt": "2026-02-28T20:57:17.155Z"
+  },
+  "f-rup-sommerland": {
+    "status": "success",
+    "id": "f-rup-sommerland",
+    "parkName": "Fårup Sommerland",
+    "fetchedAt": "2026-02-28T20:57:17.681Z"
+  },
+  "ferrari-world": {
+    "status": "success",
+    "id": "ferrari-world",
+    "parkName": "Ferrari World",
+    "fetchedAt": "2026-02-28T20:57:18.180Z"
+  },
+  "ferrari-world-abu-dhabi": {
+    "status": "success",
+    "id": "ferrari-world-abu-dhabi",
+    "parkName": "Ferrari World Abu Dhabi",
+    "fetchedAt": "2026-02-28T20:57:18.663Z"
+  },
+  "lotte-world-adventure-busan": {
+    "status": "success",
+    "id": "lotte-world-adventure-busan",
+    "parkName": "Lotte World Adventure Busan",
+    "fetchedAt": "2026-02-28T20:57:20.670Z"
+  },
+  "attractiepark-slagharen": {
+    "status": "success",
+    "id": "attractiepark-slagharen",
+    "parkName": "Attractiepark Slagharen",
+    "fetchedAt": "2026-02-28T20:57:21.172Z"
+  },
+  "parc-ast-rix": {
+    "status": "success",
+    "id": "parc-ast-rix",
+    "parkName": "Parc Astérix",
+    "fetchedAt": "2026-02-28T20:57:21.723Z"
+  },
+  "vinhedo-s-o-paulo-brazil": {
+    "status": "stub",
+    "id": "vinhedo-s-o-paulo-brazil",
+    "parkName": "Vinhedo, São Paulo, Brazil",
+    "fetchedAt": "2026-02-28T23:29:28.737Z"
+  },
+  "bonbon-land": {
+    "status": "success",
+    "id": "bonbon-land",
+    "parkName": "BonBon-Land",
+    "fetchedAt": "2026-02-28T20:57:27.191Z"
+  },
+  "disneyland-park-paris": {
+    "status": "success",
+    "id": "disneyland-park-paris",
+    "parkName": "Disneyland Park (Paris)",
+    "fetchedAt": "2026-02-28T20:57:27.750Z"
+  },
+  "gr-na-lund": {
+    "status": "success",
+    "id": "gr-na-lund",
+    "parkName": "Gröna Lund",
+    "fetchedAt": "2026-02-28T20:57:28.248Z"
+  },
+  "mirabilandia": {
+    "status": "success",
+    "id": "mirabilandia",
+    "parkName": "Mirabilandia",
+    "fetchedAt": "2026-02-28T20:57:29.698Z"
+  },
+  "gukeng-yunlin-taiwan": {
+    "status": "stub",
+    "id": "gukeng-yunlin-taiwan",
+    "parkName": "Gukeng, Yunlin, Taiwan",
+    "fetchedAt": "2026-02-28T23:30:22.142Z"
+  },
+  "sea-world-australia": {
+    "status": "success",
+    "id": "sea-world-australia",
+    "parkName": "Sea World (Australia)",
+    "fetchedAt": "2026-02-28T20:57:31.841Z"
+  },
+  "powerpark": {
+    "status": "success",
+    "id": "powerpark",
+    "parkName": "PowerPark",
+    "fetchedAt": "2026-02-28T20:57:33.723Z"
+  },
+  "linnanm-ki": {
+    "status": "success",
+    "id": "linnanm-ki",
+    "parkName": "Linnanmäki",
+    "fetchedAt": "2026-02-28T20:57:37.341Z"
+  },
+  "walibi-belgium": {
+    "status": "success",
+    "id": "walibi-belgium",
+    "parkName": "Walibi Belgium",
+    "fetchedAt": "2026-02-28T20:57:37.772Z"
+  },
+  "legendia": {
+    "status": "success",
+    "id": "legendia",
+    "parkName": "Legendia",
+    "fetchedAt": "2026-02-28T20:57:38.243Z"
+  },
+  "sea-world": {
+    "status": "success",
+    "id": "sea-world",
+    "parkName": "Sea World",
+    "fetchedAt": "2026-02-28T20:57:39.715Z"
+  },
+  "sincheon-dong": {
+    "status": "success",
+    "id": "sincheon-dong",
+    "parkName": "Sincheon-dong",
+    "fetchedAt": "2026-02-28T20:57:41.226Z"
+  },
+  "walibi-rh-ne-alpes": {
+    "status": "success",
+    "id": "walibi-rh-ne-alpes",
+    "parkName": "Walibi Rhône-Alpes",
+    "fetchedAt": "2026-02-28T20:57:41.738Z"
+  },
+  "la-feria-chapultepec-m-gico": {
+    "status": "success",
+    "id": "la-feria-chapultepec-m-gico",
+    "parkName": "La Feria Chapultepec Mágico",
+    "fetchedAt": "2026-02-28T20:57:42.240Z"
+  },
+  "monte-igueldo-amusement-park": {
+    "status": "stub",
+    "id": "monte-igueldo-amusement-park",
+    "parkName": "Monte Igueldo Amusement Park",
+    "fetchedAt": "2026-02-28T23:39:00.325Z"
+  },
+  "terra-encantada": {
+    "status": "success",
+    "id": "terra-encantada",
+    "parkName": "Terra Encantada",
+    "fetchedAt": "2026-02-28T20:57:44.286Z"
+  },
+  "hopi-hari": {
+    "status": "success",
+    "id": "hopi-hari",
+    "parkName": "Hopi Hari",
+    "fetchedAt": "2026-02-28T20:57:44.786Z"
+  },
+  "tibidabo-amusement-park": {
+    "status": "success",
+    "id": "tibidabo-amusement-park",
+    "parkName": "Tibidabo Amusement Park",
+    "fetchedAt": "2026-02-28T20:57:46.784Z"
+  },
+  "imagicaa": {
+    "status": "success",
+    "id": "imagicaa",
+    "parkName": "Imagicaa",
+    "fetchedAt": "2026-02-28T20:57:47.253Z"
+  },
+  "futuroscope": {
+    "status": "success",
+    "id": "futuroscope",
+    "parkName": "Futuroscope",
+    "fetchedAt": "2026-02-28T20:57:47.765Z"
+  },
+  "f-rup-sommarland": {
+    "status": "stub",
+    "id": "f-rup-sommarland",
+    "parkName": "Fårup Sommarland",
+    "fetchedAt": "2026-02-28T23:40:23.921Z"
+  },
+  "legoland-billund": {
+    "status": "success",
+    "id": "legoland-billund",
+    "parkName": "Legoland Billund",
+    "fetchedAt": "2026-02-28T20:57:49.817Z"
+  },
+  "gardaland-italy": {
+    "status": "stub",
+    "id": "gardaland-italy",
+    "parkName": "Gardaland Italy",
+    "fetchedAt": "2026-02-28T20:57:51.242Z"
+  },
+  "walt-disney-studios-park": {
+    "status": "success",
+    "id": "walt-disney-studios-park",
+    "parkName": "Walt Disney Studios Park",
+    "fetchedAt": "2026-02-28T20:57:51.806Z"
+  },
+  "ferrari-land": {
+    "status": "success",
+    "id": "ferrari-land",
+    "parkName": "Ferrari Land",
+    "fetchedAt": "2026-02-28T20:57:52.309Z"
+  },
+  "plopsaland-belgium": {
+    "status": "success",
+    "id": "plopsaland-belgium",
+    "parkName": "Plopsaland Belgium",
+    "fetchedAt": "2026-02-28T20:57:52.790Z"
+  },
+  "disneys-hollywood-studios": {
+    "status": "success",
+    "id": "disneys-hollywood-studios",
+    "parkName": "Disney's Hollywood Studios",
+    "fetchedAt": "2026-02-28T20:57:53.352Z"
+  },
+  "wonderland-sydney": {
+    "status": "success",
+    "id": "wonderland-sydney",
+    "parkName": "Wonderland Sydney",
+    "fetchedAt": "2026-02-28T20:57:59.796Z"
+  },
+  "luna-park-melbourne": {
+    "status": "success",
+    "id": "luna-park-melbourne",
+    "parkName": "Luna Park Melbourne",
+    "fetchedAt": "2026-02-28T20:58:00.322Z"
+  },
+  "walygator-parc": {
+    "status": "success",
+    "id": "walygator-parc",
+    "parkName": "Walygator Parc",
+    "fetchedAt": "2026-02-28T20:58:00.770Z"
+  },
+  "mer-de-sable": {
+    "status": "stub",
+    "id": "mer-de-sable",
+    "parkName": "Mer de Sable",
+    "fetchedAt": "2026-02-28T23:11:15.481Z"
+  },
+  "parque-de-atracciones-de-madrid": {
+    "status": "success",
+    "id": "parque-de-atracciones-de-madrid",
+    "parkName": "Parque de Atracciones de Madrid",
+    "fetchedAt": "2026-02-28T20:58:02.767Z"
+  },
+  "kolm-rden-wildlife-park": {
+    "status": "success",
+    "id": "kolm-rden-wildlife-park",
+    "parkName": "Kolmården Wildlife Park",
+    "fetchedAt": "2026-02-28T20:58:05.780Z"
+  },
+  "festyland": {
+    "status": "stub",
+    "id": "festyland",
+    "parkName": "Festyland",
+    "fetchedAt": "2026-02-28T23:08:05.072Z"
+  },
+  "korakuen-amusement-park": {
+    "status": "stub",
+    "id": "korakuen-amusement-park",
+    "parkName": "Korakuen Amusement Park",
+    "fetchedAt": "2026-02-28T23:08:07.622Z"
+  },
+  "central-park": {
+    "status": "success",
+    "id": "central-park",
+    "parkName": "Central Park",
+    "fetchedAt": "2026-02-28T22:57:21.746Z"
+  },
+  "taolin-happy-world": {
+    "status": "stub",
+    "id": "taolin-happy-world",
+    "parkName": "Taolin Happy World",
+    "fetchedAt": "2026-02-28T23:08:10.168Z"
+  },
+  "daguan-park": {
+    "status": "success",
+    "id": "daguan-park",
+    "parkName": "Daguan Park",
+    "fetchedAt": "2026-02-28T22:57:24.761Z"
+  },
+  "childrens-grand-park": {
+    "status": "success",
+    "id": "childrens-grand-park",
+    "parkName": "Children's Grand Park",
+    "fetchedAt": "2026-02-28T22:57:26.252Z"
+  },
+  "parc-saint-paul": {
+    "status": "stub",
+    "id": "parc-saint-paul",
+    "parkName": "Parc Saint Paul",
+    "fetchedAt": "2026-02-28T23:08:11.665Z"
+  },
+  "uncle-bernies-amusement-park": {
+    "status": "stub",
+    "id": "uncle-bernies-amusement-park",
+    "parkName": "Uncle Bernie's Amusement Park",
+    "fetchedAt": "2026-02-28T23:08:13.174Z"
+  },
+  "mini-mundi": {
+    "status": "stub",
+    "id": "mini-mundi",
+    "parkName": "Mini Mundi",
+    "fetchedAt": "2026-02-28T23:08:15.706Z"
+  },
+  "mondo-verde": {
+    "status": "stub",
+    "id": "mondo-verde",
+    "parkName": "Mondo Verde",
+    "fetchedAt": "2026-02-28T23:08:20.269Z"
+  },
+  "amusementspark-tivoli": {
+    "status": "stub",
+    "id": "amusementspark-tivoli",
+    "parkName": "Amusementspark Tivoli",
+    "fetchedAt": "2026-02-28T23:08:22.816Z"
+  },
+  "flippolino": {
+    "status": "stub",
+    "id": "flippolino",
+    "parkName": "Flippolino",
+    "fetchedAt": "2026-02-28T23:08:28.394Z"
+  },
+  "mc-play-kinderland": {
+    "status": "stub",
+    "id": "mc-play-kinderland",
+    "parkName": "Mc-Play Kinderland",
+    "fetchedAt": "2026-02-28T23:08:30.942Z"
+  },
+  "rasti-land": {
+    "status": "stub",
+    "id": "rasti-land",
+    "parkName": "Rasti-Land",
+    "fetchedAt": "2026-02-28T23:08:32.435Z"
+  },
+  "schloss-dankern": {
+    "status": "stub",
+    "id": "schloss-dankern",
+    "parkName": "Schloss Dankern",
+    "fetchedAt": "2026-02-28T23:08:43.116Z"
+  },
+  "schwarzwald-park": {
+    "status": "stub",
+    "id": "schwarzwald-park",
+    "parkName": "Schwarzwald Park",
+    "fetchedAt": "2026-02-28T23:08:48.700Z"
+  },
+  "ticiland": {
+    "status": "stub",
+    "id": "ticiland",
+    "parkName": "Ticiland",
+    "fetchedAt": "2026-02-28T23:08:50.213Z"
+  },
+  "tierpark-essehof": {
+    "status": "stub",
+    "id": "tierpark-essehof",
+    "parkName": "Tierpark Essehof",
+    "fetchedAt": "2026-02-28T23:08:55.806Z"
+  },
+  "bayern-park": {
+    "status": "stub",
+    "id": "bayern-park",
+    "parkName": "Bayern Park",
+    "fetchedAt": "2026-02-28T23:08:58.330Z"
+  },
+  "parque-de-la-ciudad": {
+    "status": "success",
+    "id": "parque-de-la-ciudad",
+    "parkName": "Parque de la Ciudad",
+    "fetchedAt": "2026-02-28T22:57:47.295Z"
+  },
+  "genting-skyworlds": {
+    "status": "success",
+    "id": "genting-skyworlds",
+    "parkName": "Genting SkyWorlds",
+    "fetchedAt": "2026-02-28T22:57:47.806Z"
+  },
+  "six-flags-qiddiya-city": {
+    "status": "success",
+    "id": "six-flags-qiddiya-city",
+    "parkName": "Six Flags Qiddiya City",
+    "fetchedAt": "2026-02-28T22:57:48.352Z"
+  },
+  "odakyu-mukogaoka-yuen": {
+    "status": "stub",
+    "id": "odakyu-mukogaoka-yuen",
+    "parkName": "Odakyu Mukogaoka Yuen",
+    "fetchedAt": "2026-02-28T23:09:03.914Z"
+  },
+  "suzuka-circuit": {
+    "status": "success",
+    "id": "suzuka-circuit",
+    "parkName": "Suzuka Circuit",
+    "fetchedAt": "2026-02-28T22:57:51.307Z"
+  },
+  "shipley-glen-pleasure-grounds": {
+    "status": "stub",
+    "id": "shipley-glen-pleasure-grounds",
+    "parkName": "Shipley Glen Pleasure Grounds",
+    "fetchedAt": "2026-02-28T23:09:12.590Z"
+  },
+  "euclid-beach-park": {
+    "status": "success",
+    "id": "euclid-beach-park",
+    "parkName": "Euclid Beach Park",
+    "fetchedAt": "2026-02-28T22:57:53.355Z"
+  },
+  "west-midland-safari-park": {
+    "status": "success",
+    "id": "west-midland-safari-park",
+    "parkName": "West Midland Safari Park",
+    "fetchedAt": "2026-02-28T22:57:54.812Z"
+  },
+  "tatzmania-l-ffingen": {
+    "status": "stub",
+    "id": "tatzmania-l-ffingen",
+    "parkName": "Tatzmania Löffingen",
+    "fetchedAt": "2026-02-28T23:09:21.246Z"
+  },
+  "kirkuk-amusement-park": {
+    "status": "stub",
+    "id": "kirkuk-amusement-park",
+    "parkName": "Kirkuk Amusement Park",
+    "fetchedAt": "2026-02-28T23:09:22.759Z"
+  },
+  "alaska-state-fairgrounds": {
+    "status": "stub",
+    "id": "alaska-state-fairgrounds",
+    "parkName": "Alaska State Fairgrounds",
+    "fetchedAt": "2026-02-28T23:09:24.294Z"
+  },
+  "busch-gardens-tampa": {
+    "status": "success",
+    "id": "busch-gardens-tampa",
+    "parkName": "Busch Gardens Tampa",
+    "fetchedAt": "2026-02-28T22:58:00.073Z"
+  },
+  "playland-park": {
+    "status": "success",
+    "id": "playland-park",
+    "parkName": "Playland Park",
+    "fetchedAt": "2026-02-28T22:58:01.354Z"
+  },
+  "cinecitt-world": {
+    "status": "success",
+    "id": "cinecitt-world",
+    "parkName": "Cinecittà World",
+    "fetchedAt": "2026-02-28T22:58:01.844Z"
+  },
+  "meryal": {
+    "status": "stub",
+    "id": "meryal",
+    "parkName": "Meryal",
+    "fetchedAt": "2026-02-28T23:09:28.299Z"
+  },
+  "glorious-fantasyland": {
+    "status": "stub",
+    "id": "glorious-fantasyland",
+    "parkName": "Glorious Fantasyland",
+    "fetchedAt": "2026-02-28T23:09:33.875Z"
+  },
+  "trans-studio-cibubur": {
+    "status": "success",
+    "id": "trans-studio-cibubur",
+    "parkName": "Trans Studio Cibubur",
+    "fetchedAt": "2026-02-28T22:58:06.903Z"
+  },
+  "dalmaland-fun-park": {
+    "status": "stub",
+    "id": "dalmaland-fun-park",
+    "parkName": "Dalmaland Fun Park",
+    "fetchedAt": "2026-02-28T23:09:36.414Z"
+  },
+  "sunac-land-chengdu": {
+    "status": "stub",
+    "id": "sunac-land-chengdu",
+    "parkName": "Sunac Land Chengdu",
+    "fetchedAt": "2026-02-28T23:09:37.917Z"
+  },
+  "vorlop-germany": {
+    "status": "stub",
+    "id": "vorlop-germany",
+    "parkName": "Vorlop (Germany)",
+    "fetchedAt": "2026-02-28T23:09:40.437Z"
+  },
+  "six-gun-territory": {
+    "status": "success",
+    "id": "six-gun-territory",
+    "parkName": "Six Gun Territory",
+    "fetchedAt": "2026-02-28T22:58:13.672Z"
+  },
+  "terra-m-tica": {
+    "status": "success",
+    "id": "terra-m-tica",
+    "parkName": "Terra Mítica",
+    "fetchedAt": "2026-02-28T22:58:14.217Z"
+  },
+  "jawa-timur-park-2": {
+    "status": "stub",
+    "id": "jawa-timur-park-2",
+    "parkName": "Jawa Timur Park 2",
+    "fetchedAt": "2026-02-28T23:09:56.746Z"
+  },
+  "fun-oasis": {
+    "status": "stub",
+    "id": "fun-oasis",
+    "parkName": "Fun Oasis",
+    "fetchedAt": "2026-02-28T23:10:02.330Z"
+  },
+  "conny-land": {
+    "status": "stub",
+    "id": "conny-land",
+    "parkName": "Conny-Land",
+    "fetchedAt": "2026-02-28T23:10:07.929Z"
+  },
+  "gullivers-world": {
+    "status": "success",
+    "id": "gullivers-world",
+    "parkName": "Gulliver's World",
+    "fetchedAt": "2026-02-28T22:58:19.183Z"
+  },
+  "lunapark": {
+    "status": "success",
+    "id": "lunapark",
+    "parkName": "Lunapark",
+    "fetchedAt": "2026-02-28T22:58:20.679Z"
+  },
+  "kingoland": {
+    "status": "stub",
+    "id": "kingoland",
+    "parkName": "Kingoland",
+    "fetchedAt": "2026-02-28T23:10:10.455Z"
+  },
+  "dale-hibbitt-uk": {
+    "status": "stub",
+    "id": "dale-hibbitt-uk",
+    "parkName": "Dale Hibbitt (UK)",
+    "fetchedAt": "2026-02-28T23:10:15.030Z"
+  },
+  "mellors-group": {
+    "status": "stub",
+    "id": "mellors-group",
+    "parkName": "Mellors Group",
+    "fetchedAt": "2026-02-28T23:10:17.567Z"
+  },
+  "thomas-jones-uk": {
+    "status": "stub",
+    "id": "thomas-jones-uk",
+    "parkName": "Thomas Jones (UK)",
+    "fetchedAt": "2026-02-28T23:10:20.118Z"
+  },
+  "codonas-amusement-park": {
+    "status": "success",
+    "id": "codonas-amusement-park",
+    "parkName": "Codona's Amusement Park",
+    "fetchedAt": "2026-02-28T22:58:27.204Z"
+  },
+  "delphin-be-grand-resort": {
+    "status": "stub",
+    "id": "delphin-be-grand-resort",
+    "parkName": "Delphin Be Grand Resort",
+    "fetchedAt": "2026-02-28T23:10:23.685Z"
+  },
+  "henry-evans-uk": {
+    "status": "stub",
+    "id": "henry-evans-uk",
+    "parkName": "Henry Evans (UK)",
+    "fetchedAt": "2026-02-28T23:10:25.164Z"
+  },
+  "lagunasia": {
+    "status": "success",
+    "id": "lagunasia",
+    "parkName": "Lagunasia",
+    "fetchedAt": "2026-02-28T22:58:30.705Z"
+  },
+  "mandoria": {
+    "status": "stub",
+    "id": "mandoria",
+    "parkName": "Mandoria",
+    "fetchedAt": "2026-02-28T23:10:27.701Z"
+  },
+  "rainier-amusements": {
+    "status": "stub",
+    "id": "rainier-amusements",
+    "parkName": "Rainier Amusements",
+    "fetchedAt": "2026-02-28T23:10:32.263Z"
+  },
+  "formosan-aboriginal-culture-village": {
+    "status": "success",
+    "id": "formosan-aboriginal-culture-village",
+    "parkName": "Formosan Aboriginal Culture Village",
+    "fetchedAt": "2026-02-28T22:58:35.721Z"
+  },
+  "bon-luxury-theme-park": {
+    "status": "stub",
+    "id": "bon-luxury-theme-park",
+    "parkName": "BON Luxury Theme Park",
+    "fetchedAt": "2026-02-28T23:10:39.362Z"
+  },
+  "nara-dreamland": {
+    "status": "success",
+    "id": "nara-dreamland",
+    "parkName": "Nara Dreamland",
+    "fetchedAt": "2026-02-28T22:58:37.752Z"
+  },
+  "maviland": {
+    "status": "stub",
+    "id": "maviland",
+    "parkName": "Maviland",
+    "fetchedAt": "2026-02-28T23:10:41.895Z"
+  },
+  "fun-city": {
+    "status": "stub",
+    "id": "fun-city",
+    "parkName": "Fun City",
+    "fetchedAt": "2026-02-28T23:10:47.518Z"
+  },
+  "vvc-wheel-park": {
+    "status": "stub",
+    "id": "vvc-wheel-park",
+    "parkName": "VVC Wheel Park",
+    "fetchedAt": "2026-02-28T23:10:51.134Z"
+  },
+  "japan-monkey-park": {
+    "status": "stub",
+    "id": "japan-monkey-park",
+    "parkName": "Japan Monkey Park",
+    "fetchedAt": "2026-02-28T23:10:55.699Z"
+  },
+  "beijing-shijingshan-amusement-park": {
+    "status": "success",
+    "id": "beijing-shijingshan-amusement-park",
+    "parkName": "Beijing Shijingshan Amusement Park",
+    "fetchedAt": "2026-02-28T22:58:44.630Z"
+  },
+  "greenland": {
+    "status": "success",
+    "id": "greenland",
+    "parkName": "Greenland",
+    "fetchedAt": "2026-02-28T22:58:45.751Z"
+  },
+  "silk-road-paradise": {
+    "status": "stub",
+    "id": "silk-road-paradise",
+    "parkName": "Silk Road Paradise",
+    "fetchedAt": "2026-02-28T23:11:03.335Z"
+  },
+  "hossoland": {
+    "status": "stub",
+    "id": "hossoland",
+    "parkName": "Hossoland",
+    "fetchedAt": "2026-02-28T23:11:07.893Z"
+  },
+  "xetulul": {
+    "status": "success",
+    "id": "xetulul",
+    "parkName": "Xetulul",
+    "fetchedAt": "2026-02-28T22:58:49.270Z"
+  },
+  "nickelodeon-universe-mall-of-america": {
+    "status": "success",
+    "id": "nickelodeon-universe-mall-of-america",
+    "parkName": "Nickelodeon Universe Mall of America",
+    "fetchedAt": "2026-02-28T22:58:49.808Z"
+  },
+  "idora-park": {
+    "status": "success",
+    "id": "idora-park",
+    "parkName": "Idora Park",
+    "fetchedAt": "2026-02-28T22:58:50.265Z"
+  },
+  "hapylon": {
+    "status": "stub",
+    "id": "hapylon",
+    "parkName": "Hapylon",
+    "fetchedAt": "2026-02-28T23:11:11.466Z"
+  },
+  "avonturenpark-hellendoorn": {
+    "status": "stub",
+    "id": "avonturenpark-hellendoorn",
+    "parkName": "Avonturenpark Hellendoorn",
+    "fetchedAt": "2026-02-28T23:11:13.985Z"
+  },
+  "yas-waterworld": {
+    "status": "success",
+    "id": "yas-waterworld",
+    "parkName": "Yas Waterworld",
+    "fetchedAt": "2026-02-28T22:58:55.315Z"
+  },
+  "bonneau-france": {
+    "status": "stub",
+    "id": "bonneau-france",
+    "parkName": "Bonneau (France)",
+    "fetchedAt": "2026-02-28T23:11:18.024Z"
+  },
+  "bengtsons-pumpkin-farm": {
+    "status": "stub",
+    "id": "bengtsons-pumpkin-farm",
+    "parkName": "Bengtson's Pumpkin Farm",
+    "fetchedAt": "2026-02-28T23:11:19.532Z"
+  },
+  "fuli-ocean-happy-world": {
+    "status": "stub",
+    "id": "fuli-ocean-happy-world",
+    "parkName": "Fuli Ocean Happy World",
+    "fetchedAt": "2026-02-28T23:11:23.117Z"
+  },
+  "jolly-roger-amusement-park": {
+    "status": "success",
+    "id": "jolly-roger-amusement-park",
+    "parkName": "Jolly Roger Amusement Park",
+    "fetchedAt": "2026-02-28T22:59:00.285Z"
+  },
+  "austins-park": {
+    "status": "stub",
+    "id": "austins-park",
+    "parkName": "Austin's Park",
+    "fetchedAt": "2026-02-28T23:11:25.628Z"
+  },
+  "tweetsie-railroad": {
+    "status": "success",
+    "id": "tweetsie-railroad",
+    "parkName": "Tweetsie Railroad",
+    "fetchedAt": "2026-02-28T22:59:02.328Z"
+  },
+  "freij-entertainment-uae": {
+    "status": "stub",
+    "id": "freij-entertainment-uae",
+    "parkName": "Freij Entertainment (UAE)",
+    "fetchedAt": "2026-02-28T23:11:28.160Z"
+  },
+  "trans-studio-bali": {
+    "status": "stub",
+    "id": "trans-studio-bali",
+    "parkName": "Trans Studio Bali",
+    "fetchedAt": "2026-02-28T23:11:29.660Z"
+  },
+  "trans-studio-action-zone": {
+    "status": "stub",
+    "id": "trans-studio-action-zone",
+    "parkName": "Trans Studio Action Zone",
+    "fetchedAt": "2026-02-28T23:11:34.233Z"
+  },
+  "nasu-highland-park": {
+    "status": "stub",
+    "id": "nasu-highland-park",
+    "parkName": "Nasu Highland Park",
+    "fetchedAt": "2026-02-28T23:11:39.884Z"
+  },
+  "world-in-miniature": {
+    "status": "stub",
+    "id": "world-in-miniature",
+    "parkName": "World in Miniature",
+    "fetchedAt": "2026-02-28T23:11:46.464Z"
+  },
+  "six-flags-mexico": {
+    "status": "success",
+    "id": "six-flags-mexico",
+    "parkName": "Six Flags Mexico",
+    "fetchedAt": "2026-02-28T22:59:10.350Z"
+  },
+  "james-stokes-uk": {
+    "status": "stub",
+    "id": "james-stokes-uk",
+    "parkName": "James Stokes (UK)",
+    "fetchedAt": "2026-02-28T23:11:50.040Z"
+  },
+  "quancheng-euro-park": {
+    "status": "success",
+    "id": "quancheng-euro-park",
+    "parkName": "Quancheng Euro Park",
+    "fetchedAt": "2026-02-28T22:59:12.345Z"
+  },
+  "le-fleury": {
+    "status": "stub",
+    "id": "le-fleury",
+    "parkName": "Le Fleury",
+    "fetchedAt": "2026-02-28T23:11:52.559Z"
+  },
+  "ocean-view-pavilion": {
+    "status": "stub",
+    "id": "ocean-view-pavilion",
+    "parkName": "Ocean View Pavilion",
+    "fetchedAt": "2026-02-28T23:12:00.191Z"
+  },
+  "lilleputthammer": {
+    "status": "stub",
+    "id": "lilleputthammer",
+    "parkName": "Lilleputthammer",
+    "fetchedAt": "2026-02-28T23:12:03.743Z"
+  },
+  "fredy-schneider-schausteller-gmbh-germany": {
+    "status": "stub",
+    "id": "fredy-schneider-schausteller-gmbh-germany",
+    "parkName": "Fredy Schneider Schausteller GmbH (Germany)",
+    "fetchedAt": "2026-02-28T23:12:05.240Z"
+  },
+  "suzhou-amusement-land-forest-world": {
+    "status": "stub",
+    "id": "suzhou-amusement-land-forest-world",
+    "parkName": "Suzhou Amusement Land Forest World",
+    "fetchedAt": "2026-02-28T23:12:07.786Z"
+  },
+  "wakayama-adventure-world": {
+    "status": "stub",
+    "id": "wakayama-adventure-world",
+    "parkName": "Wakayama Adventure World",
+    "fetchedAt": "2026-02-28T23:12:10.317Z"
+  },
+  "e-da-theme-park": {
+    "status": "success",
+    "id": "e-da-theme-park",
+    "parkName": "E-DA Theme Park",
+    "fetchedAt": "2026-02-28T22:59:21.825Z"
+  },
+  "bailey-mckay-uk": {
+    "status": "stub",
+    "id": "bailey-mckay-uk",
+    "parkName": "Bailey McKay (UK)",
+    "fetchedAt": "2026-02-28T23:12:12.865Z"
+  },
+  "bottons-pleasure-beach": {
+    "status": "stub",
+    "id": "bottons-pleasure-beach",
+    "parkName": "Botton's Pleasure Beach",
+    "fetchedAt": "2026-02-28T23:12:15.393Z"
+  },
+  "jean-schweig": {
+    "status": "stub",
+    "id": "jean-schweig",
+    "parkName": "Jean Schweig",
+    "fetchedAt": "2026-02-28T23:12:20.967Z"
+  },
+  "lewis-gess-uk": {
+    "status": "stub",
+    "id": "lewis-gess-uk",
+    "parkName": "Lewis Gess (UK)",
+    "fetchedAt": "2026-02-28T23:12:26.559Z"
+  },
+  "m-ds-scotlands-theme-park": {
+    "status": "stub",
+    "id": "m-ds-scotlands-theme-park",
+    "parkName": "M&D's Scotland's Theme Park",
+    "fetchedAt": "2026-02-28T23:12:35.208Z"
+  },
+  "ocean-beach-pleasure-park": {
+    "status": "stub",
+    "id": "ocean-beach-pleasure-park",
+    "parkName": "Ocean Beach Pleasure Park",
+    "fetchedAt": "2026-02-28T23:12:37.743Z"
+  },
+  "peter-pans-playground": {
+    "status": "success",
+    "id": "peter-pans-playground",
+    "parkName": "Peter Pan's Playground",
+    "fetchedAt": "2026-02-28T22:59:31.339Z"
+  },
+  "web-adventure-park": {
+    "status": "stub",
+    "id": "web-adventure-park",
+    "parkName": "Web Adventure Park",
+    "fetchedAt": "2026-02-28T23:12:42.292Z"
+  },
+  "west-sands-fun-fair": {
+    "status": "stub",
+    "id": "west-sands-fun-fair",
+    "parkName": "West Sands Fun Fair",
+    "fetchedAt": "2026-02-28T23:12:49.912Z"
+  },
+  "allou-fun-park": {
+    "status": "stub",
+    "id": "allou-fun-park",
+    "parkName": "Allou! Fun Park",
+    "fetchedAt": "2026-02-28T23:12:51.412Z"
+  },
+  "freizeitpark-familienland": {
+    "status": "stub",
+    "id": "freizeitpark-familienland",
+    "parkName": "Freizeitpark Familienland",
+    "fetchedAt": "2026-02-28T23:12:54.978Z"
+  },
+  "edgewater-park": {
+    "status": "success",
+    "id": "edgewater-park",
+    "parkName": "Edgewater Park",
+    "fetchedAt": "2026-02-28T22:59:38.992Z"
+  },
+  "white-sand-gate-park": {
+    "status": "stub",
+    "id": "white-sand-gate-park",
+    "parkName": "White Sand Gate Park",
+    "fetchedAt": "2026-02-28T23:12:57.515Z"
+  },
+  "barrys-amusements": {
+    "status": "success",
+    "id": "barrys-amusements",
+    "parkName": "Barry's Amusements",
+    "fetchedAt": "2026-02-28T22:59:41.923Z"
+  },
+  "butlins-grand-parade-amusement-park": {
+    "status": "stub",
+    "id": "butlins-grand-parade-amusement-park",
+    "parkName": "Butlin's Grand Parade Amusement Park",
+    "fetchedAt": "2026-02-28T23:13:00.049Z"
+  },
+  "chippewa-lake-park": {
+    "status": "success",
+    "id": "chippewa-lake-park",
+    "parkName": "Chippewa Lake Park",
+    "fetchedAt": "2026-02-28T22:59:44.949Z"
+  },
+  "currys-fun-park-portrush": {
+    "status": "stub",
+    "id": "currys-fun-park-portrush",
+    "parkName": "Curry's Fun Park Portrush",
+    "fetchedAt": "2026-02-28T23:13:02.589Z"
+  },
+  "expo-58": {
+    "status": "success",
+    "id": "expo-58",
+    "parkName": "Expo '58",
+    "fetchedAt": "2026-02-28T22:59:47.917Z"
+  },
+  "geauga-lake-wildwater-kingdom": {
+    "status": "success",
+    "id": "geauga-lake-wildwater-kingdom",
+    "parkName": "Geauga Lake & Wildwater Kingdom",
+    "fetchedAt": "2026-02-28T22:59:48.527Z"
+  },
+  "royal-adelaide-show": {
+    "status": "success",
+    "id": "royal-adelaide-show",
+    "parkName": "Royal Adelaide Show",
+    "fetchedAt": "2026-02-28T22:59:50.944Z"
+  },
+  "springlake-park": {
+    "status": "stub",
+    "id": "springlake-park",
+    "parkName": "Springlake Park",
+    "fetchedAt": "2026-02-28T23:13:06.208Z"
+  },
+  "great-adventure": {
+    "status": "success",
+    "id": "great-adventure",
+    "parkName": "Great Adventure",
+    "fetchedAt": "2026-02-28T22:59:54.137Z"
+  },
+  "hong-kong-disneyland": {
+    "status": "success",
+    "id": "hong-kong-disneyland",
+    "parkName": "Hong Kong Disneyland",
+    "fetchedAt": "2026-02-28T22:59:54.658Z"
+  },
+  "legoland-shenzhen": {
+    "status": "stub",
+    "id": "legoland-shenzhen",
+    "parkName": "Legoland Shenzhen",
+    "fetchedAt": "2026-02-28T23:13:07.694Z"
+  },
+  "legoland-shanghai": {
+    "status": "success",
+    "id": "legoland-shanghai",
+    "parkName": "Legoland Shanghai",
+    "fetchedAt": "2026-02-28T22:59:56.495Z"
+  },
+  "heide-park-resort": {
+    "status": "success",
+    "id": "heide-park-resort",
+    "parkName": "Heide Park Resort",
+    "fetchedAt": "2026-02-28T22:59:58.060Z"
+  },
+  "disneys-magic-kingdom": {
+    "status": "success",
+    "id": "disneys-magic-kingdom",
+    "parkName": "Disney's Magic Kingdom",
+    "fetchedAt": "2026-02-28T22:59:58.604Z"
+  },
+  "disneyland-park": {
+    "status": "success",
+    "id": "disneyland-park",
+    "parkName": "Disneyland Park",
+    "fetchedAt": "2026-02-28T23:00:00.004Z"
+  },
+  "enchanted-forest": {
+    "status": "success",
+    "id": "enchanted-forest",
+    "parkName": "Enchanted Forest",
+    "fetchedAt": "2026-02-28T23:00:02.535Z"
+  },
+  "seoul-land": {
+    "status": "success",
+    "id": "seoul-land",
+    "parkName": "Seoul Land",
+    "fetchedAt": "2026-02-28T23:00:04.049Z"
+  },
+  "kumdori-land": {
+    "status": "stub",
+    "id": "kumdori-land",
+    "parkName": "Kumdori Land",
+    "fetchedAt": "2026-02-28T23:13:09.199Z"
+  },
+  "riverside-park": {
+    "status": "success",
+    "id": "riverside-park",
+    "parkName": "Riverside Park",
+    "fetchedAt": "2026-02-28T23:00:08.084Z"
+  },
+  "magic-harbor": {
+    "status": "success",
+    "id": "magic-harbor",
+    "parkName": "Magic Harbor",
+    "fetchedAt": "2026-02-28T23:00:09.584Z"
+  },
+  "cultus-lake-adventure-park": {
+    "status": "stub",
+    "id": "cultus-lake-adventure-park",
+    "parkName": "Cultus Lake Adventure Park",
+    "fetchedAt": "2026-02-28T23:13:11.748Z"
+  },
+  "storyland": {
+    "status": "success",
+    "id": "storyland",
+    "parkName": "Storyland",
+    "fetchedAt": "2026-02-28T23:00:13.606Z"
+  },
+  "tetysblu-theme-park": {
+    "status": "stub",
+    "id": "tetysblu-theme-park",
+    "parkName": "Tetysblu Theme Park",
+    "fetchedAt": "2026-02-28T23:13:13.254Z"
+  },
+  "haunted-hoochie": {
+    "status": "stub",
+    "id": "haunted-hoochie",
+    "parkName": "Haunted Hoochie",
+    "fetchedAt": "2026-02-28T23:13:23.961Z"
+  },
+  "standalone": {
+    "status": "success",
+    "id": "standalone",
+    "parkName": "Standalone",
+    "fetchedAt": "2026-02-28T23:00:19.227Z"
+  },
+  "wonderpark": {
+    "status": "stub",
+    "id": "wonderpark",
+    "parkName": "WonderPark",
+    "fetchedAt": "2026-02-28T23:13:26.487Z"
+  },
+  "parc-de-la-vall-e": {
+    "status": "stub",
+    "id": "parc-de-la-vall-e",
+    "parkName": "Parc de la Vallée",
+    "fetchedAt": "2026-02-28T23:13:29.009Z"
+  },
+  "erlebniswelt-seilbahnen-thale": {
+    "status": "stub",
+    "id": "erlebniswelt-seilbahnen-thale",
+    "parkName": "Erlebniswelt Seilbahnen Thale",
+    "fetchedAt": "2026-02-28T23:13:31.569Z"
+  },
+  "mattel-adventure-park": {
+    "status": "success",
+    "id": "mattel-adventure-park",
+    "parkName": "Mattel Adventure Park",
+    "fetchedAt": "2026-02-28T23:00:25.217Z"
+  },
+  "knowsley-safari-park": {
+    "status": "success",
+    "id": "knowsley-safari-park",
+    "parkName": "Knowsley Safari Park",
+    "fetchedAt": "2026-02-28T23:00:27.732Z"
+  },
+  "bellewaerde-park": {
+    "status": "success",
+    "id": "bellewaerde-park",
+    "parkName": "Bellewaerde Park",
+    "fetchedAt": "2026-02-28T23:00:28.242Z"
+  },
+  "e-world": {
+    "status": "stub",
+    "id": "e-world",
+    "parkName": "E-World",
+    "fetchedAt": "2026-02-28T23:13:33.049Z"
+  },
+  "family-fun": {
+    "status": "success",
+    "id": "family-fun",
+    "parkName": "Family Fun",
+    "fetchedAt": "2026-02-28T23:00:32.268Z"
+  },
+  "fantasilandia": {
+    "status": "success",
+    "id": "fantasilandia",
+    "parkName": "Fantasilandia",
+    "fetchedAt": "2026-02-28T23:00:32.772Z"
+  },
+  "floraland-continent-park": {
+    "status": "stub",
+    "id": "floraland-continent-park",
+    "parkName": "Floraland Continent Park",
+    "fetchedAt": "2026-02-28T23:13:35.582Z"
+  },
+  "gero-land": {
+    "status": "stub",
+    "id": "gero-land",
+    "parkName": "Gero Land",
+    "fetchedAt": "2026-02-28T23:13:38.117Z"
+  },
+  "korakuen-yuenchi": {
+    "status": "stub",
+    "id": "korakuen-yuenchi",
+    "parkName": "Korakuen Yuenchi",
+    "fetchedAt": "2026-02-28T23:13:39.617Z"
+  },
+  "parc-des-combes": {
+    "status": "success",
+    "id": "parc-des-combes",
+    "parkName": "Parc des Combes",
+    "fetchedAt": "2026-02-28T23:00:38.900Z"
+  },
+  "parque-de-la-costa": {
+    "status": "success",
+    "id": "parque-de-la-costa",
+    "parkName": "Parque de la Costa",
+    "fetchedAt": "2026-02-28T23:00:41.352Z"
+  },
+  "prater": {
+    "status": "success",
+    "id": "prater",
+    "parkName": "Prater",
+    "fetchedAt": "2026-02-28T23:00:42.879Z"
+  },
+  "siam-park-city": {
+    "status": "success",
+    "id": "siam-park-city",
+    "parkName": "Siam Park City",
+    "fetchedAt": "2026-02-28T23:00:44.456Z"
+  },
+  "skypark-baytik": {
+    "status": "stub",
+    "id": "skypark-baytik",
+    "parkName": "SkyPark Baytik",
+    "fetchedAt": "2026-02-28T23:13:41.114Z"
+  },
+  "walygator-sud-ouest": {
+    "status": "stub",
+    "id": "walygator-sud-ouest",
+    "parkName": "Walygator Sud-Ouest",
+    "fetchedAt": "2026-02-28T23:13:43.647Z"
+  },
+  "wuhan-zhongshan-park": {
+    "status": "stub",
+    "id": "wuhan-zhongshan-park",
+    "parkName": "Wuhan Zhongshan Park",
+    "fetchedAt": "2026-02-28T23:13:45.168Z"
+  },
+  "parc-spirou-provence": {
+    "status": "stub",
+    "id": "parc-spirou-provence",
+    "parkName": "Parc Spirou Provence",
+    "fetchedAt": "2026-02-28T23:13:50.765Z"
+  },
+  "potts-park": {
+    "status": "stub",
+    "id": "potts-park",
+    "parkName": "Potts Park",
+    "fetchedAt": "2026-02-28T23:13:56.332Z"
+  },
+  "massachusetts-museum-of-contemporary-art": {
+    "status": "success",
+    "id": "massachusetts-museum-of-contemporary-art",
+    "parkName": "Massachusetts Museum of Contemporary Art",
+    "fetchedAt": "2026-02-28T23:00:55.474Z"
+  },
+  "xuzhou-paradise": {
+    "status": "stub",
+    "id": "xuzhou-paradise",
+    "parkName": "Xuzhou Paradise",
+    "fetchedAt": "2026-02-28T23:13:57.839Z"
+  },
+  "ontario-beach-park": {
+    "status": "stub",
+    "id": "ontario-beach-park",
+    "parkName": "Ontario Beach Park",
+    "fetchedAt": "2026-02-28T23:14:01.392Z"
+  },
+  "movieland-park": {
+    "status": "stub",
+    "id": "movieland-park",
+    "parkName": "Movieland Park",
+    "fetchedAt": "2026-02-28T23:14:06.989Z"
+  },
+  "europark-milano-idroscalo": {
+    "status": "stub",
+    "id": "europark-milano-idroscalo",
+    "parkName": "EuroPark Milano Idroscalo",
+    "fetchedAt": "2026-02-28T23:14:09.508Z"
+  },
+  "zoosafari-fasanolandia": {
+    "status": "success",
+    "id": "zoosafari-fasanolandia",
+    "parkName": "Zoosafari Fasanolandia",
+    "fetchedAt": "2026-02-28T23:01:05.251Z"
+  },
+  "storybook-land": {
+    "status": "success",
+    "id": "storybook-land",
+    "parkName": "Storybook Land",
+    "fetchedAt": "2026-02-28T23:01:05.755Z"
+  },
+  "shining-waters-family-fun-park": {
+    "status": "success",
+    "id": "shining-waters-family-fun-park",
+    "parkName": "Shining Waters Family Fun Park",
+    "fetchedAt": "2026-02-28T23:01:08.278Z"
+  },
+  "eis-greissler-manufaktur": {
+    "status": "stub",
+    "id": "eis-greissler-manufaktur",
+    "parkName": "Eis Greissler Manufaktur",
+    "fetchedAt": "2026-02-28T23:14:18.163Z"
+  },
+  "xiyou-world-of-adventure": {
+    "status": "stub",
+    "id": "xiyou-world-of-adventure",
+    "parkName": "Xiyou World of Adventure",
+    "fetchedAt": "2026-02-28T23:14:20.732Z"
+  },
+  "fort-hays-chuckwagon": {
+    "status": "stub",
+    "id": "fort-hays-chuckwagon",
+    "parkName": "Fort Hays Chuckwagon",
+    "fetchedAt": "2026-02-28T23:14:24.277Z"
+  },
+  "john-woodward-uk": {
+    "status": "stub",
+    "id": "john-woodward-uk",
+    "parkName": "John Woodward (UK)",
+    "fetchedAt": "2026-02-28T23:14:25.789Z"
+  },
+  "edward-kaiser-germany": {
+    "status": "stub",
+    "id": "edward-kaiser-germany",
+    "parkName": "Edward Kaiser (Germany)",
+    "fetchedAt": "2026-02-28T23:14:27.284Z"
+  },
+  "kongeparken": {
+    "status": "success",
+    "id": "kongeparken",
+    "parkName": "Kongeparken",
+    "fetchedAt": "2026-02-28T23:01:18.374Z"
+  },
+  "happy-valley": {
+    "status": "success",
+    "id": "happy-valley",
+    "parkName": "Happy Valley",
+    "fetchedAt": "2026-02-28T23:01:19.892Z"
+  },
+  "gingko-lake-amusement-park": {
+    "status": "stub",
+    "id": "gingko-lake-amusement-park",
+    "parkName": "Gingko Lake Amusement Park",
+    "fetchedAt": "2026-02-28T23:14:29.835Z"
+  },
+  "selva-m-gica": {
+    "status": "stub",
+    "id": "selva-m-gica",
+    "parkName": "Selva Mágica",
+    "fetchedAt": "2026-02-28T23:14:31.330Z"
+  },
+  "tashkentland": {
+    "status": "stub",
+    "id": "tashkentland",
+    "parkName": "Tashkentland",
+    "fetchedAt": "2026-02-28T23:14:36.996Z"
+  },
+  "tokyo-german-village": {
+    "status": "stub",
+    "id": "tokyo-german-village",
+    "parkName": "Tokyo German Village",
+    "fetchedAt": "2026-02-28T23:14:47.554Z"
+  },
+  "funland": {
+    "status": "success",
+    "id": "funland",
+    "parkName": "Funland",
+    "fetchedAt": "2026-02-28T23:01:29.559Z"
+  },
+  "emerald-park": {
+    "status": "success",
+    "id": "emerald-park",
+    "parkName": "Emerald Park",
+    "fetchedAt": "2026-02-28T23:01:30.105Z"
+  },
+  "magicland": {
+    "status": "stub",
+    "id": "magicland",
+    "parkName": "MagicLand",
+    "fetchedAt": "2026-02-28T23:14:54.242Z"
+  },
+  "lake-george-expedition-park": {
+    "status": "success",
+    "id": "lake-george-expedition-park",
+    "parkName": "Lake George Expedition Park",
+    "fetchedAt": "2026-02-28T23:01:33.099Z"
+  },
+  "tama-tech-motopia": {
+    "status": "stub",
+    "id": "tama-tech-motopia",
+    "parkName": "Tama Tech Motopia",
+    "fetchedAt": "2026-02-28T23:14:59.845Z"
+  },
+  "dream-city": {
+    "status": "success",
+    "id": "dream-city",
+    "parkName": "Dream City",
+    "fetchedAt": "2026-02-28T23:01:37.136Z"
+  },
+  "six-flags-great-escape": {
+    "status": "success",
+    "id": "six-flags-great-escape",
+    "parkName": "Six Flags Great Escape",
+    "fetchedAt": "2026-02-28T23:01:37.699Z"
+  },
+  "motiongate": {
+    "status": "stub",
+    "id": "motiongate",
+    "parkName": "Motiongate",
+    "fetchedAt": "2026-02-28T23:15:02.369Z"
+  },
+  "pirates-cove-fun-park": {
+    "status": "stub",
+    "id": "pirates-cove-fun-park",
+    "parkName": "Pirates Cove Fun Park",
+    "fetchedAt": "2026-02-28T23:15:04.904Z"
+  },
+  "parque-fiesta-aventuras": {
+    "status": "stub",
+    "id": "parque-fiesta-aventuras",
+    "parkName": "Parque Fiesta Aventuras",
+    "fetchedAt": "2026-02-28T23:15:06.407Z"
+  },
+  "primrose-valley-holiday-park": {
+    "status": "stub",
+    "id": "primrose-valley-holiday-park",
+    "parkName": "Primrose Valley Holiday Park",
+    "fetchedAt": "2026-02-28T23:15:08.941Z"
+  },
+  "brean-theme-park": {
+    "status": "stub",
+    "id": "brean-theme-park",
+    "parkName": "Brean Theme Park",
+    "fetchedAt": "2026-02-28T23:15:15.558Z"
+  },
+  "jim-murray-ireland": {
+    "status": "stub",
+    "id": "jim-murray-ireland",
+    "parkName": "Jim Murray (Ireland)",
+    "fetchedAt": "2026-02-28T23:15:19.114Z"
+  },
+  "paul-hart-uk": {
+    "status": "stub",
+    "id": "paul-hart-uk",
+    "parkName": "Paul Hart (UK)",
+    "fetchedAt": "2026-02-28T23:15:21.652Z"
+  },
+  "william-cowie-jnr-uk": {
+    "status": "stub",
+    "id": "william-cowie-jnr-uk",
+    "parkName": "William Cowie Jnr. (UK)",
+    "fetchedAt": "2026-02-28T23:15:24.178Z"
+  },
+  "chudo-park": {
+    "status": "stub",
+    "id": "chudo-park",
+    "parkName": "Chudo Park",
+    "fetchedAt": "2026-02-28T23:15:27.760Z"
+  },
+  "barmouth-amusement-park": {
+    "status": "stub",
+    "id": "barmouth-amusement-park",
+    "parkName": "Barmouth Amusement Park",
+    "fetchedAt": "2026-02-28T23:15:30.275Z"
+  },
+  "oriental-heritage": {
+    "status": "stub",
+    "id": "oriental-heritage",
+    "parkName": "Oriental Heritage",
+    "fetchedAt": "2026-02-28T23:15:32.817Z"
+  },
+  "alabama-adventure-and-splash-adventure": {
+    "status": "stub",
+    "id": "alabama-adventure-and-splash-adventure",
+    "parkName": "Alabama Adventure and Splash Adventure",
+    "fetchedAt": "2026-02-28T23:15:34.322Z"
+  },
+  "hull-zoological-gardens": {
+    "status": "stub",
+    "id": "hull-zoological-gardens",
+    "parkName": "Hull Zoological Gardens",
+    "fetchedAt": "2026-02-28T23:15:35.827Z"
+  },
+  "silver-beach-amusement-park": {
+    "status": "success",
+    "id": "silver-beach-amusement-park",
+    "parkName": "Silver Beach Amusement Park",
+    "fetchedAt": "2026-02-28T23:02:03.829Z"
+  },
+  "happy-world": {
+    "status": "success",
+    "id": "happy-world",
+    "parkName": "Happy World",
+    "fetchedAt": "2026-02-28T23:02:08.883Z"
+  },
+  "sir-goonys-fun-zone": {
+    "status": "stub",
+    "id": "sir-goonys-fun-zone",
+    "parkName": "Sir Goony's Fun Zone",
+    "fetchedAt": "2026-02-28T23:15:39.856Z"
+  },
+  "kataplum": {
+    "status": "stub",
+    "id": "kataplum",
+    "parkName": "Kataplum",
+    "fetchedAt": "2026-02-28T23:15:45.602Z"
+  },
+  "brazilian-park-washuzan-highland": {
+    "status": "stub",
+    "id": "brazilian-park-washuzan-highland",
+    "parkName": "Brazilian Park Washuzan Highland",
+    "fetchedAt": "2026-02-28T23:15:48.005Z"
+  },
+  "serengeti-park": {
+    "status": "stub",
+    "id": "serengeti-park",
+    "parkName": "Serengeti-Park",
+    "fetchedAt": "2026-02-28T23:15:50.539Z"
+  },
+  "pps-park-platja-daro": {
+    "status": "stub",
+    "id": "pps-park-platja-daro",
+    "parkName": "PPS Park Platja d'Aro",
+    "fetchedAt": "2026-02-28T23:15:53.090Z"
+  },
+  "fun-lab": {
+    "status": "stub",
+    "id": "fun-lab",
+    "parkName": "Fun Lab",
+    "fetchedAt": "2026-02-28T23:15:54.595Z"
+  },
+  "cotaland": {
+    "status": "stub",
+    "id": "cotaland",
+    "parkName": "Cotaland",
+    "fetchedAt": "2026-02-28T23:16:03.261Z"
+  },
+  "gillians-wonderland-pier": {
+    "status": "success",
+    "id": "gillians-wonderland-pier",
+    "parkName": "Gillian's Wonderland Pier",
+    "fetchedAt": "2026-02-28T23:02:23.113Z"
+  },
+  "city-forum": {
+    "status": "success",
+    "id": "city-forum",
+    "parkName": "City Forum",
+    "fetchedAt": "2026-02-28T23:02:25.527Z"
+  },
+  "washington-state-fair": {
+    "status": "success",
+    "id": "washington-state-fair",
+    "parkName": "Washington State Fair",
+    "fetchedAt": "2026-02-28T23:02:27.025Z"
+  },
+  "ghost-town-village": {
+    "status": "success",
+    "id": "ghost-town-village",
+    "parkName": "Ghost Town Village",
+    "fetchedAt": "2026-02-28T23:02:27.640Z"
+  },
+  "fantawild-wonderland": {
+    "status": "stub",
+    "id": "fantawild-wonderland",
+    "parkName": "Fantawild Wonderland",
+    "fetchedAt": "2026-02-28T23:16:08.835Z"
+  },
+  "wicksteed-park": {
+    "status": "success",
+    "id": "wicksteed-park",
+    "parkName": "Wicksteed Park",
+    "fetchedAt": "2026-02-28T23:02:30.613Z"
+  },
+  "camel-creek-adventure-park": {
+    "status": "success",
+    "id": "camel-creek-adventure-park",
+    "parkName": "Camel Creek Adventure Park",
+    "fetchedAt": "2026-02-28T23:02:31.070Z"
+  },
+  "funcoast-world": {
+    "status": "success",
+    "id": "funcoast-world",
+    "parkName": "Funcoast World",
+    "fetchedAt": "2026-02-28T23:02:32.575Z"
+  },
+  "nanchang-sunac-land": {
+    "status": "success",
+    "id": "nanchang-sunac-land",
+    "parkName": "Nanchang Sunac Land",
+    "fetchedAt": "2026-02-28T23:02:34.110Z"
+  },
+  "toyohashi-non-hoi-park": {
+    "status": "stub",
+    "id": "toyohashi-non-hoi-park",
+    "parkName": "Toyohashi Non Hoi Park",
+    "fetchedAt": "2026-02-28T23:16:19.519Z"
+  },
+  "blackbeards-family-entertainment-center": {
+    "status": "stub",
+    "id": "blackbeards-family-entertainment-center",
+    "parkName": "Blackbeard's Family Entertainment Center",
+    "fetchedAt": "2026-02-28T23:16:22.048Z"
+  },
+  "legoland-florida": {
+    "status": "success",
+    "id": "legoland-florida",
+    "parkName": "Legoland Florida",
+    "fetchedAt": "2026-02-28T23:02:38.700Z"
+  },
+  "fasttrax-entertainment": {
+    "status": "stub",
+    "id": "fasttrax-entertainment",
+    "parkName": "FastTrax Entertainment",
+    "fetchedAt": "2026-02-28T23:16:23.565Z"
+  },
+  "kaiser-germany": {
+    "status": "stub",
+    "id": "kaiser-germany",
+    "parkName": "Kaiser (Germany)",
+    "fetchedAt": "2026-02-28T23:16:30.670Z"
+  },
+  "bagatelle": {
+    "status": "success",
+    "id": "bagatelle",
+    "parkName": "Bagatelle",
+    "fetchedAt": "2026-02-28T23:02:46.689Z"
+  },
+  "nicolandia-center-park": {
+    "status": "stub",
+    "id": "nicolandia-center-park",
+    "parkName": "Nicolandia Center Park",
+    "fetchedAt": "2026-02-28T23:16:33.229Z"
+  },
+  "puritas-springs": {
+    "status": "stub",
+    "id": "puritas-springs",
+    "parkName": "Puritas Springs",
+    "fetchedAt": "2026-02-28T23:16:34.715Z"
+  },
+  "safari-land": {
+    "status": "stub",
+    "id": "safari-land",
+    "parkName": "Safari Land",
+    "fetchedAt": "2026-02-28T23:16:37.252Z"
+  },
+  "benyland": {
+    "status": "stub",
+    "id": "benyland",
+    "parkName": "Benyland",
+    "fetchedAt": "2026-02-28T23:16:40.974Z"
+  },
+  "rainbows-end": {
+    "status": "success",
+    "id": "rainbows-end",
+    "parkName": "Rainbow's End",
+    "fetchedAt": "2026-02-28T23:02:56.337Z"
+  },
+  "fantasy-forest-at-the-flushing-meadows-carousel": {
+    "status": "stub",
+    "id": "fantasy-forest-at-the-flushing-meadows-carousel",
+    "parkName": "Fantasy Forest at the Flushing Meadows Carousel",
+    "fetchedAt": "2026-02-28T23:16:47.611Z"
+  },
+  "milky-way-adventure-park": {
+    "status": "stub",
+    "id": "milky-way-adventure-park",
+    "parkName": "Milky Way Adventure Park",
+    "fetchedAt": "2026-02-28T23:16:51.151Z"
+  },
+  "agorix-temapark": {
+    "status": "stub",
+    "id": "agorix-temapark",
+    "parkName": "Agorix Temapark",
+    "fetchedAt": "2026-02-28T23:16:52.658Z"
+  },
+  "freddy-davis-spencer-stokes-uk": {
+    "status": "stub",
+    "id": "freddy-davis-spencer-stokes-uk",
+    "parkName": "Freddy Davis & Spencer Stokes (UK)",
+    "fetchedAt": "2026-02-28T23:16:55.197Z"
+  },
+  "san-antonios-incredible-pizza-company": {
+    "status": "stub",
+    "id": "san-antonios-incredible-pizza-company",
+    "parkName": "San Antonio's Incredible Pizza Company",
+    "fetchedAt": "2026-02-28T23:16:56.772Z"
+  },
+  "johns-incredible-pizza": {
+    "status": "success",
+    "id": "johns-incredible-pizza",
+    "parkName": "John's Incredible Pizza",
+    "fetchedAt": "2026-02-28T23:03:06.299Z"
+  },
+  "trans-studio-mini": {
+    "status": "stub",
+    "id": "trans-studio-mini",
+    "parkName": "Trans Studio Mini",
+    "fetchedAt": "2026-02-28T23:17:02.290Z"
+  },
+  "bayside-fun-park": {
+    "status": "stub",
+    "id": "bayside-fun-park",
+    "parkName": "Bayside Fun Park",
+    "fetchedAt": "2026-02-28T23:17:06.859Z"
+  },
+  "david-irvin-jnr-uk": {
+    "status": "stub",
+    "id": "david-irvin-jnr-uk",
+    "parkName": "David Irvin Jnr. (UK)",
+    "fetchedAt": "2026-02-28T23:17:09.387Z"
+  },
+  "mellors-group-uk": {
+    "status": "stub",
+    "id": "mellors-group-uk",
+    "parkName": "Mellors Group (UK)",
+    "fetchedAt": "2026-02-28T23:17:11.921Z"
+  },
+  "sandwell-valley-amusements": {
+    "status": "stub",
+    "id": "sandwell-valley-amusements",
+    "parkName": "Sandwell Valley Amusements",
+    "fetchedAt": "2026-02-28T23:17:15.482Z"
+  },
+  "tir-prince-fun-park": {
+    "status": "stub",
+    "id": "tir-prince-fun-park",
+    "parkName": "Tir Prince Fun Park",
+    "fetchedAt": "2026-02-28T23:17:21.086Z"
+  },
+  "pettitts-animal-adventure-park": {
+    "status": "stub",
+    "id": "pettitts-animal-adventure-park",
+    "parkName": "Pettitts Animal Adventure Park",
+    "fetchedAt": "2026-02-28T23:17:23.607Z"
+  },
+  "david-james-hackett-uk": {
+    "status": "stub",
+    "id": "david-james-hackett-uk",
+    "parkName": "David James Hackett (UK)",
+    "fetchedAt": "2026-02-28T23:17:26.151Z"
+  },
+  "buwalda-netherlands": {
+    "status": "stub",
+    "id": "buwalda-netherlands",
+    "parkName": "Buwalda (Netherlands)",
+    "fetchedAt": "2026-02-28T23:17:31.739Z"
+  },
+  "blackpool-south-pier": {
+    "status": "stub",
+    "id": "blackpool-south-pier",
+    "parkName": "Blackpool South Pier",
+    "fetchedAt": "2026-02-28T23:17:34.255Z"
+  },
+  "joseph-pullen-uk": {
+    "status": "stub",
+    "id": "joseph-pullen-uk",
+    "parkName": "Joseph Pullen (UK)",
+    "fetchedAt": "2026-02-28T23:17:35.755Z"
+  },
+  "loca-joy-holiday-theme-park": {
+    "status": "stub",
+    "id": "loca-joy-holiday-theme-park",
+    "parkName": "Loca Joy Holiday Theme Park",
+    "fetchedAt": "2026-02-28T23:17:37.276Z"
+  },
+  "jacquou-parc": {
+    "status": "success",
+    "id": "jacquou-parc",
+    "parkName": "Jacquou Parc",
+    "fetchedAt": "2026-02-28T23:03:30.037Z"
+  },
+  "discoveryland": {
+    "status": "success",
+    "id": "discoveryland",
+    "parkName": "Discoveryland",
+    "fetchedAt": "2026-02-28T23:03:31.538Z"
+  },
+  "steel-pier": {
+    "status": "success",
+    "id": "steel-pier",
+    "parkName": "Steel Pier",
+    "fetchedAt": "2026-02-28T23:03:32.019Z"
+  },
+  "scandia-family-fun-center": {
+    "status": "stub",
+    "id": "scandia-family-fun-center",
+    "parkName": "Scandia Family Fun Center",
+    "fetchedAt": "2026-02-28T23:17:39.800Z"
+  },
+  "cy-abbott-uk": {
+    "status": "stub",
+    "id": "cy-abbott-uk",
+    "parkName": "Cy Abbott (UK)",
+    "fetchedAt": "2026-02-28T23:17:42.333Z"
+  },
+  "thilo-jan-en": {
+    "status": "stub",
+    "id": "thilo-jan-en",
+    "parkName": "Thilo Janßen",
+    "fetchedAt": "2026-02-28T23:17:44.863Z"
+  },
+  "amusements-of-america-usa": {
+    "status": "stub",
+    "id": "amusements-of-america-usa",
+    "parkName": "Amusements of America (USA)",
+    "fetchedAt": "2026-02-28T23:17:50.454Z"
+  },
+  "austrian-fair-circuit": {
+    "status": "stub",
+    "id": "austrian-fair-circuit",
+    "parkName": "Austrian Fair Circuit",
+    "fetchedAt": "2026-02-28T23:17:52.984Z"
+  },
+  "brighton-palace-pier": {
+    "status": "success",
+    "id": "brighton-palace-pier",
+    "parkName": "Brighton Palace Pier",
+    "fetchedAt": "2026-02-28T23:03:44.088Z"
+  },
+  "darren-matthews-uk": {
+    "status": "stub",
+    "id": "darren-matthews-uk",
+    "parkName": "Darren Matthews (UK)",
+    "fetchedAt": "2026-02-28T23:17:56.661Z"
+  },
+  "degoussee-france": {
+    "status": "stub",
+    "id": "degoussee-france",
+    "parkName": "Degoussee (France)",
+    "fetchedAt": "2026-02-28T23:18:00.217Z"
+  },
+  "delgrossos-amusement-park": {
+    "status": "success",
+    "id": "delgrossos-amusement-park",
+    "parkName": "DelGrosso's Amusement Park",
+    "fetchedAt": "2026-02-28T23:03:48.626Z"
+  },
+  "gullivers-land": {
+    "status": "success",
+    "id": "gullivers-land",
+    "parkName": "Gulliver's Land",
+    "fetchedAt": "2026-02-28T23:03:49.139Z"
+  },
+  "hirakata-park": {
+    "status": "success",
+    "id": "hirakata-park",
+    "parkName": "Hirakata Park",
+    "fetchedAt": "2026-02-28T23:03:50.614Z"
+  },
+  "illinois-state-fair": {
+    "status": "success",
+    "id": "illinois-state-fair",
+    "parkName": "Illinois State Fair",
+    "fetchedAt": "2026-02-28T23:03:52.141Z"
+  },
+  "seoul-park": {
+    "status": "stub",
+    "id": "seoul-park",
+    "parkName": "Seoul Park",
+    "fetchedAt": "2026-02-28T23:18:02.755Z"
+  },
+  "thomas-wilmot-sons-uk": {
+    "status": "stub",
+    "id": "thomas-wilmot-sons-uk",
+    "parkName": "Thomas Wilmot & Sons (UK)",
+    "fetchedAt": "2026-02-28T23:18:07.347Z"
+  },
+  "tobu-zoo-park": {
+    "status": "stub",
+    "id": "tobu-zoo-park",
+    "parkName": "Tobu Zoo Park",
+    "fetchedAt": "2026-02-28T23:18:15.972Z"
+  },
+  "tropic-falls": {
+    "status": "stub",
+    "id": "tropic-falls",
+    "parkName": "Tropic Falls",
+    "fetchedAt": "2026-02-28T23:18:21.555Z"
+  },
+  "fte-ahrend-h-p-maier-germany-switzerland": {
+    "status": "stub",
+    "id": "fte-ahrend-h-p-maier-germany-switzerland",
+    "parkName": "FTE Ahrend & H. P. Maier (Germany & Switzerland)",
+    "fetchedAt": "2026-02-28T23:18:24.083Z"
+  },
+  "nanhu-amusement-park": {
+    "status": "stub",
+    "id": "nanhu-amusement-park",
+    "parkName": "Nanhu Amusement Park",
+    "fetchedAt": "2026-02-28T23:18:26.633Z"
+  },
+  "trans-studio-mini-pekalogan": {
+    "status": "stub",
+    "id": "trans-studio-mini-pekalogan",
+    "parkName": "Trans Studio Mini Pekalogan",
+    "fetchedAt": "2026-02-28T23:18:28.110Z"
+  },
+  "luna-park-tel-aviv": {
+    "status": "stub",
+    "id": "luna-park-tel-aviv",
+    "parkName": "Luna Park Tel Aviv",
+    "fetchedAt": "2026-02-28T23:18:29.856Z"
+  },
+  "flamingo-world": {
+    "status": "stub",
+    "id": "flamingo-world",
+    "parkName": "Flamingo World",
+    "fetchedAt": "2026-02-28T23:18:33.429Z"
+  },
+  "millsprings-amusement-park": {
+    "status": "stub",
+    "id": "millsprings-amusement-park",
+    "parkName": "Millsprings Amusement Park",
+    "fetchedAt": "2026-02-28T23:18:35.957Z"
+  },
+  "craigs-cruisers-family-fun-center": {
+    "status": "stub",
+    "id": "craigs-cruisers-family-fun-center",
+    "parkName": "Craig's Cruisers Family Fun Center",
+    "fetchedAt": "2026-02-28T23:18:39.510Z"
+  },
+  "universal-epic-universe": {
+    "status": "success",
+    "id": "universal-epic-universe",
+    "parkName": "Universal Epic Universe",
+    "fetchedAt": "2026-02-28T23:04:12.578Z"
+  },
+  "richard-michael-jennings-uk": {
+    "status": "stub",
+    "id": "richard-michael-jennings-uk",
+    "parkName": "Richard & Michael Jennings (UK)",
+    "fetchedAt": "2026-02-28T23:18:45.165Z"
+  },
+  "nokkakivi-park": {
+    "status": "stub",
+    "id": "nokkakivi-park",
+    "parkName": "Nokkakivi Park",
+    "fetchedAt": "2026-02-28T23:18:51.845Z"
+  },
+  "mayakovsky-park": {
+    "status": "stub",
+    "id": "mayakovsky-park",
+    "parkName": "Mayakovsky Park",
+    "fetchedAt": "2026-02-28T23:18:59.412Z"
+  },
+  "peppa-pig-theme-park": {
+    "status": "success",
+    "id": "peppa-pig-theme-park",
+    "parkName": "Peppa Pig Theme Park",
+    "fetchedAt": "2026-02-28T23:04:20.508Z"
+  },
+  "shinhwa-theme-park": {
+    "status": "stub",
+    "id": "shinhwa-theme-park",
+    "parkName": "Shinhwa Theme Park",
+    "fetchedAt": "2026-02-28T23:19:03.051Z"
+  },
+  "odakyu-gotemba-family-land": {
+    "status": "stub",
+    "id": "odakyu-gotemba-family-land",
+    "parkName": "Odakyu Gotemba Family Land",
+    "fetchedAt": "2026-02-28T23:19:05.500Z"
+  },
+  "boomers": {
+    "status": "success",
+    "id": "boomers",
+    "parkName": "Boomers",
+    "fetchedAt": "2026-02-28T23:04:26.041Z"
+  },
+  "legoland-deutschland": {
+    "status": "success",
+    "id": "legoland-deutschland",
+    "parkName": "Legoland Deutschland",
+    "fetchedAt": "2026-02-28T23:04:26.610Z"
+  },
+  "fantasy-valley": {
+    "status": "stub",
+    "id": "fantasy-valley",
+    "parkName": "Fantasy Valley",
+    "fetchedAt": "2026-02-28T23:19:07.013Z"
+  },
+  "al-zawraa-land": {
+    "status": "stub",
+    "id": "al-zawraa-land",
+    "parkName": "Al Zawraa Land",
+    "fetchedAt": "2026-02-28T23:19:09.544Z"
+  },
+  "marah-land": {
+    "status": "stub",
+    "id": "marah-land",
+    "parkName": "Marah Land",
+    "fetchedAt": "2026-02-28T23:19:11.122Z"
+  },
+  "universal-studios-beijing": {
+    "status": "success",
+    "id": "universal-studios-beijing",
+    "parkName": "Universal Studios Beijing",
+    "fetchedAt": "2026-02-28T23:04:32.711Z"
+  },
+  "fair-park": {
+    "status": "success",
+    "id": "fair-park",
+    "parkName": "Fair Park",
+    "fetchedAt": "2026-02-28T23:04:34.088Z"
+  },
+  "meyers-lake-park": {
+    "status": "stub",
+    "id": "meyers-lake-park",
+    "parkName": "Meyer's Lake Park",
+    "fetchedAt": "2026-02-28T23:19:14.683Z"
+  },
+  "kolm-rden": {
+    "status": "success",
+    "id": "kolm-rden",
+    "parkName": "Kolmården",
+    "fetchedAt": "2026-02-28T23:04:38.111Z"
+  },
+  "festivalgate": {
+    "status": "success",
+    "id": "festivalgate",
+    "parkName": "Festivalgate",
+    "fetchedAt": "2026-02-28T23:04:39.665Z"
+  },
+  "castles-n-coasters": {
+    "status": "success",
+    "id": "castles-n-coasters",
+    "parkName": "Castles N' Coasters",
+    "fetchedAt": "2026-02-28T23:04:40.196Z"
+  },
+  "vinwonders": {
+    "status": "stub",
+    "id": "vinwonders",
+    "parkName": "VinWonders",
+    "fetchedAt": "2026-02-28T23:19:17.223Z"
+  },
+  "clarence-pier": {
+    "status": "success",
+    "id": "clarence-pier",
+    "parkName": "Clarence Pier",
+    "fetchedAt": "2026-02-28T23:04:44.736Z"
+  },
+  "fort-fun-abenteuerland": {
+    "status": "stub",
+    "id": "fort-fun-abenteuerland",
+    "parkName": "Fort Fun Abenteuerland",
+    "fetchedAt": "2026-02-28T23:19:27.389Z"
+  },
+  "magic-springs-crystal-falls": {
+    "status": "success",
+    "id": "magic-springs-crystal-falls",
+    "parkName": "Magic Springs & Crystal Falls",
+    "fetchedAt": "2026-02-28T23:04:46.739Z"
+  },
+  "aussie-world": {
+    "status": "success",
+    "id": "aussie-world",
+    "parkName": "Aussie World",
+    "fetchedAt": "2026-02-28T23:04:48.268Z"
+  },
+  "erlebnispark-schloss-thurn": {
+    "status": "stub",
+    "id": "erlebnispark-schloss-thurn",
+    "parkName": "Erlebnispark Schloss Thurn",
+    "fetchedAt": "2026-02-28T23:19:29.909Z"
+  },
+  "deadwood": {
+    "status": "success",
+    "id": "deadwood",
+    "parkName": "Deadwood",
+    "fetchedAt": "2026-02-28T23:04:51.202Z"
+  },
+  "buckroe-beach-park": {
+    "status": "stub",
+    "id": "buckroe-beach-park",
+    "parkName": "Buckroe Beach Park",
+    "fetchedAt": "2026-02-28T23:19:34.548Z"
+  },
+  "west-view-park": {
+    "status": "success",
+    "id": "west-view-park",
+    "parkName": "West View Park",
+    "fetchedAt": "2026-02-28T23:04:54.302Z"
+  },
+  "buckeye-lake-amusement-park": {
+    "status": "stub",
+    "id": "buckeye-lake-amusement-park",
+    "parkName": "Buckeye Lake Amusement Park",
+    "fetchedAt": "2026-02-28T23:19:36.084Z"
+  },
+  "springfield-fun-park": {
+    "status": "stub",
+    "id": "springfield-fun-park",
+    "parkName": "Springfield Fun Park",
+    "fetchedAt": "2026-02-28T23:19:38.664Z"
+  },
+  "yokohama-cosmoworld": {
+    "status": "stub",
+    "id": "yokohama-cosmoworld",
+    "parkName": "Yokohama Cosmoworld",
+    "fetchedAt": "2026-02-28T23:19:41.264Z"
+  },
+  "janfusun-fancyworld": {
+    "status": "success",
+    "id": "janfusun-fancyworld",
+    "parkName": "Janfusun Fancyworld",
+    "fetchedAt": "2026-02-28T23:05:00.268Z"
+  },
+  "summit-beach-park": {
+    "status": "stub",
+    "id": "summit-beach-park",
+    "parkName": "Summit Beach Park",
+    "fetchedAt": "2026-02-28T23:19:43.792Z"
+  },
+  "salitre-magico": {
+    "status": "success",
+    "id": "salitre-magico",
+    "parkName": "Salitre Magico",
+    "fetchedAt": "2026-02-28T23:05:03.296Z"
+  },
+  "old-macdonalds-farm-fun-park": {
+    "status": "stub",
+    "id": "old-macdonalds-farm-fun-park",
+    "parkName": "Old MacDonald's Farm & Fun Park",
+    "fetchedAt": "2026-02-28T23:19:52.424Z"
+  },
+  "dippiedoe-attractiepark": {
+    "status": "stub",
+    "id": "dippiedoe-attractiepark",
+    "parkName": "DippieDoe Attractiepark",
+    "fetchedAt": "2026-02-28T23:19:53.930Z"
+  },
+  "sea-paradise": {
+    "status": "stub",
+    "id": "sea-paradise",
+    "parkName": "Sea Paradise",
+    "fetchedAt": "2026-02-28T23:19:57.501Z"
+  },
+  "misaki-park": {
+    "status": "success",
+    "id": "misaki-park",
+    "parkName": "Misaki Park",
+    "fetchedAt": "2026-02-28T23:05:08.317Z"
+  },
+  "freizeit-land-geiselwind": {
+    "status": "success",
+    "id": "freizeit-land-geiselwind",
+    "parkName": "Freizeit-Land Geiselwind",
+    "fetchedAt": "2026-02-28T23:05:09.856Z"
+  },
+  "djurs-sommerland": {
+    "status": "success",
+    "id": "djurs-sommerland",
+    "parkName": "Djurs Sommerland",
+    "fetchedAt": "2026-02-28T23:05:10.427Z"
+  },
+  "barry-island-pleasure-park": {
+    "status": "success",
+    "id": "barry-island-pleasure-park",
+    "parkName": "Barry Island Pleasure Park",
+    "fetchedAt": "2026-02-28T23:05:10.909Z"
+  },
+  "eontime-world": {
+    "status": "stub",
+    "id": "eontime-world",
+    "parkName": "Eontime World",
+    "fetchedAt": "2026-02-28T23:20:02.044Z"
+  },
+  "frasers-million-dollar-pier": {
+    "status": "success",
+    "id": "frasers-million-dollar-pier",
+    "parkName": "Fraser's Million Dollar Pier",
+    "fetchedAt": "2026-02-28T23:05:13.837Z"
+  },
+  "dragon-valley-theme-park": {
+    "status": "stub",
+    "id": "dragon-valley-theme-park",
+    "parkName": "Dragon Valley Theme Park",
+    "fetchedAt": "2026-02-28T23:20:03.546Z"
+  },
+  "hokkaido-greenland": {
+    "status": "stub",
+    "id": "hokkaido-greenland",
+    "parkName": "Hokkaido Greenland",
+    "fetchedAt": "2026-02-28T23:20:09.135Z"
+  },
+  "romon-u-park": {
+    "status": "success",
+    "id": "romon-u-park",
+    "parkName": "Romon U-Park",
+    "fetchedAt": "2026-02-28T23:05:18.380Z"
+  },
+  "treasure-island-amusement-park": {
+    "status": "stub",
+    "id": "treasure-island-amusement-park",
+    "parkName": "Treasure Island Amusement Park",
+    "fetchedAt": "2026-02-28T23:20:11.731Z"
+  },
+  "legoland-japan": {
+    "status": "success",
+    "id": "legoland-japan",
+    "parkName": "Legoland Japan",
+    "fetchedAt": "2026-02-28T23:05:21.477Z"
+  },
+  "legoland-malaysia": {
+    "status": "success",
+    "id": "legoland-malaysia",
+    "parkName": "Legoland Malaysia",
+    "fetchedAt": "2026-02-28T23:05:21.979Z"
+  },
+  "legoland-new-york": {
+    "status": "success",
+    "id": "legoland-new-york",
+    "parkName": "Legoland New York",
+    "fetchedAt": "2026-02-28T23:05:22.513Z"
+  },
+  "legoland-windsor": {
+    "status": "success",
+    "id": "legoland-windsor",
+    "parkName": "Legoland Windsor",
+    "fetchedAt": "2026-02-28T23:05:23.043Z"
+  },
+  "legoland-dubai": {
+    "status": "success",
+    "id": "legoland-dubai",
+    "parkName": "Legoland Dubai",
+    "fetchedAt": "2026-02-28T23:05:23.419Z"
+  },
+  "speelpark-oud-valkeveen": {
+    "status": "stub",
+    "id": "speelpark-oud-valkeveen",
+    "parkName": "Speelpark Oud Valkeveen",
+    "fetchedAt": "2026-02-28T23:20:15.241Z"
+  },
+  "salitre-m-gico": {
+    "status": "success",
+    "id": "salitre-m-gico",
+    "parkName": "Salitre Mágico",
+    "fetchedAt": "2026-02-28T23:05:26.458Z"
+  },
+  "zoomarine": {
+    "status": "success",
+    "id": "zoomarine",
+    "parkName": "Zoomarine",
+    "fetchedAt": "2026-02-28T23:05:26.967Z"
+  },
+  "festilandia": {
+    "status": "stub",
+    "id": "festilandia",
+    "parkName": "Festilandia",
+    "fetchedAt": "2026-02-28T23:20:18.839Z"
+  },
+  "sochi-park": {
+    "status": "stub",
+    "id": "sochi-park",
+    "parkName": "Sochi Park",
+    "fetchedAt": "2026-02-28T23:20:29.054Z"
+  },
+  "play-dxb-dubai-mall": {
+    "status": "stub",
+    "id": "play-dxb-dubai-mall",
+    "parkName": "Play DXB Dubai Mall",
+    "fetchedAt": "2026-02-28T23:20:31.484Z"
+  },
+  "guangzhou-sunac-land": {
+    "status": "stub",
+    "id": "guangzhou-sunac-land",
+    "parkName": "Guangzhou Sunac Land",
+    "fetchedAt": "2026-02-28T23:20:32.989Z"
+  },
+  "beto-carrero-world": {
+    "status": "success",
+    "id": "beto-carrero-world",
+    "parkName": "Beto Carrero World",
+    "fetchedAt": "2026-02-28T23:05:38.108Z"
+  },
+  "tusenfryd": {
+    "status": "success",
+    "id": "tusenfryd",
+    "parkName": "TusenFryd",
+    "fetchedAt": "2026-02-28T23:05:38.562Z"
+  },
+  "attractiepark-toverland": {
+    "status": "stub",
+    "id": "attractiepark-toverland",
+    "parkName": "Attractiepark Toverland",
+    "fetchedAt": "2026-02-28T23:20:38.677Z"
+  },
+  "seaworld-abu-dhabi": {
+    "status": "success",
+    "id": "seaworld-abu-dhabi",
+    "parkName": "SeaWorld Abu Dhabi",
+    "fetchedAt": "2026-02-28T23:05:40.603Z"
+  },
+  "childrens-world": {
+    "status": "success",
+    "id": "childrens-world",
+    "parkName": "Children's World",
+    "fetchedAt": "2026-02-28T23:05:43.086Z"
+  },
+  "freizeitpark-lochm-hle": {
+    "status": "stub",
+    "id": "freizeitpark-lochm-hle",
+    "parkName": "Freizeitpark Lochmühle",
+    "fetchedAt": "2026-02-28T23:20:43.232Z"
+  },
+  "wonderland-eurasia": {
+    "status": "success",
+    "id": "wonderland-eurasia",
+    "parkName": "Wonderland Eurasia",
+    "fetchedAt": "2026-02-28T23:05:45.249Z"
+  },
+  "western-playland": {
+    "status": "success",
+    "id": "western-playland",
+    "parkName": "Western Playland",
+    "fetchedAt": "2026-02-28T23:05:45.715Z"
+  },
+  "etnaland": {
+    "status": "stub",
+    "id": "etnaland",
+    "parkName": "Etnaland",
+    "fetchedAt": "2026-02-28T23:20:45.757Z"
+  },
+  "jeffry-bodet-belgium": {
+    "status": "stub",
+    "id": "jeffry-bodet-belgium",
+    "parkName": "Jeffry Bodet (Belgium)",
+    "fetchedAt": "2026-02-28T23:20:47.276Z"
+  },
+  "sams-fun-city": {
+    "status": "stub",
+    "id": "sams-fun-city",
+    "parkName": "Sam's Fun City",
+    "fetchedAt": "2026-02-28T23:20:49.822Z"
+  },
+  "babylon-park": {
+    "status": "success",
+    "id": "babylon-park",
+    "parkName": "Babylon Park",
+    "fetchedAt": "2026-02-28T23:05:52.846Z"
+  },
+  "doha-quest": {
+    "status": "stub",
+    "id": "doha-quest",
+    "parkName": "Doha Quest",
+    "fetchedAt": "2026-02-28T23:20:54.377Z"
+  },
+  "erlebnispark-steinau": {
+    "status": "stub",
+    "id": "erlebnispark-steinau",
+    "parkName": "Erlebnispark Steinau",
+    "fetchedAt": "2026-02-28T23:20:56.892Z"
+  },
+  "travelling": {
+    "status": "success",
+    "id": "travelling",
+    "parkName": "Travelling",
+    "fetchedAt": "2026-02-28T23:05:59.368Z"
+  },
+  "buwalda": {
+    "status": "success",
+    "id": "buwalda",
+    "parkName": "Buwalda",
+    "fetchedAt": "2026-02-28T23:06:00.885Z"
+  },
+  "anapa-park-jungle": {
+    "status": "stub",
+    "id": "anapa-park-jungle",
+    "parkName": "Anapa Park Jungle",
+    "fetchedAt": "2026-02-28T23:20:59.441Z"
+  },
+  "fabrikus-world": {
+    "status": "stub",
+    "id": "fabrikus-world",
+    "parkName": "Fabrikus World",
+    "fetchedAt": "2026-02-28T23:21:03.991Z"
+  },
+  "wuxi-sunac-land": {
+    "status": "stub",
+    "id": "wuxi-sunac-land",
+    "parkName": "Wuxi Sunac Land",
+    "fetchedAt": "2026-02-28T23:21:06.531Z"
+  },
+  "moon-toon": {
+    "status": "stub",
+    "id": "moon-toon",
+    "parkName": "Moon Toon",
+    "fetchedAt": "2026-02-28T23:21:14.155Z"
+  },
+  "billybird-park-hemelrijk": {
+    "status": "stub",
+    "id": "billybird-park-hemelrijk",
+    "parkName": "Billybird Park Hemelrijk",
+    "fetchedAt": "2026-02-28T23:21:22.847Z"
+  },
+  "tolk-schau": {
+    "status": "stub",
+    "id": "tolk-schau",
+    "parkName": "Tolk-Schau",
+    "fetchedAt": "2026-02-28T23:21:28.433Z"
+  },
+  "jagdm-rchenpark-hirschalm": {
+    "status": "stub",
+    "id": "jagdm-rchenpark-hirschalm",
+    "parkName": "Jagdmärchenpark Hirschalm",
+    "fetchedAt": "2026-02-28T23:21:29.931Z"
+  },
+  "schlo-beck-freizeitpark": {
+    "status": "stub",
+    "id": "schlo-beck-freizeitpark",
+    "parkName": "Schloß Beck Freizeitpark",
+    "fetchedAt": "2026-02-28T23:21:32.480Z"
+  },
+  "erse-park-uetze": {
+    "status": "stub",
+    "id": "erse-park-uetze",
+    "parkName": "Erse Park Uetze",
+    "fetchedAt": "2026-02-28T23:21:33.958Z"
+  },
+  "childrens-park-east": {
+    "status": "stub",
+    "id": "childrens-park-east",
+    "parkName": "Children's Park East",
+    "fetchedAt": "2026-02-28T23:21:36.503Z"
+  },
+  "colin-buwalda-netherlands": {
+    "status": "stub",
+    "id": "colin-buwalda-netherlands",
+    "parkName": "Colin Buwalda (Netherlands)",
+    "fetchedAt": "2026-02-28T23:21:39.042Z"
+  },
+  "didiland": {
+    "status": "stub",
+    "id": "didiland",
+    "parkName": "Didi'Land",
+    "fetchedAt": "2026-02-28T23:21:41.556Z"
+  },
+  "jurapark-solec": {
+    "status": "stub",
+    "id": "jurapark-solec",
+    "parkName": "JuraPark Solec",
+    "fetchedAt": "2026-02-28T23:21:45.134Z"
+  },
+  "koala-park": {
+    "status": "stub",
+    "id": "koala-park",
+    "parkName": "Koala Park",
+    "fetchedAt": "2026-02-28T23:21:52.766Z"
+  },
+  "land-of-legends-theme-park": {
+    "status": "stub",
+    "id": "land-of-legends-theme-park",
+    "parkName": "Land of Legends Theme Park",
+    "fetchedAt": "2026-02-28T23:21:56.330Z"
+  },
+  "lompi-family-park": {
+    "status": "stub",
+    "id": "lompi-family-park",
+    "parkName": "Lompi Family Park",
+    "fetchedAt": "2026-02-28T23:21:58.899Z"
+  },
+  "michael-wallis-jnr-william-abbott-uk": {
+    "status": "stub",
+    "id": "michael-wallis-jnr-william-abbott-uk",
+    "parkName": "Michael Wallis Jnr. & William Abbott (UK)",
+    "fetchedAt": "2026-02-28T23:22:02.433Z"
+  },
+  "mws-amusement-park": {
+    "status": "stub",
+    "id": "mws-amusement-park",
+    "parkName": "MW's Amusement Park",
+    "fetchedAt": "2026-02-28T23:22:03.923Z"
+  },
+  "steven-hill-uk": {
+    "status": "stub",
+    "id": "steven-hill-uk",
+    "parkName": "Steven Hill (UK)",
+    "fetchedAt": "2026-02-28T23:22:06.468Z"
+  },
+  "thamaghra-parc": {
+    "status": "stub",
+    "id": "thamaghra-parc",
+    "parkName": "Thamaghra Parc",
+    "fetchedAt": "2026-02-28T23:22:07.960Z"
+  },
+  "viasea": {
+    "status": "stub",
+    "id": "viasea",
+    "parkName": "ViaSea",
+    "fetchedAt": "2026-02-28T23:22:10.494Z"
+  },
+  "walygator-grand-est": {
+    "status": "stub",
+    "id": "walygator-grand-est",
+    "parkName": "Walygator Grand Est",
+    "fetchedAt": "2026-02-28T23:22:14.050Z"
+  },
+  "zoo-debrecen": {
+    "status": "stub",
+    "id": "zoo-debrecen",
+    "parkName": "Zoo Debrecen",
+    "fetchedAt": "2026-02-28T23:22:15.562Z"
+  },
+  "andretti-thrill-park": {
+    "status": "stub",
+    "id": "andretti-thrill-park",
+    "parkName": "Andretti Thrill Park",
+    "fetchedAt": "2026-02-28T23:22:17.066Z"
+  },
+  "nathan-hart-uk": {
+    "status": "stub",
+    "id": "nathan-hart-uk",
+    "parkName": "Nathan Hart (UK)",
+    "fetchedAt": "2026-02-28T23:22:19.604Z"
+  },
+  "wayne-smith-uk": {
+    "status": "stub",
+    "id": "wayne-smith-uk",
+    "parkName": "Wayne Smith (UK)",
+    "fetchedAt": "2026-02-28T23:22:24.152Z"
+  },
+  "wildlife-world": {
+    "status": "stub",
+    "id": "wildlife-world",
+    "parkName": "Wildlife World",
+    "fetchedAt": "2026-02-28T23:22:34.843Z"
+  },
+  "heritage-park": {
+    "status": "success",
+    "id": "heritage-park",
+    "parkName": "Heritage Park",
+    "fetchedAt": "2026-02-28T23:06:53.264Z"
+  },
+  "family-park": {
+    "status": "stub",
+    "id": "family-park",
+    "parkName": "Family Park",
+    "fetchedAt": "2026-02-28T23:22:40.430Z"
+  },
+  "fami-p-a-r-c": {
+    "status": "stub",
+    "id": "fami-p-a-r-c",
+    "parkName": "Fami P.A.R.C",
+    "fetchedAt": "2026-02-28T23:22:42.958Z"
+  },
+  "tongdo-fantasia": {
+    "status": "stub",
+    "id": "tongdo-fantasia",
+    "parkName": "Tongdo Fantasia",
+    "fetchedAt": "2026-02-28T23:22:48.565Z"
+  },
+  "animaparc": {
+    "status": "stub",
+    "id": "animaparc",
+    "parkName": "Animaparc",
+    "fetchedAt": "2026-02-28T23:22:50.059Z"
+  },
+  "santas-village": {
+    "status": "success",
+    "id": "santas-village",
+    "parkName": "Santa's Village",
+    "fetchedAt": "2026-02-28T23:07:02.814Z"
+  },
+  "fun-fore-all-family-fun-park": {
+    "status": "stub",
+    "id": "fun-fore-all-family-fun-park",
+    "parkName": "Fun Fore All Family Fun Park",
+    "fetchedAt": "2026-02-28T23:22:52.602Z"
+  },
+  "glorious-orient": {
+    "status": "stub",
+    "id": "glorious-orient",
+    "parkName": "Glorious Orient",
+    "fetchedAt": "2026-02-28T23:22:56.162Z"
+  },
+  "fanta-park-glorious-orient": {
+    "status": "stub",
+    "id": "fanta-park-glorious-orient",
+    "parkName": "Fanta Park Glorious Orient",
+    "fetchedAt": "2026-02-28T23:22:58.707Z"
+  },
+  "ramona-park": {
+    "status": "success",
+    "id": "ramona-park",
+    "parkName": "Ramona Park",
+    "fetchedAt": "2026-02-28T23:07:08.918Z"
+  },
+  "rocky-springs-park": {
+    "status": "stub",
+    "id": "rocky-springs-park",
+    "parkName": "Rocky Springs Park",
+    "fetchedAt": "2026-02-28T23:23:01.261Z"
+  },
+  "long-branch-park": {
+    "status": "success",
+    "id": "long-branch-park",
+    "parkName": "Long Branch Park",
+    "fetchedAt": "2026-02-28T23:07:11.863Z"
+  },
+  "north-parade-amusement-park": {
+    "status": "stub",
+    "id": "north-parade-amusement-park",
+    "parkName": "North Parade Amusement Park",
+    "fetchedAt": "2026-02-28T23:23:02.814Z"
+  },
+  "spanish-city-amusement-park": {
+    "status": "stub",
+    "id": "spanish-city-amusement-park",
+    "parkName": "Spanish City Amusement Park",
+    "fetchedAt": "2026-02-28T23:23:10.389Z"
+  },
+  "spring-grove-park": {
+    "status": "stub",
+    "id": "spring-grove-park",
+    "parkName": "Spring Grove Park",
+    "fetchedAt": "2026-02-28T23:23:12.911Z"
+  },
+  "tuscora-park": {
+    "status": "success",
+    "id": "tuscora-park",
+    "parkName": "Tuscora Park",
+    "fetchedAt": "2026-02-28T23:07:19.942Z"
+  },
+  "west-end-amusement-park": {
+    "status": "success",
+    "id": "west-end-amusement-park",
+    "parkName": "West End Amusement Park",
+    "fetchedAt": "2026-02-28T23:07:20.515Z"
+  },
+  "belle-isle-park": {
+    "status": "success",
+    "id": "belle-isle-park",
+    "parkName": "Belle Isle Park",
+    "fetchedAt": "2026-02-28T23:07:21.937Z"
+  },
+  "blackpool-new-fairground-company": {
+    "status": "stub",
+    "id": "blackpool-new-fairground-company",
+    "parkName": "Blackpool New Fairground Company",
+    "fetchedAt": "2026-02-28T23:23:15.451Z"
+  },
+  "zigong-fantawild-dinosaur-kingdom": {
+    "status": "stub",
+    "id": "zigong-fantawild-dinosaur-kingdom",
+    "parkName": "Zigong Fantawild Dinosaur Kingdom",
+    "fetchedAt": "2026-02-28T23:23:22.073Z"
+  },
+  "furuvik": {
+    "status": "success",
+    "id": "furuvik",
+    "parkName": "Furuvik",
+    "fetchedAt": "2026-02-28T23:07:27.509Z"
+  },
+  "adventureland": {
+    "status": "success",
+    "id": "adventureland",
+    "parkName": "Adventureland",
+    "fetchedAt": "2026-02-28T23:07:30.006Z"
+  },
+  "fantawild-adventure": {
+    "status": "success",
+    "id": "fantawild-adventure",
+    "parkName": "Fantawild Adventure",
+    "fetchedAt": "2026-02-28T23:07:31.513Z"
+  },
+  "lewa-adventure": {
+    "status": "stub",
+    "id": "lewa-adventure",
+    "parkName": "Lewa Adventure",
+    "fetchedAt": "2026-02-28T23:23:25.620Z"
+  },
+  "harborland": {
+    "status": "success",
+    "id": "harborland",
+    "parkName": "Harborland",
+    "fetchedAt": "2026-02-28T23:07:35.546Z"
+  },
+  "deggeller-attractions-usa": {
+    "status": "stub",
+    "id": "deggeller-attractions-usa",
+    "parkName": "Deggeller Attractions (USA)",
+    "fetchedAt": "2026-02-28T23:23:27.187Z"
+  },
+  "trampolino-familien-und-freizeitpark": {
+    "status": "stub",
+    "id": "trampolino-familien-und-freizeitpark",
+    "parkName": "Trampolino Familien- und Freizeitpark",
+    "fetchedAt": "2026-02-28T23:23:31.719Z"
+  },
+  "skyline-park": {
+    "status": "success",
+    "id": "skyline-park",
+    "parkName": "Skyline Park",
+    "fetchedAt": "2026-02-28T23:07:40.186Z"
+  },
+  "tokyo-disneysea": {
+    "status": "success",
+    "id": "tokyo-disneysea",
+    "parkName": "Tokyo DisneySea",
+    "fetchedAt": "2026-02-28T23:07:40.635Z"
+  },
+  "sunnyside-amusement-park": {
+    "status": "success",
+    "id": "sunnyside-amusement-park",
+    "parkName": "Sunnyside Amusement Park",
+    "fetchedAt": "2026-02-28T23:07:43.100Z"
+  },
+  "canadian-national-exhibition": {
+    "status": "success",
+    "id": "canadian-national-exhibition",
+    "parkName": "Canadian National Exhibition",
+    "fetchedAt": "2026-02-28T23:07:45.640Z"
+  },
+  "amazing-world": {
+    "status": "stub",
+    "id": "amazing-world",
+    "parkName": "Amazing World",
+    "fetchedAt": "2026-02-28T23:23:37.330Z"
+  },
+  "oriental-legend": {
+    "status": "stub",
+    "id": "oriental-legend",
+    "parkName": "Oriental Legend",
+    "fetchedAt": "2026-02-28T23:23:39.867Z"
+  },
+  "funderland-amusement-park": {
+    "status": "stub",
+    "id": "funderland-amusement-park",
+    "parkName": "Funderland Amusement Park",
+    "fetchedAt": "2026-02-28T23:23:42.391Z"
+  },
+  "coney-park": {
+    "status": "stub",
+    "id": "coney-park",
+    "parkName": "Coney Park",
+    "fetchedAt": "2026-02-28T23:23:43.890Z"
+  },
+  "kid-city-jurrasic-adventure": {
+    "status": "stub",
+    "id": "kid-city-jurrasic-adventure",
+    "parkName": "Kid City Jurrasic Adventure",
+    "fetchedAt": "2026-02-28T23:23:46.426Z"
+  },
+  "schwaben-park": {
+    "status": "stub",
+    "id": "schwaben-park",
+    "parkName": "Schwaben Park",
+    "fetchedAt": "2026-02-28T23:23:52.031Z"
+  },
+  "luna-farm": {
+    "status": "stub",
+    "id": "luna-farm",
+    "parkName": "Luna Farm",
+    "fetchedAt": "2026-02-28T23:23:56.586Z"
+  },
+  "pattaya-park": {
+    "status": "stub",
+    "id": "pattaya-park",
+    "parkName": "Pattaya Park",
+    "fetchedAt": "2026-02-28T23:23:59.112Z"
+  },
+  "drievliet-family-park": {
+    "status": "stub",
+    "id": "drievliet-family-park",
+    "parkName": "Drievliet Family Park",
+    "fetchedAt": "2026-02-28T23:24:08.820Z"
+  },
+  "yesterland-farm": {
+    "status": "stub",
+    "id": "yesterland-farm",
+    "parkName": "YesterLand Farm",
+    "fetchedAt": "2026-02-28T23:24:17.521Z"
+  },
+  "tosselilla": {
+    "status": "success",
+    "id": "tosselilla",
+    "parkName": "Tosselilla",
+    "fetchedAt": "2026-02-28T23:24:19.083Z"
+  },
+  "house-of-frankenstein": {
+    "status": "success",
+    "id": "house-of-frankenstein",
+    "parkName": "House of Frankenstein",
+    "fetchedAt": "2026-02-28T23:24:24.634Z"
+  },
+  "iplay-america": {
+    "status": "success",
+    "id": "iplay-america",
+    "parkName": "iPlay America",
+    "fetchedAt": "2026-02-28T23:24:27.183Z"
+  },
+  "freij-entertainment-international": {
+    "status": "stub",
+    "id": "freij-entertainment-international",
+    "parkName": "Freij Entertainment International",
+    "fetchedAt": "2026-02-28T23:24:29.696Z"
+  },
+  "fantasiana": {
+    "status": "stub",
+    "id": "fantasiana",
+    "parkName": "Fantasiana",
+    "fetchedAt": "2026-02-28T23:24:32.240Z"
+  },
+  "reece-wheatley-uk": {
+    "status": "stub",
+    "id": "reece-wheatley-uk",
+    "parkName": "Reece Wheatley (UK)",
+    "fetchedAt": "2026-02-28T23:24:35.785Z"
+  },
+  "attrapark": {
+    "status": "stub",
+    "id": "attrapark",
+    "parkName": "Attrapark",
+    "fetchedAt": "2026-02-28T23:24:41.374Z"
+  },
+  "sun-park": {
+    "status": "success",
+    "id": "sun-park",
+    "parkName": "Sun Park",
+    "fetchedAt": "2026-02-28T23:24:42.888Z"
+  },
+  "huagudeng-carnival": {
+    "status": "stub",
+    "id": "huagudeng-carnival",
+    "parkName": "Huagudeng Carnival",
+    "fetchedAt": "2026-02-28T23:24:44.380Z"
+  },
+  "fantawild-dreamland": {
+    "status": "stub",
+    "id": "fantawild-dreamland",
+    "parkName": "Fantawild Dreamland",
+    "fetchedAt": "2026-02-28T23:24:46.921Z"
+  },
+  "hangzhou-childrens-park": {
+    "status": "stub",
+    "id": "hangzhou-childrens-park",
+    "parkName": "Hangzhou Children's Park",
+    "fetchedAt": "2026-02-28T23:24:48.416Z"
+  },
+  "spreepark": {
+    "status": "success",
+    "id": "spreepark",
+    "parkName": "Spreepark",
+    "fetchedAt": "2026-02-28T23:24:52.002Z"
+  },
+  "the-funplex-myrtle-beach": {
+    "status": "stub",
+    "id": "the-funplex-myrtle-beach",
+    "parkName": "The Funplex Myrtle Beach",
+    "fetchedAt": "2026-02-28T23:25:00.641Z"
+  },
+  "tramore-amusement-park": {
+    "status": "stub",
+    "id": "tramore-amusement-park",
+    "parkName": "Tramore Amusement Park",
+    "fetchedAt": "2026-02-28T23:25:04.205Z"
+  },
+  "funplex-mount-laurel": {
+    "status": "stub",
+    "id": "funplex-mount-laurel",
+    "parkName": "Funplex Mount Laurel",
+    "fetchedAt": "2026-02-28T23:25:08.421Z"
+  },
+  "funtown-pier": {
+    "status": "stub",
+    "id": "funtown-pier",
+    "parkName": "Funtown Pier",
+    "fetchedAt": "2026-02-28T23:25:09.896Z"
+  },
+  "aquashow-family-park": {
+    "status": "stub",
+    "id": "aquashow-family-park",
+    "parkName": "Aquashow Family Park",
+    "fetchedAt": "2026-02-28T23:25:13.481Z"
+  },
+  "dennlys-parc": {
+    "status": "success",
+    "id": "dennlys-parc",
+    "parkName": "Dennlys Parc",
+    "fetchedAt": "2026-02-28T23:25:13.984Z"
+  },
+  "hunderfossen-eventyrpark": {
+    "status": "stub",
+    "id": "hunderfossen-eventyrpark",
+    "parkName": "Hunderfossen Eventyrpark",
+    "fetchedAt": "2026-02-28T23:25:15.474Z"
+  },
+  "newtons-attic": {
+    "status": "stub",
+    "id": "newtons-attic",
+    "parkName": "Newton's Attic",
+    "fetchedAt": "2026-02-28T23:25:16.988Z"
+  },
+  "familypark": {
+    "status": "stub",
+    "id": "familypark",
+    "parkName": "Familypark",
+    "fetchedAt": "2026-02-28T23:25:21.562Z"
+  },
+  "joyland-amusement-park": {
+    "status": "success",
+    "id": "joyland-amusement-park",
+    "parkName": "Joyland Amusement Park",
+    "fetchedAt": "2026-02-28T23:25:27.161Z"
+  },
+  "novosibirsk-central-park": {
+    "status": "stub",
+    "id": "novosibirsk-central-park",
+    "parkName": "Novosibirsk Central Park",
+    "fetchedAt": "2026-02-28T23:25:32.749Z"
+  },
+  "palace-playland": {
+    "status": "success",
+    "id": "palace-playland",
+    "parkName": "Palace Playland",
+    "fetchedAt": "2026-02-28T23:25:33.270Z"
+  },
+  "riverview-park-waterworld": {
+    "status": "stub",
+    "id": "riverview-park-waterworld",
+    "parkName": "Riverview Park & Waterworld",
+    "fetchedAt": "2026-02-28T23:25:35.775Z"
+  },
+  "santas-village-azoosment-park": {
+    "status": "success",
+    "id": "santas-village-azoosment-park",
+    "parkName": "Santa's Village AZoosment Park",
+    "fetchedAt": "2026-02-28T23:25:36.356Z"
+  },
+  "sylvan-beach-amusement-park": {
+    "status": "stub",
+    "id": "sylvan-beach-amusement-park",
+    "parkName": "Sylvan Beach Amusement Park",
+    "fetchedAt": "2026-02-28T23:25:38.811Z"
+  },
+  "cedar-valleys-wild-frontier-fun-park": {
+    "status": "stub",
+    "id": "cedar-valleys-wild-frontier-fun-park",
+    "parkName": "Cedar Valley's Wild Frontier Fun Park",
+    "fetchedAt": "2026-02-28T23:25:40.315Z"
+  },
+  "fun-park-sunny-beach": {
+    "status": "stub",
+    "id": "fun-park-sunny-beach",
+    "parkName": "Fun Park Sunny Beach",
+    "fetchedAt": "2026-02-28T23:25:42.854Z"
+  },
+  "aqua-park": {
+    "status": "stub",
+    "id": "aqua-park",
+    "parkName": "Aqua Park",
+    "fetchedAt": "2026-02-28T23:25:47.409Z"
+  },
+  "parque-talo-americano": {
+    "status": "stub",
+    "id": "parque-talo-americano",
+    "parkName": "Parque Ítalo Americano",
+    "fetchedAt": "2026-02-28T23:25:56.087Z"
+  },
+  "ray-cammack-shows-usa": {
+    "status": "stub",
+    "id": "ray-cammack-shows-usa",
+    "parkName": "Ray Cammack Shows (USA)",
+    "fetchedAt": "2026-02-28T23:25:59.638Z"
+  },
+  "reithoffer-shows-usa": {
+    "status": "stub",
+    "id": "reithoffer-shows-usa",
+    "parkName": "Reithoffer Shows (USA)",
+    "fetchedAt": "2026-02-28T23:26:02.170Z"
+  },
+  "playlands-castaway-cove": {
+    "status": "stub",
+    "id": "playlands-castaway-cove",
+    "parkName": "Playland's Castaway Cove",
+    "fetchedAt": "2026-02-28T23:26:05.734Z"
+  },
+  "sun-world-da-nang-downtown": {
+    "status": "stub",
+    "id": "sun-world-da-nang-downtown",
+    "parkName": "Sun World Da Nang Downtown",
+    "fetchedAt": "2026-02-28T23:26:08.259Z"
+  },
+  "tokyo-joypolis": {
+    "status": "stub",
+    "id": "tokyo-joypolis",
+    "parkName": "Tokyo Joypolis",
+    "fetchedAt": "2026-02-28T23:26:14.903Z"
+  },
+  "modern-woodmen-park": {
+    "status": "success",
+    "id": "modern-woodmen-park",
+    "parkName": "Modern Woodmen Park",
+    "fetchedAt": "2026-02-28T23:26:21.516Z"
+  },
+  "tokyo-dome-city": {
+    "status": "success",
+    "id": "tokyo-dome-city",
+    "parkName": "Tokyo Dome City",
+    "fetchedAt": "2026-02-28T23:26:24.052Z"
+  },
+  "jin-jiang-action-park": {
+    "status": "stub",
+    "id": "jin-jiang-action-park",
+    "parkName": "Jin Jiang Action Park",
+    "fetchedAt": "2026-02-28T23:26:27.603Z"
+  },
+  "saltair": {
+    "status": "success",
+    "id": "saltair",
+    "parkName": "Saltair",
+    "fetchedAt": "2026-02-28T23:26:30.133Z"
+  },
+  "redcar-amusement-park": {
+    "status": "stub",
+    "id": "redcar-amusement-park",
+    "parkName": "Redcar Amusement Park",
+    "fetchedAt": "2026-02-28T23:26:32.681Z"
+  },
+  "lotte-world-adventure-busan-magic-forest": {
+    "status": "stub",
+    "id": "lotte-world-adventure-busan-magic-forest",
+    "parkName": "Lotte World Adventure Busan - Magic Forest",
+    "fetchedAt": "2026-02-28T23:26:35.395Z"
+  },
+  "forest-park": {
+    "status": "success",
+    "id": "forest-park",
+    "parkName": "Forest Park",
+    "fetchedAt": "2026-02-28T23:26:42.280Z"
+  },
+  "blue-bayou-dixie-landin": {
+    "status": "stub",
+    "id": "blue-bayou-dixie-landin",
+    "parkName": "Blue Bayou Dixie Landin'",
+    "fetchedAt": "2026-02-28T23:26:46.835Z"
+  },
+  "freizeitpark-ruhpolding": {
+    "status": "stub",
+    "id": "freizeitpark-ruhpolding",
+    "parkName": "Freizeitpark Ruhpolding",
+    "fetchedAt": "2026-02-28T23:26:55.617Z"
+  },
+  "cacau-show-megastore-itapevi": {
+    "status": "stub",
+    "id": "cacau-show-megastore-itapevi",
+    "parkName": "Cacau Show Megastore Itapevi",
+    "fetchedAt": "2026-02-28T23:27:00.146Z"
+  },
+  "happyland": {
+    "status": "success",
+    "id": "happyland",
+    "parkName": "Happyland",
+    "fetchedAt": "2026-02-28T23:27:08.808Z"
+  },
+  "tale-park": {
+    "status": "stub",
+    "id": "tale-park",
+    "parkName": "Tale Park",
+    "fetchedAt": "2026-02-28T23:27:11.336Z"
+  },
+  "fantasiland": {
+    "status": "stub",
+    "id": "fantasiland",
+    "parkName": "Fantasiland",
+    "fetchedAt": "2026-02-28T23:27:18.054Z"
+  },
+  "john-paul-williams-ireland": {
+    "status": "stub",
+    "id": "john-paul-williams-ireland",
+    "parkName": "John Paul Williams (Ireland)",
+    "fetchedAt": "2026-02-28T23:27:21.610Z"
+  },
+  "thomas-harris-jnr-uk": {
+    "status": "stub",
+    "id": "thomas-harris-jnr-uk",
+    "parkName": "Thomas Harris Jnr. (UK)",
+    "fetchedAt": "2026-02-28T23:27:23.108Z"
+  },
+  "pavilion-fun-park": {
+    "status": "stub",
+    "id": "pavilion-fun-park",
+    "parkName": "Pavilion Fun Park",
+    "fetchedAt": "2026-02-28T23:27:28.689Z"
+  },
+  "tooty-town": {
+    "status": "stub",
+    "id": "tooty-town",
+    "parkName": "Tooty Town",
+    "fetchedAt": "2026-02-28T23:27:31.230Z"
+  },
+  "jawa-timur-park-1": {
+    "status": "stub",
+    "id": "jawa-timur-park-1",
+    "parkName": "Jawa Timur Park 1",
+    "fetchedAt": "2026-02-28T23:27:33.756Z"
+  },
+  "dewberry-farm": {
+    "status": "stub",
+    "id": "dewberry-farm",
+    "parkName": "Dewberry Farm",
+    "fetchedAt": "2026-02-28T23:27:37.320Z"
+  },
+  "ok-corral": {
+    "status": "success",
+    "id": "ok-corral",
+    "parkName": "OK Corral",
+    "fetchedAt": "2026-02-28T23:27:40.361Z"
+  },
+  "gold-reef-city": {
+    "status": "success",
+    "id": "gold-reef-city",
+    "parkName": "Gold Reef City",
+    "fetchedAt": "2026-02-28T23:27:41.869Z"
+  },
+  "parc-dattractions-marseillan-plage": {
+    "status": "stub",
+    "id": "parc-dattractions-marseillan-plage",
+    "parkName": "Parc d'Attractions Marseillan-Plage",
+    "fetchedAt": "2026-02-28T23:27:43.349Z"
+  },
+  "parque-espana-shima-spain-village": {
+    "status": "success",
+    "id": "parque-espana-shima-spain-village",
+    "parkName": "Parque Espana-Shima Spain Village",
+    "fetchedAt": "2026-02-28T23:27:44.854Z"
+  },
+  "pirates-world": {
+    "status": "success",
+    "id": "pirates-world",
+    "parkName": "Pirate's World",
+    "fetchedAt": "2026-02-28T23:27:45.500Z"
+  },
+  "gullivers-valley-resort": {
+    "status": "stub",
+    "id": "gullivers-valley-resort",
+    "parkName": "Gulliver's Valley Resort",
+    "fetchedAt": "2026-02-28T23:27:48.160Z"
+  },
+  "ravensburger-spieleland": {
+    "status": "stub",
+    "id": "ravensburger-spieleland",
+    "parkName": "Ravensburger Spieleland",
+    "fetchedAt": "2026-02-28T23:27:50.419Z"
+  },
+  "science-city": {
+    "status": "success",
+    "id": "science-city",
+    "parkName": "Science City",
+    "fetchedAt": "2026-02-28T23:27:52.961Z"
+  },
+  "lihpao-land": {
+    "status": "success",
+    "id": "lihpao-land",
+    "parkName": "Lihpao Land",
+    "fetchedAt": "2026-02-28T23:27:53.476Z"
+  },
+  "schnepf-farms": {
+    "status": "stub",
+    "id": "schnepf-farms",
+    "parkName": "Schnepf Farms",
+    "fetchedAt": "2026-02-28T23:27:54.954Z"
+  },
+  "paramounts-great-america": {
+    "status": "success",
+    "id": "paramounts-great-america",
+    "parkName": "Paramount's Great America",
+    "fetchedAt": "2026-02-28T23:27:56.609Z"
+  },
+  "greenwood-forest-park": {
+    "status": "success",
+    "id": "greenwood-forest-park",
+    "parkName": "GreenWood Forest Park",
+    "fetchedAt": "2026-02-28T23:27:58.033Z"
+  },
+  "six-flags-kentucky-kingdom": {
+    "status": "success",
+    "id": "six-flags-kentucky-kingdom",
+    "parkName": "Six Flags Kentucky Kingdom",
+    "fetchedAt": "2026-02-28T23:27:58.687Z"
+  },
+  "lakewood-park": {
+    "status": "success",
+    "id": "lakewood-park",
+    "parkName": "Lakewood Park",
+    "fetchedAt": "2026-02-28T23:28:00.010Z"
+  },
+  "parque-zool-gico-huachipa": {
+    "status": "stub",
+    "id": "parque-zool-gico-huachipa",
+    "parkName": "Parque Zoológico Huachipa",
+    "fetchedAt": "2026-02-28T23:28:05.598Z"
+  },
+  "parque-borunda": {
+    "status": "stub",
+    "id": "parque-borunda",
+    "parkName": "Parque Borunda",
+    "fetchedAt": "2026-02-28T23:28:07.105Z"
+  },
+  "real-madrid-world": {
+    "status": "success",
+    "id": "real-madrid-world",
+    "parkName": "Real Madrid World",
+    "fetchedAt": "2026-02-28T23:28:07.608Z"
+  },
+  "fantasy-island-amusement-park": {
+    "status": "success",
+    "id": "fantasy-island-amusement-park",
+    "parkName": "Fantasy Island Amusement Park",
+    "fetchedAt": "2026-02-28T23:28:08.173Z"
+  },
+  "hastings-pier": {
+    "status": "success",
+    "id": "hastings-pier",
+    "parkName": "Hastings Pier",
+    "fetchedAt": "2026-02-28T23:28:10.646Z"
+  },
+  "john-jordon-bills-uk": {
+    "status": "stub",
+    "id": "john-jordon-bills-uk",
+    "parkName": "John-Jordon Bills (UK)",
+    "fetchedAt": "2026-02-28T23:28:12.144Z"
+  },
+  "south-parade-pier": {
+    "status": "success",
+    "id": "south-parade-pier",
+    "parkName": "South Parade Pier",
+    "fetchedAt": "2026-02-28T23:28:14.673Z"
+  },
+  "anderton-rowland-uk": {
+    "status": "stub",
+    "id": "anderton-rowland-uk",
+    "parkName": "Anderton & Rowland (UK)",
+    "fetchedAt": "2026-02-28T23:28:17.208Z"
+  },
+  "mampato": {
+    "status": "success",
+    "id": "mampato",
+    "parkName": "Mampato",
+    "fetchedAt": "2026-02-28T23:28:18.711Z"
+  },
+  "gldani-park": {
+    "status": "stub",
+    "id": "gldani-park",
+    "parkName": "Gldani Park",
+    "fetchedAt": "2026-02-28T23:28:25.333Z"
+  },
+  "tokyo-summerland": {
+    "status": "stub",
+    "id": "tokyo-summerland",
+    "parkName": "Tokyo Summerland",
+    "fetchedAt": "2026-02-28T23:28:31.887Z"
+  },
+  "hb-world": {
+    "status": "stub",
+    "id": "hb-world",
+    "parkName": "HB World",
+    "fetchedAt": "2026-02-28T23:28:35.453Z"
+  },
+  "wild-und-freizeitpark-klotten-cochem": {
+    "status": "stub",
+    "id": "wild-und-freizeitpark-klotten-cochem",
+    "parkName": "Wild- und Freizeitpark Klotten/Cochem",
+    "fetchedAt": "2026-02-28T23:28:45.127Z"
+  },
+  "schneider-germany": {
+    "status": "stub",
+    "id": "schneider-germany",
+    "parkName": "Schneider (Germany)",
+    "fetchedAt": "2026-02-28T23:28:47.676Z"
+  },
+  "clementon-park-and-splash-world": {
+    "status": "success",
+    "id": "clementon-park-and-splash-world",
+    "parkName": "Clementon Park and Splash World",
+    "fetchedAt": "2026-02-28T23:28:48.234Z"
+  },
+  "vauhtipuisto": {
+    "status": "success",
+    "id": "vauhtipuisto",
+    "parkName": "Vauhtipuisto",
+    "fetchedAt": "2026-02-28T23:28:50.743Z"
+  },
+  "ray-cammack-shows": {
+    "status": "stub",
+    "id": "ray-cammack-shows",
+    "parkName": "Ray Cammack Shows",
+    "fetchedAt": "2026-02-28T23:28:52.204Z"
+  },
+  "robin-hoods-wheelgate-park": {
+    "status": "stub",
+    "id": "robin-hoods-wheelgate-park",
+    "parkName": "Robin Hoods Wheelgate Park",
+    "fetchedAt": "2026-02-28T23:29:01.825Z"
+  },
+  "big-rivers-waterpark-adventures": {
+    "status": "stub",
+    "id": "big-rivers-waterpark-adventures",
+    "parkName": "Big Rivers Waterpark & Adventures",
+    "fetchedAt": "2026-02-28T23:29:10.437Z"
+  },
+  "tojoko-toy-kingdom": {
+    "status": "stub",
+    "id": "tojoko-toy-kingdom",
+    "parkName": "Tojoko Toy Kingdom",
+    "fetchedAt": "2026-02-28T23:29:12.954Z"
+  },
+  "tier-und-freizeitpark-th-le": {
+    "status": "stub",
+    "id": "tier-und-freizeitpark-th-le",
+    "parkName": "Tier- und Freizeitpark Thüle",
+    "fetchedAt": "2026-02-28T23:29:16.554Z"
+  },
+  "luneur-park": {
+    "status": "stub",
+    "id": "luneur-park",
+    "parkName": "Luneur Park",
+    "fetchedAt": "2026-02-28T23:29:19.062Z"
+  },
+  "adhari-park": {
+    "status": "success",
+    "id": "adhari-park",
+    "parkName": "Adhari Park",
+    "fetchedAt": "2026-02-28T23:29:21.614Z"
+  },
+  "jaderpark": {
+    "status": "stub",
+    "id": "jaderpark",
+    "parkName": "Jaderpark",
+    "fetchedAt": "2026-02-28T23:29:24.148Z"
+  },
+  "jaroslav-taubert-czech-republic": {
+    "status": "stub",
+    "id": "jaroslav-taubert-czech-republic",
+    "parkName": "Jaroslav Štaubert (Czech Republic)",
+    "fetchedAt": "2026-02-28T23:29:30.242Z"
+  },
+  "tsentral-nyy-park-kul-tury": {
+    "status": "stub",
+    "id": "tsentral-nyy-park-kul-tury",
+    "parkName": "Tsentralʹnyy Park Kulʹtury",
+    "fetchedAt": "2026-02-28T23:29:34.823Z"
+  },
+  "oktyabrskiy-park": {
+    "status": "stub",
+    "id": "oktyabrskiy-park",
+    "parkName": "Oktyabrskiy Park",
+    "fetchedAt": "2026-02-28T23:29:41.448Z"
+  },
+  "holnemvolt-park": {
+    "status": "stub",
+    "id": "holnemvolt-park",
+    "parkName": "Holnemvolt Park",
+    "fetchedAt": "2026-02-28T23:29:46.031Z"
+  },
+  "sendai-highland": {
+    "status": "stub",
+    "id": "sendai-highland",
+    "parkName": "Sendai Highland",
+    "fetchedAt": "2026-02-28T23:29:49.598Z"
+  },
+  "race-city-pcb": {
+    "status": "stub",
+    "id": "race-city-pcb",
+    "parkName": "Race City PCB",
+    "fetchedAt": "2026-02-28T23:29:52.146Z"
+  },
+  "rusutsu-resort": {
+    "status": "success",
+    "id": "rusutsu-resort",
+    "parkName": "Rusutsu Resort",
+    "fetchedAt": "2026-02-28T23:29:55.704Z"
+  },
+  "xishuangbanna-sunac-land": {
+    "status": "stub",
+    "id": "xishuangbanna-sunac-land",
+    "parkName": "Xishuangbanna Sunac Land",
+    "fetchedAt": "2026-02-28T23:30:02.418Z"
+  },
+  "billy-bernard-hill-uk": {
+    "status": "stub",
+    "id": "billy-bernard-hill-uk",
+    "parkName": "Billy Bernard Hill (UK)",
+    "fetchedAt": "2026-02-28T23:30:04.945Z"
+  },
+  "foton-world": {
+    "status": "stub",
+    "id": "foton-world",
+    "parkName": "Foton World",
+    "fetchedAt": "2026-02-28T23:30:07.495Z"
+  },
+  "st-louis-incredible-pizza-company": {
+    "status": "stub",
+    "id": "st-louis-incredible-pizza-company",
+    "parkName": "St. Louis' Incredible Pizza Company",
+    "fetchedAt": "2026-02-28T23:30:11.036Z"
+  },
+  "southport-pleasureland": {
+    "status": "success",
+    "id": "southport-pleasureland",
+    "parkName": "Southport Pleasureland",
+    "fetchedAt": "2026-02-28T23:30:11.787Z"
+  },
+  "kaeson-youth-park": {
+    "status": "success",
+    "id": "kaeson-youth-park",
+    "parkName": "Kaeson Youth Park",
+    "fetchedAt": "2026-02-28T23:30:12.054Z"
+  },
+  "lap-re-france": {
+    "status": "stub",
+    "id": "lap-re-france",
+    "parkName": "Lapère (France)",
+    "fetchedAt": "2026-02-28T23:30:14.583Z"
+  },
+  "seven-islands-resort": {
+    "status": "stub",
+    "id": "seven-islands-resort",
+    "parkName": "Seven Islands Resort",
+    "fetchedAt": "2026-02-28T23:30:16.075Z"
+  },
+  "the-great-escape-fun-park": {
+    "status": "stub",
+    "id": "the-great-escape-fun-park",
+    "parkName": "The Great Escape Fun Park",
+    "fetchedAt": "2026-02-28T23:30:18.626Z"
+  },
+  "clementon-park": {
+    "status": "success",
+    "id": "clementon-park",
+    "parkName": "Clementon Park",
+    "fetchedAt": "2026-02-28T23:30:19.166Z"
+  },
+  "lesourdsville-lake-amusement-park": {
+    "status": "success",
+    "id": "lesourdsville-lake-amusement-park",
+    "parkName": "LeSourdsville Lake Amusement Park",
+    "fetchedAt": "2026-02-28T23:30:19.680Z"
+  },
+  "rocky-glen": {
+    "status": "success",
+    "id": "rocky-glen",
+    "parkName": "Rocky Glen",
+    "fetchedAt": "2026-02-28T23:30:23.674Z"
+  },
+  "la-r-cr-des-3-cur-s": {
+    "status": "stub",
+    "id": "la-r-cr-des-3-cur-s",
+    "parkName": "La Récré des 3 Curés",
+    "fetchedAt": "2026-02-28T23:30:29.230Z"
+  },
+  "fun-pier": {
+    "status": "success",
+    "id": "fun-pier",
+    "parkName": "Fun Pier",
+    "fetchedAt": "2026-02-28T23:30:30.782Z"
+  },
+  "nango-fisheries-center": {
+    "status": "stub",
+    "id": "nango-fisheries-center",
+    "parkName": "Nango Fisheries Center",
+    "fetchedAt": "2026-02-28T23:30:35.335Z"
+  },
+  "rakutenchi": {
+    "status": "stub",
+    "id": "rakutenchi",
+    "parkName": "Rakutenchi",
+    "fetchedAt": "2026-02-28T23:30:39.908Z"
+  },
+  "tochinoki-family-land": {
+    "status": "stub",
+    "id": "tochinoki-family-land",
+    "parkName": "Tochinoki Family Land",
+    "fetchedAt": "2026-02-28T23:30:42.425Z"
+  },
+  "utsunomiya-zoo": {
+    "status": "stub",
+    "id": "utsunomiya-zoo",
+    "parkName": "Utsunomiya Zoo",
+    "fetchedAt": "2026-02-28T23:30:52.096Z"
+  },
+  "biwako-tower": {
+    "status": "stub",
+    "id": "biwako-tower",
+    "parkName": "Biwako Tower",
+    "fetchedAt": "2026-02-28T23:30:55.625Z"
+  },
+  "asahiyama-zoo": {
+    "status": "success",
+    "id": "asahiyama-zoo",
+    "parkName": "Asahiyama Zoo",
+    "fetchedAt": "2026-02-28T23:30:58.192Z"
+  },
+  "fushimi-momoyama-castle-land": {
+    "status": "stub",
+    "id": "fushimi-momoyama-castle-land",
+    "parkName": "Fushimi Momoyama Castle Land",
+    "fetchedAt": "2026-02-28T23:31:04.790Z"
+  },
+  "aventura-park": {
+    "status": "stub",
+    "id": "aventura-park",
+    "parkName": "Aventura Park",
+    "fetchedAt": "2026-02-28T23:31:13.419Z"
+  },
+  "james-montal-tang": {
+    "status": "stub",
+    "id": "james-montal-tang",
+    "parkName": "James Montalétang",
+    "fetchedAt": "2026-02-28T23:31:15.951Z"
+  },
+  "luna-park-la-palmyre": {
+    "status": "stub",
+    "id": "luna-park-la-palmyre",
+    "parkName": "Luna Park La Palmyre",
+    "fetchedAt": "2026-02-28T23:31:18.492Z"
+  },
+  "ocean-beach-fun-fair": {
+    "status": "stub",
+    "id": "ocean-beach-fun-fair",
+    "parkName": "Ocean Beach Fun Fair",
+    "fetchedAt": "2026-02-28T23:31:21.030Z"
+  },
+  "lark-ranch": {
+    "status": "stub",
+    "id": "lark-ranch",
+    "parkName": "Lark Ranch",
+    "fetchedAt": "2026-02-28T23:31:23.559Z"
+  },
+  "nairamdal-park": {
+    "status": "stub",
+    "id": "nairamdal-park",
+    "parkName": "Nairamdal Park",
+    "fetchedAt": "2026-02-28T23:31:26.081Z"
+  },
+  "jinling-happy-world": {
+    "status": "stub",
+    "id": "jinling-happy-world",
+    "parkName": "Jinling Happy World",
+    "fetchedAt": "2026-02-28T23:31:28.703Z"
+  },
+  "julianatoren": {
+    "status": "stub",
+    "id": "julianatoren",
+    "parkName": "Julianatoren",
+    "fetchedAt": "2026-02-28T23:31:32.247Z"
+  },
+  "amigoland": {
+    "status": "success",
+    "id": "amigoland",
+    "parkName": "Amigoland",
+    "fetchedAt": "2026-02-28T23:31:34.797Z"
+  },
+  "lands-djur-n-jespark": {
+    "status": "stub",
+    "id": "lands-djur-n-jespark",
+    "parkName": "Ölands Djur & Nöjespark",
+    "fetchedAt": "2026-02-28T23:31:38.815Z"
+  },
+  "xavier-lap-re-travelling": {
+    "status": "stub",
+    "id": "xavier-lap-re-travelling",
+    "parkName": "Xavier Lapère (Travelling)",
+    "fetchedAt": "2026-02-28T23:31:41.363Z"
+  },
+  "chimelong-ocean-kingdom": {
+    "status": "success",
+    "id": "chimelong-ocean-kingdom",
+    "parkName": "Chimelong Ocean Kingdom",
+    "fetchedAt": "2026-02-28T23:31:41.926Z"
+  },
+  "country-garden-farm": {
+    "status": "stub",
+    "id": "country-garden-farm",
+    "parkName": "Country Garden Farm",
+    "fetchedAt": "2026-02-28T23:31:44.407Z"
+  },
+  "hamanako-pal-pal": {
+    "status": "stub",
+    "id": "hamanako-pal-pal",
+    "parkName": "Hamanako Pal Pal",
+    "fetchedAt": "2026-02-28T23:31:46.940Z"
+  },
+  "tianjin-amusement-park": {
+    "status": "stub",
+    "id": "tianjin-amusement-park",
+    "parkName": "Tianjin Amusement Park",
+    "fetchedAt": "2026-02-28T23:31:51.501Z"
+  },
+  "beihai-park": {
+    "status": "success",
+    "id": "beihai-park",
+    "parkName": "Beihai Park",
+    "fetchedAt": "2026-02-28T23:31:56.057Z"
+  },
+  "chuanlord-holiday-manor": {
+    "status": "stub",
+    "id": "chuanlord-holiday-manor",
+    "parkName": "Chuanlord Holiday Manor",
+    "fetchedAt": "2026-02-28T23:31:58.596Z"
+  },
+  "chakazoolu-indoor-theme-park": {
+    "status": "stub",
+    "id": "chakazoolu-indoor-theme-park",
+    "parkName": "Chakazoolu Indoor Theme Park",
+    "fetchedAt": "2026-02-28T23:32:00.105Z"
+  },
+  "leisure-world": {
+    "status": "success",
+    "id": "leisure-world",
+    "parkName": "Leisure World",
+    "fetchedAt": "2026-02-28T23:32:02.724Z"
+  },
+  "universal-kids-resort": {
+    "status": "success",
+    "id": "universal-kids-resort",
+    "parkName": "Universal Kids Resort",
+    "fetchedAt": "2026-02-28T23:32:03.188Z"
+  },
+  "eifelpark": {
+    "status": "success",
+    "id": "eifelpark",
+    "parkName": "Eifelpark",
+    "fetchedAt": "2026-02-28T23:32:10.775Z"
+  },
+  "karls-erlebnis-dorf-elstal": {
+    "status": "stub",
+    "id": "karls-erlebnis-dorf-elstal",
+    "parkName": "Karls Erlebnis-Dorf Elstal",
+    "fetchedAt": "2026-02-28T23:32:14.348Z"
+  },
+  "karls-erlebnis-dorf-r-vershagen": {
+    "status": "stub",
+    "id": "karls-erlebnis-dorf-r-vershagen",
+    "parkName": "Karls Erlebnis-Dorf Rövershagen",
+    "fetchedAt": "2026-02-28T23:32:19.949Z"
+  },
+  "kneippbyn": {
+    "status": "stub",
+    "id": "kneippbyn",
+    "parkName": "Kneippbyn",
+    "fetchedAt": "2026-02-28T23:32:27.560Z"
+  },
+  "knuthenborg-safaripark": {
+    "status": "success",
+    "id": "knuthenborg-safaripark",
+    "parkName": "Knuthenborg Safaripark",
+    "fetchedAt": "2026-02-28T23:32:30.084Z"
+  },
+  "dunia-fantasi": {
+    "status": "success",
+    "id": "dunia-fantasi",
+    "parkName": "Dunia Fantasi",
+    "fetchedAt": "2026-02-28T23:32:32.614Z"
+  },
+  "edaville-family-theme-park": {
+    "status": "stub",
+    "id": "edaville-family-theme-park",
+    "parkName": "Edaville Family Theme Park",
+    "fetchedAt": "2026-02-28T23:32:34.121Z"
+  },
+  "onederland": {
+    "status": "stub",
+    "id": "onederland",
+    "parkName": "Onederland",
+    "fetchedAt": "2026-02-28T23:32:37.686Z"
+  },
+  "dogwood-lakes": {
+    "status": "stub",
+    "id": "dogwood-lakes",
+    "parkName": "Dogwood Lakes",
+    "fetchedAt": "2026-02-28T23:32:46.285Z"
+  },
+  "dorney-park": {
+    "status": "success",
+    "id": "dorney-park",
+    "parkName": "Dorney Park",
+    "fetchedAt": "2026-02-28T23:32:49.956Z"
+  },
+  "shermans-amusement-park": {
+    "status": "stub",
+    "id": "shermans-amusement-park",
+    "parkName": "Sherman's Amusement Park",
+    "fetchedAt": "2026-02-28T23:32:55.428Z"
+  },
+  "strickers-grove": {
+    "status": "success",
+    "id": "strickers-grove",
+    "parkName": "Stricker's Grove",
+    "fetchedAt": "2026-02-28T23:32:56.965Z"
+  },
+  "vollmars-park": {
+    "status": "stub",
+    "id": "vollmars-park",
+    "parkName": "Vollmar's Park",
+    "fetchedAt": "2026-02-28T23:33:00.516Z"
+  },
+  "williams-grove-amusement-park": {
+    "status": "success",
+    "id": "williams-grove-amusement-park",
+    "parkName": "Williams Grove Amusement Park",
+    "fetchedAt": "2026-02-28T23:33:04.079Z"
+  },
+  "dudley-zoo-and-castle": {
+    "status": "stub",
+    "id": "dudley-zoo-and-castle",
+    "parkName": "Dudley Zoo and Castle",
+    "fetchedAt": "2026-02-28T23:33:12.725Z"
+  },
+  "izu-granpal-park": {
+    "status": "stub",
+    "id": "izu-granpal-park",
+    "parkName": "Izu Granpal Park",
+    "fetchedAt": "2026-02-28T23:33:15.253Z"
+  },
+  "pleasureland-southport": {
+    "status": "success",
+    "id": "pleasureland-southport",
+    "parkName": "Pleasureland Southport",
+    "fetchedAt": "2026-02-28T23:33:15.805Z"
+  },
+  "wild-waves-theme-water-park": {
+    "status": "stub",
+    "id": "wild-waves-theme-water-park",
+    "parkName": "Wild Waves Theme & Water Park",
+    "fetchedAt": "2026-02-28T23:33:20.824Z"
+  },
+  "indianapolis-zoo": {
+    "status": "success",
+    "id": "indianapolis-zoo",
+    "parkName": "Indianapolis Zoo",
+    "fetchedAt": "2026-02-28T23:33:23.358Z"
+  },
+  "vulqano-park": {
+    "status": "stub",
+    "id": "vulqano-park",
+    "parkName": "VulQano Park",
+    "fetchedAt": "2026-02-28T23:33:27.154Z"
+  },
+  "desaru-coast-adventure-waterpark": {
+    "status": "stub",
+    "id": "desaru-coast-adventure-waterpark",
+    "parkName": "Desaru Coast Adventure Waterpark",
+    "fetchedAt": "2026-02-28T23:33:36.713Z"
+  },
+  "pascal-heinen": {
+    "status": "stub",
+    "id": "pascal-heinen",
+    "parkName": "Pascal Heinen",
+    "fetchedAt": "2026-02-28T23:33:40.337Z"
+  },
+  "vid-mpark": {
+    "status": "success",
+    "id": "vid-mpark",
+    "parkName": "Vidámpark",
+    "fetchedAt": "2026-02-28T23:33:43.894Z"
+  },
+  "kadrioru-karussell": {
+    "status": "stub",
+    "id": "kadrioru-karussell",
+    "parkName": "Kadrioru Karussell",
+    "fetchedAt": "2026-02-28T23:33:49.481Z"
+  },
+  "rungna-peoples-pleasure-ground": {
+    "status": "success",
+    "id": "rungna-peoples-pleasure-ground",
+    "parkName": "Rungna People's Pleasure Ground",
+    "fetchedAt": "2026-02-28T23:33:49.989Z"
+  },
+  "taesongsan-funfair": {
+    "status": "success",
+    "id": "taesongsan-funfair",
+    "parkName": "Taesongsan Funfair",
+    "fetchedAt": "2026-02-28T23:33:50.499Z"
+  },
+  "park-rozrywki-kyrnica-morska": {
+    "status": "stub",
+    "id": "park-rozrywki-kyrnica-morska",
+    "parkName": "Park Rozrywki Kyrnica Morska",
+    "fetchedAt": "2026-02-28T23:33:56.178Z"
+  },
+  "bergen-beach": {
+    "status": "success",
+    "id": "bergen-beach",
+    "parkName": "Bergen Beach",
+    "fetchedAt": "2026-02-28T23:33:58.616Z"
+  },
+  "cqua-lokos": {
+    "status": "stub",
+    "id": "cqua-lokos",
+    "parkName": "Ácqua Lokos",
+    "fetchedAt": "2026-02-28T23:34:00.113Z"
+  },
+  "parque-de-atracciones-de-zaragoza": {
+    "status": "stub",
+    "id": "parque-de-atracciones-de-zaragoza",
+    "parkName": "Parque de Atracciones de Zaragoza",
+    "fetchedAt": "2026-02-28T23:34:02.654Z"
+  },
+  "marineland": {
+    "status": "success",
+    "id": "marineland",
+    "parkName": "MarineLand",
+    "fetchedAt": "2026-02-28T23:34:05.173Z"
+  },
+  "carousel-gardens-amusement-park": {
+    "status": "success",
+    "id": "carousel-gardens-amusement-park",
+    "parkName": "Carousel Gardens Amusement Park",
+    "fetchedAt": "2026-02-28T23:34:05.726Z"
+  },
+  "aztl-n-parque-urbano": {
+    "status": "success",
+    "id": "aztl-n-parque-urbano",
+    "parkName": "Aztlán Parque Urbano",
+    "fetchedAt": "2026-02-28T23:34:06.197Z"
+  },
+  "window-on-china-theme-park": {
+    "status": "success",
+    "id": "window-on-china-theme-park",
+    "parkName": "Window on China Theme Park",
+    "fetchedAt": "2026-02-28T23:34:06.678Z"
+  },
+  "colourful-yunnan-paradise": {
+    "status": "stub",
+    "id": "colourful-yunnan-paradise",
+    "parkName": "Colourful Yunnan Paradise",
+    "fetchedAt": "2026-02-28T23:34:09.197Z"
+  },
+  "sun-tzu-cultural-park": {
+    "status": "stub",
+    "id": "sun-tzu-cultural-park",
+    "parkName": "Sun Tzu Cultural Park",
+    "fetchedAt": "2026-02-28T23:34:10.787Z"
+  },
+  "jardin-dacclimatation": {
+    "status": "success",
+    "id": "jardin-dacclimatation",
+    "parkName": "Jardin d'Acclimatation",
+    "fetchedAt": "2026-02-28T23:34:12.305Z"
+  },
+  "sindibad": {
+    "status": "stub",
+    "id": "sindibad",
+    "parkName": "Sindibad",
+    "fetchedAt": "2026-02-28T23:34:14.749Z"
+  },
+  "chongqing-sunac-land": {
+    "status": "stub",
+    "id": "chongqing-sunac-land",
+    "parkName": "Chongqing Sunac Land",
+    "fetchedAt": "2026-02-28T23:34:19.333Z"
+  },
+  "leolandia": {
+    "status": "stub",
+    "id": "leolandia",
+    "parkName": "Leolandia",
+    "fetchedAt": "2026-02-28T23:34:22.898Z"
+  },
+  "sluggers-putters": {
+    "status": "stub",
+    "id": "sluggers-putters",
+    "parkName": "Sluggers & Putters",
+    "fetchedAt": "2026-02-28T23:34:29.529Z"
+  },
+  "southern-adventures": {
+    "status": "success",
+    "id": "southern-adventures",
+    "parkName": "Southern Adventures",
+    "fetchedAt": "2026-02-28T23:34:31.053Z"
+  },
+  "amusement-park-drive-in": {
+    "status": "stub",
+    "id": "amusement-park-drive-in",
+    "parkName": "Amusement Park Drive In",
+    "fetchedAt": "2026-02-28T23:34:34.602Z"
+  },
+  "castle-park": {
+    "status": "success",
+    "id": "castle-park",
+    "parkName": "Castle Park",
+    "fetchedAt": "2026-02-28T23:34:37.154Z"
+  },
+  "scandia-amusement-park": {
+    "status": "success",
+    "id": "scandia-amusement-park",
+    "parkName": "Scandia Amusement Park",
+    "fetchedAt": "2026-02-28T23:34:39.685Z"
+  },
+  "little-amerricka": {
+    "status": "success",
+    "id": "little-amerricka",
+    "parkName": "Little Amerricka",
+    "fetchedAt": "2026-02-28T23:34:40.188Z"
+  },
+  "macks-amusements": {
+    "status": "stub",
+    "id": "macks-amusements",
+    "parkName": "Mack's Amusements",
+    "fetchedAt": "2026-02-28T23:34:44.731Z"
+  },
+  "midway-state-park": {
+    "status": "success",
+    "id": "midway-state-park",
+    "parkName": "Midway State Park",
+    "fetchedAt": "2026-02-28T23:34:48.353Z"
+  },
+  "sandy-lake-amusement-park": {
+    "status": "stub",
+    "id": "sandy-lake-amusement-park",
+    "parkName": "Sandy Lake Amusement Park",
+    "fetchedAt": "2026-02-28T23:34:57.910Z"
+  },
+  "saratoga-resort": {
+    "status": "stub",
+    "id": "saratoga-resort",
+    "parkName": "Saratoga Resort",
+    "fetchedAt": "2026-02-28T23:34:59.405Z"
+  },
+  "kiddie-park": {
+    "status": "stub",
+    "id": "kiddie-park",
+    "parkName": "Kiddie Park",
+    "fetchedAt": "2026-02-28T23:35:06.023Z"
+  },
+  "leofoo-village-theme-park": {
+    "status": "success",
+    "id": "leofoo-village-theme-park",
+    "parkName": "Leofoo Village Theme Park",
+    "fetchedAt": "2026-02-28T23:35:07.579Z"
+  },
+  "tinkertown-family-fun-park": {
+    "status": "success",
+    "id": "tinkertown-family-fun-park",
+    "parkName": "Tinkertown Family Fun Park",
+    "fetchedAt": "2026-02-28T23:35:08.072Z"
+  },
+  "st-louis-union-station": {
+    "status": "success",
+    "id": "st-louis-union-station",
+    "parkName": "St. Louis Union Station",
+    "fetchedAt": "2026-02-28T23:35:10.589Z"
+  },
+  "gullivers-kingdom": {
+    "status": "success",
+    "id": "gullivers-kingdom",
+    "parkName": "Gulliver's Kingdom",
+    "fetchedAt": "2026-02-28T23:35:12.129Z"
+  },
+  "yellowstone-bear-world": {
+    "status": "success",
+    "id": "yellowstone-bear-world",
+    "parkName": "Yellowstone Bear World",
+    "fetchedAt": "2026-02-28T23:35:13.624Z"
+  },
+  "verkeers-en-attractiepark-duinen-zathe": {
+    "status": "stub",
+    "id": "verkeers-en-attractiepark-duinen-zathe",
+    "parkName": "Verkeers- en Attractiepark Duinen Zathe",
+    "fetchedAt": "2026-02-28T23:35:16.169Z"
+  },
+  "dream-park": {
+    "status": "success",
+    "id": "dream-park",
+    "parkName": "Dream Park",
+    "fetchedAt": "2026-02-28T23:35:17.668Z"
+  },
+  "superland": {
+    "status": "success",
+    "id": "superland",
+    "parkName": "Superland",
+    "fetchedAt": "2026-02-28T23:35:18.171Z"
+  },
+  "mangyongdae-funfair": {
+    "status": "success",
+    "id": "mangyongdae-funfair",
+    "parkName": "Mangyongdae Funfair",
+    "fetchedAt": "2026-02-28T23:35:18.663Z"
+  },
+  "swampy-jacks-wongo-adventure": {
+    "status": "stub",
+    "id": "swampy-jacks-wongo-adventure",
+    "parkName": "Swampy Jack's Wongo Adventure",
+    "fetchedAt": "2026-02-28T23:35:27.327Z"
+  },
+  "kappapia": {
+    "status": "stub",
+    "id": "kappapia",
+    "parkName": "Kappapia",
+    "fetchedAt": "2026-02-28T23:35:32.919Z"
+  },
+  "luna-park-sunny-beach": {
+    "status": "stub",
+    "id": "luna-park-sunny-beach",
+    "parkName": "Luna Park Sunny Beach",
+    "fetchedAt": "2026-02-28T23:35:35.449Z"
+  },
+  "seibuen-yuenchi": {
+    "status": "stub",
+    "id": "seibuen-yuenchi",
+    "parkName": "Seibuen Yuenchi",
+    "fetchedAt": "2026-02-28T23:35:41.044Z"
+  },
+  "hili-fun-city": {
+    "status": "stub",
+    "id": "hili-fun-city",
+    "parkName": "Hili Fun City",
+    "fetchedAt": "2026-02-28T23:35:48.659Z"
+  },
+  "parque-japon-s": {
+    "status": "stub",
+    "id": "parque-japon-s",
+    "parkName": "Parque Japonés",
+    "fetchedAt": "2026-02-28T23:35:51.180Z"
+  },
+  "sunway-lagoon": {
+    "status": "success",
+    "id": "sunway-lagoon",
+    "parkName": "Sunway Lagoon",
+    "fetchedAt": "2026-02-28T23:35:51.745Z"
+  },
+  "rabkoland": {
+    "status": "stub",
+    "id": "rabkoland",
+    "parkName": "Rabkoland",
+    "fetchedAt": "2026-02-28T23:35:54.307Z"
+  },
+  "vialand": {
+    "status": "stub",
+    "id": "vialand",
+    "parkName": "Vialand",
+    "fetchedAt": "2026-02-28T23:35:55.775Z"
+  },
+  "arnolds-park": {
+    "status": "success",
+    "id": "arnolds-park",
+    "parkName": "Arnolds Park",
+    "fetchedAt": "2026-02-28T23:35:58.311Z"
+  },
+  "gateway-resort": {
+    "status": "stub",
+    "id": "gateway-resort",
+    "parkName": "Gateway Resort",
+    "fetchedAt": "2026-02-28T23:36:00.838Z"
+  },
+  "js-amusement-park": {
+    "status": "success",
+    "id": "js-amusement-park",
+    "parkName": "J's Amusement Park",
+    "fetchedAt": "2026-02-28T23:36:03.372Z"
+  },
+  "old-indiana-fun-n-water-park": {
+    "status": "stub",
+    "id": "old-indiana-fun-n-water-park",
+    "parkName": "Old Indiana Fun-n-Water Park",
+    "fetchedAt": "2026-02-28T23:36:06.945Z"
+  },
+  "seaburn-fun-park": {
+    "status": "stub",
+    "id": "seaburn-fun-park",
+    "parkName": "Seaburn Fun Park",
+    "fetchedAt": "2026-02-28T23:36:12.512Z"
+  },
+  "wonderland": {
+    "status": "success",
+    "id": "wonderland",
+    "parkName": "Wonderland",
+    "fetchedAt": "2026-02-28T23:36:15.064Z"
+  },
+  "joyrides-family-fun-center": {
+    "status": "stub",
+    "id": "joyrides-family-fun-center",
+    "parkName": "JoyRides Family Fun Center",
+    "fetchedAt": "2026-02-28T23:36:17.589Z"
+  },
+  "parque-trombini": {
+    "status": "stub",
+    "id": "parque-trombini",
+    "parkName": "Parque Trombini",
+    "fetchedAt": "2026-02-28T23:36:20.117Z"
+  },
+  "aventura-luna-park": {
+    "status": "stub",
+    "id": "aventura-luna-park",
+    "parkName": "Aventura Luna Park",
+    "fetchedAt": "2026-02-28T23:36:22.650Z"
+  },
+  "ryan-crow-uk": {
+    "status": "stub",
+    "id": "ryan-crow-uk",
+    "parkName": "Ryan Crow (UK)",
+    "fetchedAt": "2026-02-28T23:36:27.221Z"
+  },
+  "abie-danter-jnr": {
+    "status": "stub",
+    "id": "abie-danter-jnr",
+    "parkName": "Abie Danter Jnr.",
+    "fetchedAt": "2026-02-28T23:36:29.753Z"
+  },
+  "mysterious-island": {
+    "status": "success",
+    "id": "mysterious-island",
+    "parkName": "Mysterious Island",
+    "fetchedAt": "2026-02-28T23:36:31.259Z"
+  },
+  "br-ndesg-rdshaven": {
+    "status": "stub",
+    "id": "br-ndesg-rdshaven",
+    "parkName": "Brændesgårdshaven",
+    "fetchedAt": "2026-02-28T23:36:33.794Z"
+  },
+  "bakken": {
+    "status": "success",
+    "id": "bakken",
+    "parkName": "Bakken",
+    "fetchedAt": "2026-02-28T23:36:39.396Z"
+  },
+  "churpfalzpark": {
+    "status": "stub",
+    "id": "churpfalzpark",
+    "parkName": "Churpfalzpark",
+    "fetchedAt": "2026-02-28T23:36:41.920Z"
+  },
+  "safariland-stukenbrock": {
+    "status": "stub",
+    "id": "safariland-stukenbrock",
+    "parkName": "Safariland Stukenbrock",
+    "fetchedAt": "2026-02-28T23:36:43.433Z"
+  },
+  "traumland-auf-der-b-renh-hle": {
+    "status": "stub",
+    "id": "traumland-auf-der-b-renh-hle",
+    "parkName": "Traumland auf der Bärenhöhle",
+    "fetchedAt": "2026-02-28T23:36:52.978Z"
+  },
+  "grupo-garcia-mexico": {
+    "status": "stub",
+    "id": "grupo-garcia-mexico",
+    "parkName": "Grupo Garcia (Mexico)",
+    "fetchedAt": "2026-02-28T23:36:55.583Z"
+  },
+  "parken-zoo": {
+    "status": "success",
+    "id": "parken-zoo",
+    "parkName": "Parken Zoo",
+    "fetchedAt": "2026-02-28T23:36:58.118Z"
+  },
+  "legoland-korea": {
+    "status": "success",
+    "id": "legoland-korea",
+    "parkName": "Legoland Korea",
+    "fetchedAt": "2026-02-28T23:36:58.635Z"
+  },
+  "crealy-adventure-park-resort": {
+    "status": "success",
+    "id": "crealy-adventure-park-resort",
+    "parkName": "Crealy Adventure Park & Resort",
+    "fetchedAt": "2026-02-28T23:37:00.169Z"
+  },
+  "coney-beach-pleasure-park": {
+    "status": "success",
+    "id": "coney-beach-pleasure-park",
+    "parkName": "Coney Beach Pleasure Park",
+    "fetchedAt": "2026-02-28T23:37:00.778Z"
+  },
+  "twinlakes-park": {
+    "status": "stub",
+    "id": "twinlakes-park",
+    "parkName": "Twinlakes Park",
+    "fetchedAt": "2026-02-28T23:37:05.323Z"
+  },
+  "sportland-pier": {
+    "status": "stub",
+    "id": "sportland-pier",
+    "parkName": "Sportland Pier",
+    "fetchedAt": "2026-02-28T23:37:15.986Z"
+  },
+  "steve-walkh-fer-diana-fischer-germany": {
+    "status": "stub",
+    "id": "steve-walkh-fer-diana-fischer-germany",
+    "parkName": "Steve Walkhöfer & Diana Fischer (Germany)",
+    "fetchedAt": "2026-02-28T23:37:18.513Z"
+  },
+  "freij-entertainment": {
+    "status": "stub",
+    "id": "freij-entertainment",
+    "parkName": "Freij Entertainment",
+    "fetchedAt": "2026-02-28T23:37:21.057Z"
+  },
+  "mtatsminda-park": {
+    "status": "success",
+    "id": "mtatsminda-park",
+    "parkName": "Mtatsminda Park",
+    "fetchedAt": "2026-02-28T23:37:22.557Z"
+  },
+  "sonoma-traintown-railroad": {
+    "status": "success",
+    "id": "sonoma-traintown-railroad",
+    "parkName": "Sonoma TrainTown Railroad",
+    "fetchedAt": "2026-02-28T23:37:23.065Z"
+  },
+  "remlinger-farms": {
+    "status": "success",
+    "id": "remlinger-farms",
+    "parkName": "Remlinger Farms",
+    "fetchedAt": "2026-02-28T23:37:24.560Z"
+  },
+  "funtasticks": {
+    "status": "stub",
+    "id": "funtasticks",
+    "parkName": "Funtasticks",
+    "fetchedAt": "2026-02-28T23:37:27.100Z"
+  },
+  "gattis-pizza": {
+    "status": "success",
+    "id": "gattis-pizza",
+    "parkName": "Gatti's Pizza",
+    "fetchedAt": "2026-02-28T23:37:36.755Z"
+  },
+  "harvest-tyme-pumpkin-patch": {
+    "status": "stub",
+    "id": "harvest-tyme-pumpkin-patch",
+    "parkName": "Harvest Tyme Pumpkin Patch",
+    "fetchedAt": "2026-02-28T23:37:39.268Z"
+  },
+  "haunted-trails-burbank": {
+    "status": "stub",
+    "id": "haunted-trails-burbank",
+    "parkName": "Haunted Trails Burbank",
+    "fetchedAt": "2026-02-28T23:37:41.847Z"
+  },
+  "niagara-amusement-park-and-splash-world": {
+    "status": "stub",
+    "id": "niagara-amusement-park-and-splash-world",
+    "parkName": "Niagara Amusement Park and Splash World",
+    "fetchedAt": "2026-02-28T23:37:43.349Z"
+  },
+  "hannibal-park": {
+    "status": "stub",
+    "id": "hannibal-park",
+    "parkName": "Hannibal Park",
+    "fetchedAt": "2026-02-28T23:37:45.842Z"
+  },
+  "sweets-hotel-ikebukuro": {
+    "status": "stub",
+    "id": "sweets-hotel-ikebukuro",
+    "parkName": "Sweets Hotel Ikebukuro",
+    "fetchedAt": "2026-02-28T23:37:48.381Z"
+  },
+  "magic-castle": {
+    "status": "success",
+    "id": "magic-castle",
+    "parkName": "Magic Castle",
+    "fetchedAt": "2026-02-28T23:37:50.929Z"
+  },
+  "fantazy-land": {
+    "status": "stub",
+    "id": "fantazy-land",
+    "parkName": "Fantazy Land",
+    "fetchedAt": "2026-02-28T23:37:54.467Z"
+  },
+  "rotunda-amusement-park": {
+    "status": "stub",
+    "id": "rotunda-amusement-park",
+    "parkName": "Rotunda Amusement Park",
+    "fetchedAt": "2026-02-28T23:38:09.170Z"
+  },
+  "parque-mutirama": {
+    "status": "stub",
+    "id": "parque-mutirama",
+    "parkName": "Parque Mutirama",
+    "fetchedAt": "2026-02-28T23:38:19.824Z"
+  },
+  "jean-schweig-belgium": {
+    "status": "stub",
+    "id": "jean-schweig-belgium",
+    "parkName": "Jean Schweig (Belgium)",
+    "fetchedAt": "2026-02-28T23:38:32.515Z"
+  },
+  "kampung-willys-kang-cuya": {
+    "status": "stub",
+    "id": "kampung-willys-kang-cuya",
+    "parkName": "Kampung Willys Kang Cuya",
+    "fetchedAt": "2026-02-28T23:38:35.039Z"
+  },
+  "galaxy-park": {
+    "status": "stub",
+    "id": "galaxy-park",
+    "parkName": "Galaxy Park",
+    "fetchedAt": "2026-02-28T23:38:37.570Z"
+  },
+  "quiqueland": {
+    "status": "stub",
+    "id": "quiqueland",
+    "parkName": "Quiqueland",
+    "fetchedAt": "2026-02-28T23:38:43.163Z"
+  },
+  "bosque-m-gico": {
+    "status": "stub",
+    "id": "bosque-m-gico",
+    "parkName": "Bosque Mágico",
+    "fetchedAt": "2026-02-28T23:38:48.732Z"
+  },
+  "diverland": {
+    "status": "stub",
+    "id": "diverland",
+    "parkName": "Diverland",
+    "fetchedAt": "2026-02-28T23:38:51.266Z"
+  },
+  "felicilandia": {
+    "status": "stub",
+    "id": "felicilandia",
+    "parkName": "Felicilandia",
+    "fetchedAt": "2026-02-28T23:38:52.785Z"
+  },
+  "tivoli-world": {
+    "status": "success",
+    "id": "tivoli-world",
+    "parkName": "Tivoli World",
+    "fetchedAt": "2026-02-28T23:38:54.277Z"
+  },
+  "la-feria-chapultepec-magico": {
+    "status": "success",
+    "id": "la-feria-chapultepec-magico",
+    "parkName": "La Feria Chapultepec Magico",
+    "fetchedAt": "2026-02-28T23:38:54.783Z"
+  },
+  "parque-norte": {
+    "status": "stub",
+    "id": "parque-norte",
+    "parkName": "Parque Norte",
+    "fetchedAt": "2026-02-28T23:38:57.312Z"
+  },
+  "stop-costa-rica": {
+    "status": "stub",
+    "id": "stop-costa-rica",
+    "parkName": "Stop (Costa Rica)",
+    "fetchedAt": "2026-02-28T23:38:58.807Z"
+  },
+  "tibidabo": {
+    "status": "success",
+    "id": "tibidabo",
+    "parkName": "Tibidabo",
+    "fetchedAt": "2026-02-28T23:39:01.824Z"
+  },
+  "juegos-del-parque-rod": {
+    "status": "stub",
+    "id": "juegos-del-parque-rod",
+    "parkName": "Juegos del Parque Rodó",
+    "fetchedAt": "2026-02-28T23:39:03.318Z"
+  },
+  "ulengo-center-glakeni": {
+    "status": "stub",
+    "id": "ulengo-center-glakeni",
+    "parkName": "Ulengo Center Glakeni",
+    "fetchedAt": "2026-02-28T23:39:04.825Z"
+  },
+  "magikland": {
+    "status": "success",
+    "id": "magikland",
+    "parkName": "Magikland",
+    "fetchedAt": "2026-02-28T23:39:06.361Z"
+  },
+  "parque-da-m-nica": {
+    "status": "success",
+    "id": "parque-da-m-nica",
+    "parkName": "Parque da Mônica",
+    "fetchedAt": "2026-02-28T23:39:06.865Z"
+  },
+  "walter-world": {
+    "status": "stub",
+    "id": "walter-world",
+    "parkName": "Walter World",
+    "fetchedAt": "2026-02-28T23:39:08.376Z"
+  },
+  "american-park": {
+    "status": "success",
+    "id": "american-park",
+    "parkName": "American Park",
+    "fetchedAt": "2026-02-28T23:39:11.973Z"
+  },
+  "mundo-petapa": {
+    "status": "stub",
+    "id": "mundo-petapa",
+    "parkName": "Mundo Petapa",
+    "fetchedAt": "2026-02-28T23:39:20.036Z"
+  },
+  "wonderland-amusement-park": {
+    "status": "success",
+    "id": "wonderland-amusement-park",
+    "parkName": "Wonderland Amusement Park",
+    "fetchedAt": "2026-02-28T23:39:24.596Z"
+  },
+  "kobe-portopialand": {
+    "status": "stub",
+    "id": "kobe-portopialand",
+    "parkName": "Kobe Portopialand",
+    "fetchedAt": "2026-02-28T23:39:26.089Z"
+  },
+  "shanghai-joypolis": {
+    "status": "stub",
+    "id": "shanghai-joypolis",
+    "parkName": "Shanghai Joypolis",
+    "fetchedAt": "2026-02-28T23:39:29.694Z"
+  },
+  "miroku-no-sato": {
+    "status": "stub",
+    "id": "miroku-no-sato",
+    "parkName": "Miroku no Sato",
+    "fetchedAt": "2026-02-28T23:39:32.181Z"
+  },
+  "pavilion-park": {
+    "status": "stub",
+    "id": "pavilion-park",
+    "parkName": "Pavilion Park",
+    "fetchedAt": "2026-02-28T23:39:34.712Z"
+  },
+  "vulcania": {
+    "status": "success",
+    "id": "vulcania",
+    "parkName": "Vulcania",
+    "fetchedAt": "2026-02-28T23:39:35.228Z"
+  },
+  "shibukawa-skyland": {
+    "status": "stub",
+    "id": "shibukawa-skyland",
+    "parkName": "Shibukawa Skyland",
+    "fetchedAt": "2026-02-28T23:39:36.719Z"
+  },
+  "pleasurelands": {
+    "status": "stub",
+    "id": "pleasurelands",
+    "parkName": "Pleasurelands",
+    "fetchedAt": "2026-02-28T23:39:39.241Z"
+  },
+  "rhyl-childrens-village": {
+    "status": "stub",
+    "id": "rhyl-childrens-village",
+    "parkName": "Rhyl Children's Village",
+    "fetchedAt": "2026-02-28T23:39:40.742Z"
+  },
+  "bodo-schuder-germany": {
+    "status": "stub",
+    "id": "bodo-schuder-germany",
+    "parkName": "Bodo Schuder (Germany)",
+    "fetchedAt": "2026-02-28T23:39:42.253Z"
+  },
+  "neo-geo-world-tokyo-bayside": {
+    "status": "stub",
+    "id": "neo-geo-world-tokyo-bayside",
+    "parkName": "Neo Geo World Tokyo Bayside",
+    "fetchedAt": "2026-02-28T23:39:44.779Z"
+  },
+  "joyland": {
+    "status": "success",
+    "id": "joyland",
+    "parkName": "Joyland",
+    "fetchedAt": "2026-02-28T23:39:46.285Z"
+  },
+  "norbert-witte": {
+    "status": "stub",
+    "id": "norbert-witte",
+    "parkName": "Norbert Witte",
+    "fetchedAt": "2026-02-28T23:39:52.899Z"
+  },
+  "scene75": {
+    "status": "stub",
+    "id": "scene75",
+    "parkName": "Scene75",
+    "fetchedAt": "2026-02-28T23:39:54.406Z"
+  },
+  "m-rchenwald-im-isartal": {
+    "status": "stub",
+    "id": "m-rchenwald-im-isartal",
+    "parkName": "Märchenwald im Isartal",
+    "fetchedAt": "2026-02-28T23:39:55.908Z"
+  },
+  "kuwait-entertainment-city": {
+    "status": "success",
+    "id": "kuwait-entertainment-city",
+    "parkName": "Kuwait Entertainment City",
+    "fetchedAt": "2026-02-28T23:39:57.439Z"
+  },
+  "harbour-park": {
+    "status": "success",
+    "id": "harbour-park",
+    "parkName": "Harbour Park",
+    "fetchedAt": "2026-02-28T23:39:57.949Z"
+  },
+  "adventure-coast-southport": {
+    "status": "success",
+    "id": "adventure-coast-southport",
+    "parkName": "Adventure Coast Southport",
+    "fetchedAt": "2026-02-28T23:39:58.543Z"
+  },
+  "r-barth-and-sohn-kg": {
+    "status": "stub",
+    "id": "r-barth-and-sohn-kg",
+    "parkName": "R. Barth and Sohn KG",
+    "fetchedAt": "2026-02-28T23:39:59.943Z"
+  },
+  "helm-sons-amusements-usa": {
+    "status": "stub",
+    "id": "helm-sons-amusements-usa",
+    "parkName": "Helm & Sons Amusements (USA)",
+    "fetchedAt": "2026-02-28T23:40:08.598Z"
+  },
+  "boudewijn-seapark": {
+    "status": "success",
+    "id": "boudewijn-seapark",
+    "parkName": "Boudewijn Seapark",
+    "fetchedAt": "2026-02-28T23:40:12.156Z"
+  },
+  "loro-parque": {
+    "status": "success",
+    "id": "loro-parque",
+    "parkName": "Loro Parque",
+    "fetchedAt": "2026-02-28T23:40:14.694Z"
+  },
+  "boblo-island": {
+    "status": "success",
+    "id": "boblo-island",
+    "parkName": "Boblo Island",
+    "fetchedAt": "2026-02-28T23:40:18.271Z"
+  },
+  "parc-du-bocasse": {
+    "status": "stub",
+    "id": "parc-du-bocasse",
+    "parkName": "Parc du Bocasse",
+    "fetchedAt": "2026-02-28T23:40:26.442Z"
+  },
+  "sesame-place-philadelphia": {
+    "status": "success",
+    "id": "sesame-place-philadelphia",
+    "parkName": "Sesame Place Philadelphia",
+    "fetchedAt": "2026-02-28T23:40:27.000Z"
+  },
+  "honey-lake-entertainment-city": {
+    "status": "stub",
+    "id": "honey-lake-entertainment-city",
+    "parkName": "Honey Lake Entertainment City",
+    "fetchedAt": "2026-02-28T23:40:28.439Z"
+  },
+  "happy-hollow-park-and-zoo": {
+    "status": "success",
+    "id": "happy-hollow-park-and-zoo",
+    "parkName": "Happy Hollow Park and Zoo",
+    "fetchedAt": "2026-02-28T23:40:29.946Z"
+  },
+  "peppa-pig-park-g-nzburg": {
+    "status": "stub",
+    "id": "peppa-pig-park-g-nzburg",
+    "parkName": "Peppa Pig Park Günzburg",
+    "fetchedAt": "2026-02-28T23:40:32.472Z"
+  },
+  "jenkinsons-boardwalk": {
+    "status": "success",
+    "id": "jenkinsons-boardwalk",
+    "parkName": "Jenkinson's Boardwalk",
+    "fetchedAt": "2026-02-28T23:40:32.975Z"
+  },
+  "old-orchard-beach": {
+    "status": "success",
+    "id": "old-orchard-beach",
+    "parkName": "Old Orchard Beach",
+    "fetchedAt": "2026-02-28T23:40:34.472Z"
+  },
+  "azadi-park": {
+    "status": "stub",
+    "id": "azadi-park",
+    "parkName": "Azadi Park",
+    "fetchedAt": "2026-02-28T23:40:35.974Z"
+  },
+  "denos-wonder-wheel-amusement-park": {
+    "status": "success",
+    "id": "denos-wonder-wheel-amusement-park",
+    "parkName": "Deno's Wonder Wheel Amusement Park",
+    "fetchedAt": "2026-02-28T23:40:36.487Z"
+  },
+  "flamingo-park": {
+    "status": "success",
+    "id": "flamingo-park",
+    "parkName": "Flamingo Park",
+    "fetchedAt": "2026-02-28T23:40:39.016Z"
+  },
+  "porto-europa": {
+    "status": "success",
+    "id": "porto-europa",
+    "parkName": "Porto Europa",
+    "fetchedAt": "2026-02-28T23:40:39.575Z"
+  },
+  "brazillian-park-washuzan-highland": {
+    "status": "stub",
+    "id": "brazillian-park-washuzan-highland",
+    "parkName": "Brazillian Park Washuzan Highland",
+    "fetchedAt": "2026-02-28T23:40:41.017Z"
+  },
+  "shibamasa-world": {
+    "status": "stub",
+    "id": "shibamasa-world",
+    "parkName": "Shibamasa World",
+    "fetchedAt": "2026-02-28T23:40:42.540Z"
+  },
+  "story-land": {
+    "status": "success",
+    "id": "story-land",
+    "parkName": "Story Land",
+    "fetchedAt": "2026-02-28T23:40:44.109Z"
+  },
+  "f-ryland": {
+    "status": "stub",
+    "id": "f-ryland",
+    "parkName": "Fééryland",
+    "fetchedAt": "2026-02-28T23:40:45.548Z"
+  },
+  "prairie-playland": {
+    "status": "stub",
+    "id": "prairie-playland",
+    "parkName": "Prairie Playland",
+    "fetchedAt": "2026-02-28T23:40:47.045Z"
+  },
+  "gumbuya-world": {
+    "status": "success",
+    "id": "gumbuya-world",
+    "parkName": "Gumbuya World",
+    "fetchedAt": "2026-02-28T23:40:47.567Z"
+  },
+  "zhoukou-dino-park": {
+    "status": "stub",
+    "id": "zhoukou-dino-park",
+    "parkName": "Zhoukou Dino Park",
+    "fetchedAt": "2026-02-28T23:40:49.054Z"
+  }
+}

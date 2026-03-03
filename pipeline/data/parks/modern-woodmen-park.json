@@ -1,0 +1,31 @@
+{
+  "id": "modern-woodmen-park",
+  "name": "Modern Woodmen Park",
+  "formerNames": [
+    "Municipal Stadium  John O'Donnell Stadium"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Iowa",
+  "continent": "North America",
+  "city": "209 South Gaines Street Davenport, IA 52802",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1931,
+  "yearClosed": null,
+  "owner": "City of Davenport",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Modern Woodmen Park (known previously as John O'Donnell Stadium and Municipal Stadium) is a minor league baseball venue located in Davenport, Iowa.  It is home to the Quad Cities River Bandits, the Midwest League affiliate of the Kansas City Royals.  Since 1987, St.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Modern_Woodmen_Park.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Modern_Woodmen_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:26:21.513Z"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-astroworld",
+  "name": "Six Flags AstroWorld",
+  "formerNames": [
+    "AstroWorld"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Houston, Texas, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1968,
+  "yearClosed": 2005,
+  "owner": "Hofheinz family (1968–1975)\n\nSix Flags (1975–2005)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 6,
+  "description": "Six Flags AstroWorld, also known simply as AstroWorld, was a seasonally operated amusement park in Houston, Texas.  Owned and operated by Six Flags, the park was situated between Kirby Drive and Fannin Street, directly south of I-610.  The park opened on June 1, 1968, and was developed originally and constructed as part of the Astrodomain, the brainchild of local philanthropist and former Houston mayor Roy Hofheinz, who intended it to complement the Astrodome.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Astroworld_entrance_gate.jpg",
+  "imageAttribution": "Entrance gate, 2004, one year before demolition",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_AstroWorld",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:05.826Z"
+}

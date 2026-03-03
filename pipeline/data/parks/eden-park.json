@@ -1,0 +1,29 @@
+{
+  "id": "eden-park",
+  "name": "Eden Park",
+  "formerNames": [],
+  "country": "IT",
+  "countryName": "Italy",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2024,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Eden Park is a sports venue in Auckland, New Zealand.  It is located three kilometres southwest of the Auckland CBD, on the boundary between the suburbs of Mount Eden and Kingsland.  The main stadium has a nominal capacity of 50,000, and is sometimes referred to as New Zealand's national stadium.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Eden_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:15.344Z"
+}

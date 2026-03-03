@@ -1,0 +1,29 @@
+{
+  "id": "western-playland",
+  "name": "Western Playland",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Mexico",
+  "continent": "North America",
+  "city": "Sunland Park",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1960,
+  "yearClosed": null,
+  "owner": "Traders Village",
+  "chain": null,
+  "website": "http://westernplayland.com/",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Western Playland is a 25 acre amusement park located in Sunland Park, New Mexico.  It was located in Ascarate Park in El Paso, Texas, from 1960 until 2006, but after conflicts with El Paso County, owner Pat Thompson decided to move it to Sunland Park where the owner of Sunland Park Casino donated land right across from his casino. \n\nIt is home to the rides The Hurricane, Tsunami, El Bandido Roller Coaster, Tilt-a Whirl, Pharaoh's Fury, Scrambler, Himalaya, and more.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Western_Playland_Logo.jpeg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Western_Playland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:45.712Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "cavallino-matto",
+  "name": "Cavallino Matto",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": "Ontario",
+  "continent": "North America",
+  "city": "Marina di Castagneto Carducci",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1967,
+  "yearClosed": null,
+  "owner": "Manfredini's Family",
+  "chain": null,
+  "website": "official web-site",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Cavallino Matto is the largest amusement park in Tuscany.  The park, the name of which means \"Crazy Horse\" in Italian, is located on 60,000 square metres of pine forest in Marina di Castagneto Carducci, Province of Livorno, and includes rides and dining facilities.",
+  "imageUrl": null,
+  "imageAttribution": "Cavallino Matto's logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cavallino_Matto",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:58.904Z"
+}

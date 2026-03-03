@@ -1,0 +1,31 @@
+{
+  "id": "legendia",
+  "name": "Legendia",
+  "formerNames": [
+    "Silesian Amusement Park"
+  ],
+  "country": "PL",
+  "countryName": "Poland",
+  "region": "Poland",
+  "continent": "Europe",
+  "city": null,
+  "latitude": 50.2756,
+  "longitude": -18.9917,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1959,
+  "yearClosed": null,
+  "owner": "Tatry Mountain Resorts",
+  "chain": null,
+  "website": "http://www.legendia.pl/en/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Legendia (a. k. a.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Chorzow_Legendia_entrance_2021.jpg",
+  "imageAttribution": "Legendia park entrance in 2021",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legendia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:38.242Z"
+}

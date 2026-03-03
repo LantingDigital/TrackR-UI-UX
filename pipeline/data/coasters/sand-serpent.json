@@ -1,0 +1,61 @@
+{
+  "id": "sand-serpent",
+  "name": "Sand Serpent",
+  "formerNames": [
+    "Wild Izzy  and Wild Maus  at Busch Gardens Williamsburg Cheetah Chase  at Busch Gardens Tampa Bay"
+  ],
+  "parkId": "busch-gardens-tampa-bay",
+  "parkName": "Busch Gardens Tampa Bay",
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "heightFt": 45.9,
+  "heightM": 14,
+  "speedMph": 28,
+  "speedKmh": 45.1,
+  "lengthFt": 1213.9,
+  "lengthM": 370,
+  "dropFt": null,
+  "dropM": null,
+  "inversions": 0,
+  "gForce": null,
+  "duration": 110,
+  "material": "Steel",
+  "type": "Wild Mouse",
+  "propulsion": "Chain lift",
+  "manufacturer": "Mack Rides",
+  "designer": "Werner Stengel",
+  "model": "Wild Maus",
+  "status": "closed",
+  "yearOpened": 2004,
+  "yearClosed": 2023,
+  "description": "Sand Serpent was a Wild Mouse roller coaster located at Busch Gardens Tampa Bay in Tampa, Florida.  The ride originally operated at sister park Busch Gardens Williamsburg in Williamsburg, Virginia as Wild Izzy in 1996 and later as Wild Maus from 1997 to 2003.  When the roller coaster was relocated to Florida, it was renamed Cheetah Chase from 2004 to 2011 before receiving its last name change.",
+  "history": null,
+  "notableFeatures": [],
+  "records": [],
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Sand_Serpent.jpg",
+  "imageAttribution": "View of Sand Serpent from its façade",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sand_Serpent",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:15:44.861Z",
+  "dataQuality": "verified",
+  "searchTerms": [
+    "sand serpent",
+    "wild izzy  and wild maus  at busch gardens williamsburg cheetah chase  at busch gardens tampa bay",
+    "busch gardens tampa bay",
+    "mack rides",
+    "wild maus",
+    "wild mouse",
+    "florida"
+  ],
+  "_meta": {
+    "manufacturerMatched": true,
+    "manufacturerRaw": "Mack Rides"
+  },
+  "popularityScore": 63.7,
+  "popularityTier": "iconic",
+  "popularityRank": 447
+}

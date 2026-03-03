@@ -1,0 +1,31 @@
+{
+  "id": "berjaya-times-square-theme-park",
+  "name": "Berjaya Times Square Theme Park",
+  "formerNames": [
+    "Cosmo's World"
+  ],
+  "country": "MY",
+  "countryName": "Malaysia",
+  "region": null,
+  "continent": "Asia",
+  "city": "Kuala Lumpur",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2003,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.berjayatimessquarethemeparkkl.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Berjaya Times Square Theme Park (formerly Cosmo's World ) is an indoor amusement park on the 5th to 8th floors of Berjaya Times Square, Kuala Lumpur, Malaysia.  It was conceived as the \"largest indoor, all weather, all ages, entertainment destination in the region\" and is the second largest indoor amusement park in Malaysia.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Berjaya_Times_Square_theme_park.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Berjaya_Times_Square_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:59.435Z"
+}

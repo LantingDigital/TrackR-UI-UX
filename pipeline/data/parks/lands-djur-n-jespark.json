@@ -1,0 +1,29 @@
+{
+  "id": "lands-djur-n-jespark",
+  "name": "Ölands Djur & Nöjespark",
+  "formerNames": [],
+  "country": "SE",
+  "countryName": "Sweden",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:31:38.813Z"
+}

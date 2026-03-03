@@ -1,0 +1,37 @@
+{
+  "articleTitle": "Pegasus (Mt. Olympus Water and Theme Park)",
+  "introSection": "Pegasus is the name of a wooden roller coaster located at Mt. Olympus Water & Theme Park in Wisconsin Dells, Wisconsin. The coaster was built by Custom Coasters International, and its trains were built by the Philadelphia Toboggan Company.\n\nPegasus opened in 1996, one year after Cyclops, another Custom Coasters International project at Mt. Olympus.",
+  "sections": [
+    {
+      "title": "Track layout",
+      "content": "Pegasus travels over and around Little Titans's drop. It covers 1600 ft of track, reaching 60 ft above the ground, and includes a 45 ft drop at speeds reaching approximately 40mph (64km/h)."
+    }
+  ],
+  "fullText": "Pegasus is the name of a wooden roller coaster located at Mt. Olympus Water & Theme Park in Wisconsin Dells, Wisconsin. The coaster was built by Custom Coasters International, and its trains were built by the Philadelphia Toboggan Company.\n\nPegasus opened in 1996, one year after Cyclops, another Custom Coasters International project at Mt. Olympus.\n\nPegasus travels over and around Little Titans's drop. It covers 1600 ft of track, reaching 60 ft above the ground, and includes a 45 ft drop at speeds reaching approximately 40mph (64km/h).\n\n",
+  "categories": [
+    "Roller coasters in Wisconsin",
+    "Roller coasters opened in 1996",
+    "1996 establishments in Wisconsin"
+  ],
+  "infoboxRaw": {
+    "name": "Pegasus",
+    "image": "PegasusMt.OlympusWater&ThemePark.jpg",
+    "location": "Mt. Olympus Water & Theme Park",
+    "status": "Open",
+    "opened": "1996",
+    "manufacturer": "Custom Coasters International",
+    "lift": "Chain Lift Hill",
+    "height_ft": "60",
+    "drop_ft": "45",
+    "length_ft": "1,600",
+    "speed_mph": "40",
+    "angle": "50",
+    "restriction_in": "40",
+    "rcdb_number": "279",
+    "coordinates": "43.61398°N, -89.78985°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Pegasus_(Mt._Olympus_Water_and_Theme_Park)",
+  "wikiPageId": 6236178,
+  "fetchedAt": "2026-02-28T20:19:41.140Z",
+  "articleLength": 543
+}

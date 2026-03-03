@@ -1,0 +1,29 @@
+{
+  "id": "dorney-park",
+  "name": "Dorney Park & Wildwater Kingdom",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Dorneyville, Pennsylvania",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "http://sixflags.com/dorneypark",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Dorney Park & Wildwater Kingdom is an amusement and water park located in Dorneyville, Pennsylvania, outside Allentown, in the United States.  Owned and operated by Six Flags, the park features 64 rides, including eight roller coasters, several thrill rides and children's rides, and a water park, Wildwater Kingdom, with 26 water slides. \n\nDorney Park features some of the world's most prominent roller coasters, including Steel Force, the ninth-longest steel roller coaster in the world and the second-longest on the U.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Dorney_Park_entrance.jpg",
+  "imageAttribution": "Entrance to Dorney Park & Wildwater Kingdom in August 2007",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dorney_Park_%26_Wildwater_Kingdom",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:49.954Z"
+}

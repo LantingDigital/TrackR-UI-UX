@@ -1,0 +1,43 @@
+{
+  "articleTitle": "Santa Monica West Coaster",
+  "introSection": "The Santa Monica West Coaster (also known as The West Coaster) is a steel roller coaster located in Pacific Park on the Santa Monica Pier in Santa Monica, California. The ride was manufactured by D. H. Morgan Manufacturing, and opened on May 25, 1996.",
+  "sections": [
+    {
+      "title": "Ride experience",
+      "content": "After leaving the station, riders instantly start climbing the lift hill. After a little dip in the track, riders go through 2 helixes and go into 2 quick bunny hops. Riders then go through 2 more helixes before entering the station."
+    },
+    {
+      "title": "In popular culture",
+      "content": "The ride has made numerous appearances in modern media, and is commonly used as an establishing shot for the Los Angeles area.\n\nThe coaster, along with the entire Santa Monica Pier as a whole, were parodied in the 2013 video game, Grand Theft Auto V. In the game, the roller coaster is called The Leviathan."
+    }
+  ],
+  "fullText": "The Santa Monica West Coaster (also known as The West Coaster) is a steel roller coaster located in Pacific Park on the Santa Monica Pier in Santa Monica, California. The ride was manufactured by D. H. Morgan Manufacturing, and opened on May 25, 1996.\n\nAfter leaving the station, riders instantly start climbing the lift hill. After a little dip in the track, riders go through 2 helixes and go into 2 quick bunny hops. Riders then go through 2 more helixes before entering the station.\n\nThe ride has made numerous appearances in modern media, and is commonly used as an establishing shot for the Los Angeles area.\n\nThe coaster, along with the entire Santa Monica Pier as a whole, were parodied in the 2013 video game, Grand Theft Auto V. In the game, the roller coaster is called The Leviathan.\n\n",
+  "categories": [
+    "Roller coasters in California",
+    "Santa Monica, California"
+  ],
+  "infoboxRaw": {
+    "carspertrain": "5",
+    "coordinates": "34.00823°N, -118.4979°W",
+    "height_ft": "55",
+    "image": "Pacific Park Pic.jpg",
+    "length_ft": "1300",
+    "lift": "Lift hill",
+    "location": "Pacific Park",
+    "manufacturer": "D. H. Morgan Manufacturing",
+    "name": "Santa Monica West Coaster",
+    "opened": "May 25, 1996",
+    "rcdb_number": "434",
+    "restriction_in": "42",
+    "ridersperrow": "2",
+    "rowspercar": "3",
+    "speed_mph": "35",
+    "status": "Operating",
+    "trains": "1",
+    "caption": "The Santa Monica West Coaster and The Pacific Wheel as seen from the entrance of the park."
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Santa_Monica_West_Coaster",
+  "wikiPageId": 61748450,
+  "fetchedAt": "2026-02-28T20:13:59.103Z",
+  "articleLength": 797
+}

@@ -1,0 +1,31 @@
+{
+  "id": "s-rk-nniemi",
+  "name": "Särkänniemi",
+  "formerNames": [
+    "Neulan huvipuisto"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Colorado",
+  "continent": "North America",
+  "city": "Tampereen Särkänniemi Oy, 33230 Tampere",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "owner": "City of Tampere",
+  "chain": null,
+  "website": "https://www.sarkanniemi.fi",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Särkänniemi ('Cape of Sandbank') is an amusement park in Tampere, Finland, located in the district by the same name.  The park features an aquarium, a planetarium, Doghill Fairytale Farm, an art museum and an observation tower Näsinneula (Näsi Needle).  Särkänniemi is the second most popular amusement park in Finland with Linnanmäki in Helsinki being the most popular one.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/S%C3%A4rk%C3%A4nniemi_collage.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/S%C3%A4rk%C3%A4nniemi",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:04.425Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "funland-hayling-island",
+  "name": "Funland Hayling Island",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Hayling Island",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1946,
+  "yearClosed": null,
+  "owner": "Marshall Hill, Jimmy Cogger",
+  "chain": null,
+  "website": "http://funland.info",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Funland Hayling Island is an amusement park on Hayling Island, in the Havant district, in the county of Hampshire, England. \n\nFunland Hayling Island contains 18 rides, an amusement arcade (as well as various independently operating arcades nearby), Diane's Diner, a kids' play area and a pirate-themed golf course. \n\nThe park is a typical funfair-styled park with the rides mainly being travelling rides from various independent funfair operators, with some rides sourced from other amusement parks.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Hayling_Funland_seen_from_the_beach_-_geograph.org.uk_-_1532819.jpg",
+  "imageAttribution": "Funland, taken from the beach",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Funland_Hayling_Island",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:27.016Z"
+}

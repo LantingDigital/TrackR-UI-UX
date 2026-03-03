@@ -1,0 +1,29 @@
+{
+  "id": "porto-europa",
+  "name": "Wakayama Marina City",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "1527, Kemi, Wakayama-shi",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1994,
+  "yearClosed": null,
+  "owner": "Wakayama Marina City Company, Limited",
+  "chain": null,
+  "website": "https://www.marinacity.com/eng/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Wakayama Marina City is a resort town built on an artificial island of 49 ha in size, in Wakaura Bay, part of the larger Osaka Bay.  It is also part of Wakayama-shi (City) Wakayama-ken (Prefecture) on the Kansai Peninsula, about a forty-minute train ride south of the Kansai International Airport, which is itself built on an artificial island.  The nearest large city is Osaka, Japan, about an hour by train to the north.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3AWakayamaMarinaCityLogo.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wakayama_Marina_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:40:39.573Z"
+}

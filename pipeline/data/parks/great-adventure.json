@@ -1,0 +1,31 @@
+{
+  "id": "great-adventure",
+  "name": "Six Flags Great Adventure",
+  "formerNames": [
+    "Great Adventure"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "Jackson",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1974,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "Six Flags Great Adventure",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Six Flags Great Adventure is a 160 acre amusement park in Jackson Township, New Jersey, United States, between New York City and Philadelphia.  Owned and operated by Six Flags, the park is part of the larger 510 acre Six Flags Great Adventure Resort complex.  This complex also includes a water park named Hurricane Harbor New Jersey, a safari park named Wild Safari Adventure, and a glamping resort named Savannah Sunset Resort and Spa.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Great_Adventure_entrance_gate_1.jpg",
+  "imageAttribution": "The park's entrance plaza in 2025",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Great_Adventure",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:54.136Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "universal-studios-japan",
+  "name": "Universal Studios Japan",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "Konohana-ku, Osaka",
+  "latitude": 34.66472,
+  "longitude": -135.43306,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2001,
+  "yearClosed": null,
+  "owner": "USJ LLC\n(Universal Destinations & Experiences)\n(wholly owned by NBCUniversal, a division of Comcast)",
+  "chain": null,
+  "website": "https://www.usj.co.jp/e/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Universal Studios Japan (ユニバーサル・スタジオ・ジャパン) is a theme park located in Osaka, Japan.  Opened on March 31, 2001, it is one of six Universal Studios theme parks worldwide and was the first to open outside the United States.  The park is owned and operated by USJ LLC, (合同会社ユー・エス・ジェイ) a wholly owned subsidiary of Comcast NBCUniversal.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/USJ_5years.JPG",
+  "imageAttribution": "Universal Studios Japan entrance in 2006",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Universal_Studios_Japan",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:11.470Z"
+}

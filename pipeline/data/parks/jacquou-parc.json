@@ -1,0 +1,29 @@
+{
+  "id": "jacquou-parc",
+  "name": "Jacquou Parc",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Saint-Félix-de-Reillac-et-Mortemart, Dordogne, France",
+  "latitude": 44.9522,
+  "longitude": -0.9706,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1995,
+  "yearClosed": null,
+  "owner": "Private",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Jacquou Parc is a family amusement park and water park located in the commune of Saint-Félix-de-Reillac-et-Mortemart, near Le Bugue in the Dordogne department of southwestern France.  It opened in 1995 The park features a mix of mechanical rides, water slides, and animal encounters, making it especially popular with families and children.  The park operates seasonally, typically from early July to early September.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Jacquou_Parc",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:30.036Z"
+}

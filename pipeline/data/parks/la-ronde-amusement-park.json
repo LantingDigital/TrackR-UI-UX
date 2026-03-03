@@ -1,0 +1,29 @@
+{
+  "id": "la-ronde-amusement-park",
+  "name": "La Ronde",
+  "formerNames": [],
+  "country": "CA",
+  "countryName": "Canada",
+  "region": "Quebec",
+  "continent": "North America",
+  "city": "Montreal, Quebec, Canada",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1967,
+  "yearClosed": null,
+  "owner": "City of Montreal",
+  "chain": null,
+  "website": "La Ronde",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "La Ronde (lit.  'The Round') is an amusement park in Montreal, Quebec, Canada.  It was originally built as the entertainment complex for Expo 67, the 1967 world's fair.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/La_Ronde_(amusement_park)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:33.065Z"
+}

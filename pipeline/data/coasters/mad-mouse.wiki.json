@@ -1,0 +1,48 @@
+{
+  "articleTitle": "Mad Mouse (Michigan's Adventure)",
+  "introSection": "Mad Mouse is a steel roller coaster located at Michigan's Adventure in Muskegon, Michigan. It was manufactured by Arrow Dynamics. Mad Mouse was the park's third steel roller coaster Woodstock Express (then known as Big Dipper) also opened the same year). In 2022, the coaster debuted a new repaint. Mad Mouse has orange track, a red lift hill, and yellow supports. The coaster was built on a location within the park that was previously used as the park's main entrance.",
+  "sections": [
+    {
+      "title": "External links",
+      "content": "\n * Official page"
+    }
+  ],
+  "fullText": "Mad Mouse is a steel roller coaster located at Michigan's Adventure in Muskegon, Michigan. It was manufactured by Arrow Dynamics. Mad Mouse was the park's third steel roller coaster Woodstock Express (then known as Big Dipper) also opened the same year). In 2022, the coaster debuted a new repaint. Mad Mouse has orange track, a red lift hill, and yellow supports. The coaster was built on a location within the park that was previously used as the park's main entrance.\n\n\n\n\n * Official page",
+  "categories": [
+    "Roller coasters in Michigan",
+    "Roller coasters opened in 1999",
+    "Michigan's Adventure",
+    "Roller coasters operated by Six Flags"
+  ],
+  "infoboxRaw": {
+    "name": "Mad Mouse",
+    "image": "Mad Mouse lift.jpg",
+    "imagedimensions": "250px",
+    "caption": "Mad Mouse's lift hill",
+    "location": "Michigan's Adventure",
+    "locationarticle": "Michigan's Adventure",
+    "coordinates": "43.3474°N, -86.2789°W",
+    "type2": "Wild Mouse",
+    "status": "Open",
+    "opened": "August 7, 1999",
+    "manufacturer": "Arrow Dynamics",
+    "model": "Mad Mouse",
+    "track": "Wild Mouse",
+    "lift": "Chain Lift Hill",
+    "height_ft": "68",
+    "length_ft": "1268",
+    "speed_mph": "33",
+    "duration": "1:30",
+    "capacity": "500",
+    "cost": "$2,000,000",
+    "restriction_in": "42",
+    "virtual_queue_name": "Fast Lane",
+    "virtual_queue_image": "Cedar Fair Fast Lane availibility.svg",
+    "virtual_queue_status": "available",
+    "rcdb_number": "537"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mad_Mouse_(Michigan's_Adventure)",
+  "wikiPageId": 15729560,
+  "fetchedAt": "2026-02-28T20:16:33.944Z",
+  "articleLength": 491
+}

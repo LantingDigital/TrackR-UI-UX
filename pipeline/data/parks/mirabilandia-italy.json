@@ -1,0 +1,29 @@
+{
+  "id": "mirabilandia-italy",
+  "name": "Mirabilandia",
+  "formerNames": [],
+  "country": "IT",
+  "countryName": "Italy",
+  "region": "Italy",
+  "continent": "Europe",
+  "city": "Savio, Ravenna (RA), Emilia-Romagna",
+  "latitude": 44.33722,
+  "longitude": -12.26333,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1992,
+  "yearClosed": null,
+  "owner": "Parques Reunidos",
+  "chain": null,
+  "website": "mirabilandia.it/ (English, ItaIian, German)",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Mirabilandia is a 210-acre theme park, located in Savio, Italy, a frazione of Ravenna, which is located in Emilia-Romagna.  With a total area of 850,000 square metres, it is the biggest park in Italy. \n\nIt has an area of 55 hectares, with an additional waterpark area of 12 hectares, called Mirabeach.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Mirab-img0004.JPG",
+  "imageAttribution": "Mirabilandia's entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Mirabilandia_(Italy)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:08.648Z"
+}

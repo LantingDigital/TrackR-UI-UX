@@ -1,0 +1,29 @@
+{
+  "id": "furuvik",
+  "name": "Furuvik",
+  "formerNames": [],
+  "country": "SE",
+  "countryName": "Sweden",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": 60.65,
+  "longitude": -17.33333,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Furuvik is a locality situated in Gävle Municipality, Gävleborg County, Sweden with 575 inhabitants in 2010.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Furuvik",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:07:27.508Z"
+}

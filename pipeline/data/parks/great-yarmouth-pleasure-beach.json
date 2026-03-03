@@ -1,0 +1,29 @@
+{
+  "id": "great-yarmouth-pleasure-beach",
+  "name": "Pleasure Beach Great Yarmouth",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Great Yarmouth, Norfolk",
+  "latitude": 52.59374,
+  "longitude": -1.73608,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1909,
+  "yearClosed": null,
+  "owner": "Pleasure & Leisure Corporation Ltd",
+  "chain": null,
+  "website": "www.pleasure-beach.co.uk",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Pleasure Beach Great Yarmouth is an amusement park in the seaside resort of Great Yarmouth, Norfolk, on England’s east coast.  It opened in 1909.  The largest and most popular ride at the park is the wooden Roller Coaster which opened in 1932.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/GYPB_logo.jpg",
+  "imageAttribution": "Pleasure Beach logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Great_Yarmouth_Pleasure_Beach",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:03.425Z"
+}

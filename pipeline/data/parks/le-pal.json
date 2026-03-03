@@ -1,0 +1,29 @@
+{
+  "id": "le-pal",
+  "name": "Le Pal",
+  "formerNames": [],
+  "country": "FR",
+  "countryName": "France",
+  "region": null,
+  "continent": "Europe",
+  "city": "Saint-Pourçain-sur-Besbre",
+  "latitude": 46.50722,
+  "longitude": -3.63056,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1973,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Le Pal is a French animal theme park that combines two activities: an amusement park and a zoo in the municipality area of Saint-Pourçain-sur-Besbre, in the Allier, France.  Created in 1973, the site became a theme park in 1981.  As of 2025, it offers 31 attractions and more than 1000 animals in semi-captivity, among several animal shows.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entr%C3%A9e_du_PAL.jpg",
+  "imageAttribution": "The entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Le_Pal",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:42.226Z"
+}

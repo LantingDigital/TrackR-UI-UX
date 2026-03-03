@@ -1,0 +1,50 @@
+{
+  "articleTitle": "Kirnu",
+  "introSection": "Kirnu (lit. 'Churn') is a steel roller coaster located at the Linnanmäki amusement park in Helsinki, Finland. Kirnu is Intamin's first ball coaster.",
+  "sections": [
+    {
+      "title": "Layout",
+      "content": "The ride starts as riders climb the curved lift hill, followed by a quick pre-drop and immediately go into a sharp half loop, then through another half loop and finally another half loop before being slowed back down by near-vertical magnetic brakes; the coaster ends with a quarter loop before returning to the station."
+    },
+    {
+      "title": "Notability",
+      "content": "As Intamin's first ball coaster, it changed the way Finnish roller coasters were viewed. The ride has since inspired new ZacSpin roller coasters."
+    },
+    {
+      "title": "Incidents",
+      "content": "On 16 May 2007, a man injured his leg on Kirnu and its brakes were renewed.\n\nAfter the deadly incident on Inferno at Terra Mítica in Benidorm, Spain on 7 July 2014, and because the two rides have an identical layout, Linnanmäki ceased running Kirnu for several days before reopening the coaster."
+    }
+  ],
+  "fullText": "Kirnu (lit. 'Churn') is a steel roller coaster located at the Linnanmäki amusement park in Helsinki, Finland. Kirnu is Intamin's first ball coaster.\n\nThe ride starts as riders climb the curved lift hill, followed by a quick pre-drop and immediately go into a sharp half loop, then through another half loop and finally another half loop before being slowed back down by near-vertical magnetic brakes; the coaster ends with a quarter loop before returning to the station.\n\nAs Intamin's first ball coaster, it changed the way Finnish roller coasters were viewed. The ride has since inspired new ZacSpin roller coasters.\n\nOn 16 May 2007, a man injured his leg on Kirnu and its brakes were renewed.\n\nAfter the deadly incident on Inferno at Terra Mítica in Benidorm, Spain on 7 July 2014, and because the two rides have an identical layout, Linnanmäki ceased running Kirnu for several days before reopening the coaster.\n\n",
+  "categories": [
+    "Roller coasters in Finland",
+    "Linnanmäki",
+    "Roller coasters opened in 2007"
+  ],
+  "infoboxRaw": {
+    "name": "Kirnu",
+    "image": "Kirnu linnanmäki.jpg",
+    "location": "Linnanmäki",
+    "type2": "Fourth-dimension",
+    "status": "Operating",
+    "opened": "27 April 2007",
+    "manufacturer": "Intamin",
+    "designer": "Werner Stengel",
+    "model": "ZacSpin",
+    "height_ft": "83.4",
+    "length_ft": "465.11",
+    "speed_mph": "37",
+    "inversions": "0",
+    "duration": "1:00",
+    "capacity": "640",
+    "cost": "About 3 million euros.",
+    "gforce": "2.6",
+    "restriction_in": "55",
+    "rcdb_number": "3613",
+    "coordinates": "60.18833°N, 24.94°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kirnu",
+  "wikiPageId": 12129671,
+  "fetchedAt": "2026-02-28T20:56:29.604Z",
+  "articleLength": 916
+}

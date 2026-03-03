@@ -1,0 +1,29 @@
+{
+  "id": "clacton-pier",
+  "name": "Clacton Pier",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": 51.7855,
+  "longitude": -1.1559,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "The Clacton Pier Company Ltd",
+  "chain": null,
+  "website": "www.clactonpier.co.uk",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Clacton Pier is a pier located in the seaside resort town of Clacton-on-Sea in England.  It was named Pier of the Year in 2020 by the National Piers Society.  The pier hosts rides, ten-pin bowling, arcades, 4D dinosaur exhibit, golf and a soft-play centre – as well as numerous food, drink and retail outlets.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Clacton_Pier_Jan_2026.jpg",
+  "imageAttribution": "Clacton Pier in 2026",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Clacton_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:12.805Z"
+}

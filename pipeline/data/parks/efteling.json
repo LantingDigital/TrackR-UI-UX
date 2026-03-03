@@ -1,0 +1,29 @@
+{
+  "id": "efteling",
+  "name": "Efteling",
+  "formerNames": [],
+  "country": "NL",
+  "countryName": "Netherlands",
+  "region": "Netherlands",
+  "continent": "Europe",
+  "city": "Kaatsheuvel",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1951,
+  "yearClosed": null,
+  "owner": "Efteling Nature Park Foundation",
+  "chain": null,
+  "website": "www.efteling.com",
+  "coasterCount": 6,
+  "totalCoasterCount": 8,
+  "description": "Efteling is fantasy-themed theme park in Kaatsheuvel, a town in the Netherlands.  The attractions reflect elements from ancient European myths and legends, fairy tales, fables, and folklore. \n\nThe park was opened on May 31, 1952.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Efteling_The_House_of_the_Five_Senses.jpg",
+  "imageAttribution": "The House of the Five Senses, the entrance to the Efteling theme park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Efteling",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:00.245Z"
+}

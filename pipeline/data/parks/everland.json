@@ -1,0 +1,31 @@
+{
+  "id": "everland",
+  "name": "Everland",
+  "formerNames": [
+    "Yongin Farmland"
+  ],
+  "country": "KR",
+  "countryName": "South Korea",
+  "region": "South Korea",
+  "continent": "Asia",
+  "city": "Yongin",
+  "latitude": 37.29389,
+  "longitude": -127.20278,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1976,
+  "yearClosed": null,
+  "owner": "Samsung C&T Resort & Construction Group",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Everland is South Korea's largest theme park.  It is located at the Everland Resort in Yongin, Gyeonggi Province.  In 2018, it received 5.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/T_Express_Everland_Resort.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Everland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:14.190Z"
+}

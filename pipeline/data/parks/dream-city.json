@@ -1,0 +1,29 @@
+{
+  "id": "dream-city",
+  "name": "Dream City",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Dream City is an operetta in two acts with music by Victor Herbert and a libretto by Edgar Smith.  The show contained a one-act musical burlesque The Magic Knight which parodies Richard Wagner's opera Lohengrin. \n\nThe original production opened at Weber's Music Hall in New York City on December 24, 1906, and ran for 102 performances until March 23, 1907.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Dream_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:37.135Z"
+}

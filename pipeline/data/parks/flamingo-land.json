@@ -1,0 +1,32 @@
+{
+  "id": "flamingo-land",
+  "name": "Flamingo Land Resort",
+  "formerNames": [
+    "Yorkshire Zoo",
+    "Flamingo Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Kirby Misperton, North Yorkshire",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1959,
+  "yearClosed": null,
+  "owner": "The Gibb Family",
+  "chain": null,
+  "website": "http://www.flamingoland.co.uk",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Flamingo Land is a theme park, zoo, and resort located in Kirby Misperton, North Yorkshire, England.  Opened in 1959, it has been owned and operated by The Gibb family since 1978.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Flamingo_Land_Ariel_View.jpg",
+  "imageAttribution": "Aerial view",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Flamingo_Land_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:28.048Z"
+}

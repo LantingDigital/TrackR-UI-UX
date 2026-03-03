@@ -1,0 +1,29 @@
+{
+  "id": "heide-park",
+  "name": "Heide Park Resort",
+  "formerNames": [],
+  "country": "DE",
+  "countryName": "Germany",
+  "region": "Germany",
+  "continent": "Europe",
+  "city": "Soltau",
+  "latitude": 53.02806,
+  "longitude": -9.86917,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1978,
+  "yearClosed": null,
+  "owner": "LondonMetric Property",
+  "chain": null,
+  "website": "Official Website",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Heide Park Resort, commonly known as Heide Park, is a theme park in Soltau, Lower Saxony, Germany.  With an overall area of over 850,000 m2 (210 acres), it is the largest amusement park in Northern Germany and among the largest in the country.  It is part of the British-based Merlin Entertainments, which operates 123 attractions in 24 countries.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Heide-Park_Resort.png_Eingang_Heide-Park_Resort_2012.JPG",
+  "imageAttribution": "Entrance in 2012",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Heide_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:26.367Z"
+}

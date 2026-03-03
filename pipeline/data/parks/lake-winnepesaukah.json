@@ -1,0 +1,29 @@
+{
+  "id": "lake-winnepesaukah",
+  "name": "Lake Winnepesaukah",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Georgia",
+  "continent": "North America",
+  "city": "Rossville, Georgia, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1925,
+  "yearClosed": null,
+  "owner": "Dixon family",
+  "chain": null,
+  "website": "www.lakewinnie.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Lake Winnepesaukah, commonly known as Lake Winnie, is an amusement park located in Rossville, Georgia, on the south of Chattanooga, Tennessee.  Carl and Minette Dixon opened the park to over 5,000 guests on June 1, 1925.  The park originally featured the largest swimming pool in the southeastern United States, which debuted in 1926 and closed in 1964.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Entrance_to_Lake_Winnepesaukah_Amusement_Park%2C_Rossville%2C_Georgia.jpg",
+  "imageAttribution": "Park entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Winnepesaukah",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:20.866Z"
+}

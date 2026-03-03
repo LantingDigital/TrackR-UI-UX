@@ -1,0 +1,37 @@
+{
+  "articleTitle": "Eagle Fortress",
+  "introSection": "Eagle Fortress was a steel suspended roller coaster at Everland, South Korea,    and was the first suspended roller coaster in Asia. It opened on 8 September 1992 and closed permanently in January 2009. Built by American manufacturer Arrow Dynamics, it was one of the last rides of its kind built by the company before going bankrupt in 2002 and was the longest suspended coaster built by Arrow Dynamics with a 3,200 ft long track.",
+  "sections": [],
+  "fullText": "Eagle Fortress was a steel suspended roller coaster at Everland, South Korea,    and was the first suspended roller coaster in Asia. It opened on 8 September 1992 and closed permanently in January 2009. Built by American manufacturer Arrow Dynamics, it was one of the last rides of its kind built by the company before going bankrupt in 2002 and was the longest suspended coaster built by Arrow Dynamics with a 3,200 ft long track.\n\n",
+  "categories": [
+    "Everland Resort",
+    "Roller coasters in South Korea"
+  ],
+  "infoboxRaw": {
+    "name": "Eagle Fortress",
+    "image": "Eagle Fortress 1.jpg",
+    "location": "Everland",
+    "status": "Removed",
+    "opened": "September 8, 1992",
+    "closed": "January 2009",
+    "type2": "Suspended",
+    "manufacturer": "Arrow Dynamics",
+    "model": "Suspended Coaster",
+    "track": "Terrain",
+    "lift": "Chain Lift Hill",
+    "length_m": "975.4",
+    "speed_km/h": "64.4",
+    "inversions": "0",
+    "duration": "1:58",
+    "trains": "2",
+    "carspertrain": "7",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "rcdb_number": "1337",
+    "coordinates": "°N, °W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Eagle_Fortress",
+  "wikiPageId": 67445644,
+  "fetchedAt": "2026-02-28T20:56:18.626Z",
+  "articleLength": 433
+}

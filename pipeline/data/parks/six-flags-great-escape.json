@@ -1,0 +1,33 @@
+{
+  "id": "six-flags-great-escape",
+  "name": "Six Flags Great Escape and Hurricane Harbor",
+  "formerNames": [
+    "Storytown USA",
+    "The Great Escape Fun Park",
+    "The Great Escape & Splashwater Kingdom"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "89 Six Flags Drive Queensbury, New York",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1954,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "https://www.sixflags.com/greatescape",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Six Flags Great Escape and Hurricane Harbor is an amusement and water park owned and operated by Six Flags.  It is located approximately 60 mi north of Albany, in Queensbury, New York.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_Great_Escape_and_Hurricane_Harbor",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:37.697Z"
+}

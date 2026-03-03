@@ -1,0 +1,34 @@
+{
+  "articleTitle": "Pitts Special (roller coaster)",
+  "introSection": "Pitts Special is a roller coaster made by Gerstlauer for the PowerPark amusement park in Alahärmä, Finland. The ride opened during the summer of 2020. The ride has a vertical 43-meter-high lifting hill right at the beginning, after which the train accelerates immediately to its top speed of 100 kilometers per hour.",
+  "sections": [],
+  "fullText": "Pitts Special is a roller coaster made by Gerstlauer for the PowerPark amusement park in Alahärmä, Finland. The ride opened during the summer of 2020. The ride has a vertical 43-meter-high lifting hill right at the beginning, after which the train accelerates immediately to its top speed of 100 kilometers per hour.\n\n",
+  "categories": [
+    "Roller coasters in Finland"
+  ],
+  "infoboxRaw": {
+    "name": "Pitts Special",
+    "image": "Pitts Special PowerPark.jpg",
+    "location": "PowerPark",
+    "status": "Open",
+    "opened": "June 24, 2020",
+    "manufacturer": "Gerstlauer",
+    "model": "Infinity Coaster",
+    "lift": "Vertical chain lift hill",
+    "height_m": "43.5",
+    "length_m": "693",
+    "speed_km/h": "100",
+    "angle": "85",
+    "gforce": "4.5",
+    "trains": "1",
+    "carspertrain": "2",
+    "rowspercar": "1",
+    "ridersperrow": "4",
+    "restriction_cm": "130",
+    "rcdb_number": "17866"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Pitts_Special_(roller_coaster)",
+  "wikiPageId": 64637776,
+  "fetchedAt": "2026-02-28T20:56:31.067Z",
+  "articleLength": 318
+}

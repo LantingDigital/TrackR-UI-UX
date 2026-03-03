@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-belgium",
+  "name": "Walibi Belgium",
+  "formerNames": [
+    "Walibi  Walibi Wavre  Six Flags Belgium"
+  ],
+  "country": "BE",
+  "countryName": "Belgium",
+  "region": null,
+  "continent": "Europe",
+  "city": "Wavre, Walloon Brabant",
+  "latitude": 50.69861,
+  "longitude": -4.59056,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1975,
+  "yearClosed": null,
+  "owner": "Compagnie des Alpes",
+  "chain": null,
+  "website": "http://www.walibi.com/belgium/be-en",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Walibi Belgium is a 64-hectare (158. 15 acres) theme park located in Wavre, Walloon Brabant, Wallonia, Belgium, close to the city of Brussels.  The park complex consists of the titular theme park and the Aqualibi indoor water park that is located next door.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3AWalibi_logo.png%7C200px%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Walibi_Belgium",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:15.706Z"
+}

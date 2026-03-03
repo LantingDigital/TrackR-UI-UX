@@ -1,0 +1,29 @@
+{
+  "id": "tivoli-gardens",
+  "name": "Tivoli Gardens",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": "Denmark",
+  "continent": "Europe",
+  "city": "Copenhagen, Denmark",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Tivoli A/S",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Tivoli Gardens, also known simply as Tivoli, is an amusement park and pleasure garden in Copenhagen, Denmark.  The park opened on 15 August 1843 and is the second-oldest operating amusement park in the world, after Dyrehavsbakken in nearby Klampenborg, also in Denmark. \n\nWith 4.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Tivoli_Gardens_4.jpg",
+  "imageAttribution": "The entrance to Tivoli",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Tivoli_Gardens",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:07.185Z"
+}

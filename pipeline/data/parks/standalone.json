@@ -1,0 +1,29 @@
+{
+  "id": "standalone",
+  "name": "Standalone",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Standalone or Stand-alone may refer to:\n\n\n * Stand-alone DSL, a digital subscriber line without analog telephone service; also known as naked DSL\n * Stand-alone expansion pack, an expansion pack which does not require the original game in order to use the new content\n * Stand-alone inverter, a power inverter that converts direct current into alternating current independent of a utility grid\n * Standalone network or Intranet, a computer network that uses Internet protocol technology within an org",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Stand-alone",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:19.226Z"
+}

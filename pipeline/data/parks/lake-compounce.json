@@ -1,0 +1,33 @@
+{
+  "id": "lake-compounce",
+  "name": "Lake Compounce",
+  "formerNames": [
+    "Lake Compounce",
+    "Hershey Lake Compounce",
+    "Lake Compounce Festival Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Connecticut",
+  "continent": "North America",
+  "city": "185 Enterprise Drive, Bristol, Connecticut",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Herschend",
+  "chain": null,
+  "website": "http://www.lakecompounce.com",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Lake Compounce is an amusement park located in Bristol and Southington, Connecticut that opened in 1846.  It is the oldest continuously operating amusement park in the United States. \n\nIt spans 332 acre, which includes a beach and a water park called Crocodile Cove, both included in the price of admission.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ALake_Compounce_Main_Gate.jpg",
+  "imageAttribution": "The main gate of Lake Compounce",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Compounce",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:18.345Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "powerpark",
+  "name": "PowerPark",
+  "formerNames": [],
+  "country": "FI",
+  "countryName": "Finland",
+  "region": "Finland",
+  "continent": "Europe",
+  "city": "Alahärmä, Kauhava",
+  "latitude": 63.22833,
+  "longitude": -22.85972,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "owner": "Lillbacka enterprises",
+  "chain": null,
+  "website": "https://www.powerpark.fi/en/",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "PowerPark is a large scale karting and amusement park in Alahärmä, Finland.  It is located along Highway 19, 66 km north of Seinäjoki and 76 km east of Vaasa.  The main karting track already resembles an F1 circuit and has previously hosted the Karting World Championship, but they also have a hectare-large indoor track, the largest in Europe.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/PowerPark.JPG",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/PowerPark",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:33.721Z"
+}

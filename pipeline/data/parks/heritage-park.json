@@ -1,0 +1,29 @@
+{
+  "id": "heritage-park",
+  "name": "Heritage Park",
+  "formerNames": [],
+  "country": "BD",
+  "countryName": "Bangladesh",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 2,
+  "description": "Heritage Park may refer to:\n\n\n * Heritage park, a type of open-air heritage park",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Heritage_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:06:53.262Z"
+}

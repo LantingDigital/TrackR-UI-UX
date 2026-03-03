@@ -1,0 +1,29 @@
+{
+  "id": "djurs-sommerland",
+  "name": "Djurs Sommerland",
+  "formerNames": [],
+  "country": "DK",
+  "countryName": "Denmark",
+  "region": null,
+  "continent": "Europe",
+  "city": "Randersvej 17, Battrupholt, 8581",
+  "latitude": 56.42593,
+  "longitude": -10.55056,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1981,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.djurssommerland.dk/en",
+  "coasterCount": 7,
+  "totalCoasterCount": 7,
+  "description": "Djurs Sommerland is an amusement park located in Djursland, Denmark, just north of the village of Nimtofte, 23 kilometers west of Grenaa, and 36 kilometers east of Randers. \n\nThe park opened in 1981, and it has progressively expanded every year since then.  Its guests mostly consist of families, as most of the rides are aimed at kids and teenagers.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Djurs_Sommerland",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:10.424Z"
+}

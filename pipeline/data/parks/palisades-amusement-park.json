@@ -1,0 +1,32 @@
+{
+  "id": "palisades-amusement-park",
+  "name": "Palisades Amusement Park",
+  "formerNames": [
+    "Park on the Palisades",
+    "Schenck Brothers Palisade Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "Cliffside Park-Fort Lee",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": 1971,
+  "owner": "Nicholas and Joseph Schenck, Jack and Irving Rosenthal",
+  "chain": null,
+  "website": "http://www.palisadespark.com",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Palisades Amusement Park was a 38-acre amusement park located in Bergen County, New Jersey, across the Hudson River from New York City.  It was located atop the New Jersey Palisades, lying partly in Cliffside Park and partly in Fort Lee.  The park operated from 1898 until 1971, remaining one of the most visited amusement parks in the country until its closure, after which a high-rise luxury apartment complex was built on its site.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Palisades_Amusement_Park_3.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Palisades_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:35.955Z"
+}

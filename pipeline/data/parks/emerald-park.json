@@ -1,0 +1,31 @@
+{
+  "id": "emerald-park",
+  "name": "Emerald Park",
+  "formerNames": [
+    "Tayto Park"
+  ],
+  "country": "IE",
+  "countryName": "Ireland",
+  "region": null,
+  "continent": "Europe",
+  "city": "Kilbrew / Curraha, near Ashbourne, County Meath",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2010,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://emeraldpark.ie",
+  "coasterCount": 6,
+  "totalCoasterCount": 6,
+  "description": "Emerald Park (Irish: Páirc Smaragaide), previously known from its 2010 opening to 2022 as Tayto Park, is a 22 ha (55-acre) amusement park and zoo located in the townland of Kilbrew, County Meath, Ireland, about 25 km northwest of Dublin.  Upon opening, the park was themed around the Irish potato crisp brand Tayto (whose factory is adjacent to the park), and was originally conceptualised by Tayto’s then owner, farmer-turned-entrepreneur Raymond Coyle (d.  2022).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Emerald_Park_Logo.jpg_Tayto_Park_-_geograph-5466675-by-Rossographer.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Emerald_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:30.104Z"
+}

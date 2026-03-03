@@ -1,0 +1,29 @@
+{
+  "id": "siam-park-city",
+  "name": "Siam Amazing Park",
+  "formerNames": [],
+  "country": "TH",
+  "countryName": "Thailand",
+  "region": null,
+  "continent": "Asia",
+  "city": "Khan Na Yao",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1980,
+  "yearClosed": null,
+  "owner": "Siam Park Bangkok Co., Ltd",
+  "chain": null,
+  "website": "www.siamamazingpark.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Siam Amazing Park, more commonly known as Siam Park City or Suansiam (สวนสยาม, , ), is an amusement and water park located in the Khan Na Yao district of Bangkok, Thailand.  It was founded in November 1980 and remains the oldest amusement and water park complex in Southeast Asia.  Located near Bangkok's Suvarnabhumi Airport, it contains attractions such as Southeast Asia's first suspended looping coaster with five inversions, a large wave pool and seven-story slides.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Original_siam3.jpg",
+  "imageAttribution": "Siam Amazing Park in Thailand",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Siam_Amazing_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:00:44.454Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "strickers-grove",
+  "name": "Stricker's Grove",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Ross, Ohio, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1924,
+  "yearClosed": null,
+  "owner": "Stricker Family, Stricker's Grove Management LLC.",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 3,
+  "description": "Stricker's Grove is a family owned amusement park located in Ross, Ohio, USA.  Unlike other amusement parks, Stricker's Grove is closed to the public for most of the year.  Instead, it is rented out for private functions, such as weddings.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3AStrickersgrove.png%5D%5D",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Stricker's_Grove",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:32:56.961Z"
+}

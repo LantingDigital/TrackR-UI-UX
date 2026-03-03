@@ -1,0 +1,29 @@
+{
+  "id": "edgewater-park",
+  "name": "Edgewater Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Michigan",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Edgewater Park can refer to a location in the United States:\n\n\n * The Edgewater Park Site, an archaeology site in Iowa\n * Edgewater Park, New Jersey, a township\n * Edgewater Park (Bronx), New York, a neighborhood\n * Edgewater Park (Cleveland), a portion of the Cleveland Metroparks Lakefront Reservation in Ohio\n * Edgewater Park, Oklahoma, a census-designated place",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Edgewater_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:38.991Z"
+}

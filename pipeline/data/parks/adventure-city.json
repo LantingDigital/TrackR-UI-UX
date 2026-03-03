@@ -1,0 +1,29 @@
+{
+  "id": "adventure-city",
+  "name": "Adventure City",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Stanton",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1994,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "Adventure City",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Adventure City is an amusement park in Stanton, California, United States.  Occupying an area of just over 2 acre, Adventure City is one of the smallest theme parks in California, and receives an average attendance of between 200,000 and 400,000 visitors per year.  The Coca-Cola Company is the park's only major sponsor.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Adventure_City_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adventure_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:00.319Z"
+}

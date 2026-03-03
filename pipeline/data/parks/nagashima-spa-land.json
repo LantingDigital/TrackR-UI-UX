@@ -1,0 +1,29 @@
+{
+  "id": "nagashima-spa-land",
+  "name": "Nagashima Spa Land",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": "Japan",
+  "continent": "Asia",
+  "city": "333 Urayasu, Nagashima, Kuwana, Mie 511-1135 Japan",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1966,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "www.nagashima-onsen.co.jp",
+  "coasterCount": 6,
+  "totalCoasterCount": 6,
+  "description": "Nagashima Spa Land (ナガシマスパーランド) is an amusement park and vacation resort in Kuwana, Mie, Japan, about 30 km west of Nagoya.  It opened in 1966, and features an amusement park with several roller coasters, thrill rides, kiddie rides, a water park (open only in the summer), a hot springs complex, an outdoor outlet mall, and 3 official hotels. \n\nIn 2022, Nagashima Spa Land hosted 4.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Nagashima_Spa_Land.JPG",
+  "imageAttribution": "Nagashima Spa Land in the distance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Nagashima_Spa_Land",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:51.740Z"
+}

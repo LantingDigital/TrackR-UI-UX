@@ -1,0 +1,31 @@
+{
+  "id": "adventure-park-usa",
+  "name": "Adventure Park USA",
+  "formerNames": [
+    "Frederick Putt-Putt Golf and Games"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Maryland",
+  "continent": "North America",
+  "city": "Monrovia",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2005,
+  "yearClosed": null,
+  "owner": "AP Land, LLC",
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Adventure Park USA is a family entertainment center in Monrovia, Maryland, east of Frederick, Maryland, situated on 17. 5 acres, which opened in 2005.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Adventure_Park_USA",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:35:23.761Z"
+}

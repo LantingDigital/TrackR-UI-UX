@@ -1,0 +1,29 @@
+{
+  "id": "kongeparken",
+  "name": "Kongeparken",
+  "formerNames": [],
+  "country": "NO",
+  "countryName": "Norway",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1986,
+  "yearClosed": null,
+  "owner": "Lund family",
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Kongeparken (The King's Park) is an amusement park in the village of Ålgård, near Stavanger in Norway.  Kongeparken is the biggest amusement park in the south-west of Norway, and the main tourist destination in the county of Rogaland.  The park has more than 50 different rides and attractions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Kongeparken2007.jpg",
+  "imageAttribution": "Kongeparken entrance in 2007",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Kongeparken",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:01:18.374Z"
+}

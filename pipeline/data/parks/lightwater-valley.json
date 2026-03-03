@@ -1,0 +1,29 @@
+{
+  "id": "lightwater-valley",
+  "name": "Lightwater Valley",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "North Stainley, North Yorkshire",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1969,
+  "yearClosed": null,
+  "owner": "Mellors Group",
+  "chain": null,
+  "website": "www.lightwatervalley.co.uk",
+  "coasterCount": 0,
+  "totalCoasterCount": 2,
+  "description": "Lightwater Valley Family Adventure Park is an adventure park in North Stainley, North Yorkshire, England.  The park was once home to the longest roller coaster in the world, The Ultimate. \n\nLightwater Valley was founded by Robert Staveley in 1969, and the leasehold is now owned and operated by the Mellors Group, having been purchased by them in 2025.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lightwater_Valley",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:58.401Z"
+}

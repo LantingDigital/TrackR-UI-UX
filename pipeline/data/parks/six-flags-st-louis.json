@@ -1,0 +1,31 @@
+{
+  "id": "six-flags-st-louis",
+  "name": "Six Flags St. Louis",
+  "formerNames": [
+    "Six Flags Over Mid-America"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Missouri",
+  "continent": "North America",
+  "city": "4900 Six Flags Road\nEureka, Missouri 63025",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1971,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "https://www.sixflags.com/stlouis",
+  "coasterCount": 7,
+  "totalCoasterCount": 7,
+  "description": "Six Flags St.  Louis, originally known as Six Flags Over Mid-America, is an amusement park in Eureka, Missouri, a suburb of St.  Louis.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Six_Flags_St._Louis",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:58.370Z"
+}

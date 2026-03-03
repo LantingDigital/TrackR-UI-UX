@@ -1,0 +1,29 @@
+{
+  "id": "e-da-theme-park",
+  "name": "E-DA Theme Park 義大遊樂世界",
+  "formerNames": [],
+  "country": "TW",
+  "countryName": "Taiwan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Dashu, Kaohsiung, Taiwan",
+  "latitude": 22.72861,
+  "longitude": -120.40667,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2010,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "The E-DA Theme Park is a theme park with Greek styling located in Dashu District, Kaohsiung, Taiwan.  It claims to be south Taiwan's largest theme park.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/E-Da_Theme_Park_Monorail.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/E-DA_Theme_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:21.823Z"
+}

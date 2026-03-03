@@ -1,0 +1,29 @@
+{
+  "id": "steel-pier",
+  "name": "Steel Pier",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New Jersey",
+  "continent": "North America",
+  "city": "1000 Boardwalk, Atlantic City, New Jersey, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "Steel Pier Associates, LLC",
+  "chain": null,
+  "website": "steelpier.com",
+  "coasterCount": 2,
+  "totalCoasterCount": 4,
+  "description": "The Steel Pier is a 1,000-foot-long (1000 ft) amusement park built on a pier of the boardwalk in Atlantic City, New Jersey, across from the Hard Rock Hotel & Casino Atlantic City (formerly the Trump Taj Mahal).  Built in 1897 and opened in 1898, it was one of the most popular venues in the United States for the first seven decades of the twentieth century, featuring concerts, exhibits, and an amusement park.  It billed itself as the Showplace of the Nation and at its peak measured 2,298 feet.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Steel_Pier_1910s_edit.jpg",
+  "imageAttribution": "Steel Pier c. 1915",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Steel_Pier",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:03:32.018Z"
+}

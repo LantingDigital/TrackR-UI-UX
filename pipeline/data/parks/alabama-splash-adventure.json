@@ -1,0 +1,34 @@
+{
+  "id": "alabama-splash-adventure",
+  "name": "Alabama Adventure Amusement Park & Splash Adventure Water Park",
+  "formerNames": [
+    "* VisionLand",
+    "* Alabama Adventure",
+    "* Splash Adventure",
+    "* Alabama Splash Adventure"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Alabama",
+  "continent": "North America",
+  "city": "Bessemer",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1998,
+  "yearClosed": null,
+  "owner": "Koch Family Parks",
+  "chain": null,
+  "website": "https://alabamaadventure.com/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Alabama Adventure & Splash Adventure (previously known as VisionLand, Alabama Adventure, Splash Adventure and Alabama Splash Adventure) is a water park and amusement park in Bessemer, Alabama.  It is owned by Koch Family Parks, which consists of members of the family who formerly had minority ownership in Holiday World & Splashin' Safari.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Alabama_Adventure_%26_Splash_Adventure",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:57.862Z"
+}

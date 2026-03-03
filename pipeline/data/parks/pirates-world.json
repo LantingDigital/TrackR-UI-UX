@@ -1,0 +1,29 @@
+{
+  "id": "pirates-world",
+  "name": "Pirates World",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Florida",
+  "continent": "North America",
+  "city": "Dania, Florida, United States",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1967,
+  "yearClosed": 1973,
+  "owner": "Recreation Corporation of America",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 3,
+  "description": "Pirates World was a 100 acre pirate-themed amusement park in Dania, Florida, that opened April 8, 1967.  Developed by Recreation Corporation of America, it was located on the north side of Sheridan Street between U. S.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ASky_trail_amusement_ride_at_Pirates_World_-_Dania%2C_Florida.jpg",
+  "imageAttribution": "Sky trail amusement ride at Pirates World, 1967",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Pirates_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:45.499Z"
+}

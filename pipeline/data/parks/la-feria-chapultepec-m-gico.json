@@ -1,0 +1,31 @@
+{
+  "id": "la-feria-chapultepec-m-gico",
+  "name": "La Feria de Chapultepec",
+  "formerNames": [
+    "Juegos Mecánicos de Chapultepec La Feria Chapultepec Mágico"
+  ],
+  "country": "MX",
+  "countryName": "Mexico",
+  "region": "Mexico",
+  "continent": "North America",
+  "city": "Mexico City",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1964,
+  "yearClosed": 2019,
+  "owner": "Ventura Entertainment",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "La Feria de Chapultepec, simply branded as La Feria, was an amusement park in Mexico City, Mexico.  Located in the middle of Chapultepec Park near the Constituyentes Metro station, it opened in 1964 as Juegos Mecánicos de Chapultepec and was originally operated by the Mexican government.  In 1992 Grupo CIE bought it and changed the name to La Feria Chapultepec Mágico.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/La_Feria_Chapultepec_M%C3%A1gico.JPG",
+  "imageAttribution": "La Feria in 2007",
+  "wikiUrl": "https://en.wikipedia.org/wiki/La_Feria_de_Chapultepec",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:42.238Z"
+}

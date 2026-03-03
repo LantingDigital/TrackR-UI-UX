@@ -1,0 +1,29 @@
+{
+  "id": "fair-park",
+  "name": "Dallas Grand Prix Circuit",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Tennessee",
+  "continent": "North America",
+  "city": "Fair Park, Dallas",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1984,
+  "yearClosed": 1988,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "Fair Park is a recreational and educational complex in Dallas, Texas, United States, located immediately east of downtown.  The 277 acre area is registered as a Dallas Landmark and National Historic Landmark; many of the buildings were constructed for the Texas Centennial Exposition in 1936. \n\nFair Park has been designated a Great Place in America by the American Planning Association.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Dallas-Fair-Park-GP-Circuit--TransAm-Circuit-1988.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Fair_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:04:34.085Z"
+}

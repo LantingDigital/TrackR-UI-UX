@@ -1,0 +1,31 @@
+{
+  "id": "attractiepark-slagharen",
+  "name": "Attractie- & Vakantiepark Slagharen",
+  "formerNames": [
+    "Ponypark Slagharen"
+  ],
+  "country": "NL",
+  "countryName": "Netherlands",
+  "region": "Netherlands",
+  "continent": "Europe",
+  "city": "Slagharen",
+  "latitude": 52.62444,
+  "longitude": -6.56194,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1963,
+  "yearClosed": null,
+  "owner": "🇪🇸 Parques Reunidos",
+  "chain": null,
+  "website": "http://www.slagharen.com/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Attractie- & Vakantiepark Slagharen is an Amusement park and holiday resort in Slagharen, Netherlands.  The park opened in 1963 and was originally named Ponypark Slagharen.  The logo contains the English name Slagharen Themepark & Resort.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Attractiepark_Slagharen_Kettenkarussell.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Attractiepark_Slagharen",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:21.170Z"
+}

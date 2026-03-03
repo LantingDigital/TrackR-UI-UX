@@ -1,0 +1,29 @@
+{
+  "id": "luna-park-melbourne",
+  "name": "Luna Park Melbourne",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "city": "18 Lower Esplanade, St. Kilda, Melbourne",
+  "latitude": 37.86804,
+  "longitude": -144.97637,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1912,
+  "yearClosed": null,
+  "owner": "Linfox, Virtual Communities, and Liberty Petrol",
+  "chain": null,
+  "website": "www.lunapark.com.au",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Luna Park Melbourne is a historic amusement park located on the foreshore of Port Phillip Bay in St Kilda, Melbourne, Victoria.  It opened on 13 December 1912, with a formal opening a week later, and has been operating almost continuously ever since.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/File%3ALuna_park_melboure.jpg",
+  "imageAttribution": "The entrance to Luna Park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Luna_Park%2C_Melbourne",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:58:00.320Z"
+}

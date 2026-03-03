@@ -1,0 +1,54 @@
+{
+  "articleTitle": "InvadR",
+  "introSection": "InvadR is a wooden roller coaster at Busch Gardens Williamsburg amusement park in James City County, Virginia, United States. The coaster was designed by American designer Skyline Attractions and built by American manufacturer Great Coasters International, and opened on April 7, 2017. The ride features a 74 ft drop, a maximum speed of 48 mph, and a total track length of 2118 ft.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "After a three-month web-campaign on March 19, 2016, Busch Gardens Williamsburg announced that a new wooden roller coaster would be introduced in 2017. The park let fans vote among three names – Viking Raider, InvadR, and Battle Klash – until April 1, 2016. InvadR was ultimately chosen by the Internet poll. On May 30, 2016, it was confirmed that trains from Gwazi, a defunct roller coaster at Busch Gardens Tampa, would be repurposed for InvadR. The attraction opened to the general public on April 7, 2017."
+    },
+    {
+      "title": "Ride experience",
+      "content": "After leaving the station, the train makes two right turns and climbs the 60 ft chain lift hill. Upon reaching the top, it makes a left turn, goes through a tunnel and drops 74 ft at 48 mph. The train makes a sharp right turn and ascends several airtime hills, before making a right and then left turn into a helix. Afterwards, the train enters the final brake run and returns to the station."
+    }
+  ],
+  "fullText": "InvadR is a wooden roller coaster at Busch Gardens Williamsburg amusement park in James City County, Virginia, United States. The coaster was designed by American designer Skyline Attractions and built by American manufacturer Great Coasters International, and opened on April 7, 2017. The ride features a 74 ft drop, a maximum speed of 48 mph, and a total track length of 2118 ft.\n\nAfter a three-month web-campaign on March 19, 2016, Busch Gardens Williamsburg announced that a new wooden roller coaster would be introduced in 2017. The park let fans vote among three names – Viking Raider, InvadR, and Battle Klash – until April 1, 2016. InvadR was ultimately chosen by the Internet poll. On May 30, 2016, it was confirmed that trains from Gwazi, a defunct roller coaster at Busch Gardens Tampa, would be repurposed for InvadR. The attraction opened to the general public on April 7, 2017.\n\nAfter leaving the station, the train makes two right turns and climbs the 60 ft chain lift hill. Upon reaching the top, it makes a left turn, goes through a tunnel and drops 74 ft at 48 mph. The train makes a sharp right turn and ascends several airtime hills, before making a right and then left turn into a helix. Afterwards, the train enters the final brake run and returns to the station.\n\n\n\n",
+  "categories": [
+    "Busch Gardens Williamsburg",
+    "2017 establishments in Virginia",
+    "Roller coasters in Virginia"
+  ],
+  "infoboxRaw": {
+    "name": "InvadR",
+    "image": "InvadR 1.jpg",
+    "location": "Busch Gardens Williamsburg",
+    "section": "New France",
+    "coordinates": "37.2325°N, -76.64861°W",
+    "status": "Operating",
+    "opened": "April 7, 2017",
+    "year": "2017",
+    "manufacturer": "Great Coasters International",
+    "designer": "Jeff Pike\nSkyline Design, LLC",
+    "lift": "Chain lift hill",
+    "height_ft": "60",
+    "drop_ft": "74",
+    "length_ft": "2118",
+    "speed_mph": "48",
+    "inversions": "0",
+    "restriction_in": "46",
+    "trains": "2",
+    "carspertrain": "8",
+    "rowspercar": "1",
+    "ridersperrow": "2",
+    "virtual_queue_name": "Quick Queue",
+    "virtual_queue_image": "Quick Queue availability logo (Busch Gardens).svg",
+    "virtual_queue_status": "available",
+    "custom_label_1": "Restraints",
+    "custom_value_1": "Lap Bar",
+    "rcdb_number": "8027",
+    "video": "InvadR Busch Gardens Williamsburg GCI Wood Coaster POVs.webm"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/InvadR",
+  "wikiPageId": 50595511,
+  "fetchedAt": "2026-02-28T20:19:27.410Z",
+  "articleLength": 1289
+}

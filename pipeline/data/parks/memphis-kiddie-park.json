@@ -1,0 +1,29 @@
+{
+  "id": "memphis-kiddie-park",
+  "name": "Memphis Kiddie Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1952,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Memphis Kiddie Park is a children's amusement park located in Brooklyn, Ohio.  The park opened on May 28, 1952.  It was one of several designed by Stuart Wintner, who also owned a chain of movie theaters.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Memphis_Kiddie_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:36.023Z"
+}

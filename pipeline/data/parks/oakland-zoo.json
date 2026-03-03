@@ -1,0 +1,29 @@
+{
+  "id": "oakland-zoo",
+  "name": "Oakland Zoo",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "9777 Golf Links Rd.\n\nOakland, California 94605",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": "https://www.oaklandzoo.org/",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "The Oakland Zoo is located in the Grass Valley neighborhood of Oakland, California, United States.  Established on June 6, 1922, it is managed by the Conservation Society of California, a 501(c)(3) non-profit organization dedicated to the conservation of wildlife both locally and globally.  The zoo is home to more than 850 native and exotic animals and is a member of the Association of Zoos and Aquariums (AZA).",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Oakland_Zoo_entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Oakland_Zoo",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:34:40.671Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "gero-land",
+  "name": "Gero Land",
+  "formerNames": [],
+  "country": "EG",
+  "countryName": "Egypt",
+  "region": null,
+  "continent": "Africa",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": null,
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": null,
+  "dataSource": [
+    "coaster_derived"
+  ],
+  "lastUpdated": "2026-02-28T23:13:38.115Z"
+}

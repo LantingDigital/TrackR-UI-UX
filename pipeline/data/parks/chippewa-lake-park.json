@@ -1,0 +1,31 @@
+{
+  "id": "chippewa-lake-park",
+  "name": "Chippewa Lake Park",
+  "formerNames": [
+    "Andrew's Pleasure Grounds"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Ohio",
+  "continent": "North America",
+  "city": "Chippewa Lake",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": null,
+  "yearClosed": 1978,
+  "owner": "Edward Andrews (1878-1898) Mac Beach (1898-1937) Parker Beach (1937-1969) Continental Business Enterprises (1969-1978)",
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 3,
+  "description": "Chippewa Lake Park is an abandoned amusement park located in Chippewa Lake, Ohio, Medina County.  It operated from 1878 through 1978, after the final owner, Continental Business Enterprises closed it due to a lack of attendance.  The rides and structures were left largely untouched and unmaintained for over 45 years.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Chippewa_Lake_Park%3B_1950's_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Chippewa_Lake_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:59:44.947Z"
+}

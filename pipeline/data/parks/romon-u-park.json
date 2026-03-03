@@ -1,0 +1,29 @@
+{
+  "id": "romon-u-park",
+  "name": "Romon U-Park",
+  "formerNames": [],
+  "country": "CN",
+  "countryName": "China",
+  "region": null,
+  "continent": "Asia",
+  "city": "820 XiaoGao East Road / 1099 Yinzhou Avenue",
+  "latitude": 29.79941,
+  "longitude": -121.5442,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2015,
+  "yearClosed": null,
+  "owner": "Romon Group",
+  "chain": null,
+  "website": "Official website",
+  "coasterCount": 2,
+  "totalCoasterCount": 2,
+  "description": "Romon U-park is a 200,000 m2 amusement park located in the south of Ningbo, China.  By its size it can be considered one of the largest urban indoor theme parks in the world.  It is funded by the leading Chinese clothing manufacturer Romon Group.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Romon_U-Park_logo.png",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Romon_U-Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:18.378Z"
+}

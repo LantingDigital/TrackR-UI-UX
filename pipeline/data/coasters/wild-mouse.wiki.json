@@ -1,0 +1,54 @@
+{
+  "articleTitle": "Wild Mouse (Lagoon)",
+  "introSection": "Wild Mouse is a steel roller coaster manufactured by Maurer Söhne currently operating at Lagoon Amusement Park in Farmington, Utah.",
+  "sections": [
+    {
+      "title": "Previous Wild Mouse coaster",
+      "content": "A wooden Wild Mouse coaster opened at Lagoon in 1965 after being relocated from the Seattle World's Fair. It was eventually retired in 1971. In 1973, the Wild Mouse roller coaster returned to Lagoon as \"The New Wilder Wild Mouse.\" The new version of the ride was located at the South Midway, in the same location where the current Wild Mouse operates. It featured the same layout as the original Wild Mouse coaster, and was likely the same coaster that opened in 1965. It operated until 1989, when it was permanently retired."
+    },
+    {
+      "title": "Current Wild Mouse",
+      "content": "On April 10, 1998, a new steel Wild Mouse coaster opened. This version featured a similar layout to the original, and was built in the same location as the 1973 version. However, it is an entirely different coaster, built by Maurer Söhne. A themed tunnel was added to the ride in the 2000 season."
+    },
+    {
+      "title": "Layout",
+      "content": "Like many other Wild Mouse roller coasters manufactured by Maurer Söhne, Lagoon's Wild Mouse features a layout that weaves in and out of itself with several hairpin turns and stiff brakes until riders reach the station again to complete the circuit.\n\nWild Mouse originally had a purple and yellow color scheme, but it was repainted green and yellow for the 2013 season. Cars are painted to look like cats or mice to fit the theme of the ride."
+    }
+  ],
+  "fullText": "Wild Mouse is a steel roller coaster manufactured by Maurer Söhne currently operating at Lagoon Amusement Park in Farmington, Utah.\n\n\n\nA wooden Wild Mouse coaster opened at Lagoon in 1965 after being relocated from the Seattle World's Fair. It was eventually retired in 1971. In 1973, the Wild Mouse roller coaster returned to Lagoon as \"The New Wilder Wild Mouse.\" The new version of the ride was located at the South Midway, in the same location where the current Wild Mouse operates. It featured the same layout as the original Wild Mouse coaster, and was likely the same coaster that opened in 1965. It operated until 1989, when it was permanently retired.\n\nOn April 10, 1998, a new steel Wild Mouse coaster opened. This version featured a similar layout to the original, and was built in the same location as the 1973 version. However, it is an entirely different coaster, built by Maurer Söhne. A themed tunnel was added to the ride in the 2000 season.\n\nLike many other Wild Mouse roller coasters manufactured by Maurer Söhne, Lagoon's Wild Mouse features a layout that weaves in and out of itself with several hairpin turns and stiff brakes until riders reach the station again to complete the circuit.\n\nWild Mouse originally had a purple and yellow color scheme, but it was repainted green and yellow for the 2013 season. Cars are painted to look like cats or mice to fit the theme of the ride.\n\n",
+  "categories": [
+    "Lagoon (amusement park)",
+    "1998 establishments in Utah"
+  ],
+  "infoboxRaw": {
+    "name": "Wild Mouse",
+    "image": "Wild Mouse at Lagoon.jpg",
+    "caption": "Wild Mouse in April 2010",
+    "location": "Lagoon Amusement Park",
+    "type2": "Wild Mouse",
+    "opened": "April 10, 1998",
+    "status": "Operating",
+    "manufacturer": "Maurer AG",
+    "designer": "Ing.-Büro Stengel GmbH",
+    "model": "Wild Mouse",
+    "track": "Wild Mouse",
+    "lift": "Chain",
+    "capacity": "900",
+    "length_ft": "1213",
+    "height_ft": "49.3",
+    "inversions": "0",
+    "speed_mph": "28",
+    "duration": "1:10",
+    "trains": "10",
+    "carspertrain": "1",
+    "rowspercar": "2",
+    "ridersperrow": "2",
+    "angle": "46",
+    "restriction_in": "46",
+    "rcdb_number": "507"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Wild_Mouse_(Lagoon)",
+  "wikiPageId": 43401203,
+  "fetchedAt": "2026-02-28T20:14:38.908Z",
+  "articleLength": 1404
+}

@@ -1,0 +1,29 @@
+{
+  "id": "eldridge-park",
+  "name": "Eldridge Park",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "New York",
+  "continent": "North America",
+  "city": "Elmira",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1926,
+  "yearClosed": null,
+  "owner": "City of Elmira",
+  "chain": null,
+  "website": "http://www.eldridgepark.org/",
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Eldridge Park is an amusement park located in Elmira, New York, which opened around the turn of the 20th century.  Covering roughly 15 acre, it is dedicated to the memory of a local physician and is still operating. \n\nThe park includes an 1890s Looff Carousel, an outdoor stage, an extensive network of picnic areas, a wooden roller coaster, a haunted house, a shooting gallery, bumper cars, a boat ride along the park's lake, eateries, a miniature golf course, and a small-gauge train ride through the park, in addition to several other rides and attractions.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Gazebo%2C_Eldridge_Park%2C_Elmira%2C_N.Y%2C_by_J._H._Whitley.jpg",
+  "imageAttribution": "Stereo card of a gazebo at the park",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Eldridge_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:31:00.188Z"
+}

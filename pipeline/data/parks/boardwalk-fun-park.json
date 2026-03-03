@@ -1,0 +1,31 @@
+{
+  "id": "boardwalk-fun-park",
+  "name": "Boardwalk Family Fun Park",
+  "formerNames": [
+    "White Water Grand Prairie"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Texas",
+  "continent": "North America",
+  "city": "Grand Prairie",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "closed",
+  "yearOpened": 1982,
+  "yearClosed": 1992,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "Boardwalk Fun Park was a 28 acre amusement park located in northeast Grand Prairie, Texas near the intersection of Belt Line Road and Interstate 30.  It was originally a water park.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Boardwalk_Fun_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:52.696Z"
+}

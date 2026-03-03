@@ -1,0 +1,29 @@
+{
+  "id": "vid-mpark",
+  "name": "Vidámpark",
+  "formerNames": [],
+  "country": "HU",
+  "countryName": "Hungary",
+  "region": null,
+  "continent": "Europe",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 0,
+  "totalCoasterCount": 1,
+  "description": "The City Park is a public park close to the centre of Budapest, Hungary.  It is a 0. 9 by rectangle, with an area of 302 acre, located in District XIV of Budapest, between Hungária körút, Ajtósi Dürer sor, Vágány utca and Dózsa György út.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/City_Park_(Budapest)",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:33:43.893Z"
+}

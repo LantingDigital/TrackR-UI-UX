@@ -1,0 +1,29 @@
+{
+  "id": "legoland-california",
+  "name": "Legoland California Resort",
+  "formerNames": [],
+  "country": "US",
+  "countryName": "United States",
+  "region": "California",
+  "continent": "North America",
+  "city": "Carlsbad, California",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1999,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Legoland California Resort is a theme park in Carlsbad, California, United States, about 35 miles north of San Diego.  Opening on March 20, 1999, it was the first Legoland park to open outside of Europe.  It has over 60 rides, shows, and attractions, plus a water park, an aquarium and two hotels.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Legolandcaliforniaentrance.JPG",
+  "imageAttribution": "Legoland California main entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_California",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:34.089Z"
+}

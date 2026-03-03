@@ -1,0 +1,29 @@
+{
+  "id": "lagunasia",
+  "name": "Lagunasia",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": null,
+  "latitude": 34.80857,
+  "longitude": -137.27199,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2002,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Lagunasia (ラグナシア) is an amusement park in Gamagōri, Aichi, Japan.  It is home to the Aqua Wind, Pirates' Blast and Stellar roller coasters.  The park was also the first Magiquest live role playing game location outside of the United States.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/LAGUNASIA.jpg",
+  "imageAttribution": "Entry to Lagunasia",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lagunasia",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T22:58:30.703Z"
+}

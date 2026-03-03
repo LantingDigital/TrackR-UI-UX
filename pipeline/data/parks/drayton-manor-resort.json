@@ -1,0 +1,29 @@
+{
+  "id": "drayton-manor-resort",
+  "name": "Drayton Manor Resort",
+  "formerNames": [],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": "United Kingdom",
+  "continent": "Europe",
+  "city": "Drayton Bassett, Tamworth, Staffordshire",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1950,
+  "yearClosed": null,
+  "owner": "Looping Group",
+  "chain": null,
+  "website": "draytonmanor.co.uk",
+  "coasterCount": 3,
+  "totalCoasterCount": 4,
+  "description": "Drayton Manor Resort is a family theme park, zoo and accommodation in the grounds of the former Drayton Manor, in Drayton Bassett, Staffordshire, England, UK.  It covers 180 acre, of which about 113 acre are in use, and hosts about 1. 5 million people each year.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Drayton_Manor_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:44:51.327Z"
+}

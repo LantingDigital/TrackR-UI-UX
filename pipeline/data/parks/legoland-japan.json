@@ -1,0 +1,29 @@
+{
+  "id": "legoland-japan",
+  "name": "Legoland Japan Resort",
+  "formerNames": [],
+  "country": "JP",
+  "countryName": "Japan",
+  "region": null,
+  "continent": "Asia",
+  "city": "Minato-ku, Nagoya",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 2017,
+  "yearClosed": null,
+  "owner": "Merlin Entertainments",
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Legoland Japan Resort (レゴランド・ジャパン) is a theme park in Nagoya, Japan.  Opening on 1 April 2017, it was the first Legoland theme park in Japan and the second in Asia (after the Legoland Malaysia Resort), and the eighth worldwide.  Upon opening, the park was projected to attract over two million visitors every year.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/LEGOLAND_JAPAN_Entrance%2C_Kinjofuto_Minato_Ward_Nagoya_2022.jpg",
+  "imageAttribution": "Entrance",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Legoland_Japan_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:05:21.476Z"
+}

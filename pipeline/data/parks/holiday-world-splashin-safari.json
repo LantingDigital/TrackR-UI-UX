@@ -1,0 +1,31 @@
+{
+  "id": "holiday-world-splashin-safari",
+  "name": "Holiday World & Splashin' Safari",
+  "formerNames": [
+    "Santa Claus Land"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Indiana",
+  "continent": "North America",
+  "city": "Santa Claus, Indiana, U.S.",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1946,
+  "yearClosed": null,
+  "owner": "Koch Development Corporation",
+  "chain": null,
+  "website": null,
+  "coasterCount": 6,
+  "totalCoasterCount": 6,
+  "description": "Holiday World & Splashin' Safari, originally known as Santa Claus Land, is a theme park and water park located in Santa Claus, Indiana.  The park opened in 1946 and features rides, live entertainment, and games.  It is divided into four sections that celebrate Christmas, Halloween, Thanksgiving, and the Fourth of July.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Holiday_World_%26_Splashin'_Safari",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:46:02.483Z"
+}

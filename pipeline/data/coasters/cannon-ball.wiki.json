@@ -1,0 +1,49 @@
+{
+  "articleTitle": "Cannon Ball (roller coaster)",
+  "introSection": "Cannon Ball is a wooden roller coaster at Lake Winnepesaukah amusement park. Designed by John C. Allen and built by Philadelphia Toboggan Company (today called Philadelphia Toboggan Coasters), the roller coaster opened in 1967 and quickly became one of the signature attractions at the park. It is one of two roller coasters at the park.",
+  "sections": [
+    {
+      "title": "External links",
+      "content": "\n * Lake Winnepesaukah Amusement Park"
+    }
+  ],
+  "fullText": "Cannon Ball is a wooden roller coaster at Lake Winnepesaukah amusement park. Designed by John C. Allen and built by Philadelphia Toboggan Company (today called Philadelphia Toboggan Coasters), the roller coaster opened in 1967 and quickly became one of the signature attractions at the park. It is one of two roller coasters at the park.\n\n\n\n\n * Lake Winnepesaukah Amusement Park",
+  "categories": [
+    "Wooden roller coasters",
+    "Roller coasters in Georgia (U.S. state)",
+    "Roller coasters opened in 1967"
+  ],
+  "infoboxRaw": {
+    "name": "Cannon Ball",
+    "image": "The Cannon Ball - Lake Winnepesaukah Amusement Park - Lakeview, Georgia.jpg",
+    "imagedimensions": "300px",
+    "caption": "Cannon Ball",
+    "location": "Lake Winnepesaukah",
+    "coordinates": "34.97482°N, -85.2485°W",
+    "status": "Operating",
+    "opened": "1967",
+    "year": "1967",
+    "manufacturer": "Philadelphia Toboggan Coasters",
+    "designer": "John C. Allen",
+    "track": "Out and back",
+    "lift": "Chain lift hill",
+    "height_ft": "70",
+    "drop_ft": "70",
+    "length_ft": "2272",
+    "speed_mph": "50",
+    "inversions": "0",
+    "duration": "1:32",
+    "angle": "45",
+    "restriction_in": "48",
+    "trains": "2",
+    "carspertrain": "3",
+    "rowspercar": "3",
+    "ridersperrow": "2",
+    "transfer_accessible": "yes",
+    "rcdb_number": "348"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Cannon_Ball_(roller_coaster)",
+  "wikiPageId": 20172177,
+  "fetchedAt": "2026-02-28T20:15:53.860Z",
+  "articleLength": 378
+}

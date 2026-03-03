@@ -1,0 +1,31 @@
+{
+  "id": "harbour-park",
+  "name": "Harbour Park",
+  "formerNames": [
+    "Butlin's Park  Smart's Amusement Park"
+  ],
+  "country": "GB",
+  "countryName": "United Kingdom",
+  "region": null,
+  "continent": "Europe",
+  "city": "Littlehampton",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1932,
+  "yearClosed": null,
+  "owner": "Wes Smart and Ash Smart",
+  "chain": null,
+  "website": "harbourpark.com",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Harbour Park, is a free to enter children's amusement park with rides open seasonally on the coastal resort of Littlehampton, West Sussex, England, check Harbour Park's website before visiting for ride open dates.  Opened in 1932, it is situated on the beach, adjacent to the working Harbour & Marina.  The park features traditional rides plus other modern attractions and is aimed at primary school children and families.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/%5B%5BImage%3AHarbour_park.jpg%7C220px%5D%5D",
+  "imageAttribution": "Harbour Park logo",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Harbour_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:39:57.945Z"
+}

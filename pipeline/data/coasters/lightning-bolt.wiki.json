@@ -1,0 +1,45 @@
+{
+  "articleTitle": "Lightning Bolt (roller coaster)",
+  "introSection": "Lightning Bolt was a steel family roller coaster that operated at MGM Grand Adventures Theme Park in Paradise, Nevada until the park's closure in 2000. Manufactured by Intamin, the ride opened at the park in 1993 as an indoor roller coaster before being renovated in 1997 and expanded outdoors.",
+  "sections": [
+    {
+      "title": "History",
+      "content": "In 1993, Lightning Bolt first opened during the grand opening of MGM Grand Adventures Theme Park. The ride was classified as an indoor roller coaster, as it never traveled outside. In 1997, the ride was renovated and expanded outdoors, adding a second lift hill and expanding the overall length of the roller coaster from 1,100 feet to 2,400 feet."
+    },
+    {
+      "title": "Closure",
+      "content": "In September of 2002, it was announced that MGM Grand Adventures Theme Park, along with all of its rides, would be closed to make space for condos and a swimming pool. Lightning Bolt was taken down piece by piece as it would be attempted to be relocated to Granite Park in Fresno, California before that theme park closed as well. The roller coaster sat there for years before finally being scrapped sometime after 2010."
+    }
+  ],
+  "fullText": "Lightning Bolt was a steel family roller coaster that operated at MGM Grand Adventures Theme Park in Paradise, Nevada until the park's closure in 2000. Manufactured by Intamin, the ride opened at the park in 1993 as an indoor roller coaster before being renovated in 1997 and expanded outdoors.\n\nIn 1993, Lightning Bolt first opened during the grand opening of MGM Grand Adventures Theme Park. The ride was classified as an indoor roller coaster, as it never traveled outside. In 1997, the ride was renovated and expanded outdoors, adding a second lift hill and expanding the overall length of the roller coaster from 1,100 feet to 2,400 feet.\n\nIn September of 2002, it was announced that MGM Grand Adventures Theme Park, along with all of its rides, would be closed to make space for condos and a swimming pool. Lightning Bolt was taken down piece by piece as it would be attempted to be relocated to Granite Park in Fresno, California before that theme park closed as well. The roller coaster sat there for years before finally being scrapped sometime after 2010.",
+  "categories": [
+    "Former roller coasters in Nevada"
+  ],
+  "infoboxRaw": {
+    "coordinates": "36.10739°N, -115.16669°W",
+    "designer": "Ing.-Büro Stengel GmbH",
+    "drop_ft": "60",
+    "length_ft": "2400",
+    "height_ft": "69.0",
+    "inversions": "0",
+    "lift": "2 lift hills",
+    "location": "MGM Grand Adventures Theme Park",
+    "manufacturer": "Intamin",
+    "model": "Family roller coaster",
+    "name": "Lightning Bolt",
+    "opened": "1993",
+    "rcdb_number": "105",
+    "speed_mph": "35",
+    "status": "Removed",
+    "type2": "Steel",
+    "carspertrain": "10",
+    "ridersperrow": "2",
+    "rowspercar": "1",
+    "trains": "2",
+    "closed": "September 4, 2000"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Lightning_Bolt_(roller_coaster)",
+  "wikiPageId": 61864019,
+  "fetchedAt": "2026-02-28T20:16:57.499Z",
+  "articleLength": 1065
+}

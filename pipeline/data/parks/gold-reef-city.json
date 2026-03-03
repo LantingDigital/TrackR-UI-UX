@@ -1,0 +1,29 @@
+{
+  "id": "gold-reef-city",
+  "name": "Gold Reef City",
+  "formerNames": [],
+  "country": "ZA",
+  "countryName": "South Africa",
+  "region": null,
+  "continent": "Africa",
+  "city": "Johannesburg",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1987,
+  "yearClosed": null,
+  "owner": "Tsogo Sun",
+  "chain": null,
+  "website": "www.goldreefcity.co.za/",
+  "coasterCount": 3,
+  "totalCoasterCount": 3,
+  "description": "Gold Reef City is an amusement park in Johannesburg, South Africa.  Located on an old gold mine which closed in 1971, the park is themed around the gold rush that started in 1886 on the Witwatersrand, and the buildings in the park are designed to mimic this period.  There is a museum dedicated to gold mining on the grounds where it is possible to see a gold-containing ore vein and see how gold is poured into barrels.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/20080216_97_Johannesburg_Gold_Reef_City.jpg",
+  "imageAttribution": "View from the Giant Wheel to the Jozi Express, with the city in the background",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Gold_Reef_City",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T23:27:41.866Z"
+}

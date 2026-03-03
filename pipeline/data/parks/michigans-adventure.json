@@ -1,0 +1,32 @@
+{
+  "id": "michigans-adventure",
+  "name": "Michigan's Adventure",
+  "formerNames": [
+    "Deer Park",
+    "Deer Park Funland"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Michigan",
+  "continent": "North America",
+  "city": "Muskegon",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1956,
+  "yearClosed": null,
+  "owner": "Six Flags",
+  "chain": null,
+  "website": "http://www.sixflags.com/miadventure",
+  "coasterCount": 7,
+  "totalCoasterCount": 7,
+  "description": "Michigan's Adventure is a 250 acre amusement park in Muskegon County, Michigan, about halfway between Muskegon and Whitehall.  It is the largest amusement park in the state and has been owned and operated by Six Flags since 2024, after its merger with Cedar Fair.  As of 2024, Michigan's Adventure has over 60 rides, slides and attractions, more than any other park in the state.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Michigans_Adventure_entrance.jpg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Michigan's_Adventure",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:31.386Z"
+}

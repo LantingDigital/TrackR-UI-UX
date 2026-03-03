@@ -1,0 +1,29 @@
+{
+  "id": "sea-world",
+  "name": "Sea World",
+  "formerNames": [],
+  "country": "AU",
+  "countryName": "Australia",
+  "region": "Australia",
+  "continent": "Oceania",
+  "city": null,
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": null,
+  "chain": null,
+  "website": null,
+  "coasterCount": 1,
+  "totalCoasterCount": 3,
+  "description": "Sea World, Seaworld, SeaWorld may mean:\n\n\n * Sea World (Australia), a marine theme park in Main Beach, Gold Coast, Australia\n * Sea World Helicopters, a company associated with the theme park that operated the helicopters involved in the 2023 Gold Coast mid-air collision\n * Sea World (Shenzhen), a tourist attraction in Shenzhen, China\n * Sea World Ancol, a marine aquarium tourist attraction in North Jakarta, Indonesia\n * SeaWorld, a U. S.",
+  "imageUrl": null,
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Sea_World",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:57:39.713Z"
+}

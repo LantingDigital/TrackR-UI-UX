@@ -1,0 +1,31 @@
+{
+  "id": "bay-beach-amusement-park",
+  "name": "Bay Beach Amusement Park",
+  "formerNames": [
+    "Bay View Beach"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Wisconsin",
+  "continent": "North America",
+  "city": "1313 Bay Beach Road",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": null,
+  "yearClosed": null,
+  "owner": "City of Green Bay, Wisconsin",
+  "chain": null,
+  "website": "https://greenbaywi.gov/445/Bay-Beach",
+  "coasterCount": 1,
+  "totalCoasterCount": 1,
+  "description": "Bay Beach is a municipal amusement park in Green Bay, Wisconsin.  Situated near the mouth of the Fox River, on the east bank as it flows into Green Bay, the park contains rides, concessions, a roller coaster, and a food pavilion.  Dances, movies, and other events are held in a pavilion.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Bay_Beach_Train_Depot.jpg",
+  "imageAttribution": "Train depot",
+  "wikiUrl": "https://en.wikipedia.org/wiki/Bay_Beach_Amusement_Park",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:47:39.866Z"
+}

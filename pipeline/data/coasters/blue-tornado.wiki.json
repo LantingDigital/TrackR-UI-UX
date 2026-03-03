@@ -1,0 +1,53 @@
+{
+  "articleTitle": "Blue Tornado (roller coaster)",
+  "introSection": "Blue Tornado is an inverted roller coaster at Gardaland, Castelnuovo del Garda, outside Verona, Italy. It is an extended standard model, with additional helix, of the Suspended Looping Coaster manufactured by Vekoma. The ride's highest force is at 4.5G's during the sidewinder inversion. A model Panavia Tornado fighter jet is seen on top of the station for decorative purposes.",
+  "sections": [
+    {
+      "title": "Accidents and incidents",
+      "content": "In August 1999, a 17-year-old boy from Treviso, Italy died of a heart attack while riding the roller coaster. It was later proven that the boy suffered a life threatening heart disease.\n\nOn May 10, 2001, a 15-year-old boy from Germany also died of a heart attack while on the ride. The 15-year-old suffered from a lifelong heart condition and according to reports, ignored advice from friends and signs not to board the ride if suffering from a heart condition."
+    },
+    {
+      "title": "External links",
+      "content": "\n * http://www.gardaland.it/en/attrazioni/blu_tornado/"
+    }
+  ],
+  "fullText": "Blue Tornado is an inverted roller coaster at Gardaland, Castelnuovo del Garda, outside Verona, Italy. It is an extended standard model, with additional helix, of the Suspended Looping Coaster manufactured by Vekoma. The ride's highest force is at 4.5G's during the sidewinder inversion. A model Panavia Tornado fighter jet is seen on top of the station for decorative purposes.\n\nIn August 1999, a 17-year-old boy from Treviso, Italy died of a heart attack while riding the roller coaster. It was later proven that the boy suffered a life threatening heart disease.\n\nOn May 10, 2001, a 15-year-old boy from Germany also died of a heart attack while on the ride. The 15-year-old suffered from a lifelong heart condition and according to reports, ignored advice from friends and signs not to board the ride if suffering from a heart condition.\n\n\n * http://www.gardaland.it/en/attrazioni/blu_tornado/",
+  "categories": [
+    "Gardaland rides",
+    "Roller coasters in Italy",
+    "Roller coasters operated by Merlin Entertainments",
+    "Roller coasters opened in 1998"
+  ],
+  "infoboxRaw": {
+    "name": "Blue Tornado",
+    "image": "BlueTornado.jpg",
+    "caption": "The ride photo taken from Flying Island.",
+    "location": "Gardaland",
+    "type2": "Inverted",
+    "opened": "1998",
+    "status": "Open",
+    "manufacturer": "Vekoma",
+    "model": "Suspended Looping Coaster (765m Extended w/ Helix)",
+    "designer": "Vekoma",
+    "capacity": "1500",
+    "length_ft": "2509",
+    "height_ft": "108.27",
+    "drop_ft": "98.43",
+    "inversions": "5",
+    "speed_mph": "49.7",
+    "duration": "1 min 42 sec",
+    "angle": "59",
+    "gforce": "4.5",
+    "restriction_in": "55-78.75",
+    "trains": "3",
+    "carspertrain": "10",
+    "ridersperrow": "2",
+    "rowspercar": "1",
+    "rcdb_number": "961",
+    "coordinates": "45.4566°N, 10.71366°W"
+  },
+  "wikiUrl": "https://en.wikipedia.org/wiki/Blue_Tornado_(roller_coaster)",
+  "wikiPageId": 5767821,
+  "fetchedAt": "2026-02-28T20:55:59.282Z",
+  "articleLength": 897
+}

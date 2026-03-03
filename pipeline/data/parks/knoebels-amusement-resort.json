@@ -1,0 +1,32 @@
+{
+  "id": "knoebels-amusement-resort",
+  "name": "Knoebels Amusement Resort",
+  "formerNames": [
+    "Knoebels Grove",
+    "Knoebels Amusement Park"
+  ],
+  "country": "US",
+  "countryName": "United States",
+  "region": "Pennsylvania",
+  "continent": "North America",
+  "city": "Elysburg",
+  "latitude": null,
+  "longitude": null,
+  "address": null,
+  "status": "operating",
+  "yearOpened": 1926,
+  "yearClosed": null,
+  "owner": "Knoebel family",
+  "chain": null,
+  "website": null,
+  "coasterCount": 4,
+  "totalCoasterCount": 5,
+  "description": "Knoebels Amusement Resort is a family-owned and operated amusement park, picnic grove, and campground in Elysburg, Pennsylvania.  Opened in 1926, it is the United States's largest free-admission park.  The park has more than 60 rides including three wooden roller coasters, three steel roller coasters, a 1913 carousel, and two haunted house dark rides.",
+  "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Knoebels_Amusement_Resort_logo.svg",
+  "imageAttribution": null,
+  "wikiUrl": "https://en.wikipedia.org/wiki/Knoebels_Amusement_Resort",
+  "dataSource": [
+    "wikipedia"
+  ],
+  "lastUpdated": "2026-02-28T20:45:13.385Z"
+}
