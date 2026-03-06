@@ -98,6 +98,7 @@ interface SearchModalProps {
   onInputFocus?: () => void; // Called when search input is focused
   onQueryChange?: (query: string) => void; // Called when search query changes (for dropdown autocomplete)
   externalQuery?: string; // Query text from external source (for split rendering sync)
+  onRideLongPress?: (item: SearchableItem) => void; // Called when user long-presses a search result
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
@@ -118,6 +119,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onInputFocus,
   onQueryChange,
   externalQuery,
+  onRideLongPress,
 }) => {
   const insets = useSafeAreaInsets();
   const [searchQuery, setSearchQuery] = useState('');
@@ -210,14 +212,17 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   const sectionAnimatedStyles = [sectionAnimStyle0, sectionAnimStyle1, sectionAnimStyle2, sectionAnimStyle3];
 
-  // Reset search query when becoming visible (embedded mode)
+  // Reset search query when modal opens (embedded mode)
   // Note: We no longer auto-focus the input - user must tap to enter focus mode
+  // onQueryChange intentionally omitted from deps — it's a callback, not data.
+  // Including it causes the query to clear on every parent re-render.
   useEffect(() => {
     if (visible && isEmbedded) {
       setSearchQuery('');
-      onQueryChange?.(''); // Reset parent's query state too
+      onQueryChange?.('');
     }
-  }, [visible, isEmbedded, onQueryChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible, isEmbedded]);
 
   // Simple close handler - NO animation logic, just calls parent's onClose
   // HomeScreen handles all animation orchestration
@@ -447,6 +452,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                         >
                           <Pressable
                             onPress={() => handleResultPress(hero)}
+                            onLongPress={() => onRideLongPress?.(hero)}
                             style={styles.heroCard}
                           >
                             <View style={styles.heroHeader}>
@@ -533,6 +539,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                           >
                             <Pressable
                               onPress={() => handleResultPress(item)}
+                              onLongPress={() => onRideLongPress?.(item)}
                               style={[
                                 styles.compactRow,
                                 index < Math.min(autocompleteResults.length - 2, 5) && styles.compactRowBorder,
@@ -1010,12 +1017,11 @@ const styles = StyleSheet.create({
   heroTapHint: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginTop: 10,
     gap: 2,
+    marginTop: 12,
   },
   heroTapHintText: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '500',
     color: '#AAAAAA',
   },

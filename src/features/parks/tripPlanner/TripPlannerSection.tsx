@@ -1,8 +1,8 @@
 // ============================================
-// Trip Planner Section v2
+// Trip Planner Section v4
 //
-// Parks tab card showing trip planner status.
-// Displays mode badge, pace indicator when active.
+// Parks tab card. Idle: "Plan your visit".
+// Active: progress + pace delta.
 // ============================================
 
 import React from 'react';
@@ -42,24 +42,20 @@ export function TripPlannerSection({ currentPlan, paceSnapshot, onPress }: TripP
     currentPlan.status === 'paused'
   );
 
-  // Compute progress
   const completedStops = isActive
     ? currentPlan.stops.filter((s) => s.state === 'done' || s.state === 'skipped').length
     : 0;
   const totalStops = isActive ? currentPlan.stops.length : 0;
   const progress = totalStops > 0 ? completedStops / totalStops : 0;
 
-  // Remaining time estimate
   const remainingMin = isActive
     ? estimateTotalMin(currentPlan.stops.filter((s) => s.state === 'pending' || s.state === 'walking' || s.state === 'in_line'))
     : 0;
 
-  // Mode display
   const modeLabel = isActive
     ? currentPlan.mode === 'speed_run' ? 'Speed Run' : 'Concierge'
     : null;
 
-  // Status text
   const statusLabel = isActive && currentPlan.status === 'paused' ? 'Paused' : null;
 
   return (

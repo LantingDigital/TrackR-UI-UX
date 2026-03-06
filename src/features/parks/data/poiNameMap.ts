@@ -120,6 +120,22 @@ export function getPOIById(id: string): ParkPOI | null {
 }
 
 // ============================================
+// POI Lookup by Coaster Index ID
+// ============================================
+
+const POI_BY_COASTER_ID = new Map<string, ParkPOI>();
+for (const poi of KNOTTS_POI) {
+  if (poi.coasterId) {
+    POI_BY_COASTER_ID.set(poi.coasterId, poi);
+  }
+}
+
+/** Look up a ParkPOI by its coaster index ID (reverse of coasterId → POI) */
+export function getPOIByCoasterId(coasterId: string): ParkPOI | null {
+  return POI_BY_COASTER_ID.get(coasterId) ?? null;
+}
+
+// ============================================
 // Wait Time ID Resolution
 // ============================================
 

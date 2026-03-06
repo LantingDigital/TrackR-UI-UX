@@ -17,6 +17,7 @@ import {
   FlatList,
   Pressable,
   Dimensions,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
@@ -26,7 +27,9 @@ import Animated, {
   withDelay,
   withSpring,
   interpolate,
+  interpolateColor,
   FadeIn,
+  type SharedValue,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
@@ -44,17 +47,22 @@ import {
   getUnratedCoasters,
   getRatingForCoaster,
   hasLogForCoaster,
+  updateLogTimestamp,
+  deleteLog,
   useRideLogStore,
 } from '../stores/rideLogStore';
 import { COASTER_BY_ID } from '../data/coasterIndex';
 import { CARD_ART, getRarityFromRank, type CardRarity } from '../data/cardArt';
 import { CoasterCard, type CoasterStats } from '../components/CoasterCard';
+import { CardActionSheet, type CardActionTarget } from '../components/CardActionSheet';
 import { RatingSheet } from '../components/RatingSheet';
+import { TimelineActionSheet, type TimelineActionTarget } from '../components/TimelineActionSheet';
 import type { RideLog, CoasterRating } from '../types/rideLog';
+import { useTourTarget, emitTourEvent } from '../features/tour';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
-const VIEWS = ['Timeline', 'Collection', 'Stats'] as const;
+const VIEWS = ['Timeline', 'Collection', 'Stats', 'Pending'] as const;
 type ViewMode = (typeof VIEWS)[number];
 
 const MAX_STAGGER = 6;
@@ -118,10 +126,37 @@ function getCoasterStats(coasterId: string): CoasterStats | undefined {
 
 const SEGMENT_COUNT = VIEWS.length;
 
+/** Per-label animated color that crossfades as the pill slides */
+const SegmentLabel: React.FC<{
+  view: ViewMode;
+  index: number;
+  indicatorX: SharedValue<number>;
+  showDot: boolean;
+}> = ({ view, index, indicatorX, showDot }) => {
+  const colorStyle = useAnimatedStyle(() => {
+    const color = interpolateColor(
+      indicatorX.value,
+      [index - 1, index, index + 1],
+      [colors.text.secondary, colors.text.inverse, colors.text.secondary],
+    );
+    return { color };
+  });
+
+  return (
+    <View style={styles.segmentLabelWrap}>
+      <Animated.Text style={[styles.segmentLabel, colorStyle]}>
+        {view}
+      </Animated.Text>
+      {showDot && <View style={styles.pendingDot} />}
+    </View>
+  );
+};
+
 const SegmentedControl: React.FC<{
   selected: ViewMode;
   onSelect: (view: ViewMode) => void;
-}> = ({ selected, onSelect }) => {
+  unratedCount?: number;
+}> = ({ selected, onSelect, unratedCount = 0 }) => {
   const activeIndex = VIEWS.indexOf(selected);
   const indicatorX = useSharedValue(activeIndex);
 
@@ -133,13 +168,7 @@ const SegmentedControl: React.FC<{
     });
   }, [selected]);
 
-  const indicatorStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: indicatorX.value * (1 / SEGMENT_COUNT) * 100 + '%' as any }],
-    width: `${100 / SEGMENT_COUNT}%` as any,
-  }));
-
-  // Workaround: Reanimated percentage transforms can be tricky.
-  // Instead, use layout-based approach with onLayout.
+  // Layout-based pill positioning
   const [containerWidth, setContainerWidth] = React.useState(0);
   const pillWidth = containerWidth > 0 ? (containerWidth - spacing.xs * 2) / SEGMENT_COUNT : 0;
 
@@ -161,8 +190,9 @@ const SegmentedControl: React.FC<{
       <Animated.View style={[styles.segmentIndicator, indicatorLayoutStyle]} />
 
       {/* Labels */}
-      {VIEWS.map((view) => {
+      {VIEWS.map((view, i) => {
         const isActive = view === selected;
+        const showDot = view === 'Pending' && unratedCount > 0 && !isActive;
         return (
           <Pressable
             key={view}
@@ -172,14 +202,12 @@ const SegmentedControl: React.FC<{
               onSelect(view);
             }}
           >
-            <Text
-              style={[
-                styles.segmentLabel,
-                isActive && styles.segmentLabelActive,
-              ]}
-            >
-              {view}
-            </Text>
+            <SegmentLabel
+              view={view}
+              index={i}
+              indicatorX={indicatorX}
+              showDot={showDot}
+            />
           </Pressable>
         );
       })}
@@ -215,12 +243,14 @@ const TimelineEntryRow = memo(
     isLast,
     rating,
     onPress,
+    onLongPress,
   }: {
     log: RideLog;
     index: number;
     isLast: boolean;
     rating?: CoasterRating;
     onPress: (log: RideLog) => void;
+    onLongPress?: (log: RideLog) => void;
   }) => {
     const progress = useSharedValue(0);
 
@@ -239,7 +269,11 @@ const TimelineEntryRow = memo(
       : null;
 
     return (
-      <Pressable onPress={() => onPress(log)}>
+      <Pressable
+        onPress={() => onPress(log)}
+        onLongPress={() => onLongPress?.(log)}
+        delayLongPress={400}
+      >
         <Animated.View style={[styles.timelineEntry, animStyle]}>
           {/* Dot + line */}
           <View style={styles.dotColumn}>
@@ -285,7 +319,8 @@ const TimelineView: React.FC<{
   logs: RideLog[];
   ratings: Record<string, CoasterRating>;
   onEntryPress: (log: RideLog) => void;
-}> = ({ logs, ratings, onEntryPress }) => {
+  onEntryLongPress?: (log: RideLog) => void;
+}> = ({ logs, ratings, onEntryPress, onEntryLongPress }) => {
   const groups = useMemo(() => groupLogsByDate(logs), [logs]);
 
   if (logs.length === 0) {
@@ -316,6 +351,7 @@ const TimelineView: React.FC<{
               isLast={gi === groups.length - 1 && ei === group.entries.length - 1}
               rating={ratings[log.coasterId]}
               onPress={onEntryPress}
+              onLongPress={onEntryLongPress}
             />
           ))}
         </View>
@@ -343,8 +379,10 @@ interface CollectionItem {
 
 const CollectionView: React.FC<{
   items: CollectionItem[];
-  onCardPress: (item: CollectionItem) => void;
-}> = ({ items, onCardPress }) => {
+  onCardPress?: (item: CollectionItem) => void;
+  onCardLongPress?: (item: CollectionItem) => void;
+  pendingFlipId?: string | null;
+}> = ({ items, onCardPress, onCardLongPress, pendingFlipId }) => {
   if (items.length === 0) {
     return (
       <View style={styles.emptyState}>
@@ -378,7 +416,8 @@ const CollectionView: React.FC<{
             rating={item.rating}
             stats={item.stats}
             size="small"
-            onPress={() => onCardPress(item)}
+            onLongPress={() => onCardLongPress?.(item)}
+            triggerFlip={pendingFlipId === item.coasterId}
           />
         </Animated.View>
       )}
@@ -479,10 +518,76 @@ const StatsView: React.FC<{
   </View>
 );
 
+// ─── Pending View ────────────────────────────────────────────
+
+interface PendingItem {
+  coasterId: string;
+  coasterName: string;
+  parkName: string;
+  rarity: CardRarity;
+  stats?: CoasterStats;
+  artSource?: any;
+}
+
+const PendingView: React.FC<{
+  items: PendingItem[];
+  onCardTap: (item: PendingItem) => void;
+}> = ({ items, onCardTap }) => {
+  if (items.length === 0) {
+    return (
+      <View style={styles.emptyState}>
+        <Ionicons name="checkmark-circle-outline" size={44} color="#4CAF50" />
+        <Text style={styles.emptyTitle}>All caught up!</Text>
+        <Text style={styles.emptySubtitle}>
+          Every ride has been rated
+        </Text>
+      </View>
+    );
+  }
+
+  return (
+    <FlatList
+      data={items}
+      numColumns={2}
+      keyExtractor={(item) => item.coasterId}
+      columnWrapperStyle={styles.collectionRow}
+      contentContainerStyle={styles.collectionContent}
+      showsVerticalScrollIndicator={false}
+      scrollEnabled={false}
+      renderItem={({ item, index }) => (
+        <Animated.View
+          entering={FadeIn.delay(Math.min(index, MAX_STAGGER) * 60).duration(200)}
+          style={{ width: CARD_WIDTH }}
+        >
+          <View style={{ position: 'relative' }}>
+            <View pointerEvents="none">
+              <CoasterCard
+                coasterId={item.coasterId}
+                coasterName={item.coasterName}
+                parkName={item.parkName}
+                artSource={item.artSource}
+                isUnlocked={true}
+                rarity={item.rarity}
+                stats={item.stats}
+                size="small"
+              />
+            </View>
+            <Pressable
+              style={StyleSheet.absoluteFill}
+              onPress={() => onCardTap(item)}
+            />
+          </View>
+        </Animated.View>
+      )}
+    />
+  );
+};
+
 // ─── Main Screen ────────────────────────────────────────────
 
 export const LogbookScreen = () => {
   const insets = useSafeAreaInsets();
+  const segmentedTourRef = useTourTarget('logbook-segmented-control');
   const [activeView, setActiveView] = useState<ViewMode>('Timeline');
   const headerProgress = useSharedValue(0);
 
@@ -494,6 +599,15 @@ export const LogbookScreen = () => {
     parkName: string;
   } | null>(null);
   const [ratingExisting, setRatingExisting] = useState<CoasterRating | undefined>();
+
+  // Card action sheet state
+  const [actionTarget, setActionTarget] = useState<CardActionTarget | null>(null);
+  const [actionSheetVisible, setActionSheetVisible] = useState(false);
+  const [pendingFlipId, setPendingFlipId] = useState<string | null>(null);
+
+  // Timeline action sheet state
+  const [timelineActionTarget, setTimelineActionTarget] = useState<TimelineActionTarget | null>(null);
+  const [timelineActionVisible, setTimelineActionVisible] = useState(false);
 
   // Subscribe to store for reactivity
   const { logs, ratings, creditCount, totalRideCount } = useRideLogStore();
@@ -588,7 +702,36 @@ export const LogbookScreen = () => {
     return unlocked;
   }, [logs, ratingsMap]);
 
+  // ── Pending (unrated) items ──
+  const toRateItems = useMemo((): PendingItem[] => {
+    return getUnratedCoasters().map((c) => {
+      const coasterData = COASTER_BY_ID[c.coasterId];
+      const rank = coasterData?.popularityRank ?? 9999;
+      return {
+        coasterId: c.coasterId,
+        coasterName: c.coasterName,
+        parkName: c.parkName,
+        rarity: getRarityFromRank(rank),
+        stats: getCoasterStats(c.coasterId),
+        artSource: CARD_ART[c.coasterId],
+      };
+    });
+  }, [logs, ratingsMap]);
+
+  const unratedCount = toRateItems.length;
+
   // ── Handlers ──
+
+  const handlePendingCardTap = useCallback((item: PendingItem) => {
+    haptics.select();
+    setRatingTarget({
+      id: item.coasterId,
+      name: item.coasterName,
+      parkName: item.parkName,
+    });
+    setRatingExisting(undefined);
+    setRatingVisible(true);
+  }, []);
 
   const handleEntryPress = useCallback((log: RideLog) => {
     haptics.select();
@@ -601,18 +744,39 @@ export const LogbookScreen = () => {
     setRatingVisible(true);
   }, []);
 
-  const handleCardPress = useCallback((item: CollectionItem) => {
-    if (!item.isUnlocked) {
-      haptics.tap();
-      return;
-    }
-    haptics.select();
-    setRatingTarget({
-      id: item.coasterId,
-      name: item.coasterName,
+  const handleCardLongPress = useCallback((item: CollectionItem) => {
+    setActionTarget({
+      coasterId: item.coasterId,
+      coasterName: item.coasterName,
       parkName: item.parkName,
+      rarity: item.rarity,
+      rating: item.rating,
     });
-    setRatingExisting(item.rating);
+    setActionSheetVisible(true);
+  }, []);
+
+  const handleActionClose = useCallback(() => {
+    setActionSheetVisible(false);
+    setActionTarget(null);
+  }, []);
+
+  const handleActionViewDetails = useCallback((target: CardActionTarget) => {
+    setActionSheetVisible(false);
+    setActionTarget(null);
+    setPendingFlipId(target.coasterId);
+    // Clear after a tick so the prop resets for future taps
+    setTimeout(() => setPendingFlipId(null), 600);
+  }, []);
+
+  const handleActionRate = useCallback((target: CardActionTarget) => {
+    setActionSheetVisible(false);
+    setActionTarget(null);
+    setRatingTarget({
+      id: target.coasterId,
+      name: target.coasterName,
+      parkName: target.parkName,
+    });
+    setRatingExisting(target.rating);
     setRatingVisible(true);
   }, []);
 
@@ -626,6 +790,59 @@ export const LogbookScreen = () => {
     setRatingVisible(false);
     setRatingTarget(null);
     setRatingExisting(undefined);
+  }, []);
+
+  // ── Timeline action sheet handlers ──
+
+  const handleEntryLongPress = useCallback((log: RideLog) => {
+    haptics.select();
+    setTimelineActionTarget({
+      logId: log.id,
+      coasterId: log.coasterId,
+      coasterName: log.coasterName,
+      parkName: log.parkName,
+      timestamp: log.timestamp,
+      isRated: !!ratingsMap[log.coasterId],
+    });
+    setTimelineActionVisible(true);
+  }, [ratingsMap]);
+
+  const handleTimelineActionClose = useCallback(() => {
+    setTimelineActionVisible(false);
+    setTimelineActionTarget(null);
+  }, []);
+
+  const handleTimelineEditDate = useCallback((logId: string, newTimestamp: string) => {
+    updateLogTimestamp(logId, newTimestamp);
+  }, []);
+
+  const handleTimelineEditRating = useCallback((target: TimelineActionTarget) => {
+    setTimelineActionVisible(false);
+    setTimelineActionTarget(null);
+    setRatingTarget({
+      id: target.coasterId,
+      name: target.coasterName,
+      parkName: target.parkName,
+    });
+    setRatingExisting(getRatingForCoaster(target.coasterId));
+    setRatingVisible(true);
+  }, []);
+
+  const handleTimelineDelete = useCallback((target: TimelineActionTarget) => {
+    setTimelineActionVisible(false);
+    setTimelineActionTarget(null);
+    Alert.alert(
+      'Delete Ride',
+      `Remove this ride on ${target.coasterName}? This cannot be undone.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: () => deleteLog(target.logId),
+        },
+      ],
+    );
   }, []);
 
   return (
@@ -658,7 +875,9 @@ export const LogbookScreen = () => {
         </Animated.View>
 
         {/* Segmented Control */}
-        <SegmentedControl selected={activeView} onSelect={setActiveView} />
+        <View ref={segmentedTourRef} collapsable={false}>
+          <SegmentedControl selected={activeView} onSelect={(v: ViewMode) => { setActiveView(v); emitTourEvent({ type: 'segmentedControl:changed', segment: v }); }} unratedCount={unratedCount} />
+        </View>
 
         {/* View content */}
         {activeView === 'Timeline' && (
@@ -666,13 +885,15 @@ export const LogbookScreen = () => {
             logs={sortedLogs}
             ratings={ratingsMap}
             onEntryPress={handleEntryPress}
+            onEntryLongPress={handleEntryLongPress}
           />
         )}
 
         {activeView === 'Collection' && (
           <CollectionView
             items={collectionItems}
-            onCardPress={handleCardPress}
+            onCardLongPress={handleCardLongPress}
+            pendingFlipId={pendingFlipId}
           />
         )}
 
@@ -685,7 +906,23 @@ export const LogbookScreen = () => {
             mostRidden={mostRidden}
           />
         )}
+
+        {activeView === 'Pending' && (
+          <PendingView
+            items={toRateItems}
+            onCardTap={handlePendingCardTap}
+          />
+        )}
       </Animated.ScrollView>
+
+      {/* Card Action Sheet */}
+      <CardActionSheet
+        target={actionTarget}
+        visible={actionSheetVisible}
+        onClose={handleActionClose}
+        onViewDetails={handleActionViewDetails}
+        onRate={handleActionRate}
+      />
 
       {/* Rating Sheet */}
       <RatingSheet
@@ -696,6 +933,16 @@ export const LogbookScreen = () => {
         existingRating={ratingExisting}
         onClose={handleRatingClose}
         onComplete={handleRatingComplete}
+      />
+
+      {/* Timeline Action Sheet */}
+      <TimelineActionSheet
+        target={timelineActionTarget}
+        visible={timelineActionVisible}
+        onClose={handleTimelineActionClose}
+        onDateChanged={handleTimelineEditDate}
+        onEditRating={handleTimelineEditRating}
+        onDelete={handleTimelineDelete}
       />
     </View>
   );
@@ -770,13 +1017,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 1,
   },
+  segmentLabelWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
   segmentLabel: {
     fontSize: typography.sizes.caption,
     fontWeight: typography.weights.semibold,
-    color: colors.text.secondary,
+    color: colors.text.secondary, // base color; overridden by animated interpolation
   },
-  segmentLabelActive: {
-    color: colors.text.inverse,
+  pendingDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#DC2626',
   },
 
   // ── Timeline ──

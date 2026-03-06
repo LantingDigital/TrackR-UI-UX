@@ -69,6 +69,7 @@ const MAX_RESULTS = 8;
 export function MapSearchBar({ pois, onSelectPoi, onSearchFilter, onClose, insetTop, activeFilters, onFilterToggle }: MapSearchBarProps) {
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const inputRef = useRef<TextInput>(null);
 
   // Results visibility animation
@@ -129,8 +130,8 @@ export function MapSearchBar({ pois, onSelectPoi, onSearchFilter, onClose, inset
     return Array.from(seen.values()).slice(0, MAX_RESULTS);
   }, [query, searchIndex]);
 
-  // Show/hide results
-  const showResults = query.trim().length > 0 && results.length > 0;
+  // Show/hide results — only when actively typing, not after selection
+  const showResults = dropdownOpen && query.trim().length > 0 && results.length > 0;
   if (showResults) {
     resultsOpacity.value = withTiming(1, { duration: 150 });
   } else {
@@ -139,6 +140,7 @@ export function MapSearchBar({ pois, onSelectPoi, onSearchFilter, onClose, inset
 
   const handleSelect = useCallback(
     (poi: ParkPOI) => {
+      setDropdownOpen(false);
       setQuery('');
       Keyboard.dismiss();
       onSelectPoi(poi);
@@ -150,12 +152,14 @@ export function MapSearchBar({ pois, onSelectPoi, onSearchFilter, onClose, inset
   const handleSearchFilter = useCallback(() => {
     const ids = new Set(results.map((r) => r.poi.id));
     const q = query.trim();
+    setDropdownOpen(false);
     setQuery('');
     Keyboard.dismiss();
     onSearchFilter(q, ids);
   }, [results, query, onSearchFilter]);
 
   const handleClear = useCallback(() => {
+    setDropdownOpen(false);
     setQuery('');
     inputRef.current?.focus();
   }, []);
@@ -178,7 +182,7 @@ export function MapSearchBar({ pois, onSelectPoi, onSearchFilter, onClose, inset
             placeholder="Search rides, food, shops..."
             placeholderTextColor={colors.text.meta}
             value={query}
-            onChangeText={setQuery}
+            onChangeText={(text) => { setQuery(text); setDropdownOpen(true); }}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             returnKeyType="search"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import Animated, {
   withTiming,
   interpolate,
   Extrapolation,
+  Easing,
   runOnJS,
 } from 'react-native-reanimated';
 import {
@@ -23,6 +24,7 @@ import {
   GestureDetector,
 } from 'react-native-gesture-handler';
 import { BlurView } from 'expo-blur';
+
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../../theme/colors';
@@ -33,16 +35,31 @@ import { shadows } from '../../../theme/shadows';
 import { SPRINGS, TIMING } from '../../../constants/animations';
 import { useTabBar } from '../../../contexts/TabBarContext';
 import { haptics } from '../../../services/haptics';
+import { CARD_ART, CARD_ART_FOCAL } from '../../../data/cardArt';
 import { EnrichedCoaster } from '../types';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const DISMISS_VELOCITY = 500;
-const IMAGE_ASPECT = 16 / 9;
-const IMAGE_HEIGHT = (SCREEN_WIDTH - spacing.xl * 2) / IMAGE_ASPECT;
+
+// ── "Hero page" layout constants ──
+// The first visible screen shows: handle + header + image + stats.
+// Image height is dynamic — fills remaining space so stats sit flush at the bottom.
+const HANDLE_AREA = 33;       // paddingTop(20) + handle(5) + paddingBottom(8)
+const SCROLL_PAD_TOP = 6;     // spacing.sm
+const HEADER_EST = 95;        // name + park + meta + status badge (conservative)
+const IMAGE_MARGIN = 24;      // spacing.xxl — gap above image
+const STATS_MARGIN = 24;      // spacing.xxl — gap above stats row
+const STATS_ROW_HEIGHT = 110; // stat cards with internal padding + bottom breathing room
+const HERO_PAGE_CHROME = HANDLE_AREA + SCROLL_PAD_TOP + HEADER_EST + IMAGE_MARGIN + STATS_MARGIN + STATS_ROW_HEIGHT;
 
 // ============================================
 // Data helpers
 // ============================================
+
+/** Clean raw status strings: "Under_construction" → "Under Construction" */
+function formatStatus(raw: string): string {
+  return raw.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
 
 interface HeroStat {
   value: string;
@@ -61,21 +78,17 @@ function buildHeroStats(coaster: EnrichedCoaster): HeroStat[] {
   return hero.slice(0, 4);
 }
 
-interface StatItem {
-  label: string;
-  value: string;
-}
 
-function buildSecondaryStats(coaster: EnrichedCoaster, heroLabels: Set<string>): StatItem[] {
-  const stats: StatItem[] = [];
-  if (coaster.heightFt > 0 && !heroLabels.has('Height')) stats.push({ label: 'Height', value: `${coaster.heightFt} ft` });
-  if (coaster.speedMph > 0 && !heroLabels.has('Top Speed')) stats.push({ label: 'Speed', value: `${coaster.speedMph} mph` });
-  if (coaster.lengthFt > 0 && !heroLabels.has('Length')) stats.push({ label: 'Length', value: `${coaster.lengthFt.toLocaleString()} ft` });
-  if (coaster.dropFt && !heroLabels.has('Drop')) stats.push({ label: 'Drop', value: `${coaster.dropFt} ft` });
-  if (coaster.inversions > 0 && !heroLabels.has('Inversions')) stats.push({ label: 'Inversions', value: `${coaster.inversions}` });
-  if (coaster.gForce && !heroLabels.has('G-Force')) stats.push({ label: 'G-Force', value: `${coaster.gForce}g` });
-  if (coaster.duration) stats.push({ label: 'Duration', value: `${coaster.duration}s` });
-  if (coaster.yearOpened) stats.push({ label: 'Opened', value: `${coaster.yearOpened}` });
+function buildSecondaryStats(coaster: EnrichedCoaster, heroLabels: Set<string>): HeroStat[] {
+  const stats: HeroStat[] = [];
+  if (coaster.heightFt > 0 && !heroLabels.has('Height')) stats.push({ value: `${coaster.heightFt}`, unit: 'ft', label: 'Height' });
+  if (coaster.speedMph > 0 && !heroLabels.has('Top Speed')) stats.push({ value: `${coaster.speedMph}`, unit: 'mph', label: 'Speed' });
+  if (coaster.lengthFt > 0 && !heroLabels.has('Length')) stats.push({ value: `${coaster.lengthFt.toLocaleString()}`, unit: 'ft', label: 'Length' });
+  if (coaster.dropFt && !heroLabels.has('Drop')) stats.push({ value: `${coaster.dropFt}`, unit: 'ft', label: 'Drop' });
+  if (coaster.inversions > 0 && !heroLabels.has('Inversions')) stats.push({ value: `${coaster.inversions}`, unit: '', label: 'Inversions' });
+  if (coaster.gForce && !heroLabels.has('G-Force')) stats.push({ value: `${coaster.gForce}`, unit: '', label: 'G-Force' });
+  if (coaster.duration) stats.push({ value: `${coaster.duration}`, unit: 's', label: 'Duration' });
+  if (coaster.yearOpened) stats.push({ value: `${coaster.yearOpened}`, unit: '', label: 'Opened' });
   return stats;
 }
 
@@ -92,7 +105,7 @@ function buildDetails(coaster: EnrichedCoaster): DetailItem[] {
   if (coaster.propulsion) details.push({ label: 'Propulsion', value: coaster.propulsion });
   if (coaster.material) details.push({ label: 'Material', value: coaster.material });
   if (coaster.type) details.push({ label: 'Type', value: coaster.type });
-  if (coaster.status) details.push({ label: 'Status', value: coaster.status });
+  if (coaster.status) details.push({ label: 'Status', value: formatStatus(coaster.status) });
   return details;
 }
 
@@ -109,6 +122,7 @@ interface CoasterSheetProps {
 export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
   const insets = useSafeAreaInsets();
   const tabBar = useTabBar();
+  const scrollRef = useRef<ScrollView>(null);
   const [mounted, setMounted] = useState(false);
   const [isDismissing, setIsDismissing] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -124,6 +138,13 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
   const sheetTop = insets.top + 16;
   const sheetHeight = SCREEN_HEIGHT - sheetTop;
 
+  // Dynamic image height — fills remaining space in the visible "hero page"
+  const imageHeight = Math.max(200, sheetHeight - HERO_PAGE_CHROME);
+
+  // Snap offset: the point where the "hero page" ends and detail content begins
+  // Add SCROLL_PAD_TOP to match the ScrollView's contentContainer paddingTop
+  const heroPageEnd = SCROLL_PAD_TOP + HEADER_EST + IMAGE_MARGIN + imageHeight + STATS_MARGIN + STATS_ROW_HEIGHT + 30;
+
   useEffect(() => {
     if (visible && coaster) {
       setMounted(true);
@@ -134,11 +155,15 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
       tabBar?.hideTabBar();
       haptics.select();
       entrance.value = 0;
-      translateY.value = withSpring(0, SPRINGS.responsive);
+      translateY.value = withTiming(0, { duration: 350, easing: Easing.out(Easing.cubic) });
       backdropOpacity.value = withTiming(1, { duration: 300 });
-      entrance.value = withTiming(1, { duration: 500 });
+      entrance.value = withTiming(1, { duration: 400 });
     } else if (!visible) {
-      tabBar?.showTabBar();
+      // Only show tab bar if we weren't already dismissing
+      // (dismiss() and showTabBarJS() already call showTabBar)
+      if (!isDismissing) {
+        tabBar?.showTabBar();
+      }
       entrance.value = 0;
       backdropOpacity.value = withTiming(0, { duration: TIMING.backdrop });
       translateY.value = withTiming(SCREEN_HEIGHT, { duration: TIMING.normal });
@@ -242,7 +267,9 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
   const heroLabels = new Set(heroStats.map((s) => s.label));
   const secondaryStats = buildSecondaryStats(coaster, heroLabels);
   const details = buildDetails(coaster);
-  const hasImage = coaster.imageUrl && !imageError;
+  const localArt = CARD_ART[coaster.id];
+  const focalY = CARD_ART_FOCAL[coaster.id] ?? 0.5;
+  const hasImage = (localArt || coaster.imageUrl) && !imageError;
 
   // Header metadata line: "Manufacturer · Est. YYYY"
   const metaParts: string[] = [];
@@ -285,12 +312,16 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
 
         {/* Scrollable content */}
         <ScrollView
+          ref={scrollRef}
           style={styles.scroll}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={[
             styles.scrollContent,
-            { paddingBottom: insets.bottom + spacing.xxxl },
+            { minHeight: heroPageEnd + (sheetHeight - HANDLE_AREA) },
           ]}
+          snapToOffsets={[0, heroPageEnd]}
+          decelerationRate="fast"
+          snapToEnd={false}
         >
           {/* Section 0: Header */}
           <Animated.View style={headerStyle}>
@@ -312,7 +343,7 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
                     ? styles.statusTextOperating
                     : styles.statusTextClosed,
                 ]}>
-                  {coaster.status}
+                  {formatStatus(coaster.status)}
                 </Text>
               </View>
             )}
@@ -324,15 +355,24 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
               <View style={styles.imageCard}>
                 {/* Spinner — visible while image is loading */}
                 {!imageLoaded && (
-                  <View style={styles.imageSpinner}>
+                  <View style={[styles.imageSpinner, { height: imageHeight }]}>
                     <ActivityIndicator size="small" color={colors.text.meta} />
                   </View>
                 )}
                 {/* Image — renders hidden, fades in on load */}
-                <Animated.View style={imageFadeStyle}>
+                <Animated.View style={[imageFadeStyle, { height: imageHeight, overflow: 'hidden' }]}>
                   <Image
-                    source={{ uri: coaster.imageUrl }}
-                    style={styles.heroImage}
+                    source={localArt || { uri: coaster.imageUrl }}
+                    style={[
+                      { width: '100%', height: imageHeight },
+                      // For local card art: render taller and position based on focalY
+                      // focalY 0=top, 0.5=center, 1=bottom
+                      localArt ? {
+                        height: imageHeight * 1.2,
+                        position: 'absolute' as const,
+                        top: -focalY * (imageHeight * 0.2),
+                      } : undefined,
+                    ]}
                     resizeMode="cover"
                     onLoad={() => {
                       setImageLoaded(true);
@@ -376,18 +416,35 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
             </Animated.View>
           )}
 
-          {/* Section 2: Secondary Stats */}
+          {/* Section 2: Additional Info heading */}
+          <View style={styles.additionalInfoHeader}>
+            <Text style={styles.additionalInfoTitle}>Additional Info</Text>
+          </View>
+
+          {/* Section 2: Secondary Stats — mini cards mirroring hero style */}
           {secondaryStats.length > 0 && (
             <Animated.View style={[styles.section, detailsStyle]}>
-              <View style={styles.secondaryCard}>
-                <View style={styles.secondaryGrid}>
-                  {secondaryStats.map((stat) => (
-                    <View key={stat.label} style={styles.secondaryCell}>
-                      <Text style={styles.secondaryValue}>{stat.value}</Text>
-                      <Text style={styles.secondaryLabel}>{stat.label}</Text>
-                    </View>
-                  ))}
-                </View>
+              <View style={styles.secondaryRow}>
+                {secondaryStats.map((stat) => (
+                  <View key={stat.label} style={styles.secondaryStatCard}>
+                    <Text
+                      style={styles.secondaryStatValue}
+                      numberOfLines={1}
+                      adjustsFontSizeToFit
+                      minimumFontScale={0.5}
+                    >
+                      {stat.value}{stat.unit}
+                    </Text>
+                    <Text
+                      style={styles.secondaryStatLabel}
+                      numberOfLines={1}
+                      adjustsFontSizeToFit
+                      minimumFontScale={0.6}
+                    >
+                      {stat.label}
+                    </Text>
+                  </View>
+                ))}
               </View>
             </Animated.View>
           )}
@@ -497,13 +554,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: spacing.base,
     right: spacing.lg,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(0,0,0,0.08)',
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 1,
+    zIndex: 10,
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    elevation: 4,
   },
   scroll: {
     flex: 1,
@@ -574,13 +636,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.imagePlaceholder,
     ...shadows.small,
   },
-  heroImage: {
-    width: '100%',
-    height: IMAGE_HEIGHT,
-  },
   imageSpinner: {
     ...StyleSheet.absoluteFillObject,
-    height: IMAGE_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -622,32 +679,60 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     textAlign: 'center',
   },
-
-  // -- Secondary Stats --
-  secondaryCard: {
-    backgroundColor: colors.background.card,
-    borderRadius: radius.card,
-    padding: spacing.lg,
-    ...shadows.small,
+  additionalInfoHeader: {
+    paddingTop: 60,
+    paddingBottom: spacing.lg,
+    alignItems: 'center',
   },
-  secondaryGrid: {
+  additionalInfoTitle: {
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
+    letterSpacing: -0.3,
+  },
+
+  // -- Secondary Stats (mini cards) --
+  secondaryRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: spacing.sm,
+    overflow: 'visible',
   },
-  secondaryCell: {
-    width: '50%',
-    paddingVertical: spacing.base,
-    paddingHorizontal: spacing.md,
-  },
-  secondaryValue: {
-    fontSize: typography.sizes.body,
-    fontWeight: typography.weights.semibold,
+  secondaryStatCard: (() => {
+    const size = Math.floor((SCREEN_WIDTH - spacing.xl * 2 - spacing.sm * 4) / 5);
+    return {
+      backgroundColor: colors.background.card,
+      borderRadius: radius.lg,
+      width: size,
+      height: size,
+      alignItems: 'center' as const,
+      justifyContent: 'center' as const,
+      paddingTop: spacing.md,
+      paddingBottom: spacing.md,
+      paddingLeft: spacing.md,
+      paddingRight: spacing.md,
+      gap: 2,
+      ...shadows.small,
+    };
+  })(),
+  secondaryStatValue: {
+    width: '100%',
+    fontSize: typography.sizes.title,
+    lineHeight: typography.sizes.title,
+    fontWeight: typography.weights.bold,
     color: colors.text.primary,
+    textAlign: 'center',
   },
-  secondaryLabel: {
+  secondaryStatLabel: {
+    width: '100%',
     fontSize: typography.sizes.small,
-    color: colors.text.meta,
-    marginTop: 2,
+    lineHeight: typography.sizes.small,
+    fontWeight: typography.weights.medium,
+    color: colors.text.secondary,
+    textTransform: 'uppercase',
+    letterSpacing: 0.4,
+    textAlign: 'center',
   },
 
   // -- Details --

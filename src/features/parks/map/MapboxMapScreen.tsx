@@ -119,13 +119,11 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
   // Hide tab bar when map is visible; adjust zoom controls when info card shows
   const tabBar = useTabBar();
 
-  // Always hide tab bar while map is open
+  // Always hide tab bar while map is open — cleanup guarantees balanced hide/show
   useEffect(() => {
-    if (visible) {
-      tabBar?.hideTabBar();
-    } else {
-      tabBar?.showTabBar();
-    }
+    if (!visible) return;
+    tabBar?.hideTabBar(0);
+    return () => tabBar?.showTabBar();
   }, [visible]);
 
   // Adjust zoom controls position based on info card visibility

@@ -31,6 +31,7 @@ import {
   resetOnboarding,
   type RiderType,
 } from '../stores/settingsStore';
+import { getCriteria } from '../stores/rideLogStore';
 
 // ============================================
 // Rider type display labels
@@ -236,6 +237,11 @@ export const SettingsScreen = () => {
               label="Notifications"
               value={notificationsEnabled}
               onValueChange={setNotificationsEnabled}
+            />
+            <TappableRow
+              label="Rating Criteria"
+              value={`${getCriteria().filter(c => c.weight > 0).length} active`}
+              onPress={() => navigation.navigate('CriteriaWeightEditor')}
               isLast
             />
           </View>
@@ -345,11 +351,12 @@ const styles = StyleSheet.create({
 
   // ── Row ──
   row: {
-    height: 52,
+    minHeight: 52,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: spacing.lg,
+    paddingVertical: 12,
   },
   rowBorder: {
     borderBottomWidth: 1,

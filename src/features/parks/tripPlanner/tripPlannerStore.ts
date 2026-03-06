@@ -1,10 +1,8 @@
 // ============================================
-// Trip Planner Store v2
+// Trip Planner Store v4
 //
 // Module-level state + AsyncStorage + listeners.
-// Full state machine per stop:
-//   pending → walking → in_line → done
-//   pending → skipped (at any time)
+// Same pattern as settingsStore.
 // ============================================
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -16,21 +14,19 @@ import type {
   TripPlannerState,
   TripStop,
   TripMode,
-  TripStatus,
   PaceSnapshot,
-  TradeOffSuggestion,
 } from './types';
 
 // ============================================
 // Constants
 // ============================================
 
-const STORAGE_KEY = '@trip_planner_v2';
+const STORAGE_KEY = '@trip_planner_v4';
 const MAX_PAST_PLANS = 30;
 const MAX_WAIT_LOG_ENTRIES = 500;
 
 // ============================================
-// UUID Helper
+// UUID
 // ============================================
 
 function generateId(): string {
@@ -70,7 +66,7 @@ async function load(): Promise<void> {
       state = { ...state, ...JSON.parse(raw) };
     }
   } catch {
-    // Silently ignore load errors
+    // ignore
   }
 }
 
@@ -78,7 +74,7 @@ async function save(): Promise<void> {
   try {
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch {
-    // Silently ignore save errors
+    // ignore
   }
 }
 
@@ -93,38 +89,23 @@ async function init() {
 // Helpers
 // ============================================
 
-/**
- * Update a single stop in the current plan by ID.
- */
-function updateStop(
-  stopId: string,
-  updater: (stop: TripStop) => TripStop,
-): void {
+function updateStop(stopId: string, updater: (stop: TripStop) => TripStop): void {
   if (!state.currentPlan) return;
   state = {
     ...state,
     currentPlan: {
       ...state.currentPlan,
-      stops: state.currentPlan.stops.map((s) =>
-        s.id === stopId ? updater(s) : s,
-      ),
+      stops: state.currentPlan.stops.map((s) => (s.id === stopId ? updater(s) : s)),
     },
   };
 }
 
-/**
- * Find the next pending stop by order after a given stop.
- */
 function findNextPendingStop(stops: TripStop[], afterOrder: number): TripStop | undefined {
   return stops
     .filter((s) => s.state === 'pending' && s.order > afterOrder)
     .sort((a, b) => a.order - b.order)[0];
 }
 
-/**
- * Auto-advance: set next pending stop to 'walking'.
- * If no more pending stops, auto-complete the trip.
- */
 function autoAdvance(completedOrder: number): void {
   if (!state.currentPlan) return;
 
@@ -136,11 +117,10 @@ function autoAdvance(completedOrder: number): void {
       walkStartedAt: Date.now(),
     }));
   } else {
-    // No more pending stops — check if trip should auto-complete
-    const hasPending = state.currentPlan.stops.some(
+    const hasActive = state.currentPlan.stops.some(
       (s) => s.state === 'pending' || s.state === 'walking' || s.state === 'in_line',
     );
-    if (!hasPending) {
+    if (!hasActive) {
       state = {
         ...state,
         currentPlan: {
@@ -149,26 +129,16 @@ function autoAdvance(completedOrder: number): void {
           completedAt: Date.now(),
         },
       };
-      archiveCurrentPlan();
-      return; // archiveCurrentPlan calls save + notify
     }
   }
 }
 
-/**
- * Record a wait time to both the plan log and global log.
- */
-function recordWaitTime(
-  poiId: string,
-  estimatedMin: number,
-  actualMin: number,
-): void {
+function recordWaitTime(poiId: string, estimatedMin: number, actualMin: number): void {
   if (!state.currentPlan) return;
 
   const now = Date.now();
   const date = new Date(now);
 
-  // Add to plan's wait time log
   state = {
     ...state,
     currentPlan: {
@@ -178,23 +148,13 @@ function recordWaitTime(
         { poiId, estimatedMin, actualMin, timestamp: now },
       ],
     },
-    // Add to global wait log
     globalWaitLog: [
       ...state.globalWaitLog,
-      {
-        poiId,
-        actualMin,
-        dayOfWeek: date.getDay(),
-        hourOfDay: date.getHours(),
-        timestamp: now,
-      },
-    ].slice(-MAX_WAIT_LOG_ENTRIES), // cap at 500
+      { poiId, actualMin, dayOfWeek: date.getDay(), hourOfDay: date.getHours(), timestamp: now },
+    ].slice(-MAX_WAIT_LOG_ENTRIES),
   };
 }
 
-/**
- * Move current plan to pastPlans and clear currentPlan.
- */
 function archiveCurrentPlan(): void {
   if (!state.currentPlan) return;
   const pastPlans = [state.currentPlan, ...state.pastPlans].slice(0, MAX_PAST_PLANS);
@@ -207,9 +167,6 @@ function archiveCurrentPlan(): void {
 // Actions
 // ============================================
 
-/**
- * Create a new trip plan (status: 'planning').
- */
 export function createPlan(
   parkId: string,
   parkName: string,
@@ -227,7 +184,6 @@ export function createPlan(
     status: 'planning',
     createdAt: Date.now(),
     paceSnapshots: [],
-    currentSuggestion: null,
     waitTimeLog: [],
   };
   state = { ...state, currentPlan: plan };
@@ -236,29 +192,18 @@ export function createPlan(
   return plan;
 }
 
-/**
- * Toggle trip mode (concierge ↔ speed_run) mid-plan.
- */
 export function setMode(mode: TripMode): void {
   if (!state.currentPlan) return;
-  state = {
-    ...state,
-    currentPlan: { ...state.currentPlan, mode },
-  };
+  state = { ...state, currentPlan: { ...state.currentPlan, mode } };
   save();
   notify();
 }
 
-/**
- * Start the trip: status → 'active', first pending stop → 'walking'.
- */
 export function startTrip(): void {
   if (!state.currentPlan) return;
 
   const now = Date.now();
   const stops = [...state.currentPlan.stops];
-
-  // Advance first pending stop to 'walking'
   const firstPending = stops
     .sort((a, b) => a.order - b.order)
     .find((s) => s.state === 'pending');
@@ -283,9 +228,6 @@ export function startTrip(): void {
   notify();
 }
 
-/**
- * Mark arrival at a stop: state → 'in_line', compute actual walk time.
- */
 export function arrivedAtStop(stopId: string): void {
   if (!state.currentPlan) return;
 
@@ -294,21 +236,12 @@ export function arrivedAtStop(stopId: string): void {
     const actualWalkMin = s.walkStartedAt
       ? Math.round((now - s.walkStartedAt) / 60_000 * 10) / 10
       : 0;
-    return {
-      ...s,
-      state: 'in_line',
-      lineStartedAt: now,
-      actualWalkMin,
-    };
+    return { ...s, state: 'in_line', lineStartedAt: now, actualWalkMin };
   });
   save();
   notify();
 }
 
-/**
- * Complete a stop: state → 'done', compute actual wait time,
- * record wait to logs, auto-advance to next stop.
- */
 export function completeStop(stopId: string): void {
   if (!state.currentPlan) return;
 
@@ -327,175 +260,69 @@ export function completeStop(stopId: string): void {
     actualWaitMin,
   }));
 
-  // Record wait time (only for rides with actual wait tracking)
   if (stop.category === 'ride') {
     recordWaitTime(stop.poiId, stop.estimatedWaitMin, actualWaitMin);
   }
 
-  // Auto-advance
   autoAdvance(stop.order);
-
   save();
   notify();
 }
 
-/**
- * Skip a stop: state → 'skipped', auto-advance to next.
- */
 export function skipStop(stopId: string): void {
   if (!state.currentPlan) return;
 
   const stop = state.currentPlan.stops.find((s) => s.id === stopId);
   if (!stop) return;
 
-  updateStop(stopId, (s) => ({
-    ...s,
-    state: 'skipped',
-    skippedAt: Date.now(),
-  }));
-
-  // Auto-advance
+  updateStop(stopId, (s) => ({ ...s, state: 'skipped', skippedAt: Date.now() }));
   autoAdvance(stop.order);
-
   save();
   notify();
 }
 
-/**
- * Pause the active trip.
- */
 export function pauseTrip(): void {
   if (!state.currentPlan || state.currentPlan.status !== 'active') return;
-  state = {
-    ...state,
-    currentPlan: { ...state.currentPlan, status: 'paused' },
-  };
+  state = { ...state, currentPlan: { ...state.currentPlan, status: 'paused' } };
   save();
   notify();
 }
 
-/**
- * Resume a paused trip.
- */
 export function resumeTrip(): void {
   if (!state.currentPlan || state.currentPlan.status !== 'paused') return;
-  state = {
-    ...state,
-    currentPlan: { ...state.currentPlan, status: 'active' },
-  };
+  state = { ...state, currentPlan: { ...state.currentPlan, status: 'active' } };
   save();
   notify();
 }
 
-/**
- * Abandon the current trip and archive it.
- */
 export function abandonTrip(): void {
   if (!state.currentPlan) return;
-  state = {
-    ...state,
-    currentPlan: {
-      ...state.currentPlan,
-      status: 'abandoned',
-    },
-  };
+  state = { ...state, currentPlan: { ...state.currentPlan, status: 'abandoned' } };
   archiveCurrentPlan();
 }
 
-/**
- * Manually complete the trip and archive it.
- */
 export function completeTrip(): void {
   if (!state.currentPlan) return;
-  state = {
-    ...state,
-    currentPlan: {
-      ...state.currentPlan,
-      status: 'completed',
-      completedAt: Date.now(),
-    },
-  };
+  state = { ...state, currentPlan: { ...state.currentPlan, status: 'completed', completedAt: Date.now() } };
   archiveCurrentPlan();
 }
 
-/**
- * Reorder stops in the current plan (delegates to planGenerator).
- */
-export function reorderPlanStops(
-  newOrder: string[],
-  mapData: UnifiedParkMapData | null,
-): void {
+export function reorderPlanStops(newOrder: string[], mapData: UnifiedParkMapData | null): void {
   if (!state.currentPlan) return;
   const reordered = reorderStops(state.currentPlan.stops, newOrder, mapData);
-  state = {
-    ...state,
-    currentPlan: { ...state.currentPlan, stops: reordered },
-  };
+  state = { ...state, currentPlan: { ...state.currentPlan, stops: reordered } };
   save();
   notify();
 }
 
-/**
- * Insert a new stop after a given stop ID (delegates to planGenerator).
- */
-export function insertStop(
-  afterStopId: string,
-  newStop: TripStop,
-  mapData: UnifiedParkMapData | null,
-): void {
+export function insertStop(afterStopId: string, newStop: TripStop, mapData: UnifiedParkMapData | null): void {
   if (!state.currentPlan) return;
-  const updated = insertStopAfter(
-    state.currentPlan.stops,
-    afterStopId,
-    newStop,
-    mapData,
-  );
-  state = {
-    ...state,
-    currentPlan: { ...state.currentPlan, stops: updated },
-  };
+  const updated = insertStopAfter(state.currentPlan.stops, afterStopId, newStop, mapData);
+  state = { ...state, currentPlan: { ...state.currentPlan, stops: updated } };
   save();
   notify();
 }
 
-/**
- * Dismiss the current trade-off suggestion.
- */
-export function dismissSuggestion(): void {
-  if (!state.currentPlan?.currentSuggestion) return;
-  state = {
-    ...state,
-    currentPlan: {
-      ...state.currentPlan,
-      currentSuggestion: {
-        ...state.currentPlan.currentSuggestion,
-        dismissed: true,
-      },
-    },
-  };
-  save();
-  notify();
-}
-
-/**
- * Set the current trade-off suggestion.
- */
-export function setSuggestion(suggestion: TradeOffSuggestion | null): void {
-  if (!state.currentPlan) return;
-  state = {
-    ...state,
-    currentPlan: {
-      ...state.currentPlan,
-      currentSuggestion: suggestion,
-    },
-  };
-  save();
-  notify();
-}
-
-/**
- * Record a pace snapshot for trend tracking.
- */
 export function recordPaceSnapshot(snapshot: PaceSnapshot): void {
   if (!state.currentPlan) return;
   state = {
@@ -509,9 +336,6 @@ export function recordPaceSnapshot(snapshot: PaceSnapshot): void {
   notify();
 }
 
-/**
- * Clear all past plans.
- */
 export function clearHistory(): void {
   state = { ...state, pastPlans: [] };
   save();
@@ -519,7 +343,7 @@ export function clearHistory(): void {
 }
 
 // ============================================
-// Getters (for use outside React)
+// Getters
 // ============================================
 
 export function getCurrentPlan(): TripPlan | null {
@@ -540,19 +364,15 @@ export function useTripPlannerStore() {
   useEffect(() => {
     listeners.add(forceUpdate);
     init();
-    return () => {
-      listeners.delete(forceUpdate);
-    };
+    return () => { listeners.delete(forceUpdate); };
   }, []);
 
   return {
-    // State
     initialized,
     currentPlan: state.currentPlan,
     pastPlans: state.pastPlans,
     globalWaitLog: state.globalWaitLog,
 
-    // Plan lifecycle
     createPlan: useCallback(createPlan, []),
     setMode: useCallback(setMode, []),
     startTrip: useCallback(startTrip, []),
@@ -561,21 +381,13 @@ export function useTripPlannerStore() {
     abandonTrip: useCallback(abandonTrip, []),
     completeTrip: useCallback(completeTrip, []),
 
-    // Stop state machine
     arrivedAtStop: useCallback(arrivedAtStop, []),
     completeStop: useCallback(completeStop, []),
     skipStop: useCallback(skipStop, []),
 
-    // Plan editing
     reorderPlanStops: useCallback(reorderPlanStops, []),
     insertStop: useCallback(insertStop, []),
-
-    // Suggestions & pace
-    setSuggestion: useCallback(setSuggestion, []),
-    dismissSuggestion: useCallback(dismissSuggestion, []),
     recordPaceSnapshot: useCallback(recordPaceSnapshot, []),
-
-    // History
     clearHistory: useCallback(clearHistory, []),
   };
 }

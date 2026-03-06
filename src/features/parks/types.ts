@@ -123,6 +123,7 @@ export interface ParkPOI {
   // General
   description?: string;
   waitTimeMinutes?: number;   // live/mock wait time (rides only)
+  approximateLocation?: boolean; // true = estimated coords, not GPS-verified
 }
 
 // ---- Park Data ----

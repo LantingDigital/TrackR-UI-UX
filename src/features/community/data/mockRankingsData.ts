@@ -1,0 +1,133 @@
+// ─── Community Rankings Mock Data ───────────────────────────
+//
+// Simulates aggregated user ratings per criterion.
+// Each category has 10 entries with community averages.
+
+import type { RankingCategory } from '../types/community';
+
+// Criterion colors (matches CriteriaWeightEditorScreen)
+const COLORS = {
+  overall:    '#E07A5F',
+  airtime:    '#CF6769',
+  intensity:  '#D4A98A',
+  smoothness: '#8FBFB8',
+  theming:    '#B8A3C4',
+  pacing:     '#92ACC0',
+};
+
+export const MOCK_RANKINGS: RankingCategory[] = [
+  {
+    id: 'overall',
+    title: 'Top 10 Overall',
+    criterion: 'overall',
+    icon: 'trophy-outline',
+    color: COLORS.overall,
+    entries: [
+      { coasterId: 'steel-vengeance', coasterName: 'Steel Vengeance', parkName: 'Cedar Point', averageScore: 9.4, totalRatings: 1247 },
+      { coasterId: 'velocicoaster', coasterName: 'Velocicoaster', parkName: 'Islands of Adventure', averageScore: 9.3, totalRatings: 982 },
+      { coasterId: 'iron-gwazi', coasterName: 'Iron Gwazi', parkName: 'Busch Gardens Tampa', averageScore: 9.1, totalRatings: 756 },
+      { coasterId: 'fury-325', coasterName: 'Fury 325', parkName: 'Carowinds', averageScore: 9.0, totalRatings: 891 },
+      { coasterId: 'lightning-rod', coasterName: 'Lightning Rod', parkName: 'Dollywood', averageScore: 8.9, totalRatings: 623 },
+      { coasterId: 'zadra', coasterName: 'Zadra', parkName: 'Energylandia', averageScore: 8.8, totalRatings: 342 },
+      { coasterId: 'el-toro', coasterName: 'El Toro', parkName: 'Six Flags Great Adventure', averageScore: 8.7, totalRatings: 814 },
+      { coasterId: 'voyage', coasterName: 'Voyage', parkName: 'Holiday World', averageScore: 8.6, totalRatings: 478 },
+      { coasterId: 'millennium-force', coasterName: 'Millennium Force', parkName: 'Cedar Point', averageScore: 8.5, totalRatings: 1103 },
+      { coasterId: 'intimidator-305', coasterName: 'Intimidator 305', parkName: 'Kings Dominion', averageScore: 8.5, totalRatings: 567 },
+    ],
+  },
+  {
+    id: 'airtime',
+    title: 'Top 10 by Airtime',
+    criterion: 'airtime',
+    icon: 'arrow-up-outline',
+    color: COLORS.airtime,
+    entries: [
+      { coasterId: 'steel-vengeance', coasterName: 'Steel Vengeance', parkName: 'Cedar Point', averageScore: 9.7, totalRatings: 1189 },
+      { coasterId: 'el-toro', coasterName: 'El Toro', parkName: 'Six Flags Great Adventure', averageScore: 9.5, totalRatings: 793 },
+      { coasterId: 'iron-gwazi', coasterName: 'Iron Gwazi', parkName: 'Busch Gardens Tampa', averageScore: 9.3, totalRatings: 701 },
+      { coasterId: 'lightning-rod', coasterName: 'Lightning Rod', parkName: 'Dollywood', averageScore: 9.2, totalRatings: 589 },
+      { coasterId: 'voyage', coasterName: 'Voyage', parkName: 'Holiday World', averageScore: 9.1, totalRatings: 445 },
+      { coasterId: 'zadra', coasterName: 'Zadra', parkName: 'Energylandia', averageScore: 9.0, totalRatings: 312 },
+      { coasterId: 'fury-325', coasterName: 'Fury 325', parkName: 'Carowinds', averageScore: 8.8, totalRatings: 856 },
+      { coasterId: 'twisted-colossus', coasterName: 'Twisted Colossus', parkName: 'Six Flags Magic Mountain', averageScore: 8.7, totalRatings: 534 },
+      { coasterId: 'phoenix', coasterName: 'Phoenix', parkName: 'Knoebels', averageScore: 8.6, totalRatings: 389 },
+      { coasterId: 'mystic-timbers', coasterName: 'Mystic Timbers', parkName: 'Kings Island', averageScore: 8.4, totalRatings: 612 },
+    ],
+  },
+  {
+    id: 'intensity',
+    title: 'Top 10 by Intensity',
+    criterion: 'intensity',
+    icon: 'flame-outline',
+    color: COLORS.intensity,
+    entries: [
+      { coasterId: 'intimidator-305', coasterName: 'Intimidator 305', parkName: 'Kings Dominion', averageScore: 9.6, totalRatings: 534 },
+      { coasterId: 'steel-vengeance', coasterName: 'Steel Vengeance', parkName: 'Cedar Point', averageScore: 9.3, totalRatings: 1156 },
+      { coasterId: 'x2', coasterName: 'X2', parkName: 'Six Flags Magic Mountain', averageScore: 9.2, totalRatings: 623 },
+      { coasterId: 'fury-325', coasterName: 'Fury 325', parkName: 'Carowinds', averageScore: 9.0, totalRatings: 834 },
+      { coasterId: 'velocicoaster', coasterName: 'Velocicoaster', parkName: 'Islands of Adventure', averageScore: 8.9, totalRatings: 912 },
+      { coasterId: 'iron-gwazi', coasterName: 'Iron Gwazi', parkName: 'Busch Gardens Tampa', averageScore: 8.8, totalRatings: 689 },
+      { coasterId: 'el-toro', coasterName: 'El Toro', parkName: 'Six Flags Great Adventure', averageScore: 8.7, totalRatings: 756 },
+      { coasterId: 'skyrush', coasterName: 'Skyrush', parkName: 'Hersheypark', averageScore: 8.7, totalRatings: 445 },
+      { coasterId: 'lightning-rod', coasterName: 'Lightning Rod', parkName: 'Dollywood', averageScore: 8.5, totalRatings: 567 },
+      { coasterId: 'montu', coasterName: 'Montu', parkName: 'Busch Gardens Tampa', averageScore: 8.4, totalRatings: 612 },
+    ],
+  },
+  {
+    id: 'smoothness',
+    title: 'Top 10 by Smoothness',
+    criterion: 'smoothness',
+    icon: 'water-outline',
+    color: COLORS.smoothness,
+    entries: [
+      { coasterId: 'velocicoaster', coasterName: 'Velocicoaster', parkName: 'Islands of Adventure', averageScore: 9.6, totalRatings: 945 },
+      { coasterId: 'fury-325', coasterName: 'Fury 325', parkName: 'Carowinds', averageScore: 9.5, totalRatings: 867 },
+      { coasterId: 'millennium-force', coasterName: 'Millennium Force', parkName: 'Cedar Point', averageScore: 9.4, totalRatings: 1078 },
+      { coasterId: 'iron-gwazi', coasterName: 'Iron Gwazi', parkName: 'Busch Gardens Tampa', averageScore: 9.2, totalRatings: 698 },
+      { coasterId: 'mako', coasterName: 'Mako', parkName: 'SeaWorld Orlando', averageScore: 9.1, totalRatings: 534 },
+      { coasterId: 'banshee', coasterName: 'Banshee', parkName: 'Kings Island', averageScore: 9.0, totalRatings: 489 },
+      { coasterId: 'steel-vengeance', coasterName: 'Steel Vengeance', parkName: 'Cedar Point', averageScore: 8.8, totalRatings: 1134 },
+      { coasterId: 'tatsu', coasterName: 'Tatsu', parkName: 'Six Flags Magic Mountain', averageScore: 8.7, totalRatings: 412 },
+      { coasterId: 'montu', coasterName: 'Montu', parkName: 'Busch Gardens Tampa', averageScore: 8.6, totalRatings: 589 },
+      { coasterId: 'candymonium', coasterName: 'Candymonium', parkName: 'Hersheypark', averageScore: 8.5, totalRatings: 356 },
+    ],
+  },
+  {
+    id: 'theming',
+    title: 'Top 10 by Theming',
+    criterion: 'theming',
+    icon: 'color-palette-outline',
+    color: COLORS.theming,
+    entries: [
+      { coasterId: 'velocicoaster', coasterName: 'Velocicoaster', parkName: 'Islands of Adventure', averageScore: 9.8, totalRatings: 956 },
+      { coasterId: 'hagrid', coasterName: 'Hagrid\'s Magical Creatures', parkName: 'Islands of Adventure', averageScore: 9.6, totalRatings: 834 },
+      { coasterId: 'expedition-everest', coasterName: 'Expedition Everest', parkName: 'Disney\'s Animal Kingdom', averageScore: 9.3, totalRatings: 1234 },
+      { coasterId: 'revenge-mummy', coasterName: 'Revenge of the Mummy', parkName: 'Universal Studios', averageScore: 9.1, totalRatings: 789 },
+      { coasterId: 'flight-of-passage', coasterName: 'Flight of Passage', parkName: 'Disney\'s Animal Kingdom', averageScore: 9.0, totalRatings: 1456 },
+      { coasterId: 'mystery-mine', coasterName: 'Mystery Mine', parkName: 'Dollywood', averageScore: 8.5, totalRatings: 345 },
+      { coasterId: 'verbolten', coasterName: 'Verbolten', parkName: 'Busch Gardens Williamsburg', averageScore: 8.3, totalRatings: 412 },
+      { coasterId: 'x2', coasterName: 'X2', parkName: 'Six Flags Magic Mountain', averageScore: 8.2, totalRatings: 601 },
+      { coasterId: 'lightning-rod', coasterName: 'Lightning Rod', parkName: 'Dollywood', averageScore: 8.0, totalRatings: 534 },
+      { coasterId: 'steel-vengeance', coasterName: 'Steel Vengeance', parkName: 'Cedar Point', averageScore: 7.8, totalRatings: 1089 },
+    ],
+  },
+  {
+    id: 'pacing',
+    title: 'Top 10 by Pacing',
+    criterion: 'pacing',
+    icon: 'speedometer-outline',
+    color: COLORS.pacing,
+    entries: [
+      { coasterId: 'steel-vengeance', coasterName: 'Steel Vengeance', parkName: 'Cedar Point', averageScore: 9.5, totalRatings: 1167 },
+      { coasterId: 'velocicoaster', coasterName: 'Velocicoaster', parkName: 'Islands of Adventure', averageScore: 9.4, totalRatings: 923 },
+      { coasterId: 'iron-gwazi', coasterName: 'Iron Gwazi', parkName: 'Busch Gardens Tampa', averageScore: 9.2, totalRatings: 712 },
+      { coasterId: 'fury-325', coasterName: 'Fury 325', parkName: 'Carowinds', averageScore: 9.1, totalRatings: 845 },
+      { coasterId: 'intimidator-305', coasterName: 'Intimidator 305', parkName: 'Kings Dominion', averageScore: 9.0, totalRatings: 523 },
+      { coasterId: 'voyage', coasterName: 'Voyage', parkName: 'Holiday World', averageScore: 8.9, totalRatings: 434 },
+      { coasterId: 'el-toro', coasterName: 'El Toro', parkName: 'Six Flags Great Adventure', averageScore: 8.8, totalRatings: 745 },
+      { coasterId: 'lightning-rod', coasterName: 'Lightning Rod', parkName: 'Dollywood', averageScore: 8.7, totalRatings: 556 },
+      { coasterId: 'twisted-colossus', coasterName: 'Twisted Colossus', parkName: 'Six Flags Magic Mountain', averageScore: 8.5, totalRatings: 501 },
+      { coasterId: 'maverick', coasterName: 'Maverick', parkName: 'Cedar Point', averageScore: 8.4, totalRatings: 678 },
+    ],
+  },
+];

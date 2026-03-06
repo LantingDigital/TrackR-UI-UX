@@ -9,7 +9,7 @@
  * matching the PassDetailView pattern.
  */
 
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -31,8 +31,8 @@ import type { CoasterRating } from '../types/rideLog';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
-/** Card aspect ratio — roughly 3:4 for a collectible feel */
-const ASPECT_RATIO = 4 / 3;
+/** Card aspect ratio — matches art assets (1696×2528 = 2:3 portrait) */
+const ASPECT_RATIO = 3 / 2;
 
 /** Size presets */
 const CARD_SIZES = {
@@ -63,7 +63,10 @@ interface CoasterCardProps {
   rating?: CoasterRating;
   stats?: CoasterStats;
   onPress?: () => void;
+  onLongPress?: () => void;
   onFlip?: () => void;
+  /** When true, programmatically flip to back */
+  triggerFlip?: boolean;
   size?: 'small' | 'medium' | 'large';
 }
 
@@ -84,7 +87,9 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
   rating,
   stats,
   onPress,
+  onLongPress,
   onFlip,
+  triggerFlip,
   size = 'small',
 }) => {
   const cardWidth = CARD_SIZES[size];
@@ -157,10 +162,22 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
       onPress?.();
       return;
     }
-    // Unlocked: flip on tap
+    // Unlocked: tap = flip only
     handleFlip();
-    onPress?.();
   }, [isUnlocked, handleFlip, onPress]);
+
+  const handleLongPress = useCallback(() => {
+    if (!isUnlocked) return;
+    haptics.select();
+    onLongPress?.();
+  }, [isUnlocked, onLongPress]);
+
+  // Programmatic flip from parent (e.g. "View Details" action)
+  useEffect(() => {
+    if (triggerFlip && isUnlocked && !isFlipped) {
+      handleFlip();
+    }
+  }, [triggerFlip]);
 
   const rarityColor = RARITY_COLORS[rarity];
   const [gradStart, gradEnd] = RARITY_GRADIENTS[rarity];
@@ -187,7 +204,7 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
       {artSource ? (
         <Image
           source={typeof artSource === 'string' ? { uri: artSource } : artSource}
-          style={styles.artImage}
+          style={[styles.artImage, { width: cardWidth, height: cardHeight }]}
           resizeMode="cover"
         />
       ) : (
@@ -257,56 +274,79 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
         },
       ]}
     >
-      {/* Header */}
-      <View style={styles.backHeader}>
-        <Text
-          style={[styles.backName, size === 'small' && styles.backNameSmall]}
-          numberOfLines={2}
-        >
-          {coasterName}
-        </Text>
-        <Text style={styles.backPark} numberOfLines={1}>
-          {parkName}
-        </Text>
-      </View>
+      {/* Background art */}
+      {artSource ? (
+        <Image
+          source={typeof artSource === 'string' ? { uri: artSource } : artSource}
+          style={styles.artImage}
+          resizeMode="cover"
+          blurRadius={2}
+        />
+      ) : (
+        <LinearGradient
+          colors={[gradStart, gradEnd]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.placeholderGradient}
+        />
+      )}
 
-      {/* Stats grid */}
-      <View style={styles.statsGrid}>
-        {stats?.heightFt != null && stats.heightFt > 0 && (
-          <StatItem label="Height" value={`${stats.heightFt} ft`} />
-        )}
-        {stats?.speedMph != null && stats.speedMph > 0 && (
-          <StatItem label="Speed" value={`${stats.speedMph} mph`} />
-        )}
-        {stats?.lengthFt != null && stats.lengthFt > 0 && (
-          <StatItem label="Length" value={`${stats.lengthFt.toLocaleString()} ft`} />
-        )}
-        {stats?.inversions != null && stats.inversions > 0 && (
-          <StatItem label="Inversions" value={String(stats.inversions)} />
-        )}
-        {stats?.yearOpened != null && stats.yearOpened > 0 && (
-          <StatItem label="Opened" value={String(stats.yearOpened)} />
-        )}
-        {stats?.manufacturer && (
-          <StatItem label="Builder" value={stats.manufacturer} />
-        )}
-      </View>
+      {/* Dark overlay for readability */}
+      <View style={styles.backOverlay} />
 
-      {/* Rating */}
-      <View style={styles.ratingSection}>
-        {rating ? (
-          <>
-            <Text style={styles.ratingScore}>
-              {(rating.weightedScore / 10).toFixed(1)}
-            </Text>
-            <Text style={styles.ratingLabel}>Your Rating</Text>
-          </>
-        ) : (
-          <>
-            <Ionicons name="star-outline" size={22} color={colors.text.meta} />
-            <Text style={styles.unratedLabel}>Not Rated</Text>
-          </>
-        )}
+      {/* Content */}
+      <View style={styles.backContent}>
+        {/* Header */}
+        <View style={styles.backHeader}>
+          <Text
+            style={[styles.backName, size === 'small' && styles.backNameSmall]}
+            numberOfLines={2}
+          >
+            {coasterName}
+          </Text>
+          <Text style={styles.backPark} numberOfLines={1}>
+            {parkName}
+          </Text>
+        </View>
+
+        {/* Stats grid */}
+        <View style={styles.statsGrid}>
+          {stats?.heightFt != null && stats.heightFt > 0 && (
+            <StatItem label="Height" value={`${stats.heightFt} ft`} />
+          )}
+          {stats?.speedMph != null && stats.speedMph > 0 && (
+            <StatItem label="Speed" value={`${stats.speedMph} mph`} />
+          )}
+          {stats?.lengthFt != null && stats.lengthFt > 0 && (
+            <StatItem label="Length" value={`${stats.lengthFt.toLocaleString()} ft`} />
+          )}
+          {stats?.inversions != null && stats.inversions > 0 && (
+            <StatItem label="Inversions" value={String(stats.inversions)} />
+          )}
+          {stats?.yearOpened != null && stats.yearOpened > 0 && (
+            <StatItem label="Opened" value={String(stats.yearOpened)} />
+          )}
+          {stats?.manufacturer && (
+            <StatItem label="Builder" value={stats.manufacturer} />
+          )}
+        </View>
+
+        {/* Rating */}
+        <View style={styles.ratingSection}>
+          {rating ? (
+            <>
+              <Text style={styles.ratingScore}>
+                {(rating.weightedScore / 10).toFixed(1)}
+              </Text>
+              <Text style={styles.ratingLabel}>Your Rating</Text>
+            </>
+          ) : (
+            <>
+              <Ionicons name="star-outline" size={22} color="rgba(255,255,255,0.5)" />
+              <Text style={styles.unratedLabel}>Not Rated</Text>
+            </>
+          )}
+        </View>
       </View>
 
       {/* Rarity badge on back too */}
@@ -317,6 +357,8 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
   return (
     <Pressable
       onPress={handlePress}
+      onLongPress={handleLongPress}
+      delayLongPress={250}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       style={{ width: cardWidth, height: cardHeight }}
@@ -349,14 +391,20 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: colors.background.card,
+    backgroundColor: '#000',
+  },
+  backOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+  },
+  backContent: {
+    ...StyleSheet.absoluteFillObject,
     padding: spacing.lg,
     justifyContent: 'space-between',
   },
   // ── Front ──
   artImage: {
     ...StyleSheet.absoluteFillObject,
-    borderRadius: 20,
   },
   placeholderGradient: {
     ...StyleSheet.absoluteFillObject,
@@ -413,7 +461,7 @@ const styles = StyleSheet.create({
   backName: {
     fontSize: 18,
     fontWeight: '700',
-    color: colors.text.primary,
+    color: '#FFFFFF',
     lineHeight: 22,
   },
   backNameSmall: {
@@ -422,7 +470,7 @@ const styles = StyleSheet.create({
   },
   backPark: {
     fontSize: 12,
-    color: colors.text.meta,
+    color: 'rgba(255,255,255,0.6)',
     marginTop: 2,
   },
   statsGrid: {
@@ -433,7 +481,7 @@ const styles = StyleSheet.create({
   },
   statItem: {
     width: '46%',
-    backgroundColor: 'rgba(0,0,0,0.04)',
+    backgroundColor: 'rgba(255,255,255,0.12)',
     borderRadius: 12,
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.base,
@@ -441,11 +489,11 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 14,
     fontWeight: '700',
-    color: colors.text.primary,
+    color: '#FFFFFF',
   },
   statLabel: {
     fontSize: 10,
-    color: colors.text.meta,
+    color: 'rgba(255,255,255,0.55)',
     marginTop: 1,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
@@ -455,22 +503,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: spacing.base,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.border.subtle,
+    borderTopColor: 'rgba(255,255,255,0.15)',
     flexDirection: 'row',
     gap: spacing.sm,
   },
   ratingScore: {
     fontSize: 24,
     fontWeight: '700',
-    color: colors.accent.primary,
+    color: '#FFFFFF',
   },
   ratingLabel: {
     fontSize: 12,
-    color: colors.text.meta,
+    color: 'rgba(255,255,255,0.55)',
   },
   unratedLabel: {
     fontSize: 12,
-    color: colors.text.meta,
+    color: 'rgba(255,255,255,0.5)',
     marginLeft: 4,
   },
 });

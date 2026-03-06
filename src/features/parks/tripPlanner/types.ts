@@ -1,5 +1,5 @@
 // ============================================
-// Trip Planner v2 — Types
+// Trip Planner v4 — Types
 // ============================================
 
 export type POICategory = 'ride' | 'food' | 'shop' | 'theater' | 'attraction' | 'service' | 'break';
@@ -8,8 +8,8 @@ export type TripMode = 'concierge' | 'speed_run';
 export type TripStatus = 'planning' | 'active' | 'paused' | 'completed' | 'abandoned';
 
 export interface TripStop {
-  id: string;                   // uuid
-  poiId: string;                // ParkPOI.id or coaster ID
+  id: string;
+  poiId: string;
   name: string;
   category: POICategory;
   order: number;
@@ -18,15 +18,15 @@ export interface TripStop {
   // Estimates (minutes)
   estimatedWalkMin: number;
   estimatedWaitMin: number;
-  estimatedRideMin: number;     // 0 for non-rides
+  estimatedRideMin: number;
 
   // Actual tracked times
   walkStartedAt?: number;
   lineStartedAt?: number;
   completedAt?: number;
   skippedAt?: number;
-  actualWaitMin?: number;       // lineStartedAt → completedAt
-  actualWalkMin?: number;       // walkStartedAt → lineStartedAt
+  actualWaitMin?: number;
+  actualWalkMin?: number;
 
   // Metadata
   thrillLevel?: string;
@@ -35,21 +35,19 @@ export interface TripStop {
   breakDurationMin?: number;
 }
 
+export interface BudgetEstimate {
+  totalMin: number;
+  budgetMin: number;
+  overByMin: number;
+  isOverBudget: boolean;
+}
+
 export interface PaceSnapshot {
   timestamp: number;
   stopsCompleted: number;
   totalStops: number;
   elapsedMin: number;
-  deltaMin: number;             // positive=behind, negative=ahead
-}
-
-export interface TradeOffSuggestion {
-  type: 'add' | 'skip';
-  message: string;              // "You're 12 min ahead — you could add Silver Bullet."
-  stopId?: string;
-  poiId?: string;
-  deltaMin: number;
-  dismissed: boolean;
+  deltaMin: number; // positive = behind, negative = ahead
 }
 
 export interface TripPlan {
@@ -58,14 +56,12 @@ export interface TripPlan {
   parkName: string;
   stops: TripStop[];
   mode: TripMode;
-  timeBudgetMin: number;        // 0 = all day
+  timeBudgetMin: number; // 0 = all day
   status: TripStatus;
   createdAt: number;
   startedAt?: number;
   completedAt?: number;
   paceSnapshots: PaceSnapshot[];
-  currentSuggestion: TradeOffSuggestion | null;
-  targetTimeMin?: number;       // Speed Run goal
   waitTimeLog: Array<{
     poiId: string;
     estimatedMin: number;
@@ -76,8 +72,8 @@ export interface TripPlan {
 
 export interface TripPlannerState {
   currentPlan: TripPlan | null;
-  pastPlans: TripPlan[];        // capped at 30
-  globalWaitLog: Array<{        // persists across trips for better estimates
+  pastPlans: TripPlan[];
+  globalWaitLog: Array<{
     poiId: string;
     actualMin: number;
     dayOfWeek: number;
@@ -86,7 +82,14 @@ export interface TripPlannerState {
   }>;
 }
 
-// ---- Convenience type for POI selection ----
+export interface TradeOffSuggestion {
+  type: 'add' | 'skip';
+  message: string;
+  stopId?: string;
+  poiId?: string;
+  deltaMin: number;
+  dismissed: boolean;
+}
 
 export interface SelectablePOI {
   id: string;
@@ -95,7 +98,6 @@ export interface SelectablePOI {
   thrillLevel?: string;
   area?: string;
   coasterId?: string;
-  menuDescription?: string;
   description?: string;
   estimatedWaitMin?: number;
   estimatedRideMin?: number;

@@ -10,6 +10,7 @@ import React, {
   useContext,
   useRef,
   useCallback,
+  useEffect,
   ReactNode,
 } from 'react';
 import {
@@ -118,3 +119,25 @@ export const useTabBarContext = (): TabBarContextValue => {
   }
   return context;
 };
+
+/**
+ * Hook to auto-hide/show the tab bar when a bottom sheet is visible.
+ * Hides on open (300ms), shows on dismiss (150ms — snappy return).
+ *
+ * Usage:
+ *   useSheetTabBar(sheetVisible);
+ */
+export function useSheetTabBar(visible: boolean) {
+  const ctx = useContext(TabBarContext);
+  const wasVisible = useRef(false);
+
+  useEffect(() => {
+    if (!ctx) return;
+    if (visible && !wasVisible.current) {
+      ctx.hideTabBar(300);
+    } else if (!visible && wasVisible.current) {
+      ctx.showTabBar(150);
+    }
+    wasVisible.current = visible;
+  }, [visible, ctx]);
+}

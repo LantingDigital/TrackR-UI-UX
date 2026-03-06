@@ -37,8 +37,14 @@ import { haptics } from '../services/haptics';
 import { SPRINGS } from '../constants/animations';
 import { COASTER_BY_ID } from '../data/coasterIndex';
 import { COASTER_DETAILS } from '../data/coasterDetails';
+import { CARD_ART, CARD_ART_FOCAL } from '../data/cardArt';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const CARD_WIDTH = SCREEN_WIDTH - spacing.xl * 2;
+const IMAGE_HEIGHT = 220;
+
+// Mini stat card size — matches CoasterSheet secondary cards
+const STAT_CARD_SIZE = Math.floor((CARD_WIDTH - spacing.lg * 2 - spacing.sm * 3) / 4);
 
 // Action area heights for celebration/nudge phases
 const ACTION_HEIGHT_CELEBRATION = 100;
@@ -81,18 +87,21 @@ export const LogConfirmCard: React.FC<LogConfirmCardProps> = ({
   // Rich coaster data
   const coasterData = COASTER_BY_ID[coasterId];
   const details = COASTER_DETAILS[coasterId];
-  const resolvedImage = imageUrl || coasterData?.imageUrl;
+  const localArt = CARD_ART[coasterId];
+  const resolvedImage = localArt || imageUrl || coasterData?.imageUrl;
 
-  // Stats chips
+  // Stats — value+unit on one line, label on second (matches CoasterSheet mini cards)
   const stats = useMemo(() => {
     if (!coasterData) return [];
-    const result: { label: string; value: string }[] = [];
-    if (coasterData.heightFt > 0) result.push({ label: 'Height', value: `${coasterData.heightFt}'` });
-    if (coasterData.speedMph > 0) result.push({ label: 'Speed', value: `${coasterData.speedMph} mph` });
-    if (coasterData.inversions > 0) result.push({ label: 'Inversions', value: `${coasterData.inversions}` });
-    if (coasterData.lengthFt > 0) result.push({ label: 'Length', value: `${coasterData.lengthFt.toLocaleString()}'` });
+    const result: { label: string; display: string }[] = [];
+    if (coasterData.heightFt > 0) result.push({ label: 'Height', display: `${coasterData.heightFt}ft` });
+    if (coasterData.speedMph > 0) result.push({ label: 'Speed', display: `${coasterData.speedMph}mph` });
+    if (coasterData.inversions > 0) result.push({ label: 'Inversions', display: `${coasterData.inversions}` });
+    if (coasterData.lengthFt > 0) result.push({ label: 'Length', display: `${coasterData.lengthFt.toLocaleString()}ft` });
     return result.slice(0, 4);
   }, [coasterId]);
+
+  const focalY = CARD_ART_FOCAL[coasterId] ?? 0.5;
 
   // Manufacturer · Material · Year
   const metaLine = useMemo(() => {
@@ -320,15 +329,24 @@ export const LogConfirmCard: React.FC<LogConfirmCardProps> = ({
             <Ionicons name="close" size={16} color={colors.text.secondary} />
           </Pressable>
 
-          {/* Coaster Image */}
+          {/* Coaster Image — taller with focal point for card art */}
           {resolvedImage ? (
-            <Image
-              source={{ uri: resolvedImage }}
-              style={lcStyles.image}
-              resizeMode="cover"
-            />
+            <View style={lcStyles.imageWrapper}>
+              <Image
+                source={typeof resolvedImage === 'string' ? { uri: resolvedImage } : resolvedImage}
+                style={[
+                  lcStyles.imageFill,
+                  localArt ? {
+                    height: IMAGE_HEIGHT * 1.2,
+                    position: 'absolute' as const,
+                    top: -focalY * (IMAGE_HEIGHT * 0.2),
+                  } : undefined,
+                ]}
+                resizeMode="cover"
+              />
+            </View>
           ) : (
-            <View style={[lcStyles.image, lcStyles.imagePlaceholder]}>
+            <View style={[lcStyles.imageWrapper, lcStyles.imagePlaceholder]}>
               <Ionicons
                 name={coasterData?.material === 'wood' ? 'leaf-outline' : 'flash-outline'}
                 size={36}
@@ -345,13 +363,27 @@ export const LogConfirmCard: React.FC<LogConfirmCardProps> = ({
             {parkName}
           </Text>
 
-          {/* Stats row */}
+          {/* Stats — mini square cards */}
           {stats.length > 0 && (
             <View style={lcStyles.statsRow}>
               {stats.map((stat, i) => (
-                <View key={i} style={lcStyles.statChip}>
-                  <Text style={lcStyles.statValue}>{stat.value}</Text>
-                  <Text style={lcStyles.statLabel}>{stat.label}</Text>
+                <View key={i} style={lcStyles.statCard}>
+                  <Text
+                    style={lcStyles.statValue}
+                    numberOfLines={1}
+                    adjustsFontSizeToFit
+                    minimumFontScale={0.5}
+                  >
+                    {stat.display}
+                  </Text>
+                  <Text
+                    style={lcStyles.statLabel}
+                    numberOfLines={1}
+                    adjustsFontSizeToFit
+                    minimumFontScale={0.6}
+                  >
+                    {stat.label}
+                  </Text>
                 </View>
               ))}
             </View>
@@ -448,7 +480,7 @@ const lcStyles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
   },
   card: {
-    width: SCREEN_WIDTH - spacing.xl * 2,
+    width: CARD_WIDTH,
     backgroundColor: colors.background.card,
     borderRadius: radius.modal,
     padding: spacing.lg,
@@ -472,12 +504,17 @@ const lcStyles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 3,
   },
-  image: {
+  imageWrapper: {
     width: '100%',
-    height: 150,
+    height: IMAGE_HEIGHT,
     borderRadius: radius.md,
     marginBottom: spacing.base,
     backgroundColor: colors.background.imagePlaceholder,
+    overflow: 'hidden',
+  },
+  imageFill: {
+    width: '100%',
+    height: IMAGE_HEIGHT,
   },
   imagePlaceholder: {
     alignItems: 'center',
@@ -498,24 +535,45 @@ const lcStyles = StyleSheet.create({
   statsRow: {
     flexDirection: 'row',
     marginTop: spacing.base,
+    justifyContent: 'center',
     gap: spacing.sm,
+    overflow: 'visible',
   },
-  statChip: {
-    flex: 1,
+  statCard: {
+    width: STAT_CARD_SIZE,
+    height: STAT_CARD_SIZE,
     backgroundColor: colors.background.page,
-    borderRadius: radius.sm,
-    paddingVertical: spacing.base,
+    borderRadius: radius.lg,
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: spacing.md,
+    paddingBottom: spacing.md,
+    paddingLeft: spacing.md,
+    paddingRight: spacing.md,
+    gap: 2,
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 2,
   },
   statValue: {
-    fontSize: typography.sizes.input,
+    width: '100%',
+    fontSize: typography.sizes.title,
+    lineHeight: typography.sizes.title,
     fontWeight: '700',
     color: colors.text.primary,
+    textAlign: 'center',
   },
   statLabel: {
+    width: '100%',
     fontSize: typography.sizes.small,
-    color: colors.text.meta,
-    marginTop: 2,
+    lineHeight: typography.sizes.small,
+    fontWeight: '500',
+    color: colors.text.secondary,
+    textTransform: 'uppercase',
+    letterSpacing: 0.4,
+    textAlign: 'center',
   },
   metaLine: {
     fontSize: typography.sizes.caption,

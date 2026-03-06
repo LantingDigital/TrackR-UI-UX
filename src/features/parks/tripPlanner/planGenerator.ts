@@ -1,18 +1,22 @@
 // ============================================
-// Plan Generator v2
+// Plan Generator v4
 //
 // Converts selected POIs into an ordered TripStop[]
-// with estimated walk/wait/ride times, interleaved
-// to spread out long waits.
+// with estimated walk/wait/ride times.
+//
+// CRITICAL: This generator NEVER removes stops.
+// It returns ALL stops + a BudgetEstimate that is
+// purely informational. The user decides what to cut.
 // ============================================
 
 import { COASTER_BY_ID } from '../../../data/coasterIndex';
-import { getSequenceWalkTimes } from './walkTimeEngine';
+import { getWalkTimeMin, getSequenceWalkTimes } from './walkTimeEngine';
 import type { UnifiedParkMapData } from '../types';
 import type {
   TripStop,
   SelectablePOI,
   POICategory,
+  BudgetEstimate,
   TripPlannerState,
 } from './types';
 
@@ -21,9 +25,8 @@ import type {
 // ============================================
 
 const DEFAULT_RIDE_MIN = 3;
-const HISTORICAL_MIN_ENTRIES = 3; // need at least this many wait log entries to use avg
+const HISTORICAL_MIN_ENTRIES = 3;
 
-/** Default durations (minutes) for non-ride POI categories */
 const CATEGORY_DURATION: Record<string, number> = {
   food: 20,
   shop: 10,
@@ -49,11 +52,6 @@ function generateId(): string {
 // Wait Time Estimation
 // ============================================
 
-/**
- * Get estimated wait time for a ride POI.
- * Uses historical data from globalWaitLog if >= 3 entries exist,
- * otherwise falls back to popularity-tier defaults.
- */
 function getEstimatedWaitMin(
   poiId: string,
   popularityTierMin: number,
@@ -67,9 +65,6 @@ function getEstimatedWaitMin(
   return popularityTierMin;
 }
 
-/**
- * Get ride duration in minutes from coaster index, or default.
- */
 function getRideDurationMin(coasterId?: string): number {
   if (!coasterId) return DEFAULT_RIDE_MIN;
   const entry = COASTER_BY_ID[coasterId];
@@ -77,36 +72,30 @@ function getRideDurationMin(coasterId?: string): number {
   return DEFAULT_RIDE_MIN;
 }
 
-/**
- * Get duration for a non-ride stop.
- */
 function getNonRideDurationMin(category: POICategory): number {
   return CATEGORY_DURATION[category] ?? 10;
 }
 
 // ============================================
-// Core Generator
+// Plan Result
 // ============================================
 
-/**
- * Generate an ordered TripStop[] from selected POIs.
- *
- * Strategy:
- * 1. Rank rides by popularity (cross-ref COASTER_BY_ID)
- * 2. Assign wait times by tier (top 3 → 45m, next 5 → 25m, rest → 10m)
- * 3. Override with historical averages when enough data exists
- * 4. Interleave popular ↔ less-popular rides to spread long waits
- * 5. Non-ride POIs are appended at natural intervals between rides
- * 6. Compute walk times between ordered stops
- * 7. Trim to time budget if set
- */
+export interface PlanResult {
+  stops: TripStop[];
+  estimate: BudgetEstimate;
+}
+
+// ============================================
+// Core Generator — NEVER TRIMS
+// ============================================
+
 export function generatePlanFromPOIs(
   pois: SelectablePOI[],
   mapData: UnifiedParkMapData | null,
   timeBudgetMin: number,
   globalWaitLog: TripPlannerState['globalWaitLog'],
-): TripStop[] {
-  if (pois.length === 0) return [];
+): PlanResult {
+  if (pois.length === 0) return { stops: [], estimate: { totalMin: 0, budgetMin: timeBudgetMin, overByMin: 0, isOverBudget: false } };
 
   // Separate rides from non-rides
   const rides = pois.filter((p) => p.category === 'ride');
@@ -115,13 +104,9 @@ export function generatePlanFromPOIs(
   // Enrich rides with popularity rank
   const enrichedRides = rides.map((r) => {
     const idx = r.coasterId ? COASTER_BY_ID[r.coasterId] : undefined;
-    return {
-      poi: r,
-      popularityRank: idx?.popularityRank ?? 9999,
-    };
+    return { poi: r, popularityRank: idx?.popularityRank ?? 9999 };
   });
 
-  // Sort by popularity (lower rank = more popular)
   enrichedRides.sort((a, b) => a.popularityRank - b.popularityRank);
 
   // Assign wait times by tier, with historical override
@@ -133,11 +118,10 @@ export function generatePlanFromPOIs(
 
     const waitMin = getEstimatedWaitMin(e.poi.id, tierMin, globalWaitLog);
     const rideMin = getRideDurationMin(e.poi.coasterId);
-
-    return { poi: e.poi, waitMin, rideMin, popularityRank: e.popularityRank };
+    return { poi: e.poi, waitMin, rideMin };
   });
 
-  // Interleave: alternate popular ↔ less-popular
+  // Interleave popular ↔ less-popular
   const midpoint = Math.ceil(ridesWithEstimates.length / 2);
   const popular = ridesWithEstimates.slice(0, midpoint);
   const lessPop = ridesWithEstimates.slice(midpoint);
@@ -148,93 +132,67 @@ export function generatePlanFromPOIs(
     if (i < lessPop.length) interleaved.push(lessPop[i]);
   }
 
-  // Scatter non-rides between rides at regular intervals
-  const orderedPOIs: Array<{
-    poi: SelectablePOI;
-    waitMin: number;
-    rideMin: number;
-  }> = [];
+  // Scatter non-rides between rides
+  const orderedPOIs: Array<{ poi: SelectablePOI; waitMin: number; rideMin: number }> = [];
 
   if (nonRides.length === 0) {
-    // No non-rides — just use interleaved rides
     for (const r of interleaved) {
       orderedPOIs.push({ poi: r.poi, waitMin: r.waitMin, rideMin: r.rideMin });
     }
   } else {
-    // Insert a non-ride every N rides
     const interval = Math.max(1, Math.floor(interleaved.length / (nonRides.length + 1)));
     let nonRideIdx = 0;
     for (let i = 0; i < interleaved.length; i++) {
-      orderedPOIs.push({
-        poi: interleaved[i].poi,
-        waitMin: interleaved[i].waitMin,
-        rideMin: interleaved[i].rideMin,
-      });
+      orderedPOIs.push({ poi: interleaved[i].poi, waitMin: interleaved[i].waitMin, rideMin: interleaved[i].rideMin });
       if ((i + 1) % interval === 0 && nonRideIdx < nonRides.length) {
         const nr = nonRides[nonRideIdx++];
-        orderedPOIs.push({
-          poi: nr,
-          waitMin: 0,
-          rideMin: getNonRideDurationMin(nr.category),
-        });
+        orderedPOIs.push({ poi: nr, waitMin: 0, rideMin: getNonRideDurationMin(nr.category) });
       }
     }
-    // Append remaining non-rides
     while (nonRideIdx < nonRides.length) {
       const nr = nonRides[nonRideIdx++];
-      orderedPOIs.push({
-        poi: nr,
-        waitMin: 0,
-        rideMin: getNonRideDurationMin(nr.category),
-      });
+      orderedPOIs.push({ poi: nr, waitMin: 0, rideMin: getNonRideDurationMin(nr.category) });
     }
   }
 
-  // Compute walk times for the ordered sequence
+  // Compute walk times
   const poiIds = orderedPOIs.map((o) => o.poi.id);
   const walkTimes = getSequenceWalkTimes(poiIds, mapData);
 
-  // Build TripStops, trimming to budget
-  const stops: TripStop[] = [];
-  let accumulatedMin = 0;
+  // Build ALL TripStops — NO TRIMMING
+  const stops: TripStop[] = orderedPOIs.map((item, i) => ({
+    id: generateId(),
+    poiId: item.poi.id,
+    name: item.poi.name,
+    category: item.poi.category,
+    order: i,
+    state: 'pending' as const,
+    estimatedWalkMin: walkTimes[i] ?? 0,
+    estimatedWaitMin: item.waitMin,
+    estimatedRideMin: item.rideMin,
+    thrillLevel: item.poi.thrillLevel,
+    area: item.poi.area,
+  }));
 
-  for (let i = 0; i < orderedPOIs.length; i++) {
-    const item = orderedPOIs[i];
-    const walkMin = walkTimes[i] ?? 0;
-    const stopTime = walkMin + item.waitMin + item.rideMin;
+  // Compute budget estimate (informational only)
+  const totalMin = estimateTotalMin(stops);
+  const overByMin = timeBudgetMin > 0 ? Math.max(0, Math.round(totalMin - timeBudgetMin)) : 0;
 
-    if (timeBudgetMin > 0 && accumulatedMin + stopTime > timeBudgetMin) {
-      continue; // skip stops that bust the budget
-    }
-
-    accumulatedMin += stopTime;
-
-    stops.push({
-      id: generateId(),
-      poiId: item.poi.id,
-      name: item.poi.name,
-      category: item.poi.category,
-      order: stops.length,
-      state: 'pending',
-      estimatedWalkMin: walkMin,
-      estimatedWaitMin: item.waitMin,
-      estimatedRideMin: item.rideMin,
-      thrillLevel: item.poi.thrillLevel,
-      area: item.poi.area,
-    });
-  }
-
-  return stops;
+  return {
+    stops,
+    estimate: {
+      totalMin: Math.round(totalMin),
+      budgetMin: timeBudgetMin,
+      overByMin,
+      isOverBudget: timeBudgetMin > 0 && totalMin > timeBudgetMin,
+    },
+  };
 }
 
 // ============================================
 // Reorder
 // ============================================
 
-/**
- * Reorder stops to match a new sequence of stop IDs.
- * Recalculates walk times for the new order.
- */
 export function reorderStops(
   stops: TripStop[],
   newOrder: string[],
@@ -245,7 +203,6 @@ export function reorderStops(
     .map((id) => stopMap.get(id))
     .filter((s): s is TripStop => s != null);
 
-  // Recalculate walk times
   const poiIds = reordered.map((s) => s.poiId);
   const walkTimes = getSequenceWalkTimes(poiIds, mapData);
 
@@ -257,13 +214,54 @@ export function reorderStops(
 }
 
 // ============================================
-// Insert Stop
+// Nearest Neighbor Route Optimization
 // ============================================
 
 /**
- * Insert a new stop after the given stop ID.
- * Recalculates walk times for the affected range.
+ * Reorder stops using greedy nearest-neighbor by walk time.
+ * Starts from first stop and greedily picks the closest
+ * unvisited stop. Recalculates walk times for the new order.
  */
+export function nearestNeighborReorder(
+  stops: TripStop[],
+  mapData: UnifiedParkMapData | null,
+): TripStop[] {
+  if (!mapData || stops.length <= 2) return stops;
+
+  const remaining = [...stops];
+  const ordered: TripStop[] = [remaining.shift()!];
+
+  while (remaining.length > 0) {
+    const lastPoiId = ordered[ordered.length - 1].poiId;
+    let nearestIdx = 0;
+    let nearestDist = Infinity;
+
+    for (let i = 0; i < remaining.length; i++) {
+      const walkTime = getWalkTimeMin(lastPoiId, remaining[i].poiId, mapData);
+      if (walkTime < nearestDist) {
+        nearestDist = walkTime;
+        nearestIdx = i;
+      }
+    }
+
+    ordered.push(remaining.splice(nearestIdx, 1)[0]);
+  }
+
+  // Recalculate walk times for new order
+  const poiIds = ordered.map((s) => s.poiId);
+  const walkTimes = getSequenceWalkTimes(poiIds, mapData);
+
+  return ordered.map((s, i) => ({
+    ...s,
+    order: i,
+    estimatedWalkMin: walkTimes[i] ?? 0,
+  }));
+}
+
+// ============================================
+// Insert Stop
+// ============================================
+
 export function insertStopAfter(
   stops: TripStop[],
   afterStopId: string,
@@ -276,7 +274,6 @@ export function insertStopAfter(
   const updated = [...stops];
   updated.splice(idx + 1, 0, newStop);
 
-  // Re-number and recalculate walk times
   const poiIds = updated.map((s) => s.poiId);
   const walkTimes = getSequenceWalkTimes(poiIds, mapData);
 
@@ -291,10 +288,6 @@ export function insertStopAfter(
 // Estimate Total
 // ============================================
 
-/**
- * Calculate total estimated time for a set of stops (minutes).
- * For break stops, uses breakDurationMin instead of wait+ride.
- */
 export function estimateTotalMin(stops: TripStop[]): number {
   return stops.reduce((sum, s) => {
     if (s.isBreak && s.breakDurationMin != null) {
@@ -308,9 +301,6 @@ export function estimateTotalMin(stops: TripStop[]): number {
 // Format Duration
 // ============================================
 
-/**
- * Format minutes as human-readable duration (e.g. "2h 30m").
- */
 export function formatDuration(min: number): string {
   const rounded = Math.round(min);
   const h = Math.floor(rounded / 60);
@@ -324,16 +314,13 @@ export function formatDuration(min: number): string {
 // Break Stop Factory
 // ============================================
 
-/**
- * Create a break stop (rest, snack, regroup, etc.).
- */
 export function createBreakStop(durationMin: number = 10): TripStop {
   return {
     id: generateId(),
     poiId: `break-${generateId().slice(0, 8)}`,
     name: 'Break',
     category: 'break',
-    order: 0, // caller should set or insertStopAfter will reorder
+    order: 0,
     state: 'pending',
     estimatedWalkMin: 0,
     estimatedWaitMin: 0,

@@ -45,7 +45,7 @@ import { TripPlannerSection } from '../features/parks/tripPlanner/TripPlannerSec
 
 // Parks Hub modals (remaining — Guide is now handled by MorphingPill)
 import { ParkSwitcherModal } from '../features/parks/modals/ParkSwitcherModal';
-import { TripPlannerModal } from '../features/parks/tripPlanner/TripPlannerModal';
+import { TripPlannerSheet } from '../features/parks/tripPlanner/TripPlannerSheet';
 import { useTripPlannerStore } from '../features/parks/tripPlanner/tripPlannerStore';
 
 // Map
@@ -56,6 +56,11 @@ import { buildParkList } from '../features/parks/utils/parkDataUtils';
 import { KNOTTS_GUIDES } from '../features/parks/data/mockParkGuides';
 import { KNOTTS_MAP_DATA } from '../features/parks/data/knottsMapData';
 import { ParkGuide, ParkData, ParkPOI } from '../features/parks/types';
+import { useTourTarget } from '../features/tour';
+import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
+import { getPOIByCoasterId } from '../features/parks/data/poiNameMap';
+
+type ParksRouteParams = { Parks: { targetCoasterId?: string } };
 
 // ============================================
 // Constants
@@ -118,6 +123,12 @@ function StaggeredSection({
 export function ParksScreen() {
   const insets = useSafeAreaInsets();
   const { homeParkName, setHomeParkName } = useSettingsStore();
+  const route = useRoute<RouteProp<ParksRouteParams, 'Parks'>>();
+  const navigation = useNavigation<any>();
+
+  // ---- Tour targets ----
+  const quickActionTourRef = useTourTarget('parks-quick-action-row');
+  const dashboardTourRef = useTourTarget('parks-dashboard');
   const { tickets } = useWallet();
   const { openPOI, registerMapHandler } = usePOIAction();
   const tripStore = useTripPlannerStore();
@@ -139,6 +150,19 @@ export function ParksScreen() {
       setMapModalVisible(true);
     });
   }, [registerMapHandler]);
+
+  // Cross-tab navigation: open map targeting a specific coaster (from HomeScreen search)
+  useEffect(() => {
+    const coasterId = route.params?.targetCoasterId;
+    if (!coasterId) return;
+    // Consume param immediately to prevent re-triggering
+    navigation.setParams({ targetCoasterId: undefined });
+    const poi = getPOIByCoasterId(coasterId);
+    if (!poi) return;
+    setSelectedGuide(null);
+    setMapTargetPoi(poi);
+    setMapModalVisible(true);
+  }, [route.params?.targetCoasterId, navigation]);
 
   // Fog covers full screen — gradient handles the visual boundary
   const fogTotalHeight = SCREEN_HEIGHT;
@@ -311,24 +335,28 @@ export function ParksScreen() {
       >
         {/* Quick actions */}
         <StaggeredSection index={0}>
-          <QuickActionRow
-            onMapPress={openMap}
-            onFoodPress={handleFoodPress}
-            onRidesPress={openTripPlanner}
-            onPassPress={openPassDetail}
-          />
+          <View ref={quickActionTourRef} collapsable={false}>
+            <QuickActionRow
+              onMapPress={openMap}
+              onFoodPress={handleFoodPress}
+              onRidesPress={openTripPlanner}
+              onPassPress={openPassDetail}
+            />
+          </View>
         </StaggeredSection>
 
         <View style={styles.sectionGap} />
 
         {/* Map preview */}
         <StaggeredSection index={1}>
-          <ParkDashboard
-            weather={MOCK_WEATHER}
-            steps={MOCK_STEPS}
-            waitTimes={MOCK_RIDE_WAIT_TIMES}
-            onRidePress={openPOI}
-          />
+          <View ref={dashboardTourRef} collapsable={false}>
+            <ParkDashboard
+              weather={MOCK_WEATHER}
+              steps={MOCK_STEPS}
+              waitTimes={MOCK_RIDE_WAIT_TIMES}
+              onRidePress={openPOI}
+            />
+          </View>
         </StaggeredSection>
 
         <View style={styles.sectionGap} />
@@ -414,7 +442,7 @@ export function ParksScreen() {
         />
       )}
 
-      <TripPlannerModal
+      <TripPlannerSheet
         visible={tripPlannerVisible}
         onClose={closeTripPlanner}
         parkId={currentPark.name}

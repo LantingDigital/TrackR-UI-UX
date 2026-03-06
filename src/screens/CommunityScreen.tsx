@@ -25,6 +25,7 @@ import { CommunityFeedTab } from '../features/community/components/CommunityFeed
 import { CommunityFriendsTab } from '../features/community/components/CommunityFriendsTab';
 import { CommunityRankingsTab } from '../features/community/components/CommunityRankingsTab';
 import { CommunityPlayTab } from '../features/community/components/CommunityPlayTab';
+import { ComposeSheet } from '../features/community/components/ComposeSheet';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const ENTER_SLIDE = SCREEN_HEIGHT * 0.15;
@@ -41,6 +42,7 @@ export const CommunityScreen = () => {
   const navigation = useNavigation<any>();
   const tabBar = useTabBar();
   const [activeTab, setActiveTab] = useState<CommunityTab>('feed');
+  const [showCompose, setShowCompose] = useState(false);
   const isExiting = useRef(false);
 
   const headerTotalHeight = insets.top + COMMUNITY_HEADER_HEIGHT;
@@ -137,13 +139,21 @@ export const CommunityScreen = () => {
       <Animated.View style={[styles.sheet, screenAnimStyle]}>
         {/* Tab content — fills entire sheet, scrolls behind header */}
         <View style={styles.tabContent}>
-          {activeTab === 'feed' && <CommunityFeedTab topInset={headerTotalHeight} />}
-          {activeTab === 'friends' && <CommunityFriendsTab />}
+          {activeTab === 'feed' && (
+            <CommunityFeedTab
+              topInset={headerTotalHeight}
+              onShowCompose={() => setShowCompose(true)}
+            />
+          )}
+          {activeTab === 'friends' && <CommunityFriendsTab topInset={headerTotalHeight} />}
           {activeTab === 'rankings' && <CommunityRankingsTab topInset={headerTotalHeight} />}
           {activeTab === 'play' && (
             <CommunityPlayTab
               topInset={headerTotalHeight}
               onPlayCoastle={() => navigation.navigate('Coastle')}
+              onPlaySpeedSorter={() => navigation.navigate('SpeedSorter')}
+              onPlayBlindRanking={() => navigation.navigate('BlindRanking')}
+              onPlayTrivia={() => navigation.navigate('Trivia')}
             />
           )}
         </View>
@@ -169,6 +179,9 @@ export const CommunityScreen = () => {
           />
         </View>
       </Animated.View>
+
+      {/* Compose sheet overlay */}
+      <ComposeSheet visible={showCompose} onClose={() => setShowCompose(false)} />
     </View>
   );
 };

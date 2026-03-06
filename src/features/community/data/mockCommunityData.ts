@@ -11,8 +11,9 @@ export interface GameItem {
 
 export const MOCK_GAMES: GameItem[] = [
   { id: 'coastle', label: 'Coastle', icon: 'game-controller-outline', active: true },
-  { id: 'game2', label: 'Soon', icon: 'lock-closed', active: false },
-  { id: 'game3', label: 'Soon', icon: 'lock-closed', active: false },
+  { id: 'speed-sorter', label: 'Sorter', icon: 'swap-vertical-outline', active: true },
+  { id: 'blind-ranking', label: 'Blind Rank', icon: 'eye-off-outline', active: true },
+  { id: 'trivia', label: 'Trivia', icon: 'help-circle-outline', active: true },
 ];
 
 export interface CoastleStats {

@@ -28,18 +28,22 @@ import Reanimated, {
 import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingActionButton } from '../components';
 import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
 import { LogModal } from '../components/LogModal';
-import { LogConfirmCard } from '../components/LogConfirmCard';
+import { LogConfirmSheet } from '../components/LogConfirmSheet';
 import { WalletCardStack, ScanModal, QuickActionsMenu, GateModeOverlay } from '../components/wallet';
 import { Ticket } from '../types/wallet';
 import { useWallet } from '../hooks/useWallet';
-import { useTabBar } from '../contexts/TabBarContext';
+import { useTabBar, useSheetTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
-import { resetOnboarding } from '../stores/settingsStore';
+import { resetOnboarding, getHomeParkName, setHomeParkName } from '../stores/settingsStore';
+import { useTourTarget, useTourContext, emitTourEvent } from '../features/tour';
 import { CoasterSheet } from '../features/parks/components/CoasterSheet';
 import { EnrichedCoaster } from '../features/parks/types';
 import { COASTER_BY_ID } from '../data/coasterIndex';
 import { COASTER_DETAILS } from '../data/coasterDetails';
 import { RatingSheet } from '../components/RatingSheet';
+import { RideActionSheet, RideActionData } from '../components/RideActionSheet';
+import { ParkSwitchConfirmSheet } from '../components/ParkSwitchConfirmSheet';
+import { getPOIByCoasterId } from '../features/parks/data/poiNameMap';
 import { addQuickLog, getTodayRideCountForCoaster, getRatingForCoaster } from '../stores/rideLogStore';
 import { CoasterRating } from '../types/rideLog';
 
@@ -71,6 +75,12 @@ const TAB_BAR_HEIGHT = 49;
 export const HomeScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
+
+  // ---- Tour targets ----
+  const searchBarTourRef = useTourTarget('home-search-bar');
+  const actionPillsTourRef = useTourTarget('home-action-pills');
+  const newsFeedTourRef = useTourTarget('home-news-feed');
+  const { startTour, registerPill, unregisterPill } = useTourContext();
   const [bookmarkedIds, setBookmarkedIds] = useState<Set<string>>(
     new Set(MOCK_NEWS.filter(item => item.isSaved).map(item => item.id))
   );
@@ -104,6 +114,20 @@ export const HomeScreen = () => {
     id: string; name: string; parkName: string;
   } | null>(null);
   const [ratingExisting, setRatingExisting] = useState<CoasterRating | undefined>();
+
+  // Ride action sheet (long-press from search results)
+  const [rideActionData, setRideActionData] = useState<RideActionData | null>(null);
+  const [rideActionVisible, setRideActionVisible] = useState(false);
+
+  // Park switch confirmation (View on Map → different park)
+  const [parkSwitchVisible, setParkSwitchVisible] = useState(false);
+  const [parkSwitchTarget, setParkSwitchTarget] = useState<{
+    parkName: string; coasterId: string; rideName: string;
+  } | null>(null);
+
+  // Auto-hide tab bar when any search bottom sheet is visible (or navigating to map)
+  const [navigatingToMap, setNavigatingToMap] = useState(false);
+  useSheetTabBar(rideActionVisible || parkSwitchVisible || navigatingToMap);
 
   // Modal animation lock — blocks all touches during open/close animations
   const [isModalAnimating, setIsModalAnimating] = useState(false);
@@ -153,6 +177,18 @@ export const HomeScreen = () => {
   const scanMorphingPillRef = useRef<MorphingPillRef>(null);
   // Ref for FlatList (allows scroll to top on Home tab tap)
   const flatListRef = useRef<FlatList>(null);
+
+  // Register MorphingPill refs with tour system for programmatic control
+  useEffect(() => {
+    registerPill('log', logMorphingPillRef);
+    registerPill('search', morphingPillRef);
+    registerPill('scan', scanMorphingPillRef);
+    return () => {
+      unregisterPill('log');
+      unregisterPill('search');
+      unregisterPill('scan');
+    };
+  }, [registerPill, unregisterPill]);
 
   // Note: animProgress/animProgressKey/animProgressRef removed
   // — replaced by Reanimated reanimatedProgress shared value
@@ -537,6 +573,7 @@ export const HomeScreen = () => {
     requestAnimationFrame(() => {
       if (morphingPillRef.current) {
         morphingPillRef.current.open();
+        emitTourEvent({ type: 'morphingPill:opened', pillId: 'search' });
       }
     });
   }, []);
@@ -740,12 +777,121 @@ export const HomeScreen = () => {
         Keyboard.dismiss();
         setSelectedCoaster(coaster);
         setCoasterSheetVisible(true);
+        emitTourEvent({ type: 'coasterSheet:opened' });
         isModalAnimatingRef.current = false;
         setIsModalAnimating(false);
       }
     }
     // Parks: future — navigate to park detail
     // News: future — navigate to news article
+  }, []);
+
+  // Long-press a search result → open RideActionSheet
+  const handleRideLongPress = useCallback((item: { id: string; name: string; type: string }) => {
+    const indexEntry = COASTER_BY_ID[item.id];
+    const parkName = indexEntry?.park ?? (item.type === 'ride' ? '' : item.name);
+    haptics.select();
+    Keyboard.dismiss();
+    searchContentFade.value = withTiming(0, { duration: 150 });
+    setRideActionData({
+      id: item.id,
+      name: item.name,
+      parkName,
+      imageUrl: indexEntry?.imageUrl,
+    });
+    setRideActionVisible(true);
+  }, []);
+
+  // RideActionSheet → View Details
+  const handleRideActionViewDetails = useCallback((ride: RideActionData) => {
+    setRideActionVisible(false);
+    searchContentFade.value = withTiming(1, { duration: 250 });
+    const indexEntry = COASTER_BY_ID[ride.id];
+    if (!indexEntry) return;
+    const details = COASTER_DETAILS[ride.id];
+    const coaster: EnrichedCoaster = {
+      id: indexEntry.id,
+      name: indexEntry.name,
+      park: indexEntry.park,
+      country: indexEntry.country,
+      continent: indexEntry.continent,
+      manufacturer: indexEntry.manufacturer,
+      material: indexEntry.material as 'Wood' | 'Steel' | 'Hybrid',
+      type: indexEntry.type,
+      heightFt: indexEntry.heightFt,
+      speedMph: indexEntry.speedMph,
+      lengthFt: indexEntry.lengthFt,
+      inversions: indexEntry.inversions,
+      yearOpened: indexEntry.yearOpened,
+      dropFt: indexEntry.dropFt,
+      gForce: indexEntry.gForce,
+      duration: indexEntry.duration,
+      propulsion: indexEntry.propulsion,
+      designer: indexEntry.designer,
+      model: indexEntry.model,
+      status: indexEntry.status,
+      imageUrl: indexEntry.imageUrl,
+      ...details,
+    };
+    Keyboard.dismiss();
+    setSelectedCoaster(coaster);
+    setCoasterSheetVisible(true);
+  }, []);
+
+  // RideActionSheet → Log Ride
+  const handleRideActionLogRide = useCallback((ride: RideActionData) => {
+    setRideActionVisible(false);
+    searchContentFade.value = withTiming(1, { duration: 250 });
+    Keyboard.dismiss();
+    setLogConfirmCoaster({
+      id: ride.id,
+      name: ride.name,
+      parkName: ride.parkName,
+      imageUrl: ride.imageUrl,
+    });
+  }, []);
+
+  // RideActionSheet → View on Map
+  const rideActionHasMapPOI = useMemo(() => {
+    if (!rideActionData) return false;
+    return !!getPOIByCoasterId(rideActionData.id);
+  }, [rideActionData]);
+
+  const handleRideActionViewOnMap = useCallback((ride: RideActionData) => {
+    searchContentFade.value = withTiming(1, { duration: 250 });
+    Keyboard.dismiss();
+    const currentPark = getHomeParkName();
+    if (currentPark === ride.parkName) {
+      // Same park — hold tab bar hidden while navigating, map will take over
+      setNavigatingToMap(true);
+      setRideActionVisible(false);
+      navigation.navigate('Parks', { targetCoasterId: ride.id });
+      // Map screen hides tab bar on mount — release our hold after it takes over
+      setTimeout(() => setNavigatingToMap(false), 500);
+    } else {
+      // Different park — transition directly to confirmation (combined signal keeps tab bar hidden)
+      setParkSwitchTarget({ parkName: ride.parkName, coasterId: ride.id, rideName: ride.name });
+      setParkSwitchVisible(true);
+      setRideActionVisible(false);
+    }
+  }, [navigation]);
+
+  const handleParkSwitchConfirm = useCallback(() => {
+    if (!parkSwitchTarget) return;
+    setNavigatingToMap(true);
+    setParkSwitchVisible(false);
+    setHomeParkName(parkSwitchTarget.parkName);
+    setTimeout(() => {
+      navigation.navigate('Parks', { targetCoasterId: parkSwitchTarget.coasterId });
+      setParkSwitchTarget(null);
+      // Map screen hides tab bar on mount — release our hold after it takes over
+      setTimeout(() => setNavigatingToMap(false), 500);
+    }, 100);
+  }, [parkSwitchTarget, navigation]);
+
+  const handleParkSwitchCancel = useCallback(() => {
+    setParkSwitchVisible(false);
+    setParkSwitchTarget(null);
   }, []);
 
   // =========================================
@@ -761,6 +907,7 @@ export const HomeScreen = () => {
     requestAnimationFrame(() => {
       if (logMorphingPillRef.current) {
         logMorphingPillRef.current.open();
+        emitTourEvent({ type: 'morphingPill:opened', pillId: 'log' });
       }
     });
   }, []);
@@ -1331,7 +1478,7 @@ export const HomeScreen = () => {
     opacity: logContentFade.value,
   }));
 
-  // LOG header text: content fade only (focus mode removed)
+  // Log header label (fades with content)
   const logHeaderAnimatedStyle = useAnimatedStyle(() => ({
     opacity: logContentFade.value,
   }));
@@ -1366,6 +1513,7 @@ export const HomeScreen = () => {
       <View style={styles.mainContentWrapper}>
       {/* News Feed - comes first, header floats over it */}
       {/* Content starts below status bar + header, but can scroll behind both */}
+      <View ref={newsFeedTourRef} style={{ flex: 1 }} collapsable={false}>
       <Reanimated.FlatList
         ref={flatListRef}
         data={MOCK_NEWS}
@@ -1382,6 +1530,7 @@ export const HomeScreen = () => {
         onContentSizeChange={(_w: number, h: number) => { contentHeightShared.value = h; }}
         onLayout={(e: any) => { viewportHeightShared.value = e.nativeEvent.layout.height; }}
       />
+      </View>
 
       {/* Fog Gradient Overlay - warmer tone with longer gradual fade section */}
       {/* Fixed height at expanded size; scaleY transform shrinks it when collapsed. */}
@@ -1424,6 +1573,7 @@ export const HomeScreen = () => {
       {/* overflow: visible allows button animations to extend beyond container */}
       {/* No animated height - let content flow naturally, fog handles the visual boundary */}
       <View
+        ref={searchBarTourRef}
         style={[
           styles.stickyHeader,
           {
@@ -1518,7 +1668,7 @@ export const HomeScreen = () => {
       {/* Action Buttons — OUTSIDE stickyHeader so they render ABOVE pill shadows (z=10)
           while remaining BELOW modal backdrops (z=50). Static z=11 keeps buttons above
           pill wrappers (z=10) so pill shadow renders behind buttons at rest. */}
-      <Reanimated.View style={[styles.morphingButtonsContainer, { top: insets.top, zIndex: 11 }, actionButtonsAnimatedStyle]} pointerEvents={searchVisible || logVisible ? 'none' : 'box-none'}>
+      <Reanimated.View ref={actionPillsTourRef} style={[styles.morphingButtonsContainer, { top: insets.top, zIndex: 11 }, actionButtonsAnimatedStyle]} pointerEvents={searchVisible || logVisible ? 'none' : 'box-none'}>
         {/* Log Button */}
         <Reanimated.View style={logButtonAnimatedStyle}>
           <MorphingActionButton
@@ -1665,6 +1815,7 @@ export const HomeScreen = () => {
             onClose={handleSearchClose}
             onSearch={handleSearch}
             onResultPress={handleSearchResultPress}
+            onRideLongPress={handleRideLongPress}
             morphProgress={pillMorphProgress}
             isEmbedded={true}
             sectionsOnly={true}
@@ -1733,8 +1884,7 @@ export const HomeScreen = () => {
         </Reanimated.View>
       )}
 
-      {/* "L O G" Header Label */}
-      {/* paddingLeft compensates for letterSpacing on last character to achieve true center */}
+      {/* "L O G" Header Label - centered, matching SEARCH and WALLET pattern */}
       {logVisible && (
         <Reanimated.Text
           style={[{
@@ -1748,7 +1898,7 @@ export const HomeScreen = () => {
             letterSpacing: 10,
             paddingLeft: 10, // Offset for trailing letterSpacing
             color: '#000000',
-            zIndex: logConfirmCoaster ? 600 : 160,
+            zIndex: 160,
           },
           logHeaderAnimatedStyle,
           ]}
@@ -1991,7 +2141,7 @@ export const HomeScreen = () => {
                   isEmbedded={true}
                   inputOnly={true}
                   showCloseButton={false}
-                  onQueryChange={setSearchQuery}
+                  onQueryChange={(q: string) => { setSearchQuery(q); emitTourEvent({ type: 'search:queryChanged', query: q }); }}
                   externalQuery={searchQuery}
                 />
               </View>
@@ -2429,6 +2579,32 @@ export const HomeScreen = () => {
         </Pressable>
       )}
 
+      {/* Tour FAB — dev/testing button */}
+      {__DEV__ && !searchVisible && !logVisible && !walletVisible && (
+        <Pressable
+          onPress={() => { haptics.select(); startTour(); }}
+          style={[
+            styles.tourFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+          ]}
+        >
+          <Ionicons name="help-circle-outline" size={22} color={colors.text.inverse} />
+        </Pressable>
+      )}
+
+      {/* Spinner Preview FAB — dev/testing button */}
+      {__DEV__ && !searchVisible && !logVisible && !walletVisible && (
+        <Pressable
+          onPress={() => { haptics.select(); navigation.navigate('SpinnerPreview' as never); }}
+          style={[
+            styles.spinnerFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+          ]}
+        >
+          <Ionicons name="reload-outline" size={22} color={colors.text.inverse} />
+        </Pressable>
+      )}
+
       {/* Coaster Detail Sheet — opens from search result taps */}
       <CoasterSheet
         coaster={selectedCoaster}
@@ -2444,21 +2620,45 @@ export const HomeScreen = () => {
         }}
       />
 
-      {/* Log Confirmation Card — blur overlay above pill (z-200), below LOG header (z-600) */}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 500 }} pointerEvents={logConfirmCoaster ? 'auto' : 'none'}>
-        <LogConfirmCard
-          visible={!!logConfirmCoaster}
-          coasterId={logConfirmCoaster?.id ?? ''}
-          coasterName={logConfirmCoaster?.name ?? ''}
-          parkName={logConfirmCoaster?.parkName ?? ''}
-          rideNumber={logConfirmCoaster ? getTodayRideCountForCoaster(logConfirmCoaster.id) + 1 : 1}
-          imageUrl={logConfirmCoaster?.imageUrl}
-          onConfirm={handleLogConfirm}
-          onRate={handleLogRate}
-          onDismiss={handleLogConfirmDismiss}
-          onExitStart={() => setLogQuery('')}
-        />
-      </View>
+      {/* Ride Action Sheet — long-press search result bottom sheet */}
+      <RideActionSheet
+        ride={rideActionData}
+        visible={rideActionVisible}
+        onClose={() => {
+          setRideActionVisible(false);
+        }}
+        onDismissStart={() => {
+          searchContentFade.value = withTiming(1, { duration: 250 });
+        }}
+        onViewDetails={handleRideActionViewDetails}
+        onViewOnMap={handleRideActionViewOnMap}
+        onLogRide={handleRideActionLogRide}
+        hasMapPOI={rideActionHasMapPOI}
+      />
+
+      {/* Park Switch Confirmation — "View on Map" at different park */}
+      <ParkSwitchConfirmSheet
+        visible={parkSwitchVisible}
+        currentParkName={getHomeParkName() ?? 'None'}
+        targetParkName={parkSwitchTarget?.parkName ?? ''}
+        rideName={parkSwitchTarget?.rideName ?? ''}
+        onConfirm={handleParkSwitchConfirm}
+        onCancel={handleParkSwitchCancel}
+      />
+
+      {/* Log Confirmation Sheet — bottom sheet above pill, below LOG header */}
+      <LogConfirmSheet
+        visible={!!logConfirmCoaster}
+        coasterId={logConfirmCoaster?.id ?? ''}
+        coasterName={logConfirmCoaster?.name ?? ''}
+        parkName={logConfirmCoaster?.parkName ?? ''}
+        rideNumber={logConfirmCoaster ? getTodayRideCountForCoaster(logConfirmCoaster.id) + 1 : 1}
+        imageUrl={logConfirmCoaster?.imageUrl}
+        onConfirm={handleLogConfirm}
+        onRate={handleLogRate}
+        onDismiss={handleLogConfirmDismiss}
+        onExitStart={() => setLogQuery('')}
+      />
 
       {/* Rating Sheet — full criteria rating for a coaster (z-index 1000 to appear above everything) */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000 }} pointerEvents={ratingSheetVisible ? 'auto' : 'none'}>
@@ -2582,6 +2782,30 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 24,
     backgroundColor: colors.text.secondary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 40,
+    ...shadows.small,
+  },
+  tourFab: {
+    position: 'absolute',
+    right: spacing.lg + (48 + spacing.base) * 4,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#5B8DEF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 40,
+    ...shadows.small,
+  },
+  spinnerFab: {
+    position: 'absolute',
+    right: spacing.lg + (48 + spacing.base) * 5,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#E87040',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 40,

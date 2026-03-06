@@ -11,6 +11,9 @@ import { MOCK_GAMES, MOCK_COASTLE_STATS, GameItem } from '../data/mockCommunityD
 
 interface GamesStripProps {
   onPlayCoastle: () => void;
+  onPlaySpeedSorter?: () => void;
+  onPlayBlindRanking?: () => void;
+  onPlayTrivia?: () => void;
 }
 
 const GameCircle = ({
@@ -52,7 +55,7 @@ const GameCircle = ({
         >
           {item.label}
         </Text>
-        {item.active && (
+        {item.id === 'coastle' && (
           <Text style={styles.gameSubtitle}>
             Daily #{MOCK_COASTLE_STATS.dailyNumber}
           </Text>
@@ -62,13 +65,18 @@ const GameCircle = ({
   );
 };
 
-export const GamesStrip = ({ onPlayCoastle }: GamesStripProps) => {
+export const GamesStrip = ({ onPlayCoastle, onPlaySpeedSorter, onPlayBlindRanking, onPlayTrivia }: GamesStripProps) => {
   const handlePress = (item: GameItem) => {
-    if (item.active && item.id === 'coastle') {
-      haptics.select();
-      onPlayCoastle();
-    } else {
+    if (!item.active) {
       haptics.tap();
+      return;
+    }
+    haptics.select();
+    switch (item.id) {
+      case 'coastle': onPlayCoastle(); break;
+      case 'speed-sorter': onPlaySpeedSorter?.(); break;
+      case 'blind-ranking': onPlayBlindRanking?.(); break;
+      case 'trivia': onPlayTrivia?.(); break;
     }
   };
 

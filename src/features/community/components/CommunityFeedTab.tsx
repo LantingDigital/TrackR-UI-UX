@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +13,9 @@ import { spacing } from '../../../theme/spacing';
 import { SPRINGS } from '../../../constants/animations';
 import { GamesStrip } from './GamesStrip';
 import { FeedPost } from './FeedPost';
-import { MOCK_FEED } from '../data/mockCommunityData';
+import { FAB } from './FAB';
+import { useCommunityStore, toggleLike } from '../stores/communityStore';
+import type { FeedItem } from '../types/community';
 
 const MAX_STAGGER = 6;
 
@@ -41,42 +43,72 @@ function StaggeredItem({
 
 interface CommunityFeedTabProps {
   topInset?: number;
+  onShowCompose?: () => void;
 }
 
-export const CommunityFeedTab = ({ topInset = 0 }: CommunityFeedTabProps) => {
+export const CommunityFeedTab = ({ topInset = 0, onShowCompose }: CommunityFeedTabProps) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
+  const { feed } = useCommunityStore();
+
+  const handleLike = useCallback((itemId: string) => {
+    toggleLike(itemId);
+  }, []);
+
+  const handleCommentTap = useCallback((item: FeedItem) => {
+    navigation.navigate('PostDetail', { itemId: item.id });
+  }, [navigation]);
+
+  const handleAuthorTap = useCallback((authorId: string) => {
+    navigation.navigate('ProfileView', { userId: authorId });
+  }, [navigation]);
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={[
-        styles.content,
-        { paddingTop: topInset, paddingBottom: insets.bottom + spacing.xxxl },
-      ]}
-      showsVerticalScrollIndicator={false}
-    >
-      <StaggeredItem index={0}>
-        <View style={styles.gamesStripContainer}>
-          <GamesStrip
-            onPlayCoastle={() => navigation.navigate('Coastle')}
-          />
-        </View>
-      </StaggeredItem>
-
-      {MOCK_FEED.map((item, index) => (
-        <StaggeredItem key={item.id} index={index + 1}>
-          <View style={styles.feedItem}>
-            <FeedPost item={item} />
+    <View style={styles.container}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={[
+          styles.content,
+          { paddingTop: topInset, paddingBottom: insets.bottom + spacing.xxxl },
+        ]}
+        showsVerticalScrollIndicator={false}
+      >
+        <StaggeredItem index={0}>
+          <View style={styles.gamesStripContainer}>
+            <GamesStrip
+              onPlayCoastle={() => navigation.navigate('Coastle')}
+              onPlaySpeedSorter={() => navigation.navigate('SpeedSorter')}
+              onPlayBlindRanking={() => navigation.navigate('BlindRanking')}
+              onPlayTrivia={() => navigation.navigate('Trivia')}
+            />
           </View>
         </StaggeredItem>
-      ))}
-    </ScrollView>
+
+        {feed.map((item, index) => (
+          <StaggeredItem key={item.id} index={index + 1}>
+            <View style={styles.feedItem}>
+              <FeedPost
+                item={item}
+                onLike={handleLike}
+                onCommentTap={handleCommentTap}
+                onAuthorTap={handleAuthorTap}
+              />
+            </View>
+          </StaggeredItem>
+        ))}
+      </ScrollView>
+
+      {/* Floating Action Button */}
+      {onShowCompose && <FAB onPress={onShowCompose} />}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  scrollView: {
     flex: 1,
   },
   content: {

@@ -42,6 +42,7 @@ import {
   getRidesForPark,
   ALL_SEARCHABLE_ITEMS,
 } from '../data/mockSearchData';
+import { useNavigation } from '@react-navigation/native';
 import { addQuickLog, getUnratedCoasters, getAllLogs, subscribe as subscribeToStore } from '../stores/rideLogStore';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -83,6 +84,7 @@ export const LogModal: React.FC<LogModalProps> = ({
   externalQuery,
 }) => {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<any>();
   const [searchQuery, setSearchQuery] = useState('');
   const [pendingRatings, setPendingRatings] = useState<SearchableItem[]>([]);
   const [hasAnyLogs, setHasAnyLogs] = useState(false);
@@ -173,11 +175,14 @@ export const LogModal: React.FC<LogModalProps> = ({
   }, [lastParkName]);
 
   // Autocomplete vs discovery content
-  const showAutocomplete = searchQuery.length > 0;
+  // In sectionsOnly mode, use externalQuery directly (avoids useEffect sync delay
+  // that can cause the crossfade detection to miss the transition by one frame)
+  const effectiveQuery = (sectionsOnly && externalQuery !== undefined) ? externalQuery : searchQuery;
+  const showAutocomplete = effectiveQuery.length > 0;
   const autocompleteResults = useMemo(() => {
-    if (!searchQuery.trim()) return [];
-    return searchItems(searchQuery).filter(item => item.type === 'ride');
-  }, [searchQuery]);
+    if (!effectiveQuery.trim()) return [];
+    return searchItems(effectiveQuery).filter(item => item.type === 'ride');
+  }, [effectiveQuery]);
 
   // Crossfade: cache last results + fade out overlay when query clears
   const cachedResultsRef = useRef<SearchableItem[]>([]);
@@ -193,25 +198,44 @@ export const LogModal: React.FC<LogModalProps> = ({
   }
 
   // Detect autocomplete → discovery transition
-  const wasAutocomplete = useRef(showAutocomplete);
-  if (wasAutocomplete.current && !showAutocomplete && !fadingOut) {
-    // Query just cleared — start fade out of cached results
-    setFadingOut(true);
-    autocompleteFade.value = 1;
-    autocompleteFade.value = withTiming(0, { duration: 800 });
-  }
-  wasAutocomplete.current = showAutocomplete;
+  // Uses render-time ref to keep overlay alive (prevents one-frame unmount blink)
+  // then useEffect to start the actual fade animation
+  const prevShowAutocomplete = useRef(showAutocomplete);
+  const justTransitioned = useRef(false);
 
-  // Clean up fadingOut state after animation completes
+  // Synchronous check: if showAutocomplete just went false, mark overlay to stay alive
+  // This prevents the gap between "showAutocomplete = false" and "fadingOut = true"
+  if (prevShowAutocomplete.current && !showAutocomplete && !fadingOut && cachedResultsRef.current.length > 0) {
+    justTransitioned.current = true;
+  }
+
   useEffect(() => {
-    if (fadingOut) {
+    const wasVisible = prevShowAutocomplete.current;
+    prevShowAutocomplete.current = showAutocomplete;
+
+    if (wasVisible && !showAutocomplete && cachedResultsRef.current.length > 0) {
+      // Query just cleared — start fade out of cached results
+      setFadingOut(true);
+      justTransitioned.current = false;
+      autocompleteFade.value = 1;
+      autocompleteFade.value = withTiming(0, { duration: 800 });
+
+      // Clean up after animation completes
       const timer = setTimeout(() => {
         setFadingOut(false);
         cachedResultsRef.current = [];
       }, 850);
       return () => clearTimeout(timer);
     }
-  }, [fadingOut]);
+
+    // Cancel fade if user started typing again while fade was running
+    if (showAutocomplete && fadingOut) {
+      setFadingOut(false);
+      autocompleteFade.value = 1;
+    }
+
+    justTransitioned.current = false;
+  }, [showAutocomplete]);
 
   // Staggered Cascade Animation (same as SearchModal) - now supports 4 sections
   // Uses Reanimated useAnimatedStyle for UI-thread driven animations
@@ -274,12 +298,15 @@ export const LogModal: React.FC<LogModalProps> = ({
     onCardSelect?.(item, cardLayout);
   }, [onCardSelect]);
 
-  // Handle "Rate All" — trigger rating for first pending item
+  // Handle "Rate All" — close modal and navigate to RateRides screen
   const handleRateAll = useCallback(() => {
     if (pendingRatings.length === 0) return;
     haptics.select();
-    handlePendingRatingPress(pendingRatings[0]);
-  }, [pendingRatings, handlePendingRatingPress]);
+    onClose();
+    setTimeout(() => {
+      navigation.navigate('RateRides');
+    }, 150);
+  }, [pendingRatings, onClose, navigation]);
 
   // Handle trending coaster tap - open confirmation card
   const handleTrendingPress = useCallback((coaster: TrendingCoaster) => {
@@ -562,13 +589,14 @@ export const LogModal: React.FC<LogModalProps> = ({
             </View>
 
             {/* Autocomplete overlay — fades out when query clears, using cached results */}
-            {(showAutocomplete || fadingOut) && (
+            {/* justTransitioned keeps overlay alive for the one frame between showAutocomplete=false and fadingOut=true */}
+            {(showAutocomplete || fadingOut || justTransitioned.current) && (
               <Animated.View
                 style={[
                   { position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10 },
-                  fadingOut ? autocompleteFadeStyle : undefined,
+                  (fadingOut || justTransitioned.current) ? autocompleteFadeStyle : undefined,
                 ]}
-                pointerEvents={fadingOut ? 'none' : 'auto'}
+                pointerEvents={(fadingOut || justTransitioned.current) ? 'none' : 'auto'}
               >
                 <View style={styles.section}>
                   {(showAutocomplete ? autocompleteResults : cachedResultsRef.current).length > 0 ? (

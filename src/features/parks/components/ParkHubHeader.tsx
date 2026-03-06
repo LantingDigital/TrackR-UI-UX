@@ -8,7 +8,6 @@ import {
   StyleSheet,
   Dimensions,
   ListRenderItemInfo,
-  ActivityIndicator,
 } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -23,6 +22,7 @@ import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
+import { TrackSpinner } from '../../../components/feedback/TrackSpinner';
 import { ParkData } from '../types';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -61,9 +61,10 @@ export function ParkHubHeader({
   const morphRef = useRef<MorphingPillRef>(null);
   const [listState, setListState] = useState<'closed' | 'preview' | 'full'>('closed');
 
-  // Three-state list loading: closed (0 items) → preview (first 8) → full (all)
+  // Defer list rendering until morph animation settles — prevents frame drops
+  // during the arc/expansion. Header + search render immediately; list fills after.
   const handleAnimationStart = useCallback((isOpening: boolean) => {
-    setListState(isOpening ? 'preview' : 'closed');
+    if (!isOpening) setListState('closed');
   }, []);
 
   const handleAnimationComplete = useCallback((isOpen: boolean) => {
@@ -287,7 +288,7 @@ function SwitcherContent({
         />
       </View>
 
-      {/* Park list — first ~10 items render synchronously, rest batched async */}
+      {/* Park list — deferred until morph animation settles */}
       <FlatList
         data={filtered}
         renderItem={renderItem}
@@ -296,11 +297,16 @@ function SwitcherContent({
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={switcherStyles.listContent}
-        ListFooterComponent={listFooter}
         initialNumToRender={10}
         maxToRenderPerBatch={5}
         windowSize={3}
         removeClippedSubviews
+        ListEmptyComponent={
+          <View style={switcherStyles.loadingState}>
+            <TrackSpinner size={36} />
+            <Text style={switcherStyles.loadingText}>Loading parks...</Text>
+          </View>
+        }
       />
     </View>
   );
@@ -404,9 +410,17 @@ const switcherStyles = StyleSheet.create({
   listContent: {
     paddingBottom: spacing.xxl,
   },
-  footerLoader: {
-    paddingVertical: spacing.xl,
+  loadingState: {
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: spacing.xxxl,
+  },
+  loadingText: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.medium,
+    color: colors.text.meta,
+    marginTop: spacing.sm,
   },
   row: {
     flexDirection: 'row',

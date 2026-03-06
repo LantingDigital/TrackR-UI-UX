@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import { StyleSheet, View, Text, Pressable, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { emitTourEvent } from '../tour';
 import { BlurView } from 'expo-blur';
 import Animated, {
   useSharedValue,
@@ -162,6 +163,7 @@ export const CoastleScreen: React.FC = () => {
 
       const guessIndex = game.guesses.length;
       submitGuess(coaster);
+      emitTourEvent({ type: 'coastle:guessSubmitted', guessCount: guessIndex + 1 });
       setRevealingIndex(guessIndex);
 
       setTimeout(() => {

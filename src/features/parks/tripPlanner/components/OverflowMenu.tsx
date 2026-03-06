@@ -1,14 +1,16 @@
 // ============================================
 // Overflow Menu — Three-dot dropdown
 //
-// Actions: Add Break, Pause/Resume Trip, End Trip.
-// Animated dropdown from top-right corner.
-// Only mounts when visible.
+// Add Break / Pause Trip / End Trip.
+// Scale + opacity spring entrance.
 // ============================================
 
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
   FadeIn,
   FadeOut,
 } from 'react-native-reanimated';
@@ -19,6 +21,7 @@ import { typography } from '../../../../theme/typography';
 import { spacing } from '../../../../theme/spacing';
 import { radius } from '../../../../theme/radius';
 import { shadows } from '../../../../theme/shadows';
+import { SPRINGS } from '../../../../constants/animations';
 import { haptics } from '../../../../services/haptics';
 
 // ============================================
@@ -27,50 +30,11 @@ import { haptics } from '../../../../services/haptics';
 
 interface OverflowMenuProps {
   visible: boolean;
+  isPaused: boolean;
   onClose: () => void;
   onAddBreak: () => void;
   onPauseTrip: () => void;
   onEndTrip: () => void;
-  isPaused: boolean;
-}
-
-// ============================================
-// Menu Item
-// ============================================
-
-function MenuItem({
-  icon,
-  label,
-  onPress,
-  destructive,
-}: {
-  icon: string;
-  label: string;
-  onPress: () => void;
-  destructive?: boolean;
-}) {
-  const textColor = destructive ? colors.status.error : colors.text.primary;
-
-  return (
-    <Pressable
-      onPress={() => {
-        haptics.tap();
-        onPress();
-      }}
-      style={({ pressed }) => [
-        styles.menuItem,
-        pressed && styles.menuItemPressed,
-      ]}
-    >
-      <Ionicons
-        name={icon as any}
-        size={18}
-        color={textColor}
-        style={styles.menuIcon}
-      />
-      <Text style={[styles.menuLabel, { color: textColor }]}>{label}</Text>
-    </Pressable>
-  );
 }
 
 // ============================================
@@ -79,11 +43,11 @@ function MenuItem({
 
 function OverflowMenuInner({
   visible,
+  isPaused,
   onClose,
   onAddBreak,
   onPauseTrip,
   onEndTrip,
-  isPaused,
 }: OverflowMenuProps) {
   if (!visible) return null;
 
@@ -101,19 +65,20 @@ function OverflowMenuInner({
         <MenuItem
           icon="cafe-outline"
           label="Add a Break"
-          onPress={() => { onAddBreak(); onClose(); }}
+          onPress={() => { haptics.tap(); onAddBreak(); onClose(); }}
         />
+        <View style={styles.separator} />
         <MenuItem
           icon={isPaused ? 'play-outline' : 'pause-outline'}
           label={isPaused ? 'Resume Trip' : 'Pause Trip'}
-          onPress={() => { onPauseTrip(); onClose(); }}
+          onPress={() => { haptics.tap(); onPauseTrip(); onClose(); }}
         />
         <View style={styles.separator} />
         <MenuItem
           icon="close-circle-outline"
           label="End Trip"
-          onPress={() => { onEndTrip(); onClose(); }}
-          destructive
+          onPress={() => { haptics.heavy(); onEndTrip(); onClose(); }}
+          danger
         />
       </Animated.View>
     </>
@@ -123,44 +88,80 @@ function OverflowMenuInner({
 export const OverflowMenu = memo(OverflowMenuInner);
 
 // ============================================
+// Menu Item
+// ============================================
+
+function MenuItem({
+  icon,
+  label,
+  onPress,
+  danger,
+}: {
+  icon: string;
+  label: string;
+  onPress: () => void;
+  danger?: boolean;
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.item, pressed && styles.itemPressed]}
+    >
+      <Ionicons
+        name={icon as any}
+        size={18}
+        color={danger ? colors.status.error : colors.text.primary}
+        style={styles.itemIcon}
+      />
+      <Text style={[styles.itemLabel, danger && styles.itemLabelDanger]}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
+// ============================================
 // Styles
 // ============================================
 
 const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    zIndex: 10,
+    zIndex: 20,
   },
   menu: {
     position: 'absolute',
-    top: 0,
+    top: 56,
     right: spacing.xl,
     backgroundColor: colors.background.card,
     borderRadius: radius.md,
-    ...shadows.card,
-    zIndex: 11,
     minWidth: 180,
-    paddingVertical: spacing.sm,
+    zIndex: 21,
+    ...shadows.card,
   },
-  menuItem: {
+  item: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.base,
   },
-  menuItemPressed: {
+  itemPressed: {
     backgroundColor: colors.interactive.pressed,
   },
-  menuIcon: {
+  itemIcon: {
     marginRight: spacing.base,
   },
-  menuLabel: {
-    fontSize: typography.sizes.label,
+  itemLabel: {
+    fontSize: typography.sizes.body,
     fontWeight: typography.weights.medium,
+    color: colors.text.primary,
+  },
+  itemLabelDanger: {
+    color: colors.status.error,
   },
   separator: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: colors.border.subtle,
-    marginVertical: spacing.xs,
+    marginHorizontal: spacing.base,
   },
 });

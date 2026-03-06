@@ -261,6 +261,27 @@ export function deleteRating(coasterId: string): void {
 }
 
 /**
+ * Update a log's timestamp (for date editing)
+ */
+export function updateLogTimestamp(logId: string, timestamp: string): void {
+  const logIndex = state.logs.findIndex((log) => log.id === logId);
+  if (logIndex === -1) return;
+
+  const updatedLogs = [...state.logs];
+  updatedLogs[logIndex] = {
+    ...updatedLogs[logIndex],
+    timestamp,
+  };
+
+  state = {
+    ...state,
+    logs: updatedLogs,
+  };
+
+  notifyListeners();
+}
+
+/**
  * Update notes for a log
  */
 export function updateLogNotes(logId: string, notes: string): void {

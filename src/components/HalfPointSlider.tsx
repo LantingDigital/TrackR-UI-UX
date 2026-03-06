@@ -1,17 +1,17 @@
 /**
  * HalfPointSlider — Reusable 1-10 slider with 0.5 step precision
  *
- * Ported from legacy RatingModal. Uses touch responder (not GestureHandler)
- * so it coexists with ScrollView without conflicts.
+ * Uses react-native-gesture-handler Gesture.Pan() so it properly coexists
+ * with other RNGH gestures (sheet dismiss, ScrollView) without touch stealing.
  *
  * Features:
  * - 1.0–10.0 range, 0.5 step snapping
- * - 8px dead zone for gesture detection (horizontal = slide, vertical = scroll)
+ * - Horizontal-only activation (vertical lets ScrollView handle it)
  * - Spring-animated thumb position
  * - Haptic feedback on each snap point
  */
 
-import React, { useCallback, useRef, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -19,13 +19,15 @@ import Animated, {
   withSpring,
   interpolate,
   Extrapolation,
+  runOnJS,
 } from 'react-native-reanimated';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { colors } from '../theme/colors';
 import { haptics } from '../services/haptics';
 
 const THUMB_SIZE = 28;
 const TRACK_HEIGHT = 6;
-const CONTAINER_HEIGHT = 36;
+const CONTAINER_HEIGHT = 44;
 const MIN_VALUE = 1.0;
 const MAX_VALUE = 10.0;
 const STEP = 0.5;
@@ -43,6 +45,10 @@ interface HalfPointSliderProps {
   disabled?: boolean;
   /** Track width defaults to 100% of container minus thumb size */
   width?: number;
+  /** When true, skip per-tick haptics (only haptic on drag start) */
+  quietHaptics?: boolean;
+  /** Custom tint for fill and thumb border (defaults to accent.primary) */
+  color?: string;
 }
 
 export const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
@@ -52,44 +58,25 @@ export const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
   onSlidingEnd,
   disabled = false,
   width: explicitWidth,
+  quietHaptics = false,
+  color,
 }) => {
-  const containerWidthRef = useRef(0);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const startY = useRef(0);
-  const startValue = useRef(value);
-  const lastValue = useRef(value);
-  const gestureDecided = useRef(false);
-
   const thumbPosition = useSharedValue(0);
-  // Shared value for track width — readable by worklets
   const trackWidthSV = useSharedValue(0);
+  const currentValueSV = useSharedValue(value);
+  const startValueSV = useSharedValue(value);
+  const lastSnappedSV = useSharedValue(value);
+  const isDraggingSV = useSharedValue(false);
 
-  const getTrackWidth = () => {
-    const w = explicitWidth ?? containerWidthRef.current;
-    return Math.max(0, w - THUMB_SIZE);
-  };
-
-  const valueToPosition = (val: number): number => {
-    const tw = getTrackWidth();
-    if (tw <= 0) return 0;
-    const normalized = (val - MIN_VALUE) / (MAX_VALUE - MIN_VALUE);
-    return normalized * tw;
-  };
-
-  const positionToValue = (pos: number): number => {
-    const tw = getTrackWidth();
-    if (tw <= 0) return MIN_VALUE;
-    const normalized = pos / tw;
-    const rawValue = normalized * (MAX_VALUE - MIN_VALUE) + MIN_VALUE;
-    const snapped = Math.round(rawValue / STEP) * STEP;
-    return Math.max(MIN_VALUE, Math.min(MAX_VALUE, snapped));
-  };
-
-  // Sync thumb when value changes externally
+  // Keep current value synced with prop
   useEffect(() => {
-    if (!isDragging.current) {
-      thumbPosition.value = withSpring(valueToPosition(value), SNAP_SPRING);
+    currentValueSV.value = value;
+    if (!isDraggingSV.value) {
+      const tw = trackWidthSV.value;
+      if (tw > 0) {
+        const pos = ((value - MIN_VALUE) / (MAX_VALUE - MIN_VALUE)) * tw;
+        thumbPosition.value = withSpring(pos, SNAP_SPRING);
+      }
     }
   }, [value]);
 
@@ -102,87 +89,97 @@ export const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
   }, [explicitWidth]);
 
   const handleLayout = useCallback((e: { nativeEvent: { layout: { width: number } } }) => {
-    containerWidthRef.current = e.nativeEvent.layout.width;
     const tw = Math.max(0, e.nativeEvent.layout.width - THUMB_SIZE);
     trackWidthSV.value = tw;
     // Set initial thumb position without animation
-    if (!isDragging.current) {
-      thumbPosition.value = valueToPosition(value);
+    if (!isDraggingSV.value) {
+      const pos = ((value - MIN_VALUE) / (MAX_VALUE - MIN_VALUE)) * tw;
+      thumbPosition.value = pos;
     }
   }, [value]);
 
-  const handleStartDrag = useCallback(
-    (evt: { nativeEvent: { pageX: number; pageY: number } }) => {
-      if (disabled) return;
-      startX.current = evt.nativeEvent.pageX;
-      startY.current = evt.nativeEvent.pageY;
-      startValue.current = value;
-      lastValue.current = value;
-      gestureDecided.current = false;
-      isDragging.current = false;
-    },
-    [value, disabled],
-  );
+  // JS callbacks (called from worklet via runOnJS)
+  const emitValueChange = useCallback((v: number) => {
+    onValueChange(v);
+  }, [onValueChange]);
 
-  const handleMoveDrag = useCallback(
-    (evt: { nativeEvent: { pageX: number; pageY: number } }) => {
-      if (disabled) return;
+  const emitSlidingStart = useCallback(() => {
+    onSlidingStart?.();
+  }, [onSlidingStart]);
 
-      if (!gestureDecided.current) {
-        const deltaX = Math.abs(evt.nativeEvent.pageX - startX.current);
-        const deltaY = Math.abs(evt.nativeEvent.pageY - startY.current);
+  const emitSlidingEnd = useCallback(() => {
+    onSlidingEnd?.();
+  }, [onSlidingEnd]);
 
-        // Wait for movement past dead zone before deciding gesture direction
-        if (deltaX < DEAD_ZONE && deltaY < DEAD_ZONE) return;
+  const emitHapticTick = useCallback(() => {
+    haptics.tick();
+  }, []);
 
-        gestureDecided.current = true;
+  const emitHapticTap = useCallback(() => {
+    haptics.tap();
+  }, []);
 
-        // Vertical gesture → let parent scroll handle it
-        if (deltaY >= deltaX) {
-          isDragging.current = false;
-          return;
-        }
+  // RNGH Pan gesture — activates on horizontal movement, fails on vertical
+  const panGesture = Gesture.Pan()
+    .enabled(!disabled)
+    .activeOffsetX([-DEAD_ZONE, DEAD_ZONE])
+    .failOffsetY([-DEAD_ZONE, DEAD_ZONE])
+    .onStart(() => {
+      'worklet';
+      startValueSV.value = currentValueSV.value;
+      lastSnappedSV.value = currentValueSV.value;
+      isDraggingSV.value = true;
+      runOnJS(emitHapticTap)();
+      runOnJS(emitSlidingStart)();
+    })
+    .onUpdate((e) => {
+      'worklet';
+      const tw = trackWidthSV.value;
+      if (tw <= 0) return;
 
-        // Horizontal gesture → we're sliding
-        isDragging.current = true;
-        haptics.tap();
-        onSlidingStart?.();
+      const startPos = ((startValueSV.value - MIN_VALUE) / (MAX_VALUE - MIN_VALUE)) * tw;
+      const desiredPos = startPos + e.translationX;
+      const clampedPos = Math.min(Math.max(0, desiredPos), tw);
+
+      // Snap to 0.5 steps
+      const rawVal = (clampedPos / tw) * (MAX_VALUE - MIN_VALUE) + MIN_VALUE;
+      const snapped = Math.round(rawVal / STEP) * STEP;
+      const clamped = Math.min(Math.max(MIN_VALUE, snapped), MAX_VALUE);
+
+      // Move thumb to exact position (smooth tracking)
+      thumbPosition.value = clampedPos;
+
+      // Emit value change + haptic on each new snap point
+      if (clamped !== lastSnappedSV.value) {
+        lastSnappedSV.value = clamped;
+        currentValueSV.value = clamped;
+        runOnJS(emitValueChange)(clamped);
+        if (!quietHaptics) runOnJS(emitHapticTick)();
+      }
+    })
+    .onEnd(() => {
+      'worklet';
+      isDraggingSV.value = false;
+
+      // Snap thumb to final value position
+      const tw = trackWidthSV.value;
+      if (tw > 0) {
+        const finalPos = ((lastSnappedSV.value - MIN_VALUE) / (MAX_VALUE - MIN_VALUE)) * tw;
+        thumbPosition.value = withSpring(finalPos, SNAP_SPRING);
       }
 
-      if (!isDragging.current) return;
-
-      const tw = getTrackWidth();
-      const deltaX = evt.nativeEvent.pageX - startX.current;
-      const startPosition = valueToPosition(startValue.current);
-      const desiredPosition = startPosition + deltaX;
-      const clampedPosition = Math.max(0, Math.min(tw, desiredPosition));
-      const newValue = positionToValue(clampedPosition);
-
-      if (newValue !== lastValue.current) {
-        haptics.tick();
-        lastValue.current = newValue;
-        onValueChange(newValue);
+      runOnJS(emitSlidingEnd)();
+    })
+    .onFinalize(() => {
+      'worklet';
+      // Safety net — if gesture is cancelled/fails, re-enable scroll
+      if (isDraggingSV.value) {
+        isDraggingSV.value = false;
+        runOnJS(emitSlidingEnd)();
       }
+    });
 
-      thumbPosition.value = clampedPosition;
-    },
-    [onValueChange, onSlidingStart, disabled],
-  );
-
-  const handleEndDrag = useCallback(() => {
-    const wasDragging = isDragging.current;
-    isDragging.current = false;
-    gestureDecided.current = false;
-
-    // Snap thumb to final value position
-    thumbPosition.value = withSpring(valueToPosition(value), SNAP_SPRING);
-
-    if (wasDragging) {
-      onSlidingEnd?.();
-    }
-  }, [value, onSlidingEnd]);
-
-  // Animated styles — use shared values only (worklet-safe)
+  // Animated styles — worklet-safe
   const thumbAnimStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: thumbPosition.value }],
   }));
@@ -199,34 +196,35 @@ export const HalfPointSlider: React.FC<HalfPointSliderProps> = ({
 
   return (
     <View
-      style={[styles.container, explicitWidth ? { width: explicitWidth } : undefined]}
+      style={[styles.outerContainer, explicitWidth ? { width: explicitWidth } : undefined]}
       onLayout={explicitWidth ? undefined : handleLayout}
-      onStartShouldSetResponder={() => !disabled}
-      onMoveShouldSetResponder={() => !disabled}
-      onResponderGrant={handleStartDrag}
-      onResponderMove={handleMoveDrag}
-      onResponderRelease={handleEndDrag}
-      onResponderTerminate={handleEndDrag}
-      onResponderTerminationRequest={() => !isDragging.current}
     >
-      {/* Track */}
-      <View style={[styles.track, { marginLeft: THUMB_SIZE / 2, marginRight: THUMB_SIZE / 2 }]}>
-        <Animated.View style={[styles.fill, disabled && styles.fillDisabled, fillAnimStyle]} />
-      </View>
+      <GestureDetector gesture={panGesture}>
+        <Animated.View style={styles.container}>
+          {/* Track */}
+          <View style={[styles.track, { marginLeft: THUMB_SIZE / 2, marginRight: THUMB_SIZE / 2 }]}>
+            <Animated.View style={[styles.fill, !disabled && color ? { backgroundColor: color } : undefined, disabled && styles.fillDisabled, fillAnimStyle]} />
+          </View>
 
-      {/* Thumb */}
-      <Animated.View
-        style={[
-          styles.thumb,
-          disabled && styles.thumbDisabled,
-          thumbAnimStyle,
-        ]}
-      />
+          {/* Thumb */}
+          <Animated.View
+            style={[
+              styles.thumb,
+              !disabled && color ? { borderColor: color } : undefined,
+              disabled && styles.thumbDisabled,
+              thumbAnimStyle,
+            ]}
+          />
+        </Animated.View>
+      </GestureDetector>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  outerContainer: {
+    overflow: 'visible',
+  },
   container: {
     height: CONTAINER_HEIGHT,
     justifyContent: 'center',

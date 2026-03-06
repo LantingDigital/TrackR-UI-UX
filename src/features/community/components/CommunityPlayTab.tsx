@@ -8,25 +8,57 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
-import { useCardPress, useSubtlePress } from '../../../hooks/useSpringPress';
+import { useCardPress } from '../../../hooks/useSpringPress';
 import { haptics } from '../../../services/haptics';
 import { MOCK_COASTLE_STATS } from '../data/mockCommunityData';
 
 interface CommunityPlayTabProps {
   topInset?: number;
   onPlayCoastle: () => void;
+  onPlaySpeedSorter?: () => void;
+  onPlayBlindRanking?: () => void;
+  onPlayTrivia?: () => void;
 }
 
-export const CommunityPlayTab = ({ topInset = 0, onPlayCoastle }: CommunityPlayTabProps) => {
+// ─── Game Card ──────────────────────────────────────────────
+
+function GameCard({ icon, title, subtitle, color, onPress }: {
+  icon: string;
+  title: string;
+  subtitle: string;
+  color: string;
+  onPress: () => void;
+}) {
+  const press = useCardPress();
+  return (
+    <Pressable onPress={onPress} {...press.pressHandlers} style={styles.gameCardPressable}>
+      <Animated.View style={[styles.gameCard, press.animatedStyle]}>
+        <View style={[styles.gameIconCircle, { backgroundColor: color + '18' }]}>
+          <Ionicons name={icon as any} size={22} color={color} />
+        </View>
+        <View style={styles.gameTextCol}>
+          <Text style={styles.gameTitle}>{title}</Text>
+          <Text style={styles.gameSubtitle}>{subtitle}</Text>
+        </View>
+        <View style={styles.gameChevron}>
+          <Ionicons name="chevron-forward" size={16} color={colors.text.meta} />
+        </View>
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+// ─── Main Component ─────────────────────────────────────────
+
+export const CommunityPlayTab = ({
+  topInset = 0,
+  onPlayCoastle,
+  onPlaySpeedSorter,
+  onPlayBlindRanking,
+  onPlayTrivia,
+}: CommunityPlayTabProps) => {
   const insets = useSafeAreaInsets();
   const heroPress = useCardPress();
-  const futurePress1 = useSubtlePress();
-  const futurePress2 = useSubtlePress();
-
-  const handleCoastlePress = () => {
-    haptics.select();
-    onPlayCoastle();
-  };
 
   return (
     <ScrollView
@@ -38,7 +70,7 @@ export const CommunityPlayTab = ({ topInset = 0, onPlayCoastle }: CommunityPlayT
       showsVerticalScrollIndicator={false}
     >
       {/* Coastle Hero Card */}
-      <Pressable onPress={handleCoastlePress} {...heroPress.pressHandlers}>
+      <Pressable onPress={() => { haptics.select(); onPlayCoastle(); }} {...heroPress.pressHandlers}>
         <Animated.View style={[styles.heroCard, heroPress.animatedStyle]}>
           <View style={styles.heroTopRow}>
             <View style={styles.iconCircle}>
@@ -46,7 +78,7 @@ export const CommunityPlayTab = ({ topInset = 0, onPlayCoastle }: CommunityPlayT
             </View>
             <View style={styles.heroTextCol}>
               <Text style={styles.heroTitle}>Coastle</Text>
-              <Text style={styles.heroSubtitle}>Daily Puzzle #{MOCK_COASTLE_STATS.dailyNumber}</Text>
+              <Text style={styles.heroSubtext}>Daily Puzzle #{MOCK_COASTLE_STATS.dailyNumber}</Text>
             </View>
             <View style={styles.arrowCircle}>
               <Ionicons name="chevron-forward" size={16} color={colors.accent.primary} />
@@ -57,7 +89,7 @@ export const CommunityPlayTab = ({ topInset = 0, onPlayCoastle }: CommunityPlayT
 
           <View style={styles.statsRow}>
             <View style={styles.statGroup}>
-              <Text style={styles.statValue}>🔥 {MOCK_COASTLE_STATS.streak}</Text>
+              <Text style={styles.statValue}>{'\u{1F525}'} {MOCK_COASTLE_STATS.streak}</Text>
               <Text style={styles.statLabel}>day streak</Text>
             </View>
             <View style={styles.statDivider} />
@@ -77,19 +109,28 @@ export const CommunityPlayTab = ({ topInset = 0, onPlayCoastle }: CommunityPlayT
       {/* More Games Section */}
       <Text style={styles.sectionTitle}>More Games</Text>
 
-      <View style={styles.futureGamesRow}>
-        <Pressable onPress={() => haptics.tap()} {...futurePress1.pressHandlers} style={styles.futureCardPressable}>
-          <Animated.View style={[styles.futureCard, futurePress1.animatedStyle]}>
-            <Ionicons name="lock-closed" size={24} color={colors.text.meta} />
-            <Text style={styles.futureCardLabel}>Coming Soon</Text>
-          </Animated.View>
-        </Pressable>
-        <Pressable onPress={() => haptics.tap()} {...futurePress2.pressHandlers} style={styles.futureCardPressable}>
-          <Animated.View style={[styles.futureCard, futurePress2.animatedStyle]}>
-            <Ionicons name="lock-closed" size={24} color={colors.text.meta} />
-            <Text style={styles.futureCardLabel}>Coming Soon</Text>
-          </Animated.View>
-        </Pressable>
+      <View style={styles.gamesCol}>
+        <GameCard
+          icon="swap-vertical-outline"
+          title="Speed Sorter"
+          subtitle="Sort coasters by stats"
+          color={colors.accent.primary}
+          onPress={() => { haptics.select(); onPlaySpeedSorter?.(); }}
+        />
+        <GameCard
+          icon="eye-off-outline"
+          title="Blind Ranking"
+          subtitle="Place items without peeking"
+          color="#B8A3C4"
+          onPress={() => { haptics.select(); onPlayBlindRanking?.(); }}
+        />
+        <GameCard
+          icon="help-circle-outline"
+          title="Coaster Trivia"
+          subtitle="Test your knowledge"
+          color="#8FBFB8"
+          onPress={() => { haptics.select(); onPlayTrivia?.(); }}
+        />
       </View>
     </ScrollView>
   );
@@ -129,7 +170,7 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
   },
-  heroSubtitle: {
+  heroSubtext: {
     fontSize: typography.sizes.caption,
     color: colors.text.secondary,
     marginTop: 2,
@@ -177,25 +218,41 @@ const styles = StyleSheet.create({
     marginTop: spacing.xxl,
     marginBottom: spacing.base,
   },
-  futureGamesRow: {
-    flexDirection: 'row',
+  gamesCol: {
     gap: spacing.base,
   },
-  futureCardPressable: {
-    flex: 1,
-  },
-  futureCard: {
-    height: 120,
+  gameCardPressable: {},
+  gameCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: colors.background.card,
-    borderRadius: radius.lg,
+    borderRadius: radius.card,
+    padding: spacing.lg,
+    ...shadows.card,
+  },
+  gameIconCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    ...shadows.small,
   },
-  futureCardLabel: {
-    fontSize: 11,
+  gameTextCol: {
+    flex: 1,
+    marginLeft: spacing.base,
+  },
+  gameTitle: {
+    fontSize: typography.sizes.body,
     fontWeight: typography.weights.semibold,
-    color: colors.text.meta,
-    marginTop: spacing.md,
+    color: colors.text.primary,
+  },
+  gameSubtitle: {
+    fontSize: typography.sizes.caption,
+    color: colors.text.secondary,
+    marginTop: 1,
+  },
+  gameChevron: {
+    width: 24,
+    alignItems: 'center',
   },
 });

@@ -19,6 +19,7 @@ import { TIMING } from '../constants/animations';
 import { useStrongPress } from '../hooks/useSpringPress';
 import { haptics } from '../services/haptics';
 import { useSettingsStore, type RiderType } from '../stores/settingsStore';
+import { useTourTarget } from '../features/tour';
 
 // ============================================
 // Rider type display labels
@@ -54,6 +55,7 @@ export const ProfileScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
   const { riderType } = useSettingsStore();
+  const settingsTourRef = useTourTarget('profile-settings-button');
 
   const editProfilePress = useStrongPress();
   const settingsPress = useStrongPress();
@@ -137,6 +139,7 @@ export const ProfileScreen = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.coasterList}
+            style={{ overflow: 'visible' }}
           >
             {MOCK_TOP_COASTERS.map((coaster, index) => (
               <View key={coaster.name} style={styles.coasterCard}>
@@ -164,18 +167,20 @@ export const ProfileScreen = () => {
             </Animated.View>
           </Pressable>
 
-          <Pressable
-            {...settingsPress.pressHandlers}
-            onPress={() => {
-              haptics.tap();
-              navigation.navigate('Settings');
-            }}
-          >
-            <Animated.View style={[styles.outlinedButton, settingsPress.animatedStyle]}>
-              <Ionicons name="settings-outline" size={18} color={colors.text.primary} />
-              <Text style={styles.outlinedButtonText}>Settings</Text>
-            </Animated.View>
-          </Pressable>
+          <View ref={settingsTourRef} collapsable={false}>
+            <Pressable
+              {...settingsPress.pressHandlers}
+              onPress={() => {
+                haptics.tap();
+                navigation.navigate('Settings');
+              }}
+            >
+              <Animated.View style={[styles.outlinedButton, settingsPress.animatedStyle]}>
+                <Ionicons name="settings-outline" size={18} color={colors.text.primary} />
+                <Text style={styles.outlinedButtonText}>Settings</Text>
+              </Animated.View>
+            </Pressable>
+          </View>
         </Animated.View>
       </ScrollView>
     </View>
@@ -273,7 +278,8 @@ const styles = StyleSheet.create({
   },
   coasterList: {
     paddingHorizontal: spacing.lg,
-    paddingBottom: spacing.md,
+    paddingTop: spacing.xs,
+    paddingBottom: spacing.lg,
     gap: spacing.base,
   },
   coasterCard: {

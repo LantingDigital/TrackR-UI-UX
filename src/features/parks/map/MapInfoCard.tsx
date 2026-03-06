@@ -108,6 +108,12 @@ export function MapInfoCard({ poi, onClose, onNavigate, onViewDetails }: MapInfo
           <View style={styles.areaPill}>
             <Text style={styles.areaLabel}>{AREA_LABELS[displayPoi.area] ?? displayPoi.area}</Text>
           </View>
+          {displayPoi.approximateLocation && (
+            <View style={styles.approxRow}>
+              <Ionicons name="location-outline" size={11} color={colors.text.meta} />
+              <Text style={styles.approxLabel}>Approximate location</Text>
+            </View>
+          )}
         </View>
         <Pressable onPress={onClose} style={styles.closeButton} hitSlop={12}>
           <Ionicons name="close" size={18} color={colors.text.secondary} />
@@ -250,6 +256,12 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
   },
   areaLabel: { fontSize: typography.sizes.small, fontWeight: typography.weights.medium, color: colors.accent.primary },
+  approxRow: {
+    flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: spacing.xs,
+  },
+  approxLabel: {
+    fontSize: typography.sizes.small, color: colors.text.meta, fontStyle: 'italic',
+  },
   closeButton: {
     width: 32, height: 32, borderRadius: radius.closeButton,
     backgroundColor: colors.background.input, alignItems: 'center', justifyContent: 'center',

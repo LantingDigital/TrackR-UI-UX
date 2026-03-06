@@ -162,8 +162,8 @@ export const PARK_BOUNDS = {
 export const KNOTTS_CENTER: [number, number] = [-118.000202, 33.843762];
 
 export const POI_BOUNDS = {
-  ne: [-117.9955, 33.8455] as [number, number],
-  sw: [-118.0020, 33.8395] as [number, number],
+  ne: [-117.9955, 33.8470] as [number, number],
+  sw: [-118.0022, 33.8395] as [number, number],
 };
 
 // ---- Zoom Levels ----
