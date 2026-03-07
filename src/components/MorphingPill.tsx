@@ -74,7 +74,8 @@ const MORPH_DURATION = 850; // ms for open (0.85x speed-up, proportional)
 const CLOSE_DURATION = 385; // ms for close backdrop (0.85x speed-up)
 
 export interface MorphingPillRef {
-  open: () => void;
+  /** Open the pill. Optionally pass screen coordinates to skip measureInWindow entirely. */
+  open: (overrideX?: number, overrideY?: number) => void;
   close: () => void;
   /** Instantly reset to collapsed state (no animation). Use when covering with another modal. */
   reset: () => void;
@@ -285,6 +286,35 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
 
   // Independent size animation — decoupled from arc travel
   const sizeProgress = useSharedValue(0);
+
+  // PRE-WARM: Force Reanimated to JIT-compile all worklets used in animated styles
+  // (outerStyle, innerStyle, backdropStyle, etc.) BEFORE the first user tap.
+  // Strategy: nudge shared values to a tiny non-zero epsilon via withSequence,
+  // then immediately snap back to the resting value. This guarantees the worklet
+  // closures evaluate (Reanimated skips no-op animations where start === end).
+  // The epsilon is imperceptible (0.001 opacity / 0.001 progress) and lasts 0ms.
+  const hasPreWarmed = useRef(false);
+  useEffect(() => {
+    if (hasPreWarmed.current) return;
+    hasPreWarmed.current = true;
+    const eps = 0.001;
+    morphProgress.value = withSequence(
+      withTiming(eps, { duration: 0 }),
+      withTiming(0, { duration: 0 })
+    );
+    backdropOpacity.value = withSequence(
+      withTiming(eps, { duration: 0 }),
+      withTiming(0, { duration: 0 })
+    );
+    closeFadeOut.value = withSequence(
+      withTiming(1 - eps, { duration: 0 }),
+      withTiming(1, { duration: 0 })
+    );
+    sizeProgress.value = withSequence(
+      withTiming(eps, { duration: 0 }),
+      withTiming(0, { duration: 0 })
+    );
+  }, []);
 
   useEffect(() => {
     tunArcHeight.value = tuning?.arcHeight ?? 120;
@@ -794,7 +824,10 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
   }, [onAnimationComplete, fireCloseCleanup]);
 
   // Open handler
-  const handleOpen = useCallback(() => {
+  // overrideX/overrideY: optional screen coordinates passed at call time.
+  // When provided, these take priority over props and measureInWindow,
+  // enabling callers to pass the position synchronously and avoid async delays.
+  const handleOpen = useCallback((overrideX?: number, overrideY?: number) => {
     if (isAnimating) return;
 
     // Defensive: ensure ref exists
@@ -876,17 +909,23 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
           backdropOpacity.value = withTiming(1, { duration });
         }
       }
+
     };
 
-    // When originScreenX/Y are provided, use them directly — no measurement needed.
-    if (originScreenX !== undefined && originScreenY !== undefined) {
+    // Priority order for position resolution:
+    // 1. Call-time overrides (synchronous, zero delay — passed by callers who know the position)
+    // 2. Props (originScreenX/Y — set from parent, also synchronous)
+    // 3. measureInWindow (async native bridge — last resort, causes first-open lag)
+    if (overrideX !== undefined && overrideY !== undefined) {
+      startOpen(overrideX, overrideY);
+    } else if (originScreenX !== undefined && originScreenY !== undefined) {
       startOpen(originScreenX, originScreenY);
     } else if (originScreenX !== undefined || originScreenY !== undefined) {
       wrapperRef.current.measure((_x, _y, _w, _h, pageX, pageY) => {
         startOpen(originScreenX ?? pageX ?? 0, originScreenY ?? pageY ?? 0);
       });
     } else {
-      // Default: measure at tap time
+      // Default: measure at tap time (async — will cause first-open lag)
       wrapperRef.current.measureInWindow((x, y) => {
         if (x === undefined || y === undefined) {
           console.warn('MorphingPill: measureInWindow returned undefined');
@@ -995,7 +1034,7 @@ export const MorphingPill = forwardRef<MorphingPillRef, MorphingPillProps>(({
         <Animated.View style={innerStyle}>
           <Pressable
             style={styles.pressable}
-            onPress={isExpanded ? undefined : handleOpen}
+            onPress={isExpanded ? undefined : () => handleOpen()}
             disabled={isAnimating}
           >
             {/* Pill content - NO wrapper flex properties, just absolute fill + opacity */}

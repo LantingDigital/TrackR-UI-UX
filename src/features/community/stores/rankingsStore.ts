@@ -36,6 +36,9 @@ export function getCategory(categoryId: string): RankingCategory | undefined {
 // React Hook
 // ============================================
 
+// Cached snapshot — stable reference as long as data is unchanged.
+let cachedRankingsSnapshot: { categories: RankingCategory[] } | null = null;
+
 export function useRankingsStore() {
   const [, forceUpdate] = useReducer((c: number) => c + 1, 0);
 
@@ -46,7 +49,9 @@ export function useRankingsStore() {
     };
   }, []);
 
-  return {
-    categories,
-  };
+  if (!cachedRankingsSnapshot || cachedRankingsSnapshot.categories !== categories) {
+    cachedRankingsSnapshot = { categories };
+  }
+
+  return cachedRankingsSnapshot;
 }

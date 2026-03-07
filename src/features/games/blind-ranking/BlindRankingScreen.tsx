@@ -11,6 +11,7 @@
 
 import React, { useCallback, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
+import { PageDots } from '../../../components/PageDots';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -176,25 +177,6 @@ function ComparisonRow({ yourRank, item, communityRank, index }: {
   );
 }
 
-// ─── Progress Dots ──────────────────────────────────────────
-
-function ProgressDots({ current, total }: { current: number; total: number }) {
-  return (
-    <View style={styles.dotsRow}>
-      {Array.from({ length: total }).map((_, i) => (
-        <View
-          key={i}
-          style={[
-            styles.dot,
-            i < current && styles.dotFilled,
-            i === current && styles.dotCurrent,
-          ]}
-        />
-      ))}
-    </View>
-  );
-}
-
 // ─── Main Screen ────────────────────────────────────────────
 
 export function BlindRankingScreen() {
@@ -224,7 +206,9 @@ export function BlindRankingScreen() {
   if (game.status === 'category_select') {
     return (
       <View style={styles.container}>
-        <BlindRankingHeader onClose={handleClose} stats={stats} settings={settings} />
+        <View style={styles.headerWrapper}>
+          <BlindRankingHeader onClose={handleClose} stats={stats} settings={settings} />
+        </View>
         <ScrollView
           contentContainerStyle={[styles.catContent, { paddingBottom: insets.bottom + spacing.xxl }]}
         >
@@ -254,7 +238,9 @@ export function BlindRankingScreen() {
 
     return (
       <View style={styles.container}>
-        <BlindRankingHeader onClose={handleClose} stats={stats} settings={settings} />
+        <View style={styles.headerWrapper}>
+          <BlindRankingHeader onClose={handleClose} stats={stats} settings={settings} />
+        </View>
         <ScrollView contentContainerStyle={[styles.resultsContent, { paddingBottom: insets.bottom + spacing.xxl }]}>
           {/* Hero */}
           <View style={styles.resultsHero}>
@@ -310,11 +296,8 @@ export function BlindRankingScreen() {
 
   return (
     <View style={styles.container}>
-      <BlindRankingHeader onClose={handleClose} stats={stats} settings={settings} />
-
-      {/* Progress */}
-      <View style={styles.progressSection}>
-        <ProgressDots current={filledCount} total={game.items.length} />
+      <View style={styles.headerWrapper}>
+        <BlindRankingHeader onClose={handleClose} stats={stats} settings={settings} />
       </View>
 
       {/* Revealed item card */}
@@ -330,7 +313,7 @@ export function BlindRankingScreen() {
 
       {/* Ranking slots */}
       <ScrollView
-        contentContainerStyle={[styles.slotsContainer, { paddingBottom: insets.bottom + spacing.xxl }]}
+        contentContainerStyle={[styles.slotsContainer, { paddingBottom: spacing.sm }]}
         showsVerticalScrollIndicator={false}
       >
         {game.slots.map((slot, i) => (
@@ -343,6 +326,15 @@ export function BlindRankingScreen() {
           />
         ))}
       </ScrollView>
+
+      {/* Progress dots — bottom-positioned like Coastle */}
+      <View style={{ paddingBottom: insets.bottom + spacing.md }}>
+        <PageDots
+          current={filledCount}
+          total={game.items.length}
+          label={`${filledCount}/${game.items.length}`}
+        />
+      </View>
     </View>
   );
 }
@@ -387,6 +379,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background.page,
+  },
+  headerWrapper: {
+    zIndex: 200,
   },
   header: {
     flexDirection: 'row',
@@ -453,31 +448,6 @@ const styles = StyleSheet.create({
   catDesc: {
     fontSize: typography.sizes.body,
     color: colors.text.secondary,
-  },
-
-  // Progress dots
-  progressSection: {
-    paddingHorizontal: spacing.xl,
-    marginBottom: spacing.base,
-  },
-  dotsRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 6,
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: colors.border.subtle,
-  },
-  dotFilled: {
-    backgroundColor: colors.accent.primary,
-  },
-  dotCurrent: {
-    backgroundColor: colors.accent.primary,
-    width: 20,
-    borderRadius: 4,
   },
 
   // Revealed item

@@ -10,6 +10,34 @@
  */
 
 import { ImageSourcePropType } from 'react-native';
+import parkHeroesData from '../../assets/parks/heroes/park_heroes.json';
+
+/**
+ * Remote hero image URLs from Wikimedia Commons
+ * Indexed by both the original key AND the slug derived from the entry's
+ * display name, so lookups work regardless of minor naming differences
+ * (e.g. "legoland-california" vs "legoland-california-resort").
+ */
+const HERO_URL_REGISTRY: Record<string, string> = {};
+for (const [key, entry] of Object.entries(parkHeroesData)) {
+  const { heroUrl, name } = entry as any;
+  if (heroUrl) {
+    HERO_URL_REGISTRY[key] = heroUrl;
+    if (name) {
+      const nameSlug = name
+        .toLowerCase()
+        .replace(/['']/g, '')
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+      if (nameSlug !== key) {
+        HERO_URL_REGISTRY[nameSlug] = heroUrl;
+      }
+    }
+  }
+}
 
 /**
  * Registry of available park card art images
@@ -104,6 +132,16 @@ export const hasCardArt = (parkName: string): boolean => {
 export const hasLogo = (parkName: string): boolean => {
   const slug = parkNameToSlug(parkName);
   return slug in LOGO_REGISTRY;
+};
+
+/**
+ * Get remote hero image URL for a park (Wikimedia Commons)
+ * Returns undefined if no hero image is available
+ * This is the fallback when no bundled card art exists
+ */
+export const getHeroUrlForPark = (parkName: string): string | undefined => {
+  const slug = parkNameToSlug(parkName);
+  return HERO_URL_REGISTRY[slug];
 };
 
 /**

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useEffect, memo } from 'react';
 import {
   View,
   Text,
@@ -37,26 +37,27 @@ import { ParkDashboard } from '../features/parks/components/ParkDashboard';
 import {
   MOCK_WEATHER,
   MOCK_STEPS,
-  MOCK_RIDE_WAIT_TIMES,
+  RideWaitTime,
 } from '../features/parks/data/mockDashboardData';
+import { fetchWaitTimes } from '../services/waitTimes';
+import { parkNameToSlug } from '../utils/parkAssets';
 import { MyPassCard } from '../features/parks/components/MyPassCard';
 import { ParkGuidesSection, GuideBottomSheet } from '../features/parks/components/ParkGuidesSection';
-import { TripPlannerSection } from '../features/parks/tripPlanner/TripPlannerSection';
-
+import { RideListView } from '../features/parks/components/RideListView';
+import { FoodListView } from '../features/parks/components/FoodListView';
 // Parks Hub modals (remaining — Guide is now handled by MorphingPill)
 import { ParkSwitcherModal } from '../features/parks/modals/ParkSwitcherModal';
-import { TripPlannerSheet } from '../features/parks/tripPlanner/TripPlannerSheet';
-import { useTripPlannerStore } from '../features/parks/tripPlanner/tripPlannerStore';
 
 // Map
 import { MapboxMapScreen } from '../features/parks/map/MapboxMapScreen';
+import { getParkMapConfig, loadParkMapData, parkHasMap } from '../features/parks/map/parkMapRegistry';
+import type { ParkMapConfig } from '../features/parks/map/parkMapRegistry';
 
 // Data
 import { buildParkList } from '../features/parks/utils/parkDataUtils';
-import { KNOTTS_GUIDES } from '../features/parks/data/mockParkGuides';
-import { KNOTTS_MAP_DATA } from '../features/parks/data/knottsMapData';
-import { ParkGuide, ParkData, ParkPOI } from '../features/parks/types';
-import { useTourTarget } from '../features/tour';
+import { getGuidesForPark } from '../features/parks/data/mockParkGuides';
+import { ParkGuide, ParkData, ParkPOI, UnifiedParkMapData } from '../features/parks/types';
+
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
 import { getPOIByCoasterId } from '../features/parks/data/poiNameMap';
 
@@ -86,7 +87,7 @@ const PAGE_RGBA = 'rgba(247, 247, 247,';
 // Staggered section wrapper
 // ============================================
 
-function StaggeredSection({
+const StaggeredSection = memo(function StaggeredSection({
   index,
   children,
   style,
@@ -114,7 +115,7 @@ function StaggeredSection({
       {children}
     </Animated.View>
   );
-}
+});
 
 // ============================================
 // ParksScreen
@@ -126,13 +127,8 @@ export function ParksScreen() {
   const route = useRoute<RouteProp<ParksRouteParams, 'Parks'>>();
   const navigation = useNavigation<any>();
 
-  // ---- Tour targets ----
-  const quickActionTourRef = useTourTarget('parks-quick-action-row');
-  const dashboardTourRef = useTourTarget('parks-dashboard');
   const { tickets } = useWallet();
   const { openPOI, registerMapHandler } = usePOIAction();
-  const tripStore = useTripPlannerStore();
-
   // ---- Guide bottom sheet state (rendered at screen level, not inside scroll) ----
   const [selectedGuide, setSelectedGuide] = useState<ParkGuide | null>(null);
   const handleGuidePress = useCallback((guide: ParkGuide) => setSelectedGuide(guide), []);
@@ -164,8 +160,11 @@ export function ParksScreen() {
     setMapModalVisible(true);
   }, [route.params?.targetCoasterId, navigation]);
 
-  // Fog covers full screen — gradient handles the visual boundary
-  const fogTotalHeight = SCREEN_HEIGHT;
+  // Fog only covers header + fade region — not full screen (reduces GPU compositing cost)
+  const fogTotalHeight = useMemo(
+    () => insets.top + HEADER_HEIGHT - FOG_OFFSET + FOG_FADE_PX,
+    [insets.top],
+  );
 
   // Compute gradient stops from actual pixel positions (not fixed percentages)
   const fogGradient = useMemo(() => {
@@ -241,15 +240,49 @@ export function ParksScreen() {
   }, [parks, homeParkName]);
 
   const guides = useMemo<ParkGuide[]>(() => {
-    if (currentPark?.name === "Knott's Berry Farm") return KNOTTS_GUIDES;
-    return [];
+    if (!currentPark) return [];
+    return getGuidesForPark(parkNameToSlug(currentPark.name));
+  }, [currentPark]);
+
+  // ---- Dynamic map data (multi-park support) ----
+  const currentMapConfig = useMemo<ParkMapConfig | null>(() => {
+    if (!currentPark) return null;
+    return getParkMapConfig(currentPark.name);
+  }, [currentPark]);
+
+  const currentMapData = useMemo<UnifiedParkMapData | null>(() => {
+    if (!currentPark) return null;
+    return loadParkMapData(currentPark.name);
+  }, [currentPark]);
+
+  // ---- Dynamic wait times from service ----
+  const [waitTimes, setWaitTimes] = useState<RideWaitTime[]>([]);
+
+  useEffect(() => {
+    if (!currentPark) return;
+    const slug = parkNameToSlug(currentPark.name);
+    fetchWaitTimes(slug).then((response) => {
+      if (!response) {
+        setWaitTimes([]);
+        return;
+      }
+      setWaitTimes(
+        response.rides.map((r) => ({
+          id: r.id,
+          name: r.name,
+          waitMinutes: r.waitMinutes,
+          isOpen: r.status === 'open',
+        })),
+      );
+    });
   }, [currentPark]);
 
   // ---- Modal state ----
   const [switcherVisible, setSwitcherVisible] = useState(false);
   const [mapModalVisible, setMapModalVisible] = useState(false);
-  const [tripPlannerVisible, setTripPlannerVisible] = useState(false);
   const [passDetailVisible, setPassDetailVisible] = useState(false);
+  const [ridesListVisible, setRidesListVisible] = useState(false);
+  const [foodListVisible, setFoodListVisible] = useState(false);
 
   // ---- Handlers ----
   const openSwitcher = useCallback(() => setSwitcherVisible(true), []);
@@ -272,17 +305,22 @@ export function ParksScreen() {
     setMapTargetPoi(null);
   }, []);
 
-  const openTripPlanner = useCallback(() => setTripPlannerVisible(true), []);
-  const closeTripPlanner = useCallback(() => setTripPlannerVisible(false), []);
-
   const openPassDetail = useCallback(() => setPassDetailVisible(true), []);
   const closePassDetail = useCallback(() => setPassDetailVisible(false), []);
 
-  // Quick action: Food placeholder
+  // Quick action: Food list view
   const handleFoodPress = useCallback(() => {
-    // Future: food search feature
     haptics.tap();
+    setFoodListVisible(true);
   }, []);
+  const closeFood = useCallback(() => setFoodListVisible(false), []);
+
+  // Quick action: Rides list view
+  const handleRidesPress = useCallback(() => {
+    haptics.tap();
+    setRidesListVisible(true);
+  }, []);
+  const closeRides = useCallback(() => setRidesListVisible(false), []);
 
   // ---- First-time experience: no park selected ----
   if (!homeParkName || !currentPark) {
@@ -316,47 +354,69 @@ export function ParksScreen() {
   }
 
   // ---- Hub layout ----
-  const passTickets = tickets.filter(
-    (t) => t.parkName === currentPark.name && t.status !== 'expired'
+  const passTickets = useMemo(
+    () => tickets.filter((t) => t.parkName === currentPark.name && t.status !== 'expired'),
+    [tickets, currentPark.name],
+  );
+
+  // Stable POI arrays — avoid creating new empty arrays on every render
+  const pois = useMemo(() => currentMapData?.pois ?? [], [currentMapData]);
+
+  // Memoize inline styles that depend on insets (stable between renders for same insets)
+  const scrollContentStyle = useMemo(
+    () => [styles.scrollContent, { paddingTop: insets.top + HEADER_HEIGHT + spacing.xxl }],
+    [insets.top],
+  );
+  const bottomSpacerStyle = useMemo(
+    () => ({ height: insets.bottom + 100 }),
+    [insets.bottom],
+  );
+  const fogContainerStyle = useMemo(
+    () => ({
+      position: 'absolute' as const,
+      top: 0,
+      left: 0,
+      right: 0,
+      height: fogTotalHeight,
+      zIndex: 5,
+    }),
+    [fogTotalHeight],
+  );
+  const headerWrapperStyle = useMemo(
+    () => [styles.headerContainer, { paddingTop: insets.top }],
+    [insets.top],
   );
 
   return (
     <View style={styles.container}>
       {/* Scroll content — fills entire screen, scrolls behind header */}
       <Animated.ScrollView
-        contentContainerStyle={[
-          styles.scrollContent,
-          // Push content below header + safe area; extra gap keeps buttons clear of fog
-          { paddingTop: insets.top + HEADER_HEIGHT + spacing.xxl },
-        ]}
+        contentContainerStyle={scrollContentStyle}
         showsVerticalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
+        removeClippedSubviews
       >
         {/* Quick actions */}
         <StaggeredSection index={0}>
-          <View ref={quickActionTourRef} collapsable={false}>
-            <QuickActionRow
-              onMapPress={openMap}
-              onFoodPress={handleFoodPress}
-              onRidesPress={openTripPlanner}
-              onPassPress={openPassDetail}
-            />
-          </View>
+          <QuickActionRow
+            onMapPress={openMap}
+            onFoodPress={handleFoodPress}
+            onRidesPress={handleRidesPress}
+            onPassPress={openPassDetail}
+          />
         </StaggeredSection>
 
         <View style={styles.sectionGap} />
 
         {/* Map preview */}
         <StaggeredSection index={1}>
-          <View ref={dashboardTourRef} collapsable={false}>
-            <ParkDashboard
-              weather={MOCK_WEATHER}
-              steps={MOCK_STEPS}
-              waitTimes={MOCK_RIDE_WAIT_TIMES}
-              onRidePress={openPOI}
-            />
-          </View>
+          <ParkDashboard
+            weather={MOCK_WEATHER}
+            steps={MOCK_STEPS}
+            waitTimes={waitTimes}
+            onRidePress={openPOI}
+          />
         </StaggeredSection>
 
         <View style={styles.sectionGap} />
@@ -378,29 +438,11 @@ export function ParksScreen() {
           </>
         )}
 
-        {/* Trip planner */}
-        <StaggeredSection index={4} style={styles.sectionPadded}>
-          <TripPlannerSection
-            currentPlan={tripStore.currentPlan}
-            onPress={openTripPlanner}
-          />
-        </StaggeredSection>
-
-        <View style={{ height: insets.bottom + 100 }} />
+        <View style={bottomSpacerStyle} />
       </Animated.ScrollView>
 
       {/* Fog gradient overlay — translucent, content visible through it */}
-      <View
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: fogTotalHeight,
-          zIndex: 5,
-        }}
-        pointerEvents="none"
-      >
+      <View style={fogContainerStyle} pointerEvents="none">
         <LinearGradient
           colors={fogGradient.colors as [string, string, ...string[]]}
           locations={fogGradient.locations as [number, number, ...number[]]}
@@ -409,12 +451,7 @@ export function ParksScreen() {
       </View>
 
       {/* Header — transparent, floats over content */}
-      <View
-        style={[
-          styles.headerContainer,
-          { paddingTop: insets.top },
-        ]}
-      >
+      <View style={headerWrapperStyle}>
         <ParkHubHeader
           parkName={currentPark.name}
           location={currentPark.location}
@@ -425,6 +462,19 @@ export function ParksScreen() {
         />
       </View>
 
+      {/* ---- Ride & Food list views (z-index 140, below Guide at 150) ---- */}
+      <RideListView
+        visible={ridesListVisible}
+        onClose={closeRides}
+        pois={pois}
+        waitTimes={waitTimes}
+      />
+      <FoodListView
+        visible={foodListVisible}
+        onClose={closeFood}
+        pois={pois}
+      />
+
       {/* ---- Guide bottom sheet (rendered at screen level so it covers everything) ---- */}
       <GuideBottomSheet
         guide={selectedGuide}
@@ -433,22 +483,15 @@ export function ParksScreen() {
       />
 
       {/* ---- Modals ---- */}
-      {currentPark?.name === "Knott's Berry Farm" && (
+      {currentMapData && currentMapConfig && (
         <MapboxMapScreen
           visible={mapModalVisible}
           onClose={closeMap}
-          mapData={KNOTTS_MAP_DATA}
+          mapData={currentMapData}
+          mapConfig={currentMapConfig}
           targetPoi={mapTargetPoi}
         />
       )}
-
-      <TripPlannerSheet
-        visible={tripPlannerVisible}
-        onClose={closeTripPlanner}
-        parkId={currentPark.name}
-        parkName={currentPark.name}
-        mapData={KNOTTS_MAP_DATA}
-      />
 
       {/* PassDetailView uses RN Modal (stays as-is) */}
       {passTickets.length > 0 && (

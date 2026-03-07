@@ -7,3 +7,4 @@
 export * from './useSpringPress';
 export * from './useMorphAnimation';
 export * from './useTabFocus';
+export * from './useKeyboardAvoidance';

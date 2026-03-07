@@ -39,8 +39,19 @@ export type TicketStatus = 'active' | 'expired' | 'used';
 
 /**
  * Supported barcode formats
+ * Includes both 2D codes (QR, Aztec, PDF417, DataMatrix) and 1D codes (Code128, Code39)
+ * 'IMAGE_ONLY' is used when barcode extraction fails and we fall back to the original photo
  */
-export type BarcodeFormat = 'QR_CODE' | 'AZTEC' | 'PDF417' | 'DATA_MATRIX';
+export type BarcodeFormat =
+  | 'QR_CODE'
+  | 'AZTEC'
+  | 'PDF417'
+  | 'DATA_MATRIX'
+  | 'CODE_128'
+  | 'CODE_39'
+  | 'EAN_13'
+  | 'UPC_A'
+  | 'IMAGE_ONLY';
 
 /**
  * Core ticket data model
@@ -67,7 +78,7 @@ export interface Ticket {
   /** End of validity period (ISO 8601 date) */
   validUntil: string;
 
-  /** Raw decoded QR/barcode content for SVG regeneration */
+  /** Raw decoded QR/barcode content for SVG regeneration (null if image-only) */
   qrData: string;
 
   /** Format of the original barcode */
@@ -88,7 +99,7 @@ export interface Ticket {
   /** Whether this pass is pinned as a favorite (up to 3 allowed) */
   isFavorite: boolean;
 
-  /** Local file path to backup photo of original ticket */
+  /** Local file path to original scanned/imported image (hybrid backup for gate display) */
   originalPhotoUri?: string;
 
   /** Current status of the ticket */
@@ -209,13 +220,13 @@ export type AddTicketStep =
  * Park brand colors for card styling
  */
 export const PARK_BRAND_COLORS: Record<ParkChain, string> = {
-  disney: '#1A3C6E',        // Disney blue
-  universal: '#F5C518',     // Universal yellow
-  cedar_fair: '#C41230',    // Cedar Fair red
-  six_flags: '#E31837',     // Six Flags red
-  seaworld: '#0072CE',      // SeaWorld blue
-  busch_gardens: '#006747', // Busch Gardens green
-  other: '#CF6769',         // App accent (fallback)
+  disney: '#92ACC0',        // Muted steel blue
+  universal: '#D6C48A',     // Muted gold
+  cedar_fair: '#CF6769',    // Muted rose
+  six_flags: '#D4A98A',     // Muted terracotta
+  seaworld: '#8FBFB8',      // Muted teal
+  busch_gardens: '#9DC0A0', // Muted sage
+  other: '#B8A3C4',         // Muted lavender
 };
 
 /**

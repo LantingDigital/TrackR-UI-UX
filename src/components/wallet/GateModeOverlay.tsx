@@ -21,6 +21,7 @@ import {
   Pressable,
   Modal,
   Animated,
+  Easing,
   Image,
   StatusBar,
 } from 'react-native';
@@ -68,6 +69,7 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
 
   // Internal visibility state to delay modal close until animation completes
   const [internalVisible, setInternalVisible] = useState(false);
+  const [showOriginalImage, setShowOriginalImage] = useState(false);
 
   // Extract pass number from QR data
   const passNumber = ticket?.qrData.split('-').pop() || ticket?.qrData || '';
@@ -120,32 +122,32 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
       // Show modal immediately, then animate in
       setInternalVisible(true);
       Animated.parallel([
-        Animated.spring(fadeAnim, {
+        Animated.timing(fadeAnim, {
           toValue: 1,
-          tension: 50,
-          friction: 9,
+          duration: 250,
+          easing: Easing.out(Easing.cubic),
           useNativeDriver: true,
         }),
         Animated.spring(scaleAnim, {
           toValue: 1,
-          tension: 50,
-          friction: 9,
+          tension: 65,
+          friction: 12,
           useNativeDriver: true,
         }),
       ]).start();
     } else if (internalVisible) {
       // Animate out, then hide modal
       Animated.parallel([
-        Animated.spring(fadeAnim, {
+        Animated.timing(fadeAnim, {
           toValue: 0,
-          tension: 65,
-          friction: 10,
+          duration: 200,
+          easing: Easing.out(Easing.cubic),
           useNativeDriver: true,
         }),
-        Animated.spring(scaleAnim, {
+        Animated.timing(scaleAnim, {
           toValue: 0.85,
-          tension: 65,
-          friction: 10,
+          duration: 200,
+          easing: Easing.out(Easing.cubic),
           useNativeDriver: true,
         }),
       ]).start(() => {
@@ -163,6 +165,7 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
   if (!internalVisible || !ticket) return null;
 
   return (
+    <>
     <Modal
       visible={internalVisible}
       transparent
@@ -239,9 +242,15 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
               </Text>
             </View>
 
-            {/* QR Code */}
+            {/* QR / Barcode */}
             <View style={styles.qrContainer}>
-              <QRCodeDisplay data={ticket.qrData} size={GATE_QR_SIZE} />
+              <QRCodeDisplay
+                data={ticket.qrData}
+                format={ticket.qrFormat}
+                size={GATE_QR_SIZE}
+                gateMode
+                originalPhotoUri={ticket.originalPhotoUri}
+              />
             </View>
 
             {/* Pass Number */}
@@ -250,6 +259,21 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
             {/* Passholder name if available */}
             {ticket.passholder && (
               <Text style={styles.passholder}>{ticket.passholder}</Text>
+            )}
+
+            {/* View Original fallback */}
+            {ticket.originalPhotoUri && (
+              <Pressable
+                style={styles.viewOriginalButton}
+                onPress={(e) => {
+                  e.stopPropagation();
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  setShowOriginalImage(true);
+                }}
+              >
+                <Ionicons name="image-outline" size={14} color={colors.text.meta} />
+                <Text style={styles.viewOriginalText}>View Original</Text>
+              </Pressable>
             )}
           </Animated.View>
 
@@ -260,6 +284,38 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
         </Animated.View>
       </Pressable>
     </Modal>
+
+    {/* Original image fullscreen modal */}
+    <Modal
+      visible={showOriginalImage}
+      animationType="fade"
+      transparent
+      onRequestClose={() => setShowOriginalImage(false)}
+    >
+      <Pressable
+        style={styles.originalImageBackdrop}
+        onPress={() => setShowOriginalImage(false)}
+      >
+        <View style={[styles.originalImageHeader, { paddingTop: insets.top + 8 }]}>
+          <Pressable
+            onPress={() => setShowOriginalImage(false)}
+            style={styles.originalImageClose}
+          >
+            <Ionicons name="close" size={24} color="#FFFFFF" />
+          </Pressable>
+          <Text style={styles.originalImageTitle}>Original Ticket</Text>
+          <View style={{ width: 40 }} />
+        </View>
+        {ticket.originalPhotoUri && (
+          <Image
+            source={{ uri: ticket.originalPhotoUri }}
+            style={styles.originalImageFull}
+            resizeMode="contain"
+          />
+        )}
+      </Pressable>
+    </Modal>
+    </>
   );
 };
 
@@ -381,6 +437,58 @@ const styles = StyleSheet.create({
   hintText: {
     fontSize: 14,
     color: 'rgba(255, 255, 255, 0.7)',
+  },
+
+  // View Original button
+  viewOriginalButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    marginTop: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    backgroundColor: colors.background.input,
+  },
+  viewOriginalText: {
+    fontSize: 13,
+    fontWeight: '500',
+    color: colors.text.meta,
+  },
+
+  // Original image modal
+  originalImageBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.95)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  originalImageHeader: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    zIndex: 10,
+  },
+  originalImageClose: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  originalImageTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#FFFFFF',
+  },
+  originalImageFull: {
+    width: SCREEN_WIDTH - 32,
+    height: SCREEN_HEIGHT * 0.7,
   },
 });
 

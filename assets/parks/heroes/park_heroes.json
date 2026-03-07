@@ -1,0 +1,941 @@
+{
+  "cedar-point": {
+    "id": "cedar-point",
+    "name": "Cedar Point",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG/1280px-CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG",
+    "source": "wikimedia",
+    "notes": "Overview shot of the back half of Cedar Point showing multiple coasters and Lake Erie"
+  },
+  "busch-gardens-williamsburg": {
+    "id": "busch-gardens-williamsburg",
+    "name": "Busch Gardens Williamsburg",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Busch_Gardens_Williamsburg_Main_Gate.jpg/1280px-Busch_Gardens_Williamsburg_Main_Gate.jpg",
+    "source": "wikimedia",
+    "notes": "Main gate entrance of Busch Gardens Williamsburg, landscape orientation"
+  },
+  "six-flags-great-america": {
+    "id": "six-flags-great-america",
+    "name": "Six Flags Great America",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Columbia_Carousel_at_Six_Flags_Great_America_June_2025.jpg/1280px-Columbia_Carousel_at_Six_Flags_Great_America_June_2025.jpg",
+    "source": "wikimedia",
+    "notes": "Columbia Carousel at Six Flags Great America, June 2025 photo showing park atmosphere"
+  },
+  "knotts-berry-farm": {
+    "id": "knotts-berry-farm",
+    "name": "Knott's Berry Farm",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Knott%27s_Berry_Farm%2C_2021.jpg/1280px-Knott%27s_Berry_Farm%2C_2021.jpg",
+    "source": "wikimedia",
+    "notes": "Knott's Berry Farm park view from 2021, landscape orientation"
+  },
+  "six-flags-over-texas": {
+    "id": "six-flags-over-texas",
+    "name": "Six Flags Over Texas",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/SFOT_Main_Park_Entrance.JPG/1280px-SFOT_Main_Park_Entrance.JPG",
+    "source": "wikimedia",
+    "notes": "Main park entrance of Six Flags Over Texas"
+  },
+  "kennywood-park": {
+    "id": "kennywood-park",
+    "name": "Kennywood Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kennywood_Park.JPG/1280px-Kennywood_Park.JPG",
+    "source": "wikimedia",
+    "notes": "Photo of Kennywood Park showing rides and park landscape"
+  },
+  "lagoon": {
+    "id": "lagoon",
+    "name": "Lagoon",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Turn_of_the_Century_-_Lagoon.jpg/1280px-Turn_of_the_Century_-_Lagoon.jpg",
+    "source": "wikimedia",
+    "notes": "Turn of the Century ride at Lagoon amusement park in Farmington, Utah"
+  },
+  "glenwood-caverns-adventure-park": {
+    "id": "glenwood-caverns-adventure-park",
+    "name": "Glenwood Caverns Adventure Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Glenwood_springs%2C_Caverns_Adventure_Park_-_panoramio.jpg/1280px-Glenwood_springs%2C_Caverns_Adventure_Park_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Panoramic view of Glenwood Caverns Adventure Park on Iron Mountain, Colorado"
+  },
+  "seaworld-san-antonio": {
+    "id": "seaworld-san-antonio",
+    "name": "SeaWorld San Antonio",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Entrance_to_Sea_World%2C_San_Antonio%2C_Texas%2C_June_4%2C_2007.JPG/1280px-Entrance_to_Sea_World%2C_San_Antonio%2C_Texas%2C_June_4%2C_2007.JPG",
+    "source": "wikimedia",
+    "notes": "Entrance to SeaWorld San Antonio, Texas"
+  },
+  "luna-park-coney-island": {
+    "id": "luna-park-coney-island",
+    "name": "Luna Park Coney Island",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Thunderbolt_Coney_Island_2.jpg/1280px-Thunderbolt_Coney_Island_2.jpg",
+    "source": "wikimedia",
+    "notes": "Thunderbolt roller coaster at Luna Park, Coney Island - dramatic landscape shot showing the modern park"
+  },
+  "tropic-falls": {
+    "id": "tropic-falls",
+    "name": "Tropic Falls",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Park_at_OWA_entrance_gate.jpg/1280px-Park_at_OWA_entrance_gate.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance gate of the Park at OWA (now Tropic Falls) in Foley, Alabama"
+  },
+  "adventuredome": {
+    "id": "adventuredome",
+    "name": "Adventuredome",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Adventuredome_interior_%28April_2017%29.jpg/1280px-Adventuredome_interior_%28April_2017%29.jpg",
+    "source": "wikimedia",
+    "notes": "Interior of the Adventuredome theme park at Circus Circus Las Vegas, showing the glass dome and rides"
+  },
+  "castles-n-coasters": {
+    "id": "castles-n-coasters",
+    "name": "Castles N Coasters",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Desert_Storm_-_Castles_N_Coasters.jpg",
+    "source": "wikimedia",
+    "notes": "Desert Storm roller coaster at Castles N' Coasters, Phoenix, Arizona. Portrait orientation - may need cropping."
+  },
+  "enchanted-forest": {
+    "id": "enchanted-forest",
+    "name": "Enchanted Forest",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Enchanted_Forest.JPG/1280px-Enchanted_Forest.JPG",
+    "source": "wikimedia",
+    "notes": "Enchanted Forest theme park entrance/overview near Salem, Oregon"
+  },
+  "jolly-roger": {
+    "id": "jolly-roger",
+    "name": "Jolly Roger",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Oceancitymd_inlet.JPG/1280px-Oceancitymd_inlet.JPG",
+    "source": "wikimedia",
+    "notes": "Ocean City MD inlet area showing the Jolly Roger pier and boardwalk amusement area"
+  },
+  "peppa-pig": {
+    "id": "peppa-pig",
+    "name": "Peppa Pig",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Peppa_Pig_World_-_The_Entrance.jpg/1280px-Peppa_Pig_World_-_The_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Peppa Pig World entrance at Paultons Park. Note: this is the UK location, not the US Florida/Texas parks, but best freely available image."
+  },
+  "story-land": {
+    "id": "story-land",
+    "name": "Story Land",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Cinderella%27s_Castle%2C_Story_Land_theme_park_in_Glen%2C_NH.jpg/1280px-Cinderella%27s_Castle%2C_Story_Land_theme_park_in_Glen%2C_NH.jpg",
+    "source": "wikimedia",
+    "notes": "Cinderella's Castle at Story Land theme park in Glen, New Hampshire"
+  },
+  "western-playland": {
+    "id": "western-playland",
+    "name": "Western Playland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Wester_Playland.jpeg",
+    "source": "wikimedia",
+    "notes": "Western Playland amusement park in Sunland Park, New Mexico (near El Paso). 800x480 - lower resolution."
+  },
+  "carousel-gardens-amusement-park": {
+    "id": "carousel-gardens-amusement-park",
+    "name": "Carousel Gardens Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/NOCityParkCarouselGGate.jpg/1280px-NOCityParkCarouselGGate.jpg",
+    "source": "wikimedia",
+    "notes": "Gate entrance of Carousel Gardens at New Orleans City Park, showing the historic carousel"
+  },
+  "clementon-park": {
+    "id": "clementon-park",
+    "name": "Clementon Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Entrance_to_Clementon_Park%2C_NJ%2C_Feb._2025.jpg/1280px-Entrance_to_Clementon_Park%2C_NJ%2C_Feb._2025.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance to Clementon Park, New Jersey, February 2025"
+  },
+  "denos-wonder-wheel-amusement-park": {
+    "id": "denos-wonder-wheel-amusement-park",
+    "name": "Deno's Wonder Wheel Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Wonder_Wheel_Coney_Island_003.jpg/1280px-Wonder_Wheel_Coney_Island_003.jpg",
+    "source": "wikimedia",
+    "notes": "The iconic Wonder Wheel at Coney Island, landscape orientation shot showing the full ferris wheel"
+  },
+  "kemah-boardwalk": {
+    "id": "kemah-boardwalk",
+    "name": "Kemah Boardwalk",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Kemah_Boardwalk_in_Kemah%2C_Texas_%2847557130751%29.jpg/1280px-Kemah_Boardwalk_in_Kemah%2C_Texas_%2847557130751%29.jpg",
+    "source": "wikimedia",
+    "notes": "Kemah Boardwalk theme park on Galveston Bay, Texas - scenic boardwalk view"
+  },
+  "lakeside-colorado": {
+    "id": "lakeside-colorado",
+    "name": "Lakeside Colorado",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Lakeside_Amusement_Park%2C_1966.jpg/1280px-Lakeside_Amusement_Park%2C_1966.jpg",
+    "source": "wikimedia",
+    "notes": "Lakeside Amusement Park near Denver, Colorado, 1966 vintage photo showing the park and Tower of Jewels"
+  },
+  "magic-kingdom-park": {
+    "id": "magic-kingdom-park",
+    "name": "Magic Kingdom Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Cinderella_Castle%2C_Magic_Kingdom_Walt_Disney_World_%282024%29.jpg/1280px-Cinderella_Castle%2C_Magic_Kingdom_Walt_Disney_World_%282024%29.jpg",
+    "source": "wikimedia",
+    "notes": "Cinderella Castle at Magic Kingdom, Walt Disney World, 2024 photo. Portrait orientation - may need cropping for card background."
+  },
+  "new-york-new-york": {
+    "id": "new-york-new-york",
+    "name": "New York-New York",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/2019.10.11_Las_Vegas_-_48955419271.jpg/1280px-2019.10.11_Las_Vegas_-_48955419271.jpg",
+    "source": "wikimedia",
+    "notes": "New York-New York Hotel and Casino on the Las Vegas Strip with Big Apple Coaster visible, wide landscape shot"
+  },
+  "oaks-amusement-park": {
+    "id": "oaks-amusement-park",
+    "name": "Oaks Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Oaks_Amusement_Park%2C_Portland_%286278715221%29.jpg/1280px-Oaks_Amusement_Park%2C_Portland_%286278715221%29.jpg",
+    "source": "wikimedia",
+    "notes": "Oaks Amusement Park in Portland, Oregon showing rides and park grounds"
+  },
+  "tweetsie-railroad": {
+    "id": "tweetsie-railroad",
+    "name": "Tweetsie Railroad",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Train_at_Tweetsie_Railroad_Amusement_Park.jpg/1280px-Train_at_Tweetsie_Railroad_Amusement_Park.jpg",
+    "source": "wikimedia",
+    "notes": "Steam train at Tweetsie Railroad amusement park between Boone and Blowing Rock, North Carolina"
+  },
+  "wonderland-amusement-park": {
+    "id": "wonderland-amusement-park",
+    "name": "Wonderland Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Hornet_%28Wonderland_Park%29_1.jpg/1280px-Hornet_%28Wonderland_Park%29_1.jpg",
+    "source": "wikimedia",
+    "notes": "Hornet roller coaster at Wonderland Park in Amarillo, Texas"
+  },
+  "six-flags-magic-mountain": {
+    "id": "six-flags-magic-mountain",
+    "name": "Six Flags Magic Mountain",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Six_Flags_Magic_Mountain_%2813208988393%29.jpg/1280px-Six_Flags_Magic_Mountain_%2813208988393%29.jpg",
+    "source": "wikimedia",
+    "notes": "Wide shot of Six Flags Magic Mountain park with roller coasters visible, landscape orientation 1280x900"
+  },
+  "kings-dominion": {
+    "id": "kings-dominion",
+    "name": "Kings Dominion",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Eiffel_Tower_Kings_Dominion_at_dusk.jpg/1280px-Eiffel_Tower_Kings_Dominion_at_dusk.jpg",
+    "source": "wikimedia",
+    "notes": "Iconic Eiffel Tower replica at Kings Dominion at dusk, dramatic lighting, 1280x853"
+  },
+  "valleyfair": {
+    "id": "valleyfair",
+    "name": "Valleyfair",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Valleyfair%2C_Shakopee%2C_Minnesota_%2852358528378%29.jpg/1280px-Valleyfair%2C_Shakopee%2C_Minnesota_%2852358528378%29.jpg",
+    "source": "wikimedia",
+    "notes": "Overview shot of Valleyfair in Shakopee, Minnesota, 1280x800"
+  },
+  "six-flags-fiesta-texas": {
+    "id": "six-flags-fiesta-texas",
+    "name": "Six Flags Fiesta Texas",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Boomerang_%28Six_Flags_Fiesta_Texas%29.JPG/1280px-Boomerang_%28Six_Flags_Fiesta_Texas%29.JPG",
+    "source": "wikimedia",
+    "notes": "Boomerang ride at Six Flags Fiesta Texas with quarry wall backdrop, 1280x960"
+  },
+  "six-flags-st-louis": {
+    "id": "six-flags-st-louis",
+    "name": "Six Flags St. Louis",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Six_Flags_St._Louis_2023_2.jpg/1280px-Six_Flags_St._Louis_2023_2.jpg",
+    "source": "wikimedia",
+    "notes": "Updated road sign entrance to Six Flags St. Louis, 2023 photo, landscape 1280x591"
+  },
+  "nickelodeon-universe-mall-of-america": {
+    "id": "nickelodeon-universe-mall-of-america",
+    "name": "Nickelodeon Universe Mall of America",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Nickelodeon_Universe_at_MOA.jpg/1280px-Nickelodeon_Universe_at_MOA.jpg",
+    "source": "wikimedia",
+    "notes": "Interior view of Nickelodeon Universe at Mall of America, 1280x853"
+  },
+  "santas-village": {
+    "id": "santas-village",
+    "name": "Santa's Village",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/Santa%27s_Village_Jefferson_welcome_sign.jpg",
+    "source": "wikimedia",
+    "notes": "Welcome sign at Santa's Village in Jefferson, NH. Portrait orientation 768x1024 - only available Wikimedia image"
+  },
+  "knoebels-amusement-resort": {
+    "id": "knoebels-amusement-resort",
+    "name": "Knoebels Amusement Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Impulse_ride_photographed_from_above.jpg/1280px-Impulse_ride_photographed_from_above.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of Impulse ride at Knoebels photographed from above, showing park area, 1280x909"
+  },
+  "seaworld-san-diego": {
+    "id": "seaworld-san-diego",
+    "name": "SeaWorld San Diego",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fireworks_at_Seaworld_San_Diego.jpg/1280px-Fireworks_at_Seaworld_San_Diego.jpg",
+    "source": "wikimedia",
+    "notes": "Dramatic fireworks display over SeaWorld San Diego at night, cinematic feel, 1280x852"
+  },
+  "cotaland": {
+    "id": "cotaland",
+    "name": "Cotaland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Circuit_of_the_Americas_Aerial_%2819947165645%29.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of Circuit of the Americas (COTA) where Cotaland is located, 1200x800. Cotaland opened 2026 at COTA."
+  },
+  "moreys-piers": {
+    "id": "moreys-piers",
+    "name": "Morey's Piers",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Wildwood_New_Jersey_Boardwalk_Morey_Pier_South_Jersey_%2853117684788%29.jpg/1280px-Wildwood_New_Jersey_Boardwalk_Morey_Pier_South_Jersey_%2853117684788%29.jpg",
+    "source": "wikimedia",
+    "notes": "Wildwood NJ boardwalk with Morey's Pier visible, colorful boardwalk scene, 1280x774"
+  },
+  "universal-epic-universe": {
+    "id": "universal-epic-universe",
+    "name": "Universal Epic Universe",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Chronos_Tower_Front_Epic_Universe.jpg/1280px-Chronos_Tower_Front_Epic_Universe.jpg",
+    "source": "wikimedia",
+    "notes": "Chronos Tower at Universal Epic Universe entrance, dramatic architecture, 1280x718"
+  },
+  "alabama-adventure-and-splash-adventure": {
+    "id": "alabama-adventure-and-splash-adventure",
+    "name": "Alabama Adventure and Splash Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Rampage%2C_Alabama_Adventure%2C_July_4th_2008.jpg/1280px-Rampage%2C_Alabama_Adventure%2C_July_4th_2008.jpg",
+    "source": "wikimedia",
+    "notes": "Rampage wooden roller coaster at Alabama Adventure, 1280x960"
+  },
+  "fun-spot-america-theme-parks": {
+    "id": "fun-spot-america-theme-parks",
+    "name": "Fun Spot America Theme Parks",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Fun_Spot_America_Orlando_overview_from_Ferris_Wheel.jpg/1280px-Fun_Spot_America_Orlando_overview_from_Ferris_Wheel.jpg",
+    "source": "wikimedia",
+    "notes": "Overview of Fun Spot America Orlando from Ferris Wheel, showing park layout, 1280x720"
+  },
+  "santa-cruz-beach-boardwalk": {
+    "id": "santa-cruz-beach-boardwalk",
+    "name": "Santa Cruz Beach Boardwalk",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Santa_Cruz_Beach_Boardwalk_-_4652510977.jpg/1280px-Santa_Cruz_Beach_Boardwalk_-_4652510977.jpg",
+    "source": "wikimedia",
+    "notes": "Wide panoramic view of Santa Cruz Beach Boardwalk with rides and beach, ultra-wide landscape 1280x365"
+  },
+  "storybook-land": {
+    "id": "storybook-land",
+    "name": "Storybook Land",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/StorybookLand.jpg/1280px-StorybookLand.jpg",
+    "source": "wikimedia",
+    "notes": "Overview shot of Storybook Land in Egg Harbor Township, NJ, 1280x853"
+  },
+  "wild-adventures": {
+    "id": "wild-adventures",
+    "name": "Wild Adventures",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Wild_Adventures_theme_park_monument_in_concrete.jpg/1280px-Wild_Adventures_theme_park_monument_in_concrete.jpg",
+    "source": "wikimedia",
+    "notes": "Wild Adventures theme park entrance monument sign in concrete, Valdosta GA, 1280x853"
+  },
+  "arnolds-park-iowa": {
+    "id": "arnolds-park-iowa",
+    "name": "Arnolds Park Iowa",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Arnolds-Park-From-Lake.jpg",
+    "source": "wikimedia",
+    "notes": "Arnolds Park amusement park viewed from West Lake Okoboji, landscape 1179x608"
+  },
+  "casino-pier": {
+    "id": "casino-pier",
+    "name": "Casino Pier",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Seaside_Heights_Casino_Pier_with_Hydrus_in_background.jpg/1280px-Seaside_Heights_Casino_Pier_with_Hydrus_in_background.jpg",
+    "source": "wikimedia",
+    "notes": "Casino Pier in Seaside Heights with Hydrus roller coaster in background, boardwalk scene, 1280x720"
+  },
+  "cliffs-amusement-park": {
+    "id": "cliffs-amusement-park",
+    "name": "Cliff's Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Cliff%27s_Amusement_Park_entrance_gate.jpg/1280px-Cliff%27s_Amusement_Park_entrance_gate.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance gate to Cliff's Amusement Park in Albuquerque, NM, 1280x853"
+  },
+  "funtown-splashtown-usa": {
+    "id": "funtown-splashtown-usa",
+    "name": "Funtown Splashtown USA",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Funtown-Splashtown_USA.jpg/1280px-Funtown-Splashtown_USA.jpg",
+    "source": "wikimedia",
+    "notes": "Funtown Splashtown USA park view in Saco, Maine, 1280x960"
+  },
+  "happy-hollow-park-zoo": {
+    "id": "happy-hollow-park-zoo",
+    "name": "Happy Hollow Park Zoo",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Happy_Hollow_Park_%26_Zoo_-San_Jose%2C_California%2C_USA-2Oct2011_%281%29.jpg/1280px-Happy_Hollow_Park_%26_Zoo_-San_Jose%2C_California%2C_USA-2Oct2011_%281%29.jpg",
+    "source": "wikimedia",
+    "notes": "Happy Hollow Park & Zoo in San Jose, CA, overview shot, 1280x850"
+  },
+  "indianapolis-zoo": {
+    "id": "indianapolis-zoo",
+    "name": "Indianapolis Zoo",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Indianapolis_Zoo_Entrance.jpg/1280px-Indianapolis_Zoo_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Indianapolis Zoo entrance shot, 1280x960"
+  },
+  "magic-springs-theme-and-water-park": {
+    "id": "magic-springs-theme-and-water-park",
+    "name": "Magic Springs Theme and Water Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Magic_Springs_Theme_Park_entrance_%281%29_-_Jeremy_Thompson.jpg/1280px-Magic_Springs_Theme_Park_entrance_%281%29_-_Jeremy_Thompson.jpg",
+    "source": "wikimedia",
+    "notes": "Magic Springs Theme Park entrance in Hot Springs, Arkansas, 1280x853"
+  },
+  "modern-woodmen-park": {
+    "id": "modern-woodmen-park",
+    "name": "Modern Woodmen Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Modern_Woodmen_Park.jpg",
+    "skip": true,
+    "source": "wikimedia",
+    "notes": "Minor league baseball stadium in Davenport, Iowa with a Ferris wheel. Not a theme park - it is a baseball venue with a few amusement rides. Image 750x332."
+  },
+  "shanghai-disneyland": {
+    "id": "shanghai-disneyland",
+    "name": "Shanghai Disneyland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Enchanted_Storybook_Castle_of_Shanghai_Disneyland.jpg/1280px-Enchanted_Storybook_Castle_of_Shanghai_Disneyland.jpg",
+    "source": "wikimedia",
+    "notes": "Enchanted Storybook Castle at Shanghai Disneyland, iconic centerpiece shot, 1280x850"
+  },
+  "wonderland-park-texas": {
+    "id": "wonderland-park-texas",
+    "name": "Wonderland Park Texas",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Hornet_%28Wonderland_Park%29_1.jpg/1280px-Hornet_%28Wonderland_Park%29_1.jpg",
+    "source": "wikimedia",
+    "notes": "Hornet ride at Wonderland Park in Amarillo, Texas, 1280x960"
+  },
+  "hersheypark": {
+    "id": "hersheypark",
+    "name": "Hersheypark",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Hersheypark_Entrance_10-2-2022.jpg/1280px-Hersheypark_Entrance_10-2-2022.jpg",
+    "source": "wikimedia",
+    "notes": "Hersheypark entrance shot from October 2022, showing the park gate and signage"
+  },
+  "kings-island": {
+    "id": "kings-island",
+    "name": "Kings Island",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Banshee_overview.jpg",
+    "source": "wikimedia",
+    "notes": "Wide overview shot of the Banshee roller coaster area at Kings Island, 3648x2736 high-res"
+  },
+  "busch-gardens-tampa-bay": {
+    "id": "busch-gardens-tampa-bay",
+    "name": "Busch Gardens Tampa Bay",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/Kumba_at_Busch_Gardens_Tampa.JPG",
+    "source": "wikimedia",
+    "notes": "Kumba roller coaster at Busch Gardens Tampa, 3072x2304 high-res wide shot"
+  },
+  "dorney-park-wildwater-kingdom": {
+    "id": "dorney-park-wildwater-kingdom",
+    "name": "Dorney Park & Wildwater Kingdom",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Dorney_Park_entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Dorney Park entrance shot, 640x480"
+  },
+  "worlds-of-fun": {
+    "id": "worlds-of-fun",
+    "name": "Worlds of Fun",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Worlds_of_Fun_and_Oceans_of_Fun_Aerial_%2852469718251%29.jpg/1280px-Worlds_of_Fun_and_Oceans_of_Fun_Aerial_%2852469718251%29.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of Worlds of Fun and Oceans of Fun, great wide cinematic shot"
+  },
+  "six-flags-new-england": {
+    "id": "six-flags-new-england",
+    "name": "Six Flags New England",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Six_Flags_New_England_football_field_with_Superman.jpg",
+    "source": "wikimedia",
+    "notes": "Wide view of Six Flags New England showing Superman coaster and park grounds, 3264x2448"
+  },
+  "seaworld-orlando": {
+    "id": "seaworld-orlando",
+    "name": "SeaWorld Orlando",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/SeaWorld_Orlando_001.jpg/1280px-SeaWorld_Orlando_001.jpg",
+    "source": "wikimedia",
+    "notes": "SeaWorld Orlando overview shot from Wikipedia main article"
+  },
+  "little-amerricka": {
+    "id": "little-amerricka",
+    "name": "Little Amerricka Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/2/23/LittleAmerrickaScrambler.jpg",
+    "source": "wikimedia",
+    "notes": "Scrambler ride at Little Amerricka, 805x400 landscape shot"
+  },
+  "six-flags-discovery-kingdom": {
+    "id": "six-flags-discovery-kingdom",
+    "name": "Six Flags Discovery Kingdom",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/DK_From_Parking_Lot.jpg",
+    "source": "wikimedia",
+    "notes": "Wide overview shot of Six Flags Discovery Kingdom from the parking lot, 2048x1536"
+  },
+  "frontier-city": {
+    "id": "frontier-city",
+    "name": "Frontier City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Frontier_City_Sign.jpg",
+    "source": "wikimedia",
+    "notes": "Frontier City entrance sign, 4608x3456 high-res"
+  },
+  "playlands-castaway-cove": {
+    "id": "playlands-castaway-cove",
+    "name": "Playland's Castaway Cove",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/70/Playland_Castaway_Cove-4_%287595004834%29.jpg",
+    "source": "wikimedia",
+    "notes": "Playland's Castaway Cove boardwalk rides, 4608x3072 high-res landscape shot"
+  },
+  "universal-islands-of-adventure": {
+    "id": "universal-islands-of-adventure",
+    "name": "Universal Islands of Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Universal_Islands_of_Adventure%2C_Orlando.jpg/1280px-Universal_Islands_of_Adventure%2C_Orlando.jpg",
+    "source": "wikimedia",
+    "notes": "Wide overview shot of Islands of Adventure Orlando, Wikipedia main article image"
+  },
+  "disney-california-adventure": {
+    "id": "disney-california-adventure",
+    "name": "Disney California Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Pixarpiersunset2019_%28cropped%29_%28cropped%29.jpg/1280px-Pixarpiersunset2019_%28cropped%29_%28cropped%29.jpg",
+    "source": "wikimedia",
+    "notes": "Pixar Pier at sunset, dramatic cinematic shot with golden light - Wikipedia main article image"
+  },
+  "gilroy-gardens": {
+    "id": "gilroy-gardens",
+    "name": "Gilroy Gardens Family Theme Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Bonfante_Gardens%2C_Gilroy_%2CCA_-_panoramio_-_UncleVinny.jpg",
+    "source": "wikimedia",
+    "notes": "Panoramic view of Bonfante Gardens (now Gilroy Gardens), 1280x960"
+  },
+  "legoland-florida": {
+    "id": "legoland-florida",
+    "name": "Legoland Florida Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Legoland_Florida_1_%286827572795%29.jpg/1280px-Legoland_Florida_1_%286827572795%29.jpg",
+    "source": "wikimedia",
+    "notes": "Legoland Florida park overview shot, Wikipedia main article image"
+  },
+  "seabreeze-amusement-park": {
+    "id": "seabreeze-amusement-park",
+    "name": "Seabreeze Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Seabreeze-jackrabbit.jpg",
+    "source": "wikimedia",
+    "notes": "Historic Jack Rabbit wooden roller coaster at Seabreeze, oldest operating coaster in the US, 750x562"
+  },
+  "strickers-grove": {
+    "id": "strickers-grove",
+    "name": "Stricker's Grove",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Strickers_Grove_025.jpg",
+    "source": "wikimedia",
+    "notes": "Tornado roller coaster POV at Stricker's Grove, 800x600"
+  },
+  "wild-waves-theme-water-park": {
+    "id": "wild-waves-theme-water-park",
+    "name": "Wild Waves Theme Water Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Wild_Waves_Theme_Park_-_Federal_Way_WA.jpg",
+    "source": "wikimedia",
+    "notes": "Wide shot of Wild Waves Theme Park in Federal Way, WA, 2848x2136 high-res"
+  },
+  "alaska-state-fairgrounds": {
+    "id": "alaska-state-fairgrounds",
+    "name": "Alaska State Fairgrounds",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Midway_Attractions_at_the_Alaska_State_Fair_in_Palmer%2C_AK.jpg/1280px-Midway_Attractions_at_the_Alaska_State_Fair_in_Palmer%2C_AK.jpg",
+    "source": "wikimedia",
+    "notes": "Midway attractions at the Alaska State Fair in Palmer, AK - wide shot with rides and fair atmosphere"
+  },
+  "astroworld": {
+    "id": "astroworld",
+    "name": "AstroWorld",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Six_Flags_Astroworld_entrance_gate.jpg/1280px-Six_Flags_Astroworld_entrance_gate.jpg",
+    "source": "wikimedia",
+    "notes": "Six Flags AstroWorld entrance gate, historic photo of the now-demolished Houston park (closed 2005)"
+  },
+  "castle-park": {
+    "id": "castle-park",
+    "name": "Castle Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/Castle_Amusement%2C_candy_house%2C_Riverside%2C_California_LOC_36681187684.jpg",
+    "source": "wikimedia",
+    "notes": "Castle Amusement (Castle Park) candy house themed structure in Riverside, CA from Library of Congress collection, 1024x713"
+  },
+  "columbus-zoo-and-aquarium": {
+    "id": "columbus-zoo-and-aquarium",
+    "name": "Columbus Zoo and Aquarium",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Columbus_Zoo_-_51284639854.jpg/1280px-Columbus_Zoo_-_51284639854.jpg",
+    "source": "wikimedia",
+    "notes": "Columbus Zoo overview shot, Wikipedia main article image"
+  },
+  "funderland-amusement-park": {
+    "id": "funderland-amusement-park",
+    "name": "Funderland Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/69/FunderlandLandParkSacramento.JPG",
+    "source": "wikimedia",
+    "notes": "Funderland Amusement Park in William Land Park, Sacramento, CA, 2304x1728"
+  },
+  "galveston-island-historic-pleasure-pier": {
+    "id": "galveston-island-historic-pleasure-pier",
+    "name": "Galveston Island Historic Pleasure Pier",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pleasure_Pier_in_Galveston%2C_Texas_%28cropped%29.jpg/1280px-Pleasure_Pier_in_Galveston%2C_Texas_%28cropped%29.jpg",
+    "source": "wikimedia",
+    "notes": "Pleasure Pier stretching into the Gulf of Mexico in Galveston, Texas - dramatic wide shot, Wikipedia main article image"
+  },
+  "island-in-pigeon-forge": {
+    "id": "island-in-pigeon-forge",
+    "name": "Island in Pigeon Forge",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Skywheel_and_fountain_at_The_Island.jpg",
+    "source": "wikimedia",
+    "notes": "Great Smoky Mountain Wheel (SkyWheel) and fountain at The Island in Pigeon Forge, TN. Low resolution (320x240) but only available Wikimedia image."
+  },
+  "lake-george-expedition-park": {
+    "id": "lake-george-expedition-park",
+    "name": "Lake George Expedition Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/MagicForest_2.jpg/1280px-MagicForest_2.jpg",
+    "source": "wikimedia",
+    "notes": "Magic Forest section at Lake George Expedition Park, 1280x720 landscape, Wikipedia main article image"
+  },
+  "legoland-california": {
+    "id": "legoland-california",
+    "name": "Legoland California Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Legolandcaliforniaentrance.JPG/1280px-Legolandcaliforniaentrance.JPG",
+    "source": "wikimedia",
+    "notes": "Legoland California entrance shot, Wikipedia main article image"
+  },
+  "niagara-amusement-park-splash-world": {
+    "id": "niagara-amusement-park-splash-world",
+    "name": "Niagara Amusement Park and Splash World",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Fantasy_Island_on_Grand_Island%2C_NY_in_2013.jpg",
+    "source": "wikimedia",
+    "notes": "Formerly Fantasy Island, now Niagara Amusement Park & Splash World on Grand Island, NY, 3176x2541 wide shot from 2013"
+  },
+  "pacific-park": {
+    "id": "pacific-park",
+    "name": "Pacific Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Santa_Monica_%E2%80%93_Pacific_Park_01.jpg",
+    "source": "wikimedia",
+    "notes": "Stunning wide panoramic shot of Pacific Park on Santa Monica Pier, 7298x4059 ultra-high-res. Large file (16MB)."
+  },
+  "remlinger-farms": {
+    "id": "remlinger-farms",
+    "name": "Remlinger Farms",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Remlinger_Farms_entrance%2C_from_Snoqualmie_valley_trail.jpg/1280px-Remlinger_Farms_entrance%2C_from_Snoqualmie_valley_trail.jpg",
+    "source": "wikimedia",
+    "notes": "Remlinger Farms entrance from Snoqualmie Valley Trail in Carnation, WA, Wikipedia main article image"
+  },
+  "washington-state-fair": {
+    "id": "washington-state-fair",
+    "name": "Washington State Fair",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Aerial_view_of_Washington_State_Fair%2C_Puyallup%2C_Washington%2C_August_16%2C_2023_%28cropped%29.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of the Washington State Fair in Puyallup, WA from August 2023, 1200x1200"
+  },
+  "yellowstone-bear-world": {
+    "id": "yellowstone-bear-world",
+    "name": "Yellowstone Bear World",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Yellowstone_Bear_World_Entrance.jpg/1280px-Yellowstone_Bear_World_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Yellowstone Bear World entrance in Rexburg, Idaho, Wikipedia main article image"
+  },
+  "canadas-wonderland": {
+    "id": "canadas-wonderland",
+    "name": "Canada's Wonderland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Canada_Wonderland_rollercoaster_2015.jpg/1280px-Canada_Wonderland_rollercoaster_2015.jpg",
+    "source": "wikimedia",
+    "notes": "Leviathan roller coaster at Canada's Wonderland, dramatic coaster shot"
+  },
+  "six-flags-over-georgia": {
+    "id": "six-flags-over-georgia",
+    "name": "Six Flags Over Georgia",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Goliath_%28Six_Flags_Over_Georgia%29_07.JPG/1280px-Goliath_%28Six_Flags_Over_Georgia%29_07.JPG",
+    "source": "wikimedia",
+    "notes": "Goliath B&M hyper coaster at Six Flags Over Georgia, wide shot showing full layout"
+  },
+  "californias-great-america": {
+    "id": "californias-great-america",
+    "name": "California's Great America",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Aerial_view_of_California%27s_Great_America_3.JPG/1280px-Aerial_view_of_California%27s_Great_America_3.JPG",
+    "source": "wikimedia",
+    "notes": "Aerial view of California's Great America by Oleg Alexandrov, high-res 4608x3072"
+  },
+  "michigans-adventure": {
+    "id": "michigans-adventure",
+    "name": "Michigan's Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/MichiganAventure_ShiveringTimbers_Dscn8247.jpg/1280px-MichiganAventure_ShiveringTimbers_Dscn8247.jpg",
+    "source": "wikimedia",
+    "notes": "Shivering Timbers wooden coaster at Michigan's Adventure, 1600x900 landscape"
+  },
+  "adventureland-new-york": {
+    "id": "adventureland-new-york",
+    "name": "Adventureland (New York)",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Adventureland_from_NB_NY_110.JPG/1280px-Adventureland_from_NB_NY_110.JPG",
+    "source": "wikimedia",
+    "notes": "Adventureland from Route 110 in East Farmingdale, New York, wide overview shot"
+  },
+  "indiana-beach": {
+    "id": "indiana-beach",
+    "name": "Indiana Beach",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/HH_Indiana_Beach.JPG",
+    "source": "wikimedia",
+    "notes": "Hoosier Hurricane at Indiana Beach on Lake Shafer, 640x480 resolution"
+  },
+  "silverwood-theme-park": {
+    "id": "silverwood-theme-park",
+    "name": "Silverwood Theme Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Roller_Coaster_Alley_%2850039116606%29.jpg/1280px-Roller_Coaster_Alley_%2850039116606%29.jpg",
+    "source": "wikimedia",
+    "notes": "Roller Coaster Alley at Silverwood Theme Park, 6016x4016 original"
+  },
+  "mt-olympus-water-theme-park-resort": {
+    "id": "mt-olympus-water-theme-park-resort",
+    "name": "Mt. Olympus Water Theme Park Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mt._Olympus_Theme_Park_entrance.jpg/1280px-Mt._Olympus_Theme_Park_entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Mt. Olympus Theme Park entrance in Wisconsin Dells, Greek-themed architecture"
+  },
+  "six-flags-great-escape-and-hurricane-harbor": {
+    "id": "six-flags-great-escape-and-hurricane-harbor",
+    "name": "Six Flags Great Escape and Hurricane Harbor",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Comet_w_blue_train.JPG/1280px-Comet_w_blue_train.JPG",
+    "source": "wikimedia",
+    "notes": "Comet roller coaster with blue train at The Great Escape, 2592x1944"
+  },
+  "fun-spot-america-atlanta": {
+    "id": "fun-spot-america-atlanta",
+    "name": "Fun Spot America Atlanta",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/ArieForce_One_1.jpg/1280px-ArieForce_One_1.jpg",
+    "source": "wikimedia",
+    "notes": "ArieForce One roller coaster at Fun Spot America Atlanta, signature 154ft coaster"
+  },
+  "waldameer-water-world": {
+    "id": "waldameer-water-world",
+    "name": "Waldameer Water World",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Ravine_Flyer_II_-_panoramio.jpg/1280px-Ravine_Flyer_II_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Ravine Flyer II roller coaster at Waldameer, the park's signature ride spanning a ravine"
+  },
+  "beech-bend": {
+    "id": "beech-bend",
+    "name": "Beech Bend",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Beech-Bend-Park.jpg",
+    "source": "wikimedia",
+    "notes": "Beech Bend Park overview in Bowling Green, KY, 1200x364 banner"
+  },
+  "dutch-wonderland": {
+    "id": "dutch-wonderland",
+    "name": "Dutch Wonderland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Dutch_Wonderland_Entrance.jpg/1280px-Dutch_Wonderland_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Dutch Wonderland entrance with iconic castle facade in Lancaster, PA"
+  },
+  "sesame-place-philadelphia": {
+    "id": "sesame-place-philadelphia",
+    "name": "Sesame Place Philadelphia",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sesame_Place_Front_Gate.jpg/1280px-Sesame_Place_Front_Gate.jpg",
+    "source": "wikimedia",
+    "notes": "Sesame Place front gate entrance in Langhorne, PA, 4000x3000 original"
+  },
+  "universal-orlando-resort": {
+    "id": "universal-orlando-resort",
+    "name": "Universal Orlando Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Orlando_-_USA_%2836829593404%29.jpg",
+    "source": "wikimedia",
+    "notes": "Universal Orlando Resort aerial/overview shot"
+  },
+  "bay-beach-amusement-park": {
+    "id": "bay-beach-amusement-park",
+    "name": "Bay Beach Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bay_Beach_Amusement_Park_-_panoramio.jpg/1280px-Bay_Beach_Amusement_Park_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Bay Beach Amusement Park panoramic view, municipal park in Green Bay, Wisconsin"
+  },
+  "epcot": {
+    "id": "epcot",
+    "name": "Epcot",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/1_epcot_spaceship_earth_2010a.JPG",
+    "source": "wikimedia",
+    "notes": "Spaceship Earth geodesic sphere at Epcot, iconic Disney park landmark, 4288x2848 original"
+  },
+  "legoland-new-york-resort": {
+    "id": "legoland-new-york-resort",
+    "name": "Legoland New York Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/LEGOLAND_New_York.jpg/1280px-LEGOLAND_New_York.jpg",
+    "source": "wikimedia",
+    "notes": "LEGOLAND New York overview shot, 5184x3888 original"
+  },
+  "nascar-speedpark": {
+    "id": "nascar-speedpark",
+    "name": "Nascar Speedpark",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Speedway_Draft%2C_NASCAR_Speedpark%2C_Sevierville%2C_Tenn._%289272848636%29.jpg/1280px-Speedway_Draft%2C_NASCAR_Speedpark%2C_Sevierville%2C_Tenn._%289272848636%29.jpg",
+    "source": "wikimedia",
+    "notes": "NASCAR SpeedPark in Sevierville, Tennessee, go-kart track area"
+  },
+  "sonoma-traintown-railroad": {
+    "id": "sonoma-traintown-railroad",
+    "name": "Sonoma TrainTown Railroad",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/TrainTown.jpg/1280px-TrainTown.jpg",
+    "source": "wikimedia",
+    "notes": "TrainTown miniature railroad and amusement park in Sonoma, California"
+  },
+  "carowinds": {
+    "id": "carowinds",
+    "name": "Carowinds",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Carowinds_aerial_view%2C_September_2017.JPG/1280px-Carowinds_aerial_view%2C_September_2017.JPG",
+    "source": "wikimedia",
+    "notes": "Aerial view of Carowinds theme park, September 2017"
+  },
+  "six-flags-great-adventure": {
+    "id": "six-flags-great-adventure",
+    "name": "Six Flags Great Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Six_Flags_Great_Adventure_entrance_gate_1.jpg/1280px-Six_Flags_Great_Adventure_entrance_gate_1.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance gate of Six Flags Great Adventure, Jackson NJ"
+  },
+  "dollywood": {
+    "id": "dollywood",
+    "name": "Dollywood",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/Dollywoodsign1.jpg",
+    "source": "wikimedia",
+    "notes": "Dollywood entrance sign in Pigeon Forge, Tennessee"
+  },
+  "silver-dollar-city": {
+    "id": "silver-dollar-city",
+    "name": "Silver Dollar City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Silver_Dollar_City_%2822854131313%29.jpg/1280px-Silver_Dollar_City_%2822854131313%29.jpg",
+    "source": "wikimedia",
+    "notes": "Silver Dollar City theme park in Branson, Missouri"
+  },
+  "holiday-world-splashin-safari": {
+    "id": "holiday-world-splashin-safari",
+    "name": "Holiday World Splashin' Safari",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Holiday_World_Entrance_Gates_-_Jeremy_Thompson.jpg/1280px-Holiday_World_Entrance_Gates_-_Jeremy_Thompson.jpg",
+    "source": "wikimedia",
+    "notes": "Holiday World entrance gates in Santa Claus, Indiana"
+  },
+  "kentucky-kingdom": {
+    "id": "kentucky-kingdom",
+    "name": "Kentucky Kingdom",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Kentucky_Kingdom_-_Entrance_Fountain_2021.jpg/1280px-Kentucky_Kingdom_-_Entrance_Fountain_2021.jpg",
+    "source": "wikimedia",
+    "notes": "Kentucky Kingdom entrance fountain, Louisville, 2021"
+  },
+  "six-flags-darien-lake": {
+    "id": "six-flags-darien-lake",
+    "name": "Six Flags Darien Lake",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/01/Predator_lift_hill.JPG",
+    "source": "wikimedia",
+    "notes": "Predator wooden roller coaster lift hill at Darien Lake"
+  },
+  "playland-park": {
+    "id": "playland-park",
+    "name": "Playland Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Playland_Beach.jpg/1280px-Playland_Beach.jpg",
+    "source": "wikimedia",
+    "notes": "Wide shot of Playland Beach and park in Rye, New York, landscape orientation"
+  },
+  "lake-compounce": {
+    "id": "lake-compounce",
+    "name": "Lake Compounce",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Lake_Compounce_Main_Gate.jpg",
+    "source": "wikimedia",
+    "notes": "Lake Compounce main gate entrance, oldest continuously operating amusement park in North America"
+  },
+  "canobie-lake-park": {
+    "id": "canobie-lake-park",
+    "name": "Canobie Lake Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Canobie_Lake_Park_Untamed.jpg/1280px-Canobie_Lake_Park_Untamed.jpg",
+    "source": "wikimedia",
+    "notes": "Canobie Lake Park with Untamed roller coaster visible, Salem, New Hampshire"
+  },
+  "elitch-gardens": {
+    "id": "elitch-gardens",
+    "name": "Elitch Gardens",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Elitch_Gardens_Theme_Park_entrance%2C_Denver%2C_2009.jpg/1280px-Elitch_Gardens_Theme_Park_entrance%2C_Denver%2C_2009.jpg",
+    "source": "wikimedia",
+    "notes": "Elitch Gardens Theme Park entrance in Denver, Colorado, 2009. Carol Highsmith photo."
+  },
+  "jenkinsons-boardwalk": {
+    "id": "jenkinsons-boardwalk",
+    "name": "Jenkinson's Boardwalk",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/2025-08-23_11_26_19_View_south_along_Jenkinson%27s_Boardwalk_at_Parkway_in_Point_Pleasant_Beach%2C_Ocean_County%2C_New_Jersey.jpg/1280px-2025-08-23_11_26_19_View_south_along_Jenkinson%27s_Boardwalk_at_Parkway_in_Point_Pleasant_Beach%2C_Ocean_County%2C_New_Jersey.jpg",
+    "source": "wikimedia",
+    "notes": "View south along Jenkinson's Boardwalk at Parkway in Point Pleasant Beach, NJ"
+  },
+  "steel-pier": {
+    "id": "steel-pier",
+    "name": "Steel Pier",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atlantic_City_Steel_Pier_-_panoramio.jpg/1280px-Atlantic_City_Steel_Pier_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Panoramic view of Steel Pier amusement park in Atlantic City, NJ with Ferris wheel and boardwalk"
+  },
+  "universal-studios-florida": {
+    "id": "universal-studios-florida",
+    "name": "Universal Studios Florida",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/USF_Entrance.jpg/1280px-USF_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Universal Studios Florida entrance arch, Orlando"
+  },
+  "adventure-city": {
+    "id": "adventure-city",
+    "name": "Adventure City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Adventure_City_-_52207187992.jpg/1280px-Adventure_City_-_52207187992.jpg",
+    "source": "wikimedia",
+    "notes": "Landscape photo of Adventure City park, 2736x1824 original"
+  },
+  "camden-park": {
+    "id": "camden-park",
+    "name": "Camden Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/The_entrance_sign_to_Camden_Park%2C_a_26-acre_amusement_park_just_outside_Huntington%2C_West_Virginia_LCCN2015631867.jpg/1280px-The_entrance_sign_to_Camden_Park%2C_a_26-acre_amusement_park_just_outside_Huntington%2C_West_Virginia_LCCN2015631867.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance sign to Camden Park, Huntington, WV. Library of Congress / Carol Highsmith photo."
+  },
+  "delgrossos-park": {
+    "id": "delgrossos-park",
+    "name": "DelGrosso's Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/DeGrosso_Amusement_park_tipton_-_panoramio.jpg/1280px-DeGrosso_Amusement_park_tipton_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "DelGrosso's Amusement Park in Tipton, Pennsylvania"
+  },
+  "family-kingdom-amusement-park": {
+    "id": "family-kingdom-amusement-park",
+    "name": "Family Kingdom Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/5/54/Family_Kingdom_Amusement_Park_3.jpg",
+    "source": "wikimedia",
+    "notes": "Family Kingdom Amusement Park oceanfront view in Myrtle Beach, SC"
+  },
+  "idlewild-soakzone": {
+    "id": "idlewild-soakzone",
+    "name": "Idlewild SoakZone",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/IDLEWILD_MR_ROGERS_TROLLEY_WIDE_200_6_00_8_-_panoramio.jpg/1280px-IDLEWILD_MR_ROGERS_TROLLEY_WIDE_200_6_00_8_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Wide landscape shot of Idlewild park area near Ligonier, PA. Third oldest operating amusement park in the US."
+  },
+  "lakeside-amusement-park": {
+    "id": "lakeside-amusement-park",
+    "name": "Lakeside Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Lakeside_Amusement_Park%2C_1966.jpg/1280px-Lakeside_Amusement_Park%2C_1966.jpg",
+    "source": "wikimedia",
+    "notes": "Lakeside Amusement Park in Denver, Colorado, 1966 vintage photo showing the Tower of Jewels and park layout"
+  },
+  "magic-harbor": {
+    "id": "magic-harbor",
+    "name": "Magic Harbor",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Magic_Harbor_lighthouse_sign%2C_Surfside_Beach%2C_South_Carolina_LCCN2017712445.tif/lossy-page1-1280px-Magic_Harbor_lighthouse_sign%2C_Surfside_Beach%2C_South_Carolina_LCCN2017712445.tif.jpg",
+    "source": "wikimedia",
+    "notes": "Magic Harbor lighthouse sign in Surfside Beach, SC. Park is defunct (closed mid-1990s). Library of Congress photo."
+  },
+  "midway-park": {
+    "id": "midway-park",
+    "name": "Midway Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Carousel_Midway_Park_Jul_12.jpg/1280px-Carousel_Midway_Park_Jul_12.jpg",
+    "source": "wikimedia",
+    "notes": "Carousel at Midway State Park in Maple Springs, NY. 15th oldest continually operating amusement park in the US."
+  },
+  "oakland-zoo": {
+    "id": "oakland-zoo",
+    "name": "Oakland Zoo",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Oakland_Zoo_entrance.jpg/1280px-Oakland_Zoo_entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Oakland Zoo entrance in Oakland, California. Primarily a zoo, has some amusement rides."
+  },
+  "parque-warner-madrid": {
+    "id": "parque-warner-madrid",
+    "name": "Parque Warner Madrid",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Entrada-parque-warner.jpg/1280px-Entrada-parque-warner.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance to Parque Warner Madrid theme park in San Martin de la Vega, Spain"
+  },
+  "quassy-amusement-waterpark": {
+    "id": "quassy-amusement-waterpark",
+    "name": "Quassy Amusement Waterpark",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Quassy_Amusement_Park_-_48334443831.jpg/1280px-Quassy_Amusement_Park_-_48334443831.jpg",
+    "source": "wikimedia",
+    "notes": "Quassy Amusement Park on Lake Quassapaug in Middlebury, Connecticut"
+  },
+  "trimper-rides-of-ocean-city": {
+    "id": "trimper-rides-of-ocean-city",
+    "name": "Trimper Rides Of Ocean City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ocean_City_MD_Boardwalk_August_2009_2.jpg/1280px-Ocean_City_MD_Boardwalk_August_2009_2.jpg",
+    "source": "wikimedia",
+    "notes": "Ocean City MD Boardwalk with Trimper's Rides area visible, August 2009"
+  },
+  "wonderla": {
+    "id": "wonderla",
+    "name": "Wonderla",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Wonderla_Bangalore_BNC.jpg/1280px-Wonderla_Bangalore_BNC.jpg",
+    "source": "wikimedia",
+    "notes": "Wide aerial/overview shot of Wonderla amusement park in Bangalore, India"
+  }
+}

@@ -64,7 +64,7 @@ interface LogModalProps {
   // Focus input (for sectionsOnly mode to focus the input in inputOnly mode)
   onFocusInput?: () => void;
   // External ref for the input (allows parent to focus it)
-  externalInputRef?: React.RefObject<TextInput>;
+  externalInputRef?: React.RefObject<TextInput | null>;
   // Synced query from parent (keeps inputOnly + sectionsOnly in sync)
   externalQuery?: string;
 }

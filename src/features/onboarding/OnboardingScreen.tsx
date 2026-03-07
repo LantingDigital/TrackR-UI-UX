@@ -13,33 +13,20 @@ import {
   setRiderType,
 } from '../../stores/settingsStore';
 import type { RiderType } from '../../stores/settingsStore';
-import type { NotificationPrefs } from './components/NotificationPrefsStep';
 import {
   WelcomeStep,
   RiderTypeStep,
-  HomeParksStep,
-  ProfileSetupStep,
-  NotificationPrefsStep,
   CelebrationStep,
   OnboardingProgressDots,
 } from './components';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
-const TOTAL_STEPS = 6;
+const TOTAL_STEPS = 3;
 
 export const OnboardingScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedRiderType, setSelectedRiderType] = useState<RiderType>(null);
-  const [selectedParks, setSelectedParks] = useState<string[]>([]);
-  const [displayName, setDisplayName] = useState('');
-  const [bio, setBio] = useState('');
-  const [notificationPrefs, setNotificationPrefs] = useState<NotificationPrefs>({
-    newRides: true,
-    news: true,
-    community: true,
-    atPark: true,
-  });
   const translateX = useSharedValue(0);
 
   const advanceStep = useCallback((nextStep: number) => {
@@ -58,10 +45,10 @@ export const OnboardingScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {/* Progress dots — hidden on celebration (step 5) */}
-      {currentStep < 5 && (
+      {/* Progress dots — hidden on celebration (step 2) */}
+      {currentStep < 2 && (
         <View style={[styles.dotsContainer, { top: insets.top }]}>
-          <OnboardingProgressDots currentStep={currentStep} totalSteps={5} />
+          <OnboardingProgressDots currentStep={currentStep} totalSteps={2} />
         </View>
       )}
 
@@ -81,40 +68,11 @@ export const OnboardingScreen: React.FC = () => {
           />
         </View>
 
-        {/* Step 2: Home Parks */}
-        <View style={styles.step}>
-          <HomeParksStep
-            selectedParks={selectedParks}
-            onParksChange={setSelectedParks}
-            onContinue={() => advanceStep(3)}
-          />
-        </View>
-
-        {/* Step 3: Profile Setup */}
-        <View style={styles.step}>
-          <ProfileSetupStep
-            displayName={displayName}
-            bio={bio}
-            onDisplayNameChange={setDisplayName}
-            onBioChange={setBio}
-            onContinue={() => advanceStep(4)}
-          />
-        </View>
-
-        {/* Step 4: Notification Preferences */}
-        <View style={styles.step}>
-          <NotificationPrefsStep
-            prefs={notificationPrefs}
-            onPrefsChange={setNotificationPrefs}
-            onContinue={() => advanceStep(5)}
-          />
-        </View>
-
-        {/* Step 5: Celebration */}
+        {/* Step 2: Celebration */}
         <View style={styles.step}>
           <CelebrationStep
             riderType={selectedRiderType}
-            active={currentStep === 5}
+            active={currentStep === 2}
             onComplete={handleCelebrationComplete}
           />
         </View>

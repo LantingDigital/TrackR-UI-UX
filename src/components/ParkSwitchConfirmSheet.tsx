@@ -23,6 +23,7 @@ import { spacing } from '../theme/spacing';
 import { radius } from '../theme/radius';
 import { shadows } from '../theme/shadows';
 import { SPRINGS } from '../constants/animations';
+import { useTabBar } from '../contexts/TabBarContext';
 
 interface ParkSwitchConfirmSheetProps {
   visible: boolean;
@@ -46,26 +47,26 @@ export function ParkSwitchConfirmSheet({
   onDismissStart,
 }: ParkSwitchConfirmSheetProps) {
   const insets = useSafeAreaInsets();
+  const tabBar = useTabBar();
   const translateY = useSharedValue(SHEET_DISMISS_OFFSET);
   const backdropOpacity = useSharedValue(0);
 
   useEffect(() => {
     if (visible) {
+      tabBar?.hideTabBar();
       translateY.value = withSpring(0, SPRINGS.responsive);
       backdropOpacity.value = withTiming(1, { duration: 250 });
-    } else {
-      translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 });
-      backdropOpacity.value = withTiming(0, { duration: 200 });
     }
   }, [visible]);
 
   const dismiss = useCallback(() => {
     onDismissStart?.();
+    tabBar?.showTabBar();
     translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 }, (finished) => {
       if (finished) runOnJS(onCancel)();
     });
     backdropOpacity.value = withTiming(0, { duration: 200 });
-  }, [onCancel, onDismissStart]);
+  }, [onCancel, onDismissStart, tabBar]);
 
   const sheetStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: translateY.value }],
@@ -110,6 +111,7 @@ export function ParkSwitchConfirmSheet({
         <View style={styles.actions}>
           <Pressable
             onPress={() => {
+              tabBar?.showTabBar();
               translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 });
               backdropOpacity.value = withTiming(0, { duration: 200 });
               onConfirm();

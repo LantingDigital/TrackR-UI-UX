@@ -45,8 +45,8 @@ import { radius } from '../../theme/radius';
 // Card dimensions for each section (1:1 aspect ratio)
 const CARD_SIZES = {
   favorites: PREVIEW_CARD_SIZES.favorites, // 120px
-  tickets: PREVIEW_CARD_SIZES.all,         // 100px
-  passes: PREVIEW_CARD_SIZES.all,          // 100px
+  tickets: PREVIEW_CARD_SIZES.all,         // 120px
+  passes: PREVIEW_CARD_SIZES.all,          // 120px
   expired: PREVIEW_CARD_SIZES.expired,     // 100px
 };
 
@@ -80,6 +80,10 @@ interface ScanModalProps {
   onQueryChange?: (query: string) => void;
   /** Current search query (from parent for filtering) */
   searchQuery?: string;
+  /** External ref for the TextInput (allows parent to focus/blur) */
+  externalInputRef?: React.RefObject<TextInput | null>;
+  /** Synced query from parent (keeps inputOnly in sync when parent clears text) */
+  externalQuery?: string;
 }
 
 export const ScanModal: React.FC<ScanModalProps> = ({
@@ -95,10 +99,20 @@ export const ScanModal: React.FC<ScanModalProps> = ({
   onInputFocus,
   onQueryChange,
   searchQuery = '',
+  externalInputRef,
+  externalQuery,
 }) => {
   // Local search state for immediate UI feedback
   const [localQuery, setLocalQuery] = useState('');
-  const inputRef = useRef<TextInput>(null);
+  const internalInputRef = useRef<TextInput>(null);
+  const inputRef = externalInputRef || internalInputRef;
+
+  // Sync internal query with external query (keeps inputOnly in sync when parent clears text)
+  React.useEffect(() => {
+    if (externalQuery !== undefined && externalQuery !== localQuery) {
+      setLocalQuery(externalQuery);
+    }
+  }, [externalQuery]);
 
   // Detail view state
   const [detailViewVisible, setDetailViewVisible] = useState(false);
@@ -243,13 +257,13 @@ export const ScanModal: React.FC<ScanModalProps> = ({
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.carouselContent}
                     decelerationRate="fast"
-                    snapToInterval={CARD_SIZES.all + spacing.md}
+                    snapToInterval={CARD_SIZES.tickets + spacing.md}
                   >
                     {filteredTickets.map((ticket) => (
                       <PassPreviewCard
                         key={ticket.id}
                         ticket={ticket}
-                        size={CARD_SIZES.all}
+                        size={CARD_SIZES.tickets}
                         onPress={() => handleTicketPress(ticket, filteredTickets)}
                         onLongPress={() => handleLongPress(ticket)}
                         showFavoriteBadge={true}

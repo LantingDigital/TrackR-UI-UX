@@ -1,0 +1,472 @@
+import { ParkPOI } from '../types';
+
+// ============================================
+// Universal Islands of Adventure — Complete Point of Interest Database
+// Source: RCDB, OpenStreetMap, Official 2025 Park Map
+//
+// Positions (x, y) are 0-1 percentages on the illustrated map.
+// These are initial estimates — use the position editor to fine-tune.
+//
+// Park center: 28.4715, -81.4715
+// ============================================
+
+// ============================================
+// RIDES — ROLLER COASTERS & MAJOR RIDES
+// ============================================
+
+const ROLLER_COASTERS: ParkPOI[] = [
+  {
+    id: 'ride-velocicoaster',
+    mapNumber: 1,
+    name: 'VelociCoaster',
+    type: 'ride',
+    area: 'jurassic-park',
+    x: 0.72, y: 0.25,
+    lng: -81.4725, lat: 28.4711,
+    heightRequirement: { min: 51 },
+    thrillLevel: 'aggressive',
+    coasterId: 'velocicoaster',
+    fastLaneEligible: true,
+  },
+  {
+    id: 'ride-hagrid',
+    mapNumber: 2,
+    name: "Hagrid's Magical Creatures Motorbike Adventure",
+    type: 'ride',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.82, y: 0.35,
+    lng: -81.4735, lat: 28.4734,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'high',
+    coasterId: 'hagrids-magical-creatures-motorbike-adventure',
+    fastLaneEligible: true,
+  },
+  {
+    id: 'ride-incredible-hulk',
+    mapNumber: 3,
+    name: 'The Incredible Hulk Coaster',
+    type: 'ride',
+    area: 'marvel-super-hero-island',
+    x: 0.22, y: 0.38,
+    lng: -81.4688, lat: 28.4715,
+    heightRequirement: { min: 54 },
+    thrillLevel: 'aggressive',
+    coasterId: 'the-incredible-hulk-coaster',
+    fastLaneEligible: true,
+  },
+  {
+    id: 'ride-flight-of-the-hippogriff-ioa',
+    mapNumber: 4,
+    name: 'Flight of the Hippogriff',
+    type: 'ride',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.85, y: 0.38,
+    lng: -81.4738, lat: 28.4724,
+    heightRequirement: { min: 36 },
+    thrillLevel: 'moderate',
+    coasterId: 'flight-of-the-hippogriff-ioa',
+  },
+];
+
+// ============================================
+// RIDES — DARK RIDES & ATTRACTIONS
+// ============================================
+
+const MAJOR_RIDES: ParkPOI[] = [
+  {
+    id: 'ride-harry-potter-forbidden-journey-ioa',
+    mapNumber: 5,
+    name: 'Harry Potter and the Forbidden Journey',
+    type: 'ride',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.80, y: 0.40,
+    lng: -81.4740, lat: 28.4717,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'high',
+  },
+  {
+    id: 'ride-spider-man',
+    mapNumber: 6,
+    name: 'The Amazing Adventures of Spider-Man',
+    type: 'ride',
+    area: 'marvel-super-hero-island',
+    x: 0.25, y: 0.42,
+    lng: -81.4697, lat: 28.4701,
+    heightRequirement: { min: 40 },
+    thrillLevel: 'high',
+  },
+  {
+    id: 'ride-jurassic-world',
+    mapNumber: 7,
+    name: 'Jurassic World VelociCoaster',
+    type: 'ride',
+    area: 'jurassic-park',
+    x: 0.68, y: 0.28,
+    lng: -81.4725, lat: 28.4711,
+    heightRequirement: { min: 42 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-jurassic-river-adventure',
+    mapNumber: 8,
+    name: 'Jurassic Park River Adventure',
+    type: 'ride',
+    area: 'jurassic-park',
+    x: 0.70, y: 0.32,
+    lng: -81.4738, lat: 28.4703,
+    heightRequirement: { min: 42 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-popeyes-bilge-rat-barges',
+    mapNumber: 9,
+    name: "Popeye & Bluto's Bilge-Rat Barges",
+    type: 'ride',
+    area: 'toon-lagoon',
+    x: 0.42, y: 0.22,
+    lng: -81.4717, lat: 28.4706,
+    heightRequirement: { min: 42 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-dudley-do-right',
+    mapNumber: 10,
+    name: "Dudley Do-Right's Ripsaw Falls",
+    type: 'ride',
+    area: 'toon-lagoon',
+    x: 0.38, y: 0.25,
+    lng: -81.4718, lat: 28.4692,
+    heightRequirement: { min: 44 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-doctor-doom',
+    mapNumber: 11,
+    name: "Doctor Doom's Fearfall",
+    type: 'ride',
+    area: 'marvel-super-hero-island',
+    x: 0.20, y: 0.35,
+    lng: -81.4693, lat: 28.4705,
+    heightRequirement: { min: 52 },
+    thrillLevel: 'high',
+  },
+  {
+    id: 'ride-storm-force-accelatron',
+    mapNumber: 12,
+    name: 'Storm Force Accelatron',
+    type: 'ride',
+    area: 'marvel-super-hero-island',
+    x: 0.28, y: 0.40,
+    lng: -81.4688, lat: 28.4709,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-skull-island-reign-of-kong',
+    mapNumber: 13,
+    name: 'Skull Island: Reign of Kong',
+    type: 'ride',
+    area: 'skull-island',
+    x: 0.55, y: 0.22,
+    lng: -81.4730, lat: 28.4691,
+    heightRequirement: { min: 36 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-cat-in-the-hat',
+    mapNumber: 14,
+    name: 'The Cat in the Hat',
+    type: 'ride',
+    area: 'seuss-landing',
+    x: 0.88, y: 0.55,
+    lng: -81.4688, lat: 28.4729,
+    thrillLevel: 'low',
+  },
+  {
+    id: 'ride-one-fish-two-fish',
+    mapNumber: 15,
+    name: 'One Fish, Two Fish, Red Fish, Blue Fish',
+    type: 'ride',
+    area: 'seuss-landing',
+    x: 0.90, y: 0.52,
+    lng: -81.4693, lat: 28.4732,
+    thrillLevel: 'low',
+  },
+  {
+    id: 'ride-caro-seuss-el',
+    mapNumber: 16,
+    name: 'Caro-Seuss-el',
+    type: 'ride',
+    area: 'seuss-landing',
+    x: 0.92, y: 0.50,
+    lng: -81.4696, lat: 28.4729,
+    thrillLevel: 'low',
+  },
+  {
+    id: 'ride-high-in-the-sky-trolley',
+    mapNumber: 17,
+    name: 'The High in the Sky Seuss Trolley Train Ride',
+    type: 'ride',
+    area: 'seuss-landing',
+    x: 0.86, y: 0.48,
+    lng: -81.4703, lat: 28.4731,
+    thrillLevel: 'low',
+  },
+];
+
+// ============================================
+// FOOD LOCATIONS
+// ============================================
+
+const FOOD: ParkPOI[] = [
+  {
+    id: 'food-three-broomsticks',
+    name: 'Three Broomsticks',
+    type: 'food',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.78, y: 0.42,
+    lng: -81.4738, lat: 28.4720,
+    menuItems: ['fish & chips', 'shepherds pie', 'rotisserie chicken', 'butterbeer'],
+    menuDescription: 'British pub fare in Hogsmeade village',
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-hogs-head',
+    name: "Hog's Head",
+    type: 'food',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.79, y: 0.44,
+    lng: -81.4739, lat: 28.4718,
+    menuItems: ['butterbeer', 'pumpkin juice', 'beer', 'drinks'],
+    menuDescription: 'Wizarding beverages including Butterbeer',
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-captain-americas-diner',
+    name: "Captain America's Diner",
+    type: 'food',
+    area: 'marvel-super-hero-island',
+    x: 0.24, y: 0.45,
+    lng: -81.4693, lat: 28.4703,
+    menuItems: ['burgers', 'chicken tenders', 'fries', 'milkshakes'],
+    menuDescription: 'Classic American burgers and chicken',
+  },
+  {
+    id: 'food-cafe-4',
+    name: 'Cafe 4',
+    type: 'food',
+    area: 'marvel-super-hero-island',
+    x: 0.22, y: 0.40,
+    lng: -81.4690, lat: 28.4708,
+    menuItems: ['pizza', 'pasta', 'salad', 'calzones'],
+    menuDescription: 'Pizza and Italian favorites',
+  },
+  {
+    id: 'food-thunder-falls-terrace',
+    name: 'Thunder Falls Terrace',
+    type: 'food',
+    area: 'jurassic-park',
+    x: 0.68, y: 0.30,
+    lng: -81.4735, lat: 28.4705,
+    menuItems: ['rotisserie chicken', 'ribs', 'rice', 'cornbread'],
+    menuDescription: 'Rotisserie chicken and smoked ribs',
+  },
+  {
+    id: 'food-blondies',
+    name: "Blondie's",
+    type: 'food',
+    area: 'toon-lagoon',
+    x: 0.40, y: 0.28,
+    lng: -81.4712, lat: 28.4698,
+    menuItems: ['sandwiches', 'wraps', 'salad', 'soup'],
+    menuDescription: 'Sandwiches, wraps, and soups',
+  },
+  {
+    id: 'food-fire-eaters-grill',
+    name: "Fire Eater's Grill",
+    type: 'food',
+    area: 'the-lost-continent',
+    x: 0.75, y: 0.45,
+    lng: -81.4740, lat: 28.4725,
+    menuItems: ['gyros', 'chicken fingers', 'salads'],
+    menuDescription: 'Mediterranean-inspired fare',
+  },
+  {
+    id: 'food-circus-mcgurkus',
+    name: 'Circus McGurkus Cafe Stoo-pendous',
+    type: 'food',
+    area: 'seuss-landing',
+    x: 0.88, y: 0.50,
+    lng: -81.4695, lat: 28.4730,
+    menuItems: ['pizza', 'chicken tenders', 'pasta', 'salad'],
+    menuDescription: 'Pizza and chicken in a Seussian setting',
+  },
+  {
+    id: 'food-confisco-grille',
+    name: 'Confisco Grille',
+    type: 'food',
+    area: 'port-of-entry',
+    x: 0.15, y: 0.58,
+    lng: -81.4685, lat: 28.4690,
+    menuItems: ['burgers', 'sandwiches', 'pasta', 'asian bowls', 'tacos'],
+    menuDescription: 'Full-service restaurant with diverse menu',
+    servesAlcohol: true,
+  },
+];
+
+// ============================================
+// MERCHANDISE / SHOPS
+// ============================================
+
+const SHOPS: ParkPOI[] = [
+  {
+    id: 'shop-honeydukes',
+    name: 'Honeydukes',
+    type: 'shop',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.76, y: 0.40,
+    lng: -81.4737, lat: 28.4720,
+    description: 'Wizarding World candy shop',
+  },
+  {
+    id: 'shop-ollivanders',
+    name: 'Ollivanders',
+    type: 'shop',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.78, y: 0.38,
+    lng: -81.4739, lat: 28.4722,
+    description: 'Interactive wand experience and shop',
+  },
+  {
+    id: 'shop-filchs-emporium',
+    name: "Filch's Emporium of Confiscated Goods",
+    type: 'shop',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.80, y: 0.42,
+    lng: -81.4740, lat: 28.4718,
+    description: 'Wizarding World merchandise',
+  },
+  {
+    id: 'shop-marvel-alterniverse',
+    name: 'Marvel Alterniverse Store',
+    type: 'shop',
+    area: 'marvel-super-hero-island',
+    x: 0.26, y: 0.44,
+    lng: -81.4695, lat: 28.4705,
+    description: 'Marvel Comics merchandise',
+  },
+  {
+    id: 'shop-jurassic-outfitters',
+    name: 'Jurassic Outfitters',
+    type: 'shop',
+    area: 'jurassic-park',
+    x: 0.66, y: 0.32,
+    lng: -81.4730, lat: 28.4705,
+    description: 'Jurassic Park and dinosaur merchandise',
+  },
+  {
+    id: 'shop-port-of-entry-gifts',
+    name: 'Islands of Adventure Trading Company',
+    type: 'shop',
+    area: 'port-of-entry',
+    x: 0.18, y: 0.60,
+    lng: -81.4685, lat: 28.4688,
+    description: 'Main park gift shop',
+  },
+];
+
+// ============================================
+// SERVICES
+// ============================================
+
+const SERVICES: ParkPOI[] = [
+  {
+    id: 'entrance-main-ioa',
+    name: 'Main Entrance',
+    type: 'service',
+    area: 'port-of-entry',
+    x: 0.12, y: 0.65,
+    lng: -81.4680, lat: 28.4685,
+    description: 'Main park entrance',
+  },
+  {
+    id: 'restroom-port-of-entry',
+    name: 'Restrooms (Port of Entry)',
+    type: 'service',
+    area: 'port-of-entry',
+    x: 0.14, y: 0.62,
+    lng: -81.4683, lat: 28.4688,
+    approximateLocation: true,
+    description: 'Restrooms at Port of Entry',
+  },
+  {
+    id: 'restroom-marvel',
+    name: 'Restrooms (Marvel Island)',
+    type: 'service',
+    area: 'marvel-super-hero-island',
+    x: 0.24, y: 0.38,
+    lng: -81.4692, lat: 28.4710,
+    approximateLocation: true,
+    description: 'Restrooms in Marvel Super Hero Island',
+  },
+  {
+    id: 'restroom-jurassic',
+    name: 'Restrooms (Jurassic Park)',
+    type: 'service',
+    area: 'jurassic-park',
+    x: 0.65, y: 0.30,
+    lng: -81.4730, lat: 28.4703,
+    approximateLocation: true,
+    description: 'Restrooms in Jurassic Park',
+  },
+  {
+    id: 'restroom-hogsmeade',
+    name: 'Restrooms (Hogsmeade)',
+    type: 'service',
+    area: 'wizarding-world-hogsmeade',
+    x: 0.82, y: 0.44,
+    lng: -81.4742, lat: 28.4720,
+    approximateLocation: true,
+    description: 'Restrooms in the Wizarding World of Harry Potter',
+  },
+  {
+    id: 'restroom-seuss',
+    name: 'Restrooms (Seuss Landing)',
+    type: 'service',
+    area: 'seuss-landing',
+    x: 0.90, y: 0.54,
+    lng: -81.4698, lat: 28.4730,
+    approximateLocation: true,
+    description: 'Restrooms in Seuss Landing',
+  },
+  {
+    id: 'service-first-aid-ioa',
+    name: 'First Aid',
+    type: 'service',
+    area: 'the-lost-continent',
+    x: 0.72, y: 0.48,
+    lng: -81.4738, lat: 28.4725,
+    description: 'First aid station',
+  },
+  {
+    id: 'service-guest-services-ioa',
+    name: 'Guest Services',
+    type: 'service',
+    area: 'port-of-entry',
+    x: 0.10, y: 0.68,
+    lng: -81.4678, lat: 28.4683,
+    description: 'Guest services and information',
+  },
+];
+
+// ============================================
+// COMBINED EXPORT
+// ============================================
+
+export const ISLANDS_OF_ADVENTURE_POI: ParkPOI[] = [
+  ...ROLLER_COASTERS,
+  ...MAJOR_RIDES,
+  ...FOOD,
+  ...SHOPS,
+  ...SERVICES,
+];

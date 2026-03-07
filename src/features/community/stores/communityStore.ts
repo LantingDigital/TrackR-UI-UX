@@ -179,6 +179,20 @@ export function getFeedItem(itemId: string): FeedItem | undefined {
 // React Hook
 // ============================================
 
+// Stable actions — module-level functions never change identity.
+const stableActions = {
+  toggleLike,
+  addComment,
+  toggleCommentLike,
+  createReviewPost,
+  createTripReportPost,
+  createRankedListPost,
+  createBucketListPost,
+} as const;
+
+// Cached feed ref — only replaced when notify() fires.
+let cachedFeedRef: FeedItem[] | null = null;
+
 export function useCommunityStore() {
   const [, forceUpdate] = useReducer((c: number) => c + 1, 0);
 
@@ -189,14 +203,13 @@ export function useCommunityStore() {
     };
   }, []);
 
+  // Return cached reference to avoid new objects every render
+  if (cachedFeedRef !== feedItems) {
+    cachedFeedRef = feedItems;
+  }
+
   return {
-    feed: feedItems,
-    toggleLike,
-    addComment,
-    toggleCommentLike,
-    createReviewPost,
-    createTripReportPost,
-    createRankedListPost,
-    createBucketListPost,
+    feed: cachedFeedRef,
+    ...stableActions,
   };
 }

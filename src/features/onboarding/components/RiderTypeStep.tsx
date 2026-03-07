@@ -57,13 +57,13 @@ const RiderCard: React.FC<RiderCardProps> = ({ item, index, isSelected, onPress 
   useEffect(() => {
     const delay = TIMING.stagger * index + 100;
     entranceOpacity.value = withDelay(delay, withTiming(1, { duration: TIMING.normal }));
-    entranceScale.value = withDelay(delay, withSpring(1, SPRINGS.bouncy));
+    entranceScale.value = withDelay(delay, withSpring(1, SPRINGS.responsive));
   }, []);
 
   useEffect(() => {
     if (isSelected) {
       selectionScale.value = withSequence(
-        withSpring(1.03, SPRINGS.bouncy),
+        withSpring(1.03, SPRINGS.responsive),
         withSpring(1, SPRINGS.responsive),
       );
       borderOpacity.value = withTiming(1, { duration: TIMING.fast });

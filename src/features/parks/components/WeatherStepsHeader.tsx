@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
@@ -37,7 +37,7 @@ interface WeatherStepsHeaderProps {
   steps: StepsData;
 }
 
-export function WeatherStepsHeader({ weather, steps }: WeatherStepsHeaderProps) {
+export const WeatherStepsHeader = memo(function WeatherStepsHeader({ weather, steps }: WeatherStepsHeaderProps) {
   // Animate ring from 0 on each screen focus
   const [ringProgress, setRingProgress] = useState(0);
 
@@ -103,7 +103,7 @@ export function WeatherStepsHeader({ weather, steps }: WeatherStepsHeaderProps) 
       </View>
     </View>
   );
-}
+});
 
 // ============================================
 // Styles

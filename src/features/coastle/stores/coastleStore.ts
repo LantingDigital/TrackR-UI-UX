@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useCallback, useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer } from 'react';
 import {
   CoastleGameState,
   CoastleStats,
@@ -233,6 +233,17 @@ function generateShareText(): string {
 // ============================================
 // React Hook
 // ============================================
+// Stable actions — module-level functions are already stable references.
+const stableCoastleActions = {
+  startGame,
+  submitGuess,
+  resetGame,
+  generateShareText,
+} as const;
+
+// Cached snapshot — invalidated on notify().
+let cachedCoastleSnapshot: { game: ReturnType<typeof getGame>; stats: ReturnType<typeof getStats> } | null = null;
+
 export function useCoastleStore() {
   const [, forceUpdate] = useReducer((x: number) => x + 1, 0);
 
@@ -242,12 +253,15 @@ export function useCoastleStore() {
     return () => { listeners.delete(forceUpdate); };
   }, []);
 
+  // Rebuild snapshot only when store has notified (game/stats refs change)
+  const game = getGame();
+  const stats = getStats();
+  if (!cachedCoastleSnapshot || cachedCoastleSnapshot.game !== game || cachedCoastleSnapshot.stats !== stats) {
+    cachedCoastleSnapshot = { game, stats };
+  }
+
   return {
-    game: getGame(),
-    stats: getStats(),
-    startGame: useCallback(startGame, []),
-    submitGuess: useCallback(submitGuess, []),
-    resetGame: useCallback(resetGame, []),
-    generateShareText: useCallback(generateShareText, []),
+    ...cachedCoastleSnapshot,
+    ...stableCoastleActions,
   };
 }

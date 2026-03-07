@@ -68,10 +68,6 @@ export function CardActionSheet({
       tabBar?.hideTabBar();
       translateY.value = withSpring(0, SPRINGS.responsive);
       backdropOpacity.value = withTiming(1, { duration: 250 });
-    } else if (!visible) {
-      tabBar?.showTabBar();
-      translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 });
-      backdropOpacity.value = withTiming(0, { duration: 200 });
     }
   }, [visible, target]);
 

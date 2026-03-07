@@ -30,6 +30,7 @@ import { spacing } from '../theme/spacing';
 import { radius } from '../theme/radius';
 import { shadows } from '../theme/shadows';
 import { SPRINGS } from '../constants/animations';
+import { useTabBar } from '../contexts/TabBarContext';
 
 // ============================================
 // Types
@@ -50,6 +51,7 @@ interface RideActionSheetProps {
   onViewDetails: (ride: RideActionData) => void;
   onViewOnMap?: (ride: RideActionData) => void;
   onLogRide: (ride: RideActionData) => void;
+  onViewRankings?: (ride: RideActionData) => void;
   hasMapPOI?: boolean;
 }
 
@@ -67,29 +69,30 @@ export function RideActionSheet({
   onViewDetails,
   onViewOnMap,
   onLogRide,
+  onViewRankings,
   hasMapPOI = false,
 }: RideActionSheetProps) {
   const insets = useSafeAreaInsets();
+  const tabBar = useTabBar();
   const translateY = useSharedValue(SHEET_DISMISS_OFFSET);
   const backdropOpacity = useSharedValue(0);
 
   useEffect(() => {
     if (visible && ride) {
+      tabBar?.hideTabBar();
       translateY.value = withSpring(0, SPRINGS.responsive);
       backdropOpacity.value = withTiming(1, { duration: 250 });
-    } else if (!visible) {
-      translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 });
-      backdropOpacity.value = withTiming(0, { duration: 200 });
     }
   }, [visible, ride]);
 
   const dismiss = useCallback(() => {
     onDismissStart?.();
+    tabBar?.showTabBar();
     translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 }, (finished) => {
       if (finished) runOnJS(onClose)();
     });
     backdropOpacity.value = withTiming(0, { duration: 200 });
-  }, [onClose, onDismissStart]);
+  }, [onClose, onDismissStart, tabBar]);
 
   const sheetStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: translateY.value }],
@@ -215,6 +218,31 @@ export function RideActionSheet({
               style={styles.chevron}
             />
           </Pressable>
+
+          {onViewRankings && (
+            <Pressable
+              onPress={() => {
+                dismiss();
+                onViewRankings(ride);
+              }}
+              style={({ pressed }) => [
+                styles.actionRow,
+                styles.actionSecondary,
+                pressed && styles.actionSecondaryPressed,
+              ]}
+            >
+              <View style={[styles.actionIconWrap, styles.actionIconSecondary]}>
+                <Ionicons name="trophy-outline" size={18} color={colors.accent.primary} />
+              </View>
+              <Text style={styles.actionSecondaryText}>View Rankings</Text>
+              <Ionicons
+                name="chevron-forward"
+                size={16}
+                color={colors.text.meta}
+                style={styles.chevron}
+              />
+            </Pressable>
+          )}
         </View>
       </Animated.View>
     </View>

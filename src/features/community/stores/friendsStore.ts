@@ -41,6 +41,9 @@ export function getActivity(): FriendActivity[] {
 // React Hook
 // ============================================
 
+// Cached snapshot — stable reference as long as data is unchanged.
+let cachedFriendsSnapshot: { friends: Friend[]; activity: FriendActivity[] } | null = null;
+
 export function useFriendsStore() {
   const [, forceUpdate] = useReducer((c: number) => c + 1, 0);
 
@@ -51,8 +54,10 @@ export function useFriendsStore() {
     };
   }, []);
 
-  return {
-    friends,
-    activity,
-  };
+  // Rebuild snapshot only when data references change
+  if (!cachedFriendsSnapshot || cachedFriendsSnapshot.friends !== friends || cachedFriendsSnapshot.activity !== activity) {
+    cachedFriendsSnapshot = { friends, activity };
+  }
+
+  return cachedFriendsSnapshot;
 }

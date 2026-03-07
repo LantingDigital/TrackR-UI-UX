@@ -1,13 +1,13 @@
 /**
- * CommunityFriendsTab — Friends list + activity feed
+ * CommunityFriendsTab — Stories + activity feed
  *
- * Top section: horizontal ScrollView of FriendRow cards
+ * Top section: StoriesRow (circular avatar bubbles with story rings)
  * Bottom section: vertical activity feed (ride, review, milestone)
  * Stagger entrance throughout.
  */
 
-import React, { useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import React, { useEffect, useCallback, useMemo } from 'react';
+import { View, Text, StyleSheet, Pressable, FlatList, ListRenderItemInfo } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
@@ -20,12 +20,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
-import { radius } from '../../../theme/radius';
 import { SPRINGS } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import { useFriendsStore } from '../stores/friendsStore';
-import { FriendRow } from './FriendRow';
+import { StoriesRow } from '../../../components/feed/StoriesRow';
 import type { FriendActivity } from '../types/community';
+import type { StoryItem } from '../../../data/mockFeed';
 
 // ─── Stagger helper ─────────────────────────────────────────
 
@@ -77,78 +77,100 @@ interface CommunityFriendsTabProps {
   topInset?: number;
 }
 
+const ActivityRow = React.memo(({ item, onPress }: { item: FriendActivity; onPress: (friendId: string) => void }) => {
+  const iconColor = activityColor(item.type);
+
+  const iconBgStyle = useMemo(
+    () => [styles.activityIcon, { backgroundColor: iconColor + '18' }],
+    [iconColor],
+  );
+
+  const handlePress = useCallback(() => {
+    haptics.tap();
+    onPress(item.friendId);
+  }, [item.friendId, onPress]);
+
+  return (
+    <Pressable
+      style={styles.activityRow}
+      onPress={handlePress}
+    >
+      <View style={iconBgStyle}>
+        <Ionicons
+          name={activityIcon(item.type) as any}
+          size={16}
+          color={iconColor}
+        />
+      </View>
+      <View style={styles.activityContent}>
+        <View style={styles.activityHeader}>
+          <Text style={styles.activityName}>{item.friendName}</Text>
+          <Text style={styles.activityTime}>{formatDaysAgo(item.daysAgo)}</Text>
+        </View>
+        <Text style={styles.activityText}>{item.text}</Text>
+      </View>
+    </Pressable>
+  );
+});
+
+const activityKeyExtractor = (item: FriendActivity) => item.id;
+
 export const CommunityFriendsTab = ({ topInset = 0 }: CommunityFriendsTabProps) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
-  const { friends, activity } = useFriendsStore();
+  const { activity } = useFriendsStore();
 
-  const handleFriendPress = useCallback((friendId: string) => {
+  const handleStoryPress = useCallback((story: StoryItem) => {
+    haptics.tap();
+    // Navigate to profile if not own story
+    if (!story.isOwn) {
+      navigation.navigate('ProfileView', { userId: story.id });
+    }
+  }, [navigation]);
+
+  const handleActivityPress = useCallback((friendId: string) => {
     navigation.navigate('ProfileView', { userId: friendId });
   }, [navigation]);
 
-  return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={[
-        styles.content,
-        { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
-      ]}
-      showsVerticalScrollIndicator={false}
-    >
-      {/* Friends Section */}
+  const contentContainerStyle = useMemo(
+    () => [styles.content, { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl }],
+    [topInset, insets.bottom],
+  );
+
+  const listHeader = useMemo(() => (
+    <>
+      {/* Stories Section */}
       <StaggeredItem index={0}>
-        <Text style={styles.sectionTitle}>Friends</Text>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.friendsStrip}
-          style={styles.friendsScroll}
-        >
-          {friends.map((friend) => (
-            <FriendRow
-              key={friend.id}
-              friend={friend}
-              onPress={handleFriendPress}
-            />
-          ))}
-        </ScrollView>
+        <Text style={styles.sectionTitle}>Stories</Text>
+        <StoriesRow onStoryPress={handleStoryPress} />
       </StaggeredItem>
 
       {/* Activity Section */}
       <StaggeredItem index={1}>
-        <Text style={[styles.sectionTitle, { marginTop: spacing.xxl }]}>Activity</Text>
+        <Text style={[styles.sectionTitle, styles.activitySectionTitle]}>Activity</Text>
       </StaggeredItem>
+    </>
+  ), [handleStoryPress]);
 
-      {activity.map((item, index) => (
-        <StaggeredItem key={item.id} index={index + 2}>
-          <Pressable
-            style={styles.activityRow}
-            onPress={() => {
-              haptics.tap();
-              navigation.navigate('ProfileView', { userId: item.friendId });
-            }}
-          >
-            {/* Activity type indicator */}
-            <View style={[styles.activityIcon, { backgroundColor: activityColor(item.type) + '18' }]}>
-              <Ionicons
-                name={activityIcon(item.type) as any}
-                size={16}
-                color={activityColor(item.type)}
-              />
-            </View>
+  const renderActivity = useCallback(({ item, index }: ListRenderItemInfo<FriendActivity>) => (
+    <StaggeredItem index={index + 2}>
+      <ActivityRow item={item} onPress={handleActivityPress} />
+    </StaggeredItem>
+  ), [handleActivityPress]);
 
-            {/* Content */}
-            <View style={styles.activityContent}>
-              <View style={styles.activityHeader}>
-                <Text style={styles.activityName}>{item.friendName}</Text>
-                <Text style={styles.activityTime}>{formatDaysAgo(item.daysAgo)}</Text>
-              </View>
-              <Text style={styles.activityText}>{item.text}</Text>
-            </View>
-          </Pressable>
-        </StaggeredItem>
-      ))}
-    </ScrollView>
+  return (
+    <FlatList
+      data={activity}
+      renderItem={renderActivity}
+      keyExtractor={activityKeyExtractor}
+      ListHeaderComponent={listHeader}
+      style={styles.container}
+      contentContainerStyle={contentContainerStyle}
+      showsVerticalScrollIndicator={false}
+      removeClippedSubviews
+      maxToRenderPerBatch={10}
+      windowSize={7}
+    />
   );
 };
 
@@ -167,16 +189,10 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.heading,
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
-    marginBottom: spacing.base,
+    marginBottom: spacing.sm,
   },
-
-  // Friends strip
-  friendsScroll: {
-    marginHorizontal: -spacing.lg,
-  },
-  friendsStrip: {
-    paddingHorizontal: spacing.lg,
-    gap: spacing.base,
+  activitySectionTitle: {
+    marginTop: spacing.xxl,
   },
 
   // Activity rows

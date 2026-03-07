@@ -65,6 +65,11 @@ export const CARD_ART: Record<string, any> = {
   'the-grizzly': require('../../assets/cards/the-grizzly.webp'),
   'woodstock-express': require('../../assets/cards/woodstock-express.webp'),
 
+  // ── Universal Islands of Adventure ──
+  'jurassic-world-velocicoaster': require('../../assets/cards/jurassic-world-velocicoaster.webp'),
+  'hagrid-s-magical-creatures-motorbike-adventure': require('../../assets/cards/hagrid-s-magical-creatures-motorbike-adventure.webp'),
+  'the-incredible-hulk-coaster': require('../../assets/cards/the-incredible-hulk-coaster.webp'),
+
   // ── Universal Studios Hollywood ──
   'fast-furious-hollywood-drift': require('../../assets/cards/fast-furious-hollywood-drift.webp'),
   'flight-of-the-hippogriff-universal-studios-hollywood': require('../../assets/cards/flight-of-the-hippogriff-universal-studios-hollywood.webp'),
@@ -122,6 +127,7 @@ export const CARD_ART: Record<string, any> = {
   'orion': require('../../assets/cards/orion.webp'),
   'son-of-beast': require('../../assets/cards/son-of-beast.webp'),
   'the-beast': require('../../assets/cards/the-beast.webp'),
+  'vortex-kings-island': require('../../assets/cards/vortex-kings-island.webp'),
 
   // ── Canada's Wonderland ──
   'behemoth': require('../../assets/cards/behemoth.webp'),
@@ -133,10 +139,157 @@ export const CARD_ART: Record<string, any> = {
   'great-american-scream-machine': require('../../assets/cards/great-american-scream-machine.webp'),
   'green-lantern': require('../../assets/cards/green-lantern.webp'),
   'kingda-ka': require('../../assets/cards/kingda-ka.webp'),
+  'nitro': require('../../assets/cards/nitro.webp'),
+
+  // ── Carowinds ──
+  'fury-325': require('../../assets/cards/fury-325.webp'),
+  'thunder-striker': require('../../assets/cards/thunder-striker.webp'),
+
+  // ── Busch Gardens Tampa Bay ──
+  'iron-gwazi': require('../../assets/cards/iron-gwazi.webp'),
+  'sheikra': require('../../assets/cards/sheikra.webp'),
 
   // ── Kings Dominion ──
   'pantherian': require('../../assets/cards/pantherian.webp'),
   'twisted-timbers': require('../../assets/cards/twisted-timbers.webp'),
+
+  // ── Six Flags New England ──
+  'goliath-six-flags-new-england': require('../../assets/cards/goliath-six-flags-new-england.webp'),
+  'superman-the-ride': require('../../assets/cards/superman-the-ride.webp'),
+
+  // ── Kennywood ──
+  'steel-curtain': require('../../assets/cards/steel-curtain.webp'),
+  'phantoms-revenge': require('../../assets/cards/phantoms-revenge.webp'),
+
+  // ── Alton Towers ──
+  'galactica': require('../../assets/cards/galactica.webp'),
+  'oblivion': require('../../assets/cards/oblivion.webp'),
+  'the-smiler': require('../../assets/cards/the-smiler.webp'),
+  'wicker-man': require('../../assets/cards/wicker-man.webp'),
+  'nemesis-reborn': require('../../assets/cards/nemesis-reborn.webp'),
+
+  // ── Hersheypark ──
+  'candymonium': require('../../assets/cards/candymonium.webp'),
+  'skyrush': require('../../assets/cards/skyrush.webp'),
+  'wildcats-revenge': require('../../assets/cards/wildcats-revenge.webp'),
+
+  // ── Six Flags Over Texas ──
+  'mr-freeze': require('../../assets/cards/mr-freeze.webp'),
+  'new-texas-giant': require('../../assets/cards/new-texas-giant.webp'),
+
+  // ── Thorpe Park ──
+  'hyperia': require('../../assets/cards/hyperia.webp'),
+
+  // ── Energylandia ──
+  'hyperion': require('../../assets/cards/hyperion.webp'),
+
+  // ── Fuji-Q Highland ──
+  'eejanaika': require('../../assets/cards/eejanaika.webp'),
+  'takabisha': require('../../assets/cards/takabisha.webp'),
+
+  // ── Nagashima Spa Land ──
+  'hakugei': require('../../assets/cards/hakugei.webp'),
+  'steel-dragon-2000': require('../../assets/cards/steel-dragon-2000.webp'),
+
+  // ── Ferrari World ──
+  'formula-rossa': require('../../assets/cards/formula-rossa.webp'),
+
+  // ── Ferrari Land ──
+  'red-force': require('../../assets/cards/red-force.webp'),
+
+  // ── Dreamworld ──
+  'tower-of-terror-ii': require('../../assets/cards/tower-of-terror-ii.webp'),
+
+  // ── Universal Orlando (additional) ──
+  'hollywood-rip-ride-rockit': require('../../assets/cards/hollywood-rip-ride-rockit.webp'),
+  'escape-from-gringotts': require('../../assets/cards/escape-from-gringotts.webp'),
+
+  // ── Epic Universe ──
+  'stardust-racers': require('../../assets/cards/stardust-racers.webp'),
+  'hiccups-wing-gliders': require('../../assets/cards/hiccups-wing-gliders.webp'),
+
+  // ── Cedar Point (additional) ──
+  'disaster-transport': require('../../assets/cards/disaster-transport.webp'),
+  'gemini': require('../../assets/cards/gemini.webp'),
+
+  // ── Six Flags Great America ──
+  'raging-bull': require('../../assets/cards/raging-bull.webp'),
+
+  // ── Six Flags Over Texas (additional) ──
+  'titan': require('../../assets/cards/titan.webp'),
+
+  // ── Busch Gardens Williamsburg ──
+  'loch-ness-monster': require('../../assets/cards/loch-ness-monster.webp'),
+  'apollos-chariot': require('../../assets/cards/apollos-chariot.webp'),
+  'griffon': require('../../assets/cards/griffon.webp'),
+
+  // ── Six Flags Fiesta Texas ──
+  'iron-rattler': require('../../assets/cards/iron-rattler.webp'),
+
+  // ── Hersheypark (additional) ──
+  'storm-runner': require('../../assets/cards/storm-runner.webp'),
+
+  // ── Dollywood ──
+  'lightning-rod': require('../../assets/cards/lightning-rod.webp'),
+
+  // ── Kings Dominion (additional) ──
+  'volcano-the-blast-coaster': require('../../assets/cards/volcano-the-blast-coaster.webp'),
+
+  // ── Cedar Point (additional) ──
+  'corkscrew-cedar-point': require('../../assets/cards/corkscrew-cedar-point.webp'),
+
+  // ── Six Flags Great America (additional) ──
+  'maxx-force': require('../../assets/cards/maxx-force.webp'),
+
+  // ── Six Flags Great Adventure (additional) ──
+  'jersey-devil-coaster': require('../../assets/cards/jersey-devil-coaster.webp'),
+
+  // ── Silver Dollar City ──
+  'outlaw-run': require('../../assets/cards/outlaw-run.webp'),
+
+  // ── Busch Gardens Williamsburg (additional) ──
+  'pantheon': require('../../assets/cards/pantheon.webp'),
+  'alpengeist': require('../../assets/cards/alpengeist.webp'),
+  'big-bad-wolf': require('../../assets/cards/big-bad-wolf.webp'),
+  'drachen-fire': require('../../assets/cards/drachen-fire.webp'),
+
+  // ── Busch Gardens Tampa Bay (additional) ──
+  'montu': require('../../assets/cards/montu.webp'),
+  'kumba': require('../../assets/cards/kumba.webp'),
+
+  // ── Six Flags Great America (additional) ──
+  'american-eagle': require('../../assets/cards/american-eagle.webp'),
+  'shockwave': require('../../assets/cards/shockwave.webp'),
+
+  // ── Six Flags Great Adventure (additional) ──
+  'medusa-six-flags-great-adventure': require('../../assets/cards/medusa-six-flags-great-adventure.webp'),
+
+  // ── Kings Dominion (additional) ──
+  'dominator': require('../../assets/cards/dominator.webp'),
+
+  // ── Carowinds (additional) ──
+  'nighthawk': require('../../assets/cards/nighthawk.webp'),
+
+  // ── SeaWorld Orlando ──
+  'mako': require('../../assets/cards/mako.webp'),
+
+  // ── Holiday World ──
+  'the-voyage': require('../../assets/cards/the-voyage.webp'),
+
+  // ── Europa-Park ──
+  'silver-star': require('../../assets/cards/silver-star.webp'),
+  'blue-fire-megacoaster': require('../../assets/cards/blue-fire-megacoaster.webp'),
+
+  // ── Fuji-Q Highland (additional) ──
+  'fujiyama': require('../../assets/cards/fujiyama.webp'),
+  'do-dodonpa': require('../../assets/cards/do-dodonpa.webp'),
+
+  // ── PortAventura ──
+  'shambhala': require('../../assets/cards/shambhala.webp'),
+
+  // ── Chengdu Sunac Land ──
+  'wrath-of-rakshasa': require('../../assets/cards/wrath-of-rakshasa.webp'),
+
 };
 
 /**

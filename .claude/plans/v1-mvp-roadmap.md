@@ -25,7 +25,7 @@ TrackR is a premium mobile app for the roller coaster community. It's not just a
 | **Milestones** | Credit count celebrations, "On This Day" memories |
 
 ### V1.1 (Post-MVP)
-- Trip planner (single day and multi-day)
+- ~~Trip planner (single day and multi-day)~~ — REMOVED
 
 ### Long-Term Backlog
 - Spotify Wrapped-style year-end summary

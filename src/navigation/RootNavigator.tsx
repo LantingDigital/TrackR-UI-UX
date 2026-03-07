@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import type { NavigationState } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TabNavigator } from './TabNavigator';
 import { CommunityScreen } from '../screens/CommunityScreen';
@@ -18,11 +17,18 @@ import { ProfileView } from '../features/community/components/ProfileView';
 import { TriviaScreen } from '../features/games/trivia/TriviaScreen';
 import { SpeedSorterScreen } from '../features/games/speed-sorter/SpeedSorterScreen';
 import { BlindRankingScreen } from '../features/games/blind-ranking/BlindRankingScreen';
+import { BlockedUsersScreen } from '../screens/settings/BlockedUsersScreen';
+import { ExportRideLogScreen } from '../screens/settings/ExportRideLogScreen';
+import { EmailScreen } from '../screens/settings/EmailScreen';
+import { PasswordScreen } from '../screens/settings/PasswordScreen';
+import { TermsScreen } from '../screens/settings/TermsScreen';
+import { PrivacyPolicyScreen } from '../screens/settings/PrivacyPolicyScreen';
+import { CreditsScreen } from '../screens/settings/CreditsScreen';
 import { WalletProvider } from '../contexts/WalletContext';
 import { TabBarProvider } from '../contexts/TabBarContext';
 import { ToastProvider } from '../components/feedback/ToastProvider';
 import { POIActionProvider } from '../features/parks/context/POIActionContext';
-import { TourProvider, emitTourEvent } from '../features/tour';
+
 import { useSettingsStore } from '../stores/settingsStore';
 import { colors } from '../theme/colors';
 
@@ -36,23 +42,8 @@ const navTheme = {
 
 const Stack = createNativeStackNavigator();
 
-// Extract the deepest focused route name from navigation state
-function getActiveRouteName(state: NavigationState | undefined): string | undefined {
-  if (!state) return undefined;
-  const route = state.routes[state.index];
-  if (route.state) return getActiveRouteName(route.state as NavigationState);
-  return route.name;
-}
-
 export const RootNavigator = () => {
   const { hasCompletedOnboarding, initialized } = useSettingsStore();
-
-  const handleNavStateChange = useCallback((state: NavigationState | undefined) => {
-    const screenName = getActiveRouteName(state);
-    if (screenName) {
-      emitTourEvent({ type: 'navigation:screenFocused', screenName });
-    }
-  }, []);
 
   // Wait for AsyncStorage hydration to prevent flash
   if (!initialized) {
@@ -60,12 +51,11 @@ export const RootNavigator = () => {
   }
 
   return (
-    <NavigationContainer theme={navTheme} onStateChange={handleNavStateChange}>
+    <NavigationContainer theme={navTheme}>
       <WalletProvider>
         <TabBarProvider>
           <ToastProvider>
             <POIActionProvider>
-              <TourProvider>
                 {hasCompletedOnboarding ? (
                   <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="Tabs" component={TabNavigator} />
@@ -181,11 +171,66 @@ export const RootNavigator = () => {
                         gestureEnabled: true,
                       }}
                     />
+                    <Stack.Screen
+                      name="BlockedUsers"
+                      component={BlockedUsersScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="ExportRideLog"
+                      component={ExportRideLogScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="EmailSettings"
+                      component={EmailScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="PasswordSettings"
+                      component={PasswordScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="TermsOfService"
+                      component={TermsScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="PrivacyPolicy"
+                      component={PrivacyPolicyScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="Credits"
+                      component={CreditsScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
                   </Stack.Navigator>
                 ) : (
                   <OnboardingScreen />
                 )}
-              </TourProvider>
             </POIActionProvider>
           </ToastProvider>
         </TabBarProvider>

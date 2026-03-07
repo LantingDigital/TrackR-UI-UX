@@ -11,6 +11,7 @@
 
 import React, { useEffect, useCallback, useState, useRef } from 'react';
 import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
+import { PageDots } from '../../../components/PageDots';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -176,25 +177,6 @@ function DraggableCard({ name, park, index, totalCards, isCorrectPos, isChecking
   );
 }
 
-// ─── Round Progress Dots ────────────────────────────────────
-
-function RoundProgress({ current, total }: { current: number; total: number }) {
-  return (
-    <View style={styles.roundProgressRow}>
-      {Array.from({ length: total }).map((_, i) => (
-        <View
-          key={i}
-          style={[
-            styles.roundDot,
-            i < current && styles.roundDotDone,
-            i === current && styles.roundDotCurrent,
-          ]}
-        />
-      ))}
-    </View>
-  );
-}
-
 // ─── Format time ────────────────────────────────────────────
 
 function formatTime(ms: number): string {
@@ -285,7 +267,9 @@ export function SpeedSorterScreen() {
     const emoji = game.totalScore >= 80 ? '\u{1F3C6}' : game.totalScore >= 60 ? '\u2B50' : '\u{1F4AA}';
     return (
       <View style={styles.container}>
-        <SpeedSorterHeader onClose={handleClose} stats={stats} settings={settings} />
+        <View style={styles.headerWrapper}>
+          <SpeedSorterHeader onClose={handleClose} stats={stats} settings={settings} />
+        </View>
         <Animated.View style={[styles.resultsContainer, resultsStyle]}>
           <Text style={styles.resultsEmoji}>{emoji}</Text>
           <Text style={styles.resultsScore}>{game.totalScore}%</Text>
@@ -330,13 +314,14 @@ export function SpeedSorterScreen() {
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      <SpeedSorterHeader onClose={handleClose} stats={stats} settings={settings} />
+      <View style={styles.headerWrapper}>
+        <SpeedSorterHeader onClose={handleClose} stats={stats} settings={settings} />
+      </View>
 
       {/* Round info + timer */}
       <View style={styles.roundInfo}>
         <View style={styles.roundInfoTop}>
           <View>
-            <RoundProgress current={game.currentRoundIndex} total={game.rounds.length} />
             <Text style={styles.categoryLabel}>
               Sort by: {round.categoryLabel} {round.unit ? `(${round.unit})` : ''}
             </Text>
@@ -393,6 +378,15 @@ export function SpeedSorterScreen() {
         )}
       </View>
 
+      {/* Round progress dots — bottom-positioned like Coastle */}
+      <View style={styles.pageDots}>
+        <PageDots
+          current={game.currentRoundIndex}
+          total={game.rounds.length}
+          label={`Round ${game.currentRoundIndex + 1}/${game.rounds.length}`}
+        />
+      </View>
+
       {/* Action button */}
       {game.status === 'playing' && (
         <Animated.View style={[styles.bottomBar, { paddingBottom: insets.bottom + spacing.lg }, bottomBarStyle]}>
@@ -426,6 +420,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background.page,
+  },
+  headerWrapper: {
+    zIndex: 200,
   },
   header: {
     flexDirection: 'row',
@@ -477,24 +474,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
   },
-  roundProgressRow: {
-    flexDirection: 'row',
-    gap: 6,
-    marginBottom: spacing.sm,
-  },
-  roundDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: colors.border.subtle,
-  },
-  roundDotDone: {
-    backgroundColor: colors.accent.primary,
-  },
-  roundDotCurrent: {
-    backgroundColor: colors.accent.primary,
-    width: 20,
-    borderRadius: 4,
+  pageDots: {
+    paddingTop: spacing.sm,
   },
   categoryLabel: {
     fontSize: typography.sizes.hero,

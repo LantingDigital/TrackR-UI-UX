@@ -152,27 +152,14 @@ export const PassHeroCard: React.FC<PassHeroCardProps> = ({
 
       {/* White Footer Section */}
       <View style={[styles.footerSection, { height: footerHeight }]}>
-        {/* QR Code or Barcode */}
+        {/* QR Code or Barcode — uses format-aware renderer */}
         <View style={styles.codeContainer}>
-          {showBarcode ? (
-            // Barcode display (simplified representation)
-            <View style={styles.barcodeContainer}>
-              <View style={styles.barcodePlaceholder}>
-                {/* Barcode lines - simplified visual */}
-                {Array.from({ length: 40 }).map((_, i) => (
-                  <View
-                    key={i}
-                    style={[
-                      styles.barcodeLine,
-                      { width: Math.random() > 0.5 ? 2 : 1 },
-                    ]}
-                  />
-                ))}
-              </View>
-            </View>
-          ) : (
-            <QRCodeDisplay data={ticket.qrData} size={QR_SIZE} />
-          )}
+          <QRCodeDisplay
+            data={ticket.qrData}
+            format={ticket.qrFormat}
+            size={QR_SIZE}
+            originalPhotoUri={ticket.originalPhotoUri}
+          />
         </View>
 
         {/* Pass Number */}

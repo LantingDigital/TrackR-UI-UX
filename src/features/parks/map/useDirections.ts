@@ -20,7 +20,11 @@ interface DirectionsState {
   error: string | null;
 }
 
-export function useDirections(mapData: UnifiedParkMapData) {
+export function useDirections(
+  mapData: UnifiedParkMapData,
+  coordConverter?: (x: number, y: number) => [number, number],
+) {
+  const toCoord = coordConverter ?? poiToCoordinate;
   const [state, setState] = useState<DirectionsState>({
     route: null,
     loading: false,
@@ -49,7 +53,7 @@ export function useDirections(mapData: UnifiedParkMapData) {
 
       // Fallback: on-device Dijkstra pathfinding
       if (originId && destinationId) {
-        const fallbackRoute = dijkstraFallback(mapData, originId, destinationId);
+        const fallbackRoute = dijkstraFallback(mapData, originId, destinationId, toCoord);
         if (fallbackRoute) {
           setState({ route: fallbackRoute, loading: false, error: null });
           return;
@@ -58,7 +62,7 @@ export function useDirections(mapData: UnifiedParkMapData) {
 
       setState({ route: null, loading: false, error: 'No route found' });
     },
-    [mapData],
+    [mapData, toCoord],
   );
 
   const clearRoute = useCallback(() => {
@@ -109,6 +113,7 @@ function dijkstraFallback(
   mapData: UnifiedParkMapData,
   startId: string,
   endId: string,
+  toCoord: (x: number, y: number) => [number, number] = poiToCoordinate,
 ): GeoJSON.Feature<GeoJSON.LineString> | null {
   // Build node list from POIs + walkway nodes (matching MapNode shape)
   const nodes: MapNode[] = [
@@ -135,7 +140,7 @@ function dijkstraFallback(
     .map((id) => {
       const node = nodeMap.get(id);
       if (!node) return null;
-      return poiToCoordinate(node.x, node.y);
+      return toCoord(node.x, node.y);
     })
     .filter((c): c is [number, number] => c !== null);
 

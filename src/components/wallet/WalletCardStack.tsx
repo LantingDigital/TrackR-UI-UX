@@ -160,13 +160,12 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
 
       requestAnimationFrame(() => {
         Animated.parallel([
-          // Arc trajectory with overshoot (spring)
-          // Low damping = more overshoot for the "pull" effect
+          // Arc trajectory with smooth spring
           Animated.spring(arcProgress, {
             toValue: 1,
-            damping: 10,        // Low damping for visible overshoot
-            stiffness: 35,      // Lower stiffness for slower, more dramatic motion
-            mass: 1.3,          // Higher mass for momentum
+            damping: 20,
+            stiffness: 80,
+            mass: 1.0,
             useNativeDriver: false,
           }),
           // Horizontal stretch (timing) - faster than arc
@@ -238,9 +237,9 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
         Animated.parallel([
           Animated.spring(anim.translateY, {
             toValue: 0,
-            damping: 16,
-            stiffness: 180,
-            mass: 0.8,
+            damping: 20,
+            stiffness: 200,
+            mass: 0.9,
             useNativeDriver: true,
           }),
           Animated.timing(anim.opacity, {
@@ -344,9 +343,9 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       Animated.spring(cardSwipePositions[currentIndex], {
         toValue: -1,
-        damping: 16,
-        stiffness: 180,
-        mass: 0.8,
+        damping: 20,
+        stiffness: 200,
+        mass: 0.9,
         useNativeDriver: true,
       }).start();
       setCurrentIndex((prev) => prev + 1);
@@ -358,9 +357,9 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       Animated.spring(cardSwipePositions[currentIndex - 1], {
         toValue: 0,
-        damping: 16,
-        stiffness: 180,
-        mass: 0.8,
+        damping: 20,
+        stiffness: 200,
+        mass: 0.9,
         useNativeDriver: true,
       }).start();
       setCurrentIndex((prev) => prev - 1);

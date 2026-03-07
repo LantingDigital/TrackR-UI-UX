@@ -249,7 +249,6 @@ export function RatingSheet({
       });
       backdropOpacity.value = withTiming(1, { duration: 300 });
     } else if (!visible && mounted) {
-      tabBar?.showTabBar();
       backdropOpacity.value = withTiming(0, { duration: TIMING.backdrop });
       translateY.value = withTiming(SCREEN_HEIGHT, { duration: TIMING.normal });
       const timer = setTimeout(() => setMounted(false), TIMING.backdrop);

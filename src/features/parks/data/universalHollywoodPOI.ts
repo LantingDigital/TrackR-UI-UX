@@ -1,0 +1,563 @@
+import { ParkPOI } from '../types';
+
+// ============================================
+// Universal Studios Hollywood — Complete Point of Interest Database
+// Source: Official 2025 Park Map, Wikipedia, OpenStreetMap
+//
+// Positions (x, y) are 0-1 percentages on the illustrated map.
+// These are initial estimates — use the position editor to fine-tune.
+//
+// Park center: 34.1390, -118.3555
+// Upper Lot and Lower Lot connected by escalators (Starway)
+// ============================================
+
+// ============================================
+// RIDES & ATTRACTIONS — UPPER LOT
+// ============================================
+
+const UPPER_LOT_RIDES: ParkPOI[] = [
+  {
+    id: 'ride-harry-potter-forbidden-journey',
+    mapNumber: 1,
+    name: 'Harry Potter and the Forbidden Journey',
+    type: 'ride',
+    area: 'wizarding-world',
+    x: 0.72, y: 0.25,
+    lng: -118.3529, lat: 34.1379,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'high',
+  },
+  {
+    id: 'ride-flight-of-the-hippogriff',
+    mapNumber: 2,
+    name: 'Flight of the Hippogriff',
+    type: 'ride',
+    area: 'wizarding-world',
+    x: 0.68, y: 0.28,
+    lng: -118.3537, lat: 34.1376,
+    heightRequirement: { min: 39 },
+    thrillLevel: 'moderate',
+    coasterId: 'flight-of-the-hippogriff-universal-studios-hollywood',
+  },
+  {
+    id: 'ride-mario-kart-bowsers-challenge',
+    mapNumber: 3,
+    name: "Mario Kart: Bowser's Challenge",
+    type: 'ride',
+    area: 'super-nintendo-world',
+    x: 0.82, y: 0.32,
+    lng: -118.3578, lat: 34.1416,
+    heightRequirement: { min: 40 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-despicable-me',
+    mapNumber: 4,
+    name: 'Despicable Me Minion Mayhem',
+    type: 'ride',
+    area: 'upper-lot',
+    x: 0.35, y: 0.42,
+    lng: -118.3565, lat: 34.1383,
+    heightRequirement: { min: 40 },
+    thrillLevel: 'mild',
+  },
+  {
+    id: 'ride-simpsons-ride',
+    mapNumber: 5,
+    name: 'The Simpsons Ride',
+    type: 'ride',
+    area: 'springfield',
+    x: 0.42, y: 0.38,
+    lng: -118.3537, lat: 34.1396,
+    heightRequirement: { min: 40 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-secret-life-of-pets',
+    mapNumber: 6,
+    name: 'The Secret Life of Pets: Off the Leash!',
+    type: 'ride',
+    area: 'upper-lot',
+    x: 0.30, y: 0.35,
+    lng: -118.3525, lat: 34.1388,
+    thrillLevel: 'low',
+  },
+  {
+    id: 'ride-studio-tour',
+    mapNumber: 7,
+    name: 'Studio Tour',
+    type: 'ride',
+    area: 'upper-lot',
+    x: 0.55, y: 0.50,
+    lng: -118.3527, lat: 34.1388,
+    thrillLevel: 'moderate',
+    description: 'Iconic tram tour through working movie sets',
+  },
+  {
+    id: 'ride-kung-fu-panda',
+    mapNumber: 8,
+    name: 'DreamWorks Theatre: Kung Fu Panda Adventure',
+    type: 'ride',
+    area: 'upper-lot',
+    x: 0.45, y: 0.45,
+    lng: -118.3538, lat: 34.1380,
+    thrillLevel: 'low',
+  },
+];
+
+// ============================================
+// RIDES & ATTRACTIONS — LOWER LOT
+// ============================================
+
+const LOWER_LOT_RIDES: ParkPOI[] = [
+  {
+    id: 'ride-jurassic-world-the-ride',
+    mapNumber: 9,
+    name: 'Jurassic World: The Ride',
+    type: 'ride',
+    area: 'jurassic-world-area',
+    x: 0.60, y: 0.72,
+    lng: -118.3576, lat: 34.1404,
+    heightRequirement: { min: 42 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-transformers',
+    mapNumber: 10,
+    name: 'Transformers: The Ride 3D',
+    type: 'ride',
+    area: 'lower-lot',
+    x: 0.50, y: 0.68,
+    lng: -118.3568, lat: 34.1415,
+    heightRequirement: { min: 40 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-revenge-of-the-mummy',
+    mapNumber: 11,
+    name: 'Revenge of the Mummy: The Ride',
+    type: 'ride',
+    area: 'lower-lot',
+    x: 0.48, y: 0.72,
+    lng: -118.3563, lat: 34.1409,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'high',
+    coasterId: 'revenge-of-the-mummy-the-ride-universal-studios-hollywood',
+  },
+  {
+    id: 'ride-fast-and-furious-drift',
+    mapNumber: 12,
+    name: 'Fast & Furious: Hollywood Drift',
+    type: 'ride',
+    area: 'upper-lot',
+    x: 0.40, y: 0.55,
+    lng: -118.3530, lat: 34.1378,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'aggressive',
+    coasterId: 'fast-and-furious-hollywood-drift',
+    underConstruction: true,
+  },
+];
+
+// ============================================
+// SHOWS & ATTRACTIONS
+// ============================================
+
+const SHOWS_AND_ATTRACTIONS: ParkPOI[] = [
+  {
+    id: 'attraction-waterworld',
+    name: 'WaterWorld',
+    type: 'theater',
+    area: 'upper-lot',
+    x: 0.20, y: 0.30,
+    lng: -118.3542, lat: 34.1369,
+    description: 'Live stunt show featuring explosions and water effects',
+  },
+  {
+    id: 'attraction-raptor-encounter',
+    name: 'Raptor Encounter',
+    type: 'attraction',
+    area: 'jurassic-world-area',
+    x: 0.58, y: 0.68,
+    lng: -118.3538, lat: 34.1362,
+    description: 'Meet a life-size raptor up close',
+  },
+  {
+    id: 'attraction-dinoplay',
+    name: 'DinoPlay',
+    type: 'attraction',
+    area: 'jurassic-world-area',
+    x: 0.62, y: 0.70,
+    lng: -118.3542, lat: 34.1358,
+    description: 'Interactive dinosaur playground',
+  },
+  {
+    id: 'attraction-ollivanders',
+    name: "Ollivanders Wand Shop",
+    type: 'attraction',
+    area: 'wizarding-world',
+    x: 0.70, y: 0.22,
+    lng: -118.3558, lat: 34.1368,
+    description: 'Interactive wand selection experience',
+  },
+  {
+    id: 'attraction-super-nintendo-activities',
+    name: 'Super Nintendo World Activities',
+    type: 'attraction',
+    area: 'super-nintendo-world',
+    x: 0.80, y: 0.35,
+    lng: -118.3548, lat: 34.1355,
+    description: 'Interactive gaming experiences in the Mushroom Kingdom',
+  },
+  {
+    id: 'attraction-animal-actors',
+    name: 'Animal Actors',
+    type: 'theater',
+    area: 'upper-lot',
+    x: 0.38, y: 0.40,
+    lng: -118.3530, lat: 34.1385,
+    description: 'Live animal performance show',
+  },
+  {
+    id: 'attraction-special-effects-show',
+    name: 'Special Effects Show',
+    type: 'theater',
+    area: 'upper-lot',
+    x: 0.32, y: 0.38,
+    lng: -118.3526, lat: 34.1387,
+    description: 'Behind-the-scenes movie effects demonstration',
+  },
+];
+
+// ============================================
+// FOOD LOCATIONS
+// ============================================
+
+const FOOD: ParkPOI[] = [
+  {
+    id: 'food-three-broomsticks',
+    name: 'Three Broomsticks',
+    type: 'food',
+    area: 'wizarding-world',
+    x: 0.74, y: 0.24,
+    lng: -118.3562, lat: 34.1362,
+    menuItems: ['fish & chips', 'shepherd\'s pie', 'chicken', 'ribs', 'butterbeer', 'corn on the cob'],
+    menuDescription: 'British-inspired meals and Butterbeer',
+  },
+  {
+    id: 'food-hogs-head',
+    name: "Hog's Head",
+    type: 'food',
+    area: 'wizarding-world',
+    x: 0.73, y: 0.26,
+    lng: -118.3561, lat: 34.1360,
+    menuItems: ['butterbeer', 'pumpkin juice', 'beer', 'drinks'],
+    menuDescription: 'Butterbeer and wizarding beverages',
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-toadstool-cafe',
+    name: 'Toadstool Cafe',
+    type: 'food',
+    area: 'super-nintendo-world',
+    x: 0.78, y: 0.34,
+    lng: -118.3552, lat: 34.1356,
+    menuItems: ['mushroom soup', 'mario burgers', 'star pasta', 'desserts'],
+    menuDescription: 'Nintendo-themed dining in the Mushroom Kingdom',
+  },
+  {
+    id: 'food-krusty-burger',
+    name: 'Krusty Burger',
+    type: 'food',
+    area: 'springfield',
+    x: 0.44, y: 0.36,
+    lng: -118.3537, lat: 34.1384,
+    menuItems: ['burgers', 'fries', 'chicken sandwiches', 'hot dogs'],
+    menuDescription: 'Simpsons-themed burgers and fast food',
+  },
+  {
+    id: 'food-moes-tavern',
+    name: "Moe's Tavern",
+    type: 'food',
+    area: 'springfield',
+    x: 0.46, y: 0.34,
+    lng: -118.3538, lat: 34.1386,
+    menuItems: ['duff beer', 'flaming moe', 'beer', 'cocktails'],
+    menuDescription: "Duff Beer and Flaming Moe's",
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-lard-lad-donuts',
+    name: 'Lard Lad Donuts',
+    type: 'food',
+    area: 'springfield',
+    x: 0.43, y: 0.35,
+    lng: -118.3536, lat: 34.1385,
+    menuItems: ['donuts', 'giant donut', 'dessert', 'pink donut'],
+    menuDescription: 'The Big Pink Donut and other treats',
+  },
+  {
+    id: 'food-isla-nu-bar',
+    name: 'Isla Nu-bar',
+    type: 'food',
+    area: 'jurassic-world-area',
+    x: 0.56, y: 0.70,
+    lng: -118.3536, lat: 34.1362,
+    menuItems: ['cocktails', 'beer', 'appetizers', 'tropical drinks'],
+    menuDescription: 'Tropical bar with Jurassic-themed cocktails',
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-jurassic-cafe',
+    name: 'Jurassic Cafe',
+    type: 'food',
+    area: 'jurassic-world-area',
+    x: 0.58, y: 0.74,
+    lng: -118.3574, lat: 34.1407,
+    menuItems: ['burgers', 'chicken tenders', 'fries', 'salad'],
+    menuDescription: 'Quick-service burgers and tenders',
+  },
+  {
+    id: 'food-studio-commissary',
+    name: 'Studio Commissary',
+    type: 'food',
+    area: 'upper-lot',
+    x: 0.48, y: 0.48,
+    lng: -118.3540, lat: 34.1378,
+    menuItems: ['pizza', 'pasta', 'salad', 'chicken'],
+    menuDescription: 'Pizza, pasta, and Italian favorites',
+  },
+  {
+    id: 'food-starbucks-ush',
+    name: 'Starbucks',
+    type: 'food',
+    area: 'upper-lot',
+    x: 0.34, y: 0.45,
+    lng: -118.3527, lat: 34.1382,
+    menuItems: ['coffee', 'starbucks', 'latte', 'espresso', 'frappuccino'],
+    menuDescription: 'Starbucks coffee and beverages',
+  },
+  {
+    id: 'food-minion-cafe',
+    name: 'Minion Cafe',
+    type: 'food',
+    area: 'upper-lot',
+    x: 0.36, y: 0.44,
+    lng: -118.3563, lat: 34.1384,
+    menuItems: ['burgers', 'chicken', 'salad', 'desserts', 'banana'],
+    menuDescription: 'Minion-themed dining with burgers and treats',
+  },
+  {
+    id: 'food-dippin-dots-ush',
+    name: "Dippin' Dots",
+    type: 'food',
+    area: 'upper-lot',
+    x: 0.40, y: 0.40,
+    lng: -118.3532, lat: 34.1386,
+    menuItems: ["dippin' dots", 'ice cream'],
+    menuDescription: "Dippin' Dots ice cream",
+  },
+];
+
+// ============================================
+// MERCHANDISE / SHOPS
+// ============================================
+
+const SHOPS: ParkPOI[] = [
+  {
+    id: 'shop-universal-studio-store',
+    name: 'Universal Studio Store',
+    type: 'shop',
+    area: 'upper-lot',
+    x: 0.28, y: 0.50,
+    lng: -118.3522, lat: 34.1375,
+    description: 'Main park merchandise and souvenirs',
+  },
+  {
+    id: 'shop-honeydukes',
+    name: 'Honeydukes',
+    type: 'shop',
+    area: 'wizarding-world',
+    x: 0.69, y: 0.23,
+    lng: -118.3557, lat: 34.1366,
+    description: 'Wizarding World candy and sweets',
+  },
+  {
+    id: 'shop-zonkos',
+    name: "Zonko's Joke Shop",
+    type: 'shop',
+    area: 'wizarding-world',
+    x: 0.71, y: 0.24,
+    lng: -118.3559, lat: 34.1365,
+    description: 'Wizarding World jokes and novelties',
+  },
+  {
+    id: 'shop-filchs-emporium',
+    name: "Filch's Emporium of Confiscated Goods",
+    type: 'shop',
+    area: 'wizarding-world',
+    x: 0.73, y: 0.28,
+    lng: -118.3561, lat: 34.1361,
+    description: 'Harry Potter merchandise and wands',
+  },
+  {
+    id: 'shop-1-up-factory',
+    name: '1-UP Factory',
+    type: 'shop',
+    area: 'super-nintendo-world',
+    x: 0.80, y: 0.38,
+    lng: -118.3549, lat: 34.1353,
+    description: 'Nintendo merchandise and collectibles',
+  },
+  {
+    id: 'shop-kwik-e-mart',
+    name: 'Kwik-E-Mart',
+    type: 'shop',
+    area: 'springfield',
+    x: 0.41, y: 0.37,
+    lng: -118.3534, lat: 34.1384,
+    description: 'Simpsons-themed gifts and snacks',
+  },
+  {
+    id: 'shop-jurassic-outfitters',
+    name: 'Jurassic Outfitters',
+    type: 'shop',
+    area: 'jurassic-world-area',
+    x: 0.62, y: 0.72,
+    lng: -118.3572, lat: 34.1403,
+    description: 'Jurassic World merchandise',
+  },
+  {
+    id: 'shop-feature-presentation',
+    name: 'Feature Presentation',
+    type: 'shop',
+    area: 'upper-lot',
+    x: 0.30, y: 0.48,
+    lng: -118.3524, lat: 34.1378,
+    description: 'Movie-themed merchandise',
+  },
+];
+
+// ============================================
+// SERVICES
+// ============================================
+
+const SERVICES: ParkPOI[] = [
+  {
+    id: 'entrance-main-ush',
+    name: 'Main Entrance',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.25, y: 0.55,
+    lng: -118.3520, lat: 34.1370,
+    description: 'Main park entrance from CityWalk',
+  },
+  {
+    id: 'service-starway-upper',
+    name: 'Starway (Upper)',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.50, y: 0.58,
+    lng: -118.3540, lat: 34.1372,
+    description: 'Escalators connecting Upper and Lower lots',
+  },
+  {
+    id: 'service-starway-lower',
+    name: 'Starway (Lower)',
+    type: 'service',
+    area: 'lower-lot',
+    x: 0.50, y: 0.65,
+    lng: -118.3540, lat: 34.1368,
+    description: 'Escalators connecting Lower and Upper lots',
+  },
+  {
+    id: 'restroom-upper-lot-entrance',
+    name: 'Restrooms (Upper Lot Entrance)',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.28, y: 0.52,
+    lng: -118.3522, lat: 34.1372,
+    approximateLocation: true,
+    description: 'Restrooms near the park entrance',
+  },
+  {
+    id: 'restroom-upper-lot-center',
+    name: 'Restrooms (Upper Lot Center)',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.42, y: 0.42,
+    lng: -118.3535, lat: 34.1382,
+    approximateLocation: true,
+    description: 'Restrooms in the center of the Upper Lot',
+  },
+  {
+    id: 'restroom-wizarding-world',
+    name: 'Restrooms (Wizarding World)',
+    type: 'service',
+    area: 'wizarding-world',
+    x: 0.67, y: 0.26,
+    lng: -118.3556, lat: 34.1364,
+    approximateLocation: true,
+    description: 'Restrooms in the Wizarding World',
+  },
+  {
+    id: 'restroom-lower-lot',
+    name: 'Restrooms (Lower Lot)',
+    type: 'service',
+    area: 'lower-lot',
+    x: 0.52, y: 0.70,
+    lng: -118.3536, lat: 34.1364,
+    approximateLocation: true,
+    description: 'Restrooms on the Lower Lot',
+  },
+  {
+    id: 'service-first-aid-ush',
+    name: 'First Aid',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.26, y: 0.48,
+    lng: -118.3521, lat: 34.1376,
+    description: 'First aid station',
+  },
+  {
+    id: 'service-guest-services-ush',
+    name: 'Guest Services',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.24, y: 0.54,
+    lng: -118.3519, lat: 34.1372,
+    description: 'Guest services and information',
+  },
+  {
+    id: 'service-atm-ush',
+    name: 'ATM (Upper Lot)',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.30, y: 0.50,
+    lng: -118.3524, lat: 34.1374,
+    description: 'ATM near entrance',
+  },
+  {
+    id: 'service-lockers-ush',
+    name: 'Lockers (Various)',
+    type: 'service',
+    area: 'upper-lot',
+    x: 0.32, y: 0.52,
+    lng: -118.3526, lat: 34.1373,
+    approximateLocation: true,
+    description: 'Rental lockers available near major rides',
+  },
+];
+
+// ============================================
+// COMBINED EXPORT
+// ============================================
+
+export const UNIVERSAL_HOLLYWOOD_POI: ParkPOI[] = [
+  ...UPPER_LOT_RIDES,
+  ...LOWER_LOT_RIDES,
+  ...SHOWS_AND_ATTRACTIONS,
+  ...FOOD,
+  ...SHOPS,
+  ...SERVICES,
+];

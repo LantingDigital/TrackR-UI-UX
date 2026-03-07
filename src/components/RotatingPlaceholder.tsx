@@ -99,6 +99,7 @@ export const RotatingPlaceholder: React.FC<RotatingPlaceholderProps> = ({
     }
 
     let visibilityTimer: NodeJS.Timeout | null = null;
+    let fadeDelayTimer: NodeJS.Timeout | null = null;
     let transitionTimer: NodeJS.Timeout | null = null;
     let intervalTimer: NodeJS.Timeout | null = null;
 
@@ -112,7 +113,7 @@ export const RotatingPlaceholder: React.FC<RotatingPlaceholderProps> = ({
         });
 
         // Delay to let fade complete
-        setTimeout(() => {
+        fadeDelayTimer = setTimeout(() => {
           isReadyRef.current = true;
 
           transitionTimer = setTimeout(() => {
@@ -138,6 +139,7 @@ export const RotatingPlaceholder: React.FC<RotatingPlaceholderProps> = ({
 
     return () => {
       if (visibilityTimer) clearTimeout(visibilityTimer);
+      if (fadeDelayTimer) clearTimeout(fadeDelayTimer);
       if (transitionTimer) clearTimeout(transitionTimer);
       if (intervalTimer) clearInterval(intervalTimer);
       componentOpacity.value = 0;

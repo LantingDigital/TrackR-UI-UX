@@ -10,3 +10,4 @@ export { SearchCarousel } from './SearchCarousel';
 export { SearchResultRow, SimpleSearchRow } from './SearchResultRow';
 export { LogModal } from './LogModal';
 export { Toast, ToastProvider, useToast, SuccessAnimation } from './feedback';
+export { PageDots } from './PageDots';

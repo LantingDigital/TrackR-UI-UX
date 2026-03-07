@@ -39,6 +39,7 @@ import { radius } from '../theme/radius';
 import { shadows } from '../theme/shadows';
 import { TIMING, SPRINGS } from '../constants/animations';
 import { haptics } from '../services/haptics';
+import { useSpringPress } from '../hooks/useSpringPress';
 import {
   getAllLogs,
   getCreditCount,
@@ -57,10 +58,13 @@ import { CoasterCard, type CoasterStats } from '../components/CoasterCard';
 import { CardActionSheet, type CardActionTarget } from '../components/CardActionSheet';
 import { RatingSheet } from '../components/RatingSheet';
 import { TimelineActionSheet, type TimelineActionTarget } from '../components/TimelineActionSheet';
+import { LogbookLogSheet } from '../components/LogbookLogSheet';
 import type { RideLog, CoasterRating } from '../types/rideLog';
-import { useTourTarget, emitTourEvent } from '../features/tour';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
+
+// Tab bar height for FAB positioning
+const TAB_BAR_HEIGHT = 49;
 
 const VIEWS = ['Timeline', 'Collection', 'Stats', 'Pending'] as const;
 type ViewMode = (typeof VIEWS)[number];
@@ -395,32 +399,39 @@ const CollectionView: React.FC<{
     );
   }
 
+  const renderCollectionItem = useCallback(({ item, index }: { item: CollectionItem; index: number }) => (
+    <Animated.View entering={FadeIn.delay(Math.min(index, MAX_STAGGER) * 60).duration(200)}>
+      <CoasterCard
+        coasterId={item.coasterId}
+        coasterName={item.coasterName}
+        parkName={item.parkName}
+        artSource={item.artSource}
+        isUnlocked={item.isUnlocked}
+        rarity={item.rarity}
+        rating={item.rating}
+        stats={item.stats}
+        size="small"
+        onLongPress={() => onCardLongPress?.(item)}
+        triggerFlip={pendingFlipId === item.coasterId}
+      />
+    </Animated.View>
+  ), [onCardLongPress, pendingFlipId]);
+
+  const collectionKeyExtractor = useCallback((item: CollectionItem) => item.coasterId, []);
+
   return (
     <FlatList
       data={items}
       numColumns={2}
-      keyExtractor={(item) => item.coasterId}
+      keyExtractor={collectionKeyExtractor}
       columnWrapperStyle={styles.collectionRow}
       contentContainerStyle={styles.collectionContent}
       showsVerticalScrollIndicator={false}
       scrollEnabled={false} // parent ScrollView handles scrolling
-      renderItem={({ item, index }) => (
-        <Animated.View entering={FadeIn.delay(Math.min(index, MAX_STAGGER) * 60).duration(200)}>
-          <CoasterCard
-            coasterId={item.coasterId}
-            coasterName={item.coasterName}
-            parkName={item.parkName}
-            artSource={item.artSource}
-            isUnlocked={item.isUnlocked}
-            rarity={item.rarity}
-            rating={item.rating}
-            stats={item.stats}
-            size="small"
-            onLongPress={() => onCardLongPress?.(item)}
-            triggerFlip={pendingFlipId === item.coasterId}
-          />
-        </Animated.View>
-      )}
+      removeClippedSubviews
+      maxToRenderPerBatch={6}
+      windowSize={5}
+      renderItem={renderCollectionItem}
     />
   );
 };
@@ -545,40 +556,47 @@ const PendingView: React.FC<{
     );
   }
 
+  const renderPendingItem = useCallback(({ item, index }: { item: PendingItem; index: number }) => (
+    <Animated.View
+      entering={FadeIn.delay(Math.min(index, MAX_STAGGER) * 60).duration(200)}
+      style={styles.pendingCardWrapper}
+    >
+      <View style={styles.pendingCardRelative}>
+        <View pointerEvents="none">
+          <CoasterCard
+            coasterId={item.coasterId}
+            coasterName={item.coasterName}
+            parkName={item.parkName}
+            artSource={item.artSource}
+            isUnlocked={true}
+            rarity={item.rarity}
+            stats={item.stats}
+            size="small"
+          />
+        </View>
+        <Pressable
+          style={StyleSheet.absoluteFill}
+          onPress={() => onCardTap(item)}
+        />
+      </View>
+    </Animated.View>
+  ), [onCardTap]);
+
+  const pendingKeyExtractor = useCallback((item: PendingItem) => item.coasterId, []);
+
   return (
     <FlatList
       data={items}
       numColumns={2}
-      keyExtractor={(item) => item.coasterId}
+      keyExtractor={pendingKeyExtractor}
       columnWrapperStyle={styles.collectionRow}
       contentContainerStyle={styles.collectionContent}
       showsVerticalScrollIndicator={false}
       scrollEnabled={false}
-      renderItem={({ item, index }) => (
-        <Animated.View
-          entering={FadeIn.delay(Math.min(index, MAX_STAGGER) * 60).duration(200)}
-          style={{ width: CARD_WIDTH }}
-        >
-          <View style={{ position: 'relative' }}>
-            <View pointerEvents="none">
-              <CoasterCard
-                coasterId={item.coasterId}
-                coasterName={item.coasterName}
-                parkName={item.parkName}
-                artSource={item.artSource}
-                isUnlocked={true}
-                rarity={item.rarity}
-                stats={item.stats}
-                size="small"
-              />
-            </View>
-            <Pressable
-              style={StyleSheet.absoluteFill}
-              onPress={() => onCardTap(item)}
-            />
-          </View>
-        </Animated.View>
-      )}
+      removeClippedSubviews
+      maxToRenderPerBatch={6}
+      windowSize={5}
+      renderItem={renderPendingItem}
     />
   );
 };
@@ -587,9 +605,9 @@ const PendingView: React.FC<{
 
 export const LogbookScreen = () => {
   const insets = useSafeAreaInsets();
-  const segmentedTourRef = useTourTarget('logbook-segmented-control');
   const [activeView, setActiveView] = useState<ViewMode>('Timeline');
   const headerProgress = useSharedValue(0);
+  const { pressHandlers: fabPressHandlers, animatedStyle: fabAnimatedStyle } = useSpringPress({ scale: 0.9 });
 
   // Rating sheet state
   const [ratingVisible, setRatingVisible] = useState(false);
@@ -608,6 +626,9 @@ export const LogbookScreen = () => {
   // Timeline action sheet state
   const [timelineActionTarget, setTimelineActionTarget] = useState<TimelineActionTarget | null>(null);
   const [timelineActionVisible, setTimelineActionVisible] = useState(false);
+
+  // Logbook log sheet state
+  const [logSheetVisible, setLogSheetVisible] = useState(false);
 
   // Subscribe to store for reactivity
   const { logs, ratings, creditCount, totalRideCount } = useRideLogStore();
@@ -875,9 +896,7 @@ export const LogbookScreen = () => {
         </Animated.View>
 
         {/* Segmented Control */}
-        <View ref={segmentedTourRef} collapsable={false}>
-          <SegmentedControl selected={activeView} onSelect={(v: ViewMode) => { setActiveView(v); emitTourEvent({ type: 'segmentedControl:changed', segment: v }); }} unratedCount={unratedCount} />
-        </View>
+        <SegmentedControl selected={activeView} onSelect={(v: ViewMode) => { setActiveView(v); }} unratedCount={unratedCount} />
 
         {/* View content */}
         {activeView === 'Timeline' && (
@@ -944,6 +963,29 @@ export const LogbookScreen = () => {
         onEditRating={handleTimelineEditRating}
         onDelete={handleTimelineDelete}
       />
+
+      {/* Logbook Log Sheet */}
+      <LogbookLogSheet
+        visible={logSheetVisible}
+        onClose={() => setLogSheetVisible(false)}
+      />
+
+      {/* Log Ride FAB */}
+      <Pressable
+        {...fabPressHandlers}
+        onPress={() => {
+          haptics.tap();
+          setLogSheetVisible(true);
+        }}
+        style={[
+          styles.fab,
+          { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+        ]}
+      >
+        <Animated.View style={[styles.fabInner, fabAnimatedStyle]}>
+          <Ionicons name="add" size={28} color="#FFFFFF" />
+        </Animated.View>
+      </Pressable>
     </View>
   );
 };
@@ -1127,6 +1169,14 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
 
+  // ── Pending ──
+  pendingCardWrapper: {
+    width: CARD_WIDTH,
+  },
+  pendingCardRelative: {
+    position: 'relative',
+  },
+
   // ── Collection ──
   collectionRow: {
     gap: CARD_GAP,
@@ -1209,6 +1259,27 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.caption,
     fontWeight: typography.weights.medium,
     color: colors.text.meta,
+  },
+
+  // ── FAB ──
+  fab: {
+    position: 'absolute',
+    right: spacing.lg,
+    zIndex: 20,
+  },
+  fabInner: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: colors.accent.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...shadows.card,
+    shadowColor: colors.accent.primary,
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 8,
   },
 
   // ── Empty State ──

@@ -185,9 +185,22 @@ export const CATEGORY_ZOOM: Record<MapCategory, number> = {
 
 // ---- Coordinate Conversion ----
 
+/** Convert normalized x/y to [lng, lat] using Knott's POI bounds (legacy). */
 export function poiToCoordinate(x: number, y: number): [number, number] {
   const lng = POI_BOUNDS.sw[0] + x * (POI_BOUNDS.ne[0] - POI_BOUNDS.sw[0]);
   const lat = POI_BOUNDS.ne[1] - y * (POI_BOUNDS.ne[1] - POI_BOUNDS.sw[1]);
+  return [lng, lat];
+}
+
+/** Convert normalized x/y to [lng, lat] using arbitrary POI bounds. */
+export function poiToCoordinateWithBounds(
+  x: number,
+  y: number,
+  poiBoundsNE: [number, number],
+  poiBoundsSW: [number, number],
+): [number, number] {
+  const lng = poiBoundsSW[0] + x * (poiBoundsNE[0] - poiBoundsSW[0]);
+  const lat = poiBoundsNE[1] - y * (poiBoundsNE[1] - poiBoundsSW[1]);
   return [lng, lat];
 }
 

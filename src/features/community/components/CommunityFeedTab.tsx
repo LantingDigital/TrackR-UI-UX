@@ -1,5 +1,5 @@
-import React, { useEffect, useCallback } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import React, { useEffect, useCallback, useMemo } from 'react';
+import { View, StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
@@ -46,6 +46,8 @@ interface CommunityFeedTabProps {
   onShowCompose?: () => void;
 }
 
+const keyExtractor = (item: FeedItem) => item.id;
+
 export const CommunityFeedTab = ({ topInset = 0, onShowCompose }: CommunityFeedTabProps) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
@@ -63,40 +65,56 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose }: CommunityFeedT
     navigation.navigate('ProfileView', { userId: authorId });
   }, [navigation]);
 
+  const handlePlayCoastle = useCallback(() => navigation.navigate('Coastle'), [navigation]);
+  const handlePlaySpeedSorter = useCallback(() => navigation.navigate('SpeedSorter'), [navigation]);
+  const handlePlayBlindRanking = useCallback(() => navigation.navigate('BlindRanking'), [navigation]);
+  const handlePlayTrivia = useCallback(() => navigation.navigate('Trivia'), [navigation]);
+
+  const listHeader = useMemo(() => (
+    <StaggeredItem index={0}>
+      <View style={styles.gamesStripContainer}>
+        <GamesStrip
+          onPlayCoastle={handlePlayCoastle}
+          onPlaySpeedSorter={handlePlaySpeedSorter}
+          onPlayBlindRanking={handlePlayBlindRanking}
+          onPlayTrivia={handlePlayTrivia}
+        />
+      </View>
+    </StaggeredItem>
+  ), [handlePlayCoastle, handlePlaySpeedSorter, handlePlayBlindRanking, handlePlayTrivia]);
+
+  const contentContainerStyle = useMemo(
+    () => [styles.content, { paddingTop: topInset, paddingBottom: insets.bottom + spacing.xxxl }],
+    [topInset, insets.bottom],
+  );
+
+  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<FeedItem>) => (
+    <StaggeredItem index={index + 1}>
+      <View style={styles.feedItem}>
+        <FeedPost
+          item={item}
+          onLike={handleLike}
+          onCommentTap={handleCommentTap}
+          onAuthorTap={handleAuthorTap}
+        />
+      </View>
+    </StaggeredItem>
+  ), [handleLike, handleCommentTap, handleAuthorTap]);
+
   return (
     <View style={styles.container}>
-      <ScrollView
+      <FlatList
+        data={feed}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        ListHeaderComponent={listHeader}
         style={styles.scrollView}
-        contentContainerStyle={[
-          styles.content,
-          { paddingTop: topInset, paddingBottom: insets.bottom + spacing.xxxl },
-        ]}
+        contentContainerStyle={contentContainerStyle}
         showsVerticalScrollIndicator={false}
-      >
-        <StaggeredItem index={0}>
-          <View style={styles.gamesStripContainer}>
-            <GamesStrip
-              onPlayCoastle={() => navigation.navigate('Coastle')}
-              onPlaySpeedSorter={() => navigation.navigate('SpeedSorter')}
-              onPlayBlindRanking={() => navigation.navigate('BlindRanking')}
-              onPlayTrivia={() => navigation.navigate('Trivia')}
-            />
-          </View>
-        </StaggeredItem>
-
-        {feed.map((item, index) => (
-          <StaggeredItem key={item.id} index={index + 1}>
-            <View style={styles.feedItem}>
-              <FeedPost
-                item={item}
-                onLike={handleLike}
-                onCommentTap={handleCommentTap}
-                onAuthorTap={handleAuthorTap}
-              />
-            </View>
-          </StaggeredItem>
-        ))}
-      </ScrollView>
+        removeClippedSubviews
+        maxToRenderPerBatch={5}
+        windowSize={7}
+      />
 
       {/* Floating Action Button */}
       {onShowCompose && <FAB onPress={onShowCompose} />}

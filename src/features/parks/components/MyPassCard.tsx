@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,7 +17,7 @@ interface MyPassCardProps {
   onPress: () => void;
 }
 
-export function MyPassCard({ parkName, onPress }: MyPassCardProps) {
+export const MyPassCard = memo(function MyPassCard({ parkName, onPress }: MyPassCardProps) {
   const { pressHandlers, animatedStyle } = useCardPress();
   const { tickets } = useWallet();
 
@@ -73,7 +73,7 @@ export function MyPassCard({ parkName, onPress }: MyPassCardProps) {
       </Animated.View>
     </Pressable>
   );
-}
+});
 
 const styles = StyleSheet.create({
   card: {

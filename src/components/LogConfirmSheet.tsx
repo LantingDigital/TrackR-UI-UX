@@ -264,7 +264,6 @@ export function LogConfirmSheet({
       entrance.value = withTiming(1, { duration: 400 });
     } else {
       clearTimers();
-      tabBar?.showTabBar();
       entrance.value = 0;
       backdropOpacity.value = withTiming(0, { duration: TIMING.backdrop });
       translateY.value = withTiming(SCREEN_HEIGHT, { duration: TIMING.normal });

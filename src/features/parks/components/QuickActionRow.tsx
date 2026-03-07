@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect, useMemo } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -48,7 +48,7 @@ const ACTIONS: QuickAction[] = [
 // ActionPill (individual pill with stagger)
 // ============================================
 
-function ActionPill({
+const ActionPill = memo(function ActionPill({
   action,
   index,
   onPress,
@@ -86,19 +86,23 @@ function ActionPill({
       </Animated.View>
     </Pressable>
   );
-}
+});
 
 // ============================================
 // QuickActionRow
 // ============================================
 
-export function QuickActionRow({
+export const QuickActionRow = memo(function QuickActionRow({
   onMapPress,
   onFoodPress,
   onRidesPress,
   onPassPress,
 }: QuickActionRowProps) {
-  const handlers = [onMapPress, onFoodPress, onRidesPress, onPassPress];
+  // Stable handlers array — only rebuilds when the actual callbacks change
+  const handlers = useMemo(
+    () => [onMapPress, onFoodPress, onRidesPress, onPassPress],
+    [onMapPress, onFoodPress, onRidesPress, onPassPress],
+  );
 
   return (
     <View style={styles.container}>
@@ -112,7 +116,7 @@ export function QuickActionRow({
       ))}
     </View>
   );
-}
+});
 
 // ============================================
 // Styles

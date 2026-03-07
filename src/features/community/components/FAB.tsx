@@ -31,10 +31,10 @@ export function FAB({ onPress }: FABProps) {
         haptics.tap();
         onPress();
       }}
-      style={[styles.fab, { bottom: insets.bottom + 80 }]}
+      style={[styles.fab, { bottom: insets.bottom + spacing.xl }]}
     >
       <Animated.View style={[styles.fabInner, animatedStyle]}>
-        <Ionicons name="add" size={28} color="#FFFFFF" />
+        <Ionicons name="create-outline" size={28} color="#FFFFFF" />
       </Animated.View>
     </Pressable>
   );
@@ -43,7 +43,7 @@ export function FAB({ onPress }: FABProps) {
 const styles = StyleSheet.create({
   fab: {
     position: 'absolute',
-    right: spacing.lg,
+    right: spacing.xl,
     zIndex: 20,
   },
   fabInner: {

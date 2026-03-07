@@ -11,12 +11,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { UnifiedParkMapData, ParkPOI, MapCategory } from '../types';
 import {
   MAPBOX_AVAILABLE,
-  KNOTTS_CENTER,
-  ZOOM,
-  PARK_BOUNDS,
   MAP_STYLE_URL,
   poiToCoordinate,
+  poiToCoordinateWithBounds,
 } from './mapboxConfig';
+import { ParkMapConfig } from './parkMapRegistry';
 import { MapInfoCard, INFO_CARD_HEIGHT } from './MapInfoCard';
 import { MapControls } from './MapControls';
 import { MapSearchBar } from './MapSearchBar';
@@ -35,21 +34,6 @@ const MapboxGL = MAPBOX_AVAILABLE ? require('@rnmapbox/maps').default : null;
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-// ---- Park title GeoJSON (single point at park center) ----
-const PARK_TITLE_GEOJSON: GeoJSON.FeatureCollection = {
-  type: 'FeatureCollection',
-  features: [
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: KNOTTS_CENTER,
-      },
-      properties: { name: "Knott's Berry Farm" },
-    },
-  ],
-};
-
 // ============================================
 // MapboxMapScreen
 // ============================================
@@ -58,11 +42,13 @@ interface MapboxMapScreenProps {
   visible: boolean;
   onClose: () => void;
   mapData: UnifiedParkMapData;
+  /** Park map configuration (center, bounds, zoom). Required for multi-park support. */
+  mapConfig: ParkMapConfig;
   /** Optional POI to fly to and auto-select when opening (e.g. from "View on Map") */
   targetPoi?: ParkPOI | null;
 }
 
-export function MapboxMapScreen({ visible, onClose, mapData, targetPoi }: MapboxMapScreenProps) {
+export function MapboxMapScreen({ visible, onClose, mapData, mapConfig, targetPoi }: MapboxMapScreenProps) {
   if (!MAPBOX_AVAILABLE || !MapboxGL) {
     return (
       <View style={styles.unavailable}>
@@ -72,14 +58,14 @@ export function MapboxMapScreen({ visible, onClose, mapData, targetPoi }: Mapbox
   }
 
   return (
-    <MapboxMapScreenInner visible={visible} onClose={onClose} mapData={mapData} targetPoi={targetPoi} />
+    <MapboxMapScreenInner visible={visible} onClose={onClose} mapData={mapData} mapConfig={mapConfig} targetPoi={targetPoi} />
   );
 }
 
 /** Approximate tab bar height including safe area padding */
 const TAB_BAR_TOTAL_HEIGHT = 90;
 
-function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMapScreenProps) {
+function MapboxMapScreenInner({ visible, onClose, mapData, mapConfig, targetPoi }: MapboxMapScreenProps) {
   const [mounted, setMounted] = useState(false);
   const [selectedPoi, setSelectedPoi] = useState<ParkPOI | null>(null);
   const [activeFilters, setActiveFilters] = useState<Set<MapCategory>>(new Set());
@@ -90,6 +76,23 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
   const insets = useSafeAreaInsets();
   const { openCoasterSheet } = usePOIAction();
   const pendingTargetRef = useRef<ParkPOI | null>(null);
+
+  // Park-specific coordinate converter
+  const toCoord = useCallback(
+    (x: number, y: number): [number, number] =>
+      poiToCoordinateWithBounds(x, y, mapConfig.poiBoundsNE, mapConfig.poiBoundsSW),
+    [mapConfig],
+  );
+
+  // Park title GeoJSON (dynamic per park)
+  const parkTitleGeoJSON = useMemo<GeoJSON.FeatureCollection>(() => ({
+    type: 'FeatureCollection',
+    features: [{
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: mapConfig.center },
+      properties: { name: mapConfig.displayName },
+    }],
+  }), [mapConfig]);
 
   // Hide base style labels (POI labels, water labels) on style load
   const handleStyleLoaded = useCallback(() => {
@@ -135,8 +138,8 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
     }
   }, [selectedPoi]);
 
-  // Directions
-  const { route, fetchRoute, clearRoute } = useDirections(mapData);
+  // Directions (with park-specific coordinate converter)
+  const { route, fetchRoute, clearRoute } = useDirections(mapData, toCoord);
 
   // Category filter toggle
   const handleFilterToggle = useCallback((category: MapCategory) => {
@@ -158,12 +161,12 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
     setSelectedPoi(null);
     clearRoute();
     cameraRef.current?.setCamera({
-      centerCoordinate: KNOTTS_CENTER,
-      zoomLevel: ZOOM.default,
+      centerCoordinate: mapConfig.center,
+      zoomLevel: mapConfig.zoom.default,
       padding: { paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0 },
       animationDuration: 1000,
     });
-  }, [clearRoute]);
+  }, [clearRoute, mapConfig]);
 
   // Zoom out to overview when category filters are activated; deselect any POI
   useEffect(() => {
@@ -173,16 +176,16 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
         clearRoute();
       }
       cameraRef.current?.setCamera({
-        centerCoordinate: KNOTTS_CENTER,
-        zoomLevel: ZOOM.default,
+        centerCoordinate: mapConfig.center,
+        zoomLevel: mapConfig.zoom.default,
         padding: { paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0 },
         animationDuration: 1000,
       });
     }
-  }, [activeFilters]);
+  }, [activeFilters, mapConfig]);
 
-  // Build GeoJSON from POI data
-  const poiGeoJSON = useMemo(() => poisToGeoJSON(mapData.pois), [mapData.pois]);
+  // Build GeoJSON from POI data (using park-specific coordinate converter)
+  const poiGeoJSON = useMemo(() => poisToGeoJSON(mapData.pois, toCoord), [mapData.pois, toCoord]);
 
   // Open / close animation
   useEffect(() => {
@@ -197,7 +200,7 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
         const coord: [number, number] =
           targetPoi.lng != null && targetPoi.lat != null
             ? [targetPoi.lng, targetPoi.lat]
-            : poiToCoordinate(targetPoi.x, targetPoi.y);
+            : toCoord(targetPoi.x, targetPoi.y);
 
         // Wait for slide-in (300ms) + a brief pause, then fly camera and auto-select
         const flyTimer = setTimeout(() => {
@@ -246,7 +249,7 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
         // Animate camera back to true center (remove bottom padding)
         const [lng, lat] = poi.lng != null && poi.lat != null
           ? [poi.lng, poi.lat]
-          : poiToCoordinate(poi.x, poi.y);
+          : toCoord(poi.x, poi.y);
         cameraRef.current?.setCamera({
           centerCoordinate: [lng, lat],
           padding: { paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0 },
@@ -256,7 +259,7 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
         selectAndFlyToPoi(poi);
       }
     },
-    [selectedPoi, clearRoute],
+    [selectedPoi, clearRoute, toCoord],
   );
 
   // Shared helper — select a POI and fly the camera to it with cinematic zoom
@@ -269,7 +272,7 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
       clearRoute();
       const [lng, lat] = poi.lng != null && poi.lat != null
         ? [poi.lng, poi.lat]
-        : poiToCoordinate(poi.x, poi.y);
+        : toCoord(poi.x, poi.y);
       cameraRef.current?.setCamera({
         centerCoordinate: [lng, lat],
         zoomLevel: 18,
@@ -277,7 +280,7 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
         animationDuration: 1000,
       });
     },
-    [clearRoute, infoPaddingTop, infoPaddingBottom],
+    [clearRoute, infoPaddingTop, infoPaddingBottom, toCoord],
   );
 
   // Handle map background tap → deselect
@@ -305,19 +308,20 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
   // Navigate to POI (directions)
   const handleNavigate = useCallback(
     (poi: ParkPOI) => {
-      const entrancePoi = mapData.pois.find((p) => p.id === 'entrance-main');
+      // Find entrance POI — try park-specific ID first, then generic
+      const entrancePoi = mapData.pois.find((p) => p.id.startsWith('entrance-'));
       if (!entrancePoi) return;
 
       fetchRoute(
-        poiToCoordinate(entrancePoi.x, entrancePoi.y),
-        poiToCoordinate(poi.x, poi.y),
+        toCoord(entrancePoi.x, entrancePoi.y),
+        toCoord(poi.x, poi.y),
         entrancePoi.id,
         poi.id,
       );
 
       if (cameraRef.current) {
-        const origin = poiToCoordinate(entrancePoi.x, entrancePoi.y);
-        const dest = poiToCoordinate(poi.x, poi.y);
+        const origin = toCoord(entrancePoi.x, entrancePoi.y);
+        const dest = toCoord(poi.x, poi.y);
         const sw: [number, number] = [
           Math.min(origin[0], dest[0]),
           Math.min(origin[1], dest[1]),
@@ -329,11 +333,11 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
         cameraRef.current.fitBounds(ne, sw, [80, 80, 320, 80], 1000);
       }
     },
-    [mapData.pois, fetchRoute],
+    [mapData.pois, fetchRoute, toCoord],
   );
 
   // Track actual camera zoom so +/- buttons stay in sync after fly-to or pinch
-  const currentZoomRef = useRef<number>(ZOOM.default);
+  const currentZoomRef = useRef<number>(mapConfig.zoom.default);
   const handleRegionChange = useCallback((feature: any) => {
     const zoom = feature?.properties?.zoomLevel;
     if (zoom != null) {
@@ -342,16 +346,16 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
   }, []);
 
   const handleZoomIn = useCallback(() => {
-    const next = Math.min(currentZoomRef.current + 0.75, ZOOM.max as number);
+    const next = Math.min(currentZoomRef.current + 0.75, mapConfig.zoom.max);
     currentZoomRef.current = next;
     cameraRef.current?.zoomTo(next, 300);
-  }, []);
+  }, [mapConfig]);
 
   const handleZoomOut = useCallback(() => {
-    const next = Math.max(currentZoomRef.current - 0.75, ZOOM.min as number);
+    const next = Math.max(currentZoomRef.current - 0.75, mapConfig.zoom.min);
     currentZoomRef.current = next;
     cameraRef.current?.zoomTo(next, 300);
-  }, []);
+  }, [mapConfig]);
 
   // Animated styles
   const backdropStyle = useAnimatedStyle(() => ({
@@ -387,28 +391,28 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
           <MapboxGL.Camera
             ref={cameraRef}
             defaultSettings={{
-              centerCoordinate: KNOTTS_CENTER,
-              zoomLevel: ZOOM.default,
+              centerCoordinate: mapConfig.center,
+              zoomLevel: mapConfig.zoom.default,
             }}
-            minZoomLevel={ZOOM.min}
-            maxZoomLevel={ZOOM.max}
+            minZoomLevel={mapConfig.zoom.min}
+            maxZoomLevel={mapConfig.zoom.max}
             maxBounds={{
-              ne: PARK_BOUNDS.ne,
-              sw: PARK_BOUNDS.sw,
+              ne: mapConfig.boundsNE,
+              sw: mapConfig.boundsSW,
             }}
           />
 
           {/* Park title — bold, visible at overview zoom, fades as user zooms in.
               Hidden when any filter or search is active (the dots speak for themselves). */}
-          <MapboxGL.ShapeSource id="park-title" shape={PARK_TITLE_GEOJSON}>
+          <MapboxGL.ShapeSource id="park-title" shape={parkTitleGeoJSON}>
             <MapboxGL.SymbolLayer
               id="park-title-label"
               style={{
-                textField: "Knott's Berry Farm",
+                textField: mapConfig.displayName,
                 textSize: [
                   'interpolate', ['linear'], ['zoom'],
-                  15.7, 24,
-                  16.1, 18,
+                  mapConfig.zoom.min, 24,
+                  mapConfig.zoom.min + 0.4, 18,
                 ],
                 textFont: ['DIN Pro Bold', 'Arial Unicode MS Bold'],
                 textColor: '#333333',
@@ -420,9 +424,9 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
                   ? 0
                   : [
                       'interpolate', ['linear'], ['zoom'],
-                      15.7, 1,
-                      15.9, 0.6,
-                      16.2, 0,
+                      mapConfig.zoom.min, 1,
+                      mapConfig.zoom.min + 0.2, 0.6,
+                      mapConfig.zoom.min + 0.5, 0,
                     ],
                 textOpacityTransition: { duration: 400, delay: 0 },
               }}
@@ -437,6 +441,8 @@ function MapboxMapScreenInner({ visible, onClose, mapData, targetPoi }: MapboxMa
             pois={mapData.pois}
             activeFilters={activeFilters}
             searchHighlightIds={searchHighlightIds}
+            minZoom={mapConfig.zoom.min}
+            coordConverter={toCoord}
           />
 
           {/* Walking route */}

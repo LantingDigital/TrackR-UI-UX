@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useRef } from 'react';
+import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Dimensions,
   ListRenderItemInfo,
+  ActivityIndicator,
 } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -172,6 +173,7 @@ export function ParkHubHeader({
                 parks={listParks}
                 currentPark={parkName}
                 loading={listState === 'preview'}
+                listState={listState}
                 onSelect={(name) => {
                   onSelectPark(name);
                   close();
@@ -196,16 +198,25 @@ function SwitcherContent({
   parks,
   currentPark,
   loading,
+  listState,
   onSelect,
   onClose,
 }: {
   parks: ParkData[];
   currentPark: string;
   loading: boolean;
+  listState: 'closed' | 'preview' | 'full';
   onSelect: (name: string) => void;
   onClose: () => void;
 }) {
   const [query, setQuery] = useState('');
+
+  // Reset search query whenever the switcher closes so it's empty on re-open
+  useEffect(() => {
+    if (listState === 'closed') {
+      setQuery('');
+    }
+  }, [listState]);
 
   const filtered = useMemo(() => {
     if (!query.trim()) return parks;
@@ -466,5 +477,9 @@ const switcherStyles = StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     backgroundColor: colors.border.subtle,
     marginHorizontal: spacing.xl,
+  },
+  footerLoader: {
+    paddingVertical: spacing.xl,
+    alignItems: 'center',
   },
 });

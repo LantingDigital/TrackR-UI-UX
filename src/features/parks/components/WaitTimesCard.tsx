@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect, useCallback, useMemo } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -19,7 +19,7 @@ import { RideWaitTime, getWaitColor } from '../data/mockDashboardData';
 // WaitTimePill (individual ride pill)
 // ============================================
 
-function WaitTimePill({
+const WaitTimePill = memo(function WaitTimePill({
   ride,
   index,
   onPress,
@@ -58,7 +58,7 @@ function WaitTimePill({
       </Animated.View>
     </Pressable>
   );
-}
+});
 
 // ============================================
 // WaitTimesCard
@@ -69,8 +69,8 @@ interface WaitTimesCardProps {
   onRidePress?: (rideId: string) => void;
 }
 
-export function WaitTimesCard({ waitTimes, onRidePress }: WaitTimesCardProps) {
-  const openCount = waitTimes.filter((r) => r.isOpen).length;
+export const WaitTimesCard = memo(function WaitTimesCard({ waitTimes, onRidePress }: WaitTimesCardProps) {
+  const openCount = useMemo(() => waitTimes.filter((r) => r.isOpen).length, [waitTimes]);
 
   return (
     <View>
@@ -96,17 +96,37 @@ export function WaitTimesCard({ waitTimes, onRidePress }: WaitTimesCardProps) {
         contentContainerStyle={styles.scrollContent}
       >
         {waitTimes.map((ride, i) => (
-          <WaitTimePill
+          <WaitTimePillWrapper
             key={ride.id}
             ride={ride}
             index={i}
-            onPress={onRidePress ? () => onRidePress(ride.id) : undefined}
+            onRidePress={onRidePress}
           />
         ))}
       </ScrollView>
     </View>
   );
-}
+});
+
+/**
+ * Wrapper that creates a stable onPress callback per ride,
+ * preventing WaitTimePill from re-rendering due to new function refs.
+ */
+const WaitTimePillWrapper = memo(function WaitTimePillWrapper({
+  ride,
+  index,
+  onRidePress,
+}: {
+  ride: RideWaitTime;
+  index: number;
+  onRidePress?: (rideId: string) => void;
+}) {
+  const onPress = useCallback(
+    () => onRidePress?.(ride.id),
+    [onRidePress, ride.id],
+  );
+  return <WaitTimePill ride={ride} index={index} onPress={onRidePress ? onPress : undefined} />;
+});
 
 // ============================================
 // Styles

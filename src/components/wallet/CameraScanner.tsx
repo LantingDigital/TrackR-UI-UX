@@ -1,10 +1,11 @@
 /**
  * CameraScanner Component
  *
- * QR code scanner using expo-camera.
- * - Live camera preview with QR detection
- * - Photo library import option
- * - Matches app's animation and styling patterns
+ * QR/barcode scanner using expo-camera:
+ * - Live camera preview with barcode detection (QR, Aztec, DataMatrix, Code128, PDF417)
+ * - Photo library import with Camera.scanFromURLAsync extraction
+ * - Haptic feedback on scan success
+ * - Reanimated spring animations on all interactions
  */
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -13,11 +14,21 @@ import {
   Text,
   StyleSheet,
   Pressable,
-  Animated,
   Dimensions,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
-import { CameraView, useCameraPermissions, BarcodeScanningResult } from 'expo-camera';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  withRepeat,
+  withSequence,
+  Easing,
+} from 'react-native-reanimated';
+import type { SharedValue } from 'react-native-reanimated';
+import { CameraView, Camera, useCameraPermissions, BarcodeScanningResult } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
@@ -26,134 +37,191 @@ import * as Haptics from 'expo-haptics';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { radius } from '../../theme/radius';
+import { BarcodeFormat } from '../../types/wallet';
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const SCANNER_SIZE = SCREEN_WIDTH * 0.75;
 
-// Animation constants - match app patterns
-const RESPONSIVE_SPRING = {
-  damping: 16,
-  stiffness: 180,
-  mass: 0.8,
-  useNativeDriver: true,
+// Spring config for button presses
+const PRESS_SPRING = { damping: 16, stiffness: 180, mass: 0.8 };
+
+/**
+ * Map expo-camera barcode type strings to our BarcodeFormat
+ */
+const mapExpoFormat = (expoType: string): BarcodeFormat => {
+  const map: Record<string, BarcodeFormat> = {
+    qr: 'QR_CODE',
+    aztec: 'AZTEC',
+    pdf417: 'PDF417',
+    datamatrix: 'DATA_MATRIX',
+    code128: 'CODE_128',
+    code39: 'CODE_39',
+    ean13: 'EAN_13',
+    upc_a: 'UPC_A',
+  };
+  return map[expoType] || 'QR_CODE';
 };
 
-const PRESS_SCALE = 0.96;
-const PRESS_OPACITY = 0.7;
-
 interface CameraScannerProps {
-  /** Called when a QR code is successfully scanned */
-  onScan: (data: string, format: string) => void;
+  /** Called when a barcode is successfully scanned */
+  onScan: (data: string, format: BarcodeFormat) => void;
   /** Called when user cancels scanning */
   onCancel: () => void;
   /** Whether to show the photo library option */
   showLibraryOption?: boolean;
+  /** Called when an image is picked but no barcode found (passes the image URI) */
+  onImageOnlyFallback?: (imageUri: string) => void;
 }
 
 export const CameraScanner: React.FC<CameraScannerProps> = ({
   onScan,
   onCancel,
   showLibraryOption = true,
+  onImageOnlyFallback,
 }) => {
   const insets = useSafeAreaInsets();
   const [permission, requestPermission] = useCameraPermissions();
   const [isScanned, setIsScanned] = useState(false);
   const [flashEnabled, setFlashEnabled] = useState(false);
+  const [isProcessingImage, setIsProcessingImage] = useState(false);
 
-  // Animation values for buttons
-  const cancelScaleAnim = useRef(new Animated.Value(1)).current;
-  const cancelOpacityAnim = useRef(new Animated.Value(1)).current;
-  const flashScaleAnim = useRef(new Animated.Value(1)).current;
-  const flashOpacityAnim = useRef(new Animated.Value(1)).current;
-  const libraryScaleAnim = useRef(new Animated.Value(1)).current;
-  const libraryOpacityAnim = useRef(new Animated.Value(1)).current;
+  // Reanimated shared values
+  const cancelScale = useSharedValue(1);
+  const flashScale = useSharedValue(1);
+  const libraryScale = useSharedValue(1);
+  const scanLinePosition = useSharedValue(0);
 
-  // Scanning line animation
-  const scanLineAnim = useRef(new Animated.Value(0)).current;
-
-  // Start scan line animation
+  // Scan line animation — loop up and down
   React.useEffect(() => {
-    const animation = Animated.loop(
-      Animated.sequence([
-        Animated.timing(scanLineAnim, {
-          toValue: 1,
-          duration: 2000,
-          useNativeDriver: true,
-        }),
-        Animated.timing(scanLineAnim, {
-          toValue: 0,
-          duration: 2000,
-          useNativeDriver: true,
-        }),
-      ])
+    scanLinePosition.value = withRepeat(
+      withSequence(
+        withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.ease) }),
+        withTiming(0, { duration: 2000, easing: Easing.inOut(Easing.ease) }),
+      ),
+      -1, // infinite
     );
-    animation.start();
-    return () => animation.stop();
-  }, [scanLineAnim]);
+  }, []);
 
-  // Handle barcode scan
+  const scanLineStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: scanLinePosition.value * (SCANNER_SIZE - 4) }],
+  }));
+
+  // Button animated styles
+  const cancelAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: cancelScale.value }],
+  }));
+  const flashAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: flashScale.value }],
+  }));
+  const libraryAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: libraryScale.value }],
+  }));
+
+  // Handle barcode scan from live camera
   const handleBarCodeScanned = useCallback((result: BarcodeScanningResult) => {
     if (isScanned) return;
 
     setIsScanned(true);
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
-    // Pass the scanned data and format to parent
-    onScan(result.data, result.type);
+    const format = mapExpoFormat(result.type);
+    onScan(result.data, format);
   }, [isScanned, onScan]);
 
-  // Handle photo library import
+  // Handle photo library import — scan barcode from image
   const handlePickImage = useCallback(async () => {
     try {
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      const pickerResult = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
         quality: 1,
       });
 
-      if (!result.canceled && result.assets[0]) {
-        // For now, we'll show an alert that image QR scanning requires additional processing
-        // In production, you'd use jsQR or similar to decode the QR from the image
-        Alert.alert(
-          'Image Selected',
-          'QR code decoding from images will be implemented in the next phase.',
-          [{ text: 'OK' }]
-        );
+      if (pickerResult.canceled || !pickerResult.assets[0]) return;
+
+      const imageUri = pickerResult.assets[0].uri;
+      setIsProcessingImage(true);
+
+      try {
+        // Scan the image for barcodes using expo-camera
+        const scanResults = await Camera.scanFromURLAsync(imageUri, [
+          'qr',
+          'aztec',
+          'pdf417',
+          'datamatrix',
+          'code128',
+          'code39',
+          'ean13',
+          'upc_a',
+        ]);
+
+        if (scanResults && scanResults.length > 0) {
+          // Found a barcode — use the first result
+          const firstResult = scanResults[0];
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          setIsScanned(true);
+
+          const format = mapExpoFormat(firstResult.type);
+          onScan(firstResult.data, format);
+        } else {
+          // No barcode found in the image
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+
+          if (onImageOnlyFallback) {
+            Alert.alert(
+              'No Barcode Found',
+              'We could not detect a barcode in this image. Would you like to save it as an image-only pass?',
+              [
+                { text: 'Cancel', style: 'cancel' },
+                {
+                  text: 'Save as Image',
+                  onPress: () => onImageOnlyFallback(imageUri),
+                },
+              ],
+            );
+          } else {
+            Alert.alert(
+              'No Barcode Found',
+              'We could not detect a barcode in this image. Try a clearer photo or scan directly with the camera.',
+              [{ text: 'OK' }],
+            );
+          }
+        }
+      } catch (scanError) {
+        console.error('Error scanning image for barcodes:', scanError);
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+
+        if (onImageOnlyFallback) {
+          Alert.alert(
+            'Scan Failed',
+            'Could not process this image. Would you like to save it as an image-only pass?',
+            [
+              { text: 'Cancel', style: 'cancel' },
+              {
+                text: 'Save as Image',
+                onPress: () => onImageOnlyFallback(imageUri),
+              },
+            ],
+          );
+        } else {
+          Alert.alert('Scan Failed', 'Could not process this image. Try a different photo.');
+        }
+      } finally {
+        setIsProcessingImage(false);
       }
     } catch (error) {
       console.error('Error picking image:', error);
+      setIsProcessingImage(false);
       Alert.alert('Error', 'Failed to pick image from library');
     }
-  }, []);
+  }, [onScan, onImageOnlyFallback]);
 
-  // Press handlers for buttons
-  const createPressHandlers = (scaleAnim: Animated.Value, opacityAnim: Animated.Value) => ({
-    onPressIn: () => {
-      Animated.parallel([
-        Animated.spring(scaleAnim, {
-          toValue: PRESS_SCALE,
-          ...RESPONSIVE_SPRING,
-        }),
-        Animated.timing(opacityAnim, {
-          toValue: PRESS_OPACITY,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    },
-    onPressOut: () => {
-      Animated.parallel([
-        Animated.spring(scaleAnim, {
-          toValue: 1,
-          ...RESPONSIVE_SPRING,
-        }),
-        Animated.timing(opacityAnim, {
-          toValue: 1,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    },
-  });
+  // Press handlers with spring physics
+  const createPressIn = (sv: SharedValue<number>) => () => {
+    sv.value = withSpring(0.92, PRESS_SPRING);
+  };
+  const createPressOut = (sv: SharedValue<number>) => () => {
+    sv.value = withSpring(1, PRESS_SPRING);
+  };
 
   // Permission not yet determined
   if (permission === null) {
@@ -172,7 +240,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
           <Ionicons name="camera-outline" size={48} color={colors.accent.primary} />
           <Text style={styles.permissionTitle}>Camera Access Required</Text>
           <Text style={styles.permissionMessage}>
-            TrackR needs camera access to scan QR codes on your tickets.
+            TrackR needs camera access to scan barcodes on your tickets and passes.
           </Text>
           <Pressable
             style={styles.permissionButton}
@@ -180,10 +248,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
           >
             <Text style={styles.permissionButtonText}>Grant Permission</Text>
           </Pressable>
-          <Pressable
-            style={styles.cancelLink}
-            onPress={onCancel}
-          >
+          <Pressable style={styles.cancelLink} onPress={onCancel}>
             <Text style={styles.cancelLinkText}>Cancel</Text>
           </Pressable>
         </View>
@@ -199,7 +264,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
         facing="back"
         enableTorch={flashEnabled}
         barcodeScannerSettings={{
-          barcodeTypes: ['qr', 'aztec', 'datamatrix'],
+          barcodeTypes: ['qr', 'aztec', 'datamatrix', 'pdf417', 'code128', 'code39', 'ean13'],
         }}
         onBarcodeScanned={isScanned ? undefined : handleBarCodeScanned}
       />
@@ -209,7 +274,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
         {/* Top section */}
         <View style={[styles.overlaySection, { paddingTop: insets.top + spacing.lg }]}>
           <Text style={styles.instructionText}>
-            Position the QR code within the frame
+            Position the barcode within the frame
           </Text>
         </View>
 
@@ -226,19 +291,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
             <View style={[styles.corner, styles.bottomRight]} />
 
             {/* Animated scan line */}
-            <Animated.View
-              style={[
-                styles.scanLine,
-                {
-                  transform: [{
-                    translateY: scanLineAnim.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [0, SCANNER_SIZE - 4],
-                    }),
-                  }],
-                },
-              ]}
-            />
+            <Animated.View style={[styles.scanLine, scanLineStyle]} />
           </View>
 
           <View style={styles.sideOverlay} />
@@ -250,17 +303,10 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
             {/* Cancel button */}
             <Pressable
               onPress={onCancel}
-              {...createPressHandlers(cancelScaleAnim, cancelOpacityAnim)}
+              onPressIn={createPressIn(cancelScale)}
+              onPressOut={createPressOut(cancelScale)}
             >
-              <Animated.View
-                style={[
-                  styles.controlButton,
-                  {
-                    transform: [{ scale: cancelScaleAnim }],
-                    opacity: cancelOpacityAnim,
-                  },
-                ]}
-              >
+              <Animated.View style={[styles.controlButton, cancelAnimStyle]}>
                 <Ionicons name="close" size={24} color="#FFFFFF" />
                 <Text style={styles.controlButtonText}>Cancel</Text>
               </Animated.View>
@@ -272,17 +318,15 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                 setFlashEnabled(!flashEnabled);
               }}
-              {...createPressHandlers(flashScaleAnim, flashOpacityAnim)}
+              onPressIn={createPressIn(flashScale)}
+              onPressOut={createPressOut(flashScale)}
             >
               <Animated.View
                 style={[
                   styles.controlButton,
                   styles.flashButton,
                   flashEnabled && styles.flashButtonActive,
-                  {
-                    transform: [{ scale: flashScaleAnim }],
-                    opacity: flashOpacityAnim,
-                  },
+                  flashAnimStyle,
                 ]}
               >
                 <Ionicons
@@ -297,19 +341,19 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
             {showLibraryOption && (
               <Pressable
                 onPress={handlePickImage}
-                {...createPressHandlers(libraryScaleAnim, libraryOpacityAnim)}
+                onPressIn={createPressIn(libraryScale)}
+                onPressOut={createPressOut(libraryScale)}
+                disabled={isProcessingImage}
               >
-                <Animated.View
-                  style={[
-                    styles.controlButton,
-                    {
-                      transform: [{ scale: libraryScaleAnim }],
-                      opacity: libraryOpacityAnim,
-                    },
-                  ]}
-                >
-                  <Ionicons name="images-outline" size={24} color="#FFFFFF" />
-                  <Text style={styles.controlButtonText}>Library</Text>
+                <Animated.View style={[styles.controlButton, libraryAnimStyle]}>
+                  {isProcessingImage ? (
+                    <ActivityIndicator size="small" color="#FFFFFF" />
+                  ) : (
+                    <Ionicons name="images-outline" size={24} color="#FFFFFF" />
+                  )}
+                  <Text style={styles.controlButtonText}>
+                    {isProcessingImage ? 'Scanning...' : 'Library'}
+                  </Text>
                 </Animated.View>
               </Pressable>
             )}
@@ -317,13 +361,24 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
         </View>
       </View>
 
+      {/* Processing overlay when scanning from image */}
+      {isProcessingImage && (
+        <View style={styles.processingOverlay}>
+          <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
+          <View style={styles.processingContent}>
+            <ActivityIndicator size="large" color="#FFFFFF" />
+            <Text style={styles.processingText}>Scanning image for barcodes...</Text>
+          </View>
+        </View>
+      )}
+
       {/* Success overlay when scanned */}
-      {isScanned && (
+      {isScanned && !isProcessingImage && (
         <View style={styles.successOverlay}>
           <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
           <View style={styles.successContent}>
             <Ionicons name="checkmark-circle" size={64} color={colors.status.success} />
-            <Text style={styles.successText}>QR Code Scanned!</Text>
+            <Text style={styles.successText}>Barcode Scanned!</Text>
           </View>
         </View>
       )}
@@ -495,6 +550,22 @@ const styles = StyleSheet.create({
   },
   flashButtonActive: {
     backgroundColor: colors.accent.primary,
+  },
+
+  // Processing overlay
+  processingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  processingContent: {
+    alignItems: 'center',
+    gap: spacing.lg,
+  },
+  processingText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#FFFFFF',
   },
 
   // Success overlay

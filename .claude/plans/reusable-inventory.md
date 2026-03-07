@@ -59,7 +59,7 @@ Every major building block, scored by how many features/screens reuse it.
 | QR/barcode renderer | Wallet display |
 | Card designer/renderer | Collectible cards, stat cards |
 | Poll component | Community posts |
-| Itinerary timeline | Trip planner |
+| ~~Itinerary timeline~~ | ~~Trip planner~~ (removed) |
 | Weather widget | Weather planner, My Park dashboard |
 | Game container/framework | Each mini-game |
 

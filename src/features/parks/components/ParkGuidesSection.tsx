@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { memo, useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -47,7 +47,7 @@ const DISMISS_VELOCITY = 500;
 // GuideCard — Card with proper shadows
 // ============================================
 
-function GuideCard({
+const GuideCard = memo(function GuideCard({
   guide,
   index,
   onPress,
@@ -100,7 +100,7 @@ function GuideCard({
       </Animated.View>
     </Pressable>
   );
-}
+});
 
 // ============================================
 // GuideBottomSheet — Drag-to-dismiss sheet
@@ -133,7 +133,6 @@ export function GuideBottomSheet({
       translateY.value = withSpring(0, SPRINGS.responsive);
       backdropOpacity.value = withTiming(1, { duration: 300 });
     } else if (!visible) {
-      tabBar?.showTabBar();
       backdropOpacity.value = withTiming(0, { duration: TIMING.backdrop });
       translateY.value = withTiming(SCREEN_HEIGHT, { duration: TIMING.normal });
       const timer = setTimeout(() => setMounted(false), TIMING.backdrop);
@@ -261,7 +260,13 @@ interface ParkGuidesSectionProps {
   onGuidePress: (guide: ParkGuide) => void;
 }
 
-export function ParkGuidesSection({ guides, onGuidePress }: ParkGuidesSectionProps) {
+export const ParkGuidesSection = memo(function ParkGuidesSection({ guides, onGuidePress }: ParkGuidesSectionProps) {
+  // Stable per-guide press handlers — avoids creating new arrow functions each render
+  const handleGuidePress = useCallback(
+    (guide: ParkGuide) => onGuidePress(guide),
+    [onGuidePress],
+  );
+
   return (
     <View>
       <View style={sectionStyles.header}>
@@ -278,17 +283,34 @@ export function ParkGuidesSection({ guides, onGuidePress }: ParkGuidesSectionPro
         contentContainerStyle={sectionStyles.scrollContent}
       >
         {guides.map((guide, index) => (
-          <GuideCard
+          <GuideCardWrapper
             key={guide.id}
             guide={guide}
             index={index}
-            onPress={() => onGuidePress(guide)}
+            onGuidePress={handleGuidePress}
           />
         ))}
       </ScrollView>
     </View>
   );
-}
+});
+
+/**
+ * Wrapper that creates a stable onPress callback per guide,
+ * so GuideCard receives a referentially-stable prop.
+ */
+const GuideCardWrapper = memo(function GuideCardWrapper({
+  guide,
+  index,
+  onGuidePress,
+}: {
+  guide: ParkGuide;
+  index: number;
+  onGuidePress: (guide: ParkGuide) => void;
+}) {
+  const onPress = useCallback(() => onGuidePress(guide), [onGuidePress, guide]);
+  return <GuideCard guide={guide} index={index} onPress={onPress} />;
+});
 
 // ============================================
 // Styles — Section

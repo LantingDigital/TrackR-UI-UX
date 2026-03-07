@@ -23,6 +23,7 @@ import {
   DEFAULT_FILTER_PREFERENCES,
 } from '../types/wallet';
 import { WalletStorage } from '../services/walletStorage';
+import { getCardArtForPark, getLogoForPark, getHeroUrlForPark } from '../utils/parkAssets';
 
 /**
  * Local pass images - bundled with the app
@@ -38,6 +39,27 @@ const LOGOS = {
   carowinds: require('../../assets/wallet/parks/logos/carowinds.png'),
   cedarPoint: require('../../assets/wallet/parks/logos/cedar-point.png'),
   kingsIsland: require('../../assets/wallet/parks/logos/kings-island.png'),
+};
+
+/**
+ * Re-hydrate non-serializable image sources on tickets loaded from storage.
+ * require() results (ImageSourcePropType) don't survive AsyncStorage,
+ * so we re-attach bundled card art, logos, and remote hero URLs here.
+ */
+const hydrateTicketImages = (ticket: Ticket): Ticket => {
+  const heroImageSource = ticket.heroImageSource || getCardArtForPark(ticket.parkName);
+  const heroImageUri = ticket.heroImageUri || getHeroUrlForPark(ticket.parkName);
+  const logoImageSource = ticket.logoImageSource || getLogoForPark(ticket.parkName);
+
+  if (heroImageSource || heroImageUri || logoImageSource) {
+    return {
+      ...ticket,
+      ...(heroImageSource && { heroImageSource }),
+      ...(heroImageUri && { heroImageUri }),
+      ...(logoImageSource && { logoImageSource }),
+    };
+  }
+  return ticket;
 };
 
 /**
@@ -157,7 +179,7 @@ const MOCK_TICKETS: Ticket[] = [
 ];
 
 // Set to true to use mock data for design testing
-const USE_MOCK_DATA = true;
+const USE_MOCK_DATA = false;
 
 /**
  * Context value interface
@@ -235,14 +257,14 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
 
         // Load wallet state
         const state = await WalletStorage.getWalletState();
-        setTickets(state.tickets);
+        setTickets(state.tickets.map(hydrateTicketImages));
         setDefaultTicketId(state.defaultTicketId);
         setFilterPreferencesState(state.filterPreferences || DEFAULT_FILTER_PREFERENCES);
 
         // Refresh ticket statuses (mark expired)
         await WalletStorage.refreshTicketStatuses();
         const refreshedState = await WalletStorage.getWalletState();
-        setTickets(refreshedState.tickets);
+        setTickets(refreshedState.tickets.map(hydrateTicketImages));
 
         setIsInitialized(true);
       } catch (err) {
@@ -264,7 +286,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       setIsLoading(true);
       await WalletStorage.refreshTicketStatuses();
       const state = await WalletStorage.getWalletState();
-      setTickets(state.tickets);
+      setTickets(state.tickets.map(hydrateTicketImages));
       setDefaultTicketId(state.defaultTicketId);
       setFilterPreferencesState(state.filterPreferences || DEFAULT_FILTER_PREFERENCES);
     } catch (err) {
@@ -512,26 +534,48 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
       });
   }, [tickets]);
 
-  const value: WalletContextValue = {
-    tickets,
-    defaultTicket,
-    isLoading,
-    isInitialized,
-    error,
-    filteredTickets,
-    filterPreferences,
-    stackTickets,
-    favoriteTickets,
-    addTicket,
-    toggleFavorite,
-    updateTicket,
-    deleteTicket,
-    setDefaultTicket,
-    markTicketUsed,
-    setFilterPreferences,
-    clearFilters,
-    refreshTickets,
-  };
+  const value = useMemo<WalletContextValue>(
+    () => ({
+      tickets,
+      defaultTicket,
+      isLoading,
+      isInitialized,
+      error,
+      filteredTickets,
+      filterPreferences,
+      stackTickets,
+      favoriteTickets,
+      addTicket,
+      toggleFavorite,
+      updateTicket,
+      deleteTicket,
+      setDefaultTicket,
+      markTicketUsed,
+      setFilterPreferences,
+      clearFilters,
+      refreshTickets,
+    }),
+    [
+      tickets,
+      defaultTicket,
+      isLoading,
+      isInitialized,
+      error,
+      filteredTickets,
+      filterPreferences,
+      stackTickets,
+      favoriteTickets,
+      addTicket,
+      toggleFavorite,
+      updateTicket,
+      deleteTicket,
+      setDefaultTicket,
+      markTicketUsed,
+      setFilterPreferences,
+      clearFilters,
+      refreshTickets,
+    ],
+  );
 
   return (
     <WalletContext.Provider value={value}>{children}</WalletContext.Provider>

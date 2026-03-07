@@ -6,8 +6,8 @@
  * Stagger entrance per section.
  */
 
-import React, { useEffect } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import React, { useEffect, useCallback, useMemo } from 'react';
+import { StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
@@ -19,6 +19,7 @@ import { spacing } from '../../../theme/spacing';
 import { SPRINGS } from '../../../constants/animations';
 import { useRankingsStore } from '../stores/rankingsStore';
 import { RankingSection } from './RankingSection';
+import type { RankingCategory } from '../types/community';
 
 // ─── Stagger helper ─────────────────────────────────────────
 
@@ -40,25 +41,35 @@ interface CommunityRankingsTabProps {
   topInset?: number;
 }
 
+const keyExtractor = (item: RankingCategory) => item.id;
+
 export const CommunityRankingsTab = ({ topInset = 0 }: CommunityRankingsTabProps) => {
   const insets = useSafeAreaInsets();
   const { categories } = useRankingsStore();
 
+  const contentContainerStyle = useMemo(
+    () => [styles.content, { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl }],
+    [topInset, insets.bottom],
+  );
+
+  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<RankingCategory>) => (
+    <StaggeredItem index={index}>
+      <RankingSection category={item} />
+    </StaggeredItem>
+  ), []);
+
   return (
-    <ScrollView
+    <FlatList
+      data={categories}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
       style={styles.container}
-      contentContainerStyle={[
-        styles.content,
-        { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
-      ]}
+      contentContainerStyle={contentContainerStyle}
       showsVerticalScrollIndicator={false}
-    >
-      {categories.map((category, index) => (
-        <StaggeredItem key={category.id} index={index}>
-          <RankingSection category={category} />
-        </StaggeredItem>
-      ))}
-    </ScrollView>
+      removeClippedSubviews
+      maxToRenderPerBatch={3}
+      windowSize={5}
+    />
   );
 };
 

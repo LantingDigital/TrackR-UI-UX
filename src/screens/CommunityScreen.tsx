@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
 import Animated, {
   useSharedValue,
@@ -40,8 +40,10 @@ const PAGE_RGBA = 'rgba(247, 247, 247,';
 export const CommunityScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const tabBar = useTabBar();
-  const [activeTab, setActiveTab] = useState<CommunityTab>('feed');
+  const routeInitialTab = route.params?.initialTab as CommunityTab | undefined;
+  const [activeTab, setActiveTab] = useState<CommunityTab>(routeInitialTab ?? 'feed');
   const [showCompose, setShowCompose] = useState(false);
   const isExiting = useRef(false);
 

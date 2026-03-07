@@ -2,7 +2,7 @@ import React, { useMemo, useCallback, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import { ParkPOI, MapCategory } from '../types';
-import { MAPBOX_AVAILABLE, ZOOM, CATEGORY_ZOOM, poiToCoordinate } from './mapboxConfig';
+import { MAPBOX_AVAILABLE, ZOOM as DEFAULT_ZOOM, CATEGORY_ZOOM as DEFAULT_CATEGORY_ZOOM, poiToCoordinate } from './mapboxConfig';
 import { MAP_CATEGORY_COLORS } from './poiGeoJSON';
 import { SPRINGS } from '../../../constants/animations';
 
@@ -37,10 +37,29 @@ interface POILayersProps {
   pois: ParkPOI[];
   activeFilters: Set<MapCategory>;
   searchHighlightIds: Set<string>;
+  /** Minimum zoom level for this park (defaults to Knott's 15.7) */
+  minZoom?: number;
+  /** Coordinate converter for selected pin marker (defaults to Knott's bounds) */
+  coordConverter?: (x: number, y: number) => [number, number];
 }
 
-export function POILayers({ geoJSON, selectedPoi, onPoiPress, pois, activeFilters, searchHighlightIds }: POILayersProps) {
+export function POILayers({ geoJSON, selectedPoi, onPoiPress, pois, activeFilters, searchHighlightIds, minZoom, coordConverter }: POILayersProps) {
   if (!MapboxGL) return null;
+
+  // Derive zoom constants from park's min zoom (allows progressive disclosure to work across parks)
+  const ZOOM = minZoom != null ? { min: minZoom } : DEFAULT_ZOOM;
+  const baseMin = ZOOM.min as number;
+  const CATEGORY_ZOOM: Record<MapCategory, number> = minZoom != null
+    ? {
+        coaster: baseMin + 0.5,
+        ride:    baseMin + 0.8,
+        food:    baseMin + 1.3,
+        show:    baseMin + 1.3,
+        shop:    baseMin + 1.6,
+        service: baseMin + 1.8,
+      }
+    : DEFAULT_CATEGORY_ZOOM;
+  const toCoord = coordConverter ?? poiToCoordinate;
 
   const isSelected = selectedPoi !== null;
 
@@ -215,7 +234,7 @@ export function POILayers({ geoJSON, selectedPoi, onPoiPress, pois, activeFilter
       </MapboxGL.ShapeSource>
 
       {/* ---- Selected POI pin marker ---- */}
-      {selectedPoi && <SelectedPinMarker poi={selectedPoi} />}
+      {selectedPoi && <SelectedPinMarker poi={selectedPoi} coordConverter={toCoord} />}
     </>
   );
 }
@@ -237,13 +256,14 @@ function getMapCategory(poi: ParkPOI): MapCategory {
   return 'service';
 }
 
-function SelectedPinMarker({ poi }: { poi: ParkPOI }) {
+function SelectedPinMarker({ poi, coordConverter }: { poi: ParkPOI; coordConverter?: (x: number, y: number) => [number, number] }) {
   if (!MapboxGL) return null;
 
+  const toCoord = coordConverter ?? poiToCoordinate;
   const coordinate: [number, number] =
     poi.lng != null && poi.lat != null
       ? [poi.lng, poi.lat]
-      : poiToCoordinate(poi.x, poi.y);
+      : toCoord(poi.x, poi.y);
 
   const color = MAP_CATEGORY_COLORS[getMapCategory(poi)];
 

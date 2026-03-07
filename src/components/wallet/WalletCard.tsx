@@ -121,8 +121,10 @@ export const WalletCard: React.FC<WalletCardProps> = ({
         <View style={styles.gateModeQRContainer}>
           <QRCodeDisplay
             data={ticket.qrData}
+            format={ticket.qrFormat}
             size={280}
             gateMode={true}
+            originalPhotoUri={ticket.originalPhotoUri}
           />
         </View>
 
@@ -186,9 +188,14 @@ export const WalletCard: React.FC<WalletCardProps> = ({
           )}
         </View>
 
-        {/* QR Code */}
+        {/* QR / Barcode */}
         <View style={styles.qrContainer}>
-          <QRCodeDisplay data={ticket.qrData} size={180} />
+          <QRCodeDisplay
+            data={ticket.qrData}
+            format={ticket.qrFormat}
+            size={180}
+            originalPhotoUri={ticket.originalPhotoUri}
+          />
         </View>
 
         {/* Footer with date info */}

@@ -1,8 +1,7 @@
 /**
  * Wallet Components - Barrel Export
  *
- * Scan flow + supporting wallet components.
- * Full wallet management UI will be rebuilt in Phase 2.
+ * Wallet components: scan flow, pass display, gate mode, and management UI.
  */
 
 export { QRCodeDisplay } from './QRCodeDisplay';

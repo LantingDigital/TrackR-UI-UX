@@ -8,6 +8,8 @@
 
 import React, { useEffect, useCallback, useRef } from 'react';
 import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { PageDots } from '../../../components/PageDots';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -35,31 +37,6 @@ import {
 import { TriviaHeader } from './components/TriviaHeader';
 
 const EASE_OUT = Easing.out(Easing.ease);
-const EASE_IN_OUT = Easing.inOut(Easing.ease);
-
-// ─── Animated Progress Bar ──────────────────────────────────
-
-function ProgressBar({ current, total }: { current: number; total: number }) {
-  const progress = useSharedValue(0);
-
-  useEffect(() => {
-    const target = (current + 1) / total;
-    progress.value = withTiming(target, { duration: 250, easing: EASE_IN_OUT });
-  }, [current, total]);
-
-  const fillStyle = useAnimatedStyle(() => ({
-    width: `${progress.value * 100}%`,
-  }));
-
-  return (
-    <View style={styles.progressContainer}>
-      <View style={styles.progressTrack}>
-        <Animated.View style={[styles.progressFill, fillStyle]} />
-      </View>
-      <Text style={styles.progressText}>{current + 1} / {total}</Text>
-    </View>
-  );
-}
 
 // ─── Score Display ──────────────────────────────────────────
 
@@ -231,6 +208,7 @@ function ResultsView({ score, total, onPlayAgain, onClose }: {
 
 export function TriviaScreen() {
   const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
   const { game, stats, settings } = useTriviaStore();
 
   // Question transition — controlled fade + slide
@@ -307,7 +285,9 @@ export function TriviaScreen() {
   if (game.status === 'results') {
     return (
       <View style={styles.container}>
-        <TriviaHeader onClose={handleClose} stats={stats} settings={settings} />
+        <View style={styles.headerWrapper}>
+          <TriviaHeader onClose={handleClose} stats={stats} settings={settings} />
+        </View>
         <ResultsView
           score={game.score}
           total={game.questions.length}
@@ -326,11 +306,12 @@ export function TriviaScreen() {
 
   return (
     <View style={styles.container}>
-      <TriviaHeader onClose={handleClose} stats={stats} settings={settings} />
+      <View style={styles.headerWrapper}>
+        <TriviaHeader onClose={handleClose} stats={stats} settings={settings} />
+      </View>
 
-      {/* Progress */}
+      {/* Score */}
       <View style={styles.progressSection}>
-        <ProgressBar current={game.currentIndex} total={game.questions.length} />
         <ScoreDisplay score={game.score} streak={game.streak} />
       </View>
 
@@ -379,6 +360,18 @@ export function TriviaScreen() {
           </Pressable>
         </Animated.View>
       )}
+
+      {/* Spacer to push dots to bottom */}
+      <View style={styles.spacer} />
+
+      {/* Question progress dots — bottom-positioned like Coastle */}
+      <View style={{ paddingBottom: insets.bottom + spacing.md }}>
+        <PageDots
+          current={game.currentIndex}
+          total={game.questions.length}
+          label={`${game.currentIndex + 1}/${game.questions.length}`}
+        />
+      </View>
     </View>
   );
 }
@@ -389,6 +382,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background.page,
+  },
+  headerWrapper: {
+    zIndex: 200,
   },
   header: {
     flexDirection: 'row',
@@ -412,34 +408,13 @@ const styles = StyleSheet.create({
   },
   headerSpacer: { width: 36 },
 
-  // Progress
+  // Progress / Score
   progressSection: {
     paddingHorizontal: spacing.xl,
     marginTop: spacing.base,
   },
-  progressContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.base,
-  },
-  progressTrack: {
+  spacer: {
     flex: 1,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.border.subtle,
-    overflow: 'hidden',
-  },
-  progressFill: {
-    height: '100%',
-    borderRadius: 3,
-    backgroundColor: colors.accent.primary,
-  },
-  progressText: {
-    fontSize: typography.sizes.caption,
-    fontWeight: typography.weights.semibold,
-    color: colors.text.meta,
-    minWidth: 36,
-    textAlign: 'right',
   },
   scoreRow: {
     flexDirection: 'row',

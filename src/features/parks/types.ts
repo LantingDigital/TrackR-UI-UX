@@ -4,14 +4,45 @@ import { CoastleCoaster } from '../coastle/types/coastle';
 // Parks Hub — Types
 // ============================================
 
+export type GuideCategory =
+  | 'strategy'
+  | 'food'
+  | 'tips'
+  | 'hidden-gems'
+  | 'must-do'
+  | 'new-this-year'
+  | 'getting-there'
+  | 'best-for';
+
 export interface ParkGuide {
   id: string;
   title: string;
-  category: 'strategy' | 'food' | 'tips' | 'hidden-gems';
+  category: GuideCategory;
   icon: string; // emoji
   preview: string;
   readTimeMinutes: number;
   content: string;
+}
+
+// ---- Wait Times ----
+
+export type RideStatus = 'open' | 'closed' | 'temporarily-closed' | 'weather-delay';
+
+export interface RideWaitTimeData {
+  id: string;
+  name: string;
+  parkSlug: string;
+  waitMinutes: number;
+  status: RideStatus;
+  lastUpdated: number;         // timestamp ms
+  historicalAvgMinutes: number; // average wait for comparison
+}
+
+export interface ParkWaitTimesResponse {
+  parkSlug: string;
+  parkName: string;
+  lastUpdated: number;
+  rides: RideWaitTimeData[];
 }
 
 // ---- Enriched Coaster Detail ----
@@ -75,12 +106,108 @@ export interface UnifiedParkMapData {
 // ---- Point of Interest Types ----
 
 export type ParkArea =
+  // Knott's Berry Farm
   | 'camp-snoopy'
   | 'fiesta-village'
   | 'boardwalk'
   | 'ghost-town'
   | 'california-marketplace'
-  | 'western-trails';
+  | 'western-trails'
+  // Cedar Point
+  | 'main-midway'
+  | 'frontier-town'
+  | 'frontierland'
+  | 'gemini-midway'
+  | 'cedar-point-shores'
+  | 'celebration-plaza'
+  | 'the-boardwalk-cp'
+  | 'kiddy-kingdom'
+  // Kings Island
+  | 'international-street'
+  | 'action-zone'
+  | 'rivertown'
+  | 'coney-mall'
+  | 'area-72'
+  | 'planet-snoopy'
+  | 'adventure-port'
+  | 'oktoberfest'
+  // Carowinds
+  | 'county-fair'
+  | 'blue-ridge-junction'
+  | 'carolina-boardwalk'
+  | 'celebration-square'
+  | 'camp-snoopy-cw'
+  | 'plant-hatchery'
+  // Six Flags Magic Mountain
+  | 'dc-universe'
+  | 'screampunk-district'
+  | 'the-movie-district'
+  | 'rapids-camp-crossing'
+  | 'baja-ridge'
+  | 'samurai-summit'
+  | 'cyclone-bay'
+  | 'looney-tunes-land'
+  // Universal Studios Hollywood
+  | 'upper-lot'
+  | 'lower-lot'
+  | 'wizarding-world'
+  | 'super-nintendo-world'
+  | 'springfield'
+  | 'jurassic-world-area'
+  | 'citywalk'
+  // Six Flags Great Adventure
+  | 'main-street-sfga'
+  | 'fantasy-forest'
+  | 'adventure-seeker'
+  | 'movietown'
+  | 'frontier-adventures'
+  | 'plaza-del-carnaval'
+  | 'lakefront'
+  | 'safari-kids'
+  // Busch Gardens Tampa Bay
+  | 'morocco'
+  | 'egypt'
+  | 'nairobi'
+  | 'congo'
+  | 'jungala'
+  | 'stanleyville'
+  | 'sesame-street-safari'
+  | 'pantopia'
+  | 'bird-gardens'
+  // Hersheypark
+  | 'chocolatetown'
+  | 'kissing-tower-hill'
+  | 'the-hollow'
+  | 'midway-america'
+  | 'pioneer-frontier'
+  | 'minetown'
+  | 'music-box-way'
+  | 'founders-way'
+  // Dollywood
+  | 'showstreet'
+  | 'craftsmans-valley'
+  | 'timber-canyon'
+  | 'wilderness-pass'
+  | 'jukebox-junction'
+  | 'country-fair-dw'
+  | 'wildwood-grove'
+  | 'adventures-in-imagination'
+  // Universal Islands of Adventure
+  | 'port-of-entry'
+  | 'marvel-super-hero-island'
+  | 'toon-lagoon'
+  | 'skull-island'
+  | 'jurassic-park'
+  | 'wizarding-world-hogsmeade'
+  | 'the-lost-continent'
+  | 'seuss-landing'
+  // Magic Kingdom
+  | 'main-street-usa'
+  | 'adventureland'
+  | 'frontierland-mk'
+  | 'liberty-square'
+  | 'fantasyland'
+  | 'tomorrowland';
 
 export type ThrillLevel = 'low' | 'mild' | 'moderate' | 'high' | 'aggressive';
 

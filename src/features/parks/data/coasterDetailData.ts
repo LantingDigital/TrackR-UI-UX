@@ -1,4 +1,6 @@
 import { EnrichedCoaster } from '../types';
+import { COASTER_BY_ID } from '../../../data/coasterIndex';
+import { COASTER_DETAILS } from '../../../data/coasterDetails';
 
 // ============================================
 // Enriched Coaster Data — Knott's Berry Farm
@@ -363,6 +365,46 @@ export function resolveCoasterId(rawId: string): string {
 /** Look up enriched coaster data by any ID format */
 export function getEnrichedCoaster(rawId: string): EnrichedCoaster | null {
   const resolved = resolveCoasterId(rawId);
-  return ENRICHED_COASTERS[resolved] ?? null;
+
+  // Check curated enriched data first (Knott's Berry Farm)
+  if (ENRICHED_COASTERS[resolved]) {
+    return ENRICHED_COASTERS[resolved];
+  }
+
+  // Fall back to global coaster index + details
+  const entry = COASTER_BY_ID[resolved];
+  if (entry) {
+    const details = COASTER_DETAILS[resolved];
+    const enriched: EnrichedCoaster = {
+      id: entry.id,
+      name: entry.name,
+      park: entry.park,
+      country: entry.country,
+      continent: entry.continent,
+      manufacturer: entry.manufacturer,
+      material: entry.material as EnrichedCoaster['material'],
+      type: entry.type,
+      heightFt: entry.heightFt,
+      speedMph: entry.speedMph,
+      lengthFt: entry.lengthFt,
+      inversions: entry.inversions,
+      yearOpened: entry.yearOpened,
+      dropFt: entry.dropFt,
+      gForce: entry.gForce,
+      duration: entry.duration,
+      propulsion: entry.propulsion,
+      designer: entry.designer,
+      model: entry.model,
+      status: entry.status,
+      imageUrl: entry.imageUrl,
+      description: details?.description,
+      notableFeatures: details?.notableFeatures,
+      records: details?.records,
+      wikiUrl: details?.wikiUrl,
+    };
+    return enriched;
+  }
+
+  return null;
 }
 

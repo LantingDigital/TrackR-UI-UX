@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { StyleSheet, View, FlatList, ListRenderItemInfo, Dimensions, Pressable, Keyboard, Text, TextInput, InteractionManager } from 'react-native';
+import { StyleSheet, View, FlatList, ListRenderItemInfo, Dimensions, Pressable, Keyboard, Text, TextInput, InteractionManager, Alert } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTabFocus } from '../hooks/useTabFocus';
 import { useNavigation } from '@react-navigation/native';
@@ -19,6 +19,7 @@ import Reanimated, {
   withTiming,
   withSpring,
   withDelay,
+  withSequence,
   interpolate,
   Extrapolation,
   runOnJS,
@@ -29,18 +30,29 @@ import { SearchBar, ActionPill, NewsCard, SearchOverlay, SearchModal, MorphingAc
 import { MorphingPill, MorphingPillRef } from '../components/MorphingPill';
 import { LogModal } from '../components/LogModal';
 import { LogConfirmSheet } from '../components/LogConfirmSheet';
-import { WalletCardStack, ScanModal, QuickActionsMenu, GateModeOverlay } from '../components/wallet';
+import { WalletCardStack, ScanModal, QuickActionsMenu, GateModeOverlay, AddTicketFlow } from '../components/wallet';
 import { Ticket } from '../types/wallet';
 import { useWallet } from '../hooks/useWallet';
 import { useTabBar, useSheetTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
+import { FEED_LAYOUT, FeedSection, FriendActivityItem } from '../data/mockFeed';
+import {
+  TrendingCoastersSection,
+  FriendActivitySection,
+  FeaturedParkCard,
+  DailyChallengeCard,
+  GamesSection,
+  DidYouKnowCard,
+  NearbyParksSection,
+} from '../components/feed';
 import { resetOnboarding, getHomeParkName, setHomeParkName } from '../stores/settingsStore';
-import { useTourTarget, useTourContext, emitTourEvent } from '../features/tour';
 import { CoasterSheet } from '../features/parks/components/CoasterSheet';
 import { EnrichedCoaster } from '../features/parks/types';
 import { COASTER_BY_ID } from '../data/coasterIndex';
 import { COASTER_DETAILS } from '../data/coasterDetails';
+import { TrendingCoasterEntry } from '../data/trendingData';
 import { RatingSheet } from '../components/RatingSheet';
+import { ArticleSheet } from '../components/ArticleSheet';
 import { RideActionSheet, RideActionData } from '../components/RideActionSheet';
 import { ParkSwitchConfirmSheet } from '../components/ParkSwitchConfirmSheet';
 import { getPOIByCoasterId } from '../features/parks/data/poiNameMap';
@@ -76,14 +88,14 @@ export const HomeScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
 
-  // ---- Tour targets ----
-  const searchBarTourRef = useTourTarget('home-search-bar');
-  const actionPillsTourRef = useTourTarget('home-action-pills');
-  const newsFeedTourRef = useTourTarget('home-news-feed');
-  const { startTour, registerPill, unregisterPill } = useTourContext();
   const [bookmarkedIds, setBookmarkedIds] = useState<Set<string>>(
     new Set(MOCK_NEWS.filter(item => item.isSaved).map(item => item.id))
   );
+  // Ref mirror of bookmarkedIds — lets renderFeedItem access current state
+  // without being in its dependency array (prevents FlatList re-render cascade)
+  const bookmarkedIdsRef = useRef(bookmarkedIds);
+  bookmarkedIdsRef.current = bookmarkedIds;
+
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchOrigin, setSearchOrigin] = useState<SearchOrigin>('expandedSearchBar');
@@ -92,16 +104,31 @@ export const HomeScreen = () => {
   const [logOrigin, setLogOrigin] = useState<'logPill' | 'logCircle'>('logPill');
   const [scanOrigin, setScanOrigin] = useState<'scanPill' | 'scanCircle'>('scanPill');
   const [walletVisible, setWalletVisible] = useState(false);
+
+  // Ref mirrors of modal visibility — lets the reset handler useEffect register
+  // once (stable deps) while always reading current state via refs.
+  const searchVisibleRef = useRef(searchVisible);
+  searchVisibleRef.current = searchVisible;
+  const logVisibleRef = useRef(logVisible);
+  logVisibleRef.current = logVisible;
+  const walletVisibleRef = useRef(walletVisible);
+  walletVisibleRef.current = walletVisible;
   // Quick actions menu state (for pass long press)
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
   const [selectedQuickActionTicket, setSelectedQuickActionTicket] = useState<Ticket | null>(null);
   // Gate mode state (for scan action from quick menu)
   const [gateModeVisible, setGateModeVisible] = useState(false);
   const [gateModeTicket, setGateModeTicket] = useState<Ticket | null>(null);
+  // Add ticket flow state
+  const [addTicketFlowVisible, setAddTicketFlowVisible] = useState(false);
 
   // Coaster detail sheet
   const [coasterSheetVisible, setCoasterSheetVisible] = useState(false);
   const [selectedCoaster, setSelectedCoaster] = useState<EnrichedCoaster | null>(null);
+
+  // Article sheet (news card tap)
+  const [articleSheetVisible, setArticleSheetVisible] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState<NewsItem | null>(null);
 
   // Log confirmation card (inline within LogModal)
   const [logConfirmCoaster, setLogConfirmCoaster] = useState<{
@@ -125,9 +152,9 @@ export const HomeScreen = () => {
     parkName: string; coasterId: string; rideName: string;
   } | null>(null);
 
-  // Auto-hide tab bar when any search bottom sheet is visible (or navigating to map)
+  // Keep tab bar hidden during map navigation transition (sheets manage their own tab bar)
   const [navigatingToMap, setNavigatingToMap] = useState(false);
-  useSheetTabBar(rideActionVisible || parkSwitchVisible || navigatingToMap);
+  useSheetTabBar(navigatingToMap);
 
   // Modal animation lock — blocks all touches during open/close animations
   const [isModalAnimating, setIsModalAnimating] = useState(false);
@@ -140,7 +167,7 @@ export const HomeScreen = () => {
   const coasterClearTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Wallet context
-  const { stackTickets, setDefaultTicket, markTicketUsed, toggleFavorite, deleteTicket, favoriteTickets, tickets } = useWallet();
+  const { stackTickets, setDefaultTicket, markTicketUsed, toggleFavorite, deleteTicket, favoriteTickets, tickets, addTicket } = useWallet();
 
   // Tab bar context for screen reset functionality
   const tabBarContext = useTabBar();
@@ -169,6 +196,8 @@ export const HomeScreen = () => {
   const searchOriginRef = useRef<'expandedSearchBar' | 'collapsedSearchBar' | 'searchPill' | 'collapsedCircle'>('expandedSearchBar');
   // Ref for the log modal input (allows focusing from sectionsOnly mode)
   const logInputRef = useRef<TextInput>(null);
+  // Ref for the scan modal input (allows focusing after clearing text)
+  const scanInputRef = useRef<TextInput>(null);
   // Ref for MorphingPill (allows triggering open from home search bar tap)
   const morphingPillRef = useRef<MorphingPillRef>(null);
   // Ref for Log MorphingPill (allows triggering open from log button tap)
@@ -177,18 +206,6 @@ export const HomeScreen = () => {
   const scanMorphingPillRef = useRef<MorphingPillRef>(null);
   // Ref for FlatList (allows scroll to top on Home tab tap)
   const flatListRef = useRef<FlatList>(null);
-
-  // Register MorphingPill refs with tour system for programmatic control
-  useEffect(() => {
-    registerPill('log', logMorphingPillRef);
-    registerPill('search', morphingPillRef);
-    registerPill('scan', scanMorphingPillRef);
-    return () => {
-      unregisterPill('log');
-      unregisterPill('search');
-      unregisterPill('scan');
-    };
-  }, [registerPill, unregisterPill]);
 
   // Note: animProgress/animProgressKey/animProgressRef removed
   // — replaced by Reanimated reanimatedProgress shared value
@@ -222,6 +239,21 @@ export const HomeScreen = () => {
   const searchIsClosing = useSharedValue(0);
   const scanIsClosing = useSharedValue(0);
 
+
+  // Screen entrance animation — fade-in + slide-up on mount
+  const screenEntrance = useSharedValue(0);
+
+  useEffect(() => {
+    screenEntrance.value = withTiming(1, {
+      duration: 400,
+      easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+    });
+  }, []);
+
+  const screenEntranceStyle = useAnimatedStyle(() => ({
+    opacity: screenEntrance.value,
+    transform: [{ translateY: interpolate(screenEntrance.value, [0, 1], [20, 0]) }],
+  }));
 
   // Spring config for buttons
   const BUTTON_SPRING_CONFIG = {
@@ -344,6 +376,39 @@ export const HomeScreen = () => {
   const [scanQuery, setScanQuery] = useState('');
   const [debouncedScanQuery, setDebouncedScanQuery] = useState('');
   const scanDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // PRE-WARM: Force Reanimated to JIT-compile all worklets that depend on these shared
+  // values. Strategy: nudge each value to a tiny epsilon via withSequence then snap back.
+  // Reanimated skips animations where start === end, so we must actually change the value
+  // to force worklet evaluation. The epsilon is imperceptible and lasts 0ms.
+  // Each shared value gets its own animation object (they're mutable/consumed on assign).
+  const hasPreWarmedHome = useRef(false);
+  useEffect(() => {
+    if (hasPreWarmedHome.current) return;
+    hasPreWarmedHome.current = true;
+    const eps = 0.001;
+    const nudge0 = () => withSequence(withTiming(eps, { duration: 0 }), withTiming(0, { duration: 0 }));
+    const nudge1 = () => withSequence(withTiming(1 - eps, { duration: 0 }), withTiming(1, { duration: 0 }));
+    // Search modal values
+    pillMorphProgress.value = nudge0();
+    backdropOpacity.value = nudge0();
+    searchContentFade.value = nudge0();
+    searchBarMorphOpacity.value = nudge1();
+    logButtonOpacity.value = nudge1();
+    searchButtonOpacity.value = nudge1();
+    scanButtonOpacity.value = nudge1();
+    // Log modal values
+    logMorphProgress.value = nudge0();
+    logBackdropOpacity.value = nudge0();
+    logContentFade.value = nudge0();
+    // Scan modal values
+    scanBackdropOpacity.value = nudge0();
+    scanContentFade.value = nudge0();
+    // Pill visibility values
+    logPillScrollHidden.value = nudge0();
+    searchPillScrollHidden.value = nudge0();
+    scanPillScrollHidden.value = nudge0();
+  }, []);
 
   // Note: Dropdown cascade animations removed — no focus mode dropdown
 
@@ -471,10 +536,54 @@ export const HomeScreen = () => {
         return;
       }
 
-      // 1. Ignore negative offsets (top bounce territory)
+      // 1. At or above top — always expand if collapsed
       if (offsetY <= 0) {
+        if (isCollapsed.value) {
+          isCollapsed.value = 0;
+          lastStateChangeTimeShared.value = Date.now();
+          logPillScrollHidden.value = 1;
+          searchPillScrollHidden.value = 1;
+          scanPillScrollHidden.value = 1;
+          logPillZIndex.value = 10;
+          searchPillZIndex.value = 10;
+          scanPillZIndex.value = 10;
+          logIsClosing.value = 0;
+          searchIsClosing.value = 0;
+          scanIsClosing.value = 0;
+          logButtonOpacity.value = 1;
+          searchButtonOpacity.value = 1;
+          scanButtonOpacity.value = 1;
+          searchBarMorphOpacity.value = 1;
+          reanimatedProgress.value = withSpring(1, BUTTON_SPRING_CONFIG);
+          buttonProgress0.value = withSpring(1, BUTTON_SPRING_CONFIG);
+          buttonProgress1.value = withDelay(50, withSpring(1, BUTTON_SPRING_CONFIG));
+          buttonProgress2.value = withDelay(100, withSpring(1, BUTTON_SPRING_CONFIG));
+        }
         lastScrollYShared.value = 0;
         return;
+      }
+
+      // 1b. Near the top — force expand if collapsed
+      if (offsetY <= EXPAND_THRESHOLD && isCollapsed.value) {
+        isCollapsed.value = 0;
+        lastStateChangeTimeShared.value = Date.now();
+        logPillScrollHidden.value = 1;
+        searchPillScrollHidden.value = 1;
+        scanPillScrollHidden.value = 1;
+        logPillZIndex.value = 10;
+        searchPillZIndex.value = 10;
+        scanPillZIndex.value = 10;
+        logIsClosing.value = 0;
+        searchIsClosing.value = 0;
+        scanIsClosing.value = 0;
+        logButtonOpacity.value = 1;
+        searchButtonOpacity.value = 1;
+        scanButtonOpacity.value = 1;
+        searchBarMorphOpacity.value = 1;
+        reanimatedProgress.value = withSpring(1, BUTTON_SPRING_CONFIG);
+        buttonProgress0.value = withSpring(1, BUTTON_SPRING_CONFIG);
+        buttonProgress1.value = withDelay(50, withSpring(1, BUTTON_SPRING_CONFIG));
+        buttonProgress2.value = withDelay(100, withSpring(1, BUTTON_SPRING_CONFIG));
       }
 
       // 2. Ignore bottom bounce territory
@@ -555,6 +664,12 @@ export const HomeScreen = () => {
   // The MorphingPill's onOpen callback coordinates external elements (backdrop, content fade)
 
   // Per-origin press handlers
+  // All-origins position map ref — stores pre-computed {x, y} for every possible
+  // origin type. Updated synchronously during render by the useMemo hooks below.
+  // Handlers read from this map to pass position directly to open() without waiting
+  // for React re-render (eliminates requestAnimationFrame delay on first interaction).
+  const allOriginPositionsRef = useRef<Record<string, { x: number; y: number }>>({});
+
   // Search bar press - determines origin based on current collapse state
   const handleSearchBarPress = useCallback(() => {
     if (isModalAnimatingRef.current) return;
@@ -569,11 +684,13 @@ export const HomeScreen = () => {
     setSearchOrigin(origin);
     searchOriginRef.current = origin; // Update ref immediately for callback access
 
-    // Use requestAnimationFrame to ensure state update is processed before open
+    // Use requestAnimationFrame so the MorphingPill wrapper re-renders at the
+    // correct origin position before open() fires. Pass override coords to skip
+    // the async measureInWindow call (eliminates first-open measurement lag).
+    const pos = allOriginPositionsRef.current[origin];
     requestAnimationFrame(() => {
-      if (morphingPillRef.current) {
-        morphingPillRef.current.open();
-        emitTourEvent({ type: 'morphingPill:opened', pillId: 'search' });
+      if (morphingPillRef.current && pos) {
+        morphingPillRef.current.open(pos.x, pos.y);
       }
     });
   }, []);
@@ -592,10 +709,13 @@ export const HomeScreen = () => {
     setSearchOrigin(origin);
     searchOriginRef.current = origin; // Update ref immediately for callback access
 
-    // Use requestAnimationFrame to ensure state update is processed before open
+    // Use requestAnimationFrame so the MorphingPill wrapper re-renders at the
+    // correct origin position before open() fires. Pass override coords to skip
+    // the async measureInWindow call (eliminates first-open measurement lag).
+    const pos = allOriginPositionsRef.current[origin];
     requestAnimationFrame(() => {
-      if (morphingPillRef.current) {
-        morphingPillRef.current.open();
+      if (morphingPillRef.current && pos) {
+        morphingPillRef.current.open(pos.x, pos.y);
       }
     });
   }, []);
@@ -682,8 +802,7 @@ export const HomeScreen = () => {
   }, [toggleFavorite]);
 
   // Quick action: Edit (placeholder - would navigate to edit screen)
-  const handleQuickActionEdit = useCallback((ticket: Ticket) => {
-    console.log('Edit ticket:', ticket.id);
+  const handleQuickActionEdit = useCallback((_ticket: Ticket) => {
     // TODO: Navigate to edit pass screen
   }, []);
 
@@ -726,8 +845,7 @@ export const HomeScreen = () => {
     };
   }, [scanQuery]);
 
-  const handleSearch = useCallback((query: string) => {
-    console.log('Searching for:', query);
+  const handleSearch = useCallback((_query: string) => {
     setSearchVisible(false);
   }, []);
 
@@ -777,7 +895,6 @@ export const HomeScreen = () => {
         Keyboard.dismiss();
         setSelectedCoaster(coaster);
         setCoasterSheetVisible(true);
-        emitTourEvent({ type: 'coasterSheet:opened' });
         isModalAnimatingRef.current = false;
         setIsModalAnimating(false);
       }
@@ -895,6 +1012,127 @@ export const HomeScreen = () => {
   }, []);
 
   // =========================================
+  // Feed Section Navigation Handlers
+  // =========================================
+
+  // Friend Activity → open CoasterSheet for the tapped ride
+  const handleFriendActivityPress = useCallback((item: FriendActivityItem) => {
+    const indexEntry = COASTER_BY_ID[item.coasterId];
+    if (!indexEntry) return;
+    const details = COASTER_DETAILS[item.coasterId];
+    const coaster: EnrichedCoaster = {
+      id: indexEntry.id,
+      name: indexEntry.name,
+      park: indexEntry.park,
+      country: indexEntry.country,
+      continent: indexEntry.continent,
+      manufacturer: indexEntry.manufacturer,
+      material: indexEntry.material as 'Wood' | 'Steel' | 'Hybrid',
+      type: indexEntry.type,
+      heightFt: indexEntry.heightFt,
+      speedMph: indexEntry.speedMph,
+      lengthFt: indexEntry.lengthFt,
+      inversions: indexEntry.inversions,
+      yearOpened: indexEntry.yearOpened,
+      dropFt: indexEntry.dropFt,
+      gForce: indexEntry.gForce,
+      duration: indexEntry.duration,
+      propulsion: indexEntry.propulsion,
+      designer: indexEntry.designer,
+      model: indexEntry.model,
+      status: indexEntry.status,
+      imageUrl: indexEntry.imageUrl,
+      ...details,
+    };
+    setSelectedCoaster(coaster);
+    setCoasterSheetVisible(true);
+  }, []);
+
+  // Trending Coaster → tap opens CoasterSheet
+  const handleTrendingCoasterPress = useCallback((item: TrendingCoasterEntry) => {
+    const indexEntry = COASTER_BY_ID[item.id];
+    if (!indexEntry) return;
+    const details = COASTER_DETAILS[item.id];
+    const coaster: EnrichedCoaster = {
+      id: indexEntry.id,
+      name: indexEntry.name,
+      park: indexEntry.park,
+      country: indexEntry.country,
+      continent: indexEntry.continent,
+      manufacturer: indexEntry.manufacturer,
+      material: indexEntry.material as 'Wood' | 'Steel' | 'Hybrid',
+      type: indexEntry.type,
+      heightFt: indexEntry.heightFt,
+      speedMph: indexEntry.speedMph,
+      lengthFt: indexEntry.lengthFt,
+      inversions: indexEntry.inversions,
+      yearOpened: indexEntry.yearOpened,
+      dropFt: indexEntry.dropFt,
+      gForce: indexEntry.gForce,
+      duration: indexEntry.duration,
+      propulsion: indexEntry.propulsion,
+      designer: indexEntry.designer,
+      model: indexEntry.model,
+      status: indexEntry.status,
+      imageUrl: indexEntry.imageUrl,
+      ...details,
+    };
+    setSelectedCoaster(coaster);
+    setCoasterSheetVisible(true);
+  }, []);
+
+  // Trending Coaster → long press opens RideActionSheet
+  const handleTrendingCoasterLongPress = useCallback((item: TrendingCoasterEntry) => {
+    setRideActionData({
+      id: item.id,
+      name: item.name,
+      parkName: item.park,
+      imageUrl: item.imageUrl,
+    });
+    setRideActionVisible(true);
+  }, []);
+
+  // RideActionSheet → View Rankings (navigate to Community Rankings tab)
+  const handleRideActionViewRankings = useCallback((_ride: RideActionData) => {
+    setRideActionVisible(false);
+    navigation.navigate('CommunityOverlay', { initialTab: 'rankings' });
+  }, [navigation]);
+
+  // Featured Park / Nearby Parks → navigate to Parks tab
+  // (haptic feedback fires inside the component's own onPress handler)
+  const handleParkNavigate = useCallback((_?: any) => {
+    navigation.navigate('Parks');
+  }, [navigation]);
+
+  const handleNavigateCommunity = useCallback(() => {
+    navigation.navigate('CommunityOverlay');
+  }, [navigation]);
+
+  const handleNavigateParks = useCallback(() => {
+    navigation.navigate('Parks');
+  }, [navigation]);
+
+  const handleNavigateCoastle = useCallback(() => {
+    haptics.select();
+    navigation.navigate('Coastle');
+  }, [navigation]);
+
+  const handleNavigateSpeedSorter = useCallback(() => {
+    haptics.select();
+    navigation.navigate('SpeedSorter');
+  }, [navigation]);
+
+  const handleNavigateBlindRanking = useCallback(() => {
+    haptics.select();
+    navigation.navigate('BlindRanking');
+  }, [navigation]);
+
+  const handleNavigateTrivia = useCallback(() => {
+    haptics.select();
+    navigation.navigate('Trivia');
+  }, [navigation]);
+
+  // =========================================
   // Log Modal Handlers
   // =========================================
   const handleLogPress = useCallback(() => {
@@ -903,11 +1141,13 @@ export const HomeScreen = () => {
     const origin = isCollapsed.value ? 'logCircle' : 'logPill';
     setLogOrigin(origin);
 
-    // Use requestAnimationFrame to ensure state update is processed before open
+    // Use requestAnimationFrame so the MorphingPill wrapper re-renders at the
+    // correct origin position before open() fires. Pass override coords to skip
+    // the async measureInWindow call (eliminates first-open measurement lag).
+    const pos = allOriginPositionsRef.current[origin];
     requestAnimationFrame(() => {
-      if (logMorphingPillRef.current) {
-        logMorphingPillRef.current.open();
-        emitTourEvent({ type: 'morphingPill:opened', pillId: 'log' });
+      if (logMorphingPillRef.current && pos) {
+        logMorphingPillRef.current.open(pos.x, pos.y);
       }
     });
   }, []);
@@ -1000,10 +1240,13 @@ export const HomeScreen = () => {
     const origin = isCollapsed.value ? 'scanCircle' : 'scanPill';
     setScanOrigin(origin);
 
-    // Use requestAnimationFrame to ensure state update is processed before open
+    // Use requestAnimationFrame so the MorphingPill wrapper re-renders at the
+    // correct origin position before open() fires. Pass override coords to skip
+    // the async measureInWindow call (eliminates first-open measurement lag).
+    const pos = allOriginPositionsRef.current[origin];
     requestAnimationFrame(() => {
-      if (scanMorphingPillRef.current) {
-        scanMorphingPillRef.current.open();
+      if (scanMorphingPillRef.current && pos) {
+        scanMorphingPillRef.current.open(pos.x, pos.y);
       }
     });
   }, []);
@@ -1014,23 +1257,33 @@ export const HomeScreen = () => {
   }, []);
 
   const handleWalletAddTicket = useCallback(() => {
-    // Close wallet properly using MorphingPill's close method
-    // This ensures the search bar animates back and state is cleaned up
-    scanMorphingPillRef.current?.close();
-    // TODO: Navigate to Profile screen's wallet section
-    console.log('Navigate to Profile to add ticket');
+    // Show AddTicketFlow immediately so it slides up over the scan modal
+    setAddTicketFlowVisible(true);
+    // Close the wallet behind it after the sheet is covering the modal
+    setTimeout(() => {
+      scanMorphingPillRef.current?.close();
+    }, 250);
   }, []);
+
+  const handleAddTicketComplete = useCallback(async (ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'>) => {
+    try {
+      await addTicket(ticketData);
+    } catch (err) {
+      console.error('Failed to add ticket:', err);
+    }
+  }, [addTicket]);
 
   // Register reset handler for Home screen - animates modals closed when tab is pressed
   // Home tab acts as X button - closes any open modal and scrolls to top
+  // Uses refs for modal visibility to avoid re-registering on every modal open/close.
   useEffect(() => {
     const resetHandler = () => {
       // Close modals with animation using MorphingPill refs
-      if (searchVisible && morphingPillRef.current) {
+      if (searchVisibleRef.current && morphingPillRef.current) {
         morphingPillRef.current.close();
-      } else if (logVisible && logMorphingPillRef.current) {
+      } else if (logVisibleRef.current && logMorphingPillRef.current) {
         logMorphingPillRef.current.close();
-      } else if (walletVisible && scanMorphingPillRef.current) {
+      } else if (walletVisibleRef.current && scanMorphingPillRef.current) {
         scanMorphingPillRef.current.close();
       }
 
@@ -1043,7 +1296,7 @@ export const HomeScreen = () => {
     return () => {
       tabBarContext?.unregisterResetHandler('Home');
     };
-  }, [searchVisible, logVisible, walletVisible, tabBarContext, handleWalletClose]);
+  }, [tabBarContext]);
 
   const handleBookmarkPress = useCallback((id: string) => {
     setBookmarkedIds(prev => {
@@ -1058,7 +1311,9 @@ export const HomeScreen = () => {
   }, []);
 
   const handleCardPress = useCallback((item: NewsItem) => {
-    console.log('Card pressed:', item.title);
+    haptics.select();
+    setSelectedArticle(item);
+    setArticleSheetVisible(true);
   }, []);
 
   const renderNewsCard = useCallback(({ item }: ListRenderItemInfo<NewsItem>) => {
@@ -1071,15 +1326,126 @@ export const HomeScreen = () => {
           timestamp={item.timestamp}
           imageUrl={{ uri: item.image }}
           isUnread={item.isUnread}
-          isBookmarked={bookmarkedIds.has(item.id)}
+          isBookmarked={bookmarkedIdsRef.current.has(item.id)}
           onPress={() => handleCardPress(item)}
           onBookmarkPress={() => handleBookmarkPress(item.id)}
         />
       </View>
     );
-  }, [bookmarkedIds, handleCardPress, handleBookmarkPress]);
+  }, [handleCardPress, handleBookmarkPress]);
+
+
+  // Track which MOCK_NEWS index each 'news' section should use
+  const newsIndexCounter = useRef(0);
+
+  // Build the heterogeneous feed data by resolving 'news' sections to actual NewsItem references
+  const feedData = useMemo(() => {
+    newsIndexCounter.current = 0;
+    return FEED_LAYOUT.map((section) => {
+      if (section.type === 'news') {
+        const newsItem = MOCK_NEWS[newsIndexCounter.current % MOCK_NEWS.length];
+        newsIndexCounter.current += 1;
+        return { ...section, newsItem };
+      }
+      return { ...section, newsItem: undefined };
+    });
+  }, []);
+
+  const renderFeedItem = useCallback(({ item }: ListRenderItemInfo<FeedSection & { newsItem?: NewsItem }>) => {
+    switch (item.type) {
+      case 'news': {
+        const newsItem = item.newsItem;
+        if (!newsItem) return null;
+        return (
+          <View style={styles.cardWrapper}>
+            <NewsCard
+              source={newsItem.source}
+              title={newsItem.title}
+              subtitle={newsItem.subtitle}
+              timestamp={newsItem.timestamp}
+              imageUrl={{ uri: newsItem.image }}
+              isUnread={newsItem.isUnread}
+              isBookmarked={bookmarkedIdsRef.current.has(newsItem.id)}
+              onPress={() => handleCardPress(newsItem)}
+              onBookmarkPress={() => handleBookmarkPress(newsItem.id)}
+            />
+          </View>
+        );
+      }
+      case 'trending':
+        return (
+          <View style={styles.feedSectionWrapper}>
+            <TrendingCoastersSection
+              onCoasterPress={handleTrendingCoasterPress}
+              onCoasterLongPress={handleTrendingCoasterLongPress}
+              onSeeAll={handleNavigateCommunity}
+            />
+          </View>
+        );
+      case 'friendActivity':
+        return (
+          <View style={styles.feedSectionWrapper}>
+            <FriendActivitySection
+              onActivityPress={handleFriendActivityPress}
+              onSeeAll={handleNavigateCommunity}
+            />
+          </View>
+        );
+      case 'featuredPark':
+        return (
+          <View style={styles.feedSectionWrapper}>
+            <FeaturedParkCard onPress={handleParkNavigate} />
+          </View>
+        );
+      case 'dailyChallenge':
+        return (
+          <View style={styles.feedSectionWrapper}>
+            <GamesSection
+              onPlayCoastle={handleNavigateCoastle}
+              onPlaySpeedSorter={handleNavigateSpeedSorter}
+              onPlayBlindRanking={handleNavigateBlindRanking}
+              onPlayTrivia={handleNavigateTrivia}
+            />
+          </View>
+        );
+      case 'didYouKnow':
+        return (
+          <View style={styles.feedSectionWrapper}>
+            <DidYouKnowCard />
+          </View>
+        );
+      case 'nearbyParks':
+        return (
+          <View style={styles.feedSectionWrapper}>
+            <NearbyParksSection
+              onParkPress={handleParkNavigate}
+              onSeeAll={handleNavigateParks}
+            />
+          </View>
+        );
+      default:
+        return null;
+    }
+  }, [handleCardPress, handleBookmarkPress, handleTrendingCoasterPress, handleTrendingCoasterLongPress, handleFriendActivityPress, handleParkNavigate, handleNavigateCommunity, handleNavigateParks, handleNavigateCoastle, handleNavigateSpeedSorter, handleNavigateBlindRanking, handleNavigateTrivia]);
+
+  const feedKeyExtractor = useCallback((item: FeedSection) => item.id, []);
 
   const keyExtractor = useCallback((item: NewsItem) => item.id, []);
+
+  // Memoize contentContainerStyle to avoid creating a new object every render
+  const feedContentContainerStyle = useMemo(
+    () => [styles.feedContent, { paddingTop: insets.top + HEADER_HEIGHT_EXPANDED }],
+    [insets.top],
+  );
+
+  // Memoize FlatList callbacks to prevent re-render of the list on every parent render
+  const handleContentSizeChange = useCallback((_w: number, h: number) => {
+    contentHeightShared.value = h;
+  }, []);
+
+  const handleListLayout = useCallback((e: any) => {
+    viewportHeightShared.value = e.nativeEvent.layout.height;
+  }, []);
 
   // Calculate dimensions
   const containerWidth = SCREEN_WIDTH - (HORIZONTAL_PADDING * 2);
@@ -1433,6 +1799,27 @@ export const HomeScreen = () => {
   }, [scanOrigin, insets.top, circleSize, collapsedY, collapsedPositions, expandedY, expandedPositions, pillWidth]);
 
   // =========================================
+  // Pre-computed Origin Position Map (sync update every render)
+  // =========================================
+  // Stores {x, y} for ALL possible origins so press handlers can pass the position
+  // directly to MorphingPill.open() without waiting for a React re-render.
+  // This runs synchronously during render (not in useEffect) so it's always up-to-date
+  // when a handler fires on the same frame.
+  allOriginPositionsRef.current = {
+    // Search origins
+    expandedSearchBar: { x: HORIZONTAL_PADDING, y: insets.top + 12 },
+    searchPill: { x: expandedPositions[1].x - pillWidth / 2, y: insets.top + expandedY - 18 },
+    collapsedSearchBar: { x: REANIMATED_EQUAL_GAP, y: insets.top + 12 },
+    collapsedCircle: { x: collapsedPositions[1].x - circleSize / 2, y: insets.top + collapsedY - circleSize / 2 },
+    // Log origins
+    logPill: { x: expandedPositions[0].x - pillWidth / 2, y: insets.top + expandedY - 18 },
+    logCircle: { x: collapsedPositions[0].x - circleSize / 2, y: insets.top + collapsedY - circleSize / 2 },
+    // Scan origins
+    scanPill: { x: expandedPositions[2].x - pillWidth / 2, y: insets.top + expandedY - 18 },
+    scanCircle: { x: collapsedPositions[2].x - circleSize / 2, y: insets.top + collapsedY - circleSize / 2 },
+  };
+
+  // =========================================
   // Dynamic Scan Pill Content Based on Origin
   // =========================================
   // Returns appropriate content for the Scan MorphingPill's closed state
@@ -1513,24 +1900,24 @@ export const HomeScreen = () => {
       <View style={styles.mainContentWrapper}>
       {/* News Feed - comes first, header floats over it */}
       {/* Content starts below status bar + header, but can scroll behind both */}
-      <View ref={newsFeedTourRef} style={{ flex: 1 }} collapsable={false}>
+      <Reanimated.View style={[{ flex: 1 }, screenEntranceStyle]}>
       <Reanimated.FlatList
         ref={flatListRef}
-        data={MOCK_NEWS}
-        keyExtractor={keyExtractor}
-        renderItem={renderNewsCard}
-        contentContainerStyle={[styles.feedContent, { paddingTop: insets.top + HEADER_HEIGHT_EXPANDED }]}
+        data={feedData as any}
+        keyExtractor={feedKeyExtractor as any}
+        renderItem={renderFeedItem as any}
+        contentContainerStyle={feedContentContainerStyle}
         showsVerticalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
-        initialNumToRender={3}
+        initialNumToRender={4}
         maxToRenderPerBatch={3}
-        windowSize={5}
+        windowSize={7}
         removeClippedSubviews={true}
-        onContentSizeChange={(_w: number, h: number) => { contentHeightShared.value = h; }}
-        onLayout={(e: any) => { viewportHeightShared.value = e.nativeEvent.layout.height; }}
+        onContentSizeChange={handleContentSizeChange}
+        onLayout={handleListLayout}
       />
-      </View>
+      </Reanimated.View>
 
       {/* Fog Gradient Overlay - warmer tone with longer gradual fade section */}
       {/* Fixed height at expanded size; scaleY transform shrinks it when collapsed. */}
@@ -1573,7 +1960,6 @@ export const HomeScreen = () => {
       {/* overflow: visible allows button animations to extend beyond container */}
       {/* No animated height - let content flow naturally, fog handles the visual boundary */}
       <View
-        ref={searchBarTourRef}
         style={[
           styles.stickyHeader,
           {
@@ -1668,7 +2054,7 @@ export const HomeScreen = () => {
       {/* Action Buttons — OUTSIDE stickyHeader so they render ABOVE pill shadows (z=10)
           while remaining BELOW modal backdrops (z=50). Static z=11 keeps buttons above
           pill wrappers (z=10) so pill shadow renders behind buttons at rest. */}
-      <Reanimated.View ref={actionPillsTourRef} style={[styles.morphingButtonsContainer, { top: insets.top, zIndex: 11 }, actionButtonsAnimatedStyle]} pointerEvents={searchVisible || logVisible ? 'none' : 'box-none'}>
+      <Reanimated.View style={[styles.morphingButtonsContainer, { top: insets.top, zIndex: 11 }, actionButtonsAnimatedStyle]} pointerEvents={searchVisible || logVisible ? 'none' : 'box-none'}>
         {/* Log Button */}
         <Reanimated.View style={logButtonAnimatedStyle}>
           <MorphingActionButton
@@ -1956,6 +2342,9 @@ export const HomeScreen = () => {
           pillHeight={logOriginPosition.height}
           pillBorderRadius={logOriginPosition.borderRadius}
           pillContent={logPillContent}
+          // Pre-computed origin position eliminates measureInWindow async call on first open
+          originScreenX={logOriginPosition.left}
+          originScreenY={logOriginPosition.top}
           expandedWidth={SCREEN_WIDTH - 32}
           expandedHeight={56}
           expandedBorderRadius={16}
@@ -2005,7 +2394,8 @@ export const HomeScreen = () => {
           )}
           showBackdrop={false}
           onOpen={() => {
-            // Trigger the existing log modal experience
+            // Keep-alive pattern: content stays mounted after first open, so no JS-thread
+            // mount work on subsequent opens. Safe to set synchronously.
             setLogVisible(true);
             // Bring pill wrapper above backdrop/fog (UI-thread sync)
             logPillZIndex.value = 200;
@@ -2097,6 +2487,11 @@ export const HomeScreen = () => {
           pillHeight={originPosition.height}
           pillBorderRadius={originPosition.borderRadius}
           pillContent={searchPillContent}
+          // Pre-computed origin position eliminates measureInWindow async call on first open.
+          // Without this, the first tap triggers an async native bridge measurement that
+          // delays animation start by 1-3 frames (the "first open lag").
+          originScreenX={originPosition.left}
+          originScreenY={originPosition.top}
           expandedWidth={SCREEN_WIDTH - 32}
           expandedHeight={56}
           expandedBorderRadius={16}
@@ -2141,7 +2536,7 @@ export const HomeScreen = () => {
                   isEmbedded={true}
                   inputOnly={true}
                   showCloseButton={false}
-                  onQueryChange={(q: string) => { setSearchQuery(q); emitTourEvent({ type: 'search:queryChanged', query: q }); }}
+                  onQueryChange={(q: string) => { setSearchQuery(q); }}
                   externalQuery={searchQuery}
                 />
               </View>
@@ -2178,7 +2573,8 @@ export const HomeScreen = () => {
             searchContentFade.value = 0;
             backdropOpacity.value = 0;
 
-            // Trigger the existing search modal experience
+            // Keep-alive pattern: content stays mounted after first open, so no JS-thread
+            // mount work on subsequent opens. Safe to set synchronously.
             setSearchVisible(true);
             // Bring pill wrapper above backdrop/fog (UI-thread sync)
             searchPillZIndex.value = 200;
@@ -2383,7 +2779,7 @@ export const HomeScreen = () => {
             onClose={() => scanMorphingPillRef.current?.close()}
             onAddTicket={handleWalletAddTicket}
             onSetDefault={setDefaultTicket}
-            onTicketPress={(ticket) => console.log('Ticket pressed:', ticket.id)}
+            onTicketPress={(ticket) => {}}
             onTicketLongPress={handlePassLongPress}
             isEmbedded={true}
             sectionsOnly={true}
@@ -2410,6 +2806,9 @@ export const HomeScreen = () => {
           pillHeight={scanOriginPosition.height}
           pillBorderRadius={scanOriginPosition.borderRadius}
           pillContent={scanPillContent}
+          // Pre-computed origin position eliminates measureInWindow async call on first open
+          originScreenX={scanOriginPosition.left}
+          originScreenY={scanOriginPosition.top}
           expandedWidth={SCREEN_WIDTH - 32}
           expandedHeight={56}
           expandedBorderRadius={16}
@@ -2428,11 +2827,21 @@ export const HomeScreen = () => {
                   isEmbedded={true}
                   inputOnly={true}
                   onQueryChange={handleScanQueryChange}
+                  externalInputRef={scanInputRef}
+                  externalQuery={scanQuery}
                 />
               </View>
-              {/* X Close Button */}
+              {/* X Close Button — clears text first, then closes if empty */}
               <Pressable
-                onPress={close}
+                onPress={() => {
+                  if (scanQuery.length > 0) {
+                    setScanQuery('');
+                    setDebouncedScanQuery('');
+                    scanInputRef.current?.focus();
+                  } else {
+                    close();
+                  }
+                }}
                 style={{
                   width: 40,
                   height: 40,
@@ -2509,22 +2918,32 @@ export const HomeScreen = () => {
       </Reanimated.View>
 
       {/* Quick Actions Menu (appears on pass long press) */}
-      <QuickActionsMenu
-        visible={quickActionsVisible}
-        ticket={selectedQuickActionTicket}
-        onClose={handleCloseQuickActions}
-        onScan={handleQuickActionScan}
-        onToggleFavorite={handleQuickActionToggleFavorite}
-        onEdit={handleQuickActionEdit}
-        onDelete={handleQuickActionDelete}
-        favoritesLimitReached={favoritesLimitReached}
-      />
+      {(quickActionsVisible || selectedQuickActionTicket) && (
+        <QuickActionsMenu
+          visible={quickActionsVisible}
+          ticket={selectedQuickActionTicket}
+          onClose={handleCloseQuickActions}
+          onScan={handleQuickActionScan}
+          onToggleFavorite={handleQuickActionToggleFavorite}
+          onEdit={handleQuickActionEdit}
+          onDelete={handleQuickActionDelete}
+          favoritesLimitReached={favoritesLimitReached}
+        />
+      )}
 
       {/* Gate Mode Overlay (appears when scanning from quick actions) */}
       <GateModeOverlay
         ticket={gateModeTicket}
         visible={gateModeVisible}
         onClose={handleCloseGateMode}
+      />
+
+      {/* Add Ticket Flow (full-screen wizard for scanning/importing passes) */}
+      <AddTicketFlow
+        visible={addTicketFlowVisible}
+        onClose={() => setAddTicketFlowVisible(false)}
+        onComplete={handleAddTicketComplete}
+        existingTickets={tickets}
       />
 
       {/* Coastle FAB — hidden when any MorphingPill modal is active */}
@@ -2579,19 +2998,6 @@ export const HomeScreen = () => {
         </Pressable>
       )}
 
-      {/* Tour FAB — dev/testing button */}
-      {__DEV__ && !searchVisible && !logVisible && !walletVisible && (
-        <Pressable
-          onPress={() => { haptics.select(); startTour(); }}
-          style={[
-            styles.tourFab,
-            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
-          ]}
-        >
-          <Ionicons name="help-circle-outline" size={22} color={colors.text.inverse} />
-        </Pressable>
-      )}
-
       {/* Spinner Preview FAB — dev/testing button */}
       {__DEV__ && !searchVisible && !logVisible && !walletVisible && (
         <Pressable
@@ -2620,31 +3026,46 @@ export const HomeScreen = () => {
         }}
       />
 
-      {/* Ride Action Sheet — long-press search result bottom sheet */}
-      <RideActionSheet
-        ride={rideActionData}
-        visible={rideActionVisible}
+      {/* Article Sheet — opens from news card taps */}
+      <ArticleSheet
+        article={selectedArticle}
+        visible={articleSheetVisible}
         onClose={() => {
-          setRideActionVisible(false);
+          setArticleSheetVisible(false);
+          setTimeout(() => setSelectedArticle(null), 400);
         }}
-        onDismissStart={() => {
-          searchContentFade.value = withTiming(1, { duration: 250 });
-        }}
-        onViewDetails={handleRideActionViewDetails}
-        onViewOnMap={handleRideActionViewOnMap}
-        onLogRide={handleRideActionLogRide}
-        hasMapPOI={rideActionHasMapPOI}
       />
 
+      {/* Ride Action Sheet — long-press search result bottom sheet */}
+      {(rideActionVisible || rideActionData) && (
+        <RideActionSheet
+          ride={rideActionData}
+          visible={rideActionVisible}
+          onClose={() => {
+            setRideActionVisible(false);
+          }}
+          onDismissStart={() => {
+            searchContentFade.value = withTiming(1, { duration: 250 });
+          }}
+          onViewDetails={handleRideActionViewDetails}
+          onViewOnMap={handleRideActionViewOnMap}
+          onLogRide={handleRideActionLogRide}
+          onViewRankings={handleRideActionViewRankings}
+          hasMapPOI={rideActionHasMapPOI}
+        />
+      )}
+
       {/* Park Switch Confirmation — "View on Map" at different park */}
-      <ParkSwitchConfirmSheet
-        visible={parkSwitchVisible}
-        currentParkName={getHomeParkName() ?? 'None'}
-        targetParkName={parkSwitchTarget?.parkName ?? ''}
-        rideName={parkSwitchTarget?.rideName ?? ''}
-        onConfirm={handleParkSwitchConfirm}
-        onCancel={handleParkSwitchCancel}
-      />
+      {parkSwitchVisible && (
+        <ParkSwitchConfirmSheet
+          visible={parkSwitchVisible}
+          currentParkName={getHomeParkName() ?? 'None'}
+          targetParkName={parkSwitchTarget?.parkName ?? ''}
+          rideName={parkSwitchTarget?.rideName ?? ''}
+          onConfirm={handleParkSwitchConfirm}
+          onCancel={handleParkSwitchCancel}
+        />
+      )}
 
       {/* Log Confirmation Sheet — bottom sheet above pill, below LOG header */}
       <LogConfirmSheet
@@ -2661,17 +3082,19 @@ export const HomeScreen = () => {
       />
 
       {/* Rating Sheet — full criteria rating for a coaster (z-index 1000 to appear above everything) */}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000 }} pointerEvents={ratingSheetVisible ? 'auto' : 'none'}>
-        <RatingSheet
-          visible={ratingSheetVisible}
-          coasterId={ratingCoaster?.id ?? ''}
-          coasterName={ratingCoaster?.name ?? ''}
-          parkName={ratingCoaster?.parkName ?? ''}
-          existingRating={ratingExisting}
-          onClose={handleRatingClose}
-          onComplete={handleRatingComplete}
-        />
-      </View>
+      {(ratingSheetVisible || ratingCoaster) && (
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000 }} pointerEvents={ratingSheetVisible ? 'auto' : 'none'}>
+          <RatingSheet
+            visible={ratingSheetVisible}
+            coasterId={ratingCoaster?.id ?? ''}
+            coasterName={ratingCoaster?.name ?? ''}
+            parkName={ratingCoaster?.parkName ?? ''}
+            existingRating={ratingExisting}
+            onClose={handleRatingClose}
+            onComplete={handleRatingComplete}
+          />
+        </View>
+      )}
 
       {/* Touch-blocking overlay during modal animations — prevents glitched states */}
       {isModalAnimating && (
@@ -2734,10 +3157,14 @@ const styles = StyleSheet.create({
   },
   feedContent: {
     paddingHorizontal: 16,
-    paddingBottom: 20,
+    paddingBottom: 100,
   },
   cardWrapper: {
-    marginBottom: 12,
+    marginBottom: spacing.lg,
+  },
+  feedSectionWrapper: {
+    marginTop: spacing.lg,
+    marginBottom: spacing.base,
   },
   coastleFab: {
     position: 'absolute',
@@ -2782,18 +3209,6 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 24,
     backgroundColor: colors.text.secondary,
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 40,
-    ...shadows.small,
-  },
-  tourFab: {
-    position: 'absolute',
-    right: spacing.lg + (48 + spacing.base) * 4,
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#5B8DEF',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 40,

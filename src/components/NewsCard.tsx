@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, Pressable, ImageSourcePropType } from 'react-native';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { Image, ImageSource } from 'expo-image';
 import Animated from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { useSpringPress } from '../hooks/useSpringPress';
@@ -9,7 +10,7 @@ interface NewsCardProps {
   title: string;
   subtitle: string;
   timestamp: string;
-  imageUrl: ImageSourcePropType;
+  imageUrl: ImageSource;
   isUnread?: boolean;
   isBookmarked?: boolean;
   onPress?: () => void;
@@ -41,7 +42,7 @@ export const NewsCard = React.memo<NewsCardProps>(({
         onPressOut={pressHandlers.onPressOut}
       >
         <View style={styles.imageContainer}>
-          <Image source={imageUrl} style={styles.image} resizeMode="cover" />
+          <Image source={imageUrl} style={styles.image} contentFit="cover" cachePolicy="memory-disk" />
           {isUnread && <View style={styles.unreadDot} />}
           <Pressable
             style={styles.bookmarkButton}

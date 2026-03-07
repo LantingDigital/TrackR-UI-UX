@@ -8,6 +8,7 @@
  * Pattern: Simple functional store with getters and setters
  */
 
+import { useEffect, useReducer } from 'react';
 import {
   RideLog,
   RideLogState,
@@ -27,6 +28,18 @@ import {
 let state: RideLogState = { ...DEFAULT_RIDE_LOG_STATE };
 let listeners: Set<() => void> = new Set();
 
+// Cached snapshot for useRideLogStore — invalidated on notifyListeners().
+let cachedSnapshot: RideLogSnapshot | null = null;
+interface RideLogSnapshot {
+  logs: RideLog[];
+  creditCount: number;
+  totalRideCount: number;
+  ratings: CoasterRating[];
+  unratedCoasters: Array<{ coasterId: string; coasterName: string; parkName: string }>;
+  criteria: RatingCriteria[];
+  hasCompletedCriteriaSetup: boolean;
+}
+
 // ============================================
 // Subscription System
 // ============================================
@@ -45,6 +58,7 @@ export function subscribe(listener: () => void): () => void {
  * Notify all listeners of state change
  */
 function notifyListeners(): void {
+  cachedSnapshot = null; // Invalidate so next getRideLogSnapshot() rebuilds
   listeners.forEach((listener) => listener());
 }
 
@@ -383,9 +397,43 @@ export function resetStore(): void {
 // React Hook for consuming store
 // ============================================
 
+// Stable actions object — module-level functions never change identity.
+const stableActions = {
+  addQuickLog,
+  updateLogNotes,
+  deleteLog,
+  upsertCoasterRating,
+  getRatingForCoaster,
+  deleteRating,
+  hasLogForCoaster,
+  updateCriteria,
+  completeCriteriaSetup,
+  resetStore,
+  subscribe,
+} as const;
+
+function buildRideLogSnapshot(): RideLogSnapshot {
+  return {
+    logs: getAllLogs(),
+    creditCount: getCreditCount(),
+    totalRideCount: getTotalRideCount(),
+    ratings: getAllRatings(),
+    unratedCoasters: getUnratedCoasters(),
+    criteria: getCriteria(),
+    hasCompletedCriteriaSetup: hasCompletedCriteriaSetup(),
+  };
+}
+
+function getRideLogSnapshot(): RideLogSnapshot {
+  if (!cachedSnapshot) {
+    cachedSnapshot = buildRideLogSnapshot();
+  }
+  return cachedSnapshot;
+}
+
 /**
- * Custom hook to use ride log store in React components
- * Re-renders component when store changes
+ * Custom hook to use ride log store in React components.
+ * Subscribes to store changes and re-renders when state updates.
  *
  * Usage:
  * ```tsx
@@ -393,41 +441,18 @@ export function resetStore(): void {
  * ```
  */
 export function useRideLogStore() {
-  // This is a placeholder - actual implementation would use
-  // useSyncExternalStore or useState + useEffect
-  // For now, components can import functions directly
+  const [, forceUpdate] = useReducer((x: number) => x + 1, 0);
+
+  useEffect(() => {
+    const unsub = subscribe(forceUpdate);
+    return unsub;
+  }, []);
+
+  const snapshot = getRideLogSnapshot();
+
   return {
-    // Log state
-    logs: getAllLogs(),
-    creditCount: getCreditCount(),
-    totalRideCount: getTotalRideCount(),
-
-    // Rating state
-    ratings: getAllRatings(),
-    unratedCoasters: getUnratedCoasters(),
-
-    // Criteria state
-    criteria: getCriteria(),
-    hasCompletedCriteriaSetup: hasCompletedCriteriaSetup(),
-
-    // Log actions
-    addQuickLog,
-    updateLogNotes,
-    deleteLog,
-
-    // Rating actions
-    upsertCoasterRating,
-    getRatingForCoaster,
-    deleteRating,
-    hasLogForCoaster,
-
-    // Criteria actions
-    updateCriteria,
-    completeCriteriaSetup,
-    resetStore,
-
-    // Subscription
-    subscribe,
+    ...snapshot,
+    ...stableActions,
   };
 }
 

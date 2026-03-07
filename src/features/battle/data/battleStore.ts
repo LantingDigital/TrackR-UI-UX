@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COASTER_DATABASE } from '../../coastle/data/coastleDatabase';
 import type {
@@ -290,6 +290,14 @@ export function getBattleState(): BattleState {
 // ============================================
 // React Hook
 // ============================================
+// Stable actions — module-level functions are already stable references.
+const stableBattleActions = {
+  initBattle,
+  submitBattle,
+  getCurrentMatchup,
+  getBattleResults,
+} as const;
+
 export function useBattleStore() {
   const [, forceUpdate] = useReducer((x: number) => x + 1, 0);
 
@@ -306,9 +314,6 @@ export function useBattleStore() {
     results: state.results,
     matchups: state.matchups,
     isComplete: state.isComplete,
-    initBattle: useCallback(initBattle, []),
-    submitBattle: useCallback(submitBattle, []),
-    getCurrentMatchup: useCallback(getCurrentMatchup, []),
-    getBattleResults: useCallback(getBattleResults, []),
+    ...stableBattleActions,
   };
 }

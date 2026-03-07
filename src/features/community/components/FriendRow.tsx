@@ -23,7 +23,7 @@ interface FriendRowProps {
   onPress: (friendId: string) => void;
 }
 
-export function FriendRow({ friend, onPress }: FriendRowProps) {
+export const FriendRow = React.memo(function FriendRow({ friend, onPress }: FriendRowProps) {
   const press = useCardPress();
 
   return (
@@ -50,7 +50,7 @@ export function FriendRow({ friend, onPress }: FriendRowProps) {
       </Animated.View>
     </Pressable>
   );
-}
+});
 
 const styles = StyleSheet.create({
   card: {

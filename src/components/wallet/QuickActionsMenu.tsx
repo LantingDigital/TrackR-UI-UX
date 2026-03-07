@@ -1,7 +1,7 @@
 /**
  * QuickActionsMenu Component
  *
- * Custom branded popup menu for pass quick actions.
+ * Bottom sheet for pass quick actions, matching the RideActionSheet pattern.
  * Appears on long-press of a pass card.
  *
  * Actions:
@@ -11,31 +11,42 @@
  * - Delete: Remove pass (with confirmation styling)
  *
  * Design:
- * - Floating card with blur backdrop
- * - Spring animation entrance/exit
- * - Light haptic feedback on actions
- * - Matches app's premium aesthetic
+ * - Bottom sheet with blur backdrop (matches RideActionSheet)
+ * - Drag handle for dismiss gesture
+ * - Reanimated spring entrance, timing exit
+ * - Haptic feedback on actions
+ * - Uses theme constants throughout
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Modal,
   Pressable,
-  Animated,
-  Dimensions,
 } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  runOnJS,
+} from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
-import { Ticket } from '../../types/wallet';
+import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
 import { colors } from '../../theme/colors';
+import { typography } from '../../theme/typography';
+import { spacing } from '../../theme/spacing';
 import { radius } from '../../theme/radius';
+import { shadows } from '../../theme/shadows';
 import { SPRINGS } from '../../constants/animations';
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+// ============================================
+// Types
+// ============================================
 
 interface QuickActionsMenuProps {
   /** Whether the menu is visible */
@@ -56,6 +67,12 @@ interface QuickActionsMenuProps {
   favoritesLimitReached?: boolean;
 }
 
+// ============================================
+// Component
+// ============================================
+
+const SHEET_DISMISS_OFFSET = 500;
+
 export const QuickActionsMenu: React.FC<QuickActionsMenuProps> = ({
   visible,
   ticket,
@@ -66,371 +83,351 @@ export const QuickActionsMenu: React.FC<QuickActionsMenuProps> = ({
   onDelete,
   favoritesLimitReached = false,
 }) => {
-  // Animation values
-  const backdropOpacity = useRef(new Animated.Value(0)).current;
-  const menuScale = useRef(new Animated.Value(0.9)).current;
-  const menuOpacity = useRef(new Animated.Value(0)).current;
-  const menuTranslateY = useRef(new Animated.Value(20)).current;
+  const insets = useSafeAreaInsets();
+  const translateY = useSharedValue(SHEET_DISMISS_OFFSET);
+  const backdropOpacity = useSharedValue(0);
 
-  // Animate in/out
   useEffect(() => {
-    if (visible) {
-      // Animate in
-      Animated.parallel([
-        Animated.timing(backdropOpacity, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-        Animated.spring(menuScale, {
-          toValue: 1,
-          ...SPRINGS.responsive,
-          useNativeDriver: true,
-        }),
-        Animated.spring(menuOpacity, {
-          toValue: 1,
-          ...SPRINGS.responsive,
-          useNativeDriver: true,
-        }),
-        Animated.spring(menuTranslateY, {
-          toValue: 0,
-          ...SPRINGS.responsive,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    } else {
-      // Animate out
-      Animated.parallel([
-        Animated.timing(backdropOpacity, {
-          toValue: 0,
-          duration: 150,
-          useNativeDriver: true,
-        }),
-        Animated.timing(menuScale, {
-          toValue: 0.9,
-          duration: 150,
-          useNativeDriver: true,
-        }),
-        Animated.timing(menuOpacity, {
-          toValue: 0,
-          duration: 150,
-          useNativeDriver: true,
-        }),
-        Animated.timing(menuTranslateY, {
-          toValue: 20,
-          duration: 150,
-          useNativeDriver: true,
-        }),
-      ]).start();
+    if (visible && ticket) {
+      translateY.value = withSpring(0, SPRINGS.responsive);
+      backdropOpacity.value = withTiming(1, { duration: 250 });
+    } else if (!visible) {
+      translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 });
+      backdropOpacity.value = withTiming(0, { duration: 200 });
     }
-  }, [visible]);
+  }, [visible, ticket]);
 
-  // Handle action press with haptic feedback
-  const handleAction = (action: () => void) => {
+  const dismiss = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    action();
-    onClose();
-  };
+    translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 }, (finished) => {
+      if (finished) runOnJS(onClose)();
+    });
+    backdropOpacity.value = withTiming(0, { duration: 200 });
+  }, [onClose]);
 
-  // Handle backdrop press
-  const handleBackdropPress = () => {
+  const handleAction = useCallback((action: () => void) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    onClose();
-  };
+    translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 }, (finished) => {
+      if (finished) {
+        runOnJS(action)();
+        runOnJS(onClose)();
+      }
+    });
+    backdropOpacity.value = withTiming(0, { duration: 200 });
+  }, [onClose]);
+
+  const sheetStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+  }));
+
+  const backdropStyle = useAnimatedStyle(() => ({
+    opacity: backdropOpacity.value,
+  }));
 
   if (!ticket) return null;
 
   const isFavorite = ticket.isFavorite;
   const canPin = isFavorite || !favoritesLimitReached;
+  const passTypeLabel = PASS_TYPE_LABELS[ticket.passType] || ticket.passType;
 
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="none"
-      statusBarTranslucent
-      onRequestClose={onClose}
-    >
-      {/* Blur Backdrop */}
-      <Animated.View style={[styles.backdrop, { opacity: backdropOpacity }]}>
-        <Pressable style={styles.backdropPressable} onPress={handleBackdropPress}>
-          <BlurView intensity={20} tint="dark" style={styles.blurView} />
-        </Pressable>
+    <View style={styles.overlay} pointerEvents={visible ? 'auto' : 'none'}>
+      {/* Backdrop */}
+      <Animated.View style={[StyleSheet.absoluteFill, backdropStyle]}>
+        <BlurView intensity={15} tint="light" style={StyleSheet.absoluteFill}>
+          <Pressable style={StyleSheet.absoluteFill} onPress={dismiss} />
+        </BlurView>
       </Animated.View>
 
-      {/* Menu Card */}
-      <View style={styles.menuContainer}>
-        <Animated.View
-          style={[
-            styles.menuCard,
-            {
-              opacity: menuOpacity,
-              transform: [
-                { scale: menuScale },
-                { translateY: menuTranslateY },
-              ],
-            },
-          ]}
-        >
-          {/* Header with pass info */}
-          <View style={styles.header}>
-            <Text style={styles.headerTitle} numberOfLines={1}>
-              {ticket.parkName}
-            </Text>
-            <Text style={styles.headerSubtitle}>Quick Actions</Text>
+      {/* Sheet */}
+      <Animated.View
+        style={[
+          styles.sheet,
+          { paddingBottom: insets.bottom + spacing.xl },
+          sheetStyle,
+        ]}
+      >
+        {/* Drag handle */}
+        <View style={styles.handleRow}>
+          <View style={styles.handle} />
+        </View>
+
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.name} numberOfLines={2}>
+            {ticket.parkName}
+          </Text>
+          <View style={styles.meta}>
+            <View style={styles.typeBadge}>
+              <Text style={styles.typeBadgeText}>{passTypeLabel}</Text>
+            </View>
+            {ticket.passholder && (
+              <Text style={styles.passholder}>{ticket.passholder}</Text>
+            )}
           </View>
+        </View>
 
-          {/* Divider */}
-          <View style={styles.divider} />
+        {/* Divider */}
+        <View style={styles.divider} />
 
-          {/* Action Buttons */}
-          <View style={styles.actionsContainer}>
-            {/* Scan Action */}
-            <Pressable
-              style={({ pressed }) => [
-                styles.actionButton,
-                pressed && styles.actionButtonPressed,
-              ]}
-              onPress={() => onScan && handleAction(() => onScan(ticket))}
-            >
-              <View style={[styles.actionIcon, styles.actionIconScan]}>
-                <Ionicons name="scan" size={20} color={colors.accent.primary} />
-              </View>
-              <View style={styles.actionTextContainer}>
-                <Text style={styles.actionTitle}>Scan</Text>
-                <Text style={styles.actionSubtitle}>Open at gate</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={18} color="#CCCCCC" />
-            </Pressable>
-
-            {/* Pin/Unpin Action */}
-            <Pressable
-              style={({ pressed }) => [
-                styles.actionButton,
-                pressed && styles.actionButtonPressed,
-                !canPin && styles.actionButtonDisabled,
-              ]}
-              onPress={() => canPin && onToggleFavorite && handleAction(() => onToggleFavorite(ticket))}
-              disabled={!canPin}
-            >
-              <View style={[styles.actionIcon, styles.actionIconFavorite]}>
-                <Ionicons
-                  name={isFavorite ? 'star' : 'star-outline'}
-                  size={20}
-                  color={isFavorite ? '#FFD700' : '#666666'}
-                />
-              </View>
-              <View style={styles.actionTextContainer}>
-                <Text style={[styles.actionTitle, !canPin && styles.actionTitleDisabled]}>
-                  {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-                </Text>
-                <Text style={styles.actionSubtitle}>
-                  {!canPin && !isFavorite ? 'Max 3 favorites reached' : (isFavorite ? 'Currently favorited' : 'Quick access')}
-                </Text>
-              </View>
-              {canPin && <Ionicons name="chevron-forward" size={18} color="#CCCCCC" />}
-            </Pressable>
-
-            {/* Edit Action */}
-            <Pressable
-              style={({ pressed }) => [
-                styles.actionButton,
-                pressed && styles.actionButtonPressed,
-              ]}
-              onPress={() => onEdit && handleAction(() => onEdit(ticket))}
-            >
-              <View style={[styles.actionIcon, styles.actionIconEdit]}>
-                <Ionicons name="pencil" size={20} color="#007AFF" />
-              </View>
-              <View style={styles.actionTextContainer}>
-                <Text style={styles.actionTitle}>Edit</Text>
-                <Text style={styles.actionSubtitle}>Modify pass details</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={18} color="#CCCCCC" />
-            </Pressable>
-
-            {/* Divider before destructive action */}
-            <View style={styles.dividerThin} />
-
-            {/* Delete Action */}
-            <Pressable
-              style={({ pressed }) => [
-                styles.actionButton,
-                pressed && styles.actionButtonPressed,
-              ]}
-              onPress={() => onDelete && handleAction(() => onDelete(ticket))}
-            >
-              <View style={[styles.actionIcon, styles.actionIconDelete]}>
-                <Ionicons name="trash" size={20} color="#FF3B30" />
-              </View>
-              <View style={styles.actionTextContainer}>
-                <Text style={[styles.actionTitle, styles.actionTitleDestructive]}>Delete</Text>
-                <Text style={styles.actionSubtitle}>Remove this pass</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={18} color="#CCCCCC" />
-            </Pressable>
-          </View>
-
-          {/* Cancel Button */}
+        {/* Actions */}
+        <View style={styles.actions}>
+          {/* Scan — Primary action */}
           <Pressable
+            onPress={() => onScan && handleAction(() => onScan(ticket))}
             style={({ pressed }) => [
-              styles.cancelButton,
-              pressed && styles.cancelButtonPressed,
+              styles.actionRow,
+              styles.actionPrimary,
+              pressed && styles.actionPrimaryPressed,
             ]}
-            onPress={handleBackdropPress}
           >
-            <Text style={styles.cancelButtonText}>Cancel</Text>
+            <View style={styles.actionIconWrap}>
+              <Ionicons name="scan" size={18} color={colors.text.inverse} />
+            </View>
+            <Text style={styles.actionPrimaryText}>Scan at Gate</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={18}
+              color={colors.text.inverse}
+              style={styles.chevron}
+            />
           </Pressable>
-        </Animated.View>
-      </View>
-    </Modal>
+
+          {/* Toggle Favorite */}
+          <Pressable
+            onPress={() => canPin && onToggleFavorite && handleAction(() => onToggleFavorite(ticket))}
+            disabled={!canPin}
+            style={({ pressed }) => [
+              styles.actionRow,
+              styles.actionSecondary,
+              pressed && styles.actionSecondaryPressed,
+              !canPin && styles.actionDisabled,
+            ]}
+          >
+            <View style={[styles.actionIconWrap, styles.actionIconSecondary]}>
+              <Ionicons
+                name={isFavorite ? 'star' : 'star-outline'}
+                size={18}
+                color={isFavorite ? '#FFD700' : colors.accent.primary}
+              />
+            </View>
+            <View style={styles.actionTextWrap}>
+              <Text style={[styles.actionSecondaryText, !canPin && styles.actionTextDisabled]}>
+                {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              </Text>
+              {!canPin && !isFavorite && (
+                <Text style={styles.actionHint}>Max 3 favorites reached</Text>
+              )}
+            </View>
+            {canPin && (
+              <Ionicons
+                name="chevron-forward"
+                size={16}
+                color={colors.text.meta}
+                style={styles.chevron}
+              />
+            )}
+          </Pressable>
+
+          {/* Edit Details */}
+          <Pressable
+            onPress={() => onEdit && handleAction(() => onEdit(ticket))}
+            style={({ pressed }) => [
+              styles.actionRow,
+              styles.actionSecondary,
+              pressed && styles.actionSecondaryPressed,
+            ]}
+          >
+            <View style={[styles.actionIconWrap, styles.actionIconSecondary]}>
+              <Ionicons name="pencil" size={18} color={colors.accent.primary} />
+            </View>
+            <Text style={styles.actionSecondaryText}>Edit Details</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={16}
+              color={colors.text.meta}
+              style={styles.chevron}
+            />
+          </Pressable>
+
+          {/* Delete — Destructive */}
+          <Pressable
+            onPress={() => onDelete && handleAction(() => onDelete(ticket))}
+            style={({ pressed }) => [
+              styles.actionRow,
+              styles.actionDestructive,
+              pressed && styles.actionDestructivePressed,
+            ]}
+          >
+            <View style={[styles.actionIconWrap, styles.actionIconDestructive]}>
+              <Ionicons name="trash" size={18} color={colors.status.error} />
+            </View>
+            <Text style={styles.actionDestructiveText}>Delete Pass</Text>
+            <Ionicons
+              name="chevron-forward"
+              size={16}
+              color={colors.status.error}
+              style={styles.chevron}
+            />
+          </Pressable>
+        </View>
+      </Animated.View>
+    </View>
   );
 };
 
+// ============================================
+// Styles (mirrors RideActionSheet pattern)
+// ============================================
+
 const styles = StyleSheet.create({
-  // Backdrop
-  backdrop: {
-    ...StyleSheet.absoluteFillObject,
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 200,
   },
-  backdropPressable: {
-    flex: 1,
+  sheet: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: colors.background.card,
+    borderTopLeftRadius: radius.modal,
+    borderTopRightRadius: radius.modal,
+    ...shadows.modal,
   },
-  blurView: {
-    flex: 1,
-  },
-
-  // Menu Container
-  menuContainer: {
-    flex: 1,
-    justifyContent: 'center',
+  handleRow: {
     alignItems: 'center',
-    paddingHorizontal: 24,
+    paddingTop: spacing.base,
   },
-
-  // Menu Card
-  menuCard: {
-    width: '100%',
-    maxWidth: 340,
-    backgroundColor: '#FFFFFF',
-    borderRadius: radius.card,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 12 },
-    shadowOpacity: 0.25,
-    shadowRadius: 24,
-    elevation: 12,
-    overflow: 'hidden',
+  handle: {
+    width: 36,
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: colors.border.subtle,
   },
-
-  // Header
   header: {
-    paddingTop: 20,
-    paddingHorizontal: 20,
-    paddingBottom: 16,
+    paddingTop: spacing.xl,
+    paddingHorizontal: spacing.xl,
+    paddingBottom: spacing.lg,
   },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#000000',
-    marginBottom: 4,
+  name: {
+    fontSize: typography.sizes.hero,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
+    lineHeight: typography.sizes.hero * typography.lineHeights.tight,
+    marginBottom: spacing.md,
   },
-  headerSubtitle: {
-    fontSize: 13,
-    fontWeight: '500',
-    color: '#999999',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-  },
-
-  // Dividers
-  divider: {
-    height: 1,
-    backgroundColor: '#F0F0F0',
-    marginHorizontal: 20,
-  },
-  dividerThin: {
-    height: 1,
-    backgroundColor: '#F5F5F5',
-    marginHorizontal: 20,
-    marginVertical: 4,
-  },
-
-  // Actions Container
-  actionsContainer: {
-    paddingVertical: 8,
-  },
-
-  // Action Button
-  actionButton: {
+  meta: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 14,
-    paddingHorizontal: 20,
+    gap: spacing.md,
   },
-  actionButtonPressed: {
-    backgroundColor: '#F5F5F5',
+  typeBadge: {
+    backgroundColor: colors.accent.primaryLight,
+    borderRadius: radius.pill,
+    paddingHorizontal: spacing.base,
+    paddingVertical: spacing.xs,
   },
-  actionButtonDisabled: {
+  typeBadgeText: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.semibold,
+    color: colors.accent.primary,
+  },
+  passholder: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.medium,
+    color: colors.text.meta,
+  },
+  divider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: colors.border.subtle,
+    marginHorizontal: spacing.xl,
+  },
+  actions: {
+    paddingTop: spacing.lg,
+    paddingHorizontal: spacing.xl,
+    gap: spacing.md,
+  },
+  actionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: spacing.base,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radius.lg,
+  },
+  actionIconWrap: {
+    width: 32,
+    height: 32,
+    borderRadius: radius.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.base,
+  },
+  chevron: {
+    marginLeft: 'auto',
+  },
+  actionTextWrap: {
+    flex: 1,
+  },
+  actionHint: {
+    fontSize: typography.sizes.meta,
+    color: colors.text.meta,
+    marginTop: 2,
+  },
+
+  // Primary (accent background)
+  actionPrimary: {
+    backgroundColor: colors.accent.primary,
+  },
+  actionPrimaryPressed: {
+    backgroundColor: colors.interactive.pressedAccentDark,
+  },
+  actionPrimaryText: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.inverse,
+  },
+
+  // Secondary (input background)
+  actionSecondary: {
+    backgroundColor: colors.background.input,
+  },
+  actionSecondaryPressed: {
+    backgroundColor: colors.border.subtle,
+  },
+  actionIconSecondary: {
+    backgroundColor: colors.accent.primaryLight,
+  },
+  actionSecondaryText: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.semibold,
+    color: colors.accent.primary,
+  },
+  actionTextDisabled: {
+    color: colors.text.meta,
+  },
+  actionDisabled: {
     opacity: 0.5,
   },
 
-  // Action Icon
-  actionIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 14,
-  },
-  actionIconScan: {
-    backgroundColor: `${colors.accent.primary}15`,
-  },
-  actionIconFavorite: {
-    backgroundColor: '#FFF8E1',
-  },
-  actionIconEdit: {
-    backgroundColor: '#E3F2FD',
-  },
-  actionIconDelete: {
+  // Destructive (delete)
+  actionDestructive: {
     backgroundColor: '#FFEBEE',
   },
-
-  // Action Text
-  actionTextContainer: {
-    flex: 1,
+  actionDestructivePressed: {
+    backgroundColor: '#FFCDD2',
   },
-  actionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 2,
+  actionIconDestructive: {
+    backgroundColor: '#FFCDD2',
   },
-  actionTitleDisabled: {
-    color: '#999999',
-  },
-  actionTitleDestructive: {
-    color: '#FF3B30',
-  },
-  actionSubtitle: {
-    fontSize: 13,
-    color: '#999999',
-  },
-
-  // Cancel Button
-  cancelButton: {
-    paddingVertical: 16,
-    alignItems: 'center',
-    borderTopWidth: 1,
-    borderTopColor: '#F0F0F0',
-    marginTop: 8,
-  },
-  cancelButtonPressed: {
-    backgroundColor: '#F5F5F5',
-  },
-  cancelButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#666666',
+  actionDestructiveText: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.semibold,
+    color: colors.status.error,
   },
 });
 

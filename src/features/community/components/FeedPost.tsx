@@ -153,7 +153,7 @@ const BucketListContent = ({ item }: { item: BucketListFeedItem }) => (
             name={entry.completed ? 'checkmark-circle' : 'ellipse-outline'}
             size={16}
             color={entry.completed ? '#4CAF50' : colors.text.meta}
-            style={{ marginRight: spacing.sm }}
+            style={styles.bucketCheckIcon}
           />
           <Text style={[
             styles.previewName,
@@ -172,7 +172,7 @@ const BucketListContent = ({ item }: { item: BucketListFeedItem }) => (
 
 // ─── Main Component ─────────────────────────────────────────
 
-export const FeedPost = ({ item, onLike, onCommentTap, onAuthorTap }: FeedPostProps) => {
+export const FeedPost = React.memo(({ item, onLike, onCommentTap, onAuthorTap }: FeedPostProps) => {
   const press = useCardPress();
   const [expanded, setExpanded] = useState(false);
   const [showHeart, setShowHeart] = useState(false);
@@ -272,7 +272,7 @@ export const FeedPost = ({ item, onLike, onCommentTap, onAuthorTap }: FeedPostPr
       </Animated.View>
     </Pressable>
   );
-};
+});
 
 // ─── Styles ─────────────────────────────────────────────────
 
@@ -412,6 +412,9 @@ const styles = StyleSheet.create({
   },
 
   // Bucket List
+  bucketCheckIcon: {
+    marginRight: spacing.sm,
+  },
   completedItem: {
     textDecorationLine: 'line-through',
     color: colors.text.meta,

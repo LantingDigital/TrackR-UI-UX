@@ -52,18 +52,20 @@ function getMapCategory(poi: ParkPOI): MapCategory {
  * Each feature is a Point with properties used for SymbolLayer styling.
  *
  * Prefers real lng/lat coordinates when available on the POI,
- * falling back to the legacy poiToCoordinate(x, y) projection.
+ * falling back to the provided coordinate converter or legacy poiToCoordinate(x, y).
  */
 export function poisToGeoJSON(
   pois: ParkPOI[],
+  coordConverter?: (x: number, y: number) => [number, number],
 ): GeoJSON.FeatureCollection<GeoJSON.Point, POIFeatureProperties> {
+  const toCoord = coordConverter ?? poiToCoordinate;
   return {
     type: 'FeatureCollection',
     features: pois.map((poi) => {
       const [lng, lat] =
         poi.lng != null && poi.lat != null
           ? [poi.lng, poi.lat]
-          : poiToCoordinate(poi.x, poi.y);
+          : toCoord(poi.x, poi.y);
 
       const mapCategory = getMapCategory(poi);
 

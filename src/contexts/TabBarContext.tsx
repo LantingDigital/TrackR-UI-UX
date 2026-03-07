@@ -11,6 +11,7 @@ import React, {
   useRef,
   useCallback,
   useEffect,
+  useMemo,
   ReactNode,
 } from 'react';
 import {
@@ -86,15 +87,26 @@ export const TabBarProvider: React.FC<TabBarProviderProps> = ({ children }) => {
     resetHandlers.current.forEach((handler) => handler());
   }, []);
 
-  const value: TabBarContextValue = {
-    tabBarTranslateY,
-    hideTabBar,
-    showTabBar,
-    registerResetHandler,
-    unregisterResetHandler,
-    resetScreen,
-    resetAllScreens,
-  };
+  const value = useMemo<TabBarContextValue>(
+    () => ({
+      tabBarTranslateY,
+      hideTabBar,
+      showTabBar,
+      registerResetHandler,
+      unregisterResetHandler,
+      resetScreen,
+      resetAllScreens,
+    }),
+    [
+      tabBarTranslateY,
+      hideTabBar,
+      showTabBar,
+      registerResetHandler,
+      unregisterResetHandler,
+      resetScreen,
+      resetAllScreens,
+    ],
+  );
 
   return (
     <TabBarContext.Provider value={value}>{children}</TabBarContext.Provider>

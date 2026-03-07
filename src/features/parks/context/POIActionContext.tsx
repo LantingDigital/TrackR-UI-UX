@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback, useRef } from 'react';
+import React, { createContext, useContext, useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { POIActionSheet } from '../components/POIActionSheet';
 import { CoasterSheet } from '../components/CoasterSheet';
 import { getPOIById } from '../data/poiNameMap';
@@ -28,6 +28,22 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
   const [detailCoaster, setDetailCoaster] = useState<EnrichedCoaster | null>(null);
   const [detailVisible, setDetailVisible] = useState(false);
 
+  // Track all timers for cleanup on unmount
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const safeTimeout = useCallback((cb: () => void, ms: number) => {
+    const t = setTimeout(cb, ms);
+    timersRef.current.push(t);
+    return t;
+  }, []);
+
+  // Cleanup all pending timers on unmount
+  useEffect(() => {
+    return () => {
+      timersRef.current.forEach(clearTimeout);
+      timersRef.current = [];
+    };
+  }, []);
+
   // Map handler registered by ParksScreen
   const mapHandlerRef = useRef<((poi: ParkPOI) => void) | null>(null);
 
@@ -46,8 +62,8 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
   // ---- Action sheet close ----
   const closeActionSheet = useCallback(() => {
     setActionSheetVisible(false);
-    setTimeout(() => setSelectedPOI(null), 300);
-  }, []);
+    safeTimeout(() => setSelectedPOI(null), 300);
+  }, [safeTimeout]);
 
   // ---- View Details (coaster stat card) ----
   const handleViewDetails = useCallback(() => {
@@ -56,11 +72,11 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
     if (!coaster) return;
 
     setActionSheetVisible(false);
-    setTimeout(() => {
+    safeTimeout(() => {
       setDetailCoaster(coaster);
       setDetailVisible(true);
     }, 300);
-  }, [selectedPOI]);
+  }, [selectedPOI, safeTimeout]);
 
   // ---- Open coaster sheet directly (used by map info card) ----
   const openCoasterSheet = useCallback((poiId: string) => {
@@ -76,20 +92,25 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
   const handleViewOnMap = useCallback(() => {
     if (!selectedPOI) return;
     setActionSheetVisible(false);
-    setTimeout(() => {
+    safeTimeout(() => {
       mapHandlerRef.current?.(selectedPOI);
       setSelectedPOI(null);
     }, 300);
-  }, [selectedPOI]);
+  }, [selectedPOI, safeTimeout]);
 
   // ---- Close detail sheet ----
   const closeDetailSheet = useCallback(() => {
     setDetailVisible(false);
-    setTimeout(() => setDetailCoaster(null), 400);
-  }, []);
+    safeTimeout(() => setDetailCoaster(null), 400);
+  }, [safeTimeout]);
+
+  const value = useMemo<POIActionContextValue>(
+    () => ({ openPOI, openCoasterSheet, registerMapHandler }),
+    [openPOI, openCoasterSheet, registerMapHandler],
+  );
 
   return (
-    <POIActionCtx.Provider value={{ openPOI, openCoasterSheet, registerMapHandler }}>
+    <POIActionCtx.Provider value={value}>
       {children}
       <POIActionSheet
         poi={selectedPOI}

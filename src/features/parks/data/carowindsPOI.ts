@@ -1,0 +1,528 @@
+import { ParkPOI } from '../types';
+
+// ============================================
+// Carowinds — Complete Point of Interest Database
+// Source: Official 2025 Park Map, RCDB, OpenStreetMap
+//
+// Positions (x, y) are 0-1 percentages on the illustrated map.
+// These are initial estimates — use the position editor to fine-tune.
+//
+// Park center: 35.1040, -80.9420
+// ============================================
+
+// ============================================
+// RIDES — ROLLER COASTERS
+// ============================================
+
+const ROLLER_COASTERS: ParkPOI[] = [
+  {
+    id: 'ride-fury-325',
+    mapNumber: 1,
+    name: 'Fury 325',
+    type: 'ride',
+    area: 'carolina-boardwalk',
+    x: 0.65, y: 0.30,
+    lng: -80.939190, lat: 35.106460,
+    heightRequirement: { min: 54 },
+    thrillLevel: 'aggressive',
+    coasterId: 'fury-325',
+    fastLaneEligible: true,
+  },
+  {
+    id: 'ride-thunder-striker',
+    mapNumber: 2,
+    name: 'Thunder Striker',
+    type: 'ride',
+    area: 'carolina-boardwalk',
+    x: 0.72, y: 0.45,
+    lng: -80.938110, lat: 35.101086,
+    heightRequirement: { min: 54 },
+    thrillLevel: 'aggressive',
+    coasterId: 'intimidator-carowinds',
+    fastLaneEligible: true,
+  },
+  {
+    id: 'ride-copperhead-strike',
+    mapNumber: 3,
+    name: 'Copperhead Strike',
+    type: 'ride',
+    area: 'blue-ridge-junction',
+    x: 0.35, y: 0.28,
+    lng: -80.942882, lat: 35.101125,
+    heightRequirement: { min: 50 },
+    thrillLevel: 'aggressive',
+    coasterId: 'copperhead-strike',
+    fastLaneEligible: true,
+  },
+  {
+    id: 'ride-afterburn',
+    mapNumber: 4,
+    name: 'Afterburn',
+    type: 'ride',
+    area: 'carolina-boardwalk',
+    x: 0.58, y: 0.52,
+    lng: -80.941167, lat: 35.100186,
+    heightRequirement: { min: 54 },
+    thrillLevel: 'aggressive',
+    coasterId: 'afterburn',
+    fastLaneEligible: true,
+  },
+  {
+    id: 'ride-carolina-cyclone',
+    mapNumber: 5,
+    name: 'Carolina Cyclone',
+    type: 'ride',
+    area: 'county-fair',
+    x: 0.45, y: 0.55,
+    lng: -80.943562, lat: 35.104053,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'high',
+    coasterId: 'carolina-cyclone',
+  },
+  {
+    id: 'ride-vortex-cw',
+    mapNumber: 6,
+    name: 'Vortex',
+    type: 'ride',
+    area: 'county-fair',
+    x: 0.40, y: 0.58,
+    lng: -80.941583, lat: 35.103574,
+    heightRequirement: { min: 54 },
+    thrillLevel: 'high',
+    coasterId: 'vortex-carowinds',
+  },
+  {
+    id: 'ride-hurler',
+    mapNumber: 7,
+    name: 'Hurler',
+    type: 'ride',
+    area: 'county-fair',
+    x: 0.48, y: 0.62,
+    lng: -80.943007, lat: 35.105663,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'moderate',
+    coasterId: 'hurler-carowinds',
+  },
+  {
+    id: 'ride-carolina-goldrusher',
+    mapNumber: 8,
+    name: 'Carolina Goldrusher',
+    type: 'ride',
+    area: 'blue-ridge-junction',
+    x: 0.30, y: 0.35,
+    lng: -80.942498, lat: 35.102909,
+    heightRequirement: { min: 46, withCompanion: 36 },
+    thrillLevel: 'moderate',
+    coasterId: 'carolina-goldrusher',
+  },
+  {
+    id: 'ride-kiddy-hawk',
+    mapNumber: 9,
+    name: 'Kiddy Hawk',
+    type: 'ride',
+    area: 'camp-snoopy-cw',
+    x: 0.25, y: 0.50,
+    lng: -80.940689, lat: 35.102070,
+    heightRequirement: { withCompanion: 36 },
+    thrillLevel: 'low',
+    coasterId: 'kiddy-hawk',
+  },
+  {
+    id: 'ride-woodstock-express-cw',
+    mapNumber: 10,
+    name: 'Woodstock Express',
+    type: 'ride',
+    area: 'camp-snoopy-cw',
+    x: 0.22, y: 0.48,
+    lng: -80.939422, lat: 35.101040,
+    heightRequirement: { min: 48, withCompanion: 40 },
+    thrillLevel: 'mild',
+    coasterId: 'woodstock-express-carowinds',
+  },
+  {
+    id: 'ride-snoopys-racing-railway',
+    mapNumber: 11,
+    name: "Snoopy's Racing Railway",
+    type: 'ride',
+    area: 'camp-snoopy-cw',
+    x: 0.20, y: 0.45,
+    lng: -80.9455, lat: 35.1042,
+    heightRequirement: { min: 42, withCompanion: 36 },
+    thrillLevel: 'mild',
+    coasterId: 'snoopys-racing-railway',
+  },
+];
+
+// ============================================
+// RIDES — FLAT / THRILL RIDES
+// ============================================
+
+const THRILL_RIDES: ParkPOI[] = [
+  {
+    id: 'ride-windseeker-cw',
+    mapNumber: 12,
+    name: 'WindSeeker',
+    type: 'ride',
+    area: 'celebration-square',
+    x: 0.50, y: 0.42,
+    lng: -80.9415, lat: 35.1045,
+    heightRequirement: { min: 52 },
+    thrillLevel: 'moderate',
+  },
+  {
+    id: 'ride-electro-spin',
+    mapNumber: 13,
+    name: 'Electro-Spin',
+    type: 'ride',
+    area: 'county-fair',
+    x: 0.42, y: 0.52,
+    lng: -80.9425, lat: 35.1035,
+    heightRequirement: { min: 48 },
+    thrillLevel: 'high',
+  },
+  {
+    id: 'ride-zephyr',
+    mapNumber: 14,
+    name: 'Zephyr',
+    type: 'ride',
+    area: 'county-fair',
+    x: 0.38, y: 0.48,
+    lng: -80.9430, lat: 35.1040,
+    heightRequirement: { min: 42, withCompanion: 36 },
+    thrillLevel: 'mild',
+  },
+  {
+    id: 'ride-dodgem-cw',
+    mapNumber: 15,
+    name: 'Dodgem',
+    type: 'ride',
+    area: 'county-fair',
+    x: 0.44, y: 0.50,
+    lng: -80.9422, lat: 35.1038,
+    heightRequirement: { min: 44 },
+    thrillLevel: 'mild',
+  },
+  {
+    id: 'ride-grand-carousel-cw',
+    mapNumber: 16,
+    name: 'Grand Carousel',
+    type: 'ride',
+    area: 'celebration-square',
+    x: 0.48, y: 0.44,
+    lng: -80.9418, lat: 35.1043,
+    thrillLevel: 'low',
+  },
+  {
+    id: 'ride-charlie-browns-raft-blast',
+    mapNumber: 17,
+    name: "Charlie Brown's River Raft Blast",
+    type: 'ride',
+    area: 'camp-snoopy-cw',
+    x: 0.24, y: 0.52,
+    lng: -80.9448, lat: 35.1035,
+    thrillLevel: 'mild',
+  },
+  {
+    id: 'ride-boo-blasters',
+    mapNumber: 18,
+    name: 'Boo Blasters on Boo Hill',
+    type: 'ride',
+    area: 'county-fair',
+    x: 0.46, y: 0.58,
+    lng: -80.9420, lat: 35.1028,
+    thrillLevel: 'low',
+  },
+];
+
+// ============================================
+// FOOD LOCATIONS
+// ============================================
+
+const FOOD: ParkPOI[] = [
+  {
+    id: 'food-harmony-hall',
+    name: 'Harmony Hall Marketplace',
+    type: 'food',
+    area: 'celebration-square',
+    x: 0.52, y: 0.40,
+    lng: -80.9412, lat: 35.1048,
+    menuItems: ['burgers', 'pizza', 'chicken tenders', 'salad', 'bbq'],
+    menuDescription: 'Large food hall with multiple stations',
+  },
+  {
+    id: 'food-panda-express-cw',
+    name: 'Panda Express',
+    type: 'food',
+    area: 'county-fair',
+    x: 0.43, y: 0.56,
+    lng: -80.9424, lat: 35.1032,
+    menuItems: ['orange chicken', 'fried rice', 'chow mein', 'chinese food'],
+    menuDescription: 'Panda Express Chinese food',
+  },
+  {
+    id: 'food-chickie-petes-cw',
+    name: "Chickie's & Pete's",
+    type: 'food',
+    area: 'carolina-boardwalk',
+    x: 0.60, y: 0.38,
+    lng: -80.9402, lat: 35.1050,
+    menuItems: ['crab fries', 'burgers', 'chicken tenders', 'cheesesteaks'],
+    menuDescription: 'Famous crab fries and cheesesteaks',
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-bier-fest-grill',
+    name: 'Bier Fest Grill',
+    type: 'food',
+    area: 'celebration-square',
+    x: 0.54, y: 0.45,
+    lng: -80.9410, lat: 35.1042,
+    menuItems: ['bratwurst', 'pretzels', 'beer', 'sausage'],
+    menuDescription: 'German-style bratwurst and craft beer',
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-starbucks-cw',
+    name: 'Starbucks',
+    type: 'food',
+    area: 'celebration-square',
+    x: 0.50, y: 0.70,
+    lng: -80.9416, lat: 35.1018,
+    menuItems: ['coffee', 'starbucks', 'latte', 'espresso', 'frappuccino'],
+    menuDescription: 'Starbucks coffee and beverages',
+  },
+  {
+    id: 'food-grannys-kitchen',
+    name: "Granny's Kitchen",
+    type: 'food',
+    area: 'blue-ridge-junction',
+    x: 0.32, y: 0.32,
+    lng: -80.9440, lat: 35.1058,
+    menuItems: ['fried chicken', 'biscuits', 'mac & cheese', 'cobbler', 'southern food'],
+    menuDescription: 'Southern fried chicken and homestyle cooking',
+  },
+  {
+    id: 'food-brickhouse-bbq',
+    name: 'Brickhouse BBQ',
+    type: 'food',
+    area: 'blue-ridge-junction',
+    x: 0.34, y: 0.30,
+    lng: -80.9438, lat: 35.1060,
+    menuItems: ['bbq', 'pulled pork', 'ribs', 'brisket', 'cornbread'],
+    menuDescription: 'Slow-smoked BBQ with classic sides',
+    servesAlcohol: true,
+  },
+  {
+    id: 'food-jukebox-diner',
+    name: 'Jukebox Diner',
+    type: 'food',
+    area: 'county-fair',
+    x: 0.40, y: 0.60,
+    lng: -80.9428, lat: 35.1025,
+    menuItems: ['burgers', 'fries', 'milkshakes', 'hot dogs'],
+    menuDescription: 'Classic diner with burgers and shakes',
+  },
+  {
+    id: 'food-dippin-dots-cw',
+    name: "Dippin' Dots",
+    type: 'food',
+    area: 'carolina-boardwalk',
+    x: 0.62, y: 0.42,
+    lng: -80.9400, lat: 35.1046,
+    menuItems: ["dippin' dots", 'ice cream'],
+    menuDescription: "Dippin' Dots ice cream",
+  },
+];
+
+// ============================================
+// MERCHANDISE / SHOPS
+// ============================================
+
+const SHOPS: ParkPOI[] = [
+  {
+    id: 'shop-main-gate-gifts',
+    name: 'Main Gate Gifts',
+    type: 'shop',
+    area: 'celebration-square',
+    x: 0.50, y: 0.75,
+    lng: -80.9416, lat: 35.1015,
+    description: 'Main park gift shop near entrance',
+  },
+  {
+    id: 'shop-fury-325-store',
+    name: 'Fury 325 Speed Shop',
+    type: 'shop',
+    area: 'carolina-boardwalk',
+    x: 0.63, y: 0.32,
+    lng: -80.9400, lat: 35.1056,
+    description: 'Fury 325 ride photos and merchandise',
+  },
+  {
+    id: 'shop-camp-snoopy-store-cw',
+    name: 'Camp Snoopy Store',
+    type: 'shop',
+    area: 'camp-snoopy-cw',
+    x: 0.23, y: 0.46,
+    lng: -80.9450, lat: 35.1042,
+    description: 'Snoopy and Peanuts merchandise',
+  },
+  {
+    id: 'shop-boardwalk-gifts-cw',
+    name: 'Boardwalk Gifts',
+    type: 'shop',
+    area: 'carolina-boardwalk',
+    x: 0.56, y: 0.36,
+    lng: -80.9408, lat: 35.1052,
+    description: 'Boardwalk-themed gifts and souvenirs',
+  },
+];
+
+// ============================================
+// THEATERS & ATTRACTIONS
+// ============================================
+
+const THEATERS_AND_ATTRACTIONS: ParkPOI[] = [
+  {
+    id: 'attraction-carolina-harbor',
+    name: 'Carolina Harbor Waterpark',
+    type: 'attraction',
+    area: 'carolina-boardwalk',
+    x: 0.80, y: 0.60,
+    lng: -80.9375, lat: 35.1025,
+    description: 'Waterpark included with admission',
+  },
+  {
+    id: 'attraction-celebration-stage',
+    name: 'Celebration Stage',
+    type: 'theater',
+    area: 'celebration-square',
+    x: 0.49, y: 0.42,
+    lng: -80.9417, lat: 35.1045,
+    description: 'Main stage for live entertainment',
+  },
+  {
+    id: 'attraction-midway-games-cw',
+    name: 'Midway Games',
+    type: 'attraction',
+    area: 'county-fair',
+    x: 0.42, y: 0.54,
+    lng: -80.9425, lat: 35.1033,
+    description: 'Carnival games and prizes',
+  },
+];
+
+// ============================================
+// SERVICES
+// ============================================
+
+const SERVICES: ParkPOI[] = [
+  {
+    id: 'entrance-main-cw',
+    name: 'Main Entrance',
+    type: 'service',
+    area: 'celebration-square',
+    x: 0.50, y: 0.85,
+    lng: -80.9416, lat: 35.1008,
+    description: 'Main park entrance',
+  },
+  {
+    id: 'restroom-entrance-cw',
+    name: 'Restrooms (Entrance)',
+    type: 'service',
+    area: 'celebration-square',
+    x: 0.48, y: 0.78,
+    lng: -80.9418, lat: 35.1012,
+    approximateLocation: true,
+    description: 'Restrooms near main entrance',
+  },
+  {
+    id: 'restroom-county-fair',
+    name: 'Restrooms (County Fair)',
+    type: 'service',
+    area: 'county-fair',
+    x: 0.42, y: 0.56,
+    lng: -80.9425, lat: 35.1032,
+    approximateLocation: true,
+    description: 'Restrooms in County Fair',
+  },
+  {
+    id: 'restroom-boardwalk-cw',
+    name: 'Restrooms (Boardwalk)',
+    type: 'service',
+    area: 'carolina-boardwalk',
+    x: 0.58, y: 0.40,
+    lng: -80.9405, lat: 35.1048,
+    approximateLocation: true,
+    description: 'Restrooms on the Carolina Boardwalk',
+  },
+  {
+    id: 'restroom-blue-ridge',
+    name: 'Restrooms (Blue Ridge Junction)',
+    type: 'service',
+    area: 'blue-ridge-junction',
+    x: 0.33, y: 0.34,
+    lng: -80.9440, lat: 35.1056,
+    approximateLocation: true,
+    description: 'Restrooms in Blue Ridge Junction',
+  },
+  {
+    id: 'restroom-camp-snoopy-cw',
+    name: 'Restrooms (Camp Snoopy)',
+    type: 'service',
+    area: 'camp-snoopy-cw',
+    x: 0.24, y: 0.50,
+    lng: -80.9448, lat: 35.1038,
+    approximateLocation: true,
+    description: 'Restrooms in Camp Snoopy',
+  },
+  {
+    id: 'service-first-aid-cw',
+    name: 'First Aid',
+    type: 'service',
+    area: 'celebration-square',
+    x: 0.52, y: 0.68,
+    lng: -80.9412, lat: 35.1020,
+    description: 'First aid station',
+  },
+  {
+    id: 'service-guest-services-cw',
+    name: 'Guest Services',
+    type: 'service',
+    area: 'celebration-square',
+    x: 0.50, y: 0.82,
+    lng: -80.9416, lat: 35.1010,
+    description: 'Guest services and information',
+  },
+  {
+    id: 'service-atm-cw',
+    name: 'ATM (Entrance)',
+    type: 'service',
+    area: 'celebration-square',
+    x: 0.52, y: 0.80,
+    lng: -80.9414, lat: 35.1012,
+    description: 'ATM near main entrance',
+  },
+  {
+    id: 'service-lockers-cw',
+    name: 'Lockers (Entrance)',
+    type: 'service',
+    area: 'celebration-square',
+    x: 0.48, y: 0.82,
+    lng: -80.9418, lat: 35.1010,
+    approximateLocation: true,
+    description: 'Rental lockers near entrance',
+  },
+];
+
+// ============================================
+// COMBINED EXPORT
+// ============================================
+
+export const CAROWINDS_POI: ParkPOI[] = [
+  ...ROLLER_COASTERS,
+  ...THRILL_RIDES,
+  ...FOOD,
+  ...SHOPS,
+  ...THEATERS_AND_ATTRACTIONS,
+  ...SERVICES,
+];

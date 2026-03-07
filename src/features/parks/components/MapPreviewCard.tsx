@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { memo, useMemo, useCallback } from 'react';
 import {
   View,
   Text,
@@ -14,40 +14,52 @@ import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import {
   MAPBOX_AVAILABLE,
-  KNOTTS_CENTER,
-  ZOOM,
   MAP_STYLE_URL,
-  PARK_BOUNDS,
+  poiToCoordinateWithBounds,
 } from '../map/mapboxConfig';
+import { ParkMapConfig } from '../map/parkMapRegistry';
 import { UnifiedParkMapData } from '../types';
 import { poisToGeoJSON } from '../map/poiGeoJSON';
 
 const MapboxGL = MAPBOX_AVAILABLE ? require('@rnmapbox/maps').default : null;
 
-// Park title point at park center
-const PREVIEW_TITLE_GEOJSON: GeoJSON.FeatureCollection = {
-  type: 'FeatureCollection',
-  features: [
-    {
-      type: 'Feature',
-      geometry: { type: 'Point', coordinates: KNOTTS_CENTER },
-      properties: { name: "Knott's Berry Farm" },
-    },
-  ],
-};
-
 interface MapPreviewCardProps {
   onPress: (center?: [number, number]) => void;
   mapData?: UnifiedParkMapData;
+  mapConfig?: ParkMapConfig;
 }
 
-export function MapPreviewCard({ onPress, mapData }: MapPreviewCardProps) {
+export const MapPreviewCard = memo(function MapPreviewCard({ onPress, mapData, mapConfig }: MapPreviewCardProps) {
+  const coordConverter = useMemo(() => {
+    if (!mapConfig) return undefined;
+    return (x: number, y: number): [number, number] =>
+      poiToCoordinateWithBounds(x, y, mapConfig.poiBoundsNE, mapConfig.poiBoundsSW);
+  }, [mapConfig]);
+
   const poiGeoJSON = useMemo(() => {
     if (!mapData) return null;
-    return poisToGeoJSON(mapData.pois);
-  }, [mapData]);
+    return poisToGeoJSON(mapData.pois, coordConverter);
+  }, [mapData, coordConverter]);
 
-  const showLiveMap = MAPBOX_AVAILABLE && MapboxGL && poiGeoJSON;
+  const parkCenter = mapConfig?.center;
+  const parkBoundsNE = mapConfig?.boundsNE;
+  const parkBoundsSW = mapConfig?.boundsSW;
+  const parkZoom = mapConfig?.zoom;
+  const parkName = mapConfig?.displayName ?? 'Park Map';
+
+  const previewTitleGeoJSON = useMemo<GeoJSON.FeatureCollection | null>(() => {
+    if (!parkCenter) return null;
+    return {
+      type: 'FeatureCollection',
+      features: [{
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: parkCenter },
+        properties: { name: parkName },
+      }],
+    };
+  }, [parkCenter, parkName]);
+
+  const showLiveMap = MAPBOX_AVAILABLE && MapboxGL && poiGeoJSON && parkCenter;
 
   // MapView tap → open full map centered on tapped coordinate
   const handleMapTap = useCallback(
@@ -92,18 +104,19 @@ export function MapPreviewCard({ onPress, mapData }: MapPreviewCardProps) {
         >
           <MapboxGL.Camera
             defaultSettings={{
-              centerCoordinate: KNOTTS_CENTER,
-              zoomLevel: ZOOM.default,
+              centerCoordinate: parkCenter,
+              zoomLevel: parkZoom?.default ?? 15.7,
             }}
-            maxBounds={{ ne: PARK_BOUNDS.ne, sw: PARK_BOUNDS.sw }}
+            maxBounds={parkBoundsNE && parkBoundsSW ? { ne: parkBoundsNE, sw: parkBoundsSW } : undefined}
           />
 
           {/* Park title — large and prominent */}
-          <MapboxGL.ShapeSource id="preview-title" shape={PREVIEW_TITLE_GEOJSON}>
+          {previewTitleGeoJSON && (
+          <MapboxGL.ShapeSource id="preview-title" shape={previewTitleGeoJSON}>
             <MapboxGL.SymbolLayer
               id="preview-title-label"
               style={{
-                textField: "Knott's Berry Farm",
+                textField: parkName,
                 textSize: 20,
                 textFont: ['DIN Pro Bold', 'Arial Unicode MS Bold'],
                 textColor: '#1A1A1A',
@@ -114,6 +127,7 @@ export function MapPreviewCard({ onPress, mapData }: MapPreviewCardProps) {
               }}
             />
           </MapboxGL.ShapeSource>
+          )}
 
           {/* POI dots — coasters featured, rides as subtle context */}
           <MapboxGL.ShapeSource id="preview-pois" shape={poiGeoJSON}>
@@ -172,7 +186,7 @@ export function MapPreviewCard({ onPress, mapData }: MapPreviewCardProps) {
       </View>
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   outerPadding: {

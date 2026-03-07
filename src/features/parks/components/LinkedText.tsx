@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
-import { POI_NAME_MAP } from '../data/poiNameMap';
+import { getPOINameMap } from '../data/poiNameMap';
 
 // ============================================
 // LinkedText
@@ -15,20 +15,31 @@ interface LinkedTextProps {
   onPOIPress: (poiId: string) => void;
 }
 
-// Build regex once — sort names by length desc so longest match wins
-const SORTED_NAMES = Object.keys(POI_NAME_MAP).sort(
-  (a, b) => b.length - a.length,
-);
-
 // Escape special regex chars in POI names (e.g. "Jaguar!" has "!")
 function escapeRegex(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-const NAME_PATTERN = new RegExp(
-  `(${SORTED_NAMES.map(escapeRegex).join('|')})`,
-  'g',
-);
+// Build regex lazily — initialized on first use after all POIs are loaded
+let _cachedPattern: RegExp | null = null;
+
+function getNamePattern(): RegExp {
+  if (_cachedPattern) return _cachedPattern;
+  const nameMap = getPOINameMap();
+  const sortedNames = Object.keys(nameMap).sort(
+    (a, b) => b.length - a.length,
+  );
+  if (sortedNames.length === 0) {
+    // Fallback: match nothing
+    _cachedPattern = /(?!)/g;
+    return _cachedPattern;
+  }
+  _cachedPattern = new RegExp(
+    `(${sortedNames.map(escapeRegex).join('|')})`,
+    'g',
+  );
+  return _cachedPattern;
+}
 
 interface TextSegment {
   text: string;
@@ -37,16 +48,21 @@ interface TextSegment {
 
 export function LinkedText({ text, onPOIPress }: LinkedTextProps) {
   const segments = useMemo<TextSegment[]>(() => {
+    const nameMap = getPOINameMap();
+    const pattern = getNamePattern();
+    // Reset lastIndex for global regex reuse
+    pattern.lastIndex = 0;
+
     const result: TextSegment[] = [];
     let lastIndex = 0;
 
-    text.replace(NAME_PATTERN, (match, _group, offset) => {
+    text.replace(pattern, (match, _group, offset) => {
       // Plain text before this match
       if (offset > lastIndex) {
         result.push({ text: text.slice(lastIndex, offset), poiId: null });
       }
 
-      const poiId = POI_NAME_MAP[match] || null;
+      const poiId = nameMap[match] || null;
       result.push({ text: match, poiId });
       lastIndex = offset + match.length;
       return match;

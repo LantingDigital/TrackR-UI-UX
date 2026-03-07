@@ -19,7 +19,7 @@ interface RankingSectionProps {
   category: RankingCategory;
 }
 
-function RankingEntry({ entry, rank, color }: { entry: CommunityRankingEntry; rank: number; color: string }) {
+const RankingEntry = React.memo(function RankingEntry({ entry, rank, color }: { entry: CommunityRankingEntry; rank: number; color: string }) {
   // Normalize score to 0-1 for bar width (scores are 1-10)
   const barWidth = ((entry.averageScore - 5) / 5) * 100; // 5-10 → 0-100%
   const clampedWidth = Math.max(10, Math.min(100, barWidth));
@@ -41,9 +41,9 @@ function RankingEntry({ entry, rank, color }: { entry: CommunityRankingEntry; ra
       </View>
     </View>
   );
-}
+});
 
-export function RankingSection({ category }: RankingSectionProps) {
+export const RankingSection = React.memo(function RankingSection({ category }: RankingSectionProps) {
   return (
     <View style={styles.card}>
       {/* Header */}
@@ -67,7 +67,7 @@ export function RankingSection({ category }: RankingSectionProps) {
       </View>
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   card: {

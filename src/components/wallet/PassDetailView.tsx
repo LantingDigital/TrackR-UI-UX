@@ -77,6 +77,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isFlipped, setIsFlipped] = useState(false);
   const [internalVisible, setInternalVisible] = useState(false);
+  const [showOriginalImage, setShowOriginalImage] = useState(false);
 
   // Refs for PanResponder (to avoid stale closures)
   const currentIndexRef = useRef(currentIndex);
@@ -141,8 +142,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
     const animations = dotAnimations.map((anim, i) => {
       return Animated.spring(anim, {
         toValue: i === toIndex ? 1 : 0,
-        tension: 40,
-        friction: 7,
+        tension: 65,
+        friction: 12,
         useNativeDriver: false,
       });
     });
@@ -178,8 +179,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
         }),
         Animated.spring(translateY, {
           toValue: 0,
-          tension: 50,
-          friction: 10,
+          tension: 65,
+          friction: 12,
           useNativeDriver: true,
         }),
       ]).start();
@@ -223,8 +224,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
     Animated.parallel([
       Animated.spring(translateY, {
         toValue: SCREEN_HEIGHT,
-        tension: 50,
-        friction: 10,
+        tension: 65,
+        friction: 12,
         useNativeDriver: true,
       }),
       Animated.timing(backdropOpacity, {
@@ -245,7 +246,6 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
     const ticket = tickets[currentIndexRef.current];
     if (!ticket) return;
 
-    console.log('🔄 Card tap - starting flip animation');
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
 
     // Start the flip
@@ -265,8 +265,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
       // Scale bounces back with satisfying spring
       Animated.spring(cardPressScale, {
         toValue: 1,
-        tension: 40,
-        friction: 5,
+        tension: 65,
+        friction: 10,
         useNativeDriver: true,
       }),
       // Card rotates in 3D with easing for smooth motion
@@ -288,9 +288,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
         duration: 200,
         useNativeDriver: true,
       }),
-    ]).start(() => {
-      console.log('🔄 Flip animation complete');
-    });
+    ]).start();
 
     onUsePass?.(ticket);
   }, [tickets, flipAnim, flipBackgroundOpacity, cardPressScale, bottomSectionOpacity, onUsePass]);
@@ -346,13 +344,11 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
   // PanResponder - captures ALL touches, distinguishes tap vs drag on release
   const panResponder = useRef(
     PanResponder.create({
-      // Capture touch on start to track taps
+      // Capture touch on start to track taps (but not when flipped, so Pressables work)
       onStartShouldSetPanResponder: () => {
-        console.log('🟢 onStartShouldSetPanResponder called');
-        return true;
+        return !isFlippedRef.current;
       },
       onPanResponderGrant: (evt, _gs) => {
-        console.log('🟢 onPanResponderGrant - touch started');
         // Record where gesture started
         gestureStartX.current = evt.nativeEvent.pageX;
         gestureStartY.current = evt.nativeEvent.pageY;
@@ -421,12 +417,10 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
         const totalMovement = Math.abs(gs.dx) + Math.abs(gs.dy);
         const wasTap = totalMovement < TAP_THRESHOLD;
 
-        console.log('🎯 PanResponder release - movement:', totalMovement, 'wasTap:', wasTap, 'isFlipped:', isFlippedRef.current);
         gestureStarted.current = false;
 
         // TAP DETECTED - trigger flip! (handleCardTap will bounce back the scale)
         if (wasTap && !isFlippedRef.current) {
-          console.log('🎯 Calling handleCardTap');
           handleCardTapRef.current();
           return;
         }
@@ -435,8 +429,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
         if (!isFlippedRef.current) {
           Animated.spring(cardPressScale, {
             toValue: 1,
-            tension: 40,
-            friction: 6,
+            tension: 65,
+            friction: 10,
             useNativeDriver: true,
           }).start();
         }
@@ -451,8 +445,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
             Animated.parallel([
               Animated.spring(translateY, {
                 toValue: 0,
-                tension: 50,
-                friction: 8,
+                tension: 65,
+                friction: 12,
                 useNativeDriver: true,
               }),
               Animated.timing(backdropOpacity, {
@@ -489,8 +483,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
           // Animate with bounce
           Animated.spring(translateX, {
             toValue: -newIndex * TOTAL_CARD_WIDTH,
-            tension: 40,
-            friction: 7, // Lower friction = more bounce
+            tension: 65,
+            friction: 12,
             useNativeDriver: true,
           }).start();
         }
@@ -520,8 +514,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
           Animated.parallel([
             Animated.spring(translateY, {
               toValue: 0,
-              tension: 50,
-              friction: 8,
+              tension: 65,
+              friction: 12,
               useNativeDriver: true,
             }),
             Animated.timing(backdropOpacity, {
@@ -547,8 +541,8 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
 
     Animated.spring(translateX, {
       toValue: -index * TOTAL_CARD_WIDTH,
-      tension: 40,
-      friction: 7,
+      tension: 65,
+      friction: 12,
       useNativeDriver: true,
     }).start();
   }, [translateX, animateDots]);
@@ -727,7 +721,13 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
                       </View>
 
                       <View style={styles.qrContainer}>
-                        <QRCodeDisplay data={ticket.qrData} size={SCAN_QR_SIZE} />
+                        <QRCodeDisplay
+                          data={ticket.qrData}
+                          format={ticket.qrFormat}
+                          size={SCAN_QR_SIZE}
+                          gateMode
+                          originalPhotoUri={ticket.originalPhotoUri}
+                        />
                       </View>
 
                       <Text style={styles.passNumber}>PASS #: {passNumber}</Text>
@@ -737,6 +737,19 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
                       )}
 
                       <Text style={styles.flipHint}>Tap to flip back</Text>
+
+                      {ticket.originalPhotoUri && (
+                        <Pressable
+                          style={styles.viewOriginalButton}
+                          onPress={() => {
+                            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                            setShowOriginalImage(true);
+                          }}
+                        >
+                          <Ionicons name="image-outline" size={14} color={colors.text.meta} />
+                          <Text style={styles.viewOriginalText}>View Original</Text>
+                        </Pressable>
+                      )}
                     </Pressable>
                   </Animated.View>
                 )}
@@ -803,6 +816,37 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
           {tickets.length === 1 && <View style={{ height: insets.bottom + 32 }} />}
         </Animated.View>
       </Animated.View>
+
+      {/* Original image fullscreen modal — must be inside parent Modal */}
+      <Modal
+        visible={showOriginalImage}
+        animationType="fade"
+        transparent
+        onRequestClose={() => setShowOriginalImage(false)}
+      >
+        <Pressable
+          style={styles.originalImageBackdrop}
+          onPress={() => setShowOriginalImage(false)}
+        >
+          <View style={[styles.originalImageHeader, { paddingTop: insets.top + 8 }]}>
+            <Pressable
+              onPress={() => setShowOriginalImage(false)}
+              style={styles.originalImageClose}
+            >
+              <Ionicons name="close" size={24} color="#FFFFFF" />
+            </Pressable>
+            <Text style={styles.originalImageTitle}>Original Ticket</Text>
+            <View style={{ width: 40 }} />
+          </View>
+          {tickets[currentIndex]?.originalPhotoUri && (
+            <Image
+              source={{ uri: tickets[currentIndex].originalPhotoUri }}
+              style={styles.originalImageFull}
+              resizeMode="contain"
+            />
+          )}
+        </Pressable>
+      </Modal>
     </Modal>
   );
 };
@@ -987,6 +1031,58 @@ const styles = StyleSheet.create({
   indicator: {
     height: 8,
     borderRadius: 4,
+  },
+
+  // View Original button
+  viewOriginalButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    marginTop: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    borderRadius: 12,
+    backgroundColor: colors.background.input,
+  },
+  viewOriginalText: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: colors.text.meta,
+  },
+
+  // Original image modal
+  originalImageBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.95)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  originalImageHeader: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    zIndex: 10,
+  },
+  originalImageClose: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  originalImageTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#FFFFFF',
+  },
+  originalImageFull: {
+    width: SCREEN_WIDTH - 32,
+    height: SCREEN_HEIGHT * 0.7,
   },
 });
 

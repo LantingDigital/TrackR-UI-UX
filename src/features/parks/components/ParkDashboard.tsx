@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { spacing } from '../../../theme/spacing';
 import { WeatherStepsHeader } from './WeatherStepsHeader';
@@ -16,7 +16,7 @@ interface ParkDashboardProps {
   onRidePress?: (rideId: string) => void;
 }
 
-export function ParkDashboard({
+export const ParkDashboard = memo(function ParkDashboard({
   weather,
   steps,
   waitTimes,
@@ -29,7 +29,7 @@ export function ParkDashboard({
       <WaitTimesCard waitTimes={waitTimes} onRidePress={onRidePress} />
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   container: {

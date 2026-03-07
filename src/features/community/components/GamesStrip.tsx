@@ -101,6 +101,8 @@ const styles = StyleSheet.create({
   stripContent: {
     paddingHorizontal: spacing.lg,
     gap: spacing.lg,
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   gameWrapper: {
     alignItems: 'center',
