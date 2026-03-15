@@ -79,9 +79,9 @@ const DISMISS_VELOCITY = 500;
 
 // ── Layout constants ──
 const HANDLE_AREA = 33;
-const IMAGE_MARGIN = 8;
-const STATS_MARGIN = 8;
-const ACTION_MARGIN = 6;
+const IMAGE_MARGIN = 12;
+const STATS_MARGIN = 12;
+const ACTION_MARGIN = 10;
 
 // How far content lifts (translateY) — single lift for celebration
 const LIFT_AMOUNT = -60;
@@ -98,6 +98,8 @@ export interface OnboardingLogConfirmSheetRef {
   triggerLog: () => void;
   /** Programmatically scrolls the pager to page 2 (for demo automation) */
   scrollToPage2: () => void;
+  /** Programmatically scrolls the pager back to page 1 (for demo automation) */
+  scrollToPage1: () => void;
   /** Programmatically triggers the "Rate this ride" action (for demo automation) */
   triggerRate: () => void;
 }
@@ -330,23 +332,23 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       }, 300);
 
       if (showRateNudge) {
-        // Phase 3: Checkmark fades out
+        // Phase 3: Checkmark fades out (at 3000ms — 3500ms celebration total)
         addTimer(() => {
           checkOpacity.value = withTiming(0, { duration: 250 });
           checkScale.value = withTiming(0.9, { duration: 250, easing: Easing.in(Easing.cubic) });
           loggedTextOpacity.value = withTiming(0, { duration: 200 });
-        }, 1600);
+        }, 3000);
 
-        // Phase 4: Rate nudge fades in (same space, no additional lift)
+        // Phase 4: Rate nudge fades in (at 3500ms — after celebration finishes)
         addTimer(() => {
           setShowingNudge(true);
           nudgeOpacity.value = withDelay(100, withTiming(1, { duration: 300 }));
-        }, 2000);
+        }, 3500);
       } else {
         // No rate nudge — fire onLogComplete after celebration
         addTimer(() => {
           onLogComplete?.();
-        }, 2000);
+        }, 3500);
       }
     }, [confirmed, onLogComplete, showRateNudge]);
 
@@ -393,6 +395,11 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       scrollToPage2: () => {
         if (measuredPagerW > 0 && pagerRef.current) {
           pagerRef.current.scrollTo({ x: measuredPagerW, animated: true });
+        }
+      },
+      scrollToPage1: () => {
+        if (pagerRef.current) {
+          pagerRef.current.scrollTo({ x: 0, animated: true });
         }
       },
       triggerRate: () => {
@@ -864,8 +871,12 @@ const styles = StyleSheet.create({
   },
 
   // -- Image --
+  // FIXED height instead of flex:1 — prevents image from pushing stats/button off screen.
+  // The sheet is inside a transform-scaled container, so SCREEN_HEIGHT is the unscaled value.
+  // Header (~90) + image + stats (~80) + button (~50) + handle (~33) + margins (~40) must fit.
   imageSection: {
     flex: 1,
+    maxHeight: SCREEN_HEIGHT * 0.44, // caps the image so stats + button aren't pushed off
     marginTop: IMAGE_MARGIN,
   },
   imageCard: {
@@ -936,6 +947,7 @@ const styles = StyleSheet.create({
   // -- Action Area --
   actionArea: {
     marginTop: ACTION_MARGIN,
+    paddingBottom: 16,
   },
   logButton: {
     backgroundColor: colors.accent.primary,
@@ -957,24 +969,22 @@ const styles = StyleSheet.create({
   },
 
   // -- Bottom anchor for celebration (stays in place while content lifts) --
+  // Covers the bottom half of the sheet so celebration + nudge center properly
+  // in the visible space below the lifted content
   bottomAnchor: {
     position: 'absolute',
     left: 0,
     right: 0,
     bottom: 0,
-    height: Math.abs(LIFT_AMOUNT) + 64,
+    height: SCREEN_HEIGHT * 0.4,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
-  // -- Celebration -- centered in the full empty space, nudged up
+  // -- Celebration -- centered vertically within bottomAnchor
   celebrationContainer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 48,
   },
   checkCircle: {
     width: 52,
@@ -996,17 +1006,17 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
   },
 
-  // -- Rate nudge -- centered in the full empty space
+  // -- Rate nudge -- centered in the available space
   nudgeContainer: {
     position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
+    alignItems: 'center',
     justifyContent: 'center',
     gap: spacing.md,
     paddingHorizontal: spacing.xl,
-    paddingBottom: 48,
   },
   nudgeCheckRow: {
     flexDirection: 'row',

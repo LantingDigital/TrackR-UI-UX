@@ -294,6 +294,9 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   const [ratingCoasterId, setRatingCoasterId] = useState('');
   const ratingSheetRef = useRef<OnboardingRatingSheetRef>(null);
 
+  // Active bottom nav tab (for rate demo Logbook tab highlight)
+  const [activeNavTab, setActiveNavTab] = useState('Home');
+
   // Highlighted result index
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
 
@@ -413,8 +416,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
     { x: HORIZONTAL_PADDING + pillWidth * 2 + GAP * 2 + pillWidth / 2, y: expandedY },
   ];
 
-  // Collapsed (circle) positions
-  const collapsedY = 12 + 21;
+  // Collapsed (circle) positions — paddingTop is 20 in the embed (not 12 like real HomeScreen)
+  const collapsedY = 20 + 21;
   const collapsedPositions = [
     { x: equalGap + collapsedSearchWidth + equalGap + circleSize / 2, y: collapsedY },
     { x: equalGap + collapsedSearchWidth + equalGap + circleSize + equalGap + circleSize / 2, y: collapsedY },
@@ -1104,6 +1107,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       t = runLogSequence('maverick', 'Maverick', 'logPill', t);
 
       // === BETWEEN SEQUENCES: Header collapse + feed scroll ===
+      // Collapse uses withTiming (decisive, no bounce) with staggered buttons
       scheduleTimer(() => {
         if (!demoActiveRef.current) return;
         reanimatedProgress.value = withTiming(0, {
@@ -1114,14 +1118,14 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           duration: 500,
           easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
         });
-        buttonProgress1.value = withTiming(0, {
+        buttonProgress1.value = withDelay(60, withTiming(0, {
           duration: 500,
           easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
-        buttonProgress2.value = withTiming(0, {
+        }));
+        buttonProgress2.value = withDelay(120, withTiming(0, {
           duration: 500,
           easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
+        }));
         // Simulate feed scrolling up slightly
         feedScrollTranslateY.value = withTiming(-40, {
           duration: 500,
@@ -1136,29 +1140,16 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       t = runLogSequence('expedition-everest', 'Expedition Everest', 'logCircle', t);
 
       // After sequence 2 closes, re-expand header
+      // Expand uses withSpring (has overshoot/bounce) with staggered buttons, matching real HomeScreen
       scheduleTimer(() => {
         if (!demoActiveRef.current) return;
-        reanimatedProgress.value = withTiming(1, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
-        buttonProgress0.value = withTiming(1, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
-        buttonProgress1.value = withTiming(1, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
-        buttonProgress2.value = withTiming(1, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
+        const expandSpring = { damping: 18, stiffness: 150, mass: 1 };
+        reanimatedProgress.value = withSpring(1, expandSpring);
+        buttonProgress0.value = withSpring(1, expandSpring);
+        buttonProgress1.value = withDelay(60, withSpring(1, expandSpring));
+        buttonProgress2.value = withDelay(120, withSpring(1, expandSpring));
         // Scroll feed back up
-        feedScrollTranslateY.value = withTiming(0, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
+        feedScrollTranslateY.value = withSpring(0, expandSpring);
       }, t);
 
       // Wait for re-expand + pause before loop
@@ -1224,24 +1215,26 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           scanContentOpacity.value = 1;
         }, t);
 
-        // 1500ms pause — user sees the wallet sections (Favorites, Tickets, Passes)
-        t += 1500;
+        // 1200ms pause -- user sees the wallet sections (Favorites, Tickets, Passes)
+        t += 1200;
 
-        // Auto-scroll carousel: scroll to pass index 1 in the sections
+        // Auto-scroll carousel to second pass (Knott's Berry Farm) to show browsing
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           scanModalRef.current?.scrollToPass(1);
         }, t);
 
-        // 1500ms — scroll to pass index 2
-        t += 1500;
+        // 1200ms -- user sees the scrolled carousel
+        t += 1200;
+
+        // Scroll back to target pass before tapping
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
-          scanModalRef.current?.scrollToPass(2);
+          scanModalRef.current?.scrollToPass(ticketIdx % DEMO_TICKETS.length);
         }, t);
 
-        // 1000ms pause on the selected pass before "tapping"
-        t += 1000;
+        // 800ms pause on the selected pass before "tapping"
+        t += 800;
 
         // Fade out section cards before showing pass detail
         scheduleTimer(() => {
@@ -1328,7 +1321,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       t = runScanSequence(passIndex, t);
       passIndex++;
 
-      // SEQUENCE 2: Scan a different pass (Kings Island Day Pass)
+      // SEQUENCE 2: Scan a different pass (Knott's Berry Farm Season Pass)
       t = runScanSequence(passIndex, t);
 
       // Loop back
@@ -1353,6 +1346,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       setRatingCoasterName('');
       setRatingParkName('');
       setRatingCoasterId('');
+      setActiveNavTab('Home');
 
       // Helper: run the FULL rate sequence (log + rate nudge + rating) for the first coaster
       const runFullRateSequence = (
@@ -1412,14 +1406,28 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           openLogConfirmSheet(coasterKey);
         }, t);
 
-        // Wait then auto-scroll pager to page 2 (ride info)
-        t += 800;
+        // Wait 2000ms viewing card art (page 1)
+        t += 2000;
+
+        // Auto-scroll pager to page 2 (stats)
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           logConfirmSheetRef.current?.scrollToPage2();
         }, t);
 
-        // Pause before "Log It" (1000ms)
+        // Wait 1500ms viewing stats page
+        t += 1500;
+
+        // Auto-scroll BACK to page 1 (card art)
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          logConfirmSheetRef.current?.scrollToPage1();
+        }, t);
+
+        // Wait 1000ms viewing card art again after flip back
+        t += 1000;
+
+        // PAUSE 1000ms before tapping "Log It" (deliberate, human pace)
         t += 1000;
 
         // Trigger the log celebration via ref
@@ -1428,11 +1436,12 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           logConfirmSheetRef.current?.triggerLog();
         }, t);
 
-        // Wait for celebration + rate nudge to appear
-        // handleConfirm: 300ms to phase 2, 1600ms to check fade, 2000ms to nudge fade-in
-        t += 2500;
+        // Wait for celebration to finish + nudge to appear and fade in
+        // handleConfirm timing: celebration at 300ms, checkmark fades at 3000ms,
+        // nudge starts at 3500ms (+ 100ms delay + 300ms fade = fully visible ~3900ms)
+        t += 3900;
 
-        // View rate nudge for 1.5s, then trigger rate action
+        // View rate nudge for 1500ms, then trigger rate action
         t += 1500;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
@@ -1507,6 +1516,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       };
 
       // Helper: run standalone rating (no log flow) for second coaster
+      // Simulates navigating to Logbook tab, then opening rating from there
       const runStandaloneRateSequence = (
         coasterKey: string,
         ratings: Record<string, number>,
@@ -1514,7 +1524,16 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       ): number => {
         let t = startT;
 
-        // Directly open the RatingSheet (showing rating can happen independently)
+        // Highlight "Logbook" tab in bottom nav (simulating tab switch)
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          setActiveNavTab('Logbook');
+        }, t);
+
+        // Brief pause to let the tab switch register visually (1000ms)
+        t += 1000;
+
+        // Open the RatingSheet (as if tapping a ride from the logbook)
         const enriched = ENRICHED_COASTERS[coasterKey];
         const coasterName = enriched?.name ?? coasterKey;
         const parkName = enriched?.park ?? '';
@@ -1555,6 +1574,13 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setRatingSheetVisible(false);
+        }, t);
+
+        // Switch back to Home tab
+        t += 500;
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          setActiveNavTab('Home');
         }, t);
 
         // Wait for close + pause before next loop (2500ms)
@@ -1894,7 +1920,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
               zIndex: 160,
             }, searchHeaderAnimatedStyle]}
           >
-            {searchOrigin === 'logPill' || searchOrigin === 'logCircle' ? 'LOG' : searchOrigin === 'scanPill' ? 'SCAN' : 'SEARCH'}
+            {searchOrigin === 'logPill' || searchOrigin === 'logCircle' ? 'LOG' : searchOrigin === 'scanPill' ? 'WALLET' : 'SEARCH'}
           </Reanimated.Text>
         )}
 
@@ -2167,6 +2193,42 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             onClose={() => setRatingSheetVisible(false)}
             onRateComplete={() => {}}
           />
+        </View>
+
+        {/* Bottom Navigation Bar (decorative) */}
+        <View
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: '#FFFFFF',
+            borderTopWidth: StyleSheet.hairlineWidth,
+            borderTopColor: '#E5E5E5',
+            flexDirection: 'row',
+            paddingTop: 12,
+            paddingBottom: insets.bottom > 0 ? insets.bottom + 4 : 24,
+            zIndex: 8,
+          }}
+        >
+          {([
+            { icon: 'home' as const, label: 'Home' },
+            { icon: 'location-outline' as const, label: 'Parks' },
+            { icon: 'book-outline' as const, label: 'Logbook' },
+            { icon: 'chatbubbles-outline' as const, label: 'Community' },
+            { icon: 'person-outline' as const, label: 'Profile' },
+          ]).map((tab) => {
+            const isActive = tab.label === activeNavTab;
+            return (
+              <View key={tab.label} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Ionicons
+                  name={tab.icon}
+                  size={24}
+                  color={isActive ? colors.accent.primary : '#999999'}
+                />
+              </View>
+            );
+          })}
         </View>
       </View>
 

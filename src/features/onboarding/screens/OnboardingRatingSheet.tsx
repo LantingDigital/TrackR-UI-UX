@@ -285,7 +285,7 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
         });
       }, 300));
 
-      // T+1600ms: Checkmark fades out
+      // T+2500ms: Checkmark fades out (extended celebration time)
       celebTimersRef.current.push(setTimeout(() => {
         celebCheckOpacity.value = withTiming(0, { duration: 250 });
         celebCheckScale.value = withTiming(0.9, {
@@ -293,12 +293,12 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
           easing: Easing.in(Easing.cubic),
         });
         celebTextOpacity.value = withTiming(0, { duration: 200 });
-      }, 1600));
+      }, 2500));
 
-      // T+1900ms: Fire onRateComplete
+      // T+3000ms: Fire onRateComplete (3000ms total celebration)
       celebTimersRef.current.push(setTimeout(() => {
         onRateComplete();
-      }, 1900));
+      }, 3000));
     }, [onRateComplete]);
 
     const handleCriterionDragEnd = useCallback((criterionId: string, value: number) => {
@@ -399,10 +399,10 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
 
     return (
       <View style={StyleSheet.absoluteFill} pointerEvents={visible ? 'auto' : 'none'}>
-        {/* Backdrop */}
+        {/* Backdrop — covers full screen including notch area */}
         <Animated.View style={[StyleSheet.absoluteFill, backdropAnimStyle]}>
           <Pressable style={StyleSheet.absoluteFill} onPress={dismiss}>
-            <BlurView intensity={25} tint="light" style={StyleSheet.absoluteFill} />
+            <BlurView intensity={40} tint="systemChromeMaterialLight" style={StyleSheet.absoluteFill} />
           </Pressable>
         </Animated.View>
 

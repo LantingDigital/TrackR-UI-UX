@@ -9,16 +9,16 @@
  *  - Multi-pass horizontal swiping (demo shows a single pass)
  *  - Dot indicators (single pass, not needed)
  *  - Original image modal (no real images in demo)
- *  - PanResponder-based gesture handling (replaced with Reanimated Gesture Handler)
+ *  - PanResponder-based gesture handling (replaced with Reanimated)
  *  - react-native Animated (replaced with react-native-reanimated per project rules)
  *  - PassHeroCard + QRCodeDisplay (replaced with inline gradient card + QR placeholder)
  *  - <Modal> (replaced with absolute-positioned View to stay inside scaled phone frame)
  *
  * Kept:
- *  - 3D flip animation (rotateY, 600ms) — THE key visual
+ *  - 3D flip animation (rotateY, 600ms) -- THE key visual
  *  - Front face (pass hero card with park gradient, park name, pass type)
- *  - Back face (QR code placeholder with grid pattern)
- *  - Blur backdrop
+ *  - Back face (QR code placeholder with realistic grid pattern)
+ *  - Blurred card art as FULL BACKGROUND (not solid color)
  *  - Close button (X when front, arrow-back when flipped)
  *  - "Tap card to scan" instruction badge
  *  - "Tap to flip back" hint on back face
@@ -28,9 +28,8 @@
  *  - forwardRef with flip() and dismiss() methods for programmatic control
  *  - Uses react-native-reanimated (project standard) instead of react-native Animated
  *  - Renders as absolute overlay (no Modal) so it stays inside phone frame
- *  - Blurred card art background behind the pass card
+ *  - Blurred card art background covering the ENTIRE screen
  *  - Proper bottom sheet entrance (translateY spring from bottom)
- *  - Proper bottom sheet exit (translateY timing to bottom)
  */
 
 import React, { useState, useCallback, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
@@ -64,11 +63,10 @@ import { CARD_ART } from '../../../data/cardArt';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-// Card art mapping (ticket id → card art asset) — must match OnboardingScanModal
+// Card art mapping (ticket id -> card art asset) -- must match OnboardingScanModal
 const TICKET_CARD_ART: Record<string, ImageSourcePropType> = {
   'cp-season': CARD_ART['steel-vengeance'],
-  'ki-day': CARD_ART['diamondback'],
-  'cw-fast': CARD_ART['fury-325'],
+  'kbf-season': CARD_ART['ghostrider'],
 };
 
 // Card dimensions - nearly full width
@@ -83,31 +81,42 @@ const FOOTER_HEIGHT_RATIO = 0.42;
 const QR_PLACEHOLDER_SIZE = 140;
 
 // ============================================
-// QR Placeholder — grid pattern instead of real QR
+// QR Placeholder -- realistic grid pattern
 // ============================================
 
 const QRPlaceholder: React.FC<{ size: number }> = ({ size }) => {
-  const gridSize = 7;
-  const cellSize = size / gridSize;
+  const gridSize = 11;
+  const cellSize = (size - 24) / gridSize; // Subtract padding
 
-  // Generate a deterministic grid pattern that looks like a QR code
+  // Generate a deterministic grid pattern that looks like a real QR code
   const cells: boolean[][] = [];
   for (let row = 0; row < gridSize; row++) {
     cells[row] = [];
     for (let col = 0; col < gridSize; col++) {
-      // Corner positioning squares (QR code pattern)
-      const isCornerSquare =
-        (row < 2 && col < 2) ||
-        (row < 2 && col >= gridSize - 2) ||
-        (row >= gridSize - 2 && col < 2);
+      // Finder patterns (three 3x3 corners with border)
+      const isTopLeft = row < 3 && col < 3;
+      const isTopRight = row < 3 && col >= gridSize - 3;
+      const isBottomLeft = row >= gridSize - 3 && col < 3;
+      const isFinderOuter = isTopLeft || isTopRight || isBottomLeft;
 
-      // Timing pattern (alternating row/col at position 3)
-      const isTimingPattern = row === 3 || col === 3;
+      // Inner filled part of finder (1x1 center)
+      const isFinderInner =
+        (row === 1 && col === 1) ||
+        (row === 1 && col === gridSize - 2) ||
+        (row === gridSize - 2 && col === 1);
 
-      // Random-looking data cells
-      const isDataCell = (row * 7 + col * 3 + row * col) % 3 === 0;
+      // Finder border (outer ring)
+      const isFinderBorder = isFinderOuter && !isFinderInner;
 
-      cells[row][col] = isCornerSquare || (isTimingPattern && (row + col) % 2 === 0) || isDataCell;
+      // Timing patterns (alternating row/col between finders)
+      const isTimingH = row === 3 && col > 2 && col < gridSize - 3 && col % 2 === 0;
+      const isTimingV = col === 3 && row > 2 && row < gridSize - 3 && row % 2 === 0;
+
+      // Pseudo-random data cells (deterministic hash)
+      const hash = (row * 17 + col * 31 + row * col * 7) % 11;
+      const isDataCell = !isFinderOuter && !isTimingH && !isTimingV && hash < 5;
+
+      cells[row][col] = isFinderBorder || isFinderInner || isTimingH || isTimingV || isDataCell;
     }
   }
 
@@ -290,7 +299,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       }
     }, [handleFlip]);
 
-    // ── Animated styles ──
+    // -- Animated styles --
 
     const backdropAnimStyle = useAnimatedStyle(() => ({
       opacity: backdropOpacity.value,
@@ -351,30 +360,37 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
 
     return (
       <View style={styles.overlayRoot}>
-        {/* Backdrop with blurred card art background */}
+        {/* Backdrop with blurred card art as FULL background */}
         <Pressable style={StyleSheet.absoluteFill} onPress={handleBackdropPress}>
           <Animated.View style={[styles.backdrop, backdropAnimStyle]}>
-            {/* Blurred card art background (like the real PassDetailView) */}
+            {/* Card art as full background, blurred */}
             {cardArtSource ? (
-              <Image
-                source={cardArtSource}
-                style={styles.cardArtBackground}
-                resizeMode="cover"
-                blurRadius={20}
-              />
-            ) : null}
-            <LinearGradient
-              colors={gradientColors}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={[StyleSheet.absoluteFill, { opacity: cardArtSource ? 0.3 : 0.6 }]}
-            />
-            <View style={styles.backdropDarkOverlay} />
-            <BlurView intensity={cardArtSource ? 15 : 40} tint="dark" style={StyleSheet.absoluteFill} />
+              <>
+                <Image
+                  source={cardArtSource}
+                  style={styles.cardArtBackground}
+                  resizeMode="cover"
+                  blurRadius={25}
+                />
+                {/* Darken overlay for readability */}
+                <View style={styles.backdropDarkOverlay} />
+              </>
+            ) : (
+              <>
+                <LinearGradient
+                  colors={gradientColors}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  style={StyleSheet.absoluteFill}
+                />
+                <View style={styles.backdropDarkOverlay} />
+                <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
+              </>
+            )}
           </Animated.View>
         </Pressable>
 
-        {/* Flip background (gradient + blur) */}
+        {/* Flip background (enhanced blur when QR is showing) */}
         <Animated.View
           style={[StyleSheet.absoluteFill, flipBgAnimStyle]}
           pointerEvents={isFlipped ? 'auto' : 'none'}
@@ -384,7 +400,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
               source={cardArtSource}
               style={styles.cardArtBackground}
               resizeMode="cover"
-              blurRadius={25}
+              blurRadius={30}
             />
           ) : (
             <LinearGradient
@@ -425,7 +441,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
 
           {/* Card area */}
           <View style={styles.cardContainer}>
-            {/* Front face — gradient hero card */}
+            {/* Front face -- gradient hero card */}
             <Animated.View style={[styles.cardFace, frontCardStyle]}>
               <Pressable onPress={handleCardPress} style={styles.heroCard}>
                 {/* Hero gradient area */}
@@ -473,7 +489,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
               </Pressable>
             </Animated.View>
 
-            {/* Back face — scan card with QR */}
+            {/* Back face -- scan card with QR */}
             <Animated.View style={[styles.cardFace, styles.cardBack, backCardStyle]}>
               <Pressable onPress={handleFlipBack} style={styles.scanCard}>
                 <Text style={styles.scanParkName}>{ticket.parkName}</Text>
@@ -497,7 +513,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
             </Animated.View>
           </View>
 
-          {/* Bottom section — instruction + last used */}
+          {/* Bottom section -- instruction + last used */}
           <Animated.View
             style={[styles.bottomSection, bottomAnimStyle]}
             pointerEvents={isFlipped ? 'none' : 'auto'}
@@ -535,12 +551,11 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     overflow: 'hidden',
   },
   backdropDarkOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    backgroundColor: 'rgba(0, 0, 0, 0.45)',
   },
   cardArtBackground: {
     ...StyleSheet.absoluteFillObject,
