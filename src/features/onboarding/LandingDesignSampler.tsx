@@ -26,6 +26,9 @@ import { colors } from '../../theme/colors';
 import { haptics } from '../../services/haptics';
 import { OnboardingCardLanding } from './screens/OnboardingCardLanding';
 import { OnboardingSearch } from './screens/OnboardingSearch';
+import { OnboardingLog } from './screens/OnboardingLog';
+import { OnboardingScan } from './screens/OnboardingScan';
+import { OnboardingRate } from './screens/OnboardingRate';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -37,6 +40,9 @@ interface ScreenDef {
 const SCREENS: ScreenDef[] = [
   { name: 'Card Art Landing', Component: OnboardingCardLanding },
   { name: 'Search', Component: OnboardingSearch },
+  { name: 'Log', Component: OnboardingLog },
+  { name: 'Scan', Component: OnboardingScan },
+  { name: 'Rate', Component: OnboardingRate },
 ];
 
 interface LandingDesignSamplerProps {
