@@ -18,9 +18,10 @@
  *  - Snap-with-peek carousel scrolling
  *
  * Added:
- *  - Static DEMO_TICKETS data (3 passes with gradient backgrounds)
+ *  - Static DEMO_TICKETS data (3 passes with real NanoBanana card art)
  *  - forwardRef with scrollToPass(index) method
  *  - onPassSelect callback (fires when user taps a pass)
+ *  - Multi-card visible carousel (2-3 cards visible at once)
  */
 
 import React, { forwardRef, useImperativeHandle, useCallback, useRef } from 'react';
@@ -30,12 +31,13 @@ import {
   StyleSheet,
   ScrollView,
   Pressable,
+  Image,
+  ImageSourcePropType,
 } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-  withDelay,
   interpolate,
   Extrapolation,
   Easing,
@@ -43,14 +45,24 @@ import Animated, {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Ticket, PASS_TYPE_LABELS } from '../../../types/wallet';
-import { colors } from '../../../theme/colors';
-import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
-import { getParkGradientColors, getParkInitials } from '../../../utils/parkAssets';
+import { CARD_ART } from '../../../data/cardArt';
 
-// Card dimensions for carousel
-const CARD_SIZE = 120;
+// Card dimensions for carousel — wider to show 2-3 cards at once
+const CARD_WIDTH = 140;
+const CARD_HEIGHT = 140;
+const CARD_GAP = 12;
+
+// ============================================
+// Card Art Mapping (ticket id → card art asset)
+// ============================================
+
+const TICKET_CARD_ART: Record<string, ImageSourcePropType> = {
+  'cp-season': CARD_ART['steel-vengeance'],
+  'ki-day': CARD_ART['diamondback'],
+  'cw-fast': CARD_ART['fury-325'],
+};
 
 // ============================================
 // Static Mock Ticket Data
@@ -124,13 +136,12 @@ interface OnboardingScanModalProps {
   onPassSelect?: (ticket: Ticket, index: number) => void;
 }
 
-/** Mini preview card for the demo carousel */
+/** Mini preview card for the demo carousel — uses real card art */
 const DemoPassCard: React.FC<{
   ticket: Ticket;
   onPress?: () => void;
 }> = ({ ticket, onPress }) => {
-  const gradientColors = getParkGradientColors(ticket.parkName);
-  const initials = getParkInitials(ticket.parkName);
+  const cardArtSource = TICKET_CARD_ART[ticket.id];
 
   return (
     <Pressable
@@ -138,14 +149,16 @@ const DemoPassCard: React.FC<{
       style={({ pressed }) => [pressed && { transform: [{ scale: 0.97 }] }]}
     >
       <View style={demoCardStyles.container}>
-        <LinearGradient
-          colors={gradientColors}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={demoCardStyles.gradient}
-        >
-          <Text style={demoCardStyles.initials}>{initials}</Text>
-        </LinearGradient>
+        {/* Card art image background */}
+        {cardArtSource ? (
+          <Image
+            source={cardArtSource}
+            style={demoCardStyles.cardArt}
+            resizeMode="cover"
+          />
+        ) : (
+          <View style={demoCardStyles.fallbackGradient} />
+        )}
 
         {/* Star badge for favorites */}
         {ticket.isFavorite && (
@@ -154,10 +167,17 @@ const DemoPassCard: React.FC<{
           </View>
         )}
 
+        {/* Pass type badge at top-right */}
+        <View style={demoCardStyles.passTypeBadge}>
+          <Text style={demoCardStyles.passTypeText}>
+            {PASS_TYPE_LABELS[ticket.passType] || 'Pass'}
+          </Text>
+        </View>
+
         {/* Gradient banner at bottom with park name */}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)']}
-          locations={[0, 0.5, 1]}
+          colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.85)']}
+          locations={[0, 0.45, 1]}
           style={demoCardStyles.banner}
         >
           <Text style={demoCardStyles.parkName} numberOfLines={1}>
@@ -171,8 +191,8 @@ const DemoPassCard: React.FC<{
 
 const demoCardStyles = StyleSheet.create({
   container: {
-    width: CARD_SIZE,
-    height: CARD_SIZE,
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT,
     borderRadius: radius.card,
     backgroundColor: '#E8E8E8',
     overflow: 'hidden',
@@ -182,19 +202,17 @@ const demoCardStyles = StyleSheet.create({
     shadowRadius: 12,
     elevation: 4,
   },
-  gradient: {
+  cardArt: {
     width: '100%',
     height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
-  initials: {
-    fontSize: CARD_SIZE * 0.35,
-    fontWeight: '700',
-    color: 'rgba(255, 255, 255, 0.9)',
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 4,
+  fallbackGradient: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#CCCCCC',
   },
   favoriteBadge: {
     position: 'absolute',
@@ -207,18 +225,34 @@ const demoCardStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  passTypeBadge: {
+    position: 'absolute',
+    top: 6,
+    right: 6,
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  passTypeText: {
+    fontSize: 8,
+    fontWeight: '700',
+    color: '#333333',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
   banner: {
     position: 'absolute',
     left: 0,
     right: 0,
     bottom: 0,
-    height: '35%',
+    height: '40%',
     justifyContent: 'flex-end',
-    paddingBottom: 6,
-    paddingHorizontal: 6,
+    paddingBottom: 8,
+    paddingHorizontal: 8,
   },
   parkName: {
-    fontSize: CARD_SIZE * 0.11,
+    fontSize: 12,
     fontWeight: '600',
     color: '#FFFFFF',
     textAlign: 'center',
@@ -265,7 +299,7 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
         if (ticket.isFavorite) {
           const favIndex = favoriteTickets.findIndex(t => t.id === ticket.id);
           favoritesScrollRef.current?.scrollTo({
-            x: favIndex * (CARD_SIZE + spacing.md),
+            x: favIndex * (CARD_WIDTH + CARD_GAP),
             animated: true,
           });
         }
@@ -308,7 +342,7 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.carouselContent}
               decelerationRate="fast"
-              snapToInterval={CARD_SIZE + spacing.md}
+              snapToInterval={CARD_WIDTH + CARD_GAP}
             >
               {favoriteTickets.map((ticket) => (
                 <DemoPassCard
@@ -340,7 +374,7 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.carouselContent}
               decelerationRate="fast"
-              snapToInterval={CARD_SIZE + spacing.md}
+              snapToInterval={CARD_WIDTH + CARD_GAP}
             >
               {ticketItems.map((ticket) => (
                 <DemoPassCard
@@ -372,7 +406,7 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.carouselContent}
               decelerationRate="fast"
-              snapToInterval={CARD_SIZE + spacing.md}
+              snapToInterval={CARD_WIDTH + CARD_GAP}
             >
               {passItems.map((ticket) => (
                 <DemoPassCard
@@ -436,7 +470,7 @@ const styles = StyleSheet.create({
   // Carousel
   carouselContent: {
     paddingHorizontal: 16,
-    gap: spacing.md,
+    gap: CARD_GAP,
   },
 
   // Section Empty States

@@ -10,7 +10,6 @@
  *  - RatingSheet integration (rating is a separate onboarding step)
  *  - Navigation calls
  *  - Rate nudge (countdown timer, "Rate this ride" button, "Maybe later")
- *  - Pager / Page 2 ("Ride Info") — single page with card art only
  *
  * Kept:
  *  - Entrance animation (staggered content reveal)
@@ -42,6 +41,7 @@ import {
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
   withSpring,
   withTiming,
   withSequence,
@@ -76,7 +76,7 @@ const DISMISS_VELOCITY = 500;
 const HANDLE_AREA = 33;
 const IMAGE_MARGIN = 12;
 const STATS_MARGIN = 12;
-const ACTION_MARGIN = 12;
+const ACTION_MARGIN = 8;
 
 // How far content lifts (translateY) — single lift for celebration
 const LIFT_AMOUNT = -80;
@@ -91,6 +91,8 @@ const STAT_CARD_SIZE = Math.floor((SCREEN_WIDTH - spacing.xl * 2 - spacing.sm * 
 export interface OnboardingLogConfirmSheetRef {
   /** Programmatically triggers the "Log It" button action (for demo automation) */
   triggerLog: () => void;
+  /** Programmatically scrolls the pager to page 2 (for demo automation) */
+  scrollToPage2: () => void;
 }
 
 interface OnboardingLogConfirmSheetProps {
@@ -115,6 +117,18 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
     const [imageLoaded, setImageLoaded] = useState(false);
     const [measuredImageH, setMeasuredImageH] = useState(0);
     const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+    // ── Pager state ──
+    const [measuredPagerW, setMeasuredPagerW] = useState(0);
+    const pagerScrollX = useSharedValue(0);
+    const pagerWidthSV = useSharedValue(0);
+    const pagerRef = useRef<Animated.ScrollView>(null);
+
+    const pagerScrollHandler = useAnimatedScrollHandler({
+      onScroll: (e) => {
+        pagerScrollX.value = e.contentOffset.x;
+      },
+    });
 
     // ── Data ──
     const coasterData = COASTER_BY_ID[coaster.id];
@@ -144,8 +158,24 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       return parts.join(' \u00B7 ');
     }, [coaster.id]);
 
+    // Page 2 detail items
+    const detailItems = useMemo(() => {
+      if (!coasterData) return [];
+      const items: { label: string; value: string }[] = [];
+      if (coasterData.manufacturer) items.push({ label: 'Manufacturer', value: coasterData.manufacturer });
+      if (coasterData.material) items.push({ label: 'Material', value: coasterData.material.charAt(0).toUpperCase() + coasterData.material.slice(1) });
+      if (coasterData.yearOpened > 0) items.push({ label: 'Opened', value: String(coasterData.yearOpened) });
+      if (coasterData.heightFt > 0) items.push({ label: 'Height', value: `${coasterData.heightFt} ft` });
+      if (coasterData.speedMph > 0) items.push({ label: 'Top Speed', value: `${coasterData.speedMph} mph` });
+      if (coasterData.lengthFt > 0) items.push({ label: 'Length', value: `${coasterData.lengthFt.toLocaleString()} ft` });
+      if (coasterData.inversions > 0) items.push({ label: 'Inversions', value: String(coasterData.inversions) });
+      return items;
+    }, [coaster.id]);
+
+    const hasPage2 = detailItems.length > 0;
+
     // ── Sheet geometry ──
-    const sheetTop = insets.top + 16;
+    const sheetTop = insets.top + 4;
     const sheetHeight = SCREEN_HEIGHT - sheetTop;
 
     // ── Animation shared values ──
@@ -192,6 +222,10 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
         confettiProgress.value = 0;
         celebSlideY.value = 30;
         liftY.value = 0;
+
+        // Reset pager to page 1
+        pagerScrollX.value = 0;
+        pagerRef.current?.scrollTo({ x: 0, animated: false });
 
         haptics.select();
 
@@ -254,10 +288,15 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       }, 2000);
     }, [confirmed, onLogComplete]);
 
-    // ── Expose triggerLog via ref ──
+    // ── Expose triggerLog + scrollToPage2 via ref ──
     useImperativeHandle(ref, () => ({
       triggerLog: () => {
         handleConfirm();
+      },
+      scrollToPage2: () => {
+        if (measuredPagerW > 0 && pagerRef.current) {
+          pagerRef.current.scrollTo({ x: measuredPagerW, animated: true });
+        }
       },
     }));
 
@@ -345,6 +384,27 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       transform: [{ translateY: celebSlideY.value }],
     }));
 
+    // ── Pager dot styles ──
+    const dot1Style = useAnimatedStyle(() => {
+      const progress = pagerWidthSV.value > 0
+        ? pagerScrollX.value / pagerWidthSV.value
+        : 0;
+      return {
+        opacity: interpolate(progress, [0, 1], [1, 0.3], Extrapolation.CLAMP),
+        width: interpolate(progress, [0, 1], [16, 6], Extrapolation.CLAMP),
+      };
+    });
+
+    const dot2Style = useAnimatedStyle(() => {
+      const progress = pagerWidthSV.value > 0
+        ? pagerScrollX.value / pagerWidthSV.value
+        : 0;
+      return {
+        opacity: interpolate(progress, [0, 1], [0.3, 1], Extrapolation.CLAMP),
+        width: interpolate(progress, [0, 1], [6, 16], Extrapolation.CLAMP),
+      };
+    });
+
     if (!mounted && !visible) return null;
 
     return (
@@ -384,7 +444,7 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
           </Pressable>
 
           {/* Content */}
-          <View style={[styles.content, { paddingBottom: insets.bottom + 8 }]}>
+          <View style={[styles.content, { paddingBottom: insets.bottom + 12 }]}>
             {/* Header */}
             <Animated.View style={headerStyle}>
               <Text style={styles.name} numberOfLines={2}>{coaster.name}</Text>
@@ -394,49 +454,106 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
               )}
             </Animated.View>
 
-            {/* Hero Image — flex fills remaining space, single page (no pager) */}
+            {/* Hero Image / Info Pager — flex fills remaining space */}
             <Animated.View
               style={[styles.imageSection, imageEntranceStyle]}
               onLayout={(e) => {
                 const h = e.nativeEvent.layout.height;
+                const w = e.nativeEvent.layout.width;
                 setMeasuredImageH(h);
+                setMeasuredPagerW(w);
+                pagerWidthSV.value = w;
               }}
             >
-              {hasImage ? (
-                <View style={styles.imageCard}>
-                  {!imageLoaded && (
-                    <View style={styles.imageSpinner}>
-                      <ActivityIndicator size="small" color={colors.text.meta} />
+              {measuredPagerW > 0 ? (
+                <>
+                  <Animated.ScrollView
+                    ref={pagerRef}
+                    horizontal
+                    pagingEnabled
+                    bounces={false}
+                    showsHorizontalScrollIndicator={false}
+                    onScroll={pagerScrollHandler}
+                    scrollEventThrottle={16}
+                    style={{ flex: 1 }}
+                  >
+                    {/* ── Page 1: Card Art ── */}
+                    <View style={{ width: measuredPagerW, height: '100%' }}>
+                      {hasImage ? (
+                        <View style={styles.imageCard}>
+                          {!imageLoaded && (
+                            <View style={styles.imageSpinner}>
+                              <ActivityIndicator size="small" color={colors.text.meta} />
+                            </View>
+                          )}
+                          <Animated.View style={[imageFadeStyle, { flex: 1, overflow: 'hidden' }]}>
+                            <Image
+                              source={localArt || (typeof resolvedImage === 'string' ? { uri: resolvedImage } : resolvedImage)}
+                              style={[
+                                { width: '100%', height: '100%' },
+                                localArt && measuredImageH > 0 ? {
+                                  height: measuredImageH * 1.2,
+                                  position: 'absolute' as const,
+                                  top: -focalY * (measuredImageH * 0.2),
+                                } : undefined,
+                              ]}
+                              resizeMode="cover"
+                              onLoad={() => {
+                                setImageLoaded(true);
+                                imageOpacity.value = withTiming(1, { duration: 300 });
+                              }}
+                              onError={() => setImageError(true)}
+                            />
+                          </Animated.View>
+                        </View>
+                      ) : (
+                        <View style={[styles.imageCard, styles.imagePlaceholder]}>
+                          <Ionicons
+                            name={coasterData?.material === 'wood' ? 'leaf-outline' : 'flash-outline'}
+                            size={48}
+                            color={colors.text.meta}
+                          />
+                        </View>
+                      )}
+                    </View>
+
+                    {/* ── Page 2: Ride Info ── */}
+                    {hasPage2 && (
+                      <View style={{ width: measuredPagerW, height: '100%' }}>
+                        <View style={styles.page2Card}>
+                          <Text style={styles.p2Header}>Ride Info</Text>
+                          <View style={styles.p2DetailsCard}>
+                            {detailItems.map((item, i) => (
+                              <View
+                                key={item.label}
+                                style={[
+                                  styles.p2DetailRow,
+                                  i < detailItems.length - 1 && styles.p2DetailRowBorder,
+                                ]}
+                              >
+                                <Text style={styles.p2DetailLabel}>{item.label}</Text>
+                                <Text style={styles.p2DetailValue}>{item.value}</Text>
+                              </View>
+                            ))}
+                          </View>
+                        </View>
+                      </View>
+                    )}
+                  </Animated.ScrollView>
+
+                  {/* Dot indicators — frosted dark pill */}
+                  {hasPage2 && (
+                    <View style={styles.dotsOuter}>
+                      <View style={styles.dotsPill}>
+                        <Animated.View style={[styles.dot, dot1Style]} />
+                        <Animated.View style={[styles.dot, dot2Style]} />
+                      </View>
                     </View>
                   )}
-                  <Animated.View style={[imageFadeStyle, { flex: 1, overflow: 'hidden' }]}>
-                    <Image
-                      source={localArt || (typeof resolvedImage === 'string' ? { uri: resolvedImage } : resolvedImage)}
-                      style={[
-                        { width: '100%', height: '100%' },
-                        localArt && measuredImageH > 0 ? {
-                          height: measuredImageH * 1.2,
-                          position: 'absolute' as const,
-                          top: -focalY * (measuredImageH * 0.2),
-                        } : undefined,
-                      ]}
-                      resizeMode="cover"
-                      onLoad={() => {
-                        setImageLoaded(true);
-                        imageOpacity.value = withTiming(1, { duration: 300 });
-                      }}
-                      onError={() => setImageError(true)}
-                    />
-                  </Animated.View>
-                </View>
+                </>
               ) : (
-                <View style={[styles.imageCard, styles.imagePlaceholder]}>
-                  <Ionicons
-                    name={coasterData?.material === 'wood' ? 'leaf-outline' : 'flash-outline'}
-                    size={48}
-                    color={colors.text.meta}
-                  />
-                </View>
+                // Placeholder while measuring width
+                <View style={[styles.imageCard, styles.imagePlaceholder]} />
               )}
             </Animated.View>
 
@@ -704,5 +821,69 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#4CAF50',
     marginTop: spacing.sm,
+  },
+
+  // -- Pager dots (frosted dark pill) --
+  dotsOuter: {
+    position: 'absolute',
+    bottom: spacing.base,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+  },
+  dotsPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    backgroundColor: 'rgba(0,0,0,0.45)',
+    paddingHorizontal: spacing.base,
+    paddingVertical: spacing.sm,
+    borderRadius: 999,
+  },
+  dot: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#FFFFFF',
+  },
+
+  // -- Page 2 --
+  page2Card: {
+    flex: 1,
+    backgroundColor: colors.background.card,
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+    overflow: 'hidden',
+  },
+  p2Header: {
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
+    marginBottom: spacing.lg,
+  },
+  p2DetailsCard: {
+    backgroundColor: colors.background.page,
+    borderRadius: radius.md,
+    overflow: 'hidden',
+  },
+  p2DetailRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.base,
+  },
+  p2DetailRowBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.border.subtle,
+  },
+  p2DetailLabel: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.medium,
+    color: colors.text.secondary,
+  },
+  p2DetailValue: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
   },
 });

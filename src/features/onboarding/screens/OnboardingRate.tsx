@@ -35,9 +35,9 @@ export const OnboardingRate: React.FC<OnboardingScreenProps> = ({ isActive }) =>
   return (
     <View style={styles.container}>
       <View style={[styles.textRegion, { paddingTop: insets.top + spacing.xxxl + spacing.lg }]}>
-        <Text style={styles.title}>Rate & Rank</Text>
+        <Text style={styles.title}>Rate What Matters</Text>
         <Text style={[styles.desc, { marginTop: spacing.md }]}>
-          Your opinion matters.{'\n'}Rate every ride, build your rankings.
+          Not just a number.{'\n'}Rate every aspect that matters to you.
         </Text>
       </View>
 

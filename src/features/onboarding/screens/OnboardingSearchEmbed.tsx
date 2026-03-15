@@ -995,15 +995,15 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         t += 300;
         t = typeString(searchText, t);
 
-        // Wait 500ms after typing completes, then highlight result
-        t += 500;
+        // Wait 800ms after typing completes, then highlight result
+        t += 800;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setHighlightedIndex(0);
         }, t);
 
-        // Wait 300ms, open LogConfirmSheet
-        t += 300;
+        // Wait 500ms, open LogConfirmSheet
+        t += 500;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           stopCursorBlink();
@@ -1011,8 +1011,15 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           openLogConfirmSheet(coasterKey);
         }, t);
 
-        // Wait 1.5s viewing the sheet
-        t += 1500;
+        // Wait 1s then auto-scroll pager to page 2 (ride info)
+        t += 1000;
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          logConfirmSheetRef.current?.scrollToPage2();
+        }, t);
+
+        // Wait 1s viewing page 2, then trigger log
+        t += 1000;
 
         // Trigger the celebration via ref
         scheduleTimer(() => {
@@ -1020,8 +1027,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           logConfirmSheetRef.current?.triggerLog();
         }, t);
 
-        // Wait 2.5s for celebration to play (checkmark + "Logged!")
-        t += 2500;
+        // Wait 3s for celebration to play (checkmark + "Logged!")
+        t += 3000;
 
         // Close LogConfirmSheet
         scheduleTimer(() => {
@@ -1039,8 +1046,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           morphingPillRef.current.close();
         }, t);
 
-        // Wait 2s for close animation + pause
-        t += 2000;
+        // Wait 2.5s for close animation + pause
+        t += 2500;
 
         return t;
       };
@@ -1240,15 +1247,15 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         t += 300;
         t = typeString(searchText, t);
 
-        // Wait 500ms after typing completes, then highlight result
-        t += 500;
+        // Wait 800ms after typing completes, then highlight result
+        t += 800;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setHighlightedIndex(0);
         }, t);
 
-        // Wait 300ms, open LogConfirmSheet
-        t += 300;
+        // Wait 500ms, open LogConfirmSheet
+        t += 500;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           stopCursorBlink();
@@ -1256,8 +1263,15 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           openLogConfirmSheet(coasterKey);
         }, t);
 
-        // Wait 1s viewing the sheet
-        t += 1000;
+        // Wait 800ms then auto-scroll pager to page 2 (ride info)
+        t += 800;
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          logConfirmSheetRef.current?.scrollToPage2();
+        }, t);
+
+        // Wait 700ms viewing page 2, then trigger log
+        t += 700;
 
         // Trigger the log celebration via ref
         scheduleTimer(() => {
@@ -1265,8 +1279,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           logConfirmSheetRef.current?.triggerLog();
         }, t);
 
-        // Wait 2.5s for celebration to play (checkmark + "Logged!")
-        t += 2500;
+        // Wait 3s for celebration to play (checkmark + "Logged!")
+        t += 3000;
 
         // Open RatingSheet for this coaster
         const enriched = ENRICHED_COASTERS[coasterKey];
@@ -1908,7 +1922,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           />
         )}
 
-        {/* Scan Demo — PassDetail (renders as a Modal, so position doesn't matter) */}
+        {/* Scan Demo — PassDetail (absolute overlay inside mainContentWrapper) */}
         {passDetailVisible && passDetailTicket && (
           <OnboardingPassDetail
             ref={passDetailRef}
@@ -1921,15 +1935,17 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           />
         )}
 
-        {/* Rate Demo — RatingSheet */}
-        <OnboardingRatingSheet
-          ref={ratingSheetRef}
-          coasterName={ratingCoasterName}
-          parkName={ratingParkName}
-          visible={ratingSheetVisible}
-          onClose={() => setRatingSheetVisible(false)}
-          onRateComplete={() => {}}
-        />
+        {/* Rate Demo — RatingSheet (z-index above LogConfirmSheet's 500) */}
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 600 }} pointerEvents={ratingSheetVisible ? 'auto' : 'none'}>
+          <OnboardingRatingSheet
+            ref={ratingSheetRef}
+            coasterName={ratingCoasterName}
+            parkName={ratingParkName}
+            visible={ratingSheetVisible}
+            onClose={() => setRatingSheetVisible(false)}
+            onRateComplete={() => {}}
+          />
+        </View>
       </View>
 
       {/* Search MorphingPill */}

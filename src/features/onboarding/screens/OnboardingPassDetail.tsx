@@ -12,21 +12,22 @@
  *  - PanResponder-based gesture handling (replaced with Reanimated Gesture Handler)
  *  - react-native Animated (replaced with react-native-reanimated per project rules)
  *  - PassHeroCard + QRCodeDisplay (replaced with inline gradient card + QR placeholder)
+ *  - <Modal> (replaced with absolute-positioned View to stay inside scaled phone frame)
  *
  * Kept:
  *  - 3D flip animation (rotateY, 600ms) — THE key visual
  *  - Front face (pass hero card with park gradient, park name, pass type)
  *  - Back face (QR code placeholder with grid pattern)
  *  - Blur backdrop
- *  - Swipe-down-to-close gesture
  *  - Close button (X when front, arrow-back when flipped)
  *  - "Tap card to scan" instruction badge
  *  - "Tap to flip back" hint on back face
- *  - Modal presentation with slide-up entrance
+ *  - Slide-up entrance animation
  *
  * Added:
  *  - forwardRef with flip() method for programmatic flip trigger
  *  - Uses react-native-reanimated (project standard) instead of react-native Animated
+ *  - Renders as absolute overlay (no Modal) so it stays inside phone frame
  */
 
 import React, { useState, useCallback, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
@@ -36,7 +37,6 @@ import {
   StyleSheet,
   Dimensions,
   Pressable,
-  Modal,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -46,22 +46,15 @@ import Animated, {
   interpolate,
   Extrapolation,
   Easing,
-  runOnJS,
 } from 'react-native-reanimated';
-import {
-  Gesture,
-  GestureDetector,
-} from 'react-native-gesture-handler';
 import { BlurView } from 'expo-blur';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ticket, PASS_TYPE_LABELS } from '../../../types/wallet';
 import { colors } from '../../../theme/colors';
 import { radius } from '../../../theme/radius';
-import { spacing } from '../../../theme/spacing';
-import { getParkGradientColors, getParkInitials } from '../../../utils/parkAssets';
 import { SPRINGS } from '../../../constants/animations';
+import { getParkGradientColors, getParkInitials } from '../../../utils/parkAssets';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -72,9 +65,6 @@ const CARD_ASPECT_RATIO = 1.35;
 const CARD_HEIGHT = CARD_WIDTH * CARD_ASPECT_RATIO;
 const HERO_HEIGHT_RATIO = 0.58;
 const FOOTER_HEIGHT_RATIO = 0.42;
-
-// Swipe threshold
-const SWIPE_CLOSE_THRESHOLD = 100;
 
 // QR placeholder size
 const QR_PLACEHOLDER_SIZE = 140;
@@ -169,7 +159,6 @@ interface OnboardingPassDetailProps {
 
 export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, OnboardingPassDetailProps>(
   function OnboardingPassDetail({ ticket, visible, onClose }, ref) {
-    const insets = useSafeAreaInsets();
     const [isFlipped, setIsFlipped] = useState(false);
     const [internalVisible, setInternalVisible] = useState(false);
     const isFlippedRef = useRef(false);
@@ -263,46 +252,6 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       },
     }));
 
-    // Swipe-down-to-close gesture (header area)
-    const panGesture = Gesture.Pan()
-      .enabled(visible)
-      .onUpdate((e) => {
-        'worklet';
-        if (e.translationY > 0) {
-          translateY.value = e.translationY;
-          backdropOpacity.value = interpolate(
-            e.translationY,
-            [0, SCREEN_HEIGHT * 0.4],
-            [1, 0],
-            Extrapolation.CLAMP,
-          );
-        }
-      })
-      .onEnd((e) => {
-        'worklet';
-        if (e.translationY > SWIPE_CLOSE_THRESHOLD || e.velocityY > 500) {
-          translateY.value = withTiming(SCREEN_HEIGHT, { duration: 250 });
-          backdropOpacity.value = withTiming(0, { duration: 250 });
-          runOnJS(handleCloseFromGesture)();
-        } else {
-          translateY.value = withSpring(0, SPRINGS.responsive);
-          backdropOpacity.value = withSpring(1);
-        }
-      });
-
-    const handleCloseFromGesture = useCallback(() => {
-      if (isFlippedRef.current) {
-        setIsFlipped(false);
-        isFlippedRef.current = false;
-        flipProgress.value = 0;
-        flipBgOpacity.value = 0;
-      }
-      setTimeout(() => {
-        setInternalVisible(false);
-        onClose();
-      }, 100);
-    }, [onClose]);
-
     // Backdrop tap handler
     const handleBackdropPress = useCallback(() => {
       if (isFlippedRef.current) {
@@ -382,13 +331,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
     const passTypeLabel = PASS_TYPE_LABELS[ticket.passType] || 'Pass';
 
     return (
-      <Modal
-        visible={internalVisible}
-        transparent
-        animationType="none"
-        statusBarTranslucent
-        onRequestClose={animateClose}
-      >
+      <View style={styles.overlayRoot}>
         {/* Backdrop */}
         <Pressable style={StyleSheet.absoluteFill} onPress={handleBackdropPress}>
           <Animated.View style={[styles.backdrop, backdropAnimStyle]}>
@@ -419,24 +362,22 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
           style={[styles.contentContainer, contentStyle]}
           pointerEvents="box-none"
         >
-          {/* Header — drag to dismiss */}
-          <GestureDetector gesture={panGesture}>
-            <Animated.View style={[styles.header, { paddingTop: insets.top + 16 }]}>
-              <View style={styles.headerRow}>
-                <Pressable
-                  onPress={isFlipped ? handleFlipBack : animateClose}
-                  style={({ pressed }) => [styles.closeButton, pressed && { opacity: 0.7 }]}
-                  hitSlop={12}
-                >
-                  <Ionicons name={isFlipped ? 'arrow-back' : 'close'} size={24} color="#FFFFFF" />
-                </Pressable>
-                <Text style={styles.headerTitle}>
-                  {isFlipped ? 'Ready to Scan' : 'Passes'}
-                </Text>
-                <View style={styles.closeButton} />
-              </View>
-            </Animated.View>
-          </GestureDetector>
+          {/* Header */}
+          <View style={[styles.header, { paddingTop: 16 }]}>
+            <View style={styles.headerRow}>
+              <Pressable
+                onPress={isFlipped ? handleFlipBack : animateClose}
+                style={({ pressed }) => [styles.closeButton, pressed && { opacity: 0.7 }]}
+                hitSlop={12}
+              >
+                <Ionicons name={isFlipped ? 'arrow-back' : 'close'} size={24} color="#FFFFFF" />
+              </Pressable>
+              <Text style={styles.headerTitle}>
+                {isFlipped ? 'Ready to Scan' : 'Passes'}
+              </Text>
+              <View style={styles.closeButton} />
+            </View>
+          </View>
 
           {/* Card area */}
           <View style={styles.cardContainer}>
@@ -531,19 +472,23 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
               </Text>
             </View>
 
-            <View style={{ height: insets.bottom + 32 }} />
+            <View style={{ height: 32 }} />
           </Animated.View>
         </Animated.View>
-      </Modal>
+      </View>
     );
   },
 );
 
 // ============================================
-// Styles (matches PassDetailView)
+// Styles
 // ============================================
 
 const styles = StyleSheet.create({
+  overlayRoot: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 100,
+  },
   backdrop: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
