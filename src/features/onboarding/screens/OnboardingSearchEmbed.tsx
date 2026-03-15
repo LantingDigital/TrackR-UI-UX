@@ -99,6 +99,24 @@ const TRENDING_SEARCHES = [
 ];
 
 // =========================================
+// Logbook Collection Grid (for rate demo)
+// =========================================
+const LOGBOOK_GRID_CARDS: { id: string; name: string; unrated?: boolean }[] = [
+  { id: 'steel-vengeance', name: 'Steel Vengeance' },
+  { id: 'fury-325', name: 'Fury 325' },
+  { id: 'millennium-force', name: 'Millennium Force' },
+  { id: 'iron-gwazi', name: 'Iron Gwazi' },
+  { id: 'jurassic-world-velocicoaster', name: 'VelociCoaster', unrated: true },
+  { id: 'maverick', name: 'Maverick' },
+  { id: 'expedition-everest', name: 'Expedition Everest' },
+  { id: 'el-toro', name: 'El Toro' },
+  { id: 'lightning-rod', name: 'Lightning Rod' },
+];
+const LOGBOOK_GRID_COLUMNS = 3;
+const LOGBOOK_CARD_GAP = 8;
+const LOGBOOK_CARD_SIZE = (SCREEN_WIDTH - 32 - LOGBOOK_CARD_GAP * (LOGBOOK_GRID_COLUMNS - 1)) / LOGBOOK_GRID_COLUMNS;
+
+// =========================================
 // Static EnrichedCoaster data for real CoasterSheet
 // =========================================
 const ENRICHED_COASTERS: Record<string, EnrichedCoaster> = {
@@ -296,6 +314,11 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
 
   // Active bottom nav tab (for rate demo Logbook tab highlight)
   const [activeNavTab, setActiveNavTab] = useState('Home');
+
+  // Logbook view state (for rate demo second sequence)
+  const [showLogbookView, setShowLogbookView] = useState(false);
+  const logbookFadeProgress = useSharedValue(0); // 0 = home visible, 1 = logbook visible
+  const [highlightedCardId, setHighlightedCardId] = useState<string | null>(null);
 
   // Highlighted result index
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
@@ -588,6 +611,16 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   // Feed scroll animated style (for simulated scroll between log sequences)
   const feedScrollAnimatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: feedScrollTranslateY.value }],
+  }));
+
+  // Home feed opacity (fades out when logbook is shown)
+  const homeFeedOpacityStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(logbookFadeProgress.value, [0, 1], [1, 0]),
+  }));
+
+  // Logbook content opacity (fades in when logbook is shown)
+  const logbookContentOpacityStyle = useAnimatedStyle(() => ({
+    opacity: logbookFadeProgress.value,
   }));
 
   const logButtonAnimatedStyle = useAnimatedStyle(() => ({
@@ -1067,6 +1100,15 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         // Wait 1500ms viewing page 2
         t += 1500;
 
+        // Scroll BACK to page 1 (card art) before logging
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          logConfirmSheetRef.current?.scrollToPage1();
+        }, t);
+
+        // Wait 1000ms viewing card art again
+        t += 1000;
+
         // PAUSE 1000ms before tapping "Log It" button (the big moment)
         t += 1000;
 
@@ -1253,8 +1295,26 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           setPassDetailVisible(true);
         }, t);
 
-        // 2000ms — view the front of the pass
-        t += 2000;
+        // 1000ms — view the front of the pass (Cedar Point)
+        t += 1000;
+
+        // Swipe to Knott's Berry Farm pass (index 1)
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          passDetailRef.current?.swipeTo(1);
+        }, t);
+
+        // 1500ms — view Knott's Berry Farm pass
+        t += 1500;
+
+        // Swipe BACK to Cedar Point pass (index 0)
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          passDetailRef.current?.swipeTo(0);
+        }, t);
+
+        // 1000ms — view Cedar Point again
+        t += 1000;
 
         // Trigger the 3D flip (show QR code back)
         scheduleTimer(() => {
@@ -1293,14 +1353,21 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         // 1000ms pause showing wallet again
         t += 1000;
 
-        // Close ScanModal
+        // Fade out wallet content smoothly before closing
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          scanContentOpacity.value = withTiming(0, { duration: 200 });
+        }, t);
+
+        // Wait for fade-out (200ms), then unmount ScanModal
+        t += 250;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setScanModalVisible(false);
         }, t);
 
-        // Wait 500ms
-        t += 500;
+        // Wait 200ms then close MorphingPill
+        t += 200;
 
         // Close MorphingPill
         scheduleTimer(() => {
@@ -1347,6 +1414,9 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       setRatingParkName('');
       setRatingCoasterId('');
       setActiveNavTab('Home');
+      setShowLogbookView(false);
+      setHighlightedCardId(null);
+      logbookFadeProgress.value = 0;
 
       // Helper: run the FULL rate sequence (log + rate nudge + rating) for the first coaster
       const runFullRateSequence = (
@@ -1516,7 +1586,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       };
 
       // Helper: run standalone rating (no log flow) for second coaster
-      // Simulates navigating to Logbook tab, then opening rating from there
+      // Simulates navigating to Logbook tab, showing collection grid, tapping VelociCoaster, then rating
       const runStandaloneRateSequence = (
         coasterKey: string,
         ratings: Record<string, number>,
@@ -1524,21 +1594,33 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       ): number => {
         let t = startT;
 
-        // Highlight "Logbook" tab in bottom nav (simulating tab switch)
+        // Switch nav to "Logbook" tab + show logbook view with crossfade
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setActiveNavTab('Logbook');
+          setShowLogbookView(true);
+          logbookFadeProgress.value = withTiming(1, { duration: 300, easing: ReanimatedEasing.out(ReanimatedEasing.cubic) });
         }, t);
 
-        // Brief pause to let the tab switch register visually (1000ms)
-        t += 1000;
+        // Wait 1.5s for user to see the logbook grid
+        t += 1500;
 
-        // Open the RatingSheet (as if tapping a ride from the logbook)
+        // "Tap" the VelociCoaster card (highlight it briefly)
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          setHighlightedCardId(coasterKey);
+        }, t);
+
+        // Wait 500ms with highlight visible
+        t += 500;
+
+        // Open the RatingSheet (as if tapping the card)
         const enriched = ENRICHED_COASTERS[coasterKey];
         const coasterName = enriched?.name ?? coasterKey;
         const parkName = enriched?.park ?? '';
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
+          setHighlightedCardId(null);
           setRatingCoasterName(coasterName);
           setRatingParkName(parkName);
           setRatingCoasterId(coasterKey);
@@ -1576,15 +1658,24 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           setRatingSheetVisible(false);
         }, t);
 
-        // Switch back to Home tab
+        // Wait 500ms then fade back to home
         t += 500;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
+          logbookFadeProgress.value = withTiming(0, { duration: 300, easing: ReanimatedEasing.out(ReanimatedEasing.cubic) });
           setActiveNavTab('Home');
         }, t);
 
-        // Wait for close + pause before next loop (2500ms)
-        t += 2500;
+        // Wait for fade to complete, then clean up logbook state
+        t += 400;
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          setShowLogbookView(false);
+          setHighlightedCardId(null);
+        }, t);
+
+        // Wait for pause before next loop (2100ms)
+        t += 2100;
 
         return t;
       };
@@ -1637,8 +1728,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   return (
     <View style={styles.container} pointerEvents="none">
       <View style={styles.mainContentWrapper}>
-        {/* Static feed content placeholder */}
-        <Reanimated.View style={feedScrollAnimatedStyle}>
+        {/* Static feed content placeholder (home feed) */}
+        <Reanimated.View style={[feedScrollAnimatedStyle, homeFeedOpacityStyle]}>
         <ScrollView
           contentContainerStyle={[styles.feedContent, { paddingTop: insets.top + HEADER_HEIGHT_EXPANDED }]}
           showsVerticalScrollIndicator={false}
@@ -1685,6 +1776,98 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           </View>
         </ScrollView>
         </Reanimated.View>
+
+        {/* Logbook Collection View (for rate demo second sequence) */}
+        {showLogbookView && (
+          <Reanimated.View
+            style={[
+              {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                paddingTop: insets.top + HEADER_HEIGHT_EXPANDED,
+                paddingHorizontal: 16,
+              },
+              logbookContentOpacityStyle,
+            ]}
+          >
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              scrollEnabled={false}
+              contentContainerStyle={{ paddingBottom: 100 }}
+            >
+              {/* Logbook Header */}
+              <Text style={styles.logbookTitle}>Logbook</Text>
+              <View style={styles.logbookStatsRow}>
+                <Text style={styles.logbookStatText}>12 Rides</Text>
+                <View style={styles.logbookStatDot} />
+                <Text style={styles.logbookStatText}>8 Parks</Text>
+                <View style={styles.logbookStatDot} />
+                <Text style={styles.logbookStatText}>6 Rated</Text>
+              </View>
+
+              {/* Tabs row */}
+              <View style={styles.logbookTabsRow}>
+                <View style={styles.logbookTabActive}>
+                  <Text style={styles.logbookTabActiveText}>Collection</Text>
+                  <View style={styles.logbookTabUnderline} />
+                </View>
+                <View style={styles.logbookTab}>
+                  <Text style={styles.logbookTabText}>Timeline</Text>
+                </View>
+                <View style={styles.logbookTab}>
+                  <Text style={styles.logbookTabText}>Pending</Text>
+                  <View style={styles.logbookBadge}>
+                    <Text style={styles.logbookBadgeText}>2</Text>
+                  </View>
+                </View>
+              </View>
+
+              {/* Collection Grid */}
+              <View style={styles.logbookGrid}>
+                {LOGBOOK_GRID_CARDS.map((card) => {
+                  const cardArt = CARD_ART[card.id];
+                  const isHighlighted = highlightedCardId === card.id;
+                  return (
+                    <View
+                      key={card.id}
+                      style={[
+                        styles.logbookCardWrapper,
+                        isHighlighted && styles.logbookCardHighlighted,
+                      ]}
+                    >
+                      <View style={styles.logbookCard}>
+                        {cardArt ? (
+                          <Image
+                            source={cardArt}
+                            style={styles.logbookCardImage}
+                            resizeMode="cover"
+                          />
+                        ) : (
+                          <View style={[styles.logbookCardImage, { backgroundColor: '#E0E0E0' }]} />
+                        )}
+                        <LinearGradient
+                          colors={['transparent', 'rgba(0,0,0,0.65)']}
+                          style={styles.logbookCardGradient}
+                        />
+                        <Text style={styles.logbookCardName} numberOfLines={2}>
+                          {card.name}
+                        </Text>
+                        {card.unrated && (
+                          <View style={styles.logbookUnratedBadge}>
+                            <Text style={styles.logbookUnratedText}>Unrated</Text>
+                          </View>
+                        )}
+                      </View>
+                    </View>
+                  );
+                })}
+              </View>
+            </ScrollView>
+          </Reanimated.View>
+        )}
 
         {/* Fog Gradient Overlay */}
         <View
@@ -1949,13 +2132,14 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                 />
               </Reanimated.View>
             ) : (
-            <ScrollView
+            <Reanimated.ScrollView
               style={styles.demoSearchContent}
               showsVerticalScrollIndicator={false}
               scrollEnabled={false}
+              layout={Layout.duration(300)}
             >
               {filteredResults.length > 0 ? (
-                <View style={styles.demoSearchSection}>
+                <Reanimated.View style={styles.demoSearchSection} layout={Layout.duration(300)}>
                   <Text style={styles.demoSearchSectionTitle}>Top Results</Text>
                   {/* Rich card for top result — animated in/out */}
                   {filteredResults.length > 0 && (() => {
@@ -2035,7 +2219,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                       <Ionicons name="chevron-forward" size={16} color="#999999" />
                     </Reanimated.View>
                   ))}
-                </View>
+                </Reanimated.View>
               ) : typedText.length === 0 ? (
                 /* Show initial state: Recent Searches (if any), Popular Rides, Popular Parks, Trending */
                 <View>
@@ -2139,7 +2323,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                   </View>
                 </View>
               )}
-            </ScrollView>
+            </Reanimated.ScrollView>
             )}
           </Reanimated.View>
         )}
@@ -2173,6 +2357,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             <OnboardingPassDetail
               ref={passDetailRef}
               ticket={passDetailTicket}
+              allTickets={DEMO_TICKETS}
               visible={passDetailVisible}
               onClose={() => {
                 setPassDetailVisible(false);
@@ -2208,7 +2393,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             flexDirection: 'row',
             paddingTop: 12,
             paddingBottom: insets.bottom > 0 ? insets.bottom + 4 : 24,
-            zIndex: 8,
+            zIndex: 95, // above blur backdrop (50) and fog (90), below bottom sheets (300+)
           }}
         >
           {([
@@ -2272,6 +2457,10 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           closeDuration={searchOrigin === 'expandedSearchBar' ? 445 : undefined}
           closeArcHeight={searchOrigin === 'expandedSearchBar' ? 25 : undefined}
           expandedContent={(_close) => (
+            demoMode === 'scan' ? (
+              /* Scan mode: empty view — OnboardingScanModal has its own "Search passes..." bar */
+              <View style={{ flex: 1 }} />
+            ) : (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16 }}>
               {/* Globe icon */}
               <View style={{ width: 20, height: 20, marginRight: 8, justifyContent: 'center', alignItems: 'center' }}>
@@ -2326,6 +2515,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                 <Ionicons name="close" size={24} color="#666666" />
               </View>
             </View>
+            )
           )}
           showBackdrop={false}
           onOpen={() => {
@@ -2666,5 +2856,140 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     color: colors.accent.primary,
+  },
+
+  // ── Logbook Collection View ──
+  logbookTitle: {
+    fontSize: 28,
+    fontWeight: '800',
+    color: '#000000',
+    marginBottom: 6,
+  },
+  logbookStatsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  logbookStatText: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#666666',
+  },
+  logbookStatDot: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: '#CCCCCC',
+    marginHorizontal: 8,
+  },
+  logbookTabsRow: {
+    flexDirection: 'row',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#E5E5E5',
+    marginBottom: 16,
+  },
+  logbookTab: {
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  logbookTabText: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#999999',
+  },
+  logbookTabActive: {
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    position: 'relative',
+  },
+  logbookTabActiveText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#000000',
+  },
+  logbookTabUnderline: {
+    position: 'absolute',
+    bottom: 0,
+    left: 16,
+    right: 16,
+    height: 2,
+    borderRadius: 1,
+    backgroundColor: colors.accent.primary,
+  },
+  logbookBadge: {
+    backgroundColor: colors.accent.primary,
+    borderRadius: 9,
+    minWidth: 18,
+    height: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 5,
+    marginLeft: 6,
+  },
+  logbookBadgeText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  logbookGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: LOGBOOK_CARD_GAP,
+  },
+  logbookCardWrapper: {
+    width: LOGBOOK_CARD_SIZE,
+    height: LOGBOOK_CARD_SIZE,
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
+  logbookCardHighlighted: {
+    borderWidth: 2,
+    borderColor: colors.accent.primary,
+    transform: [{ scale: 0.96 }],
+  },
+  logbookCard: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
+    overflow: 'hidden',
+    backgroundColor: '#E8E6E3',
+  },
+  logbookCardImage: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+  },
+  logbookCardGradient: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '50%',
+  },
+  logbookCardName: {
+    position: 'absolute',
+    bottom: 6,
+    left: 6,
+    right: 6,
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  logbookUnratedBadge: {
+    position: 'absolute',
+    top: 6,
+    right: 6,
+    backgroundColor: 'rgba(207, 103, 105, 0.9)',
+    borderRadius: 8,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+  },
+  logbookUnratedText: {
+    fontSize: 9,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    letterSpacing: 0.5,
   },
 });

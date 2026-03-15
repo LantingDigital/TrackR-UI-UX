@@ -32,6 +32,20 @@ import { OnboardingRate } from './screens/OnboardingRate';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
+// ── Radial color pulse per screen ──
+// Null = no pulse (first screen). Colors are the "full" rgb — opacity is
+// built up by layering 3 concentric circles for a soft radial gradient feel.
+const SCREEN_PULSE_COLORS: (string | null)[] = [
+  null,                        // Card Landing — entry, no pulse
+  'rgb(207, 103, 105)',        // Search — coral (app accent)
+  'rgb(100, 140, 210)',        // Log — soft blue
+  'rgb(90, 175, 130)',         // Scan — sage green
+  'rgb(210, 175, 70)',         // Rate — warm gold
+];
+
+// Circle must cover the full screen diagonal
+const PULSE_SIZE = Math.ceil(Math.sqrt(SCREEN_WIDTH ** 2 + SCREEN_HEIGHT ** 2)) + 40;
+
 interface ScreenDef {
   name: string;
   Component: React.FC<{ isActive: boolean }>;
@@ -54,6 +68,37 @@ export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDi
   const [activeIndex, setActiveIndex] = React.useState(0);
   const activeIndexRef = useRef(0);
   const flatListRef = useRef<FlatList>(null);
+  const isFirstRender = useRef(true);
+
+  // ── Radial pulse ──
+  const pulseScale = useSharedValue(0);
+  const pulseOpacity = useSharedValue(0);
+  const [pulseColor, setPulseColor] = React.useState<string | null>(null);
+
+  useEffect(() => {
+    // Don't pulse on initial mount
+    if (isFirstRender.current) { isFirstRender.current = false; return; }
+
+    const color = SCREEN_PULSE_COLORS[activeIndex] ?? null;
+    if (!color) return;
+
+    setPulseColor(color);
+
+    // Reset then expand + fade
+    pulseScale.value = 0;
+    pulseOpacity.value = 1;
+    pulseScale.value = withTiming(1, { duration: 700, easing: Easing.out(Easing.cubic) });
+    pulseOpacity.value = withDelay(80, withTiming(0, { duration: 620, easing: Easing.in(Easing.ease) }));
+
+    // "Whoosh" haptic — accelerating ticks that feel like a sweep
+    const whoosh = [0, 20, 38, 54, 68, 80, 95];
+    whoosh.forEach(ms => setTimeout(() => haptics.tick(), ms));
+  }, [activeIndex]);
+
+  const pulseStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: pulseScale.value }],
+    opacity: pulseOpacity.value,
+  }));
 
   // Bouncing chevron
   const chevronY = useSharedValue(0);
@@ -80,7 +125,6 @@ export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDi
     if (index !== activeIndexRef.current && index >= 0 && index < SCREENS.length) {
       activeIndexRef.current = index;
       setActiveIndex(index);
-      haptics.select();
     }
   }, []);
 
@@ -103,6 +147,32 @@ export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDi
           </View>
         )}
       />
+
+      {/* Radial color pulse overlay — 3 concentric circles for soft gradient */}
+      {pulseColor && (
+        <Animated.View
+          style={[styles.pulseContainer, pulseStyle]}
+          pointerEvents="none"
+        >
+          {/* Outer ring — softest */}
+          <View style={[styles.pulseCircle, {
+            width: PULSE_SIZE, height: PULSE_SIZE, borderRadius: PULSE_SIZE / 2,
+            backgroundColor: pulseColor, opacity: 0.045,
+          }]} />
+          {/* Middle ring */}
+          <View style={[styles.pulseCircle, {
+            width: PULSE_SIZE * 0.6, height: PULSE_SIZE * 0.6, borderRadius: PULSE_SIZE * 0.3,
+            left: PULSE_SIZE * 0.2, top: PULSE_SIZE * 0.2,
+            backgroundColor: pulseColor, opacity: 0.06,
+          }]} />
+          {/* Inner core — densest */}
+          <View style={[styles.pulseCircle, {
+            width: PULSE_SIZE * 0.3, height: PULSE_SIZE * 0.3, borderRadius: PULSE_SIZE * 0.15,
+            left: PULSE_SIZE * 0.35, top: PULSE_SIZE * 0.35,
+            backgroundColor: pulseColor, opacity: 0.08,
+          }]} />
+        </Animated.View>
+      )}
 
       {/* Skip button — top right */}
       <Pressable
@@ -132,6 +202,17 @@ export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDi
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  pulseContainer: {
+    position: 'absolute',
+    width: PULSE_SIZE,
+    height: PULSE_SIZE,
+    left: SCREEN_WIDTH / 2 - PULSE_SIZE / 2,
+    top: SCREEN_HEIGHT / 2 - PULSE_SIZE / 2,
+    zIndex: 50,
+  },
+  pulseCircle: {
+    position: 'absolute',
   },
   bottomOverlay: {
     position: 'absolute',

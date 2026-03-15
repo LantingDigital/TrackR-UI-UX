@@ -41,6 +41,9 @@ import {
   Pressable,
   Image,
   ImageSourcePropType,
+  ScrollView,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -170,11 +173,15 @@ export interface OnboardingPassDetailRef {
   flip: () => void;
   /** Programmatically dismiss the pass detail (slide down) */
   dismiss: () => void;
+  /** Programmatically swipe to a specific ticket by index */
+  swipeTo: (index: number) => void;
 }
 
 interface OnboardingPassDetailProps {
-  /** The ticket to display */
+  /** The ticket to display (primary / initially visible) */
   ticket: Ticket | null;
+  /** All tickets available for swiping (if provided, enables carousel) */
+  allTickets?: Ticket[];
   /** Whether the detail view is visible */
   visible: boolean;
   /** Called when the detail view should close */
@@ -182,10 +189,12 @@ interface OnboardingPassDetailProps {
 }
 
 export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, OnboardingPassDetailProps>(
-  function OnboardingPassDetail({ ticket, visible, onClose }, ref) {
+  function OnboardingPassDetail({ ticket, allTickets, visible, onClose }, ref) {
     const [isFlipped, setIsFlipped] = useState(false);
     const [internalVisible, setInternalVisible] = useState(false);
     const isFlippedRef = useRef(false);
+    const [activeTicketIndex, setActiveTicketIndex] = useState(0);
+    const pagerScrollRef = useRef<ScrollView>(null);
 
     // Reanimated shared values
     const translateY = useSharedValue(SCREEN_HEIGHT);
@@ -194,6 +203,9 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
     const flipBgOpacity = useSharedValue(0);
     const cardScale = useSharedValue(1);
     const bottomSectionOpacity = useSharedValue(1);
+
+    // Compute the tickets list for the pager
+    const tickets = allTickets && allTickets.length > 0 ? allTickets : (ticket ? [ticket] : []);
 
     // Open animation
     useEffect(() => {
@@ -206,8 +218,19 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
         cardScale.value = 1;
         bottomSectionOpacity.value = 1;
 
+        // Set initial index to the primary ticket within the list
+        const idx = tickets.findIndex(t => t.id === ticket.id);
+        setActiveTicketIndex(idx >= 0 ? idx : 0);
+
         backdropOpacity.value = withTiming(1, { duration: 300 });
         translateY.value = withSpring(0, SPRINGS.stiff);
+
+        // Scroll pager to initial ticket after mount
+        if (idx > 0) {
+          setTimeout(() => {
+            pagerScrollRef.current?.scrollTo({ x: idx * CARD_WIDTH, animated: false });
+          }, 50);
+        }
       }
     }, [visible, ticket]);
 
@@ -265,7 +288,16 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       }, 500);
     }, []);
 
-    // Expose flip() and dismiss() via ref
+    // Handle pager scroll end to update active ticket
+    const handlePagerScrollEnd = useCallback((e: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const offsetX = e.nativeEvent.contentOffset.x;
+      const newIndex = Math.round(offsetX / CARD_WIDTH);
+      if (newIndex !== activeTicketIndex && newIndex >= 0 && newIndex < tickets.length) {
+        setActiveTicketIndex(newIndex);
+      }
+    }, [activeTicketIndex, tickets.length]);
+
+    // Expose flip(), dismiss(), and swipeTo() via ref
     useImperativeHandle(ref, () => ({
       flip: () => {
         if (isFlippedRef.current) {
@@ -276,6 +308,12 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       },
       dismiss: () => {
         animateClose();
+      },
+      swipeTo: (index: number) => {
+        if (index >= 0 && index < tickets.length) {
+          pagerScrollRef.current?.scrollTo({ x: index * CARD_WIDTH, animated: true });
+          setActiveTicketIndex(index);
+        }
       },
     }));
 
@@ -352,25 +390,25 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
 
     if (!internalVisible || !ticket) return null;
 
-    const gradientColors = getParkGradientColors(ticket.parkName);
-    const parkInitials = getParkInitials(ticket.parkName);
-    const passNumber = ticket.qrData.split('-').pop() || ticket.qrData;
-    const passTypeLabel = PASS_TYPE_LABELS[ticket.passType] || 'Pass';
-    const cardArtSource = TICKET_CARD_ART[ticket.id];
+    // Use active ticket for backdrop/back face; front face uses pager
+    const displayTicket = tickets[activeTicketIndex] || ticket;
+    const gradientColors = getParkGradientColors(displayTicket.parkName);
+    const parkInitials = getParkInitials(displayTicket.parkName);
+    const passNumber = displayTicket.qrData.split('-').pop() || displayTicket.qrData;
+    const passTypeLabel = PASS_TYPE_LABELS[displayTicket.passType] || 'Pass';
+    const cardArtSource = TICKET_CARD_ART[displayTicket.id];
 
     return (
       <View style={styles.overlayRoot}>
-        {/* Backdrop with blurred card art as FULL background */}
+        {/* Backdrop with card art as FULL background — NOT blurred on front face */}
         <Pressable style={StyleSheet.absoluteFill} onPress={handleBackdropPress}>
           <Animated.View style={[styles.backdrop, backdropAnimStyle]}>
-            {/* Card art as full background, blurred */}
             {cardArtSource ? (
               <>
                 <Image
                   source={cardArtSource}
                   style={styles.cardArtBackground}
                   resizeMode="cover"
-                  blurRadius={25}
                 />
                 {/* Darken overlay for readability */}
                 <View style={styles.backdropDarkOverlay} />
@@ -441,58 +479,91 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
 
           {/* Card area */}
           <View style={styles.cardContainer}>
-            {/* Front face -- gradient hero card */}
+            {/* Front face -- horizontal pager of hero cards */}
             <Animated.View style={[styles.cardFace, frontCardStyle]}>
-              <Pressable onPress={handleCardPress} style={styles.heroCard}>
-                {/* Hero gradient area */}
-                <View style={[styles.heroSection, { height: CARD_HEIGHT * HERO_HEIGHT_RATIO }]}>
-                  <LinearGradient
-                    colors={gradientColors}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    style={styles.heroGradient}
-                  >
-                    <Text style={styles.heroInitials}>{parkInitials}</Text>
-                  </LinearGradient>
+              <ScrollView
+                ref={pagerScrollRef}
+                horizontal
+                pagingEnabled
+                showsHorizontalScrollIndicator={false}
+                onMomentumScrollEnd={handlePagerScrollEnd}
+                scrollEnabled={!isFlipped && tickets.length > 1}
+                style={{ width: CARD_WIDTH }}
+                contentContainerStyle={tickets.length > 1 ? undefined : undefined}
+              >
+                {tickets.map((t) => {
+                  const tGradient = getParkGradientColors(t.parkName);
+                  const tInitials = getParkInitials(t.parkName);
+                  const tPassNumber = t.qrData.split('-').pop() || t.qrData;
+                  return (
+                    <Pressable key={t.id} onPress={handleCardPress} style={styles.heroCard}>
+                      {/* Hero gradient area */}
+                      <View style={[styles.heroSection, { height: CARD_HEIGHT * HERO_HEIGHT_RATIO }]}>
+                        <LinearGradient
+                          colors={tGradient}
+                          start={{ x: 0, y: 0 }}
+                          end={{ x: 1, y: 1 }}
+                          style={styles.heroGradient}
+                        >
+                          <Text style={styles.heroInitials}>{tInitials}</Text>
+                        </LinearGradient>
 
-                  {/* Darkening overlay for text readability */}
-                  <LinearGradient
-                    colors={['rgba(0,0,0,0.4)', 'transparent', 'rgba(0,0,0,0.2)']}
-                    locations={[0, 0.4, 1]}
-                    style={StyleSheet.absoluteFill}
-                  />
+                        {/* Darkening overlay for text readability */}
+                        <LinearGradient
+                          colors={['rgba(0,0,0,0.4)', 'transparent', 'rgba(0,0,0,0.2)']}
+                          locations={[0, 0.4, 1]}
+                          style={StyleSheet.absoluteFill}
+                        />
 
-                  {/* Park name at top */}
-                  <View style={styles.parkNameWrapper}>
-                    <LinearGradient
-                      colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'transparent']}
-                      style={styles.parkNameGradientBg}
+                        {/* Park name at top */}
+                        <View style={styles.parkNameWrapper}>
+                          <LinearGradient
+                            colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'transparent']}
+                            style={styles.parkNameGradientBg}
+                          />
+                          <Text style={styles.parkNameText}>{t.parkName}</Text>
+                        </View>
+
+                        {/* Passholder name at bottom */}
+                        {t.passholder && (
+                          <View style={styles.passholderContainer}>
+                            <Text style={styles.passholderText}>{t.passholder}</Text>
+                          </View>
+                        )}
+                      </View>
+
+                      {/* White footer with QR placeholder */}
+                      <View style={[styles.footerSection, { height: CARD_HEIGHT * FOOTER_HEIGHT_RATIO }]}>
+                        <View style={styles.codeContainer}>
+                          <QRPlaceholder size={120} />
+                        </View>
+                        <Text style={styles.passNumberText}>PASS #: {tPassNumber}</Text>
+                      </View>
+                    </Pressable>
+                  );
+                })}
+              </ScrollView>
+
+              {/* Dot indicators (only if multiple tickets) */}
+              {tickets.length > 1 && (
+                <View style={styles.dotIndicatorRow}>
+                  {tickets.map((t, i) => (
+                    <View
+                      key={t.id}
+                      style={[
+                        styles.dotIndicator,
+                        i === activeTicketIndex && styles.dotIndicatorActive,
+                      ]}
                     />
-                    <Text style={styles.parkNameText}>{ticket.parkName}</Text>
-                  </View>
-
-                  {/* Passholder name at bottom */}
-                  {ticket.passholder && (
-                    <View style={styles.passholderContainer}>
-                      <Text style={styles.passholderText}>{ticket.passholder}</Text>
-                    </View>
-                  )}
+                  ))}
                 </View>
-
-                {/* White footer with QR placeholder */}
-                <View style={[styles.footerSection, { height: CARD_HEIGHT * FOOTER_HEIGHT_RATIO }]}>
-                  <View style={styles.codeContainer}>
-                    <QRPlaceholder size={120} />
-                  </View>
-                  <Text style={styles.passNumberText}>PASS #: {passNumber}</Text>
-                </View>
-              </Pressable>
+              )}
             </Animated.View>
 
-            {/* Back face -- scan card with QR */}
+            {/* Back face -- scan card with QR (always shows active ticket) */}
             <Animated.View style={[styles.cardFace, styles.cardBack, backCardStyle]}>
               <Pressable onPress={handleFlipBack} style={styles.scanCard}>
-                <Text style={styles.scanParkName}>{ticket.parkName}</Text>
+                <Text style={styles.scanParkName}>{displayTicket.parkName}</Text>
 
                 <View style={styles.passTypeBadge}>
                   <Text style={styles.passTypeText}>{passTypeLabel}</Text>
@@ -504,8 +575,8 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
 
                 <Text style={styles.passNumberLabel}>PASS #: {passNumber}</Text>
 
-                {ticket.passholder && (
-                  <Text style={styles.passholderLabel}>{ticket.passholder}</Text>
+                {displayTicket.passholder && (
+                  <Text style={styles.passholderLabel}>{displayTicket.passholder}</Text>
                 )}
 
                 <Text style={styles.flipHint}>Tap to flip back</Text>
@@ -785,6 +856,27 @@ const styles = StyleSheet.create({
   lastUsedText: {
     fontSize: 12,
     color: 'rgba(255, 255, 255, 0.5)',
+  },
+
+  // Dot indicators for multi-pass pager
+  dotIndicatorRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 12,
+  },
+  dotIndicator: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: 'rgba(255, 255, 255, 0.35)',
+  },
+  dotIndicatorActive: {
+    backgroundColor: '#FFFFFF',
+    width: 8,
+    height: 8,
+    borderRadius: 4,
   },
 });
 

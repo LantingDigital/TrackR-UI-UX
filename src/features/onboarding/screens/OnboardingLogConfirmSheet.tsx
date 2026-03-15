@@ -876,7 +876,7 @@ const styles = StyleSheet.create({
   // Header (~90) + image + stats (~80) + button (~50) + handle (~33) + margins (~40) must fit.
   imageSection: {
     flex: 1,
-    maxHeight: SCREEN_HEIGHT * 0.44, // caps the image so stats + button aren't pushed off
+    maxHeight: SCREEN_HEIGHT * 0.50, // tall card art — fills available space above stats
     marginTop: IMAGE_MARGIN,
   },
   imageCard: {
@@ -976,7 +976,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: SCREEN_HEIGHT * 0.4,
+    top: '65%', // starts below where stats end after lift — centers in the revealed gap
     justifyContent: 'center',
     alignItems: 'center',
   },
