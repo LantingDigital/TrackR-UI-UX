@@ -10,7 +10,6 @@
  *  - Keyboard tracking (no text input in demo)
  *  - Notes section (not relevant for demo)
  *  - existingRating prop (always fresh in demo)
- *  - coasterId / card art / rarity lookups (demo uses name + park only)
  *
  * Kept:
  *  - Full rating UI: all category sliders/inputs, weighted score display
@@ -37,6 +36,7 @@ import {
   View,
   Text,
   TextInput,
+  Image,
   Pressable,
   StyleSheet,
   Dimensions,
@@ -77,6 +77,13 @@ import {
   DEFAULT_CRITERIA,
   calculateWeightedScore,
 } from '../../../types/rideLog';
+import { CARD_ART } from '../../../data/cardArt';
+import { COASTER_BY_ID } from '../../../data/coasterIndex';
+import {
+  getRarityFromRank,
+  RARITY_GRADIENTS,
+} from '../../../data/cardArt';
+import { LinearGradient } from 'expo-linear-gradient';
 
 // ============================================
 // Constants
@@ -135,6 +142,8 @@ export interface OnboardingRatingSheetRef {
 interface OnboardingRatingSheetProps {
   coasterName: string;
   parkName: string;
+  /** Optional coaster ID for card art lookup */
+  coasterId?: string;
   visible: boolean;
   onClose: () => void;
   /** Fires after celebration finishes ("Rated!" sequence complete) */
@@ -149,6 +158,7 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
   function OnboardingRatingSheet({
     coasterName,
     parkName,
+    coasterId,
     visible,
     onClose,
     onRateComplete,
@@ -163,6 +173,14 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
     // Use DEFAULT_CRITERIA directly (no store dependency)
     const allCriteria = DEFAULT_CRITERIA;
     const enabledCriteria = allCriteria.filter(c => c.weight > 0);
+
+    // Art & rarity
+    const localArt = coasterId ? CARD_ART[coasterId] : undefined;
+    const coasterData = coasterId ? COASTER_BY_ID[coasterId] : undefined;
+    const popularityRank = coasterData?.popularityRank ?? 9999;
+    const rarity = getRarityFromRank(popularityRank);
+    const [gradStart, gradEnd] = RARITY_GRADIENTS[rarity];
+    const materialIcon = coasterData?.material === 'wood' ? 'leaf-outline' : 'train-outline';
 
     // Ratings — only updated on drag-end for zero-rerender sliders
     const [ratings, setRatings] = useState<Record<string, number>>(() => {
@@ -434,18 +452,46 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
               onScroll={scrollHandler}
               scrollEventThrottle={16}
             >
-              {/* ── Hero (scrolls with content) — simplified, no card art ── */}
+              {/* ── Hero (scrolls with content) ── */}
               <View style={styles.heroSection}>
-                <View style={styles.heroGradientBg} />
+                {/* Blurred art / gradient background */}
+                {localArt ? (
+                  <Image
+                    source={localArt}
+                    style={styles.heroBgImage}
+                    resizeMode="cover"
+                    blurRadius={20}
+                  />
+                ) : (
+                  <LinearGradient
+                    colors={[gradStart, gradEnd]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={StyleSheet.absoluteFillObject}
+                  />
+                )}
                 <View style={styles.heroDarkOverlay} />
 
                 {/* Content row */}
                 <View style={styles.heroContent}>
-                  {/* Placeholder portrait */}
+                  {/* Portrait card */}
                   <View style={styles.portraitCard}>
-                    <View style={styles.portraitPlaceholder}>
-                      <Ionicons name="train-outline" size={24} color="rgba(255,255,255,0.5)" />
-                    </View>
+                    {localArt ? (
+                      <Image
+                        source={localArt}
+                        style={styles.portraitImage}
+                        resizeMode="cover"
+                      />
+                    ) : (
+                      <LinearGradient
+                        colors={[gradStart, gradEnd]}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 1 }}
+                        style={styles.portraitPlaceholder}
+                      >
+                        <Ionicons name={materialIcon as any} size={24} color="rgba(255,255,255,0.5)" />
+                      </LinearGradient>
+                    )}
                   </View>
 
                   {/* Name + park */}
@@ -797,9 +843,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: spacing.lg,
   },
-  heroGradientBg: {
+  heroBgImage: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#CF6769', // Accent color gradient fallback
+    width: '100%',
+    height: '100%',
   },
   heroDarkOverlay: {
     ...StyleSheet.absoluteFillObject,
@@ -828,7 +875,10 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#CF6769',
+  },
+  portraitImage: {
+    width: '100%',
+    height: '100%',
   },
   heroInfo: {
     flex: 1,
@@ -978,7 +1028,9 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: 60,
     zIndex: 50,
+    backgroundColor: colors.background.page,
   },
   celebCenter: {
     alignItems: 'center',

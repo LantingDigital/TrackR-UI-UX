@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { StyleSheet, View, Dimensions, Text, ScrollView, Image, LayoutAnimation } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, ScrollView, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
@@ -42,7 +42,7 @@ const GAP = 12;
 const HEADER_HEIGHT_EXPANDED = 132;
 
 // Type for tracking which element triggered the search modal
-type SearchOrigin = 'expandedSearchBar' | 'searchPill' | 'logPill' | 'scanPill';
+type SearchOrigin = 'expandedSearchBar' | 'searchPill' | 'logPill' | 'logCircle' | 'scanPill';
 
 // =========================================
 // Coaster Data for Cinematic Demo
@@ -232,7 +232,7 @@ const ENRICHED_COASTERS: Record<string, EnrichedCoaster> = {
 // =========================================
 // Demo Sequence Typing Config
 // =========================================
-const TYPE_SPEED = 80; // ms per character
+const TYPE_SPEED = 100; // ms per character (human pace)
 const BACKSPACE_SPEED = 50; // ms per character
 const CURSOR_BLINK_RATE = 500; // ms
 
@@ -273,7 +273,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   // Log Confirm Sheet State
   // =========================================
   const logConfirmSheetRef = useRef<OnboardingLogConfirmSheetRef>(null);
-  const [logConfirmCoaster, setLogConfirmCoaster] = useState<{ id: string; name: string; parkName: string } | null>(null);
+  const [logConfirmCoaster, setLogConfirmCoaster] = useState<{ id: string; name: string; parkName: string; description?: string } | null>(null);
   const [logConfirmVisible, setLogConfirmVisible] = useState(false);
 
   // =========================================
@@ -291,6 +291,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   const [ratingSheetVisible, setRatingSheetVisible] = useState(false);
   const [ratingCoasterName, setRatingCoasterName] = useState('');
   const [ratingParkName, setRatingParkName] = useState('');
+  const [ratingCoasterId, setRatingCoasterId] = useState('');
   const ratingSheetRef = useRef<OnboardingRatingSheetRef>(null);
 
   // Highlighted result index
@@ -316,6 +317,9 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   // Close-in-progress flag
   const searchIsClosing = useSharedValue(0);
 
+  // Feed scroll translateY for simulated scroll between log sequences
+  const feedScrollTranslateY = useSharedValue(0);
+
   // Hero morph animation values for search modal
   const pillMorphProgress = useSharedValue(0);
   const backdropOpacity = useSharedValue(0);
@@ -332,6 +336,9 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   const logButtonOpacity = useSharedValue(1);
   const searchButtonOpacity = useSharedValue(1);
   const scanButtonOpacity = useSharedValue(1);
+
+  // Scan modal content opacity (hides section cards when pass detail is up)
+  const scanContentOpacity = useSharedValue(1);
 
   // Animation lock
   const isModalAnimatingRef = useRef(false);
@@ -443,6 +450,14 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           height: 36,
           borderRadius: 18,
         };
+      case 'logCircle':
+        return {
+          top: insets.top + collapsedY - circleSize / 2,
+          left: collapsedPositions[0].x - circleSize / 2,
+          width: circleSize,
+          height: circleSize,
+          borderRadius: circleSize / 2,
+        };
       case 'scanPill':
         return {
           top: insets.top + expandedY - 18,
@@ -485,6 +500,12 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             </View>
           </View>
         );
+      case 'logCircle':
+        return (
+          <View style={{ ...absoluteFill, alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name="add-circle-outline" size={18} color="#000000" />
+          </View>
+        );
       case 'scanPill':
         return (
           <View style={{ ...absoluteFill, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
@@ -516,6 +537,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
     expandedSearchBar: { x: HORIZONTAL_PADDING, y: insets.top + 20 },
     searchPill: { x: expandedPositions[1].x - pillWidth / 2, y: insets.top + expandedY - 18 },
     logPill: { x: expandedPositions[0].x - pillWidth / 2, y: insets.top + expandedY - 18 },
+    logCircle: { x: collapsedPositions[0].x - circleSize / 2, y: insets.top + collapsedY - circleSize / 2 },
     scanPill: { x: expandedPositions[2].x - pillWidth / 2, y: insets.top + expandedY - 18 },
   };
 
@@ -560,6 +582,11 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
     opacity: searchBarMorphOpacity.value,
   }));
 
+  // Feed scroll animated style (for simulated scroll between log sequences)
+  const feedScrollAnimatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: feedScrollTranslateY.value }],
+  }));
+
   const logButtonAnimatedStyle = useAnimatedStyle(() => ({
     opacity: logButtonOpacity.value,
   }));
@@ -568,6 +595,10 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   }));
   const scanButtonAnimatedStyle = useAnimatedStyle(() => ({
     opacity: scanButtonOpacity.value,
+  }));
+
+  const scanContentAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: scanContentOpacity.value,
   }));
 
   const searchPillWrapperZStyle = useAnimatedStyle(() => {
@@ -641,7 +672,6 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       const charDelay = elapsed;
       scheduleTimer(() => {
         if (!demoActiveRef.current) return;
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         const newText = typedTextRef.current + text[charIndex];
         typedTextRef.current = newText;
         setTypedText(newText);
@@ -662,7 +692,6 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       const bsDelay = elapsed;
       scheduleTimer(() => {
         if (!demoActiveRef.current) return;
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         const newText = typedTextRef.current.slice(0, -1);
         typedTextRef.current = newText;
         setTypedText(newText);
@@ -709,7 +738,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   const openLogConfirmSheet = useCallback((coasterKey: string) => {
     const enriched = ENRICHED_COASTERS[coasterKey];
     if (!enriched) return;
-    setLogConfirmCoaster({ id: enriched.id, name: enriched.name, parkName: enriched.park });
+    setLogConfirmCoaster({ id: enriched.id, name: enriched.name, parkName: enriched.park, description: enriched.description });
     setLogConfirmVisible(true);
   }, []);
 
@@ -743,9 +772,11 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       setScanModalVisible(false);
       setPassDetailVisible(false);
       setPassDetailTicket(null);
+      scanContentOpacity.value = 1;
       setRatingSheetVisible(false);
       setRatingCoasterName('');
       setRatingParkName('');
+      setRatingCoasterId('');
       return;
     }
 
@@ -958,18 +989,30 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       setHighlightedIndex(null);
       setRecentSearch(null);
 
+      // Ensure header starts expanded
+      reanimatedProgress.value = 1;
+      buttonProgress0.value = 1;
+      buttonProgress1.value = 1;
+      buttonProgress2.value = 1;
+      feedScrollTranslateY.value = 0;
+
       // Helper: run a single log sequence for a given coaster
-      const runLogSequence = (coasterKey: string, searchText: string, startT: number): number => {
+      const runLogSequence = (
+        coasterKey: string,
+        searchText: string,
+        origin: 'logPill' | 'logCircle',
+        startT: number,
+      ): number => {
         let t = startT;
 
-        // Set origin to logPill
+        // Set origin
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
-          setSearchOrigin('logPill');
-          searchOriginRef.current = 'logPill';
+          setSearchOrigin(origin);
+          searchOriginRef.current = origin;
         }, t);
 
-        // Wait 200ms for state to settle, then open MorphingPill from Log button
+        // Wait 200ms for state to settle, then open MorphingPill
         t += 200;
         scheduleTimer(() => {
           if (!demoActiveRef.current || !morphingPillRef.current) return;
@@ -978,32 +1021,32 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           searchPillScrollHidden.value = 0;
           logButtonOpacity.value = 0; // hide Log button, pill covers it
 
-          const pos = allOriginPositionsRef.current['logPill'];
+          const pos = allOriginPositionsRef.current[origin];
           if (pos) {
             morphingPillRef.current.open(pos.x, pos.y);
           }
         }, t);
 
-        // After morph opens (~900ms), start cursor blink
-        t += 900;
+        // After morph opens (~1200ms human pace), start cursor blink
+        t += 1200;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           startCursorBlink();
         }, t);
 
-        // Wait a beat (300ms) then start typing
-        t += 300;
+        // Wait 500ms then start typing
+        t += 500;
         t = typeString(searchText, t);
 
-        // Wait 800ms after typing completes, then highlight result
-        t += 800;
+        // Wait 1000ms after typing (natural reading pause), then highlight result
+        t += 1000;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setHighlightedIndex(0);
         }, t);
 
-        // Wait 500ms, open LogConfirmSheet
-        t += 500;
+        // Wait 700ms (deliberate tap feel), open LogConfirmSheet
+        t += 700;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           stopCursorBlink();
@@ -1011,14 +1054,17 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           openLogConfirmSheet(coasterKey);
         }, t);
 
-        // Wait 1s then auto-scroll pager to page 2 (ride info)
-        t += 1000;
+        // Wait 2000ms viewing sheet before auto-scroll to page 2
+        t += 2000;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           logConfirmSheetRef.current?.scrollToPage2();
         }, t);
 
-        // Wait 1s viewing page 2, then trigger log
+        // Wait 1500ms viewing page 2
+        t += 1500;
+
+        // PAUSE 1000ms before tapping "Log It" button (the big moment)
         t += 1000;
 
         // Trigger the celebration via ref
@@ -1027,8 +1073,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           logConfirmSheetRef.current?.triggerLog();
         }, t);
 
-        // Wait 3s for celebration to play (checkmark + "Logged!")
-        t += 3000;
+        // Wait 3500ms for celebration hold
+        t += 3500;
 
         // Close LogConfirmSheet
         scheduleTimer(() => {
@@ -1036,17 +1082,16 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           closeLogConfirmSheet();
         }, t);
 
-        // Wait 800ms for sheet dismiss + clear text → shows generic modal
-        t += 800;
+        // Wait 1500ms after sheet close, before modal close
+        t += 1500;
 
-        // Wait 800ms showing generic modal, then close MorphingPill
-        t += 800;
+        // Close MorphingPill
         scheduleTimer(() => {
           if (!demoActiveRef.current || !morphingPillRef.current) return;
           morphingPillRef.current.close();
         }, t);
 
-        // Wait 2.5s for close animation + pause
+        // Wait 2500ms for close animation + pause
         t += 2500;
 
         return t;
@@ -1054,12 +1099,70 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
 
       let t = 0;
 
-      // SEQUENCE 1: Log Maverick
+      // SEQUENCE 1: Log Maverick (from expanded logPill)
       t += 1500; // initial wait
-      t = runLogSequence('maverick', 'Maverick', t);
+      t = runLogSequence('maverick', 'Maverick', 'logPill', t);
 
-      // SEQUENCE 2: Log Expedition Everest
-      t = runLogSequence('expedition-everest', 'Expedition Everest', t);
+      // === BETWEEN SEQUENCES: Header collapse + feed scroll ===
+      scheduleTimer(() => {
+        if (!demoActiveRef.current) return;
+        reanimatedProgress.value = withTiming(0, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        buttonProgress0.value = withTiming(0, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        buttonProgress1.value = withTiming(0, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        buttonProgress2.value = withTiming(0, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        // Simulate feed scrolling up slightly
+        feedScrollTranslateY.value = withTiming(-40, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+      }, t);
+
+      // Wait 2500ms between sequences (header collapse + pause)
+      t += 2500;
+
+      // SEQUENCE 2: Log Expedition Everest (from collapsed logCircle)
+      t = runLogSequence('expedition-everest', 'Expedition Everest', 'logCircle', t);
+
+      // After sequence 2 closes, re-expand header
+      scheduleTimer(() => {
+        if (!demoActiveRef.current) return;
+        reanimatedProgress.value = withTiming(1, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        buttonProgress0.value = withTiming(1, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        buttonProgress1.value = withTiming(1, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        buttonProgress2.value = withTiming(1, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+        // Scroll feed back up
+        feedScrollTranslateY.value = withTiming(0, {
+          duration: 500,
+          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+        });
+      }, t);
+
+      // Wait for re-expand + pause before loop
+      t += 1500;
 
       // Loop back
       scheduleTimer(() => {
@@ -1082,6 +1185,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       setScanModalVisible(false);
       setPassDetailVisible(false);
       setPassDetailTicket(null);
+      scanContentOpacity.value = 1;
 
       // Track which pass to show each sequence (alternate between passes)
       let passIndex = 0;
@@ -1117,12 +1221,38 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setScanModalVisible(true);
+          scanContentOpacity.value = 1;
         }, t);
 
-        // Wait 2s (user sees the carousel)
-        t += 2000;
+        // 1500ms pause — user sees the wallet sections (Favorites, Tickets, Passes)
+        t += 1500;
 
-        // "Tap" a pass card — show PassDetail
+        // Auto-scroll carousel: scroll to pass index 1 in the sections
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          scanModalRef.current?.scrollToPass(1);
+        }, t);
+
+        // 1500ms — scroll to pass index 2
+        t += 1500;
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          scanModalRef.current?.scrollToPass(2);
+        }, t);
+
+        // 1000ms pause on the selected pass before "tapping"
+        t += 1000;
+
+        // Fade out section cards before showing pass detail
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          scanContentOpacity.value = withTiming(0, { duration: 200 });
+        }, t);
+
+        // 250ms for fade out, then show PassDetail
+        t += 250;
+
+        // "Tap" a pass card — show PassDetail with proper sheet entrance
         const selectedTicket = DEMO_TICKETS[ticketIdx % DEMO_TICKETS.length];
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
@@ -1130,8 +1260,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           setPassDetailVisible(true);
         }, t);
 
-        // Wait 1.5s (see the pass front)
-        t += 1500;
+        // 2000ms — view the front of the pass
+        t += 2000;
 
         // Trigger the 3D flip (show QR code back)
         scheduleTimer(() => {
@@ -1139,18 +1269,36 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           passDetailRef.current?.flip();
         }, t);
 
-        // Wait 2s (see QR code)
+        // 2000ms — view QR code
         t += 2000;
 
-        // Close PassDetail
+        // Flip back to front
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          passDetailRef.current?.flip();
+        }, t);
+
+        // 1000ms — view front again after flip back
+        t += 1000;
+
+        // Dismiss the pass detail sheet (slide down)
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          passDetailRef.current?.dismiss();
+        }, t);
+
+        // Wait for dismiss animation (300ms) then clean up state
+        t += 350;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setPassDetailVisible(false);
           setPassDetailTicket(null);
+          // Fade section cards back in
+          scanContentOpacity.value = withTiming(1, { duration: 200 });
         }, t);
 
-        // Wait 800ms
-        t += 800;
+        // 1000ms pause showing wallet again
+        t += 1000;
 
         // Close ScanModal
         scheduleTimer(() => {
@@ -1167,7 +1315,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           morphingPillRef.current.close();
         }, t);
 
-        // Wait 2s for close animation + pause
+        // Wait 2s for close animation + pause before next sequence
         t += 2000;
 
         return t;
@@ -1204,9 +1352,10 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       setRatingSheetVisible(false);
       setRatingCoasterName('');
       setRatingParkName('');
+      setRatingCoasterId('');
 
-      // Helper: run a single rate sequence (log + rate) for a given coaster
-      const runRateSequence = (
+      // Helper: run the FULL rate sequence (log + rate nudge + rating) for the first coaster
+      const runFullRateSequence = (
         coasterKey: string,
         searchText: string,
         ratings: Record<string, number>,
@@ -1236,26 +1385,26 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           }
         }, t);
 
-        // After morph opens (~900ms), start cursor blink
-        t += 900;
+        // After morph opens, wait before cursor appears (1200ms)
+        t += 1200;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           startCursorBlink();
         }, t);
 
-        // Wait a beat (300ms) then start typing
-        t += 300;
+        // Wait before typing starts (500ms)
+        t += 500;
         t = typeString(searchText, t);
 
-        // Wait 800ms after typing completes, then highlight result
-        t += 800;
+        // Wait after typing completes, then highlight result (1000ms)
+        t += 1000;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           setHighlightedIndex(0);
         }, t);
 
-        // Wait 500ms, open LogConfirmSheet
-        t += 500;
+        // Wait after highlight before sheet opens (700ms)
+        t += 700;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           stopCursorBlink();
@@ -1263,15 +1412,15 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           openLogConfirmSheet(coasterKey);
         }, t);
 
-        // Wait 800ms then auto-scroll pager to page 2 (ride info)
+        // Wait then auto-scroll pager to page 2 (ride info)
         t += 800;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           logConfirmSheetRef.current?.scrollToPage2();
         }, t);
 
-        // Wait 700ms viewing page 2, then trigger log
-        t += 700;
+        // Pause before "Log It" (1000ms)
+        t += 1000;
 
         // Trigger the log celebration via ref
         scheduleTimer(() => {
@@ -1279,10 +1428,18 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           logConfirmSheetRef.current?.triggerLog();
         }, t);
 
-        // Wait 3s for celebration to play (checkmark + "Logged!")
-        t += 3000;
+        // Wait for celebration + rate nudge to appear
+        // handleConfirm: 300ms to phase 2, 1600ms to check fade, 2000ms to nudge fade-in
+        t += 2500;
 
-        // Open RatingSheet for this coaster
+        // View rate nudge for 1.5s, then trigger rate action
+        t += 1500;
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          logConfirmSheetRef.current?.triggerRate();
+        }, t);
+
+        // Open RatingSheet for this coaster (immediately after rate trigger)
         const enriched = ENRICHED_COASTERS[coasterKey];
         const coasterName = enriched?.name ?? searchText;
         const parkName = enriched?.park ?? '';
@@ -1290,13 +1447,14 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           if (!demoActiveRef.current) return;
           setRatingCoasterName(coasterName);
           setRatingParkName(parkName);
+          setRatingCoasterId(coasterKey);
           setRatingSheetVisible(true);
         }, t);
 
-        // Wait 800ms for rating sheet to open and stagger animations to play
-        t += 800;
+        // Wait for rating sheet to open and stagger animations to play (1000ms)
+        t += 1000;
 
-        // Programmatically set ratings one at a time with ~400ms stagger
+        // Programmatically set ratings one at a time with 500ms stagger
         const ratingEntries = Object.entries(ratings);
         for (let i = 0; i < ratingEntries.length; i++) {
           const [category, value] = ratingEntries[i];
@@ -1305,18 +1463,18 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             if (!demoActiveRef.current) return;
             ratingSheetRef.current?.setRating(category, value);
           }, ratingDelay);
-          t += 400;
+          t += 500;
         }
 
-        // Wait 1s after all ratings set, then submit
-        t += 1000;
+        // Wait after all ratings set, then submit (1200ms)
+        t += 1200;
         scheduleTimer(() => {
           if (!demoActiveRef.current) return;
           ratingSheetRef.current?.submitRating();
         }, t);
 
-        // Wait 2s for "Rated!" celebration to finish
-        t += 2000;
+        // Wait for "Rated!" celebration to finish (3000ms)
+        t += 3000;
 
         // Close RatingSheet
         scheduleTimer(() => {
@@ -1342,17 +1500,74 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           morphingPillRef.current.close();
         }, t);
 
-        // Wait 2s for close animation + pause
-        t += 2000;
+        // Wait for close animation + pause before next sequence (2500ms)
+        t += 2500;
+
+        return t;
+      };
+
+      // Helper: run standalone rating (no log flow) for second coaster
+      const runStandaloneRateSequence = (
+        coasterKey: string,
+        ratings: Record<string, number>,
+        startT: number,
+      ): number => {
+        let t = startT;
+
+        // Directly open the RatingSheet (showing rating can happen independently)
+        const enriched = ENRICHED_COASTERS[coasterKey];
+        const coasterName = enriched?.name ?? coasterKey;
+        const parkName = enriched?.park ?? '';
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          setRatingCoasterName(coasterName);
+          setRatingParkName(parkName);
+          setRatingCoasterId(coasterKey);
+          setRatingSheetVisible(true);
+        }, t);
+
+        // Wait for rating sheet to open and stagger animations to play (1000ms)
+        t += 1000;
+
+        // Programmatically set ratings one at a time with 500ms stagger
+        const ratingEntries = Object.entries(ratings);
+        for (let i = 0; i < ratingEntries.length; i++) {
+          const [category, value] = ratingEntries[i];
+          const ratingDelay = t;
+          scheduleTimer(() => {
+            if (!demoActiveRef.current) return;
+            ratingSheetRef.current?.setRating(category, value);
+          }, ratingDelay);
+          t += 500;
+        }
+
+        // Wait after all ratings set, then submit (1200ms)
+        t += 1200;
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          ratingSheetRef.current?.submitRating();
+        }, t);
+
+        // Wait for "Rated!" celebration to finish (3000ms)
+        t += 3000;
+
+        // Close RatingSheet
+        scheduleTimer(() => {
+          if (!demoActiveRef.current) return;
+          setRatingSheetVisible(false);
+        }, t);
+
+        // Wait for close + pause before next loop (2500ms)
+        t += 2500;
 
         return t;
       };
 
       let t = 0;
 
-      // SEQUENCE 1: Rate Iron Gwazi
+      // SEQUENCE 1: Full flow -- Log Iron Gwazi, see rate nudge, then rate it
       t += 1000; // initial wait
-      t = runRateSequence('iron-gwazi', 'Iron Gwazi', {
+      t = runFullRateSequence('iron-gwazi', 'Iron Gwazi', {
         airtime: 9.0,
         intensity: 8.5,
         smoothness: 7.0,
@@ -1360,8 +1575,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         pacing: 8.0,
       }, t);
 
-      // SEQUENCE 2: Rate VelociCoaster
-      t = runRateSequence('jurassic-world-velocicoaster', 'VelociCoaster', {
+      // SEQUENCE 2: Standalone rating -- skip log, open RatingSheet directly for VelociCoaster
+      t = runStandaloneRateSequence('jurassic-world-velocicoaster', {
         airtime: 8.0,
         intensity: 9.5,
         smoothness: 8.0,
@@ -1397,6 +1612,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
     <View style={styles.container} pointerEvents="none">
       <View style={styles.mainContentWrapper}>
         {/* Static feed content placeholder */}
+        <Reanimated.View style={feedScrollAnimatedStyle}>
         <ScrollView
           contentContainerStyle={[styles.feedContent, { paddingTop: insets.top + HEADER_HEIGHT_EXPANDED }]}
           showsVerticalScrollIndicator={false}
@@ -1442,6 +1658,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             </View>
           </View>
         </ScrollView>
+        </Reanimated.View>
 
         {/* Fog Gradient Overlay */}
         <View
@@ -1677,7 +1894,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
               zIndex: 160,
             }, searchHeaderAnimatedStyle]}
           >
-            {searchOrigin === 'logPill' ? 'LOG' : searchOrigin === 'scanPill' ? 'SCAN' : 'SEARCH'}
+            {searchOrigin === 'logPill' || searchOrigin === 'logCircle' ? 'LOG' : searchOrigin === 'scanPill' ? 'SCAN' : 'SEARCH'}
           </Reanimated.Text>
         )}
 
@@ -1695,7 +1912,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           >
             {/* Scan mode: show wallet carousel instead of search results */}
             {demoMode === 'scan' ? (
-              <View style={styles.demoSearchContent}>
+              <Reanimated.View style={[styles.demoSearchContent, scanContentAnimatedStyle]}>
                 <OnboardingScanModal
                   ref={scanModalRef}
                   visible={scanModalVisible}
@@ -1704,7 +1921,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                     setPassDetailVisible(true);
                   }}
                 />
-              </View>
+              </Reanimated.View>
             ) : (
             <ScrollView
               style={styles.demoSearchContent}
@@ -1911,7 +2128,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           onClose={closeSheet}
         />
 
-        {/* Log Confirm Sheet (for log demo) */}
+        {/* Log Confirm Sheet (for log and rate demos) */}
         {logConfirmCoaster && (
           <OnboardingLogConfirmSheet
             ref={logConfirmSheetRef}
@@ -1919,20 +2136,24 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             visible={logConfirmVisible}
             onClose={() => { setLogConfirmVisible(false); setLogConfirmCoaster(null); }}
             onLogComplete={() => { /* handled by timer */ }}
+            showRateNudge={demoMode === 'rate'}
+            onRate={() => { /* handled by timer — triggerRate fires from demo sequence */ }}
           />
         )}
 
-        {/* Scan Demo — PassDetail (absolute overlay inside mainContentWrapper) */}
+        {/* Scan Demo — PassDetail (absolute overlay, z-index above everything including MorphingPill) */}
         {passDetailVisible && passDetailTicket && (
-          <OnboardingPassDetail
-            ref={passDetailRef}
-            ticket={passDetailTicket}
-            visible={passDetailVisible}
-            onClose={() => {
-              setPassDetailVisible(false);
-              setPassDetailTicket(null);
-            }}
-          />
+          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 300 }}>
+            <OnboardingPassDetail
+              ref={passDetailRef}
+              ticket={passDetailTicket}
+              visible={passDetailVisible}
+              onClose={() => {
+                setPassDetailVisible(false);
+                setPassDetailTicket(null);
+              }}
+            />
+          </View>
         )}
 
         {/* Rate Demo — RatingSheet (z-index above LogConfirmSheet's 500) */}
@@ -1941,6 +2162,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             ref={ratingSheetRef}
             coasterName={ratingCoasterName}
             parkName={ratingParkName}
+            coasterId={ratingCoasterId}
             visible={ratingSheetVisible}
             onClose={() => setRatingSheetVisible(false)}
             onRateComplete={() => {}}
@@ -1984,7 +2206,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           overshootAngle={0}
           scrollHidden={searchPillScrollHidden}
           closeFixedSize={searchOrigin === 'expandedSearchBar'}
-          closeShadowFade={searchOrigin === 'searchPill' || searchOrigin === 'logPill' || searchOrigin === 'scanPill'}
+          closeShadowFade={searchOrigin === 'searchPill' || searchOrigin === 'logPill' || searchOrigin === 'logCircle' || searchOrigin === 'scanPill'}
           closeDuration={searchOrigin === 'expandedSearchBar' ? 445 : undefined}
           closeArcHeight={searchOrigin === 'expandedSearchBar' ? 25 : undefined}
           expandedContent={(_close) => (
@@ -2059,8 +2281,8 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
               searchButtonOpacity.value = 1;
               logButtonOpacity.value = 1;
               scanButtonOpacity.value = 1;
-            } else if (searchOriginRef.current === 'logPill') {
-              // Log button origin: hide Log button, keep bar and Search button visible
+            } else if (searchOriginRef.current === 'logPill' || searchOriginRef.current === 'logCircle') {
+              // Log button/circle origin: hide Log button, keep bar and Search button visible
               logButtonOpacity.value = 0;
               searchButtonOpacity.value = 1;
               scanButtonOpacity.value = 1;

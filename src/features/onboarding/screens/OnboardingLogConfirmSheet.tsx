@@ -9,7 +9,6 @@
  *  - addQuickLog / ride log store imports (demo doesn't actually log rides)
  *  - RatingSheet integration (rating is a separate onboarding step)
  *  - Navigation calls
- *  - Rate nudge (countdown timer, "Rate this ride" button, "Maybe later")
  *
  * Kept:
  *  - Entrance animation (staggered content reveal)
@@ -22,10 +21,14 @@
  *  - BlurView backdrop
  *  - Gesture-based dismiss (GestureDetector)
  *  - All spring configs and timing
+ *  - Rate nudge (optional, controlled by showRateNudge prop)
  *
  * Added:
  *  - triggerLog() via imperative ref (for demo automation)
+ *  - triggerRate() via imperative ref (for demo automation)
  *  - onLogComplete callback (fires after celebration finishes)
+ *  - showRateNudge prop (boolean) — shows "Rate this ride?" nudge after celebration
+ *  - onRate callback — fires when "Rate this ride" is tapped (or triggered via ref)
  */
 
 import React, { useState, useCallback, useEffect, useRef, useMemo, forwardRef, useImperativeHandle } from 'react';
@@ -54,6 +57,7 @@ import Animated, {
 import {
   Gesture,
   GestureDetector,
+  ScrollView as GHScrollView,
 } from 'react-native-gesture-handler';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -67,6 +71,7 @@ import { haptics } from '../../../services/haptics';
 import { SPRINGS, TIMING } from '../../../constants/animations';
 import { COASTER_BY_ID } from '../../../data/coasterIndex';
 import { CARD_ART, CARD_ART_FOCAL } from '../../../data/cardArt';
+import { COASTER_DETAILS } from '../../../data/coasterDetails';
 import ConfettiBurst from '../../../components/feedback/ConfettiBurst';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -74,15 +79,15 @@ const DISMISS_VELOCITY = 500;
 
 // ── Layout constants ──
 const HANDLE_AREA = 33;
-const IMAGE_MARGIN = 12;
-const STATS_MARGIN = 12;
-const ACTION_MARGIN = 8;
+const IMAGE_MARGIN = 8;
+const STATS_MARGIN = 8;
+const ACTION_MARGIN = 6;
 
 // How far content lifts (translateY) — single lift for celebration
-const LIFT_AMOUNT = -80;
+const LIFT_AMOUNT = -60;
 
-// Mini stat card size — 4 across within sheet padding
-const STAT_CARD_SIZE = Math.floor((SCREEN_WIDTH - spacing.xl * 2 - spacing.sm * 3) / 4);
+// Mini stat card size — 4 across within sheet padding (compact for onboarding)
+const STAT_CARD_SIZE = Math.floor((SCREEN_WIDTH - spacing.xl * 2 - spacing.sm * 3) / 4) - 4;
 
 // ============================================
 // Props & Ref
@@ -93,14 +98,20 @@ export interface OnboardingLogConfirmSheetRef {
   triggerLog: () => void;
   /** Programmatically scrolls the pager to page 2 (for demo automation) */
   scrollToPage2: () => void;
+  /** Programmatically triggers the "Rate this ride" action (for demo automation) */
+  triggerRate: () => void;
 }
 
 interface OnboardingLogConfirmSheetProps {
-  coaster: { id: string; name: string; parkName: string };
+  coaster: { id: string; name: string; parkName: string; description?: string };
   visible: boolean;
   onClose: () => void;
   /** Fires after celebration finishes (checkmark + "Logged!" sequence complete) */
   onLogComplete?: () => void;
+  /** When true, shows the "Rate this ride?" nudge after celebration instead of firing onLogComplete immediately */
+  showRateNudge?: boolean;
+  /** Fires when "Rate this ride" is tapped or triggered via ref */
+  onRate?: () => void;
 }
 
 // ============================================
@@ -108,15 +119,18 @@ interface OnboardingLogConfirmSheetProps {
 // ============================================
 
 export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef, OnboardingLogConfirmSheetProps>(
-  function OnboardingLogConfirmSheet({ coaster, visible, onClose, onLogComplete }, ref) {
+  function OnboardingLogConfirmSheet({ coaster, visible, onClose, onLogComplete, showRateNudge = false, onRate }, ref) {
     const insets = useSafeAreaInsets();
 
     const [mounted, setMounted] = useState(false);
     const [confirmed, setConfirmed] = useState(false);
+    const [showingNudge, setShowingNudge] = useState(false);
+    const [nudgeCountdown, setNudgeCountdown] = useState(5);
     const [imageError, setImageError] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [measuredImageH, setMeasuredImageH] = useState(0);
     const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+    const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     // ── Pager state ──
     const [measuredPagerW, setMeasuredPagerW] = useState(0);
@@ -158,24 +172,47 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       return parts.join(' \u00B7 ');
     }, [coaster.id]);
 
-    // Page 2 detail items
+    // Page 2 secondary stats
+    const secondaryStats = useMemo(() => {
+      if (!coasterData) return [];
+      const items: { label: string; display: string }[] = [];
+      if (coasterData.dropFt) items.push({ label: 'Drop', display: `${coasterData.dropFt}ft` });
+      if (coasterData.gForce) items.push({ label: 'G-Force', display: `${coasterData.gForce}g` });
+      if (coasterData.duration) items.push({ label: 'Duration', display: `${coasterData.duration}s` });
+      if (coasterData.yearOpened > 0) items.push({ label: 'Opened', display: `${coasterData.yearOpened}` });
+      return items;
+    }, [coaster.id]);
+
+    // Page 2 detail items (manufacturer, designer, model, material, type, status)
     const detailItems = useMemo(() => {
       if (!coasterData) return [];
       const items: { label: string; value: string }[] = [];
       if (coasterData.manufacturer) items.push({ label: 'Manufacturer', value: coasterData.manufacturer });
+      if (coasterData.designer) items.push({ label: 'Designer', value: coasterData.designer });
+      if (coasterData.model) items.push({ label: 'Model', value: coasterData.model });
       if (coasterData.material) items.push({ label: 'Material', value: coasterData.material.charAt(0).toUpperCase() + coasterData.material.slice(1) });
-      if (coasterData.yearOpened > 0) items.push({ label: 'Opened', value: String(coasterData.yearOpened) });
-      if (coasterData.heightFt > 0) items.push({ label: 'Height', value: `${coasterData.heightFt} ft` });
-      if (coasterData.speedMph > 0) items.push({ label: 'Top Speed', value: `${coasterData.speedMph} mph` });
-      if (coasterData.lengthFt > 0) items.push({ label: 'Length', value: `${coasterData.lengthFt.toLocaleString()} ft` });
-      if (coasterData.inversions > 0) items.push({ label: 'Inversions', value: String(coasterData.inversions) });
+      if (coasterData.type) items.push({ label: 'Type', value: coasterData.type });
+      if (coasterData.status) items.push({ label: 'Status', value: coasterData.status });
       return items;
     }, [coaster.id]);
 
-    const hasPage2 = detailItems.length > 0;
+    // Page 2 rich details (description from COASTER_DETAILS, fallback to prop)
+    const richDetails = useMemo(() => {
+      const details = COASTER_DETAILS[coaster.id];
+      if (details) return details;
+      // Fallback: use description from coaster prop if available
+      if (coaster.description) return { description: coaster.description };
+      return null;
+    }, [coaster.id, coaster.description]);
+
+    const hasPage2 =
+      secondaryStats.length > 0 ||
+      detailItems.length > 0 ||
+      !!richDetails?.description;
 
     // ── Sheet geometry ──
-    const sheetTop = insets.top + 4;
+    // Use a larger top offset so the sheet doesn't overflow in the scaled onboarding container
+    const sheetTop = insets.top + 16;
     const sheetHeight = SCREEN_HEIGHT - sheetTop;
 
     // ── Animation shared values ──
@@ -191,6 +228,7 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
     const confettiProgress = useSharedValue(0);
     const celebSlideY = useSharedValue(30);
     const liftY = useSharedValue(0);
+    const nudgeOpacity = useSharedValue(0);
 
     // ── Timer helpers ──
     const clearTimers = useCallback(() => {
@@ -209,6 +247,8 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       if (visible) {
         setMounted(true);
         setConfirmed(false);
+        setShowingNudge(false);
+        setNudgeCountdown(5);
         setImageError(false);
         setImageLoaded(false);
         imageOpacity.value = 0;
@@ -222,6 +262,13 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
         confettiProgress.value = 0;
         celebSlideY.value = 30;
         liftY.value = 0;
+        nudgeOpacity.value = 0;
+
+        // Clear countdown interval
+        if (countdownRef.current) {
+          clearInterval(countdownRef.current);
+          countdownRef.current = null;
+        }
 
         // Reset pager to page 1
         pagerScrollX.value = 0;
@@ -254,7 +301,7 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       backdropOpacity.value = withTiming(0, { duration: 250 });
     }, [onClose, sheetHeight, clearTimers]);
 
-    // ── Handle confirm (multi-phase celebration — no rate nudge) ──
+    // ── Handle confirm (multi-phase celebration, optionally followed by rate nudge) ──
     const handleConfirm = useCallback(() => {
       if (confirmed) return;
       setConfirmed(true);
@@ -282,13 +329,63 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
         });
       }, 300);
 
-      // Phase 3: Hold celebration, then fire onLogComplete
-      addTimer(() => {
-        onLogComplete?.();
-      }, 2000);
-    }, [confirmed, onLogComplete]);
+      if (showRateNudge) {
+        // Phase 3: Checkmark fades out
+        addTimer(() => {
+          checkOpacity.value = withTiming(0, { duration: 250 });
+          checkScale.value = withTiming(0.9, { duration: 250, easing: Easing.in(Easing.cubic) });
+          loggedTextOpacity.value = withTiming(0, { duration: 200 });
+        }, 1600);
 
-    // ── Expose triggerLog + scrollToPage2 via ref ──
+        // Phase 4: Rate nudge fades in (same space, no additional lift)
+        addTimer(() => {
+          setShowingNudge(true);
+          nudgeOpacity.value = withDelay(100, withTiming(1, { duration: 300 }));
+        }, 2000);
+      } else {
+        // No rate nudge — fire onLogComplete after celebration
+        addTimer(() => {
+          onLogComplete?.();
+        }, 2000);
+      }
+    }, [confirmed, onLogComplete, showRateNudge]);
+
+    // ── Countdown timer for rate nudge ──
+    useEffect(() => {
+      if (showingNudge) {
+        setNudgeCountdown(5);
+        countdownRef.current = setInterval(() => {
+          setNudgeCountdown(prev => {
+            if (prev <= 1) {
+              if (countdownRef.current) clearInterval(countdownRef.current);
+              countdownRef.current = null;
+              dismiss();
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+      }
+      return () => {
+        if (countdownRef.current) {
+          clearInterval(countdownRef.current);
+          countdownRef.current = null;
+        }
+      };
+    }, [showingNudge]);
+
+    // ── Handle rate ──
+    const handleRate = useCallback(() => {
+      haptics.select();
+      clearTimers();
+      if (countdownRef.current) {
+        clearInterval(countdownRef.current);
+        countdownRef.current = null;
+      }
+      onRate?.();
+    }, [onRate, clearTimers]);
+
+    // ── Expose triggerLog + scrollToPage2 + triggerRate via ref ──
     useImperativeHandle(ref, () => ({
       triggerLog: () => {
         handleConfirm();
@@ -297,6 +394,9 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
         if (measuredPagerW > 0 && pagerRef.current) {
           pagerRef.current.scrollTo({ x: measuredPagerW, animated: true });
         }
+      },
+      triggerRate: () => {
+        handleRate();
       },
     }));
 
@@ -382,6 +482,11 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
 
     const celebSlideStyle = useAnimatedStyle(() => ({
       transform: [{ translateY: celebSlideY.value }],
+    }));
+
+    const nudgeAnimStyle = useAnimatedStyle(() => ({
+      opacity: nudgeOpacity.value,
+      transform: [{ translateY: interpolate(nudgeOpacity.value, [0, 1], [20, 0], Extrapolation.CLAMP) }],
     }));
 
     // ── Pager dot styles ──
@@ -521,21 +626,68 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
                     {hasPage2 && (
                       <View style={{ width: measuredPagerW, height: '100%' }}>
                         <View style={styles.page2Card}>
-                          <Text style={styles.p2Header}>Ride Info</Text>
-                          <View style={styles.p2DetailsCard}>
-                            {detailItems.map((item, i) => (
-                              <View
-                                key={item.label}
-                                style={[
-                                  styles.p2DetailRow,
-                                  i < detailItems.length - 1 && styles.p2DetailRowBorder,
-                                ]}
-                              >
-                                <Text style={styles.p2DetailLabel}>{item.label}</Text>
-                                <Text style={styles.p2DetailValue}>{item.value}</Text>
+                          <GHScrollView
+                            nestedScrollEnabled
+                            showsVerticalScrollIndicator={false}
+                            contentContainerStyle={styles.page2Content}
+                          >
+                            <Text style={styles.p2Header}>Ride Info</Text>
+
+                            {/* Secondary stats */}
+                            {secondaryStats.length > 0 && (
+                              <View style={styles.p2StatsRow}>
+                                {secondaryStats.map((s) => (
+                                  <View key={s.label} style={styles.p2StatCard}>
+                                    <Text
+                                      style={styles.p2StatValue}
+                                      numberOfLines={1}
+                                      adjustsFontSizeToFit
+                                      minimumFontScale={0.5}
+                                    >
+                                      {s.display}
+                                    </Text>
+                                    <Text
+                                      style={styles.p2StatLabel}
+                                      numberOfLines={1}
+                                      adjustsFontSizeToFit
+                                      minimumFontScale={0.6}
+                                    >
+                                      {s.label}
+                                    </Text>
+                                  </View>
+                                ))}
                               </View>
-                            ))}
-                          </View>
+                            )}
+
+                            {/* Details */}
+                            {detailItems.length > 0 && (
+                              <View style={styles.p2Section}>
+                                <Text style={styles.p2SectionLabel}>DETAILS</Text>
+                                <View style={styles.p2DetailsCard}>
+                                  {detailItems.map((d, i) => (
+                                    <View
+                                      key={d.label}
+                                      style={[
+                                        styles.p2DetailRow,
+                                        i < detailItems.length - 1 && styles.p2DetailRowBorder,
+                                      ]}
+                                    >
+                                      <Text style={styles.p2DetailLabel}>{d.label}</Text>
+                                      <Text style={styles.p2DetailValue}>{d.value}</Text>
+                                    </View>
+                                  ))}
+                                </View>
+                              </View>
+                            )}
+
+                            {/* About */}
+                            {richDetails?.description && (
+                              <View style={styles.p2Section}>
+                                <Text style={styles.p2SectionLabel}>ABOUT</Text>
+                                <Text style={styles.p2Description}>{richDetails.description}</Text>
+                              </View>
+                            )}
+                          </GHScrollView>
                         </View>
                       </View>
                     )}
@@ -600,8 +752,9 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
               </Animated.View>
             </Animated.View>
 
-            {/* Celebration — pinned to bottom of sheet, doesn't lift */}
+            {/* Celebration + Rate nudge — pinned to bottom of sheet, doesn't lift */}
             <View style={styles.bottomAnchor} pointerEvents="box-none">
+              {/* Celebration — centered in available space */}
               <Animated.View style={[styles.celebrationContainer, celebSlideStyle]} pointerEvents="none">
                 <ConfettiBurst progress={confettiProgress} />
                 <Animated.View style={[styles.checkCircle, checkAnimStyle]}>
@@ -611,6 +764,26 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
                   <Text style={styles.loggedText}>Logged!</Text>
                 </Animated.View>
               </Animated.View>
+
+              {/* Rate nudge — fills from bottom */}
+              {showRateNudge && (
+                <Animated.View
+                  style={[styles.nudgeContainer, nudgeAnimStyle]}
+                  pointerEvents={showingNudge ? 'auto' : 'none'}
+                >
+                  <View style={styles.nudgeCheckRow}>
+                    <Ionicons name="checkmark-circle" size={18} color="#4CAF50" />
+                    <Text style={styles.nudgeLoggedText}>Ride logged</Text>
+                  </View>
+                  <Pressable style={styles.rateButton} onPress={handleRate}>
+                    <Ionicons name="star" size={16} color={colors.accent.primary} style={{ marginRight: 6 }} />
+                    <Text style={styles.rateButtonText}>Rate this ride</Text>
+                  </Pressable>
+                  <Pressable onPress={() => { haptics.tap(); dismiss(); }}>
+                    <Text style={styles.skipText}>Maybe later ({nudgeCountdown})</Text>
+                  </Pressable>
+                </Animated.View>
+              )}
             </View>
           </View>
         </Animated.View>
@@ -767,7 +940,7 @@ const styles = StyleSheet.create({
   logButton: {
     backgroundColor: colors.accent.primary,
     borderRadius: radius.button,
-    paddingVertical: 16,
+    paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -778,7 +951,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   logButtonText: {
-    fontSize: 17,
+    fontSize: 15,
     fontWeight: '600',
     color: '#FFFFFF',
   },
@@ -823,6 +996,49 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
   },
 
+  // -- Rate nudge -- centered in the full empty space
+  nudgeContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    gap: spacing.md,
+    paddingHorizontal: spacing.xl,
+    paddingBottom: 48,
+  },
+  nudgeCheckRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nudgeLoggedText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#4CAF50',
+    marginLeft: 6,
+  },
+  rateButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.accent.primaryLight,
+    borderRadius: 16,
+    paddingVertical: 14,
+    width: '100%',
+  },
+  rateButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: colors.accent.primary,
+  },
+  skipText: {
+    fontSize: 14,
+    color: colors.text.meta,
+    textAlign: 'center',
+  },
+
   // -- Pager dots (frosted dark pill) --
   dotsOuter: {
     position: 'absolute',
@@ -849,28 +1065,82 @@ const styles = StyleSheet.create({
   // -- Page 2 --
   page2Card: {
     flex: 1,
-    backgroundColor: colors.background.card,
     borderRadius: radius.lg,
-    padding: spacing.lg,
+    backgroundColor: colors.background.card,
     overflow: 'hidden',
+  },
+  page2Content: {
+    padding: spacing.lg,
+    paddingBottom: spacing.xxxl,
   },
   p2Header: {
     fontSize: typography.sizes.title,
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
+    letterSpacing: -0.3,
     marginBottom: spacing.lg,
+  },
+  p2StatsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: spacing.sm,
+  },
+  p2StatCard: (() => {
+    const size = Math.floor((SCREEN_WIDTH - spacing.xl * 2 - spacing.sm * 3) / 4) - 4;
+    return {
+      width: size,
+      height: size,
+      backgroundColor: colors.background.page,
+      borderRadius: radius.lg,
+      alignItems: 'center' as const,
+      justifyContent: 'center' as const,
+      paddingTop: spacing.md,
+      paddingBottom: spacing.md,
+      paddingLeft: spacing.md,
+      paddingRight: spacing.md,
+      gap: 2,
+    };
+  })(),
+  p2StatValue: {
+    width: '100%',
+    fontSize: typography.sizes.title,
+    lineHeight: typography.sizes.title,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
+    textAlign: 'center',
+  },
+  p2StatLabel: {
+    width: '100%',
+    fontSize: typography.sizes.small,
+    lineHeight: typography.sizes.small,
+    fontWeight: typography.weights.medium,
+    color: colors.text.secondary,
+    textTransform: 'uppercase',
+    letterSpacing: 0.4,
+    textAlign: 'center',
+  },
+  p2Section: {
+    marginTop: spacing.xl,
+  },
+  p2SectionLabel: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.meta,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    marginBottom: spacing.base,
   },
   p2DetailsCard: {
     backgroundColor: colors.background.page,
-    borderRadius: radius.md,
-    overflow: 'hidden',
+    borderRadius: radius.card,
+    paddingHorizontal: spacing.lg,
   },
   p2DetailRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.base,
+    paddingVertical: spacing.base,
   },
   p2DetailRowBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
@@ -878,12 +1148,19 @@ const styles = StyleSheet.create({
   },
   p2DetailLabel: {
     fontSize: typography.sizes.caption,
-    fontWeight: typography.weights.medium,
     color: colors.text.secondary,
   },
   p2DetailValue: {
     fontSize: typography.sizes.caption,
     fontWeight: typography.weights.semibold,
     color: colors.text.primary,
+    flexShrink: 1,
+    textAlign: 'right',
+    marginLeft: spacing.lg,
+  },
+  p2Description: {
+    fontSize: typography.sizes.body,
+    color: colors.text.primary,
+    lineHeight: typography.sizes.body * 1.6,
   },
 });

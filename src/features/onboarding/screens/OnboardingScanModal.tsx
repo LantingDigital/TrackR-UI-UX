@@ -303,6 +303,24 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
             animated: true,
           });
         }
+
+        // Also scroll in Tickets section
+        const ticketIndex = ticketItems.findIndex(t => t.id === ticket.id);
+        if (ticketIndex >= 0) {
+          ticketsScrollRef.current?.scrollTo({
+            x: ticketIndex * (CARD_WIDTH + CARD_GAP),
+            animated: true,
+          });
+        }
+
+        // Also scroll in Passes section
+        const passIndex = passItems.findIndex(t => t.id === ticket.id);
+        if (passIndex >= 0) {
+          passesScrollRef.current?.scrollTo({
+            x: passIndex * (CARD_WIDTH + CARD_GAP),
+            animated: true,
+          });
+        }
       },
     }));
 

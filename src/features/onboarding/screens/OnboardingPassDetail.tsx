@@ -25,9 +25,12 @@
  *  - Slide-up entrance animation
  *
  * Added:
- *  - forwardRef with flip() method for programmatic flip trigger
+ *  - forwardRef with flip() and dismiss() methods for programmatic control
  *  - Uses react-native-reanimated (project standard) instead of react-native Animated
  *  - Renders as absolute overlay (no Modal) so it stays inside phone frame
+ *  - Blurred card art background behind the pass card
+ *  - Proper bottom sheet entrance (translateY spring from bottom)
+ *  - Proper bottom sheet exit (translateY timing to bottom)
  */
 
 import React, { useState, useCallback, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
@@ -37,6 +40,8 @@ import {
   StyleSheet,
   Dimensions,
   Pressable,
+  Image,
+  ImageSourcePropType,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -55,8 +60,16 @@ import { colors } from '../../../theme/colors';
 import { radius } from '../../../theme/radius';
 import { SPRINGS } from '../../../constants/animations';
 import { getParkGradientColors, getParkInitials } from '../../../utils/parkAssets';
+import { CARD_ART } from '../../../data/cardArt';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+
+// Card art mapping (ticket id → card art asset) — must match OnboardingScanModal
+const TICKET_CARD_ART: Record<string, ImageSourcePropType> = {
+  'cp-season': CARD_ART['steel-vengeance'],
+  'ki-day': CARD_ART['diamondback'],
+  'cw-fast': CARD_ART['fury-325'],
+};
 
 // Card dimensions - nearly full width
 const CARD_HORIZONTAL_MARGIN = 16;
@@ -146,6 +159,8 @@ const qrStyles = StyleSheet.create({
 export interface OnboardingPassDetailRef {
   /** Programmatically trigger the flip animation */
   flip: () => void;
+  /** Programmatically dismiss the pass detail (slide down) */
+  dismiss: () => void;
 }
 
 interface OnboardingPassDetailProps {
@@ -241,7 +256,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       }, 500);
     }, []);
 
-    // Expose flip() via ref
+    // Expose flip() and dismiss() via ref
     useImperativeHandle(ref, () => ({
       flip: () => {
         if (isFlippedRef.current) {
@@ -249,6 +264,9 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
         } else {
           handleFlip();
         }
+      },
+      dismiss: () => {
+        animateClose();
       },
     }));
 
@@ -329,13 +347,30 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
     const parkInitials = getParkInitials(ticket.parkName);
     const passNumber = ticket.qrData.split('-').pop() || ticket.qrData;
     const passTypeLabel = PASS_TYPE_LABELS[ticket.passType] || 'Pass';
+    const cardArtSource = TICKET_CARD_ART[ticket.id];
 
     return (
       <View style={styles.overlayRoot}>
-        {/* Backdrop */}
+        {/* Backdrop with blurred card art background */}
         <Pressable style={StyleSheet.absoluteFill} onPress={handleBackdropPress}>
           <Animated.View style={[styles.backdrop, backdropAnimStyle]}>
-            <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
+            {/* Blurred card art background (like the real PassDetailView) */}
+            {cardArtSource ? (
+              <Image
+                source={cardArtSource}
+                style={styles.cardArtBackground}
+                resizeMode="cover"
+                blurRadius={20}
+              />
+            ) : null}
+            <LinearGradient
+              colors={gradientColors}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={[StyleSheet.absoluteFill, { opacity: cardArtSource ? 0.3 : 0.6 }]}
+            />
+            <View style={styles.backdropDarkOverlay} />
+            <BlurView intensity={cardArtSource ? 15 : 40} tint="dark" style={StyleSheet.absoluteFill} />
           </Animated.View>
         </Pressable>
 
@@ -344,12 +379,21 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
           style={[StyleSheet.absoluteFill, flipBgAnimStyle]}
           pointerEvents={isFlipped ? 'auto' : 'none'}
         >
-          <LinearGradient
-            colors={gradientColors}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={StyleSheet.absoluteFill}
-          />
+          {cardArtSource ? (
+            <Image
+              source={cardArtSource}
+              style={styles.cardArtBackground}
+              resizeMode="cover"
+              blurRadius={25}
+            />
+          ) : (
+            <LinearGradient
+              colors={gradientColors}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={StyleSheet.absoluteFill}
+            />
+          )}
           <View style={styles.flipOverlay} />
           <BlurView intensity={60} tint="dark" style={StyleSheet.absoluteFill} />
           {isFlipped && (
@@ -492,6 +536,16 @@ const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    overflow: 'hidden',
+  },
+  backdropDarkOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+  },
+  cardArtBackground: {
+    ...StyleSheet.absoluteFillObject,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
   },
   flipOverlay: {
     ...StyleSheet.absoluteFillObject,
