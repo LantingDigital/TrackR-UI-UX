@@ -38,7 +38,9 @@ export const MyPassCard = memo(function MyPassCard({ parkName, onPress }: MyPass
               style={styles.accentGradient}
             />
             <View style={styles.row}>
-              <PassPreviewCard ticket={ticket} size={84} />
+              <View pointerEvents="none">
+                <PassPreviewCard ticket={ticket} size={84} />
+              </View>
               <View style={styles.textColumn}>
                 <Text style={styles.label}>MY PASS</Text>
                 <Text style={styles.parkName} numberOfLines={1}>

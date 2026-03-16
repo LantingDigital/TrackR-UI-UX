@@ -1,0 +1,313 @@
+[
+  {
+    "id": "hersheypark",
+    "name": "Hersheypark",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Hersheypark_Entrance_10-2-2022.jpg/1280px-Hersheypark_Entrance_10-2-2022.jpg",
+    "source": "wikimedia",
+    "notes": "Hersheypark entrance shot from October 2022, showing the park gate and signage"
+  },
+  {
+    "id": "kings-island",
+    "name": "Kings Island",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Banshee_overview.jpg",
+    "source": "wikimedia",
+    "notes": "Wide overview shot of the Banshee roller coaster area at Kings Island, 3648x2736 high-res"
+  },
+  {
+    "id": "busch-gardens-tampa-bay",
+    "name": "Busch Gardens Tampa Bay",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/Kumba_at_Busch_Gardens_Tampa.JPG",
+    "source": "wikimedia",
+    "notes": "Kumba roller coaster at Busch Gardens Tampa, 3072x2304 high-res wide shot"
+  },
+  {
+    "id": "dorney-park-wildwater-kingdom",
+    "name": "Dorney Park & Wildwater Kingdom",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Dorney_Park_entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Dorney Park entrance shot, 640x480"
+  },
+  {
+    "id": "worlds-of-fun",
+    "name": "Worlds of Fun",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Worlds_of_Fun_and_Oceans_of_Fun_Aerial_%2852469718251%29.jpg/1280px-Worlds_of_Fun_and_Oceans_of_Fun_Aerial_%2852469718251%29.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of Worlds of Fun and Oceans of Fun, great wide cinematic shot"
+  },
+  {
+    "id": "six-flags-new-england",
+    "name": "Six Flags New England",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Six_Flags_New_England_football_field_with_Superman.jpg",
+    "source": "wikimedia",
+    "notes": "Wide view of Six Flags New England showing Superman coaster and park grounds, 3264x2448"
+  },
+  {
+    "id": "seaworld-orlando",
+    "name": "SeaWorld Orlando",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/SeaWorld_Orlando_001.jpg/1280px-SeaWorld_Orlando_001.jpg",
+    "source": "wikimedia",
+    "notes": "SeaWorld Orlando overview shot from Wikipedia main article"
+  },
+  {
+    "id": "little-amerricka",
+    "name": "Little Amerricka Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/2/23/LittleAmerrickaScrambler.jpg",
+    "source": "wikimedia",
+    "notes": "Scrambler ride at Little Amerricka, 805x400 landscape shot"
+  },
+  {
+    "id": "six-flags-discovery-kingdom",
+    "name": "Six Flags Discovery Kingdom",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/DK_From_Parking_Lot.jpg",
+    "source": "wikimedia",
+    "notes": "Wide overview shot of Six Flags Discovery Kingdom from the parking lot, 2048x1536"
+  },
+  {
+    "id": "frontier-city",
+    "name": "Frontier City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Frontier_City_Sign.jpg",
+    "source": "wikimedia",
+    "notes": "Frontier City entrance sign, 4608x3456 high-res"
+  },
+  {
+    "id": "playlands-castaway-cove",
+    "name": "Playland's Castaway Cove",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/70/Playland_Castaway_Cove-4_%287595004834%29.jpg",
+    "source": "wikimedia",
+    "notes": "Playland's Castaway Cove boardwalk rides, 4608x3072 high-res landscape shot"
+  },
+  {
+    "id": "universal-islands-of-adventure",
+    "name": "Universal Islands of Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Universal_Islands_of_Adventure%2C_Orlando.jpg/1280px-Universal_Islands_of_Adventure%2C_Orlando.jpg",
+    "source": "wikimedia",
+    "notes": "Wide overview shot of Islands of Adventure Orlando, Wikipedia main article image"
+  },
+  {
+    "id": "austins-park",
+    "name": "Austin's Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small family entertainment center in Pflugerville, TX. No Wikimedia Commons images available. Only commercial/social media photos exist."
+  },
+  {
+    "id": "disney-california-adventure",
+    "name": "Disney California Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Pixarpiersunset2019_%28cropped%29_%28cropped%29.jpg/1280px-Pixarpiersunset2019_%28cropped%29_%28cropped%29.jpg",
+    "source": "wikimedia",
+    "notes": "Pixar Pier at sunset, dramatic cinematic shot with golden light - Wikipedia main article image"
+  },
+  {
+    "id": "gilroy-gardens",
+    "name": "Gilroy Gardens Family Theme Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Bonfante_Gardens%2C_Gilroy_%2CCA_-_panoramio_-_UncleVinny.jpg",
+    "source": "wikimedia",
+    "notes": "Panoramic view of Bonfante Gardens (now Gilroy Gardens), 1280x960"
+  },
+  {
+    "id": "legoland-florida",
+    "name": "Legoland Florida Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Legoland_Florida_1_%286827572795%29.jpg/1280px-Legoland_Florida_1_%286827572795%29.jpg",
+    "source": "wikimedia",
+    "notes": "Legoland Florida park overview shot, Wikipedia main article image"
+  },
+  {
+    "id": "seabreeze-amusement-park",
+    "name": "Seabreeze Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Seabreeze-jackrabbit.jpg",
+    "source": "wikimedia",
+    "notes": "Historic Jack Rabbit wooden roller coaster at Seabreeze, oldest operating coaster in the US, 750x562"
+  },
+  {
+    "id": "strickers-grove",
+    "name": "Stricker's Grove",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Strickers_Grove_025.jpg",
+    "source": "wikimedia",
+    "notes": "Tornado roller coaster POV at Stricker's Grove, 800x600"
+  },
+  {
+    "id": "wild-waves-theme-water-park",
+    "name": "Wild Waves Theme Water Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Wild_Waves_Theme_Park_-_Federal_Way_WA.jpg",
+    "source": "wikimedia",
+    "notes": "Wide shot of Wild Waves Theme Park in Federal Way, WA, 2848x2136 high-res"
+  },
+  {
+    "id": "alaska-state-fairgrounds",
+    "name": "Alaska State Fairgrounds",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Midway_Attractions_at_the_Alaska_State_Fair_in_Palmer%2C_AK.jpg/1280px-Midway_Attractions_at_the_Alaska_State_Fair_in_Palmer%2C_AK.jpg",
+    "source": "wikimedia",
+    "notes": "Midway attractions at the Alaska State Fair in Palmer, AK - wide shot with rides and fair atmosphere"
+  },
+  {
+    "id": "astroworld",
+    "name": "AstroWorld",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Six_Flags_Astroworld_entrance_gate.jpg/1280px-Six_Flags_Astroworld_entrance_gate.jpg",
+    "source": "wikimedia",
+    "notes": "Six Flags AstroWorld entrance gate, historic photo of the now-demolished Houston park (closed 2005)"
+  },
+  {
+    "id": "branson-missouri",
+    "name": "Branson Missouri",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Branson is a city, not a specific theme park. Multiple attractions exist in Branson (Silver Dollar City, etc.) but this entry is a city name."
+  },
+  {
+    "id": "castle-park",
+    "name": "Castle Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/Castle_Amusement%2C_candy_house%2C_Riverside%2C_California_LOC_36681187684.jpg",
+    "source": "wikimedia",
+    "notes": "Castle Amusement (Castle Park) candy house themed structure in Riverside, CA from Library of Congress collection, 1024x713"
+  },
+  {
+    "id": "columbus-zoo-and-aquarium",
+    "name": "Columbus Zoo and Aquarium",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Columbus_Zoo_-_51284639854.jpg/1280px-Columbus_Zoo_-_51284639854.jpg",
+    "source": "wikimedia",
+    "notes": "Columbus Zoo overview shot, Wikipedia main article image"
+  },
+  {
+    "id": "dragon-park",
+    "name": "Dragon Park",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Cannot identify a specific US theme park called 'Dragon Park'. May be a very small local attraction with no online presence."
+  },
+  {
+    "id": "fast-lane-entertainment",
+    "name": "Fast Lane Entertainment",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Small local family entertainment center, not a theme park. No Wikimedia Commons images available."
+  },
+  {
+    "id": "funderland-amusement-park",
+    "name": "Funderland Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/69/FunderlandLandParkSacramento.JPG",
+    "source": "wikimedia",
+    "notes": "Funderland Amusement Park in William Land Park, Sacramento, CA, 2304x1728"
+  },
+  {
+    "id": "galveston-island-historic-pleasure-pier",
+    "name": "Galveston Island Historic Pleasure Pier",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pleasure_Pier_in_Galveston%2C_Texas_%28cropped%29.jpg/1280px-Pleasure_Pier_in_Galveston%2C_Texas_%28cropped%29.jpg",
+    "source": "wikimedia",
+    "notes": "Pleasure Pier stretching into the Gulf of Mexico in Galveston, Texas - dramatic wide shot, Wikipedia main article image"
+  },
+  {
+    "id": "harvest-tyme-pumpkin-patch",
+    "name": "Harvest Tyme Pumpkin Patch",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Seasonal pumpkin patch/farm attraction, not a theme park. No Wikimedia Commons images available."
+  },
+  {
+    "id": "island-in-pigeon-forge",
+    "name": "Island in Pigeon Forge",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Skywheel_and_fountain_at_The_Island.jpg",
+    "source": "wikimedia",
+    "notes": "Great Smoky Mountain Wheel (SkyWheel) and fountain at The Island in Pigeon Forge, TN. Low resolution (320x240) but only available Wikimedia image."
+  },
+  {
+    "id": "lake-george-expedition-park",
+    "name": "Lake George Expedition Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/MagicForest_2.jpg/1280px-MagicForest_2.jpg",
+    "source": "wikimedia",
+    "notes": "Magic Forest section at Lake George Expedition Park, 1280x720 landscape, Wikipedia main article image"
+  },
+  {
+    "id": "legoland-california",
+    "name": "Legoland California Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Legolandcaliforniaentrance.JPG/1280px-Legolandcaliforniaentrance.JPG",
+    "source": "wikimedia",
+    "notes": "Legoland California entrance shot, Wikipedia main article image"
+  },
+  {
+    "id": "mason-ohio",
+    "name": "Mason Ohio",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Mason, Ohio is a city (home of Kings Island), not a theme park itself."
+  },
+  {
+    "id": "mr-gattis-pizza",
+    "name": "Mr Gatti's Pizza",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Pizza restaurant chain with indoor arcade/entertainment, not a theme park."
+  },
+  {
+    "id": "niagara-amusement-park-splash-world",
+    "name": "Niagara Amusement Park and Splash World",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Fantasy_Island_on_Grand_Island%2C_NY_in_2013.jpg",
+    "source": "wikimedia",
+    "notes": "Formerly Fantasy Island, now Niagara Amusement Park & Splash World on Grand Island, NY, 3176x2541 wide shot from 2013"
+  },
+  {
+    "id": "pacific-park",
+    "name": "Pacific Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Santa_Monica_%E2%80%93_Pacific_Park_01.jpg",
+    "source": "wikimedia",
+    "notes": "Stunning wide panoramic shot of Pacific Park on Santa Monica Pier, 7298x4059 ultra-high-res. Large file (16MB)."
+  },
+  {
+    "id": "prairie-playland",
+    "name": "Prairie Playland",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Very small local amusement attraction, no Wikimedia Commons or significant online photo presence."
+  },
+  {
+    "id": "remlinger-farms",
+    "name": "Remlinger Farms",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Remlinger_Farms_entrance%2C_from_Snoqualmie_valley_trail.jpg/1280px-Remlinger_Farms_entrance%2C_from_Snoqualmie_valley_trail.jpg",
+    "source": "wikimedia",
+    "notes": "Remlinger Farms entrance from Snoqualmie Valley Trail in Carnation, WA, Wikipedia main article image"
+  },
+  {
+    "id": "saunders-county-fairgrounds",
+    "name": "Saunders County Fairgrounds",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "County fairgrounds, not a theme park. No relevant Wikimedia Commons images."
+  },
+  {
+    "id": "sluggers-putters",
+    "name": "Sluggers Putters",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Small local batting cages/mini golf attraction, not a theme park."
+  },
+  {
+    "id": "tampa",
+    "name": "Tampa",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Tampa is a city, not a specific theme park. Multiple parks exist in Tampa (Busch Gardens, Adventure Island, etc.)."
+  },
+  {
+    "id": "washington-state-fair",
+    "name": "Washington State Fair",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Aerial_view_of_Washington_State_Fair%2C_Puyallup%2C_Washington%2C_August_16%2C_2023_%28cropped%29.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of the Washington State Fair in Puyallup, WA from August 2023, 1200x1200"
+  },
+  {
+    "id": "yellowstone-bear-world",
+    "name": "Yellowstone Bear World",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Yellowstone_Bear_World_Entrance.jpg/1280px-Yellowstone_Bear_World_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Yellowstone Bear World entrance in Rexburg, Idaho, Wikipedia main article image"
+  }
+]

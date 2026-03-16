@@ -1,13 +1,25 @@
 /**
  * CommunityFriendsTab — Stories + activity feed
  *
- * Top section: StoriesRow (circular avatar bubbles with story rings)
+ * Top section: UserSearchSection (search bar for discovering users)
+ * Stories row: StoriesRow (circular avatar bubbles with story rings)
+ * Friend Requests: FriendRequestsSection (pending requests, only if any)
  * Bottom section: vertical activity feed (ride, review, milestone)
+ * Pull-to-refresh + infinite scroll pagination.
  * Stagger entrance throughout.
  */
 
-import React, { useEffect, useCallback, useMemo } from 'react';
-import { View, Text, StyleSheet, Pressable, FlatList, ListRenderItemInfo } from 'react-native';
+import React, { useEffect, useCallback, useMemo, useState, useRef } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  FlatList,
+  ListRenderItemInfo,
+  RefreshControl,
+  ActivityIndicator,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
@@ -24,6 +36,8 @@ import { SPRINGS } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import { useFriendsStore } from '../stores/friendsStore';
 import { StoriesRow } from '../../../components/feed/StoriesRow';
+import { UserSearchSection } from './UserSearchSection';
+import { FriendRequestsSection } from './FriendRequestsSection';
 import type { FriendActivity } from '../types/community';
 import type { StoryItem } from '../../../data/mockFeed';
 
@@ -75,9 +89,102 @@ function formatDaysAgo(days: number): string {
 
 interface CommunityFriendsTabProps {
   topInset?: number;
+  onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
 }
 
-const ActivityRow = React.memo(({ item, onPress }: { item: FriendActivity; onPress: (friendId: string) => void }) => {
+/**
+ * Renders activity text with tappable coaster and park names as accent-colored links.
+ * Plain text segments are rendered normally; coaster/park names become Pressable links.
+ */
+function ActivityTextWithLinks({ text, item, onCoasterTap }: {
+  text: string;
+  item: FriendActivity;
+  onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
+}) {
+  if (!item.coasterName && !item.parkName) {
+    return <Text style={styles.activityText}>{text}</Text>;
+  }
+
+  // Build segments: split text by coasterName and parkName occurrences
+  const segments: { text: string; type: 'plain' | 'coaster' | 'park' }[] = [];
+  let remaining = text;
+
+  while (remaining.length > 0) {
+    let earliestIdx = remaining.length;
+    let matchType: 'coaster' | 'park' = 'coaster';
+    let matchStr = '';
+
+    if (item.coasterName) {
+      const idx = remaining.indexOf(item.coasterName);
+      if (idx >= 0 && idx < earliestIdx) {
+        earliestIdx = idx;
+        matchType = 'coaster';
+        matchStr = item.coasterName;
+      }
+    }
+    if (item.parkName) {
+      const idx = remaining.indexOf(item.parkName);
+      if (idx >= 0 && idx < earliestIdx) {
+        earliestIdx = idx;
+        matchType = 'park';
+        matchStr = item.parkName;
+      }
+    }
+
+    if (earliestIdx === remaining.length) {
+      // No more matches
+      segments.push({ text: remaining, type: 'plain' });
+      break;
+    }
+
+    if (earliestIdx > 0) {
+      segments.push({ text: remaining.slice(0, earliestIdx), type: 'plain' });
+    }
+    segments.push({ text: matchStr, type: matchType });
+    remaining = remaining.slice(earliestIdx + matchStr.length);
+  }
+
+  return (
+    <Text style={styles.activityText}>
+      {segments.map((seg, i) => {
+        if (seg.type === 'coaster' && item.coasterId && onCoasterTap) {
+          return (
+            <Text
+              key={i}
+              style={styles.linkedText}
+              onPress={() => {
+                haptics.select();
+                onCoasterTap(item.coasterId!, item.coasterName!, item.parkName ?? '');
+              }}
+            >
+              {seg.text}
+            </Text>
+          );
+        }
+        if (seg.type === 'park' && item.parkName) {
+          return (
+            <Text
+              key={i}
+              style={styles.linkedText}
+              onPress={() => {
+                haptics.select();
+                // Park taps also open the coaster action sheet if we have a coasterId
+                if (item.coasterId && onCoasterTap) {
+                  onCoasterTap(item.coasterId, item.coasterName ?? '', item.parkName!);
+                }
+              }}
+            >
+              {seg.text}
+            </Text>
+          );
+        }
+        return <Text key={i}>{seg.text}</Text>;
+      })}
+    </Text>
+  );
+}
+
+const ActivityRow = React.memo(({ item, onPress, onCoasterTap }: { item: FriendActivity; onPress: (friendId: string) => void; onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void }) => {
   const iconColor = activityColor(item.type);
 
   const iconBgStyle = useMemo(
@@ -85,16 +192,13 @@ const ActivityRow = React.memo(({ item, onPress }: { item: FriendActivity; onPre
     [iconColor],
   );
 
-  const handlePress = useCallback(() => {
+  const handleNamePress = useCallback(() => {
     haptics.tap();
     onPress(item.friendId);
   }, [item.friendId, onPress]);
 
   return (
-    <Pressable
-      style={styles.activityRow}
-      onPress={handlePress}
-    >
+    <View style={styles.activityRow}>
       <View style={iconBgStyle}>
         <Ionicons
           name={activityIcon(item.type) as any}
@@ -104,21 +208,38 @@ const ActivityRow = React.memo(({ item, onPress }: { item: FriendActivity; onPre
       </View>
       <View style={styles.activityContent}>
         <View style={styles.activityHeader}>
-          <Text style={styles.activityName}>{item.friendName}</Text>
+          <Pressable onPress={handleNamePress} hitSlop={4}>
+            <Text style={styles.activityName}>{item.friendName}</Text>
+          </Pressable>
           <Text style={styles.activityTime}>{formatDaysAgo(item.daysAgo)}</Text>
         </View>
-        <Text style={styles.activityText}>{item.text}</Text>
+        <ActivityTextWithLinks text={item.text} item={item} onCoasterTap={onCoasterTap} />
       </View>
-    </Pressable>
+    </View>
   );
 });
 
 const activityKeyExtractor = (item: FriendActivity) => item.id;
 
-export const CommunityFriendsTab = ({ topInset = 0 }: CommunityFriendsTabProps) => {
+export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFriendsTabProps) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
-  const { activity } = useFriendsStore();
+
+  const {
+    activity,
+    friendRequests,
+    searchUsers,
+    sendRequest,
+    acceptRequest,
+    declineRequest,
+    loadMoreActivity,
+  } = useFriendsStore();
+
+  // Pull-to-refresh state
+  const [refreshing, setRefreshing] = useState(false);
+
+  // Pagination state
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const handleStoryPress = useCallback((story: StoryItem) => {
     haptics.tap();
@@ -132,6 +253,46 @@ export const CommunityFriendsTab = ({ topInset = 0 }: CommunityFriendsTabProps) 
     navigation.navigate('ProfileView', { userId: friendId });
   }, [navigation]);
 
+  // Pull-to-refresh handler
+  const handleRefresh = useCallback(() => {
+    setRefreshing(true);
+    // Mock 1s delay then "refresh" (just re-render same data)
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1000);
+  }, []);
+
+  // Infinite scroll handler
+  const handleEndReached = useCallback(() => {
+    if (loadingMore) return;
+    setLoadingMore(true);
+    // Mock a brief delay before loading more
+    setTimeout(() => {
+      loadMoreActivity();
+      setLoadingMore(false);
+    }, 800);
+  }, [loadingMore, loadMoreActivity]);
+
+  // Friend request handlers
+  const handleAcceptRequest = useCallback((requestId: string) => {
+    acceptRequest(requestId);
+  }, [acceptRequest]);
+
+  const handleDeclineRequest = useCallback((requestId: string) => {
+    declineRequest(requestId);
+  }, [declineRequest]);
+
+  // Search handler
+  const handleSendRequest = useCallback((userId: string) => {
+    sendRequest(userId);
+  }, [sendRequest]);
+
+  // Only show pending requests
+  const pendingRequests = useMemo(
+    () => friendRequests.filter((r) => r.status === 'pending'),
+    [friendRequests],
+  );
+
   const contentContainerStyle = useMemo(
     () => [styles.content, { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl }],
     [topInset, insets.bottom],
@@ -139,24 +300,53 @@ export const CommunityFriendsTab = ({ topInset = 0 }: CommunityFriendsTabProps) 
 
   const listHeader = useMemo(() => (
     <>
-      {/* Stories Section */}
+      {/* User Search */}
       <StaggeredItem index={0}>
+        <UserSearchSection
+          onSearch={searchUsers}
+          onSendRequest={handleSendRequest}
+        />
+      </StaggeredItem>
+
+      {/* Stories Section */}
+      <StaggeredItem index={1}>
         <Text style={styles.sectionTitle}>Stories</Text>
         <StoriesRow onStoryPress={handleStoryPress} />
       </StaggeredItem>
 
+      {/* Friend Requests Section */}
+      {pendingRequests.length > 0 && (
+        <StaggeredItem index={2}>
+          <FriendRequestsSection
+            requests={pendingRequests}
+            onAccept={handleAcceptRequest}
+            onDecline={handleDeclineRequest}
+          />
+        </StaggeredItem>
+      )}
+
       {/* Activity Section */}
-      <StaggeredItem index={1}>
+      <StaggeredItem index={pendingRequests.length > 0 ? 3 : 2}>
         <Text style={[styles.sectionTitle, styles.activitySectionTitle]}>Activity</Text>
       </StaggeredItem>
     </>
-  ), [handleStoryPress]);
+  ), [handleStoryPress, pendingRequests, handleAcceptRequest, handleDeclineRequest, searchUsers, handleSendRequest]);
 
   const renderActivity = useCallback(({ item, index }: ListRenderItemInfo<FriendActivity>) => (
-    <StaggeredItem index={index + 2}>
-      <ActivityRow item={item} onPress={handleActivityPress} />
+    <StaggeredItem index={index + (pendingRequests.length > 0 ? 4 : 3)}>
+      <ActivityRow item={item} onPress={handleActivityPress} onCoasterTap={onCoasterTap} />
     </StaggeredItem>
-  ), [handleActivityPress]);
+  ), [handleActivityPress, onCoasterTap, pendingRequests.length]);
+
+  // Footer loading spinner for pagination
+  const ListFooter = useMemo(() => {
+    if (!loadingMore) return null;
+    return (
+      <View style={styles.footerLoader}>
+        <ActivityIndicator size="small" color={colors.accent.primary} />
+      </View>
+    );
+  }, [loadingMore]);
 
   return (
     <FlatList
@@ -164,12 +354,25 @@ export const CommunityFriendsTab = ({ topInset = 0 }: CommunityFriendsTabProps) 
       renderItem={renderActivity}
       keyExtractor={activityKeyExtractor}
       ListHeaderComponent={listHeader}
+      ListFooterComponent={ListFooter}
       style={styles.container}
       contentContainerStyle={contentContainerStyle}
       showsVerticalScrollIndicator={false}
       removeClippedSubviews
       maxToRenderPerBatch={10}
       windowSize={7}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={handleRefresh}
+          tintColor={colors.accent.primary}
+          colors={[colors.accent.primary]}
+        />
+      }
+      onEndReached={handleEndReached}
+      onEndReachedThreshold={0.5}
     />
   );
 };
@@ -233,5 +436,15 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.body,
     color: colors.text.secondary,
     marginTop: 2,
+  },
+  linkedText: {
+    color: colors.accent.primary,
+    fontWeight: typography.weights.semibold,
+  },
+
+  // Footer loader
+  footerLoader: {
+    paddingVertical: spacing.xxl,
+    alignItems: 'center',
   },
 });

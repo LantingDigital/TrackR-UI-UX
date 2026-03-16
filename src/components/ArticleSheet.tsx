@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
   withTiming,
+  withSequence,
   interpolate,
   Extrapolation,
   Easing,
@@ -35,6 +36,7 @@ import { SPRINGS, TIMING } from '../constants/animations';
 import { useTabBar } from '../contexts/TabBarContext';
 import { haptics } from '../services/haptics';
 import { NewsItem } from '../data/mockNews';
+import { isSaved, toggleSave } from '../stores/savedArticlesStore';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const DISMISS_VELOCITY = 500;
@@ -56,8 +58,10 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
   const scrollRef = useRef<ScrollView>(null);
   const [mounted, setMounted] = useState(false);
   const [isDismissing, setIsDismissing] = useState(false);
+  const [canInteract, setCanInteract] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const openLockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const imageOpacity = useSharedValue(0);
   const imageFadeStyle = useAnimatedStyle(() => ({
     opacity: imageOpacity.value,
@@ -74,6 +78,7 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
     if (visible && article) {
       setMounted(true);
       setIsDismissing(false);
+      setCanInteract(false);
       setImageError(false);
       setImageLoaded(false);
       imageOpacity.value = 0;
@@ -83,7 +88,12 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
       translateY.value = withTiming(0, { duration: 350, easing: Easing.out(Easing.cubic) });
       backdropOpacity.value = withTiming(1, { duration: 300 });
       entrance.value = withTiming(1, { duration: 400 });
+      // Unlock interaction after open animation completes
+      if (openLockTimer.current) clearTimeout(openLockTimer.current);
+      openLockTimer.current = setTimeout(() => setCanInteract(true), 450);
     } else if (!visible) {
+      setCanInteract(false);
+      if (openLockTimer.current) { clearTimeout(openLockTimer.current); openLockTimer.current = null; }
       if (!isDismissing) {
         tabBar?.showTabBar();
       }
@@ -113,7 +123,7 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
 
   // ── Pan gesture ──
   const panGesture = Gesture.Pan()
-    .enabled(visible)
+    .enabled(visible && canInteract)
     .onUpdate((e) => {
       'worklet';
       translateY.value = Math.max(0, e.translationY);
@@ -166,6 +176,23 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
     opacity: backdropOpacity.value,
   }));
 
+  // Bookmark state + animation
+  const bookmarkScale = useSharedValue(1);
+  const bookmarkAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: bookmarkScale.value }],
+  }));
+  const articleSaved = article ? isSaved(article.id) : false;
+
+  const handleBookmark = useCallback(() => {
+    if (!article) return;
+    haptics.select();
+    bookmarkScale.value = withSequence(
+      withTiming(1.3, { duration: 100 }),
+      withTiming(1, { duration: 100 }),
+    );
+    toggleSave(article.id);
+  }, [article, bookmarkScale]);
+
   if (!mounted || !article) return null;
 
   // Build meta line: "Source · 2h ago · 4 min read"
@@ -187,7 +214,7 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
       {/* Blur backdrop */}
       <Animated.View style={[StyleSheet.absoluteFill, backdropAnimStyle]}>
         <BlurView intensity={25} tint="light" style={StyleSheet.absoluteFill}>
-          <Pressable style={StyleSheet.absoluteFill} onPress={dismiss} />
+          <Pressable style={StyleSheet.absoluteFill} onPress={canInteract ? dismiss : undefined} />
         </BlurView>
       </Animated.View>
 
@@ -208,7 +235,7 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
 
         {/* Close button */}
         <Pressable
-          onPress={() => { haptics.tap(); dismiss(); }}
+          onPress={canInteract ? () => { haptics.tap(); dismiss(); } : undefined}
           style={styles.closeBtn}
           hitSlop={8}
         >
@@ -266,8 +293,24 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
           </Animated.View>
 
           {/* Bottom safe area padding */}
-          <View style={{ height: insets.bottom + spacing.xxxl }} />
+          <View style={{ height: insets.bottom + spacing.xxxl + 60 }} />
         </ScrollView>
+
+        {/* Floating bookmark button */}
+        <Animated.View style={[styles.fabContainer, { bottom: insets.bottom + spacing.lg }]}>
+          <Pressable
+            onPress={handleBookmark}
+            style={styles.fab}
+          >
+            <Animated.View style={bookmarkAnimStyle}>
+              <Ionicons
+                name={articleSaved ? 'bookmark' : 'bookmark-outline'}
+                size={22}
+                color={articleSaved ? colors.accent.primary : colors.text.primary}
+              />
+            </Animated.View>
+          </Pressable>
+        </Animated.View>
       </Animated.View>
     </View>
   );
@@ -376,5 +419,23 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     lineHeight: 22,
     marginBottom: spacing.lg,
+  },
+
+  // -- Floating bookmark button --
+  fabContainer: {
+    position: 'absolute',
+    right: spacing.lg,
+    zIndex: 20,
+  },
+  fab: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.background.card,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: colors.border.subtle,
+    ...shadows.card,
   },
 });

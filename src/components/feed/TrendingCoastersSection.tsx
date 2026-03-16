@@ -6,20 +6,22 @@
 import React, { useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, Pressable, ScrollView, Dimensions } from 'react-native';
 import { Image } from 'expo-image';
-import Animated, {
+import Reanimated, {
   useSharedValue,
   useAnimatedStyle,
   withDelay,
-  withSpring,
+  withTiming,
+  Easing,
+  interpolate,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { useSpringPress } from '../../hooks/useSpringPress';
+import { onBecomeVisible, offBecomeVisible, hasBeenVisible } from '../../utils/feedAnimations';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { shadows } from '../../theme/shadows';
 import { radius } from '../../theme/radius';
 import { haptics } from '../../services/haptics';
-import { SPRINGS } from '../../constants/animations';
 import { TRENDING_COASTERS, TrendingCoasterEntry } from '../../data/trendingData';
 import { CARD_ART } from '../../data/cardArt';
 
@@ -43,15 +45,15 @@ const TrendingCard = React.memo<TrendingCardProps>(({ item, index, onPress, onLo
   useEffect(() => {
     entryProgress.value = withDelay(
       index * 75,
-      withSpring(1, SPRINGS.bouncy)
+      withTiming(1, { duration: 400, easing: Easing.out(Easing.cubic) })
     );
   }, []);
 
   const entryStyle = useAnimatedStyle(() => ({
     opacity: entryProgress.value,
     transform: [
-      { translateX: (1 - entryProgress.value) * 40 },
-      { scale: 0.85 + entryProgress.value * 0.15 },
+      { translateX: interpolate(entryProgress.value, [0, 1], [40, 0]) },
+      { scale: interpolate(entryProgress.value, [0, 1], [0.85, 1]) },
     ],
   }));
 
@@ -63,7 +65,7 @@ const TrendingCard = React.memo<TrendingCardProps>(({ item, index, onPress, onLo
   };
 
   return (
-    <Animated.View style={[entryStyle, animatedStyle]}>
+    <Reanimated.View style={[entryStyle, animatedStyle]}>
       <Pressable
         onPress={() => { haptics.select(); onPress(item); }}
         onLongPress={onLongPress ? () => { haptics.heavy(); onLongPress(item); } : undefined}
@@ -73,13 +75,19 @@ const TrendingCard = React.memo<TrendingCardProps>(({ item, index, onPress, onLo
         style={styles.card}
       >
         <View style={styles.imageWrapper}>
-          <Image
-            source={CARD_ART[item.id] ?? { uri: item.imageUrl }}
-            style={styles.cardImage}
-            contentFit="cover"
-            cachePolicy="memory-disk"
-            recyclingKey={item.id}
-          />
+          {CARD_ART[item.id] ? (
+            <Image
+              source={CARD_ART[item.id]}
+              style={styles.cardImage}
+              contentFit="cover"
+              cachePolicy="memory-disk"
+              recyclingKey={item.id}
+            />
+          ) : (
+            <View style={styles.imagePlaceholder}>
+              <Ionicons name="flash" size={24} color={colors.text.meta} />
+            </View>
+          )}
           <View style={styles.imageOverlay} />
           <View style={[styles.rankBadge, { backgroundColor: getRankColor(item.rank) }]}>
             <Text style={styles.rankText}>#{item.rank}</Text>
@@ -94,19 +102,38 @@ const TrendingCard = React.memo<TrendingCardProps>(({ item, index, onPress, onLo
           </View>
         </View>
       </Pressable>
-    </Animated.View>
+    </Reanimated.View>
   );
 });
 
 // ── Main Component ──
 
 interface TrendingCoastersSectionProps {
+  sectionId?: string;
   onCoasterPress?: (item: TrendingCoasterEntry) => void;
   onCoasterLongPress?: (item: TrendingCoasterEntry) => void;
   onSeeAll?: () => void;
 }
 
-export const TrendingCoastersSection = React.memo<TrendingCoastersSectionProps>(({ onCoasterPress, onCoasterLongPress, onSeeAll }) => {
+export const TrendingCoastersSection = React.memo<TrendingCoastersSectionProps>(({ sectionId, onCoasterPress, onCoasterLongPress, onSeeAll }) => {
+  const entrance = useSharedValue(sectionId ? (hasBeenVisible(sectionId) ? 1 : 0) : 1);
+
+  useEffect(() => {
+    if (!sectionId) return;
+    onBecomeVisible(sectionId, () => {
+      entrance.value = withTiming(1, {
+        duration: 400,
+        easing: Easing.out(Easing.cubic),
+      });
+    });
+    return () => offBecomeVisible(sectionId);
+  }, [sectionId]);
+
+  const entranceStyle = useAnimatedStyle(() => ({
+    opacity: entrance.value,
+    transform: [{ translateY: interpolate(entrance.value, [0, 1], [20, 0]) }],
+  }));
+
   const handlePress = useCallback((item: TrendingCoasterEntry) => {
     onCoasterPress?.(item);
   }, [onCoasterPress]);
@@ -116,7 +143,7 @@ export const TrendingCoastersSection = React.memo<TrendingCoastersSectionProps>(
   }, [onCoasterLongPress]);
 
   return (
-    <View style={styles.container}>
+    <Reanimated.View style={[styles.container, entranceStyle]}>
       <View style={styles.headerRow}>
         <Text style={styles.sectionTitle}>Trending This Week</Text>
         <Pressable onPress={() => { haptics.tap(); onSeeAll?.(); }} hitSlop={8}>
@@ -141,7 +168,7 @@ export const TrendingCoastersSection = React.memo<TrendingCoastersSectionProps>(
           />
         ))}
       </ScrollView>
-    </View>
+    </Reanimated.View>
   );
 });
 
@@ -194,6 +221,13 @@ const styles = StyleSheet.create({
   cardImage: {
     width: '100%',
     height: '100%',
+  },
+  imagePlaceholder: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: colors.background.imagePlaceholder,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   imageOverlay: {
     ...StyleSheet.absoluteFillObject,

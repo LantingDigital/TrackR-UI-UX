@@ -44,7 +44,7 @@ const EASE_OUT = Easing.out(Easing.ease);
 
 // ─── Category Card ──────────────────────────────────────────
 
-function CategoryCard({ category, index, onPress }: {
+const CategoryCard = React.memo(function CategoryCard({ category, index, onPress }: {
   category: BlindRankingCategory;
   index: number;
   onPress: () => void;
@@ -68,20 +68,22 @@ function CategoryCard({ category, index, onPress }: {
 
   return (
     <Pressable {...press.pressHandlers} onPress={onPress}>
-      <Animated.View style={[styles.catCard, entranceStyle, press.animatedStyle]}>
-        <View style={[styles.catIconCircle, { backgroundColor: category.color + '18' }]}>
-          <Ionicons name={category.icon as any} size={24} color={category.color} />
+      <Animated.View style={[entranceStyle, press.animatedStyle]}>
+        <View style={styles.catCard}>
+          <View style={[styles.catIconCircle, { backgroundColor: category.color + '18' }]}>
+            <Ionicons name={category.icon as any} size={24} color={category.color} />
+          </View>
+          <Text style={styles.catTitle}>{category.title}</Text>
+          <Text style={styles.catDesc}>{category.description}</Text>
         </View>
-        <Text style={styles.catTitle}>{category.title}</Text>
-        <Text style={styles.catDesc}>{category.description}</Text>
       </Animated.View>
     </Pressable>
   );
-}
+});
 
 // ─── Slot Row ───────────────────────────────────────────────
 
-function SlotRow({ index, slot, isAvailable, onPress }: {
+const SlotRow = React.memo(function SlotRow({ index, slot, isAvailable, onPress }: {
   index: number;
   slot: { name: string; subtitle: string } | null;
   isAvailable: boolean;
@@ -126,11 +128,11 @@ function SlotRow({ index, slot, isAvailable, onPress }: {
       )}
     </Pressable>
   );
-}
+});
 
 // ─── Results Comparison Row ─────────────────────────────────
 
-function ComparisonRow({ yourRank, item, communityRank, index }: {
+const ComparisonRow = React.memo(function ComparisonRow({ yourRank, item, communityRank, index }: {
   yourRank: number;
   item: { name: string; subtitle: string };
   communityRank?: number;
@@ -153,29 +155,31 @@ function ComparisonRow({ yourRank, item, communityRank, index }: {
   const diff = communityRank != null ? Math.abs(yourRank - communityRank) : null;
 
   return (
-    <Animated.View style={[styles.compRow, entranceStyle]}>
-      <View style={styles.compRankBadge}>
-        <Text style={styles.compRankText}>{yourRank}</Text>
-      </View>
-      <View style={styles.compInfo}>
-        <Text style={styles.compName}>{item.name}</Text>
-        <Text style={styles.compSub}>{item.subtitle}</Text>
-      </View>
-      {communityRank != null && (
-        <View style={styles.compCommunity}>
-          <Text style={styles.compCommunityLabel}>Community</Text>
-          <Text style={[
-            styles.compCommunityRank,
-            diff === 0 && styles.compMatch,
-            diff != null && diff <= 1 && diff > 0 && styles.compClose,
-          ]}>
-            #{communityRank}
-          </Text>
+    <Animated.View style={entranceStyle}>
+      <View style={styles.compRow}>
+        <View style={styles.compRankBadge}>
+          <Text style={styles.compRankText}>{yourRank}</Text>
         </View>
-      )}
+        <View style={styles.compInfo}>
+          <Text style={styles.compName}>{item.name}</Text>
+          <Text style={styles.compSub}>{item.subtitle}</Text>
+        </View>
+        {communityRank != null && (
+          <View style={styles.compCommunity}>
+            <Text style={styles.compCommunityLabel}>Community</Text>
+            <Text style={[
+              styles.compCommunityRank,
+              diff === 0 && styles.compMatch,
+              diff != null && diff <= 1 && diff > 0 && styles.compClose,
+            ]}>
+              #{communityRank}
+            </Text>
+          </View>
+        )}
+      </View>
     </Animated.View>
   );
-}
+});
 
 // ─── Main Screen ────────────────────────────────────────────
 
@@ -341,7 +345,7 @@ export function BlindRankingScreen() {
 
 // ─── Reveal Card ────────────────────────────────────────────
 
-function RevealCard({ name, subtitle, counter, color }: {
+const RevealCard = React.memo(function RevealCard({ name, subtitle, counter, color }: {
   name: string;
   subtitle: string;
   counter: string;
@@ -362,16 +366,18 @@ function RevealCard({ name, subtitle, counter, color }: {
   }));
 
   return (
-    <Animated.View style={[styles.revealCard, { borderColor: color }, animStyle]}>
-      <Text style={[styles.revealLabel, { color }]}>
-        Where does this belong?
-      </Text>
-      <Text style={styles.revealName}>{name}</Text>
-      <Text style={styles.revealSub}>{subtitle}</Text>
-      <Text style={styles.revealCounter}>{counter}</Text>
+    <Animated.View style={animStyle}>
+      <View style={[styles.revealCard, { borderColor: color }]}>
+        <Text style={[styles.revealLabel, { color }]}>
+          Where does this belong?
+        </Text>
+        <Text style={styles.revealName}>{name}</Text>
+        <Text style={styles.revealSub}>{subtitle}</Text>
+        <Text style={styles.revealCounter}>{counter}</Text>
+      </View>
     </Animated.View>
   );
-}
+});
 
 // ─── Styles ─────────────────────────────────────────────────
 
@@ -429,7 +435,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.card,
     padding: spacing.xl,
     alignItems: 'center',
-    ...shadows.card,
+    ...shadows.small,
   },
   catIconCircle: {
     width: 52,
@@ -459,7 +465,7 @@ const styles = StyleSheet.create({
     padding: spacing.xl,
     alignItems: 'center',
     borderWidth: 2,
-    ...shadows.card,
+    ...shadows.small,
   },
   revealLabel: {
     fontSize: typography.sizes.small,
@@ -600,7 +606,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     padding: spacing.base,
     marginBottom: 6,
-    ...shadows.card,
+    ...shadows.small,
   },
   compRankBadge: {
     width: 30,

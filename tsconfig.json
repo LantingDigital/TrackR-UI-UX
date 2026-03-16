@@ -2,10 +2,14 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "expo-ahap": [
+        "src/types/expo-ahap"
       ]
     }
   },
@@ -14,6 +18,10 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "src/_legacy"
+    "src/_legacy",
+    "src/_v2",
+    "src/features/parks/map/_mapbox",
+    "node_modules/expo-ahap/**/*",
+    "functions"
   ]
 }

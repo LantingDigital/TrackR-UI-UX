@@ -1,6 +1,6 @@
 // ─── Friends Mock Data ──────────────────────────────────────
 
-import type { Friend, FriendActivity } from '../types/community';
+import type { Friend, FriendActivity, FriendRequest, DiscoverableUser } from '../types/community';
 
 export const MOCK_FRIENDS: Friend[] = [
   {
@@ -86,6 +86,9 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'rode Maverick at Cedar Point',
     timestamp: Date.now() - 1 * 86400000,
     daysAgo: 1,
+    coasterId: 'maverick',
+    coasterName: 'Maverick',
+    parkName: 'Cedar Point',
   },
   {
     id: 'fa2',
@@ -96,6 +99,9 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'reviewed Mako \u2014 gave it 4 stars',
     timestamp: Date.now() - 2 * 86400000,
     daysAgo: 2,
+    coasterId: 'mako',
+    coasterName: 'Mako',
+    parkName: 'SeaWorld Orlando',
   },
   {
     id: 'fa3',
@@ -106,6 +112,9 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'rode Millennium Force at Cedar Point',
     timestamp: Date.now() - 2 * 86400000,
     daysAgo: 2,
+    coasterId: 'millennium-force',
+    coasterName: 'Millennium Force',
+    parkName: 'Cedar Point',
   },
   {
     id: 'fa4',
@@ -126,6 +135,9 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'rode Intimidator 305 at Kings Dominion',
     timestamp: Date.now() - 4 * 86400000,
     daysAgo: 4,
+    coasterId: 'intimidator-305',
+    coasterName: 'Intimidator 305',
+    parkName: 'Kings Dominion',
   },
   {
     id: 'fa6',
@@ -136,6 +148,9 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'reviewed Montu \u2014 gave it 4 stars',
     timestamp: Date.now() - 5 * 86400000,
     daysAgo: 5,
+    coasterId: 'montu',
+    coasterName: 'Montu',
+    parkName: 'Busch Gardens Tampa',
   },
   {
     id: 'fa7',
@@ -156,6 +171,9 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'rode Taron at Phantasialand',
     timestamp: Date.now() - 8 * 86400000,
     daysAgo: 8,
+    coasterId: 'taron',
+    coasterName: 'Taron',
+    parkName: 'Phantasialand',
   },
   {
     id: 'fa9',
@@ -166,6 +184,9 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'reviewed Velocicoaster \u2014 gave it 5 stars',
     timestamp: Date.now() - 10 * 86400000,
     daysAgo: 10,
+    coasterId: 'velocicoaster',
+    coasterName: 'Velocicoaster',
+    parkName: 'Islands of Adventure',
   },
   {
     id: 'fa10',
@@ -176,5 +197,120 @@ export const MOCK_FRIEND_ACTIVITY: FriendActivity[] = [
     text: 'visited their 30th park!',
     timestamp: Date.now() - 12 * 86400000,
     daysAgo: 12,
+  },
+];
+
+// ─── Friend Requests (pending, received by current user) ────
+
+export const MOCK_FRIEND_REQUESTS: FriendRequest[] = [
+  {
+    id: 'fr1',
+    fromUserId: 'u-rw',
+    fromUserName: 'Rachel W.',
+    fromUserInitials: 'RW',
+    fromUserCreditCount: 174,
+    toUserId: 'me',
+    status: 'pending',
+    createdAt: Date.now() - 2 * 3600000, // 2 hours ago
+    daysAgo: 0,
+  },
+  {
+    id: 'fr2',
+    fromUserId: 'u-bg',
+    fromUserName: 'Brandon G.',
+    fromUserInitials: 'BG',
+    fromUserCreditCount: 362,
+    toUserId: 'me',
+    status: 'pending',
+    createdAt: Date.now() - 1 * 86400000, // 1 day ago
+    daysAgo: 1,
+  },
+  {
+    id: 'fr3',
+    fromUserId: 'u-nt',
+    fromUserName: 'Nina T.',
+    fromUserInitials: 'NT',
+    fromUserCreditCount: 89,
+    toUserId: 'me',
+    status: 'pending',
+    createdAt: Date.now() - 3 * 86400000, // 3 days ago
+    daysAgo: 3,
+  },
+];
+
+// ─── Discoverable Users (not friends — for search) ──────────
+
+export const MOCK_DISCOVERABLE_USERS: DiscoverableUser[] = [
+  {
+    id: 'u-rw',
+    name: 'Rachel W.',
+    initials: 'RW',
+    creditCount: 174,
+    topCoaster: 'Millennium Force',
+    mutualFriends: 2,
+    friendshipStatus: 'request_received',
+  },
+  {
+    id: 'u-bg',
+    name: 'Brandon G.',
+    initials: 'BG',
+    creditCount: 362,
+    topCoaster: 'El Toro',
+    mutualFriends: 3,
+    friendshipStatus: 'request_received',
+  },
+  {
+    id: 'u-nt',
+    name: 'Nina T.',
+    initials: 'NT',
+    creditCount: 89,
+    topCoaster: 'Twisted Colossus',
+    mutualFriends: 1,
+    friendshipStatus: 'request_received',
+  },
+  {
+    id: 'u-kh',
+    name: 'Kevin H.',
+    initials: 'KH',
+    creditCount: 203,
+    topCoaster: 'Phoenix',
+    mutualFriends: 0,
+    friendshipStatus: 'none',
+  },
+  {
+    id: 'u-jt',
+    name: 'Jasmine T.',
+    initials: 'JT',
+    creditCount: 445,
+    topCoaster: 'Voyage',
+    mutualFriends: 2,
+    friendshipStatus: 'none',
+  },
+  {
+    id: 'u-mp',
+    name: 'Marcus P.',
+    initials: 'MP',
+    creditCount: 128,
+    topCoaster: 'Hagrid\'s',
+    mutualFriends: 1,
+    friendshipStatus: 'request_sent',
+  },
+  {
+    id: 'u-ew',
+    name: 'Emily W.',
+    initials: 'EW',
+    creditCount: 297,
+    topCoaster: 'Cannibal',
+    mutualFriends: 4,
+    friendshipStatus: 'none',
+  },
+  {
+    id: 'u-dl',
+    name: 'Daniel L.',
+    initials: 'DL',
+    creditCount: 531,
+    topCoaster: 'Nemesis Reborn',
+    mutualFriends: 3,
+    friendshipStatus: 'none',
   },
 ];

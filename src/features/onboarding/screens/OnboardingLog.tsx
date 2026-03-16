@@ -64,7 +64,7 @@ export const OnboardingLog: React.FC<OnboardingScreenProps> = ({ isActive }) => 
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background.page, alignItems: 'center' },
+  container: { flex: 1, backgroundColor: 'transparent', alignItems: 'center' },
   textRegion: { alignItems: 'center', paddingHorizontal: spacing.xxxl, zIndex: 2 },
   title: { fontSize: typography.sizes.display, fontWeight: typography.weights.bold, color: colors.text.primary, letterSpacing: -1, textAlign: 'center' },
   desc: { fontSize: typography.sizes.body, fontWeight: typography.weights.regular, color: colors.text.secondary, textAlign: 'center', lineHeight: typography.sizes.body * typography.lineHeights.relaxed, letterSpacing: 0.2 },

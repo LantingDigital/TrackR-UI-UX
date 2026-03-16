@@ -1,0 +1,312 @@
+[
+  {
+    "id": "canadas-wonderland",
+    "name": "Canada's Wonderland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Canada_Wonderland_rollercoaster_2015.jpg/1280px-Canada_Wonderland_rollercoaster_2015.jpg",
+    "source": "wikimedia",
+    "notes": "Leviathan roller coaster at Canada's Wonderland, dramatic coaster shot"
+  },
+  {
+    "id": "six-flags-over-georgia",
+    "name": "Six Flags Over Georgia",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Goliath_%28Six_Flags_Over_Georgia%29_07.JPG/1280px-Goliath_%28Six_Flags_Over_Georgia%29_07.JPG",
+    "source": "wikimedia",
+    "notes": "Goliath B&M hyper coaster at Six Flags Over Georgia, wide shot showing full layout"
+  },
+  {
+    "id": "californias-great-america",
+    "name": "California's Great America",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Aerial_view_of_California%27s_Great_America_3.JPG/1280px-Aerial_view_of_California%27s_Great_America_3.JPG",
+    "source": "wikimedia",
+    "notes": "Aerial view of California's Great America by Oleg Alexandrov, high-res 4608x3072"
+  },
+  {
+    "id": "michigans-adventure",
+    "name": "Michigan's Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Michigan%27s_Adventure_panorama_%283651914456%29.jpg/1280px-Michigan%27s_Adventure_panorama_%283651914456%29.jpg",
+    "source": "wikimedia",
+    "notes": "Wide panorama of Michigan's Adventure park, 11000x2000 original resolution"
+  },
+  {
+    "id": "adventureland-new-york",
+    "name": "Adventureland (New York)",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Adventureland_from_NB_NY_110.JPG/1280px-Adventureland_from_NB_NY_110.JPG",
+    "source": "wikimedia",
+    "notes": "Adventureland from Route 110 in East Farmingdale, New York, wide overview shot"
+  },
+  {
+    "id": "indiana-beach",
+    "name": "Indiana Beach",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/HH_Indiana_Beach.JPG",
+    "source": "wikimedia",
+    "notes": "Hoosier Hurricane at Indiana Beach on Lake Shafer, 640x480 resolution"
+  },
+  {
+    "id": "silverwood-theme-park",
+    "name": "Silverwood Theme Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Silverwood_idaho_%282190974969%29.jpg/1280px-Silverwood_idaho_%282190974969%29.jpg",
+    "source": "wikimedia",
+    "notes": "Silverwood Theme Park in Athol, Idaho, largest theme park in the Northwest"
+  },
+  {
+    "id": "mt-olympus-water-theme-park-resort",
+    "name": "Mt. Olympus Water Theme Park Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mt._Olympus_Theme_Park_entrance.jpg/1280px-Mt._Olympus_Theme_Park_entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Mt. Olympus Theme Park entrance in Wisconsin Dells, Greek-themed architecture"
+  },
+  {
+    "id": "six-flags-great-escape-and-hurricane-harbor",
+    "name": "Six Flags Great Escape and Hurricane Harbor",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/The_Great_Escape_in_Queensbury%2C_New_York.jpg/1280px-The_Great_Escape_in_Queensbury%2C_New_York.jpg",
+    "source": "wikimedia",
+    "notes": "The Great Escape theme park in Queensbury, New York, 5184x3456 original"
+  },
+  {
+    "id": "fun-spot-america-atlanta",
+    "name": "Fun Spot America Atlanta",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/ArieForce_One_1.jpg/1280px-ArieForce_One_1.jpg",
+    "source": "wikimedia",
+    "notes": "ArieForce One roller coaster at Fun Spot America Atlanta, signature 154ft coaster"
+  },
+  {
+    "id": "sportland-pier",
+    "name": "Sportland Pier",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Historic Wildwood NJ pier, now mostly shops/games. Library of Congress has historical photos but no freely usable high-res hero images found. Park is largely defunct as a ride pier."
+  },
+  {
+    "id": "waldameer-water-world",
+    "name": "Waldameer Water World",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Ravine_Flyer_II_-_panoramio.jpg/1280px-Ravine_Flyer_II_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Ravine Flyer II roller coaster at Waldameer, the park's signature ride spanning a ravine"
+  },
+  {
+    "id": "beech-bend",
+    "name": "Beech Bend",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Beech_Bend_entrance_gate.jpg/1280px-Beech_Bend_entrance_gate.jpg",
+    "source": "wikimedia",
+    "notes": "Beech Bend Park entrance gate in Bowling Green, Kentucky, 4080x3072 original"
+  },
+  {
+    "id": "dutch-wonderland",
+    "name": "Dutch Wonderland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Dutch_Wonderland_Entrance.jpg/1280px-Dutch_Wonderland_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Dutch Wonderland entrance with iconic castle facade in Lancaster, PA"
+  },
+  {
+    "id": "idlewild-and-soak-zone",
+    "name": "Idlewild and Soak Zone",
+    "heroUrl": null,
+    "source": null,
+    "notes": "No suitable Wikimedia image found for the Idlewild amusement park (Ligonier, PA). Commons files are for a different Idlewild property in Media, PA."
+  },
+  {
+    "id": "lost-island-theme-park",
+    "name": "Lost Island Theme Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Relatively new park (opened 2022) in Waterloo, Iowa. Wikimedia Commons category exists but no high-quality hero-suitable images found via search."
+  },
+  {
+    "id": "sesame-place-philadelphia",
+    "name": "Sesame Place Philadelphia",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Sesame_Place_Front_Gate.jpg/1280px-Sesame_Place_Front_Gate.jpg",
+    "source": "wikimedia",
+    "notes": "Sesame Place front gate entrance in Langhorne, PA, 4000x3000 original"
+  },
+  {
+    "id": "universal-orlando-resort",
+    "name": "Universal Orlando Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Universal_Studios%2C_Orlando%2C_Florida.jpg/1280px-Universal_Studios%2C_Orlando%2C_Florida.jpg",
+    "source": "wikimedia",
+    "notes": "Universal Studios Florida overview shot, 3888x2500 original resolution"
+  },
+  {
+    "id": "3501-boardwalk",
+    "name": "3501 Boardwalk",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "This is the street address for Morey's Piers in Wildwood, NJ, not a distinct park name. Should use Morey's Piers identity instead."
+  },
+  {
+    "id": "alley-cats",
+    "name": "Alley Cats",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Alley Cats Entertainment is a bowling/laser tag/arcade entertainment center in Arlington/Hurst, TX. Not a theme park."
+  },
+  {
+    "id": "bay-beach-amusement-park",
+    "name": "Bay Beach Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bay_Beach_Amusement_Park_-_panoramio.jpg/1280px-Bay_Beach_Amusement_Park_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Bay Beach Amusement Park panoramic view, municipal park in Green Bay, Wisconsin"
+  },
+  {
+    "id": "cj-barrymores",
+    "name": "CJ Barrymore's",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "CJ Barrymore's is a family entertainment center in Clinton Township, MI with go-karts, bowling, arcade. Not a traditional theme park."
+  },
+  {
+    "id": "chelyuskintsev-park",
+    "name": "Chelyuskintsev Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Urban forest park in Minsk, Belarus with a small amusement area. No suitable Wikimedia hero image found. Park has a Ferris wheel and small coaster but limited photo coverage."
+  },
+  {
+    "id": "como-town",
+    "name": "Como Town",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small kiddie amusement park (ages 2-12) adjacent to Como Zoo in Saint Paul, MN. No Wikimedia images found. Very small 4-acre park."
+  },
+  {
+    "id": "epcot",
+    "name": "Epcot",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/1_epcot_spaceship_earth_2010a.JPG",
+    "source": "wikimedia",
+    "notes": "Spaceship Earth geodesic sphere at Epcot, iconic Disney park landmark, 4288x2848 original"
+  },
+  {
+    "id": "fort-hays-chuckwagon",
+    "name": "Fort Hays Chuckwagon",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Fort Hays is an Old West town/dinner show near Rapid City, SD built on the Dances with Wolves film set. Not an amusement/theme park."
+  },
+  {
+    "id": "funplex-mount-laurel",
+    "name": "Funplex Mount Laurel",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Family entertainment center in Mount Laurel, NJ with indoor/outdoor rides, waterpark, bowling. No Wikimedia images found."
+  },
+  {
+    "id": "glen-new-hampshire",
+    "name": "Glen New Hampshire",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Glen is a town in New Hampshire, not a park. Story Land theme park is located there but this entry appears to be the town name, not a park."
+  },
+  {
+    "id": "haunted-trails-burbank",
+    "name": "Haunted Trails Burbank",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small Halloween-themed family entertainment center in Burbank, IL since 1975. Mini golf, go karts, batting cages, small rides. No Wikimedia images found."
+  },
+  {
+    "id": "johns-incredible-pizza-company",
+    "name": "John's Incredible Pizza Company",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Pizza buffet restaurant chain with arcade/rides inside. Not a theme park. 9 locations in CA/NV."
+  },
+  {
+    "id": "lake-winnepesaukah",
+    "name": "Lake Winnepesaukah",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Classic amusement park in Rossville, GA (near Chattanooga) since 1925. No suitable Wikimedia hero images found via search."
+  },
+  {
+    "id": "legoland-new-york-resort",
+    "name": "Legoland New York Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/LEGOLAND_New_York_%2851316267432%29.jpg/1280px-LEGOLAND_New_York_%2851316267432%29.jpg",
+    "source": "wikimedia",
+    "notes": "LEGOLAND New York Resort in Goshen, NY, overview of themed lands"
+  },
+  {
+    "id": "memphis-kiddie-park",
+    "name": "Memphis Kiddie Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Historic small kiddie park in Brooklyn, OH since 1952 with 11 rides. No Wikimedia images found. Very small park primarily for children under 50 inches."
+  },
+  {
+    "id": "nascar-speedpark",
+    "name": "Nascar Speedpark",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Speedway_Draft%2C_NASCAR_Speedpark%2C_Sevierville%2C_Tenn._%289272848636%29.jpg/1280px-Speedway_Draft%2C_NASCAR_Speedpark%2C_Sevierville%2C_Tenn._%289272848636%29.jpg",
+    "source": "wikimedia",
+    "notes": "NASCAR SpeedPark in Sevierville, Tennessee, go-kart track area"
+  },
+  {
+    "id": "nitro-zone",
+    "name": "Nitro Zone",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Indoor entertainment center (go-karts, bowling, trampoline park). Atlanta location is permanently closed. Small Dowagiac, MI location operates. Not a theme park."
+  },
+  {
+    "id": "parque-diversiones",
+    "name": "Parque Diversiones",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Amusement park in San Jose, Costa Rica since 1981. No Wikimedia hero images found. Park profits support the National Children's Hospital."
+  },
+  {
+    "id": "prime-pacific-entertainment",
+    "name": "Prime Pacific Entertainment",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Not a park. Prime Pacific Entertainment is a ride/entertainment services company based in Cleburne, TX that builds and refurbishes rides and food carts."
+  },
+  {
+    "id": "rides-at-adventure-cove",
+    "name": "Rides at Adventure Cove",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small amusement ride area within the Columbus Zoo and Aquarium in Powell, Ohio. Opened 2008, renamed from Jungle Jack's Landing in 2020. No Wikimedia hero images found."
+  },
+  {
+    "id": "scandia-family-fun-center",
+    "name": "Scandia Family Fun Center",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Chain of Scandinavian-themed family fun centers in California (Sacramento, Rohnert Park, Victorville, Fairfield). Mini golf, go-karts, arcade, bumper boats. No Wikimedia images found."
+  },
+  {
+    "id": "sonoma-traintown-railroad",
+    "name": "Sonoma TrainTown Railroad",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/TrainTown.jpg/1280px-TrainTown.jpg",
+    "source": "wikimedia",
+    "notes": "TrainTown miniature railroad and amusement park in Sonoma, California"
+  },
+  {
+    "id": "the-great-escape-fun-park",
+    "name": "The Great Escape Fun Park",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "This appears to be a duplicate of Six Flags Great Escape and Hurricane Harbor in Queensbury, NY. See that entry instead."
+  },
+  {
+    "id": "wildlife-world",
+    "name": "Wildlife World",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Wildlife World Zoo, Aquarium & Safari Park in Litchfield Park, AZ. 215-acre zoo with some amusement rides. No Wikimedia hero images found."
+  },
+  {
+    "id": "yorks-wild-kingdom",
+    "name": "York's Wild Kingdom",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Zoo and amusement park in York Beach, Maine since 1980. 75 animal exhibits, 18 rides. No Wikimedia hero images found."
+  }
+]

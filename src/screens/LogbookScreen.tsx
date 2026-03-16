@@ -20,6 +20,7 @@ import {
   Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -47,18 +48,21 @@ import {
   getAllRatings,
   getUnratedCoasters,
   getRatingForCoaster,
+  getTodayRideCountForCoaster,
+  addQuickLog,
   hasLogForCoaster,
   updateLogTimestamp,
   deleteLog,
   useRideLogStore,
 } from '../stores/rideLogStore';
-import { COASTER_BY_ID } from '../data/coasterIndex';
+import { COASTER_BY_ID, type CoasterIndexEntry } from '../data/coasterIndex';
 import { CARD_ART, getRarityFromRank, type CardRarity } from '../data/cardArt';
 import { CoasterCard, type CoasterStats } from '../components/CoasterCard';
 import { CardActionSheet, type CardActionTarget } from '../components/CardActionSheet';
 import { RatingSheet } from '../components/RatingSheet';
 import { TimelineActionSheet, type TimelineActionTarget } from '../components/TimelineActionSheet';
 import { LogbookLogSheet } from '../components/LogbookLogSheet';
+import { LogConfirmSheet } from '../components/LogConfirmSheet';
 import type { RideLog, CoasterRating } from '../types/rideLog';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -604,6 +608,7 @@ const PendingView: React.FC<{
 // ─── Main Screen ────────────────────────────────────────────
 
 export const LogbookScreen = () => {
+  const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const [activeView, setActiveView] = useState<ViewMode>('Timeline');
   const headerProgress = useSharedValue(0);
@@ -627,8 +632,13 @@ export const LogbookScreen = () => {
   const [timelineActionTarget, setTimelineActionTarget] = useState<TimelineActionTarget | null>(null);
   const [timelineActionVisible, setTimelineActionVisible] = useState(false);
 
-  // Logbook log sheet state
+  // Logbook log sheet state (search step)
   const [logSheetVisible, setLogSheetVisible] = useState(false);
+
+  // Log confirmation sheet state (unified with HomeScreen flow)
+  const [logConfirmCoaster, setLogConfirmCoaster] = useState<{
+    id: string; name: string; parkName: string;
+  } | null>(null);
 
   // Subscribe to store for reactivity
   const { logs, ratings, creditCount, totalRideCount } = useRideLogStore();
@@ -813,6 +823,41 @@ export const LogbookScreen = () => {
     setRatingExisting(undefined);
   }, []);
 
+  // ── Log confirm sheet handlers (unified with HomeScreen) ──
+
+  const handleLogCoasterSelect = useCallback((coaster: CoasterIndexEntry) => {
+    setLogConfirmCoaster({
+      id: coaster.id,
+      name: coaster.name,
+      parkName: coaster.park,
+    });
+  }, []);
+
+  const handleLogConfirm = useCallback(() => {
+    if (!logConfirmCoaster) return;
+    addQuickLog({
+      id: logConfirmCoaster.id,
+      name: logConfirmCoaster.name,
+      parkName: logConfirmCoaster.parkName,
+    });
+  }, [logConfirmCoaster]);
+
+  const handleLogRate = useCallback(() => {
+    if (!logConfirmCoaster) return;
+    setLogConfirmCoaster(null);
+    setRatingTarget({
+      id: logConfirmCoaster.id,
+      name: logConfirmCoaster.name,
+      parkName: logConfirmCoaster.parkName,
+    });
+    setRatingExisting(getRatingForCoaster(logConfirmCoaster.id));
+    setRatingVisible(true);
+  }, [logConfirmCoaster]);
+
+  const handleLogConfirmDismiss = useCallback(() => {
+    setLogConfirmCoaster(null);
+  }, []);
+
   // ── Timeline action sheet handlers ──
 
   const handleEntryLongPress = useCallback((log: RideLog) => {
@@ -909,11 +954,30 @@ export const LogbookScreen = () => {
         )}
 
         {activeView === 'Collection' && (
-          <CollectionView
-            items={collectionItems}
-            onCardLongPress={handleCardLongPress}
-            pendingFlipId={pendingFlipId}
-          />
+          <>
+            {/* Card Shop Entry Point */}
+            <Pressable
+              onPress={() => {
+                haptics.select();
+                navigation.navigate('MerchStore');
+              }}
+              style={styles.shopBanner}
+            >
+              <View style={styles.shopBannerIcon}>
+                <Ionicons name="bag-outline" size={20} color={colors.accent.primary} />
+              </View>
+              <View style={styles.shopBannerText}>
+                <Text style={styles.shopBannerTitle}>Card Shop</Text>
+                <Text style={styles.shopBannerSubtitle}>Order physical NanoBanana cards</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={colors.text.meta} />
+            </Pressable>
+            <CollectionView
+              items={collectionItems}
+              onCardLongPress={handleCardLongPress}
+              pendingFlipId={pendingFlipId}
+            />
+          </>
         )}
 
         {activeView === 'Stats' && (
@@ -964,13 +1028,26 @@ export const LogbookScreen = () => {
         onDelete={handleTimelineDelete}
       />
 
-      {/* Logbook Log Sheet */}
+      {/* Logbook Log Sheet (search step) */}
       <LogbookLogSheet
         visible={logSheetVisible}
         onClose={() => setLogSheetVisible(false)}
+        onCoasterSelect={handleLogCoasterSelect}
       />
 
-      {/* Log Ride FAB */}
+      {/* Log Confirmation Sheet (unified with HomeScreen) */}
+      <LogConfirmSheet
+        visible={!!logConfirmCoaster}
+        coasterId={logConfirmCoaster?.id ?? ''}
+        coasterName={logConfirmCoaster?.name ?? ''}
+        parkName={logConfirmCoaster?.parkName ?? ''}
+        rideNumber={logConfirmCoaster ? getTodayRideCountForCoaster(logConfirmCoaster.id) + 1 : 1}
+        onConfirm={handleLogConfirm}
+        onRate={handleLogRate}
+        onDismiss={handleLogConfirmDismiss}
+      />
+
+      {/* Log Ride FAB — always rendered, sheets cover it at higher z-index */}
       <Pressable
         {...fabPressHandlers}
         onPress={() => {
@@ -1175,6 +1252,40 @@ const styles = StyleSheet.create({
   },
   pendingCardRelative: {
     position: 'relative',
+  },
+
+  // ── Card Shop Banner ──
+  shopBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.background.card,
+    borderRadius: radius.card,
+    marginHorizontal: spacing.xl,
+    marginBottom: spacing.lg,
+    padding: spacing.base,
+    ...shadows.small,
+  },
+  shopBannerIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.md,
+    backgroundColor: colors.accent.primaryLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.base,
+  },
+  shopBannerText: {
+    flex: 1,
+  },
+  shopBannerTitle: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
+  },
+  shopBannerSubtitle: {
+    fontSize: typography.sizes.meta,
+    color: colors.text.secondary,
+    marginTop: 1,
   },
 
   // ── Collection ──

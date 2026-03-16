@@ -106,6 +106,42 @@ export interface Friend {
   };
 }
 
+/**
+ * Describes the relationship between the current user and another user.
+ * - 'none': no relationship
+ * - 'request_sent': current user sent a friend request (pending)
+ * - 'request_received': other user sent a friend request to current user
+ * - 'friends': mutual friendship established
+ */
+export type FriendshipStatus = 'none' | 'request_sent' | 'request_received' | 'friends';
+
+export interface FriendRequest {
+  id: string;
+  fromUserId: string;
+  fromUserName: string;
+  fromUserInitials: string;
+  fromUserCreditCount: number;
+  toUserId: string;
+  status: 'pending' | 'accepted' | 'declined';
+  createdAt: number; // epoch ms
+  daysAgo: number;
+}
+
+/**
+ * A discoverable user (not necessarily a friend).
+ * Used in search results.
+ */
+export interface DiscoverableUser {
+  id: string;
+  name: string;
+  initials: string;
+  avatarUrl?: string;
+  creditCount: number;
+  topCoaster: string;
+  mutualFriends: number;
+  friendshipStatus: FriendshipStatus;
+}
+
 export interface FriendActivity {
   id: string;
   friendId: string;
@@ -115,6 +151,9 @@ export interface FriendActivity {
   text: string;
   timestamp: number; // epoch ms
   daysAgo: number;
+  coasterId?: string;
+  coasterName?: string;
+  parkName?: string;
 }
 
 // ─── Community Rankings ─────────────────────────────────────
@@ -125,6 +164,7 @@ export interface CommunityRankingEntry {
   parkName: string;
   averageScore: number; // 1.0 - 10.0
   totalRatings: number;
+  rankChange?: number; // positive = moved up, negative = moved down, 0 = unchanged
 }
 
 export interface RankingCategory {

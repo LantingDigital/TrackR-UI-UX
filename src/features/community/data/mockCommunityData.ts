@@ -14,6 +14,7 @@ export const MOCK_GAMES: GameItem[] = [
   { id: 'speed-sorter', label: 'Sorter', icon: 'swap-vertical-outline', active: true },
   { id: 'blind-ranking', label: 'Blind Rank', icon: 'eye-off-outline', active: true },
   { id: 'trivia', label: 'Trivia', icon: 'help-circle-outline', active: true },
+  { id: 'coaster-clash', label: 'Coaster Clash', icon: 'flash', active: true },
 ];
 
 export interface CoastleStats {

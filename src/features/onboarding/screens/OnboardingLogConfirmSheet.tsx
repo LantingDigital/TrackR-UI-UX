@@ -102,6 +102,8 @@ export interface OnboardingLogConfirmSheetRef {
   scrollToPage1: () => void;
   /** Programmatically triggers the "Rate this ride" action (for demo automation) */
   triggerRate: () => void;
+  /** Animate the rate button press then trigger rate (for demo automation) */
+  highlightRateButton: () => void;
 }
 
 interface OnboardingLogConfirmSheetProps {
@@ -231,6 +233,8 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
     const celebSlideY = useSharedValue(30);
     const liftY = useSharedValue(0);
     const nudgeOpacity = useSharedValue(0);
+    const rateButtonScale = useSharedValue(1);
+    const rateButtonOpacity = useSharedValue(1);
 
     // ── Timer helpers ──
     const clearTimers = useCallback(() => {
@@ -404,6 +408,15 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
       },
       triggerRate: () => {
         handleRate();
+      },
+      highlightRateButton: () => {
+        rateButtonScale.value = withTiming(0.96, { duration: 150 });
+        rateButtonOpacity.value = withTiming(0.7, { duration: 150 });
+        setTimeout(() => {
+          rateButtonScale.value = withTiming(1, { duration: 150 });
+          rateButtonOpacity.value = withTiming(1, { duration: 150 });
+          handleRate();
+        }, 300);
       },
     }));
 
@@ -782,10 +795,12 @@ export const OnboardingLogConfirmSheet = forwardRef<OnboardingLogConfirmSheetRef
                     <Ionicons name="checkmark-circle" size={18} color="#4CAF50" />
                     <Text style={styles.nudgeLoggedText}>Ride logged</Text>
                   </View>
-                  <Pressable style={styles.rateButton} onPress={handleRate}>
-                    <Ionicons name="star" size={16} color={colors.accent.primary} style={{ marginRight: 6 }} />
-                    <Text style={styles.rateButtonText}>Rate this ride</Text>
-                  </Pressable>
+                  <Animated.View style={{ width: '100%', transform: [{ scale: rateButtonScale }], opacity: rateButtonOpacity }}>
+                    <Pressable style={styles.rateButton} onPress={handleRate}>
+                      <Ionicons name="star" size={16} color={colors.accent.primary} />
+                      <Text style={styles.rateButtonText}>Rate this ride</Text>
+                    </Pressable>
+                  </Animated.View>
                   <Pressable onPress={() => { haptics.tap(); dismiss(); }}>
                     <Text style={styles.skipText}>Maybe later ({nudgeCountdown})</Text>
                   </Pressable>
@@ -1033,6 +1048,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 6,
     backgroundColor: colors.accent.primaryLight,
     borderRadius: 16,
     paddingVertical: 14,

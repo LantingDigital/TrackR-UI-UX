@@ -5,30 +5,39 @@
  * with criterion-colored score bars and community averages.
  */
 
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useCallback } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { Ionicons } from '@expo/vector-icons';
+import { haptics } from '../../../services/haptics';
 import type { RankingCategory, CommunityRankingEntry } from '../types/community';
 
 interface RankingSectionProps {
   category: RankingCategory;
+  onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
 }
 
-const RankingEntry = React.memo(function RankingEntry({ entry, rank, color }: { entry: CommunityRankingEntry; rank: number; color: string }) {
+const RankingEntry = React.memo(function RankingEntry({ entry, rank, color, onCoasterTap }: { entry: CommunityRankingEntry; rank: number; color: string; onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void }) {
   // Normalize score to 0-1 for bar width (scores are 1-10)
   const barWidth = ((entry.averageScore - 5) / 5) * 100; // 5-10 → 0-100%
   const clampedWidth = Math.max(10, Math.min(100, barWidth));
 
+  const handlePress = useCallback(() => {
+    if (onCoasterTap) {
+      haptics.tap();
+      onCoasterTap(entry.coasterId, entry.coasterName, entry.parkName);
+    }
+  }, [entry.coasterId, entry.coasterName, entry.parkName, onCoasterTap]);
+
   return (
-    <View style={styles.entryRow}>
+    <Pressable style={styles.entryRow} onPress={handlePress}>
       <Text style={[styles.rank, { color }]}>{rank}</Text>
       <View style={styles.entryInfo}>
-        <Text style={styles.coasterName} numberOfLines={1}>{entry.coasterName}</Text>
+        <Text style={[styles.coasterName, onCoasterTap && styles.tappableCoaster]} numberOfLines={1}>{entry.coasterName}</Text>
         <Text style={styles.parkName} numberOfLines={1}>{entry.parkName}</Text>
       </View>
       <View style={styles.scoreCol}>
@@ -39,11 +48,11 @@ const RankingEntry = React.memo(function RankingEntry({ entry, rank, color }: { 
           {entry.averageScore.toFixed(1)} avg · {entry.totalRatings}
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 });
 
-export const RankingSection = React.memo(function RankingSection({ category }: RankingSectionProps) {
+export const RankingSection = React.memo(function RankingSection({ category, onCoasterTap }: RankingSectionProps) {
   return (
     <View style={styles.card}>
       {/* Header */}
@@ -62,6 +71,7 @@ export const RankingSection = React.memo(function RankingSection({ category }: R
             entry={entry}
             rank={i + 1}
             color={category.color}
+            onCoasterTap={onCoasterTap}
           />
         ))}
       </View>
@@ -121,6 +131,9 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.body,
     fontWeight: typography.weights.semibold,
     color: colors.text.primary,
+  },
+  tappableCoaster: {
+    color: colors.accent.primary,
   },
   parkName: {
     fontSize: typography.sizes.small,

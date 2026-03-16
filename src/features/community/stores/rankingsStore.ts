@@ -1,57 +1,59 @@
-// ─── Rankings Store ─────────────────────────────────────────
-//
-// Module-level store for community-aggregated rankings.
-// Pattern: communityStore.ts (state + listeners + notify + useReducer hook).
+/**
+ * Rankings Store — Zustand
+ *
+ * Read-only store for community-aggregated rankings.
+ * Firestore sync layer pushes data via _setCategories internal action.
+ */
 
-import { useEffect, useReducer } from 'react';
+import { create } from 'zustand';
 import type { RankingCategory } from '../types/community';
-import { MOCK_RANKINGS } from '../data/mockRankingsData';
 
 // ============================================
-// Module-Level State
+// Store
 // ============================================
 
-let categories: RankingCategory[] = [...MOCK_RANKINGS];
+interface RankingsState {
+  categories: RankingCategory[];
 
-type Listener = () => void;
-const listeners = new Set<Listener>();
-
-function notify() {
-  listeners.forEach((fn) => fn());
+  // Firestore sync actions (called by sync layer, not UI)
+  _setCategories: (categories: RankingCategory[]) => void;
+  _resetStore: () => void;
 }
 
+const useStore = create<RankingsState>((set) => ({
+  categories: [],
+
+  // ── Firestore sync actions ──────────────────
+
+  _setCategories: (categories) => set({ categories }),
+  _resetStore: () => set({ categories: [] }),
+}));
+
 // ============================================
-// Getters
+// Internal Access (for sync layer)
+// ============================================
+
+export const _rankingsStoreInternal = useStore;
+
+// ============================================
+// Standalone Getters
 // ============================================
 
 export function getCategories(): RankingCategory[] {
-  return categories;
+  return useStore.getState().categories;
 }
 
 export function getCategory(categoryId: string): RankingCategory | undefined {
-  return categories.find((c) => c.id === categoryId);
+  return useStore.getState().categories.find((c) => c.id === categoryId);
 }
 
 // ============================================
 // React Hook
 // ============================================
 
-// Cached snapshot — stable reference as long as data is unchanged.
-let cachedRankingsSnapshot: { categories: RankingCategory[] } | null = null;
-
 export function useRankingsStore() {
-  const [, forceUpdate] = useReducer((c: number) => c + 1, 0);
-
-  useEffect(() => {
-    listeners.add(forceUpdate);
-    return () => {
-      listeners.delete(forceUpdate);
-    };
-  }, []);
-
-  if (!cachedRankingsSnapshot || cachedRankingsSnapshot.categories !== categories) {
-    cachedRankingsSnapshot = { categories };
-  }
-
-  return cachedRankingsSnapshot;
+  const state = useStore();
+  return {
+    categories: state.categories,
+  };
 }

@@ -76,7 +76,7 @@ export const OnboardingSearch: React.FC<OnboardingScreenProps> = ({ isActive }) 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background.page,
+    backgroundColor: 'transparent',
     alignItems: 'center',
   },
   textRegion: {

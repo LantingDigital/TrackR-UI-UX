@@ -1,0 +1,312 @@
+[
+  {
+    "id": "six-flags-magic-mountain",
+    "name": "Six Flags Magic Mountain",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Six_Flags_Magic_Mountain_%2813208988393%29.jpg/1280px-Six_Flags_Magic_Mountain_%2813208988393%29.jpg",
+    "source": "wikimedia",
+    "notes": "Wide shot of Six Flags Magic Mountain park with roller coasters visible, landscape orientation 1280x900"
+  },
+  {
+    "id": "kings-dominion",
+    "name": "Kings Dominion",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Eiffel_Tower_Kings_Dominion_at_dusk.jpg/1280px-Eiffel_Tower_Kings_Dominion_at_dusk.jpg",
+    "source": "wikimedia",
+    "notes": "Iconic Eiffel Tower replica at Kings Dominion at dusk, dramatic lighting, 1280x853"
+  },
+  {
+    "id": "valleyfair",
+    "name": "Valleyfair",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Valleyfair%2C_Shakopee%2C_Minnesota_%2852358528378%29.jpg/1280px-Valleyfair%2C_Shakopee%2C_Minnesota_%2852358528378%29.jpg",
+    "source": "wikimedia",
+    "notes": "Overview shot of Valleyfair in Shakopee, Minnesota, 1280x800"
+  },
+  {
+    "id": "six-flags-fiesta-texas",
+    "name": "Six Flags Fiesta Texas",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Boomerang_%28Six_Flags_Fiesta_Texas%29.JPG/1280px-Boomerang_%28Six_Flags_Fiesta_Texas%29.JPG",
+    "source": "wikimedia",
+    "notes": "Boomerang ride at Six Flags Fiesta Texas with quarry wall backdrop, 1280x960"
+  },
+  {
+    "id": "six-flags-st-louis",
+    "name": "Six Flags St. Louis",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Six_Flags_St._Louis_2023_2.jpg/1280px-Six_Flags_St._Louis_2023_2.jpg",
+    "source": "wikimedia",
+    "notes": "Updated road sign entrance to Six Flags St. Louis, 2023 photo, landscape 1280x591"
+  },
+  {
+    "id": "nickelodeon-universe-mall-of-america",
+    "name": "Nickelodeon Universe Mall of America",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Nickelodeon_Universe_at_MOA.jpg/1280px-Nickelodeon_Universe_at_MOA.jpg",
+    "source": "wikimedia",
+    "notes": "Interior view of Nickelodeon Universe at Mall of America, 1280x853"
+  },
+  {
+    "id": "santas-village",
+    "name": "Santa's Village",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/Santa%27s_Village_Jefferson_welcome_sign.jpg",
+    "source": "wikimedia",
+    "notes": "Welcome sign at Santa's Village in Jefferson, NH. Portrait orientation 768x1024 - only available Wikimedia image"
+  },
+  {
+    "id": "knoebels-amusement-resort",
+    "name": "Knoebels Amusement Resort",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Impulse_ride_photographed_from_above.jpg/1280px-Impulse_ride_photographed_from_above.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of Impulse ride at Knoebels photographed from above, showing park area, 1280x909"
+  },
+  {
+    "id": "seaworld-san-diego",
+    "name": "SeaWorld San Diego",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fireworks_at_Seaworld_San_Diego.jpg/1280px-Fireworks_at_Seaworld_San_Diego.jpg",
+    "source": "wikimedia",
+    "notes": "Dramatic fireworks display over SeaWorld San Diego at night, cinematic feel, 1280x852"
+  },
+  {
+    "id": "cotaland",
+    "name": "Cotaland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Circuit_of_the_Americas_Aerial_%2819947165645%29.jpg",
+    "source": "wikimedia",
+    "notes": "Aerial view of Circuit of the Americas (COTA) where Cotaland is located, 1200x800. Cotaland opened 2026 at COTA."
+  },
+  {
+    "id": "moreys-piers",
+    "name": "Morey's Piers",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Wildwood_New_Jersey_Boardwalk_Morey_Pier_South_Jersey_%2853117684788%29.jpg/1280px-Wildwood_New_Jersey_Boardwalk_Morey_Pier_South_Jersey_%2853117684788%29.jpg",
+    "source": "wikimedia",
+    "notes": "Wildwood NJ boardwalk with Morey's Pier visible, colorful boardwalk scene, 1280x774"
+  },
+  {
+    "id": "universal-epic-universe",
+    "name": "Universal Epic Universe",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Chronos_Tower_Front_Epic_Universe.jpg/1280px-Chronos_Tower_Front_Epic_Universe.jpg",
+    "source": "wikimedia",
+    "notes": "Chronos Tower at Universal Epic Universe entrance, dramatic architecture, 1280x718"
+  },
+  {
+    "id": "alabama-adventure-and-splash-adventure",
+    "name": "Alabama Adventure and Splash Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Rampage%2C_Alabama_Adventure%2C_July_4th_2008.jpg/1280px-Rampage%2C_Alabama_Adventure%2C_July_4th_2008.jpg",
+    "source": "wikimedia",
+    "notes": "Rampage wooden roller coaster at Alabama Adventure, 1280x960"
+  },
+  {
+    "id": "craigs-cruisers",
+    "name": "Craig's Cruisers",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Family entertainment center chain in Michigan with go-karts and arcades. No Wikimedia image available; no suitable free image found."
+  },
+  {
+    "id": "fun-spot-america-theme-parks",
+    "name": "Fun Spot America Theme Parks",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Fun_Spot_America_Orlando_overview_from_Ferris_Wheel.jpg/1280px-Fun_Spot_America_Orlando_overview_from_Ferris_Wheel.jpg",
+    "source": "wikimedia",
+    "notes": "Overview of Fun Spot America Orlando from Ferris Wheel, showing park layout, 1280x720"
+  },
+  {
+    "id": "land-of-make-believe",
+    "name": "Land Of Make Believe",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small family amusement park in Hope, NJ. No Wikimedia image available."
+  },
+  {
+    "id": "santa-cruz-beach-boardwalk",
+    "name": "Santa Cruz Beach Boardwalk",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Santa_Cruz_Beach_Boardwalk_-_4652510977.jpg/1280px-Santa_Cruz_Beach_Boardwalk_-_4652510977.jpg",
+    "source": "wikimedia",
+    "notes": "Wide panoramic view of Santa Cruz Beach Boardwalk with rides and beach, ultra-wide landscape 1280x365"
+  },
+  {
+    "id": "storybook-land",
+    "name": "Storybook Land",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/StorybookLand.jpg/1280px-StorybookLand.jpg",
+    "source": "wikimedia",
+    "notes": "Overview shot of Storybook Land in Egg Harbor Township, NJ, 1280x853"
+  },
+  {
+    "id": "wild-adventures",
+    "name": "Wild Adventures",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Wild_Adventures_theme_park_monument_in_concrete.jpg/1280px-Wild_Adventures_theme_park_monument_in_concrete.jpg",
+    "source": "wikimedia",
+    "notes": "Wild Adventures theme park entrance monument sign in concrete, Valdosta GA, 1280x853"
+  },
+  {
+    "id": "airway-fun-center",
+    "name": "Airway Fun Center",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Indoor family entertainment center (bowling, laser tag, arcades) in Kalamazoo, MI. Not a traditional theme/amusement park."
+  },
+  {
+    "id": "arnolds-park-iowa",
+    "name": "Arnolds Park Iowa",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Arnolds-Park-From-Lake.jpg",
+    "source": "wikimedia",
+    "notes": "Arnolds Park amusement park viewed from West Lake Okoboji, landscape 1179x608"
+  },
+  {
+    "id": "blackbeards-family-entertainment-center",
+    "name": "Blackbeard's Family Entertainment Center",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Family entertainment center in Fresno, CA with mini golf, go-karts, and rides. No Wikimedia image available."
+  },
+  {
+    "id": "casino-pier",
+    "name": "Casino Pier",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Seaside_Heights_Casino_Pier_with_Hydrus_in_background.jpg/1280px-Seaside_Heights_Casino_Pier_with_Hydrus_in_background.jpg",
+    "source": "wikimedia",
+    "notes": "Casino Pier in Seaside Heights with Hydrus roller coaster in background, boardwalk scene, 1280x720"
+  },
+  {
+    "id": "cliffs-amusement-park",
+    "name": "Cliff's Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Cliff%27s_Amusement_Park_entrance_gate.jpg/1280px-Cliff%27s_Amusement_Park_entrance_gate.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance gate to Cliff's Amusement Park in Albuquerque, NM, 1280x853"
+  },
+  {
+    "id": "dewberry-farm",
+    "name": "Dewberry Farm",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Seasonal pumpkin patch and farm attraction near Houston, TX. Not a traditional theme/amusement park."
+  },
+  {
+    "id": "farmington-utah",
+    "name": "Farmington Utah",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "This is a city name (Farmington, Utah), not a theme park. Lagoon amusement park is located here but the entry is just the city."
+  },
+  {
+    "id": "fun-fore-all-family-fun-park",
+    "name": "Fun Fore All Family Fun Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small family entertainment center in Cranberry Township, PA with mini golf, go-karts, and arcade. No Wikimedia image available."
+  },
+  {
+    "id": "funtown-splashtown-usa",
+    "name": "Funtown Splashtown USA",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Funtown-Splashtown_USA.jpg/1280px-Funtown-Splashtown_USA.jpg",
+    "source": "wikimedia",
+    "notes": "Funtown Splashtown USA park view in Saco, Maine, 1280x960"
+  },
+  {
+    "id": "happy-hollow-park-zoo",
+    "name": "Happy Hollow Park Zoo",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Happy_Hollow_Park_%26_Zoo_-San_Jose%2C_California%2C_USA-2Oct2011_%281%29.jpg/1280px-Happy_Hollow_Park_%26_Zoo_-San_Jose%2C_California%2C_USA-2Oct2011_%281%29.jpg",
+    "source": "wikimedia",
+    "notes": "Happy Hollow Park & Zoo in San Jose, CA, overview shot, 1280x850"
+  },
+  {
+    "id": "indianapolis-zoo",
+    "name": "Indianapolis Zoo",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Indianapolis_Zoo_Entrance.jpg/1280px-Indianapolis_Zoo_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Indianapolis Zoo entrance shot, 1280x960"
+  },
+  {
+    "id": "kiddie-park",
+    "name": "Kiddie Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Historic children's amusement park (est. 1925) in San Antonio, TX, now at San Antonio Zoo. No Wikipedia article or Wikimedia image found."
+  },
+  {
+    "id": "lark-ranch",
+    "name": "Lark Ranch",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Seasonal agricultural farm attraction in Lanesville, Indiana with corn maze and pumpkin patch. Not a traditional theme/amusement park."
+  },
+  {
+    "id": "magic-springs-theme-and-water-park",
+    "name": "Magic Springs Theme and Water Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Magic_Springs_Theme_Park_entrance_%281%29_-_Jeremy_Thompson.jpg/1280px-Magic_Springs_Theme_Park_entrance_%281%29_-_Jeremy_Thompson.jpg",
+    "source": "wikimedia",
+    "notes": "Magic Springs Theme Park entrance in Hot Springs, Arkansas, 1280x853"
+  },
+  {
+    "id": "modern-woodmen-park",
+    "name": "Modern Woodmen Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Modern_Woodmen_Park.jpg",
+    "skip": true,
+    "source": "wikimedia",
+    "notes": "Minor league baseball stadium in Davenport, Iowa with a Ferris wheel. Not a theme park - it is a baseball venue with a few amusement rides. Image 750x332."
+  },
+  {
+    "id": "newtons-attic",
+    "name": "Newton's Attic",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "STEM education facility in Lexington, KY. Not an amusement park."
+  },
+  {
+    "id": "orlando-florida",
+    "name": "Orlando Florida",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "This is a city name, not a specific theme park."
+  },
+  {
+    "id": "powerplay-family-entertainment-center",
+    "name": "PowerPlay Family Entertainment Center",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Indoor family entertainment center in Kansas City, MO with bowling, arcade, and go-karts. No Wikimedia image available."
+  },
+  {
+    "id": "rainier-amusements",
+    "name": "Rainier Amusements",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Traveling carnival company based in Portland, OR. Not a fixed-location theme park."
+  },
+  {
+    "id": "santas-village-amusement-water-park",
+    "name": "Santa's Village Amusement Water Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Amusement and water park in East Dundee, Illinois (near Chicago). No Wikimedia image available for this park."
+  },
+  {
+    "id": "shanghai-disneyland",
+    "name": "Shanghai Disneyland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Enchanted_Storybook_Castle_of_Shanghai_Disneyland.jpg/1280px-Enchanted_Storybook_Castle_of_Shanghai_Disneyland.jpg",
+    "source": "wikimedia",
+    "notes": "Enchanted Storybook Castle at Shanghai Disneyland, iconic centerpiece shot, 1280x850"
+  },
+  {
+    "id": "sylvan-beach-amusement-park",
+    "name": "Sylvan Beach Amusement Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Historic amusement park on Oneida Lake, NY. No Wikipedia article or Wikimedia image found."
+  },
+  {
+    "id": "wade-shows-inc",
+    "name": "Wade Shows Inc",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Traveling carnival midway company based in Livonia, MI. Not a fixed-location theme park."
+  },
+  {
+    "id": "wonderland-park-texas",
+    "name": "Wonderland Park Texas",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Hornet_%28Wonderland_Park%29_1.jpg/1280px-Hornet_%28Wonderland_Park%29_1.jpg",
+    "source": "wikimedia",
+    "notes": "Hornet ride at Wonderland Park in Amarillo, Texas, 1280x960"
+  }
+]

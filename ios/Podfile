@@ -23,6 +23,23 @@ prepare_react_native_project!
 target 'TrackR' do
   use_expo_modules!
 
+  # Firebase pods need modular headers for Swift/C interop with use_frameworks! :static
+  pod 'FirebaseCore', :modular_headers => true
+  pod 'FirebaseCoreInternal', :modular_headers => true
+  pod 'FirebaseAuth', :modular_headers => true
+  pod 'FirebaseAuthInterop', :modular_headers => true
+  pod 'FirebaseAppCheckInterop', :modular_headers => true
+  pod 'FirebaseCoreExtension', :modular_headers => true
+  pod 'FirebaseFirestore', :modular_headers => true
+  pod 'FirebaseFirestoreInternal', :modular_headers => true
+  pod 'FirebaseFunctions', :modular_headers => true
+  pod 'FirebaseMessagingInterop', :modular_headers => true
+  pod 'FirebaseStorage', :modular_headers => true
+  pod 'FirebaseSharedSwift', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
+  pod 'RecaptchaInterop', :modular_headers => true
+  pod 'GTMSessionFetcher', :modular_headers => true
+
   if ENV['EXPO_USE_COMMUNITY_AUTOLINKING'] == '1'
     config_command = ['node', '-e', "process.argv=['', '', 'config'];require('@react-native-community/cli').run()"];
   else
@@ -41,13 +58,6 @@ target 'TrackR' do
   use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
   use_frameworks! :linkage => ENV['USE_FRAMEWORKS'].to_sym if ENV['USE_FRAMEWORKS']
 
-# @generated begin pre_installer - expo prebuild (DO NOT MODIFY) sync-c8812095000d6054b846ce74840f0ffb540c2757
-  pre_install do |installer|
-# @generated begin @rnmapbox/maps-pre_installer - expo prebuild (DO NOT MODIFY) sync-ea4905840bf9fcea0acc62e92aa2e784f9d760f8
-    $RNMapboxMaps.pre_install(installer)
-# @generated end @rnmapbox/maps-pre_installer
-  end
-# @generated end pre_installer
   use_react_native!(
     :path => config[:reactNativePath],
     :hermes_enabled => podfile_properties['expo.jsEngine'] == nil || podfile_properties['expo.jsEngine'] == 'hermes',
@@ -57,14 +67,29 @@ target 'TrackR' do
   )
 
   post_install do |installer|
-# @generated begin @rnmapbox/maps-post_installer - expo prebuild (DO NOT MODIFY) sync-c4e8f90e96f6b6c6ea9241dd7b52ab5f57f7bf36
-    $RNMapboxMaps.post_install(installer)
-# @generated end @rnmapbox/maps-post_installer
     react_native_post_install(
       installer,
       config[:reactNativePath],
       :mac_catalyst_enabled => false,
       :ccache_enabled => ccache_enabled?(podfile_properties),
     )
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      end
+
+      # Disable Clang module maps for RNFB pods so they don't enforce
+      # module boundaries on React header imports
+      if target.name.start_with?('RNFB')
+        target.build_configurations.each do |config|
+          config.build_settings['DEFINES_MODULE'] = 'NO'
+          config.build_settings.delete('MODULEMAP_FILE')
+        end
+        # Also delete the generated modulemap file
+        modulemap = File.join(installer.sandbox.root, 'Target Support Files', target.name, "#{target.name}.modulemap")
+        File.delete(modulemap) if File.exist?(modulemap)
+      end
+    end
   end
 end

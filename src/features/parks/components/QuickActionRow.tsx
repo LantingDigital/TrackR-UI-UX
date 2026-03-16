@@ -27,7 +27,7 @@ interface QuickAction {
 }
 
 interface QuickActionRowProps {
-  onMapPress: () => void;
+  onStatsPress: () => void;
   onFoodPress: () => void;
   onRidesPress: () => void;
   onPassPress: () => void;
@@ -38,7 +38,7 @@ interface QuickActionRowProps {
 // ============================================
 
 const ACTIONS: QuickAction[] = [
-  { key: 'map', label: 'Map', icon: 'map-outline', color: '#5B8DEF' },
+  { key: 'stats', label: 'Stats', icon: 'stats-chart-outline', color: '#5B8DEF' },
   { key: 'food', label: 'Food', icon: 'restaurant-outline', color: '#E8734A' },
   { key: 'rides', label: 'Rides', icon: 'flash-outline', color: '#9B6DD7' },
   { key: 'pass', label: 'Pass', icon: 'ticket-outline', color: colors.accent.primary },
@@ -93,15 +93,15 @@ const ActionPill = memo(function ActionPill({
 // ============================================
 
 export const QuickActionRow = memo(function QuickActionRow({
-  onMapPress,
+  onStatsPress,
   onFoodPress,
   onRidesPress,
   onPassPress,
 }: QuickActionRowProps) {
   // Stable handlers array — only rebuilds when the actual callbacks change
   const handlers = useMemo(
-    () => [onMapPress, onFoodPress, onRidesPress, onPassPress],
-    [onMapPress, onFoodPress, onRidesPress, onPassPress],
+    () => [onStatsPress, onFoodPress, onRidesPress, onPassPress],
+    [onStatsPress, onFoodPress, onRidesPress, onPassPress],
   );
 
   return (

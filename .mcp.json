@@ -1,9 +1,22 @@
 {
   "mcpServers": {
-    "playwright": {
+    "nanobanana": {
       "command": "npx",
-      "args": ["@playwright/mcp", "--headless"],
-      "env": {}
+      "args": [
+        "@playwright/mcp@latest",
+        "--headless",
+        "--browser", "chrome",
+        "--user-data-dir", "./mcp-data/nanobanana"
+      ]
+    },
+    "article": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--headless",
+        "--browser", "chrome",
+        "--user-data-dir", "./mcp-data/article"
+      ]
     }
   }
 }

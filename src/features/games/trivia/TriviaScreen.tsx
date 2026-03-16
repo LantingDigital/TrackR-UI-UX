@@ -40,7 +40,7 @@ const EASE_OUT = Easing.out(Easing.ease);
 
 // ─── Score Display ──────────────────────────────────────────
 
-function ScoreDisplay({ score, streak }: { score: number; streak: number }) {
+const ScoreDisplay = React.memo(function ScoreDisplay({ score, streak }: { score: number; streak: number }) {
   const scoreScale = useSharedValue(1);
   const streakOpacity = useSharedValue(0);
   const prevScore = useRef(score);
@@ -80,11 +80,11 @@ function ScoreDisplay({ score, streak }: { score: number; streak: number }) {
       </Animated.Text>
     </View>
   );
-}
+});
 
 // ─── Answer Button ──────────────────────────────────────────
 
-function AnswerButton({ text, index, correctIndex, selectedIndex, isRevealed, onPress }: {
+const AnswerButton = React.memo(function AnswerButton({ text, index, correctIndex, selectedIndex, isRevealed, onPress }: {
   text: string;
   index: number;
   correctIndex: number;
@@ -132,29 +132,30 @@ function AnswerButton({ text, index, correctIndex, selectedIndex, isRevealed, on
 
   return (
     <Pressable onPress={onPress} disabled={isRevealed}>
-      <Animated.View style={[
-        styles.answerBtn,
-        showCorrect && styles.answerCorrect,
-        showWrong && styles.answerWrong,
-        animStyle,
-      ]}>
-        <Text style={[
-          styles.answerText,
-          showCorrect && styles.answerTextCorrect,
-          showWrong && styles.answerTextWrong,
+      <Animated.View style={animStyle}>
+        <View style={[
+          styles.answerBtn,
+          showCorrect && styles.answerCorrect,
+          showWrong && styles.answerWrong,
         ]}>
-          {text}
-        </Text>
-        {showCorrect && <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />}
-        {showWrong && <Ionicons name="close-circle" size={20} color="#E53935" />}
+          <Text style={[
+            styles.answerText,
+            showCorrect && styles.answerTextCorrect,
+            showWrong && styles.answerTextWrong,
+          ]}>
+            {text}
+          </Text>
+          {showCorrect && <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />}
+          {showWrong && <Ionicons name="close-circle" size={20} color="#E53935" />}
+        </View>
       </Animated.View>
     </Pressable>
   );
-}
+});
 
 // ─── Results Screen ─────────────────────────────────────────
 
-function ResultsView({ score, total, onPlayAgain, onClose }: {
+const ResultsView = React.memo(function ResultsView({ score, total, onPlayAgain, onClose }: {
   score: number;
   total: number;
   onPlayAgain: () => void;
@@ -202,7 +203,7 @@ function ResultsView({ score, total, onPlayAgain, onClose }: {
       </Animated.View>
     </View>
   );
-}
+});
 
 // ─── Main Screen ────────────────────────────────────────────
 
@@ -475,7 +476,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.card,
     borderRadius: radius.card,
     padding: spacing.lg,
-    ...shadows.card,
+    ...shadows.small,
   },
   answerCorrect: {
     backgroundColor: '#E8F5E9',

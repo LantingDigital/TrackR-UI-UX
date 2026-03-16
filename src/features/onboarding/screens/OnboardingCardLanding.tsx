@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image, Pressable, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
@@ -17,6 +17,72 @@ import { colors } from '../../../theme/colors';
 import { shadows } from '../../../theme/shadows';
 import { radius } from '../../../theme/radius';
 import { haptics } from '../../../services/haptics';
+import { Player } from 'expo-ahap';
+
+// ── Core Haptics: Card cascade rainfall ──
+// Continuous haptic that swells as cards appear, peaks at hero landing, tapers off.
+// Matches the visual entrance timing: ~200ms start, peak around 1100ms, tail to 1700ms.
+// Card entrance timing: first card ~200ms, last card ~1430ms, last landing ~2030ms.
+// AHAP covers 200ms–2100ms to blanket the full appear+land range.
+const CARD_CASCADE_PLAYER = Platform.OS === 'ios' ? new Player({ Pattern: [
+  // Continuous rumble — covers full entrance + landing window
+  {
+    Event: { Time: 0.2, EventType: 'HapticContinuous', EventDuration: 1.9, EventParameters: [
+      { ParameterID: 'HapticIntensity', ParameterValue: 0.8 },
+      { ParameterID: 'HapticSharpness', ParameterValue: 0.2 },
+    ]},
+  },
+  // Intensity curve: build → peak → long gentle taper through landing phase
+  {
+    ParameterCurve: { ParameterID: 'HapticIntensityControl', Time: 0.2, ParameterCurveControlPoints: [
+      { Time: 0, ParameterValue: 0.2 },
+      { Time: 0.25, ParameterValue: 0.4 },
+      { Time: 0.5, ParameterValue: 0.55 },
+      { Time: 0.75, ParameterValue: 0.75 },
+      { Time: 0.95, ParameterValue: 1.0 },    // peak — hero cards appearing
+      { Time: 1.2, ParameterValue: 0.6 },     // still present during landings
+      { Time: 1.5, ParameterValue: 0.3 },
+      { Time: 1.7, ParameterValue: 0.12 },
+      { Time: 1.9, ParameterValue: 0.0 },
+    ]},
+  },
+  // Sharpness curve: deep → brighter at peak → settles back
+  {
+    ParameterCurve: { ParameterID: 'HapticSharpnessControl', Time: 0.2, ParameterCurveControlPoints: [
+      { Time: 0, ParameterValue: -0.4 },
+      { Time: 0.75, ParameterValue: 0.0 },
+      { Time: 0.95, ParameterValue: 0.3 },
+      { Time: 1.9, ParameterValue: -0.2 },
+    ]},
+  },
+  // Transient raindrop hits
+  { Event: { Time: 0.3, EventType: 'HapticTransient', EventParameters: [
+    { ParameterID: 'HapticIntensity', ParameterValue: 0.4 },
+    { ParameterID: 'HapticSharpness', ParameterValue: 0.35 },
+  ]}},
+  { Event: { Time: 0.5, EventType: 'HapticTransient', EventParameters: [
+    { ParameterID: 'HapticIntensity', ParameterValue: 0.5 },
+    { ParameterID: 'HapticSharpness', ParameterValue: 0.4 },
+  ]}},
+  { Event: { Time: 0.7, EventType: 'HapticTransient', EventParameters: [
+    { ParameterID: 'HapticIntensity', ParameterValue: 0.65 },
+    { ParameterID: 'HapticSharpness', ParameterValue: 0.45 },
+  ]}},
+  // Hero landing — big hit
+  { Event: { Time: 0.95, EventType: 'HapticTransient', EventParameters: [
+    { ParameterID: 'HapticIntensity', ParameterValue: 1.0 },
+    { ParameterID: 'HapticSharpness', ParameterValue: 0.55 },
+  ]}},
+  // Settle taps during landing phase
+  { Event: { Time: 1.25, EventType: 'HapticTransient', EventParameters: [
+    { ParameterID: 'HapticIntensity', ParameterValue: 0.35 },
+    { ParameterID: 'HapticSharpness', ParameterValue: 0.3 },
+  ]}},
+  { Event: { Time: 1.55, EventType: 'HapticTransient', EventParameters: [
+    { ParameterID: 'HapticIntensity', ParameterValue: 0.2 },
+    { ParameterID: 'HapticSharpness', ParameterValue: 0.25 },
+  ]}},
+]}) : null;
 
 const { width: SW, height: SH } = Dimensions.get('window');
 const ACCENT = colors.accent.primary;
@@ -343,7 +409,7 @@ const MiniStatsBack = ({ card, w, h }: { card: CardData; w: number; h: number })
   if (card.yearOpened) metaParts.push(String(card.yearOpened));
 
   return (
-    <View style={{ width: w, height: h, borderRadius: 8 * s, backgroundColor: colors.background.card, padding: 5 * s, justifyContent: 'space-between', ...shadows.card }}>
+    <View style={{ width: w, height: h, borderRadius: 8 * s, backgroundColor: colors.background.card, padding: 5 * s, justifyContent: 'space-between', ...shadows.small }}>
       <View>
         <Text style={{ fontSize: 10 * s, fontWeight: typography.weights.bold, color: colors.text.primary }} adjustsFontSizeToFit numberOfLines={1}>{card.name}</Text>
         <Text style={{ fontSize: 7 * s, color: colors.text.secondary, marginTop: 1 * s }} adjustsFontSizeToFit numberOfLines={1}>{card.park}</Text>
@@ -379,6 +445,8 @@ const MiniStatsBack = ({ card, w, h }: { card: CardData; w: number; h: number })
 };
 
 // ── Card component ──
+// Non-flippable (tiers 0-2): no shadow (too small for visible lift — saves GPU)
+// Flippable (tiers 3-4): shadow on OUTER wrapper, overflow:hidden on INNER (prevents clipping)
 const CardView = ({ card, w, h, canFlip }: { card: CardData; w: number; h: number; canFlip: boolean }) => {
   const flipProgress = useSharedValue(0);
   const isFlipped = useRef(false);
@@ -389,11 +457,19 @@ const CardView = ({ card, w, h, canFlip }: { card: CardData; w: number; h: numbe
   const backStyle = useAnimatedStyle(() => ({ transform: [{ perspective: 800 }, { rotateY: `${interpolate(flipProgress.value, [0, 1], [180, 360])}deg` }], opacity: interpolate(flipProgress.value, [0, 0.5, 0.55, 1], [0, 0, 1, 1]) }));
 
   if (!canFlip) {
-    return (<View style={{ width: w, height: h, borderRadius: w * 0.12, overflow: 'hidden', backgroundColor: colors.background.card, ...shadows.small }}><Image source={card.source} style={{ width: w, height: h }} resizeMode="cover" /></View>);
+    // Tiers 0-2: no shadow, just clipped image
+    return (<View style={{ width: w, height: h, borderRadius: w * 0.12, overflow: 'hidden', backgroundColor: colors.background.card }}><Image source={card.source} style={{ width: w, height: h }} resizeMode="cover" /></View>);
   }
+  // Tiers 3-4: shadow wrapper (no overflow:hidden) → inner clip (overflow:hidden, no shadow)
   return (
     <Pressable onPress={handlePress} style={{ width: w, height: h }}>
-      <Animated.View style={[{ width: w, height: h, position: 'absolute' }, frontStyle]}><View style={{ flex: 1, borderRadius: w * 0.12, overflow: 'hidden', backgroundColor: colors.background.card, ...shadows.card }}><Image source={card.source} style={{ width: w, height: h }} resizeMode="cover" /></View></Animated.View>
+      <Animated.View style={[{ width: w, height: h, position: 'absolute' }, frontStyle]}>
+        <View style={{ flex: 1, borderRadius: w * 0.12, backgroundColor: colors.background.card, ...shadows.small }}>
+          <View style={{ flex: 1, borderRadius: w * 0.12, overflow: 'hidden' }}>
+            <Image source={card.source} style={{ width: w, height: h }} resizeMode="cover" />
+          </View>
+        </View>
+      </Animated.View>
       <Animated.View style={[{ width: w, height: h, position: 'absolute' }, backStyle]} pointerEvents="none"><MiniStatsBack card={card} w={w} h={h} /></Animated.View>
     </Pressable>
   );
@@ -612,6 +688,7 @@ export const OnboardingCardLanding: React.FC<OnboardingScreenProps> = ({ isActiv
       }
 
       // Card entrance (staggered reveal) — replays every visit
+      // Per-card tick synced to each card's appearance (layered on AHAP base)
       for (let ci = 0; ci < NUM_CARDS; ci++) {
         const pos = POSITION_POOL[newPositions[ci]];
         const delay = 200 + ci * 50 + Math.random() * 80;
@@ -619,28 +696,18 @@ export const OnboardingCardLanding: React.FC<OnboardingScreenProps> = ({ isActiv
         cardAnims[ci].scale.value = withDelay(delay, withTiming(1, { duration: 600, easing: Easing.out(Easing.cubic) }));
         setTimeout(() => {
           if (!isActiveRef.current) return;
+          haptics.tick();
+        }, delay);
+        setTimeout(() => {
+          if (!isActiveRef.current) return;
           startFloat(ci);
         }, delay + 700);
         lastCycled.current[ci] = Date.now() - Math.random() * 4000;
       }
 
-      // Haptic sequence — hand-crafted rhythm that accompanies the card cascade.
-      // Builds from light patter → crescendo → punctuated landing.
-      const { tick, tap, select } = haptics;
-      const hapticSeq: [number, () => void][] = [
-        // Light patter — first cards trickling in
-        [220,  tick], [310, tick], [420, tick],
-        // Building — more cards appearing
-        [510,  tap],  [590, tick], [670, tick], [740, tap],
-        // Crescendo — peak of the entrance
-        [830,  tap],  [900, tick], [960, tap],  [1030, tick],
-        // Landing — heroes settling in
-        [1140, select], [1280, tap], [1400, tick],
-        // Final settle
-        [1540, tick], [1700, tick],
-      ];
-      for (const [ms, fn] of hapticSeq) {
-        setTimeout(() => { if (isActiveRef.current) fn(); }, ms);
+      // Core Haptics cascade — continuous swell underneath the per-card ticks
+      if (CARD_CASCADE_PLAYER) {
+        CARD_CASCADE_PLAYER.start();
       }
 
       // Start cycling after entrance settles
@@ -704,7 +771,7 @@ export const OnboardingCardLanding: React.FC<OnboardingScreenProps> = ({ isActiv
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background.page },
+  container: { flex: 1, backgroundColor: 'transparent' },
   sphere: { position: 'absolute', width: SPHERE_SIZE, height: SPHERE_SIZE, borderRadius: SPHERE_SIZE / 2, backgroundColor: 'rgba(207, 103, 105, 0.04)', shadowColor: ACCENT, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.18, shadowRadius: 90, zIndex: 0 },
   cardSlot: { position: 'absolute' },
   titleRegion: { position: 'absolute', top: 0, left: 0, right: 0, alignItems: 'center', zIndex: 20 },

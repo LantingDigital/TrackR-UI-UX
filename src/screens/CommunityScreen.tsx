@@ -26,16 +26,19 @@ import { CommunityFriendsTab } from '../features/community/components/CommunityF
 import { CommunityRankingsTab } from '../features/community/components/CommunityRankingsTab';
 import { CommunityPlayTab } from '../features/community/components/CommunityPlayTab';
 import { ComposeSheet } from '../features/community/components/ComposeSheet';
+import { RideActionSheet, RideActionData } from '../components/RideActionSheet';
+// getPOIByCoasterId removed (map feature shelved for v2)
+import { addQuickLog } from '../stores/rideLogStore';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const ENTER_SLIDE = SCREEN_HEIGHT * 0.15;
 const EXIT_DURATION = 300;
 const COMMUNITY_HEADER_HEIGHT = 60;
-const FOG_OFFSET = 56; // start fade this many pixels ABOVE header bottom
+const FOG_EXTENSION = 150; // more room below header for a smooth, gradual fade-out
 
-// Page color in rgba for fog gradient
-// colors.background.page = #F7F7F7 = rgb(247, 247, 247)
-const PAGE_RGBA = 'rgba(247, 247, 247,';
+// Fog base color — MUST match HomeScreen exactly
+// HomeScreen uses rgba(240, 238, 235, ...) for a warmer tone
+const FOG_BASE = 'rgba(240, 238, 235,';
 
 export const CommunityScreen = () => {
   const insets = useSafeAreaInsets();
@@ -43,12 +46,18 @@ export const CommunityScreen = () => {
   const route = useRoute<any>();
   const tabBar = useTabBar();
   const routeInitialTab = route.params?.initialTab as CommunityTab | undefined;
+  const routePostId = route.params?.postId as string | undefined;
   const [activeTab, setActiveTab] = useState<CommunityTab>(routeInitialTab ?? 'feed');
   const [showCompose, setShowCompose] = useState(false);
   const isExiting = useRef(false);
+  const hasNavigatedToPost = useRef(false);
+
+  // Ride action sheet state
+  const [rideActionData, setRideActionData] = useState<RideActionData | null>(null);
+  const [rideActionVisible, setRideActionVisible] = useState(false);
 
   const headerTotalHeight = insets.top + COMMUNITY_HEADER_HEIGHT;
-  const fogHeight = headerTotalHeight + 200;
+  const fogHeight = headerTotalHeight + FOG_EXTENSION;
 
   // Separate values for entrance slide-up and exit slide-down
   const enterProgress = useSharedValue(0); // 0→1 spring in
@@ -61,6 +70,20 @@ export const CommunityScreen = () => {
       enterProgress.value = 0;
       exitY.value = 0;
       enterProgress.value = withSpring(1, SPRINGS.responsive);
+
+      // When arriving via friend activity tap with a postId, navigate to PostDetail
+      if (routePostId && !hasNavigatedToPost.current) {
+        hasNavigatedToPost.current = true;
+        haptics.select();
+        // Small delay to let the Community screen entrance animation start
+        const timer = setTimeout(() => {
+          navigation.navigate('PostDetail', { itemId: routePostId });
+        }, 200);
+        return () => {
+          tabBar?.showTabBar();
+          clearTimeout(timer);
+        };
+      }
 
       return () => {
         tabBar?.showTabBar();
@@ -98,43 +121,56 @@ export const CommunityScreen = () => {
     navigation.goBack();
   };
 
-  // 12-stop fog gradient — opaque through header, gradual fade below
+  // Fog gradient — solid through header, drops off quickly below so content
+  // (Games title, etc.) is readable, then fades to nothing with no hard edge.
   const fogGradient = useMemo(() => {
-    const headerEnd = (headerTotalHeight - FOG_OFFSET) / fogHeight;
+    const headerEnd = Math.min(headerTotalHeight / fogHeight, 0.55);
     const fadeZone = 1 - headerEnd;
-    const step = fadeZone / 10;
-
     return {
       colors: [
-        `${PAGE_RGBA} 0.94)`,
-        `${PAGE_RGBA} 0.94)`,
-        `${PAGE_RGBA} 0.94)`,
-        `${PAGE_RGBA} 0.82)`,
-        `${PAGE_RGBA} 0.65)`,
-        `${PAGE_RGBA} 0.45)`,
-        `${PAGE_RGBA} 0.28)`,
-        `${PAGE_RGBA} 0.15)`,
-        `${PAGE_RGBA} 0.06)`,
-        `${PAGE_RGBA} 0.02)`,
-        `${PAGE_RGBA} 0.005)`,
-        'transparent',
+        `${FOG_BASE} 0.94)`,   // Solid through full header
+        `${FOG_BASE} 0.92)`,   // Begin gentle fade right at header edge
+        `${FOG_BASE} 0.72)`,   // Drop quickly — content below here is readable
+        `${FOG_BASE} 0.45)`,   // Noticeably lighter
+        `${FOG_BASE} 0.22)`,   // Subtle
+        `${FOG_BASE} 0.10)`,   // Very faint
+        `${FOG_BASE} 0.04)`,   // Barely perceptible
+        `${FOG_BASE} 0.01)`,   // Whisper
+        'transparent',           // Gone
       ] as [string, string, ...string[]],
       locations: [
         0,
-        headerEnd * 0.5,
         headerEnd,
-        headerEnd + step * 1,
-        headerEnd + step * 2,
-        headerEnd + step * 3,
-        headerEnd + step * 4,
-        headerEnd + step * 5,
-        headerEnd + step * 6,
-        headerEnd + step * 7,
-        headerEnd + step * 8,
+        Math.min(headerEnd + fadeZone * 0.12, 1),
+        Math.min(headerEnd + fadeZone * 0.28, 1),
+        Math.min(headerEnd + fadeZone * 0.45, 1),
+        Math.min(headerEnd + fadeZone * 0.60, 1),
+        Math.min(headerEnd + fadeZone * 0.76, 1),
+        Math.min(headerEnd + fadeZone * 0.90, 1),
         1,
       ] as [number, number, ...number[]],
     };
   }, [headerTotalHeight, fogHeight]);
+
+  // Coaster cross-reference handler — opens RideActionSheet
+  const handleCoasterTap = useCallback((coasterId: string, coasterName: string, parkName: string) => {
+    setRideActionData({ id: coasterId, name: coasterName, parkName });
+    setRideActionVisible(true);
+  }, []);
+
+  const handleRideActionViewDetails = useCallback((ride: RideActionData) => {
+    setRideActionVisible(false);
+    navigation.navigate('CoasterDetail', { coasterId: ride.id });
+  }, [navigation]);
+
+  const handleRideActionLogRide = useCallback((ride: RideActionData) => {
+    setRideActionVisible(false);
+    addQuickLog({
+      id: ride.id,
+      name: ride.name,
+      parkName: ride.parkName,
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -145,10 +181,11 @@ export const CommunityScreen = () => {
             <CommunityFeedTab
               topInset={headerTotalHeight}
               onShowCompose={() => setShowCompose(true)}
+              onCoasterTap={handleCoasterTap}
             />
           )}
-          {activeTab === 'friends' && <CommunityFriendsTab topInset={headerTotalHeight} />}
-          {activeTab === 'rankings' && <CommunityRankingsTab topInset={headerTotalHeight} />}
+          {activeTab === 'friends' && <CommunityFriendsTab topInset={headerTotalHeight} onCoasterTap={handleCoasterTap} />}
+          {activeTab === 'rankings' && <CommunityRankingsTab topInset={headerTotalHeight} onCoasterTap={handleCoasterTap} />}
           {activeTab === 'play' && (
             <CommunityPlayTab
               topInset={headerTotalHeight}
@@ -184,6 +221,20 @@ export const CommunityScreen = () => {
 
       {/* Compose sheet overlay */}
       <ComposeSheet visible={showCompose} onClose={() => setShowCompose(false)} />
+
+      {/* Ride action sheet — coaster cross-references */}
+      {(rideActionVisible || rideActionData) && (
+        <RideActionSheet
+          ride={rideActionData}
+          visible={rideActionVisible}
+          onClose={() => {
+            setRideActionVisible(false);
+            setRideActionData(null);
+          }}
+          onViewDetails={handleRideActionViewDetails}
+          onLogRide={handleRideActionLogRide}
+        />
+      )}
     </View>
   );
 };

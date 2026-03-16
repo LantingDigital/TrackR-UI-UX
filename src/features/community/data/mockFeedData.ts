@@ -26,6 +26,79 @@ function makeComments(...entries: [string, string, string][]): Comment[] {
 // ─── Feed Items ─────────────────────────────────────────────
 
 export const MOCK_FEED_EXTENDED: FeedItem[] = [
+  // ─── Friend Activity Posts (fa1, fa2, fa3) ──────────────────
+  // These match the MOCK_FRIEND_ACTIVITY items from src/data/mockFeed.ts
+  // so tapping a friend activity card on Home navigates to the full post here.
+  {
+    id: 'fa1',
+    type: 'review',
+    authorId: 'u-coasterking',
+    authorName: 'CoasterKing',
+    authorInitials: 'CK',
+    daysAgo: 0,
+    likeCount: 78,
+    commentCount: 4,
+    isLiked: false,
+    coasterId: 'steel-vengeance',
+    coasterName: 'Steel Vengeance',
+    parkName: 'Cedar Point',
+    rating: 5,
+    reviewText:
+      'Just got off Steel Vengeance for the third time today and I am STILL shaking. Back row, night ride, empty train. The first drop into that twisted structure with nothing but darkness around you is genuinely life-changing. 27 seconds of airtime is not a stat, it is a spiritual experience. Every single ejector moment hits harder at night. This is not just the best RMC, this is the best coaster on the planet and it is not even close. If you have not done a night marathon on SteVe, you have not lived.',
+    comments: makeComments(
+      ['ThemeParkJen', 'TJ', 'Back row night ride is the GOAT experience. Nothing compares.'],
+      ['LoopMaster', 'LM', 'Three rides in one day?? Living the dream honestly.'],
+      ['RideOrDie', 'RD', 'The way it just THROWS you out of your seat on every hill is unreal.'],
+      ['SixFlagsFan', 'SF', 'Cedar Point after dark hits different. SteVe is the crown jewel.'],
+    ),
+  },
+  {
+    id: 'fa2',
+    type: 'review',
+    authorId: 'u-themeparkjen',
+    authorName: 'ThemeParkJen',
+    authorInitials: 'TJ',
+    daysAgo: 0,
+    likeCount: 53,
+    commentCount: 3,
+    isLiked: false,
+    coasterId: 'millennium-force',
+    coasterName: 'Millennium Force',
+    parkName: 'Cedar Point',
+    rating: 4,
+    reviewText:
+      'Finally giving Millennium Force a proper re-ride after focusing on SteVe all morning. You know what? This thing still absolutely rips. The first drop is so iconic, that panoramic view of Lake Erie before you just plunge 310 feet at 93 mph. The overbanked turns are glassy smooth and the tunnel flythrough gets me every time. Taking one star off because the airtime does not quite stack up to modern hypers, but the overall experience and that legendary status earn a strong 4. A must-ride classic that still holds up after 25+ years.',
+    comments: makeComments(
+      ['CoasterKing', 'CK', 'Millie in the front row with that lake view is elite tier. Good call on the 4.'],
+      ['LoopMaster', 'LM', 'Hot take but Millie at night is better than during the day. Those tunnel lights go crazy.'],
+      ['RMC_Rider', 'RR', 'The first giga and still one of the best. Cedar Point really said "hold my funnel cake" back in 2000.'],
+    ),
+  },
+  {
+    id: 'fa3',
+    type: 'trip_report',
+    authorId: 'u-loopmaster',
+    authorName: 'LoopMaster',
+    authorInitials: 'LM',
+    daysAgo: 0,
+    likeCount: 41,
+    commentCount: 3,
+    isLiked: false,
+    title: 'X2 Day at Magic Mountain',
+    parkId: 'sfmm',
+    parkName: 'Six Flags Magic Mountain',
+    rideCount: 6,
+    excerpt:
+      'Showed up right at rope drop with one mission: marathon X2 until my brain could not handle it anymore. Made it six rides and each one was completely different.',
+    fullText:
+      'Showed up right at rope drop with one mission: marathon X2 until my brain could not handle it anymore. Made it six rides and each one was completely different.\n\nFirst ride was front row, outside seat. The way you flip forward over that 200-foot drop with absolutely nothing below you is still the most disorienting thing in all of coasters. No other ride does what X2 does. The fire effects in the trench caught me off guard on ride two even though I knew they were coming.\n\nRides three and four were back row and honestly I think back row might be the move. The hang time on the raven turn is unreal. You are just dangling face-down staring at the ground for what feels like forever.\n\nClosed out with rides five and six in the afternoon heat, shorter wait by then. Grabbed a Twisted Colossus ride on the way out because how do you not. X2 remains the most unique coaster in the world and I will fight anyone who disagrees. Six Flags Magic Mountain does not get enough credit for keeping this thing running so well.',
+    comments: makeComments(
+      ['CoasterKing', 'CK', 'Six rides on X2 in one day is absolutely unhinged and I respect it so much.'],
+      ['ThemeParkJen', 'TJ', 'The fire effects always get me too, even when I KNOW they are coming. X2 is wild.'],
+      ['SixFlagsFan', 'SF', 'SFMM rope drop for X2 is the play. Glad someone else knows the strat.'],
+    ),
+  },
+  // ─── Regular Community Feed Posts ───────────────────────────
   {
     id: 'f1',
     type: 'review',

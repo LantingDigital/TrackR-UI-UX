@@ -42,6 +42,7 @@ import {
   getRidesForPark,
   ALL_SEARCHABLE_ITEMS,
 } from '../data/mockSearchData';
+import { CARD_ART } from '../data/cardArt';
 import { useNavigation } from '@react-navigation/native';
 import { addQuickLog, getUnratedCoasters, getAllLogs, subscribe as subscribeToStore } from '../stores/rideLogStore';
 
@@ -609,10 +610,20 @@ export const LogModal: React.FC<LogModalProps> = ({
                           pressed && styles.rowPressed,
                         ]}
                       >
-                        <Image
-                          source={{ uri: item.image }}
-                          style={styles.autocompleteImage}
-                        />
+                        {CARD_ART[item.id] ? (
+                          <Image
+                            source={CARD_ART[item.id]}
+                            style={styles.autocompleteImage}
+                          />
+                        ) : (
+                          <View style={[styles.autocompleteImage, styles.autocompletePlaceholder]}>
+                            <Ionicons
+                              name={item.type === 'ride' ? 'flash' : 'location'}
+                              size={16}
+                              color={colors.text.meta}
+                            />
+                          </View>
+                        )}
                         <View style={styles.autocompleteTextContainer}>
                           <Text style={styles.autocompleteTitle} numberOfLines={1}>
                             {item.name}
@@ -820,6 +831,10 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: radius.sm,
     backgroundColor: colors.background.imagePlaceholder,
+  },
+  autocompletePlaceholder: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   autocompleteTextContainer: {
     flex: 1,

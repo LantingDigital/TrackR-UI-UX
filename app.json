@@ -11,18 +11,42 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.lantingdigital.trackr"
+      "bundleIdentifier": "com.lantingdigital.trackr",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "entitlements": {
+        "com.apple.developer.applesignin": ["Default"],
+        "com.apple.developer.healthkit": true,
+        "com.apple.developer.healthkit.access": []
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "TrackR uses your location to provide walking directions inside theme parks.",
+        "NSHealthShareUsageDescription": "TrackR reads your step count and distance to show how far you walked at the park.",
+        "NSHealthUpdateUsageDescription": "TrackR does not write any health data."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#F7F7F7"
       },
-      "package": "com.trackr.app"
+      "package": "com.trackr.app",
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDGrQ0jNlj7acawuqeDe5bSZgGH2XnkEzQ"
+        }
+      }
     },
     "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-google-signin/google-signin",
       "expo-secure-store",
-      ["@rnmapbox/maps", {
-        "RNMapboxMapsImpl": "mapbox"
+      ["expo-location", {
+        "locationWhenInUsePermission": "TrackR uses your location to provide walking directions inside theme parks."
+      }],
+      ["@kingstinct/react-native-healthkit", {
+        "NSHealthShareUsageDescription": "TrackR reads your step count and distance to show how far you walked at the park.",
+        "NSHealthUpdateUsageDescription": "TrackR does not write any health data."
       }]
     ]
   }

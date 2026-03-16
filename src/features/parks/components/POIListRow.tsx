@@ -15,8 +15,17 @@ import { haptics } from '../../../services/haptics';
 import { ParkPOI, MapCategory } from '../types';
 import { CARD_ART } from '../../../data/cardArt';
 import { getAreaLabel } from '../data/areaLabels';
-import { MAP_CATEGORY_COLORS } from '../map/poiGeoJSON';
 import { getEnrichedCoaster } from '../data/coasterDetailData';
+
+/** Category colors — inlined from moved map/poiGeoJSON.ts */
+const MAP_CATEGORY_COLORS: Record<MapCategory, string> = {
+  coaster: '#E53935',
+  ride:    '#E53935',
+  food:    '#FF9800',
+  show:    '#7B1FA2',
+  shop:    '#1E88E5',
+  service: '#757575',
+};
 
 // ============================================
 // Helpers

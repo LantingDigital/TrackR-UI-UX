@@ -7,7 +7,7 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { useSubtlePress } from '../../../hooks/useSpringPress';
 import { haptics } from '../../../services/haptics';
-import { MOCK_GAMES, MOCK_COASTLE_STATS, GameItem } from '../data/mockCommunityData';
+import { MOCK_GAMES, GameItem } from '../data/mockCommunityData';
 
 interface GamesStripProps {
   onPlayCoastle: () => void;
@@ -55,11 +55,6 @@ const GameCircle = ({
         >
           {item.label}
         </Text>
-        {item.id === 'coastle' && (
-          <Text style={styles.gameSubtitle}>
-            Daily #{MOCK_COASTLE_STATS.dailyNumber}
-          </Text>
-        )}
       </Animated.View>
     </Pressable>
   );
@@ -99,10 +94,9 @@ export const GamesStrip = ({ onPlayCoastle, onPlaySpeedSorter, onPlayBlindRankin
 
 const styles = StyleSheet.create({
   stripContent: {
-    paddingHorizontal: spacing.lg,
+    paddingLeft: spacing.lg,
+    paddingRight: spacing.xxl,
     gap: spacing.lg,
-    flexGrow: 1,
-    justifyContent: 'center',
   },
   gameWrapper: {
     alignItems: 'center',
@@ -148,10 +142,5 @@ const styles = StyleSheet.create({
   gameLabelInactive: {
     fontWeight: typography.weights.regular,
     color: colors.text.meta,
-  },
-  gameSubtitle: {
-    fontSize: 10,
-    color: colors.text.meta,
-    marginTop: 1,
   },
 });

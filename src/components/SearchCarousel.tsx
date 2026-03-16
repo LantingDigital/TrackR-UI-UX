@@ -5,13 +5,15 @@ import {
   Text,
   ScrollView,
   Pressable,
-  Image,
   Dimensions,
 } from 'react-native';
+import { Image } from 'expo-image';
 import Animated from 'react-native-reanimated';
+import { Ionicons } from '@expo/vector-icons';
 import { useSpringPress } from '../hooks/useSpringPress';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SearchableItem } from '../data/mockSearchData';
+import { CARD_ART } from '../data/cardArt';
 
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -41,6 +43,11 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ item, onPress }) => {
     opacity: 0.9,
   });
 
+  // Use NanoBanana card art for rides; fall back to placeholder (never real photos)
+  const cardArt = item.type === 'ride' ? CARD_ART[item.id] : undefined;
+  // Parks don't have card art -- use their image URL if available
+  const imageSource = cardArt ?? (item.type === 'park' && item.image ? { uri: item.image } : undefined);
+
   return (
     <Animated.View style={[styles.cardContainer, animatedStyle]}>
       <Pressable
@@ -49,11 +56,23 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ item, onPress }) => {
         onPressOut={pressHandlers.onPressOut}
         style={styles.cardPressable}
       >
-        <Image
-          source={{ uri: item.image }}
-          style={styles.cardImage}
-          resizeMode="cover"
-        />
+        {imageSource ? (
+          <Image
+            source={imageSource}
+            style={styles.cardImage}
+            contentFit="cover"
+            cachePolicy="memory-disk"
+            recyclingKey={item.id}
+          />
+        ) : (
+          <View style={styles.cardPlaceholder}>
+            <Ionicons
+              name={item.type === 'ride' ? 'flash' : 'location'}
+              size={28}
+              color={colors.text.meta}
+            />
+          </View>
+        )}
         <LinearGradient
           colors={['transparent', 'rgba(0,0,0,0.7)']}
           style={styles.cardGradient}
@@ -125,6 +144,14 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'absolute',
+  },
+  cardPlaceholder: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    backgroundColor: colors.background.imagePlaceholder,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   cardGradient: {
     position: 'absolute',

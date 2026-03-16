@@ -1,196 +1,249 @@
-[debug] [2025-12-09T00:19:59.487Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-09T00:19:59.488Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
-[debug] [2025-12-09T00:19:59.488Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-09T00:19:59.488Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
-[debug] [2025-12-09T00:19:59.493Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-09T00:19:59.493Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
-[debug] [2025-12-09T00:20:00.106Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-09T00:20:00.106Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
-[debug] [2025-12-09T00:20:00.107Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-09T00:20:00.107Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
-[debug] [2025-12-09T00:20:00.124Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-09T00:20:00.124Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
-[debug] [2025-12-09T00:20:00.124Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-09T00:20:00.124Z] > authorizing via signed-in user (keysbycaleb@gmail.com)
-[debug] [2025-12-16T22:12:08.508Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-16T22:12:08.509Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-16T22:12:08.509Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-16T22:12:08.509Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-16T22:12:08.513Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-16T22:12:08.513Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-16T22:12:09.712Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-16T22:12:09.713Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-16T22:12:09.713Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-16T22:12:09.713Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-16T22:12:09.714Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-16T22:12:09.714Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-16T22:12:09.714Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-16T22:12:09.715Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:40.720Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:40.722Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:40.722Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:40.722Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:40.728Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:40.728Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:42.315Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:42.315Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:42.316Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:42.316Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:42.317Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:42.317Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:42.318Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:42.318Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:49.377Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:49.379Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:49.379Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:49.379Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:49.385Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:49.385Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:51.041Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:51.042Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:51.042Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:51.042Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:51.044Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:51.044Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2025-12-17T21:58:51.045Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-12-17T21:58:51.045Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-19T23:00:20.111Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-19T23:00:20.113Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-19T23:00:20.113Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-19T23:00:20.113Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-19T23:00:20.122Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-19T23:00:20.122Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-19T23:00:21.931Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-19T23:00:21.931Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-19T23:00:21.932Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-19T23:00:21.933Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-19T23:00:21.937Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-19T23:00:21.937Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-19T23:00:21.938Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-19T23:00:21.938Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-21T20:37:03.019Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-21T20:37:03.020Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-21T20:37:03.020Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-21T20:37:03.020Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-21T20:37:03.024Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-21T20:37:03.024Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-21T20:37:04.110Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-21T20:37:04.111Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-21T20:37:04.111Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-21T20:37:04.111Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-21T20:37:04.112Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-21T20:37:04.112Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-21T20:37:04.112Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-21T20:37:04.112Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:17:49.115Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:17:49.116Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:17:49.116Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:17:49.116Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:17:49.121Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:17:49.121Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:17:50.263Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:17:50.263Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:17:50.264Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:17:50.264Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:17:50.293Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:17:50.293Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:17:50.294Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:17:50.294Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:33:11.909Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:33:11.911Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:33:11.911Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:33:11.911Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:33:11.915Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:33:11.915Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:33:13.049Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:33:13.049Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:33:13.050Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:33:13.050Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:33:13.051Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:33:13.051Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-22T01:33:13.051Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-22T01:33:13.051Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T16:28:35.373Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T16:28:35.375Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T16:28:35.375Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T16:28:35.375Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T16:28:35.380Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T16:28:35.380Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T16:28:36.567Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T16:28:36.568Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T16:28:36.568Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T16:28:36.569Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T16:28:36.572Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T16:28:36.572Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T16:28:36.573Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T16:28:36.573Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T17:06:15.720Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T17:06:15.722Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T17:06:15.722Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T17:06:15.722Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T17:06:15.728Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T17:06:15.728Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T17:06:16.951Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T17:06:16.951Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T17:06:16.952Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T17:06:16.952Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T17:06:16.958Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T17:06:16.958Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-25T17:06:16.958Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-25T17:06:16.958Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-26T17:01:21.301Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-26T17:01:21.304Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-26T17:01:21.304Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-26T17:01:21.304Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-26T17:01:21.311Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-26T17:01:21.312Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-26T17:01:22.798Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-26T17:01:22.798Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-26T17:01:22.799Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-26T17:01:22.799Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-26T17:01:22.808Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-26T17:01:22.808Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-26T17:01:22.808Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-26T17:01:22.808Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T18:41:06.452Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T18:41:06.453Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T18:41:06.453Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T18:41:06.453Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T18:41:06.457Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T18:41:06.458Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T18:41:07.841Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T18:41:07.841Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T18:41:07.842Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T18:41:07.842Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T18:41:07.873Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T18:41:07.874Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T18:41:07.874Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T18:41:07.874Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T21:51:53.184Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T21:51:53.185Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T21:51:53.185Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T21:51:53.185Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T21:51:53.189Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T21:51:53.189Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T21:51:54.561Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T21:51:54.561Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T21:51:54.562Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T21:51:54.562Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T21:51:54.563Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T21:51:54.563Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-02-28T21:51:54.563Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-02-28T21:51:54.563Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-03-01T22:46:50.976Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-03-01T22:46:50.977Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-03-01T22:46:50.977Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-03-01T22:46:50.977Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-03-01T22:46:50.985Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-03-01T22:46:50.985Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-03-01T22:46:52.564Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-03-01T22:46:52.564Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-03-01T22:46:52.564Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-03-01T22:46:52.564Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-03-01T22:46:52.572Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-03-01T22:46:52.572Z] > authorizing via signed-in user (caleb@lantingdigital.com)
-[debug] [2026-03-01T22:46:52.572Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2026-03-01T22:46:52.572Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:39.288Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:39.292Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:39.292Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:39.292Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:39.308Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.308Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.308Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.310Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.310Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.333Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.334Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.334Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.334Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.335Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.337Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.337Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.337Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.338Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.338Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.340Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.340Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.341Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.341Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.341Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.346Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.346Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.347Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.347Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.347Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.349Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.349Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.349Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.349Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.349Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.350Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:39.350Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:39.351Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.352Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.352Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.352Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.352Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.355Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.355Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.355Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.356Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.356Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:39.357Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.357Z] Checked if tokens are valid: false, expires at: 1773694001236
+[debug] [2026-03-16T21:20:39.357Z] > refreshing access token with scopes: []
+[debug] [2026-03-16T21:20:39.358Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-03-16T21:20:39.358Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:40.505Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:40.506Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:40.525Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:40.525Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:40.577Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:40.577Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:40.592Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:40.592Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:40.603Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:40.603Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:40.613Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:40.613Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:40.785Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:40.785Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:40.798Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:40.798Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:40.890Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:40.891Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:40.902Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:40.902Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.013Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:41.013Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:41.029Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:41.030Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.039Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:41.039Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:41.065Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.065Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.067Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:41.067Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:41.087Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:41.087Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.235Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-03-16T21:20:41.236Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-03-16T21:20:41.248Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.248Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.323Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:41.334Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:41.335Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:41.335Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:41.342Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.342Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.352Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.353Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.353Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.353Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.355Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.355Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.358Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.358Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.358Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.358Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.359Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:41.359Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:41.360Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.360Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.361Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.361Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.362Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:41.362Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.363Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.363Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.364Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.364Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.366Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:41.366Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.368Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.368Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.370Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.370Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.370Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.371Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:41.371Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.371Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.372Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:41.372Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.373Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:41.373Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:41.748Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:41.748Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:41.905Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:41.905Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:41.908Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:41.908Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.084Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:42.085Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:42.127Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:42.139Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:42.128Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.139Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:42.301Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:42.301Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.367Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:42.368Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:42.370Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:42.370Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.485Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:42.486Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.491Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:42.491Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.662Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:42.662Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:42.665Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:42.665Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:42.666Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:42.666Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.668Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:42.668Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:42.913Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:42.913Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:43.100Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:43.100Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:43.236Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:43.236Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:46.424Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:46.424Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:46.426Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:46.426Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:46.442Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:46.443Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:46.444Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:46.444Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:48.308Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:48.315Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:48.322Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:48.322Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:48.395Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:48.395Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:48.396Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:48.397Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:50.975Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:50.978Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:50.978Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:50.979Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:50.989Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:50.990Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.001Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.002Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.003Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.003Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.005Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.006Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.015Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.015Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.016Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.016Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.016Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:51.017Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:51.018Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:51.018Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.020Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:51.021Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.022Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:51.022Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.024Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:51.024Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.024Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:51.024Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.025Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:51.025Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.027Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.027Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.029Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.029Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.029Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.029Z] Checked if tokens are valid: true, expires at: 1773699640236
+[debug] [2026-03-16T21:20:51.030Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-03-16T21:20:51.030Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.032Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-03-16T21:20:51.032Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.033Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [none]
+[debug] [2026-03-16T21:20:51.034Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com x-goog-quota-user=projects/trackr-coaster-app
+[debug] [2026-03-16T21:20:51.993Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:51.993Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:52.057Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:52.057Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:52.061Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:52.061Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:52.061Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:52.061Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:52.071Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:52.071Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:52.422Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-03-16T21:20:52.423Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:52.461Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com 403
+[debug] [2026-03-16T21:20:52.461Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseio.com [omitted]
+[debug] [2026-03-16T21:20:52.483Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:52.483Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:52.500Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-03-16T21:20:52.500Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/trackr-coaster-app/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-03-16T21:20:55.599Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:55.599Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:55.600Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:55.600Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:55.606Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:55.607Z] > authorizing via signed-in user (caleb@lantingdigital.com)
+[debug] [2026-03-16T21:20:55.607Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-16T21:20:55.608Z] > authorizing via signed-in user (caleb@lantingdigital.com)

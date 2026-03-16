@@ -2,6 +2,7 @@ import { COASTER_DATABASE } from '../../coastle/data/coastleDatabase';
 import { CoastleCoaster } from '../../coastle/types/coastle';
 import { ParkData } from '../types';
 
+
 // ============================================
 // Park Location Lookup
 // ============================================
@@ -35,6 +36,17 @@ const PARK_LOCATIONS: Record<string, string> = {
   "Worlds of Fun": 'Kansas City, Missouri, USA',
   "Michigan's Adventure": 'Muskegon, Michigan, USA',
   'Kennywood': 'West Mifflin, Pennsylvania, USA',
+  'Universal Epic Universe': 'Orlando, Florida, USA',
+  'Universal Studios Florida': 'Orlando, Florida, USA',
+  'Universal Studios Hollywood': 'Universal City, California, USA',
+  'Islands of Adventure': 'Orlando, Florida, USA',
+  'Magic Kingdom': 'Lake Buena Vista, Florida, USA',
+  'Disneyland': 'Anaheim, California, USA',
+  'Epcot': 'Lake Buena Vista, Florida, USA',
+  "Disney's Hollywood Studios": 'Lake Buena Vista, Florida, USA',
+  "Disney's Animal Kingdom": 'Lake Buena Vista, Florida, USA',
+  'LEGOLAND California': 'Carlsbad, California, USA',
+  'LEGOLAND Florida': 'Winter Haven, Florida, USA',
 
   // International
   'Alton Towers': 'Staffordshire, England, UK',
@@ -59,7 +71,7 @@ const PARK_LOCATIONS: Record<string, string> = {
 // Park Data Utilities
 // ============================================
 
-/** Group coasters by park and compute aggregate stats. */
+/** Group coasters by park and compute aggregate stats. Also includes map-only parks. */
 export function buildParkList(): ParkData[] {
   const grouped: Record<string, CoastleCoaster[]> = {};
   for (const c of COASTER_DATABASE) {
@@ -67,7 +79,7 @@ export function buildParkList(): ParkData[] {
     grouped[c.park].push(c);
   }
 
-  return Object.entries(grouped)
+  const parkList: ParkData[] = Object.entries(grouped)
     .map(([name, coasters]) => ({
       name,
       coasters,
@@ -81,6 +93,7 @@ export function buildParkList(): ParkData[] {
         fastest: Math.max(...coasters.map((c) => c.speedMph)),
         mostInversions: Math.max(...coasters.map((c) => c.inversions)),
       },
-    }))
-    .sort((a, b) => b.count - a.count);
+    }));
+
+  return parkList.sort((a, b) => b.count - a.count);
 }

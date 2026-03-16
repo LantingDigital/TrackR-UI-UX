@@ -60,6 +60,7 @@ import {
   GestureDetector,
 } from 'react-native-gesture-handler';
 import { BlurView } from 'expo-blur';
+import Svg, { Defs, RadialGradient, Stop, Rect } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../../theme/colors';
@@ -137,6 +138,8 @@ export interface OnboardingRatingSheetRef {
   setRating: (category: string, value: number) => void;
   /** Programmatically trigger submit (for demo automation) */
   submitRating: () => void;
+  /** Scroll to reveal the Save Rating button (for demo automation) */
+  scrollToSubmit: () => void;
 }
 
 interface OnboardingRatingSheetProps {
@@ -209,6 +212,7 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
     const celebCheckOpacity = useSharedValue(0);
     const celebTextOpacity = useSharedValue(0);
     const celebConfettiProgress = useSharedValue(0);
+    const celebOverlayOpacity = useSharedValue(0);
     const celebTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
     useEffect(() => {
@@ -230,6 +234,7 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
         celebCheckOpacity.value = 0;
         celebTextOpacity.value = 0;
         celebConfettiProgress.value = 0;
+        celebOverlayOpacity.value = 0;
         celebTimersRef.current.forEach(t => clearTimeout(t));
         celebTimersRef.current = [];
 
@@ -264,10 +269,11 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
       haptics.success();
       setShowSuccess(true);
 
-      // T+0: Fade out scroll content
-      contentFadeOut.value = withTiming(0, { duration: 200 });
+      // T+0: Fade in celebration overlay (smooth, no jerk) + fade out scroll content
+      celebOverlayOpacity.value = withTiming(1, { duration: 500, easing: Easing.out(Easing.ease) });
+      contentFadeOut.value = withTiming(0, { duration: 250 });
 
-      // T+300ms: Celebration slides up + check pops + confetti fires
+      // T+500ms: After background is fully settled, celebration slides up + check pops
       celebTimersRef.current.push(setTimeout(() => {
         celebSlideY.value = withTiming(0, {
           duration: 300,
@@ -283,22 +289,23 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
           duration: 700,
           easing: Easing.out(Easing.cubic),
         });
-      }, 300));
+      }, 500));
 
-      // T+2500ms: Checkmark fades out (extended celebration time)
+      // T+2400ms: Begin fade out — checkmark, text, and overlay all fade together
       celebTimersRef.current.push(setTimeout(() => {
-        celebCheckOpacity.value = withTiming(0, { duration: 250 });
+        celebCheckOpacity.value = withTiming(0, { duration: 300 });
         celebCheckScale.value = withTiming(0.9, {
-          duration: 250,
+          duration: 300,
           easing: Easing.in(Easing.cubic),
         });
-        celebTextOpacity.value = withTiming(0, { duration: 200 });
-      }, 2500));
+        celebTextOpacity.value = withTiming(0, { duration: 250 });
+        celebOverlayOpacity.value = withTiming(0, { duration: 400, easing: Easing.in(Easing.ease) });
+      }, 2400));
 
-      // T+3000ms: Fire onRateComplete (3000ms total celebration)
+      // T+3200ms: Fire onRateComplete
       celebTimersRef.current.push(setTimeout(() => {
         onRateComplete();
-      }, 3000));
+      }, 3200));
     }, [onRateComplete]);
 
     const handleCriterionDragEnd = useCallback((criterionId: string, value: number) => {
@@ -312,6 +319,9 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
       },
       submitRating: () => {
         handleSubmit();
+      },
+      scrollToSubmit: () => {
+        (scrollRef.current as any)?.scrollToEnd?.({ animated: true });
       },
     }));
 
@@ -394,6 +404,9 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
     const celebTextStyle = useAnimatedStyle(() => ({
       opacity: celebTextOpacity.value,
     }));
+    const celebOverlayAnimStyle = useAnimatedStyle(() => ({
+      opacity: celebOverlayOpacity.value,
+    }));
 
     if (!mounted) return null;
 
@@ -406,6 +419,46 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
           </Pressable>
         </Animated.View>
 
+        {/* Celebration overlay — always mounted, opacity-driven (no mount flash) */}
+        <Animated.View style={[styles.celebOverlay, celebOverlayAnimStyle]} pointerEvents="none">
+          {localArt && (
+            <>
+              <Image
+                source={localArt}
+                style={{ position: 'absolute', top: 0, left: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT }}
+                resizeMode="cover"
+              />
+              <BlurView
+                intensity={35}
+                tint="light"
+                style={{ position: 'absolute', top: 0, left: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT }}
+              />
+            </>
+          )}
+          <View style={styles.celebWhiteOverlay} />
+          {/* True radial gradient glow — SVG, smooth white-to-transparent */}
+          <Svg width={320} height={320} style={{ position: 'absolute' }}>
+            <Defs>
+              <RadialGradient id="celebGlow" cx="50%" cy="50%" r="50%">
+                <Stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.82} />
+                <Stop offset="40%" stopColor="#FFFFFF" stopOpacity={0.5} />
+                <Stop offset="70%" stopColor="#FFFFFF" stopOpacity={0.18} />
+                <Stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
+              </RadialGradient>
+            </Defs>
+            <Rect x="0" y="0" width="320" height="320" fill="url(#celebGlow)" />
+          </Svg>
+          <Animated.View style={[styles.celebCenter, celebSlideStyle]}>
+            <ConfettiBurst progress={celebConfettiProgress} />
+            <Animated.View style={[styles.celebCheckCircle, celebCheckStyle]}>
+              <Ionicons name="checkmark" size={28} color="#FFFFFF" />
+            </Animated.View>
+            <Animated.View style={celebTextStyle}>
+              <Text style={styles.celebRatedText}>Rated!</Text>
+            </Animated.View>
+          </Animated.View>
+        </Animated.View>
+
         {/* Sheet */}
         <GestureDetector gesture={panGesture}>
           <Animated.View
@@ -415,6 +468,12 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
               sheetAnimStyle,
             ]}
           >
+            {/* Soft gradient edge — dissolves hard gray line into backdrop */}
+            <LinearGradient
+              colors={['#F7F7F700', '#F7F7F7']}
+              style={styles.sheetTopGradient}
+            />
+
             {/* Drag Handle */}
             <View style={styles.dragHandleArea}>
               <View style={styles.dragHandle} />
@@ -444,7 +503,7 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
               style={[styles.scrollView, contentOpacityStyle]}
               contentContainerStyle={[
                 styles.scrollContent,
-                { paddingBottom: insets.bottom + spacing.xxxl },
+                { paddingBottom: insets.bottom + spacing.xxxl + 48 },
               ]}
               showsVerticalScrollIndicator={false}
               scrollEnabled={scrollEnabled}
@@ -533,19 +592,7 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
             </Animated.ScrollView>
 
             {/* ── Full-screen celebration overlay (inside sheet) ── */}
-            {showSuccess && (
-              <View style={styles.celebOverlay} pointerEvents="none">
-                <Animated.View style={[styles.celebCenter, celebSlideStyle]}>
-                  <ConfettiBurst progress={celebConfettiProgress} />
-                  <Animated.View style={[styles.celebCheckCircle, celebCheckStyle]}>
-                    <Ionicons name="checkmark" size={28} color="#FFFFFF" />
-                  </Animated.View>
-                  <Animated.View style={celebTextStyle}>
-                    <Text style={styles.celebRatedText}>Rated!</Text>
-                  </Animated.View>
-                </Animated.View>
-              </View>
-            )}
+            {/* Celebration moved to full-screen wrapper for notch coverage */}
           </Animated.View>
         </GestureDetector>
       </View>
@@ -562,7 +609,7 @@ interface ScoreCardProps {
   scoreBarStyle: any;
 }
 
-function ScoreCard({ displayScore, scoreBarStyle }: ScoreCardProps) {
+const ScoreCard = memo(function ScoreCard({ displayScore, scoreBarStyle }: ScoreCardProps) {
   const stagger = useStaggerEntrance(0);
 
   return (
@@ -576,20 +623,20 @@ function ScoreCard({ displayScore, scoreBarStyle }: ScoreCardProps) {
       </View>
     </Animated.View>
   );
-}
+});
 
 // ============================================
 // SectionLabel
 // ============================================
 
-function SectionLabel({ index }: { index: number }) {
+const SectionLabel = memo(function SectionLabel({ index }: { index: number }) {
   const stagger = useStaggerEntrance(index);
   return (
     <Animated.View style={stagger}>
       <Text style={styles.sectionLabel}>RATE EACH ASPECT</Text>
     </Animated.View>
   );
-}
+});
 
 // ============================================
 // CriteriaCard
@@ -603,7 +650,7 @@ interface CriteriaCardProps {
   onSlidingEnd: () => void;
 }
 
-function CriteriaCard({
+const CriteriaCard = memo(function CriteriaCard({
   enabledCriteria,
   ratings,
   onDragEnd,
@@ -628,7 +675,7 @@ function CriteriaCard({
       ))}
     </Animated.View>
   );
-}
+});
 
 // ============================================
 // CriterionRow -- zero-rerender slider row
@@ -739,7 +786,7 @@ interface SubmitSectionProps {
   onSubmit: () => void;
 }
 
-function SubmitSection({ index, showSuccess, onSubmit }: SubmitSectionProps) {
+const SubmitSection = memo(function SubmitSection({ index, showSuccess, onSubmit }: SubmitSectionProps) {
   const stagger = useStaggerEntrance(index);
   const { pressHandlers, animatedStyle } = useSpringPress({ scale: 0.97 });
 
@@ -752,7 +799,7 @@ function SubmitSection({ index, showSuccess, onSubmit }: SubmitSectionProps) {
       </Pressable>
     </Animated.View>
   );
-}
+});
 
 // ============================================
 // Styles (matches RatingSheet exactly)
@@ -762,7 +809,7 @@ const CARD_W = 88;
 const CARD_H = 117; // ~3:4 aspect
 
 const styles = StyleSheet.create({
-  // ── Sheet ──
+  // ── Sheet — shadow on outer, overflow hidden on inner via borderRadius ──
   sheet: {
     position: 'absolute',
     left: 0,
@@ -772,6 +819,17 @@ const styles = StyleSheet.create({
     borderTopRightRadius: radius.modal,
     ...shadows.modal,
     overflow: 'hidden',
+  },
+  // Soft gradient edge at top — dissolves into backdrop instead of hard gray line
+  sheetTopGradient: {
+    position: 'absolute',
+    top: -1,
+    left: 0,
+    right: 0,
+    height: 4,
+    borderTopLeftRadius: radius.modal,
+    borderTopRightRadius: radius.modal,
+    zIndex: 25,
   },
   dragHandleArea: {
     alignItems: 'center',
@@ -1028,13 +1086,19 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 60,
     zIndex: 50,
-    backgroundColor: colors.background.page,
+    overflow: 'hidden',
+    backgroundColor: colors.background.page, // fallback when no card art
+  },
+  celebWhiteOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(255, 255, 255, 0.45)',
   },
   celebCenter: {
     alignItems: 'center',
   },
+  // Single circle with feathered edges via iOS shadow blur
+  // celebGlow rendered inline via SVG RadialGradient
   celebCheckCircle: {
     width: 52,
     height: 52,

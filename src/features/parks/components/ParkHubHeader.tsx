@@ -48,6 +48,8 @@ interface ParkHubHeaderProps {
   onSelectPark: (name: string) => void;
   /** Animated progress: 1 = expanded, 0 = collapsed */
   progress: SharedValue<number>;
+  /** When true, force-close the MorphingPill switcher (e.g. on tab blur) */
+  forceClose?: boolean;
 }
 
 export function ParkHubHeader({
@@ -57,6 +59,7 @@ export function ParkHubHeader({
   parks,
   onSelectPark,
   progress,
+  forceClose,
 }: ParkHubHeaderProps) {
   const insets = useSafeAreaInsets();
   const morphRef = useRef<MorphingPillRef>(null);
@@ -71,6 +74,13 @@ export function ParkHubHeader({
   const handleAnimationComplete = useCallback((isOpen: boolean) => {
     if (isOpen) setListState('full');
   }, []);
+
+  // Force-close the MorphingPill from parent (e.g. on tab blur)
+  useEffect(() => {
+    if (forceClose && morphRef.current?.isOpen) {
+      morphRef.current.close();
+    }
+  }, [forceClose]);
 
   const PREVIEW_COUNT = 10;
   const listParks = listState === 'full'

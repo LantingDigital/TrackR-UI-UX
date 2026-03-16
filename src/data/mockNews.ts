@@ -16,7 +16,7 @@ export const MOCK_NEWS: NewsItem[] = [
   {
     id: '1',
     source: 'CoasterNation',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG/800px-CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG',
+    image: 'https://picsum.photos/seed/cedar-point/800/500',
     title: 'Cedar Point Announces Major New Coaster for 2025 Season',
     subtitle: 'The Ohio amusement park reveals plans for a record-breaking attraction that promises to redefine thrill rides.',
     timestamp: '2h ago',
@@ -41,7 +41,7 @@ Cedar Point plans to release the full name, theme, and detailed specifications d
   {
     id: '2',
     source: 'Theme Park Insider',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Six_Flags_Magic_Mountain_%2813208988393%29.jpg/800px-Six_Flags_Magic_Mountain_%2813208988393%29.jpg',
+    image: 'https://picsum.photos/seed/six-flags/800/500',
     title: 'Six Flags and Cedar Fair Merger: What It Means for Season Pass Holders',
     subtitle: 'Industry experts weigh in on the implications of the largest theme park merger in history.',
     timestamp: '5h ago',
@@ -68,7 +68,7 @@ For now, existing passes from both chains will be honored through the end of the
   {
     id: '3',
     source: 'Coaster Studios',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kennywood_Park.JPG/800px-Kennywood_Park.JPG',
+    image: 'https://picsum.photos/seed/kennywood/800/500',
     title: 'Top 10 Hidden Gems: Underrated Coasters You Need to Ride',
     subtitle: 'Our latest video explores amazing roller coasters that fly under the radar.',
     timestamp: '1d ago',
@@ -93,7 +93,7 @@ The common thread among these hidden gems is that they prioritize ride experienc
   {
     id: '4',
     source: 'RCDB',
-    image: 'https://en.wikipedia.org/wiki/Special:FilePath/Steel_Vengeance_Drop_View.jpg',
+    image: 'https://picsum.photos/seed/rmc-coaster/800/500',
     title: 'New RMC Conversion Announced for Classic Wooden Coaster',
     subtitle: 'Another beloved wooden coaster is getting the Iron Horse treatment this winter.',
     timestamp: '2d ago',

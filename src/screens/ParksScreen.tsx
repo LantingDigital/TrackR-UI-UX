@@ -17,6 +17,7 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { colors } from '../theme/colors';
@@ -28,6 +29,8 @@ import { useSettingsStore } from '../stores/settingsStore';
 import { useWallet } from '../hooks/useWallet';
 import { haptics } from '../services/haptics';
 import { PassDetailView } from '../components/wallet/PassDetailView';
+import { AddTicketFlow } from '../components/wallet/AddTicketFlow';
+import { Ticket } from '../types/wallet';
 import { usePOIAction } from '../features/parks/context/POIActionContext';
 
 // Parks Hub components
@@ -43,20 +46,16 @@ import { fetchWaitTimes } from '../services/waitTimes';
 import { parkNameToSlug } from '../utils/parkAssets';
 import { MyPassCard } from '../features/parks/components/MyPassCard';
 import { ParkGuidesSection, GuideBottomSheet } from '../features/parks/components/ParkGuidesSection';
+import { WaitTimesSection } from '../features/parks/components/waitTimes';
 import { RideListView } from '../features/parks/components/RideListView';
 import { FoodListView } from '../features/parks/components/FoodListView';
 // Parks Hub modals (remaining — Guide is now handled by MorphingPill)
 import { ParkSwitcherModal } from '../features/parks/modals/ParkSwitcherModal';
 
-// Map
-import { MapboxMapScreen } from '../features/parks/map/MapboxMapScreen';
-import { getParkMapConfig, loadParkMapData, parkHasMap } from '../features/parks/map/parkMapRegistry';
-import type { ParkMapConfig } from '../features/parks/map/parkMapRegistry';
-
 // Data
 import { buildParkList } from '../features/parks/utils/parkDataUtils';
 import { getGuidesForPark } from '../features/parks/data/mockParkGuides';
-import { ParkGuide, ParkData, ParkPOI, UnifiedParkMapData } from '../features/parks/types';
+import { ParkGuide, ParkData, ParkPOI, ParkWaitTimesResponse } from '../features/parks/types';
 
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
 import { getPOIByCoasterId } from '../features/parks/data/poiNameMap';
@@ -127,27 +126,14 @@ export function ParksScreen() {
   const route = useRoute<RouteProp<ParksRouteParams, 'Parks'>>();
   const navigation = useNavigation<any>();
 
-  const { tickets } = useWallet();
-  const { openPOI, registerMapHandler } = usePOIAction();
+  const { tickets, addTicket } = useWallet();
+  const { openPOI } = usePOIAction();
   // ---- Guide bottom sheet state (rendered at screen level, not inside scroll) ----
   const [selectedGuide, setSelectedGuide] = useState<ParkGuide | null>(null);
   const handleGuidePress = useCallback((guide: ParkGuide) => setSelectedGuide(guide), []);
   const handleGuideClose = useCallback(() => setSelectedGuide(null), []);
 
-  // ---- Map center for "View on Map" from POI action sheet ----
-  const [mapTargetPoi, setMapTargetPoi] = useState<ParkPOI | null>(null);
-
-  // Register map handler so POIActionContext can open the map and fly to a POI
-  useEffect(() => {
-    registerMapHandler((poi: ParkPOI) => {
-      // Close guide sheet if open (so map comes to foreground)
-      setSelectedGuide(null);
-      setMapTargetPoi(poi);
-      setMapModalVisible(true);
-    });
-  }, [registerMapHandler]);
-
-  // Cross-tab navigation: open map targeting a specific coaster (from HomeScreen search)
+  // Cross-tab navigation: navigate to park detail for a specific coaster
   useEffect(() => {
     const coasterId = route.params?.targetCoasterId;
     if (!coasterId) return;
@@ -155,10 +141,9 @@ export function ParksScreen() {
     navigation.setParams({ targetCoasterId: undefined });
     const poi = getPOIByCoasterId(coasterId);
     if (!poi) return;
-    setSelectedGuide(null);
-    setMapTargetPoi(poi);
-    setMapModalVisible(true);
-  }, [route.params?.targetCoasterId, navigation]);
+    // v2: will open map. For now, just open POI action sheet.
+    openPOI(poi.id);
+  }, [route.params?.targetCoasterId, navigation, openPOI]);
 
   // Fog only covers header + fade region — not full screen (reduces GPU compositing cost)
   const fogTotalHeight = useMemo(
@@ -244,45 +229,55 @@ export function ParksScreen() {
     return getGuidesForPark(parkNameToSlug(currentPark.name));
   }, [currentPark]);
 
-  // ---- Dynamic map data (multi-park support) ----
-  const currentMapConfig = useMemo<ParkMapConfig | null>(() => {
-    if (!currentPark) return null;
-    return getParkMapConfig(currentPark.name);
-  }, [currentPark]);
-
-  const currentMapData = useMemo<UnifiedParkMapData | null>(() => {
-    if (!currentPark) return null;
-    return loadParkMapData(currentPark.name);
-  }, [currentPark]);
-
   // ---- Dynamic wait times from service ----
-  const [waitTimes, setWaitTimes] = useState<RideWaitTime[]>([]);
+  const [waitTimesResponse, setWaitTimesResponse] = useState<ParkWaitTimesResponse | null>(null);
 
   useEffect(() => {
     if (!currentPark) return;
     const slug = parkNameToSlug(currentPark.name);
     fetchWaitTimes(slug).then((response) => {
-      if (!response) {
-        setWaitTimes([]);
-        return;
-      }
-      setWaitTimes(
-        response.rides.map((r) => ({
-          id: r.id,
-          name: r.name,
-          waitMinutes: r.waitMinutes,
-          isOpen: r.status === 'open',
-        })),
-      );
+      setWaitTimesResponse(response);
     });
   }, [currentPark]);
 
+  // Simplified format for ParkDashboard's existing WaitTimesCard
+  const waitTimes = useMemo<RideWaitTime[]>(() => {
+    if (!waitTimesResponse) return [];
+    return waitTimesResponse.rides.map((r) => ({
+      id: r.id,
+      name: r.name,
+      waitMinutes: r.waitMinutes,
+      isOpen: r.status === 'open',
+    }));
+  }, [waitTimesResponse]);
+
   // ---- Modal state ----
   const [switcherVisible, setSwitcherVisible] = useState(false);
-  const [mapModalVisible, setMapModalVisible] = useState(false);
   const [passDetailVisible, setPassDetailVisible] = useState(false);
+  const [addTicketVisible, setAddTicketVisible] = useState(false);
   const [ridesListVisible, setRidesListVisible] = useState(false);
   const [foodListVisible, setFoodListVisible] = useState(false);
+
+  // ---- Force-close MorphingPill switcher on tab blur ----
+  const [forceCloseSwitcher, setForceCloseSwitcher] = useState(false);
+
+  // ---- Auto-close all modals/sheets when tab loses focus ----
+  useFocusEffect(
+    useCallback(() => {
+      // On focus: reset forceClose flag
+      setForceCloseSwitcher(false);
+      return () => {
+        // On blur: close everything
+        setSwitcherVisible(false);
+        setPassDetailVisible(false);
+        setAddTicketVisible(false);
+        setRidesListVisible(false);
+        setFoodListVisible(false);
+        setSelectedGuide(null);
+        setForceCloseSwitcher(true);
+      };
+    }, []),
+  );
 
   // ---- Handlers ----
   const openSwitcher = useCallback(() => setSwitcherVisible(true), []);
@@ -296,17 +291,16 @@ export function ParksScreen() {
     [setHomeParkName],
   );
 
-  const openMap = useCallback(() => {
-    setMapTargetPoi(null);
-    setMapModalVisible(true);
-  }, []);
-  const closeMap = useCallback(() => {
-    setMapModalVisible(false);
-    setMapTargetPoi(null);
-  }, []);
+  // Quick action: Park stats — navigates to ParkDetailScreen
+  const handleStatsPress = useCallback(() => {
+    haptics.tap();
+    if (currentPark) {
+      navigation.navigate('ParkDetail', { parkName: currentPark.name });
+    }
+  }, [navigation, currentPark]);
 
-  const openPassDetail = useCallback(() => setPassDetailVisible(true), []);
   const closePassDetail = useCallback(() => setPassDetailVisible(false), []);
+  const closeAddTicket = useCallback(() => setAddTicketVisible(false), []);
 
   // Quick action: Food list view
   const handleFoodPress = useCallback(() => {
@@ -321,6 +315,58 @@ export function ParksScreen() {
     setRidesListVisible(true);
   }, []);
   const closeRides = useCallback(() => setRidesListVisible(false), []);
+
+  // ---- Hub layout (hooks MUST be above any early return to avoid hook count mismatch) ----
+  const passTickets = useMemo(
+    () => currentPark ? tickets.filter((t) => t.parkName === currentPark.name && t.status !== 'expired') : [],
+    [tickets, currentPark],
+  );
+
+  // Unified pass handler: opens detail if pass exists, add-ticket flow otherwise
+  const openPassDetail = useCallback(() => {
+    if (passTickets.length > 0) {
+      setPassDetailVisible(true);
+    } else {
+      setAddTicketVisible(true);
+    }
+  }, [passTickets.length]);
+
+  const handleAddTicketComplete = useCallback(async (ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'>) => {
+    try {
+      await addTicket(ticketData);
+    } catch (err) {
+      console.error('Failed to add ticket:', err);
+    }
+    setAddTicketVisible(false);
+  }, [addTicket]);
+
+  // Stable POI arrays — empty for now (POIs were map-specific, v2)
+  const pois = useMemo(() => [] as ParkPOI[], []);
+
+  // Memoize inline styles that depend on insets (stable between renders for same insets)
+  const scrollContentStyle = useMemo(
+    () => [styles.scrollContent, { paddingTop: insets.top + HEADER_HEIGHT + spacing.xxl }],
+    [insets.top],
+  );
+  const bottomSpacerStyle = useMemo(
+    () => ({ height: insets.bottom + 100 }),
+    [insets.bottom],
+  );
+  const fogContainerStyle = useMemo(
+    () => ({
+      position: 'absolute' as const,
+      top: 0,
+      left: 0,
+      right: 0,
+      height: fogTotalHeight,
+      zIndex: 5,
+    }),
+    [fogTotalHeight],
+  );
+  const headerWrapperStyle = useMemo(
+    () => [styles.headerContainer, { paddingTop: insets.top }],
+    [insets.top],
+  );
 
   // ---- First-time experience: no park selected ----
   if (!homeParkName || !currentPark) {
@@ -353,40 +399,6 @@ export function ParksScreen() {
     );
   }
 
-  // ---- Hub layout ----
-  const passTickets = useMemo(
-    () => tickets.filter((t) => t.parkName === currentPark.name && t.status !== 'expired'),
-    [tickets, currentPark.name],
-  );
-
-  // Stable POI arrays — avoid creating new empty arrays on every render
-  const pois = useMemo(() => currentMapData?.pois ?? [], [currentMapData]);
-
-  // Memoize inline styles that depend on insets (stable between renders for same insets)
-  const scrollContentStyle = useMemo(
-    () => [styles.scrollContent, { paddingTop: insets.top + HEADER_HEIGHT + spacing.xxl }],
-    [insets.top],
-  );
-  const bottomSpacerStyle = useMemo(
-    () => ({ height: insets.bottom + 100 }),
-    [insets.bottom],
-  );
-  const fogContainerStyle = useMemo(
-    () => ({
-      position: 'absolute' as const,
-      top: 0,
-      left: 0,
-      right: 0,
-      height: fogTotalHeight,
-      zIndex: 5,
-    }),
-    [fogTotalHeight],
-  );
-  const headerWrapperStyle = useMemo(
-    () => [styles.headerContainer, { paddingTop: insets.top }],
-    [insets.top],
-  );
-
   return (
     <View style={styles.container}>
       {/* Scroll content — fills entire screen, scrolls behind header */}
@@ -400,7 +412,7 @@ export function ParksScreen() {
         {/* Quick actions */}
         <StaggeredSection index={0}>
           <QuickActionRow
-            onMapPress={openMap}
+            onStatsPress={handleStatsPress}
             onFoodPress={handleFoodPress}
             onRidesPress={handleRidesPress}
             onPassPress={openPassDetail}
@@ -421,8 +433,21 @@ export function ParksScreen() {
 
         <View style={styles.sectionGap} />
 
+        {/* Full wait times section */}
+        {waitTimesResponse && waitTimesResponse.rides.length > 0 && (
+          <StaggeredSection index={2}>
+            <WaitTimesSection
+              rides={waitTimesResponse.rides}
+              lastUpdated={waitTimesResponse.lastUpdated}
+              onRidePress={openPOI}
+            />
+          </StaggeredSection>
+        )}
+
+        <View style={styles.sectionGap} />
+
         {/* My pass */}
-        <StaggeredSection index={2} style={styles.sectionPadded}>
+        <StaggeredSection index={3} style={styles.sectionPadded}>
           <MyPassCard parkName={currentPark.name} onPress={openPassDetail} />
         </StaggeredSection>
 
@@ -431,7 +456,7 @@ export function ParksScreen() {
         {/* Park guides (MorphingPill handled internally) */}
         {guides.length > 0 && (
           <>
-            <StaggeredSection index={3}>
+            <StaggeredSection index={4}>
               <ParkGuidesSection guides={guides} onGuidePress={handleGuidePress} />
             </StaggeredSection>
             <View style={styles.sectionGap} />
@@ -459,6 +484,7 @@ export function ParksScreen() {
           parks={parks}
           onSelectPark={handleParkSelect}
           progress={headerProgress}
+          forceClose={forceCloseSwitcher}
         />
       </View>
 
@@ -482,17 +508,6 @@ export function ParksScreen() {
         onClose={handleGuideClose}
       />
 
-      {/* ---- Modals ---- */}
-      {currentMapData && currentMapConfig && (
-        <MapboxMapScreen
-          visible={mapModalVisible}
-          onClose={closeMap}
-          mapData={currentMapData}
-          mapConfig={currentMapConfig}
-          targetPoi={mapTargetPoi}
-        />
-      )}
-
       {/* PassDetailView uses RN Modal (stays as-is) */}
       {passTickets.length > 0 && (
         <PassDetailView
@@ -502,6 +517,15 @@ export function ParksScreen() {
           onClose={closePassDetail}
         />
       )}
+
+      {/* Add Ticket Flow (when no pass exists) */}
+      <AddTicketFlow
+        visible={addTicketVisible}
+        onClose={closeAddTicket}
+        onComplete={handleAddTicketComplete}
+        existingTickets={tickets}
+        initialParkName={currentPark.name}
+      />
     </View>
   );
 }

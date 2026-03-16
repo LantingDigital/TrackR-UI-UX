@@ -24,6 +24,18 @@ import { PasswordScreen } from '../screens/settings/PasswordScreen';
 import { TermsScreen } from '../screens/settings/TermsScreen';
 import { PrivacyPolicyScreen } from '../screens/settings/PrivacyPolicyScreen';
 import { CreditsScreen } from '../screens/settings/CreditsScreen';
+import { SavedArticlesScreen } from '../screens/SavedArticlesScreen';
+import { PerksScreen } from '../screens/PerksScreen';
+import { ParkDetailScreen } from '../screens/ParkDetailScreen';
+import { MerchStoreScreen } from '../features/merch/screens/MerchStoreScreen';
+import { MerchCardDetailSheet } from '../features/merch/screens/MerchCardDetailSheet';
+import { CartScreen } from '../features/merch/screens/CartScreen';
+import { CustomPackBuilderScreen } from '../features/merch/screens/CustomPackBuilderScreen';
+import { CheckoutScreen as MerchCheckoutScreen } from '../features/merch/screens/CheckoutScreen';
+import { OrderConfirmationScreen } from '../features/merch/screens/OrderConfirmationScreen';
+import { OrderHistoryScreen } from '../features/merch/screens/OrderHistoryScreen';
+import { ProUpgradeScreen } from '../features/pro/ProUpgradeScreen';
+import { ArticleDetailScreen } from '../features/articles/screens/ArticleDetailScreen';
 import { WalletProvider } from '../contexts/WalletContext';
 import { TabBarProvider } from '../contexts/TabBarContext';
 import { ToastProvider } from '../components/feedback/ToastProvider';
@@ -225,6 +237,107 @@ export const RootNavigator = () => {
                       options={{
                         animation: 'slide_from_right',
                         gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="SavedArticles"
+                      component={SavedArticlesScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="Perks"
+                      component={PerksScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="ParkDetail"
+                      component={ParkDetailScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    {/* Merch Store screens */}
+                    <Stack.Screen
+                      name="MerchStore"
+                      component={MerchStoreScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="MerchCardDetail"
+                      component={MerchCardDetailSheet}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="MerchCart"
+                      component={CartScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="MerchPackBuilder"
+                      component={CustomPackBuilderScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="MerchCheckout"
+                      component={MerchCheckoutScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="MerchOrderConfirmation"
+                      component={OrderConfirmationScreen}
+                      options={{
+                        animation: 'slide_from_bottom',
+                        gestureEnabled: false,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="MerchOrderHistory"
+                      component={OrderHistoryScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    {/* Article Detail */}
+                    <Stack.Screen
+                      name="ArticleDetail"
+                      component={ArticleDetailScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    {/* Pro Upgrade */}
+                    <Stack.Screen
+                      name="ProUpgrade"
+                      component={ProUpgradeScreen}
+                      options={{
+                        presentation: 'transparentModal',
+                        animation: 'none',
+                        gestureEnabled: true,
+                        contentStyle: { backgroundColor: 'transparent' },
                       }}
                     />
                   </Stack.Navigator>

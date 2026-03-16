@@ -1,15 +1,10 @@
 /**
- * LogbookLogSheet — Bottom sheet for logging rides directly from the Logbook screen.
+ * LogbookLogSheet — Search-only bottom sheet for finding coasters.
+ *
+ * After a coaster is selected, delegates to the parent (LogbookScreen)
+ * which opens LogConfirmSheet for the unified logging experience.
  *
  * Pattern: BlurView backdrop + Gesture.Pan drag-to-dismiss + staggered entrance.
- * Reference: CoasterSheet.tsx for bottom sheet mechanics.
- *
- * Flow:
- *  1. Search input at top to find coasters by name
- *  2. Search results as user types (from COASTER_INDEX)
- *  3. Tap a coaster -> quick log form (date, ride count, notes)
- *  4. "Log Ride" button saves via addQuickLog
- *  5. Brief success feedback, then sheet closes
  */
 
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
@@ -24,13 +19,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Image,
 } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
   withSpring,
-  withDelay,
   interpolate,
   Extrapolation,
   Easing,
@@ -53,9 +48,9 @@ import { SPRINGS, TIMING } from '../constants/animations';
 import { useTabBar } from '../contexts/TabBarContext';
 import { haptics } from '../services/haptics';
 import { COASTER_INDEX, type CoasterIndexEntry } from '../data/coasterIndex';
-import { addQuickLog } from '../stores/rideLogStore';
+import { CARD_ART } from '../data/cardArt';
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const DISMISS_VELOCITY = 500;
 const MAX_SEARCH_RESULTS = 20;
 
@@ -94,11 +89,10 @@ function searchCoasters(query: string): CoasterIndexEntry[] {
 interface LogbookLogSheetProps {
   visible: boolean;
   onClose: () => void;
+  onCoasterSelect?: (coaster: CoasterIndexEntry) => void;
 }
 
-type SheetPhase = 'search' | 'form' | 'success';
-
-export function LogbookLogSheet({ visible, onClose }: LogbookLogSheetProps) {
+export function LogbookLogSheet({ visible, onClose, onCoasterSelect }: LogbookLogSheetProps) {
   const insets = useSafeAreaInsets();
   const tabBar = useTabBar();
   const inputRef = useRef<TextInput>(null);
@@ -113,29 +107,11 @@ export function LogbookLogSheet({ visible, onClose }: LogbookLogSheetProps) {
   const sheetTop = insets.top + 16;
   const sheetHeight = SCREEN_HEIGHT - sheetTop;
 
-  // State
-  const [phase, setPhase] = useState<SheetPhase>('search');
+  // State — search only (confirmation handled by parent via LogConfirmSheet)
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCoaster, setSelectedCoaster] = useState<CoasterIndexEntry | null>(null);
-  const [rideDate, setRideDate] = useState<string>(''); // display string
-  const [rideCount, setRideCount] = useState(1);
-  const [notes, setNotes] = useState('');
 
   // Search results
   const searchResults = useMemo(() => searchCoasters(searchQuery), [searchQuery]);
-
-  // Form entrance animation
-  const formEntrance = useSharedValue(0);
-
-  // Success feedback animation
-  const successScale = useSharedValue(0);
-  const successOpacity = useSharedValue(0);
-
-  // ── Today's date as default ──
-  const todayString = useMemo(() => {
-    const d = new Date();
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  }, []);
 
   // ── Open / Close lifecycle ──
 
@@ -143,15 +119,7 @@ export function LogbookLogSheet({ visible, onClose }: LogbookLogSheetProps) {
     if (visible) {
       setMounted(true);
       setIsDismissing(false);
-      setPhase('search');
       setSearchQuery('');
-      setSelectedCoaster(null);
-      setRideDate('');
-      setRideCount(1);
-      setNotes('');
-      formEntrance.value = 0;
-      successScale.value = 0;
-      successOpacity.value = 0;
 
       tabBar?.hideTabBar();
       haptics.select();
@@ -239,76 +207,22 @@ export function LogbookLogSheet({ visible, onClose }: LogbookLogSheetProps) {
     ],
   }));
 
-  const formAnimStyle = useAnimatedStyle(() => ({
-    opacity: formEntrance.value,
-    transform: [
-      { translateY: interpolate(formEntrance.value, [0, 1], [16, 0]) },
-    ],
-  }));
-
-  const successAnimStyle = useAnimatedStyle(() => ({
-    opacity: successOpacity.value,
-    transform: [{ scale: successScale.value }],
-  }));
-
   // ── Handlers ──
 
   const handleCoasterSelect = useCallback((coaster: CoasterIndexEntry) => {
     haptics.select();
     Keyboard.dismiss();
-    setSelectedCoaster(coaster);
-    setPhase('form');
-    setRideDate(todayString);
-    setRideCount(1);
-    setNotes('');
-
-    // Animate form in
-    formEntrance.value = 0;
-    formEntrance.value = withTiming(1, { duration: 300, easing: Easing.out(Easing.cubic) });
-  }, [todayString, formEntrance]);
-
-  const handleBackToSearch = useCallback(() => {
-    haptics.tap();
-    setPhase('search');
-    setSelectedCoaster(null);
-    formEntrance.value = 0;
-    setTimeout(() => inputRef.current?.focus(), 100);
-  }, [formEntrance]);
-
-  const handleIncrementCount = useCallback(() => {
-    haptics.tick();
-    setRideCount((c) => c + 1);
-  }, []);
-
-  const handleDecrementCount = useCallback(() => {
-    haptics.tick();
-    setRideCount((c) => Math.max(1, c - 1));
-  }, []);
-
-  const handleLogRide = useCallback(() => {
-    if (!selectedCoaster) return;
-
-    haptics.success();
-
-    // Log the ride(s) via the store
-    for (let i = 0; i < rideCount; i++) {
-      addQuickLog({
-        id: selectedCoaster.id,
-        name: selectedCoaster.name,
-        parkName: selectedCoaster.park,
-      });
-    }
-
-    // Show success feedback
-    setPhase('success');
-    successScale.value = withSpring(1, { damping: 18, stiffness: 200, mass: 0.8 });
-    successOpacity.value = withTiming(1, { duration: 200 });
-
-    // Auto-dismiss after a brief pause
-    setTimeout(() => {
-      dismiss();
-    }, 900);
-  }, [selectedCoaster, rideCount, dismiss, successScale, successOpacity]);
+    // Dismiss the search sheet and delegate to parent's LogConfirmSheet
+    setIsDismissing(true);
+    tabBar?.showTabBar();
+    translateY.value = withTiming(sheetHeight, { duration: 300 }, (finished) => {
+      if (finished) {
+        runOnJS(onClose)();
+        runOnJS(onCoasterSelect!)(coaster);
+      }
+    });
+    backdropOpacity.value = withTiming(0, { duration: 250 });
+  }, [onClose, onCoasterSelect, sheetHeight, tabBar]);
 
   // ── Render ──
 
@@ -352,201 +266,96 @@ export function LogbookLogSheet({ visible, onClose }: LogbookLogSheetProps) {
           style={styles.keyboardAvoid}
           keyboardVerticalOffset={sheetTop}
         >
-          {/* ── Search Phase ── */}
-          {phase === 'search' && (
-            <Animated.View style={[styles.phaseContainer, searchEntranceStyle]}>
-              {/* Title */}
-              <Text style={styles.sheetTitle}>Log a Ride</Text>
+          <Animated.View style={[styles.phaseContainer, searchEntranceStyle]}>
+            {/* Title */}
+            <Text style={styles.sheetTitle}>Log a Ride</Text>
 
-              {/* Search input */}
-              <View style={styles.searchBar}>
-                <Ionicons name="search" size={18} color={colors.text.meta} />
-                <TextInput
-                  ref={inputRef}
-                  style={styles.searchInput}
-                  placeholder="Search coasters..."
-                  placeholderTextColor={colors.text.meta}
-                  value={searchQuery}
-                  onChangeText={(text) => {
-                    setSearchQuery(text);
-                    haptics.tick();
-                  }}
-                  returnKeyType="search"
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                />
-                {searchQuery.length > 0 && (
-                  <Pressable
-                    onPress={() => {
-                      haptics.tap();
-                      setSearchQuery('');
-                      inputRef.current?.focus();
-                    }}
-                    hitSlop={8}
-                  >
-                    <Ionicons name="close-circle" size={18} color={colors.text.meta} />
-                  </Pressable>
-                )}
-              </View>
-
-              {/* Results */}
-              <ScrollView
-                style={styles.resultsScroll}
-                contentContainerStyle={styles.resultsContent}
-                showsVerticalScrollIndicator={false}
-                keyboardShouldPersistTaps="handled"
-              >
-                {searchQuery.length > 0 && searchResults.length === 0 && (
-                  <View style={styles.noResults}>
-                    <Ionicons name="search-outline" size={32} color={colors.text.meta} />
-                    <Text style={styles.noResultsText}>No coasters found</Text>
-                  </View>
-                )}
-
-                {searchQuery.length === 0 && (
-                  <View style={styles.searchHint}>
-                    <Ionicons name="trail-sign-outline" size={32} color={colors.text.meta} />
-                    <Text style={styles.searchHintText}>
-                      Search for a coaster to log your ride
-                    </Text>
-                  </View>
-                )}
-
-                {searchResults.map((coaster, index) => (
-                  <Pressable
-                    key={coaster.id}
-                    onPress={() => handleCoasterSelect(coaster)}
-                    style={({ pressed }) => [
-                      styles.resultRow,
-                      pressed && styles.resultRowPressed,
-                    ]}
-                  >
-                    <View style={styles.resultInfo}>
-                      <Text style={styles.resultName} numberOfLines={1}>
-                        {coaster.name}
-                      </Text>
-                      <Text style={styles.resultPark} numberOfLines={1}>
-                        {coaster.park}
-                      </Text>
-                    </View>
-                    <Ionicons name="add-circle" size={24} color={colors.accent.primary} />
-                  </Pressable>
-                ))}
-              </ScrollView>
-            </Animated.View>
-          )}
-
-          {/* ── Form Phase ── */}
-          {phase === 'form' && selectedCoaster && (
-            <Animated.View style={[styles.phaseContainer, formAnimStyle]}>
-              {/* Back button + title */}
-              <View style={styles.formHeader}>
-                <Pressable onPress={handleBackToSearch} style={styles.backButton} hitSlop={8}>
-                  <Ionicons name="chevron-back" size={22} color={colors.accent.primary} />
-                </Pressable>
-                <Text style={styles.sheetTitle}>Log Ride</Text>
-                <View style={styles.backButtonSpacer} />
-              </View>
-
-              <ScrollView
-                style={styles.formScroll}
-                contentContainerStyle={styles.formContent}
-                showsVerticalScrollIndicator={false}
-                keyboardShouldPersistTaps="handled"
-              >
-                {/* Selected coaster card */}
-                <View style={styles.selectedCard}>
-                  <View style={styles.selectedIconCircle}>
-                    <Ionicons name="train-outline" size={20} color={colors.accent.primary} />
-                  </View>
-                  <View style={styles.selectedInfo}>
-                    <Text style={styles.selectedName} numberOfLines={1}>
-                      {selectedCoaster.name}
-                    </Text>
-                    <Text style={styles.selectedPark} numberOfLines={1}>
-                      {selectedCoaster.park}
-                    </Text>
-                  </View>
-                </View>
-
-                {/* Date field */}
-                <View style={styles.formField}>
-                  <Text style={styles.fieldLabel}>Date</Text>
-                  <View style={styles.fieldValueRow}>
-                    <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
-                    <Text style={styles.fieldValueText}>{rideDate || todayString}</Text>
-                  </View>
-                </View>
-
-                {/* Ride count */}
-                <View style={styles.formField}>
-                  <Text style={styles.fieldLabel}>Rides</Text>
-                  <View style={styles.counterRow}>
-                    <Pressable
-                      onPress={handleDecrementCount}
-                      style={[
-                        styles.counterButton,
-                        rideCount <= 1 && styles.counterButtonDisabled,
-                      ]}
-                      disabled={rideCount <= 1}
-                    >
-                      <Ionicons
-                        name="remove"
-                        size={20}
-                        color={rideCount <= 1 ? colors.text.meta : colors.accent.primary}
-                      />
-                    </Pressable>
-                    <Text style={styles.counterValue}>{rideCount}</Text>
-                    <Pressable onPress={handleIncrementCount} style={styles.counterButton}>
-                      <Ionicons name="add" size={20} color={colors.accent.primary} />
-                    </Pressable>
-                  </View>
-                </View>
-
-                {/* Notes */}
-                <View style={styles.formField}>
-                  <Text style={styles.fieldLabel}>Notes (optional)</Text>
-                  <TextInput
-                    style={styles.notesInput}
-                    placeholder="Front row, great night ride..."
-                    placeholderTextColor={colors.text.meta}
-                    value={notes}
-                    onChangeText={setNotes}
-                    multiline
-                    maxLength={200}
-                    textAlignVertical="top"
-                  />
-                </View>
-
-                {/* Log button */}
+            {/* Search input */}
+            <View style={styles.searchBar}>
+              <Ionicons name="search" size={18} color={colors.text.meta} />
+              <TextInput
+                ref={inputRef}
+                style={styles.searchInput}
+                placeholder="Search coasters..."
+                placeholderTextColor={colors.text.meta}
+                value={searchQuery}
+                onChangeText={(text) => {
+                  setSearchQuery(text);
+                  haptics.tick();
+                }}
+                returnKeyType="search"
+                autoCorrect={false}
+                autoCapitalize="none"
+              />
+              {searchQuery.length > 0 && (
                 <Pressable
-                  onPress={handleLogRide}
+                  onPress={() => {
+                    haptics.tap();
+                    setSearchQuery('');
+                    inputRef.current?.focus();
+                  }}
+                  hitSlop={8}
+                >
+                  <Ionicons name="close-circle" size={18} color={colors.text.meta} />
+                </Pressable>
+              )}
+            </View>
+
+            {/* Results */}
+            <ScrollView
+              style={styles.resultsScroll}
+              contentContainerStyle={styles.resultsContent}
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+            >
+              {searchQuery.length > 0 && searchResults.length === 0 && (
+                <View style={styles.noResults}>
+                  <Ionicons name="search-outline" size={32} color={colors.text.meta} />
+                  <Text style={styles.noResultsText}>No coasters found</Text>
+                </View>
+              )}
+
+              {searchQuery.length === 0 && (
+                <View style={styles.searchHint}>
+                  <Ionicons name="trail-sign-outline" size={32} color={colors.text.meta} />
+                  <Text style={styles.searchHintText}>
+                    Search for a coaster to log your ride
+                  </Text>
+                </View>
+              )}
+
+              {searchResults.map((coaster) => (
+                <Pressable
+                  key={coaster.id}
+                  onPress={() => handleCoasterSelect(coaster)}
                   style={({ pressed }) => [
-                    styles.logButton,
-                    pressed && styles.logButtonPressed,
+                    styles.resultRow,
+                    pressed && styles.resultRowPressed,
                   ]}
                 >
-                  <Ionicons name="checkmark-circle" size={20} color={colors.text.inverse} />
-                  <Text style={styles.logButtonText}>
-                    Log {rideCount > 1 ? `${rideCount} Rides` : 'Ride'}
-                  </Text>
+                  {CARD_ART[coaster.id] ? (
+                    <Image
+                      source={CARD_ART[coaster.id]}
+                      style={styles.resultArt}
+                    />
+                  ) : (
+                    <View style={[styles.resultArt, styles.resultArtPlaceholder]}>
+                      <Ionicons name="flash" size={16} color={colors.text.meta} />
+                    </View>
+                  )}
+                  <View style={styles.resultInfo}>
+                    <Text style={styles.resultName} numberOfLines={1}>
+                      {coaster.name}
+                    </Text>
+                    <Text style={styles.resultPark} numberOfLines={1}>
+                      {coaster.park}
+                    </Text>
+                  </View>
+                  <Ionicons name="add-circle" size={24} color={colors.accent.primary} />
                 </Pressable>
-              </ScrollView>
-            </Animated.View>
-          )}
-
-          {/* ── Success Phase ── */}
-          {phase === 'success' && (
-            <Animated.View style={[styles.successContainer, successAnimStyle]}>
-              <View style={styles.successIconCircle}>
-                <Ionicons name="checkmark" size={40} color={colors.status.successSoft} />
-              </View>
-              <Text style={styles.successText}>Ride Logged!</Text>
-              {selectedCoaster && (
-                <Text style={styles.successSubtext}>{selectedCoaster.name}</Text>
-              )}
-            </Animated.View>
-          )}
+              ))}
+            </ScrollView>
+          </Animated.View>
         </KeyboardAvoidingView>
       </Animated.View>
     </View>
@@ -654,8 +463,19 @@ const styles = StyleSheet.create({
   resultRowPressed: {
     backgroundColor: colors.interactive.pressed,
   },
+  resultArt: {
+    width: 48,
+    height: 48,
+    borderRadius: radius.sm,
+    backgroundColor: colors.background.imagePlaceholder,
+  },
+  resultArtPlaceholder: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   resultInfo: {
     flex: 1,
+    marginLeft: spacing.base,
     marginRight: spacing.base,
   },
   resultName: {
@@ -689,181 +509,4 @@ const styles = StyleSheet.create({
     maxWidth: 240,
   },
 
-  // ── Form ──
-  formHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: spacing.lg,
-  },
-  backButton: {
-    width: 32,
-    height: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: spacing.md,
-  },
-  backButtonSpacer: {
-    width: 32 + spacing.md,
-  },
-  formScroll: {
-    flex: 1,
-  },
-  formContent: {
-    paddingBottom: spacing.xxxl * 2,
-  },
-
-  // ── Selected coaster card ──
-  selectedCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.background.card,
-    borderRadius: radius.card,
-    padding: spacing.lg,
-    marginBottom: spacing.xxl,
-    ...shadows.small,
-  },
-  selectedIconCircle: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: colors.accent.primaryLight,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: spacing.base,
-  },
-  selectedInfo: {
-    flex: 1,
-  },
-  selectedName: {
-    fontSize: typography.sizes.body,
-    fontWeight: typography.weights.semibold,
-    color: colors.text.primary,
-    marginBottom: 2,
-  },
-  selectedPark: {
-    fontSize: typography.sizes.caption,
-    color: colors.text.secondary,
-  },
-
-  // ── Form fields ──
-  formField: {
-    marginBottom: spacing.xl,
-  },
-  fieldLabel: {
-    fontSize: typography.sizes.caption,
-    fontWeight: typography.weights.semibold,
-    color: colors.text.meta,
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    marginBottom: spacing.md,
-  },
-  fieldValueRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.background.card,
-    borderRadius: radius.md,
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.base,
-    gap: spacing.md,
-    ...shadows.small,
-  },
-  fieldValueText: {
-    fontSize: typography.sizes.body,
-    fontWeight: typography.weights.medium,
-    color: colors.text.primary,
-  },
-
-  // ── Counter ──
-  counterRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.background.card,
-    borderRadius: radius.md,
-    paddingHorizontal: spacing.base,
-    paddingVertical: spacing.xs,
-    alignSelf: 'flex-start',
-    ...shadows.small,
-  },
-  counterButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  counterButtonDisabled: {
-    opacity: 0.4,
-  },
-  counterValue: {
-    fontSize: typography.sizes.heading,
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
-    minWidth: 40,
-    textAlign: 'center',
-  },
-
-  // ── Notes ──
-  notesInput: {
-    backgroundColor: colors.background.card,
-    borderRadius: radius.md,
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing.base,
-    paddingBottom: spacing.base,
-    fontSize: typography.sizes.body,
-    color: colors.text.primary,
-    minHeight: 80,
-    ...shadows.small,
-  },
-
-  // ── Log button ──
-  logButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accent.primary,
-    borderRadius: radius.button,
-    paddingVertical: spacing.lg,
-    gap: spacing.md,
-    marginTop: spacing.base,
-    ...shadows.card,
-    shadowColor: colors.accent.primary,
-    shadowOpacity: 0.3,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-  },
-  logButtonPressed: {
-    backgroundColor: colors.interactive.pressedAccentDark,
-  },
-  logButtonText: {
-    fontSize: typography.sizes.body,
-    fontWeight: typography.weights.bold,
-    color: colors.text.inverse,
-  },
-
-  // ── Success ──
-  successContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: spacing.xxxl * 3,
-  },
-  successIconCircle: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: 'rgba(76, 175, 80, 0.12)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: spacing.lg,
-  },
-  successText: {
-    fontSize: typography.sizes.heading,
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
-    marginBottom: spacing.xs,
-  },
-  successSubtext: {
-    fontSize: typography.sizes.body,
-    color: colors.text.secondary,
-  },
 });

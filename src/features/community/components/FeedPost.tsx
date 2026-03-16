@@ -59,6 +59,7 @@ interface FeedPostProps {
   onLike: (itemId: string) => void;
   onCommentTap: (item: FeedItem) => void;
   onAuthorTap: (authorId: string) => void;
+  onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
 }
 
 // ─── Content Renderers ──────────────────────────────────────
@@ -76,10 +77,20 @@ const StarRow = ({ rating }: { rating: number }) => (
   </View>
 );
 
-const ReviewContent = ({ item, expanded, onMore }: { item: ReviewFeedItem; expanded: boolean; onMore: () => void }) => (
+const ReviewContent = ({ item, expanded, onMore, onCoasterTap }: { item: ReviewFeedItem; expanded: boolean; onMore: () => void; onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void }) => (
   <View style={styles.contentArea}>
     <StarRow rating={item.rating} />
-    <Text style={styles.coasterName}>{item.coasterName}</Text>
+    <Pressable
+      onPress={() => {
+        if (onCoasterTap) {
+          haptics.tap();
+          onCoasterTap(item.coasterId, item.coasterName, item.parkName);
+        }
+      }}
+      hitSlop={4}
+    >
+      <Text style={[styles.coasterName, onCoasterTap && styles.tappableCoaster]}>{item.coasterName}</Text>
+    </Pressable>
     <Text style={styles.parkName}>{item.parkName}</Text>
     <Text
       style={styles.bodyText}
@@ -120,7 +131,7 @@ const TripReportContent = ({ item, expanded, onMore }: { item: TripReportFeedIte
   );
 };
 
-const TopListContent = ({ item }: { item: TopListFeedItem }) => (
+const TopListContent = ({ item, onCoasterTap }: { item: TopListFeedItem; onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void }) => (
   <View style={styles.contentArea}>
     <View style={styles.listTitleRow}>
       <Text style={styles.listEmoji}>{item.emoji}</Text>
@@ -131,16 +142,25 @@ const TopListContent = ({ item }: { item: TopListFeedItem }) => (
     </View>
     <View style={styles.previewList}>
       {item.items.map((entry, i) => (
-        <View key={typeof entry === 'string' ? entry : entry.name} style={[styles.previewItem, i > 0 && styles.previewItemSpacing]}>
+        <Pressable
+          key={entry.coasterId}
+          style={[styles.previewItem, i > 0 && styles.previewItemSpacing]}
+          onPress={() => {
+            if (onCoasterTap) {
+              haptics.tap();
+              onCoasterTap(entry.coasterId, entry.name, '');
+            }
+          }}
+        >
           <Text style={styles.previewRank}>{i + 1}</Text>
-          <Text style={styles.previewName}>{typeof entry === 'string' ? entry : entry.name}</Text>
-        </View>
+          <Text style={[styles.previewName, onCoasterTap && styles.tappableCoaster]}>{entry.name}</Text>
+        </Pressable>
       ))}
     </View>
   </View>
 );
 
-const BucketListContent = ({ item }: { item: BucketListFeedItem }) => (
+const BucketListContent = ({ item, onCoasterTap }: { item: BucketListFeedItem; onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void }) => (
   <View style={styles.contentArea}>
     <Text style={styles.tripTitle}>{item.title}</Text>
     <View style={styles.categoryPill}>
@@ -148,7 +168,16 @@ const BucketListContent = ({ item }: { item: BucketListFeedItem }) => (
     </View>
     <View style={styles.previewList}>
       {item.items.map((entry, i) => (
-        <View key={entry.id} style={[styles.previewItem, i > 0 && styles.previewItemSpacing]}>
+        <Pressable
+          key={entry.id}
+          style={[styles.previewItem, i > 0 && styles.previewItemSpacing]}
+          onPress={() => {
+            if (onCoasterTap && entry.itemType === 'coaster') {
+              haptics.tap();
+              onCoasterTap(entry.refId, entry.name, '');
+            }
+          }}
+        >
           <Ionicons
             name={entry.completed ? 'checkmark-circle' : 'ellipse-outline'}
             size={16}
@@ -158,13 +187,14 @@ const BucketListContent = ({ item }: { item: BucketListFeedItem }) => (
           <Text style={[
             styles.previewName,
             entry.completed && styles.completedItem,
+            onCoasterTap && entry.itemType === 'coaster' && styles.tappableCoaster,
           ]}>
             {entry.name}
           </Text>
           <Text style={styles.bucketType}>
             {entry.itemType === 'park' ? 'Park' : ''}
           </Text>
-        </View>
+        </Pressable>
       ))}
     </View>
   </View>
@@ -172,7 +202,7 @@ const BucketListContent = ({ item }: { item: BucketListFeedItem }) => (
 
 // ─── Main Component ─────────────────────────────────────────
 
-export const FeedPost = React.memo(({ item, onLike, onCommentTap, onAuthorTap }: FeedPostProps) => {
+export const FeedPost = React.memo(({ item, onLike, onCommentTap, onAuthorTap, onCoasterTap }: FeedPostProps) => {
   const press = useCardPress();
   const [expanded, setExpanded] = useState(false);
   const [showHeart, setShowHeart] = useState(false);
@@ -219,13 +249,13 @@ export const FeedPost = React.memo(({ item, onLike, onCommentTap, onAuthorTap }:
   const renderContent = () => {
     switch (item.type) {
       case 'review':
-        return <ReviewContent item={item} expanded={expanded} onMore={handleMore} />;
+        return <ReviewContent item={item} expanded={expanded} onMore={handleMore} onCoasterTap={onCoasterTap} />;
       case 'trip_report':
         return <TripReportContent item={item} expanded={expanded} onMore={handleMore} />;
       case 'top_list':
-        return <TopListContent item={item} />;
+        return <TopListContent item={item} onCoasterTap={onCoasterTap} />;
       case 'bucket_list':
-        return <BucketListContent item={item} />;
+        return <BucketListContent item={item} onCoasterTap={onCoasterTap} />;
     }
   };
 
@@ -344,6 +374,9 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
     marginTop: spacing.md,
+  },
+  tappableCoaster: {
+    color: colors.accent.primary,
   },
   parkName: {
     fontSize: typography.sizes.caption,

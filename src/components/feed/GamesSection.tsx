@@ -1,14 +1,21 @@
 /**
  * GamesSection - Horizontal scrolling strip of game cards for the home feed.
  * Shows available games (Coastle, Speed Sorter, Blind Ranking, Trivia)
- * plus a "Coming Soon" placeholder that peeks off-screen to hint at scrolling.
+ * plus a "View All" card that navigates to the full games list.
  */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Reanimated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  Easing,
+  interpolate,
+} from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { useSpringPress } from '../../hooks/useSpringPress';
+import { onBecomeVisible, offBecomeVisible, hasBeenVisible } from '../../utils/feedAnimations';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { shadows } from '../../theme/shadows';
@@ -73,7 +80,7 @@ const GameCard = React.memo(({
       onPressIn={pressHandlers.onPressIn}
       onPressOut={pressHandlers.onPressOut}
     >
-      <Animated.View style={[styles.gameCard, animatedStyle]}>
+      <Reanimated.View style={[styles.gameCard, animatedStyle]}>
         <View style={styles.iconCircle}>
           <Ionicons name={game.icon as any} size={24} color={colors.accent.primary} />
         </View>
@@ -83,38 +90,70 @@ const GameCard = React.memo(({
           <Text style={styles.playText}>Play</Text>
           <Ionicons name="chevron-forward" size={14} color={colors.accent.primary} />
         </View>
-      </Animated.View>
+      </Reanimated.View>
     </Pressable>
   );
 });
 
-// ── Coming Soon Card ──
+// ── View All Card ──
 
-const ComingSoonCard = React.memo(() => (
-  <View style={styles.comingSoonCard}>
-    <View style={styles.comingSoonIconCircle}>
-      <Ionicons name="add-outline" size={24} color={colors.text.meta} />
-    </View>
-    <Text style={styles.comingSoonTitle}>More Games</Text>
-    <Text style={styles.comingSoonSubtitle}>Coming Soon</Text>
-  </View>
-));
+const ViewAllCard = React.memo(({ onPress }: { onPress?: () => void }) => {
+  const { pressHandlers, animatedStyle } = useSpringPress({ scale: 0.96, opacity: 0.9 });
+
+  return (
+    <Pressable
+      onPress={() => { haptics.tap(); onPress?.(); }}
+      onPressIn={pressHandlers.onPressIn}
+      onPressOut={pressHandlers.onPressOut}
+    >
+      <Reanimated.View style={[styles.gameCard, styles.viewAllLayout, animatedStyle]}>
+        <View style={styles.iconCircle}>
+          <Ionicons name="arrow-forward-outline" size={24} color={colors.accent.primary} />
+        </View>
+        <Text style={styles.viewAllTitle}>View All</Text>
+        <Text style={styles.viewAllSubtitle}>See all games</Text>
+      </Reanimated.View>
+    </Pressable>
+  );
+});
 
 // ── Main Component ──
 
 interface GamesSectionProps {
+  sectionId?: string;
   onPlayCoastle: () => void;
   onPlaySpeedSorter: () => void;
   onPlayBlindRanking: () => void;
   onPlayTrivia: () => void;
+  onViewAll?: () => void;
 }
 
 export const GamesSection = React.memo<GamesSectionProps>(({
+  sectionId,
   onPlayCoastle,
   onPlaySpeedSorter,
   onPlayBlindRanking,
   onPlayTrivia,
+  onViewAll,
 }) => {
+  const entrance = useSharedValue(sectionId ? (hasBeenVisible(sectionId) ? 1 : 0) : 1);
+
+  useEffect(() => {
+    if (!sectionId) return;
+    onBecomeVisible(sectionId, () => {
+      entrance.value = withTiming(1, {
+        duration: 400,
+        easing: Easing.out(Easing.cubic),
+      });
+    });
+    return () => offBecomeVisible(sectionId);
+  }, [sectionId]);
+
+  const entranceStyle = useAnimatedStyle(() => ({
+    opacity: entrance.value,
+    transform: [{ translateY: interpolate(entrance.value, [0, 1], [20, 0]) }],
+  }));
+
   const handlePress = useCallback((id: string) => {
     switch (id) {
       case 'coastle': onPlayCoastle(); break;
@@ -130,7 +169,7 @@ export const GamesSection = React.memo<GamesSectionProps>(({
   const handleTrivia = useCallback(() => handlePress('trivia'), [handlePress]);
 
   return (
-    <View>
+    <Reanimated.View style={entranceStyle}>
       <Text style={styles.sectionLabel}>Games</Text>
       <ScrollView
         horizontal
@@ -150,9 +189,9 @@ export const GamesSection = React.memo<GamesSectionProps>(({
             }
           />
         ))}
-        <ComingSoonCard />
+        <ViewAllCard onPress={onViewAll} />
       </ScrollView>
-    </View>
+    </Reanimated.View>
   );
 });
 
@@ -165,12 +204,15 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     marginBottom: spacing.base,
   },
+  // Shadow-safe horizontal scroll (see shadow-clipping.md)
   scrollContainer: {
     marginHorizontal: -spacing.lg,
+    marginVertical: -spacing.xl,
+    overflow: 'visible' as const,
   },
   scrollContent: {
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.base,
+    paddingVertical: spacing.xl,
     gap: spacing.base,
   },
   gameCard: {
@@ -211,35 +253,23 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.semibold,
     color: colors.accent.primary,
   },
-  comingSoonCard: {
-    width: CARD_WIDTH,
-    backgroundColor: colors.background.page,
-    borderRadius: radius.card,
-    padding: spacing.lg,
-    borderWidth: 1.5,
-    borderStyle: 'dashed',
-    borderColor: colors.border.subtle,
+  viewAllLayout: {
     alignItems: 'center',
     justifyContent: 'center',
+    aspectRatio: 1,
   },
-  comingSoonIconCircle: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: colors.background.input,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: spacing.base,
-  },
-  comingSoonTitle: {
+  viewAllTitle: {
     fontSize: typography.sizes.label,
-    fontWeight: typography.weights.semibold,
-    color: colors.text.meta,
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
+    marginTop: spacing.sm,
     marginBottom: 2,
+    textAlign: 'center',
   },
-  comingSoonSubtitle: {
+  viewAllSubtitle: {
     fontSize: typography.sizes.meta,
     fontWeight: typography.weights.regular,
-    color: colors.text.meta,
+    color: colors.accent.primary,
+    textAlign: 'center',
   },
 });

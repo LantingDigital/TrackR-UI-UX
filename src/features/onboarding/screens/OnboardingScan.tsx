@@ -35,9 +35,9 @@ export const OnboardingScan: React.FC<OnboardingScreenProps> = ({ isActive }) =>
   return (
     <View style={styles.container}>
       <View style={[styles.textRegion, { paddingTop: insets.top + spacing.xxxl + spacing.lg }]}>
-        <Text style={styles.title}>Your Wallet</Text>
+        <Text style={styles.title}>Your Passes</Text>
         <Text style={[styles.desc, { marginTop: spacing.md }]}>
-          Park passes, season tickets, FastPass.{'\n'}All in one place.
+          Scan, store, and flip to your QR code{'\n'}at the gate. Add to Apple Wallet too.
         </Text>
       </View>
 
@@ -64,7 +64,7 @@ export const OnboardingScan: React.FC<OnboardingScreenProps> = ({ isActive }) =>
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background.page, alignItems: 'center' },
+  container: { flex: 1, backgroundColor: 'transparent', alignItems: 'center' },
   textRegion: { alignItems: 'center', paddingHorizontal: spacing.xxxl, zIndex: 2 },
   title: { fontSize: typography.sizes.display, fontWeight: typography.weights.bold, color: colors.text.primary, letterSpacing: -1, textAlign: 'center' },
   desc: { fontSize: typography.sizes.body, fontWeight: typography.weights.regular, color: colors.text.secondary, textAlign: 'center', lineHeight: typography.sizes.body * typography.lineHeights.relaxed, letterSpacing: 0.2 },

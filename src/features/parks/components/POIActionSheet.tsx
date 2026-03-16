@@ -56,7 +56,6 @@ interface POIActionSheetProps {
   visible: boolean;
   onClose: () => void;
   onViewDetails: () => void;
-  onViewOnMap: () => void;
 }
 
 const SHEET_DISMISS_OFFSET = 400;
@@ -66,7 +65,6 @@ export function POIActionSheet({
   visible,
   onClose,
   onViewDetails,
-  onViewOnMap,
 }: POIActionSheetProps) {
   const insets = useSafeAreaInsets();
   const translateY = useSharedValue(SHEET_DISMISS_OFFSET);
@@ -165,26 +163,6 @@ export function POIActionSheet({
               />
             </Pressable>
           )}
-
-          <Pressable
-            onPress={onViewOnMap}
-            style={({ pressed }) => [
-              styles.actionRow,
-              styles.actionSecondary,
-              pressed && styles.actionSecondaryPressed,
-            ]}
-          >
-            <View style={[styles.actionIconWrap, styles.actionIconSecondary]}>
-              <Ionicons name="map-outline" size={18} color={colors.accent.primary} />
-            </View>
-            <Text style={styles.actionSecondaryText}>View on Map</Text>
-            <Ionicons
-              name="chevron-forward"
-              size={16}
-              color={colors.text.meta}
-              style={styles.chevron}
-            />
-          </Pressable>
 
           {isRide && (
             <Pressable

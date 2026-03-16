@@ -2,20 +2,25 @@
  * AddTicketFlow Component
  *
  * Multi-step wizard for adding new tickets/passes:
- * Step 1: Choose method (Camera / Photo Library)
- * Step 2: CameraScanner (live scan or library pick with barcode extraction)
- * Step 3: Detection result (auto-detected info + barcode preview)
- * Step 4: Manual entry form (fill gaps)
+ * Step 1: Choose pass type (Annual, Season, Day, Multi-Day)
+ * Step 2: Choose method (Camera / Photo Library / Enter Manually)
+ * Step 3: CameraScanner (live scan or library pick with barcode extraction)
+ * Step 4: Detection result (auto-detected info + barcode preview)
+ * Step 5a (manual): Barcode/QR input + type picker
+ * Step 5b (manual): Park selection (park name + chain)
+ * Step 5c (manual): Pass details (pass type + dates)
+ * Step 5d (manual): Review/confirm
+ * Step 5 (scanned): Combined form (fill gaps)
  *
  * Supports the hybrid approach:
  * - Extracts barcode data from scanned/imported images
  * - Falls back to IMAGE_ONLY when extraction fails
  * - Always saves original image URI as backup
  *
- * All animations use react-native-reanimated with spring physics.
+ * All animations use react-native-reanimated with timing/easing (no spring on transitions).
  */
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useRef } from 'react';
 import {
   View,
   Text,
@@ -27,15 +32,18 @@ import {
   Platform,
   Alert,
   Image,
+  Dimensions,
 } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedReaction,
   withSpring,
   withTiming,
+  interpolate,
+  interpolateColor,
+  runOnJS,
   FadeIn,
-  FadeOut,
-  SlideInRight,
   Easing,
 } from 'react-native-reanimated';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -133,7 +141,31 @@ function addOneYear(date: Date): Date {
 // Spring config for button presses
 const PRESS_SPRING = { damping: 16, stiffness: 180, mass: 0.8 };
 
-type FlowStep = 'method' | 'scan' | 'detection' | 'form';
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
+type FlowStep =
+  | 'method'
+  | 'type_select'
+  | 'scan'
+  | 'detection'
+  | 'form'
+  | 'manual_barcode'
+  | 'manual_park'
+  | 'manual_details'
+  | 'manual_review';
+
+/** Step ordering for determining forward/backward direction */
+const STEP_ORDER: Record<FlowStep, number> = {
+  type_select: 0,
+  method: 1,
+  scan: 2,
+  detection: 3,
+  form: 4,
+  manual_barcode: 2,
+  manual_park: 3,
+  manual_details: 4,
+  manual_review: 5,
+};
 
 /**
  * Human-readable barcode format labels
@@ -159,6 +191,8 @@ interface AddTicketFlowProps {
   onComplete: (ticketData: Omit<Ticket, 'id' | 'addedAt' | 'isDefault' | 'isFavorite'>) => void;
   /** Existing tickets for duplicate detection */
   existingTickets?: Ticket[];
+  /** Pre-fill park name when adding from a specific park screen */
+  initialParkName?: string;
 }
 
 export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
@@ -166,12 +200,13 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   onClose,
   onComplete,
   existingTickets = [],
+  initialParkName,
 }) => {
   const insets = useSafeAreaInsets();
   const { scrollRef, scrollHandler, handleInputFocus, keyboardPadding } = useKeyboardAvoidance();
 
-  // Flow state
-  const [step, setStep] = useState<FlowStep>('method');
+  // Flow state — type_select is first step now
+  const [step, setStep] = useState<FlowStep>('type_select');
   const [qrData, setQrData] = useState<string>('');
   const [qrFormat, setQrFormat] = useState<BarcodeFormat>('QR_CODE');
   const [originalImageUri, setOriginalImageUri] = useState<string | undefined>();
@@ -193,6 +228,14 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   // Park autocomplete
   const [parkQuery, setParkQuery] = useState('');
   const [showParkSuggestions, setShowParkSuggestions] = useState(false);
+
+  // Track whether user came from manual entry (to show disclaimer banner on form)
+  const [isManualEntry, setIsManualEntry] = useState(false);
+
+  // Manual barcode number input
+  const [manualBarcodeNumber, setManualBarcodeNumber] = useState('');
+  const [manualBarcodeFormat, setManualBarcodeFormat] = useState<'qr' | '1d' | 'auto'>('auto');
+  const [barcodeValidationError, setBarcodeValidationError] = useState('');
 
   // Animated heights for date pickers
   const fromPickerHeight = useSharedValue(0);
@@ -241,10 +284,75 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
     transform: [{ scale: submitButtonScale.value }],
   }));
 
-  // Reset flow when closed
+  // Two-layer iOS push transition state
+  const [displayedStep, setDisplayedStep] = useState<FlowStep>('type_select');
+  const [previousStepState, setPreviousStepState] = useState<FlowStep | null>(null);
+  const transitionProgress = useSharedValue(0); // 0 = start of transition, 1 = complete
+  const isGoingForward = useRef(true);
+
+  // Current (incoming) screen style — slides from right (forward) or from -33% left (back)
+  const currentLayerStyle = useAnimatedStyle(() => {
+    if (previousStepState === null) return {};
+    const forward = isGoingForward.current;
+    return {
+      transform: [{
+        translateX: interpolate(
+          transitionProgress.value,
+          [0, 1],
+          [forward ? SCREEN_WIDTH : -SCREEN_WIDTH * 0.33, 0],
+        ),
+      }],
+      // Subtle left-edge shadow on incoming screen (forward only)
+      shadowColor: '#000',
+      shadowOffset: { width: -3, height: 0 },
+      shadowOpacity: interpolate(transitionProgress.value, [0, 1], [forward ? 0.15 : 0, 0]),
+      shadowRadius: 12,
+    };
+  });
+
+  // Previous (outgoing) screen style — slides to -33% left (forward) or off right (back)
+  const previousLayerStyle = useAnimatedStyle(() => {
+    if (previousStepState === null) return {};
+    const forward = isGoingForward.current;
+    return {
+      transform: [{
+        translateX: interpolate(
+          transitionProgress.value,
+          [0, 1],
+          [0, forward ? -SCREEN_WIDTH * 0.33 : SCREEN_WIDTH],
+        ),
+      }],
+      opacity: interpolate(
+        transitionProgress.value,
+        [0, 1],
+        [1, forward ? 0.85 : 1],
+      ),
+    };
+  });
+
+  /** Navigate to a step with true iOS native-stack push animation */
+  const navigateToStep = useCallback((targetStep: FlowStep, forward?: boolean) => {
+    const autoForward = forward !== undefined ? forward : STEP_ORDER[targetStep] > STEP_ORDER[displayedStep];
+    isGoingForward.current = autoForward;
+    setPreviousStepState(displayedStep);
+    setDisplayedStep(targetStep);
+    transitionProgress.value = 0;
+    transitionProgress.value = withTiming(1, {
+      duration: 350,
+      easing: Easing.out(Easing.cubic),
+    }, () => {
+      runOnJS(setPreviousStepState)(null);
+    });
+  }, [displayedStep]);
+
+  // Reset flow when closed, pre-fill park name when opened
   React.useEffect(() => {
     if (!visible) {
-      setStep('method');
+      setStep('type_select');
+      setDisplayedStep('type_select');
+      setPreviousStepState(null);
+      transitionProgress.value = 0;
+      isGoingForward.current = true;
       setQrData('');
       setQrFormat('QR_CODE');
       setOriginalImageUri(undefined);
@@ -260,8 +368,19 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       setShowUntilPicker(false);
       setParkQuery('');
       setShowParkSuggestions(false);
+      setIsManualEntry(false);
+      setManualBarcodeNumber('');
+      setManualBarcodeFormat('auto');
+      setBarcodeValidationError('');
+      setSelectedType(null);
+      continueButtonAnim.value = 0;
       fromPickerHeight.value = 0;
       untilPickerHeight.value = 0;
+    } else if (initialParkName) {
+      setParkName(initialParkName);
+      setParkQuery(initialParkName);
+      const chain = PARK_TO_CHAIN[initialParkName];
+      if (chain) setParkChain(chain);
     }
   }, [visible]);
 
@@ -284,7 +403,11 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
     if (result.validFrom) setValidFromDate(fromISODate(result.validFrom));
     if (result.validUntil) setValidUntilDate(fromISODate(result.validUntil));
 
+    // Jump directly (no slide) since camera is fullscreen
+    setDisplayedStep('detection');
     setStep('detection');
+    setPreviousStepState(null);
+    transitionProgress.value = 0;
   }, []);
 
   // Handle image-only fallback (no barcode found in image)
@@ -294,8 +417,11 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
     setOriginalImageUri(imageUri);
     setDetectionResult(null);
 
-    // Go straight to form since we have no data to detect from
+    // Go to form since type is already selected — jump directly
+    setDisplayedStep('form');
     setStep('form');
+    setPreviousStepState(null);
+    transitionProgress.value = 0;
   }, []);
 
   // Handle photo library import directly from method step
@@ -424,6 +550,13 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       return;
     }
 
+    // Validate barcode number for manual entry
+    if (isManualEntry && !manualBarcodeNumber.trim()) {
+      setBarcodeValidationError('Barcode number is required');
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      return;
+    }
+
     // Check for duplicate barcode/QR data
     if (qrData && qrFormat !== 'IMAGE_ONLY') {
       const duplicate = existingTickets.find(t => t.qrData === qrData);
@@ -441,39 +574,78 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
     }
 
     proceedWithSave();
-  }, [parkName, qrData, qrFormat, existingTickets, proceedWithSave]);
+  }, [parkName, qrData, qrFormat, existingTickets, proceedWithSave, isManualEntry, manualBarcodeNumber]);
 
   // Go back to previous step
   const goBack = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    switch (step) {
+    const currentStep = displayedStep;
+    switch (currentStep) {
+      case 'method':
+        navigateToStep('type_select', false);
+        setStep('type_select');
+        break;
+      case 'type_select':
+        onClose();
+        break;
       case 'scan':
+        navigateToStep('method', false);
         setStep('method');
         break;
       case 'detection':
+        navigateToStep('method', false);
         setStep('method');
         break;
       case 'form':
-        if (qrFormat === 'IMAGE_ONLY') {
+        if (isManualEntry) {
+          navigateToStep('method', false);
           setStep('method');
         } else {
+          navigateToStep('detection', false);
           setStep('detection');
         }
         break;
+      // Multi-step manual entry back navigation
+      case 'manual_barcode':
+        navigateToStep('method', false);
+        setStep('method');
+        break;
+      case 'manual_park':
+        navigateToStep('manual_barcode', false);
+        setStep('manual_barcode');
+        break;
+      case 'manual_details':
+        navigateToStep('manual_park', false);
+        setStep('manual_park');
+        break;
+      case 'manual_review':
+        navigateToStep('manual_details', false);
+        setStep('manual_details');
+        break;
     }
-  }, [step, qrFormat]);
+  }, [displayedStep, isManualEntry, onClose, navigateToStep]);
 
-  // Render step content
-  const renderStep = () => {
-    switch (step) {
+  // Render step content — accepts a step arg so both layers can render different steps
+  const renderStepContent = (targetStep: FlowStep) => {
+    switch (targetStep) {
       case 'method':
         return renderMethodStep();
+      case 'type_select':
+        return renderTypeSelectStep();
       case 'scan':
         return renderScanStep();
       case 'detection':
         return renderDetectionStep();
       case 'form':
         return renderFormStep();
+      case 'manual_barcode':
+        return renderManualBarcodeStep();
+      case 'manual_park':
+        return renderManualParkStep();
+      case 'manual_details':
+        return renderManualDetailsStep();
+      case 'manual_review':
+        return renderManualReviewStep();
     }
   };
 
@@ -481,13 +653,9 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   // Step 1: Choose method
   // =============================================
   const renderMethodStep = () => (
-    <Animated.View
-      entering={FadeIn.duration(200)}
-      style={styles.stepContainer}
-    >
-      <Text style={styles.stepTitle}>Add New Pass</Text>
+    <View style={styles.stepContainer}>
       <Text style={styles.stepSubtitle}>
-        How would you like to add your pass?
+        Choose how you want to import your pass
       </Text>
 
       <View style={styles.methodOptions}>
@@ -495,7 +663,11 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         <Pressable
           onPress={() => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            // Jump to scan (fullscreen camera) without slide animation
+            setDisplayedStep('scan');
             setStep('scan');
+            setPreviousStepState(null);
+            transitionProgress.value = 0;
           }}
           onPressIn={() => { cameraCardScale.value = withSpring(0.97, PRESS_SPRING); }}
           onPressOut={() => { cameraCardScale.value = withSpring(1, PRESS_SPRING); }}
@@ -513,7 +685,9 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
 
         {/* Photo library option */}
         <Pressable
-          onPress={handlePickFromLibrary}
+          onPress={() => {
+            handlePickFromLibrary();
+          }}
           onPressIn={() => { libraryCardScale.value = withSpring(0.97, PRESS_SPRING); }}
           onPressOut={() => { libraryCardScale.value = withSpring(1, PRESS_SPRING); }}
         >
@@ -527,8 +701,217 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
             </Text>
           </Animated.View>
         </Pressable>
+
+        {/* Manual entry option — now goes to multi-step manual flow */}
+        <Pressable
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            setQrData('');
+            setQrFormat('IMAGE_ONLY');
+            setOriginalImageUri(undefined);
+            setDetectionResult(null);
+            setIsManualEntry(true);
+            navigateToStep('manual_barcode', true);
+            setStep('manual_barcode');
+          }}
+        >
+          <View style={styles.methodCard}>
+            <View style={styles.methodIcon}>
+              <Ionicons name="create" size={32} color={colors.accent.primary} />
+            </View>
+            <Text style={styles.methodTitle}>Enter Manually</Text>
+            <Text style={styles.methodDescription}>
+              Type in your pass details without scanning
+            </Text>
+          </View>
+        </Pressable>
       </View>
-    </Animated.View>
+    </View>
+  );
+
+  // =============================================
+  // Step 1: Pass type selection (vertical card list)
+  // =============================================
+  const TYPE_SELECT_OPTIONS: { type: PassType; label: string; icon: keyof typeof Ionicons.glyphMap; description: string }[] = [
+    { type: 'annual_pass', label: 'Annual Pass', icon: 'calendar', description: 'Year-round park access' },
+    { type: 'season_pass', label: 'Season Pass', icon: 'sunny', description: 'Specific season or date range' },
+    { type: 'day_pass', label: 'Day Pass', icon: 'ticket', description: 'Single day admission' },
+    { type: 'express', label: 'Express / VIP', icon: 'flash', description: 'Skip-the-line or premium add-on' },
+  ];
+
+  // Track which card is selected (user must tap Continue to advance)
+  const [selectedType, setSelectedType] = useState<PassType | null>(null);
+
+  // Shared value tracking selected type index for useAnimatedReaction (-1 = none)
+  const selectedTypeIndex = useSharedValue(-1);
+
+  // Continue button animation — always visible, transitions between disabled/active
+  const continueButtonAnim = useSharedValue(0); // 0 = disabled, 1 = active
+  const continueScale = useSharedValue(1);
+
+  const continueButtonAnimStyle = useAnimatedStyle(() => {
+    const bgColor = interpolateColor(
+      continueButtonAnim.value,
+      [0, 1],
+      [colors.border.subtle, colors.accent.primary],
+    );
+    return {
+      backgroundColor: bgColor,
+      transform: [{ scale: continueScale.value }],
+    };
+  });
+
+  const continueTextAnimStyle = useAnimatedStyle(() => {
+    const textColor = interpolateColor(
+      continueButtonAnim.value,
+      [0, 1],
+      [colors.text.meta, '#FFFFFF'],
+    );
+    return { color: textColor };
+  });
+
+  const continueIconAnimStyle = useAnimatedStyle(() => {
+    const iconColor = interpolateColor(
+      continueButtonAnim.value,
+      [0, 1],
+      [colors.text.meta, '#FFFFFF'],
+    );
+    return { color: iconColor };
+  });
+
+  /** Animated type card sub-component — uses useAnimatedReaction watching selectedTypeIndex */
+  const TypeSelectCard = React.memo(({ option, index, onSelect }: {
+    option: typeof TYPE_SELECT_OPTIONS[number];
+    index: number;
+    onSelect: () => void;
+  }) => {
+    const selectionAnim = useSharedValue(0);
+    const pressScale = useSharedValue(1);
+
+    // Drive color animation from the shared selectedTypeIndex value
+    useAnimatedReaction(
+      () => selectedTypeIndex.value,
+      (currentIndex) => {
+        const isNowSelected = currentIndex === index;
+        selectionAnim.value = withTiming(isNowSelected ? 1 : 0, {
+          duration: 200,
+          easing: Easing.out(Easing.cubic),
+        });
+      },
+      [index],
+    );
+
+    const cardAnimStyle = useAnimatedStyle(() => {
+      const bgColor = interpolateColor(
+        selectionAnim.value,
+        [0, 1],
+        [colors.background.card, colors.interactive.pressedAccent],
+      );
+      const borderColor = interpolateColor(
+        selectionAnim.value,
+        [0, 1],
+        ['transparent', colors.accent.primary],
+      );
+      return {
+        backgroundColor: bgColor,
+        borderColor: borderColor,
+        transform: [{ scale: pressScale.value }],
+      };
+    });
+
+    const iconBgStyle = useAnimatedStyle(() => {
+      const bgColor = interpolateColor(
+        selectionAnim.value,
+        [0, 1],
+        [colors.accent.primaryLight, colors.accent.primary],
+      );
+      return { backgroundColor: bgColor };
+    });
+
+    const iconColorStyle = useAnimatedStyle(() => {
+      const c = interpolateColor(
+        selectionAnim.value,
+        [0, 1],
+        [colors.accent.primary, colors.text.inverse],
+      );
+      return { color: c };
+    });
+
+    const labelColorStyle = useAnimatedStyle(() => {
+      const c = interpolateColor(
+        selectionAnim.value,
+        [0, 1],
+        [colors.text.primary, colors.accent.primary],
+      );
+      return { color: c };
+    });
+
+    return (
+      <Pressable
+        onPress={onSelect}
+        onPressIn={() => { pressScale.value = withSpring(0.97, PRESS_SPRING); }}
+        onPressOut={() => { pressScale.value = withSpring(1, PRESS_SPRING); }}
+      >
+        <Animated.View style={[styles.typeSelectTallCard, cardAnimStyle]}>
+          <Animated.View style={[styles.typeSelectTallIcon, iconBgStyle]}>
+            <Ionicons name={option.icon} size={28} color={colors.accent.primary} />
+          </Animated.View>
+          <Animated.Text style={[styles.typeSelectTallLabel, labelColorStyle]}>
+            {option.label}
+          </Animated.Text>
+          <Text style={styles.typeSelectTallDesc}>{option.description}</Text>
+        </Animated.View>
+      </Pressable>
+    );
+  });
+
+  const renderTypeSelectStep = () => (
+    <View style={styles.typeSelectStepContainer}>
+      <Text style={styles.typeSelectQuestion}>
+        What type of pass?
+      </Text>
+
+      <View style={styles.typeSelectTallList}>
+        {TYPE_SELECT_OPTIONS.map((option, index) => (
+          <TypeSelectCard
+            key={option.type}
+            option={option}
+            index={index}
+            onSelect={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              setSelectedType(option.type);
+              setPassType(option.type);
+              selectedTypeIndex.value = index;
+              continueButtonAnim.value = withTiming(1, { duration: 250, easing: Easing.out(Easing.cubic) });
+            }}
+          />
+        ))}
+      </View>
+
+      {/* Continue button — ALWAYS visible, disabled/gray when no selection */}
+      <View style={styles.typeSelectContinueWrapper}>
+        <Pressable
+          onPress={() => {
+            if (!selectedType) return;
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            navigateToStep('method', true);
+            setStep('method');
+          }}
+          onPressIn={() => {
+            if (selectedType) continueScale.value = withSpring(0.96, PRESS_SPRING);
+          }}
+          onPressOut={() => {
+            if (selectedType) continueScale.value = withSpring(1, PRESS_SPRING);
+          }}
+          disabled={!selectedType}
+        >
+          <Animated.View style={[styles.typeSelectContinueButton, continueButtonAnimStyle]}>
+            <Animated.Text style={[styles.typeSelectContinueText, continueTextAnimStyle]}>Continue</Animated.Text>
+            <Ionicons name="arrow-forward" size={20} color={colors.text.meta} />
+          </Animated.View>
+        </Pressable>
+      </View>
+    </View>
   );
 
   // =============================================
@@ -555,7 +938,6 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
 
     return (
       <Animated.ScrollView
-        entering={FadeIn.duration(250)}
         style={styles.stepContainer}
         contentContainerStyle={styles.detectionScrollContent}
       >
@@ -680,6 +1062,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
           style={styles.primaryButton}
           onPress={() => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            navigateToStep('form', true);
             setStep('form');
           }}
         >
@@ -740,24 +1123,720 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   }, []);
 
   // =============================================
-  // Step 4: Manual entry form
+  // Manual Entry Step 1: Barcode/QR Input + Type Picker
+  // =============================================
+  const renderManualBarcodeStep = () => (
+    <Animated.ScrollView
+      ref={scrollRef}
+      onScroll={scrollHandler}
+      scrollEventThrottle={16}
+      style={styles.stepContainer}
+      contentContainerStyle={styles.manualStepContent}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="interactive"
+    >
+      <View style={styles.manualStepHeader}>
+        <View style={styles.manualStepNumberBadge}>
+          <Text style={styles.manualStepNumberText}>1</Text>
+        </View>
+        <Text style={styles.manualStepTitle}>Barcode Information</Text>
+        <Text style={styles.manualStepSubtitle}>
+          Enter the number from your pass barcode
+        </Text>
+      </View>
+
+      {/* Barcode Number */}
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>Barcode / Pass Number</Text>
+        <TextInput
+          style={[
+            styles.manualTextInput,
+            barcodeValidationError ? styles.textInputError : undefined,
+          ]}
+          value={manualBarcodeNumber}
+          onChangeText={(text) => {
+            setManualBarcodeNumber(text);
+            setQrData(text);
+            if (barcodeValidationError && text.trim()) {
+              setBarcodeValidationError('');
+            }
+            if (text.trim()) {
+              if (manualBarcodeFormat === 'qr') {
+                setQrFormat('QR_CODE');
+              } else if (manualBarcodeFormat === '1d') {
+                setQrFormat('CODE_128');
+              } else {
+                setQrFormat('CODE_128');
+              }
+            } else {
+              setQrFormat('IMAGE_ONLY');
+            }
+          }}
+          onFocus={handleInputFocus}
+          placeholder="Enter barcode or pass number"
+          placeholderTextColor={colors.text.meta}
+          autoCapitalize="characters"
+          autoCorrect={false}
+        />
+        {barcodeValidationError ? (
+          <Text style={styles.validationError}>{barcodeValidationError}</Text>
+        ) : null}
+      </View>
+
+      {/* Barcode Type — large card selector instead of tiny pills */}
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>Barcode Type</Text>
+        <View style={styles.manualSelectorList}>
+          {([
+            { key: 'auto' as const, label: 'Auto-detect', icon: 'scan-outline' as const, desc: 'We\'ll figure it out' },
+            { key: 'qr' as const, label: 'QR Code', icon: 'qr-code-outline' as const, desc: '2D square pattern' },
+            { key: '1d' as const, label: 'Barcode (1D)', icon: 'barcode-outline' as const, desc: 'Standard line barcode' },
+          ]).map((fmt) => {
+            const isSel = manualBarcodeFormat === fmt.key;
+            return (
+              <Pressable
+                key={fmt.key}
+                onPress={() => {
+                  Haptics.selectionAsync();
+                  setManualBarcodeFormat(fmt.key);
+                  if (manualBarcodeNumber.trim()) {
+                    if (fmt.key === 'qr') setQrFormat('QR_CODE');
+                    else if (fmt.key === '1d') setQrFormat('CODE_128');
+                    else setQrFormat('CODE_128');
+                  }
+                }}
+              >
+                <View style={[
+                  styles.manualSelectorCard,
+                  isSel && styles.manualSelectorCardSelected,
+                ]}>
+                  <View style={[
+                    styles.manualSelectorIconWrap,
+                    isSel && styles.manualSelectorIconWrapSelected,
+                  ]}>
+                    <Ionicons
+                      name={fmt.icon}
+                      size={24}
+                      color={isSel ? colors.text.inverse : colors.accent.primary}
+                    />
+                  </View>
+                  <View style={styles.manualSelectorTextWrap}>
+                    <Text style={[
+                      styles.manualSelectorLabel,
+                      isSel && styles.manualSelectorLabelSelected,
+                    ]}>
+                      {fmt.label}
+                    </Text>
+                    <Text style={styles.manualSelectorDesc}>{fmt.desc}</Text>
+                  </View>
+                  {isSel && (
+                    <Ionicons name="checkmark-circle" size={22} color={colors.accent.primary} />
+                  )}
+                </View>
+              </Pressable>
+            );
+          })}
+        </View>
+      </View>
+
+      <View style={styles.disclaimerBanner}>
+        <Ionicons name="information-circle-outline" size={16} color={colors.text.secondary} />
+        <Text style={styles.disclaimerBannerText}>
+          Please double-check that the number matches your pass barcode exactly.
+        </Text>
+      </View>
+
+      {/* Continue button */}
+      <Pressable
+        style={styles.primaryButton}
+        onPress={() => {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          navigateToStep('manual_park', true);
+          setStep('manual_park');
+        }}
+      >
+        <Text style={styles.primaryButtonText}>Next: Choose Park</Text>
+        <Ionicons name="arrow-forward" size={20} color="#FFFFFF" />
+      </Pressable>
+
+      <Animated.View style={keyboardPadding} />
+      <View style={{ height: insets.bottom + spacing.xxl }} />
+    </Animated.ScrollView>
+  );
+
+  // =============================================
+  // Manual Entry Step 2: Park Selection
+  // =============================================
+  const renderManualParkStep = () => (
+    <Animated.ScrollView
+      ref={scrollRef}
+      onScroll={scrollHandler}
+      scrollEventThrottle={16}
+      style={styles.stepContainer}
+      contentContainerStyle={styles.manualStepContent}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="interactive"
+    >
+      <View style={styles.manualStepHeader}>
+        <View style={styles.manualStepNumberBadge}>
+          <Text style={styles.manualStepNumberText}>2</Text>
+        </View>
+        <Text style={styles.manualStepTitle}>Select Your Park</Text>
+        <Text style={styles.manualStepSubtitle}>
+          Search for your park and select the chain
+        </Text>
+      </View>
+
+      {/* Park Name with Autocomplete */}
+      <View style={[styles.formGroup, { zIndex: 10 }]}>
+        <Text style={styles.formLabel}>Park Name</Text>
+        <TextInput
+          style={styles.manualTextInput}
+          value={parkQuery}
+          onChangeText={handleParkNameChange}
+          onFocus={(e) => {
+            handleInputFocus(e);
+            if (parkQuery.length >= 3) setShowParkSuggestions(true);
+          }}
+          onBlur={() => {
+            setTimeout(() => setShowParkSuggestions(false), 200);
+          }}
+          placeholder="e.g., Cedar Point"
+          placeholderTextColor={colors.text.meta}
+        />
+        {showParkSuggestions && parkSuggestions.length > 0 && (
+          <View style={styles.autocompleteDropdown}>
+            {parkSuggestions.map((name) => (
+              <Pressable
+                key={name}
+                style={styles.autocompleteItem}
+                onPress={() => handleParkSelect(name)}
+              >
+                <Ionicons name="location-outline" size={16} color={colors.text.secondary} />
+                <Text style={styles.autocompleteText} numberOfLines={1}>{name}</Text>
+                {PARK_TO_CHAIN[name] && (
+                  <Text style={styles.autocompleteChain} numberOfLines={1}>
+                    {PARK_CHAIN_LABELS[PARK_TO_CHAIN[name]]}
+                  </Text>
+                )}
+              </Pressable>
+            ))}
+          </View>
+        )}
+      </View>
+
+      {/* Park Chain — full-width cards instead of tiny pills */}
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>Park Chain</Text>
+        <View style={styles.manualSelectorList}>
+          {(Object.keys(PARK_CHAIN_LABELS) as ParkChain[]).map((chain) => {
+            const isSel = parkChain === chain;
+            const brandColor = PARK_BRAND_COLORS[chain];
+            return (
+              <Pressable
+                key={chain}
+                onPress={() => {
+                  Haptics.selectionAsync();
+                  setParkChain(chain);
+                }}
+              >
+                <View style={[
+                  styles.manualSelectorCard,
+                  isSel && styles.manualSelectorCardSelected,
+                  isSel && { borderColor: brandColor },
+                ]}>
+                  <View style={[
+                    styles.manualSelectorChainDot,
+                    { backgroundColor: brandColor },
+                  ]} />
+                  <View style={styles.manualSelectorTextWrap}>
+                    <Text style={[
+                      styles.manualSelectorLabel,
+                      isSel && { color: brandColor },
+                    ]}>
+                      {PARK_CHAIN_LABELS[chain]}
+                    </Text>
+                  </View>
+                  {isSel && (
+                    <Ionicons name="checkmark-circle" size={22} color={brandColor} />
+                  )}
+                </View>
+              </Pressable>
+            );
+          })}
+        </View>
+      </View>
+
+      {/* Continue button */}
+      <Pressable
+        style={[styles.primaryButton, !parkName.trim() && styles.primaryButtonDisabled]}
+        onPress={() => {
+          if (!parkName.trim()) {
+            Alert.alert('Missing Info', 'Please enter a park name');
+            return;
+          }
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          navigateToStep('manual_details', true);
+          setStep('manual_details');
+        }}
+        disabled={!parkName.trim()}
+      >
+        <Text style={styles.primaryButtonText}>Next: Pass Details</Text>
+        <Ionicons name="arrow-forward" size={20} color="#FFFFFF" />
+      </Pressable>
+
+      <Animated.View style={keyboardPadding} />
+      <View style={{ height: insets.bottom + spacing.xxl }} />
+    </Animated.ScrollView>
+  );
+
+  // =============================================
+  // Manual Entry Step 3: Pass Details (type + dates)
+  // =============================================
+  const renderManualDetailsStep = () => (
+    <Animated.ScrollView
+      ref={scrollRef}
+      onScroll={scrollHandler}
+      scrollEventThrottle={16}
+      style={styles.stepContainer}
+      contentContainerStyle={styles.manualStepContent}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="interactive"
+    >
+      <View style={styles.manualStepHeader}>
+        <View style={styles.manualStepNumberBadge}>
+          <Text style={styles.manualStepNumberText}>3</Text>
+        </View>
+        <Text style={styles.manualStepTitle}>Pass Details</Text>
+        <Text style={styles.manualStepSubtitle}>
+          Select the pass type and date information
+        </Text>
+      </View>
+
+      {/* Pass Type — large card selector */}
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>Pass Type</Text>
+        <View style={styles.manualSelectorList}>
+          {(Object.keys(PASS_TYPE_LABELS) as PassType[]).map((type) => {
+            const isSel = passType === type;
+            const iconMap: Record<PassType, keyof typeof Ionicons.glyphMap> = {
+              day_pass: 'ticket-outline',
+              multi_day: 'layers-outline',
+              annual_pass: 'calendar-outline',
+              season_pass: 'sunny-outline',
+              vip: 'star-outline',
+              parking: 'car-outline',
+              express: 'flash-outline',
+              unknown: 'help-circle-outline',
+            };
+            return (
+              <Pressable
+                key={type}
+                onPress={() => {
+                  Haptics.selectionAsync();
+                  setPassType(type);
+                  if (showFromPicker) {
+                    setShowFromPicker(false);
+                    fromPickerHeight.value = withTiming(0, { duration: 200, easing: Easing.out(Easing.ease) });
+                  }
+                  if (showUntilPicker) {
+                    setShowUntilPicker(false);
+                    untilPickerHeight.value = withTiming(0, { duration: 200, easing: Easing.out(Easing.ease) });
+                  }
+                }}
+              >
+                <View style={[
+                  styles.manualSelectorCard,
+                  isSel && styles.manualSelectorCardSelected,
+                ]}>
+                  <View style={[
+                    styles.manualSelectorIconWrap,
+                    isSel && styles.manualSelectorIconWrapSelected,
+                  ]}>
+                    <Ionicons
+                      name={iconMap[type]}
+                      size={22}
+                      color={isSel ? colors.text.inverse : colors.accent.primary}
+                    />
+                  </View>
+                  <View style={styles.manualSelectorTextWrap}>
+                    <Text style={[
+                      styles.manualSelectorLabel,
+                      isSel && styles.manualSelectorLabelSelected,
+                    ]}>
+                      {PASS_TYPE_LABELS[type]}
+                    </Text>
+                  </View>
+                  {isSel && (
+                    <Ionicons name="checkmark-circle" size={22} color={colors.accent.primary} />
+                  )}
+                </View>
+              </Pressable>
+            );
+          })}
+        </View>
+      </View>
+
+      {/* Dynamic Date Fields based on pass type */}
+      {needsDateFields && (
+        <Animated.View entering={FadeIn.duration(200)}>
+          {/* Day Pass: single "Date of Visit" */}
+          {passType === 'day_pass' && (
+            <View style={styles.formGroup}>
+              <Text style={styles.formLabel}>Date of Visit</Text>
+              <Pressable style={styles.dateButton} onPress={toggleFromPicker}>
+                <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                <Text style={styles.dateButtonText}>{toISODate(validFromDate)}</Text>
+                <Ionicons
+                  name={showFromPicker ? 'chevron-up' : 'chevron-down'}
+                  size={16}
+                  color={colors.text.meta}
+                />
+              </Pressable>
+              <Animated.View style={fromPickerStyle}>
+                <View style={styles.pickerContainer}>
+                  <DateTimePicker
+                    value={validFromDate}
+                    mode="date"
+                    display="spinner"
+                    onChange={(_, date) => {
+                      if (date) {
+                        setValidFromDate(date);
+                        setValidUntilDate(date);
+                      }
+                    }}
+                    style={styles.datePicker}
+                    textColor={colors.text.primary}
+                  />
+                </View>
+              </Animated.View>
+            </View>
+          )}
+
+          {/* Multi-Day: start + end date pickers */}
+          {passType === 'multi_day' && (
+            <>
+              <View style={styles.formGroup}>
+                <Text style={styles.formLabel}>Start Date</Text>
+                <Pressable style={styles.dateButton} onPress={toggleFromPicker}>
+                  <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                  <Text style={styles.dateButtonText}>{toISODate(validFromDate)}</Text>
+                  <Ionicons
+                    name={showFromPicker ? 'chevron-up' : 'chevron-down'}
+                    size={16}
+                    color={colors.text.meta}
+                  />
+                </Pressable>
+                <Animated.View style={fromPickerStyle}>
+                  <View style={styles.pickerContainer}>
+                    <DateTimePicker
+                      value={validFromDate}
+                      mode="date"
+                      display="spinner"
+                      onChange={(_, date) => { if (date) setValidFromDate(date); }}
+                      style={styles.datePicker}
+                      textColor={colors.text.primary}
+                    />
+                  </View>
+                </Animated.View>
+              </View>
+              <View style={styles.formGroup}>
+                <Text style={styles.formLabel}>End Date</Text>
+                <Pressable style={styles.dateButton} onPress={toggleUntilPicker}>
+                  <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                  <Text style={styles.dateButtonText}>{toISODate(validUntilDate)}</Text>
+                  <Ionicons
+                    name={showUntilPicker ? 'chevron-up' : 'chevron-down'}
+                    size={16}
+                    color={colors.text.meta}
+                  />
+                </Pressable>
+                <Animated.View style={untilPickerStyle}>
+                  <View style={styles.pickerContainer}>
+                    <DateTimePicker
+                      value={validUntilDate}
+                      mode="date"
+                      display="spinner"
+                      minimumDate={validFromDate}
+                      onChange={(_, date) => { if (date) setValidUntilDate(date); }}
+                      style={styles.datePicker}
+                      textColor={colors.text.primary}
+                    />
+                  </View>
+                </Animated.View>
+              </View>
+            </>
+          )}
+
+          {/* Season Pass: start + end date pickers */}
+          {passType === 'season_pass' && (
+            <>
+              <View style={styles.formGroup}>
+                <Text style={styles.formLabel}>Start Date</Text>
+                <Pressable style={styles.dateButton} onPress={toggleFromPicker}>
+                  <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                  <Text style={styles.dateButtonText}>{toISODate(validFromDate)}</Text>
+                  <Ionicons
+                    name={showFromPicker ? 'chevron-up' : 'chevron-down'}
+                    size={16}
+                    color={colors.text.meta}
+                  />
+                </Pressable>
+                <Animated.View style={fromPickerStyle}>
+                  <View style={styles.pickerContainer}>
+                    <DateTimePicker
+                      value={validFromDate}
+                      mode="date"
+                      display="spinner"
+                      onChange={(_, date) => { if (date) setValidFromDate(date); }}
+                      style={styles.datePicker}
+                      textColor={colors.text.primary}
+                    />
+                  </View>
+                </Animated.View>
+              </View>
+              <View style={styles.formGroup}>
+                <Text style={styles.formLabel}>End Date</Text>
+                <Pressable style={styles.dateButton} onPress={toggleUntilPicker}>
+                  <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                  <Text style={styles.dateButtonText}>{toISODate(validUntilDate)}</Text>
+                  <Ionicons
+                    name={showUntilPicker ? 'chevron-up' : 'chevron-down'}
+                    size={16}
+                    color={colors.text.meta}
+                  />
+                </Pressable>
+                <Animated.View style={untilPickerStyle}>
+                  <View style={styles.pickerContainer}>
+                    <DateTimePicker
+                      value={validUntilDate}
+                      mode="date"
+                      display="spinner"
+                      minimumDate={validFromDate}
+                      onChange={(_, date) => { if (date) setValidUntilDate(date); }}
+                      style={styles.datePicker}
+                      textColor={colors.text.primary}
+                    />
+                  </View>
+                </Animated.View>
+              </View>
+            </>
+          )}
+
+          {/* Annual Pass: start date + auto-calculated read-only expiry */}
+          {passType === 'annual_pass' && (
+            <>
+              <View style={styles.formGroup}>
+                <Text style={styles.formLabel}>Start Date</Text>
+                <Pressable style={styles.dateButton} onPress={toggleFromPicker}>
+                  <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                  <Text style={styles.dateButtonText}>{toISODate(validFromDate)}</Text>
+                  <Ionicons
+                    name={showFromPicker ? 'chevron-up' : 'chevron-down'}
+                    size={16}
+                    color={colors.text.meta}
+                  />
+                </Pressable>
+                <Animated.View style={fromPickerStyle}>
+                  <View style={styles.pickerContainer}>
+                    <DateTimePicker
+                      value={validFromDate}
+                      mode="date"
+                      display="spinner"
+                      onChange={(_, date) => { if (date) setValidFromDate(date); }}
+                      style={styles.datePicker}
+                      textColor={colors.text.primary}
+                    />
+                  </View>
+                </Animated.View>
+              </View>
+              <View style={styles.formGroup}>
+                <Text style={styles.formLabel}>Expires (auto-calculated)</Text>
+                <View style={[styles.dateButton, styles.dateButtonReadOnly]}>
+                  <Ionicons name="calendar-outline" size={18} color={colors.text.meta} />
+                  <Text style={[styles.dateButtonText, { color: colors.text.meta }]}>
+                    {toISODate(annualExpiry)}
+                  </Text>
+                  <Ionicons name="lock-closed-outline" size={14} color={colors.text.meta} />
+                </View>
+              </View>
+            </>
+          )}
+        </Animated.View>
+      )}
+
+      {/* Passholder Name */}
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>Passholder Name (optional)</Text>
+        <TextInput
+          style={styles.manualTextInput}
+          value={passholder}
+          onChangeText={setPassholder}
+          onFocus={handleInputFocus}
+          placeholder="e.g., Caleb Lanting"
+          placeholderTextColor={colors.text.meta}
+        />
+      </View>
+
+      {/* Notes */}
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>Notes (optional)</Text>
+        <TextInput
+          style={[styles.manualTextInput, styles.textInputMultiline]}
+          value={notes}
+          onChangeText={setNotes}
+          onFocus={handleInputFocus}
+          placeholder="Any additional notes..."
+          placeholderTextColor={colors.text.meta}
+          multiline
+          numberOfLines={3}
+        />
+      </View>
+
+      {/* Continue button */}
+      <Pressable
+        style={styles.primaryButton}
+        onPress={() => {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          navigateToStep('manual_review', true);
+          setStep('manual_review');
+        }}
+      >
+        <Text style={styles.primaryButtonText}>Next: Review</Text>
+        <Ionicons name="arrow-forward" size={20} color="#FFFFFF" />
+      </Pressable>
+
+      <Animated.View style={keyboardPadding} />
+      <View style={{ height: insets.bottom + spacing.xxl }} />
+    </Animated.ScrollView>
+  );
+
+  // =============================================
+  // Manual Entry Step 4: Review & Confirm
+  // =============================================
+  const renderManualReviewStep = () => {
+    const brandColor = PARK_BRAND_COLORS[parkChain];
+    return (
+      <ScrollView
+        style={styles.stepContainer}
+        contentContainerStyle={styles.manualStepContent}
+      >
+        <View style={styles.manualStepHeader}>
+          <View style={[styles.manualStepNumberBadge, { backgroundColor: colors.status.success }]}>
+            <Ionicons name="checkmark" size={16} color="#FFFFFF" />
+          </View>
+          <Text style={styles.manualStepTitle}>Review Your Pass</Text>
+          <Text style={styles.manualStepSubtitle}>
+            Make sure everything looks right before saving
+          </Text>
+        </View>
+
+        {/* Review card */}
+        <View style={styles.reviewCard}>
+          {/* Park info header */}
+          <View style={[styles.reviewHeader, { backgroundColor: brandColor }]}>
+            <Text style={styles.reviewHeaderPark}>{parkName.trim() || 'No park name'}</Text>
+            <Text style={styles.reviewHeaderChain}>{PARK_CHAIN_LABELS[parkChain]}</Text>
+          </View>
+
+          {/* Details rows */}
+          <View style={styles.reviewRow}>
+            <Ionicons name="card-outline" size={18} color={colors.text.secondary} />
+            <Text style={styles.reviewRowLabel}>Pass Type</Text>
+            <Text style={styles.reviewRowValue}>{PASS_TYPE_LABELS[passType]}</Text>
+          </View>
+
+          <View style={styles.reviewDivider} />
+
+          {manualBarcodeNumber.trim() ? (
+            <>
+              <View style={styles.reviewRow}>
+                <Ionicons name="barcode-outline" size={18} color={colors.text.secondary} />
+                <Text style={styles.reviewRowLabel}>Barcode</Text>
+                <Text style={styles.reviewRowValue} numberOfLines={1}>{manualBarcodeNumber}</Text>
+              </View>
+              <View style={styles.reviewDivider} />
+            </>
+          ) : null}
+
+          {needsDateFields && (
+            <>
+              <View style={styles.reviewRow}>
+                <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                <Text style={styles.reviewRowLabel}>
+                  {passType === 'day_pass' ? 'Date' : 'From'}
+                </Text>
+                <Text style={styles.reviewRowValue}>{toISODate(validFromDate)}</Text>
+              </View>
+              <View style={styles.reviewDivider} />
+
+              {passType !== 'day_pass' && (
+                <>
+                  <View style={styles.reviewRow}>
+                    <Ionicons name="calendar-outline" size={18} color={colors.text.secondary} />
+                    <Text style={styles.reviewRowLabel}>Until</Text>
+                    <Text style={styles.reviewRowValue}>
+                      {passType === 'annual_pass' ? toISODate(annualExpiry) : toISODate(validUntilDate)}
+                    </Text>
+                  </View>
+                  <View style={styles.reviewDivider} />
+                </>
+              )}
+            </>
+          )}
+
+          {passholder.trim() ? (
+            <>
+              <View style={styles.reviewRow}>
+                <Ionicons name="person-outline" size={18} color={colors.text.secondary} />
+                <Text style={styles.reviewRowLabel}>Passholder</Text>
+                <Text style={styles.reviewRowValue}>{passholder.trim()}</Text>
+              </View>
+              <View style={styles.reviewDivider} />
+            </>
+          ) : null}
+
+          {notes.trim() ? (
+            <View style={styles.reviewRow}>
+              <Ionicons name="document-text-outline" size={18} color={colors.text.secondary} />
+              <Text style={styles.reviewRowLabel}>Notes</Text>
+              <Text style={styles.reviewRowValue} numberOfLines={2}>{notes.trim()}</Text>
+            </View>
+          ) : null}
+        </View>
+
+        {/* Save button */}
+        <Pressable
+          onPress={handleSubmit}
+          onPressIn={() => { submitButtonScale.value = withSpring(0.96, PRESS_SPRING); }}
+          onPressOut={() => { submitButtonScale.value = withSpring(1, PRESS_SPRING); }}
+        >
+          <Animated.View style={[styles.primaryButton, submitButtonStyle]}>
+            <Text style={styles.primaryButtonText}>Save Pass</Text>
+            <Ionicons name="checkmark" size={20} color="#FFFFFF" />
+          </Animated.View>
+        </Pressable>
+
+        <View style={{ height: insets.bottom + spacing.xxl }} />
+      </ScrollView>
+    );
+  };
+
+  // =============================================
+  // Scanned entry form (existing — for non-manual flow)
   // =============================================
   const renderFormStep = () => (
       <Animated.ScrollView
         ref={scrollRef}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
-        entering={SlideInRight.springify().damping(20).stiffness(200)}
         style={styles.stepContainer}
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="interactive"
       >
-        <Text style={styles.stepTitle}>Pass Details</Text>
         <Text style={styles.stepSubtitle}>
-          {qrFormat === 'IMAGE_ONLY'
-            ? 'Enter the details for your pass'
-            : 'Confirm or edit the pass information'}
+          Confirm or edit the pass information
         </Text>
 
         {/* Original image preview for IMAGE_ONLY */}
@@ -1141,9 +2220,9 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
     >
       <View style={[styles.container, { paddingTop: insets.top }]}>
         {/* Header (hidden during scan step) */}
-        {step !== 'scan' && (
+        {displayedStep !== 'scan' && (
           <View style={styles.header}>
-            {step !== 'method' ? (
+            {displayedStep !== 'type_select' ? (
               <Pressable style={styles.backButton} onPress={goBack}>
                 <Ionicons name="arrow-back" size={24} color={colors.text.primary} />
               </Pressable>
@@ -1151,7 +2230,8 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
               <View style={styles.backButton} />
             )}
 
-            {(step === 'detection' || step === 'form') && (
+            {(displayedStep === 'type_select' || displayedStep === 'method' || displayedStep === 'detection' || displayedStep === 'form'
+              || displayedStep === 'manual_barcode' || displayedStep === 'manual_park' || displayedStep === 'manual_details' || displayedStep === 'manual_review') && (
               <View style={styles.headerCenter}>
                 <Text style={styles.headerTitle}>IMPORT PASS</Text>
               </View>
@@ -1163,9 +2243,25 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
           </View>
         )}
 
-        {/* Step content */}
+        {/* Step content — two-layer iOS push transition */}
         <View style={styles.content}>
-          {renderStep()}
+          {displayedStep === 'scan' ? (
+            // Scan step is full-screen camera, no slide wrapper
+            renderStepContent('scan')
+          ) : (
+            <View style={styles.transitionContainer}>
+              {/* Previous (outgoing) layer */}
+              {previousStepState && previousStepState !== 'scan' && (
+                <Animated.View style={[StyleSheet.absoluteFill, previousLayerStyle, styles.transitionLayer]}>
+                  {renderStepContent(previousStepState)}
+                </Animated.View>
+              )}
+              {/* Current (incoming) layer */}
+              <Animated.View style={[StyleSheet.absoluteFill, currentLayerStyle, styles.transitionLayer]}>
+                {renderStepContent(displayedStep)}
+              </Animated.View>
+            </View>
+          )}
         </View>
       </View>
     </Modal>
@@ -1208,6 +2304,14 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    overflow: 'hidden',
+  },
+  transitionContainer: {
+    flex: 1,
+  },
+  transitionLayer: {
+    flex: 1,
+    backgroundColor: colors.background.page,
   },
   stepContainer: {
     flex: 1,
@@ -1220,12 +2324,6 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.xxl,
     paddingTop: spacing.xl,
     gap: spacing.xxl,
-  },
-  stepTitle: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: colors.text.primary,
-    marginBottom: spacing.sm,
   },
   stepSubtitle: {
     fontSize: 16,
@@ -1267,6 +2365,96 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.text.secondary,
     textAlign: 'center',
+  },
+  // Disclaimer banner (persistent on manual entry form)
+  disclaimerBanner: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.md,
+    marginBottom: spacing.lg,
+    paddingHorizontal: spacing.base,
+    paddingVertical: spacing.base,
+    backgroundColor: colors.background.input,
+    borderRadius: radius.md,
+  },
+  disclaimerBannerText: {
+    flex: 1,
+    fontSize: typography.sizes.small,
+    color: colors.text.secondary,
+    lineHeight: 16,
+  },
+
+  // Type selection step -- vertical tall cards centered
+  typeSelectStepContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: spacing.xl,
+  },
+  typeSelectQuestion: {
+    fontSize: typography.sizes.input,
+    fontWeight: typography.weights.medium,
+    color: colors.text.secondary,
+    marginBottom: spacing.lg,
+    textAlign: 'center',
+  },
+  typeSelectTallList: {
+    gap: spacing.base,
+  },
+  typeSelectTallCard: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.background.card,
+    borderRadius: radius.card,
+    paddingVertical: spacing.xl,
+    paddingHorizontal: spacing.base,
+    minHeight: 100,
+    borderWidth: 2,
+    borderColor: 'transparent',
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.06,
+    shadowRadius: 10,
+    elevation: 3,
+  },
+  typeSelectTallIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.accent.primaryLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.sm,
+  },
+  typeSelectTallLabel: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold as any,
+    color: colors.text.primary,
+    marginBottom: 2,
+  },
+  typeSelectTallLabelSelected: {
+    color: colors.accent.primary,
+  },
+  typeSelectTallDesc: {
+    fontSize: typography.sizes.small,
+    color: colors.text.secondary,
+  },
+  typeSelectContinueWrapper: {
+    marginTop: spacing.xl,
+  },
+  typeSelectContinueButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.sm,
+    paddingVertical: spacing.base + 2,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radius.actionPill,
+    backgroundColor: colors.border.subtle,
+  },
+  typeSelectContinueText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: colors.text.meta,
   },
 
   // Detection step
@@ -1415,9 +2603,42 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border.subtle,
   },
+  textInputError: {
+    borderColor: colors.status.error,
+  },
   textInputMultiline: {
     minHeight: 80,
     textAlignVertical: 'top',
+  },
+  validationError: {
+    fontSize: 13,
+    color: colors.status.error,
+    marginTop: spacing.xs,
+    fontWeight: '500',
+  },
+  barcodeFormatRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  barcodeFormatPill: {
+    paddingHorizontal: spacing.base,
+    paddingVertical: spacing.md,
+    borderRadius: radius.actionPill,
+    backgroundColor: colors.background.card,
+    borderWidth: 1,
+    borderColor: colors.border.subtle,
+  },
+  barcodeFormatPillSelected: {
+    backgroundColor: colors.accent.primary,
+    borderColor: colors.accent.primary,
+  },
+  barcodeFormatPillText: {
+    fontSize: 13,
+    color: colors.text.secondary,
+    fontWeight: '500',
+  },
+  barcodeFormatPillTextSelected: {
+    color: '#FFFFFF',
   },
   chipScroll: {
     marginHorizontal: -spacing.lg,
@@ -1524,5 +2745,163 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#FFFFFF',
+  },
+  primaryButtonDisabled: {
+    backgroundColor: colors.border.subtle,
+  },
+
+  // =============================================
+  // Manual multi-step styles
+  // =============================================
+  manualStepContent: {
+    paddingBottom: spacing.xxl,
+    paddingTop: spacing.lg,
+  },
+  manualStepHeader: {
+    alignItems: 'center',
+    marginBottom: spacing.xxl,
+  },
+  manualStepNumberBadge: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: colors.accent.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.md,
+  },
+  manualStepNumberText: {
+    fontSize: typography.sizes.label,
+    fontWeight: typography.weights.bold,
+    color: '#FFFFFF',
+  },
+  manualStepTitle: {
+    fontSize: typography.sizes.heading,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
+    marginBottom: spacing.xs,
+    textAlign: 'center',
+  },
+  manualStepSubtitle: {
+    fontSize: typography.sizes.body,
+    color: colors.text.secondary,
+    textAlign: 'center',
+  },
+  manualTextInput: {
+    backgroundColor: colors.background.card,
+    borderRadius: radius.md,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.lg,
+    fontSize: typography.sizes.input,
+    color: colors.text.primary,
+    borderWidth: 1,
+    borderColor: colors.border.subtle,
+  },
+
+  // Large selector cards for manual steps
+  manualSelectorList: {
+    gap: spacing.md,
+  },
+  manualSelectorCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.background.card,
+    borderRadius: radius.md,
+    paddingVertical: spacing.base,
+    paddingHorizontal: spacing.lg,
+    borderWidth: 2,
+    borderColor: 'transparent',
+    minHeight: 56,
+  },
+  manualSelectorCardSelected: {
+    borderColor: colors.accent.primary,
+    backgroundColor: colors.interactive.pressedAccent,
+  },
+  manualSelectorIconWrap: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.accent.primaryLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.base,
+  },
+  manualSelectorIconWrapSelected: {
+    backgroundColor: colors.accent.primary,
+  },
+  manualSelectorChainDot: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    marginRight: spacing.base,
+  },
+  manualSelectorTextWrap: {
+    flex: 1,
+  },
+  manualSelectorLabel: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold as any,
+    color: colors.text.primary,
+  },
+  manualSelectorLabelSelected: {
+    color: colors.accent.primary,
+  },
+  manualSelectorDesc: {
+    fontSize: typography.sizes.small,
+    color: colors.text.secondary,
+    marginTop: 1,
+  },
+
+  // Review step
+  reviewCard: {
+    backgroundColor: colors.background.card,
+    borderRadius: radius.card,
+    overflow: 'hidden',
+    marginBottom: spacing.lg,
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    elevation: 4,
+  },
+  reviewHeader: {
+    paddingHorizontal: spacing.xl,
+    paddingVertical: spacing.lg,
+  },
+  reviewHeaderPark: {
+    fontSize: typography.sizes.large,
+    fontWeight: typography.weights.bold,
+    color: '#FFFFFF',
+    marginBottom: 2,
+  },
+  reviewHeaderChain: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.medium,
+    color: 'rgba(255,255,255,0.8)',
+  },
+  reviewRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    paddingHorizontal: spacing.xl,
+    paddingVertical: spacing.base,
+  },
+  reviewRowLabel: {
+    fontSize: typography.sizes.caption,
+    color: colors.text.secondary,
+    fontWeight: typography.weights.medium,
+    width: 80,
+  },
+  reviewRowValue: {
+    flex: 1,
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.medium,
+    color: colors.text.primary,
+    textAlign: 'right',
+  },
+  reviewDivider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: colors.border.subtle,
+    marginHorizontal: spacing.xl,
   },
 });

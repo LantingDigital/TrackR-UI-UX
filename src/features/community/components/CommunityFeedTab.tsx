@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useMemo } from 'react';
-import { View, StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
@@ -9,6 +9,7 @@ import Animated, {
   withDelay,
 } from 'react-native-reanimated';
 import { colors } from '../../../theme/colors';
+import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { SPRINGS } from '../../../constants/animations';
 import { GamesStrip } from './GamesStrip';
@@ -44,11 +45,12 @@ function StaggeredItem({
 interface CommunityFeedTabProps {
   topInset?: number;
   onShowCompose?: () => void;
+  onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
 }
 
 const keyExtractor = (item: FeedItem) => item.id;
 
-export const CommunityFeedTab = ({ topInset = 0, onShowCompose }: CommunityFeedTabProps) => {
+export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap }: CommunityFeedTabProps) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
   const { feed } = useCommunityStore();
@@ -72,6 +74,7 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose }: CommunityFeedT
 
   const listHeader = useMemo(() => (
     <StaggeredItem index={0}>
+      <Text style={styles.gamesSectionLabel}>GAMES</Text>
       <View style={styles.gamesStripContainer}>
         <GamesStrip
           onPlayCoastle={handlePlayCoastle}
@@ -96,10 +99,11 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose }: CommunityFeedT
           onLike={handleLike}
           onCommentTap={handleCommentTap}
           onAuthorTap={handleAuthorTap}
+          onCoasterTap={onCoasterTap}
         />
       </View>
     </StaggeredItem>
-  ), [handleLike, handleCommentTap, handleAuthorTap]);
+  ), [handleLike, handleCommentTap, handleAuthorTap, onCoasterTap]);
 
   return (
     <View style={styles.container}>
@@ -132,8 +136,16 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: spacing.lg,
   },
-  gamesStripContainer: {
+  gamesSectionLabel: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.meta,
+    textTransform: 'uppercase' as const,
+    letterSpacing: 1.2,
     marginTop: spacing.lg,
+    marginBottom: spacing.base,
+  },
+  gamesStripContainer: {
     marginHorizontal: -spacing.lg,
   },
   feedItem: {

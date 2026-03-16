@@ -8,7 +8,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
-        <StatusBar style="dark" />
+        <StatusBar style="auto" />
         <RootNavigator />
       </SafeAreaProvider>
     </GestureHandlerRootView>

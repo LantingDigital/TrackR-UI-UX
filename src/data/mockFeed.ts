@@ -94,7 +94,7 @@ export const MOCK_FEATURED_PARK: FeaturedParkData = {
   id: 'cedar-point',
   name: 'Cedar Point',
   location: 'Sandusky, Ohio',
-  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG/800px-CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG',
+  imageUrl: 'https://picsum.photos/seed/cedar-point-park/800/500',
   description: 'The Roller Coaster Capital of the World returns with 17 coasters and a brand new lineup for the season.',
   coasterCount: 17,
   topRide: 'Steel Vengeance',
@@ -123,39 +123,72 @@ export const MOCK_DAILY_CHALLENGE: DailyChallengeData = {
   participantCount: 2847,
 };
 
-// ── Did You Know Facts ──
+// ── Trivia ──
 
-export interface CoasterFactData {
+export interface TriviaData {
   id: string;
-  fact: string;
+  question: string;
+  answer: string;
   source: string;
-  relatedRide?: string;
-  relatedPark?: string;
   icon: string;
 }
 
-export const MOCK_COASTER_FACTS: CoasterFactData[] = [
+export const MOCK_TRIVIA: TriviaData[] = [
   {
-    id: 'f1',
-    fact: 'Steel Vengeance holds the record for most airtime on any roller coaster at 27.2 seconds of weightlessness.',
-    source: 'RCDB',
-    relatedRide: 'Steel Vengeance',
-    relatedPark: 'Cedar Point',
-    icon: 'timer-outline',
-  },
-  {
-    id: 'f2',
-    fact: 'Formula Rossa at Ferrari World is the fastest coaster in the world, reaching 149.1 mph in just 4.9 seconds.',
-    source: 'Guinness World Records',
-    relatedRide: 'Formula Rossa',
-    relatedPark: 'Ferrari World Abu Dhabi',
+    id: 't1',
+    question: 'Which roller coaster currently holds the record for the fastest speed in the world?',
+    answer: "Falcon's Flight at Six Flags Qiddiya, reaching 155 mph. It surpassed Formula Rossa's 149.1 mph record when it opened in 2025.",
+    source: 'Six Flags Qiddiya',
     icon: 'speedometer-outline',
   },
   {
-    id: 'f3',
-    fact: 'The first roller coaster in America was the Switchback Railway at Coney Island, opened in 1884. It cost 5 cents to ride.',
+    id: 't2',
+    question: 'Which coaster has the most airtime of any roller coaster ever built?',
+    answer: 'Steel Vengeance at Cedar Point with 27.2 seconds of weightlessness across its 5,740 feet of track.',
+    source: 'RCDB',
+    icon: 'timer-outline',
+  },
+  {
+    id: 't3',
+    question: 'What year did the first roller coaster in America open, and how much did it cost to ride?',
+    answer: 'The Switchback Railway at Coney Island opened in 1884 and cost just 5 cents to ride.',
     source: 'Smithsonian',
     icon: 'book-outline',
+  },
+  {
+    id: 't4',
+    question: 'What is the tallest roller coaster in the world?',
+    answer: 'Kingda Ka at Six Flags Great Adventure stands 456 feet tall, launched to 128 mph in 3.5 seconds by a hydraulic launch system.',
+    source: 'RCDB',
+    icon: 'resize-outline',
+  },
+  {
+    id: 't5',
+    question: 'Which manufacturer has built the most roller coasters worldwide?',
+    answer: 'Vekoma has built over 700 roller coasters across 60+ countries, making them the most prolific coaster manufacturer in history.',
+    source: 'Vekoma / RCDB',
+    icon: 'construct-outline',
+  },
+  {
+    id: 't6',
+    question: 'What was the first roller coaster to feature an inversion (loop)?',
+    answer: 'The Corkscrew at Knott\'s Berry Farm in 1975 was the first modern coaster with a full 360-degree inversion. It was designed by Arrow Dynamics.',
+    source: 'Knott\'s Berry Farm',
+    icon: 'sync-outline',
+  },
+  {
+    id: 't7',
+    question: 'How many operating roller coasters are there in the world?',
+    answer: 'There are roughly 4,800 operating roller coasters worldwide as of 2025. China leads with the most coasters of any single country.',
+    source: 'RCDB / Coaster Census',
+    icon: 'globe-outline',
+  },
+  {
+    id: 't8',
+    question: 'What is the longest roller coaster in the world?',
+    answer: 'Steel Dragon 2000 at Nagashima Spa Land in Japan stretches 8,133 feet (1.54 miles) of track. It held the height record too when it opened.',
+    source: 'RCDB',
+    icon: 'trail-sign-outline',
   },
 ];
 
@@ -176,7 +209,7 @@ export const MOCK_NEARBY_PARKS: NearbyParkItem[] = [
     id: 'sfmm',
     name: 'Six Flags Magic Mountain',
     distance: '52 mi',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Six_Flags_Magic_Mountain_%2813208988393%29.jpg/400px-Six_Flags_Magic_Mountain_%2813208988393%29.jpg',
+    imageUrl: 'https://picsum.photos/seed/magic-mountain/400/300',
     coasterCount: 16,
     isOpen: true,
   },
@@ -184,7 +217,7 @@ export const MOCK_NEARBY_PARKS: NearbyParkItem[] = [
     id: 'knotts',
     name: 'Knott\'s Berry Farm',
     distance: '38 mi',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Knott%27s_Berry_Farm%2C_2021.jpg/400px-Knott%27s_Berry_Farm%2C_2021.jpg',
+    imageUrl: 'https://picsum.photos/seed/knotts-berry/400/300',
     coasterCount: 10,
     isOpen: true,
   },
@@ -192,7 +225,7 @@ export const MOCK_NEARBY_PARKS: NearbyParkItem[] = [
     id: 'disney',
     name: 'Disneyland Resort',
     distance: '41 mi',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Pixarpiersunset2019_%28cropped%29_%28cropped%29.jpg/400px-Pixarpiersunset2019_%28cropped%29_%28cropped%29.jpg',
+    imageUrl: 'https://picsum.photos/seed/disneyland-ca/400/300',
     coasterCount: 6,
     isOpen: false,
     nextOpenTime: 'Opens 8:00 AM',

@@ -1,0 +1,310 @@
+[
+  {
+    "id": "carowinds",
+    "name": "Carowinds",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Carowinds_aerial_view%2C_September_2017.JPG/1280px-Carowinds_aerial_view%2C_September_2017.JPG",
+    "source": "wikimedia",
+    "notes": "Aerial view of Carowinds theme park, September 2017"
+  },
+  {
+    "id": "six-flags-great-adventure",
+    "name": "Six Flags Great Adventure",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Six_Flags_Great_Adventure_entrance_gate_1.jpg/1280px-Six_Flags_Great_Adventure_entrance_gate_1.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance gate of Six Flags Great Adventure, Jackson NJ"
+  },
+  {
+    "id": "dollywood",
+    "name": "Dollywood",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/Dollywoodsign1.jpg",
+    "source": "wikimedia",
+    "notes": "Dollywood entrance sign in Pigeon Forge, Tennessee"
+  },
+  {
+    "id": "silver-dollar-city",
+    "name": "Silver Dollar City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Silver_Dollar_City_%2822854131313%29.jpg/1280px-Silver_Dollar_City_%2822854131313%29.jpg",
+    "source": "wikimedia",
+    "notes": "Silver Dollar City theme park in Branson, Missouri"
+  },
+  {
+    "id": "holiday-world-splashin-safari",
+    "name": "Holiday World Splashin' Safari",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Holiday_World_Entrance_Gates_-_Jeremy_Thompson.jpg/1280px-Holiday_World_Entrance_Gates_-_Jeremy_Thompson.jpg",
+    "source": "wikimedia",
+    "notes": "Holiday World entrance gates in Santa Claus, Indiana"
+  },
+  {
+    "id": "kentucky-kingdom",
+    "name": "Kentucky Kingdom",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Kentucky_Kingdom_-_Entrance_Fountain_2021.jpg/1280px-Kentucky_Kingdom_-_Entrance_Fountain_2021.jpg",
+    "source": "wikimedia",
+    "notes": "Kentucky Kingdom entrance fountain, Louisville, 2021"
+  },
+  {
+    "id": "six-flags-darien-lake",
+    "name": "Six Flags Darien Lake",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/01/Predator_lift_hill.JPG",
+    "source": "wikimedia",
+    "notes": "Predator wooden roller coaster lift hill at Darien Lake"
+  },
+  {
+    "id": "playland-park",
+    "name": "Playland Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Playland_Beach.jpg/1280px-Playland_Beach.jpg",
+    "source": "wikimedia",
+    "notes": "Wide shot of Playland Beach and park in Rye, New York, landscape orientation"
+  },
+  {
+    "id": "adventure-park-usa",
+    "name": "Adventure Park USA",
+    "heroUrl": null,
+    "source": null,
+    "notes": "No Wikimedia Commons images available. Small family entertainment center in Monrovia, Maryland with go-karts, mini golf, and indoor attractions."
+  },
+  {
+    "id": "lake-compounce",
+    "name": "Lake Compounce",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Lake_Compounce_Main_Gate.jpg",
+    "source": "wikimedia",
+    "notes": "Lake Compounce main gate entrance, oldest continuously operating amusement park in North America"
+  },
+  {
+    "id": "tom-foolerys-adventure-park",
+    "name": "Tom Foolery's Adventure Park",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Indoor entertainment center inside Kalahari Resort (Wisconsin Dells and Round Rock TX). Not a traditional theme park."
+  },
+  {
+    "id": "yesterland-farm",
+    "name": "YesterLand Farm",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Pumpkin farm and seasonal agritourism attraction in Canton, TX. Has some amusement rides but primarily a farm attraction, not a theme park."
+  },
+  {
+    "id": "canobie-lake-park",
+    "name": "Canobie Lake Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Canobie_Lake_Park_Untamed.jpg/1280px-Canobie_Lake_Park_Untamed.jpg",
+    "source": "wikimedia",
+    "notes": "Canobie Lake Park with Untamed roller coaster visible, Salem, New Hampshire"
+  },
+  {
+    "id": "elitch-gardens",
+    "name": "Elitch Gardens",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Elitch_Gardens_Theme_Park_entrance%2C_Denver%2C_2009.jpg/1280px-Elitch_Gardens_Theme_Park_entrance%2C_Denver%2C_2009.jpg",
+    "source": "wikimedia",
+    "notes": "Elitch Gardens Theme Park entrance in Denver, Colorado, 2009. Carol Highsmith photo."
+  },
+  {
+    "id": "jenkinsons-boardwalk",
+    "name": "Jenkinson's Boardwalk",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/2025-08-23_11_26_19_View_south_along_Jenkinson%27s_Boardwalk_at_Parkway_in_Point_Pleasant_Beach%2C_Ocean_County%2C_New_Jersey.jpg/1280px-2025-08-23_11_26_19_View_south_along_Jenkinson%27s_Boardwalk_at_Parkway_in_Point_Pleasant_Beach%2C_Ocean_County%2C_New_Jersey.jpg",
+    "source": "wikimedia",
+    "notes": "View south along Jenkinson's Boardwalk at Parkway in Point Pleasant Beach, NJ"
+  },
+  {
+    "id": "luna-park-nj",
+    "name": "Luna Park (NJ)",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Luna Parc in NJ is an art installation/museum by Ricky Boscarino, not an amusement park. No traditional theme park by this name exists in NJ."
+  },
+  {
+    "id": "steel-pier",
+    "name": "Steel Pier",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atlantic_City_Steel_Pier_-_panoramio.jpg/1280px-Atlantic_City_Steel_Pier_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Panoramic view of Steel Pier amusement park in Atlantic City, NJ with Ferris wheel and boardwalk"
+  },
+  {
+    "id": "universal-studios-florida",
+    "name": "Universal Studios Florida",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/USF_Entrance.jpg/1280px-USF_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Universal Studios Florida entrance arch, Orlando"
+  },
+  {
+    "id": "adventure-city",
+    "name": "Adventure City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Adventure_City_-_52207187992.jpg/1280px-Adventure_City_-_52207187992.jpg",
+    "source": "wikimedia",
+    "notes": "Landscape photo of Adventure City park, 2736x1824 original"
+  },
+  {
+    "id": "altoona",
+    "name": "Altoona",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Altoona is a city in Pennsylvania, not a theme park. Possibly refers to DelGrosso's Park (in nearby Tipton) or Lakemont Park, but the entry is just the city name."
+  },
+  {
+    "id": "bengtsons-pumpkin-farm",
+    "name": "Bengtson's Pumpkin Farm",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Seasonal pumpkin farm and fall festival in Homer Glen, IL. Has some kiddie amusement rides but is primarily a farm/seasonal attraction."
+  },
+  {
+    "id": "camden-park",
+    "name": "Camden Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/The_entrance_sign_to_Camden_Park%2C_a_26-acre_amusement_park_just_outside_Huntington%2C_West_Virginia_LCCN2015631867.jpg/1280px-The_entrance_sign_to_Camden_Park%2C_a_26-acre_amusement_park_just_outside_Huntington%2C_West_Virginia_LCCN2015631867.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance sign to Camden Park, Huntington, WV. Library of Congress / Carol Highsmith photo."
+  },
+  {
+    "id": "city-forum",
+    "name": "City Forum",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Indoor family entertainment center in Clarksville, TN (go-karts, bowling, laser tag, arcade). Not a traditional theme park."
+  },
+  {
+    "id": "delgrossos-park",
+    "name": "DelGrosso's Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/DeGrosso_Amusement_park_tipton_-_panoramio.jpg/1280px-DeGrosso_Amusement_park_tipton_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "DelGrosso's Amusement Park in Tipton, Pennsylvania"
+  },
+  {
+    "id": "family-kingdom-amusement-park",
+    "name": "Family Kingdom Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/5/54/Family_Kingdom_Amusement_Park_3.jpg",
+    "source": "wikimedia",
+    "notes": "Family Kingdom Amusement Park oceanfront view in Myrtle Beach, SC"
+  },
+  {
+    "id": "frankies-fun-park",
+    "name": "Frankie's Fun Park",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Chain of family entertainment centers in the Carolinas (go-karts, mini golf, arcade, bowling). Not a traditional theme park."
+  },
+  {
+    "id": "funtasticks",
+    "name": "Funtasticks",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Small 5-acre family fun park in Tucson, AZ with go-karts, mini golf, bumper boats. Not a traditional theme park."
+  },
+  {
+    "id": "go-karts-plus",
+    "name": "Go-Karts Plus",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Go-kart and family entertainment center in Williamsburg, VA. Not a traditional theme park."
+  },
+  {
+    "id": "idlewild-soakzone",
+    "name": "Idlewild SoakZone",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/IDLEWILD_MR_ROGERS_TROLLEY_WIDE_200_6_00_8_-_panoramio.jpg/1280px-IDLEWILD_MR_ROGERS_TROLLEY_WIDE_200_6_00_8_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Wide landscape shot of Idlewild park area near Ligonier, PA. Third oldest operating amusement park in the US."
+  },
+  {
+    "id": "jungle-jims-playland",
+    "name": "Jungle Jim's Playland",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Defunct indoor family entertainment chain (Midvale UT location closed). Indoor playground and mini amusement park concept, not a traditional theme park."
+  },
+  {
+    "id": "lakeside-amusement-park",
+    "name": "Lakeside Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Lakeside_Amusement_Park%2C_1966.jpg/1280px-Lakeside_Amusement_Park%2C_1966.jpg",
+    "source": "wikimedia",
+    "notes": "Lakeside Amusement Park in Denver, Colorado, 1966 vintage photo showing the Tower of Jewels and park layout"
+  },
+  {
+    "id": "magic-harbor",
+    "name": "Magic Harbor",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Magic_Harbor_lighthouse_sign%2C_Surfside_Beach%2C_South_Carolina_LCCN2017712445.tif/lossy-page1-1280px-Magic_Harbor_lighthouse_sign%2C_Surfside_Beach%2C_South_Carolina_LCCN2017712445.tif.jpg",
+    "source": "wikimedia",
+    "notes": "Magic Harbor lighthouse sign in Surfside Beach, SC. Park is defunct (closed mid-1990s). Library of Congress photo."
+  },
+  {
+    "id": "midway-park",
+    "name": "Midway Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Carousel_Midway_Park_Jul_12.jpg/1280px-Carousel_Midway_Park_Jul_12.jpg",
+    "source": "wikimedia",
+    "notes": "Carousel at Midway State Park in Maple Springs, NY. 15th oldest continually operating amusement park in the US."
+  },
+  {
+    "id": "new-philadelphia-ohio",
+    "name": "New Philadelphia Ohio",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "New Philadelphia is a city in Ohio, not a theme park."
+  },
+  {
+    "id": "oakland-zoo",
+    "name": "Oakland Zoo",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Oakland_Zoo_entrance.jpg/1280px-Oakland_Zoo_entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Oakland Zoo entrance in Oakland, California. Primarily a zoo, has some amusement rides."
+  },
+  {
+    "id": "parque-warner-madrid",
+    "name": "Parque Warner Madrid",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Entrada-parque-warner.jpg/1280px-Entrada-parque-warner.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance to Parque Warner Madrid theme park in San Martin de la Vega, Spain"
+  },
+  {
+    "id": "quassy-amusement-waterpark",
+    "name": "Quassy Amusement Waterpark",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Quassy_Amusement_Park_-_48334443831.jpg/1280px-Quassy_Amusement_Park_-_48334443831.jpg",
+    "source": "wikimedia",
+    "notes": "Quassy Amusement Park on Lake Quassapaug in Middlebury, Connecticut"
+  },
+  {
+    "id": "safari-land",
+    "name": "Safari Land",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "62,000 sq ft indoor entertainment center in Villa Park, IL (bowling, arcade, indoor coaster). Not a traditional theme park."
+  },
+  {
+    "id": "scene75",
+    "name": "Scene75",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Indoor entertainment center chain in Ohio and Chicago area (go-karts, laser tag, arcade). Not a traditional theme park."
+  },
+  {
+    "id": "st-louis-mo",
+    "name": "St. Louis MO",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "St. Louis is a city in Missouri, not a theme park. Possibly refers to Six Flags St. Louis, but the entry is just the city name."
+  },
+  {
+    "id": "trimper-rides-of-ocean-city",
+    "name": "Trimper Rides Of Ocean City",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ocean_City_MD_Boardwalk_August_2009_2.jpg/1280px-Ocean_City_MD_Boardwalk_August_2009_2.jpg",
+    "source": "wikimedia",
+    "notes": "Ocean City MD Boardwalk with Trimper's Rides area visible, August 2009"
+  },
+  {
+    "id": "wonderla",
+    "name": "Wonderla",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Wonderla_Bangalore_BNC.jpg/1280px-Wonderla_Bangalore_BNC.jpg",
+    "source": "wikimedia",
+    "notes": "Wide aerial/overview shot of Wonderla amusement park in Bangalore, India"
+  }
+]

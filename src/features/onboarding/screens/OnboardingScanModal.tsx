@@ -1,34 +1,8 @@
 /**
  * OnboardingScanModal
  *
- * A stripped copy of ScanModal (src/components/wallet/ScanModal.tsx)
- * for use in the onboarding demo (Screen 4). Matches the real wallet layout exactly.
- *
- * Layout (matches real ScanModal):
- *  - "W A L L E T" header with letter-spacing
- *  - "Search passes..." search bar
- *  - Favorites section (empty state: star icon + "No favorites yet")
- *  - Tickets section (empty state: ticket icon + "No tickets yet" + "+ Add")
- *  - Passes section (pass cards + "Import Pass" dashed card + "+ Add")
- *
- * Stripped:
- *  - useWallet hook -- uses static mock ticket data instead
- *  - Search functionality (filtering, keyboard handling)
- *  - Quick actions (long press, set default)
- *  - Expired section (demo only shows active passes)
- *  - PassDetailView (parent handles it)
- *
- * Kept:
- *  - Carousel layout (horizontal ScrollViews with pass cards)
- *  - Section card styling (white cards with shadows)
- *  - Section headers with "+ Add" buttons
- *  - Empty states with icons and descriptive text
- *  - Import Pass card with dashed border
- *
- * Added:
- *  - Static DEMO_TICKETS data (2 passes with real NanoBanana card art)
- *  - forwardRef with scrollToPass(index) method
- *  - onPassSelect callback (fires when user taps a pass)
+ * A stripped copy of ScanModal for onboarding demo (Screen 4).
+ * Shows populated wallet with favorites, tickets, and passes.
  */
 
 import React, { forwardRef, useImperativeHandle, useCallback, useRef } from 'react';
@@ -45,6 +19,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
+  withSpring,
   interpolate,
   Extrapolation,
   Easing,
@@ -57,11 +32,10 @@ import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { CARD_ART } from '../../../data/cardArt';
 
-// Card dimensions — scaled down for onboarding phone frame
-// Real app uses 120px, onboarding frame is scaled ~0.85x so 100px looks right
-const CARD_WIDTH = 100;
-const CARD_HEIGHT = 100;
-const CARD_GAP = 10;
+// Card dimensions — match real ScanModal (120px for favorites/tickets/passes)
+const CARD_WIDTH = 120;
+const CARD_HEIGHT = 120;
+const CARD_GAP = 8; // spacing.md
 
 // ============================================
 // Card Art Mapping (ticket id -> card art asset)
@@ -70,12 +44,70 @@ const CARD_GAP = 10;
 const TICKET_CARD_ART: Record<string, ImageSourcePropType> = {
   'cp-season': CARD_ART['steel-vengeance'],
   'kbf-season': CARD_ART['ghostrider'],
+  'bgt-fav': CARD_ART['iron-gwazi'],
+  'ioa-ticket': CARD_ART['jurassic-world-velocicoaster'],
+  'sfmm-ticket': CARD_ART['twisted-colossus'],
 };
 
 // ============================================
 // Static Mock Ticket Data
 // ============================================
 
+// Favorite pass
+const DEMO_FAVORITE: Ticket = {
+  id: 'bgt-fav',
+  parkName: 'Busch Gardens Tampa',
+  parkChain: 'seaworld',
+  passType: 'annual_pass',
+  passholder: 'Caleb Lanting',
+  validFrom: '2026-01-01',
+  validUntil: '2026-12-31',
+  qrData: 'BGT-ANNUAL-2026-07721',
+  qrFormat: 'QR_CODE',
+  isFavorite: true,
+  status: 'active',
+  isDefault: false,
+  addedAt: '2026-01-10T08:00:00Z',
+  lastUsedAt: '2026-02-14T10:00:00Z',
+  autoDetected: false,
+};
+
+// Day tickets
+const DEMO_TICKET_1: Ticket = {
+  id: 'ioa-ticket',
+  parkName: 'Islands of Adventure',
+  parkChain: 'universal',
+  passType: 'day_pass',
+  passholder: 'Caleb Lanting',
+  validFrom: '2026-04-15',
+  validUntil: '2026-04-15',
+  qrData: 'IOA-DAY-2026-33190',
+  qrFormat: 'QR_CODE',
+  isFavorite: false,
+  status: 'active',
+  isDefault: false,
+  addedAt: '2026-03-01T12:00:00Z',
+  autoDetected: false,
+};
+
+const DEMO_TICKET_2: Ticket = {
+  id: 'sfmm-ticket',
+  parkName: 'Six Flags Magic Mountain',
+  parkChain: 'six_flags',
+  passType: 'day_pass',
+  passholder: 'Caleb Lanting',
+  validFrom: '2026-05-10',
+  validUntil: '2026-05-10',
+  qrData: 'SFMM-DAY-2026-55042',
+  qrFormat: 'QR_CODE',
+  isFavorite: false,
+  status: 'active',
+  isDefault: false,
+  addedAt: '2026-03-05T09:00:00Z',
+  autoDetected: false,
+};
+
+// Season passes
 export const DEMO_TICKETS: Ticket[] = [
   {
     id: 'cp-season',
@@ -93,6 +125,7 @@ export const DEMO_TICKETS: Ticket[] = [
     addedAt: '2026-01-15T10:00:00Z',
     lastUsedAt: '2026-03-08T14:30:00Z',
     autoDetected: true,
+    heroImageSource: CARD_ART['steel-vengeance'],
   },
   {
     id: 'kbf-season',
@@ -110,6 +143,7 @@ export const DEMO_TICKETS: Ticket[] = [
     addedAt: '2026-02-20T09:00:00Z',
     lastUsedAt: '2026-03-01T11:00:00Z',
     autoDetected: true,
+    heroImageSource: CARD_ART['ghostrider'],
   },
 ];
 
@@ -118,33 +152,39 @@ export const DEMO_TICKETS: Ticket[] = [
 // ============================================
 
 export interface OnboardingScanModalRef {
-  /** Scroll to a specific pass card by index */
   scrollToPass: (index: number) => void;
 }
 
 interface OnboardingScanModalProps {
-  /** Whether the modal content is visible */
   visible: boolean;
-  /** Called when modal should close */
   onClose?: () => void;
-  /** Called when user taps a pass card */
   onPassSelect?: (ticket: Ticket, index: number) => void;
 }
 
-/** Mini preview card for the demo carousel -- uses real card art */
+/** Mini preview card for the demo carousel — matches real PassPreviewCard */
 const DemoPassCard: React.FC<{
   ticket: Ticket;
   onPress?: () => void;
 }> = ({ ticket, onPress }) => {
-  const cardArtSource = TICKET_CARD_ART[ticket.id];
+  // Use TICKET_CARD_ART mapping first, then fall back to ticket.heroImageSource
+  const cardArtSource = TICKET_CARD_ART[ticket.id] || ticket.heroImageSource;
+  const pressScale = useSharedValue(1);
+
+  const pressAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: pressScale.value }],
+  }));
 
   return (
     <Pressable
       onPress={onPress}
-      style={({ pressed }) => [pressed && { transform: [{ scale: 0.97 }] }]}
+      onPressIn={() => {
+        pressScale.value = withTiming(0.93, { duration: 120 });
+      }}
+      onPressOut={() => {
+        pressScale.value = withSpring(1, { damping: 15, stiffness: 200, mass: 0.8 });
+      }}
     >
-      <View style={demoCardStyles.container}>
-        {/* Card art image background */}
+      <Animated.View style={[demoCardStyles.container, pressAnimStyle]}>
         {cardArtSource ? (
           <Image
             source={cardArtSource}
@@ -155,24 +195,22 @@ const DemoPassCard: React.FC<{
           <View style={demoCardStyles.fallbackGradient} />
         )}
 
-        {/* Star badge for favorites */}
         {ticket.isFavorite && (
           <View style={demoCardStyles.favoriteBadge}>
-            <Ionicons name="star" size={10} color="#FFD700" />
+            <Ionicons name="star" size={12} color="#FFD700" />
           </View>
         )}
 
-        {/* Gradient banner at bottom with park name */}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.85)']}
-          locations={[0, 0.45, 1]}
+          colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)']}
+          locations={[0, 0.5, 1]}
           style={demoCardStyles.banner}
         >
-          <Text style={demoCardStyles.parkName} numberOfLines={2}>
+          <Text style={demoCardStyles.parkName} numberOfLines={1} ellipsizeMode="tail">
             {ticket.parkName}
           </Text>
         </LinearGradient>
-      </View>
+      </Animated.View>
     </Pressable>
   );
 };
@@ -194,8 +232,6 @@ const demoCardStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'absolute',
-    top: 0,
-    left: 0,
   },
   fallbackGradient: {
     width: '100%',
@@ -204,11 +240,11 @@ const demoCardStyles = StyleSheet.create({
   },
   favoriteBadge: {
     position: 'absolute',
-    top: 5,
-    left: 5,
-    width: 18,
-    height: 18,
-    borderRadius: 9,
+    top: 6,
+    left: 6,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -218,26 +254,26 @@ const demoCardStyles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: '40%',
+    height: '35%',
     justifyContent: 'flex-end',
     paddingBottom: 6,
     paddingHorizontal: 6,
   },
   parkName: {
-    fontSize: 10,
+    fontSize: CARD_WIDTH * 0.11,
     fontWeight: '600',
     color: '#FFFFFF',
     textAlign: 'center',
   },
 });
 
-/** Import Pass card with dashed border */
-const ImportPassCard: React.FC = () => (
+/** Import card with dashed border — reusable for Tickets and Passes */
+const ImportCard: React.FC<{ label: string }> = ({ label }) => (
   <View style={importCardStyles.container}>
     <View style={importCardStyles.iconContainer}>
       <Ionicons name="add" size={22} color={colors.accent.primary} />
     </View>
-    <Text style={importCardStyles.text}>Import Pass</Text>
+    <Text style={importCardStyles.text}>{label}</Text>
   </View>
 );
 
@@ -254,16 +290,16 @@ const importCardStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconContainer: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     backgroundColor: `${colors.accent.primary}15`,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 4,
+    marginBottom: 6,
   },
   text: {
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: '600',
     color: colors.accent.primary,
   },
@@ -273,10 +309,8 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
   function OnboardingScanModal({ visible, onClose, onPassSelect }, ref) {
     const passesScrollRef = useRef<ScrollView>(null);
 
-    // Entrance animation
     const entrance = useSharedValue(0);
 
-    // Start entrance animation when visible
     React.useEffect(() => {
       if (visible) {
         entrance.value = 0;
@@ -286,24 +320,16 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
       }
     }, [visible]);
 
-    // All demo tickets go in Passes section (season_pass, annual_pass, etc.)
-    // Favorites and Tickets are intentionally empty to match the screenshot
-    const passItems = DEMO_TICKETS;
-
-    // Handle pass tap
     const handlePassPress = useCallback((ticket: Ticket) => {
       const index = DEMO_TICKETS.findIndex(t => t.id === ticket.id);
       onPassSelect?.(ticket, index >= 0 ? index : 0);
     }, [onPassSelect]);
 
-    // Expose scrollToPass via ref
     useImperativeHandle(ref, () => ({
       scrollToPass: (index: number) => {
         const ticket = DEMO_TICKETS[index];
         if (!ticket) return;
-
-        // Scroll in Passes section
-        const passIndex = passItems.findIndex(t => t.id === ticket.id);
+        const passIndex = DEMO_TICKETS.findIndex(t => t.id === ticket.id);
         if (passIndex >= 0) {
           passesScrollRef.current?.scrollTo({
             x: passIndex * (CARD_WIDTH + CARD_GAP),
@@ -313,7 +339,7 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
       },
     }));
 
-    // Staggered entrance styles for each section
+    // Staggered entrance styles
     const favoritesStyle = useAnimatedStyle(() => ({
       opacity: interpolate(entrance.value, [0, 0.3], [0, 1], Extrapolation.CLAMP),
       transform: [{ translateY: interpolate(entrance.value, [0, 0.3], [20, 0], Extrapolation.CLAMP) }],
@@ -329,59 +355,50 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
       transform: [{ translateY: interpolate(entrance.value, [0.3, 0.6], [20, 0], Extrapolation.CLAMP) }],
     }));
 
-    if (!visible) return null;
-
     return (
       <ScrollView
-        style={styles.scrollView}
+        style={[styles.scrollView, !visible && { opacity: 0 }]}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
+        pointerEvents={visible ? 'auto' : 'none'}
       >
-        {/* ========== SEARCH BAR (visual only) ========== */}
-        <View style={styles.searchBarContainer}>
-          <View style={styles.searchBar}>
-            <Ionicons name="search" size={16} color="#999999" />
-            <Text style={styles.searchBarText}>Search passes...</Text>
-            <View style={styles.searchBarCloseButton}>
-              <Ionicons name="close" size={14} color="#666666" />
-            </View>
-          </View>
-        </View>
-
-        {/* ========== FAVORITES SECTION (empty state) ========== */}
+        {/* ========== FAVORITES SECTION (1 favorite) ========== */}
         <Animated.View style={[styles.section, favoritesStyle]}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Favorites</Text>
           </View>
-          <View style={styles.sectionEmptyState}>
-            <Ionicons name="star-outline" size={20} color="#CCCCCC" />
-            <Text style={styles.sectionEmptyText}>No favorites yet</Text>
-            <Text style={styles.sectionEmptySubtext}>
-              Long press any pass to add to favorites
-            </Text>
-          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.carouselScrollView}
+            contentContainerStyle={styles.carouselContent}
+          >
+            <DemoPassCard ticket={DEMO_FAVORITE} />
+          </ScrollView>
         </Animated.View>
 
         <View style={styles.frostedGap} />
 
-        {/* ========== TICKETS SECTION (empty state) ========== */}
+        {/* ========== TICKETS SECTION (2 day tickets) ========== */}
         <Animated.View style={[styles.section, ticketsStyle]}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Tickets</Text>
             <Text style={styles.addButton}>+ Add</Text>
           </View>
-          <View style={styles.sectionEmptyState}>
-            <Ionicons name="diamond-outline" size={20} color="#CCCCCC" />
-            <Text style={styles.sectionEmptyText}>No tickets yet</Text>
-            <Text style={styles.sectionEmptySubtext}>
-              Day passes and multi-day tickets appear here
-            </Text>
-          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.carouselScrollView}
+            contentContainerStyle={styles.carouselContent}
+          >
+            <DemoPassCard ticket={DEMO_TICKET_1} />
+            <ImportCard label="Import Ticket" />
+          </ScrollView>
         </Animated.View>
 
         <View style={styles.frostedGap} />
 
-        {/* ========== PASSES SECTION (with cards + Import Pass) ========== */}
+        {/* ========== PASSES SECTION (season passes + Import) ========== */}
         <Animated.View style={[styles.section, passesStyle]}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Passes</Text>
@@ -391,23 +408,22 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
             ref={passesScrollRef}
             horizontal
             showsHorizontalScrollIndicator={false}
+            style={styles.carouselScrollView}
             contentContainerStyle={styles.carouselContent}
             decelerationRate="fast"
             snapToInterval={CARD_WIDTH + CARD_GAP}
           >
-            {passItems.map((ticket) => (
+            {DEMO_TICKETS.map((ticket) => (
               <DemoPassCard
                 key={ticket.id}
                 ticket={ticket}
                 onPress={() => handlePassPress(ticket)}
               />
             ))}
-            {/* Import Pass card at end of carousel */}
-            <ImportPassCard />
+            <ImportCard label="Import Pass" />
           </ScrollView>
         </Animated.View>
 
-        {/* Bottom padding */}
         <View style={{ height: 100 }} />
       </ScrollView>
     );
@@ -415,77 +431,57 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
 );
 
 // ============================================
-// Styles (matches ScanModal sectionsOnly mode)
+// Styles
 // ============================================
 
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
+    overflow: 'visible',
   },
   contentContainer: {
-    paddingTop: 8,
+    paddingTop: 0,
   },
 
-  // Search Bar (visual only)
-  searchBarContainer: {
-    paddingHorizontal: 12,
-    marginBottom: 12,
-  },
-  searchBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F5F5F5',
-    borderRadius: 14,
-    paddingHorizontal: 12,
-    height: 36,
-    gap: 6,
-  },
-  searchBarText: {
-    flex: 1,
-    fontSize: 13,
-    color: '#999999',
-  },
-  searchBarCloseButton: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    backgroundColor: 'rgba(0,0,0,0.08)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  // Section Card (matches ScanModal exactly)
+  // Section Card — matches real ScanModal
   section: {
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     marginHorizontal: 8,
-    paddingVertical: 14,
-    ...shadows.section,
+    paddingVertical: 16,
+    shadowColor: '#323232',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.14,
+    shadowRadius: 20,
+    elevation: 5,
   },
   frostedGap: {
-    height: 14,
+    height: 16,
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 14,
-    marginBottom: 10,
+    paddingHorizontal: 16,
+    marginBottom: 12,
   },
   sectionTitle: {
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: '600',
     color: '#000000',
   },
   addButton: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '600',
     color: colors.accent.primary,
   },
 
   // Carousel
+  carouselScrollView: {
+    overflow: 'visible',
+  },
   carouselContent: {
-    paddingHorizontal: 14,
+    paddingHorizontal: 16,
     gap: CARD_GAP,
   },
 

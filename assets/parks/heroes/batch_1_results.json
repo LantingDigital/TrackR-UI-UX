@@ -1,0 +1,308 @@
+[
+  {
+    "id": "cedar-point",
+    "name": "Cedar Point",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG/1280px-CedarPoint_Overview_BackHalf_DSCN9502_%28cropped%29.JPG",
+    "source": "wikimedia",
+    "notes": "Overview shot of the back half of Cedar Point showing multiple coasters and Lake Erie"
+  },
+  {
+    "id": "busch-gardens-williamsburg",
+    "name": "Busch Gardens Williamsburg",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Busch_Gardens_Williamsburg_Main_Gate.jpg/1280px-Busch_Gardens_Williamsburg_Main_Gate.jpg",
+    "source": "wikimedia",
+    "notes": "Main gate entrance of Busch Gardens Williamsburg, landscape orientation"
+  },
+  {
+    "id": "six-flags-great-america",
+    "name": "Six Flags Great America",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Columbia_Carousel_at_Six_Flags_Great_America_June_2025.jpg/1280px-Columbia_Carousel_at_Six_Flags_Great_America_June_2025.jpg",
+    "source": "wikimedia",
+    "notes": "Columbia Carousel at Six Flags Great America, June 2025 photo showing park atmosphere"
+  },
+  {
+    "id": "knotts-berry-farm",
+    "name": "Knott's Berry Farm",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Knott%27s_Berry_Farm%2C_2021.jpg/1280px-Knott%27s_Berry_Farm%2C_2021.jpg",
+    "source": "wikimedia",
+    "notes": "Knott's Berry Farm park view from 2021, landscape orientation"
+  },
+  {
+    "id": "six-flags-over-texas",
+    "name": "Six Flags Over Texas",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/SFOT_Main_Park_Entrance.JPG/1280px-SFOT_Main_Park_Entrance.JPG",
+    "source": "wikimedia",
+    "notes": "Main park entrance of Six Flags Over Texas"
+  },
+  {
+    "id": "kennywood-park",
+    "name": "Kennywood Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kennywood_Park.JPG/1280px-Kennywood_Park.JPG",
+    "source": "wikimedia",
+    "notes": "Photo of Kennywood Park showing rides and park landscape"
+  },
+  {
+    "id": "lagoon",
+    "name": "Lagoon",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Turn_of_the_Century_-_Lagoon.jpg/1280px-Turn_of_the_Century_-_Lagoon.jpg",
+    "source": "wikimedia",
+    "notes": "Turn of the Century ride at Lagoon amusement park in Farmington, Utah"
+  },
+  {
+    "id": "glenwood-caverns-adventure-park",
+    "name": "Glenwood Caverns Adventure Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Glenwood_springs%2C_Caverns_Adventure_Park_-_panoramio.jpg/1280px-Glenwood_springs%2C_Caverns_Adventure_Park_-_panoramio.jpg",
+    "source": "wikimedia",
+    "notes": "Panoramic view of Glenwood Caverns Adventure Park on Iron Mountain, Colorado"
+  },
+  {
+    "id": "seaworld-san-antonio",
+    "name": "SeaWorld San Antonio",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Entrance_to_Sea_World%2C_San_Antonio%2C_Texas%2C_June_4%2C_2007.JPG/1280px-Entrance_to_Sea_World%2C_San_Antonio%2C_Texas%2C_June_4%2C_2007.JPG",
+    "source": "wikimedia",
+    "notes": "Entrance to SeaWorld San Antonio, Texas"
+  },
+  {
+    "id": "cedar-valleys-wild-frontier-fun-park",
+    "name": "Cedar Valley's Wild Frontier Fun Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small family fun park in Comins, Michigan. No Wikimedia Commons images available. Very small park with limited online photo presence."
+  },
+  {
+    "id": "luna-park-coney-island",
+    "name": "Luna Park Coney Island",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Thunderbolt_Coney_Island_2.jpg/1280px-Thunderbolt_Coney_Island_2.jpg",
+    "source": "wikimedia",
+    "notes": "Thunderbolt roller coaster at Luna Park, Coney Island - dramatic landscape shot showing the modern park"
+  },
+  {
+    "id": "tropic-falls",
+    "name": "Tropic Falls",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Park_at_OWA_entrance_gate.jpg/1280px-Park_at_OWA_entrance_gate.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance gate of the Park at OWA (now Tropic Falls) in Foley, Alabama"
+  },
+  {
+    "id": "adventuredome",
+    "name": "Adventuredome",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Adventuredome_interior_%28April_2017%29.jpg/1280px-Adventuredome_interior_%28April_2017%29.jpg",
+    "source": "wikimedia",
+    "notes": "Interior of the Adventuredome theme park at Circus Circus Las Vegas, showing the glass dome and rides"
+  },
+  {
+    "id": "castles-n-coasters",
+    "name": "Castles N Coasters",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Desert_Storm_-_Castles_N_Coasters.jpg",
+    "source": "wikimedia",
+    "notes": "Desert Storm roller coaster at Castles N' Coasters, Phoenix, Arizona. Portrait orientation - may need cropping."
+  },
+  {
+    "id": "enchanted-forest",
+    "name": "Enchanted Forest",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Enchanted_Forest.JPG/1280px-Enchanted_Forest.JPG",
+    "source": "wikimedia",
+    "notes": "Enchanted Forest theme park entrance/overview near Salem, Oregon"
+  },
+  {
+    "id": "jolly-roger",
+    "name": "Jolly Roger",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Oceancitymd_inlet.JPG/1280px-Oceancitymd_inlet.JPG",
+    "source": "wikimedia",
+    "notes": "Ocean City MD inlet area showing the Jolly Roger pier and boardwalk amusement area"
+  },
+  {
+    "id": "peppa-pig",
+    "name": "Peppa Pig",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Peppa_Pig_World_-_The_Entrance.jpg/1280px-Peppa_Pig_World_-_The_Entrance.jpg",
+    "source": "wikimedia",
+    "notes": "Peppa Pig World entrance at Paultons Park. Note: this is the UK location, not the US Florida/Texas parks, but best freely available image."
+  },
+  {
+    "id": "story-land",
+    "name": "Story Land",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Cinderella%27s_Castle%2C_Story_Land_theme_park_in_Glen%2C_NH.jpg/1280px-Cinderella%27s_Castle%2C_Story_Land_theme_park_in_Glen%2C_NH.jpg",
+    "source": "wikimedia",
+    "notes": "Cinderella's Castle at Story Land theme park in Glen, New Hampshire"
+  },
+  {
+    "id": "western-playland",
+    "name": "Western Playland",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Wester_Playland.jpeg",
+    "source": "wikimedia",
+    "notes": "Western Playland amusement park in Sunland Park, New Mexico (near El Paso). 800x480 - lower resolution."
+  },
+  {
+    "id": "adventurers-family-entertainment-center",
+    "name": "Adventurers Family Entertainment Center",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small family entertainment center in Brooklyn, NY (formerly Nellie Bly Amusement Park). Temporarily closed. No Wikimedia images available."
+  },
+  {
+    "id": "andretti-thrill-park",
+    "name": "Andretti Thrill Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Family entertainment center in Melbourne, Florida with go-karts and mini golf. No Wikipedia or Wikimedia Commons images available."
+  },
+  {
+    "id": "big-rivers-waterpark",
+    "name": "Big Rivers Waterpark",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Water park and adventure park in New Caney, Texas (near Houston). No Wikipedia page or Wikimedia Commons images available."
+  },
+  {
+    "id": "carousel-gardens-amusement-park",
+    "name": "Carousel Gardens Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/NOCityParkCarouselGGate.jpg/1280px-NOCityParkCarouselGGate.jpg",
+    "source": "wikimedia",
+    "notes": "Gate entrance of Carousel Gardens at New Orleans City Park, showing the historic carousel"
+  },
+  {
+    "id": "clementon-park",
+    "name": "Clementon Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Entrance_to_Clementon_Park%2C_NJ%2C_Feb._2025.jpg/1280px-Entrance_to_Clementon_Park%2C_NJ%2C_Feb._2025.jpg",
+    "source": "wikimedia",
+    "notes": "Entrance to Clementon Park, New Jersey, February 2025"
+  },
+  {
+    "id": "denos-wonder-wheel-amusement-park",
+    "name": "Deno's Wonder Wheel Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Wonder_Wheel_Coney_Island_003.jpg/1280px-Wonder_Wheel_Coney_Island_003.jpg",
+    "source": "wikimedia",
+    "notes": "The iconic Wonder Wheel at Coney Island, landscape orientation shot showing the full ferris wheel"
+  },
+  {
+    "id": "fantasy-forest-flushing-meadows",
+    "name": "Fantasy Forest Flushing Meadows",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small amusement park at Flushing Meadows Corona Park, Queens, NYC. No Wikimedia Commons images available."
+  },
+  {
+    "id": "freehold-township-nj",
+    "name": "Freehold Township NJ",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "This is a township in New Jersey, not a theme park. iPlay America is located here but is an indoor FEC, not a traditional amusement park."
+  },
+  {
+    "id": "funtimes-fun-park",
+    "name": "Funtimes Fun Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small outdoor family entertainment center in Alliance, Ohio with ~20 rides. No Wikipedia page or Wikimedia Commons images available."
+  },
+  {
+    "id": "gurnee-illinois",
+    "name": "Gurnee Illinois",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "This is a city in Illinois, not a theme park. Six Flags Great America is located in Gurnee but is already listed separately."
+  },
+  {
+    "id": "illinois-state-fair",
+    "name": "Illinois State Fair",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "This is a seasonal state fair in Springfield, IL, not a permanent amusement park."
+  },
+  {
+    "id": "kemah-boardwalk",
+    "name": "Kemah Boardwalk",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Kemah_Boardwalk_in_Kemah%2C_Texas_%2847557130751%29.jpg/1280px-Kemah_Boardwalk_in_Kemah%2C_Texas_%2847557130751%29.jpg",
+    "source": "wikimedia",
+    "notes": "Kemah Boardwalk theme park on Galveston Bay, Texas - scenic boardwalk view"
+  },
+  {
+    "id": "lakeside-colorado",
+    "name": "Lakeside Colorado",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Lakeside_Amusement_Park%2C_1966.jpg/1280px-Lakeside_Amusement_Park%2C_1966.jpg",
+    "source": "wikimedia",
+    "notes": "Lakeside Amusement Park near Denver, Colorado, 1966 vintage photo showing the park and Tower of Jewels"
+  },
+  {
+    "id": "magic-kingdom-park",
+    "name": "Magic Kingdom Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Cinderella_Castle%2C_Magic_Kingdom_Walt_Disney_World_%282024%29.jpg/1280px-Cinderella_Castle%2C_Magic_Kingdom_Walt_Disney_World_%282024%29.jpg",
+    "source": "wikimedia",
+    "notes": "Cinderella Castle at Magic Kingdom, Walt Disney World, 2024 photo. Portrait orientation - may need cropping for card background."
+  },
+  {
+    "id": "miracle-strip-pier-park",
+    "name": "Miracle Strip Pier Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Former amusement park in Panama City Beach, FL. Closed in 2015, replaced by Swampy Jack's Wongo Adventure. Only logo SVG available on Wikimedia, no park photos."
+  },
+  {
+    "id": "new-york-new-york",
+    "name": "New York-New York",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/2019.10.11_Las_Vegas_-_48955419271.jpg/1280px-2019.10.11_Las_Vegas_-_48955419271.jpg",
+    "source": "wikimedia",
+    "notes": "New York-New York Hotel and Casino on the Las Vegas Strip with Big Apple Coaster visible, wide landscape shot"
+  },
+  {
+    "id": "oaks-amusement-park",
+    "name": "Oaks Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Oaks_Amusement_Park%2C_Portland_%286278715221%29.jpg/1280px-Oaks_Amusement_Park%2C_Portland_%286278715221%29.jpg",
+    "source": "wikimedia",
+    "notes": "Oaks Amusement Park in Portland, Oregon showing rides and park grounds"
+  },
+  {
+    "id": "pavilion-park",
+    "name": "Pavilion Park",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Amusement park at Broadway at the Beach in Myrtle Beach, SC. No Wikipedia page or Wikimedia Commons images available."
+  },
+  {
+    "id": "race-city-pcb",
+    "name": "Race City PCB",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Go-kart and ride park in Panama City Beach, FL. No Wikipedia page or Wikimedia Commons images available."
+  },
+  {
+    "id": "san-antonios-incredible-pizza",
+    "name": "San Antonio's Incredible Pizza",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Indoor family entertainment center / pizza buffet chain. Not a traditional theme or amusement park."
+  },
+  {
+    "id": "schnepf-farms",
+    "name": "Schnepf Farms",
+    "heroUrl": null,
+    "skip": true,
+    "source": null,
+    "notes": "Agritainment farm in Queen Creek, Arizona. Has some rides but is primarily a farm/festival venue, not a traditional amusement park."
+  },
+  {
+    "id": "swampy-jacks-wongo-adventure",
+    "name": "Swampy Jack's Wongo Adventure",
+    "heroUrl": null,
+    "source": null,
+    "notes": "Small themed amusement/FEC park in Panama City Beach, FL. No Wikipedia page or Wikimedia Commons images available."
+  },
+  {
+    "id": "tweetsie-railroad",
+    "name": "Tweetsie Railroad",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Train_at_Tweetsie_Railroad_Amusement_Park.jpg/1280px-Train_at_Tweetsie_Railroad_Amusement_Park.jpg",
+    "source": "wikimedia",
+    "notes": "Steam train at Tweetsie Railroad amusement park between Boone and Blowing Rock, North Carolina"
+  },
+  {
+    "id": "wonderland-amusement-park",
+    "name": "Wonderland Amusement Park",
+    "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Hornet_%28Wonderland_Park%29_1.jpg/1280px-Hornet_%28Wonderland_Park%29_1.jpg",
+    "source": "wikimedia",
+    "notes": "Hornet roller coaster at Wonderland Park in Amarillo, Texas"
+  }
+]

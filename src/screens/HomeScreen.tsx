@@ -33,9 +33,10 @@ import { LogConfirmSheet } from '../components/LogConfirmSheet';
 import { WalletCardStack, ScanModal, QuickActionsMenu, GateModeOverlay, AddTicketFlow } from '../components/wallet';
 import { Ticket } from '../types/wallet';
 import { useWallet } from '../hooks/useWallet';
-import { useTabBar, useSheetTabBar } from '../contexts/TabBarContext';
+import { useTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
 import { FEED_LAYOUT, FeedSection, FriendActivityItem } from '../data/mockFeed';
+import { triggerVisible, onBecomeVisible, offBecomeVisible, hasBeenVisible } from '../utils/feedAnimations';
 import {
   TrendingCoastersSection,
   FriendActivitySection,
@@ -45,7 +46,7 @@ import {
   DidYouKnowCard,
   NearbyParksSection,
 } from '../components/feed';
-import { resetOnboarding, getHomeParkName, setHomeParkName } from '../stores/settingsStore';
+import { resetOnboarding, showDesignSampler } from '../stores/settingsStore';
 import { CoasterSheet } from '../features/parks/components/CoasterSheet';
 import { EnrichedCoaster } from '../features/parks/types';
 import { COASTER_BY_ID } from '../data/coasterIndex';
@@ -54,9 +55,12 @@ import { TrendingCoasterEntry } from '../data/trendingData';
 import { RatingSheet } from '../components/RatingSheet';
 import { ArticleSheet } from '../components/ArticleSheet';
 import { RideActionSheet, RideActionData } from '../components/RideActionSheet';
-import { ParkSwitchConfirmSheet } from '../components/ParkSwitchConfirmSheet';
-import { getPOIByCoasterId } from '../features/parks/data/poiNameMap';
+
+import { NewsCardActionSheet } from '../components/NewsCardActionSheet';
+import { FeedToast } from '../components/FeedToast';
+// getPOIByCoasterId removed (map feature shelved for v2)
 import { addQuickLog, getTodayRideCountForCoaster, getRatingForCoaster } from '../stores/rideLogStore';
+import { useSavedArticlesStore } from '../stores/savedArticlesStore';
 import { CoasterRating } from '../types/rideLog';
 
 const COLLAPSE_THRESHOLD = 50;
@@ -84,17 +88,107 @@ type SearchOrigin =
 // Tab bar height for FAB positioning
 const TAB_BAR_HEIGHT = 49;
 
+// ── Animated News Card Wrapper ──
+// Handles smooth removal animation (thumbs-down) and undo re-entrance.
+
+const AnimatedNewsCardWrapper = React.memo(({
+  isRemoving,
+  isUndoing,
+  onRemovalComplete,
+  children,
+}: {
+  isRemoving: boolean;
+  isUndoing: boolean;
+  onRemovalComplete: () => void;
+  children: React.ReactNode;
+}) => {
+  const scale = useSharedValue(isUndoing ? 0.8 : 1);
+  const opacity = useSharedValue(isUndoing ? 0 : 1);
+  const height = useSharedValue<number | undefined>(undefined);
+  const measuredHeight = useRef(0);
+
+  const handleLayout = useCallback((e: any) => {
+    measuredHeight.current = e.nativeEvent.layout.height;
+  }, []);
+
+  // Removal animation (thumbs-down) — single smooth motion
+  useEffect(() => {
+    if (isRemoving && measuredHeight.current > 0) {
+      const duration = 350;
+      const easing = ReanimatedEasing.inOut(ReanimatedEasing.cubic);
+
+      scale.value = withTiming(0.85, { duration: duration * 0.6, easing });
+      opacity.value = withTiming(0, { duration, easing });
+      height.value = measuredHeight.current;
+      height.value = withTiming(0, { duration, easing }, (finished) => {
+        if (finished) runOnJS(onRemovalComplete)();
+      });
+    }
+  }, [isRemoving]);
+
+  // Undo entrance animation
+  useEffect(() => {
+    if (isUndoing) {
+      scale.value = 0.8;
+      opacity.value = 0;
+      scale.value = withTiming(1, { duration: 300, easing: ReanimatedEasing.out(ReanimatedEasing.cubic) });
+      opacity.value = withTiming(1, { duration: 300 });
+    }
+  }, [isUndoing]);
+
+  const animStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+    opacity: opacity.value,
+    ...(height.value !== undefined ? { height: height.value, overflow: 'hidden' as const } : {}),
+  }));
+
+  return (
+    <Reanimated.View style={animStyle} onLayout={handleLayout}>
+      {children}
+    </Reanimated.View>
+  );
+});
+
+// Entrance animation wrapper for news cards in the feed.
+// Uses the same onBecomeVisible/hasBeenVisible pattern as section components.
+const NewsCardEntranceWrapper = React.memo(({
+  sectionId,
+  children,
+}: {
+  sectionId: string;
+  children: React.ReactNode;
+}) => {
+  const entrance = useSharedValue(hasBeenVisible(sectionId) ? 1 : 0);
+
+  useEffect(() => {
+    onBecomeVisible(sectionId, () => {
+      entrance.value = withTiming(1, {
+        duration: 400,
+        easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
+      });
+    });
+    return () => offBecomeVisible(sectionId);
+  }, [sectionId]);
+
+  const entranceStyle = useAnimatedStyle(() => ({
+    opacity: entrance.value,
+    transform: [{ translateY: interpolate(entrance.value, [0, 1], [20, 0]) }],
+  }));
+
+  return (
+    <Reanimated.View style={entranceStyle}>
+      {children}
+    </Reanimated.View>
+  );
+});
+
 export const HomeScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
 
-  const [bookmarkedIds, setBookmarkedIds] = useState<Set<string>>(
-    new Set(MOCK_NEWS.filter(item => item.isSaved).map(item => item.id))
-  );
-  // Ref mirror of bookmarkedIds — lets renderFeedItem access current state
-  // without being in its dependency array (prevents FlatList re-render cascade)
-  const bookmarkedIdsRef = useRef(bookmarkedIds);
-  bookmarkedIdsRef.current = bookmarkedIds;
+  // Saved articles store (replaces local bookmarkedIds state)
+  const { isSaved: isArticleSaved, toggleSave: toggleArticleSave, getSavedArticleIds } = useSavedArticlesStore();
+  const savedArticleIds = getSavedArticleIds(); // Changes on every toggle — forces re-render of memoized callbacks
 
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -130,6 +224,24 @@ export const HomeScreen = () => {
   const [articleSheetVisible, setArticleSheetVisible] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState<NewsItem | null>(null);
 
+  // News card action sheet (long-press)
+  const [newsActionVisible, setNewsActionVisible] = useState(false);
+  const [newsActionArticle, setNewsActionArticle] = useState<NewsItem | null>(null);
+
+  // Removed news card IDs (thumbs-down) and feed toast
+  const [removedNewsIds, setRemovedNewsIds] = useState<Set<string>>(new Set());
+  const removedNewsIdsRef = useRef(removedNewsIds);
+  removedNewsIdsRef.current = removedNewsIds;
+  const [animatingRemovalId, setAnimatingRemovalId] = useState<string | null>(null);
+  const [undoAnimatingId, setUndoAnimatingId] = useState<string | null>(null);
+  const [feedToast, setFeedToast] = useState<{
+    visible: boolean;
+    message: string;
+    duration: number;
+    undoLabel?: string;
+    undoArticleId?: string;
+  }>({ visible: false, message: '', duration: 3000 });
+
   // Log confirmation card (inline within LogModal)
   const [logConfirmCoaster, setLogConfirmCoaster] = useState<{
     id: string; name: string; parkName: string; imageUrl?: string;
@@ -146,16 +258,6 @@ export const HomeScreen = () => {
   const [rideActionData, setRideActionData] = useState<RideActionData | null>(null);
   const [rideActionVisible, setRideActionVisible] = useState(false);
 
-  // Park switch confirmation (View on Map → different park)
-  const [parkSwitchVisible, setParkSwitchVisible] = useState(false);
-  const [parkSwitchTarget, setParkSwitchTarget] = useState<{
-    parkName: string; coasterId: string; rideName: string;
-  } | null>(null);
-
-  // Keep tab bar hidden during map navigation transition (sheets manage their own tab bar)
-  const [navigatingToMap, setNavigatingToMap] = useState(false);
-  useSheetTabBar(navigatingToMap);
-
   // Modal animation lock — blocks all touches during open/close animations
   const [isModalAnimating, setIsModalAnimating] = useState(false);
   const isModalAnimatingRef = useRef(false);
@@ -165,6 +267,9 @@ export const HomeScreen = () => {
 
   // Timer ref for delayed coaster data clear — must be cancellable to prevent race condition
   const coasterClearTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Cooldown ref for article sheet to prevent rapid open/close losing tab bar
+  const articleSheetCooldownRef = useRef(false);
 
   // Wallet context
   const { stackTickets, setDefaultTicket, markTicketUsed, toggleFavorite, deleteTicket, favoriteTickets, tickets, addTicket } = useWallet();
@@ -189,6 +294,10 @@ export const HomeScreen = () => {
   const lastStateChangeTimeShared = useSharedValue(0);
   const contentHeightShared = useSharedValue(0);
   const viewportHeightShared = useSharedValue(0);
+
+  // Feed item visibility tracking (measureInWindow-based entrance animations)
+  const feedItemRefsMap = useRef(new Map<string, View>());
+  const feedItemTriggeredRef = useRef(new Set<string>());
 
   // Tracks which element triggered the search MorphingPill (mutable ref for callbacks)
   // Bar origins: pill covers search bar → "pill IS the search bar" pattern
@@ -968,48 +1077,7 @@ export const HomeScreen = () => {
     });
   }, []);
 
-  // RideActionSheet → View on Map
-  const rideActionHasMapPOI = useMemo(() => {
-    if (!rideActionData) return false;
-    return !!getPOIByCoasterId(rideActionData.id);
-  }, [rideActionData]);
-
-  const handleRideActionViewOnMap = useCallback((ride: RideActionData) => {
-    searchContentFade.value = withTiming(1, { duration: 250 });
-    Keyboard.dismiss();
-    const currentPark = getHomeParkName();
-    if (currentPark === ride.parkName) {
-      // Same park — hold tab bar hidden while navigating, map will take over
-      setNavigatingToMap(true);
-      setRideActionVisible(false);
-      navigation.navigate('Parks', { targetCoasterId: ride.id });
-      // Map screen hides tab bar on mount — release our hold after it takes over
-      setTimeout(() => setNavigatingToMap(false), 500);
-    } else {
-      // Different park — transition directly to confirmation (combined signal keeps tab bar hidden)
-      setParkSwitchTarget({ parkName: ride.parkName, coasterId: ride.id, rideName: ride.name });
-      setParkSwitchVisible(true);
-      setRideActionVisible(false);
-    }
-  }, [navigation]);
-
-  const handleParkSwitchConfirm = useCallback(() => {
-    if (!parkSwitchTarget) return;
-    setNavigatingToMap(true);
-    setParkSwitchVisible(false);
-    setHomeParkName(parkSwitchTarget.parkName);
-    setTimeout(() => {
-      navigation.navigate('Parks', { targetCoasterId: parkSwitchTarget.coasterId });
-      setParkSwitchTarget(null);
-      // Map screen hides tab bar on mount — release our hold after it takes over
-      setTimeout(() => setNavigatingToMap(false), 500);
-    }, 100);
-  }, [parkSwitchTarget, navigation]);
-
-  const handleParkSwitchCancel = useCallback(() => {
-    setParkSwitchVisible(false);
-    setParkSwitchTarget(null);
-  }, []);
+  // (View on Map removed — maps shelved for v2)
 
   // =========================================
   // Feed Section Navigation Handlers
@@ -1099,9 +1167,15 @@ export const HomeScreen = () => {
   }, [navigation]);
 
   // Featured Park / Nearby Parks → navigate to Parks tab
-  // (haptic feedback fires inside the component's own onPress handler)
+  // TODO: Build dedicated ParkInfoSheet for viewing park stats without changing home park
   const handleParkNavigate = useCallback((_?: any) => {
     navigation.navigate('Parks');
+  }, [navigation]);
+
+  // Friend Activity → tap non-ride area to navigate to that friend's post in Community
+  const handleFriendPostPress = useCallback((item: FriendActivityItem) => {
+    haptics.select();
+    navigation.navigate('CommunityOverlay', { postId: item.id });
   }, [navigation]);
 
   const handleNavigateCommunity = useCallback(() => {
@@ -1130,6 +1204,11 @@ export const HomeScreen = () => {
   const handleNavigateTrivia = useCallback(() => {
     haptics.select();
     navigation.navigate('Trivia');
+  }, [navigation]);
+
+  const handleNavigateGames = useCallback(() => {
+    haptics.select();
+    navigation.navigate('CommunityOverlay', { initialTab: 'play' });
   }, [navigation]);
 
   // =========================================
@@ -1299,22 +1378,83 @@ export const HomeScreen = () => {
   }, [tabBarContext]);
 
   const handleBookmarkPress = useCallback((id: string) => {
-    setBookmarkedIds(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  }, []);
+    toggleArticleSave(id);
+  }, [toggleArticleSave]);
 
   const handleCardPress = useCallback((item: NewsItem) => {
+    if (articleSheetVisible || articleSheetCooldownRef.current) return;
     haptics.select();
     setSelectedArticle(item);
     setArticleSheetVisible(true);
+  }, [articleSheetVisible]);
+
+  const handleCardLongPress = useCallback((item: NewsItem) => {
+    haptics.select();
+    setNewsActionArticle(item);
+    setNewsActionVisible(true);
   }, []);
+
+  const handleNewsActionDismissStart = useCallback(() => {
+    setNewsActionVisible(false);
+  }, []);
+
+  const handleNewsActionClose = useCallback(() => {
+    setNewsActionArticle(null);
+  }, []);
+
+  const handleNewsThumbsUp = useCallback(() => {
+    setFeedToast({
+      visible: true,
+      message: 'Thanks for the feedback!',
+      duration: 2000,
+    });
+  }, []);
+
+  const handleNewsThumbsDown = useCallback(() => {
+    const articleId = newsActionArticle?.id;
+    if (!articleId) return;
+    // Start the animated removal instead of immediately removing
+    setAnimatingRemovalId(articleId);
+    setFeedToast({
+      visible: true,
+      message: "Got it. We'll show fewer posts like this.",
+      duration: 3000,
+      undoLabel: 'Undo',
+      undoArticleId: articleId,
+    });
+  }, [newsActionArticle]);
+
+  const handleRemovalComplete = useCallback(() => {
+    if (!animatingRemovalId) return;
+    setRemovedNewsIds((prev) => {
+      const next = new Set(prev);
+      next.add(animatingRemovalId);
+      return next;
+    });
+    setAnimatingRemovalId(null);
+  }, [animatingRemovalId]);
+
+  const handleFeedToastDismiss = useCallback(() => {
+    setFeedToast((prev) => ({ ...prev, visible: false }));
+  }, []);
+
+  const handleFeedToastUndo = useCallback(() => {
+    const articleId = feedToast.undoArticleId;
+    if (!articleId) return;
+    // If still animating out, cancel the removal
+    if (animatingRemovalId === articleId) {
+      setAnimatingRemovalId(null);
+    }
+    // Track this ID for undo entrance animation
+    setUndoAnimatingId(articleId);
+    setRemovedNewsIds((prev) => {
+      const next = new Set(prev);
+      next.delete(articleId);
+      return next;
+    });
+    // Clear undo animation tracking after animation completes
+    setTimeout(() => setUndoAnimatingId(null), 350);
+  }, [feedToast.undoArticleId, animatingRemovalId]);
 
   const renderNewsCard = useCallback(({ item }: ListRenderItemInfo<NewsItem>) => {
     return (
@@ -1326,19 +1466,22 @@ export const HomeScreen = () => {
           timestamp={item.timestamp}
           imageUrl={{ uri: item.image }}
           isUnread={item.isUnread}
-          isBookmarked={bookmarkedIdsRef.current.has(item.id)}
+          isBookmarked={isArticleSaved(item.id)}
+          isActionSheetOpen={newsActionArticle?.id === item.id && newsActionVisible}
           onPress={() => handleCardPress(item)}
+          onLongPress={() => handleCardLongPress(item)}
           onBookmarkPress={() => handleBookmarkPress(item.id)}
         />
       </View>
     );
-  }, [handleCardPress, handleBookmarkPress]);
+  }, [handleCardPress, handleCardLongPress, handleBookmarkPress, isArticleSaved, savedArticleIds, newsActionArticle, newsActionVisible]);
 
 
   // Track which MOCK_NEWS index each 'news' section should use
   const newsIndexCounter = useRef(0);
 
   // Build the heterogeneous feed data by resolving 'news' sections to actual NewsItem references
+  // Re-computes when news cards are removed (thumbs-down) to collapse the gap
   const feedData = useMemo(() => {
     newsIndexCounter.current = 0;
     return FEED_LAYOUT.map((section) => {
@@ -1348,7 +1491,43 @@ export const HomeScreen = () => {
         return { ...section, newsItem };
       }
       return { ...section, newsItem: undefined };
+    }).filter((section) => {
+      // Remove news sections whose article has been thumbs-downed
+      if (section.type === 'news' && section.newsItem) {
+        return !removedNewsIds.has(section.newsItem.id);
+      }
+      return true;
     });
+  }, [removedNewsIds]);
+
+  // measureInWindow-based visibility detection for feed entrance animations.
+  // FlatList onLayout gives y relative to the cell container (always ~0), so we use
+  // measureInWindow to get absolute screen positions and trigger animations when items
+  // scroll into view.
+  const checkFeedVisibilityMeasure = useCallback(() => {
+    feedItemRefsMap.current.forEach((viewRef, id) => {
+      if (feedItemTriggeredRef.current.has(id)) return;
+      viewRef.measureInWindow((x: number, y: number, w: number, h: number) => {
+        // Item is visible if its top is at least 100px above the bottom of the screen
+        // so the user sees the full entrance animation
+        if (y !== undefined && y < SCREEN_HEIGHT - 100 && y + h > 0) {
+          feedItemTriggeredRef.current.add(id);
+          triggerVisible([id]);
+        }
+      });
+    });
+  }, []);
+
+  // Periodic visibility check — polls every 200ms on the JS thread.
+  useEffect(() => {
+    const interval = setInterval(checkFeedVisibilityMeasure, 200);
+    return () => clearInterval(interval);
+  }, [checkFeedVisibilityMeasure]);
+
+  // Initial check after items mount
+  useEffect(() => {
+    const timeout = setTimeout(checkFeedVisibilityMeasure, 100);
+    return () => clearTimeout(timeout);
   }, []);
 
   const renderFeedItem = useCallback(({ item }: ListRenderItemInfo<FeedSection & { newsItem?: NewsItem }>) => {
@@ -1357,25 +1536,36 @@ export const HomeScreen = () => {
         const newsItem = item.newsItem;
         if (!newsItem) return null;
         return (
-          <View style={styles.cardWrapper}>
-            <NewsCard
-              source={newsItem.source}
-              title={newsItem.title}
-              subtitle={newsItem.subtitle}
-              timestamp={newsItem.timestamp}
-              imageUrl={{ uri: newsItem.image }}
-              isUnread={newsItem.isUnread}
-              isBookmarked={bookmarkedIdsRef.current.has(newsItem.id)}
-              onPress={() => handleCardPress(newsItem)}
-              onBookmarkPress={() => handleBookmarkPress(newsItem.id)}
-            />
-          </View>
+          <AnimatedNewsCardWrapper
+            isRemoving={animatingRemovalId === newsItem.id}
+            isUndoing={undoAnimatingId === newsItem.id}
+            onRemovalComplete={handleRemovalComplete}
+          >
+            <View style={styles.cardWrapper} collapsable={false} ref={(ref: any) => { if (ref) feedItemRefsMap.current.set(item.id, ref); }}>
+              <NewsCardEntranceWrapper sectionId={item.id}>
+                <NewsCard
+                source={newsItem.source}
+                title={newsItem.title}
+                subtitle={newsItem.subtitle}
+                timestamp={newsItem.timestamp}
+                imageUrl={{ uri: newsItem.image }}
+                isUnread={newsItem.isUnread}
+                isBookmarked={isArticleSaved(newsItem.id)}
+                isActionSheetOpen={newsActionArticle?.id === newsItem.id && newsActionVisible}
+                onPress={() => handleCardPress(newsItem)}
+                onLongPress={() => handleCardLongPress(newsItem)}
+                onBookmarkPress={() => handleBookmarkPress(newsItem.id)}
+              />
+              </NewsCardEntranceWrapper>
+            </View>
+          </AnimatedNewsCardWrapper>
         );
       }
       case 'trending':
         return (
-          <View style={styles.feedSectionWrapper}>
+          <View style={styles.feedSectionWrapper} collapsable={false} ref={(ref: any) => { if (ref) feedItemRefsMap.current.set(item.id, ref); }}>
             <TrendingCoastersSection
+              sectionId={item.id}
               onCoasterPress={handleTrendingCoasterPress}
               onCoasterLongPress={handleTrendingCoasterLongPress}
               onSeeAll={handleNavigateCommunity}
@@ -1384,40 +1574,45 @@ export const HomeScreen = () => {
         );
       case 'friendActivity':
         return (
-          <View style={styles.feedSectionWrapper}>
+          <View style={styles.feedSectionWrapper} collapsable={false} ref={(ref: any) => { if (ref) feedItemRefsMap.current.set(item.id, ref); }}>
             <FriendActivitySection
+              sectionId={item.id}
               onActivityPress={handleFriendActivityPress}
+              onFriendPostPress={handleFriendPostPress}
               onSeeAll={handleNavigateCommunity}
             />
           </View>
         );
       case 'featuredPark':
         return (
-          <View style={styles.feedSectionWrapper}>
-            <FeaturedParkCard onPress={handleParkNavigate} />
+          <View style={styles.feedSectionWrapper} collapsable={false} ref={(ref: any) => { if (ref) feedItemRefsMap.current.set(item.id, ref); }}>
+            <FeaturedParkCard sectionId={item.id} onPress={handleParkNavigate} />
           </View>
         );
       case 'dailyChallenge':
         return (
-          <View style={styles.feedSectionWrapper}>
+          <View style={styles.feedSectionWrapper} collapsable={false} ref={(ref: any) => { if (ref) feedItemRefsMap.current.set(item.id, ref); }}>
             <GamesSection
+              sectionId={item.id}
               onPlayCoastle={handleNavigateCoastle}
               onPlaySpeedSorter={handleNavigateSpeedSorter}
               onPlayBlindRanking={handleNavigateBlindRanking}
               onPlayTrivia={handleNavigateTrivia}
+              onViewAll={handleNavigateGames}
             />
           </View>
         );
       case 'didYouKnow':
         return (
-          <View style={styles.feedSectionWrapper}>
-            <DidYouKnowCard />
+          <View style={styles.feedSectionWrapper} collapsable={false} ref={(ref: any) => { if (ref) feedItemRefsMap.current.set(item.id, ref); }}>
+            <DidYouKnowCard sectionId={item.id} />
           </View>
         );
       case 'nearbyParks':
         return (
-          <View style={styles.feedSectionWrapper}>
+          <View style={styles.feedSectionWrapper} collapsable={false} ref={(ref: any) => { if (ref) feedItemRefsMap.current.set(item.id, ref); }}>
             <NearbyParksSection
+              sectionId={item.id}
               onParkPress={handleParkNavigate}
               onSeeAll={handleNavigateParks}
             />
@@ -1426,9 +1621,10 @@ export const HomeScreen = () => {
       default:
         return null;
     }
-  }, [handleCardPress, handleBookmarkPress, handleTrendingCoasterPress, handleTrendingCoasterLongPress, handleFriendActivityPress, handleParkNavigate, handleNavigateCommunity, handleNavigateParks, handleNavigateCoastle, handleNavigateSpeedSorter, handleNavigateBlindRanking, handleNavigateTrivia]);
+  }, [handleCardPress, handleCardLongPress, handleBookmarkPress, isArticleSaved, savedArticleIds, handleTrendingCoasterPress, handleTrendingCoasterLongPress, handleFriendActivityPress, handleFriendPostPress, handleParkNavigate, handleNavigateCommunity, handleNavigateParks, handleNavigateCoastle, handleNavigateSpeedSorter, handleNavigateBlindRanking, handleNavigateTrivia, handleNavigateGames, newsActionArticle, newsActionVisible, animatingRemovalId, undoAnimatingId, handleRemovalComplete]);
 
   const feedKeyExtractor = useCallback((item: FeedSection) => item.id, []);
+
 
   const keyExtractor = useCallback((item: NewsItem) => item.id, []);
 
@@ -2962,7 +3158,7 @@ export const HomeScreen = () => {
       {/* Onboarding replay FAB — dev/testing button */}
       {!searchVisible && !logVisible && !walletVisible && (
         <Pressable
-          onPress={() => { haptics.select(); resetOnboarding(); }}
+          onPress={() => { haptics.select(); showDesignSampler(); }}
           style={[
             styles.onboardingFab,
             { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
@@ -3032,8 +3228,35 @@ export const HomeScreen = () => {
         visible={articleSheetVisible}
         onClose={() => {
           setArticleSheetVisible(false);
-          setTimeout(() => setSelectedArticle(null), 400);
+          tabBarContext?.showTabBar();
+          articleSheetCooldownRef.current = true;
+          setTimeout(() => {
+            setSelectedArticle(null);
+            articleSheetCooldownRef.current = false;
+          }, 400);
         }}
+      />
+
+      {/* News Card Action Sheet — long-press news card bottom sheet */}
+      {(newsActionVisible || newsActionArticle) && (
+        <NewsCardActionSheet
+          article={newsActionArticle}
+          visible={newsActionVisible}
+          onClose={handleNewsActionClose}
+          onDismissStart={handleNewsActionDismissStart}
+          onThumbsUp={handleNewsThumbsUp}
+          onThumbsDown={handleNewsThumbsDown}
+        />
+      )}
+
+      {/* Feed Toast — bottom snackbar for thumbs up/down feedback */}
+      <FeedToast
+        visible={feedToast.visible}
+        message={feedToast.message}
+        duration={feedToast.duration}
+        undoLabel={feedToast.undoLabel}
+        onUndo={feedToast.undoLabel ? handleFeedToastUndo : undefined}
+        onDismiss={handleFeedToastDismiss}
       />
 
       {/* Ride Action Sheet — long-press search result bottom sheet */}
@@ -3048,22 +3271,8 @@ export const HomeScreen = () => {
             searchContentFade.value = withTiming(1, { duration: 250 });
           }}
           onViewDetails={handleRideActionViewDetails}
-          onViewOnMap={handleRideActionViewOnMap}
           onLogRide={handleRideActionLogRide}
           onViewRankings={handleRideActionViewRankings}
-          hasMapPOI={rideActionHasMapPOI}
-        />
-      )}
-
-      {/* Park Switch Confirmation — "View on Map" at different park */}
-      {parkSwitchVisible && (
-        <ParkSwitchConfirmSheet
-          visible={parkSwitchVisible}
-          currentParkName={getHomeParkName() ?? 'None'}
-          targetParkName={parkSwitchTarget?.parkName ?? ''}
-          rideName={parkSwitchTarget?.rideName ?? ''}
-          onConfirm={handleParkSwitchConfirm}
-          onCancel={handleParkSwitchCancel}
         />
       )}
 

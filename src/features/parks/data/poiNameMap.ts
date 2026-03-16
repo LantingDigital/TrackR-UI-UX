@@ -100,6 +100,17 @@ function ensureAllPoisLoaded() {
     { pois: require('./dollywoodPOI').DOLLYWOOD_POI },
     { pois: require('./islandsOfAdventurePOI').ISLANDS_OF_ADVENTURE_POI },
     { pois: require('./magicKingdomPOI').MAGIC_KINGDOM_POI },
+    { pois: require('./epicUniversePOI').EPIC_UNIVERSE_POI },
+    { pois: require('./universalStudiosFloridaPOI').UNIVERSAL_STUDIOS_FLORIDA_POI },
+    { pois: require('./disneylandPOI').DISNEYLAND_POI },
+    { pois: require('./legolandCaliforniaPOI').LEGOLAND_CALIFORNIA_POI },
+    { pois: require('./dorneyParkPOI').DORNEY_PARK_POI },
+    { pois: require('./canadasWonderlandPOI').CANADAS_WONDERLAND_POI },
+    { pois: require('./legolandFloridaPOI').LEGOLAND_FLORIDA_POI },
+    { pois: require('./seaworldOrlandoPOI').SEAWORLD_ORLANDO_POI },
+    { pois: require('./seaworldSanDiegoPOI').SEAWORLD_SAN_DIEGO_POI },
+    { pois: require('./hollywoodStudiosPOI').HOLLYWOOD_STUDIOS_POI },
+    { pois: require('./animalKingdomPOI').ANIMAL_KINGDOM_POI },
   ];
   for (const mod of parkModules) {
     for (const poi of mod.pois) {

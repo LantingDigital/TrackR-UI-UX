@@ -888,15 +888,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.border.subtle,
   },
 
-  // ── Close button (CoasterSheet pattern) ──
+  // ── Close button — positioned within hero section, below the drag handle ──
   closeBtn: {
     position: 'absolute',
-    top: spacing.base,
+    top: 28, // below dragHandleArea (17px) + padding into hero
     right: spacing.lg,
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255,255,255,0.85)',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 30,

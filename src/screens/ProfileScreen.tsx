@@ -1,12 +1,12 @@
 /**
- * ProfileScreen
+ * ProfileScreen — Social-Style Centered Profile
  *
- * Premium profile hub with large avatar, editable display name,
- * stats row, top coasters carousel, and quick-action navigation.
- * Staggered spring entrance on every section.
+ * Centered avatar, stats card with 3 columns,
+ * segmented tab pills (My Rides / Rankings / Badges),
+ * and a Pro upgrade card at the bottom.
  */
 
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useMemo, useState, useRef } from 'react';
 import {
   StyleSheet,
   View,
@@ -15,7 +15,9 @@ import {
   Pressable,
   Image,
   Alert,
+  LayoutChangeEvent,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -26,6 +28,13 @@ import Animated, {
   withDelay,
   withSpring,
   withTiming,
+  interpolateColor,
+  runOnJS,
+  Easing,
+  FadeIn,
+  FadeOut,
+  LinearTransition,
+  type SharedValue,
 } from 'react-native-reanimated';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -33,7 +42,7 @@ import { spacing } from '../theme/spacing';
 import { radius } from '../theme/radius';
 import { shadows } from '../theme/shadows';
 import { SPRINGS, TIMING } from '../constants/animations';
-import { useSpringPress, useStrongPress } from '../hooks/useSpringPress';
+import { useSpringPress, useSubtlePress } from '../hooks/useSpringPress';
 import { haptics } from '../services/haptics';
 import {
   useSettingsStore,
@@ -47,32 +56,48 @@ import {
 } from '../stores/rideLogStore';
 
 // ============================================
-// Rider type display labels
+// Constants
 // ============================================
-const RIDER_LABELS: Record<NonNullable<RiderType>, string> = {
-  thrills: 'Thrill Seeker',
-  data: 'Data Nerd',
-  planner: 'Trip Planner',
-  newbie: 'Fresh Rider',
-};
+const HEADER_HEIGHT = 48;
+const FOG_OFFSET = 20;
+const FOG_EXTENSION = 40;
+const AVATAR_SIZE = 88;
+const CAMERA_BADGE_SIZE = 28;
 
-// ============================================
-// Mock data
-// ============================================
 const MOCK_PARKS_VISITED = 34;
 const MOCK_GAMES_PLAYED = 18;
 const MOCK_JOIN_DATE = 'March 2026';
 
 const MOCK_TOP_COASTERS = [
-  { name: 'Steel Vengeance', park: 'Cedar Point' },
-  { name: 'Velocicoaster', park: 'Islands of Adventure' },
-  { name: 'Iron Gwazi', park: 'Busch Gardens Tampa' },
-  { name: 'El Toro', park: 'Six Flags Great Adventure' },
-  { name: 'Fury 325', park: 'Carowinds' },
+  { name: 'Steel Vengeance', park: 'Cedar Point', rating: 9.8 },
+  { name: 'Velocicoaster', park: 'Islands of Adventure', rating: 9.6 },
+  { name: 'Iron Gwazi', park: 'Busch Gardens Tampa', rating: 9.5 },
+  { name: 'El Toro', park: 'Six Flags Great Adventure', rating: 9.3 },
+  { name: 'Fury 325', park: 'Carowinds', rating: 9.1 },
 ];
 
+const MOCK_RECENT_RIDES = [
+  { name: 'Steel Vengeance', park: 'Cedar Point', date: 'Mar 8', rating: 9.8 },
+  { name: 'Millennium Force', park: 'Cedar Point', date: 'Mar 8', rating: 8.4 },
+  { name: 'Maverick', park: 'Cedar Point', date: 'Mar 7', rating: 9.0 },
+  { name: 'Top Thrill 2', park: 'Cedar Point', date: 'Mar 7', rating: 8.7 },
+];
+
+const MOCK_ACHIEVEMENTS = {
+  unlocked: 12,
+  total: 50,
+  badges: ['trophy', 'flash', 'ribbon', 'star', 'medal'] as const,
+};
+
+// Page RGBA for fog — matches colors.background.page (#F7F7F7)
+const PAGE_RGBA = 'rgba(247, 247, 247,';
+
+// Tab definitions
+const TABS = ['My Rides', 'Rankings', 'Badges'] as const;
+type TabKey = (typeof TABS)[number];
+
 // ============================================
-// Stagger entrance helper
+// Stagger entrance
 // ============================================
 function useStaggerEntrance(index: number) {
   const opacity = useSharedValue(0);
@@ -91,21 +116,102 @@ function useStaggerEntrance(index: number) {
 }
 
 // ============================================
+// Animated Tab Pill
+// ============================================
+// ============================================
+// Sliding Segmented Tab Control (matches Logbook pattern)
+// ============================================
+
+const TAB_COUNT = TABS.length;
+
+const TabLabel: React.FC<{
+  tab: TabKey;
+  index: number;
+  indicatorX: SharedValue<number>;
+}> = ({ tab, index, indicatorX }) => {
+  const colorStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(
+      indicatorX.value,
+      [index - 1, index, index + 1],
+      [colors.text.secondary, colors.text.inverse, colors.text.secondary],
+    ),
+  }));
+
+  return (
+    <Animated.Text style={[styles.tabLabel, colorStyle]}>{tab}</Animated.Text>
+  );
+};
+
+const ProfileTabBar: React.FC<{
+  selected: TabKey;
+  onSelect: (tab: TabKey) => void;
+}> = ({ selected, onSelect }) => {
+  const activeIndex = TABS.indexOf(selected);
+  const indicatorX = useSharedValue(activeIndex);
+
+  useEffect(() => {
+    indicatorX.value = withSpring(TABS.indexOf(selected), {
+      damping: 18,
+      stiffness: 200,
+      mass: 0.8,
+    });
+  }, [selected]);
+
+  const [containerWidth, setContainerWidth] = React.useState(0);
+  const pillWidth = containerWidth > 0 ? (containerWidth - spacing.xs * 2) / TAB_COUNT : 0;
+
+  const indicatorStyle = useAnimatedStyle(() => {
+    if (pillWidth <= 0) return { opacity: 0 };
+    return {
+      opacity: 1,
+      width: pillWidth,
+      transform: [{ translateX: indicatorX.value * pillWidth }],
+    };
+  });
+
+  return (
+    <View
+      style={styles.tabBar}
+      onLayout={(e) => setContainerWidth(e.nativeEvent.layout.width)}
+    >
+      {/* Sliding indicator pill */}
+      <Animated.View style={[styles.tabIndicator, indicatorStyle]} />
+
+      {/* Labels */}
+      {TABS.map((tab, i) => (
+        <Pressable
+          key={tab}
+          style={styles.tabChip}
+          onPress={() => {
+            haptics.tap();
+            onSelect(tab);
+          }}
+        >
+          <TabLabel tab={tab} index={i} indicatorX={indicatorX} />
+        </Pressable>
+      ))}
+    </View>
+  );
+};
+
+// ============================================
 // ProfileScreen
 // ============================================
 export const ProfileScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
   const {
-    riderType,
     displayName,
     username,
     profileImageUri,
     homeParkName,
   } = useSettingsStore();
-  // Ride log stats (reactive)
-  const [creditCount, setCreditCount] = React.useState(getCreditCount());
-  const [totalRides, setTotalRides] = React.useState(getTotalRideCount());
+
+  const [creditCount, setCreditCount] = useState(getCreditCount());
+  const [totalRides, setTotalRides] = useState(getTotalRideCount());
+  const [selectedTab, setSelectedTab] = useState<TabKey>('My Rides');
+  // Visual tab tracks pill highlight immediately; selectedTab tracks content (delayed for crossfade)
+  const [visualTab, setVisualTab] = useState<TabKey>('My Rides');
 
   useEffect(() => {
     const unsub = subscribeRideLog(() => {
@@ -115,17 +221,33 @@ export const ProfileScreen = () => {
     return unsub;
   }, []);
 
+  const scrollRef = useRef<ScrollView>(null);
+
+  const handleTabChange = useCallback(
+    (tab: TabKey) => {
+      if (tab === visualTab) return;
+      haptics.select();
+      setVisualTab(tab);
+      setSelectedTab(tab);
+      // Smoothly scroll up so shorter tab content isn't past the viewport
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
+    },
+    [visualTab],
+  );
+
   // Staggered entrance animations
-  const headerAnim = useStaggerEntrance(0);
+  const heroAnim = useStaggerEntrance(0);
   const statsAnim = useStaggerEntrance(1);
-  const topCoastersAnim = useStaggerEntrance(2);
-  const actionsAnim = useStaggerEntrance(3);
+  const metaAnim = useStaggerEntrance(2);
+  const tabsAnim = useStaggerEntrance(3);
+  const contentAnim = useStaggerEntrance(4);
+  const proCardAnim = useStaggerEntrance(5);
 
   // Press states
-  const avatarPress = useStrongPress();
   const settingsPress = useSpringPress();
+  const avatarPress = useSubtlePress();
+  const proPress = useSubtlePress();
 
-  const riderLabel = riderType ? RIDER_LABELS[riderType] : 'Enthusiast';
   const initials = displayName
     .split(' ')
     .map((w) => w[0])
@@ -183,168 +305,317 @@ export const ProfileScreen = () => {
   }, [profileImageUri]);
 
   // Navigate to coaster in Parks
-  const handleCoasterPress = useCallback((coaster: { name: string; park: string }) => {
-    navigation.navigate('Parks', { targetCoasterName: coaster.name });
-  }, [navigation]);
+  const handleCoasterPress = useCallback(
+    (coasterName: string) => {
+      haptics.tap();
+      navigation.navigate('Parks', { targetCoasterName: coasterName });
+    },
+    [navigation],
+  );
 
-  // Stats data
-  const stats = [
-    { label: 'Rides', value: creditCount },
-    { label: 'Parks', value: MOCK_PARKS_VISITED },
-    { label: 'Games', value: MOCK_GAMES_PLAYED },
-  ];
+  // Fog computation
+  const topBarHeight = insets.top + HEADER_HEIGHT;
+  const fogHeight = topBarHeight + FOG_EXTENSION;
+
+  const fogGradient = useMemo(() => {
+    const headerEnd = (topBarHeight - FOG_OFFSET) / fogHeight;
+
+    return {
+      colors: [
+        `${PAGE_RGBA} 1)`,
+        `${PAGE_RGBA} 1)`,
+        `${PAGE_RGBA} 0.85)`,
+        `${PAGE_RGBA} 0.5)`,
+        `${PAGE_RGBA} 0.15)`,
+        `${PAGE_RGBA} 0)`,
+      ] as [string, string, ...string[]],
+      locations: [
+        0,
+        headerEnd,
+        headerEnd + 0.08,
+        headerEnd + 0.16,
+        headerEnd + 0.24,
+        1,
+      ] as [number, number, ...number[]],
+    };
+  }, [topBarHeight, fogHeight]);
+
+  // ── Tab content renderers ──
+
+  const renderMyRides = () => (
+    <>
+      {MOCK_RECENT_RIDES.map((ride, index) => (
+        <Pressable
+          key={`${ride.name}-${ride.date}`}
+          onPress={() => handleCoasterPress(ride.name)}
+        >
+          <View
+            style={[
+              styles.rideRow,
+              index < MOCK_RECENT_RIDES.length - 1 && styles.rowDivider,
+            ]}
+          >
+            <View style={styles.rideInfo}>
+              <Text style={styles.rideName} numberOfLines={1}>
+                {ride.name}
+              </Text>
+              <Text style={styles.rideMeta} numberOfLines={1}>
+                {ride.park} {'\u00B7'} {ride.date}
+              </Text>
+            </View>
+            <View style={styles.ratingPill}>
+              <Ionicons name="star" size={10} color={colors.accent.primary} />
+              <Text style={styles.ratingText}>{ride.rating}</Text>
+            </View>
+          </View>
+        </Pressable>
+      ))}
+    </>
+  );
+
+  const renderRankings = () => (
+    <>
+      {MOCK_TOP_COASTERS.map((coaster, index) => (
+        <Pressable
+          key={coaster.name}
+          onPress={() => handleCoasterPress(coaster.name)}
+        >
+          <View
+            style={[
+              styles.rankRow,
+              index < MOCK_TOP_COASTERS.length - 1 && styles.rowDivider,
+            ]}
+          >
+            <View style={styles.rankBadge}>
+              <Text style={styles.rankText}>{index + 1}</Text>
+            </View>
+            <View style={styles.rankInfo}>
+              <Text style={styles.rankName} numberOfLines={1}>
+                {coaster.name}
+              </Text>
+              <Text style={styles.rankPark} numberOfLines={1}>
+                {coaster.park}
+              </Text>
+            </View>
+            <View style={styles.ratingPill}>
+              <Ionicons name="star" size={10} color={colors.accent.primary} />
+              <Text style={styles.ratingText}>{coaster.rating}</Text>
+            </View>
+          </View>
+        </Pressable>
+      ))}
+    </>
+  );
+
+  const renderBadges = () => (
+    <View style={styles.badgesInner}>
+      <Text style={styles.badgesProgress}>
+        {MOCK_ACHIEVEMENTS.unlocked}{' '}
+        <Text style={styles.badgesTotal}>/ {MOCK_ACHIEVEMENTS.total} unlocked</Text>
+      </Text>
+
+      <View style={styles.progressBarTrack}>
+        <View
+          style={[
+            styles.progressBarFill,
+            {
+              width: `${(MOCK_ACHIEVEMENTS.unlocked / MOCK_ACHIEVEMENTS.total) * 100}%`,
+            },
+          ]}
+        />
+      </View>
+
+      <View style={styles.badgeIconRow}>
+        {MOCK_ACHIEVEMENTS.badges.map((badge) => (
+          <View key={badge} style={styles.badgeCircle}>
+            <Ionicons
+              name={`${badge}-outline` as any}
+              size={18}
+              color={colors.accent.primary}
+            />
+          </View>
+        ))}
+        <View style={styles.badgeMore}>
+          <Text style={styles.badgeMoreText}>
+            +{MOCK_ACHIEVEMENTS.unlocked - MOCK_ACHIEVEMENTS.badges.length}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+
+  const renderTabContent = () => {
+    switch (selectedTab) {
+      case 'My Rides':
+        return renderMyRides();
+      case 'Rankings':
+        return renderRankings();
+      case 'Badges':
+        return renderBadges();
+    }
+  };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
+      {/* Scrollable content */}
       <ScrollView
+        ref={scrollRef}
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: insets.bottom + spacing.xxxl + 80 },
+          {
+            paddingTop: topBarHeight + spacing.lg,
+            paddingBottom: insets.bottom + spacing.xxxl + 80,
+          },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        {/* ── Profile Header ── */}
-        <Animated.View style={[styles.headerSection, headerAnim]}>
-          {/* Avatar with camera overlay */}
+        {/* ── Hero: Centered avatar + name + username ── */}
+        <Animated.View style={[styles.heroSection, heroAnim]}>
           <Pressable
             {...avatarPress.pressHandlers}
             onPress={handleAvatarPress}
           >
-            <Animated.View style={[styles.avatarWrapper, avatarPress.animatedStyle]}>
+            <Animated.View style={[styles.avatarContainer, avatarPress.animatedStyle]}>
               {profileImageUri ? (
-                <Image
-                  source={{ uri: profileImageUri }}
-                  style={styles.avatarImage}
-                />
+                <Image source={{ uri: profileImageUri }} style={styles.avatarImage} />
               ) : (
                 <View style={styles.avatarFallback}>
                   <Text style={styles.avatarInitials}>{initials}</Text>
                 </View>
               )}
-              <View style={styles.cameraButton}>
-                <Ionicons name="camera" size={14} color={colors.text.inverse} />
+              {/* Camera badge overlay */}
+              <View style={styles.cameraBadge}>
+                <Ionicons name="camera-outline" size={14} color={colors.text.inverse} />
               </View>
             </Animated.View>
           </Pressable>
 
-          {/* Name + username */}
           <Text style={styles.displayName}>{displayName}</Text>
-          <Text style={styles.username}>{username}</Text>
+          <Text style={styles.username}>@{username}</Text>
+        </Animated.View>
 
-          {/* Rider type badge */}
-          <View style={styles.badgeRow}>
-            <View style={styles.badge}>
-              <Ionicons
-                name="flash"
-                size={12}
-                color={colors.accent.primary}
-                style={styles.badgeIcon}
-              />
-              <Text style={styles.badgeText}>{riderLabel}</Text>
+        {/* ── Stats card: 3 columns ── */}
+        <Animated.View style={[styles.statsCardWrapper, statsAnim]}>
+          <View style={styles.statsCard}>
+            <View style={styles.statColumn}>
+              <Text style={styles.statNumber}>{creditCount}</Text>
+              <Text style={styles.statLabel}>Rides</Text>
             </View>
-          </View>
-
-          {/* Join date + home park */}
-          <View style={styles.metaRow}>
-            <View style={styles.metaItem}>
-              <Ionicons name="calendar-outline" size={13} color={colors.text.meta} />
-              <Text style={styles.metaText}>Joined {MOCK_JOIN_DATE}</Text>
+            <View style={styles.statDivider} />
+            <View style={styles.statColumn}>
+              <Text style={styles.statNumber}>{MOCK_PARKS_VISITED}</Text>
+              <Text style={styles.statLabel}>Parks</Text>
             </View>
-            {homeParkName && (
-              <View style={styles.metaItem}>
-                <Ionicons name="location-outline" size={13} color={colors.text.meta} />
-                <Text style={styles.metaText}>{homeParkName}</Text>
-              </View>
-            )}
+            <View style={styles.statDivider} />
+            <View style={styles.statColumn}>
+              <Text style={styles.statNumber}>{MOCK_GAMES_PLAYED}</Text>
+              <Text style={styles.statLabel}>Games</Text>
+            </View>
           </View>
         </Animated.View>
 
-        {/* ── Stats Row ── */}
-        <Animated.View style={[styles.statsCard, statsAnim]}>
-          {stats.map((stat, i) => (
-            <React.Fragment key={stat.label}>
-              {i > 0 && <View style={styles.statDivider} />}
-              <View style={styles.statItem}>
-                <Text style={styles.statValue}>{stat.value}</Text>
-                <Text style={styles.statLabel}>{stat.label}</Text>
-              </View>
-            </React.Fragment>
-          ))}
+        {/* ── Meta row: home park + join date ── */}
+        <Animated.View style={[styles.metaRow, metaAnim]}>
+          {homeParkName ? (
+            <>
+              <Ionicons name="location-outline" size={13} color={colors.text.meta} />
+              <Text style={styles.metaText}>{homeParkName}</Text>
+              <Text style={styles.metaDot}>{'\u00B7'}</Text>
+            </>
+          ) : null}
+          <Ionicons name="calendar-outline" size={13} color={colors.text.meta} />
+          <Text style={styles.metaText}>Joined {MOCK_JOIN_DATE}</Text>
         </Animated.View>
 
-        {/* ── Top Coasters ── */}
-        <Animated.View style={topCoastersAnim}>
-          <Text style={styles.sectionTitle}>My Top Coasters</Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.coasterScroll}
-            contentContainerStyle={styles.coasterList}
+        {/* ── Segment tabs (sliding pill) ── */}
+        <Animated.View style={[styles.tabBarWrapper, tabsAnim]}>
+          <ProfileTabBar selected={visualTab} onSelect={handleTabChange} />
+        </Animated.View>
+
+        {/* ── Tab content: Layout auto-animates height, FadeIn/Out crossfades ── */}
+        <Animated.View
+          style={[styles.tabContentCard, contentAnim]}
+          layout={LinearTransition.duration(350).easing(Easing.out(Easing.cubic))}
+        >
+          <Animated.View
+            key={selectedTab}
+            entering={FadeIn.duration(200).delay(100)}
+            exiting={FadeOut.duration(100)}
           >
-            {MOCK_TOP_COASTERS.map((coaster, index) => (
-              <CoasterCard key={coaster.name} coaster={coaster} rank={index + 1} onPress={handleCoasterPress} />
-            ))}
-          </ScrollView>
+            {renderTabContent()}
+          </Animated.View>
         </Animated.View>
 
-        {/* ── Quick Actions ── */}
-        <Animated.View style={[styles.actionsSection, actionsAnim]}>
-          <View style={styles.settingsButtonWrapper}>
-            <Pressable
-              {...settingsPress.pressHandlers}
-              onPress={() => {
-                haptics.tap();
-                navigation.navigate('Settings');
-              }}
-            >
-              <Animated.View style={[styles.settingsButton, settingsPress.animatedStyle]}>
-                <Ionicons name="settings-outline" size={18} color={colors.accent.primary} />
-                <Text style={styles.settingsButtonText}>Settings</Text>
-              </Animated.View>
-            </Pressable>
-          </View>
+        {/* Fixed spacer */}
+        <Animated.View
+          style={{ height: spacing.xl }}
+          layout={LinearTransition.duration(350).easing(Easing.out(Easing.cubic))}
+        />
+
+        {/* ── TrackR Pro card ── */}
+        <Animated.View
+          style={[styles.proCardWrapper, proCardAnim]}
+          layout={LinearTransition.duration(350).easing(Easing.out(Easing.cubic))}
+        >
+          <Pressable
+            {...proPress.pressHandlers}
+            onPress={() => {
+              haptics.tap();
+              // Navigate to Pro upgrade
+            }}
+          >
+            <Animated.View style={[styles.proCard, proPress.animatedStyle]}>
+              <View style={styles.proHeader}>
+                <View style={styles.proBadge}>
+                  <Ionicons name="diamond-outline" size={14} color={colors.accent.primary} />
+                  <Text style={styles.proBadgeText}>PRO</Text>
+                </View>
+              </View>
+              <Text style={styles.proTitle}>Upgrade to TrackR Pro</Text>
+              <Text style={styles.proDescription}>
+                Unlimited ride stats, advanced analytics, custom badges, and ad-free experience.
+              </Text>
+              <View style={styles.proButton}>
+                <Text style={styles.proButtonText}>Upgrade</Text>
+              </View>
+            </Animated.View>
+          </Pressable>
         </Animated.View>
       </ScrollView>
+
+      {/* Fog gradient overlay */}
+      <View
+        style={[styles.fogContainer, { height: fogHeight }]}
+        pointerEvents="none"
+      >
+        <LinearGradient
+          colors={fogGradient.colors}
+          locations={fogGradient.locations}
+          style={StyleSheet.absoluteFill}
+        />
+      </View>
+
+      {/* Floating header: "PROFILE" + settings gear */}
+      <View style={[styles.topBar, { top: insets.top }]}>
+        <View style={styles.topBarSpacer} />
+        <View style={styles.topBarCenter}>
+          <Text style={styles.screenTitle}>PROFILE</Text>
+        </View>
+        <Pressable
+          {...settingsPress.pressHandlers}
+          onPress={() => {
+            haptics.tap();
+            navigation.navigate('Settings');
+          }}
+        >
+          <Animated.View style={[styles.settingsButton, settingsPress.animatedStyle]}>
+            <Ionicons name="settings-outline" size={22} color={colors.text.secondary} />
+          </Animated.View>
+        </Pressable>
+      </View>
     </View>
   );
 };
-
-// ============================================
-// Coaster Card sub-component
-// ============================================
-type CoasterCardProps = {
-  coaster: { name: string; park: string };
-  rank: number;
-  onPress: (coaster: { name: string; park: string }) => void;
-};
-
-const CoasterCard = React.memo(({ coaster, rank, onPress }: CoasterCardProps) => {
-  const { pressHandlers, animatedStyle } = useSpringPress({ scale: 0.97 });
-
-  const handlePress = useCallback(() => {
-    haptics.tap();
-    onPress(coaster);
-  }, [coaster, onPress]);
-
-  return (
-    <Pressable
-      {...pressHandlers}
-      onPress={handlePress}
-    >
-      <Animated.View style={[styles.coasterCard, animatedStyle]}>
-        <View style={styles.rankBadge}>
-          <Text style={styles.rankText}>#{rank}</Text>
-        </View>
-        <Text style={styles.coasterName} numberOfLines={1}>
-          {coaster.name}
-        </Text>
-        <Text style={styles.coasterPark} numberOfLines={1}>
-          {coaster.park}
-        </Text>
-      </Animated.View>
-    </Pressable>
-  );
-});
 
 // ============================================
 // Styles
@@ -355,212 +626,400 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   scrollContent: {
-    paddingBottom: spacing.xxxl,
-  },
-
-  // ── Header ──
-  headerSection: {
-    alignItems: 'center',
-    paddingTop: spacing.xxl,
-    paddingBottom: spacing.xl,
     paddingHorizontal: spacing.lg,
   },
 
-  // Avatar
-  avatarWrapper: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: spacing.lg,
-    ...shadows.card,
+  // ── Fog ──
+  fogContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 5,
+  },
+
+  // ── Top bar ──
+  topBar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: spacing.lg,
+    height: HEADER_HEIGHT,
+    zIndex: 10,
+  },
+  topBarSpacer: {
+    width: 40,
+  },
+  topBarCenter: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  screenTitle: {
+    fontSize: typography.sizes.large,
+    fontWeight: typography.weights.bold,
+    letterSpacing: 4,
+    color: colors.text.primary,
+  },
+  settingsButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.background.card,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...shadows.small,
+  },
+
+  // ── Hero (centered) ──
+  heroSection: {
+    alignItems: 'center',
+    marginBottom: spacing.xl,
+  },
+  avatarContainer: {
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
+    borderRadius: AVATAR_SIZE / 2,
+    marginBottom: spacing.base,
   },
   avatarImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
+    borderRadius: AVATAR_SIZE / 2,
   },
   avatarFallback: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
+    borderRadius: AVATAR_SIZE / 2,
     backgroundColor: colors.accent.primary,
     alignItems: 'center',
     justifyContent: 'center',
   },
   avatarInitials: {
-    fontSize: typography.sizes.display,
+    fontSize: typography.sizes.hero,
     fontWeight: typography.weights.bold,
     color: colors.text.inverse,
   },
-  cameraButton: {
+  cameraBadge: {
     position: 'absolute',
-    bottom: 2,
-    right: 2,
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    bottom: 0,
+    right: 0,
+    width: CAMERA_BADGE_SIZE,
+    height: CAMERA_BADGE_SIZE,
+    borderRadius: CAMERA_BADGE_SIZE / 2,
     backgroundColor: colors.accent.primary,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
     borderColor: colors.background.page,
   },
-
-  // Name / handle
   displayName: {
-    fontSize: typography.sizes.hero,
+    fontSize: typography.sizes.heading,
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
-    marginBottom: spacing.xs,
+    textAlign: 'center',
   },
   username: {
-    fontSize: typography.sizes.body,
+    fontSize: typography.sizes.caption,
     fontWeight: typography.weights.regular,
     color: colors.text.secondary,
-    marginBottom: spacing.base,
+    marginTop: 2,
+    textAlign: 'center',
   },
 
-  // Badge
-  badgeRow: {
-    flexDirection: 'row',
-    marginBottom: spacing.base,
+  // ── Stats card ──
+  statsCardWrapper: {
+    marginBottom: spacing.lg,
+    // Shadow-safe padding
+    paddingTop: spacing.xs,
+    paddingBottom: spacing.xs,
   },
-  badge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: spacing.base,
-    paddingVertical: spacing.sm,
-    borderRadius: radius.pill,
-    backgroundColor: colors.accent.primaryLight,
-  },
-  badgeIcon: {
-    marginRight: spacing.xs,
-  },
-  badgeText: {
-    fontSize: typography.sizes.caption,
-    fontWeight: typography.weights.semibold,
-    color: colors.accent.primary,
-  },
-
-  // Meta row (join date, home park)
-  metaRow: {
-    flexDirection: 'row',
-    gap: spacing.lg,
-  },
-  metaItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.xs,
-  },
-  metaText: {
-    fontSize: typography.sizes.meta,
-    fontWeight: typography.weights.regular,
-    color: colors.text.meta,
-  },
-
-  // ── Stats ──
   statsCard: {
     flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: colors.background.card,
     borderRadius: radius.card,
-    paddingVertical: spacing.xl,
-    marginHorizontal: spacing.lg,
-    marginBottom: spacing.xxl,
-    ...shadows.section,
-  },
-  statItem: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  statValue: {
-    fontSize: typography.sizes.hero,
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
-    marginBottom: spacing.xs,
-  },
-  statLabel: {
-    fontSize: typography.sizes.meta,
-    fontWeight: typography.weights.medium,
-    color: colors.text.secondary,
-  },
-  statDivider: {
-    width: 1,
-    height: 32,
-    backgroundColor: colors.border.subtle,
-  },
-
-  // ── Top Coasters ──
-  sectionTitle: {
-    fontSize: typography.sizes.title,
-    fontWeight: typography.weights.semibold,
-    color: colors.text.primary,
-    paddingHorizontal: spacing.lg,
-    marginBottom: spacing.base,
-  },
-  coasterScroll: {
-    overflow: 'visible',
-    marginBottom: spacing.xxl,
-  },
-  coasterList: {
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.base,
-    gap: spacing.base,
-  },
-  coasterCard: {
-    width: 150,
-    backgroundColor: colors.background.card,
-    borderRadius: radius.card,
-    padding: spacing.lg,
+    paddingVertical: spacing.lg,
     ...shadows.small,
   },
-  rankBadge: {
-    alignSelf: 'flex-start',
-    backgroundColor: colors.accent.primaryLight,
-    borderRadius: radius.sm,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    marginBottom: spacing.md,
+  statColumn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  rankText: {
-    fontSize: typography.sizes.meta,
+  statNumber: {
+    fontSize: typography.sizes.heading,
     fontWeight: typography.weights.bold,
-    color: colors.accent.primary,
-  },
-  coasterName: {
-    fontSize: typography.sizes.label,
-    fontWeight: typography.weights.semibold,
     color: colors.text.primary,
-    marginBottom: spacing.xs,
   },
-  coasterPark: {
-    fontSize: typography.sizes.meta,
+  statLabel: {
+    fontSize: typography.sizes.small,
     fontWeight: typography.weights.regular,
     color: colors.text.secondary,
+    marginTop: 2,
+  },
+  statDivider: {
+    width: StyleSheet.hairlineWidth,
+    backgroundColor: colors.border.subtle,
+    alignSelf: 'stretch',
+    marginVertical: spacing.xs,
   },
 
-  // ── Quick Actions ──
-  actionsSection: {
-    paddingHorizontal: spacing.lg,
-  },
-  settingsButtonWrapper: {
-    flex: 1,
-  },
-  settingsButton: {
-    flex: 1,
-    height: 48,
-    borderRadius: radius.pill,
-    backgroundColor: colors.background.card,
+  // ── Meta row ──
+  metaRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: spacing.sm,
-    ...shadows.card,
+    marginBottom: spacing.xxl,
+    gap: 4,
   },
-  settingsButtonText: {
+  metaText: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.regular,
+    color: colors.text.meta,
+  },
+  metaDot: {
+    fontSize: typography.sizes.small,
+    color: colors.text.meta,
+    marginHorizontal: 2,
+  },
+
+  // ── Segment tab bar (sliding pill) ──
+  tabBarWrapper: {
+    marginBottom: spacing.xl,
+    paddingHorizontal: spacing.xl,
+  },
+  tabBar: {
+    flexDirection: 'row',
+    backgroundColor: colors.background.card,
+    borderRadius: radius.button,
+    padding: spacing.xs,
+    position: 'relative',
+    ...shadows.small,
+  },
+  tabIndicator: {
+    position: 'absolute',
+    top: spacing.xs,
+    left: spacing.xs,
+    bottom: spacing.xs,
+    borderRadius: radius.button - spacing.xs,
+    backgroundColor: colors.accent.primary,
+    ...shadows.small,
+  },
+  tabChip: {
+    flex: 1,
+    paddingVertical: spacing.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  },
+  tabLabel: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.secondary,
+  },
+
+  // ── Tab content card (Layout animation handles height morph) ──
+  tabContentCard: {
+    backgroundColor: colors.background.card,
+    borderRadius: radius.card,
+    overflow: 'hidden',
+    ...shadows.small,
+  },
+
+  // ── My Rides tab ──
+  rideRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.base,
+  },
+  rideInfo: {
+    flex: 1,
+    marginRight: spacing.md,
+  },
+  rideName: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.medium,
+    color: colors.text.primary,
+  },
+  rideMeta: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.regular,
+    color: colors.text.meta,
+    marginTop: 1,
+  },
+
+  // ── Rankings tab ──
+  // rankingsCard removed — tabContentCard is the card now
+  rankRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.base,
+  },
+  rowDivider: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.border.subtle,
+  },
+  rankBadge: {
+    width: 24,
+    height: 24,
+    borderRadius: radius.sm,
+    backgroundColor: colors.accent.primaryLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: spacing.base,
+  },
+  rankText: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
+  },
+  rankInfo: {
+    flex: 1,
+    marginRight: spacing.md,
+  },
+  rankName: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.medium,
+    color: colors.text.primary,
+  },
+  rankPark: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.regular,
+    color: colors.text.secondary,
+    marginTop: 1,
+  },
+
+  // ── Shared rating pill ──
+  ratingPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
+    borderRadius: radius.pill,
+    backgroundColor: colors.accent.primaryLight,
+  },
+  ratingText: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.semibold,
+    color: colors.accent.primary,
+  },
+
+  // ── Badges tab ──
+  // badgesCard removed — tabContentCard is the card now
+  badgesInner: {
+    padding: spacing.lg,
+  },
+  badgesProgress: {
+    fontSize: typography.sizes.heading,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
+  },
+  badgesTotal: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.regular,
+    color: colors.text.secondary,
+  },
+  progressBarTrack: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.background.input,
+    marginTop: spacing.base,
+    overflow: 'hidden',
+  },
+  progressBarFill: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.accent.primary,
+  },
+  badgeIconRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: spacing.lg,
+    gap: spacing.md,
+  },
+  badgeCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.accent.primaryLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeMore: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.background.input,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeMoreText: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.secondary,
+  },
+
+  // ── TrackR Pro ──
+  proCardWrapper: {
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.xs,
+  },
+  proCard: {
+    backgroundColor: colors.background.card,
+    borderRadius: radius.card,
+    padding: spacing.xl,
+    borderWidth: 1,
+    borderColor: colors.accent.primary,
+    ...shadows.small,
+  },
+  proHeader: {
+    flexDirection: 'row',
+    marginBottom: spacing.base,
+  },
+  proBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
+    borderRadius: radius.pill,
+    backgroundColor: colors.accent.primaryLight,
+  },
+  proBadgeText: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
+    letterSpacing: 1,
+  },
+  proTitle: {
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
+    marginBottom: spacing.sm,
+  },
+  proDescription: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.regular,
+    color: colors.text.secondary,
+    lineHeight: typography.sizes.caption * typography.lineHeights.relaxed,
+    marginBottom: spacing.lg,
+  },
+  proButton: {
+    alignSelf: 'flex-start',
+    paddingHorizontal: spacing.xxl,
+    paddingVertical: spacing.base,
+    borderRadius: radius.button,
+    backgroundColor: colors.accent.primary,
+  },
+  proButtonText: {
     fontSize: typography.sizes.body,
     fontWeight: typography.weights.semibold,
-    color: colors.text.primary,
+    color: colors.text.inverse,
   },
 });
 

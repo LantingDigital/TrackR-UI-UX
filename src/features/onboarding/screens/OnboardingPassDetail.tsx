@@ -1,35 +1,14 @@
 /**
  * OnboardingPassDetail
  *
- * A stripped copy of PassDetailView (src/components/wallet/PassDetailView.tsx)
- * for use in the onboarding demo (Screen 4). Keeps the key 3D flip animation.
- *
- * Stripped:
- *  - Brightness adjustment (requires Brightness API, unnecessary in demo)
- *  - Multi-pass horizontal swiping (demo shows a single pass)
- *  - Dot indicators (single pass, not needed)
- *  - Original image modal (no real images in demo)
- *  - PanResponder-based gesture handling (replaced with Reanimated)
- *  - react-native Animated (replaced with react-native-reanimated per project rules)
- *  - PassHeroCard + QRCodeDisplay (replaced with inline gradient card + QR placeholder)
- *  - <Modal> (replaced with absolute-positioned View to stay inside scaled phone frame)
- *
- * Kept:
- *  - 3D flip animation (rotateY, 600ms) -- THE key visual
- *  - Front face (pass hero card with park gradient, park name, pass type)
- *  - Back face (QR code placeholder with realistic grid pattern)
- *  - Blurred card art as FULL BACKGROUND (not solid color)
- *  - Close button (X when front, arrow-back when flipped)
- *  - "Tap card to scan" instruction badge
- *  - "Tap to flip back" hint on back face
- *  - Slide-up entrance animation
- *
- * Added:
- *  - forwardRef with flip() and dismiss() methods for programmatic control
- *  - Uses react-native-reanimated (project standard) instead of react-native Animated
- *  - Renders as absolute overlay (no Modal) so it stays inside phone frame
- *  - Blurred card art background covering the ENTIRE screen
- *  - Proper bottom sheet entrance (translateY spring from bottom)
+ * Stripped copy of PassDetailView for onboarding demo (Screen 4).
+ * Matches the real wallet behavior:
+ *  - Front face backdrop: dark blur over wallet content (no card art)
+ *  - Hero section: card art image with gradient overlay
+ *  - QR flip: card art becomes blurred background
+ *  - Real QR code via react-native-qrcode-svg
+ *  - Goopy animated dot indicators (spring width + scaleY)
+ *  - Properly centered card
  */
 
 import React, { useState, useCallback, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
@@ -40,10 +19,6 @@ import {
   Dimensions,
   Pressable,
   Image,
-  ImageSourcePropType,
-  ScrollView,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -51,140 +26,89 @@ import Animated, {
   withTiming,
   withSpring,
   interpolate,
+  interpolateColor,
   Extrapolation,
   Easing,
 } from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import QRCode from 'react-native-qrcode-svg';
 import { Ticket, PASS_TYPE_LABELS } from '../../../types/wallet';
 import { colors } from '../../../theme/colors';
 import { radius } from '../../../theme/radius';
 import { SPRINGS } from '../../../constants/animations';
-import { getParkGradientColors, getParkInitials } from '../../../utils/parkAssets';
-import { CARD_ART } from '../../../data/cardArt';
+import { getParkGradientColors } from '../../../utils/parkAssets';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-// Card art mapping (ticket id -> card art asset) -- must match OnboardingScanModal
-const TICKET_CARD_ART: Record<string, ImageSourcePropType> = {
-  'cp-season': CARD_ART['steel-vengeance'],
-  'kbf-season': CARD_ART['ghostrider'],
-};
+// No separate card art mapping needed — uses ticket.heroImageSource directly
 
-// Card dimensions - nearly full width
+// Card dimensions — matches real PassDetailView (16px margin, perfectly centered)
 const CARD_HORIZONTAL_MARGIN = 16;
 const CARD_WIDTH = SCREEN_WIDTH - (CARD_HORIZONTAL_MARGIN * 2);
-const CARD_ASPECT_RATIO = 1.35;
+const CARD_ASPECT_RATIO = 1.15;
 const CARD_HEIGHT = CARD_WIDTH * CARD_ASPECT_RATIO;
-const HERO_HEIGHT_RATIO = 0.58;
-const FOOTER_HEIGHT_RATIO = 0.42;
+const HERO_HEIGHT_RATIO = 0.52;
+const FOOTER_HEIGHT_RATIO = 0.48;
 
-// QR placeholder size
-const QR_PLACEHOLDER_SIZE = 140;
+// QR code size
+const QR_SIZE = 120;
 
 // ============================================
-// QR Placeholder -- realistic grid pattern
+// Animated Dot Indicator
 // ============================================
 
-const QRPlaceholder: React.FC<{ size: number }> = ({ size }) => {
-  const gridSize = 11;
-  const cellSize = (size - 24) / gridSize; // Subtract padding
+const AnimatedDot: React.FC<{
+  isActive: boolean;
+  index: number;
+}> = ({ isActive }) => {
+  const progress = useSharedValue(isActive ? 1 : 0);
 
-  // Generate a deterministic grid pattern that looks like a real QR code
-  const cells: boolean[][] = [];
-  for (let row = 0; row < gridSize; row++) {
-    cells[row] = [];
-    for (let col = 0; col < gridSize; col++) {
-      // Finder patterns (three 3x3 corners with border)
-      const isTopLeft = row < 3 && col < 3;
-      const isTopRight = row < 3 && col >= gridSize - 3;
-      const isBottomLeft = row >= gridSize - 3 && col < 3;
-      const isFinderOuter = isTopLeft || isTopRight || isBottomLeft;
+  useEffect(() => {
+    progress.value = withSpring(isActive ? 1 : 0, {
+      damping: 12,
+      stiffness: 65,
+      mass: 0.8,
+    });
+  }, [isActive]);
 
-      // Inner filled part of finder (1x1 center)
-      const isFinderInner =
-        (row === 1 && col === 1) ||
-        (row === 1 && col === gridSize - 2) ||
-        (row === gridSize - 2 && col === 1);
+  const dotStyle = useAnimatedStyle(() => ({
+    width: interpolate(progress.value, [0, 1], [8, 24], Extrapolation.CLAMP),
+    transform: [
+      {
+        scaleY: interpolate(
+          progress.value,
+          [0, 0.5, 1],
+          [1, 1.3, 1],
+          Extrapolation.CLAMP,
+        ),
+      },
+    ],
+    backgroundColor: interpolateColor(
+      progress.value,
+      [0, 1],
+      ['rgba(255, 255, 255, 0.3)', '#FFFFFF'],
+    ),
+  }));
 
-      // Finder border (outer ring)
-      const isFinderBorder = isFinderOuter && !isFinderInner;
-
-      // Timing patterns (alternating row/col between finders)
-      const isTimingH = row === 3 && col > 2 && col < gridSize - 3 && col % 2 === 0;
-      const isTimingV = col === 3 && row > 2 && row < gridSize - 3 && row % 2 === 0;
-
-      // Pseudo-random data cells (deterministic hash)
-      const hash = (row * 17 + col * 31 + row * col * 7) % 11;
-      const isDataCell = !isFinderOuter && !isTimingH && !isTimingV && hash < 5;
-
-      cells[row][col] = isFinderBorder || isFinderInner || isTimingH || isTimingV || isDataCell;
-    }
-  }
-
-  return (
-    <View style={[qrStyles.container, { width: size, height: size }]}>
-      {cells.map((row, rowIndex) => (
-        <View key={rowIndex} style={qrStyles.row}>
-          {row.map((filled, colIndex) => (
-            <View
-              key={colIndex}
-              style={[
-                qrStyles.cell,
-                { width: cellSize, height: cellSize },
-                filled ? qrStyles.cellFilled : qrStyles.cellEmpty,
-              ]}
-            />
-          ))}
-        </View>
-      ))}
-    </View>
-  );
+  return <Animated.View style={[styles.dotIndicator, dotStyle]} />;
 };
-
-const qrStyles = StyleSheet.create({
-  container: {
-    padding: 12,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  cell: {
-    borderWidth: 0.5,
-    borderColor: 'transparent',
-  },
-  cellFilled: {
-    backgroundColor: '#1A1A1A',
-  },
-  cellEmpty: {
-    backgroundColor: '#FFFFFF',
-  },
-});
 
 // ============================================
 // Component
 // ============================================
 
 export interface OnboardingPassDetailRef {
-  /** Programmatically trigger the flip animation */
   flip: () => void;
-  /** Programmatically dismiss the pass detail (slide down) */
   dismiss: () => void;
-  /** Programmatically swipe to a specific ticket by index */
   swipeTo: (index: number) => void;
 }
 
 interface OnboardingPassDetailProps {
-  /** The ticket to display (primary / initially visible) */
   ticket: Ticket | null;
-  /** All tickets available for swiping (if provided, enables carousel) */
   allTickets?: Ticket[];
-  /** Whether the detail view is visible */
   visible: boolean;
-  /** Called when the detail view should close */
   onClose: () => void;
 }
 
@@ -194,7 +118,6 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
     const [internalVisible, setInternalVisible] = useState(false);
     const isFlippedRef = useRef(false);
     const [activeTicketIndex, setActiveTicketIndex] = useState(0);
-    const pagerScrollRef = useRef<ScrollView>(null);
 
     // Reanimated shared values
     const translateY = useSharedValue(SCREEN_HEIGHT);
@@ -203,8 +126,9 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
     const flipBgOpacity = useSharedValue(0);
     const cardScale = useSharedValue(1);
     const bottomSectionOpacity = useSharedValue(1);
+    // Spring-driven horizontal pager (matches real PassDetailView)
+    const cardTranslateX = useSharedValue(0);
 
-    // Compute the tickets list for the pager
     const tickets = allTickets && allTickets.length > 0 ? allTickets : (ticket ? [ticket] : []);
 
     // Open animation
@@ -218,25 +142,18 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
         cardScale.value = 1;
         bottomSectionOpacity.value = 1;
 
-        // Set initial index to the primary ticket within the list
         const idx = tickets.findIndex(t => t.id === ticket.id);
         setActiveTicketIndex(idx >= 0 ? idx : 0);
+        // Set initial pager position instantly (no animation)
+        cardTranslateX.value = -idx * SCREEN_WIDTH;
 
         backdropOpacity.value = withTiming(1, { duration: 300 });
         translateY.value = withSpring(0, SPRINGS.stiff);
-
-        // Scroll pager to initial ticket after mount
-        if (idx > 0) {
-          setTimeout(() => {
-            pagerScrollRef.current?.scrollTo({ x: idx * CARD_WIDTH, animated: false });
-          }, 50);
-        }
       }
     }, [visible, ticket]);
 
     // Close animation
     const animateClose = useCallback(() => {
-      // If flipped, reset first
       if (isFlippedRef.current) {
         setIsFlipped(false);
         isFlippedRef.current = false;
@@ -247,7 +164,6 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       translateY.value = withTiming(SCREEN_HEIGHT, { duration: 300, easing: Easing.out(Easing.cubic) });
       backdropOpacity.value = withTiming(0, { duration: 250 });
 
-      // Delay unmount
       setTimeout(() => {
         setInternalVisible(false);
         onClose();
@@ -261,7 +177,6 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       setIsFlipped(true);
       isFlippedRef.current = true;
 
-      // Card flip + scale bounce + bg fade + hide bottom
       cardScale.value = withSpring(1, SPRINGS.responsive);
       flipProgress.value = withTiming(1, {
         duration: 600,
@@ -288,16 +203,12 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       }, 500);
     }, []);
 
-    // Handle pager scroll end to update active ticket
-    const handlePagerScrollEnd = useCallback((e: NativeSyntheticEvent<NativeScrollEvent>) => {
-      const offsetX = e.nativeEvent.contentOffset.x;
-      const newIndex = Math.round(offsetX / CARD_WIDTH);
-      if (newIndex !== activeTicketIndex && newIndex >= 0 && newIndex < tickets.length) {
-        setActiveTicketIndex(newIndex);
-      }
-    }, [activeTicketIndex, tickets.length]);
+    // Spring-driven pager animated style (matches real PassDetailView physics)
+    const pagerAnimatedStyle = useAnimatedStyle(() => ({
+      transform: [{ translateX: cardTranslateX.value }],
+    }));
 
-    // Expose flip(), dismiss(), and swipeTo() via ref
+    // Expose methods via ref
     useImperativeHandle(ref, () => ({
       flip: () => {
         if (isFlippedRef.current) {
@@ -311,13 +222,17 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       },
       swipeTo: (index: number) => {
         if (index >= 0 && index < tickets.length) {
-          pagerScrollRef.current?.scrollTo({ x: index * CARD_WIDTH, animated: true });
+          // Spring animation matching real PassDetailView: tension 65, friction 12
+          cardTranslateX.value = withSpring(-index * SCREEN_WIDTH, {
+            damping: 14,
+            stiffness: 65,
+            mass: 1,
+          });
           setActiveTicketIndex(index);
         }
       },
     }));
 
-    // Backdrop tap handler
     const handleBackdropPress = useCallback(() => {
       if (isFlippedRef.current) {
         handleFlipBack();
@@ -326,10 +241,8 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       }
     }, [animateClose, handleFlipBack]);
 
-    // Card tap handler (front side only)
     const handleCardPress = useCallback(() => {
       if (!isFlippedRef.current) {
-        // Press-in scale + flip
         cardScale.value = withTiming(0.95, { duration: 100 });
         setTimeout(() => {
           handleFlip();
@@ -351,7 +264,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       opacity: flipBgOpacity.value,
     }));
 
-    // Front face rotation (0 -> 90deg at midpoint, stays hidden after)
+    // Front face rotation
     const frontCardStyle = useAnimatedStyle(() => ({
       opacity: interpolate(flipProgress.value, [0, 0.49, 0.5], [1, 1, 0], Extrapolation.CLAMP),
       transform: [
@@ -368,7 +281,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
       ],
     }));
 
-    // Back face rotation (hidden until midpoint, then -90 -> 0)
+    // Back face rotation
     const backCardStyle = useAnimatedStyle(() => ({
       opacity: interpolate(flipProgress.value, [0.5, 0.51, 1], [0, 1, 1], Extrapolation.CLAMP),
       transform: [
@@ -390,45 +303,22 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
 
     if (!internalVisible || !ticket) return null;
 
-    // Use active ticket for backdrop/back face; front face uses pager
     const displayTicket = tickets[activeTicketIndex] || ticket;
     const gradientColors = getParkGradientColors(displayTicket.parkName);
-    const parkInitials = getParkInitials(displayTicket.parkName);
     const passNumber = displayTicket.qrData.split('-').pop() || displayTicket.qrData;
     const passTypeLabel = PASS_TYPE_LABELS[displayTicket.passType] || 'Pass';
-    const cardArtSource = TICKET_CARD_ART[displayTicket.id];
+    const cardArtSource = displayTicket.heroImageSource;
 
     return (
       <View style={styles.overlayRoot}>
-        {/* Backdrop with card art as FULL background — NOT blurred on front face */}
+        {/* Backdrop — dark blur over wallet content (matches real PassDetailView) */}
         <Pressable style={StyleSheet.absoluteFill} onPress={handleBackdropPress}>
           <Animated.View style={[styles.backdrop, backdropAnimStyle]}>
-            {cardArtSource ? (
-              <>
-                <Image
-                  source={cardArtSource}
-                  style={styles.cardArtBackground}
-                  resizeMode="cover"
-                />
-                {/* Darken overlay for readability */}
-                <View style={styles.backdropDarkOverlay} />
-              </>
-            ) : (
-              <>
-                <LinearGradient
-                  colors={gradientColors}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                  style={StyleSheet.absoluteFill}
-                />
-                <View style={styles.backdropDarkOverlay} />
-                <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
-              </>
-            )}
+            <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
           </Animated.View>
         </Pressable>
 
-        {/* Flip background (enhanced blur when QR is showing) */}
+        {/* Flip background — card art blurred, only visible when QR is showing */}
         <Animated.View
           style={[StyleSheet.absoluteFill, flipBgAnimStyle]}
           pointerEvents={isFlipped ? 'auto' : 'none'}
@@ -438,7 +328,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
               source={cardArtSource}
               style={styles.cardArtBackground}
               resizeMode="cover"
-              blurRadius={30}
+              blurRadius={25}
             />
           ) : (
             <LinearGradient
@@ -460,8 +350,8 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
           style={[styles.contentContainer, contentStyle]}
           pointerEvents="box-none"
         >
-          {/* Header */}
-          <View style={[styles.header, { paddingTop: 16 }]}>
+          {/* Header — paddingTop matches real app's insets.top + 16 (~75px on dynamic island devices) */}
+          <View style={[styles.header, { paddingTop: 75 }]}>
             <View style={styles.headerRow}>
               <Pressable
                 onPress={isFlipped ? handleFlipBack : animateClose}
@@ -477,90 +367,94 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
             </View>
           </View>
 
-          {/* Card area */}
+          {/* Card area — centered */}
           <View style={styles.cardContainer}>
-            {/* Front face -- horizontal pager of hero cards */}
+            {/* Front face — spring-driven hero card pager (matches real PassDetailView) */}
             <Animated.View style={[styles.cardFace, frontCardStyle]}>
-              <ScrollView
-                ref={pagerScrollRef}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                onMomentumScrollEnd={handlePagerScrollEnd}
-                scrollEnabled={!isFlipped && tickets.length > 1}
-                style={{ width: CARD_WIDTH }}
-                contentContainerStyle={tickets.length > 1 ? undefined : undefined}
-              >
-                {tickets.map((t) => {
-                  const tGradient = getParkGradientColors(t.parkName);
-                  const tInitials = getParkInitials(t.parkName);
-                  const tPassNumber = t.qrData.split('-').pop() || t.qrData;
-                  return (
-                    <Pressable key={t.id} onPress={handleCardPress} style={styles.heroCard}>
-                      {/* Hero gradient area */}
-                      <View style={[styles.heroSection, { height: CARD_HEIGHT * HERO_HEIGHT_RATIO }]}>
-                        <LinearGradient
-                          colors={tGradient}
-                          start={{ x: 0, y: 0 }}
-                          end={{ x: 1, y: 1 }}
-                          style={styles.heroGradient}
-                        >
-                          <Text style={styles.heroInitials}>{tInitials}</Text>
-                        </LinearGradient>
+              <View style={styles.pagerClip}>
+                <Animated.View style={[styles.pagerRow, pagerAnimatedStyle]}>
+                  {tickets.map((t) => {
+                    const tGradient = getParkGradientColors(t.parkName);
+                    const tCardArt = t.heroImageSource;
+                    const tPassNumber = t.qrData.split('-').pop() || t.qrData;
+                    return (
+                      <View key={t.id} style={styles.pagerSlot}>
+                        <Pressable onPress={handleCardPress} style={styles.heroCard}>
+                          {/* Hero section — card art image or gradient fallback */}
+                          <View style={[styles.heroSection, { height: CARD_HEIGHT * HERO_HEIGHT_RATIO }]}>
+                            {tCardArt ? (
+                              <Image
+                                source={tCardArt}
+                                style={StyleSheet.absoluteFill}
+                                resizeMode="cover"
+                              />
+                            ) : (
+                              <LinearGradient
+                                colors={tGradient}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 1 }}
+                                style={StyleSheet.absoluteFill}
+                              />
+                            )}
 
-                        {/* Darkening overlay for text readability */}
-                        <LinearGradient
-                          colors={['rgba(0,0,0,0.4)', 'transparent', 'rgba(0,0,0,0.2)']}
-                          locations={[0, 0.4, 1]}
-                          style={StyleSheet.absoluteFill}
-                        />
+                            {/* Darkening overlay for text readability */}
+                            <LinearGradient
+                              colors={['rgba(0,0,0,0.4)', 'transparent', 'rgba(0,0,0,0.2)']}
+                              locations={[0, 0.4, 1]}
+                              style={StyleSheet.absoluteFill}
+                            />
 
-                        {/* Park name at top */}
-                        <View style={styles.parkNameWrapper}>
-                          <LinearGradient
-                            colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'transparent']}
-                            style={styles.parkNameGradientBg}
-                          />
-                          <Text style={styles.parkNameText}>{t.parkName}</Text>
-                        </View>
+                            {/* Park name at top */}
+                            <View style={styles.parkNameWrapper}>
+                              <LinearGradient
+                                colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'transparent']}
+                                style={styles.parkNameGradientBg}
+                              />
+                              <Text style={styles.parkNameText}>{t.parkName}</Text>
+                            </View>
 
-                        {/* Passholder name at bottom */}
-                        {t.passholder && (
-                          <View style={styles.passholderContainer}>
-                            <Text style={styles.passholderText}>{t.passholder}</Text>
+                            {/* Passholder name at bottom */}
+                            {t.passholder && (
+                              <View style={styles.passholderContainer}>
+                                <Text style={styles.passholderText}>{t.passholder}</Text>
+                              </View>
+                            )}
                           </View>
-                        )}
-                      </View>
 
-                      {/* White footer with QR placeholder */}
-                      <View style={[styles.footerSection, { height: CARD_HEIGHT * FOOTER_HEIGHT_RATIO }]}>
-                        <View style={styles.codeContainer}>
-                          <QRPlaceholder size={120} />
-                        </View>
-                        <Text style={styles.passNumberText}>PASS #: {tPassNumber}</Text>
+                          {/* White footer with QR code */}
+                          <View style={[styles.footerSection, { height: CARD_HEIGHT * FOOTER_HEIGHT_RATIO }]}>
+                            <View style={styles.codeContainer}>
+                              <QRCode
+                                value={t.qrData}
+                                size={QR_SIZE}
+                                backgroundColor="#FFFFFF"
+                                color="#1A1A1A"
+                              />
+                            </View>
+                            <Text style={styles.passNumberText}>PASS #: {tPassNumber}</Text>
+                          </View>
+                        </Pressable>
                       </View>
-                    </Pressable>
-                  );
-                })}
-              </ScrollView>
+                    );
+                  })}
+                </Animated.View>
+              </View>
 
-              {/* Dot indicators (only if multiple tickets) */}
+              {/* Animated dot indicators (only if multiple tickets) */}
               {tickets.length > 1 && (
                 <View style={styles.dotIndicatorRow}>
                   {tickets.map((t, i) => (
-                    <View
+                    <AnimatedDot
                       key={t.id}
-                      style={[
-                        styles.dotIndicator,
-                        i === activeTicketIndex && styles.dotIndicatorActive,
-                      ]}
+                      index={i}
+                      isActive={i === activeTicketIndex}
                     />
                   ))}
                 </View>
               )}
             </Animated.View>
 
-            {/* Back face -- scan card with QR (always shows active ticket) */}
+            {/* Back face — scan card with QR (always shows active ticket) */}
             <Animated.View style={[styles.cardFace, styles.cardBack, backCardStyle]}>
               <Pressable onPress={handleFlipBack} style={styles.scanCard}>
                 <Text style={styles.scanParkName}>{displayTicket.parkName}</Text>
@@ -570,7 +464,12 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
                 </View>
 
                 <View style={styles.qrContainer}>
-                  <QRPlaceholder size={QR_PLACEHOLDER_SIZE} />
+                  <QRCode
+                    value={displayTicket.qrData}
+                    size={160}
+                    backgroundColor="#FFFFFF"
+                    color="#1A1A1A"
+                  />
                 </View>
 
                 <Text style={styles.passNumberLabel}>PASS #: {passNumber}</Text>
@@ -584,7 +483,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
             </Animated.View>
           </View>
 
-          {/* Bottom section -- instruction + last used */}
+          {/* Bottom section — instruction + last used */}
           <Animated.View
             style={[styles.bottomSection, bottomAnimStyle]}
             pointerEvents={isFlipped ? 'none' : 'auto'}
@@ -603,7 +502,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
               </Text>
             </View>
 
-            <View style={{ height: 32 }} />
+            <View style={{ height: 8 }} />
           </Animated.View>
         </Animated.View>
       </View>
@@ -622,11 +521,7 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    overflow: 'hidden',
-  },
-  backdropDarkOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.45)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   cardArtBackground: {
     ...StyleSheet.absoluteFillObject,
@@ -665,11 +560,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
 
-  // Card area
+  // Card area — centered, with extra top margin to push card into visible center of phone frame
   cardContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 60,
   },
   cardFace: {
     backfaceVisibility: 'hidden',
@@ -678,9 +574,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
+    // Offset upward to compensate for cardContainer's marginTop (which accounts for
+    // the front face's bottom section). Back face has no bottom section, so it needs
+    // to reclaim roughly half that margin to stay visually centered.
+    marginTop: -60,
   },
 
-  // Front: Hero card (matches PassHeroCard layout)
+  // Front: Hero card
   heroCard: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
@@ -697,20 +597,6 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'relative',
     overflow: 'hidden',
-  },
-  heroGradient: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  heroInitials: {
-    fontSize: 72,
-    fontWeight: '700',
-    color: 'rgba(255, 255, 255, 0.25)',
-    textShadowColor: 'rgba(0, 0, 0, 0.2)',
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 8,
   },
   parkNameWrapper: {
     position: 'absolute',
@@ -770,7 +656,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
 
-  // Back: Scan card (matches PassDetailView)
+  // Back: Scan card
   scanCard: {
     width: CARD_WIDTH,
     backgroundColor: '#FFFFFF',
@@ -858,7 +744,20 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.5)',
   },
 
-  // Dot indicators for multi-pass pager
+  // Spring-driven horizontal pager
+  pagerClip: {
+    width: SCREEN_WIDTH,
+    overflow: 'hidden',
+  },
+  pagerRow: {
+    flexDirection: 'row' as const,
+  },
+  pagerSlot: {
+    width: SCREEN_WIDTH,
+    alignItems: 'center' as const,
+  },
+
+  // Animated dot indicators
   dotIndicatorRow: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -867,14 +766,6 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   dotIndicator: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: 'rgba(255, 255, 255, 0.35)',
-  },
-  dotIndicatorActive: {
-    backgroundColor: '#FFFFFF',
-    width: 8,
     height: 8,
     borderRadius: 4,
   },

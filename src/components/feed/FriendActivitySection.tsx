@@ -11,9 +11,12 @@ import Animated, {
   useAnimatedStyle,
   withDelay,
   withSpring,
+  withTiming,
+  Easing,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { useSpringPress } from '../../hooks/useSpringPress';
+import { onBecomeVisible, offBecomeVisible, hasBeenVisible } from '../../utils/feedAnimations';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { shadows } from '../../theme/shadows';
@@ -21,6 +24,7 @@ import { radius } from '../../theme/radius';
 import { haptics } from '../../services/haptics';
 import { SPRINGS } from '../../constants/animations';
 import { FriendActivityItem, MOCK_FRIEND_ACTIVITY } from '../../data/mockFeed';
+import { CARD_ART } from '../../data/cardArt';
 
 // ── Individual Activity Row ──
 
@@ -28,10 +32,11 @@ interface ActivityRowProps {
   item: FriendActivityItem;
   index: number;
   isLast: boolean;
-  onPress: (item: FriendActivityItem) => void;
+  onCoasterPress: (item: FriendActivityItem) => void;
+  onFriendPostPress?: (item: FriendActivityItem) => void;
 }
 
-const ActivityRow = React.memo<ActivityRowProps>(({ item, index, isLast, onPress }) => {
+const ActivityRow = React.memo<ActivityRowProps>(({ item, index, isLast, onCoasterPress, onFriendPostPress }) => {
   const { pressHandlers, animatedStyle } = useSpringPress({ scale: 0.98 });
   const entryProgress = useSharedValue(0);
 
@@ -61,7 +66,7 @@ const ActivityRow = React.memo<ActivityRowProps>(({ item, index, isLast, onPress
   return (
     <Animated.View style={[entryStyle, animatedStyle]}>
       <Pressable
-        onPress={() => { haptics.tap(); onPress(item); }}
+        onPress={() => { haptics.tap(); onFriendPostPress?.(item); }}
         onPressIn={pressHandlers.onPressIn}
         onPressOut={pressHandlers.onPressOut}
         style={[styles.activityRow, !isLast && styles.activityRowBorder]}
@@ -71,7 +76,11 @@ const ActivityRow = React.memo<ActivityRowProps>(({ item, index, isLast, onPress
           <Text style={styles.activityText} numberOfLines={2}>
             <Text style={styles.username}>{item.username}</Text>
             {' '}{item.action}{' '}
-            <Text style={styles.rideName}>{item.rideName}</Text>
+            <Text
+              style={styles.rideName}
+              onPress={() => { haptics.select(); onCoasterPress(item); }}
+              suppressHighlighting={false}
+            >{item.rideName}</Text>
           </Text>
           <View style={styles.activityMeta}>
             <Text style={styles.parkName}>{item.parkName}</Text>
@@ -82,7 +91,13 @@ const ActivityRow = React.memo<ActivityRowProps>(({ item, index, isLast, onPress
             <View style={styles.starsRow}>{renderStars(item.rating)}</View>
           )}
         </View>
-        <Image source={{ uri: item.rideImageUrl }} style={styles.rideThumb} cachePolicy="memory-disk" recyclingKey={`ride-${item.id}`} />
+        {CARD_ART[item.coasterId] ? (
+          <Image source={CARD_ART[item.coasterId]} style={styles.rideThumb} cachePolicy="memory-disk" recyclingKey={`ride-${item.id}`} />
+        ) : (
+          <View style={[styles.rideThumb, styles.rideThumbPlaceholder]}>
+            <Ionicons name="flash" size={20} color={colors.text.meta} />
+          </View>
+        )}
       </Pressable>
     </Animated.View>
   );
@@ -91,17 +106,42 @@ const ActivityRow = React.memo<ActivityRowProps>(({ item, index, isLast, onPress
 // ── Main Component ──
 
 interface FriendActivitySectionProps {
+  sectionId?: string;
   onActivityPress?: (item: FriendActivityItem) => void;
+  onFriendPostPress?: (item: FriendActivityItem) => void;
   onSeeAll?: () => void;
 }
 
-export const FriendActivitySection = React.memo<FriendActivitySectionProps>(({ onActivityPress, onSeeAll }) => {
-  const handlePress = useCallback((item: FriendActivityItem) => {
+export const FriendActivitySection = React.memo<FriendActivitySectionProps>(({ sectionId, onActivityPress, onFriendPostPress, onSeeAll }) => {
+  const handleCoasterPress = useCallback((item: FriendActivityItem) => {
     onActivityPress?.(item);
   }, [onActivityPress]);
 
+  const handleFriendPostPress = useCallback((item: FriendActivityItem) => {
+    onFriendPostPress?.(item);
+  }, [onFriendPostPress]);
+
+  // Entrance animation for the entire section (viewability-based)
+  const sectionEntry = useSharedValue(sectionId ? (hasBeenVisible(sectionId) ? 1 : 0) : 1);
+
+  useEffect(() => {
+    if (!sectionId) return;
+    onBecomeVisible(sectionId, () => {
+      sectionEntry.value = withTiming(1, {
+        duration: 400,
+        easing: Easing.out(Easing.cubic),
+      });
+    });
+    return () => offBecomeVisible(sectionId);
+  }, [sectionId]);
+
+  const sectionEntryStyle = useAnimatedStyle(() => ({
+    opacity: sectionEntry.value,
+    transform: [{ translateY: (1 - sectionEntry.value) * 20 }],
+  }));
+
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, sectionEntryStyle]}>
       <View style={styles.headerRow}>
         <Text style={styles.sectionTitle}>Friend Activity</Text>
         <Pressable onPress={() => { haptics.tap(); onSeeAll?.(); }} hitSlop={8}>
@@ -115,11 +155,12 @@ export const FriendActivitySection = React.memo<FriendActivitySectionProps>(({ o
             item={activity}
             index={index}
             isLast={index === MOCK_FRIEND_ACTIVITY.length - 1}
-            onPress={handlePress}
+            onCoasterPress={handleCoasterPress}
+            onFriendPostPress={handleFriendPostPress}
           />
         ))}
       </View>
-    </View>
+    </Animated.View>
   );
 });
 
@@ -213,5 +254,9 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: radius.sm,
     backgroundColor: colors.background.imagePlaceholder,
+  },
+  rideThumbPlaceholder: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

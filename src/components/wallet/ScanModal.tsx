@@ -331,7 +331,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
                         ]}
                       >
                         <Ionicons name="add" size={16} color={colors.accent.primary} />
-                        <Text style={styles.sectionEmptyAddText}>Add Pass</Text>
+                        <Text style={styles.sectionEmptyAddText}>Import Pass</Text>
                       </Pressable>
                     )}
                   </View>
@@ -421,7 +421,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
                         showFavoriteBadge={true}
                       />
                     ))}
-                    {/* Add Pass Card at end of carousel */}
+                    {/* Import Pass Card at end of carousel */}
                     <Pressable
                       onPress={handleAddTicket}
                       style={({ pressed }) => [
@@ -433,7 +433,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
                       <View style={styles.addPassIconContainer}>
                         <Ionicons name="add" size={28} color={colors.accent.primary} />
                       </View>
-                      <Text style={styles.addPassText}>Add Pass</Text>
+                      <Text style={styles.addPassText}>Import Pass</Text>
                     </Pressable>
                   </ScrollView>
                 ) : (
@@ -580,7 +580,7 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
 
-  // Add Pass Card (dynamically sized)
+  // Import Pass Card (dynamically sized)
   addPassCard: {
     backgroundColor: '#FFFFFF',
     borderRadius: radius.card,

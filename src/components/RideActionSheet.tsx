@@ -49,10 +49,8 @@ interface RideActionSheetProps {
   onClose: () => void;
   onDismissStart?: () => void;
   onViewDetails: (ride: RideActionData) => void;
-  onViewOnMap?: (ride: RideActionData) => void;
   onLogRide: (ride: RideActionData) => void;
   onViewRankings?: (ride: RideActionData) => void;
-  hasMapPOI?: boolean;
 }
 
 // ============================================
@@ -67,10 +65,8 @@ export function RideActionSheet({
   onClose,
   onDismissStart,
   onViewDetails,
-  onViewOnMap,
   onLogRide,
   onViewRankings,
-  hasMapPOI = false,
 }: RideActionSheetProps) {
   const insets = useSafeAreaInsets();
   const tabBar = useTabBar();
@@ -166,31 +162,6 @@ export function RideActionSheet({
               style={styles.chevron}
             />
           </Pressable>
-
-          {hasMapPOI && onViewOnMap && (
-            <Pressable
-              onPress={() => {
-                dismiss();
-                onViewOnMap(ride);
-              }}
-              style={({ pressed }) => [
-                styles.actionRow,
-                styles.actionSecondary,
-                pressed && styles.actionSecondaryPressed,
-              ]}
-            >
-              <View style={[styles.actionIconWrap, styles.actionIconSecondary]}>
-                <Ionicons name="map-outline" size={18} color={colors.accent.primary} />
-              </View>
-              <Text style={styles.actionSecondaryText}>View on Map</Text>
-              <Ionicons
-                name="chevron-forward"
-                size={16}
-                color={colors.text.meta}
-                style={styles.chevron}
-              />
-            </Pressable>
-          )}
 
           <Pressable
             onPress={() => {

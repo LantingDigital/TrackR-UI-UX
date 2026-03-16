@@ -15,6 +15,7 @@ import Animated, {
   withTiming,
   interpolate,
   Extrapolation,
+  Easing,
   runOnJS,
 } from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -35,7 +36,7 @@ import { ComposeBucketList } from './ComposeBucketList';
 import type { PostType } from '../types/community';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
-const SHEET_HEIGHT = SCREEN_HEIGHT * 0.85;
+const SHEET_HEIGHT = SCREEN_HEIGHT * 0.45;
 const DISMISS_VELOCITY = 500;
 
 interface ComposeSheetProps {
@@ -81,19 +82,20 @@ export function ComposeSheet({ visible, onClose }: ComposeSheetProps) {
   useEffect(() => {
     if (visible) {
       setSelectedType(null);
-      translateY.value = withSpring(0, SPRINGS.responsive);
+      translateY.value = withSpring(0, SPRINGS.stiff);
       backdropOpacity.value = withTiming(1, { duration: 250 });
-    } else {
-      translateY.value = withTiming(SHEET_HEIGHT, { duration: 250 });
-      backdropOpacity.value = withTiming(0, { duration: 200 });
     }
+    // Close is handled entirely by dismiss() to avoid double-animation pop
   }, [visible]);
 
   const dismiss = useCallback(() => {
-    translateY.value = withTiming(SHEET_HEIGHT, { duration: 250 }, (finished) => {
+    translateY.value = withTiming(SHEET_HEIGHT, {
+      duration: 280,
+      easing: Easing.in(Easing.cubic),
+    }, (finished) => {
       if (finished) runOnJS(onClose)();
     });
-    backdropOpacity.value = withTiming(0, { duration: 200 });
+    backdropOpacity.value = withTiming(0, { duration: 250 });
   }, [onClose]);
 
   const panGesture = Gesture.Pan()
@@ -113,12 +115,15 @@ export function ComposeSheet({ visible, onClose }: ComposeSheetProps) {
     .onEnd((e) => {
       'worklet';
       if (translateY.value > SHEET_HEIGHT * 0.25 || e.velocityY > DISMISS_VELOCITY) {
-        translateY.value = withTiming(SHEET_HEIGHT, { duration: 250 }, (finished) => {
+        translateY.value = withTiming(SHEET_HEIGHT, {
+          duration: 280,
+          easing: Easing.in(Easing.cubic),
+        }, (finished) => {
           if (finished) runOnJS(onClose)();
         });
         backdropOpacity.value = withTiming(0, { duration: 250 });
       } else {
-        translateY.value = withSpring(0, SPRINGS.responsive);
+        translateY.value = withSpring(0, SPRINGS.stiff);
         backdropOpacity.value = withTiming(1, { duration: 250 });
       }
     });
@@ -187,7 +192,7 @@ export function ComposeSheet({ visible, onClose }: ComposeSheetProps) {
             </Pressable>
           </View>
 
-          <View style={styles.divider} />
+          {/* Divider removed — clean header */}
 
           {/* Content */}
           <View style={[styles.body, { paddingBottom: insets.bottom + spacing.lg }]}>
@@ -241,7 +246,7 @@ const styles = StyleSheet.create({
   },
   handleRow: {
     alignItems: 'center',
-    paddingTop: spacing.base,
+    paddingTop: spacing.md,
     paddingBottom: spacing.xs,
   },
   handle: {
@@ -254,7 +259,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.xs,
   },
   backBtn: {
     width: 32,
@@ -270,15 +275,10 @@ const styles = StyleSheet.create({
     width: 32,
     alignItems: 'flex-end',
   },
-  divider: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: colors.border.subtle,
-    marginHorizontal: spacing.lg,
-  },
   body: {
     flex: 1,
     paddingHorizontal: spacing.xl,
-    paddingTop: spacing.xl,
+    paddingTop: spacing.lg,
   },
 
   // Type selector grid

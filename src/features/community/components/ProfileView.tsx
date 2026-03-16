@@ -2,10 +2,12 @@
  * ProfileView — Full-screen user profile
  *
  * Shows avatar, name, stats row, recent rides, recent ratings.
+ * Includes FriendActionButton (add/remove/accept/decline) and
+ * RemoveFriendSheet for confirmation.
  * Stagger entrance throughout. Registered as slide_from_right in RootNavigator.
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -24,7 +26,10 @@ import { shadows } from '../../../theme/shadows';
 import { SPRINGS } from '../../../constants/animations';
 import { useSpringPress } from '../../../hooks/useSpringPress';
 import { haptics } from '../../../services/haptics';
-import { getFriend } from '../stores/friendsStore';
+import { getFriend, useFriendsStore } from '../stores/friendsStore';
+import { FriendActionButton } from './FriendActionButton';
+import { RemoveFriendSheet } from './RemoveFriendSheet';
+import type { FriendshipStatus } from '../types/community';
 
 // ─── Stagger helper ─────────────────────────────────────────
 
@@ -109,11 +114,55 @@ export function ProfileView() {
   const friend = getFriend(userId);
   const profile = getProfileData(userId);
 
+  // Store actions (reactive so UI updates on friend add/remove)
+  const {
+    sendRequest,
+    acceptRequest,
+    declineRequest,
+    removeFriend,
+    getFriendshipStatus,
+    friendRequests,
+  } = useFriendsStore();
+
+  const friendshipStatus: FriendshipStatus = getFriendshipStatus(userId);
+
+  // Find pending request from this user (if any)
+  const pendingRequest = friendRequests.find(
+    (r) => r.fromUserId === userId && r.status === 'pending'
+  );
+
+  // Remove friend sheet state
+  const [showRemoveSheet, setShowRemoveSheet] = useState(false);
+
   // Fallback for unknown users (e.g., feed authors who aren't friends)
   const displayName = friend?.name ?? 'User';
   const displayInitials = friend?.initials ?? 'U';
   const creditCount = friend?.creditCount ?? 0;
-  const topCoaster = friend?.topCoaster ?? '—';
+  const topCoaster = friend?.topCoaster ?? '\u2014';
+
+  const handleAddFriend = useCallback(() => {
+    sendRequest(userId);
+  }, [userId, sendRequest]);
+
+  const handleAccept = useCallback(() => {
+    if (pendingRequest) {
+      acceptRequest(pendingRequest.id);
+    }
+  }, [pendingRequest, acceptRequest]);
+
+  const handleDecline = useCallback(() => {
+    if (pendingRequest) {
+      declineRequest(pendingRequest.id);
+    }
+  }, [pendingRequest, declineRequest]);
+
+  const handleOverflowPress = useCallback(() => {
+    setShowRemoveSheet(true);
+  }, []);
+
+  const handleRemoveConfirm = useCallback(() => {
+    removeFriend(userId);
+  }, [userId, removeFriend]);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -149,8 +198,21 @@ export function ProfileView() {
           </View>
         </StaggeredItem>
 
-        {/* Stats row */}
+        {/* Friend Action Button */}
         <StaggeredItem index={1}>
+          <View style={styles.actionRow}>
+            <FriendActionButton
+              status={friendshipStatus}
+              onAddFriend={handleAddFriend}
+              onAccept={handleAccept}
+              onDecline={handleDecline}
+              onOverflowPress={handleOverflowPress}
+            />
+          </View>
+        </StaggeredItem>
+
+        {/* Stats row */}
+        <StaggeredItem index={2}>
           <View style={styles.statsRow}>
             <View style={styles.statItem}>
               <Text style={styles.statNumber}>{creditCount}</Text>
@@ -170,7 +232,7 @@ export function ProfileView() {
         </StaggeredItem>
 
         {/* Recent Rides */}
-        <StaggeredItem index={2}>
+        <StaggeredItem index={3}>
           <Text style={styles.sectionTitle}>Recent Rides</Text>
           <View style={styles.sectionCard}>
             {profile.recentRides.map((ride, i) => (
@@ -187,7 +249,7 @@ export function ProfileView() {
         </StaggeredItem>
 
         {/* Recent Ratings */}
-        <StaggeredItem index={3}>
+        <StaggeredItem index={4}>
           <Text style={styles.sectionTitle}>Recent Ratings</Text>
           <View style={styles.sectionCard}>
             {profile.recentRatings.map((rating, i) => (
@@ -208,6 +270,14 @@ export function ProfileView() {
           </View>
         </StaggeredItem>
       </ScrollView>
+
+      {/* Remove Friend Confirmation Sheet */}
+      <RemoveFriendSheet
+        visible={showRemoveSheet}
+        friendName={displayName}
+        onClose={() => setShowRemoveSheet(false)}
+        onConfirm={handleRemoveConfirm}
+      />
     </View>
   );
 }
@@ -251,7 +321,7 @@ const styles = StyleSheet.create({
   // Hero
   hero: {
     alignItems: 'center',
-    marginTop: spacing.xl,
+    marginTop: spacing.sm,
   },
   avatar: {
     width: 80,
@@ -260,7 +330,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.accent.primaryLight,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: spacing.base,
+    marginBottom: spacing.sm,
   },
   avatarText: {
     fontSize: 28,
@@ -278,6 +348,12 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
 
+  // Action row (friend button)
+  actionRow: {
+    alignItems: 'center',
+    marginTop: spacing.lg,
+  },
+
   // Stats row
   statsRow: {
     flexDirection: 'row',
@@ -286,7 +362,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.card,
     borderRadius: radius.card,
     padding: spacing.lg,
-    marginTop: spacing.xl,
+    marginTop: spacing.base,
     ...shadows.card,
   },
   statItem: {
@@ -314,8 +390,8 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.heading,
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
-    marginTop: spacing.xxl,
-    marginBottom: spacing.base,
+    marginTop: spacing.lg,
+    marginBottom: spacing.sm,
   },
   sectionCard: {
     backgroundColor: colors.background.card,

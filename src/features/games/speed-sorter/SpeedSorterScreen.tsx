@@ -9,8 +9,8 @@
  * stiff spring only on drag release for direct snap-back.
  */
 
-import React, { useEffect, useCallback, useState, useRef } from 'react';
-import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
+import React, { useEffect, useCallback, useRef, useMemo } from 'react';
+import { View, Text, TextInput, StyleSheet, Pressable, Dimensions } from 'react-native';
 import { PageDots } from '../../../components/PageDots';
 import Animated, {
   useSharedValue,
@@ -19,6 +19,7 @@ import Animated, {
   withDelay,
   withSpring,
   runOnJS,
+  useFrameCallback,
   Easing,
 } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -53,34 +54,37 @@ const CARD_STEP = CARD_HEIGHT + CARD_GAP;
 const DRAG_SETTLE = { damping: 22, stiffness: 220, mass: 0.8 };
 
 // ─── Timer Display ──────────────────────────────────────────
+// Uses useFrameCallback + setNativeProps to update on UI thread,
+// avoiding 10 JS re-renders/sec from setInterval + useState.
 
-function Timer({ startTime, active }: { startTime: number; active: boolean }) {
-  const [elapsed, setElapsed] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+const Timer = React.memo(function Timer({ startTime, active }: { startTime: number; active: boolean }) {
+  const textRef = useRef<TextInput>(null);
 
-  useEffect(() => {
-    if (active && startTime > 0) {
-      const tick = () => setElapsed(Date.now() - startTime);
-      tick();
-      intervalRef.current = setInterval(tick, 100);
-      return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-    }
-  }, [active, startTime]);
-
-  const seconds = Math.floor(elapsed / 1000);
-  const tenths = Math.floor((elapsed % 1000) / 100);
+  useFrameCallback(() => {
+    if (!active || startTime <= 0) return;
+    const elapsed = Date.now() - startTime;
+    const seconds = Math.floor(elapsed / 1000);
+    const tenths = Math.floor((elapsed % 1000) / 100);
+    textRef.current?.setNativeProps({ text: `${seconds}.${tenths}s` });
+  });
 
   return (
     <View style={styles.timerContainer}>
       <Ionicons name="timer-outline" size={16} color={colors.accent.primary} />
-      <Text style={styles.timerText}>{seconds}.{tenths}s</Text>
+      <TextInput
+        ref={textRef}
+        style={styles.timerText}
+        defaultValue="0.0s"
+        editable={false}
+        pointerEvents="none"
+      />
     </View>
   );
-}
+});
 
 // ─── Draggable Card ─────────────────────────────────────────
 
-function DraggableCard({ name, park, index, totalCards, isCorrectPos, isChecking, onReorder }: {
+const DraggableCard = React.memo(function DraggableCard({ name, park, index, totalCards, isCorrectPos, isChecking, onReorder }: {
   name: string;
   park: string;
   index: number;
@@ -152,30 +156,31 @@ function DraggableCard({ name, park, index, totalCards, isCorrectPos, isChecking
 
   return (
     <GestureDetector gesture={panGesture}>
-      <Animated.View style={[
-        styles.card,
-        isChecking && isCorrectPos && styles.cardCorrect,
-        isChecking && isCorrectPos === false && styles.cardWrong,
-        animStyle,
-      ]}>
-        <View style={styles.cardDragHandle}>
-          <Ionicons name="reorder-three" size={20} color={colors.text.meta} />
+      <Animated.View style={animStyle}>
+        <View style={[
+          styles.card,
+          isChecking && isCorrectPos && styles.cardCorrect,
+          isChecking && isCorrectPos === false && styles.cardWrong,
+        ]}>
+          <View style={styles.cardDragHandle}>
+            <Ionicons name="reorder-three" size={20} color={colors.text.meta} />
+          </View>
+          <Text style={styles.cardRank}>{index + 1}</Text>
+          <View style={styles.cardInfo}>
+            <Text style={styles.cardName} numberOfLines={1}>{name}</Text>
+            <Text style={styles.cardPark} numberOfLines={1}>{park}</Text>
+          </View>
+          {isChecking && isCorrectPos && (
+            <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+          )}
+          {isChecking && isCorrectPos === false && (
+            <Ionicons name="close-circle" size={20} color="#E53935" />
+          )}
         </View>
-        <Text style={styles.cardRank}>{index + 1}</Text>
-        <View style={styles.cardInfo}>
-          <Text style={styles.cardName} numberOfLines={1}>{name}</Text>
-          <Text style={styles.cardPark} numberOfLines={1}>{park}</Text>
-        </View>
-        {isChecking && isCorrectPos && (
-          <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
-        )}
-        {isChecking && isCorrectPos === false && (
-          <Ionicons name="close-circle" size={20} color="#E53935" />
-        )}
       </Animated.View>
     </GestureDetector>
   );
-}
+});
 
 // ─── Format time ────────────────────────────────────────────
 
@@ -310,7 +315,7 @@ export function SpeedSorterScreen() {
   // ─── Playing / Checking ─────────────────────────────
 
   const round = game.rounds[game.currentRoundIndex];
-  const coasterMap = new Map(round.coasters.map((c) => [c.id, c]));
+  const coasterMap = useMemo(() => new Map(round.coasters.map((c) => [c.id, c])), [round.coasters]);
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -501,7 +506,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.card,
     padding: spacing.base,
     height: CARD_HEIGHT,
-    ...shadows.card,
+    ...shadows.small,
   },
   cardDragHandle: {
     width: 24,

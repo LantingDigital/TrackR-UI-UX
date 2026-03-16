@@ -12,7 +12,6 @@ import { ParkPOI, EnrichedCoaster } from '../types';
 interface POIActionContextValue {
   openPOI: (poiId: string) => void;
   openCoasterSheet: (poiId: string) => void;
-  registerMapHandler: (handler: (poi: ParkPOI) => void) => void;
 }
 
 const POIActionCtx = createContext<POIActionContextValue | null>(null);
@@ -42,13 +41,6 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
       timersRef.current.forEach(clearTimeout);
       timersRef.current = [];
     };
-  }, []);
-
-  // Map handler registered by ParksScreen
-  const mapHandlerRef = useRef<((poi: ParkPOI) => void) | null>(null);
-
-  const registerMapHandler = useCallback((handler: (poi: ParkPOI) => void) => {
-    mapHandlerRef.current = handler;
   }, []);
 
   // ---- Open action sheet for any POI ----
@@ -88,16 +80,6 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
     setDetailVisible(true);
   }, []);
 
-  // ---- View on Map ----
-  const handleViewOnMap = useCallback(() => {
-    if (!selectedPOI) return;
-    setActionSheetVisible(false);
-    safeTimeout(() => {
-      mapHandlerRef.current?.(selectedPOI);
-      setSelectedPOI(null);
-    }, 300);
-  }, [selectedPOI, safeTimeout]);
-
   // ---- Close detail sheet ----
   const closeDetailSheet = useCallback(() => {
     setDetailVisible(false);
@@ -105,8 +87,8 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
   }, [safeTimeout]);
 
   const value = useMemo<POIActionContextValue>(
-    () => ({ openPOI, openCoasterSheet, registerMapHandler }),
-    [openPOI, openCoasterSheet, registerMapHandler],
+    () => ({ openPOI, openCoasterSheet }),
+    [openPOI, openCoasterSheet],
   );
 
   return (
@@ -117,7 +99,6 @@ export function POIActionProvider({ children }: { children: React.ReactNode }) {
         visible={actionSheetVisible}
         onClose={closeActionSheet}
         onViewDetails={handleViewDetails}
-        onViewOnMap={handleViewOnMap}
       />
       <CoasterSheet
         coaster={detailCoaster}
