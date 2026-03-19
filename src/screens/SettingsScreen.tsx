@@ -22,7 +22,7 @@
  * - Credits -> CreditsScreen (navigation)
  */
 
-import React, { useEffect, useCallback, useState, useMemo } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -33,7 +33,6 @@ import {
   Alert,
   Image,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -72,6 +71,7 @@ import { getCriteria } from '../stores/rideLogStore';
 import { SettingsBottomSheet } from '../components/settings/SettingsBottomSheet';
 import { DangerousActionModal } from '../components/settings/DangerousActionModal';
 import type { SettingsSheetOption } from '../components/settings/SettingsBottomSheet';
+import { FogHeader } from '../components/FogHeader';
 
 // ============================================
 // Constants
@@ -513,37 +513,6 @@ export const SettingsScreen = () => {
     .toUpperCase();
 
   const headerHeight = insets.top + 52;
-  const FOG_OFFSET = 20;
-  const FOG_EXTENSION = 40;
-  const fogHeight = headerHeight + FOG_EXTENSION;
-
-  // Page color in rgba — MUST match colors.background.page exactly
-  // colors.background.page = #F7F7F7 = rgb(247, 247, 247)
-  const PAGE_RGBA = 'rgba(247, 247, 247,';
-
-  // Fog gradient — CommunityScreen pattern
-  const fogGradient = useMemo(() => {
-    const headerEnd = (headerHeight - FOG_OFFSET) / fogHeight;
-
-    return {
-      colors: [
-        `${PAGE_RGBA} 1)`,
-        `${PAGE_RGBA} 1)`,
-        `${PAGE_RGBA} 0.85)`,
-        `${PAGE_RGBA} 0.5)`,
-        `${PAGE_RGBA} 0.15)`,
-        `${PAGE_RGBA} 0)`,
-      ] as [string, string, ...string[]],
-      locations: [
-        0,
-        headerEnd,
-        headerEnd + 0.08,
-        headerEnd + 0.16,
-        headerEnd + 0.24,
-        1,
-      ] as [number, number, ...number[]],
-    };
-  }, [headerHeight, fogHeight]);
 
   return (
     <View style={styles.container}>
@@ -767,17 +736,8 @@ export const SettingsScreen = () => {
         </View>
       </ScrollView>
 
-      {/* Fog gradient overlay — CommunityScreen pattern */}
-      <View
-        style={[styles.fogContainer, { height: fogHeight }]}
-        pointerEvents="none"
-      >
-        <LinearGradient
-          colors={fogGradient.colors}
-          locations={fogGradient.locations}
-          style={StyleSheet.absoluteFill}
-        />
-      </View>
+      {/* Fog gradient overlay — uses approved FogHeader (0.97, warm base) */}
+      <FogHeader headerHeight={headerHeight} />
 
       {/* Floating header */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>
@@ -906,15 +866,6 @@ const styles = StyleSheet.create({
   },
   headerSpacer: {
     width: 36,
-  },
-
-  // ── Fog ──
-  fogContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 5,
   },
 
   // ── Scroll ──

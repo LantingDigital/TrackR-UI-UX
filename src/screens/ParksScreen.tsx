@@ -156,9 +156,9 @@ export function ParksScreen() {
     const step = (FOG_FADE_PX / fogTotalHeight) / 10;
     return {
       colors: [
-        `${PAGE_RGBA} 0.94)`,
-        `${PAGE_RGBA} 0.94)`,
-        `${PAGE_RGBA} 0.94)`,
+        `${PAGE_RGBA} 0.97)`,
+        `${PAGE_RGBA} 0.97)`,
+        `${PAGE_RGBA} 0.97)`,
         `${PAGE_RGBA} 0.82)`,
         `${PAGE_RGBA} 0.65)`,
         `${PAGE_RGBA} 0.45)`,

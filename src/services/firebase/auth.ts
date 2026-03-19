@@ -113,7 +113,7 @@ function getReadableMessage(code: string, fallback: string): string {
  * 416798662915-XXXXXXXX.apps.googleusercontent.com (same project number, different hash)
  */
 const GOOGLE_WEB_CLIENT_ID =
-  '416798662915-58upab73nvoh5ni8mal1ofen72ofgrbp.apps.googleusercontent.com';
+  '416798662915-eli7jkfng016hsm2a303ahrntum498du.apps.googleusercontent.com';
 
 GoogleSignin.configure({
   webClientId: GOOGLE_WEB_CLIENT_ID,

@@ -66,20 +66,6 @@
       ]
     },
     {
-      "collectionGroup": "ratings",
-      "queryScope": "COLLECTION_GROUP",
-      "fields": [
-        { "fieldPath": "weightedScore", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "appleWalletRegistrations",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "serialNumber", "order": "ASCENDING" }
-      ]
-    },
-    {
       "collectionGroup": "articles",
       "queryScope": "COLLECTION",
       "fields": [

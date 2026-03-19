@@ -16,7 +16,7 @@ interface FogHeaderProps {
   /**
    * Total header height in pixels (including safe area insets).
    * The fog will be most opaque through this region and gradually
-   * fade below it. Content is ALWAYS slightly visible (max 0.94 opacity).
+   * fade below it. Content is ALWAYS slightly visible (max 0.97 opacity).
    */
   headerHeight: number;
 
@@ -49,7 +49,7 @@ interface FogHeaderProps {
  * Reusable fog gradient overlay for screen headers.
  *
  * Matches the HomeScreen fog exactly:
- * - Max opacity 0.94 (never fully opaque — content always slightly visible)
+ * - Max opacity 0.97 (never fully opaque — content always slightly visible)
  * - Extends 50px above screen top (no hard line at status bar)
  * - 12-stop gradient with gradual fade curve
  * - Fog height = overshoot + headerHeight + extension

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackR V1 Sprint Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F7F7F7; color: #000; padding: 20px; max-width: 900px; margin: 0 auto; }
+
+  h1 { font-size: 24px; font-weight: 700; }
+  .subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
+
+  /* Progress */
+  .progress-wrap { margin-bottom: 24px; }
+  .progress-bar { background: #E8E8E8; border-radius: 8px; height: 10px; overflow: hidden; margin-bottom: 8px; }
+  .progress-fill { background: linear-gradient(90deg, #34A853, #2E9148); height: 100%; border-radius: 8px; }
+  .progress-label { font-size: 13px; color: #666; }
+  .progress-label strong { color: #000; }
+
+  /* Stats row */
+  .stats { display: flex; gap: 10px; margin-bottom: 24px; }
+  .stat { background: #fff; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 4px rgba(50,50,50,0.06); flex: 1; text-align: center; }
+  .stat-val { font-size: 28px; font-weight: 700; }
+  .stat-val.green { color: #34A853; }
+  .stat-val.blue { color: #4285F4; }
+  .stat-val.gray { color: #999; }
+  .stat-lbl { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+  /* Agent cards */
+  .agent { background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(50,50,50,0.06); margin-bottom: 16px; overflow: hidden; }
+  .agent-bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; }
+  .agent-name { font-size: 17px; font-weight: 700; }
+  .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 3px 10px; border-radius: 5px; }
+  .badge.done { background: #E6F4EA; color: #1E7E34; }
+  .badge.working { background: #E8F0FE; color: #1A73E8; }
+  .badge.idle { background: #FEF7E0; color: #E37400; }
+  .badge.shutdown { background: #F0F0F0; color: #888; }
+
+  .agent-body { padding: 0 18px 16px; }
+  .agent-track { font-size: 12px; color: #999; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .section-head { font-size: 11px; font-weight: 700; color: #CF6769; text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 6px; }
+  .section-head:first-child { margin-top: 0; }
+
+  .item { font-size: 13px; line-height: 1.6; padding: 2px 0; color: #333; }
+  .item strong { color: #000; }
+  .check { color: #34A853; margin-right: 4px; }
+  .bullet { color: #4285F4; margin-right: 4px; }
+  .warn { color: #CF6769; margin-right: 4px; }
+  .dim { color: #999; }
+  code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: 'SF Mono', monospace; }
+
+  .discovery { background: #FFF8F0; border-left: 3px solid #FA7B17; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 13px; }
+  .discovery strong { color: #E37400; }
+
+  .next-up { background: #F0F7FF; border-left: 3px solid #4285F4; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 13px; }
+
+  .needs-caleb { background: #FFF0F0; border-left: 3px solid #CF6769; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 13px; }
+
+  .lost { background: #FCE8E6; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #721C24; margin: 8px 0; }
+
+  hr { border: none; border-top: 1px solid #f0f0f0; margin: 20px 0; }
+
+  .footer { font-size: 11px; color: #bbb; text-align: center; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<h1>TrackR V1 Sprint</h1>
+<p class="subtitle">March 19, 2026 &mdash; Target: End of April 2026</p>
+
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" style="width: 93%"></div></div>
+  <div class="progress-label"><strong>14 of 15 tasks complete</strong> &mdash; 1 in progress (NanoBanana generation)</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-val green">14</div><div class="stat-lbl">Done</div></div>
+  <div class="stat"><div class="stat-val blue">1</div><div class="stat-lbl">In Progress</div></div>
+  <div class="stat"><div class="stat-val gray">6</div><div class="stat-lbl">Agents Used</div></div>
+</div>
+
+<!-- ==================== BACKEND ==================== -->
+<div class="agent" style="border-left: 4px solid #4285F4;">
+  <div class="agent-bar">
+    <span class="agent-name">backend</span>
+    <span class="badge shutdown">Shutdown</span>
+  </div>
+  <div class="agent-body">
+    <div class="agent-track">Track 1: Cloud Functions + Firebase Auth</div>
+
+    <div class="section-head">What Happened</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>29 Cloud Functions deployed</strong> to trackr-coaster-app (us-central1) &mdash; all live</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Firestore rules</strong> (253 lines) + <strong>11 indexes</strong> deployed</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>3 stale functions deleted:</strong> onRideLogCreated, scrapeScreamscape, selectDailyCoaster</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Firebase Auth:</strong> Email, Google, Apple providers all enabled</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>webClientId captured:</strong> <code>416798662915-eli7jkfng016hsm2a303ahrntum498du.apps.googleusercontent.com</code></div>
+    <div class="item"><span class="check">&#10003;</span> <strong>webClientId wired</strong> into <code>src/services/firebase/auth.ts</code></div>
+    <div class="item"><span class="check">&#10003;</span> <strong>onUserCreated</strong> converted from blocking function to callable + wrapper added</div>
+
+    <div class="discovery">
+      <strong>Discovery:</strong> <code>onUserCreated</code> was a <code>beforeUserCreated</code> blocking function which requires GCIP/Identity Platform (not enabled). Converted to <code>onCall</code> callable. Client must call <code>callOnUserCreated()</code> after signup.
+    </div>
+
+    <div class="lost">Code changes (webClientId wiring, onUserCreated wrapper) were in worktree and need rebuilding. Firebase deploys are live and unaffected.</div>
+
+    <div class="needs-caleb">
+      <strong>Needs you:</strong> E2E auth test (Task #3) &mdash; device build, sign up, log a coaster, verify persistence. Also: call <code>callOnUserCreated()</code> after signup in auth flow.
+    </div>
+
+    <div class="section-head">Key Reference</div>
+    <div class="item"><span class="bullet">&#8227;</span> Apple S2S webhook: <code>https://handlesubscriptionevent-rsdqoekcba-uc.a.run.app</code></div>
+    <div class="item"><span class="bullet">&#8227;</span> 2 Firestore indexes removed (single-field, auto-indexed)</div>
+    <div class="item"><span class="bullet">&#8227;</span> 4 legacy indexes remain in Firebase (not in local file)</div>
+  </div>
+</div>
+
+<!-- ==================== FRONTEND ==================== -->
+<div class="agent" style="border-left: 4px solid #E8457C;">
+  <div class="agent-bar">
+    <span class="agent-name">frontend</span>
+    <span class="badge idle">Idle</span>
+  </div>
+  <div class="agent-body">
+    <div class="agent-track">Track 2: Fog + Onboarding + Auth Screen</div>
+
+    <div class="section-head">What Happened</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Fog headers unified</strong> &mdash; all screens now 0.97 opacity, warm base rgba(240,238,235)</div>
+    <div class="item" style="padding-left: 20px;"><span class="dim">Fixed:</span> ProfileScreen, SettingsScreen (were 1.0, wrong color, 40px extension)</div>
+    <div class="item" style="padding-left: 20px;"><span class="dim">Fixed:</span> HomeScreen (4 gradients), CommunityScreen, ParksScreen, OnboardingSearchEmbed</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Onboarding audit:</strong> all 5 demo screens verified matching real app (code-level)</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Auth screen redesigned</strong> &mdash; matches WelcomeScreen visual language</div>
+    <div class="item" style="padding-left: 20px;">Apple + Google sign-in only (no email clutter)</div>
+    <div class="item" style="padding-left: 20px;">Real auth wired: <code>signInWithApple()</code> + <code>signInWithGoogle()</code></div>
+    <div class="item" style="padding-left: 20px;">"Continue without an account" at bottom with spring press</div>
+    <div class="item" style="padding-left: 20px;">Skip button already disappears on auth screen (parent handles this)</div>
+    <div class="item" style="padding-left: 20px;">TrackR wordmark (48px), radial accent glow, accent line separator</div>
+
+    <div class="discovery">
+      <strong>Discovery:</strong> Onboarding demos look correct in code, but Caleb says they're broken on device. May be a visual rendering issue only visible on physical iPhone. Needs device test.
+    </div>
+
+    <div class="next-up">
+      <strong>Next up:</strong> Test onboarding on device to find visual issues Caleb flagged. Also needs to verify auth screen renders correctly on device.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CARD-ART ==================== -->
+<div class="agent" style="border-left: 4px solid #34A853;">
+  <div class="agent-bar">
+    <span class="agent-name">card-art</span>
+    <span class="badge working">Generating</span>
+  </div>
+  <div class="agent-body">
+    <div class="agent-track">Track 3: NanoBanana Card Art Pipeline</div>
+
+    <div class="section-head">What Happened</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>7 source images verified/acquired</strong> for Wave 1-2 park deck completers</div>
+    <div class="item" style="padding-left: 20px;">2 new downloads: loop-dee-doop-dee (Universal Beijing), little-dipper (Castle Park)</div>
+    <div class="item" style="padding-left: 20px;">3 new downloads: gulf-coaster (CGA), miner-mike (Adventuredome), mine-cart-madness (Epic Universe)</div>
+    <div class="item" style="padding-left: 20px;">2 verified existing: pteranodon-flyers (IoA, 5.2MB), flight-of-the-hippogriff (IoA, low-res but usable)</div>
+
+    <div class="section-head">Currently Doing</div>
+    <div class="item"><span class="bullet">&#8227;</span> Generating NanoBanana Pro card art in Gemini for all 7 sources</div>
+    <div class="item"><span class="bullet">&#8227;</span> pteranodon-flyers NB2 was generated, needed "Redo with Pro"</div>
+    <div class="item"><span class="bullet">&#8227;</span> Had Playwright collision with backend (resolved &mdash; got exclusive browser access)</div>
+
+    <div class="discovery">
+      <strong>Discovery:</strong> Agents in the same session share one Playwright browser. Per-project isolation only works across separate Claude Code sessions, not across teammates. Sequential browser access is the workaround for now.
+    </div>
+
+    <div class="next-up">
+      <strong>Next up:</strong> Finish all 7 cards, then Caleb reviews generated art for approval before adding to cardArt.ts. After Waves 1-2: move to Waves 3-4 (deeper park completion).
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MERCH ==================== -->
+<div class="agent" style="border-left: 4px solid #FBBC04;">
+  <div class="agent-bar">
+    <span class="agent-name">merch + merch-pricing</span>
+    <span class="badge idle">Idle</span>
+  </div>
+  <div class="agent-body">
+    <div class="agent-track">Track 4: Merch Store + Payments + Pricing</div>
+
+    <div class="section-head">What Happened</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>MERCH-PAYMENT-PLAN.md</strong> &mdash; full integration research document</div>
+    <div class="item" style="padding-left: 20px;">Physical cards = Stripe (0% Apple commission, Apple requires this)</div>
+    <div class="item" style="padding-left: 20px;">Pro subscription = Apple IAP (15% under Small Business Program)</div>
+    <div class="item" style="padding-left: 20px;">QPMN: REST API, partner registration required, growth manager assigned</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>3 Stripe Cloud Functions built</strong></div>
+    <div class="item" style="padding-left: 20px;"><code>createCardOrder</code> &mdash; validates cart, creates PaymentIntent, stores order</div>
+    <div class="item" style="padding-left: 20px;"><code>confirmCardOrder</code> &mdash; Stripe webhook, marks paid, adds to batch queue</div>
+    <div class="item" style="padding-left: 20px;"><code>getOrderStatus</code> &mdash; order lookup + list (enforces ownership)</div>
+    <div class="item" style="padding-left: 20px;">Supporting: <code>pricing.ts</code> server-side source of truth (all cents)</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>PRICING-STRATEGY.md</strong> &mdash; full ROI + margin analysis</div>
+
+    <div class="discovery">
+      <strong>Pricing findings:</strong><br>
+      &bull; Standard card: <strong>$5.99</strong> (batch) / <strong>$8.99</strong> (instant ship)<br>
+      &bull; Gold foil upcharge: <strong>$2.99</strong><br>
+      &bull; Holographic: <strong>$9.99</strong> (batch) / <strong>$13.99</strong> (instant)<br>
+      &bull; 10-pack: <strong>$39.99</strong> (33% off singles)<br>
+      &bull; Batch margins: <strong>55-60%</strong> | Instant margins: <strong>47-53%</strong><br>
+      &bull; Kickstarter $99 Park Deck tier: <strong>52% margin, very viable</strong><br>
+      &bull; Break-even: ~69 cards/month (~1-2 orders/day)
+    </div>
+
+    <div class="lost">Stripe CF code was in worktree and needs rebuilding. Research docs (MERCH-PAYMENT-PLAN.md, PRICING-STRATEGY.md) also in worktree.</div>
+
+    <div class="needs-caleb">
+      <strong>Needs you:</strong><br>
+      &bull; <strong>QPMN account signup</strong> &mdash; #1 blocker for real pricing. All costs are estimates until then.<br>
+      &bull; Stripe secrets: <code>firebase functions:secrets:set STRIPE_SECRET_KEY</code><br>
+      &bull; Register webhook: <code>https://us-central1-trackr-coaster-app.cloudfunctions.net/confirmCardOrder</code><br>
+      &bull; App Store Connect: create 14 IAP products for PWYW Pro ($1-$12)
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ADMIN-WEB ==================== -->
+<div class="agent" style="border-left: 4px solid #A142F4;">
+  <div class="agent-bar">
+    <span class="agent-name">admin-web</span>
+    <span class="badge shutdown">Shutdown</span>
+  </div>
+  <div class="agent-body">
+    <div class="agent-track">Track 5: Admin Dashboard + Landing Page</div>
+
+    <div class="section-head">What Happened</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Full admin dashboard</strong> &mdash; Next.js 14, 11 pages, Tiptap rich text editor</div>
+    <div class="item" style="padding-left: 20px;">Login, Dashboard (stats), Articles (CRUD + publish), Reports (review queue), Users (search, Pro, block)</div>
+    <div class="item" style="padding-left: 20px;">Firebase Web App: <code>1:416798662915:web:3695d9332359025d2e0936</code></div>
+    <div class="item" style="padding-left: 20px;">Static export, zero-JS landing page, Tailwind CSS with TrackR tokens</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Landing page</strong> at root <code>/</code></div>
+    <div class="item" style="padding-left: 20px;">Hero ("The premium home for your coaster life"), 6 feature cards, TCG teaser, stats strip, download CTA, footer</div>
+    <div class="item" style="padding-left: 20px;">Exact design tokens: #F7F7F7, #FFFFFF, #CF6769, three grays, warm shadows</div>
+    <div class="item" style="padding-left: 20px;">Server component, 0 JS bundle, CSS-only transitions</div>
+
+    <div class="lost">All code was in worktree and needs rebuilding. Project structure, all pages, Firebase config, Tailwind setup.</div>
+
+    <div class="needs-caleb">
+      <strong>Needs you:</strong><br>
+      &bull; Purchase <strong>ridetrackr.app</strong> domain<br>
+      &bull; Add custom domain in Firebase Hosting console<br>
+      &bull; Set admin claim on your Firebase Auth UID (run <code>setAdminClaim</code> CF)<br>
+      &bull; Swap placeholder screenshots with real app screenshots
+    </div>
+  </div>
+</div>
+
+<!-- ==================== WALLET ==================== -->
+<div class="agent" style="border-left: 4px solid #FA7B17;">
+  <div class="agent-bar">
+    <span class="agent-name">wallet</span>
+    <span class="badge shutdown">Shutdown</span>
+  </div>
+  <div class="agent-body">
+    <div class="agent-track">Track 6: Queue-Times + Apple Wallet</div>
+
+    <div class="section-head">What Happened</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>35-park Queue-Times mapping</strong> created (<code>queueTimesParkIds.ts</code>)</div>
+    <div class="item" style="padding-left: 20px;">Exports: QUEUE_TIMES_PARK_IDS, getQueueTimesParkId(), hasLiveWaitTimes()</div>
+    <div class="item" style="padding-left: 20px;">2 parks NOT on Queue-Times: Holiday World, Lagoon</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Wait times service wired</strong> &mdash; fetchWaitTimes() now tries CF first, falls back to mock</div>
+    <div class="item" style="padding-left: 20px;">Zero UI changes needed &mdash; ParksScreen already calls fetchWaitTimes(slug)</div>
+    <div class="item"><span class="check">&#10003;</span> <strong>Apple Wallet cert guide</strong> written (APPLE-WALLET-CERT-SETUP.md)</div>
+    <div class="item" style="padding-left: 20px;">7 steps: register Pass Type ID, create cert, export .p12, convert PEM, upload to Cloud Storage</div>
+
+    <div class="discovery">
+      <strong>Discovery:</strong> Queue-Times API is fully public &mdash; no signup, no API key, no account needed. The proxyWaitTimes CF can call it directly. One less blocker.
+    </div>
+
+    <div class="lost">All 3 files were in worktree and need rebuilding: queueTimesParkIds.ts, waitTimes.ts update, APPLE-WALLET-CERT-SETUP.md</div>
+
+    <div class="needs-caleb">
+      <strong>Needs you:</strong> Apple Developer portal &mdash; register Pass Type ID <code>pass.com.lantingdigital.trackr</code>, create cert, export, upload PEMs to Cloud Storage. Full guide was in APPLE-WALLET-CERT-SETUP.md.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SUMMARY ==================== -->
+<hr>
+
+<div style="margin-bottom: 20px;">
+  <h2 style="font-size: 18px; margin-bottom: 12px;">Session Discoveries</h2>
+  <div class="discovery" style="margin: 8px 0;">
+    <strong>1. Playwright browser sharing:</strong> Agents in the same session share one browser. Per-project isolation only works across separate Claude Code sessions. Need sequential access within teams.
+  </div>
+  <div class="discovery" style="margin: 8px 0;">
+    <strong>2. Queue-Times API is free:</strong> No signup needed. Public JSON endpoints. proxyWaitTimes CF is ready to go immediately after deploy.
+  </div>
+  <div class="discovery" style="margin: 8px 0;">
+    <strong>3. Apple Guideline 3.1.3(e):</strong> Apple REQUIRES non-IAP payment for physical goods. Stripe for cards is not just allowed, it's mandatory.
+  </div>
+  <div class="discovery" style="margin: 8px 0;">
+    <strong>4. onUserCreated needs GCIP:</strong> Blocking auth functions require Identity Platform. Converted to callable as workaround. Client must call after signup.
+  </div>
+  <div class="discovery" style="margin: 8px 0;">
+    <strong>5. Card business is viable:</strong> 55-60% margins on batch, break-even at ~69 cards/month. $99 Kickstarter Park Deck tier works at 52% margin.
+  </div>
+</div>
+
+<div style="margin-bottom: 20px;">
+  <h2 style="font-size: 18px; margin-bottom: 12px;">What's Live on Firebase Right Now</h2>
+  <div class="item"><span class="check">&#10003;</span> 29 Cloud Functions (us-central1)</div>
+  <div class="item"><span class="check">&#10003;</span> Firestore security rules (253 lines)</div>
+  <div class="item"><span class="check">&#10003;</span> 11 composite Firestore indexes</div>
+  <div class="item"><span class="check">&#10003;</span> Firebase Auth: Email + Google + Apple providers enabled</div>
+</div>
+
+<div>
+  <h2 style="font-size: 18px; margin-bottom: 12px;">What Needs Rebuilding (lost in worktree cleanup)</h2>
+  <div class="item"><span class="warn">!</span> Backend: webClientId wiring + onUserCreated wrapper (small, ~20 lines total)</div>
+  <div class="item"><span class="warn">!</span> Merch: 3 Stripe CFs + pricing.ts (~4 files)</div>
+  <div class="item"><span class="warn">!</span> Merch: MERCH-PAYMENT-PLAN.md + PRICING-STRATEGY.md (research docs)</div>
+  <div class="item"><span class="warn">!</span> Admin-web: entire Next.js project (11 pages + landing page)</div>
+  <div class="item"><span class="warn">!</span> Wallet: queueTimesParkIds.ts + waitTimes.ts update + cert guide</div>
+  <div class="item" style="margin-top: 8px;"><span class="dim">Frontend + card-art worktrees are still alive (agents not shut down)</span></div>
+</div>
+
+<p class="footer">TrackR V1 Sprint &mdash; Team trackr-v1 &mdash; Refresh for updates</p>
+
+<script>
+  document.querySelector('.subtitle').textContent += ' \u2014 Updated ' + new Date().toLocaleTimeString();
+</script>
+</body>
+</html>

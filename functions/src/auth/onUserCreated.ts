@@ -1,45 +1,50 @@
 /**
- * onUserCreated — Firebase Auth onCreate trigger
+ * onUserCreated — Callable function to initialize user profile
  *
- * Creates the initial `users/{uid}` Firestore document when a new
- * Firebase Auth account is created. This is the server-side equivalent
- * of createUserDoc in the client service — acts as a safety net in case
- * the client-side creation fails or races.
+ * Called by the client after Firebase Auth signup to create the
+ * initial `users/{uid}` Firestore document. Acts as a safety net
+ * for the client-side createUserDoc — if the client call fails or
+ * races, this CF ensures the doc exists.
  *
- * Maps to `generateProfileReady` in the Cloud Functions spec.
+ * Converted from beforeUserCreated (blocking function) to onCall
+ * because blocking functions require Identity Platform (GCIP) which
+ * is not enabled on this project. The client calls this immediately
+ * after auth signup.
  */
 
-import { beforeUserCreated } from 'firebase-functions/v2/identity';
+import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
-export const onUserCreated = beforeUserCreated(
+export const onUserCreated = onCall(
   { region: 'us-central1' },
-  async (event) => {
-    const user = event.data;
-    if (!user) return;
+  async (request) => {
+    if (!request.auth) {
+      throw new HttpsError('unauthenticated', 'Must be signed in');
+    }
 
+    const { uid, token } = request.auth;
     const db = getFirestore();
-    const userDocRef = db.collection('users').doc(user.uid);
+    const userDocRef = db.collection('users').doc(uid);
 
     // Check if client already created the doc (race condition guard)
     const existing = await userDocRef.get();
-    if (existing.exists) return;
-
-    // Detect auth provider
-    let authProvider: 'apple' | 'google' | 'email' = 'email';
-    if (user.providerData && user.providerData.length > 0) {
-      const providerId = user.providerData[0].providerId;
-      if (providerId === 'apple.com') authProvider = 'apple';
-      else if (providerId === 'google.com') authProvider = 'google';
+    if (existing.exists) {
+      return { created: false, message: 'User doc already exists' };
     }
+
+    // Detect auth provider from the token
+    let authProvider: 'apple' | 'google' | 'email' = 'email';
+    const signInProvider = token.firebase?.sign_in_provider;
+    if (signInProvider === 'apple.com') authProvider = 'apple';
+    else if (signInProvider === 'google.com') authProvider = 'google';
 
     const now = FieldValue.serverTimestamp();
 
     await userDocRef.set({
-      uid: user.uid,
-      displayName: user.displayName ?? '',
+      uid,
+      displayName: token.name ?? '',
       username: '',
-      profileImageUrl: user.photoURL ?? null,
+      profileImageUrl: token.picture ?? null,
       authProvider,
 
       homeParkName: '',
@@ -63,5 +68,7 @@ export const onUserCreated = beforeUserCreated(
       updatedAt: now,
       lastActiveAt: now,
     });
+
+    return { created: true, message: 'User doc created' };
   },
 );

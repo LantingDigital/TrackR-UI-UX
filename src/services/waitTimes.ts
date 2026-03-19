@@ -1,9 +1,9 @@
 // ============================================
 // Wait Times Service
 //
-// Currently backed by mock data generators.
-// To swap for a live API, replace the implementation
-// of fetchWaitTimes() — the interface stays the same.
+// Tries live Queue-Times data via Cloud Function first
+// (for authenticated users at supported parks), then
+// falls back to mock data generators.
 // ============================================
 
 import {
@@ -13,6 +13,9 @@ import {
 } from '../features/parks/types';
 import { PARK_RIDE_DEFINITIONS } from '../features/parks/data/parkRideDefinitions';
 import { COASTER_DATABASE } from '../features/coastle/data/coastleDatabase';
+import { getQueueTimesParkId } from '../data/queueTimesParkIds';
+import { callProxyWaitTimes } from './firebase/functions';
+import { getIsAuthenticated } from '../stores/authStore';
 
 // ============================================
 // Public API
@@ -21,23 +24,45 @@ import { COASTER_DATABASE } from '../features/coastle/data/coastleDatabase';
 /**
  * Fetch wait times for a given park.
  *
- * Uses explicit ride definitions when available, otherwise
- * auto-generates mock data from the coaster database so
- * every park gets wait times.
- *
- * When a real API is available, swap the body of this
- * function — callers only depend on ParkWaitTimesResponse.
+ * Priority:
+ * 1. Live data from Queue-Times via proxyWaitTimes CF (if authenticated + park mapped)
+ * 2. Mock data from explicit ride definitions
+ * 3. Mock data auto-generated from coaster database
  */
 export async function fetchWaitTimes(
   parkSlug: string,
 ): Promise<ParkWaitTimesResponse | null> {
-  const definition = PARK_RIDE_DEFINITIONS[parkSlug];
+  // Try live data first for supported parks
+  const queueTimesParkId = getQueueTimesParkId(parkSlug);
+  if (queueTimesParkId !== undefined && getIsAuthenticated()) {
+    try {
+      const live = await callProxyWaitTimes({ parkSlug, parkId: queueTimesParkId });
+      const parkName = slugToParkName(parkSlug);
+      return {
+        parkSlug,
+        parkName,
+        lastUpdated: new Date(live.lastFetched).getTime(),
+        rides: live.rides.map((r) => ({
+          id: r.id,
+          name: r.name,
+          parkSlug,
+          waitMinutes: r.waitMinutes,
+          status: r.status === 'open' ? 'open' : 'closed',
+          lastUpdated: new Date(r.lastUpdated).getTime(),
+          historicalAvgMinutes: 0, // Queue-Times doesn't provide historical averages
+        })),
+      };
+    } catch {
+      // Live fetch failed — fall through to mock data
+    }
+  }
 
+  // Fallback: mock data
+  const definition = PARK_RIDE_DEFINITIONS[parkSlug];
   if (definition) {
     return buildFromDefinition(parkSlug, definition);
   }
 
-  // Fallback: generate from coaster database
   return buildFromCoasterDatabase(parkSlug);
 }
 

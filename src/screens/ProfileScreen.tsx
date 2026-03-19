@@ -6,7 +6,7 @@
  * and a Pro upgrade card at the bottom.
  */
 
-import React, { useEffect, useCallback, useMemo, useState, useRef } from 'react';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
 import {
   StyleSheet,
   View,
@@ -17,7 +17,6 @@ import {
   Alert,
   LayoutChangeEvent,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -54,13 +53,12 @@ import {
   getTotalRideCount,
   subscribe as subscribeRideLog,
 } from '../stores/rideLogStore';
+import { FogHeader } from '../components/FogHeader';
 
 // ============================================
 // Constants
 // ============================================
 const HEADER_HEIGHT = 48;
-const FOG_OFFSET = 20;
-const FOG_EXTENSION = 40;
 const AVATAR_SIZE = 88;
 const CAMERA_BADGE_SIZE = 28;
 
@@ -89,8 +87,6 @@ const MOCK_ACHIEVEMENTS = {
   badges: ['trophy', 'flash', 'ribbon', 'star', 'medal'] as const,
 };
 
-// Page RGBA for fog — matches colors.background.page (#F7F7F7)
-const PAGE_RGBA = 'rgba(247, 247, 247,';
 
 // Tab definitions
 const TABS = ['My Rides', 'Rankings', 'Badges'] as const;
@@ -322,32 +318,7 @@ export const ProfileScreen = () => {
     [navigation],
   );
 
-  // Fog computation
   const topBarHeight = insets.top + HEADER_HEIGHT;
-  const fogHeight = topBarHeight + FOG_EXTENSION;
-
-  const fogGradient = useMemo(() => {
-    const headerEnd = (topBarHeight - FOG_OFFSET) / fogHeight;
-
-    return {
-      colors: [
-        `${PAGE_RGBA} 1)`,
-        `${PAGE_RGBA} 1)`,
-        `${PAGE_RGBA} 0.85)`,
-        `${PAGE_RGBA} 0.5)`,
-        `${PAGE_RGBA} 0.15)`,
-        `${PAGE_RGBA} 0)`,
-      ] as [string, string, ...string[]],
-      locations: [
-        0,
-        headerEnd,
-        headerEnd + 0.08,
-        headerEnd + 0.16,
-        headerEnd + 0.24,
-        1,
-      ] as [number, number, ...number[]],
-    };
-  }, [topBarHeight, fogHeight]);
 
   // ── Tab content renderers ──
 
@@ -608,17 +579,8 @@ export const ProfileScreen = () => {
         </Animated.View>
       </ScrollView>
 
-      {/* Fog gradient overlay */}
-      <View
-        style={[styles.fogContainer, { height: fogHeight }]}
-        pointerEvents="none"
-      >
-        <LinearGradient
-          colors={fogGradient.colors}
-          locations={fogGradient.locations}
-          style={StyleSheet.absoluteFill}
-        />
-      </View>
+      {/* Fog gradient overlay — uses approved FogHeader (0.97, warm base) */}
+      <FogHeader headerHeight={topBarHeight} />
 
       {/* Floating header: "PROFILE" + settings gear */}
       <View style={[styles.topBar, { top: insets.top }]}>
@@ -652,15 +614,6 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: spacing.lg,
-  },
-
-  // ── Fog ──
-  fogContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 5,
   },
 
   // ── Top bar ──

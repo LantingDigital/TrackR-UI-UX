@@ -61,9 +61,42 @@ interface MigrateLocalDataResult {
   };
 }
 
+interface OnUserCreatedResult {
+  created: boolean;
+  message: string;
+}
+
 // ============================================
 // Cloud Function Callers
 // ============================================
+
+/**
+ * Call the onUserCreated Cloud Function to ensure the user doc exists
+ * in Firestore after auth signup. This is a safety net — the client
+ * should also attempt to create the doc directly, but this CF handles
+ * race conditions and ensures the doc schema is correct.
+ *
+ * Call this immediately after a successful signUp/signIn for new users.
+ */
+async function callOnUserCreated(): Promise<OnUserCreatedResult> {
+  try {
+    const callable = functions().httpsCallable('onUserCreated');
+    const result = await callable({});
+    return result.data as OnUserCreatedResult;
+  } catch (error) {
+    if (
+      error !== null &&
+      typeof error === 'object' &&
+      'code' in error &&
+      'message' in error
+    ) {
+      const fnError = error as { code: string; message: string };
+      console.error('[onUserCreated] Failed:', fnError.message);
+    }
+    // Non-fatal: client-side doc creation is the primary path
+    return { created: false, message: 'Cloud function call failed' };
+  }
+}
 
 /**
  * Call the validateUsername Cloud Function to atomically check availability
@@ -443,6 +476,7 @@ async function callUnblockUser(
 // ============================================
 
 export {
+  callOnUserCreated,
   callValidateUsername,
   callMigrateLocalData,
   callSendFriendRequest,
@@ -465,6 +499,7 @@ export {
   callUnblockUser,
 };
 export type {
+  OnUserCreatedResult,
   ValidateUsernameResult,
   MigrateLocalDataInput,
   MigrateLocalDataResult,

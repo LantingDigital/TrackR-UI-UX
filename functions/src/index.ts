@@ -70,3 +70,8 @@ export { setAdminClaim } from './admin/setAdminClaim';
 
 // Wait Times (Queue-Times.com proxy)
 export { proxyWaitTimes } from './waitTimes/proxyWaitTimes';
+
+// Merch Store (physical card purchases via Stripe + QPMN fulfillment)
+export { createCardOrder } from './merch/createCardOrder';
+export { confirmCardOrder } from './merch/confirmCardOrder';
+export { getOrderStatus } from './merch/getOrderStatus';

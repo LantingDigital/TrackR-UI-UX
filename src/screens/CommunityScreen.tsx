@@ -129,7 +129,7 @@ export const CommunityScreen = () => {
     const fadeZone = 1 - headerEnd;
     return {
       colors: [
-        `${FOG_BASE} 0.94)`,   // Solid through full header
+        `${FOG_BASE} 0.97)`,   // Solid through full header (matches FogHeader approved opacity)
         `${FOG_BASE} 0.88)`,   // Just above header edge — still covered
         `${FOG_BASE} 0.32)`,   // Sharp drop right below header — titles readable
         `${FOG_BASE} 0.14)`,   // Quickly fading out

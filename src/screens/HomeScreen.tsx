@@ -2163,9 +2163,9 @@ export const HomeScreen = () => {
       >
         <LinearGradient
           colors={[
-            'rgba(240, 238, 235, 0.94)',   // Solid through header
-            'rgba(240, 238, 235, 0.94)',   // Status bar area
-            'rgba(240, 238, 235, 0.94)',   // Search bar area
+            'rgba(240, 238, 235, 0.97)',   // Solid through header (matches FogHeader approved opacity)
+            'rgba(240, 238, 235, 0.97)',   // Status bar area
+            'rgba(240, 238, 235, 0.97)',   // Search bar area
             'rgba(240, 238, 235, 0.88)',   // Action buttons - starts easing
             'rgba(240, 238, 235, 0.75)',   // Gradual fade
             'rgba(240, 238, 235, 0.55)',   // Mid fade
@@ -2363,9 +2363,9 @@ export const HomeScreen = () => {
         >
           <LinearGradient
             colors={[
-              'rgba(240, 238, 235, 0.94)',   // Solid through header area
-              'rgba(240, 238, 235, 0.94)',   // Status bar area
-              'rgba(240, 238, 235, 0.94)',   // Search bar area
+              'rgba(240, 238, 235, 0.97)',   // Solid through header area
+              'rgba(240, 238, 235, 0.97)',   // Status bar area
+              'rgba(240, 238, 235, 0.97)',   // Search bar area
               'rgba(240, 238, 235, 0.88)',   // Below search bar - starts easing
               'rgba(240, 238, 235, 0.75)',   // Gradual fade
               'rgba(240, 238, 235, 0.55)',   // Mid fade
@@ -2476,9 +2476,9 @@ export const HomeScreen = () => {
         >
           <LinearGradient
             colors={[
-              'rgba(240, 238, 235, 0.94)',   // Solid through header area
-              'rgba(240, 238, 235, 0.94)',   // Status bar area
-              'rgba(240, 238, 235, 0.94)',   // Search bar area
+              'rgba(240, 238, 235, 0.97)',   // Solid through header area
+              'rgba(240, 238, 235, 0.97)',   // Status bar area
+              'rgba(240, 238, 235, 0.97)',   // Search bar area
               'rgba(240, 238, 235, 0.88)',   // Below search bar - starts easing
               'rgba(240, 238, 235, 0.75)',   // Gradual fade
               'rgba(240, 238, 235, 0.55)',   // Mid fade
@@ -2940,9 +2940,9 @@ export const HomeScreen = () => {
         >
           <LinearGradient
             colors={[
-              'rgba(240, 238, 235, 0.94)',   // Solid through header area
-              'rgba(240, 238, 235, 0.94)',   // Status bar area
-              'rgba(240, 238, 235, 0.94)',   // Search bar area
+              'rgba(240, 238, 235, 0.97)',   // Solid through header area
+              'rgba(240, 238, 235, 0.97)',   // Status bar area
+              'rgba(240, 238, 235, 0.97)',   // Search bar area
               'rgba(240, 238, 235, 0.88)',   // Below search bar - starts easing
               'rgba(240, 238, 235, 0.75)',   // Gradual fade
               'rgba(240, 238, 235, 0.55)',   // Mid fade

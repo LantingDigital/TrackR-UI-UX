@@ -1966,9 +1966,9 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
         >
           <LinearGradient
             colors={[
-              'rgba(240, 238, 235, 0.94)',
-              'rgba(240, 238, 235, 0.94)',
-              'rgba(240, 238, 235, 0.94)',
+              'rgba(240, 238, 235, 0.97)',
+              'rgba(240, 238, 235, 0.97)',
+              'rgba(240, 238, 235, 0.97)',
               'rgba(240, 238, 235, 0.88)',
               'rgba(240, 238, 235, 0.75)',
               'rgba(240, 238, 235, 0.55)',
@@ -2152,9 +2152,9 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           >
             <LinearGradient
               colors={[
-                'rgba(240, 238, 235, 0.94)',
-                'rgba(240, 238, 235, 0.94)',
-                'rgba(240, 238, 235, 0.94)',
+                'rgba(240, 238, 235, 0.97)',
+                'rgba(240, 238, 235, 0.97)',
+                'rgba(240, 238, 235, 0.97)',
                 'rgba(240, 238, 235, 0.88)',
                 'rgba(240, 238, 235, 0.75)',
                 'rgba(240, 238, 235, 0.55)',

@@ -199,8 +199,11 @@ service cloud.firestore {
     match /reports/{reportId} {
       // Only admins can read reports
       allow read: if isAdmin();
-      // Reports created by Cloud Functions only (reportUser CF)
-      allow write: if false;
+      // Reports created by Cloud Functions (reportUser CF)
+      // Admins can update status (resolve/dismiss from admin dashboard)
+      allow create: if false;
+      allow update: if isAdmin();
+      allow delete: if false;
     }
 
     // ========================================
