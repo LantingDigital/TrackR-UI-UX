@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import {
   Canvas,
   Group,
@@ -30,15 +30,15 @@ const CX = SCREEN_W / 2;
 const CY = SCREEN_H * 0.40;
 
 // ─── Timing ─────────────────────────────────────────────────────────────────
-const TUNNEL_DURATION = 4500;
-const FADE_IN_DURATION = 1500;
-const BLOOM_IN_DELAY = 4000;
-const BLOOM_IN_DURATION = 600;
-const CANVAS_HIDE_DELAY = 4600;
-const BLOOM_OUT_DURATION = 600;
-const TEXT_DELAY = 4800;
+const TUNNEL_DURATION = 3000;       // tunnel with deceleration — motion slows gracefully
+const FADE_IN_DURATION = 250;       // fast fade from black so particles appear quickly
+const BLOOM_IN_DELAY = 2100;        // bloom starts early for seamless coverage
+const BLOOM_IN_DURATION = 900;      // slow bloom — fully covers before canvas hides
+const CANVAS_HIDE_DELAY = 3100;     // canvas hides after bloom is at full opacity
+const BLOOM_OUT_DURATION = 700;     // gentle bloom fade reveals light page
+const TEXT_DELAY = 3300;            // text appears shortly after canvas hides
 const TEXT_DURATION = 800;
-const TOTAL_DURATION = 6600;
+const TOTAL_DURATION = 8000;        // extended so name/subtitle have real reading time
 
 // ─── Track constants ────────────────────────────────────────────────────────
 const RAIL_HALF = SCREEN_W * 1.2;    // rails from the sides of the phone
@@ -293,14 +293,14 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
     return interpolate(tunnel.value, [0, 0.06, 0.68, 0.9, 1], [0, 0.85, 0.85, 0.15, 0]);
   });
 
-  // Overexposure bloom
+  // Overexposure bloom — ramps to full coverage before canvas hides
   const overexR = useDerivedValue(() => {
     'worklet';
-    return interpolate(tunnel.value, [0.7, 0.85, 0.95, 1], [0, 150, 550, 1200]);
+    return interpolate(tunnel.value, [0.6, 0.75, 0.88, 1], [0, 200, 700, 1400]);
   });
   const overexOpacity = useDerivedValue(() => {
     'worklet';
-    return interpolate(tunnel.value, [0.7, 0.85, 0.95, 1], [0, 0.1, 0.4, 0.8]);
+    return interpolate(tunnel.value, [0.6, 0.75, 0.88, 1], [0, 0.15, 0.6, 1]);
   });
 
   // Fade from black
@@ -323,7 +323,7 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
 
     tunnel.value = withTiming(1, {
       duration: TUNNEL_DURATION,
-      easing: Easing.in(Easing.quad),
+      easing: Easing.bezier(0.25, 0.1, 0.25, 1),
     });
 
     t(() => {
@@ -379,8 +379,8 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
   const subtitleStyle = useAnimatedStyle(() => {
     const p = text.value;
     return {
-      opacity: interpolate(p, [0.3, 0.8], [0, 0.6]),
-      transform: [{ translateY: interpolate(p, [0.3, 0.8], [12, 0]) }],
+      opacity: interpolate(p, [0.15, 0.6], [0, 1]),
+      transform: [{ translateY: interpolate(p, [0.15, 0.6], [12, 0]) }],
     };
   });
 
@@ -528,14 +528,16 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
         <Animated.Text style={[styles.welcomeLabel, welcomeStyle]}>
           Welcome,
         </Animated.Text>
-        <Animated.Text
-          style={[styles.nameText, nameStyle]}
-          numberOfLines={1}
-          adjustsFontSizeToFit
-          minimumFontScale={0.65}
-        >
-          {nameText}
-        </Animated.Text>
+        <Animated.View style={nameStyle}>
+          <Text
+            style={styles.nameText}
+            numberOfLines={1}
+            adjustsFontSizeToFit
+            minimumFontScale={0.5}
+          >
+            {nameText}
+          </Text>
+        </Animated.View>
         <Animated.Text style={[styles.subtitle, subtitleStyle]}>
           Your adventure starts now
         </Animated.Text>
@@ -557,7 +559,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: SCREEN_H * 0.38,
     alignItems: 'center',
-    paddingHorizontal: spacing.xxxl,
+    paddingHorizontal: spacing.xl,
   },
   welcomeLabel: {
     fontSize: typography.sizes.large,
@@ -574,7 +576,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: typography.sizes.subtitle,
     fontWeight: typography.weights.regular,
-    color: colors.text.meta,
+    color: colors.text.secondary,
     marginTop: spacing.lg,
     letterSpacing: 0.5,
   },

@@ -54,6 +54,7 @@ import type { CoasterRating } from '../types/rideLog';
 
 import { COASTER_BY_ID } from '../data/coasterIndex';
 import { CARD_ART, getRarityFromRank } from '../data/cardArt';
+import { FogHeader } from '../components/FogHeader';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -281,10 +282,34 @@ export const RateRidesScreen: React.FC = () => {
 
   const pendingCount = items.length;
 
+  const SUBTITLE_HEIGHT = pendingCount > 0 ? 32 : 0;
+  const headerTotalHeight = insets.top + 52 + SUBTITLE_HEIGHT;
+
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* ── Header ── */}
-      <Animated.View style={[styles.header, headerAnimStyle]}>
+    <View style={styles.container}>
+      {/* ── Grid or Empty State ── */}
+      {pendingCount === 0 ? (
+        <EmptyState />
+      ) : (
+        <FlatList
+          data={items}
+          numColumns={2}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          columnWrapperStyle={styles.gridRow}
+          contentContainerStyle={[
+            styles.gridContent,
+            { paddingTop: headerTotalHeight + spacing.sm, paddingBottom: insets.bottom + spacing.xxxl },
+          ]}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <Animated.View style={[styles.header, { top: insets.top }, headerAnimStyle]}>
         <Pressable
           {...backPress.pressHandlers}
           onPress={handleBack}
@@ -298,31 +323,13 @@ export const RateRidesScreen: React.FC = () => {
         <View style={styles.headerSpacer} />
       </Animated.View>
 
-      {/* ── Subtitle counter ── */}
+      {/* Subtitle counter — above fog */}
       {pendingCount > 0 && (
-        <Animated.View style={headerAnimStyle}>
+        <Animated.View style={[styles.subtitleWrap, { top: insets.top + 52 }, headerAnimStyle]}>
           <Text style={styles.subtitle}>
             {pendingCount} {pendingCount === 1 ? 'ride' : 'rides'} to rate
           </Text>
         </Animated.View>
-      )}
-
-      {/* ── Grid or Empty State ── */}
-      {pendingCount === 0 ? (
-        <EmptyState />
-      ) : (
-        <FlatList
-          data={items}
-          numColumns={2}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          columnWrapperStyle={styles.gridRow}
-          contentContainerStyle={[
-            styles.gridContent,
-            { paddingBottom: insets.bottom + spacing.xxxl },
-          ]}
-          showsVerticalScrollIndicator={false}
-        />
       )}
 
       {/* ── Rating Sheet (kept mounted, visibility controlled via prop) ── */}
@@ -353,6 +360,10 @@ const styles = StyleSheet.create({
 
   // ── Header (matches SettingsScreen) ──
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
@@ -377,11 +388,18 @@ const styles = StyleSheet.create({
   },
 
   // ── Subtitle ──
+  subtitleWrap: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
+    alignItems: 'center',
+    paddingVertical: spacing.xs,
+  },
   subtitle: {
     textAlign: 'center',
     fontSize: typography.sizes.label,
     color: colors.text.secondary,
-    marginBottom: spacing.lg,
   },
 
   // ── Grid ──

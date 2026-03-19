@@ -23,6 +23,7 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { TIMING } from '../../../constants/animations';
+import { SheetFog } from '../../../components/SheetFog';
 import { CoastleCoaster } from '../../coastle/types/coastle';
 import { ChecklistRow } from '../components/ChecklistRow';
 import { usePOIAction } from '../context/POIActionContext';
@@ -30,6 +31,9 @@ import { usePOIAction } from '../context/POIActionContext';
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const SHEET_HEIGHT = SCREEN_HEIGHT * 0.9;
 const ROW_HEIGHT = 52;
+
+// Fixed header: handleRow(19) + header(30) + summary(28) + tabBar(42) ≈ 119
+const HEADER_AREA_HEIGHT = 120;
 
 type Tab = 'today' | 'allTime';
 
@@ -215,6 +219,9 @@ export function ChecklistModal({
           </Pressable>
         </View>
 
+        {/* Fog gradient — fades content as it scrolls under the header/tabs */}
+        <SheetFog headerHeight={HEADER_AREA_HEIGHT} />
+
         {/* List */}
         {activeTab === 'today' ? (
           <FlatList
@@ -263,6 +270,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.card,
     borderTopLeftRadius: radius.modal,
     borderTopRightRadius: radius.modal,
+    overflow: 'hidden',
   },
   handleRow: {
     alignItems: 'center',

@@ -36,6 +36,7 @@ interface FriendsState {
   _setDiscoverableUsers: (users: DiscoverableUser[]) => void;
   _setSentRequestIds: (ids: string[]) => void;
   _addSentRequestId: (id: string) => void;
+  _removeSentRequestId: (id: string) => void;
   _removeFriend: (friendId: string) => void;
   _resetStore: () => void;
 }
@@ -175,6 +176,10 @@ const useStore = create<FriendsState>((set, get) => ({
       sentRequestIds: state.sentRequestIds.includes(id)
         ? state.sentRequestIds
         : [...state.sentRequestIds, id],
+    })),
+  _removeSentRequestId: (id) =>
+    set((state) => ({
+      sentRequestIds: state.sentRequestIds.filter((sid) => sid !== id),
     })),
   _removeFriend: (friendId) =>
     set((state) => ({

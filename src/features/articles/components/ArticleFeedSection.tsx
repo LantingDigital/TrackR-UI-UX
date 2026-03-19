@@ -59,7 +59,7 @@ const CompactArticleCard: React.FC<{
         onPressOut={handlePressOut}
       >
         <Image
-          source={{ uri: article.bannerImageUrl }}
+          source={typeof article.bannerImage === 'number' ? article.bannerImage : { uri: article.bannerImage }}
           style={compactStyles.image}
           contentFit="cover"
           cachePolicy="memory-disk"

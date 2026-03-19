@@ -36,6 +36,7 @@ import { OrderConfirmationScreen } from '../features/merch/screens/OrderConfirma
 import { OrderHistoryScreen } from '../features/merch/screens/OrderHistoryScreen';
 import { ProUpgradeScreen } from '../features/pro/ProUpgradeScreen';
 import { ArticleDetailScreen } from '../features/articles/screens/ArticleDetailScreen';
+import { ArticlesListScreen } from '../features/articles/screens/ArticlesListScreen';
 import { WalletProvider } from '../contexts/WalletContext';
 import { TabBarProvider } from '../contexts/TabBarContext';
 import { ToastProvider } from '../components/feedback/ToastProvider';
@@ -320,7 +321,15 @@ export const RootNavigator = () => {
                         gestureEnabled: true,
                       }}
                     />
-                    {/* Article Detail */}
+                    {/* Articles */}
+                    <Stack.Screen
+                      name="ArticlesList"
+                      component={ArticlesListScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
                     <Stack.Screen
                       name="ArticleDetail"
                       component={ArticleDetailScreen}

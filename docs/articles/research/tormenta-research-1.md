@@ -1,0 +1,773 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - navigation "Main" [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e15]:
+          - link "Search" [ref=e16] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+            - generic [ref=e20]: Search
+          - link "Computer" [ref=e21] [cursor=pointer]:
+            - /url: /computer/new
+            - img [ref=e25]
+            - generic [ref=e29]: Computer
+        - generic [ref=e30]:
+          - button "New thread ⌘K" [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]:
+              - img [ref=e39]
+              - generic [ref=e41]: New thread
+              - generic [ref=e43]: ⌘K
+          - generic [ref=e44]:
+            - generic [ref=e46]:
+              - link "History" [ref=e47] [cursor=pointer]:
+                - /url: /library
+                - generic [ref=e48]:
+                  - img [ref=e53]
+                  - generic [ref=e55]: History
+              - link "Discover" [ref=e56] [cursor=pointer]:
+                - /url: /discover
+                - generic [ref=e57]:
+                  - img [ref=e62]
+                  - generic [ref=e64]: Discover
+              - link "Spaces" [ref=e65] [cursor=pointer]:
+                - /url: /spaces
+                - generic [ref=e66]:
+                  - img [ref=e71]
+                  - generic [ref=e73]: Spaces
+              - link "Finance" [ref=e74] [cursor=pointer]:
+                - /url: /finance
+                - generic [ref=e75]:
+                  - img [ref=e80]
+                  - generic [ref=e82]: Finance
+              - button "More" [ref=e83] [cursor=pointer]:
+                - generic [ref=e84]:
+                  - img [ref=e89]
+                  - generic [ref=e91]: More
+            - generic [ref=e97]:
+              - button "Recent Collapse" [ref=e98] [cursor=pointer]:
+                - link "Recent" [ref=e99]:
+                  - /url: /library
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: Recent
+                    - img [ref=e103]
+                - button "Collapse" [ref=e107]:
+                  - img [ref=e110]
+              - generic [ref=e115]:
+                - generic [ref=e1722]:
+                  - 'link "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c" [ref=e1723] [cursor=pointer]':
+                    - /url: /search/tormenta-rampaging-run-six-fla-4A7LnKA8T6.roJytBAC64w
+                    - generic [ref=e1726]: "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1727]:
+                  - link "What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202" [ref=e1728] [cursor=pointer]:
+                    - /url: /search/what-are-the-biggest-roller-co-N7KmV85pShubda2GtMZmtQ
+                    - generic [ref=e1731]: What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1732]:
+                  - 'link "using real research, address the following: Act as an expert software agency founder, enterprise Sa" [ref=e1733] [cursor=pointer]':
+                    - /url: /search/using-real-research-address-th-Wcp1p8DDTp.OPref6qXXsg
+                    - generic [ref=e1736]: "using real research, address the following: Act as an expert software agency founder, enterprise Sa"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1737]:
+                  - link "roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park" [ref=e1738] [cursor=pointer]:
+                    - /url: /search/roller-coaster-and-theme-park-n9vJaevtT42.dHV_OUv7rw
+                    - generic [ref=e1741]: roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+        - generic [ref=e137] [cursor=pointer]:
+          - button "User avatar Caleb Lanting" [ref=e139]:
+            - generic [ref=e146]:
+              - generic [ref=e150]:
+                - img "User avatar" [ref=e151]
+                - img [ref=e154]
+              - generic [ref=e157]: Caleb Lanting
+          - button "Notifications" [ref=e166]:
+            - img [ref=e169]
+    - main [ref=e176]:
+      - generic [ref=e277]:
+        - generic:
+          - generic:
+            - tablist "Answer mode tabs" [ref=e279]:
+              - tab "Answer" [selected] [ref=e280] [cursor=pointer]:
+                - img [ref=e281]
+                - text: Answer
+              - tab "Links" [ref=e283] [cursor=pointer]:
+                - img [ref=e284]
+                - text: Links
+              - tab "Images" [ref=e286] [cursor=pointer]:
+                - img [ref=e287]
+                - text: Images
+            - generic [ref=e289]:
+              - button "Thread actions" [ref=e725] [cursor=pointer]:
+                - img [ref=e726]
+              - button "Share" [ref=e292] [cursor=pointer]:
+                - img [ref=e294]
+                - generic [ref=e296]: Share
+              - button "Download Comet" [ref=e299] [cursor=pointer]:
+                - img [ref=e301]
+                - generic [ref=e303]: Download Comet
+        - generic [ref=e306]:
+          - tabpanel "Answer" [ref=e314]:
+            - generic [ref=e315]:
+              - generic [ref=e320]:
+                - generic:
+                  - button "Edit Query":
+                    - generic:
+                      - generic:
+                        - img
+                  - button "Copy Query":
+                    - generic:
+                      - generic:
+                        - img
+                - 'heading "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track completion, world records, ride specs, opening date, Rancho de la Tormenta theming, Cocina Abuela restaurant, B&M dive coaster history, and enthusiast reaction. Find every major article, press release, and news report." [level=1] [ref=e325]':
+                  - generic [ref=e327]: "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track completion, world records, ride specs, opening date, Rancho de la Tormenta theming, Cocina Abuela restaurant, B&M dive coaster history, and enthusiast reaction. Find every major article, press release, and news report."
+              - generic [ref=e328]:
+                - button "3 steps completed" [ref=e729] [cursor=pointer]:
+                  - text: 3 steps completed
+                  - img [ref=e731]
+                - generic [ref=e740]:
+                  - paragraph [ref=e741]:
+                    - text: Tormenta Rampaging Run is a record‑breaking B&M giga dive coaster opening at Six Flags Over Texas in 2026 as the anchor of a new Spanish village area called Rancho de la Tormenta, with a companion restaurant, Cocina Abuela.
+                    - generic [ref=e746] [cursor=pointer]:
+                      - generic [ref=e747]: sixflags
+                      - generic [ref=e748]: "+5"
+                  - heading "Ride stats and world records" [level=2] [ref=e749]
+                  - paragraph [ref=e750]:
+                    - text: Tormenta Rampaging Run is marketed as the world’s tallest, fastest, longest, and first‑ever giga (300+ ft) dive coaster, and it will break six world records when it opens.
+                    - generic [ref=e755] [cursor=pointer]:
+                      - generic [ref=e756]: people
+                      - generic [ref=e757]: "+6"
+                  - paragraph [ref=e758]:
+                    - text: Key
+                    - strong [ref=e759]: specs
+                    - text: "(all official figures):"
+                  - list [ref=e760]:
+                    - listitem [ref=e761]:
+                      - paragraph [ref=e762]:
+                        - text: "Height / lift hill: 309 ft (tallest dive coaster)."
+                        - generic [ref=e767] [cursor=pointer]:
+                          - generic [ref=e768]: blooloop
+                          - generic [ref=e769]: "+6"
+                    - listitem [ref=e770]:
+                      - paragraph [ref=e771]:
+                        - text: "First drop: 285 ft at 95 degrees beyond vertical (highest 95° beyond‑vertical drop)."
+                        - generic [ref=e776] [cursor=pointer]:
+                          - generic [ref=e777]: blooloop
+                          - generic [ref=e778]: "+4"
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e780]:
+                          - generic [ref=e783] [cursor=pointer]:
+                            - img [ref=e785]
+                            - generic [ref=e787]: YouTube
+                    - listitem [ref=e788]:
+                      - paragraph [ref=e789]:
+                        - text: "Top speed: 87 mph (fastest dive coaster)."
+                        - generic [ref=e794] [cursor=pointer]:
+                          - generic [ref=e795]: cbsnews
+                          - generic [ref=e796]: "+6"
+                    - listitem [ref=e797]:
+                      - paragraph [ref=e798]:
+                        - text: "Track length: 4,199 ft (longest dive coaster)."
+                        - generic [ref=e803] [cursor=pointer]:
+                          - generic [ref=e804]: instagram
+                          - generic [ref=e805]: "+5"
+                    - listitem [ref=e806]:
+                      - paragraph [ref=e807]:
+                        - text: "Vertical loop: 179 ft (tallest vertical coaster loop in the world)."
+                        - generic [ref=e812] [cursor=pointer]:
+                          - generic [ref=e813]: arlingtontx
+                          - generic [ref=e814]: "+4"
+                    - listitem [ref=e815]:
+                      - paragraph [ref=e816]:
+                        - text: "Immelmann inversion: 218 ft (highest Immelmann inversion)."
+                        - generic [ref=e821] [cursor=pointer]:
+                          - generic [ref=e822]: sixflags
+                          - generic [ref=e823]: "+4"
+                    - listitem [ref=e824]:
+                      - paragraph [ref=e825]:
+                        - text: "Height requirement: 48 in minimum, 76 in maximum."
+                        - generic "Tormenta Rampaging Run | Ride | Six Flags Over Texas" [ref=e827]:
+                          - link "sixflags" [ref=e829] [cursor=pointer]:
+                            - /url: https://www.sixflags.com/overtexas/attractions/tormenta-rampaging-run
+                            - generic [ref=e832]: sixflags
+                    - listitem [ref=e833]:
+                      - paragraph [ref=e834]:
+                        - text: "Manufacturer: Bolliger & Mabillard (B&M, Switzerland), dive coaster model, floorless wide‑row trains with vest restraints."
+                        - generic "The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e836]:
+                          - generic [ref=e839] [cursor=pointer]:
+                            - img [ref=e841]
+                            - generic [ref=e843]: YouTube
+                        - generic [ref=e848] [cursor=pointer]:
+                          - generic [ref=e849]: coasterpedia
+                          - generic [ref=e850]: "+4"
+                  - paragraph [ref=e851]:
+                    - text: The layout includes a 309‑ft lift, a holding brake before the 95° drop, a huge Immelmann, a 179‑ft vertical loop, airtime and high‑speed turns, and additional drops before the final brakes, with on‑ride time from drop to brakes estimated around 50 seconds in the animated POV.
+                    - generic [ref=e856] [cursor=pointer]:
+                      - img [ref=e858]
+                      - generic [ref=e860]: youtube
+                      - generic [ref=e861]: "+1"
+                    - generic [ref=e866] [cursor=pointer]:
+                      - generic [ref=e867]: people
+                      - generic [ref=e868]: "+3"
+                  - heading "B&M dive coaster context" [level=2] [ref=e869]
+                  - paragraph [ref=e870]:
+                    - text: B&M’s Dive Coaster line began with Oblivion at Alton Towers in 1998 as the first vertical‑drop coaster, then expanded with SheiKra (first inversions), Griffon (first floorless trains), and later large custom layouts like Valravn and Yukon Striker.
+                    - generic [ref=e875] [cursor=pointer]:
+                      - generic [ref=e876]: coasterpedia
+                      - generic [ref=e877]: "+1"
+                  - paragraph [ref=e878]:
+                    - text: Until Tormenta, Yukon Striker at Canada’s Wonderland held the major dive coaster size records; Valravn had previously held six dive records at opening, which Tormenta is now designed to surpass in height, speed, and length.
+                    - generic [ref=e883] [cursor=pointer]:
+                      - generic [ref=e884]: bm-list.oldehanhoff
+                      - generic [ref=e885]: "+1"
+                    - generic "The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e887]:
+                      - generic [ref=e890] [cursor=pointer]:
+                        - img [ref=e892]
+                        - generic [ref=e894]: YouTube
+                  - heading "Dive coaster evolution vs Tormenta" [level=2] [ref=e895]
+                  - table [ref=e898]:
+                    - rowgroup [ref=e899]:
+                      - row "Dive coaster Park / country Height (ft) Speed (mph) Length (ft) Notable firsts / records Source" [ref=e900]:
+                        - columnheader "Dive coaster" [ref=e901]
+                        - columnheader "Park / country" [ref=e902]
+                        - columnheader "Height (ft)" [ref=e903]
+                        - columnheader "Speed (mph)" [ref=e904]
+                        - columnheader "Length (ft)" [ref=e905]
+                        - columnheader "Notable firsts / records" [ref=e906]
+                        - columnheader "Source" [ref=e907]
+                    - rowgroup [ref=e908]:
+                      - row "Oblivion (1998) Alton Towers, UK ~180 ~68 ~1,200 First B&M Dive Coaster Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e909]:
+                        - cell "Oblivion (1998)" [ref=e910]
+                        - cell "Alton Towers, UK" [ref=e911]
+                        - cell "~180" [ref=e912]
+                        - cell "~68" [ref=e913]
+                        - cell "~1,200" [ref=e914]
+                        - cell "First B&M Dive Coaster" [ref=e915]
+                        - cell "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e916]:
+                          - generic "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e918]:
+                            - link "coasterpedia" [ref=e920] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Dive_Coaster
+                              - generic [ref=e923]: coasterpedia
+                      - row "SheiKra (2005) Busch Gardens Tampa, USA 200 70 3,188 First dive with inversions Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e924]:
+                        - cell "SheiKra (2005)" [ref=e925]
+                        - cell "Busch Gardens Tampa, USA" [ref=e926]
+                        - cell "200" [ref=e927]
+                        - cell "70" [ref=e928]
+                        - cell "3,188" [ref=e929]
+                        - cell "First dive with inversions" [ref=e930]
+                        - cell "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e931]:
+                          - generic "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e933]:
+                            - link "coasterpedia" [ref=e935] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Dive_Coaster
+                              - generic [ref=e938]: coasterpedia
+                      - row "Griffon (2007) Busch Gardens Wmsbg, USA 205 71 3,108 First floorless dive Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e939]:
+                        - cell "Griffon (2007)" [ref=e940]
+                        - cell "Busch Gardens Wmsbg, USA" [ref=e941]
+                        - cell "205" [ref=e942]
+                        - cell "71" [ref=e943]
+                        - cell "3,108" [ref=e944]
+                        - cell "First floorless dive" [ref=e945]
+                        - cell "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e946]:
+                          - generic "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e948]:
+                            - link "coasterpedia" [ref=e950] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Dive_Coaster
+                              - generic [ref=e953]: coasterpedia
+                      - row "Valravn (2016) Cedar Point, USA 223 75 3,415 6 dive records at opening Dive Coaster - Eddy's B&M List The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e954]:
+                        - cell "Valravn (2016)" [ref=e955]
+                        - cell "Cedar Point, USA" [ref=e956]
+                        - cell "223" [ref=e957]
+                        - cell "75" [ref=e958]
+                        - cell "3,415" [ref=e959]
+                        - cell "6 dive records at opening" [ref=e960]
+                        - cell "Dive Coaster - Eddy's B&M List The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e961]:
+                          - generic "Dive Coaster - Eddy's B&M List" [ref=e963]:
+                            - link "bm-list.oldehanhoff" [ref=e965] [cursor=pointer]:
+                              - /url: https://bm-list.oldehanhoff.nl/?page_id=49
+                              - generic [ref=e968]: bm-list.oldehanhoff
+                          - generic "The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e970]:
+                            - generic [ref=e973] [cursor=pointer]:
+                              - img [ref=e975]
+                              - generic [ref=e977]: YouTube
+                      - row "Yukon Striker Canada’s Wonderland, CAN 223 80 3,625 Tallest/fastest/longest pre‑Tormenta The World's B&M DIVE Coasters - By The Numbers - YouTube Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e978]:
+                        - cell "Yukon Striker" [ref=e979]
+                        - cell "Canada’s Wonderland, CAN" [ref=e980]
+                        - cell "223" [ref=e981]
+                        - cell "80" [ref=e982]
+                        - cell "3,625" [ref=e983]
+                        - cell "Tallest/fastest/longest pre‑Tormenta" [ref=e984]
+                        - cell "The World's B&M DIVE Coasters - By The Numbers - YouTube Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e985]:
+                          - generic "The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e987]:
+                            - generic [ref=e990] [cursor=pointer]:
+                              - img [ref=e992]
+                              - generic [ref=e994]: YouTube
+                          - generic "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e996]:
+                            - link "coasterpedia" [ref=e998] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Dive_Coaster
+                              - generic [ref=e1001]: coasterpedia
+                      - row "Dr. Diabolical Six Flags Fiesta Texas 150 60 ~2,500 95° drop on a dive The World's B&M DIVE Coasters - By The Numbers - YouTube Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e1002]:
+                        - cell "Dr. Diabolical" [ref=e1003]
+                        - cell "Six Flags Fiesta Texas" [ref=e1004]
+                        - cell "150" [ref=e1005]
+                        - cell "60" [ref=e1006]
+                        - cell "~2,500" [ref=e1007]
+                        - cell "95° drop on a dive" [ref=e1008]
+                        - cell "The World's B&M DIVE Coasters - By The Numbers - YouTube Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e1009]:
+                          - generic "The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e1011]:
+                            - generic [ref=e1014] [cursor=pointer]:
+                              - img [ref=e1016]
+                              - generic [ref=e1018]: YouTube
+                          - generic "Dive Coaster - Coasterpedia - The Amusement Ride Wiki" [ref=e1020]:
+                            - link "coasterpedia" [ref=e1022] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Dive_Coaster
+                              - generic [ref=e1025]: coasterpedia
+                      - row "Tormenta (2026) Six Flags Over Texas, USA 309 87 4,199 First giga dive, 6 world records sixflags +5" [ref=e1026]:
+                        - cell "Tormenta (2026)" [ref=e1027]
+                        - cell "Six Flags Over Texas, USA" [ref=e1028]
+                        - cell "309" [ref=e1029]
+                        - cell "87" [ref=e1030]
+                        - cell "4,199" [ref=e1031]
+                        - cell "First giga dive, 6 world records" [ref=e1032]
+                        - cell "sixflags +5" [ref=e1033]:
+                          - generic [ref=e1038] [cursor=pointer]:
+                            - generic [ref=e1039]: sixflags
+                            - generic [ref=e1040]: "+5"
+                  - paragraph [ref=e1041]:
+                    - text: Tormenta scales the dive concept into true giga‑height territory similar in stature to B&M’s Leviathan‑style giga hypers but with a vertical hold‑and‑drop and multiple record‑breaking inversions.
+                    - generic [ref=e1046] [cursor=pointer]:
+                      - img [ref=e1048]
+                      - generic [ref=e1050]: youtube
+                      - generic [ref=e1051]: "+1"
+                    - generic [ref=e1056] [cursor=pointer]:
+                      - generic [ref=e1057]: people
+                      - generic [ref=e1058]: "+1"
+                  - heading "Construction timeline and milestones" [level=2] [ref=e1059]
+                  - paragraph [ref=e1060]:
+                    - text: Public documentation shows a multi‑year build beginning with site prep and track delivery in 2025 and major vertical milestones in late 2025 and early 2026.
+                    - generic [ref=e1065] [cursor=pointer]:
+                      - generic [ref=e1066]: arlingtontx
+                      - generic [ref=e1067]: "+6"
+                  - paragraph [ref=e1068]:
+                    - text: Key
+                    - strong [ref=e1069]: timeline
+                    - text: "points:"
+                  - list [ref=e1070]:
+                    - listitem [ref=e1071]:
+                      - paragraph [ref=e1072]:
+                        - text: "June 2025: B&M track and supports begin arriving to Six Flags Over Texas, staged in the front preferred parking lot."
+                        - generic "Tormenta Rampaging Run - New for 2026 Coaster - Guide to SFoT" [ref=e1074]:
+                          - link "guidetosfot" [ref=e1076] [cursor=pointer]:
+                            - /url: https://guidetosfot.com/newfor2026/
+                            - generic [ref=e1079]: guidetosfot
+                    - listitem [ref=e1080]:
+                      - paragraph [ref=e1081]:
+                        - text: "Late September 2025: Vertical construction starts; early station supports go up."
+                        - generic "Tormenta Rampaging Run - New for 2026 Coaster - Guide to SFoT" [ref=e1083]:
+                          - link "guidetosfot" [ref=e1085] [cursor=pointer]:
+                            - /url: https://guidetosfot.com/newfor2026/
+                            - generic [ref=e1088]: guidetosfot
+                    - listitem [ref=e1089]:
+                      - paragraph [ref=e1090]:
+                        - text: "25 September 2025: Official announcement of Tormenta Rampaging Run, with name, theme, records, and 2026 opening target."
+                        - generic [ref=e1095] [cursor=pointer]:
+                          - generic [ref=e1096]: people
+                          - generic [ref=e1097]: "+3"
+                    - listitem [ref=e1098]:
+                      - paragraph [ref=e1099]:
+                        - text: "Early October 2025: First pieces of track installed."
+                        - generic [ref=e1104] [cursor=pointer]:
+                          - generic [ref=e1105]: facebook
+                          - generic [ref=e1106]: "+1"
+                    - listitem [ref=e1107]:
+                      - paragraph [ref=e1108]:
+                        - text: "22 January 2026 (approx.): Completion of the record‑breaking Immelmann inversion; People magazine reports the element as a major milestone."
+                        - generic "Six Flags' Record-Breaking Roller Coaster Reaches Construction ..." [ref=e1110]:
+                          - link "people" [ref=e1112] [cursor=pointer]:
+                            - /url: https://people.com/six-flags-record-breaking-coaster-reaches-construction-milestone-11890343
+                            - generic [ref=e1115]: people
+                    - listitem [ref=e1116]:
+                      - paragraph [ref=e1117]:
+                        - text: "6 February 2026: Park press release and Arlington city news highlight completion of the 179‑ft vertical loop, calling it the world’s tallest vertical coaster loop and noting vertical construction is more than halfway complete."
+                        - generic "Six Flags Over Texas Completes Vertical Loop on Tormenta ..." [ref=e1119]:
+                          - link "arlingtontx" [ref=e1121] [cursor=pointer]:
+                            - /url: https://www.arlingtontx.gov/News-Articles/2026/February/Six-Flags-Over-Texas-Completes-Vertical-Loop-on-Tormenta-Rampaging-Run
+                            - generic [ref=e1124]: arlingtontx
+                    - listitem [ref=e1125]:
+                      - paragraph [ref=e1126]:
+                        - text: "Late January 2026: Blooloop reports that construction of the dive coaster structure has been completed, with Tormenta “due to open this year.”"
+                        - generic "Six Flags Over Texas completes construction of dive coaster | blooloop" [ref=e1128]:
+                          - link "blooloop" [ref=e1130] [cursor=pointer]:
+                            - /url: https://blooloop.com/six-flags-completes-new-coaster/
+                            - generic [ref=e1133]: blooloop
+                    - listitem [ref=e1134]:
+                      - paragraph [ref=e1135]:
+                        - text: "February 2026: Six Flags Over Texas opens its 65th season on February 28, stating Tormenta will debut later in the year as the centerpiece of the anniversary season."
+                        - generic [ref=e1140] [cursor=pointer]:
+                          - generic [ref=e1141]: fox4news
+                          - generic [ref=e1142]: "+1"
+                    - listitem [ref=e1143]:
+                      - paragraph [ref=e1144]:
+                        - text: Enthusiast forum chatter in early 2026 suggests trackwork completion by around April 2026, followed by several months of testing before a summer opening, though this is speculative rather than an official date.
+                        - generic [ref=e1149] [cursor=pointer]:
+                          - generic [ref=e1150]: reddit
+                          - generic [ref=e1151]: "+1"
+                        - generic "When Will Tormenta Open At Six Flags Over Texas? - YouTube" [ref=e1153]:
+                          - generic [ref=e1156] [cursor=pointer]:
+                            - img [ref=e1158]
+                            - generic [ref=e1160]: YouTube
+                  - paragraph [ref=e1161]:
+                    - text: The park has also released under‑construction POV videos and train color reveals on social platforms during winter 2025–26, showing red‑accented trains and significant progress on the lift and major elements.
+                    - generic [ref=e1166] [cursor=pointer]:
+                      - generic [ref=e1167]: facebook
+                      - generic [ref=e1168]: "+2"
+                  - heading "Opening timeframe" [level=2] [ref=e1169]
+                  - paragraph [ref=e1170]:
+                    - text: As of March 2026, Six Flags has not published a specific grand opening date, but all official materials repeatedly frame Tormenta as opening in the 2026 season after the park’s February 28 season kickoff.
+                    - generic [ref=e1175] [cursor=pointer]:
+                      - generic [ref=e1176]: blooloop
+                      - generic [ref=e1177]: "+6"
+                  - list [ref=e1178]:
+                    - listitem [ref=e1179]:
+                      - paragraph [ref=e1180]:
+                        - text: "Six Flags corporate and Blooloop articles: “opens in 2026” and “will open this year.”"
+                        - generic [ref=e1185] [cursor=pointer]:
+                          - generic [ref=e1186]: cbsnews
+                          - generic [ref=e1187]: "+3"
+                    - listitem [ref=e1188]:
+                      - paragraph [ref=e1189]:
+                        - text: "Six Flags Over Texas 65th‑season release: calls Tormenta a centerpiece “debuting later this year.”"
+                        - generic [ref=e1194] [cursor=pointer]:
+                          - generic [ref=e1195]: arlingtontx
+                          - generic [ref=e1196]: "+1"
+                    - listitem [ref=e1197]:
+                      - paragraph [ref=e1198]:
+                        - text: An Instagram promo post references “opening in February 2026,” but this conflicts with later official city and park communications that still describe it as opening “later in 2026,” implying a delay beyond opening day.
+                        - generic [ref=e1203] [cursor=pointer]:
+                          - generic [ref=e1204]: instagram
+                          - generic [ref=e1205]: "+2"
+                    - listitem [ref=e1206]:
+                      - paragraph [ref=e1207]:
+                        - text: Enthusiast speculation clusters around a late spring or summer 2026 opening based on projected construction completion, testing time, and planned enthusiast events, but no authoritative month is confirmed yet.
+                        - generic "When Will Tormenta Open At Six Flags Over Texas? - YouTube" [ref=e1209]:
+                          - generic [ref=e1212] [cursor=pointer]:
+                            - img [ref=e1214]
+                            - generic [ref=e1216]: YouTube
+                        - generic [ref=e1221] [cursor=pointer]:
+                          - generic [ref=e1222]: reddit
+                          - generic [ref=e1223]: "+3"
+                  - paragraph [ref=e1224]:
+                    - text: Given these sources, the best‑supported position is that Tormenta will open sometime later in the 2026 operating season, most likely after spring break, with the exact date still to be announced.
+                    - generic [ref=e1229] [cursor=pointer]:
+                      - generic [ref=e1230]: fox4news
+                      - generic [ref=e1231]: "+1"
+                    - generic "When Will Tormenta Open At Six Flags Over Texas? - YouTube" [ref=e1233]:
+                      - generic [ref=e1236] [cursor=pointer]:
+                        - img [ref=e1238]
+                        - generic [ref=e1240]: YouTube
+                  - heading "Rancho de la Tormenta theming" [level=2] [ref=e1241]
+                  - paragraph [ref=e1242]:
+                    - text: Rancho de la Tormenta is a new Spanish‑village‑style land built around Tormenta, themed to Spain’s running of the bulls and a legendary bull named Tormenta.
+                    - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1244]:
+                      - generic [ref=e1247] [cursor=pointer]:
+                        - img [ref=e1249]
+                        - generic [ref=e1251]: YouTube
+                    - generic [ref=e1256] [cursor=pointer]:
+                      - generic [ref=e1257]: people
+                      - generic [ref=e1258]: "+5"
+                  - paragraph [ref=e1259]:
+                    - text: The
+                    - strong [ref=e1260]: narrative and environment
+                    - text: ":"
+                  - list [ref=e1261]:
+                    - listitem [ref=e1262]:
+                      - paragraph [ref=e1263]:
+                        - text: The area represents an old, secluded Spanish village whose name originally came from the storms (“tormentas”) that crossed the plains.
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1265]:
+                          - generic [ref=e1268] [cursor=pointer]:
+                            - img [ref=e1270]
+                            - generic [ref=e1272]: YouTube
+                    - listitem [ref=e1273]:
+                      - paragraph [ref=e1274]:
+                        - text: Its story centers on a mythical bull, Tormenta, famed for strength and speed; matadors from across Spain failed to defeat him, and the town was eventually renamed in his honor.
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1276]:
+                          - generic [ref=e1279] [cursor=pointer]:
+                            - img [ref=e1281]
+                            - generic [ref=e1283]: YouTube
+                    - listitem [ref=e1284]:
+                      - paragraph [ref=e1285]:
+                        - text: Guests enter under a canopy of colorful banners with jubilant Spanish music, immediately seeing the 309‑ft coaster towering overhead.
+                        - generic [ref=e1290] [cursor=pointer]:
+                          - generic [ref=e1291]: people
+                          - generic [ref=e1292]: "+3"
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1294]:
+                          - generic [ref=e1297] [cursor=pointer]:
+                            - img [ref=e1299]
+                            - generic [ref=e1301]: YouTube
+                    - listitem [ref=e1302]:
+                      - paragraph [ref=e1303]:
+                        - text: The trains are styled like the vibrant costumes of runners in a bull run, reinforcing the chase motif of the ride.
+                        - generic "Tormenta Rampaging Run | Ride | Six Flags Over Texas" [ref=e1305]:
+                          - link "sixflags" [ref=e1307] [cursor=pointer]:
+                            - /url: https://www.sixflags.com/overtexas/attractions/tormenta-rampaging-run
+                            - generic [ref=e1310]: sixflags
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1312]:
+                          - generic [ref=e1315] [cursor=pointer]:
+                            - img [ref=e1317]
+                            - generic [ref=e1319]: YouTube
+                  - paragraph [ref=e1320]:
+                    - text: Atmosphere and
+                    - strong [ref=e1321]: aesthetic
+                    - text: "elements called out in materials include:"
+                  - list [ref=e1322]:
+                    - listitem [ref=e1323]:
+                      - paragraph [ref=e1324]:
+                        - text: Immersive Spanish village decor, vivid colors, and architectural details evocative of small Iberian towns.
+                        - generic [ref=e1329] [cursor=pointer]:
+                          - generic [ref=e1330]: blooloop
+                          - generic [ref=e1331]: "+2"
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1333]:
+                          - generic [ref=e1336] [cursor=pointer]:
+                            - img [ref=e1338]
+                            - generic [ref=e1340]: YouTube
+                    - listitem [ref=e1341]:
+                      - paragraph [ref=e1342]:
+                        - text: Theming integrated across plaza, queue, and restaurant, with Spanish/Latin music and food creating a cohesive experience.
+                        - generic [ref=e1347] [cursor=pointer]:
+                          - generic [ref=e1348]: people
+                          - generic [ref=e1349]: "+4"
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1351]:
+                          - generic [ref=e1354] [cursor=pointer]:
+                            - img [ref=e1356]
+                            - generic [ref=e1358]: YouTube
+                  - heading "Cocina Abuela restaurant" [level=2] [ref=e1359]
+                  - paragraph [ref=e1360]:
+                    - text: Cocina Abuela (also called Cocina de la Abuela in one city release) is a new restaurant within Rancho de la Tormenta, positioned as an elevated, scratch‑kitchen dining experience themed to Spanish and Latin American home cooking.
+                    - generic [ref=e1365] [cursor=pointer]:
+                      - generic [ref=e1366]: blooloop
+                      - generic [ref=e1367]: "+4"
+                  - paragraph [ref=e1368]: "Menu highlights mentioned so far:"
+                  - list [ref=e1369]:
+                    - listitem [ref=e1370]:
+                      - paragraph [ref=e1371]:
+                        - text: Spanish rice.
+                        - generic [ref=e1376] [cursor=pointer]:
+                          - generic [ref=e1377]: people
+                          - generic [ref=e1378]: "+1"
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1380]:
+                          - generic [ref=e1383] [cursor=pointer]:
+                            - img [ref=e1385]
+                            - generic [ref=e1387]: YouTube
+                    - listitem [ref=e1388]:
+                      - paragraph [ref=e1389]:
+                        - text: Papas/patatas bravas.
+                        - generic [ref=e1394] [cursor=pointer]:
+                          - generic [ref=e1395]: blooloop
+                          - generic [ref=e1396]: "+1"
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1398]:
+                          - generic [ref=e1401] [cursor=pointer]:
+                            - img [ref=e1403]
+                            - generic [ref=e1405]: YouTube
+                    - listitem [ref=e1406]:
+                      - paragraph [ref=e1407]:
+                        - text: Chicken tinga.
+                        - generic [ref=e1412] [cursor=pointer]:
+                          - generic [ref=e1413]: people
+                          - generic [ref=e1414]: "+1"
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1416]:
+                          - generic [ref=e1419] [cursor=pointer]:
+                            - img [ref=e1421]
+                            - generic [ref=e1423]: YouTube
+                    - listitem [ref=e1424]:
+                      - paragraph [ref=e1425]:
+                        - text: Fresh house‑made guacamole.
+                        - generic "Six Flags Unveils Terrifying New 'Giga Dive' Roller Coaster Opening ..." [ref=e1427]:
+                          - link "people" [ref=e1429] [cursor=pointer]:
+                            - /url: https://people.com/six-flags-over-texas-roller-coaster-giga-dive-coaster-fastest-longest-tallest-tormenta-rampaging-run-11821359
+                            - generic [ref=e1432]: people
+                        - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1434]:
+                          - generic [ref=e1437] [cursor=pointer]:
+                            - img [ref=e1439]
+                            - generic [ref=e1441]: YouTube
+                  - paragraph [ref=e1442]:
+                    - text: Park and media descriptions emphasize bold flavors, scratch‑made quality, and a focus on regional Spanish and Latin American dishes rather than typical quick‑serve fare.
+                    - generic [ref=e1447] [cursor=pointer]:
+                      - generic [ref=e1448]: cbsnews
+                      - generic [ref=e1449]: "+4"
+                    - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1451]:
+                      - generic [ref=e1454] [cursor=pointer]:
+                        - img [ref=e1456]
+                        - generic [ref=e1458]: YouTube
+                  - paragraph [ref=e1459]:
+                    - text: The restaurant sits at the entrance to the plaza, with its aromas and design deliberately used as part of the land’s story introduction.
+                    - generic "Six Flags Over Texas Begins Monumental 65th Season on Feb. 28 ..." [ref=e1461]:
+                      - link "arlingtontx" [ref=e1463] [cursor=pointer]:
+                        - /url: https://www.arlingtontx.gov/News-Articles/2026/February/Six-Flags-Over-Texas-Begins-Monumental-65th-Season-on-Feb.-28-2026
+                        - generic [ref=e1466]: arlingtontx
+                    - generic "Record Breaking Dive Coaster - Six Flags Over Texas 2026 - YouTube" [ref=e1468]:
+                      - generic [ref=e1471] [cursor=pointer]:
+                        - img [ref=e1473]
+                        - generic [ref=e1475]: YouTube
+                  - heading "Enthusiast and media reaction" [level=2] [ref=e1476]
+                  - paragraph [ref=e1477]:
+                    - text: Roller coaster enthusiasts and mainstream outlets have given Tormenta intense attention due to its world‑first giga dive status and aggressive stats.
+                    - generic [ref=e1482] [cursor=pointer]:
+                      - img [ref=e1484]
+                      - generic [ref=e1486]: youtube
+                      - generic [ref=e1487]: "+1"
+                    - generic [ref=e1492] [cursor=pointer]:
+                      - generic [ref=e1493]: reddit
+                      - generic [ref=e1494]: "+7"
+                  - paragraph [ref=e1495]:
+                    - text: Mainstream and industry
+                    - strong [ref=e1496]: coverage
+                    - text: ":"
+                  - list [ref=e1497]:
+                    - listitem [ref=e1498]:
+                      - paragraph [ref=e1499]:
+                        - text: People magazine and CBS News Texas highlight Tormenta as a “terrifying” and “record‑breaking” new coaster, stressing its height, speed, and the uniqueness of the giga dive concept.
+                        - generic [ref=e1504] [cursor=pointer]:
+                          - generic [ref=e1505]: facebook
+                          - generic [ref=e1506]: "+3"
+                    - listitem [ref=e1507]:
+                      - paragraph [ref=e1508]:
+                        - text: Blooloop and city releases frame it as a historic innovation that redefines Six Flags Over Texas’s skyline and celebrates the park’s legacy for its 65th anniversary.
+                        - generic [ref=e1513] [cursor=pointer]:
+                          - generic [ref=e1514]: arlingtontx
+                          - generic [ref=e1515]: "+5"
+                  - paragraph [ref=e1516]:
+                    - text: Enthusiast
+                    - strong [ref=e1517]: community reaction
+                    - text: "(forums and fan pages):"
+                  - list [ref=e1518]:
+                    - listitem [ref=e1519]:
+                      - paragraph [ref=e1520]:
+                        - text: Many enthusiasts are excited about the unprecedented scale—309 ft tall with a 95° drop—and see it as Six Flags’ boldest modern project, often comparing it favorably to Yukon Striker and Valravn.
+                        - generic [ref=e1525] [cursor=pointer]:
+                          - generic [ref=e1526]: facebook
+                          - generic [ref=e1527]: "+2"
+                        - generic [ref=e1532] [cursor=pointer]:
+                          - img [ref=e1534]
+                          - generic [ref=e1536]: youtube
+                          - generic [ref=e1537]: "+1"
+                    - listitem [ref=e1538]:
+                      - paragraph [ref=e1539]:
+                        - text: Some critique the layout as potentially less dynamic than other gigas, calling it “the world’s least interesting giga coaster” in one Reddit thread, largely due to perceived long transitions and the use of vest restraints.
+                        - generic "[Tormenta Rampaging Run] at [Six Flags Over Texas] - Reddit" [ref=e1541]:
+                          - link "reddit" [ref=e1543] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/rollercoasters/comments/1qysae8/tormenta_rampaging_run_at_six_flags_over_texas/
+                            - generic [ref=e1546]: reddit
+                        - generic "Tormenta Rampaging Run Could Be Smooth… Maybe - YouTube" [ref=e1548]:
+                          - generic [ref=e1551] [cursor=pointer]:
+                            - img [ref=e1553]
+                            - generic [ref=e1555]: YouTube
+                    - listitem [ref=e1556]:
+                      - paragraph [ref=e1557]:
+                        - text: Others praise the huge vertical loop and Immelmann, saying they are eager to experience airtime plus massive inversions on a dive coaster at this scale.
+                        - generic [ref=e1562] [cursor=pointer]:
+                          - img [ref=e1564]
+                          - generic [ref=e1566]: youtube
+                          - generic [ref=e1567]: "+1"
+                        - generic [ref=e1572] [cursor=pointer]:
+                          - generic [ref=e1573]: reddit
+                          - generic [ref=e1574]: "+2"
+                    - listitem [ref=e1575]:
+                      - paragraph [ref=e1576]:
+                        - text: Several fan accounts and Facebook groups are tracking construction obsessively, posting photos of the lift, loop, and trains and speculating about opening day and potential ACE or enthusiast events in late spring or summer.
+                        - generic [ref=e1581] [cursor=pointer]:
+                          - generic [ref=e1582]: facebook
+                          - generic [ref=e1583]: "+6"
+                        - generic "When Will Tormenta Open At Six Flags Over Texas? - YouTube" [ref=e1585]:
+                          - generic [ref=e1588] [cursor=pointer]:
+                            - img [ref=e1590]
+                            - generic [ref=e1592]: YouTube
+                  - paragraph [ref=e1593]:
+                    - text: Overall sentiment is that Tormenta is one of the most significant new coasters of 2026 worldwide, both for its stats and for Six Flags’ investment scale.
+                    - generic [ref=e1598] [cursor=pointer]:
+                      - generic [ref=e1599]: facebook
+                      - generic [ref=e1600]: "+4"
+                    - generic "The World's B&M DIVE Coasters - By The Numbers - YouTube" [ref=e1602]:
+                      - generic [ref=e1605] [cursor=pointer]:
+                        - img [ref=e1607]
+                        - generic [ref=e1609]: YouTube
+                  - separator [ref=e1610]
+                  - paragraph [ref=e1611]: Would you like a structured timeline document (year–month with sources) or a layout‑focused breakdown comparing Tormenta’s elements to Yukon Striker and Valravn first?
+                - generic [ref=e1612]:
+                  - generic [ref=e1613]:
+                    - button "Share" [ref=e1614] [cursor=pointer]:
+                      - img [ref=e1617]
+                    - button "Download" [ref=e1620] [cursor=pointer]:
+                      - img [ref=e1621]
+                    - button "Copy" [ref=e1623] [cursor=pointer]:
+                      - img [ref=e1626]
+                    - button "Rewrite Thread" [ref=e1629] [cursor=pointer]:
+                      - img [ref=e1632]
+                    - button "28 sources" [ref=e1636] [cursor=pointer]:
+                      - generic [ref=e1638]:
+                        - img [ref=e1639]
+                        - img [ref=e1640]
+                        - generic [ref=e1642]:
+                          - img [ref=e1645]
+                          - img [ref=e1649]
+                          - img [ref=e1653]
+                        - text: 28 sources
+                  - generic [ref=e1656]:
+                    - generic [ref=e1658]:
+                      - button "Helpful" [ref=e1659] [cursor=pointer]:
+                        - img [ref=e1662]
+                      - button "Not helpful" [ref=e1665] [cursor=pointer]:
+                        - img [ref=e1668]
+                    - button "More actions" [ref=e1672] [cursor=pointer]:
+                      - img [ref=e1673]
+                - generic [ref=e1675]:
+                  - generic [ref=e1680]: Follow-ups
+                  - generic [ref=e1681]:
+                    - button "Build an interactive dashboard for Tormenta Rampaging Run with specs like 309ft drop, Immelmann, world records, Rancho de la Tormenta theming, and construction timeline visualization Computer" [ref=e1682] [cursor=pointer]:
+                      - img [ref=e1684]
+                      - generic [ref=e1686]:
+                        - generic [ref=e1687]: Build an interactive dashboard for Tormenta Rampaging Run with specs like 309ft drop, Immelmann, world records, Rancho de la Tormenta theming, and construction timeline visualization
+                        - generic [ref=e1688]:
+                          - img [ref=e1689]
+                          - text: Computer
+                    - button "What is the top speed and length of Tormenta Rampaging Run" [ref=e1691] [cursor=pointer]:
+                      - img [ref=e1693]
+                      - generic [ref=e1696]: What is the top speed and length of Tormenta Rampaging Run
+                    - button "Details on the ride layout and inversions" [ref=e1697] [cursor=pointer]:
+                      - img [ref=e1699]
+                      - generic [ref=e1702]: Details on the ride layout and inversions
+                    - button "Cocina Abuela full menu and dining options" [ref=e1703] [cursor=pointer]:
+                      - img [ref=e1705]
+                      - generic [ref=e1708]: Cocina Abuela full menu and dining options
+                    - button "Other rides and attractions in Rancho de la Tormenta" [ref=e1709] [cursor=pointer]:
+                      - img [ref=e1711]
+                      - generic [ref=e1714]: Other rides and attractions in Rancho de la Tormenta
+          - generic [ref=e672]:
+            - generic [ref=e674]:
+              - textbox [active] [ref=e675]:
+                - paragraph [ref=e676]
+              - generic: Ask a follow-up
+            - button "Add files or tools" [ref=e679] [cursor=pointer]:
+              - img [ref=e682]
+            - generic [ref=e685]:
+              - button "Model" [ref=e686] [cursor=pointer]:
+                - generic [ref=e687]: Model
+                - img [ref=e689]
+              - button "Dictation" [ref=e1716] [cursor=pointer]:
+                - img [ref=e1719]
+              - button "Submit" [disabled]:
+                - generic:
+                  - generic:
+                    - img
+  - listbox "Typeahead menu"

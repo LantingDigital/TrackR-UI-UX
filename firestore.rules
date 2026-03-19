@@ -14,20 +14,28 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.uid == userId;
     }
 
+    // Admin check — uses custom claim set by Cloud Functions.
+    // Set via: admin.auth().setCustomUserClaims(uid, { admin: true })
+    function isAdmin() {
+      return isAuthenticated() && request.auth.token.admin == true;
+    }
+
     // ========================================
     // M1: USERS
     // ========================================
 
     match /users/{userId} {
       allow read: if isAuthenticated();
+      // v1: client creates user doc on first auth. Phase 2 migrates to generateProfileReady CF.
+      allow create: if isOwner(userId);
       allow update: if isOwner(userId)
         && !request.resource.data.diff(resource.data).affectedKeys()
             .hasAny(['totalCredits', 'totalRides', 'proStatus', 'createdAt']);
-      allow create: if false;
       allow delete: if false;
 
       match /friends/{friendId} {
         allow read: if isOwner(userId);
+        // Writes handled by Cloud Functions (sendFriendRequest, acceptFriendRequest, removeFriend)
         allow write: if false;
       }
 
@@ -90,8 +98,10 @@ service cloud.firestore {
     // ========================================
 
     match /rideLogs/{userId} {
-      match /meta {
+      // Actual path: rideLogs/{userId}/meta/meta (single doc in meta subcollection)
+      match /meta/{docId} {
         allow read: if isOwner(userId);
+        // Written by Cloud Functions only (onRideLogCreate/Delete)
         allow write: if false;
       }
 
@@ -108,7 +118,9 @@ service cloud.firestore {
     // M1: RATINGS
     // ========================================
 
-    match /ratings/{userId}/{coasterId} {
+    // Actual Firestore path: ratings/{userId}/ratings/{coasterId}
+    // (userId is a path-segment doc, "ratings" is the subcollection name)
+    match /ratings/{userId}/ratings/{coasterId} {
       allow read: if isOwner(userId);
       allow create: if isOwner(userId)
         && request.resource.data.keys().hasAll(['coasterId', 'criteriaRatings', 'weightedScore']);
@@ -158,7 +170,51 @@ service cloud.firestore {
       allow read: if isAuthenticated()
         && (resource.data.fromUserId == request.auth.uid
             || resource.data.toUserId == request.auth.uid);
+      // Writes handled by Cloud Functions (sendFriendRequest, acceptFriendRequest, declineFriendRequest)
       allow write: if false;
+    }
+
+    // ========================================
+    // ARTICLES (News Feed)
+    // ========================================
+
+    match /articles/{articleId} {
+      // Anyone authenticated can read published articles.
+      // Admin can read all (including drafts).
+      allow read: if isAdmin()
+        || (isAuthenticated() && resource.data.status == 'published');
+      // Only admin can write articles (create, update, delete)
+      allow create: if isAdmin()
+        && request.resource.data.keys().hasAll([
+          'title', 'subtitle', 'body', 'category', 'status', 'authorId'
+        ]);
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ========================================
+    // REPORTS (Community Safety)
+    // ========================================
+
+    match /reports/{reportId} {
+      // Only admins can read reports
+      allow read: if isAdmin();
+      // Reports created by Cloud Functions only (reportUser CF)
+      allow write: if false;
+    }
+
+    // ========================================
+    // INTERNAL (admin/system docs)
+    // ========================================
+
+    match /_admin/{document=**} {
+      allow read: if isAdmin();
+      allow write: if false; // Cloud Functions only
+    }
+
+    match /_internal/{document=**} {
+      allow read: if false;
+      allow write: if false; // Cloud Functions only
     }
 
     // ========================================

@@ -1,0 +1,723 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - navigation "Main" [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e15]:
+          - link "Search" [ref=e16] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+            - generic [ref=e20]: Search
+          - link "Computer" [ref=e21] [cursor=pointer]:
+            - /url: /computer/new
+            - img [ref=e25]
+            - generic [ref=e29]: Computer
+        - generic [ref=e30]:
+          - button "New thread ⌘K" [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]:
+              - img [ref=e39]
+              - generic [ref=e41]: New thread
+              - generic [ref=e43]: ⌘K
+          - generic [ref=e44]:
+            - generic [ref=e46]:
+              - link "History" [ref=e47] [cursor=pointer]:
+                - /url: /library
+                - generic [ref=e48]:
+                  - img [ref=e53]
+                  - generic [ref=e55]: History
+              - link "Discover" [ref=e56] [cursor=pointer]:
+                - /url: /discover
+                - generic [ref=e57]:
+                  - img [ref=e62]
+                  - generic [ref=e64]: Discover
+              - link "Spaces" [ref=e65] [cursor=pointer]:
+                - /url: /spaces
+                - generic [ref=e66]:
+                  - img [ref=e71]
+                  - generic [ref=e73]: Spaces
+              - link "Finance" [ref=e74] [cursor=pointer]:
+                - /url: /finance
+                - generic [ref=e75]:
+                  - img [ref=e80]
+                  - generic [ref=e82]: Finance
+              - button "More" [ref=e83] [cursor=pointer]:
+                - generic [ref=e84]:
+                  - img [ref=e89]
+                  - generic [ref=e91]: More
+            - generic [ref=e97]:
+              - button "Recent Collapse" [ref=e98] [cursor=pointer]:
+                - link "Recent" [ref=e99]:
+                  - /url: /library
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: Recent
+                    - img [ref=e103]
+                - button "Collapse" [ref=e107]:
+                  - img [ref=e110]
+              - generic [ref=e115]:
+                - generic [ref=e1951]:
+                  - 'link "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details" [ref=e1952] [cursor=pointer]':
+                    - /url: /search/rocky-mountain-construction-rm-WsgOpGk6TMi2Vul14JApYw
+                    - generic [ref=e1955]: "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1956]:
+                  - 'link "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack" [ref=e1957] [cursor=pointer]':
+                    - /url: /search/dollywood-nightflight-expediti-697Pm.fOT9SxDcFfluFvsQ
+                    - generic [ref=e1960]: "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1961]:
+                  - 'link "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202" [ref=e1962] [cursor=pointer]':
+                    - /url: /search/southern-california-theme-park-595pPipqSBWM8xDc0QiXlQ
+                    - generic [ref=e1965]: "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1966]:
+                  - 'link "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c" [ref=e1967] [cursor=pointer]':
+                    - /url: /search/tormenta-rampaging-run-six-fla-4A7LnKA8T6.roJytBAC64w
+                    - generic [ref=e1970]: "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1971]:
+                  - link "What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202" [ref=e1972] [cursor=pointer]:
+                    - /url: /search/what-are-the-biggest-roller-co-N7KmV85pShubda2GtMZmtQ
+                    - generic [ref=e1975]: What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1976]:
+                  - 'link "using real research, address the following: Act as an expert software agency founder, enterprise Sa" [ref=e1977] [cursor=pointer]':
+                    - /url: /search/using-real-research-address-th-Wcp1p8DDTp.OPref6qXXsg
+                    - generic [ref=e1980]: "using real research, address the following: Act as an expert software agency founder, enterprise Sa"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1981]:
+                  - link "roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park" [ref=e1982] [cursor=pointer]:
+                    - /url: /search/roller-coaster-and-theme-park-n9vJaevtT42.dHV_OUv7rw
+                    - generic [ref=e1985]: roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+        - generic [ref=e149] [cursor=pointer]:
+          - button "User avatar Caleb Lanting" [ref=e151]:
+            - generic [ref=e158]:
+              - generic [ref=e162]:
+                - img "User avatar" [ref=e163]
+                - img [ref=e166]
+              - generic [ref=e169]: Caleb Lanting
+          - button "Notifications" [ref=e178]:
+            - img [ref=e181]
+    - main [ref=e188]:
+      - generic [ref=e1836]:
+        - generic:
+          - generic:
+            - tablist "Answer mode tabs" [ref=e1838]:
+              - tab "Answer" [selected] [ref=e1839] [cursor=pointer]:
+                - img [ref=e1840]
+                - text: Answer
+              - tab "Links" [ref=e1842] [cursor=pointer]:
+                - img [ref=e1843]
+                - text: Links
+              - tab "Images" [ref=e1845] [cursor=pointer]:
+                - img [ref=e1846]
+                - text: Images
+            - generic [ref=e1848]:
+              - button "Thread actions" [ref=e1987] [cursor=pointer]:
+                - img [ref=e1988]
+              - button "Share" [ref=e1851] [cursor=pointer]:
+                - img [ref=e1853]
+                - generic [ref=e1855]: Share
+              - button "Download Comet" [ref=e1858] [cursor=pointer]:
+                - img [ref=e1860]
+                - generic [ref=e1862]: Download Comet
+        - generic [ref=e1865]:
+          - tabpanel "Answer" [ref=e1873]:
+            - generic [ref=e1874]:
+              - generic [ref=e1879]:
+                - generic:
+                  - button "Edit Query":
+                    - generic:
+                      - generic:
+                        - img
+                  - button "Copy Query":
+                    - generic:
+                      - generic:
+                        - img
+                - generic [ref=e1880]:
+                  - 'heading "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details on the coaster, RMC''s strategy for smaller parks, Raptor track model history, all installations worldwide, how RMC went from Iron Horse conversions to building for small seaside parks, Alan Schilke, Fred Grubb, IAAPA announcements, Coaster101 coverage, Reddit discussions, industry analysis of RMC expanding beyond Six Flags and Cedar Fair into independent parks, and any other sources covering RMC''s evolving business model and the Family Kingdom project specifically" [level=1] [ref=e1884]':
+                    - generic [ref=e1886]: "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details on the coaster, RMC's strategy for smaller parks, Raptor track model history, all installations worldwide, how RMC went from Iron Horse conversions to building for small seaside parks, Alan Schilke, Fred Grubb, IAAPA announcements, Coaster101 coverage, Reddit discussions, industry analysis of RMC expanding beyond Six Flags and Cedar Fair into independent parks, and any other sources covering RMC's evolving business model and the Family Kingdom project specifically"
+                  - button "Show more" [ref=e1889] [cursor=pointer]:
+                    - generic [ref=e1890]: Show more
+                    - img [ref=e1892]
+              - generic [ref=e1895]:
+                - button "2 steps completed" [ref=e1899] [cursor=pointer]:
+                  - text: 2 steps completed
+                  - img [ref=e1901]
+                - generic [ref=e1991]:
+                  - paragraph [ref=e1992]:
+                    - text: Family Kingdom’s 2026 RMC Raptor is a custom‑layout single‑rail coaster roughly in the “extended Raptor” family, and it has become a focal point for how RMC is repositioning Raptors as a turn‑key product for smaller, independent parks rather than just Six Flags/Cedar Fair flagships.
+                    - generic [ref=e1997] [cursor=pointer]:
+                      - generic [ref=e1998]: coaster101
+                      - generic [ref=e1999]: "+1"
+                  - 'heading "Family Kingdom Raptor: Hard Details (2026)" [level=2] [ref=e2000]'
+                  - list [ref=e2001]:
+                    - listitem [ref=e2002]:
+                      - paragraph [ref=e2003]:
+                        - text: "Location: Family Kingdom Amusement Park, Myrtle Beach, South Carolina, on the seaside Ocean Blvd. midway."
+                        - generic [ref=e2008] [cursor=pointer]:
+                          - generic [ref=e2009]: parkfans
+                          - generic [ref=e2010]: "+1"
+                    - listitem [ref=e2011]:
+                      - paragraph [ref=e2012]:
+                        - text: "Opening window: “Late Summer 2026,” with local coverage and Coaster101 clarifying to think closer to Labor Day than Memorial Day."
+                        - generic [ref=e2017] [cursor=pointer]:
+                          - generic [ref=e2018]: facebook
+                          - generic [ref=e2019]: "+1"
+                    - listitem [ref=e2020]:
+                      - paragraph [ref=e2021]:
+                        - text: "Status: Under construction in 2026; Family Kingdom and fan pages report track shipments beginning with “the first of 28 deliveries” arriving in early March."
+                        - generic [ref=e2026] [cursor=pointer]:
+                          - generic [ref=e2027]: facebook
+                          - generic [ref=e2028]: "+2"
+                  - paragraph [ref=e2029]:
+                    - text: "Key stats (from Coaster101’s ACE visit report and park presentation):"
+                    - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2031]:
+                      - link "coaster101" [ref=e2033] [cursor=pointer]:
+                        - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                        - generic [ref=e2036]: coaster101
+                  - list [ref=e2037]:
+                    - listitem [ref=e2038]:
+                      - paragraph [ref=e2039]:
+                        - text: "Height: 100 ft (about 30 ft taller than Swamp Fox)."
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2041]:
+                          - link "coaster101" [ref=e2043] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2046]: coaster101
+                    - listitem [ref=e2047]:
+                      - paragraph [ref=e2048]:
+                        - text: "Speed: 52 mph (slightly faster than the original Raptor layouts historically advertised at 50 mph)."
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2050]:
+                          - link "coaster101" [ref=e2052] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2055]: coaster101
+                    - listitem [ref=e2056]:
+                      - paragraph [ref=e2057]:
+                        - text: "Track length: 1,920 ft, about 100 ft longer than RailBlazer / Wonder Woman Golden Lasso’s original Raptor layout, but a bit shorter than Fire Runner at Lost Island."
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2059]:
+                          - link "coaster101" [ref=e2061] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2064]: coaster101
+                    - listitem [ref=e2065]:
+                      - paragraph [ref=e2066]:
+                        - text: "Inversions: 3 inversions, consistent with most Raptors (except the 6‑inversion “Thrill” side of YoY at Walibi Holland)."
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2068]:
+                          - link "coaster101" [ref=e2070] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2073]: coaster101
+                    - listitem [ref=e2074]:
+                      - paragraph [ref=e2075]:
+                        - text: "Airtime: 5 distinct airtime moments."
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2077]:
+                          - link "coaster101" [ref=e2079] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2082]: coaster101
+                    - listitem [ref=e2083]:
+                      - paragraph [ref=e2084]:
+                        - text: "Layout lineage: Described as very similar to Fire Runner at Lost Island, but with an extra airtime hill at the end and the final brake run flipped so the train turns left into the station instead of right."
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2086]:
+                          - link "coaster101" [ref=e2088] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2091]: coaster101
+                    - listitem [ref=e2092]:
+                      - paragraph [ref=e2093]:
+                        - text: "Trains/track: Single‑rail Raptor track with inline single‑seat cars typical of the model (1 rider per row), as shown in the digital POV and RMC’s standard Raptor train design."
+                        - 'generic "How It Works: Single Rail Coasters (RMC Raptor) - YouTube" [ref=e2095]':
+                          - generic [ref=e2098] [cursor=pointer]:
+                            - img [ref=e2100]
+                            - generic [ref=e2102]: YouTube
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2104]:
+                          - link "coaster101" [ref=e2106] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2109]: coaster101
+                    - listitem [ref=e2110]:
+                      - paragraph [ref=e2111]:
+                        - text: "Theming/name: Name still unannounced; the only hint from the park is “We’re near the ocean, use your imagination.”"
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2113]:
+                          - link "coaster101" [ref=e2115] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2118]: coaster101
+                  - paragraph [ref=e2119]:
+                    - text: Local fan pages and ACE/enthusiast coverage emphasize that this will be the
+                    - strong [ref=e2120]: Southeast’s
+                    - text: first RMC single‑rail Raptor and Family Kingdom’s fourth coaster, significantly upgrading the park’s coaster lineup while keeping a compact footprint that fits the seaside site.
+                    - generic [ref=e2125] [cursor=pointer]:
+                      - generic [ref=e2126]: facebook
+                      - generic [ref=e2127]: "+1"
+                  - heading "IAAPA Announcement and Media / Fan Coverage" [level=2] [ref=e2128]
+                  - list [ref=e2129]:
+                    - listitem [ref=e2130]:
+                      - paragraph [ref=e2131]:
+                        - text: "IAAPA Expo reveal: RMC announced the Family Kingdom Raptor at the IAAPA Expo in Orlando, with many outlets calling it one of the most surprising reveals because it paired a “headline” RMC product with a small seaside independent park rather than a major chain destination."
+                        - generic "RMC and Family Kingdom Announce Partnership For 2026 Single ..." [ref=e2133]:
+                          - generic [ref=e2136] [cursor=pointer]:
+                            - img [ref=e2138]
+                            - generic [ref=e2140]: YouTube
+                        - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2142]:
+                          - link "coaster101" [ref=e2144] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                            - generic [ref=e2147]: coaster101
+                    - listitem [ref=e2148]:
+                      - paragraph [ref=e2149]:
+                        - text: "IAAPA booth content: Video coverage from the RMC booth at IAAPA 2025 in Orlando shows RMC and Family Kingdom representatives announcing the partnership for a 2026 single‑rail coaster and positioning it as a big step for both the park and the Raptor line."
+                        - generic "RMC and Family Kingdom Announce Partnership For 2026 Single ..." [ref=e2151]:
+                          - generic [ref=e2154] [cursor=pointer]:
+                            - img [ref=e2156]
+                            - generic [ref=e2158]: YouTube
+                  - paragraph [ref=e2159]:
+                    - text: "Key press and fan sources focusing on this project:"
+                    - generic [ref=e2164] [cursor=pointer]:
+                      - generic [ref=e2165]: reddit
+                      - generic [ref=e2166]: "+3"
+                  - list [ref=e2167]:
+                    - listitem [ref=e2168]:
+                      - paragraph [ref=e2169]: "Coaster101: Detailed article with stats, layout comparison to Fire Runner, and confirmation of the late‑summer timeframe plus the 1,920 ft / 52 mph / 3 inversion / 5 airtime hill package."
+                    - listitem [ref=e2170]:
+                      - paragraph [ref=e2171]:
+                        - text: "ParkFans / CoasterForce threads: Track the permitting, site prep on the oceanfront parcel, and comment heavily on how a Raptor will visually dominate Ocean Blvd after years of Myrtle Beach coaster attrition."
+                        - generic [ref=e2176] [cursor=pointer]:
+                          - generic [ref=e2177]: coasterforce
+                          - generic [ref=e2178]: "+1"
+                    - listitem [ref=e2179]:
+                      - paragraph [ref=e2180]:
+                        - text: "Facebook / Instagram fan pages: Share concept imagery and construction photos, confirming the general layout and shipment schedule."
+                        - generic [ref=e2185] [cursor=pointer]:
+                          - generic [ref=e2186]: instagram
+                          - generic [ref=e2187]: "+2"
+                    - listitem [ref=e2188]:
+                      - paragraph [ref=e2189]:
+                        - text: "Reddit r/rollercoasters: A February 2026 thread titled along the lines of “Family Kingdom Raptor layout revealed” hosts discussion about the layout similarities to Fire Runner, questions about ride intensity for a small park audience, and speculation that RMC is increasingly reliant on “Raptor clones” and extended variants as its bread‑and‑butter product."
+                        - 'generic "[Family Kingdom] Raptor Layout revealed : r/rollercoasters - Reddit" [ref=e2191]':
+                          - link "reddit" [ref=e2193] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/rollercoasters/comments/1rgi3m6/family_kingdom_raptor_layout_revealed/
+                            - generic [ref=e2196]: reddit
+                  - 'heading "Raptor Track Model: History and Installations" [level=2] [ref=e2197]'
+                  - heading "Origins of Raptor Single‑Rail" [level=2] [ref=e2198]
+                  - list [ref=e2199]:
+                    - listitem [ref=e2200]:
+                      - paragraph [ref=e2201]:
+                        - text: RMC introduced the single‑beam “T‑Rex” and smaller “Raptor” single‑rail concepts at IAAPA 2015, displaying sample track pieces at their booth.
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2203]:
+                          - link "coasterpedia" [ref=e2205] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2208]: coasterpedia
+                        - 'generic "How It Works: Single Rail Coasters (RMC Raptor) - YouTube" [ref=e2210]':
+                          - generic [ref=e2213] [cursor=pointer]:
+                            - img [ref=e2215]
+                            - generic [ref=e2217]: YouTube
+                    - listitem [ref=e2218]:
+                      - paragraph [ref=e2219]:
+                        - text: The Raptor line was created as a more compact, lower‑cost single‑rail alternative to T‑Rex, explicitly aimed at local and regional parks that could not afford giant multi‑train T‑Rex hypercoasters.
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2221]:
+                          - link "coasterpedia" [ref=e2223] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2226]: coasterpedia
+                        - 'generic "How It Works: Single Rail Coasters (RMC Raptor) - YouTube" [ref=e2228]':
+                          - generic [ref=e2231] [cursor=pointer]:
+                            - img [ref=e2233]
+                            - generic [ref=e2235]: YouTube
+                  - paragraph [ref=e2236]:
+                    - text: A technical explainer on single‑rail coasters notes that RMC first tested a large single‑beam prototype (what enthusiasts now call T‑Rex track), then downsized to the Raptor to improve feasibility and cost; the Raptor’s single‑file trains and narrow track allow tight maneuvers and relatively light support structures.
+                    - 'generic "How It Works: Single Rail Coasters (RMC Raptor) - YouTube" [ref=e2238]':
+                      - generic [ref=e2241] [cursor=pointer]:
+                        - img [ref=e2243]
+                        - generic [ref=e2245]: YouTube
+                    - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2247]:
+                      - link "coasterpedia" [ref=e2249] [cursor=pointer]:
+                        - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                        - generic [ref=e2252]: coasterpedia
+                  - heading "Known Raptor Installations and “Extended” Layouts" [level=2] [ref=e2253]
+                  - paragraph [ref=e2254]:
+                    - text: "Coasterpedia’s project list plus recent additions and IAAPA announcements give this picture of RMC Raptor installs as of 2026:"
+                    - generic [ref=e2259] [cursor=pointer]:
+                      - generic [ref=e2260]: coasterpedia
+                      - generic [ref=e2261]: "+1"
+                  - table [ref=e2264]:
+                    - rowgroup [ref=e2265]:
+                      - row "Raptor coaster Park Country Opened / opening Notes" [ref=e2266]:
+                        - columnheader "Raptor coaster" [ref=e2267]
+                        - columnheader "Park" [ref=e2268]
+                        - columnheader "Country" [ref=e2269]
+                        - columnheader "Opened / opening" [ref=e2270]
+                        - columnheader "Notes" [ref=e2271]
+                    - rowgroup [ref=e2272]:
+                      - row "Wonder Woman Golden Lasso Coaster Six Flags Fiesta Texas USA 2018 First Raptor; original compact layout, 3 inversions. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2273]:
+                        - cell "Wonder Woman Golden Lasso Coaster" [ref=e2274]
+                        - cell "Six Flags Fiesta Texas" [ref=e2275]
+                        - cell "USA" [ref=e2276]
+                        - cell "2018" [ref=e2277]
+                        - cell "First Raptor; original compact layout, 3 inversions. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2278]:
+                          - text: First Raptor; original compact layout, 3 inversions.
+                          - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2280]:
+                            - link "coasterpedia" [ref=e2282] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                              - generic [ref=e2285]: coasterpedia
+                      - row "RailBlazer California’s Great America USA 2018 Sister to Golden Lasso; same core layout with park‑specific theming. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2286]:
+                        - cell "RailBlazer" [ref=e2287]
+                        - cell "California’s Great America" [ref=e2288]
+                        - cell "USA" [ref=e2289]
+                        - cell "2018" [ref=e2290]
+                        - cell "Sister to Golden Lasso; same core layout with park‑specific theming. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2291]:
+                          - text: Sister to Golden Lasso; same core layout with park‑specific theming.
+                          - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2293]:
+                            - link "coasterpedia" [ref=e2295] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                              - generic [ref=e2298]: coasterpedia
+                      - row "Stunt Pilot Silverwood Theme Park USA 2021 Customized Raptor at a smaller regional park; aviation theme. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2299]:
+                        - cell "Stunt Pilot" [ref=e2300]
+                        - cell "Silverwood Theme Park" [ref=e2301]
+                        - cell "USA" [ref=e2302]
+                        - cell "2021" [ref=e2303]
+                        - cell "Customized Raptor at a smaller regional park; aviation theme. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2304]:
+                          - text: Customized Raptor at a smaller regional park; aviation theme.
+                          - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2306]:
+                            - link "coasterpedia" [ref=e2308] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                              - generic [ref=e2311]: coasterpedia
+                      - row "Jersey Devil Coaster Six Flags Great Adventure USA 2021 Longer “custom/extended” Raptor with larger trains and more spread‑out layout. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2312]:
+                        - cell "Jersey Devil Coaster" [ref=e2313]
+                        - cell "Six Flags Great Adventure" [ref=e2314]
+                        - cell "USA" [ref=e2315]
+                        - cell "2021" [ref=e2316]
+                        - cell "Longer “custom/extended” Raptor with larger trains and more spread‑out layout. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2317]:
+                          - text: Longer “custom/extended” Raptor with larger trains and more spread‑out layout.
+                          - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2319]:
+                            - link "coasterpedia" [ref=e2321] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                              - generic [ref=e2324]: coasterpedia
+                      - row "Wonder Woman Flight of Courage Six Flags Magic Mountain USA 2022 Another extended‑style Raptor with similar stats to Jersey Devil. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2325]:
+                        - cell "Wonder Woman Flight of Courage" [ref=e2326]
+                        - cell "Six Flags Magic Mountain" [ref=e2327]
+                        - cell "USA" [ref=e2328]
+                        - cell "2022" [ref=e2329]
+                        - cell "Another extended‑style Raptor with similar stats to Jersey Devil. Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2330]:
+                          - text: Another extended‑style Raptor with similar stats to Jersey Devil.
+                          - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2332]:
+                            - link "coasterpedia" [ref=e2334] [cursor=pointer]:
+                              - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                              - generic [ref=e2337]: coasterpedia
+                      - row "Fire Runner Lost Island Theme Park USA 2025 Latest U.S. Raptor before Family Kingdom; extended but slightly longer than Family Kingdom’s ride. coasterpedia +1" [ref=e2338]:
+                        - cell "Fire Runner" [ref=e2339]
+                        - cell "Lost Island Theme Park" [ref=e2340]
+                        - cell "USA" [ref=e2341]
+                        - cell "2025" [ref=e2342]
+                        - cell "Latest U.S. Raptor before Family Kingdom; extended but slightly longer than Family Kingdom’s ride. coasterpedia +1" [ref=e2343]:
+                          - text: Latest U.S. Raptor before Family Kingdom; extended but slightly longer than Family Kingdom’s ride.
+                          - generic [ref=e2348] [cursor=pointer]:
+                            - generic [ref=e2349]: coasterpedia
+                            - generic [ref=e2350]: "+1"
+                      - row "YoY (Thrill side) Walibi Holland Netherlands 202? Raptor variant with 6 inversions on the “Thrill” side, an outlier in intensity and inversion count. coaster101 +1" [ref=e2351]:
+                        - cell "YoY (Thrill side)" [ref=e2352]
+                        - cell "Walibi Holland" [ref=e2353]
+                        - cell "Netherlands" [ref=e2354]
+                        - cell "202?" [ref=e2355]
+                        - cell "Raptor variant with 6 inversions on the “Thrill” side, an outlier in intensity and inversion count. coaster101 +1" [ref=e2356]:
+                          - text: Raptor variant with 6 inversions on the “Thrill” side, an outlier in intensity and inversion count.
+                          - generic [ref=e2361] [cursor=pointer]:
+                            - generic [ref=e2362]: coaster101
+                            - generic [ref=e2363]: "+1"
+                      - row "Family Kingdom Raptor (name TBA) Family Kingdom, Myrtle Beach USA Late summer 2026 Custom extended layout, 100 ft tall, 1,920 ft, 3 inversions. Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2364]:
+                        - cell "Family Kingdom Raptor (name TBA)" [ref=e2365]
+                        - cell "Family Kingdom, Myrtle Beach" [ref=e2366]
+                        - cell "USA" [ref=e2367]
+                        - cell "Late summer 2026" [ref=e2368]
+                        - cell "Custom extended layout, 100 ft tall, 1,920 ft, 3 inversions. Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2369]:
+                          - text: Custom extended layout, 100 ft tall, 1,920 ft, 3 inversions.
+                          - generic "Details Revealed for Family Kingdom's New-For-2026 RMC Raptor" [ref=e2371]:
+                            - link "coaster101" [ref=e2373] [cursor=pointer]:
+                              - /url: https://www.coaster101.com/2026/02/27/details-revealed-for-family-kingdoms-new-for-2026-rmc-raptor/
+                              - generic [ref=e2376]: coaster101
+                  - paragraph [ref=e2377]:
+                    - text: (There are also T‑Rex and concept‑only projects, and at least one humorous “cancelled” Raptor in Fred Grubb’s front yard noted by Coasterpedia, but those are not operating installations.)
+                    - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2379]:
+                      - link "coasterpedia" [ref=e2381] [cursor=pointer]:
+                        - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                        - generic [ref=e2384]: coasterpedia
+                  - paragraph [ref=e2385]: "Enthusiast discussions often split the Raptor product line into:"
+                  - list [ref=e2386]:
+                    - listitem [ref=e2387]:
+                      - paragraph [ref=e2388]: “Original compact layout” Raptors (RailBlazer, Golden Lasso)
+                    - listitem [ref=e2389]:
+                      - paragraph [ref=e2390]: “Extended” custom Raptors (Jersey Devil, Wonder Woman Flight of Courage, Fire Runner, Family Kingdom)
+                    - listitem [ref=e2391]:
+                      - paragraph [ref=e2392]:
+                        - text: Experimental variants like the 6‑inversion YoY configuration in Europe.
+                        - generic [ref=e2397] [cursor=pointer]:
+                          - generic [ref=e2398]: reddit
+                          - generic [ref=e2399]: "+2"
+                  - heading "From Iron Horse Conversions to Small Seaside Parks" [level=2] [ref=e2400]
+                  - 'heading "Early RMC: Hybrids and Flagship Projects" [level=2] [ref=e2401]'
+                  - list [ref=e2402]:
+                    - listitem [ref=e2403]:
+                      - paragraph [ref=e2404]:
+                        - text: RMC was founded in 2001 and first gained fame for its Topper Track and I‑Box (Iron Horse) wooden‑to‑steel hybrid conversions, starting with New Texas Giant at Six Flags Over Texas in 2011.
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2406]:
+                          - link "coasterpedia" [ref=e2408] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2411]: coasterpedia
+                    - listitem [ref=e2412]:
+                      - paragraph [ref=e2413]:
+                        - text: "Through the 2010s, RMC’s portfolio is dominated by large‑scale conversions and ground‑up wood/hybrid projects for major chains: Six Flags (New Texas Giant, Iron Rattler, Twisted Colossus, Wicked Cyclone, Joker, Twisted Cyclone, etc.), Cedar Fair (Twisted Timbers, Steel Vengeance), SeaWorld/Busch (Iron Gwazi), and a few large independents/international parks (Outlaw Run at Silver Dollar City, Wildfire at Kolmården, Zadra at Energylandia)."
+                        - generic "The Rising Uncertainty of Rocky Mountain Construction - YouTube" [ref=e2415]:
+                          - generic [ref=e2418] [cursor=pointer]:
+                            - img [ref=e2420]
+                            - generic [ref=e2422]: YouTube
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2424]:
+                          - link "coasterpedia" [ref=e2426] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2429]: coasterpedia
+                  - paragraph [ref=e2430]:
+                    - text: Industry commentary points out that these big‑ticket I‑Box projects require large capital outlays and are usually tied to multiyear CapEx cycles at big chains; a longform YouTube analysis about “The Rising Uncertainty of RMC” explicitly notes that RMC’s most successful innovation—its I‑Box retrofits—was heavily dependent on Six Flags and other large parks recycling aging wooden coasters into marketable “new” thrill rides.
+                    - generic "The Rising Uncertainty of Rocky Mountain Construction - YouTube" [ref=e2432]:
+                      - generic [ref=e2435] [cursor=pointer]:
+                        - img [ref=e2437]
+                        - generic [ref=e2439]: YouTube
+                    - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2441]:
+                      - link "coasterpedia" [ref=e2443] [cursor=pointer]:
+                        - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                        - generic [ref=e2446]: coasterpedia
+                  - heading "Strategic Need for a “Mass Product”" [level=2] [ref=e2447]
+                  - paragraph [ref=e2448]:
+                    - text: "That same analysis and various enthusiast videos argue that Raptors are RMC’s best shot at mass‑producing a standardized (or semi‑standardized) product that:"
+                    - generic [ref=e2453] [cursor=pointer]:
+                      - img [ref=e2455]
+                      - generic [ref=e2457]: youtube
+                      - generic [ref=e2458]: "+1"
+                  - list [ref=e2459]:
+                    - listitem [ref=e2460]:
+                      - paragraph [ref=e2461]: Has lower structural and maintenance costs than giant hybrids.
+                    - listitem [ref=e2462]:
+                      - paragraph [ref=e2463]: Can be sold repeatedly with minor layout tweaks.
+                    - listitem [ref=e2464]:
+                      - paragraph [ref=e2465]: Scales down well to smaller parks that want an RMC “headline ride” without mega‑chain budgets.
+                  - paragraph [ref=e2466]:
+                    - text: Commentators suggest that RMC’s business stability requires a broader customer base than just Six Flags/Cedar Fair and occasional European flagships, especially in light of macro headwinds, leadership changes, and chain consolidation.
+                    - generic [ref=e2471] [cursor=pointer]:
+                      - generic [ref=e2472]: attractionsmagazine
+                      - generic [ref=e2473]: "+1"
+                    - generic "The Rising Uncertainty of Rocky Mountain Construction - YouTube" [ref=e2475]:
+                      - generic [ref=e2478] [cursor=pointer]:
+                        - img [ref=e2480]
+                        - generic [ref=e2482]: YouTube
+                  - heading "RMC’s Strategy for Smaller / Independent Parks" [level=2] [ref=e2483]
+                  - heading "Moving Beyond the Big Chains" [level=2] [ref=e2484]
+                  - paragraph [ref=e2485]:
+                    - text: "Evidence of RMC’s strategic pivot toward smaller and independent parks includes:"
+                    - generic "The Rising Uncertainty of Rocky Mountain Construction - YouTube" [ref=e2487]:
+                      - generic [ref=e2490] [cursor=pointer]:
+                        - img [ref=e2492]
+                        - generic [ref=e2494]: YouTube
+                    - generic [ref=e2499] [cursor=pointer]:
+                      - generic [ref=e2500]: coasterpedia
+                      - generic [ref=e2501]: "+1"
+                  - list [ref=e2502]:
+                    - listitem [ref=e2503]:
+                      - paragraph [ref=e2504]:
+                        - text: Stunt Pilot at Silverwood (RMC’s “home” regional park), a compact Raptor that showcased how a single‑rail coaster could fit a mid‑size independent park and operate with manageable capacity and staffing.
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2506]:
+                          - link "coasterpedia" [ref=e2508] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2511]: coasterpedia
+                    - listitem [ref=e2512]:
+                      - paragraph [ref=e2513]:
+                        - text: ArieForce One at Fun Spot America Atlanta, a ground‑up I‑Box at a small chain best known for go‑kart and flat‑ride operations, often cited as a tipping point showing RMC’s willingness to work with non‑chain clients on major projects.
+                        - generic "The Rising Uncertainty of Rocky Mountain Construction - YouTube" [ref=e2515]:
+                          - generic [ref=e2518] [cursor=pointer]:
+                            - img [ref=e2520]
+                            - generic [ref=e2522]: YouTube
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2524]:
+                          - link "coasterpedia" [ref=e2526] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2529]: coasterpedia
+                    - listitem [ref=e2530]:
+                      - paragraph [ref=e2531]:
+                        - text: Fire Runner at Lost Island (Iowa), an extended Raptor at a very small, stand‑alone theme park attempting to gain market presence; this layout now serves as the reference point for Family Kingdom’s design.
+                        - generic [ref=e2536] [cursor=pointer]:
+                          - generic [ref=e2537]: coasterpedia
+                          - generic [ref=e2538]: "+1"
+                    - listitem [ref=e2539]:
+                      - paragraph [ref=e2540]:
+                        - text: The Family Kingdom Raptor, at a modest oceanfront park in Myrtle Beach traditionally known for classic wood (Swamp Fox) and compact steel coasters, representing a true “boardwalk‑scale” RMC.
+                        - generic [ref=e2545] [cursor=pointer]:
+                          - generic [ref=e2546]: parkfans
+                          - generic [ref=e2547]: "+2"
+                  - paragraph [ref=e2548]:
+                    - text: "Industry observers and fans connect these moves to broader structural changes: the Six Flags–Cedar Fair merger and subsequent talk of “portfolio optimization” and potential divestitures of smaller parks raise questions about how many large, chain‑funded hyper‑hybrids the market can absorb in the medium term."
+                    - generic [ref=e2553] [cursor=pointer]:
+                      - generic [ref=e2554]: facebook
+                      - generic [ref=e2555]: "+1"
+                  - heading "Why Raptors Fit Small Parks" [level=2] [ref=e2556]
+                  - paragraph [ref=e2557]:
+                    - text: "Analysts and enthusiast commentators (YouTube, Reddit, forums) consistently cite several reasons Raptors work well in this new strategy:"
+                    - generic [ref=e2562] [cursor=pointer]:
+                      - generic [ref=e2563]: coasterforce
+                      - generic [ref=e2564]: "+1"
+                    - generic [ref=e2569] [cursor=pointer]:
+                      - img [ref=e2571]
+                      - generic [ref=e2573]: youtube
+                      - generic [ref=e2574]: "+1"
+                  - list [ref=e2575]:
+                    - listitem [ref=e2576]:
+                      - paragraph [ref=e2577]:
+                        - strong [ref=e2578]: Cost / footprint
+                        - text: ": Single‑rail track and reduced support steel keep both capital and site costs down, which matters for land‑constrained sites like seaside piers or older midways."
+                    - listitem [ref=e2579]:
+                      - paragraph [ref=e2580]:
+                        - text: "Capacity and operations: Single‑row trains can dispatch quickly with streamlined restraints, allowing decent throughput for smaller crowds without massive stations or storage tracks."
+                        - generic "[Rocky Mountain Construction] now offers an extended version of ..." [ref=e2582]:
+                          - link "reddit" [ref=e2584] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/rollercoasters/comments/nais9w/rocky_mountain_construction_now_offers_an/
+                            - generic [ref=e2587]: reddit
+                        - 'generic "How It Works: Single Rail Coasters (RMC Raptor) - YouTube" [ref=e2589]':
+                          - generic [ref=e2592] [cursor=pointer]:
+                            - img [ref=e2594]
+                            - generic [ref=e2596]: YouTube
+                    - listitem [ref=e2597]:
+                      - paragraph [ref=e2598]: "Marketability: Despite their smaller size on paper, Raptors deliver high perceived intensity and a unique visual profile, letting small parks advertise a “world‑class RMC” without needing 200‑ft stats."
+                    - listitem [ref=e2599]:
+                      - paragraph [ref=e2600]:
+                        - text: "Modularity: RMC can reuse core design elements (e.g., drop + dive loop, cutback, stall, inline twist, airtime hill combo) and tweak element order, lengths, and transitions to fit terrain or site constraints (e.g., Lost Island vs Family Kingdom)."
+                        - generic [ref=e2605] [cursor=pointer]:
+                          - generic [ref=e2606]: coasterpedia
+                          - generic [ref=e2607]: "+1"
+                  - paragraph [ref=e2608]:
+                    - text: A 2024 analytical video even argues that if “all else fails,” family‑oriented or smaller‑scale Raptors and conversions for mid‑sized wooden coasters could “save RMC” by creating more repeatable, lower‑risk installations at a larger number of parks, rather than depending on sporadic mega‑hybrids.
+                    - generic "The Rising Uncertainty of Rocky Mountain Construction - YouTube" [ref=e2610]:
+                      - generic [ref=e2613] [cursor=pointer]:
+                        - img [ref=e2615]
+                        - generic [ref=e2617]: YouTube
+                  - heading "Alan Schilke, Fred Grubb, and RMC’s Evolution" [level=2] [ref=e2618]
+                  - list [ref=e2619]:
+                    - listitem [ref=e2620]:
+                      - paragraph [ref=e2621]:
+                        - text: Fred Grubb is the founder and president of Rocky Mountain Construction, with notable background in ride construction and fabrication; he is frequently credited as the practical, construction‑centric side of RMC’s innovation.
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2623]:
+                          - link "coasterpedia" [ref=e2625] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2628]: coasterpedia
+                    - listitem [ref=e2629]:
+                      - paragraph [ref=e2630]:
+                        - text: Alan Schilke, famous in coaster design circles for his work with Arrow and later collaborations on X‑type 4D coasters, has been a key design partner on RMC projects; many of RMC’s signature inversions and pacing choices are attributed to Schilke’s design style in industry and enthusiast commentary.
+                        - 'generic "How It Works: Single Rail Coasters (RMC Raptor) - YouTube" [ref=e2632]':
+                          - generic [ref=e2635] [cursor=pointer]:
+                            - img [ref=e2637]
+                            - generic [ref=e2639]: YouTube
+                        - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2641]:
+                          - link "coasterpedia" [ref=e2643] [cursor=pointer]:
+                            - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                            - generic [ref=e2646]: coasterpedia
+                  - paragraph [ref=e2647]:
+                    - text: While detailed business biographies are sparse in open sources, coverage around IAAPA 2015 and subsequent RMC projects presents Grubb as the driving force behind the company’s fabrication/field capabilities and Schilke as the mind behind much of the layout and element creativity, including the move into single‑rail concepts like Raptor and T‑Rex.
+                    - 'generic "How It Works: Single Rail Coasters (RMC Raptor) - YouTube" [ref=e2649]':
+                      - generic [ref=e2652] [cursor=pointer]:
+                        - img [ref=e2654]
+                        - generic [ref=e2656]: YouTube
+                    - generic "Rocky Mountain Construction - The Amusement Ride Wiki" [ref=e2658]:
+                      - link "coasterpedia" [ref=e2660] [cursor=pointer]:
+                        - /url: https://coasterpedia.net/wiki/Rocky_Mountain_Construction
+                        - generic [ref=e2663]: coasterpedia
+                  - paragraph [ref=e2664]:
+                    - text: In the context of the Family Kingdom project, this lineage matters because it shows how RMC’s core design DNA—aggressive pacing, oddball inversions, strong airtime—has been “compressed” into smaller layouts that still feel like Schilke‑designed RMCs, but scaled to parks that historically would never have been realistic clients for a Steel Vengeance‑sized project.
+                    - generic [ref=e2669] [cursor=pointer]:
+                      - generic [ref=e2670]: reddit
+                      - generic [ref=e2671]: "+1"
+                    - generic "The Rising Uncertainty of Rocky Mountain Construction - YouTube" [ref=e2673]:
+                      - generic [ref=e2676] [cursor=pointer]:
+                        - img [ref=e2678]
+                        - generic [ref=e2680]: YouTube
+                  - separator [ref=e2681]
+                  - paragraph [ref=e2682]: Is there a particular angle you want to drill into more—layout nitty‑gritty (element by element), or the business/CapEx strategy behind RMC’s shift to Raptors for independents?
+                - generic [ref=e2683]:
+                  - generic [ref=e2684]:
+                    - button "Share" [ref=e2685] [cursor=pointer]:
+                      - img [ref=e2688]
+                    - button "Download" [ref=e2691] [cursor=pointer]:
+                      - img [ref=e2692]
+                    - button "Copy" [ref=e2694] [cursor=pointer]:
+                      - img [ref=e2697]
+                    - button "Rewrite Thread" [ref=e2700] [cursor=pointer]:
+                      - img [ref=e2703]
+                    - button "15 sources" [ref=e2707] [cursor=pointer]:
+                      - generic [ref=e2709]:
+                        - img [ref=e2710]
+                        - img [ref=e2711]
+                        - generic [ref=e2713]:
+                          - img [ref=e2716]
+                          - img [ref=e2720]
+                          - img [ref=e2724]
+                        - text: 15 sources
+                  - generic [ref=e2727]:
+                    - generic [ref=e2729]:
+                      - button "Helpful" [ref=e2730] [cursor=pointer]:
+                        - img [ref=e2733]
+                      - button "Not helpful" [ref=e2736] [cursor=pointer]:
+                        - img [ref=e2739]
+                    - button "More actions" [ref=e2743] [cursor=pointer]:
+                      - img [ref=e2744]
+                - generic [ref=e2746]:
+                  - generic [ref=e2751]: Follow-ups
+                  - generic [ref=e2752]:
+                    - button "Whether RMC Raptor clones represent a smart pivot for smaller parks or expose them to the same reliability risks as bigger coasters Model council" [ref=e2753] [cursor=pointer]:
+                      - img [ref=e2755]
+                      - generic [ref=e2757]:
+                        - generic [ref=e2758]: Whether RMC Raptor clones represent a smart pivot for smaller parks or expose them to the same reliability risks as bigger coasters
+                        - generic [ref=e2759]:
+                          - img [ref=e2760]
+                          - text: Model council
+                    - button "RMC Raptor vs T-Rex track differences and capacities" [ref=e2762] [cursor=pointer]:
+                      - img [ref=e2764]
+                      - generic [ref=e2767]: RMC Raptor vs T-Rex track differences and capacities
+                    - button "Why did RMC choose Family Kingdom for their next Raptor" [ref=e2768] [cursor=pointer]:
+                      - img [ref=e2770]
+                      - generic [ref=e2773]: Why did RMC choose Family Kingdom for their next Raptor
+                    - button "Full list of all RMC single-rail Raptor coasters worldwide" [ref=e2774] [cursor=pointer]:
+                      - img [ref=e2776]
+                      - generic [ref=e2779]: Full list of all RMC single-rail Raptor coasters worldwide
+                    - button "RMC Raptor ride experience and height speed specs" [ref=e2780] [cursor=pointer]:
+                      - img [ref=e2782]
+                      - generic [ref=e2785]: RMC Raptor ride experience and height speed specs
+          - generic [ref=e1922]:
+            - generic [ref=e1924]:
+              - textbox [active] [ref=e1925]:
+                - paragraph [ref=e1926]
+              - generic: Ask a follow-up
+            - button "Add files or tools" [ref=e1929] [cursor=pointer]:
+              - img [ref=e1932]
+            - generic [ref=e1935]:
+              - button "Model" [ref=e1936] [cursor=pointer]:
+                - generic [ref=e1937]: Model
+                - img [ref=e1939]
+              - button "Dictation" [ref=e2787] [cursor=pointer]:
+                - img [ref=e2790]
+              - button "Submit" [disabled]:
+                - generic:
+                  - generic:
+                    - img
+  - listbox "Typeahead menu"

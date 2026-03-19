@@ -6,11 +6,15 @@ export type ArticleStatus = 'draft' | 'published';
 
 export type ArticleCategory =
   | 'news'
+  | 'news-digest'
   | 'ride-review'
   | 'park-guide'
   | 'industry'
   | 'seasonal'
-  | 'opinion';
+  | 'opinion'
+  | 'culture'
+  | 'history'
+  | 'guide';
 
 export interface ArticleSource {
   name: string;
@@ -23,8 +27,8 @@ export interface Article {
   subtitle: string;
   /** Markdown-formatted body text */
   body: string;
-  /** NanoBanana card art or other banner image */
-  bannerImageUrl: string;
+  /** NanoBanana card art (require()) or remote URL */
+  bannerImage: string | number;
   category: ArticleCategory;
   tags: string[];
   readTimeMinutes: number;

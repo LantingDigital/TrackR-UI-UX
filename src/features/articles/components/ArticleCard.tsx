@@ -28,11 +28,15 @@ import { formatRelativeTime } from '../data/mockArticles';
 
 const CATEGORY_LABELS: Record<ArticleCategory, string> = {
   news: 'NEWS',
+  'news-digest': 'WEEKLY DIGEST',
   'ride-review': 'RIDE REVIEW',
   'park-guide': 'PARK GUIDE',
   industry: 'INDUSTRY',
   seasonal: 'SEASONAL',
   opinion: 'OPINION',
+  culture: 'CULTURE',
+  history: 'HISTORY',
+  guide: 'GUIDE',
 };
 
 interface ArticleCardProps {
@@ -81,7 +85,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = React.memo(({ article, on
             </View>
           ) : (
             <Image
-              source={{ uri: article.bannerImageUrl }}
+              source={typeof article.bannerImage === 'number' ? article.bannerImage : { uri: article.bannerImage }}
               style={styles.image}
               contentFit="cover"
               cachePolicy="memory-disk"

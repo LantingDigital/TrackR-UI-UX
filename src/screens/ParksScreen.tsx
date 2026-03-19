@@ -46,7 +46,6 @@ import { fetchWaitTimes } from '../services/waitTimes';
 import { parkNameToSlug } from '../utils/parkAssets';
 import { MyPassCard } from '../features/parks/components/MyPassCard';
 import { ParkGuidesSection, GuideBottomSheet } from '../features/parks/components/ParkGuidesSection';
-import { WaitTimesSection } from '../features/parks/components/waitTimes';
 import { RideListView } from '../features/parks/components/RideListView';
 import { FoodListView } from '../features/parks/components/FoodListView';
 // Parks Hub modals (remaining — Guide is now handled by MorphingPill)
@@ -430,19 +429,6 @@ export function ParksScreen() {
             onRidePress={openPOI}
           />
         </StaggeredSection>
-
-        <View style={styles.sectionGap} />
-
-        {/* Full wait times section */}
-        {waitTimesResponse && waitTimesResponse.rides.length > 0 && (
-          <StaggeredSection index={2}>
-            <WaitTimesSection
-              rides={waitTimesResponse.rides}
-              lastUpdated={waitTimesResponse.lastUpdated}
-              onRidePress={openPOI}
-            />
-          </StaggeredSection>
-        )}
 
         <View style={styles.sectionGap} />
 

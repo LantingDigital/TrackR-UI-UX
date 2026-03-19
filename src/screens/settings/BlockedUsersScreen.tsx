@@ -34,6 +34,9 @@ import { shadows } from '../../theme/shadows';
 import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
+import { FogHeader } from '../../components/FogHeader';
+
+const HEADER_HEIGHT = 52;
 
 // ============================================
 // Mock Data
@@ -153,28 +156,12 @@ export function BlockedUsersScreen() {
     opacity: headerAnim.value,
   }));
 
-  return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <Animated.View style={[styles.header, headerStyle]}>
-        <Pressable
-          {...backPress.pressHandlers}
-          onPress={() => {
-            haptics.tap();
-            navigation.goBack();
-          }}
-          hitSlop={12}
-        >
-          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
-            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
-          </Animated.View>
-        </Pressable>
-        <Text style={styles.headerTitle}>Blocked Users</Text>
-        <View style={styles.headerSpacer} />
-      </Animated.View>
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
+  return (
+    <View style={styles.container}>
       {blockedUsers.length === 0 ? (
-        <View style={styles.emptyState}>
+        <View style={[styles.emptyState, { paddingTop: headerTotalHeight }]}>
           <View style={styles.emptyIcon}>
             <Ionicons name="people-outline" size={48} color={colors.text.meta} />
           </View>
@@ -192,11 +179,32 @@ export function BlockedUsersScreen() {
           )}
           contentContainerStyle={[
             styles.listContent,
-            { paddingBottom: insets.bottom + spacing.xxxl },
+            { paddingTop: headerTotalHeight + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
           ]}
           showsVerticalScrollIndicator={false}
         />
       )}
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <Animated.View style={[styles.header, { top: insets.top }, headerStyle]}>
+        <Pressable
+          {...backPress.pressHandlers}
+          onPress={() => {
+            haptics.tap();
+            navigation.goBack();
+          }}
+          hitSlop={12}
+        >
+          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
+            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
+          </Animated.View>
+        </Pressable>
+        <Text style={styles.headerTitle}>Blocked Users</Text>
+        <View style={styles.headerSpacer} />
+      </Animated.View>
     </View>
   );
 }
@@ -211,10 +219,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    height: 52,
+    height: HEADER_HEIGHT,
   },
   backButton: {
     width: 36,
@@ -235,7 +247,6 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing.lg,
   },
   userRow: {
     flexDirection: 'row',

@@ -34,7 +34,7 @@ const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const ENTER_SLIDE = SCREEN_HEIGHT * 0.15;
 const EXIT_DURATION = 300;
 const COMMUNITY_HEADER_HEIGHT = 60;
-const FOG_EXTENSION = 150; // more room below header for a smooth, gradual fade-out
+const FOG_EXTENSION = 200; // extended tail for very gradual bottom-edge fade
 
 // Fog base color — MUST match HomeScreen exactly
 // HomeScreen uses rgba(240, 238, 235, ...) for a warmer tone
@@ -121,31 +121,32 @@ export const CommunityScreen = () => {
     navigation.goBack();
   };
 
-  // Fog gradient — solid through header, drops off quickly below so content
-  // (Games title, etc.) is readable, then fades to nothing with no hard edge.
+  // Fog gradient — solid through header, sharp drop below so titles (Games,
+  // Featured, etc.) are readable, then a very long gradual tail to prevent
+  // the hard-line edge that was visible ~1/5 down the screen.
   const fogGradient = useMemo(() => {
     const headerEnd = Math.min(headerTotalHeight / fogHeight, 0.55);
     const fadeZone = 1 - headerEnd;
     return {
       colors: [
         `${FOG_BASE} 0.94)`,   // Solid through full header
-        `${FOG_BASE} 0.92)`,   // Begin gentle fade right at header edge
-        `${FOG_BASE} 0.72)`,   // Drop quickly — content below here is readable
-        `${FOG_BASE} 0.45)`,   // Noticeably lighter
-        `${FOG_BASE} 0.22)`,   // Subtle
-        `${FOG_BASE} 0.10)`,   // Very faint
-        `${FOG_BASE} 0.04)`,   // Barely perceptible
-        `${FOG_BASE} 0.01)`,   // Whisper
+        `${FOG_BASE} 0.88)`,   // Just above header edge — still covered
+        `${FOG_BASE} 0.32)`,   // Sharp drop right below header — titles readable
+        `${FOG_BASE} 0.14)`,   // Quickly fading out
+        `${FOG_BASE} 0.06)`,   // Subtle haze
+        `${FOG_BASE} 0.025)`,  // Very faint
+        `${FOG_BASE} 0.008)`,  // Near-zero — prevents hard bottom edge
+        `${FOG_BASE} 0.002)`,  // Imperceptible
         'transparent',           // Gone
       ] as [string, string, ...string[]],
       locations: [
         0,
-        headerEnd,
-        Math.min(headerEnd + fadeZone * 0.12, 1),
-        Math.min(headerEnd + fadeZone * 0.28, 1),
-        Math.min(headerEnd + fadeZone * 0.45, 1),
-        Math.min(headerEnd + fadeZone * 0.60, 1),
-        Math.min(headerEnd + fadeZone * 0.76, 1),
+        Math.max(headerEnd - 0.02, 0),
+        Math.min(headerEnd + fadeZone * 0.06, 1),
+        Math.min(headerEnd + fadeZone * 0.18, 1),
+        Math.min(headerEnd + fadeZone * 0.35, 1),
+        Math.min(headerEnd + fadeZone * 0.55, 1),
+        Math.min(headerEnd + fadeZone * 0.75, 1),
         Math.min(headerEnd + fadeZone * 0.90, 1),
         1,
       ] as [number, number, ...number[]],

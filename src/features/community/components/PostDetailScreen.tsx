@@ -32,6 +32,7 @@ import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { SPRINGS } from '../../../constants/animations';
 import { useSpringPress } from '../../../hooks/useSpringPress';
+import { FogHeader } from '../../../components/FogHeader';
 import { haptics } from '../../../services/haptics';
 import {
   getFeedItem,
@@ -209,12 +210,15 @@ export function PostDetailScreen() {
   const [commentText, setCommentText] = useState('');
   const inputRef = useRef<TextInput>(null);
 
+  const HEADER_ROW_HEIGHT = 52;
+  const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT;
+
   const itemId = route.params?.itemId;
   const item = getFeedItem(itemId);
 
   if (!item) {
     return (
-      <View style={[styles.container, { paddingTop: insets.top }]}>
+      <View style={[styles.container, { paddingTop: headerTotalHeight }]}>
         <Text style={styles.errorText}>Post not found</Text>
       </View>
     );
@@ -241,11 +245,14 @@ export function PostDetailScreen() {
 
   return (
     <KeyboardAvoidingView
-      style={[styles.container, { paddingTop: insets.top }]}
+      style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
-      {/* Header */}
-      <View style={styles.header}>
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — absolute, above fog */}
+      <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
         <Pressable
           {...backPress.pressHandlers}
           onPress={() => { haptics.tap(); navigation.goBack(); }}
@@ -263,7 +270,7 @@ export function PostDetailScreen() {
       <FlatList
         data={item.comments}
         keyExtractor={(c) => c.id}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 80 }]}
+        contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base, paddingBottom: insets.bottom + 80 }]}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={() => (
           <View>
@@ -356,6 +363,9 @@ const styles = StyleSheet.create({
 
   // Header
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,

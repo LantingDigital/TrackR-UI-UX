@@ -59,7 +59,7 @@
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSAllowsArbitraryLoads</key>
-      <true/>
+      <false/>
       <key>NSAllowsLocalNetworking</key>
       <true/>
     </dict>
@@ -67,6 +67,10 @@
     <string>Allow $(PRODUCT_NAME) to access your camera</string>
     <key>NSFaceIDUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your Face ID biometric data.</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>TrackR reads your step count and distance to show how far you walked at the park.</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>TrackR does not write any health data.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your location</string>
     <key>NSLocationAlwaysUsageDescription</key>

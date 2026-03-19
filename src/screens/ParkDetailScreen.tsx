@@ -39,6 +39,7 @@ import { shadows } from '../theme/shadows';
 import { SPRINGS, TIMING } from '../constants/animations';
 import { useSpringPress } from '../hooks/useSpringPress';
 import { haptics } from '../services/haptics';
+import { FogHeader } from '../components/FogHeader';
 import {
   getAllLogs,
   subscribe as subscribeRideLog,
@@ -333,6 +334,9 @@ export function ParkDetailScreen() {
           )}
         </Animated.View>
       </Animated.ScrollView>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={insets.top} fogExtension={120} />
 
       {/* Floating back button */}
       <View style={[styles.backButtonContainer, { top: insets.top + spacing.md }]}>

@@ -27,6 +27,9 @@ import { radius } from '../../theme/radius';
 import { TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
+import { FogHeader } from '../../components/FogHeader';
+
+const HEADER_HEIGHT = 52;
 
 // ============================================
 // Mock Terms Content
@@ -100,30 +103,15 @@ export function TermsScreen() {
     opacity: headerOpacity.value,
   }));
 
-  return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <Animated.View style={[styles.header, headerStyle]}>
-        <Pressable
-          {...backPress.pressHandlers}
-          onPress={() => {
-            haptics.tap();
-            navigation.goBack();
-          }}
-          hitSlop={12}
-        >
-          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
-            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
-          </Animated.View>
-        </Pressable>
-        <Text style={styles.headerTitle}>Terms of Service</Text>
-        <View style={styles.headerSpacer} />
-      </Animated.View>
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
+  return (
+    <View style={styles.container}>
+      {/* Scroll content — fills entire screen, scrolls behind header */}
       <ScrollView
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: insets.bottom + spacing.xxxl },
+          { paddingTop: headerTotalHeight + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
         ]}
         showsVerticalScrollIndicator={false}
       >
@@ -143,6 +131,27 @@ export function TermsScreen() {
           </Text>
         </View>
       </ScrollView>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <Animated.View style={[styles.header, { top: insets.top }, headerStyle]}>
+        <Pressable
+          {...backPress.pressHandlers}
+          onPress={() => {
+            haptics.tap();
+            navigation.goBack();
+          }}
+          hitSlop={12}
+        >
+          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
+            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
+          </Animated.View>
+        </Pressable>
+        <Text style={styles.headerTitle}>Terms of Service</Text>
+        <View style={styles.headerSpacer} />
+      </Animated.View>
     </View>
   );
 }
@@ -157,10 +166,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    height: 52,
+    height: HEADER_HEIGHT,
   },
   backButton: {
     width: 36,
@@ -181,7 +194,6 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: spacing.xl,
-    paddingTop: spacing.lg,
   },
   lastUpdated: {
     fontSize: typography.sizes.meta,

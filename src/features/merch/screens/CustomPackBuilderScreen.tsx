@@ -35,6 +35,7 @@ import { typography } from '../../../theme/typography';
 import { SPRINGS, TIMING } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress } from '../../../hooks/useSpringPress';
+import { FogHeader } from '../../../components/FogHeader';
 import {
   getMerchProducts,
   PACK_OPTIONS,
@@ -267,10 +268,18 @@ export const CustomPackBuilderScreen: React.FC = () => {
 
   const keyExtractor = useCallback((item: MerchProduct) => item.id, []);
 
+  const HEADER_ROW_HEIGHT = 60;
+  const PACK_SELECTOR_HEIGHT = 44;
+  const COUNTER_HEIGHT = 28;
+  const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT + PACK_SELECTOR_HEIGHT + COUNTER_HEIGHT;
+
   return (
-    <View style={[styles.screen, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <View style={styles.header}>
+    <View style={styles.screen}>
+      {/* Fog gradient overlay — covers header + pack selector + counter */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — absolute, above fog */}
+      <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
         <Pressable onPress={() => { haptics.tap(); navigation.goBack(); }} style={styles.backButton}>
           <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
         </Pressable>
@@ -278,8 +287,8 @@ export const CustomPackBuilderScreen: React.FC = () => {
         <View style={styles.headerSpacer} />
       </View>
 
-      {/* Pack Size Selector */}
-      <Animated.View entering={FadeInDown.duration(200)} style={styles.packSelector}>
+      {/* Pack Size Selector — absolute, above fog */}
+      <Animated.View entering={FadeInDown.duration(200)} style={[styles.packSelector, { top: insets.top + HEADER_ROW_HEIGHT, zIndex: 10 }]}>
         {PACK_OPTIONS.map((option, i) => (
           <PackSizePill
             key={option.size}
@@ -296,8 +305,8 @@ export const CustomPackBuilderScreen: React.FC = () => {
         ))}
       </Animated.View>
 
-      {/* Counter */}
-      <View style={styles.counter}>
+      {/* Counter — absolute, above fog */}
+      <View style={[styles.counter, { top: insets.top + HEADER_ROW_HEIGHT + PACK_SELECTOR_HEIGHT, zIndex: 10 }]}>
         <Text style={styles.counterText}>
           {selectedIds.size} / {maxCards} selected
         </Text>
@@ -310,7 +319,7 @@ export const CustomPackBuilderScreen: React.FC = () => {
         keyExtractor={keyExtractor}
         numColumns={NUM_COLUMNS}
         columnWrapperStyle={styles.gridRow}
-        contentContainerStyle={styles.gridContent}
+        contentContainerStyle={[styles.gridContent, { paddingTop: headerTotalHeight + spacing.sm }]}
         showsVerticalScrollIndicator={false}
       />
 
@@ -353,6 +362,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -374,14 +386,20 @@ const styles = StyleSheet.create({
     width: 36,
   },
   packSelector: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     gap: spacing.md,
     paddingHorizontal: spacing.lg,
-    marginBottom: spacing.base,
+    paddingVertical: spacing.xs,
   },
   counter: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     paddingHorizontal: spacing.lg,
-    marginBottom: spacing.base,
+    paddingVertical: spacing.xs,
   },
   counterText: {
     fontSize: typography.sizes.caption,

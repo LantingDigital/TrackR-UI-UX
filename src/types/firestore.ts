@@ -257,3 +257,48 @@ export interface FriendDocFirestore {
   friendAvatarUrl: string | null;
   addedAt: Timestamp;
 }
+
+// ============================================
+// Articles (News Feed)
+// ============================================
+
+export type ArticleCategory =
+  | 'news'
+  | 'news-digest'
+  | 'ride-review'
+  | 'park-guide'
+  | 'industry'
+  | 'seasonal'
+  | 'opinion'
+  | 'culture'
+  | 'history'
+  | 'guide';
+
+export type ArticleStatus = 'draft' | 'published';
+
+export interface ArticleSource {
+  name: string;
+  url: string;
+}
+
+/**
+ * `articles/{articleId}` — News feed articles.
+ * Managed by admin (custom claim), read by all authenticated users.
+ */
+export interface ArticleDoc {
+  id: string;
+  title: string;
+  subtitle: string;
+  body: string; // markdown
+  bannerImageUrl: string | null;
+  category: ArticleCategory;
+  tags: string[];
+  readTimeMinutes: number;
+  sources: ArticleSource[];
+  authorId: string;
+  authorName: string;
+  publishedAt: Timestamp | null;
+  status: ArticleStatus;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+}

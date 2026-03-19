@@ -237,6 +237,7 @@ export const MOCK_NEARBY_PARKS: NearbyParkItem[] = [
 export type FeedItemType =
   | 'news'
   | 'trending'
+  | 'articles'
   | 'friendActivity'
   | 'featuredPark'
   | 'dailyChallenge'

@@ -17,6 +17,9 @@ import Animated, {
   withDelay,
   withSpring,
   Easing,
+  FadeIn,
+  FadeOut,
+  LinearTransition,
 } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -265,7 +268,13 @@ export function TriviaScreen() {
 
   const handleNext = useCallback(() => {
     haptics.tap();
-    nextQuestion();
+    // Fade out current question content before advancing to prevent layout jump
+    questionOpacity.value = withTiming(0, { duration: 100 });
+    nextBtnOpacity.value = withTiming(0, { duration: 80 });
+    // Advance after visual exit completes
+    setTimeout(() => {
+      nextQuestion();
+    }, 120);
   }, []);
 
   const handlePlayAgain = useCallback(() => {
@@ -342,17 +351,22 @@ export function TriviaScreen() {
 
       {/* Correct answer callout when wrong */}
       {game.isRevealed && game.selectedAnswer !== question.correctIndex && (
-        <View style={styles.correctCallout}>
-          <Ionicons name="information-circle" size={16} color={colors.accent.primary} />
-          <Text style={styles.correctCalloutText}>
-            Correct: {question.answers[question.correctIndex]}
-          </Text>
-        </View>
+        <Animated.View
+          entering={FadeIn.duration(200)}
+          exiting={FadeOut.duration(100)}
+        >
+          <View style={styles.correctCallout}>
+            <Ionicons name="information-circle" size={16} color={colors.accent.primary} />
+            <Text style={styles.correctCalloutText}>
+              Correct: {question.answers[question.correctIndex]}
+            </Text>
+          </View>
+        </Animated.View>
       )}
 
       {/* Next button */}
       {game.isRevealed && (
-        <Animated.View style={nextBtnStyle}>
+        <Animated.View style={nextBtnStyle} exiting={FadeOut.duration(100)}>
           <Pressable style={styles.nextBtn} onPress={handleNext}>
             <Text style={styles.nextBtnText}>
               {game.currentIndex < game.questions.length - 1 ? 'Next' : 'See Results'}

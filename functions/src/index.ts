@@ -13,6 +13,60 @@ initializeApp();
 // Auth & User functions
 export { validateUsername } from './auth/validateUsername';
 export { onUserCreated } from './auth/onUserCreated';
+export { deleteUserAccount } from './auth/deleteUserAccount';
+
+// Ride Log triggers (maintain denormalized counters)
+export { onRideLogCreate } from './rideLogs/onRideLogCreate';
+export { onRideLogDelete } from './rideLogs/onRideLogDelete';
+export { onRideLogUpdate } from './rideLogs/onRideLogUpdate';
+export { exportRideLog } from './rideLogs/exportRideLog';
+
+// Ratings
+export { onRatingWrite } from './ratings/onRatingWrite';
+export { computeRankings } from './ratings/computeRankings';
+
+// Migration (local data → Firestore on first auth)
+export { migrateLocalData } from './migration/migrateLocalData';
+
+// Community (friend operations)
+export {
+  sendFriendRequest,
+  acceptFriendRequest,
+  declineFriendRequest,
+  removeFriend,
+} from './community/friendOperations';
+
+// Notifications
+export { registerFCMToken } from './notifications/registerFCMToken';
 
 // Apple Wallet
 export { generatePKPass } from './wallet/generatePKPass';
+
+// Premium (IAP verification + Apple S2S webhook)
+export { verifyPurchase } from './premium/verifyPurchase';
+export { handleSubscriptionEvent } from './premium/handleSubscriptionEvent';
+
+// Games & Challenges
+export { submitGameScore } from './games/submitGameScore';
+export { getWeeklyChallenge } from './games/getWeeklyChallenge';
+
+// Articles (admin-managed news feed)
+export {
+  createArticle,
+  publishArticle,
+  unpublishArticle,
+  deleteArticle,
+} from './articles/articleOperations';
+
+// Community Safety (report & block)
+export {
+  reportUser,
+  blockUser,
+  unblockUser,
+} from './community/reportAndBlock';
+
+// Admin
+export { setAdminClaim } from './admin/setAdminClaim';
+
+// Wait Times (Queue-Times.com proxy)
+export { proxyWaitTimes } from './waitTimes/proxyWaitTimes';

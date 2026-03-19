@@ -25,6 +25,7 @@ import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { SPRINGS } from '../../../constants/animations';
 import { useSpringPress } from '../../../hooks/useSpringPress';
+import { FogHeader } from '../../../components/FogHeader';
 import { haptics } from '../../../services/haptics';
 import { getFriend, useFriendsStore } from '../stores/friendsStore';
 import { FriendActionButton } from './FriendActionButton';
@@ -164,10 +165,16 @@ export function ProfileView() {
     removeFriend(userId);
   }, [userId, removeFriend]);
 
+  const HEADER_ROW_HEIGHT = 52;
+  const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT;
+
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <View style={styles.header}>
+    <View style={styles.container}>
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — absolute, above fog */}
+      <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
         <Pressable
           {...backPress.pressHandlers}
           onPress={() => { haptics.tap(); navigation.goBack(); }}
@@ -182,7 +189,7 @@ export function ProfileView() {
       </View>
 
       <ScrollView
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + spacing.xxxl }]}
+        contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base, paddingBottom: insets.bottom + spacing.xxxl }]}
         showsVerticalScrollIndicator={false}
       >
         {/* Profile hero */}
@@ -292,6 +299,9 @@ const styles = StyleSheet.create({
 
   // Header
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,

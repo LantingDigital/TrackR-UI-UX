@@ -210,6 +210,9 @@ const useStore = create<WalletStore>((set, get) => ({
 // Auto-initialize on first import
 useStore.getState().initialize();
 
+// Internal store access (for screenshot seed / sync layer only)
+export const _walletStoreInternal = useStore;
+
 // ============================================
 // React Hook (same API as original Context)
 // ============================================

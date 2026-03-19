@@ -33,6 +33,9 @@ import { SPRINGS, TIMING } from '../constants/animations';
 import { useSpringPress } from '../hooks/useSpringPress';
 import { haptics } from '../services/haptics';
 import { useToast } from '../components/feedback/useToast';
+import { FogHeader } from '../components/FogHeader';
+
+const HEADER_HEIGHT = 52;
 import {
   getCreditCount,
   getTotalRideCount,
@@ -291,23 +294,15 @@ export const PerksScreen = () => {
     navigation.goBack();
   }, [navigation]);
 
-  return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header bar */}
-      <View style={styles.headerBar}>
-        <Pressable onPress={handleBack} hitSlop={12}>
-          <View style={styles.backButton}>
-            <Ionicons name="chevron-back" size={22} color={colors.text.primary} />
-          </View>
-        </Pressable>
-        <Text style={styles.headerTitle}>Perks</Text>
-        <View style={styles.backButton} />
-      </View>
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
+  return (
+    <View style={styles.container}>
+      {/* Scroll content — fills entire screen, scrolls behind header */}
       <ScrollView
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: insets.bottom + spacing.xxl },
+          { paddingTop: headerTotalHeight + spacing.lg, paddingBottom: insets.bottom + spacing.xxl },
         ]}
         showsVerticalScrollIndicator={false}
       >
@@ -405,6 +400,20 @@ export const PerksScreen = () => {
           </View>
         </View>
       </ScrollView>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <View style={[styles.headerBar, { top: insets.top }]}>
+        <Pressable onPress={handleBack} hitSlop={12}>
+          <View style={styles.backButton}>
+            <Ionicons name="chevron-back" size={22} color={colors.text.primary} />
+          </View>
+        </Pressable>
+        <Text style={styles.headerTitle}>Perks</Text>
+        <View style={styles.backButton} />
+      </View>
     </View>
   );
 };
@@ -434,11 +443,15 @@ const styles = StyleSheet.create({
 
   // Header bar
   headerBar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
+    height: HEADER_HEIGHT,
   },
   backButton: {
     width: 36,

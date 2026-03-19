@@ -7,6 +7,63 @@ import { Article } from '../types';
 
 export const MOCK_ARTICLES: Article[] = [
   {
+    id: 'article-weekly-digest-march-10-16',
+    title: 'This Week in Coasters: March 10-16, 2026',
+    subtitle: 'Muppets take over Rock \'n\' Roller Coaster, Big Thunder\'s comeback, and a hazmat scare at Disneyland',
+    body: `Slow news week? Not exactly. No groundbreaking announcements, but a lot of stuff moving in the background. Construction photos, reopening dates, and one genuinely weird incident at Disneyland.
+
+## Muppets Rock 'n' Roller Coaster is getting real
+
+If you've been following the Rock 'n' Roller Coaster retheme at Hollywood Studios, the scaffolding is officially everywhere now. The facade is covered. New flame graphics showed up on the stretch limo car this week, and the guitar marquee is getting torn into. Disney's still targeting summer 2026 for the debut, and for the first time it actually looks like they might hit it.
+
+The internet is still split on this one. Losing Aerosmith stings if you grew up with it. But the ride hardware isn't changing, that launch and those inversions are staying. If the Muppets humor lands (and Disney has a solid track record there, Muppet Vision 3D still holds up), this could quietly become one of the better rethemes they've done. The kind where people complain online for six months and then ride it and go "okay fine, this is good."
+
+Construction walls around Animation Courtyard pushed even further into guest pathways this week too. Hollywood Studios is a construction zone right now.
+
+## Big Thunder coming back in May
+
+WDW locked in some reopening dates. Big Thunder Mountain Railroad is confirmed for early May, which is solid timing if you're planning a spring trip. Buzz Lightyear's Space Ranger Spin is also coming back with what they're calling a "refreshed experience," some Easter egg updates, nothing crazy. And Soarin' Across America at EPCOT finally has a real date after being behind walls for what feels like two years.
+
+Not the most exciting news on its own, but if you've been to WDW recently you know how many rides have been down simultaneously. Getting three back is a relief.
+
+## Space Mountain got evacuated
+
+Weird one. On March 14, Disneyland evacuated Space Mountain and shut down parts of Tomorrowland over a hazardous materials situation. Nobody got hurt, everything reopened, but it was the most-talked-about Disney story of the week. Ended up in all the recap roundups. Just one of those reminders that running a theme park 365 days a year is genuinely complicated.
+
+## World of Frozen opens March 29
+
+Disney Adventure World (the rebranded Walt Disney Studios Park at Disneyland Paris) launches March 29. Less than two weeks out. World of Frozen is the centerpiece, and Raiponce Tangled Spin joins the lineup too. Early photos look really good, like Tokyo Fantasy Springs good.
+
+Paris has been the underdog Disney resort forever. This is the biggest investment they've gotten in years, and it'll be interesting to see if the quality matches what Tokyo pulled off last year.
+
+## Everything else
+
+Dollywood's hybrid water-coaster is still progressing. VAI Resort and the Mattel Theme Park in Arizona got more construction footage. Universal's Frisco, Texas resort is chugging along. Across the country, parks are locking in 2026 operating calendars and announcing preview nights.
+
+No "we just announced a 500-foot RMC" moment. It was a build week, not an announce week. But a lot of pieces are falling into place for what could be a really strong summer.
+
+## Next week
+
+March 29 is coming fast. Any early reports or soft opening leaks from Disney Adventure World will be the thing to watch. And we'll keep an eye on how quickly the Muppets facade work moves at Hollywood Studios now that scaffolding is fully up.`,
+    bannerImage: require('../../../../assets/cards/big-thunder-mountain-railroad.webp'),
+    category: 'news-digest',
+    tags: ['weekly-digest', 'disney', 'muppets', 'rock-n-roller-coaster', 'world-of-frozen', 'space-mountain'],
+    readTimeMinutes: 5,
+    sources: [
+      { name: 'Theme Park Insider', url: 'https://www.themeparkinsider.com' },
+      { name: 'WDWNT', url: 'https://wdwnt.com/2026/03/space-mountain-evacuated-due-to-hazardous-material-this-and-more-in-the-top-10-stories-of-the-week-for-march-14-2026/' },
+      { name: 'WDW Magic', url: 'https://www.wdwmagic.com' },
+      { name: 'Laughing Place', url: 'https://www.laughingplace.com/disney-parks/the-magic-of-disney-animation-march-2026-update/' },
+      { name: 'Newsweek', url: 'https://www.newsweek.com' },
+      { name: 'Disney Fanatic', url: 'https://www.disneyfanatic.com' },
+      { name: 'TimeOut', url: 'https://www.timeout.com' },
+    ],
+    authorId: 'trackr-editorial',
+    authorName: 'TrackR Team',
+    publishedAt: '2026-03-16T18:00:00Z',
+    status: 'published',
+  },
+  {
     id: 'article-sf-cf-merger',
     title: 'Six Flags and Cedar Fair Merger: What It Means for You',
     subtitle: 'The largest theme park merger in history is changing everything from season passes to new ride investments.',
@@ -33,7 +90,7 @@ Cedar Fair's premium pricing model averaged significantly higher than Six Flags'
 ## The Bottom Line
 
 For now, existing passes from both chains will be honored through the end of the current season, with the new unified program launching ahead of the following year. The real excitement starts when those capital investment dollars begin flowing to parks that have been waiting years for a headline attraction.`,
-    bannerImageUrl: 'https://picsum.photos/seed/six-flags-merger/800/500',
+    bannerImage: 'https://picsum.photos/seed/six-flags-merger/800/500',
     category: 'industry',
     tags: ['six-flags', 'cedar-fair', 'merger', 'season-pass'],
     readTimeMinutes: 5,
@@ -71,7 +128,7 @@ Several flat rides and a portion of the existing midway have been cleared to mak
 Pre-sale numbers for 2025 passes have reportedly surged **40 percent** compared to the same period last year, driven largely by anticipation around the announcement.
 
 Cedar Point plans to release the full name, theme, and detailed specifications during a live-streamed event scheduled for later this fall.`,
-    bannerImageUrl: 'https://picsum.photos/seed/cedar-point-2025/800/500',
+    bannerImage: 'https://picsum.photos/seed/cedar-point-2025/800/500',
     category: 'news',
     tags: ['cedar-point', 'new-coaster', 'intamin', 'record-breaking'],
     readTimeMinutes: 4,
@@ -108,7 +165,7 @@ The second half of the ride tears through a dense forest with laterals and airti
 ## The Common Thread
 
 These hidden gems prioritize ride experience over marketing milestones. They may not hold world records, but they deliver something more important: pure, unfiltered joy from start to finish.`,
-    bannerImageUrl: 'https://picsum.photos/seed/hidden-gems/800/500',
+    bannerImage: 'https://picsum.photos/seed/hidden-gems/800/500',
     category: 'ride-review',
     tags: ['hidden-gems', 'underrated', 'bucket-list', 'rmc'],
     readTimeMinutes: 6,
@@ -148,7 +205,7 @@ Each of these rides consistently ranks among the top steel coasters globally in 
 ## Timeline
 
 Construction is expected to begin immediately following the current operating season, with a target opening of the following spring.`,
-    bannerImageUrl: 'https://picsum.photos/seed/rmc-conversion/800/500',
+    bannerImage: 'https://picsum.photos/seed/rmc-conversion/800/500',
     category: 'news',
     tags: ['rmc', 'iron-horse', 'wooden-coaster', 'conversion'],
     readTimeMinutes: 3,

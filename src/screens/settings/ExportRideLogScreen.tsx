@@ -31,6 +31,9 @@ import { shadows } from '../../theme/shadows';
 import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
+import { FogHeader } from '../../components/FogHeader';
+
+const HEADER_HEIGHT = 52;
 
 // ============================================
 // Types
@@ -100,27 +103,11 @@ export function ExportRideLogScreen() {
     );
   }, [format, dateRange]);
 
-  return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <Animated.View style={[styles.header, headerAnim]}>
-        <Pressable
-          {...backPress.pressHandlers}
-          onPress={() => {
-            haptics.tap();
-            navigation.goBack();
-          }}
-          hitSlop={12}
-        >
-          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
-            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
-          </Animated.View>
-        </Pressable>
-        <Text style={styles.headerTitle}>Export Ride Log</Text>
-        <View style={styles.headerSpacer} />
-      </Animated.View>
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
-      <View style={[styles.content, { paddingBottom: insets.bottom + spacing.xxxl }]}>
+  return (
+    <View style={styles.container}>
+      <View style={[styles.content, { paddingTop: headerTotalHeight + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl }]}>
         {/* Format Selection */}
         <Animated.View style={formatAnim}>
           <Text style={styles.sectionHeader}>FORMAT</Text>
@@ -219,6 +206,27 @@ export function ExportRideLogScreen() {
           </Pressable>
         </Animated.View>
       </View>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>
+        <Pressable
+          {...backPress.pressHandlers}
+          onPress={() => {
+            haptics.tap();
+            navigation.goBack();
+          }}
+          hitSlop={12}
+        >
+          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
+            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
+          </Animated.View>
+        </Pressable>
+        <Text style={styles.headerTitle}>Export Ride Log</Text>
+        <View style={styles.headerSpacer} />
+      </Animated.View>
     </View>
   );
 }
@@ -233,10 +241,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    height: 52,
+    height: HEADER_HEIGHT,
   },
   backButton: {
     width: 36,
@@ -258,7 +270,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing.lg,
   },
   sectionHeader: {
     fontSize: typography.sizes.small,

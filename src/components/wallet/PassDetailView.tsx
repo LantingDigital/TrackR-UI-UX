@@ -55,7 +55,7 @@ const RUBBER_BAND_RESISTANCE = 0.25;
 const TAP_THRESHOLD = 10;
 
 // QR code size
-const SCAN_QR_SIZE = 200;
+const SCAN_QR_SIZE = 160;
 
 interface PassDetailViewProps {
   tickets: Ticket[];
@@ -927,9 +927,10 @@ const styles = StyleSheet.create({
 
   scanCard: {
     width: CARD_WIDTH,
+    alignSelf: 'center',
     backgroundColor: '#FFFFFF',
     borderRadius: radius.card,
-    paddingVertical: 28,
+    paddingVertical: 24,
     paddingHorizontal: 24,
     alignItems: 'center',
     shadowColor: '#000000',
@@ -961,7 +962,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 6,
     borderRadius: 16,
-    marginBottom: 20,
+    marginBottom: 12,
   },
   passTypeText: {
     fontSize: 12,
@@ -971,10 +972,10 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   qrContainer: {
-    padding: 12,
+    padding: 10,
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
-    marginBottom: 20,
+    marginBottom: 12,
   },
   passNumber: {
     fontSize: 14,

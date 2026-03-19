@@ -31,8 +31,8 @@ import type { CoasterRating } from '../types/rideLog';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
-/** Card aspect ratio — matches art assets (1696×2528 = 2:3 portrait) */
-const ASPECT_RATIO = 3 / 2;
+/** Card aspect ratio — standard TCG (2.5×3.5 inches = 5:7) */
+const ASPECT_RATIO = 7 / 5;
 
 /** Size presets */
 const CARD_SIZES = {

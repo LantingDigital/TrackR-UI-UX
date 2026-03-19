@@ -312,8 +312,9 @@ export function RatingSheet({
       celebTextOpacity.value = withTiming(0, { duration: 200 });
     }, 1600));
 
-    // T+1900ms: Fire onComplete
+    // T+1900ms: Restore tab bar + fire onComplete
     celebTimersRef.current.push(setTimeout(() => {
+      tabBar?.showTabBar();
       onComplete(rating);
     }, 1900));
   }, [coasterId, coasterName, parkName, ratings, notes, onComplete]);

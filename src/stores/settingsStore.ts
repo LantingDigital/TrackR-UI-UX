@@ -71,7 +71,7 @@ const useStore = create<SettingsStore>()(
       riderType: null,
       homeParkName: null,
       displayName: 'Coaster Rider',
-      username: '@coasterrider',
+      username: 'coasterrider',
       profileImageUri: null,
       activityVisibility: 'everyone' as PrivacyLevel,
 

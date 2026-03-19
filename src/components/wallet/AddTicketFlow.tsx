@@ -75,6 +75,9 @@ import { shadows } from '../../theme/shadows';
 import { typography } from '../../theme/typography';
 import { useKeyboardAvoidance } from '../../hooks/useKeyboardAvoidance';
 import { getCardArtForPark, getLogoForPark, getHeroUrlForPark } from '../../utils/parkAssets';
+import { FogHeader } from '../FogHeader';
+
+const AnimatedIonicons = Animated.createAnimatedComponent(Ionicons);
 
 /**
  * Park name -> ParkChain mapping for autocomplete auto-fill.
@@ -373,6 +376,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       setManualBarcodeFormat('auto');
       setBarcodeValidationError('');
       setSelectedType(null);
+      selectedTypeIndex.value = -1;
       continueButtonAnim.value = 0;
       fromPickerHeight.value = 0;
       untilPickerHeight.value = 0;
@@ -854,7 +858,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       >
         <Animated.View style={[styles.typeSelectTallCard, cardAnimStyle]}>
           <Animated.View style={[styles.typeSelectTallIcon, iconBgStyle]}>
-            <Ionicons name={option.icon} size={28} color={colors.accent.primary} />
+            <AnimatedIonicons name={option.icon} size={28} style={iconColorStyle} />
           </Animated.View>
           <Animated.Text style={[styles.typeSelectTallLabel, labelColorStyle]}>
             {option.label}
@@ -907,7 +911,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         >
           <Animated.View style={[styles.typeSelectContinueButton, continueButtonAnimStyle]}>
             <Animated.Text style={[styles.typeSelectContinueText, continueTextAnimStyle]}>Continue</Animated.Text>
-            <Ionicons name="arrow-forward" size={20} color={colors.text.meta} />
+            <AnimatedIonicons name="arrow-forward" size={20} style={continueIconAnimStyle} />
           </Animated.View>
         </Pressable>
       </View>
@@ -2218,10 +2222,15 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       animationType="slide"
       presentationStyle="fullScreen"
     >
-      <View style={[styles.container, { paddingTop: insets.top }]}>
-        {/* Header (hidden during scan step) */}
+      <View style={styles.container}>
+        {/* Fog gradient overlay (hidden during scan step) */}
         {displayedStep !== 'scan' && (
-          <View style={styles.header}>
+          <FogHeader headerHeight={insets.top + 56} />
+        )}
+
+        {/* Header (hidden during scan step) — absolute, above fog */}
+        {displayedStep !== 'scan' && (
+          <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
             {displayedStep !== 'type_select' ? (
               <Pressable style={styles.backButton} onPress={goBack}>
                 <Ionicons name="arrow-back" size={24} color={colors.text.primary} />
@@ -2244,7 +2253,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         )}
 
         {/* Step content — two-layer iOS push transition */}
-        <View style={styles.content}>
+        <View style={[styles.content, displayedStep !== 'scan' ? { marginTop: insets.top + 56 } : { marginTop: 0 }]}>
           {displayedStep === 'scan' ? (
             // Scan step is full-screen camera, no slide wrapper
             renderStepContent('scan')
@@ -2274,6 +2283,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

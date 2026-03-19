@@ -32,6 +32,7 @@ import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { haptics } from '../../../services/haptics';
+import { EmptyState } from '../../../components/EmptyState';
 import { useRankingsStore } from '../stores/rankingsStore';
 import type { RankingCategory, CommunityRankingEntry } from '../types/community';
 
@@ -266,6 +267,18 @@ export const CommunityRankingsTab = ({ topInset = 0, onCoasterTap }: CommunityRa
   const entries = selectedCategory?.entries ?? [];
   const totalRatings = entries.reduce((sum, e) => sum + e.totalRatings, 0);
 
+  if (categories.length === 0) {
+    return (
+      <View style={[s.container, s.emptyContainer, { paddingTop: topInset }]}>
+        <EmptyState
+          icon="podium-outline"
+          title="No rankings yet"
+          subtitle="Community rankings appear as riders log and rate coasters. Be the first to contribute!"
+        />
+      </View>
+    );
+  }
+
   return (
     <ScrollView
       style={s.container}
@@ -337,6 +350,28 @@ const s = StyleSheet.create({
   },
   content: {
     paddingHorizontal: spacing.lg,
+  },
+
+  // ── Empty state ──
+  emptyContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyState: {
+    alignItems: 'center',
+    paddingHorizontal: spacing.xxxl,
+  },
+  emptyTitle: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
+    marginTop: spacing.base,
+    marginBottom: spacing.xs,
+  },
+  emptySubtitle: {
+    fontSize: typography.sizes.caption,
+    color: colors.text.meta,
+    textAlign: 'center' as const,
   },
 
   // ── Category chips (shadow-safe) ──

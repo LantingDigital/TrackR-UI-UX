@@ -1,0 +1,479 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - navigation "Main" [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e15]:
+          - link "Search" [ref=e16] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+            - generic [ref=e20]: Search
+          - link "Computer" [ref=e21] [cursor=pointer]:
+            - /url: /computer/new
+            - img [ref=e25]
+            - generic [ref=e29]: Computer
+        - generic [ref=e30]:
+          - button "New thread ⌘K" [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]:
+              - img [ref=e39]
+              - generic [ref=e41]: New thread
+              - generic [ref=e43]: ⌘K
+          - generic [ref=e44]:
+            - generic [ref=e46]:
+              - link "History" [ref=e47] [cursor=pointer]:
+                - /url: /library
+                - generic [ref=e48]:
+                  - img [ref=e53]
+                  - generic [ref=e55]: History
+              - link "Discover" [ref=e56] [cursor=pointer]:
+                - /url: /discover
+                - generic [ref=e57]:
+                  - img [ref=e62]
+                  - generic [ref=e64]: Discover
+              - link "Spaces" [ref=e65] [cursor=pointer]:
+                - /url: /spaces
+                - generic [ref=e66]:
+                  - img [ref=e71]
+                  - generic [ref=e73]: Spaces
+              - link "Finance" [ref=e74] [cursor=pointer]:
+                - /url: /finance
+                - generic [ref=e75]:
+                  - img [ref=e80]
+                  - generic [ref=e82]: Finance
+              - button "More" [ref=e83] [cursor=pointer]:
+                - generic [ref=e84]:
+                  - img [ref=e89]
+                  - generic [ref=e91]: More
+            - generic [ref=e97]:
+              - button "Recent Collapse" [ref=e98] [cursor=pointer]:
+                - link "Recent" [ref=e99]:
+                  - /url: /library
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: Recent
+                    - img [ref=e103]
+                - button "Collapse" [ref=e107]:
+                  - img [ref=e110]
+              - generic [ref=e115]:
+                - generic [ref=e471]:
+                  - 'link "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202" [ref=e472] [cursor=pointer]':
+                    - /url: /search/southern-california-theme-park-595pPipqSBWM8xDc0QiXlQ
+                    - generic [ref=e475]: "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e476]:
+                  - 'link "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c" [ref=e477] [cursor=pointer]':
+                    - /url: /search/tormenta-rampaging-run-six-fla-4A7LnKA8T6.roJytBAC64w
+                    - generic [ref=e480]: "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e481]:
+                  - link "What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202" [ref=e482] [cursor=pointer]:
+                    - /url: /search/what-are-the-biggest-roller-co-N7KmV85pShubda2GtMZmtQ
+                    - generic [ref=e485]: What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e486]:
+                  - 'link "using real research, address the following: Act as an expert software agency founder, enterprise Sa" [ref=e487] [cursor=pointer]':
+                    - /url: /search/using-real-research-address-th-Wcp1p8DDTp.OPref6qXXsg
+                    - generic [ref=e490]: "using real research, address the following: Act as an expert software agency founder, enterprise Sa"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e491]:
+                  - link "roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park" [ref=e492] [cursor=pointer]:
+                    - /url: /search/roller-coaster-and-theme-park-n9vJaevtT42.dHV_OUv7rw
+                    - generic [ref=e495]: roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+        - generic [ref=e143] [cursor=pointer]:
+          - button "User avatar Caleb Lanting" [ref=e145]:
+            - generic [ref=e152]:
+              - generic [ref=e156]:
+                - img "User avatar" [ref=e157]
+                - img [ref=e160]
+              - generic [ref=e163]: Caleb Lanting
+          - button "Notifications" [ref=e172]:
+            - img [ref=e175]
+    - main [ref=e182]:
+      - generic [ref=e356]:
+        - generic:
+          - generic:
+            - tablist "Answer mode tabs" [ref=e358]:
+              - tab "Answer" [selected] [ref=e359] [cursor=pointer]:
+                - img [ref=e360]
+                - text: Answer
+              - tab "Links" [ref=e362] [cursor=pointer]:
+                - img [ref=e363]
+                - text: Links
+              - tab "Images" [ref=e365] [cursor=pointer]:
+                - img [ref=e366]
+                - text: Images
+            - generic [ref=e368]:
+              - button "Thread actions" [ref=e497] [cursor=pointer]:
+                - img [ref=e498]
+              - button "Share" [ref=e371] [cursor=pointer]:
+                - img [ref=e373]
+                - generic [ref=e375]: Share
+              - button "Download Comet" [ref=e378] [cursor=pointer]:
+                - img [ref=e380]
+                - generic [ref=e382]: Download Comet
+        - generic [ref=e385]:
+          - tabpanel "Answer" [ref=e393]:
+            - generic [ref=e394]:
+              - generic [ref=e399]:
+                - generic:
+                  - button "Edit Query":
+                    - generic:
+                      - generic:
+                        - img
+                  - button "Copy Query":
+                    - generic:
+                      - generic:
+                        - img
+                - generic [ref=e400]:
+                  - 'heading "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 2026 (track arrived, unnamed, 19th coaster), Knott''s Berry Farm MonteZOOMa The Forbidden Fortress 2026, Universal Studios Hollywood Fast & Furious Hollywood Drift, Vekoma thrill glider Ninja replacement rumor, 2028 LA Olympics effect on park investments, Screamscape rumors. Get every source, every detail, every rumor." [level=1] [ref=e404]':
+                    - generic [ref=e406]: "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 2026 (track arrived, unnamed, 19th coaster), Knott's Berry Farm MonteZOOMa The Forbidden Fortress 2026, Universal Studios Hollywood Fast & Furious Hollywood Drift, Vekoma thrill glider Ninja replacement rumor, 2028 LA Olympics effect on park investments, Screamscape rumors. Get every source, every detail, every rumor."
+                  - button "Show more" [ref=e409] [cursor=pointer]:
+                    - generic [ref=e410]: Show more
+                    - img [ref=e412]
+              - generic [ref=e415]:
+                - button "2 steps completed" [ref=e419] [cursor=pointer]:
+                  - text: 2 steps completed
+                  - img [ref=e421]
+                - generic [ref=e501]:
+                  - paragraph [ref=e502]:
+                    - text: Southern California parks are clearly arming up with new coasters and expansions through 2028, but a lot of what you’re asking about (especially SFMM’s Vekoma project and any Ninja replacement) is still in the rumor / partially confirmed category and can change quickly.
+                    - generic [ref=e507] [cursor=pointer]:
+                      - generic [ref=e508]: screamscape
+                      - generic [ref=e509]: "+1"
+                  - 'heading "Six Flags Magic Mountain: 19th coaster & Vekoma “Thrill Glider”" [level=2] [ref=e510]'
+                  - list [ref=e511]:
+                    - listitem [ref=e512]:
+                      - paragraph [ref=e513]:
+                        - text: Blue track for an unannounced 19th coaster has arrived on site, with the park teasing that “the skyline won’t be the same,” and construction is framed as a 2027 project rather than a firm 2026 opening.
+                        - generic "Six Flags Magic Mountain teases new coaster - YouTube" [ref=e515]:
+                          - generic [ref=e518] [cursor=pointer]:
+                            - img [ref=e520]
+                            - generic [ref=e522]: YouTube
+                        - generic "Six Flags Magic Mountain - Screamscape" [ref=e524]:
+                          - link "screamscape" [ref=e526] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/six_flags_magic_mountain.htm
+                            - generic [ref=e529]: screamscape
+                    - listitem [ref=e530]:
+                      - paragraph [ref=e531]:
+                        - text: Screamscape reports this as a Vekoma
+                        - strong [ref=e532]: Thrill Glider
+                        - text: concept, noting that hardware has now appeared and permits were filed earlier to clear Golden Bear Theater and possibly the Ninja area as part of a long‑term plan.
+                        - generic "Six Flags Magic Mountain - Screamscape" [ref=e534]:
+                          - link "screamscape" [ref=e536] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/six_flags_magic_mountain.htm
+                            - generic [ref=e539]: screamscape
+                    - listitem [ref=e540]:
+                      - paragraph [ref=e541]:
+                        - text: Multiple enthusiast and local news sources say the paperwork labels (“Flags Thr Glider Coaster”) point to the world’s first Vekoma Thrill Glider, described as an inverted, straddle‑seating, motorbike‑style launch coaster—a sort of under‑track, launch‑powered cousin to TRON but with inversions.
+                        - generic [ref=e546] [cursor=pointer]:
+                          - generic [ref=e547]: yahoo
+                          - generic [ref=e548]: "+3"
+                    - listitem [ref=e549]:
+                      - paragraph [ref=e550]:
+                        - text: Screamscape has previously floated that corporate briefly wavered on the Thrill Glider concept and looked at a different Vekoma launched coaster, which is why timelines have slipped and you see it listed as “delayed” to 2027.
+                        - generic "Six Flags Magic Mountain - Screamscape" [ref=e552]:
+                          - link "screamscape" [ref=e554] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/six_flags_magic_mountain.htm
+                            - generic [ref=e557]: screamscape
+                    - listitem [ref=e558]:
+                      - paragraph [ref=e559]:
+                        - text: In enthusiast circles (ParkFans, CoasterForce) this same project has been associated with the working name “Cyber Cycle” and with the idea that it functionally replaces Ninja in the long term, though neither the name nor the retirement of Ninja are confirmed by the park.
+                        - generic [ref=e564] [cursor=pointer]:
+                          - generic [ref=e565]: coasterforce
+                          - generic [ref=e566]: "+2"
+                  - heading "Current best read on SFMM “arms race” posture" [level=2] [ref=e567]
+                  - list [ref=e568]:
+                    - listitem [ref=e569]:
+                      - paragraph [ref=e570]:
+                        - text: "SFMM is positioning the Thrill Glider as a record‑style prototype: first inverted straddle / motorbike coaster with inversions, first Thrill Glider model, and a new skyline‑dominating launched coaster to get them back out in front on the coaster‑count narrative."
+                        - generic [ref=e575] [cursor=pointer]:
+                          - generic [ref=e576]: reddit
+                          - generic [ref=e577]: "+2"
+                    - listitem [ref=e578]:
+                      - paragraph [ref=e579]:
+                        - text: "Timing is murky: Screamscape openly says they don’t know if the 19th coaster will open mid/late 2026 or slip to early 2027, and the park’s own teaser post leans toward a 2027 opening window."
+                        - generic "Six Flags Magic Mountain teases new coaster - YouTube" [ref=e581]:
+                          - generic [ref=e584] [cursor=pointer]:
+                            - img [ref=e586]
+                            - generic [ref=e588]: YouTube
+                        - generic "Six Flags Magic Mountain - Screamscape" [ref=e590]:
+                          - link "screamscape" [ref=e592] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/six_flags_magic_mountain.htm
+                            - generic [ref=e595]: screamscape
+                  - 'heading "Knott’s Berry Farm: MonteZOOMa: The Forbidden Fortress (2026)" [level=2] [ref=e596]'
+                  - list [ref=e597]:
+                    - listitem [ref=e598]:
+                      - paragraph [ref=e599]:
+                        - text: Knott’s is reconstructing Montezooma’s Revenge as
+                        - strong [ref=e600]: "MonteZOOMa: The Forbidden Fortress"
+                        - text: ", a modernized launched shuttle with a new story, queue, and updated hardware."
+                        - generic "Knott's Berry Farm - Screamscape" [ref=e602]:
+                          - link "screamscape" [ref=e604] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/knott-s_berry_farm.htm
+                            - generic [ref=e607]: screamscape
+                    - listitem [ref=e608]:
+                      - paragraph [ref=e609]:
+                        - text: Screamscape’s Knott’s page notes that track and supports have been going in, with recent construction videos showing the rebuilt loop and launch area progressing, and reports as of March 2026 describe workers finishing track installation and station/queue work.
+                        - generic [ref=e614] [cursor=pointer]:
+                          - img [ref=e616]
+                          - generic [ref=e618]: youtube
+                          - generic [ref=e619]: "+1"
+                        - generic "Knott's Berry Farm - Screamscape" [ref=e621]:
+                          - link "screamscape" [ref=e623] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/knott-s_berry_farm.htm
+                            - generic [ref=e626]: screamscape
+                    - listitem [ref=e627]:
+                      - paragraph [ref=e628]:
+                        - text: On‑the‑ground updates in January–February 2026 show electrical and LSM infrastructure work (rebar, equipment pads) and a reconfigured entrance/queue area, but even enthusiasts aren’t confident enough yet to call an exact opening month beyond “hopefully 2026.”
+                        - generic [ref=e633] [cursor=pointer]:
+                          - img [ref=e635]
+                          - generic [ref=e637]: youtube
+                          - generic [ref=e638]: "+1"
+                        - generic "The Forbidden Fortress as of Tuesday, January 27, 2026 - Instagram" [ref=e640]:
+                          - link "instagram" [ref=e642] [cursor=pointer]:
+                            - /url: https://www.instagram.com/p/DUCpa45kf_j/
+                            - generic [ref=e645]: instagram
+                  - heading "Role in the regional coaster landscape" [level=2] [ref=e646]
+                  - list [ref=e647]:
+                    - listitem [ref=e648]:
+                      - paragraph [ref=e649]:
+                        - text: MonteZOOMa isn’t a brand‑new layout so much as a legacy‑ride modernization, but it gives Knott’s a refreshed, launch‑focused headliner right as Universal and SFMM bring in new hardware, which keeps Knott’s competitive on the “must‑ride” list without a totally new footprint coaster.
+                        - generic "Knott's Berry Farm - Screamscape" [ref=e651]:
+                          - link "screamscape" [ref=e653] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/knott-s_berry_farm.htm
+                            - generic [ref=e656]: screamscape
+                        - generic "Knott's Berry Farm | Ride and Park Update | Montezooma Construction" [ref=e658]:
+                          - generic [ref=e661] [cursor=pointer]:
+                            - img [ref=e663]
+                            - generic [ref=e665]: YouTube
+                  - 'heading "Universal Studios Hollywood: Fast & Furious – Hollywood Drift (2026)" [level=2] [ref=e666]'
+                  - list [ref=e667]:
+                    - listitem [ref=e668]:
+                      - paragraph [ref=e669]:
+                        - text: Universal has fully announced
+                        - strong [ref=e670]: "Fast & Furious: Hollywood Drift"
+                        - text: as its first high‑speed outdoor coaster, opening summer 2026 on the Upper Lot.
+                        - generic [ref=e675] [cursor=pointer]:
+                          - generic [ref=e676]: attractionsmagazine
+                          - generic [ref=e677]: "+2"
+                    - listitem [ref=e678]:
+                      - paragraph [ref=e679]:
+                        - text: "Official specs: up to 72 mph, about 4,100 feet of elevated track, multiple inversions, and ride vehicles that can spin 360 degrees to simulate high‑speed drifting."
+                        - generic [ref=e684] [cursor=pointer]:
+                          - generic [ref=e685]: insideuniversal
+                          - generic [ref=e686]: "+2"
+                    - listitem [ref=e687]:
+                      - paragraph [ref=e688]:
+                        - text: The coaster threads over the park, including over segments of the multi‑level Starway escalators, and replaces the old special effects/animal show area, with a themed garage‑style queue to match the film franchise.
+                        - generic [ref=e693] [cursor=pointer]:
+                          - generic [ref=e694]: deadline
+                          - generic [ref=e695]: "+2"
+                  - heading "How Universal is playing the “arms race”" [level=2] [ref=e696]
+                  - list [ref=e697]:
+                    - listitem [ref=e698]:
+                      - paragraph [ref=e699]:
+                        - text: With Hollywood Drift, Universal is clearly targeting the thrill‑seeker demographic SFMM normally dominates, while still tying the ride to a massive IP; they’re framing it as the fastest coaster in the Universal Destinations lineup when it opens.
+                        - generic [ref=e704] [cursor=pointer]:
+                          - generic [ref=e705]: attractionsmagazine
+                          - generic [ref=e706]: "+1"
+                    - listitem [ref=e707]:
+                      - paragraph [ref=e708]:
+                        - text: Because it’s a 2026 opening with officially advertised speed, track length, and a visible construction profile across the park, this is the most locked‑in piece of the 2026–2027 coaster race and likely to soak up a lot of LA‑area coaster coverage in the short term.
+                        - generic [ref=e713] [cursor=pointer]:
+                          - generic [ref=e714]: insideuniversal
+                          - generic [ref=e715]: "+1"
+                  - heading "Ninja‑replacement and Vekoma “thrill glider” rumors" [level=2] [ref=e716]
+                  - list [ref=e717]:
+                    - listitem [ref=e718]:
+                      - paragraph [ref=e719]:
+                        - text: Screamscape has repeatedly suggested that the long‑term plan is for the Vekoma Thrill Glider to functionally replace Ninja, citing the aging state of Ninja, past earthquake damage, tree losses, and project plans focused on that side of the mountain.
+                        - generic [ref=e724] [cursor=pointer]:
+                          - generic [ref=e725]: reddit
+                          - generic [ref=e726]: "+1"
+                    - listitem [ref=e727]:
+                      - paragraph [ref=e728]:
+                        - text: Forum discussions (ParkFans, CoasterForce) echo this, referencing internal‑style planning chatter and associating the Thrill Glider/Cyber Cycle project with demolishing Golden Bear Theater and potentially removing Ninja and surrounding structures.
+                        - generic [ref=e733] [cursor=pointer]:
+                          - generic [ref=e734]: coasterforce
+                          - generic [ref=e735]: "+2"
+                    - listitem [ref=e736]:
+                      - paragraph [ref=e737]:
+                        - text: None of those sources show an official closure announcement or a specific date from Six Flags; the consensus among rumor trackers has been “ride Ninja now if you care, because 2025–2026 could be its last seasons,” but again that’s fan inference rather than confirmed closure notice.
+                        - generic [ref=e742] [cursor=pointer]:
+                          - generic [ref=e743]: reddit
+                          - generic [ref=e744]: "+1"
+                  - heading "What we actually know about the Thrill Glider model" [level=2] [ref=e745]
+                  - list [ref=e746]:
+                    - listitem [ref=e747]:
+                      - paragraph [ref=e748]:
+                        - text: Vekoma’s own public product pages emphasize their
+                        - strong [ref=e749]: Suspended Thrill Coaster
+                        - text: and general sit‑down/suspended thrill lines—multi‑inversion, smooth, lower‑height‑restriction layouts—but do not yet list a separate “Thrill Glider” product page, suggesting this is a prototype variant rather than a catalog model.
+                        - generic [ref=e754] [cursor=pointer]:
+                          - generic [ref=e755]: vekoma
+                          - generic [ref=e756]: "+1"
+                    - listitem [ref=e757]:
+                      - paragraph [ref=e758]:
+                        - text: "Enthusiast explainers describe Thrill Glider as an inverted or suspended straddle‑seat launch coaster that combines elements of Vekoma’s family inverted and motorbike designs: under‑track trains, lap‑bar “straddle” seating, and at least one inversion, marketed as a first‑of‑its‑kind execution."
+                        - generic [ref=e763] [cursor=pointer]:
+                          - generic [ref=e764]: facebook
+                          - generic [ref=e765]: "+2"
+                  - heading "LA 2028 Olympics and park investment trends" [level=2] [ref=e766]
+                  - list [ref=e767]:
+                    - listitem [ref=e768]:
+                      - paragraph [ref=e769]:
+                        - text: The Southern California Association of Governments (SCAG) study on LA28 estimates that the 2028 Games will generate around 13–18 billion dollars in economic impact for the six‑county region, with 8.9–12 billion of that in Los Angeles County alone.
+                        - generic [ref=e774] [cursor=pointer]:
+                          - generic [ref=e775]: thesportsexaminer
+                          - generic [ref=e776]: "+1"
+                    - listitem [ref=e777]:
+                      - paragraph [ref=e778]:
+                        - text: That impact includes billions in visitor/media/sponsor spending and large transport infrastructure investments, which logically supports tourism‑related businesses—including theme parks—but the LA28 plan is explicitly “no‑build” for permanent venues, so the Olympics are not directly funding new rides.
+                        - 'generic "LOS ANGELES 2028: LA28 says it has reached $2 billion in ..." [ref=e780]':
+                          - link "thesportsexaminer" [ref=e782] [cursor=pointer]:
+                            - /url: https://www.thesportsexaminer.com/los-angeles-2028-la28-says-it-has-reached-2-billion-in-sponsorships-new-study-says-2028-games-will-offer-13-6-billion-plus-economic-impact/
+                            - generic [ref=e785]: thesportsexaminer
+                    - listitem [ref=e786]:
+                      - paragraph [ref=e787]:
+                        - text: The LA Business Journal notes that local parks have been expanding offerings against this broader tourism backdrop, and that the merged Six Flags / Cedar Fair entity now controls both SFMM and Knott’s, which may affect how they time marquee projects to surf Olympics‑year demand without overspending during merger integration.
+                        - 'generic "Tourism: Theme Park Expansion - Los Angeles Business Journal" [ref=e789]':
+                          - link "labusinessjournal" [ref=e791] [cursor=pointer]:
+                            - /url: https://labusinessjournal.com/special-reports/tourism-theme-park-expansion/
+                            - generic [ref=e794]: labusinessjournal
+                  - heading "How Olympics‑era pressure shapes the “arms race”" [level=2] [ref=e795]
+                  - list [ref=e796]:
+                    - listitem [ref=e797]:
+                      - paragraph [ref=e798]:
+                        - text: With a huge tourism spike expected around 2027–2028 and a largely privately funded Games, parks are incentivized to have their major new‑ride slate open or at least marketable by then, which aligns with Universal targeting 2026, Knott’s aiming MonteZOOMa for 2026, and SFMM sliding its prototype Vekoma piece to the 2026–2027 window.
+                        - generic [ref=e803] [cursor=pointer]:
+                          - generic [ref=e804]: screamscape
+                          - generic [ref=e805]: "+3"
+                    - listitem [ref=e806]:
+                      - paragraph [ref=e807]:
+                        - text: Disney’s local parks and SeaWorld/LEGOLAND aren’t covered in the sources above, but industry commentary generally anticipates that every major SoCal park will want at least one significant new attraction live by the time the Games arrive to capture the extra tourist days those visitors tack onto their Olympics trips.
+                        - generic [ref=e812] [cursor=pointer]:
+                          - generic [ref=e813]: labusinessjournal
+                          - generic [ref=e814]: "+1"
+                  - heading "Screamscape’s role and rumor density (what we have vs. what we don’t)" [level=2] [ref=e815]
+                  - list [ref=e816]:
+                    - listitem [ref=e817]:
+                      - paragraph [ref=e818]:
+                        - text: "Screamscape’s SFMM page has been the main clearinghouse for Thrill Glider speculation: it documents track arriving, notes the park’s own blue‑track teaser, points to RCDB entries labeling it a 2027 project, and recounts the pivot where corporate briefly considered a different Vekoma launch concept."
+                        - generic "Six Flags Magic Mountain - Screamscape" [ref=e820]:
+                          - link "screamscape" [ref=e822] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/six_flags_magic_mountain.htm
+                            - generic [ref=e825]: screamscape
+                    - listitem [ref=e826]:
+                      - paragraph [ref=e827]:
+                        - text: "Its Knott’s page keeps a running log on MonteZOOMa: The Forbidden Fortress, with updates on when track/loop work resumed and how long the ride has been in extended rebuild, which is where the “2026 finally?” tone comes from."
+                        - generic "Knott's Berry Farm - Screamscape" [ref=e829]:
+                          - link "screamscape" [ref=e831] [cursor=pointer]:
+                            - /url: https://www.screamscape.com/html/knott-s_berry_farm.htm
+                            - generic [ref=e834]: screamscape
+                    - listitem [ref=e835]:
+                      - paragraph [ref=e836]:
+                        - text: For Ninja, Screamscape frames the Vekoma coaster as a “thought to be meant as a replacement for Ninja” and hints that riders should get their last laps in, but it stops short of claiming an official closure order, highlighting how speculative that piece still is.
+                        - generic [ref=e841] [cursor=pointer]:
+                          - generic [ref=e842]: reddit
+                          - generic [ref=e843]: "+1"
+                  - 'heading "Big picture: 2026–2028 coaster arms race" [level=2] [ref=e844]'
+                  - list [ref=e845]:
+                    - listitem [ref=e846]:
+                      - paragraph [ref=e847]:
+                        - text: By 2026, Universal is guaranteed a high‑visibility, record‑messaging coaster (Hollywood Drift), Knott’s likely has a fully refreshed legacy launch (MonteZOOMa), and SFMM is mid‑stream on a prototype Vekoma Thrill Glider that could open as early as late 2026 but more realistically 2027 per current chatter.
+                        - generic [ref=e852] [cursor=pointer]:
+                          - generic [ref=e853]: attractionsmagazine
+                          - generic [ref=e854]: "+2"
+                    - listitem [ref=e855]:
+                      - paragraph [ref=e856]:
+                        - text: Through 2028 and the Olympics, that sets up a landscape where each major LA‑adjacent park can market at least one “new” or significantly reimagined thrill headliner to a massive influx of domestic and international visitors, with SFMM betting on uniqueness (first Thrill Glider) and Universal betting on IP and speed records to win the coverage war.
+                        - generic [ref=e861] [cursor=pointer]:
+                          - generic [ref=e862]: reddit
+                          - generic [ref=e863]: "+3"
+                  - paragraph [ref=e864]: Is there a particular park or project (SFMM Thrill Glider vs. Hollywood Drift vs. MonteZOOMa) you’d like a deeper dive on next—layout speculation, tech details, or likely ride experience?
+                - generic [ref=e865]:
+                  - generic [ref=e866]:
+                    - button "Share" [ref=e867] [cursor=pointer]:
+                      - img [ref=e870]
+                    - button "Download" [ref=e873] [cursor=pointer]:
+                      - img [ref=e874]
+                    - button "Copy" [ref=e876] [cursor=pointer]:
+                      - img [ref=e879]
+                    - button "Rewrite Thread" [ref=e882] [cursor=pointer]:
+                      - img [ref=e885]
+                    - button "30 sources" [ref=e889] [cursor=pointer]:
+                      - generic [ref=e891]:
+                        - img [ref=e892]
+                        - img [ref=e893]
+                        - generic [ref=e895]:
+                          - img [ref=e898]
+                          - img [ref=e903]
+                          - img [ref=e907]
+                        - text: 30 sources
+                  - generic [ref=e910]:
+                    - generic [ref=e912]:
+                      - button "Helpful" [ref=e913] [cursor=pointer]:
+                        - img [ref=e916]
+                      - button "Not helpful" [ref=e919] [cursor=pointer]:
+                        - img [ref=e922]
+                    - button "More actions" [ref=e926] [cursor=pointer]:
+                      - img [ref=e927]
+                - generic [ref=e929]:
+                  - generic [ref=e934]: Follow-ups
+                  - generic [ref=e935]:
+                    - button "Build an interactive dashboard comparing Six Flags Magic Mountain 2026 Vekoma Thrill Glider, Knott's MonteZOOMa Forbidden Fortress, and Universal Fast & Furious Hollywood Drift with specs, heights, speeds, inversions, and status trackers Computer" [ref=e936] [cursor=pointer]:
+                      - img [ref=e938]
+                      - generic [ref=e940]:
+                        - generic [ref=e941]: Build an interactive dashboard comparing Six Flags Magic Mountain 2026 Vekoma Thrill Glider, Knott's MonteZOOMa Forbidden Fortress, and Universal Fast & Furious Hollywood Drift with specs, heights, speeds, inversions, and status trackers
+                        - generic [ref=e942]:
+                          - img [ref=e943]
+                          - text: Computer
+                    - button "What are the specs and launch height for MonteZOOMa The Forbidden Fortress" [ref=e945] [cursor=pointer]:
+                      - img [ref=e947]
+                      - generic [ref=e950]: What are the specs and launch height for MonteZOOMa The Forbidden Fortress
+                    - button "Details on Vekoma Thrill Glider for Six Flags Magic Mountain" [ref=e951] [cursor=pointer]:
+                      - img [ref=e953]
+                      - generic [ref=e956]: Details on Vekoma Thrill Glider for Six Flags Magic Mountain
+                    - button "Fast & Furious Hollywood Drift height speed and inversions" [ref=e957] [cursor=pointer]:
+                      - img [ref=e959]
+                      - generic [ref=e962]: Fast & Furious Hollywood Drift height speed and inversions
+                    - button "Coaster plans for Six Flags Magic Mountain in 2027 and 2028" [ref=e963] [cursor=pointer]:
+                      - img [ref=e965]
+                      - generic [ref=e968]: Coaster plans for Six Flags Magic Mountain in 2027 and 2028
+          - generic [ref=e442]:
+            - generic [ref=e444]:
+              - textbox [active] [ref=e445]:
+                - paragraph [ref=e446]
+              - generic: Ask a follow-up
+            - button "Add files or tools" [ref=e449] [cursor=pointer]:
+              - img [ref=e452]
+            - generic [ref=e455]:
+              - button "Model" [ref=e456] [cursor=pointer]:
+                - generic [ref=e457]: Model
+                - img [ref=e459]
+              - button "Dictation" [ref=e970] [cursor=pointer]:
+                - img [ref=e973]
+              - button "Submit" [disabled]:
+                - generic:
+                  - generic:
+                    - img
+  - listbox "Typeahead menu"

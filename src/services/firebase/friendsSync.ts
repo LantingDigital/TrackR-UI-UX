@@ -14,6 +14,12 @@ import firestore from '@react-native-firebase/firestore';
 import { _friendsStoreInternal } from '../../features/community/stores/friendsStore';
 import { FriendRequestDoc, FriendDocFirestore, UserDoc } from '../../types/firestore';
 import type { Friend, FriendRequest, FriendActivity } from '../../features/community/types/community';
+import {
+  callSendFriendRequest,
+  callAcceptFriendRequest,
+  callDeclineFriendRequest,
+  callRemoveFriend,
+} from './functions';
 
 // ============================================
 // Collection Refs
@@ -185,105 +191,64 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
 }
 
 // ============================================
-// Write Operations
+// Write Operations (routed through Cloud Functions)
 // ============================================
 
 /**
- * Send a friend request to another user.
+ * Send a friend request to another user via CF.
+ * CF handles duplicate checks, denormalization, and write atomicity.
  */
 async function sendFriendRequest(
   uid: string,
-  userName: string,
-  userAvatarUrl: string | null,
+  _userName: string,
+  _userAvatarUrl: string | null,
   targetUserId: string,
 ): Promise<void> {
   // Optimistic update
   _friendsStoreInternal.getState()._addSentRequestId(targetUserId);
 
-  const now = firestore.Timestamp.now();
-  const requestDoc: Omit<FriendRequestDoc, 'id'> = {
-    fromUserId: uid,
-    fromUserName: userName,
-    fromUserAvatarUrl: userAvatarUrl,
-    toUserId: targetUserId,
-    status: 'pending',
-    createdAt: now,
-    respondedAt: null,
-  };
-
-  await friendRequestsRef().add(requestDoc);
+  try {
+    await callSendFriendRequest({ targetUserId });
+  } catch (error) {
+    // Rollback optimistic update on failure
+    _friendsStoreInternal.getState()._removeSentRequestId(targetUserId);
+    throw error;
+  }
 }
 
 /**
- * Accept a friend request. Creates bidirectional friend docs atomically.
+ * Accept a friend request via CF.
+ * CF handles bidirectional friend doc creation atomically.
  */
 async function acceptFriendRequest(
-  uid: string,
-  userName: string,
-  userAvatarUrl: string | null,
+  _uid: string,
+  _userName: string,
+  _userAvatarUrl: string | null,
   requestId: string,
 ): Promise<void> {
-  const requestSnap = await friendRequestsRef().doc(requestId).get();
-  if (!requestSnap.exists()) return;
-
-  const requestData = requestSnap.data() as FriendRequestDoc;
-  const now = firestore.Timestamp.now();
-  const batch = firestore().batch();
-
-  // Update request status
-  batch.update(friendRequestsRef().doc(requestId), {
-    status: 'accepted',
-    respondedAt: now,
-  });
-
-  // Create bidirectional friend docs
-  const myFriendDoc: FriendDocFirestore = {
-    friendId: requestData.fromUserId,
-    friendName: requestData.fromUserName,
-    friendAvatarUrl: requestData.fromUserAvatarUrl,
-    addedAt: now,
-  };
-
-  const theirFriendDoc: FriendDocFirestore = {
-    friendId: uid,
-    friendName: userName,
-    friendAvatarUrl: userAvatarUrl,
-    addedAt: now,
-  };
-
-  batch.set(
-    friendsRef(uid).doc(requestData.fromUserId),
-    myFriendDoc,
-  );
-  batch.set(
-    friendsRef(requestData.fromUserId).doc(uid),
-    theirFriendDoc,
-  );
-
-  await batch.commit();
+  await callAcceptFriendRequest({ requestId });
 }
 
 /**
- * Decline a friend request.
+ * Decline a friend request via CF.
  */
 async function declineFriendRequest(requestId: string): Promise<void> {
-  await friendRequestsRef().doc(requestId).update({
-    status: 'declined',
-    respondedAt: firestore.Timestamp.now(),
-  });
+  await callDeclineFriendRequest({ requestId });
 }
 
 /**
- * Remove a friend. Deletes bidirectional friend docs atomically.
+ * Remove a friend via CF. CF handles bidirectional deletion.
  */
-async function removeFriend(uid: string, friendId: string): Promise<void> {
+async function removeFriend(_uid: string, friendId: string): Promise<void> {
   // Optimistic delete
   _friendsStoreInternal.getState()._removeFriend(friendId);
 
-  const batch = firestore().batch();
-  batch.delete(friendsRef(uid).doc(friendId));
-  batch.delete(friendsRef(friendId).doc(uid));
-  await batch.commit();
+  try {
+    await callRemoveFriend({ friendId });
+  } catch (error) {
+    // Snapshot listener will reconcile on failure
+    throw error;
+  }
 }
 
 // ============================================

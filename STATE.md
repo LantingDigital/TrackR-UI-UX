@@ -1,94 +1,134 @@
 # TrackR — Current State
 
-Last updated: 2026-03-16 (Session 6 — Team Sprint)
+Last updated: 2026-03-19
 
 ---
 
-## CRITICAL NEXT STEP: Big Merge + Native Rebuild
+## TODAY'S EXECUTION PLAN (2026-03-19)
 
-All work from Session 6 is in **agent worktrees** (isolated git branches). Nothing is on main yet.
+**Goal:** Start the V1 sprint. Backend is critical path. End of April 2026 App Store target.
 
-### Merge order:
-1. Merge each agent's worktree branch into main (resolve conflicts)
-2. `expo prebuild --clean` (new native deps: HealthKit, Google Sign-In, Apple Sign-In)
-3. `npx expo run:ios --device 00008140-00044DA42E00401C`
-4. Test everything on device
+**Frontend freeze is ON** — no new UI work until backend ships. See `.claude/rules/frontend-freeze.md`.
 
-### Also do next session:
-- Perplexity Pro headed login (config ready at `.mcp.json` in EA hub)
-- Queue-Times API signup via Playwright
-- NanoBanana generation (23 verified sources ready, start at corkscrew #48)
-- Install `blader/humanizer` Claude Code skill for article pipeline
+### STEP 1: Inventory + Merge Worktrees (DO THIS FIRST)
+All code from Sessions 6-8 lives in **agent worktrees** (isolated git branches). Nothing is merged to main yet.
+
+1. Run `git branch --all` and `git worktree list` to inventory all worktree branches
+2. Identify which branches have changes (some may be empty/abandoned)
+3. Plan merge order to minimize conflicts (backend branches first, then UI)
+4. Merge each branch into main, resolving conflicts
+5. After all merges: `git log --oneline -20` to verify clean history
+
+### STEP 2: Native Rebuild
+After merge, new native dependencies need a clean build:
+```bash
+cd /Users/Lanting-Digital-LLC/Documents/ExecutiveAssistant/projects/trackr
+npx expo prebuild --clean
+```
+**CRITICAL:** After prebuild, must re-apply Firebase iOS Podfile fixes. See `.claude/rules/firebase-ios-build.md`:
+- `use_frameworks! :linkage => :static` via Podfile.properties.json
+- 15 Firebase pods with `:modular_headers => true`
+- Post-install hook: RNFB module map removal
+- `CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES`
+
+Then: `cd ios && pod install`
+
+### STEP 3: Deploy Cloud Functions
+```bash
+cd /Users/Lanting-Digital-LLC/Documents/ExecutiveAssistant/projects/trackr
+firebase deploy --only functions --project trackr-coaster-app
+```
+29 Cloud Functions ready to deploy. All TypeScript clean. Client wrappers in `src/services/firebase/functions.ts`.
+
+### STEP 4: Firebase Auth Setup (requires Caleb for console access)
+- Enable Google + Apple sign-in providers in Firebase Console > Auth
+- Get `webClientId` from Firebase Console for Google Sign-In
+- Enable "Sign in with Apple" in Apple Developer portal
+- Caleb may need to do these manually or via Playwright
+
+### STEP 5: Build + Test on Device
+```bash
+REACT_NATIVE_PACKAGER_HOSTNAME=192.168.2.1 npx expo run:ios --device "00008140-00044DA42E00401C"
+```
+Note: Caleb is on public WiFi with USB. Use `192.168.2.1` for Metro hostname. macOS Internet Sharing must be on.
+
+Test: sign up, log a coaster, verify data persists in Firestore, sign out, sign back in, data still there.
+
+### AFTER BACKEND SHIPS — Parallel Tracks
+Once Steps 1-5 are done, these tracks can run as parallel agent teams in worktrees:
+
+| Track | What | Agent Type |
+|-------|------|-----------|
+| Track 2 | Frontend UI (fog approval, onboarding, card game UI, card back, headers, articles) | UI agent |
+| Track 3 | NanoBanana card art pipeline (resume batches, RCDB verification) | NanoBanana agent |
+| Track 4 | Merch + Payments (QPMN, Stripe, Pro subscription) | Backend agent |
+| Track 5 | Admin web app + ridetrackr.app domain + landing page | Web agent |
+| Track 6 | Apple Wallet certs + Queue-Times API | Backend agent |
 
 ---
 
-## What Was Built This Session (Session 6)
+## V1 SPRINT PLAN — Full Track Details
 
-### Backend (7 tasks, ALL DONE)
-**Agent: `backend` — worktree**
+### TRACK 1: Backend (CRITICAL PATH)
+- [ ] **Big merge** — all worktrees from Sessions 6-8 into main (resolve conflicts)
+- [ ] **Native rebuild** — `expo prebuild --clean` (new native deps: HealthKit, Google Sign-In, Apple Sign-In)
+- [ ] **Deploy 29 Cloud Functions** — `firebase deploy --only functions --project trackr-coaster-app`
+- [ ] **Firebase Auth setup** — enable Google + Apple providers in Firebase Console, get webClientId
+- [ ] **Enable "Sign in with Apple"** in Apple Developer portal
+- [ ] **Firestore sync** — coasters, ratings, logs write to cloud + persist across devices
+- [ ] **Test auth flow end-to-end** — sign up, sign in, data persists on new device
 
-1. **Google Sign-In** — `signInWithGoogle()` in auth.ts. Package: `@react-native-google-signin/google-signin`
-   - TODO: Set real webClientId from Firebase Console
-   - TODO: Enable Google Sign-In in Firebase Console > Auth
-2. **Apple Sign-In** — `signInWithApple()` in auth.ts. Package: `@invertase/react-native-apple-authentication`
-   - TODO: Enable "Sign in with Apple" in Apple Developer portal
-   - TODO: Enable Apple Sign-In in Firebase Console > Auth
-3. **Firestore user docs + username validation** — createUserDoc, isUsernameAvailable, validateUsername CF (atomic Firestore transaction)
-4. **Firestore sync layer** — syncController.ts orchestrator + 4 sync modules:
-   - rideLogSync (logs + meta), ratingsSync, criteriaSync, userProfileSync
-   - All with optimistic updates, onSnapshot listeners, offline support
-   - Activate with `initSync()` in App.tsx
-5. **Community backend** — friendsSync (batched writes), feedSync (4 post types, likes, comments), rankingsSync (read-only), userSearch (prefix queries)
-   - Community stores now start EMPTY (no mock data). Firestore populates them.
-   - Rankings need `computeRankings` scheduled CF (not yet built)
-6. **Apple Wallet PKPass** — Cloud Function using passkit-generator. 5 visual styles, 40+ park geo-fence coords, barcode format mapping
-   - TODO: Register Pass Type ID, upload certs to Cloud Storage, replace placeholder images
+### TRACK 2: Frontend UI Completion
+- [ ] **Fog gradient** — test 0.97 opacity version, approve or iterate. Then verify on Profile, Settings, OrderHistory screens.
+- [ ] **Onboarding flow** — finish remaining screens (auth screen is final page, skip button disappears at auth)
+- [ ] **Card game UI** — new TCG format: TrackR logo on card back, art+stats on front. Voice narration game mode.
+- [ ] **Card back design** — graphic design for the universal TrackR card back
+- [ ] **Screen headers with fog** — ensure all screens have proper FogHeader/SheetFog
+- [ ] **Articles visible** — articles need to render from Firestore so Caleb can read them + populate via admin
+- [ ] **EmptyState** — already built, applied to most screens. Verify coverage.
 
-### Merch Store (5 tasks, ALL DONE + 1 in progress)
-**Agent: `merch-store` — worktree**
+### TRACK 3: NanoBanana Card Art Pipeline
+- [ ] **Resume NanoBanana batches** — need card art for all park packs in the card shop
+- [ ] **Source image verification** — check each against RCDB before submitting to Gemini
+- [ ] **Batch review** — approve/reject generated art, re-run rejects
+- [ ] **77px card art crop test** — test with QPMN sample batch for print quality
 
-1. **7 screens built:** MerchStore, CardDetail, Cart, PackBuilder, Checkout, Confirmation, OrderHistory
-2. **Mock data** from real card art + CoasterIndex
-3. **Zustand cart store** (cartStore.ts)
-4. **Wired into navigation** — "Card Shop" entry in LogbookScreen Collection tab, 7 screens registered in RootNavigator
-5. **TrackR Pro PWYW paywall** — ProPaywallSheet (bottom sheet, 3 price cards, billing toggle, feature list), ProBadge, ProLabel, proStore (Zustand), registered as transparentModal
-6. **Auth/Login screen** — OnboardingAuth.tsx + OnboardingAuthEmbed.tsx (card art collage bg, Apple/Google/Email buttons, staggered entrance). Also integrated into LandingDesignSampler (Screen 9, skip wiring, pulse color)
-7. **Article feed display** (#21) — IN PROGRESS at shutdown, check worktree for partial work
+### TRACK 4: Merch Store + Payments
+- [ ] **QPMN API signup + pricing** — need real account to test orders
+- [ ] **Bulk order model** — 2-week collection windows, batch print (Josh meeting decision)
+- [ ] **Instant ship option** — premium price, API direct to QPMN
+- [ ] **Stripe/payment integration** — for in-app purchases
+- [ ] **PWYW Pro subscription** — stays in V1, quiet background revenue
 
-### Onboarding (10 tasks, ALL DONE)
-**Agents: `onboarding-polish`, `onboarding-rate`, `onboarding-screens` — separate worktrees**
+### TRACK 5: Admin + Web
+- [ ] **Admin web app** — manage articles, review card art, manage pro users, view reports
+- [ ] **ridetrackr.app domain** — purchase and set up
+- [ ] **Landing page** — advertise app, provide download link, maybe card previews
+- [ ] **Article management** — admin creates/publishes articles, app reads from Firestore
 
-1. **Screen 3 (Log)** — Verified clean, no changes needed
-2. **Screen 4 (Wallet)** — PassDetail swipe mechanics rework
-3. **Screen 5 (Rate)** — Notch clipping fixed (44px cover), performance optimized (React.memo, conditional mounting, memoized grid cards, hardware texture rasterization)
-4. **Screen 6 (Parks)** — Complete rewrite (~750 lines). Removed scroll animation, tightened layout, rebuilt morph animation, added modal demos, wait time carousel auto-scroll
-5. **Screen 7 (Rankings)** — Eliminated ALL polling re-renders (280/sec -> 0 via useAnimatedProps). Two rows of pills (6 templates), notch spacing fixed (paddingTop 60->74), title upgraded
-6. **Screen 8 (Community)** — Tab indicator position fixed (moved inside tabRow), fog gradient added, heart tap ring animation, nav z-index fixed
-7. **Screen 9 (Auth)** — Built by merch-store agent. Card art collage, "Join TrackR", Apple/Google/Email buttons, integrated into sampler
-8. **Chevron bounce** — Fixed snap-back to smooth continuous bounce (withRepeat + withSequence)
-9. **Card shadows (Screen 1)** — Separated shadow/clip layers on tiers 3-4, removed invisible shadows on tiers 0-2 (net perf improvement)
-10. **Auth screen verification** — onboarding-polish confirmed integration
+### TRACK 6: Apple Wallet + External APIs
+- [ ] **Pass Type ID certificate** — Apple Developer portal, upload to Cloud Storage
+- [ ] **Queue-Times API signup** — proxyWaitTimes CF already built, needs parkId mapping
+- [ ] **Apple Wallet passes** — PKPass CF built (5 styles, 40+ geo-fences), needs real certs
 
-### New Features (ALL DONE)
-1. **HealthKit integration** (#22) — `@kingstinct/react-native-healthkit`, permission flow, DailyActivityCard, healthStore (Zustand), AppState auto-refresh. Needs native rebuild for HealthKit entitlement.
-2. **Wait times UI** (#23) — WaitTimesHeader (pulsing LIVE badge), WaitTimesCard (color-coded, historical avg comparison), WaitTimesFavorites (horizontal top 3), WaitTimesList, WaitTimesSection. Integrated into ParksScreen. Mock data for Cedar Point.
-3. **Article feed** (#21) — ArticleCard (golden ratio, spring press), ArticleFeedSection (horizontal snap scroll), ArticleDetailScreen (parallax banner, markdown renderer). 4 mock articles. Wired into RootNavigator. Ready to drop into HomeScreen.
+### Open Blockers (not assigned to a track)
+- [ ] Coaster-themed PWYW tier names
+- [ ] Admin notification for user reports — store admin UIDs in `_admin/config` Firestore doc
 
-### Card Art Pipeline
-**Agent: `nanobanana` — no worktree (Playwright died)**
+---
 
-- Full audit of ALL 64 remaining sources (#48-#111)
-- **23 confirmed good**, 16 borderline, 7 uncertain, **18 wrong sources documented**
-- QUEUE.md updated with categorized sections
-- First batch of 10 strongest sources identified and ready
-- **NO cards generated** (Playwright MCP killed mid-session)
-- Next session: open Gemini, submit 23 verified sources immediately
+## PREVIOUS SESSION: Fog Gradient Iteration — Awaiting Caleb Feedback
 
-### Infrastructure
-- **Playwright isolation configured** — TrackR `.mcp.json` has `nanobanana` and `article` servers with separate `--user-data-dir`
-- **Perplexity Pro web config** — EA hub `.mcp.json` has `perplexity-web` (headed, persistent cookies at `mcp-data/perplexity/`)
-- **First article drafted** — `content/articles/six-flags-cedar-fair-merger-season-passes.md` (~1,100 words)
-- **Humanizer identified** — `blader/humanizer` Claude Code skill (not yet installed)
+Caleb is testing the latest FogHeader gradient (0.97 peak opacity). Iterated ~12 times with live feedback. Latest version ready for review.
+
+- FogHeader.tsx: 8-stop gradient, 0.97 peak opacity
+- SheetFog.tsx: 7-stop gradient, 0.97 peak opacity
+- ArticlesList fogExtension: 80 -> 150px
+
+**Other completed work (Session 7):**
+- EmptyState component + applied to LogbookScreen (4 tabs), CommunityFeedTab, CommunityFriendsTab, CommunityRankingsTab, SavedArticlesScreen
+- Articles FAB fixes, ArticlesList header typography, CartScreen/CheckoutScreen button bars
+- CustomPackBuilderScreen header, RateRidesScreen subtitle z-index, MerchCardDetailSheet native Switch
 
 ---
 
@@ -98,7 +138,7 @@ All work from Session 6 is in **agent worktrees** (isolated git branches). Nothi
 - Auth required. Auth screen is final onboarding page. Skip button navigates to auth, disappears when you reach it.
 - Rating criteria gating: 7 total, free users start with 2, unlock over time, 6th triggers Pro prompt
 - Activity screen: SCRAPPED
-- HealthKit step counting: v1 scope (built this session)
+- HealthKit step counting: v1 scope
 - heroImageSource on ticket objects = source of truth for pass detail hero images
 
 ### Merch Store
@@ -109,33 +149,21 @@ All work from Session 6 is in **agent worktrees** (isolated git branches). Nothi
 
 ### TrackR Pro
 - PWYW $1-$12 slider. Main: $1.99/$2.99/$3.99. Annual: x10.
-- Bottom sheet nudge (not blocking). All tiers = same features. BUILT THIS SESSION.
+- Bottom sheet nudge (not blocking). All tiers = same features.
+- CONFIRMED in V1 (decided 2026-03-18). Cards are primary revenue, Pro is quiet background.
+
+### Card Game (pivoted 2026-03-18)
+- TRADING CARD GAME (Top Trumps-style + One Night Werewolf voice narration)
+- Card back: TrackR logo only. Front: art + stats.
+- Physical cards on Amazon/Etsy + in-app purchase. Need app to play.
+- Kickstarter before/alongside app launch. $100+ tier = 10-pack pick.
+- QPMN bulk order: 2-week windows, batch print, pocket margin. Holographic options.
 
 ### Apple Wallet
 - PKPass CF BUILT (5 styles, 40+ park geo-fences). Needs real certs.
 
-### Stripe (planned, not started)
-- Merch: Stripe PaymentSheet for card checkout
-- Pro: Stripe + RevenueCat (or direct StoreKit) for IAP
-- Backend: Stripe webhooks CF for order fulfillment
-
----
-
-## Open Blockers
-
-- [ ] **Big merge** — all worktrees into main (NEXT SESSION FIRST THING)
-- [ ] **Native rebuild** — new deps need `expo prebuild --clean`
-- [ ] QPMN API signup + pricing
-- [ ] Queue-Times API signup (do via Playwright next session)
-- [ ] Pass Type ID certificate (Apple Developer portal)
-- [ ] Google Sign-In webClientId from Firebase Console
-- [ ] Enable Google + Apple providers in Firebase Console > Auth
-- [ ] Enable "Sign in with Apple" in Apple Developer portal
-- [ ] Card back graphic design
-- [ ] 77px card art crop test with QPMN sample batch
-- [ ] Coaster-themed PWYW tier names
-- [ ] Deploy Cloud Functions: `cd functions && npm run deploy`
-- [ ] Install `blader/humanizer` skill
+### Domain
+- ridetrackr.app CONFIRMED (Caleb + Josh agreed 2026-03-18)
 
 ---
 
@@ -149,7 +177,7 @@ All work from Session 6 is in **agent worktrees** (isolated git branches). Nothi
 ## Strategy (locked 2026-03-11)
 - Identity: "The premium home for your coaster life"
 - Target: Thoosies first. GP in v2.
-- App Store target: June 22, 2026
+- App Store target: END OF APRIL 2026 (moved up from June 22 per Josh meeting 2026-03-18)
 - Full strategy: `context/projects/trackr-strategy.md`
 - V1 master plan: `docs/V1-IMPLEMENTATION-PLAN.md`
 
@@ -157,4 +185,6 @@ All work from Session 6 is in **agent worktrees** (isolated git branches). Nothi
 
 ## Session Archive
 - Sessions 1-5: all 2026-03-16 (pre-team sprint, individual sessions)
-- **Session 6: 2026-03-16 (Team Sprint)** — 6 agents, 23 tasks, **22 completed**, 1 blocked (NanoBanana — Playwright down). Backend: auth + sync + community + Apple Wallet CF. Merch: 7 screens + nav + Pro paywall. Onboarding: 9 screens polished + auth screen. New features: HealthKit, wait times UI, article feed, first article drafted. Infra: Playwright isolation, Perplexity Pro config.
+- **Session 6: 2026-03-16 (Team Sprint)** — 6 agents, 23 tasks, 22 completed, 1 blocked
+- **Session 7: 2026-03-18 (UI Polish)** — Fog gradient iteration (12+ rounds), EmptyState, FAB fixes, screen-specific fog fixes, typography. Fog awaiting final approval.
+- **Session 8: 2026-03-18 (Backend Team Sprint)** — 29 Cloud Functions built across 5 phases. All TypeScript clean, all with client wrappers.

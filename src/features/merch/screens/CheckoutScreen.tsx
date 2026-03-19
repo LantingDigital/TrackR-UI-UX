@@ -31,6 +31,7 @@ import { shadows } from '../../../theme/shadows';
 import { typography } from '../../../theme/typography';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress } from '../../../hooks/useSpringPress';
+import { FogHeader } from '../../../components/FogHeader';
 import { MERCH_PRICING } from '../../../data/mockMerchData';
 import { useCartStore, type ShippingAddress } from '../store/cartStore';
 
@@ -187,10 +188,16 @@ export const CheckoutScreen: React.FC = () => {
     });
   }, [address, setShippingAddress, navigation]);
 
+  const HEADER_ROW_HEIGHT = 60;
+  const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT;
+
   return (
-    <View style={[styles.screen, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <View style={styles.header}>
+    <View style={styles.screen}>
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — absolute, above fog */}
+      <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
         <Pressable onPress={() => { haptics.tap(); navigation.goBack(); }} style={styles.backButton}>
           <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
         </Pressable>
@@ -204,7 +211,7 @@ export const CheckoutScreen: React.FC = () => {
       >
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base }]}
           keyboardShouldPersistTaps="handled"
         >
           {/* Shipping Address */}
@@ -377,6 +384,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -457,9 +467,9 @@ const styles = StyleSheet.create({
   bottomBar: {
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.base,
-    backgroundColor: colors.background.card,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.border.subtle,
+    backgroundColor: colors.background.page,
+    ...shadows.small,
+    shadowOffset: { width: 0, height: -4 },
   },
   placeOrderButton: {
     flexDirection: 'row',

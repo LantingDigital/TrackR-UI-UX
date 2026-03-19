@@ -222,6 +222,8 @@ export const ProfileScreen = () => {
   }, []);
 
   const scrollRef = useRef<ScrollView>(null);
+  const scrollYRef = useRef(0);
+  const viewportHeightRef = useRef(0);
 
   const handleTabChange = useCallback(
     (tab: TabKey) => {
@@ -229,11 +231,18 @@ export const ProfileScreen = () => {
       haptics.select();
       setVisualTab(tab);
       setSelectedTab(tab);
-      // Smoothly scroll up so shorter tab content isn't past the viewport
-      scrollRef.current?.scrollTo({ y: 0, animated: true });
+      // Don't scroll immediately — onContentSizeChange handles it
     },
     [visualTab],
   );
+
+  // Only scroll up when new tab content is shorter than current scroll position
+  const handleContentSizeChange = useCallback((_w: number, h: number) => {
+    const maxScroll = Math.max(0, h - viewportHeightRef.current);
+    if (scrollYRef.current > maxScroll) {
+      scrollRef.current?.scrollTo({ y: maxScroll, animated: true });
+    }
+  }, []);
 
   // Staggered entrance animations
   const heroAnim = useStaggerEntrance(0);
@@ -373,9 +382,20 @@ export const ProfileScreen = () => {
     </>
   );
 
+  const getMedalStyle = (rank: number) => {
+    switch (rank) {
+      case 1: return { bg: '#FFF8E1', text: '#D4A017' }; // Gold
+      case 2: return { bg: '#F0F0F0', text: '#888888' }; // Silver
+      case 3: return { bg: '#FBE9E7', text: '#BF6D3A' }; // Bronze
+      default: return null;
+    }
+  };
+
   const renderRankings = () => (
     <>
-      {MOCK_TOP_COASTERS.map((coaster, index) => (
+      {MOCK_TOP_COASTERS.map((coaster, index) => {
+        const medal = getMedalStyle(index + 1);
+        return (
         <Pressable
           key={coaster.name}
           onPress={() => handleCoasterPress(coaster.name)}
@@ -386,8 +406,8 @@ export const ProfileScreen = () => {
               index < MOCK_TOP_COASTERS.length - 1 && styles.rowDivider,
             ]}
           >
-            <View style={styles.rankBadge}>
-              <Text style={styles.rankText}>{index + 1}</Text>
+            <View style={[styles.rankBadge, medal && { backgroundColor: medal.bg }]}>
+              <Text style={[styles.rankText, medal && { color: medal.text }]}>{index + 1}</Text>
             </View>
             <View style={styles.rankInfo}>
               <Text style={styles.rankName} numberOfLines={1}>
@@ -403,7 +423,8 @@ export const ProfileScreen = () => {
             </View>
           </View>
         </Pressable>
-      ))}
+        );
+      })}
     </>
   );
 
@@ -468,6 +489,10 @@ export const ProfileScreen = () => {
           },
         ]}
         showsVerticalScrollIndicator={false}
+        onScroll={(e) => { scrollYRef.current = e.nativeEvent.contentOffset.y; }}
+        scrollEventThrottle={16}
+        onLayout={(e) => { viewportHeightRef.current = e.nativeEvent.layout.height; }}
+        onContentSizeChange={handleContentSizeChange}
       >
         {/* ── Hero: Centered avatar + name + username ── */}
         <Animated.View style={[styles.heroSection, heroAnim]}>
@@ -599,7 +624,7 @@ export const ProfileScreen = () => {
       <View style={[styles.topBar, { top: insets.top }]}>
         <View style={styles.topBarSpacer} />
         <View style={styles.topBarCenter}>
-          <Text style={styles.screenTitle}>PROFILE</Text>
+          <Text style={styles.screenTitle}>@{username}</Text>
         </View>
         <Pressable
           {...settingsPress.pressHandlers}
@@ -660,7 +685,7 @@ const styles = StyleSheet.create({
   screenTitle: {
     fontSize: typography.sizes.large,
     fontWeight: typography.weights.bold,
-    letterSpacing: 4,
+    letterSpacing: 0.5,
     color: colors.text.primary,
   },
   settingsButton: {

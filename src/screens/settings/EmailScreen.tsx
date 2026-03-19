@@ -30,6 +30,9 @@ import { shadows } from '../../theme/shadows';
 import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
+import { FogHeader } from '../../components/FogHeader';
+
+const HEADER_HEIGHT = 52;
 
 // ============================================
 // Stagger
@@ -65,27 +68,11 @@ export function EmailScreen() {
   const statusAnim = useStagger(2);
   const changeAnim = useStagger(3);
 
-  return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <Animated.View style={[styles.header, headerAnim]}>
-        <Pressable
-          {...backPress.pressHandlers}
-          onPress={() => {
-            haptics.tap();
-            navigation.goBack();
-          }}
-          hitSlop={12}
-        >
-          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
-            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
-          </Animated.View>
-        </Pressable>
-        <Text style={styles.headerTitle}>Email</Text>
-        <View style={styles.headerSpacer} />
-      </Animated.View>
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
-      <View style={[styles.content, { paddingBottom: insets.bottom + spacing.xxxl }]}>
+  return (
+    <View style={styles.container}>
+      <View style={[styles.content, { paddingTop: headerTotalHeight + spacing.xxl, paddingBottom: insets.bottom + spacing.xxxl }]}>
         {/* Current Email Card */}
         <Animated.View style={emailAnim}>
           <View style={styles.emailCard}>
@@ -135,6 +122,27 @@ export function EmailScreen() {
           </Text>
         </Animated.View>
       </View>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>
+        <Pressable
+          {...backPress.pressHandlers}
+          onPress={() => {
+            haptics.tap();
+            navigation.goBack();
+          }}
+          hitSlop={12}
+        >
+          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
+            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
+          </Animated.View>
+        </Pressable>
+        <Text style={styles.headerTitle}>Email</Text>
+        <View style={styles.headerSpacer} />
+      </Animated.View>
     </View>
   );
 }
@@ -149,10 +157,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    height: 52,
+    height: HEADER_HEIGHT,
   },
   backButton: {
     width: 36,
@@ -174,7 +186,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing.xxl,
   },
 
   // Email card

@@ -63,6 +63,8 @@ import { RatingSheet } from '../components/RatingSheet';
 import { TimelineActionSheet, type TimelineActionTarget } from '../components/TimelineActionSheet';
 import { LogbookLogSheet } from '../components/LogbookLogSheet';
 import { LogConfirmSheet } from '../components/LogConfirmSheet';
+import { FogHeader } from '../components/FogHeader';
+import { EmptyState } from '../components/EmptyState';
 import type { RideLog, CoasterRating } from '../types/rideLog';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -328,18 +330,19 @@ const TimelineView: React.FC<{
   ratings: Record<string, CoasterRating>;
   onEntryPress: (log: RideLog) => void;
   onEntryLongPress?: (log: RideLog) => void;
-}> = ({ logs, ratings, onEntryPress, onEntryLongPress }) => {
+  onLogRide?: () => void;
+}> = ({ logs, ratings, onEntryPress, onEntryLongPress, onLogRide }) => {
   const groups = useMemo(() => groupLogsByDate(logs), [logs]);
 
   if (logs.length === 0) {
     return (
-      <View style={styles.emptyState}>
-        <Ionicons name="book-outline" size={44} color={colors.text.meta} />
-        <Text style={styles.emptyTitle}>No rides logged yet</Text>
-        <Text style={styles.emptySubtitle}>
-          Use the Log button on the Home tab to capture your rides
-        </Text>
-      </View>
+      <EmptyState
+        icon="book-outline"
+        title="No rides logged yet"
+        subtitle="Start tracking your coaster adventures and build your ride history"
+        ctaLabel="Log Your First Ride"
+        onCtaPress={onLogRide}
+      />
     );
   }
 
@@ -390,16 +393,17 @@ const CollectionView: React.FC<{
   onCardPress?: (item: CollectionItem) => void;
   onCardLongPress?: (item: CollectionItem) => void;
   pendingFlipId?: string | null;
-}> = ({ items, onCardPress, onCardLongPress, pendingFlipId }) => {
+  onLogRide?: () => void;
+}> = ({ items, onCardPress, onCardLongPress, pendingFlipId, onLogRide }) => {
   if (items.length === 0) {
     return (
-      <View style={styles.emptyState}>
-        <Ionicons name="albums-outline" size={44} color={colors.text.meta} />
-        <Text style={styles.emptyTitle}>No collection yet</Text>
-        <Text style={styles.emptySubtitle}>
-          Log rides to start building your collection
-        </Text>
-      </View>
+      <EmptyState
+        icon="albums-outline"
+        title="Your collection is empty"
+        subtitle="Log rides to unlock collectible cards for every coaster you experience"
+        ctaLabel="Log Your First Ride"
+        onCtaPress={onLogRide}
+      />
     );
   }
 
@@ -484,7 +488,8 @@ const StatsView: React.FC<{
   parksVisited: number;
   topRating: number | null;
   mostRidden: { name: string; count: number }[];
-}> = ({ creditCount, totalRides, parksVisited, topRating, mostRidden }) => (
+  onLogRide?: () => void;
+}> = ({ creditCount, totalRides, parksVisited, topRating, mostRidden, onLogRide }) => (
   <View>
     {/* Stats grid */}
     <View style={styles.statsGrid}>
@@ -522,13 +527,13 @@ const StatsView: React.FC<{
     )}
 
     {creditCount === 0 && (
-      <View style={styles.emptyState}>
-        <Ionicons name="analytics-outline" size={44} color={colors.text.meta} />
-        <Text style={styles.emptyTitle}>No stats yet</Text>
-        <Text style={styles.emptySubtitle}>
-          Start logging rides to see your statistics
-        </Text>
-      </View>
+      <EmptyState
+        icon="analytics-outline"
+        title="No stats yet"
+        subtitle="Log rides and rate coasters to build your personal statistics"
+        ctaLabel="Log Your First Ride"
+        onCtaPress={onLogRide}
+      />
     )}
   </View>
 );
@@ -547,16 +552,19 @@ interface PendingItem {
 const PendingView: React.FC<{
   items: PendingItem[];
   onCardTap: (item: PendingItem) => void;
-}> = ({ items, onCardTap }) => {
+  onLogRide?: () => void;
+}> = ({ items, onCardTap, onLogRide }) => {
   if (items.length === 0) {
     return (
-      <View style={styles.emptyState}>
-        <Ionicons name="checkmark-circle-outline" size={44} color="#4CAF50" />
-        <Text style={styles.emptyTitle}>All caught up!</Text>
-        <Text style={styles.emptySubtitle}>
-          Every ride has been rated
-        </Text>
-      </View>
+      <EmptyState
+        icon="checkmark-circle-outline"
+        iconColor="#4CAF50"
+        title="All caught up!"
+        subtitle="Every ride has been rated. Log more rides to unlock new cards to rate."
+        ctaLabel="Log Another Ride"
+        ctaIcon="flash-outline"
+        onCtaPress={onLogRide}
+      />
     );
   }
 
@@ -639,6 +647,9 @@ export const LogbookScreen = () => {
   const [logConfirmCoaster, setLogConfirmCoaster] = useState<{
     id: string; name: string; parkName: string;
   } | null>(null);
+
+  // Hide FABs when any sheet/modal is open
+  const anySheetOpen = ratingVisible || actionSheetVisible || timelineActionVisible || logSheetVisible || !!logConfirmCoaster;
 
   // Subscribe to store for reactivity
   const { logs, ratings, creditCount, totalRideCount } = useRideLogStore();
@@ -912,11 +923,11 @@ export const LogbookScreen = () => {
   }, []);
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Animated.ScrollView
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: insets.bottom + 49 + spacing.xxxl },
+          { paddingTop: insets.top + spacing.lg, paddingBottom: insets.bottom + 49 + spacing.xxxl },
         ]}
         showsVerticalScrollIndicator={false}
       >
@@ -950,34 +961,17 @@ export const LogbookScreen = () => {
             ratings={ratingsMap}
             onEntryPress={handleEntryPress}
             onEntryLongPress={handleEntryLongPress}
+            onLogRide={() => setLogSheetVisible(true)}
           />
         )}
 
         {activeView === 'Collection' && (
-          <>
-            {/* Card Shop Entry Point */}
-            <Pressable
-              onPress={() => {
-                haptics.select();
-                navigation.navigate('MerchStore');
-              }}
-              style={styles.shopBanner}
-            >
-              <View style={styles.shopBannerIcon}>
-                <Ionicons name="bag-outline" size={20} color={colors.accent.primary} />
-              </View>
-              <View style={styles.shopBannerText}>
-                <Text style={styles.shopBannerTitle}>Card Shop</Text>
-                <Text style={styles.shopBannerSubtitle}>Order physical NanoBanana cards</Text>
-              </View>
-              <Ionicons name="chevron-forward" size={18} color={colors.text.meta} />
-            </Pressable>
-            <CollectionView
-              items={collectionItems}
-              onCardLongPress={handleCardLongPress}
-              pendingFlipId={pendingFlipId}
-            />
-          </>
+          <CollectionView
+            items={collectionItems}
+            onCardLongPress={handleCardLongPress}
+            pendingFlipId={pendingFlipId}
+            onLogRide={() => setLogSheetVisible(true)}
+          />
         )}
 
         {activeView === 'Stats' && (
@@ -987,6 +981,7 @@ export const LogbookScreen = () => {
             parksVisited={parksVisited}
             topRating={topRating}
             mostRidden={mostRidden}
+            onLogRide={() => setLogSheetVisible(true)}
           />
         )}
 
@@ -994,9 +989,13 @@ export const LogbookScreen = () => {
           <PendingView
             items={toRateItems}
             onCardTap={handlePendingCardTap}
+            onLogRide={() => setLogSheetVisible(true)}
           />
         )}
       </Animated.ScrollView>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={insets.top} />
 
       {/* Card Action Sheet */}
       <CardActionSheet
@@ -1047,8 +1046,26 @@ export const LogbookScreen = () => {
         onDismiss={handleLogConfirmDismiss}
       />
 
-      {/* Log Ride FAB — always rendered, sheets cover it at higher z-index */}
-      <Pressable
+      {/* Card Shop FAB — bottom left, opposite the log FAB */}
+      {activeView === 'Collection' && !anySheetOpen && (
+        <Pressable
+          onPress={() => {
+            haptics.select();
+            navigation.navigate('MerchStore');
+          }}
+          style={[
+            styles.shopFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
+          ]}
+        >
+          <View style={styles.shopFabInner}>
+            <Ionicons name="bag-outline" size={24} color={colors.accent.primary} />
+          </View>
+        </Pressable>
+      )}
+
+      {/* Log Ride FAB — hidden when any sheet is open */}
+      {!anySheetOpen && <Pressable
         {...fabPressHandlers}
         onPress={() => {
           haptics.tap();
@@ -1062,7 +1079,7 @@ export const LogbookScreen = () => {
         <Animated.View style={[styles.fabInner, fabAnimatedStyle]}>
           <Ionicons name="add" size={28} color="#FFFFFF" />
         </Animated.View>
-      </Pressable>
+      </Pressable>}
     </View>
   );
 };
@@ -1372,7 +1389,25 @@ const styles = StyleSheet.create({
     color: colors.text.meta,
   },
 
-  // ── FAB ──
+  // ── FABs ──
+  shopFab: {
+    position: 'absolute',
+    left: spacing.lg,
+    zIndex: 20,
+  },
+  shopFabInner: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...shadows.card,
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 8,
+  },
   fab: {
     position: 'absolute',
     right: spacing.lg,

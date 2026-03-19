@@ -46,6 +46,10 @@ import { haptics } from '../services/haptics';
 import { useSavedArticlesStore, toggleSave } from '../stores/savedArticlesStore';
 import { NewsItem } from '../data/mockNews';
 import { ArticleSheet } from '../components/ArticleSheet';
+import { FogHeader } from '../components/FogHeader';
+import { EmptyState } from '../components/EmptyState';
+
+const HEADER_HEIGHT = 52;
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const SHEET_DISMISS_OFFSET = 400;
@@ -812,10 +816,41 @@ export const SavedArticlesScreen = () => {
 
   const keyExtractor = useCallback((item: NewsItem) => item.id, []);
 
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
+
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <View style={styles.header}>
+    <View style={styles.container}>
+      {/* Content */}
+      {savedArticles.length === 0 ? (
+        <Animated.View style={[styles.emptyState, { paddingTop: headerTotalHeight }, emptyAnimStyle]}>
+          <EmptyState
+            icon="bookmark-outline"
+            title="No saved articles yet"
+            subtitle="Tap the bookmark icon on any article to save it here for easy access later"
+            ctaLabel="Browse Articles"
+            ctaIcon="newspaper-outline"
+            onCtaPress={handleBack}
+          />
+        </Animated.View>
+      ) : (
+        <FlatList
+          data={savedArticles}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          contentContainerStyle={[
+            styles.listContent,
+            { paddingTop: headerTotalHeight + spacing.base, paddingBottom: insets.bottom + spacing.xxxl },
+          ]}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
+        />
+      )}
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <View style={[styles.header, { top: insets.top }]}>
         <Pressable
           {...backPress.pressHandlers}
           onPress={handleBack}
@@ -827,31 +862,6 @@ export const SavedArticlesScreen = () => {
         <Text style={styles.headerTitle}>Saved Articles</Text>
         <View style={styles.headerSpacer} />
       </View>
-
-      {/* Content */}
-      {savedArticles.length === 0 ? (
-        <Animated.View style={[styles.emptyState, emptyAnimStyle]}>
-          <View style={styles.emptyGroup}>
-            <Ionicons name="bookmark-outline" size={48} color={colors.text.meta} />
-            <Text style={styles.emptyTitle}>No saved articles yet</Text>
-            <Text style={styles.emptySubtitle}>
-              Tap the bookmark icon on any article to save it here
-            </Text>
-          </View>
-        </Animated.View>
-      ) : (
-        <FlatList
-          data={savedArticles}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          contentContainerStyle={[
-            styles.listContent,
-            { paddingBottom: insets.bottom + spacing.xxxl },
-          ]}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
-        />
-      )}
 
       {/* Article Sheet */}
       <ArticleSheet
@@ -898,10 +908,14 @@ const styles = StyleSheet.create({
 
   // Header
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.base,
+    height: HEADER_HEIGHT,
   },
   backButton: {
     width: 36,
@@ -926,7 +940,6 @@ const styles = StyleSheet.create({
   // List
   listContent: {
     paddingHorizontal: spacing.lg,
-    paddingTop: spacing.base,
   },
 
   // Row

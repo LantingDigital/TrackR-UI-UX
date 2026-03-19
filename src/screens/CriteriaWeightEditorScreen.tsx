@@ -48,6 +48,7 @@ import { shadows } from '../theme/shadows';
 import { SPRINGS, TIMING } from '../constants/animations';
 import { useSpringPress } from '../hooks/useSpringPress';
 import { haptics } from '../services/haptics';
+import { FogHeader } from '../components/FogHeader';
 import { RatingCriteria } from '../types/rideLog';
 import { getCriteriaConfig, updateCriteriaConfig } from '../stores/rideLogStore';
 
@@ -893,27 +894,14 @@ export function CriteriaWeightEditorScreen() {
     }
   }, [hasChanges, navigation]);
 
-  return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <Animated.View style={[styles.header, headerAnim]}>
-        <Pressable
-          {...backPress.pressHandlers}
-          onPress={() => { haptics.tap(); handleBack(); }}
-          hitSlop={12}
-        >
-          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
-            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
-          </Animated.View>
-        </Pressable>
-        <Text style={styles.headerTitle}>Rating Criteria</Text>
-        <View style={styles.headerSpacer} />
-      </Animated.View>
+  const headerTotalHeight = insets.top + 52;
 
+  return (
+    <View style={styles.container}>
       <ScrollView
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: insets.bottom + spacing.xxxl },
+          { paddingTop: headerTotalHeight + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
         ]}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
@@ -991,6 +979,24 @@ export function CriteriaWeightEditorScreen() {
           )}
         </Animated.View>
       </ScrollView>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>
+        <Pressable
+          {...backPress.pressHandlers}
+          onPress={() => { haptics.tap(); handleBack(); }}
+          hitSlop={12}
+        >
+          <Animated.View style={[styles.backButton, backPress.animatedStyle]}>
+            <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
+          </Animated.View>
+        </Pressable>
+        <Text style={styles.headerTitle}>Rating Criteria</Text>
+        <View style={styles.headerSpacer} />
+      </Animated.View>
     </View>
   );
 }
@@ -1006,6 +1012,10 @@ const styles = StyleSheet.create({
   },
 
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,

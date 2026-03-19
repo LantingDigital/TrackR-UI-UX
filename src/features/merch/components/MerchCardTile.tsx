@@ -1,12 +1,14 @@
 /**
  * MerchCardTile — Tappable card art tile for the merch store
  *
- * Shows NanoBanana art in standard TCG aspect ratio (2.5:3.5 = 5:7).
- * Spring press feedback, soft shadow, coaster name + park + price below.
+ * Card art fills the entire tile. Name + park overlaid at the bottom
+ * with a gradient scrim. Price pill in the top-right corner.
+ * Tap opens the detail view with the clean, unobstructed card.
  */
 
 import React from 'react';
 import { View, Text, Image, Pressable, StyleSheet, Dimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import Animated from 'react-native-reanimated';
 import { colors } from '../../../theme/colors';
 import { spacing } from '../../../theme/spacing';
@@ -43,7 +45,7 @@ export const MerchCardTile: React.FC<MerchCardTileProps> = ({
 }) => {
   const { pressHandlers, animatedStyle } = useSpringPress({ scale: 0.97 });
   const tileWidth = width ?? (SCREEN_WIDTH - spacing.lg * 2 - spacing.base) / 2;
-  const imageHeight = tileWidth * CARD_ASPECT;
+  const tileHeight = tileWidth * CARD_ASPECT;
 
   return (
     <Pressable
@@ -53,24 +55,33 @@ export const MerchCardTile: React.FC<MerchCardTileProps> = ({
       }}
       {...pressHandlers}
     >
-      <Animated.View style={[styles.container, { width: tileWidth }, animatedStyle]}>
-        <View style={[styles.imageWrapper, { height: imageHeight }]}>
-          <Image
-            source={artSource}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          {isNew && (
-            <View style={styles.newBadge}>
-              <Text style={styles.newBadgeText}>NEW</Text>
-            </View>
-          )}
+      <Animated.View style={[styles.container, { width: tileWidth, height: tileHeight }, animatedStyle]}>
+        <Image
+          source={artSource}
+          style={styles.image}
+          resizeMode="cover"
+        />
+
+        {/* Price pill — top right */}
+        <View style={styles.pricePill}>
+          <Text style={styles.priceText}>${price.toFixed(2)}</Text>
         </View>
-        <View style={styles.info}>
+
+        {/* NEW badge — top left */}
+        {isNew && (
+          <View style={styles.newBadge}>
+            <Text style={styles.newBadgeText}>NEW</Text>
+          </View>
+        )}
+
+        {/* Name + park overlay — bottom */}
+        <LinearGradient
+          colors={['transparent', 'rgba(0,0,0,0.65)']}
+          style={styles.gradient}
+        >
           <Text style={styles.name} numberOfLines={1}>{name}</Text>
           <Text style={styles.park} numberOfLines={1}>{parkName}</Text>
-          <Text style={styles.price}>${price.toFixed(2)}</Text>
-        </View>
+        </LinearGradient>
       </Animated.View>
     </Pressable>
   );
@@ -78,18 +89,29 @@ export const MerchCardTile: React.FC<MerchCardTileProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.background.card,
     borderRadius: radius.card,
+    overflow: 'hidden',
+    backgroundColor: colors.background.card,
     ...shadows.card,
   },
-  imageWrapper: {
-    borderTopLeftRadius: radius.card,
-    borderTopRightRadius: radius.card,
-    overflow: 'hidden',
-  },
   image: {
+    ...StyleSheet.absoluteFillObject,
     width: '100%',
     height: '100%',
+  },
+  pricePill: {
+    position: 'absolute',
+    top: spacing.md,
+    right: spacing.md,
+    backgroundColor: 'rgba(255,255,255,0.92)',
+    borderRadius: radius.pill,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
+  },
+  priceText: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.bold,
+    color: colors.text.primary,
   },
   newBadge: {
     position: 'absolute',
@@ -106,25 +128,25 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     letterSpacing: 1,
   },
-  info: {
-    padding: spacing.base,
+  gradient: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingTop: spacing.xxxl,
+    paddingBottom: spacing.base,
+    paddingHorizontal: spacing.base,
   },
   name: {
     fontSize: typography.sizes.label,
     fontWeight: typography.weights.semibold,
-    color: colors.text.primary,
+    color: '#FFFFFF',
     lineHeight: typography.sizes.label * typography.lineHeights.tight,
   },
   park: {
     fontSize: typography.sizes.meta,
     fontWeight: typography.weights.regular,
-    color: colors.text.secondary,
+    color: 'rgba(255,255,255,0.8)',
     marginTop: 2,
-  },
-  price: {
-    fontSize: typography.sizes.label,
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
-    marginTop: spacing.xs,
   },
 });

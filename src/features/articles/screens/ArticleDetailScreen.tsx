@@ -33,6 +33,7 @@ import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { typography } from '../../../theme/typography';
 import { haptics } from '../../../services/haptics';
+import { FogHeader } from '../../../components/FogHeader';
 import { useArticleStore } from '../store/articleStore';
 import { Article, ArticleSource } from '../types';
 import { formatRelativeTime } from '../data/mockArticles';
@@ -250,10 +251,13 @@ export const ArticleDetailScreen: React.FC = () => {
 
   return (
     <View style={styles.screen}>
+      {/* Fog gradient overlay — covers safe area + back button */}
+      <FogHeader headerHeight={insets.top} fogExtension={120} />
+
       {/* Parallax Banner */}
       <Animated.View style={[styles.bannerContainer, bannerStyle]}>
         <Image
-          source={{ uri: article.bannerImageUrl }}
+          source={typeof article.bannerImage === 'number' ? article.bannerImage : { uri: article.bannerImage }}
           style={styles.bannerImage}
           contentFit="cover"
           cachePolicy="memory-disk"
@@ -276,7 +280,7 @@ export const ArticleDetailScreen: React.FC = () => {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + spacing.xxxl }]}
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + spacing.xxxl * 2 }]}
       >
         {/* Spacer for banner */}
         <View style={styles.bannerSpacer} />

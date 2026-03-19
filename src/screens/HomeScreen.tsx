@@ -1,3 +1,6 @@
+// Flip to true to show dev FABs (Coastle, Onboarding, Battle, Activity, Spinner)
+const SHOW_DEV_FABS = true;
+
 import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItemInfo, Dimensions, Pressable, Keyboard, Text, TextInput, InteractionManager, Alert } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -35,6 +38,8 @@ import { Ticket } from '../types/wallet';
 import { useWallet } from '../hooks/useWallet';
 import { useTabBar } from '../contexts/TabBarContext';
 import { MOCK_NEWS, NewsItem } from '../data/mockNews';
+import { getPublishedArticles, formatRelativeTime } from '../features/articles/data/mockArticles';
+import { Article } from '../features/articles/types';
 import { FEED_LAYOUT, FeedSection, FriendActivityItem } from '../data/mockFeed';
 import { triggerVisible, onBecomeVisible, offBecomeVisible, hasBeenVisible } from '../utils/feedAnimations';
 import {
@@ -54,6 +59,7 @@ import { COASTER_DETAILS } from '../data/coasterDetails';
 import { TrendingCoasterEntry } from '../data/trendingData';
 import { RatingSheet } from '../components/RatingSheet';
 import { ArticleSheet } from '../components/ArticleSheet';
+import { ArticleFeedSection } from '../features/articles';
 import { RideActionSheet, RideActionData } from '../components/RideActionSheet';
 
 import { NewsCardActionSheet } from '../components/NewsCardActionSheet';
@@ -1381,12 +1387,16 @@ export const HomeScreen = () => {
     toggleArticleSave(id);
   }, [toggleArticleSave]);
 
-  const handleCardPress = useCallback((item: NewsItem) => {
-    if (articleSheetVisible || articleSheetCooldownRef.current) return;
+  const handleCardPress = useCallback((item: NewsItem & { _articleId?: string }) => {
     haptics.select();
-    setSelectedArticle(item);
-    setArticleSheetVisible(true);
-  }, [articleSheetVisible]);
+    if (item._articleId) {
+      navigation.navigate('ArticleDetail' as never, { articleId: item._articleId } as never);
+    } else {
+      if (articleSheetVisible || articleSheetCooldownRef.current) return;
+      setSelectedArticle(item);
+      setArticleSheetVisible(true);
+    }
+  }, [articleSheetVisible, navigation]);
 
   const handleCardLongPress = useCallback((item: NewsItem) => {
     haptics.select();
@@ -1477,16 +1487,35 @@ export const HomeScreen = () => {
   }, [handleCardPress, handleCardLongPress, handleBookmarkPress, isArticleSaved, savedArticleIds, newsActionArticle, newsActionVisible]);
 
 
-  // Track which MOCK_NEWS index each 'news' section should use
+  // Convert real articles to NewsItem format for NewsCard rendering
+  const articleNewsItems = useMemo(() => {
+    return getPublishedArticles().map((article) => ({
+      id: article.id,
+      source: article.authorName,
+      image: typeof article.bannerImage === 'string' ? article.bannerImage : '',
+      title: article.title,
+      subtitle: article.subtitle,
+      timestamp: formatRelativeTime(article.publishedAt),
+      isUnread: true,
+      isSaved: false,
+      readTimeMinutes: article.readTimeMinutes,
+      author: article.authorName,
+      content: article.body,
+      _articleId: article.id,
+      _bannerImage: typeof article.bannerImage === 'number' ? article.bannerImage : undefined,
+    }));
+  }, []);
+
+  // Track which article index each 'news' section should use
   const newsIndexCounter = useRef(0);
 
-  // Build the heterogeneous feed data by resolving 'news' sections to actual NewsItem references
+  // Build the heterogeneous feed data by resolving 'news' sections to actual articles
   // Re-computes when news cards are removed (thumbs-down) to collapse the gap
   const feedData = useMemo(() => {
     newsIndexCounter.current = 0;
     return FEED_LAYOUT.map((section) => {
       if (section.type === 'news') {
-        const newsItem = MOCK_NEWS[newsIndexCounter.current % MOCK_NEWS.length];
+        const newsItem = articleNewsItems[newsIndexCounter.current % articleNewsItems.length];
         newsIndexCounter.current += 1;
         return { ...section, newsItem };
       }
@@ -1498,7 +1527,7 @@ export const HomeScreen = () => {
       }
       return true;
     });
-  }, [removedNewsIds]);
+  }, [removedNewsIds, articleNewsItems]);
 
   // measureInWindow-based visibility detection for feed entrance animations.
   // FlatList onLayout gives y relative to the cell container (always ~0), so we use
@@ -1548,7 +1577,7 @@ export const HomeScreen = () => {
                 title={newsItem.title}
                 subtitle={newsItem.subtitle}
                 timestamp={newsItem.timestamp}
-                imageUrl={{ uri: newsItem.image }}
+                imageUrl={(newsItem as any)._bannerImage ?? (newsItem.image ? { uri: newsItem.image } : undefined)}
                 isUnread={newsItem.isUnread}
                 isBookmarked={isArticleSaved(newsItem.id)}
                 isActionSheetOpen={newsActionArticle?.id === newsItem.id && newsActionVisible}
@@ -3143,7 +3172,7 @@ export const HomeScreen = () => {
       />
 
       {/* Coastle FAB — hidden when any MorphingPill modal is active */}
-      {!searchVisible && !logVisible && !walletVisible && (
+      {SHOW_DEV_FABS && !searchVisible && !logVisible && !walletVisible && (
         <Pressable
           onPress={() => { haptics.select(); navigation.navigate('Coastle'); }}
           style={[
@@ -3156,7 +3185,7 @@ export const HomeScreen = () => {
       )}
 
       {/* Onboarding replay FAB — dev/testing button */}
-      {!searchVisible && !logVisible && !walletVisible && (
+      {SHOW_DEV_FABS && !searchVisible && !logVisible && !walletVisible && (
         <Pressable
           onPress={() => { haptics.select(); showDesignSampler(); }}
           style={[
@@ -3169,7 +3198,7 @@ export const HomeScreen = () => {
       )}
 
       {/* Battle Mode FAB — dev/testing button */}
-      {!searchVisible && !logVisible && !walletVisible && (
+      {SHOW_DEV_FABS && !searchVisible && !logVisible && !walletVisible && (
         <Pressable
           onPress={() => { haptics.select(); navigation.navigate('Battle'); }}
           style={[
@@ -3182,7 +3211,7 @@ export const HomeScreen = () => {
       )}
 
       {/* Activity FAB — dev/testing button */}
-      {!searchVisible && !logVisible && !walletVisible && (
+      {SHOW_DEV_FABS && !searchVisible && !logVisible && !walletVisible && (
         <Pressable
           onPress={() => { haptics.select(); navigation.navigate('Activity'); }}
           style={[
@@ -3195,7 +3224,7 @@ export const HomeScreen = () => {
       )}
 
       {/* Spinner Preview FAB — dev/testing button */}
-      {__DEV__ && !searchVisible && !logVisible && !walletVisible && (
+      {SHOW_DEV_FABS && __DEV__ && !searchVisible && !logVisible && !walletVisible && (
         <Pressable
           onPress={() => { haptics.select(); navigation.navigate('SpinnerPreview' as never); }}
           style={[
@@ -3204,6 +3233,22 @@ export const HomeScreen = () => {
           ]}
         >
           <Ionicons name="reload-outline" size={22} color={colors.text.inverse} />
+        </Pressable>
+      )}
+
+      {/* Articles FAB — temporary bridge for reviewing articles in-app */}
+      {!searchVisible && !logVisible && !walletVisible && (
+        <Pressable
+          onPress={() => { haptics.select(); navigation.navigate('ArticlesList'); }}
+          hitSlop={8}
+          style={[
+            styles.articlesFab,
+            { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg + 48 + spacing.base },
+          ]}
+        >
+          <View style={styles.articlesFabInner}>
+            <Ionicons name="newspaper-outline" size={22} color={colors.accent.primary} />
+          </View>
         </Pressable>
       )}
 
@@ -3425,7 +3470,7 @@ const styles = StyleSheet.create({
   },
   spinnerFab: {
     position: 'absolute',
-    right: spacing.lg + (48 + spacing.base) * 5,
+    right: spacing.lg + (48 + spacing.base) * 4,
     width: 48,
     height: 48,
     borderRadius: 24,
@@ -3434,5 +3479,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 40,
     ...shadows.small,
+  },
+  articlesFab: {
+    position: 'absolute',
+    left: spacing.lg,
+    width: 48,
+    height: 48,
+    zIndex: 50,
+  },
+  articlesFabInner: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...shadows.card,
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 8,
   },
 });

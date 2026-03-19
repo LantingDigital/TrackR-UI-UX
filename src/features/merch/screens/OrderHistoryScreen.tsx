@@ -29,6 +29,7 @@ import { shadows } from '../../../theme/shadows';
 import { typography } from '../../../theme/typography';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress } from '../../../hooks/useSpringPress';
+import { FogHeader } from '../../../components/FogHeader';
 import { MOCK_ORDERS, type MerchOrder } from '../../../data/mockMerchData';
 
 // ─── Types ──────────────────────────────────────────────
@@ -265,10 +266,16 @@ export const OrderHistoryScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const orders = MOCK_ORDERS;
 
+  const HEADER_ROW_HEIGHT = 60;
+  const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT;
+
   return (
-    <View style={[styles.screen, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <View style={styles.header}>
+    <View style={styles.screen}>
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — absolute, above fog */}
+      <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
         <Pressable onPress={() => { haptics.tap(); navigation.goBack(); }} style={styles.backButton}>
           <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
         </Pressable>
@@ -281,7 +288,7 @@ export const OrderHistoryScreen: React.FC = () => {
       ) : (
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.xl }]}
         >
           {orders.map((order, index) => (
             <OrderCard
@@ -306,6 +313,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

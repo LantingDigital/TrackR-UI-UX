@@ -20,6 +20,7 @@ import {
   StyleSheet,
   Dimensions,
   Image,
+  TextInput,
 } from 'react-native';
 import Animated, {
   FadeIn,
@@ -40,18 +41,16 @@ import { typography } from '../../../theme/typography';
 import { SPRINGS, TIMING } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress, useCardPress } from '../../../hooks/useSpringPress';
+import { FogHeader } from '../../../components/FogHeader';
 import {
   getNewArrivals,
   getPopularProducts,
-  getProductsByPark,
-  getAvailableParks,
   getMerchProducts,
   MERCH_PRICING,
   type MerchProduct,
 } from '../../../data/mockMerchData';
 import { useCartStore } from '../store/cartStore';
 import { MerchCardTile } from '../components/MerchCardTile';
-import { ParkFilterPills } from '../components/ParkFilterPills';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_TILE_WIDTH = (SCREEN_WIDTH - spacing.lg * 2 - spacing.base) / 2;
@@ -139,7 +138,7 @@ const HeroBanner: React.FC<{
             <Text style={styles.heroLabel}>PHYSICAL CARDS</Text>
             <Text style={styles.heroTitle}>Collect Your Rides</Text>
             <Text style={styles.heroSubtitle}>
-              Premium NanoBanana card art, printed on thick card stock. Starting at ${MERCH_PRICING.cardPrice}
+              Premium card art on collector-grade material. Starting at ${MERCH_PRICING.cardPrice}
             </Text>
           </View>
           <View style={styles.heroCardPreview}>
@@ -266,7 +265,7 @@ const ProductGrid: React.FC<{
 export const MerchStoreScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
-  const [selectedPark, setSelectedPark] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const cartItemCount = useCartStore(state => state.getItemCount());
 
   const onSelectProduct = useCallback((product: MerchProduct) => {
@@ -278,24 +277,30 @@ export const MerchStoreScreen: React.FC = () => {
 
   const newArrivals = useMemo(() => getNewArrivals(10), []);
   const popular = useMemo(() => getPopularProducts(10), []);
-  const parks = useMemo(() => getAvailableParks(), []);
+  const allProducts = useMemo(() => getMerchProducts(), []);
+  const isSearching = searchQuery.trim().length > 0;
   const filteredProducts = useMemo(() => {
-    if (!selectedPark) return getMerchProducts().slice(0, 20);
-    return getProductsByPark(selectedPark);
-  }, [selectedPark]);
+    if (!isSearching) return allProducts.slice(0, 20);
+    const q = searchQuery.toLowerCase().trim();
+    return allProducts.filter(
+      (p) => p.name.toLowerCase().includes(q) || p.parkName.toLowerCase().includes(q)
+    );
+  }, [searchQuery, isSearching, allProducts]);
 
-  const handleSelectPark = useCallback((park: string | null) => {
-    setSelectedPark(park);
-  }, []);
+  const HEADER_ROW_HEIGHT = 60; // 12 + 36 + 12
+  const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT;
 
   return (
-    <View style={[styles.screen, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <View style={styles.header}>
+    <View style={styles.screen}>
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — absolute, above fog */}
+      <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
         <Pressable onPress={() => { haptics.tap(); onGoBack(); }} style={styles.backButton}>
           <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
         </Pressable>
-        <Text style={styles.headerTitle}>Card Shop</Text>
+        <Text style={styles.headerTitle}>CARD SHOP</Text>
         <Pressable onPress={() => { haptics.tap(); onOpenCart(); }} style={styles.cartButton}>
           <Ionicons name="bag-outline" size={22} color={colors.text.primary} />
           {cartItemCount > 0 && (
@@ -308,7 +313,7 @@ export const MerchStoreScreen: React.FC = () => {
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base }]}
       >
         {/* Hero Banner */}
         <HeroBanner
@@ -316,15 +321,27 @@ export const MerchStoreScreen: React.FC = () => {
           onPress={onSelectProduct}
         />
 
-        {/* Park Filter */}
-        <ParkFilterPills
-          parks={parks.slice(0, 12)}
-          selectedPark={selectedPark}
-          onSelect={handleSelectPark}
-        />
+        {/* Search Bar */}
+        <View style={styles.searchWrapper}>
+          <Ionicons name="search-outline" size={18} color={colors.text.meta} style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search cards..."
+            placeholderTextColor={colors.text.meta}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            returnKeyType="search"
+            autoCorrect={false}
+          />
+          {isSearching && (
+            <Pressable onPress={() => setSearchQuery('')} style={styles.searchClear}>
+              <Ionicons name="close-circle" size={18} color={colors.text.meta} />
+            </Pressable>
+          )}
+        </View>
 
         {/* New Arrivals */}
-        {!selectedPark && (
+        {!isSearching && (
           <>
             <SectionHeader title="New Arrivals" subtitle="Latest card art drops" />
             <HorizontalCardStrip products={newArrivals} onSelectProduct={onSelectProduct} />
@@ -332,7 +349,7 @@ export const MerchStoreScreen: React.FC = () => {
         )}
 
         {/* Popular */}
-        {!selectedPark && (
+        {!isSearching && (
           <>
             <SectionHeader title="Popular" subtitle="Fan favorites" />
             <HorizontalCardStrip products={popular} onSelectProduct={onSelectProduct} />
@@ -340,15 +357,15 @@ export const MerchStoreScreen: React.FC = () => {
         )}
 
         {/* Build Your Pack CTA */}
-        {!selectedPark && (
+        {!isSearching && (
           <View style={styles.ctaWrapper}>
             <PackBuilderCTA onPress={onOpenPackBuilder} />
           </View>
         )}
 
-        {/* Browse Grid (filtered by park or default) */}
+        {/* Browse Grid */}
         <SectionHeader
-          title={selectedPark ?? 'Browse All'}
+          title={isSearching ? `Results for "${searchQuery}"` : 'Browse All'}
           subtitle={`${filteredProducts.length} cards`}
         />
         <ProductGrid products={filteredProducts} onSelectProduct={onSelectProduct} />
@@ -368,6 +385,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -381,9 +401,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headerTitle: {
-    fontSize: typography.sizes.title,
+    fontSize: typography.sizes.large,
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
+    letterSpacing: 4,
   },
   cartButton: {
     width: 36,
@@ -410,6 +431,33 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: spacing.xxxl,
+  },
+
+  // Search
+  searchWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.background.card,
+    borderRadius: radius.pill,
+    marginHorizontal: spacing.lg,
+    marginTop: spacing.base,
+    paddingHorizontal: spacing.base,
+    height: 44,
+    borderWidth: 1,
+    borderColor: colors.border.subtle,
+  },
+  searchIcon: {
+    marginRight: spacing.md,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: typography.sizes.body,
+    color: colors.text.primary,
+    paddingVertical: 0,
+  },
+  searchClear: {
+    marginLeft: spacing.md,
+    padding: spacing.xs,
   },
 
   // Hero
@@ -473,7 +521,6 @@ const styles = StyleSheet.create({
 
   // Horizontal strip
   stripScroll: {
-    marginHorizontal: -spacing.lg,
     overflow: 'visible',
   },
   stripContent: {

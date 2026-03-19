@@ -34,6 +34,7 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { SPRINGS } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
+import { EmptyState } from '../../../components/EmptyState';
 import { useFriendsStore } from '../stores/friendsStore';
 import { StoriesRow } from '../../../components/feed/StoriesRow';
 import { UserSearchSection } from './UserSearchSection';
@@ -294,9 +295,21 @@ export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFri
   );
 
   const contentContainerStyle = useMemo(
-    () => [styles.content, { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl }],
-    [topInset, insets.bottom],
+    () => [
+      styles.content,
+      { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
+      activity.length === 0 ? styles.emptyContentContainer : undefined,
+    ],
+    [topInset, insets.bottom, activity.length],
   );
+
+  const listEmpty = useMemo(() => (
+    <EmptyState
+      icon="people-outline"
+      title="No activity yet"
+      subtitle="Search for friends above to see their rides, reviews, and milestones here"
+    />
+  ), []);
 
   const listHeader = useMemo(() => (
     <>
@@ -354,6 +367,7 @@ export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFri
       renderItem={renderActivity}
       keyExtractor={activityKeyExtractor}
       ListHeaderComponent={listHeader}
+      ListEmptyComponent={listEmpty}
       ListFooterComponent={ListFooter}
       style={styles.container}
       contentContainerStyle={contentContainerStyle}
@@ -446,5 +460,27 @@ const styles = StyleSheet.create({
   footerLoader: {
     paddingVertical: spacing.xxl,
     alignItems: 'center',
+  },
+
+  // Empty state
+  emptyContentContainer: {
+    flexGrow: 1,
+  },
+  emptyState: {
+    alignItems: 'center' as const,
+    paddingVertical: spacing.xxxl * 2,
+  },
+  emptyTitle: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
+    marginTop: spacing.base,
+    marginBottom: spacing.xs,
+  },
+  emptySubtitle: {
+    fontSize: typography.sizes.caption,
+    color: colors.text.meta,
+    textAlign: 'center' as const,
+    paddingHorizontal: spacing.xxxl,
   },
 });

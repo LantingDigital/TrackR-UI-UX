@@ -25,7 +25,7 @@ import { _rideLogStoreInternal } from '../../stores/rideLogStore';
 import { _friendsStoreInternal } from '../../features/community/stores/friendsStore';
 import { _communityStoreInternal } from '../../features/community/stores/communityStore';
 import { _rankingsStoreInternal } from '../../features/community/stores/rankingsStore';
-import { DEFAULT_RIDE_LOG_STATE } from '../../types/rideLog';
+import { AuthUser } from '../../types/auth';
 
 // ============================================
 // State
@@ -46,8 +46,12 @@ let currentUid: string | null = null;
 
 /**
  * Start all Firestore sync listeners for the given user.
+ * Pass the full AuthUser so getOrCreateUserDoc gets real profile data
+ * (email, displayName, photoURL, provider) on first sign-up.
  */
-async function startAllSync(uid: string): Promise<void> {
+async function startAllSync(authUser: AuthUser): Promise<void> {
+  const uid = authUser.uid;
+
   // Don't double-subscribe
   if (currentUid === uid) return;
 
@@ -59,14 +63,6 @@ async function startAllSync(uid: string): Promise<void> {
   // (safety net — the client-side createUserDoc + onUserCreated CF
   // should have already created these, but this handles edge cases)
   try {
-    const authUser = {
-      uid,
-      email: null,
-      displayName: null,
-      photoURL: null,
-      emailVerified: false,
-      authProvider: 'email' as const,
-    };
     await getOrCreateUserDoc(authUser);
     await ensureCriteriaConfig(uid);
   } catch (error) {
@@ -126,7 +122,7 @@ function initSync(): () => void {
 
   authUnsub = onAuthStateChanged((user) => {
     if (user) {
-      startAllSync(user.uid);
+      startAllSync(user);
     } else {
       stopAllSync();
     }

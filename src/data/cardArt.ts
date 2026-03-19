@@ -427,6 +427,23 @@ export const CARD_ART: Record<string, any> = {
   // ── Busch Gardens Tampa Bay (additional) ──
   'cobras-curse': require('../../assets/cards/cobras-curse.webp'),
 
+  // ── Batch Review Approved (2026-03-16) ──
+  'crystal-wing': require('../../assets/cards/crystal-wing.webp'),
+  'd-monen': require('../../assets/cards/d-monen.webp'),
+  'dahlonega-mine-train': require('../../assets/cards/dahlonega-mine-train.webp'),
+  'dare-devil-dive': require('../../assets/cards/dare-devil-dive.webp'),
+  'dc-rivals-hypercoaster': require('../../assets/cards/dc-rivals-hypercoaster.webp'),
+  'de-vliegende-hollander': require('../../assets/cards/de-vliegende-hollander.webp'),
+  'dragon-fyre': require('../../assets/cards/dragon-fyre.webp'),
+  'dragon-khan': require('../../assets/cards/dragon-khan.webp'),
+  'euro-mir': require('../../assets/cards/euro-mir.webp'),
+  'fiorano-gt-challenge': require('../../assets/cards/fiorano-gt-challenge.webp'),
+  'flight-of-the-hippogriff-universal-studios-beijing': require('../../assets/cards/flight-of-the-hippogriff-universal-studios-beijing.webp'),
+  'flight-of-the-hippogriff-universal-studios-japan': require('../../assets/cards/flight-of-the-hippogriff-universal-studios-japan.webp'),
+  'flying-aces': require('../../assets/cards/flying-aces.webp'),
+  'furius-baco': require('../../assets/cards/furius-baco.webp'),
+  'galeforce': require('../../assets/cards/galeforce.webp'),
+  'hollywood-dream-the-ride': require('../../assets/cards/hollywood-dream-the-ride.webp'),
 };
 
 /**

@@ -21,10 +21,14 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { TIMING } from '../../../constants/animations';
+import { SheetFog } from '../../../components/SheetFog';
 import { ParkGuide } from '../types';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const SHEET_HEIGHT = SCREEN_HEIGHT * 0.7;
+
+// Fixed header area: handleRow(19) + header(icon + title + meta ≈ 131)
+const HEADER_AREA_HEIGHT = 150;
 
 interface GuideModalProps {
   visible: boolean;
@@ -101,6 +105,9 @@ export function GuideModal({ visible, guide, onClose }: GuideModalProps) {
           </View>
         </View>
 
+        {/* Fog gradient — fades content as it scrolls under the header */}
+        <SheetFog headerHeight={HEADER_AREA_HEIGHT} />
+
         {/* Content */}
         <ScrollView
           style={styles.scroll}
@@ -136,6 +143,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.card,
     borderTopLeftRadius: radius.modal,
     borderTopRightRadius: radius.modal,
+    overflow: 'hidden',
   },
   handleRow: {
     alignItems: 'center',

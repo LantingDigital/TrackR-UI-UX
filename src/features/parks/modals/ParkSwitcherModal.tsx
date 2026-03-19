@@ -23,6 +23,7 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { TIMING } from '../../../constants/animations';
+import { SheetFog } from '../../../components/SheetFog';
 import { buildParkList } from '../utils/parkDataUtils';
 import { ParkData } from '../types';
 
@@ -164,6 +165,9 @@ export function ParkSwitcherModal({
             returnKeyType="search"
           />
         </View>
+
+        {/* Fog gradient — fades content as it scrolls under the header/search */}
+        <SheetFog headerHeight={96} />
 
         {/* Park list */}
         <FlatList

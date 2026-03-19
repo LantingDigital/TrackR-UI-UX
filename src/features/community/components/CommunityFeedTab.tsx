@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback, useMemo } from 'react';
 import { View, Text, StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
@@ -12,6 +13,7 @@ import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { SPRINGS } from '../../../constants/animations';
+import { EmptyState } from '../../../components/EmptyState';
 import { GamesStrip } from './GamesStrip';
 import { FeedPost } from './FeedPost';
 import { FAB } from './FAB';
@@ -87,9 +89,24 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap }: 
   ), [handlePlayCoastle, handlePlaySpeedSorter, handlePlayBlindRanking, handlePlayTrivia]);
 
   const contentContainerStyle = useMemo(
-    () => [styles.content, { paddingTop: topInset, paddingBottom: insets.bottom + spacing.xxxl }],
-    [topInset, insets.bottom],
+    () => [
+      styles.content,
+      { paddingTop: topInset, paddingBottom: insets.bottom + spacing.xxxl },
+      feed.length === 0 ? styles.emptyContentContainer : undefined,
+    ],
+    [topInset, insets.bottom, feed.length],
   );
+
+  const listEmpty = useMemo(() => (
+    <EmptyState
+      icon="chatbubbles-outline"
+      title="No posts yet"
+      subtitle="Share a ride review, trip report, or your top coaster list with the community"
+      ctaLabel="Create a Post"
+      ctaIcon="create-outline"
+      onCtaPress={onShowCompose}
+    />
+  ), [onShowCompose]);
 
   const renderItem = useCallback(({ item, index }: ListRenderItemInfo<FeedItem>) => (
     <StaggeredItem index={index + 1}>
@@ -112,6 +129,7 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap }: 
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ListHeaderComponent={listHeader}
+        ListEmptyComponent={listEmpty}
         style={styles.scrollView}
         contentContainerStyle={contentContainerStyle}
         showsVerticalScrollIndicator={false}
@@ -150,5 +168,27 @@ const styles = StyleSheet.create({
   },
   feedItem: {
     marginTop: spacing.lg,
+  },
+
+  // Empty state
+  emptyContentContainer: {
+    flexGrow: 1,
+  },
+  emptyState: {
+    alignItems: 'center' as const,
+    paddingVertical: spacing.xxxl * 2,
+  },
+  emptyTitle: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.semibold,
+    color: colors.text.primary,
+    marginTop: spacing.base,
+    marginBottom: spacing.xs,
+  },
+  emptySubtitle: {
+    fontSize: typography.sizes.caption,
+    color: colors.text.meta,
+    textAlign: 'center' as const,
+    paddingHorizontal: spacing.xxxl,
   },
 });

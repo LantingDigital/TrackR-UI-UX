@@ -17,15 +17,11 @@ import {
   Image,
   StyleSheet,
   Dimensions,
+  Switch,
 } from 'react-native';
 import Animated, {
   FadeIn,
   FadeInDown,
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  withTiming,
-  Easing,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -35,9 +31,9 @@ import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { typography } from '../../../theme/typography';
-import { SPRINGS, TIMING } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress } from '../../../hooks/useSpringPress';
+import { FogHeader } from '../../../components/FogHeader';
 import { MERCH_PRICING, calculateCardPrice, getMerchProducts, type MerchProduct } from '../../../data/mockMerchData';
 import { useCartStore } from '../store/cartStore';
 
@@ -149,23 +145,6 @@ const GoldFoilToggle: React.FC<{
   onToggle: () => void;
   isFree: boolean;
 }> = ({ enabled, onToggle, isFree }) => {
-  const trackBg = useSharedValue(enabled ? 1 : 0);
-
-  React.useEffect(() => {
-    trackBg.value = withTiming(enabled ? 1 : 0, {
-      duration: 200,
-      easing: Easing.out(Easing.cubic),
-    });
-  }, [enabled, trackBg]);
-
-  const trackStyle = useAnimatedStyle(() => ({
-    backgroundColor: trackBg.value > 0.5 ? '#D4A853' : colors.background.input,
-  }));
-
-  const thumbStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: withSpring(enabled ? 20 : 0, SPRINGS.stiff) }],
-  }));
-
   return (
     <Pressable
       onPress={() => {
@@ -183,9 +162,16 @@ const GoldFoilToggle: React.FC<{
           {isFree ? 'FREE (GPS Verified)' : `+$${MERCH_PRICING.goldFoilUpcharge.toFixed(2)}`}
         </Text>
       </View>
-      <Animated.View style={[goldStyles.track, trackStyle]}>
-        <Animated.View style={[goldStyles.thumb, thumbStyle]} />
-      </Animated.View>
+      <Switch
+        value={enabled}
+        onValueChange={() => {
+          haptics.tap();
+          onToggle();
+        }}
+        trackColor={{ false: colors.background.input, true: '#D4A853' }}
+        thumbColor={colors.background.card}
+        ios_backgroundColor={colors.background.input}
+      />
     </Pressable>
   );
 };
@@ -219,20 +205,6 @@ const goldStyles = StyleSheet.create({
     fontSize: typography.sizes.meta,
     color: colors.text.secondary,
     marginTop: 2,
-  },
-  track: {
-    width: 48,
-    height: 28,
-    borderRadius: 14,
-    padding: 2,
-    justifyContent: 'center',
-  },
-  thumb: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: colors.background.card,
-    ...shadows.small,
   },
 });
 
@@ -279,10 +251,16 @@ export const MerchCardDetailSheet: React.FC = () => {
 
   const stats = product.stats;
 
+  const HEADER_ROW_HEIGHT = 60;
+  const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT;
+
   return (
-    <View style={[styles.screen, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <View style={styles.header}>
+    <View style={styles.screen}>
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — absolute, above fog */}
+      <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
         <Pressable onPress={() => { haptics.tap(); navigation.goBack(); }} style={styles.closeButton}>
           <Ionicons name="close" size={24} color={colors.text.primary} />
         </Pressable>
@@ -292,7 +270,7 @@ export const MerchCardDetailSheet: React.FC = () => {
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base }]}
       >
         {/* Card Art */}
         <Animated.View
@@ -392,6 +370,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.page,
   },
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

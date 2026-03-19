@@ -18,6 +18,9 @@ import { shadows } from '../theme/shadows';
 import { TIMING } from '../constants/animations';
 import { useSpringPress } from '../hooks/useSpringPress';
 import { haptics } from '../services/haptics';
+import { FogHeader } from '../components/FogHeader';
+
+const HEADER_HEIGHT = 52;
 
 // ─── Mock Data ──────────────────────────────────────────────
 
@@ -225,29 +228,15 @@ export const ActivityScreen = () => {
     ],
   }));
 
-  return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header */}
-      <Animated.View style={[styles.header, headerAnimatedStyle]}>
-        <Pressable
-          style={styles.backButton}
-          onPress={() => {
-            haptics.tap();
-            navigation.goBack();
-          }}
-          hitSlop={12}
-        >
-          <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
-        </Pressable>
-        <Text style={styles.headerTitle}>Activity</Text>
-        <View style={styles.headerSpacer} />
-      </Animated.View>
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
+  return (
+    <View style={styles.container}>
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: insets.bottom + spacing.xxxl },
+          { paddingTop: headerTotalHeight + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
         ]}
         showsVerticalScrollIndicator={false}
       >
@@ -291,6 +280,25 @@ export const ActivityScreen = () => {
           </View>
         </View>
       </ScrollView>
+
+      {/* Fog gradient overlay */}
+      <FogHeader headerHeight={headerTotalHeight} />
+
+      {/* Header — floats above fog */}
+      <Animated.View style={[styles.header, { top: insets.top }, headerAnimatedStyle]}>
+        <Pressable
+          style={styles.backButton}
+          onPress={() => {
+            haptics.tap();
+            navigation.goBack();
+          }}
+          hitSlop={12}
+        >
+          <Ionicons name="chevron-back" size={24} color={colors.text.primary} />
+        </Pressable>
+        <Text style={styles.headerTitle}>Activity</Text>
+        <View style={styles.headerSpacer} />
+      </Animated.View>
     </View>
   );
 };
@@ -305,10 +313,14 @@ const styles = StyleSheet.create({
 
   // Header
   header: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.base,
+    height: HEADER_HEIGHT,
   },
   backButton: {
     width: 32,
