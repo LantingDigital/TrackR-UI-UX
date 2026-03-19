@@ -36,7 +36,6 @@ import { SPRINGS, TIMING } from '../../../constants/animations';
 import { useTabBar } from '../../../contexts/TabBarContext';
 import { haptics } from '../../../services/haptics';
 import { CARD_ART, CARD_ART_FOCAL } from '../../../data/cardArt';
-import { SheetFog } from '../../../components/SheetFog';
 import { EnrichedCoaster } from '../types';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -311,8 +310,6 @@ export function CoasterSheet({ coaster, visible, onClose }: CoasterSheetProps) {
           <Ionicons name="close" size={20} color={colors.text.secondary} />
         </Pressable>
 
-        {/* Fog gradient — fades content as it scrolls under the handle/close area */}
-        <SheetFog headerHeight={HANDLE_AREA} fogBase="rgba(247, 247, 247," />
 
         {/* Scrollable content */}
         <ScrollView

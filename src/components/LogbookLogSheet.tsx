@@ -48,7 +48,6 @@ import { SPRINGS, TIMING } from '../constants/animations';
 import { useTabBar } from '../contexts/TabBarContext';
 import { haptics } from '../services/haptics';
 import { COASTER_INDEX, type CoasterIndexEntry } from '../data/coasterIndex';
-import { SheetFog } from './SheetFog';
 import { CARD_ART } from '../data/cardArt';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -262,8 +261,6 @@ export function LogbookLogSheet({ visible, onClose, onCoasterSelect }: LogbookLo
           <Ionicons name="close" size={20} color={colors.text.secondary} />
         </Pressable>
 
-        {/* Fog gradient — fades results as they scroll under handle/title/search */}
-        <SheetFog headerHeight={130} fogBase="rgba(247, 247, 247," />
 
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

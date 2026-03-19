@@ -1,21 +1,49 @@
-# Playwright Team Isolation (Known Limitation)
+# Playwright Team Isolation — SOLVED
 
-## The Problem
+## The Problem (was)
 
-Per-project Playwright MCP isolation (`.claude/settings.json`) prevents browser collisions between SEPARATE Claude Code sessions (e.g., TrackR session vs iAttend session). But agents within the SAME team/session share the parent session's MCP connections, so they share one browser instance.
+All agents in the same session shared ONE Playwright MCP browser. When multiple agents needed browsers simultaneously (e.g., card-art in Gemini + backend in Firebase Console), they'd hijack each other's pages.
 
-## Impact
+## The Solution
 
-When multiple agents on a team need Playwright simultaneously (e.g., backend in Firebase Console + card-art in Gemini), they collide — one agent's navigation redirects the other's page.
+Use **inline `mcpServers`** in agent definition files (`.claude/agents/*.md`). Each agent's YAML frontmatter defines its own Playwright MCP server, which spins up a separate process = separate browser.
 
-## Current Workaround
+```yaml
+---
+mcpServers:
+  - name: playwright
+    type: stdio
+    command: npx
+    args: ["@playwright/mcp@latest", "--headless", "--isolated"]
+---
+```
 
-Sequential browser access: only ONE agent uses Playwright at a time. Team lead coordinates by pausing other agents.
+The `--isolated` flag ensures each uses a temporary user-data-dir (no profile collisions).
+
+**Key:** You MUST use inline definitions. If you pass a string reference (just `"playwright"`), it shares the parent's connection.
+
+## Agent Files Created
+
+- `.claude/agents/card-art-browser.md` — for Gemini NanoBanana generation
+- `.claude/agents/firebase-browser.md` — for Firebase Console admin tasks
+- `.claude/agents/merch-browser.md` — for QPMN, pricing research, vendor signups
+
+## How to Use
+
+When spawning agents that need Playwright, use `subagent_type` matching the agent file name:
+
+```
+Agent(subagent_type="card-art-browser", name="card-art", ...)
+Agent(subagent_type="firebase-browser", name="backend", ...)
+Agent(subagent_type="merch-browser", name="merch", ...)
+```
+
+Each agent gets its own browser process. No collisions. Browsers clean up on agent exit.
+
+## What About the Project-Level Config?
+
+The `.claude/settings.json` Playwright config stays as the default for the main session and any agents that DON'T define their own inline MCP. The inline definitions override it per-agent.
 
 ## Incident (2026-03-19)
 
-Backend agent (Firebase Console) and card-art agent (Gemini NanoBanana) collided. Card-art uploaded a source image and got NB2 generation, then backend navigated to Firebase Console, killing the Gemini session before "Redo with Pro" could be clicked. Resolved by pausing backend.
-
-## Future Fix (TODO)
-
-Research whether agents can spawn their own isolated Playwright MCP servers on different ports. This would require per-agent MCP config, not just per-project.
+Card-art agent and backend agent collided 3 times. Then card-art and merch-pricing collided 3 more times. Fixed mid-session with sequential access, then permanently solved with inline mcpServers.

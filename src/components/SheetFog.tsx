@@ -3,10 +3,10 @@ import { View, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 /**
- * Default extension below the header for the gradual fade tail.
- * Shorter than screen fog since bottom sheets have less vertical space.
+ * Short fade tail — smoothness comes from micro-stops, not distance.
+ * Sheets have less vertical space so this is even shorter than FogHeader.
  */
-const DEFAULT_FOG_EXTENSION = 120;
+const DEFAULT_FOG_EXTENSION = 40;
 
 interface SheetFogProps {
   /**
@@ -17,7 +17,7 @@ interface SheetFogProps {
 
   /**
    * Optional extension below the header for the fade tail.
-   * Larger = longer, more gradual fade. Default: 120px.
+   * Keep SHORT — smoothness comes from micro-stops. Default: 40px.
    */
   fogExtension?: number;
 
@@ -58,29 +58,37 @@ export function SheetFog({
   const fogTotalHeight = headerHeight + fogExtension;
 
   const fogGradient = useMemo(() => {
-    // The header area occupies [0, headerEnd] of the fog
     const headerEnd = headerHeight / fogTotalHeight;
-    // The fade zone is everything below the header
     const fadeZone = 1 - headerEnd;
 
-    // Dense fog through header (matches FogHeader 0.97), smooth fade below.
+    // Dense through header, micro-stepped fade below — short but smooth.
     return {
       colors: [
-        `${fogBase} 0.97)`,   // Top — dense through header
-        `${fogBase} 0.97)`,   // End of header — still dense
-        `${fogBase} 0.88)`,   // Ease begins right below header
-        `${fogBase} 0.60)`,   // Opening up
-        `${fogBase} 0.25)`,   // Mostly clear
-        `${fogBase} 0.08)`,   // Very light
-        'transparent',          // Fully clear
+        `${fogBase} 0.97)`,    // Top — dense through header
+        `${fogBase} 0.97)`,    // End of header — still dense
+        `${fogBase} 0.93)`,    // -4  Ramp begins
+        `${fogBase} 0.86)`,    // -7
+        `${fogBase} 0.74)`,    // -12
+        `${fogBase} 0.58)`,    // -16 (mid-fade)
+        `${fogBase} 0.40)`,    // -18
+        `${fogBase} 0.24)`,    // -16
+        `${fogBase} 0.12)`,    // -12
+        `${fogBase} 0.04)`,    // -8
+        `${fogBase} 0.01)`,    // -3 (imperceptible)
+        'transparent',           // Gone
       ] as [string, string, ...string[]],
       locations: [
         0,
         headerEnd,
         headerEnd + fadeZone * 0.08,
-        headerEnd + fadeZone * 0.25,
-        headerEnd + fadeZone * 0.50,
-        headerEnd + fadeZone * 0.75,
+        headerEnd + fadeZone * 0.18,
+        headerEnd + fadeZone * 0.32,
+        headerEnd + fadeZone * 0.48,
+        headerEnd + fadeZone * 0.62,
+        headerEnd + fadeZone * 0.74,
+        headerEnd + fadeZone * 0.84,
+        headerEnd + fadeZone * 0.92,
+        headerEnd + fadeZone * 0.97,
         1,
       ] as [number, number, ...number[]],
     };

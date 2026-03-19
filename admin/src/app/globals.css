@@ -9,6 +9,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Card fan layout — computed per-card via CSS custom properties */
+.card-fan-item {
+  transform:
+    translateX(calc(var(--fan-offset) * 42px))
+    translateY(var(--fan-ty))
+    rotate(var(--fan-rotate))
+    scale(var(--fan-scale));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-fan-item:hover {
+  transform:
+    translateX(calc(var(--fan-offset) * 42px))
+    translateY(calc(var(--fan-ty) - 12px))
+    rotate(var(--fan-rotate))
+    scale(1.06);
+  z-index: 10 !important;
+}
+@media (min-width: 640px) {
+  .card-fan-item {
+    transform:
+      translateX(calc(var(--fan-offset) * 72px))
+      translateY(var(--fan-ty))
+      rotate(var(--fan-rotate))
+      scale(var(--fan-scale));
+  }
+  .card-fan-item:hover {
+    transform:
+      translateX(calc(var(--fan-offset) * 72px))
+      translateY(calc(var(--fan-ty) - 16px))
+      rotate(var(--fan-rotate))
+      scale(1.08);
+  }
+}
+
 /* Tiptap editor styles */
 .tiptap-editor .ProseMirror {
   outline: none;

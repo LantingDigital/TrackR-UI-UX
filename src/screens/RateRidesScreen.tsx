@@ -54,7 +54,6 @@ import type { CoasterRating } from '../types/rideLog';
 
 import { COASTER_BY_ID } from '../data/coasterIndex';
 import { CARD_ART, getRarityFromRank } from '../data/cardArt';
-import { FogHeader } from '../components/FogHeader';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -305,8 +304,6 @@ export const RateRidesScreen: React.FC = () => {
         />
       )}
 
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
 
       {/* Header — floats above fog */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnimStyle]}>

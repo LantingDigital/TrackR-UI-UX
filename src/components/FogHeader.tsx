@@ -9,8 +9,9 @@ const FOG_BASE = 'rgba(240, 238, 235,';
 // How far above the screen top to extend (eliminates status bar hard line)
 const TOP_OVERSHOOT = 50;
 
-// Default extension below header for gradual fade tail
-const DEFAULT_FOG_EXTENSION = 200;
+// Short fade tail — fog should NOT cover visible content before scrolling.
+// The smoothness comes from many micro-stops, not from distance.
+const DEFAULT_FOG_EXTENSION = 60;
 
 interface FogHeaderProps {
   /**
@@ -22,7 +23,8 @@ interface FogHeaderProps {
 
   /**
    * Optional extension below the header for the fade tail.
-   * Larger = longer, more gradual fade. Default: 200px.
+   * Larger = longer fade. Default: 60px. Keep this SHORT — smoothness
+   * comes from micro-stops in the gradient, not from distance.
    */
   fogExtension?: number;
 
@@ -48,11 +50,9 @@ interface FogHeaderProps {
 /**
  * Reusable fog gradient overlay for screen headers.
  *
- * Matches the HomeScreen fog exactly:
- * - Max opacity 0.97 (never fully opaque — content always slightly visible)
- * - Extends 50px above screen top (no hard line at status bar)
- * - 12-stop gradient with gradual fade curve
- * - Fog height = overshoot + headerHeight + extension
+ * Dense 0.97 fog through the header for text readability, then a short
+ * micro-stepped fade that dissolves imperceptibly. The fade is only ~60px
+ * so it never covers content before the user scrolls.
  *
  * Usage (static header):
  *   <FogHeader headerHeight={insets.top + 52} />
@@ -74,35 +74,47 @@ export function FogHeader({
   // Total fog height: overshoot above + header + fade extension below
   const fogTotalHeight = TOP_OVERSHOOT + headerHeight + fogExtension;
 
-  // Compute gradient locations based on where the header ends within the fog
+  // Compute gradient — dense through header, micro-stepped fade below
   const fogGradient = useMemo(() => {
-    // The header area occupies [0, headerEnd] of the fog (including overshoot)
     const headerEnd = (TOP_OVERSHOOT + headerHeight) / fogTotalHeight;
-    // The fade zone is everything below the header
     const fadeZone = 1 - headerEnd;
 
-    // Dense fog through header for text readability, same smooth fade shape.
-    // Solid 0.97 holds through header text, then gentle curve down.
+    // 16-stop gradient: solid through header, then micro-steps (2-5 points each)
+    // with an imperceptible tail. Short but smooth.
     return {
       colors: [
-        `${FOG_BASE} 0.97)`,   // Above screen (overshoot)
-        `${FOG_BASE} 0.97)`,   // Through header — dense, text is crisp
-        `${FOG_BASE} 0.88)`,   // Just below header — starts easing
-        `${FOG_BASE} 0.60)`,   // Fade zone — opening up
-        `${FOG_BASE} 0.28)`,   // Mostly clear
-        `${FOG_BASE} 0.10)`,   // Very light
-        `${FOG_BASE} 0.03)`,   // Barely there
-        'transparent',           // Fully clear
+        `${FOG_BASE} 0.97)`,    // Overshoot — solid
+        `${FOG_BASE} 0.97)`,    // Header bottom — solid the whole way
+        `${FOG_BASE} 0.94)`,    // -3  Ramp begins gently
+        `${FOG_BASE} 0.90)`,    // -4
+        `${FOG_BASE} 0.84)`,    // -6
+        `${FOG_BASE} 0.76)`,    // -8
+        `${FOG_BASE} 0.65)`,    // -11 (mid-fade, steepest part)
+        `${FOG_BASE} 0.52)`,    // -13
+        `${FOG_BASE} 0.38)`,    // -14
+        `${FOG_BASE} 0.25)`,    // -13
+        `${FOG_BASE} 0.15)`,    // -10 (decelerating)
+        `${FOG_BASE} 0.08)`,    // -7
+        `${FOG_BASE} 0.03)`,    // -5
+        `${FOG_BASE} 0.008)`,   // -2.2 (imperceptible)
+        'transparent',            // Gone
       ] as [string, string, ...string[]],
       locations: [
-        0,                                       // Top of container
-        headerEnd,                               // Header bottom — solid all the way
-        headerEnd + fadeZone * 0.08,             // Ease begins right below header
-        headerEnd + fadeZone * 0.25,             // 25% into fade zone
-        headerEnd + fadeZone * 0.45,             // 45% into fade zone
-        headerEnd + fadeZone * 0.65,             // 65% into fade zone
-        headerEnd + fadeZone * 0.82,             // 82% into fade zone
-        1,                                       // Bottom
+        0,                                      // Top
+        headerEnd,                              // Header bottom — solid ends
+        headerEnd + fadeZone * 0.06,            // Ramp starts
+        headerEnd + fadeZone * 0.14,
+        headerEnd + fadeZone * 0.24,
+        headerEnd + fadeZone * 0.34,
+        headerEnd + fadeZone * 0.46,            // Mid-fade
+        headerEnd + fadeZone * 0.56,
+        headerEnd + fadeZone * 0.66,
+        headerEnd + fadeZone * 0.75,
+        headerEnd + fadeZone * 0.83,            // Decelerating
+        headerEnd + fadeZone * 0.89,
+        headerEnd + fadeZone * 0.94,
+        headerEnd + fadeZone * 0.98,            // Imperceptible dissolve
+        1,                                      // Bottom
       ] as [number, number, ...number[]],
     };
   }, [headerHeight, fogTotalHeight]);

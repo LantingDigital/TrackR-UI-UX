@@ -49,7 +49,7 @@ export const ArticlesListScreen: React.FC = () => {
   return (
     <View style={styles.screen}>
       {/* Fog gradient overlay */}
-      <FogHeader headerHeight={insets.top + 36} fogExtension={150} />
+      <FogHeader headerHeight={headerTotalHeight} />
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>

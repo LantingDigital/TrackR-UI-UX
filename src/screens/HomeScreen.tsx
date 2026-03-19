@@ -381,8 +381,8 @@ export const HomeScreen = () => {
   // Using scaleY + translateY instead of animated height prevents the 12-stop
   // LinearGradient from being redrawn every frame. The GPU scales the pre-rendered
   // gradient texture instead — dramatically cheaper.
-  const FOG_EXPANDED_HEIGHT = 50 + insets.top + HEADER_HEIGHT_EXPANDED + 200;
-  const FOG_COLLAPSED_HEIGHT = 50 + insets.top + HEADER_HEIGHT_COLLAPSED + 200;
+  const FOG_EXPANDED_HEIGHT = 50 + insets.top + HEADER_HEIGHT_EXPANDED + 60;
+  const FOG_COLLAPSED_HEIGHT = 50 + insets.top + HEADER_HEIGHT_COLLAPSED + 60;
   const FOG_SCALE_COLLAPSED = FOG_COLLAPSED_HEIGHT / FOG_EXPANDED_HEIGHT;
 
   const fogGradientAnimatedStyle = useAnimatedStyle(() => {
@@ -2356,7 +2356,7 @@ export const HomeScreen = () => {
             top: -50,
             left: 0,
             right: 0,
-            height: 50 + insets.top + 88 + 200, // 50px above + status bar + 88px visible + 200px buffer
+            height: 50 + insets.top + 88 + 60, // 50px above + status bar + 88px visible + 60px fade
             zIndex: 90,
           }, searchContentFadeStyle]}
           pointerEvents="none"
@@ -2467,7 +2467,7 @@ export const HomeScreen = () => {
             top: -50,
             left: 0,
             right: 0,
-            height: 50 + insets.top + 88 + 200, // 50px above + status bar + 88px visible + 200px buffer
+            height: 50 + insets.top + 88 + 60, // 50px above + status bar + 88px visible + 60px fade
             zIndex: 90,
           },
           logFogAnimatedStyle,
@@ -2931,7 +2931,7 @@ export const HomeScreen = () => {
             top: -50,
             left: 0,
             right: 0,
-            height: 50 + insets.top + 88 + 200, // 50px above + status bar + 88px visible + 200px buffer
+            height: 50 + insets.top + 88 + 60, // 50px above + status bar + 88px visible + 60px fade
             zIndex: 90,
           },
           scanFogAnimatedStyle,

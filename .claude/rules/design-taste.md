@@ -41,6 +41,14 @@ These are components/screens Caleb has approved. Study their feel when building 
 - Shadows: `#323232` (never black)
 - No other gray values. No blue tints. No cool tones.
 
+## Fog Rules (from 2026-03-19 device review)
+
+- Fog must NEVER affect content before the user scrolls. If a page isn't scrollable, fog should basically not touch content at all.
+- Short + smooth > long + gradual. 60px of 15 micro-stops is better than 200px of 8 stops.
+- Screens with simple text headers (like "ARTICLES") expose gradient imperfections. Complex header modules (search bars, pills, cards) hide transitions naturally.
+- Some screens don't need fog at all — RateRidesScreen, LogbookLogSheet, CoasterSheet had it removed.
+- Approved fog examples: PerksScreen ("really good"), ArticleDetailScreen, ArticleSheet, LogbookScreen, CriteriaWeightEditorScreen.
+
 ## When Building New Game UIs
 
 - Games are line entertainment — played while waiting in line at a park

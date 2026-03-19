@@ -34,7 +34,7 @@ const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const ENTER_SLIDE = SCREEN_HEIGHT * 0.15;
 const EXIT_DURATION = 300;
 const COMMUNITY_HEADER_HEIGHT = 60;
-const FOG_EXTENSION = 200; // extended tail for very gradual bottom-edge fade
+const FOG_EXTENSION = 60; // short tail — smoothness from micro-stops, not distance
 
 // Fog base color — MUST match HomeScreen exactly
 // HomeScreen uses rgba(240, 238, 235, ...) for a warmer tone
