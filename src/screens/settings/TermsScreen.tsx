@@ -133,7 +133,7 @@ export function TermsScreen() {
       </ScrollView>
 
       {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      <FogHeader headerHeight={headerTotalHeight} fogExtension={80} />
 
       {/* Header — floats above fog */}
       <Animated.View style={[styles.header, { top: insets.top }, headerStyle]}>

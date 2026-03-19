@@ -105,8 +105,8 @@ export function GuideModal({ visible, guide, onClose }: GuideModalProps) {
           </View>
         </View>
 
-        {/* Fog gradient — fades content as it scrolls under the header */}
-        <SheetFog headerHeight={HEADER_AREA_HEIGHT} />
+        {/* Fog gradient — matches ArticleSheet: small dense zone, long smooth fade */}
+        <SheetFog headerHeight={HEADER_AREA_HEIGHT} fogExtension={60} />
 
         {/* Content */}
         <ScrollView

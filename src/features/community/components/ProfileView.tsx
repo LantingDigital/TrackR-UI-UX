@@ -171,7 +171,7 @@ export function ProfileView() {
   return (
     <View style={styles.container}>
       {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      <FogHeader headerHeight={headerTotalHeight} fogExtension={30} />
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>

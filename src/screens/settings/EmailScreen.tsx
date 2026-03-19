@@ -124,7 +124,7 @@ export function EmailScreen() {
       </View>
 
       {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      <FogHeader headerHeight={headerTotalHeight} fogExtension={20} />
 
       {/* Header — floats above fog */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>

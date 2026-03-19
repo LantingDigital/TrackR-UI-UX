@@ -737,7 +737,7 @@ export const SettingsScreen = () => {
       </ScrollView>
 
       {/* Fog gradient overlay — uses approved FogHeader (0.97, warm base) */}
-      <FogHeader headerHeight={headerHeight} />
+      <FogHeader headerHeight={headerHeight} fogExtension={30} />
 
       {/* Floating header */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>

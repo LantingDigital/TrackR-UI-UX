@@ -293,7 +293,7 @@ export const MerchStoreScreen: React.FC = () => {
   return (
     <View style={styles.screen}>
       {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      <FogHeader headerHeight={headerTotalHeight} fogExtension={30} />
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>

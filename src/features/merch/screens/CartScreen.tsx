@@ -355,10 +355,10 @@ export const CartScreen: React.FC = () => {
               </Animated.View>
             )}
 
-            <View style={{ height: 120 }} />
+            <View style={{ height: 100 }} />
           </ScrollView>
 
-          {/* Checkout Button */}
+          {/* Checkout Button — floats at bottom on page background */}
           <View style={[styles.bottomBar, { paddingBottom: insets.bottom + spacing.base }]}>
             <Pressable
               onPress={() => {
@@ -447,11 +447,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomBar: {
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing.base,
-    backgroundColor: colors.background.page,
-    ...shadows.small,
-    shadowOffset: { width: 0, height: -4 },
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingHorizontal: spacing.xl,
+    paddingTop: spacing.lg,
   },
   checkoutButton: {
     alignItems: 'center',
@@ -459,6 +460,7 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: radius.button,
     backgroundColor: colors.accent.primary,
+    ...shadows.card,
   },
   checkoutText: {
     fontSize: typography.sizes.subtitle,

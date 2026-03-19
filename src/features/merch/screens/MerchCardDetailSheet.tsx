@@ -257,7 +257,7 @@ export const MerchCardDetailSheet: React.FC = () => {
   return (
     <View style={styles.screen}>
       {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      <FogHeader headerHeight={headerTotalHeight} fogExtension={24} />
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
