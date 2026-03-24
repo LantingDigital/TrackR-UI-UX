@@ -71,7 +71,7 @@ import { getCriteria } from '../stores/rideLogStore';
 import { SettingsBottomSheet } from '../components/settings/SettingsBottomSheet';
 import { DangerousActionModal } from '../components/settings/DangerousActionModal';
 import type { SettingsSheetOption } from '../components/settings/SettingsBottomSheet';
-import { FogHeader } from '../components/FogHeader';
+import { GlassHeader } from '../components/GlassHeader';
 
 // ============================================
 // Constants
@@ -268,8 +268,6 @@ export const SettingsScreen = () => {
     setHapticsEnabled,
     setNotificationsEnabled,
   } = useSettingsStore();
-
-  const backPress = useSpringPress();
 
   // Bottom sheet states
   const [unitsSheetVisible, setUnitsSheetVisible] = useState(false);
@@ -512,6 +510,7 @@ export const SettingsScreen = () => {
     .slice(0, 2)
     .toUpperCase();
 
+  const backPress = useSpringPress();
   const headerHeight = insets.top + 52;
 
   return (
@@ -736,8 +735,8 @@ export const SettingsScreen = () => {
         </View>
       </ScrollView>
 
-      {/* Fog gradient overlay — uses approved FogHeader (0.97, warm base) */}
-      <FogHeader headerHeight={headerHeight} fogExtension={30} />
+      {/* Liquid Glass header overlay */}
+      <GlassHeader headerHeight={headerHeight} />
 
       {/* Floating header */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>

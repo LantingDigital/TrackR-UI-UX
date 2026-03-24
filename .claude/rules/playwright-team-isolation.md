@@ -1,49 +1,30 @@
-# Playwright Team Isolation — SOLVED
+# Browser Team Isolation — Browser Slot System
 
-## The Problem (was)
+## History
 
-All agents in the same session shared ONE Playwright MCP browser. When multiple agents needed browsers simultaneously (e.g., card-art in Gemini + backend in Firebase Console), they'd hijack each other's pages.
+The original inline Playwright MCP system (per-agent `mcpServers` in YAML frontmatter) has been **REPLACED** by the browser slot system. The old approach defined isolated `--headless --isolated` Playwright instances per agent. The new system uses pre-launched headed browser slots managed by the team lead.
 
-## The Solution
+## The Old System (DEPRECATED)
 
-Use **inline `mcpServers`** in agent definition files (`.claude/agents/*.md`). Each agent's YAML frontmatter defines its own Playwright MCP server, which spins up a separate process = separate browser.
+Used inline `mcpServers` in agent YAML frontmatter to spin up per-agent Playwright processes. Each agent got `--headless --isolated`. This solved browser collisions but required each agent to manage its own browser lifecycle.
 
-```yaml
----
-mcpServers:
-  - name: playwright
-    type: stdio
-    command: npx
-    args: ["@playwright/mcp@latest", "--headless", "--isolated"]
----
-```
+## The New System — Browser Slots
 
-The `--isolated` flag ensures each uses a temporary user-data-dir (no profile collisions).
+Agents now use pre-assigned browser slots via `mcp__browser-{N}__*` tools. The browser is already running when the agent starts. Agents do NOT launch their own browsers.
 
-**Key:** You MUST use inline definitions. If you pass a string reference (just `"playwright"`), it shares the parent's connection.
+Key rules:
+- Do NOT use `mcp__playwright__*` tools — use only your assigned `mcp__browser-{N}__*` tools
+- The browser is already running — do NOT launch your own
+- Browser slots are assigned by the team lead when activating agents
+- Refer to BROWSER-WORKFLOW.md in the EA project root for the full tool list and usage rules
 
-## Agent Files Created
+## Agent Files Updated
 
-- `.claude/agents/card-art-browser.md` — for Gemini NanoBanana generation
-- `.claude/agents/firebase-browser.md` — for Firebase Console admin tasks
-- `.claude/agents/merch-browser.md` — for QPMN, pricing research, vendor signups
-
-## How to Use
-
-When spawning agents that need Playwright, use `subagent_type` matching the agent file name:
-
-```
-Agent(subagent_type="card-art-browser", name="card-art", ...)
-Agent(subagent_type="firebase-browser", name="backend", ...)
-Agent(subagent_type="merch-browser", name="merch", ...)
-```
-
-Each agent gets its own browser process. No collisions. Browsers clean up on agent exit.
+- `card-art-agent.md` — uses browser slot for Gemini NanoBanana generation and source image search
+- `experience-agent.md` — uses browser slot for PKPass cert setup and API testing
+- `firebase-browser.md` — utility agent, uses browser slot for Firebase Console admin tasks
+- `merch-browser.md` — utility agent, uses browser slot for QPMN, pricing research, vendor signups
 
 ## What About the Project-Level Config?
 
-The `.claude/settings.json` Playwright config stays as the default for the main session and any agents that DON'T define their own inline MCP. The inline definitions override it per-agent.
-
-## Incident (2026-03-19)
-
-Card-art agent and backend agent collided 3 times. Then card-art and merch-pricing collided 3 more times. Fixed mid-session with sequential access, then permanently solved with inline mcpServers.
+The `.claude/settings.json` Playwright config may still exist as a fallback for the main session. The browser slot system is the primary method for team agents.

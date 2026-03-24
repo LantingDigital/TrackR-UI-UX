@@ -20,10 +20,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
   withTiming,
   withDelay,
   Easing,
   interpolate,
+  type SharedValue,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../../theme/colors';
@@ -50,6 +52,7 @@ interface CommunityPlayTabProps {
   onPlaySpeedSorter?: () => void;
   onPlayBlindRanking?: () => void;
   onPlayTrivia?: () => void;
+  scrollY?: SharedValue<number>;
 }
 
 // ─── Game Definitions ───────────────────────────────────────
@@ -454,8 +457,15 @@ export const CommunityPlayTab = ({
   onPlaySpeedSorter,
   onPlayBlindRanking,
   onPlayTrivia,
+  scrollY,
 }: CommunityPlayTabProps) => {
   const insets = useSafeAreaInsets();
+
+  const playScrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      if (scrollY) scrollY.value = event.contentOffset.y;
+    },
+  });
 
   const featuredIndex = useMemo(() => getFeaturedIndex(), []);
   const featuredGame = ALL_GAMES[featuredIndex];
@@ -484,13 +494,15 @@ export const CommunityPlayTab = ({
   }, [onPlayCoastle, onPlaySpeedSorter, onPlayBlindRanking, onPlayTrivia]);
 
   return (
-    <ScrollView
+    <Animated.ScrollView
       style={styles.container}
       contentContainerStyle={[
         styles.content,
         { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
       ]}
       showsVerticalScrollIndicator={false}
+      onScroll={playScrollHandler}
+      scrollEventThrottle={16}
     >
       {/* Featured: Single daily game */}
       <SectionLabel label="FEATURED" delay={0} />
@@ -513,7 +525,7 @@ export const CommunityPlayTab = ({
 
       {/* Quick Tip */}
       <QuickTip />
-    </ScrollView>
+    </Animated.ScrollView>
   );
 };
 

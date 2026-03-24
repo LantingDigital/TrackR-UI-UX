@@ -1,0 +1,931 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Skip to content":
+      - /url: "#main-content"
+    - generic [ref=e3]:
+      - link "DEV Community Home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "DEV Community" [ref=e5]
+      - search [ref=e7]:
+        - generic [ref=e9]:
+          - textbox "Search term" [ref=e708]:
+            - /placeholder: Find related posts...
+          - button "Search" [ref=e11] [cursor=pointer]:
+            - img
+          - link "Powered by Algolia" [ref=e12] [cursor=pointer]:
+            - /url: https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral
+            - text: Powered by Algolia
+            - img [ref=e13]
+      - generic [ref=e16]:
+        - link "Log in" [ref=e18] [cursor=pointer]:
+          - /url: https://dev.to/enter?signup_subforem=1
+        - link "Create account" [ref=e19] [cursor=pointer]:
+          - /url: https://dev.to/enter?signup_subforem=1&state=new-user
+  - generic [ref=e23]:
+    - complementary "Article actions" [ref=e24]:
+      - generic [ref=e26]:
+        - button "reaction-drawer-trigger" [ref=e28] [cursor=pointer]:
+          - img [ref=e30]
+          - generic [ref=e33]: "82"
+          - generic: Add reaction
+        - button "Jump to Comments" [ref=e34] [cursor=pointer]:
+          - img [ref=e36]
+          - generic [ref=e38]: "9"
+          - generic: Jump to Comments
+        - button "Add to reading list" [ref=e39] [cursor=pointer]:
+          - img [ref=e41]
+          - generic [ref=e43]: "6"
+          - generic: Save
+        - button "Boost" [ref=e44] [cursor=pointer]:
+          - img [ref=e46]
+          - generic: Boost
+        - button "Share post options" [ref=e49] [cursor=pointer]:
+          - img
+    - main [ref=e50]:
+      - article [ref=e52]:
+        - generic [ref=e53]:
+          - link "Cover image for 🎨JSON Style Guides for Controlled Image Generation with GPT-4o and GPT-Image-1" [ref=e54] [cursor=pointer]:
+            - /url: https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F687ofnva9p2vb95cu9qj.png
+            - img "Cover image for 🎨JSON Style Guides for Controlled Image Generation with GPT-4o and GPT-Image-1" [ref=e55]
+          - generic [ref=e56]:
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - link "Technology at Worldline profile image" [ref=e60] [cursor=pointer]:
+                  - /url: /worldlinetech
+                  - img "Technology at Worldline profile image" [ref=e61]
+                - link "raphiki" [ref=e62] [cursor=pointer]:
+                  - /url: /raphiki
+                  - img "raphiki" [ref=e63]
+              - generic [ref=e64]:
+                - link "raphiki" [ref=e65] [cursor=pointer]:
+                  - /url: /raphiki
+                - text: for
+                - link "Technology at Worldline" [ref=e66] [cursor=pointer]:
+                  - /url: /worldlinetech
+                - paragraph [ref=e67]:
+                  - text: Posted on
+                  - time [ref=e68]: May 8, 2025
+                  - text: • Edited on
+                  - time [ref=e69]: Jun 2, 2025
+            - generic [ref=e70]:
+              - button "Like" [ref=e71] [cursor=pointer]:
+                - img [ref=e73]
+                - generic [ref=e74]: "75"
+              - button "Unicorn" [ref=e75] [cursor=pointer]:
+                - img [ref=e77]
+                - generic [ref=e78]: "2"
+              - button "Exploding Head" [ref=e79] [cursor=pointer]:
+                - img [ref=e81]
+                - generic [ref=e82]: "2"
+              - button "Raised Hands" [ref=e83] [cursor=pointer]:
+                - img [ref=e85]
+                - generic [ref=e86]: "1"
+              - button "Fire" [ref=e87] [cursor=pointer]:
+                - img [ref=e89]
+                - generic [ref=e90]: "2"
+            - heading "🎨JSON Style Guides for Controlled Image Generation with GPT-4o and GPT-Image-1" [level=1] [ref=e91]
+            - generic [ref=e92]:
+              - link "# genai" [ref=e93] [cursor=pointer]:
+                - /url: /t/genai
+                - generic [ref=e94]: "#"
+                - text: genai
+              - link "# image" [ref=e95] [cursor=pointer]:
+                - /url: /t/image
+                - generic [ref=e96]: "#"
+                - text: image
+              - link "# json" [ref=e97] [cursor=pointer]:
+                - /url: /t/json
+                - generic [ref=e98]: "#"
+                - text: json
+              - link "# gpt" [ref=e99] [cursor=pointer]:
+                - /url: /t/gpt
+                - generic [ref=e100]: "#"
+                - text: gpt
+        - generic [ref=e101]:
+          - navigation [ref=e102]:
+            - heading "Image Generation (5 Part Series)" [level=2] [ref=e104]:
+              - link "Image Generation (5 Part Series)" [ref=e105] [cursor=pointer]:
+                - /url: /raphiki/series/30873
+            - generic [ref=e106]:
+              - link "1 The Yoga of Image Generation – Part 1" [ref=e107] [cursor=pointer]:
+                - /url: /worldlinetech/the-yoga-of-image-generation-part-1-1gan
+                - generic [ref=e108]: "1"
+                - generic [ref=e109]: The Yoga of Image Generation – Part 1
+              - link "2 The Yoga of Image Generation – Part 2" [ref=e110] [cursor=pointer]:
+                - /url: /worldlinetech/the-yoga-of-image-generation-part-2-42c
+                - generic [ref=e111]: "2"
+                - generic [ref=e112]: The Yoga of Image Generation – Part 2
+              - link "3 🎨JSON Style Guides for Controlled Image Generation with GPT-4o and GPT-Image-1" [ref=e113] [cursor=pointer]:
+                - /url: /worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p
+                - generic [ref=e114]: "3"
+                - generic [ref=e115]: 🎨JSON Style Guides for Controlled Image Generation with GPT-4o and GPT-Image-1
+              - link "4 The Yoga of Image Generation – Part 3" [ref=e116] [cursor=pointer]:
+                - /url: /worldlinetech/the-yoga-of-image-generation-part-3-5517
+                - generic [ref=e117]: "4"
+                - generic [ref=e118]: The Yoga of Image Generation – Part 3
+              - link "5 Enhancing QR Codes in the Age of GenAI" [ref=e119] [cursor=pointer]:
+                - /url: /worldlinetech/enhancing-qr-codes-in-the-age-of-genai-4fa6
+                - generic [ref=e120]: "5"
+                - generic [ref=e121]: Enhancing QR Codes in the Age of GenAI
+          - generic [ref=e122]:
+            - paragraph [ref=e123]:
+              - text: Image generation with GPT-4o and GPT-Image-1 can yield visually stunning results—but without clear instructions, results may vary. Using
+              - strong [ref=e124]: JSON style guides
+              - text: is a powerful way to bring
+              - strong [ref=e125]: clarity, structure, and repeatability
+              - text: to your prompts. This tutorial will walk you through why JSON style guides matter, how to use them effectively, and provide a complete reference to all parameters you can define.
+            - separator [ref=e126]
+            - heading "🚀 Why Use a JSON Style Guide?" [level=2] [ref=e127]:
+              - link:
+                - /url: "#why-use-a-json-style-guide"
+              - text: 🚀 Why Use a JSON Style Guide?
+            - paragraph [ref=e128]: "Natural language is powerful but often ambiguous. By organizing your image prompts using JSON:"
+            - list [ref=e129]:
+              - listitem [ref=e130]:
+                - text: ✅ You
+                - strong [ref=e131]: eliminate ambiguity
+                - text: with structured fields.
+              - listitem [ref=e132]:
+                - text: ✅ You
+                - strong [ref=e133]: ensure consistency
+                - text: across multiple generations.
+              - listitem [ref=e134]:
+                - text: ✅ You can
+                - strong [ref=e135]: automate or scale
+                - text: prompt creation for batch processing.
+              - listitem [ref=e136]:
+                - text: ✅ You
+                - strong [ref=e137]: separate content from style
+                - text: ", making iterations easier."
+              - listitem [ref=e138]: ✅ Developers and designers can work together using shared, machine-readable formats.
+            - heading "🛠️ How to Use a JSON Style Guide" [level=2] [ref=e139]:
+              - link:
+                - /url: "#how-to-use-a-json-style-guide"
+              - text: 🛠️ How to Use a JSON Style Guide
+            - paragraph [ref=e140]: "A JSON prompt is simply a structured document specifying everything you want the model to include. Here’s a simple example:"
+            - code [ref=e143]: "{ \"scene\": \"a magical forest clearing\", \"subjects\": [ { \"type\": \"fox\", \"description\": \"wearing a wizard hat, sitting on a tree stump\", \"position\": \"center\" } ], \"style\": \"storybook illustration\", \"color_palette\": [\"forest green\", \"gold\", \"midnight blue\"], \"lighting\": \"soft dappled sunlight\", \"mood\": \"whimsical and cozy\", \"background\": \"glowing mushrooms and tall trees\", \"composition\": \"eye-level view, centered subject\" }"
+            - paragraph [ref=e144]: This structure gives the model explicit, interpretable instructions for what to render and how.
+            - paragraph [ref=e145]:
+              - link "Fox in Magical forest" [ref=e146]:
+                - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F397u1qvhz9oktlwljiau.png
+                - img "Fox in Magical forest" [ref=e147]
+            - separator [ref=e148]
+            - heading "📚 Parameter Reference" [level=2] [ref=e149]:
+              - link:
+                - /url: "#parameter-reference"
+              - text: 📚 Parameter Reference
+            - paragraph [ref=e150]: Here’s a breakdown of possible fields you can use in a JSON style guide.
+            - heading "1. scene" [level=3] [ref=e151]:
+              - link:
+                - /url: "#1-raw-scene-endraw-"
+              - text: "1."
+              - code [ref=e152]: scene
+            - blockquote [ref=e153]:
+              - paragraph [ref=e154]: A short overview of the entire setting or environment.
+            - list [ref=e155]:
+              - listitem [ref=e156]:
+                - text: "Example:"
+                - code [ref=e157]: "\"a futuristic city at sunset\""
+            - heading "2. subjects (array of objects)" [level=3] [ref=e158]:
+              - link:
+                - /url: "#2-raw-subjects-endraw-array-of-objects"
+              - text: "2."
+              - code [ref=e159]: subjects
+              - emphasis [ref=e160]: (array of objects)
+            - blockquote [ref=e161]:
+              - paragraph [ref=e162]: "Describes each key subject in the image. Each subject can include:"
+            - code [ref=e165]: "{ \"type\": \"robot\", \"description\": \"silver body with glowing blue eyes\", \"position\": \"foreground\", \"pose\": \"standing upright\", \"size\": \"large\", \"expression\": \"neutral\", \"interaction\": \"looking at a floating screen\" }"
+            - heading "3. style" [level=3] [ref=e166]:
+              - link:
+                - /url: "#3-raw-style-endraw-"
+              - text: "3."
+              - code [ref=e167]: style
+            - blockquote [ref=e168]:
+              - paragraph [ref=e169]: The artistic or visual rendering style.
+            - list [ref=e170]:
+              - listitem [ref=e171]:
+                - text: "Examples:"
+                - code [ref=e172]: "\"photorealistic\""
+                - text: ","
+                - code [ref=e173]: "\"watercolor\""
+                - text: ","
+                - code [ref=e174]: "\"pixel art\""
+                - text: ","
+                - code [ref=e175]: "\"cyberpunk\""
+                - text: ","
+                - code [ref=e176]: "\"anime\""
+            - heading "4. color_palette" [level=3] [ref=e177]:
+              - link:
+                - /url: "#4-raw-colorpalette-endraw-"
+              - text: "4."
+              - code [ref=e178]: color_palette
+            - blockquote [ref=e179]:
+              - paragraph [ref=e180]: An array of dominant and accent colors.
+            - list [ref=e181]:
+              - listitem [ref=e182]:
+                - text: "Example:"
+                - code [ref=e183]: "[\"emerald green\", \"burnt orange\", \"charcoal\"]"
+            - heading "5. lighting" [level=3] [ref=e184]:
+              - link:
+                - /url: "#5-raw-lighting-endraw-"
+              - text: "5."
+              - code [ref=e185]: lighting
+            - blockquote [ref=e186]:
+              - paragraph [ref=e187]: How the image is lit.
+            - list [ref=e188]:
+              - listitem [ref=e189]:
+                - text: "Examples:"
+                - code [ref=e190]: "\"sunset backlight\""
+                - text: ","
+                - code [ref=e191]: "\"soft studio lighting\""
+                - text: ","
+                - code [ref=e192]: "\"glow from below\""
+            - heading "6. mood" [level=3] [ref=e193]:
+              - link:
+                - /url: "#6-raw-mood-endraw-"
+              - text: "6."
+              - code [ref=e194]: mood
+            - blockquote [ref=e195]:
+              - paragraph [ref=e196]: The emotional tone or atmosphere.
+            - list [ref=e197]:
+              - listitem [ref=e198]:
+                - text: "Examples:"
+                - code [ref=e199]: "\"peaceful\""
+                - text: ","
+                - code [ref=e200]: "\"dramatic\""
+                - text: ","
+                - code [ref=e201]: "\"eerie\""
+                - text: ","
+                - code [ref=e202]: "\"playful\""
+            - heading "7. background" [level=3] [ref=e203]:
+              - link:
+                - /url: "#7-raw-background-endraw-"
+              - text: "7."
+              - code [ref=e204]: background
+            - blockquote [ref=e205]:
+              - paragraph [ref=e206]: The scenery or backdrop.
+            - list [ref=e207]:
+              - listitem [ref=e208]:
+                - text: "Examples:"
+                - code [ref=e209]: "\"mountain landscape\""
+                - text: ","
+                - code [ref=e210]: "\"white cyclorama\""
+                - text: ","
+                - code [ref=e211]: "\"dreamy nebula sky\""
+            - heading "8. composition" [level=3] [ref=e212]:
+              - link:
+                - /url: "#8-raw-composition-endraw-"
+              - text: "8."
+              - code [ref=e213]: composition
+            - blockquote [ref=e214]:
+              - paragraph [ref=e215]: Overall layout and positioning.
+            - list [ref=e216]:
+              - listitem [ref=e217]:
+                - text: "Examples:"
+                - code [ref=e218]: "\"symmetrical\""
+                - text: ","
+                - code [ref=e219]: "\"rule of thirds\""
+                - text: ","
+                - code [ref=e220]: "\"top-down shot\""
+                - text: ","
+                - code [ref=e221]: "\"portrait orientation\""
+            - heading "9. camera" [level=3] [ref=e222]:
+              - link:
+                - /url: "#9-raw-camera-endraw-"
+              - text: "9."
+              - code [ref=e223]: camera
+            - blockquote [ref=e224]:
+              - paragraph [ref=e225]: Virtual photography settings.
+            - code [ref=e228]: "{ \"angle\": \"eye-level\", \"distance\": \"medium shot\", \"lens\": \"wide-angle\", \"focus\": \"sharp subject, blurred background\" }"
+            - heading "10. medium" [level=3] [ref=e229]:
+              - link:
+                - /url: "#10-raw-medium-endraw-"
+              - text: "10."
+              - code [ref=e230]: medium
+            - blockquote [ref=e231]:
+              - paragraph [ref=e232]: Simulated medium or format.
+            - list [ref=e233]:
+              - listitem [ref=e234]:
+                - text: "Examples:"
+                - code [ref=e235]: "\"oil painting\""
+                - text: ","
+                - code [ref=e236]: "\"3D render\""
+                - text: ","
+                - code [ref=e237]: "\"ink drawing\""
+                - text: ","
+                - code [ref=e238]: "\"chalkboard sketch\""
+            - heading "11. textures" [level=3] [ref=e239]:
+              - link:
+                - /url: "#11-raw-textures-endraw-"
+              - text: "11."
+              - code [ref=e240]: textures
+            - blockquote [ref=e241]:
+              - paragraph [ref=e242]: Surface qualities and tactile impressions.
+            - list [ref=e243]:
+              - listitem [ref=e244]:
+                - text: "Examples:"
+                - code [ref=e245]: "\"soft velvet\""
+                - text: ","
+                - code [ref=e246]: "\"rusty metal\""
+                - text: ","
+                - code [ref=e247]: "\"wet pavement\""
+            - heading "12. resolution" [level=3] [ref=e248]:
+              - link:
+                - /url: "#12-raw-resolution-endraw-"
+              - text: "12."
+              - code [ref=e249]: resolution
+            - blockquote [ref=e250]:
+              - paragraph [ref=e251]: Intended resolution or output size.
+            - list [ref=e252]:
+              - listitem [ref=e253]:
+                - text: "Examples:"
+                - code [ref=e254]: "\"4K\""
+                - text: ","
+                - code [ref=e255]: "\"web banner\""
+                - text: ","
+                - code [ref=e256]: "\"Instagram square\""
+            - heading "13. details" [level=3] [ref=e257]:
+              - link:
+                - /url: "#13-raw-details-endraw-"
+              - text: "13."
+              - code [ref=e258]: details
+            - blockquote [ref=e259]:
+              - paragraph [ref=e260]: Extra fine-tuned attributes.
+            - code [ref=e263]: "{ \"clothing\": \"flowing red cape\", \"weather\": \"light snowfall\", \"facial_features\": \"freckles and sharp jawline\", \"material\": \"glass and brass\", \"ornaments\": \"glasses, ring\" }"
+            - heading "14. effects" [level=3] [ref=e264]:
+              - link:
+                - /url: "#14-raw-effects-endraw-"
+              - text: "14."
+              - code [ref=e265]: effects
+            - blockquote [ref=e266]:
+              - paragraph [ref=e267]: Special effects or visual treatments.
+            - list [ref=e268]:
+              - listitem [ref=e269]:
+                - text: "Examples:"
+                - code [ref=e270]: "\"lens flare\""
+                - text: ","
+                - code [ref=e271]: "\"bokeh blur\""
+                - text: ","
+                - code [ref=e272]: "\"double exposure\""
+                - text: ","
+                - code [ref=e273]: "\"film grain\""
+            - heading "15. inspirations" [level=3] [ref=e274]:
+              - link:
+                - /url: "#15-raw-inspirations-endraw-"
+              - text: "15."
+              - code [ref=e275]: inspirations
+            - blockquote [ref=e276]:
+              - paragraph [ref=e277]: Known references to guide visual style.
+            - list [ref=e278]:
+              - listitem [ref=e279]:
+                - text: "Examples:"
+                - code [ref=e280]: "\"inspired by Studio Ghibli\""
+                - text: ","
+                - code [ref=e281]: "\"in the style of Van Gogh\""
+                - text: ","
+                - code [ref=e282]: "\"similar to Blade Runner\""
+            - separator [ref=e283]
+            - heading "🧪 Example Use Cases" [level=2] [ref=e284]:
+              - link:
+                - /url: "#example-use-cases"
+              - text: 🧪 Example Use Cases
+            - heading "Fantasy Character Concept Art" [level=3] [ref=e285]:
+              - link:
+                - /url: "#fantasy-character-concept-art"
+              - text: Fantasy Character Concept Art
+            - code [ref=e288]: "{ \"scene\": \"mountaintop at sunrise\", \"subjects\": [ { \"type\": \"warrior elf\", \"description\": \"leather armor, long silver hair\", \"pose\": \"standing with sword raised\", \"position\": \"foreground\" } ], \"style\": \"digital painting\", \"color_palette\": [\"misty gray\", \"light gold\", \"teal\"], \"lighting\": \"sunrise backlight\", \"mood\": \"heroic and calm\", \"background\": \"foggy mountains\", \"composition\": \"rule of thirds\", \"camera\": { \"angle\": \"low angle\", \"distance\": \"medium shot\", \"focus\": \"sharp on character\" } }"
+            - paragraph [ref=e289]:
+              - link "Fantasy Character" [ref=e290]:
+                - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbqkhb6curyugo1k7f0hg.png
+                - img "Fantasy Character" [ref=e291]
+            - heading "Product Mockup" [level=3] [ref=e292]:
+              - link:
+                - /url: "#product-mockup"
+              - text: Product Mockup
+            - code [ref=e295]: "{ \"scene\": \"minimalist white studio\", \"subjects\": [ { \"type\": \"smartwatch\", \"description\": \"silver frame with red strap\", \"position\": \"center\", \"pose\": \"lying flat\" } ], \"style\": \"photorealistic\", \"lighting\": \"diffused light from above\", \"mood\": \"clean and sleek\", \"background\": \"white gradient\", \"composition\": \"centered product with top view\", \"resolution\": \"4K\" }"
+            - paragraph [ref=e296]:
+              - link "Smartwatch" [ref=e297]:
+                - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fozoa22j5kdvl1vetlrby.png
+                - img "Smartwatch" [ref=e298]
+            - heading "Realistic Scene with two Characters" [level=3] [ref=e299]:
+              - link:
+                - /url: "#realistic-scene-with-two-characters"
+              - text: Realistic Scene with two Characters
+            - code [ref=e302]: "{ \"scene\": \"urban café terrace in Paris during golden hour\", \"subjects\": [ { \"type\": \"young woman\", \"description\": \"30s, Black hair in a bun, wearing a white blouse and tan trench coat, holding a coffee cup\", \"pose\": \"sitting at a café table, leaning forward slightly\", \"position\": \"left foreground\", \"expression\": \"engaged, smiling softly\" }, { \"type\": \"young man\", \"description\": \"30s, light brown curly hair, wearing a navy blue jacket and scarf, gesturing with one hand\", \"pose\": \"sitting across from the woman, mid-conversation\", \"position\": \"right foreground\", \"expression\": \"animated, talking\" } ], \"style\": \"hyper-realistic photography\", \"lighting\": \"natural golden hour light with soft shadows and sun flare\", \"mood\": \"warm and intimate\", \"background\": { \"elements\": [\"street with bicycles\", \"café signage\", \"distant pedestrians\"], \"depth_of_field\": \"shallow, blurred background\" }, \"composition\": \"framed using the rule of thirds, both characters centered with table between them\", \"camera\": { \"angle\": \"eye level\", \"distance\": \"medium close-up\", \"focus\": \"sharp on characters' faces\" }, \"color_palette\": [\"warm gold\", \"beige\", \"navy\", \"soft rose\", \"espresso brown\"], \"props\": [\"ceramic coffee cups\", \"croissants on a small plate\", \"notebook and pen on table\"], \"resolution\": \"4K\" }"
+            - paragraph [ref=e303]:
+              - link "Coffee Break in Paris" [ref=e304]:
+                - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fizn9jplwlqa4vyzt62qa.png
+                - img "Coffee Break in Paris" [ref=e305]
+            - separator [ref=e306]
+            - paragraph [ref=e307]:
+              - text: Using JSON style guides gives you a consistent, modular, and precise way to control image generation. Whether you're creating a portfolio of characters, designing branded assets, or prototyping environments, structured prompts give you the power to
+              - strong [ref=e308]: communicate with clarity
+              - text: and
+              - strong [ref=e309]: scale with confidence
+              - text: .
+            - paragraph [ref=e310]: And don’t hesitate to use ChatGPT to refine or co-create your JSON Style Guides! It can turn vague ideas into structured, generation-ready prompts in seconds.
+          - navigation [ref=e311]:
+            - heading "Image Generation (5 Part Series)" [level=2] [ref=e313]:
+              - link "Image Generation (5 Part Series)" [ref=e314] [cursor=pointer]:
+                - /url: /raphiki/series/30873
+            - generic [ref=e315]:
+              - link "1 The Yoga of Image Generation – Part 1" [ref=e316] [cursor=pointer]:
+                - /url: /worldlinetech/the-yoga-of-image-generation-part-1-1gan
+                - generic [ref=e317]: "1"
+                - generic [ref=e318]: The Yoga of Image Generation – Part 1
+              - link "2 The Yoga of Image Generation – Part 2" [ref=e319] [cursor=pointer]:
+                - /url: /worldlinetech/the-yoga-of-image-generation-part-2-42c
+                - generic [ref=e320]: "2"
+                - generic [ref=e321]: The Yoga of Image Generation – Part 2
+              - link "3 🎨JSON Style Guides for Controlled Image Generation with GPT-4o and GPT-Image-1" [ref=e322] [cursor=pointer]:
+                - /url: /worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p
+                - generic [ref=e323]: "3"
+                - generic [ref=e324]: 🎨JSON Style Guides for Controlled Image Generation with GPT-4o and GPT-Image-1
+              - link "4 The Yoga of Image Generation – Part 3" [ref=e325] [cursor=pointer]:
+                - /url: /worldlinetech/the-yoga-of-image-generation-part-3-5517
+                - generic [ref=e326]: "4"
+                - generic [ref=e327]: The Yoga of Image Generation – Part 3
+              - link "5 Enhancing QR Codes in the Age of GenAI" [ref=e328] [cursor=pointer]:
+                - /url: /worldlinetech/enhancing-qr-codes-in-the-age-of-genai-4fa6
+                - generic [ref=e329]: "5"
+                - generic [ref=e330]: Enhancing QR Codes in the Age of GenAI
+        - generic [ref=e331]:
+          - generic [ref=e332]:
+            - heading "Top comments (9)" [level=2] [ref=e334]
+            - generic [ref=e337] [cursor=pointer]: Subscribe
+          - generic [ref=e338]:
+            - generic [ref=e339]:
+              - img "pic" [ref=e341]
+              - textbox "Add a comment to the discussion" [ref=e344]:
+                - /placeholder: Add to the discussion
+            - generic [ref=e345]:
+              - group [ref=e346]:
+                - generic "Toggle this comment (and replies)" [ref=e347] [cursor=pointer]:
+                  - img "Collapse" [ref=e349]
+                - generic [ref=e353]:
+                  - link "raphiki profile image" [ref=e354] [cursor=pointer]:
+                    - /url: https://dev.to/raphiki
+                    - img "raphiki profile image" [ref=e355]
+                  - generic [ref=e356]:
+                    - generic [ref=e357]:
+                      - generic [ref=e358]:
+                        - text: Author
+                        - generic [ref=e359]:
+                          - button "raphiki profile details" [ref=e360] [cursor=pointer]:
+                            - text: raphiki
+                            - generic "Member of Technology at Worldline": Technology at Worldline
+                          - generic [ref=e361]:
+                            - img [ref=e362]
+                            - text: Author
+                        - text: •
+                        - link "Aug 20 '25" [ref=e364] [cursor=pointer]:
+                          - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-30ihe
+                          - time [ref=e365]: Aug 20 '25
+                        - button "Toggle dropdown menu" [ref=e367] [cursor=pointer]:
+                          - img "Dropdown menu"
+                      - generic [ref=e368]:
+                        - paragraph [ref=e369]: "Here are instructions you can give to an assistant or agent to propose a full-blown JSON STyle Guide base on a few inputs words:"
+                        - blockquote [ref=e370]:
+                          - paragraph [ref=e371]:
+                            - text: You are tasked with generating a JSON object in English (even if the initial user prompt is in another language) containing properties for image generation based on a simple design prompt provided by the user. The JSON object should reflect the artistic intent, technical specifications, and thematic elements of the prompt and be compatible with Stable Diffusion or Flux models. Be creative and consistent in your interpretations.
+                            - text: "Instructions:"
+                          - list [ref=e372]:
+                            - listitem [ref=e373]: Ask the user for a short, simple design prompt (e.g., "a serene Japanese garden at sunrise" or "cyberpunk, city skyline, flying cars").
+                            - listitem [ref=e374]: Analyze the design prompt to extract all relevant artistic, thematic, and technical details.
+                            - listitem [ref=e375]: Identify visual style, subjects, colors, mood, composition, lighting, and other distinctive elements.
+                            - listitem [ref=e376]: "Generate a structured JSON object containing (at minimum) the following top-level keys:"
+                            - listitem [ref=e377]: style_name – A catchy, descriptive phrase that encapsulates the design prompt’s overall identity.
+                            - listitem [ref=e378]: inspiration – 2–4 artistic styles, artists, or cultural references that align with the prompt.
+                            - listitem [ref=e379]: scene – A concise description of the overall setting/environment.
+                            - listitem [ref=e380]: "subjects – An array of objects describing each main element in the scene: { \"type\": \"robot\", \"description\": \"silver body with glowing blue eyes\", \"position\": \"foreground\", \"pose\": \"standing upright\", \"size\": \"large\", \"expression\": \"neutral\", \"interaction\": \"looking at a floating screen\" }"
+                            - listitem [ref=e381]: style – Artistic rendering style (e.g., "watercolor", "photorealistic", "anime").
+                            - listitem [ref=e382]: "color_palette – Object containing: primary: hex code for main color secondary: complementary hex color highlight: accent hex color shadow: depth hex color background_gradient: array of two hex colors for gradients"
+                            - listitem [ref=e383]: lighting – Description of light source, tone, and direction (e.g., "soft morning light", "neon backlighting").
+                            - listitem [ref=e384]: mood – Emotional tone or atmosphere (e.g., "serene", "mysterious", "energetic").
+                            - listitem [ref=e385]: "background – Object describing backdrop: type: \"solid\", \"gradient\", \"pattern\", \"scenery\" details: description of background elements"
+                            - listitem [ref=e386]: composition – Layout and framing approach (e.g., "rule of thirds", "center focus", "top-down view").
+                            - listitem [ref=e387]: "camera – Virtual camera settings: angle: e.g., \"eye-level\", \"low angle\" distance: e.g., \"close-up\", \"wide shot\" lens: e.g., \"35mm\", \"wide-angle\" focus: e.g., \"sharp subject, blurred background\""
+                            - listitem [ref=e388]: medium – Simulated artistic medium (e.g., "oil painting", "charcoal sketch", "3D render").
+                            - listitem [ref=e389]: textures – Surface qualities (e.g., "rough concrete", "silky fabric").
+                            - listitem [ref=e390]: resolution – Intended output size (e.g., "4K", "Instagram square").
+                            - listitem [ref=e391]: details – Extra specific attributes (e.g., clothing, weather, materials, accessories).
+                            - listitem [ref=e392]: effects – Special visual treatments (e.g., "bokeh blur", "lens flare", "film grain").
+                            - listitem [ref=e393]: themes – 3–5 conceptual or emotional themes in the design.
+                            - listitem [ref=e394]: usage_notes – Short guidelines on how to apply the style effectively.
+                            - listitem [ref=e395]: Optional – You can add additional keys and properties - only if relevant - to have a comprehensive JSON Style Guide to be use for image generation by Stable Diffusion or Flux models.
+                            - listitem [ref=e396]: Merge everything in one single JSON file and output the final JSON file only with proper indentation and formatting for readability and without other extra text before or after. Ensure that all properties in the JSON object reflect the input design prompt and that the text is in English.
+                    - generic [ref=e397]:
+                      - button "like" [ref=e398] [cursor=pointer]:
+                        - img "Like comment:"
+                        - generic: "1"
+                        - generic: like
+                        - generic: Like
+                      - button "Comment button Reply" [ref=e399] [cursor=pointer]:
+                        - img "Comment button"
+                        - generic: Reply
+              - group [ref=e400]:
+                - generic "Toggle this comment (and replies)" [ref=e401] [cursor=pointer]:
+                  - img "Collapse" [ref=e403]
+                - generic [ref=e405]:
+                  - generic [ref=e407]:
+                    - link "raphiki profile image" [ref=e408] [cursor=pointer]:
+                      - /url: https://dev.to/raphiki
+                      - img "raphiki profile image" [ref=e409]
+                    - generic [ref=e410]:
+                      - generic [ref=e411]:
+                        - generic [ref=e412]:
+                          - text: Author
+                          - generic [ref=e413]:
+                            - button "raphiki profile details" [ref=e414] [cursor=pointer]:
+                              - text: raphiki
+                              - generic "Member of Technology at Worldline": Technology at Worldline
+                            - generic [ref=e415]:
+                              - img [ref=e416]
+                              - text: Author
+                          - text: •
+                          - link "May 25 '25" [ref=e418] [cursor=pointer]:
+                            - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-2o3ig
+                            - time [ref=e419]: May 25 '25
+                          - button "Toggle dropdown menu" [ref=e421] [cursor=pointer]:
+                            - img "Dropdown menu"
+                        - paragraph [ref=e423]:
+                          - text: "And this also work with Gemini:"
+                          - link "Fox in Magical Forest":
+                            - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjcejbptx1xt17pbdw990.jpg
+                            - img "Fox in Magical Forest"
+                      - generic [ref=e424]:
+                        - button "like" [ref=e425] [cursor=pointer]:
+                          - img "Like comment:"
+                          - generic: "1"
+                          - generic: like
+                          - generic: Like
+                        - button "Comment button Reply" [ref=e426] [cursor=pointer]:
+                          - img "Comment button"
+                          - generic: Reply
+                  - group [ref=e427]:
+                    - generic "Toggle this comment (and replies)" [ref=e428] [cursor=pointer]:
+                      - img "Collapse" [ref=e430]
+                    - generic [ref=e434]:
+                      - link "raphiki profile image" [ref=e435] [cursor=pointer]:
+                        - /url: https://dev.to/raphiki
+                        - img "raphiki profile image" [ref=e436]
+                      - generic [ref=e437]:
+                        - generic [ref=e438]:
+                          - generic [ref=e439]:
+                            - text: Author
+                            - generic [ref=e440]:
+                              - button "raphiki profile details" [ref=e441] [cursor=pointer]:
+                                - text: raphiki
+                                - generic "Member of Technology at Worldline": Technology at Worldline
+                              - generic [ref=e442]:
+                                - img [ref=e443]
+                                - text: Author
+                            - text: •
+                            - link "Jul 31 '25" [ref=e445] [cursor=pointer]:
+                              - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-308lf
+                              - time [ref=e446]: Jul 31 '25
+                            - button "Toggle dropdown menu" [ref=e448] [cursor=pointer]:
+                              - img "Dropdown menu"
+                          - generic [ref=e449]:
+                            - paragraph [ref=e450]:
+                              - text: And with Flux.1 Krea on
+                              - link "huggingface.co/spaces/black-forest..." [ref=e451] [cursor=pointer]:
+                                - /url: https://huggingface.co/spaces/black-forest-labs/FLUX.1-Krea-dev
+                            - paragraph:
+                              - link:
+                                - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4u0a5f8y1o8i0ej7azbu.png
+                                - img
+                        - generic [ref=e452]:
+                          - button "like" [ref=e453] [cursor=pointer]:
+                            - img "Like comment:"
+                            - generic: "1"
+                            - generic: like
+                            - generic: Like
+                          - button "Comment button Reply" [ref=e454] [cursor=pointer]:
+                            - img "Comment button"
+                            - generic: Reply
+              - group [ref=e455]:
+                - generic "Toggle this comment (and replies)" [ref=e456] [cursor=pointer]:
+                  - img "Collapse" [ref=e458]
+                - generic [ref=e462]:
+                  - link "raphiki profile image" [ref=e463] [cursor=pointer]:
+                    - /url: https://dev.to/raphiki
+                    - img "raphiki profile image" [ref=e464]
+                  - generic [ref=e465]:
+                    - generic [ref=e466]:
+                      - generic [ref=e467]:
+                        - text: Author
+                        - generic [ref=e468]:
+                          - button "raphiki profile details" [ref=e469] [cursor=pointer]:
+                            - text: raphiki
+                            - generic "Member of Technology at Worldline": Technology at Worldline
+                          - generic [ref=e470]:
+                            - img [ref=e471]
+                            - text: Author
+                        - text: •
+                        - link "Aug 23 '25" [ref=e473] [cursor=pointer]:
+                          - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-30kdp
+                          - time [ref=e474]: Aug 23 '25
+                        - button "Toggle dropdown menu" [ref=e476] [cursor=pointer]:
+                          - img "Dropdown menu"
+                      - paragraph [ref=e478]:
+                        - text: Qwen Edit also understands JSON Prompt Guides
+                        - link:
+                          - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffa9mc40rdvvc03tylv3d.png
+                          - img
+                    - generic [ref=e479]:
+                      - button "like" [ref=e480] [cursor=pointer]:
+                        - img "Like comment:"
+                        - generic: "1"
+                        - generic: like
+                        - generic: Like
+                      - button "Comment button Reply" [ref=e481] [cursor=pointer]:
+                        - img "Comment button"
+                        - generic: Reply
+              - group [ref=e482]:
+                - generic "Toggle this comment (and replies)" [ref=e483] [cursor=pointer]:
+                  - img "Collapse" [ref=e485]
+                - generic [ref=e489]:
+                  - link "dung_ly_ff99f52d6f33c27a1 profile image" [ref=e490] [cursor=pointer]:
+                    - /url: https://dev.to/dung_ly_ff99f52d6f33c27a1
+                    - img "dung_ly_ff99f52d6f33c27a1 profile image" [ref=e491]
+                  - generic [ref=e492]:
+                    - generic [ref=e493]:
+                      - generic [ref=e494]:
+                        - button "Dung Ly profile details" [ref=e496] [cursor=pointer]: Dung Ly
+                        - text: •
+                        - link "Sep 18 '25" [ref=e497] [cursor=pointer]:
+                          - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-318lp
+                          - time [ref=e498]: Sep 18 '25
+                        - button "Toggle dropdown menu" [ref=e500] [cursor=pointer]:
+                          - img "Dropdown menu"
+                      - paragraph [ref=e502]: Thank you. These JSON Style Guides helped me a lot.
+                    - generic [ref=e503]:
+                      - button "like" [ref=e504] [cursor=pointer]:
+                        - img "Like comment:"
+                        - generic: "2"
+                        - generic: likes
+                        - generic: Like
+                      - button "Comment button Reply" [ref=e505] [cursor=pointer]:
+                        - img "Comment button"
+                        - generic: Reply
+              - group [ref=e506]:
+                - generic "Toggle this comment (and replies)" [ref=e507] [cursor=pointer]:
+                  - img "Collapse" [ref=e509]
+                - generic [ref=e513]:
+                  - link "raphiki profile image" [ref=e514] [cursor=pointer]:
+                    - /url: https://dev.to/raphiki
+                    - img "raphiki profile image" [ref=e515]
+                  - generic [ref=e516]:
+                    - generic [ref=e517]:
+                      - generic [ref=e518]:
+                        - text: Author
+                        - generic [ref=e519]:
+                          - button "raphiki profile details" [ref=e520] [cursor=pointer]:
+                            - text: raphiki
+                            - generic "Member of Technology at Worldline": Technology at Worldline
+                          - generic [ref=e521]:
+                            - img [ref=e522]
+                            - text: Author
+                        - text: •
+                        - link "May 25 '25" [ref=e524] [cursor=pointer]:
+                          - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-2o3ib
+                          - time [ref=e525]: May 25 '25
+                        - button "Toggle dropdown menu" [ref=e527] [cursor=pointer]:
+                          - img "Dropdown menu"
+                      - generic [ref=e528]:
+                        - paragraph [ref=e529]: "And this also work with Gemini:"
+                        - paragraph:
+                          - link "Realistic Scene with two Characters":
+                            - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fl4emqn7z054r1b62ut89.jpg
+                            - img "Realistic Scene with two Characters"
+                    - generic [ref=e530]:
+                      - button "like" [ref=e531] [cursor=pointer]:
+                        - img "Like comment:"
+                        - generic: "1"
+                        - generic: like
+                        - generic: Like
+                      - button "Comment button Reply" [ref=e532] [cursor=pointer]:
+                        - img "Comment button"
+                        - generic: Reply
+              - group [ref=e533]:
+                - generic "Toggle this comment (and replies)" [ref=e534] [cursor=pointer]:
+                  - img "Collapse" [ref=e536]
+                - generic [ref=e540]:
+                  - link "raphiki profile image" [ref=e541] [cursor=pointer]:
+                    - /url: https://dev.to/raphiki
+                    - img "raphiki profile image" [ref=e542]
+                  - generic [ref=e543]:
+                    - generic [ref=e544]:
+                      - generic [ref=e545]:
+                        - text: Author
+                        - generic [ref=e546]:
+                          - button "raphiki profile details" [ref=e547] [cursor=pointer]:
+                            - text: raphiki
+                            - generic "Member of Technology at Worldline": Technology at Worldline
+                          - generic [ref=e548]:
+                            - img [ref=e549]
+                            - text: Author
+                        - text: •
+                        - link "May 25 '25" [ref=e551] [cursor=pointer]:
+                          - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-2o3id
+                          - time [ref=e552]: May 25 '25
+                        - button "Toggle dropdown menu" [ref=e554] [cursor=pointer]:
+                          - img "Dropdown menu"
+                      - paragraph [ref=e556]:
+                        - text: "And this also work with Gemini:"
+                        - link "Product Mockup":
+                          - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fi92krm1cm07jsa71mjtm.jpg
+                          - img "Product Mockup"
+                    - generic [ref=e557]:
+                      - button "like" [ref=e558] [cursor=pointer]:
+                        - img "Like comment:"
+                        - generic: "1"
+                        - generic: like
+                        - generic: Like
+                      - button "Comment button Reply" [ref=e559] [cursor=pointer]:
+                        - img "Comment button"
+                        - generic: Reply
+              - group [ref=e561]:
+                - generic "Toggle this comment (and replies)" [ref=e562] [cursor=pointer]:
+                  - img "Collapse" [ref=e564]
+                - generic [ref=e568]:
+                  - link "raphiki profile image" [ref=e569] [cursor=pointer]:
+                    - /url: https://dev.to/raphiki
+                    - img "raphiki profile image" [ref=e570]
+                  - generic [ref=e571]:
+                    - generic [ref=e572]:
+                      - generic [ref=e573]:
+                        - text: Author
+                        - generic [ref=e574]:
+                          - button "raphiki profile details" [ref=e575] [cursor=pointer]:
+                            - text: raphiki
+                            - generic "Member of Technology at Worldline": Technology at Worldline
+                          - generic [ref=e576]:
+                            - img [ref=e577]
+                            - text: Author
+                        - text: •
+                        - link "May 25 '25" [ref=e579] [cursor=pointer]:
+                          - /url: https://dev.to/worldlinetech/json-style-guides-for-controlled-image-generation-with-gpt-4o-and-gpt-image-1-36p#comment-2o3ie
+                          - time [ref=e580]: May 25 '25
+                        - button "Toggle dropdown menu" [ref=e582] [cursor=pointer]:
+                          - img "Dropdown menu"
+                      - paragraph [ref=e584]:
+                        - text: "And this also work with Gemini:"
+                        - link "Fantasy Character Concept Art":
+                          - /url: https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fiau91fec6zqq4ooy5r58.jpg
+                          - img "Fantasy Character Concept Art"
+                    - generic [ref=e585]:
+                      - button "like" [ref=e586] [cursor=pointer]:
+                        - img "Like comment:"
+                        - generic: "1"
+                        - generic: like
+                        - generic: Like
+                      - button "Comment button Reply" [ref=e587] [cursor=pointer]:
+                        - img "Comment button"
+                        - generic: Reply
+          - generic [ref=e588]:
+            - paragraph [ref=e589]:
+              - text: Some comments may only be visible to logged-in visitors.
+              - link "Sign in" [ref=e590] [cursor=pointer]:
+                - /url: /enter
+              - text: to view all comments.
+            - navigation "Conduct controls" [ref=e591]:
+              - link "Code of Conduct" [ref=e592] [cursor=pointer]:
+                - /url: /code-of-conduct
+              - text: •
+              - link "Report abuse" [ref=e593] [cursor=pointer]:
+                - /url: /report-abuse
+    - complementary "Author details" [ref=e596]:
+      - generic [ref=e597]:
+        - generic [ref=e598]:
+          - link "Technology at Worldline" [ref=e600] [cursor=pointer]:
+            - /url: /worldlinetech
+            - generic [ref=e602]: Technology at Worldline
+          - 'button "Follow organization: Technology at Worldline" [ref=e604] [cursor=pointer]': Follow
+        - generic [ref=e605]:
+          - heading "More from Technology at Worldline" [level=3] [ref=e607]:
+            - text: More from
+            - link "Technology at Worldline" [ref=e608] [cursor=pointer]:
+              - /url: /worldlinetech
+          - generic [ref=e609]:
+            - 'link "Automating Image Generation with n8n and ComfyUI #comfyui #n8n #genai #agents" [ref=e610] [cursor=pointer]':
+              - /url: /worldlinetech/automating-image-generation-with-n8n-and-comfyui-521p
+              - text: Automating Image Generation with n8n and ComfyUI
+              - generic [ref=e611]:
+                - generic [ref=e612]: "#comfyui"
+                - generic [ref=e613]: "#n8n"
+                - generic [ref=e614]: "#genai"
+                - generic [ref=e615]: "#agents"
+            - 'link "WebSockets & ComfyUI: Building Interactive AI Applications #comfyui #jupyter #websockets #genai" [ref=e616] [cursor=pointer]':
+              - /url: /worldlinetech/websockets-comfyui-building-interactive-ai-applications-1j1g
+              - text: "WebSockets & ComfyUI: Building Interactive AI Applications"
+              - generic [ref=e617]:
+                - generic [ref=e618]: "#comfyui"
+                - generic [ref=e619]: "#jupyter"
+                - generic [ref=e620]: "#websockets"
+                - generic [ref=e621]: "#genai"
+            - 'link "Unlocking ComfyUI''s Power: A Guide to the HTTP API in Jupyter #comfyui #api #jupyter #genai" [ref=e622] [cursor=pointer]':
+              - /url: /worldlinetech/unlocking-comfyuis-power-a-guide-to-the-http-api-in-jupyter-1mpi
+              - text: "Unlocking ComfyUI's Power: A Guide to the HTTP API in Jupyter"
+              - generic [ref=e623]:
+                - generic [ref=e624]: "#comfyui"
+                - generic [ref=e625]: "#api"
+                - generic [ref=e626]: "#jupyter"
+                - generic [ref=e627]: "#genai"
+  - contentinfo [ref=e629]:
+    - generic [ref=e630]:
+      - generic [ref=e632]:
+        - paragraph [ref=e633]: 💎 DEV Diamond Sponsors
+        - paragraph [ref=e634]: Thank you to our Diamond Sponsors for supporting the DEV Community
+        - generic [ref=e635]:
+          - generic [ref=e636]:
+            - link "Google AI - Official AI Model and Platform Partner" [ref=e637] [cursor=pointer]:
+              - /url: https://aistudio.google.com/?utm_source=partner&utm_medium=partner&utm_campaign=FY25-Global-DEVpartnership-sponsorship-AIS&utm_content=-&utm_term=-&bb=146443
+              - img "Google AI - Official AI Model and Platform Partner" [ref=e638]
+            - paragraph [ref=e639]: Google AI is the official AI Model and Platform Partner of DEV
+          - generic [ref=e640]:
+            - link "Neon - Official Database Partner" [ref=e641] [cursor=pointer]:
+              - /url: https://neon.tech/?ref=devto&bb=146443
+              - img "Neon - Official Database Partner" [ref=e642]
+            - paragraph [ref=e643]: Neon is the official database partner of DEV
+          - generic [ref=e644]:
+            - link "Algolia - Official Search Partner" [ref=e645] [cursor=pointer]:
+              - /url: https://www.algolia.com/developers/?utm_source=devto&utm_medium=referral&bb=146443
+              - img "Algolia - Official Search Partner" [ref=e646]
+            - paragraph [ref=e647]: Algolia is the official search partner of DEV
+      - paragraph [ref=e648]:
+        - link "DEV Community Home" [ref=e649] [cursor=pointer]:
+          - /url: /
+          - text: DEV Community
+        - text: — A space to discuss and keep up software development and manage your software career
+      - list [ref=e650]:
+        - listitem [ref=e651]:
+          - link "Home" [ref=e652] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e654]:
+          - link "DEV++" [ref=e655] [cursor=pointer]:
+            - /url: /++
+        - listitem [ref=e657]:
+          - link "Videos" [ref=e658] [cursor=pointer]:
+            - /url: /videos
+        - listitem [ref=e660]:
+          - link "DEV Education Tracks" [ref=e661] [cursor=pointer]:
+            - /url: /deved
+        - listitem [ref=e663]:
+          - link "DEV Challenges" [ref=e664] [cursor=pointer]:
+            - /url: /challenges
+        - listitem [ref=e666]:
+          - link "DEV Help" [ref=e667] [cursor=pointer]:
+            - /url: /help
+        - listitem [ref=e669]:
+          - link "Advertise on DEV" [ref=e670] [cursor=pointer]:
+            - /url: /advertise
+        - listitem [ref=e672]:
+          - link "Organization Accounts" [ref=e673] [cursor=pointer]:
+            - /url: /organizations
+        - listitem [ref=e675]:
+          - link "DEV Showcase" [ref=e676] [cursor=pointer]:
+            - /url: /showcase
+        - listitem [ref=e678]:
+          - link "About" [ref=e679] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e681]:
+          - link "Contact" [ref=e682] [cursor=pointer]:
+            - /url: /contact
+        - listitem [ref=e684]:
+          - link "Free Postgres Database" [ref=e685] [cursor=pointer]:
+            - /url: /free-postgres-database-tier
+        - listitem [ref=e687]:
+          - link "Forem Shop" [ref=e688] [cursor=pointer]:
+            - /url: https://shop.forem.com/
+        - listitem [ref=e690]:
+          - link "MLH" [ref=e691] [cursor=pointer]:
+            - /url: https://mlh.io/
+      - list [ref=e692]:
+        - listitem [ref=e693]:
+          - link "Code of Conduct" [ref=e694] [cursor=pointer]:
+            - /url: /code-of-conduct
+        - listitem [ref=e696]:
+          - link "Privacy Policy" [ref=e697] [cursor=pointer]:
+            - /url: /privacy
+        - listitem [ref=e699]:
+          - link "Terms of Use" [ref=e700] [cursor=pointer]:
+            - /url: /terms
+      - generic [ref=e701]:
+        - paragraph [ref=e702]:
+          - text: Built on
+          - link "Forem" [ref=e703] [cursor=pointer]:
+            - /url: https://www.forem.com
+          - text: — the
+          - link "open source" [ref=e704] [cursor=pointer]:
+            - /url: https://dev.to/t/opensource
+          - text: software that powers
+          - link "DEV" [ref=e705] [cursor=pointer]:
+            - /url: https://dev.to
+          - text: and other inclusive communities.
+        - paragraph [ref=e706]:
+          - text: Made with love and
+          - link "Ruby on Rails" [ref=e707] [cursor=pointer]:
+            - /url: https://dev.to/t/rails
+          - text: . DEV Community © 2016 - 2026.

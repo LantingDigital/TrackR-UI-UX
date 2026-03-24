@@ -24,6 +24,8 @@ import * as ImagePicker from 'expo-image-picker';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
+  interpolate,
   withDelay,
   withSpring,
   withTiming,
@@ -53,7 +55,7 @@ import {
   getTotalRideCount,
   subscribe as subscribeRideLog,
 } from '../stores/rideLogStore';
-import { FogHeader } from '../components/FogHeader';
+import { GlassHeader } from '../components/GlassHeader';
 
 // ============================================
 // Constants
@@ -219,6 +221,20 @@ export const ProfileScreen = () => {
 
   const scrollRef = useRef<ScrollView>(null);
   const scrollYRef = useRef(0);
+  const updateScrollRef = useCallback((y: number) => { scrollYRef.current = y; }, []);
+  const scrollY = useSharedValue(0);
+
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollY.value = event.contentOffset.y;
+      runOnJS(updateScrollRef)(event.contentOffset.y);
+    },
+  });
+
+  // Fog fades IN as user scrolls (invisible at top, full opacity after 80px scroll)
+  const fogAnimStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(scrollY.value, [0, 80], [0, 1], 'clamp'),
+  }));
   const viewportHeightRef = useRef(0);
 
   const handleTabChange = useCallback(
@@ -450,7 +466,7 @@ export const ProfileScreen = () => {
   return (
     <View style={styles.container}>
       {/* Scrollable content */}
-      <ScrollView
+      <Animated.ScrollView
         ref={scrollRef}
         contentContainerStyle={[
           styles.scrollContent,
@@ -460,9 +476,9 @@ export const ProfileScreen = () => {
           },
         ]}
         showsVerticalScrollIndicator={false}
-        onScroll={(e) => { scrollYRef.current = e.nativeEvent.contentOffset.y; }}
+        onScroll={scrollHandler}
         scrollEventThrottle={16}
-        onLayout={(e) => { viewportHeightRef.current = e.nativeEvent.layout.height; }}
+        onLayout={(e: any) => { viewportHeightRef.current = e.nativeEvent.layout.height; }}
         onContentSizeChange={handleContentSizeChange}
       >
         {/* ── Hero: Centered avatar + name + username ── */}
@@ -487,7 +503,7 @@ export const ProfileScreen = () => {
           </Pressable>
 
           <Text style={styles.displayName}>{displayName}</Text>
-          <Text style={styles.username}>@{username}</Text>
+          <Text style={styles.username}>@{username.replace(/^@+/, '')}</Text>
         </Animated.View>
 
         {/* ── Stats card: 3 columns ── */}
@@ -577,16 +593,18 @@ export const ProfileScreen = () => {
             </Animated.View>
           </Pressable>
         </Animated.View>
-      </ScrollView>
+      </Animated.ScrollView>
 
-      {/* Fog gradient overlay — uses approved FogHeader (0.97, warm base) */}
-      <FogHeader headerHeight={topBarHeight} />
+      {/* Clean fog overlay — crossfades in as user scrolls */}
+      <Animated.View style={[{ position: 'absolute', top: 0, left: 0, right: 0 }, fogAnimStyle]}>
+        <GlassHeader headerHeight={topBarHeight} />
+      </Animated.View>
 
       {/* Floating header: "PROFILE" + settings gear */}
       <View style={[styles.topBar, { top: insets.top }]}>
         <View style={styles.topBarSpacer} />
         <View style={styles.topBarCenter}>
-          <Text style={styles.screenTitle}>@{username}</Text>
+          <Text style={styles.screenTitle}>@{username.replace(/^@+/, '')}</Text>
         </View>
         <Pressable
           {...settingsPress.pressHandlers}

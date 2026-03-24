@@ -1,0 +1,678 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+    - generic [ref=e4]: Skip to main content
+  - generic [ref=e6]:
+    - generic:
+      - generic [ref=e7]:
+        - generic: "The \"JSON Remix\": A simple prompt trick for god-mode control and consistency in AI images. : r/ChatGPTPromptGenius"
+      - banner [ref=e10]:
+        - navigation [ref=e11]:
+          - link "Home" [ref=e15] [cursor=pointer]:
+            - /url: /
+            - img [ref=e17]
+          - search [ref=e34]:
+            - generic [ref=e36]:
+              - img [ref=e39]
+              - generic "Remove r/ChatGPTPromptGenius filter and expand search to all of Reddit" [ref=e42] [cursor=pointer]:
+                - button [pressed] [ref=e43]:
+                  - generic [ref=e47]: r/ChatGPTPromptGenius
+                - img [ref=e49]
+              - textbox "Remove r/ChatGPTPromptGenius filter and expand search to all of Reddit" [ref=e52]:
+                - /placeholder: Search in r/ChatGPTPromptGenius
+          - generic [ref=e53]:
+            - button "Get App" [ref=e58] [cursor=pointer]:
+              - generic [ref=e59]:
+                - img [ref=e61]
+                - generic [ref=e63]: Get App
+            - link "Log In" [ref=e67] [cursor=pointer]:
+              - /url: https://www.reddit.com/login/
+              - generic [ref=e69]: Log In
+            - button "Expand user menu" [ref=e74] [cursor=pointer]:
+              - img [ref=e77]
+              - generic [ref=e79]:
+                - generic: Expand user menu
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - generic:
+              - generic:
+                - link "Skip to Navigation" [ref=e83] [cursor=pointer]:
+                  - /url: "#left-sidebar-container"
+                - link "Skip to Right Sidebar" [ref=e84] [cursor=pointer]:
+                  - /url: "#right-sidebar-container"
+          - generic [ref=e85]:
+            - main [ref=e86]:
+              - 'generic "The \"JSON Remix\": A simple prompt trick for god-mode control and consistency in AI images. : r/ChatGPTPromptGenius"'
+              - generic [ref=e87]:
+                - generic [ref=e88]:
+                  - generic [ref=e89]:
+                    - button "Back" [ref=e91] [cursor=pointer]:
+                      - img [ref=e94]
+                      - generic [ref=e96]:
+                        - generic: Back
+                    - link "Go to ChatGPTPromptGenius" [ref=e99] [cursor=pointer]:
+                      - /url: /r/ChatGPTPromptGenius/
+                      - generic [ref=e103]:
+                        - generic: Go to ChatGPTPromptGenius
+                    - group [ref=e104]:
+                      - generic [ref=e105]:
+                        - link "r/ChatGPTPromptGenius" [ref=e109] [cursor=pointer]:
+                          - /url: /r/ChatGPTPromptGenius/
+                        - generic [ref=e110]: •
+                        - time [ref=e112]: 8mo ago
+                      - 'link "Author: Beginning-Willow-801" [ref=e118] [cursor=pointer]':
+                        - /url: /user/Beginning-Willow-801/
+                        - text: Beginning-Willow-801
+                  - generic [ref=e119]:
+                    - img "Archived post" [ref=e123]
+                    - button "Open user actions" [ref=e128] [cursor=pointer]:
+                      - img [ref=e131]
+                - generic [ref=e134]:
+                  - 'heading "Post Title: The \"JSON Remix\": A simple prompt trick for god-mode control and consistency in AI images." [level=1] [ref=e135]': "The \"JSON Remix\": A simple prompt trick for god-mode control and consistency in AI images."
+                  - 'link "Flair: Business & Professional" [ref=e138] [cursor=pointer]':
+                    - /url: /r/ChatGPTPromptGenius/?f=flair_name%3A%22Business%20%26%20Professional%22
+                    - 'generic "Flair: Business & Professional" [ref=e140]': Business & Professional
+                - generic [ref=e144]:
+                  - paragraph [ref=e145]:
+                    - strong [ref=e146]: "TL;DR: Instead of just describing an image, have ChatGPT-4o create a detailed JSON \"profile\" of it first. Then, you can feed that JSON back to the AI with a single edit command (e.g., \"change background to mountains\"). The AI will preserve every other detail perfectly—subject, pose, lighting, style—giving you insane consistency and control."
+                  - paragraph [ref=e147]: Like many of you, I've been frustrated by the lack of consistency in AI image generation. You get the perfect character, but the moment you try to put them in a new scene, their face, clothes, and vibe change completely.
+                  - paragraph [ref=e148]:
+                    - text: I've found a magic trick that solves this, and it works by giving the AI structured data instead of just a "soup of words." I call it the
+                    - strong [ref=e149]: JSON Remix
+                    - text: .
+                  - 'heading "The Core Idea: Blueprint > Description" [level=1] [ref=e150]'
+                  - paragraph [ref=e151]:
+                    - text: Instead of just prompting with natural language, you first ask the AI to analyze an image and create a detailed
+                    - strong [ref=e152]: JSON context profile
+                    - text: . This is basically a highly structured "blueprint" of the image, capturing everything from the subject's pose and clothing down to the lighting temperature and camera angle.
+                  - paragraph [ref=e153]:
+                    - text: When you feed this blueprint
+                    - emphasis [ref=e154]: back
+                    - text: to the AI with a simple edit request, it knows exactly what to keep and what to change.
+                  - paragraph [ref=e155]:
+                    - strong [ref=e156]: "Here's a real example of how I used it:"
+                  - list [ref=e157]:
+                    - listitem [ref=e158]:
+                      - paragraph [ref=e159]: "I started with an idea: a person in a red jacket on a pier at sunset. I generated an image I liked."
+                    - listitem [ref=e160]:
+                      - paragraph [ref=e161]: I uploaded that image to ChatGPT-4o and asked it to create a JSON profile of it.
+                    - listitem [ref=e162]:
+                      - paragraph [ref=e163]:
+                        - text: Then, I started a new prompt, pasted the
+                        - emphasis [ref=e164]: entire JSON code
+                        - text: ", and added one simple instruction at the top:"
+                        - emphasis [ref=e165]: "\"Keep everything exactly the same but change the ocean background to a mountain range with snow-capped peaks.\""
+                  - paragraph [ref=e166]:
+                    - text: The result was stunning. The AI produced an image of the
+                    - strong [ref=e167]: exact same person
+                    - text: ", in the"
+                    - strong [ref=e168]: exact same red jacket and pose
+                    - text: ", with the"
+                    - strong [ref=e169]: same golden-hour lighting and photorealistic style
+                    - text: . The only thing that changed was the environment. The serene ocean was gone, replaced by a majestic, snowy mountain range. No more fighting with the AI to keep my subject consistent—it just worked.
+                  - heading "How You Can Do It in Two Steps" [level=1] [ref=e170]
+                  - list [ref=e171]:
+                    - listitem [ref=e172]:
+                      - paragraph [ref=e173]:
+                        - strong [ref=e174]: "Generate the Blueprint:"
+                        - text: Upload an image to ChatGPT-4o (or your image model of choice) with a prompt to create its profile.
+                    - listitem [ref=e175]:
+                      - paragraph [ref=e176]:
+                        - strong [ref=e177]: "Remix the Scene:"
+                        - text: Copy the JSON code it gives you. Paste it into a new prompt and add your change request at the top (e.g., "change day to night," "make the subject smile," "change the car from red to blue").
+                  - 'heading "PRO-TIP: The Ultimate Prompt for Maximum Detail" [level=1] [ref=e178]'
+                  - paragraph [ref=e179]:
+                    - text: I quickly realized I could get even
+                    - emphasis [ref=e180]: more
+                    - text: control by telling the AI exactly how to structure the JSON. I asked ChatGPT to act as a prompt engineer and improve its own process. This is the prompt it came up with, and it's a game-changer for capturing insane detail.
+                  - paragraph [ref=e181]: "Copy and paste this into ChatGPT with your image:"
+                  - generic [ref=e182]: "Create a deeply detailed, advanced JSON context profile for this image. This JSON should be structured to capture all interpretable visual, spatial, semantic, and atmospheric data, suitable for high-fidelity image manipulation or reconstruction. Your goal is to generate a machine-readable representation that encapsulates the entire scene with nuance, hierarchy, and precision. Include the following in the JSON output: 1. **objects**: List every identifiable object. For each, include its label, description (color, texture, material), position, relative size, and relationships to other objects. 2. **environment**: Describe the setting, time of day, lighting (source, direction, color), weather, and background. 3. **people** (if any): Detail each person's estimated age/gender, expression, pose, clothing, and activity. 4. **composition**: Note the camera angle, framing, focal depth, visual balance, and color palette. 5. **symbolism_and_story**: Describe any implied narrative, emotional cues, or symbolic elements. 6. **metadata**: Infer the image style (e.g., photo, illustration), and potential artistic influences. Output the JSON as a single structured object. Prioritize accuracy and depth to serve as a comprehensive blueprint for generative models, ensuring all positional and compositional data can be preserved during object or environment swaps."
+                  - heading "This technique is amazing for:" [level=1] [ref=e183]
+                  - list [ref=e184]:
+                    - listitem [ref=e185]:
+                      - paragraph [ref=e186]:
+                        - strong [ref=e187]: "Storytelling:"
+                        - text: Creating storyboards with the same character in different locations.
+                    - listitem [ref=e188]:
+                      - paragraph [ref=e189]:
+                        - strong [ref=e190]: "Branding:"
+                        - text: Ensuring brand assets and mascots look identical across all marketing content.
+                    - listitem [ref=e191]:
+                      - paragraph [ref=e192]:
+                        - strong [ref=e193]: "Product Visualization:"
+                        - text: Showing a product in various settings without reshooting.
+                    - listitem [ref=e194]:
+                      - paragraph [ref=e195]:
+                        - strong [ref=e196]: "Control Freaks (like me):"
+                        - text: Finally getting the precision we've always wanted from AI.
+                  - paragraph [ref=e197]: Give it a try! I'm curious to see what other "remixes" you all come up with.
+                - generic [ref=e199]:
+                  - img [ref=e200]
+                  - generic [ref=e203]: Archived post. New comments cannot be posted and votes cannot be cast.
+                - generic "Actions available for this post" [ref=e204]:
+                  - generic [ref=e207]:
+                    - button "Upvote" [disabled]:
+                      - generic:
+                        - img
+                      - generic:
+                        - generic: Upvote
+                    - generic [ref=e209]: "57"
+                    - button "Downvote" [disabled]:
+                      - generic:
+                        - img
+                      - generic:
+                        - generic: Downvote
+                  - button "2 Go to comments" [ref=e210] [cursor=pointer]:
+                    - generic [ref=e211]:
+                      - img [ref=e213]
+                      - generic [ref=e216]: "2"
+                    - generic [ref=e217]:
+                      - generic: Go to comments
+                  - button "Give award" [ref=e219] [cursor=pointer]:
+                    - img [ref=e222]
+                  - button "Share" [ref=e227] [cursor=pointer]:
+                    - generic [ref=e228]:
+                      - img [ref=e230]
+                      - generic [ref=e232]: Share
+              - generic "Trust your writing process with an AI tool you can trust." [ref=e233]:
+                - generic [ref=e234]:
+                  - 'generic "Advertisement: Trust your writing process with an AI tool you can trust." [ref=e235]':
+                    - 'link "Advertisement: Trust your writing process with an AI tool you can trust." [ref=e236] [cursor=pointer]':
+                      - /url: https://alb.reddit.com/cr?za=MgnOv1Hb67JVxev-eeFsMhj9A80X63HeoaV9EIFWtkd4XYlfFZebNE9gr4tcVOR-Ua_D90nNNR82YZl8JLrh0z-Qpox85xXOJCBRxQqtyq8aPhN_PqCBuB88hfcNeweaCkHIOldnsY71oCxjB0umhgLRVhrCTizKsWS1QIWW4IEEd2UFu1qj99WbJF79hYo1HDOejIPkklOYfyRkdDivIwGBMxYVx6W1HXp60q6p_J-Ek0BMIGv4Lv1vHuM8xbkwE9tbXlr7ynXM-OrVFXlWecA86kct1moMWafI5m4Ttt8pDw51IW5ENH2tXho9eVDdpYucmgPMN6XonjC2p6INjeinijAl6MshYd-9MBkpksjbWQEDmEPc536a6I4TyY0Wu0aoT1yB0U5AA1VxPAmbR9S5d7U-oRDEm9tmoxq0IWCdu_4bOel0KQlvf9DserxmBVgxMP7Ra_rYm7_66P1FSULddIp0WD1Epvg3R02dQ50WP4qQJLOW9l4R5zcK3_lsl2-wWh86M1P4U2r3xC3FcCj5H3GHRuiAm7TlzkdFx2xWcUQy_AV2XNptXHWUm8DF70qDK9rHtojVGk84O_GSSEaptlEdRjEANQyMT8jt-uxjEgt33TGhmE1VupR0aWicYl-aagbZ2pyvJdhYQzakZB5_ZF48AA77uOgVgkssi3u-3j0noCbHI68uGgE2F0Vj0JYPFz5MITmT3tRLAOIkQRYJspFYhy_7jDQcwxdDTa1m2NMPNjuSDYUSi4yll4Ift-yUcWxGtpPNpJTof7EVQg&zp=uBw60U7cThbhX1d8pb-T7jBF7cGVU-qa-AAoyG36bn9Vo9CdizvHRhRVJdiCpczrQ4qmXGu18Y55YmHeJFj8TlJhAOvFVuv1rmDRIcFLiQa0FxIl813OL9OVIIT3ffoFqU6jeuEVI9VkVy0adXK7_dU3EgumURoAnSiTNbDoXChD98I8szBg76h9a3IyX0C9jLVltWSdPAIDA7Vajg1TpaovllTequ2e1wBlhqvId-fCIUziJsYjDgnGEtdCpSGFSNiIpJHPEEX2FbYVrFupvP3p0hrvSk1nKQ68EWMmd5n1EYBam0dmrqfqsSLk4fkPEHnbaXmKdRSSKoq6qhh9SE3W
+                  - generic [ref=e237]:
+                    - generic [ref=e238]:
+                      - link "u/Grammarly avatar Grammarly" [ref=e241] [cursor=pointer]:
+                        - /url: /user/Grammarly/
+                        - generic [ref=e245]:
+                          - img "u/Grammarly avatar"
+                        - generic [ref=e246]: Grammarly
+                      - generic [ref=e247]: •
+                      - link "Promoted" [ref=e249] [cursor=pointer]:
+                        - /url: /user/Grammarly/
+                        - generic [ref=e250]: Promoted
+                      - link [ref=e252] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=MgnOv1Hb67JVxev-eeFsMhj9A80X63HeoaV9EIFWtkd4XYlfFZebNE9gr4tcVOR-Ua_D90nNNR82YZl8JLrh0z-Qpox85xXOJCBRxQqtyq8aPhN_PqCBuB88hfcNeweaCkHIOldnsY71oCxjB0umhgLRVhrCTizKsWS1QIWW4IEEd2UFu1qj99WbJF79hYo1HDOejIPkklOYfyRkdDivIwGBMxYVx6W1HXp60q6p_J-Ek0BMIGv4Lv1vHuM8xbkwE9tbXlr7ynXM-OrVFXlWecA86kct1moMWafI5m4Ttt8pDw51IW5ENH2tXho9eVDdpYucmgPMN6XonjC2p6INjeinijAl6MshYd-9MBkpksjbWQEDmEPc536a6I4TyY0Wu0aoT1yB0U5AA1VxPAmbR9S5d7U-oRDEm9tmoxq0IWCdu_4bOel0KQlvf9DserxmBVgxMP7Ra_rYm7_66P1FSULddIp0WD1Epvg3R02dQ50WP4qQJLOW9l4R5zcK3_lsl2-wWh86M1P4U2r3xC3FcCj5H3GHRuiAm7TlzkdFx2xWcUQy_AV2XNptXHWUm8DF70qDK9rHtojVGk84O_GSSEaptlEdRjEANQyMT8jt-uxjEgt33TGhmE1VupR0aWicYl-aagbZ2pyvJdhYQzakZB5_ZF48AA77uOgVgkssi3u-3j0noCbHI68uGgE2F0Vj0JYPFz5MITmT3tRLAOIkQRYJspFYhy_7jDQcwxdDTa1m2NMPNjuSDYUSi4yll4Ift-yUcWxGtpPNpJTof7EVQg&zp=uBw60U7cThbhX1d8pb-T7jBF7cGVU-qa-AAoyG36bn9Vo9CdizvHRhRVJdiCpczrQ4qmXGu18Y55YmHeJFj8TlJhAOvFVuv1rmDRIcFLiQa0FxIl813OL9OVIIT3ffoFqU6jeuEVI9VkVy0adXK7_dU3EgumURoAnSiTNbDoXChD98I8szBg76h9a3IyX0C9jLVltWSdPAIDA7Vajg1TpaovllTequ2e1wBlhqvId-fCIUziJsYjDgnGEtdCpSGFSNiIpJHPEEX2FbYVrFupvP3p0hrvSk1nKQ68EWMmd5n1EYBam0dmrqfqsSLk4fkPEHnbaXmKdRSSKoq6qhh9SE3W
+                    - button "Open user actions" [ref=e257] [cursor=pointer]:
+                      - img [ref=e260]
+                  - generic [ref=e263]:
+                    - generic [ref=e264]:
+                      - link "Trust your writing process with an AI tool you can trust." [ref=e266] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=MgnOv1Hb67JVxev-eeFsMhj9A80X63HeoaV9EIFWtkd4XYlfFZebNE9gr4tcVOR-Ua_D90nNNR82YZl8JLrh0z-Qpox85xXOJCBRxQqtyq8aPhN_PqCBuB88hfcNeweaCkHIOldnsY71oCxjB0umhgLRVhrCTizKsWS1QIWW4IEEd2UFu1qj99WbJF79hYo1HDOejIPkklOYfyRkdDivIwGBMxYVx6W1HXp60q6p_J-Ek0BMIGv4Lv1vHuM8xbkwE9tbXlr7ynXM-OrVFXlWecA86kct1moMWafI5m4Ttt8pDw51IW5ENH2tXho9eVDdpYucmgPMN6XonjC2p6INjeinijAl6MshYd-9MBkpksjbWQEDmEPc536a6I4TyY0Wu0aoT1yB0U5AA1VxPAmbR9S5d7U-oRDEm9tmoxq0IWCdu_4bOel0KQlvf9DserxmBVgxMP7Ra_rYm7_66P1FSULddIp0WD1Epvg3R02dQ50WP4qQJLOW9l4R5zcK3_lsl2-wWh86M1P4U2r3xC3FcCj5H3GHRuiAm7TlzkdFx2xWcUQy_AV2XNptXHWUm8DF70qDK9rHtojVGk84O_GSSEaptlEdRjEANQyMT8jt-uxjEgt33TGhmE1VupR0aWicYl-aagbZ2pyvJdhYQzakZB5_ZF48AA77uOgVgkssi3u-3j0noCbHI68uGgE2F0Vj0JYPFz5MITmT3tRLAOIkQRYJspFYhy_7jDQcwxdDTa1m2NMPNjuSDYUSi4yll4Ift-yUcWxGtpPNpJTof7EVQg&zp=uBw60U7cThbhX1d8pb-T7jBF7cGVU-qa-AAoyG36bn9Vo9CdizvHRhRVJdiCpczrQ4qmXGu18Y55YmHeJFj8TlJhAOvFVuv1rmDRIcFLiQa0FxIl813OL9OVIIT3ffoFqU6jeuEVI9VkVy0adXK7_dU3EgumURoAnSiTNbDoXChD98I8szBg76h9a3IyX0C9jLVltWSdPAIDA7Vajg1TpaovllTequ2e1wBlhqvId-fCIUziJsYjDgnGEtdCpSGFSNiIpJHPEEX2FbYVrFupvP3p0hrvSk1nKQ68EWMmd5n1EYBam0dmrqfqsSLk4fkPEHnbaXmKdRSSKoq6qhh9SE3W
+                        - generic: Trust your writing process with an AI tool you can trust.
+                      - generic [ref=e267]:
+                        - link [ref=e269] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=MgnOv1Hb67JVxev-eeFsMhj9A80X63HeoaV9EIFWtkd4XYlfFZebNE9gr4tcVOR-Ua_D90nNNR82YZl8JLrh0z-Qpox85xXOJCBRxQqtyq8aPhN_PqCBuB88hfcNeweaCkHIOldnsY71oCxjB0umhgLRVhrCTizKsWS1QIWW4IEEd2UFu1qj99WbJF79hYo1HDOejIPkklOYfyRkdDivIwGBMxYVx6W1HXp60q6p_J-Ek0BMIGv4Lv1vHuM8xbkwE9tbXlr7ynXM-OrVFXlWecA86kct1moMWafI5m4Ttt8pDw51IW5ENH2tXho9eVDdpYucmgPMN6XonjC2p6INjeinijAl6MshYd-9MBkpksjbWQEDmEPc536a6I4TyY0Wu0aoT1yB0U5AA1VxPAmbR9S5d7U-oRDEm9tmoxq0IWCdu_4bOel0KQlvf9DserxmBVgxMP7Ra_rYm7_66P1FSULddIp0WD1Epvg3R02dQ50WP4qQJLOW9l4R5zcK3_lsl2-wWh86M1P4U2r3xC3FcCj5H3GHRuiAm7TlzkdFx2xWcUQy_AV2XNptXHWUm8DF70qDK9rHtojVGk84O_GSSEaptlEdRjEANQyMT8jt-uxjEgt33TGhmE1VupR0aWicYl-aagbZ2pyvJdhYQzakZB5_ZF48AA77uOgVgkssi3u-3j0noCbHI68uGgE2F0Vj0JYPFz5MITmT3tRLAOIkQRYJspFYhy_7jDQcwxdDTa1m2NMPNjuSDYUSi4yll4Ift-yUcWxGtpPNpJTof7EVQg&zp=uBw60U7cThbhX1d8pb-T7jBF7cGVU-qa-AAoyG36bn9Vo9CdizvHRhRVJdiCpczrQ4qmXGu18Y55YmHeJFj8TlJhAOvFVuv1rmDRIcFLiQa0FxIl813OL9OVIIT3ffoFqU6jeuEVI9VkVy0adXK7_dU3EgumURoAnSiTNbDoXChD98I8szBg76h9a3IyX0C9jLVltWSdPAIDA7Vajg1TpaovllTequ2e1wBlhqvId-fCIUziJsYjDgnGEtdCpSGFSNiIpJHPEEX2FbYVrFupvP3p0hrvSk1nKQ68EWMmd5n1EYBam0dmrqfqsSLk4fkPEHnbaXmKdRSSKoq6qhh9SE3W
+                        - generic [ref=e270]:
+                          - link "Download" [ref=e272] [cursor=pointer]:
+                            - /url: https://alb.reddit.com/cr?za=MgnOv1Hb67JVxev-eeFsMhj9A80X63HeoaV9EIFWtkd4XYlfFZebNE9gr4tcVOR-Ua_D90nNNR82YZl8JLrh0z-Qpox85xXOJCBRxQqtyq8aPhN_PqCBuB88hfcNeweaCkHIOldnsY71oCxjB0umhgLRVhrCTizKsWS1QIWW4IEEd2UFu1qj99WbJF79hYo1HDOejIPkklOYfyRkdDivIwGBMxYVx6W1HXp60q6p_J-Ek0BMIGv4Lv1vHuM8xbkwE9tbXlr7ynXM-OrVFXlWecA86kct1moMWafI5m4Ttt8pDw51IW5ENH2tXho9eVDdpYucmgPMN6XonjC2p6INjeinijAl6MshYd-9MBkpksjbWQEDmEPc536a6I4TyY0Wu0aoT1yB0U5AA1VxPAmbR9S5d7U-oRDEm9tmoxq0IWCdu_4bOel0KQlvf9DserxmBVgxMP7Ra_rYm7_66P1FSULddIp0WD1Epvg3R02dQ50WP4qQJLOW9l4R5zcK3_lsl2-wWh86M1P4U2r3xC3FcCj5H3GHRuiAm7TlzkdFx2xWcUQy_AV2XNptXHWUm8DF70qDK9rHtojVGk84O_GSSEaptlEdRjEANQyMT8jt-uxjEgt33TGhmE1VupR0aWicYl-aagbZ2pyvJdhYQzakZB5_ZF48AA77uOgVgkssi3u-3j0noCbHI68uGgE2F0Vj0JYPFz5MITmT3tRLAOIkQRYJspFYhy_7jDQcwxdDTa1m2NMPNjuSDYUSi4yll4Ift-yUcWxGtpPNpJTof7EVQg&zp=uBw60U7cThbhX1d8pb-T7jBF7cGVU-qa-AAoyG36bn9Vo9CdizvHRhRVJdiCpczrQ4qmXGu18Y55YmHeJFj8TlJhAOvFVuv1rmDRIcFLiQa0FxIl813OL9OVIIT3ffoFqU6jeuEVI9VkVy0adXK7_dU3EgumURoAnSiTNbDoXChD98I8szBg76h9a3IyX0C9jLVltWSdPAIDA7Vajg1TpaovllTequ2e1wBlhqvId-fCIUziJsYjDgnGEtdCpSGFSNiIpJHPEEX2FbYVrFupvP3p0hrvSk1nKQ68EWMmd5n1EYBam0dmrqfqsSLk4fkPEHnbaXmKdRSSKoq6qhh9SE3W
+                            - generic [ref=e274]:
+                              - generic: Download
+                          - link "grammarly.com" [ref=e277] [cursor=pointer]:
+                            - /url: https://alb.reddit.com/cr?za=MgnOv1Hb67JVxev-eeFsMhj9A80X63HeoaV9EIFWtkd4XYlfFZebNE9gr4tcVOR-Ua_D90nNNR82YZl8JLrh0z-Qpox85xXOJCBRxQqtyq8aPhN_PqCBuB88hfcNeweaCkHIOldnsY71oCxjB0umhgLRVhrCTizKsWS1QIWW4IEEd2UFu1qj99WbJF79hYo1HDOejIPkklOYfyRkdDivIwGBMxYVx6W1HXp60q6p_J-Ek0BMIGv4Lv1vHuM8xbkwE9tbXlr7ynXM-OrVFXlWecA86kct1moMWafI5m4Ttt8pDw51IW5ENH2tXho9eVDdpYucmgPMN6XonjC2p6INjeinijAl6MshYd-9MBkpksjbWQEDmEPc536a6I4TyY0Wu0aoT1yB0U5AA1VxPAmbR9S5d7U-oRDEm9tmoxq0IWCdu_4bOel0KQlvf9DserxmBVgxMP7Ra_rYm7_66P1FSULddIp0WD1Epvg3R02dQ50WP4qQJLOW9l4R5zcK3_lsl2-wWh86M1P4U2r3xC3FcCj5H3GHRuiAm7TlzkdFx2xWcUQy_AV2XNptXHWUm8DF70qDK9rHtojVGk84O_GSSEaptlEdRjEANQyMT8jt-uxjEgt33TGhmE1VupR0aWicYl-aagbZ2pyvJdhYQzakZB5_ZF48AA77uOgVgkssi3u-3j0noCbHI68uGgE2F0Vj0JYPFz5MITmT3tRLAOIkQRYJspFYhy_7jDQcwxdDTa1m2NMPNjuSDYUSi4yll4Ift-yUcWxGtpPNpJTof7EVQg&zp=uBw60U7cThbhX1d8pb-T7jBF7cGVU-qa-AAoyG36bn9Vo9CdizvHRhRVJdiCpczrQ4qmXGu18Y55YmHeJFj8TlJhAOvFVuv1rmDRIcFLiQa0FxIl813OL9OVIIT3ffoFqU6jeuEVI9VkVy0adXK7_dU3EgumURoAnSiTNbDoXChD98I8szBg76h9a3IyX0C9jLVltWSdPAIDA7Vajg1TpaovllTequ2e1wBlhqvId-fCIUziJsYjDgnGEtdCpSGFSNiIpJHPEEX2FbYVrFupvP3p0hrvSk1nKQ68EWMmd5n1EYBam0dmrqfqsSLk4fkPEHnbaXmKdRSSKoq6qhh9SE3W
+                            - generic: grammarly.com
+                    - 'link "Thumbnail image: Trust your writing process with an AI tool you can trust." [ref=e280] [cursor=pointer]':
+                      - /url: https://alb.reddit.com/cr?za=MgnOv1Hb67JVxev-eeFsMhj9A80X63HeoaV9EIFWtkd4XYlfFZebNE9gr4tcVOR-Ua_D90nNNR82YZl8JLrh0z-Qpox85xXOJCBRxQqtyq8aPhN_PqCBuB88hfcNeweaCkHIOldnsY71oCxjB0umhgLRVhrCTizKsWS1QIWW4IEEd2UFu1qj99WbJF79hYo1HDOejIPkklOYfyRkdDivIwGBMxYVx6W1HXp60q6p_J-Ek0BMIGv4Lv1vHuM8xbkwE9tbXlr7ynXM-OrVFXlWecA86kct1moMWafI5m4Ttt8pDw51IW5ENH2tXho9eVDdpYucmgPMN6XonjC2p6INjeinijAl6MshYd-9MBkpksjbWQEDmEPc536a6I4TyY0Wu0aoT1yB0U5AA1VxPAmbR9S5d7U-oRDEm9tmoxq0IWCdu_4bOel0KQlvf9DserxmBVgxMP7Ra_rYm7_66P1FSULddIp0WD1Epvg3R02dQ50WP4qQJLOW9l4R5zcK3_lsl2-wWh86M1P4U2r3xC3FcCj5H3GHRuiAm7TlzkdFx2xWcUQy_AV2XNptXHWUm8DF70qDK9rHtojVGk84O_GSSEaptlEdRjEANQyMT8jt-uxjEgt33TGhmE1VupR0aWicYl-aagbZ2pyvJdhYQzakZB5_ZF48AA77uOgVgkssi3u-3j0noCbHI68uGgE2F0Vj0JYPFz5MITmT3tRLAOIkQRYJspFYhy_7jDQcwxdDTa1m2NMPNjuSDYUSi4yll4Ift-yUcWxGtpPNpJTof7EVQg&zp=uBw60U7cThbhX1d8pb-T7jBF7cGVU-qa-AAoyG36bn9Vo9CdizvHRhRVJdiCpczrQ4qmXGu18Y55YmHeJFj8TlJhAOvFVuv1rmDRIcFLiQa0FxIl813OL9OVIIT3ffoFqU6jeuEVI9VkVy0adXK7_dU3EgumURoAnSiTNbDoXChD98I8szBg76h9a3IyX0C9jLVltWSdPAIDA7Vajg1TpaovllTequ2e1wBlhqvId-fCIUziJsYjDgnGEtdCpSGFSNiIpJHPEEX2FbYVrFupvP3p0hrvSk1nKQ68EWMmd5n1EYBam0dmrqfqsSLk4fkPEHnbaXmKdRSSKoq6qhh9SE3W
+                      - 'img "Thumbnail image: Trust your writing process with an AI tool you can trust." [ref=e281]'
+              - generic [ref=e288]:
+                - generic [ref=e290]:
+                  - generic [ref=e291]: "Sort by:"
+                  - button "Sort by Best" [ref=e296] [cursor=pointer]:
+                    - generic [ref=e298]: Best
+                - button "Search Comments Expand comment search" [ref=e305] [cursor=pointer]:
+                  - generic [ref=e306]:
+                    - img [ref=e309]
+                    - generic [ref=e312]: Search Comments
+                  - generic [ref=e313]:
+                    - generic: Expand comment search
+              - region "Comments" [ref=e317]:
+                - heading "Comments Section" [level=1] [ref=e318]
+                - generic:
+                  - article "Comment from fidalco 8 months ago" [ref=e320]:
+                    - generic "Metadata for fidalco's comment" [ref=e321]:
+                      - link "fidalco's profile --- avatar" [ref=e327] [cursor=pointer]:
+                        - /url: /user/fidalco/
+                        - generic [ref=e329]:
+                          - img [ref=e331]
+                          - img [ref=e335]
+                          - img [ref=e338]
+                      - generic [ref=e344]:
+                        - link "fidalco's profile" [ref=e348] [cursor=pointer]:
+                          - /url: /user/fidalco/
+                          - text: fidalco
+                        - generic [ref=e349]: •
+                        - link "8mo ago" [ref=e350] [cursor=pointer]:
+                          - /url: /r/ChatGPTPromptGenius/comments/1mfezeb/comment/n6gnrib/
+                          - time [ref=e351]: 8mo ago
+                    - paragraph [ref=e359]: Ummm, RuinedFoocus already does this, just simply import an image and all JSON data with loras, prompts etc are inserted so you don’t have re-run the previous steps.
+                  - article "Comment from eldoroshi 6 months ago" [ref=e365]:
+                    - generic "Metadata for eldoroshi's comment" [ref=e366]:
+                      - link "eldoroshi's profile --- avatar" [ref=e372] [cursor=pointer]:
+                        - /url: /user/eldoroshi/
+                        - img "u/eldoroshi avatar" [ref=e375]
+                      - generic [ref=e380]:
+                        - link "eldoroshi's profile" [ref=e384] [cursor=pointer]:
+                          - /url: /user/eldoroshi/
+                          - text: eldoroshi
+                        - generic [ref=e385]: •
+                        - link "6mo ago" [ref=e386] [cursor=pointer]:
+                          - /url: /r/ChatGPTPromptGenius/comments/1mfezeb/comment/nhjoe9f/
+                          - time [ref=e387]: 6mo ago
+                    - paragraph [ref=e395]:
+                      - text: just use
+                      - link "https://jsonpromptai.org" [ref=e396] [cursor=pointer]:
+                        - /url: https://jsonpromptai.org
+            - generic [ref=e401]:
+              - generic [ref=e402]:
+                - complementary "Related Answers Section" [ref=e404]:
+                  - heading "Related Answers Section" [level=1] [ref=e405]
+                  - generic [ref=e406]:
+                    - img [ref=e408]
+                    - generic [ref=e410]: Related Answers
+                  - generic [ref=e411]:
+                    - link "Best JSON prompts for generating images" [ref=e413] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/274bb60b-3761-455e-9111-d66d19a5c2cd/?q=Best+JSON+prompts+for+generating+images&source=PDP
+                      - generic [ref=e416]: Best JSON prompts for generating images
+                      - img [ref=e419]
+                    - link "Tips for using JSON with ChatGPT" [ref=e422] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/f9b4beec-6b6c-48d4-8b16-ce9f6ba2c2be/?q=Tips+for+using+JSON+with+ChatGPT&source=PDP
+                      - generic [ref=e425]: Tips for using JSON with ChatGPT
+                      - img [ref=e428]
+                    - link "Understanding JSON prompts for AI" [ref=e431] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/d5dfe766-3284-4fce-83d3-21d27052caa1/?q=Understanding+JSON+prompts+for+AI&source=PDP
+                      - generic [ref=e434]: Understanding JSON prompts for AI
+                      - img [ref=e437]
+                    - link "How to convert prompts to JSON format" [ref=e440] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/eec1e74c-dca2-4397-a060-f62cb413abdb/?q=How+to+convert+prompts+to+JSON+format&source=PDP
+                      - generic [ref=e443]: How to convert prompts to JSON format
+                      - img [ref=e446]
+                    - link "Crafting prompts for storytelling with AI" [ref=e449] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/8ca936e2-c3f4-49ab-af5d-a77248637695/?q=Crafting+prompts+for+storytelling+with+AI&source=PDP
+                      - generic [ref=e452]: Crafting prompts for storytelling with AI
+                      - img [ref=e455]
+                - complementary [ref=e459]:
+                  - generic [ref=e460]:
+                    - generic [ref=e461]: New to Reddit?
+                    - paragraph [ref=e462]: Create your account and connect with a world of communities.
+                  - generic [ref=e463]:
+                    - iframe [ref=e472]:
+                      - button "Continue with Google. Opens in new tab" [ref=f8e3] [cursor=pointer]:
+                        - generic [ref=f8e5]:
+                          - img [ref=f8e7]
+                          - generic [ref=f8e14]: Continue with Google
+                    - link "Continue with Email" [ref=e474] [cursor=pointer]:
+                      - /url: https://www.reddit.com/register/
+                      - generic [ref=e477]:
+                        - img [ref=e478]
+                        - generic [ref=e480]: Continue with Email
+                  - link "Continue With Phone Number" [ref=e483] [cursor=pointer]:
+                    - /url: https://www.reddit.com/login/
+                    - generic [ref=e486]:
+                      - img [ref=e487]
+                      - generic [ref=e490]: Continue With Phone Number
+                  - generic [ref=e491]:
+                    - text: By continuing, you agree to our
+                    - link "User Agreement" [ref=e492] [cursor=pointer]:
+                      - /url: https://www.redditinc.com/policies/user-agreement
+                    - text: and acknowledge that you understand the
+                    - link "Privacy Policy" [ref=e493] [cursor=pointer]:
+                      - /url: https://www.redditinc.com/policies/privacy-policy
+                    - text: .
+                - complementary "Related Posts Section" [ref=e494]:
+                  - heading "Related Posts Section" [level=1] [ref=e495]: More posts you may like
+                  - list [ref=e501]:
+                    - listitem [ref=e502]:
+                      - generic [ref=e503]:
+                        - generic [ref=e505]:
+                          - link "I built a JSON prompt that makes AI write like a human" [ref=e506] [cursor=pointer]:
+                            - /url: /r/ChatGPTPromptGenius/comments/1mteqd5/i_built_a_json_prompt_that_makes_ai_write_like_a/
+                            - generic [ref=e507]:
+                              - generic: I built a JSON prompt that makes AI write like a human
+                          - generic [ref=e510]:
+                            - generic [ref=e513]:
+                              - link "r/ChatGPTPromptGenius" [ref=e514] [cursor=pointer]:
+                                - /url: /r/ChatGPTPromptGenius/
+                                - generic [ref=e518]: r/ChatGPTPromptGenius
+                              - generic [ref=e519]: •
+                              - time [ref=e521]: 7mo ago
+                            - link "List item post - I built a JSON prompt that makes AI write like a human" [ref=e523] [cursor=pointer]:
+                              - /url: /r/ChatGPTPromptGenius/comments/1mteqd5/i_built_a_json_prompt_that_makes_ai_write_like_a/
+                              - heading "List item post - I built a JSON prompt that makes AI write like a human" [level=3] [ref=e526]: I built a JSON prompt that makes AI write like a human
+                          - generic [ref=e528]:
+                            - generic [ref=e529]: "75"
+                            - text: upvotes ·
+                            - generic [ref=e530]: "22"
+                            - text: comments
+                        - separator [ref=e531]
+                    - listitem [ref=e532]:
+                      - generic [ref=e534]:
+                        - generic:
+                          - 'generic "Advertisement: worth the wait. our fan-favorite chicken al pastor is back at chipotle for a limited time." [ref=e535]':
+                            - 'link "Advertisement: worth the wait. our fan-favorite chicken al pastor is back at chipotle for a limited time." [ref=e536] [cursor=pointer]':
+                              - /url: https://alb.reddit.com/cr?za=Wr56doppIMbeV9EMaU9mladfL-lxIOKYUpKoexCWwVCQ3jtrV6HHMDG5u_hqd5HpdpsXG9VLTrY9sW1eql9I78yCbel2xyvqHTtXgaRDqoDIySsuM5DpmdRlaYHDGBZcxKweFaqNokERCRLLj0V20TKcC9QdF3ZGGxgQFrTmkAtUaY24D8ca51a6bXRNsZhNOMrE8v5drcqQIYnqir-qwUklYd4wBJUjdiuD-M3W2WrepvZTxH89RhewWxx_a5-WhbDWDntTaf9gQYrcjptoj_pcvYP_YN7enhI3OoyAnO95QWBN2dArDKMB2AYTDF861DySioJLu9b2k4GJW7xzxeFjJeX73NukOSfSTCleCjPHVDzIqZUm2rLxNByTu8-rST37A0xvWae_bWxm3TRxJ6w2_naSBbWHCynYX1HMlcRGz_br8UN9ttwiRntmgBOlnULpglN6g-McAmjc7lxlybf2hTE2r3kwKiJeSDrwUkyK7Bno9krH0zksgmJCvU_DDWsNUukaKsdgp-y-UbN6DOpVh46fHN-OfnpMSHnpuD4OjaWcXiTmRbmPIr9hdo50GzsWJwNKBMrgGe2YCYvx5JLA1Ovrg5ZlnOSlFH7zLFfhEx1bSU9uO_o50g2fSY7WJknp7_s9XV1fmeEkGePBxoEIzXdLMSUpIYRhsJz-KyrODlOgJT6JbFosP5JJUQP4wvBery8WW8XstWc3SyJSU9sWlICq9UwqPsUnf3gES5emcZ_eaL4XwzObLI72Lus7Twu41ZtcSb6GHem8JRwjkbvGGmQ1_ZR2IbnM9wbjuEMkNQ_n_9AFp2coPJqhshJfXf0qQvQabFFFLPPfmO9wWB0ZNzW8LxX-wt6yb5AvbnK1GYU8MbG7RBlv0AgWXmEIbYuuTiEojviDEKA8uCFo_IbZ60L6hop30yqV9s7SAlwZrL6ejrLkTV7xqzsaVYgDxVbJVzlJVc382VO_EcBPF9FLUxf2izn6KS5a_2sOF3G2uhIwQ6a1L9ZZSZYRZ-1TqOFdHDD9mKlnsrkMpaoqeStfCd7k89wtbg_erVcU60_MnvW6xJvGZ-9rFoAYGV13nTjOBz7uz0zTStHqg1U8qJzFaOOgEn9msgdmiy32u7PnDWYbSYBb9TcrhF3H3gxtcKaNcJNfz1loRFjFLBHoUnowgwl435hH_Bf1wDCVD96D7uU1yz8Tz4_nE3Zjtt21Mxtuqebmwi7ylBC4Yu1sCGm3FpECzYtT1l35uc7mXiE5FQcwVhoANFfAwbDv5nxe-zNplqthuwofiNtZ1g5zY_sT5wDGMnkyqMh4rp8wF3_K5yd3oYhu-NnIVN94329yGBle1bIHIFcwSkl7XdossNRz5BRskQfSdO1Br8ns27TFBoCCLxVtJLdCxMAzE64rxePDfSPol6KZo6hJqENrnCxrbwmR4SML3-f7uKJJGiRwiUqsIw-nJneyCbpHg2-r4EbBPKye1T-oe9-tcopS0yW-XZVO0rfOyW0LNHKl8nkn0PCVekfhMeW3FE_pb_uzzMDR&zp=YeHRH_vOi9B7m_EGwg4VvjkVsYR4j6QWD1tW9BdjIeEEoUQR45dk7VsIQT1OLYm5a6vUwXvFCH2jxnhrhDt5ChQTPr-6ZmI5FMnRTtw-6--bmqcExc3TaxdsWmTNCX-2sOuRlGWfAv8VjwS7em9P0w7EU1JKCKbG5YTNLHDA6w0LX7IUl3x77Fw3TZEngOiKKRmh9685AxaGEKwW9FSHm1NaZo84lPfJtX5Ny6bC9zI00_dzzMYxYgqWeBSJJWxhULY899bJ9XFW6zhCC6IZbOijOff9fFTUMjNT5e0BoPm4vOEv7jSwz7N4I1UdymbRy6WHw-fvSErPYtf76w-PjDiO
+                          - generic [ref=e537]:
+                            - generic [ref=e538]:
+                              - generic [ref=e539]:
+                                - generic [ref=e540]:
+                                  - generic [ref=e541]:
+                                    - link "u/chipotle avatar chipotle" [ref=e544] [cursor=pointer]:
+                                      - /url: /user/chipotle/
+                                      - img "u/chipotle avatar" [ref=e549]
+                                      - generic [ref=e550]: chipotle
+                                    - generic [ref=e551]: •
+                                    - link "Promoted" [ref=e553] [cursor=pointer]:
+                                      - /url: /user/chipotle/
+                                      - generic [ref=e554]: Promoted
+                                    - link [ref=e556] [cursor=pointer]:
+                                      - /url: https://alb.reddit.com/cr?za=Wr56doppIMbeV9EMaU9mladfL-lxIOKYUpKoexCWwVCQ3jtrV6HHMDG5u_hqd5HpdpsXG9VLTrY9sW1eql9I78yCbel2xyvqHTtXgaRDqoDIySsuM5DpmdRlaYHDGBZcxKweFaqNokERCRLLj0V20TKcC9QdF3ZGGxgQFrTmkAtUaY24D8ca51a6bXRNsZhNOMrE8v5drcqQIYnqir-qwUklYd4wBJUjdiuD-M3W2WrepvZTxH89RhewWxx_a5-WhbDWDntTaf9gQYrcjptoj_pcvYP_YN7enhI3OoyAnO95QWBN2dArDKMB2AYTDF861DySioJLu9b2k4GJW7xzxeFjJeX73NukOSfSTCleCjPHVDzIqZUm2rLxNByTu8-rST37A0xvWae_bWxm3TRxJ6w2_naSBbWHCynYX1HMlcRGz_br8UN9ttwiRntmgBOlnULpglN6g-McAmjc7lxlybf2hTE2r3kwKiJeSDrwUkyK7Bno9krH0zksgmJCvU_DDWsNUukaKsdgp-y-UbN6DOpVh46fHN-OfnpMSHnpuD4OjaWcXiTmRbmPIr9hdo50GzsWJwNKBMrgGe2YCYvx5JLA1Ovrg5ZlnOSlFH7zLFfhEx1bSU9uO_o50g2fSY7WJknp7_s9XV1fmeEkGePBxoEIzXdLMSUpIYRhsJz-KyrODlOgJT6JbFosP5JJUQP4wvBery8WW8XstWc3SyJSU9sWlICq9UwqPsUnf3gES5emcZ_eaL4XwzObLI72Lus7Twu41ZtcSb6GHem8JRwjkbvGGmQ1_ZR2IbnM9wbjuEMkNQ_n_9AFp2coPJqhshJfXf0qQvQabFFFLPPfmO9wWB0ZNzW8LxX-wt6yb5AvbnK1GYU8MbG7RBlv0AgWXmEIbYuuTiEojviDEKA8uCFo_IbZ60L6hop30yqV9s7SAlwZrL6ejrLkTV7xqzsaVYgDxVbJVzlJVc382VO_EcBPF9FLUxf2izn6KS5a_2sOF3G2uhIwQ6a1L9ZZSZYRZ-1TqOFdHDD9mKlnsrkMpaoqeStfCd7k89wtbg_erVcU60_MnvW6xJvGZ-9rFoAYGV13nTjOBz7uz0zTStHqg1U8qJzFaOOgEn9msgdmiy32u7PnDWYbSYBb9TcrhF3H3gxtcKaNcJNfz1loRFjFLBHoUnowgwl435hH_Bf1wDCVD96D7uU1yz8Tz4_nE3Zjtt21Mxtuqebmwi7ylBC4Yu1sCGm3FpECzYtT1l35uc7mXiE5FQcwVhoANFfAwbDv5nxe-zNplqthuwofiNtZ1g5zY_sT5wDGMnkyqMh4rp8wF3_K5yd3oYhu-NnIVN94329yGBle1bIHIFcwSkl7XdossNRz5BRskQfSdO1Br8ns27TFBoCCLxVtJLdCxMAzE64rxePDfSPol6KZo6hJqENrnCxrbwmR4SML3-f7uKJJGiRwiUqsIw-nJneyCbpHg2-r4EbBPKye1T-oe9-tcopS0yW-XZVO0rfOyW0LNHKl8nkn0PCVekfhMeW3FE_pb_uzzMDR&zp=YeHRH_vOi9B7m_EGwg4VvjkVsYR4j6QWD1tW9BdjIeEEoUQR45dk7VsIQT1OLYm5a6vUwXvFCH2jxnhrhDt5ChQTPr-6ZmI5FMnRTtw-6--bmqcExc3TaxdsWmTNCX-2sOuRlGWfAv8VjwS7em9P0w7EU1JKCKbG5YTNLHDA6w0LX7IUl3x77Fw3TZEngOiKKRmh9685AxaGEKwW9FSHm1NaZo84lPfJtX5Ny6bC9zI00_dzzMYxYgqWeBSJJWxhULY899bJ9XFW6zhCC6IZbOijOff9fFTUMjNT5e0BoPm4vOEv7jSwz7N4I1UdymbRy6WHw-fvSErPYtf76w-PjDiO
+                                  - button "Open user actions" [ref=e561] [cursor=pointer]:
+                                    - img [ref=e564]
+                                - link "worth the wait. our fan-favorite chicken al pastor is back at chipotle for a limited time." [ref=e568] [cursor=pointer]:
+                                  - /url: https://alb.reddit.com/cr?za=Wr56doppIMbeV9EMaU9mladfL-lxIOKYUpKoexCWwVCQ3jtrV6HHMDG5u_hqd5HpdpsXG9VLTrY9sW1eql9I78yCbel2xyvqHTtXgaRDqoDIySsuM5DpmdRlaYHDGBZcxKweFaqNokERCRLLj0V20TKcC9QdF3ZGGxgQFrTmkAtUaY24D8ca51a6bXRNsZhNOMrE8v5drcqQIYnqir-qwUklYd4wBJUjdiuD-M3W2WrepvZTxH89RhewWxx_a5-WhbDWDntTaf9gQYrcjptoj_pcvYP_YN7enhI3OoyAnO95QWBN2dArDKMB2AYTDF861DySioJLu9b2k4GJW7xzxeFjJeX73NukOSfSTCleCjPHVDzIqZUm2rLxNByTu8-rST37A0xvWae_bWxm3TRxJ6w2_naSBbWHCynYX1HMlcRGz_br8UN9ttwiRntmgBOlnULpglN6g-McAmjc7lxlybf2hTE2r3kwKiJeSDrwUkyK7Bno9krH0zksgmJCvU_DDWsNUukaKsdgp-y-UbN6DOpVh46fHN-OfnpMSHnpuD4OjaWcXiTmRbmPIr9hdo50GzsWJwNKBMrgGe2YCYvx5JLA1Ovrg5ZlnOSlFH7zLFfhEx1bSU9uO_o50g2fSY7WJknp7_s9XV1fmeEkGePBxoEIzXdLMSUpIYRhsJz-KyrODlOgJT6JbFosP5JJUQP4wvBery8WW8XstWc3SyJSU9sWlICq9UwqPsUnf3gES5emcZ_eaL4XwzObLI72Lus7Twu41ZtcSb6GHem8JRwjkbvGGmQ1_ZR2IbnM9wbjuEMkNQ_n_9AFp2coPJqhshJfXf0qQvQabFFFLPPfmO9wWB0ZNzW8LxX-wt6yb5AvbnK1GYU8MbG7RBlv0AgWXmEIbYuuTiEojviDEKA8uCFo_IbZ60L6hop30yqV9s7SAlwZrL6ejrLkTV7xqzsaVYgDxVbJVzlJVc382VO_EcBPF9FLUxf2izn6KS5a_2sOF3G2uhIwQ6a1L9ZZSZYRZ-1TqOFdHDD9mKlnsrkMpaoqeStfCd7k89wtbg_erVcU60_MnvW6xJvGZ-9rFoAYGV13nTjOBz7uz0zTStHqg1U8qJzFaOOgEn9msgdmiy32u7PnDWYbSYBb9TcrhF3H3gxtcKaNcJNfz1loRFjFLBHoUnowgwl435hH_Bf1wDCVD96D7uU1yz8Tz4_nE3Zjtt21Mxtuqebmwi7ylBC4Yu1sCGm3FpECzYtT1l35uc7mXiE5FQcwVhoANFfAwbDv5nxe-zNplqthuwofiNtZ1g5zY_sT5wDGMnkyqMh4rp8wF3_K5yd3oYhu-NnIVN94329yGBle1bIHIFcwSkl7XdossNRz5BRskQfSdO1Br8ns27TFBoCCLxVtJLdCxMAzE64rxePDfSPol6KZo6hJqENrnCxrbwmR4SML3-f7uKJJGiRwiUqsIw-nJneyCbpHg2-r4EbBPKye1T-oe9-tcopS0yW-XZVO0rfOyW0LNHKl8nkn0PCVekfhMeW3FE_pb_uzzMDR&zp=YeHRH_vOi9B7m_EGwg4VvjkVsYR4j6QWD1tW9BdjIeEEoUQR45dk7VsIQT1OLYm5a6vUwXvFCH2jxnhrhDt5ChQTPr-6ZmI5FMnRTtw-6--bmqcExc3TaxdsWmTNCX-2sOuRlGWfAv8VjwS7em9P0w7EU1JKCKbG5YTNLHDA6w0LX7IUl3x77Fw3TZEngOiKKRmh9685AxaGEKwW9FSHm1NaZo84lPfJtX5Ny6bC9zI00_dzzMYxYgqWeBSJJWxhULY899bJ9XFW6zhCC6IZbOijOff9fFTUMjNT5e0BoPm4vOEv7jSwz7N4I1UdymbRy6WHw-fvSErPYtf76w-PjDiO
+                                  - generic "worth the wait. our fan-favorite chicken al pastor is back at chipotle for a limited time." [ref=e569]
+                              - 'link "Thumbnail image: worth the wait. our fan-favorite chicken al pastor is back at chipotle for a limited time." [ref=e572] [cursor=pointer]':
+                                - /url: https://alb.reddit.com/cr?za=Wr56doppIMbeV9EMaU9mladfL-lxIOKYUpKoexCWwVCQ3jtrV6HHMDG5u_hqd5HpdpsXG9VLTrY9sW1eql9I78yCbel2xyvqHTtXgaRDqoDIySsuM5DpmdRlaYHDGBZcxKweFaqNokERCRLLj0V20TKcC9QdF3ZGGxgQFrTmkAtUaY24D8ca51a6bXRNsZhNOMrE8v5drcqQIYnqir-qwUklYd4wBJUjdiuD-M3W2WrepvZTxH89RhewWxx_a5-WhbDWDntTaf9gQYrcjptoj_pcvYP_YN7enhI3OoyAnO95QWBN2dArDKMB2AYTDF861DySioJLu9b2k4GJW7xzxeFjJeX73NukOSfSTCleCjPHVDzIqZUm2rLxNByTu8-rST37A0xvWae_bWxm3TRxJ6w2_naSBbWHCynYX1HMlcRGz_br8UN9ttwiRntmgBOlnULpglN6g-McAmjc7lxlybf2hTE2r3kwKiJeSDrwUkyK7Bno9krH0zksgmJCvU_DDWsNUukaKsdgp-y-UbN6DOpVh46fHN-OfnpMSHnpuD4OjaWcXiTmRbmPIr9hdo50GzsWJwNKBMrgGe2YCYvx5JLA1Ovrg5ZlnOSlFH7zLFfhEx1bSU9uO_o50g2fSY7WJknp7_s9XV1fmeEkGePBxoEIzXdLMSUpIYRhsJz-KyrODlOgJT6JbFosP5JJUQP4wvBery8WW8XstWc3SyJSU9sWlICq9UwqPsUnf3gES5emcZ_eaL4XwzObLI72Lus7Twu41ZtcSb6GHem8JRwjkbvGGmQ1_ZR2IbnM9wbjuEMkNQ_n_9AFp2coPJqhshJfXf0qQvQabFFFLPPfmO9wWB0ZNzW8LxX-wt6yb5AvbnK1GYU8MbG7RBlv0AgWXmEIbYuuTiEojviDEKA8uCFo_IbZ60L6hop30yqV9s7SAlwZrL6ejrLkTV7xqzsaVYgDxVbJVzlJVc382VO_EcBPF9FLUxf2izn6KS5a_2sOF3G2uhIwQ6a1L9ZZSZYRZ-1TqOFdHDD9mKlnsrkMpaoqeStfCd7k89wtbg_erVcU60_MnvW6xJvGZ-9rFoAYGV13nTjOBz7uz0zTStHqg1U8qJzFaOOgEn9msgdmiy32u7PnDWYbSYBb9TcrhF3H3gxtcKaNcJNfz1loRFjFLBHoUnowgwl435hH_Bf1wDCVD96D7uU1yz8Tz4_nE3Zjtt21Mxtuqebmwi7ylBC4Yu1sCGm3FpECzYtT1l35uc7mXiE5FQcwVhoANFfAwbDv5nxe-zNplqthuwofiNtZ1g5zY_sT5wDGMnkyqMh4rp8wF3_K5yd3oYhu-NnIVN94329yGBle1bIHIFcwSkl7XdossNRz5BRskQfSdO1Br8ns27TFBoCCLxVtJLdCxMAzE64rxePDfSPol6KZo6hJqENrnCxrbwmR4SML3-f7uKJJGiRwiUqsIw-nJneyCbpHg2-r4EbBPKye1T-oe9-tcopS0yW-XZVO0rfOyW0LNHKl8nkn0PCVekfhMeW3FE_pb_uzzMDR&zp=YeHRH_vOi9B7m_EGwg4VvjkVsYR4j6QWD1tW9BdjIeEEoUQR45dk7VsIQT1OLYm5a6vUwXvFCH2jxnhrhDt5ChQTPr-6ZmI5FMnRTtw-6--bmqcExc3TaxdsWmTNCX-2sOuRlGWfAv8VjwS7em9P0w7EU1JKCKbG5YTNLHDA6w0LX7IUl3x77Fw3TZEngOiKKRmh9685AxaGEKwW9FSHm1NaZo84lPfJtX5Ny6bC9zI00_dzzMYxYgqWeBSJJWxhULY899bJ9XFW6zhCC6IZbOijOff9fFTUMjNT5e0BoPm4vOEv7jSwz7N4I1UdymbRy6WHw-fvSErPYtf76w-PjDiO
+                                - 'img "Thumbnail image: worth the wait. our fan-favorite chicken al pastor is back at chipotle for a limited time." [ref=e574]'
+                            - generic [ref=e575]:
+                              - link [ref=e577] [cursor=pointer]:
+                                - /url: https://alb.reddit.com/cr?za=Wr56doppIMbeV9EMaU9mladfL-lxIOKYUpKoexCWwVCQ3jtrV6HHMDG5u_hqd5HpdpsXG9VLTrY9sW1eql9I78yCbel2xyvqHTtXgaRDqoDIySsuM5DpmdRlaYHDGBZcxKweFaqNokERCRLLj0V20TKcC9QdF3ZGGxgQFrTmkAtUaY24D8ca51a6bXRNsZhNOMrE8v5drcqQIYnqir-qwUklYd4wBJUjdiuD-M3W2WrepvZTxH89RhewWxx_a5-WhbDWDntTaf9gQYrcjptoj_pcvYP_YN7enhI3OoyAnO95QWBN2dArDKMB2AYTDF861DySioJLu9b2k4GJW7xzxeFjJeX73NukOSfSTCleCjPHVDzIqZUm2rLxNByTu8-rST37A0xvWae_bWxm3TRxJ6w2_naSBbWHCynYX1HMlcRGz_br8UN9ttwiRntmgBOlnULpglN6g-McAmjc7lxlybf2hTE2r3kwKiJeSDrwUkyK7Bno9krH0zksgmJCvU_DDWsNUukaKsdgp-y-UbN6DOpVh46fHN-OfnpMSHnpuD4OjaWcXiTmRbmPIr9hdo50GzsWJwNKBMrgGe2YCYvx5JLA1Ovrg5ZlnOSlFH7zLFfhEx1bSU9uO_o50g2fSY7WJknp7_s9XV1fmeEkGePBxoEIzXdLMSUpIYRhsJz-KyrODlOgJT6JbFosP5JJUQP4wvBery8WW8XstWc3SyJSU9sWlICq9UwqPsUnf3gES5emcZ_eaL4XwzObLI72Lus7Twu41ZtcSb6GHem8JRwjkbvGGmQ1_ZR2IbnM9wbjuEMkNQ_n_9AFp2coPJqhshJfXf0qQvQabFFFLPPfmO9wWB0ZNzW8LxX-wt6yb5AvbnK1GYU8MbG7RBlv0AgWXmEIbYuuTiEojviDEKA8uCFo_IbZ60L6hop30yqV9s7SAlwZrL6ejrLkTV7xqzsaVYgDxVbJVzlJVc382VO_EcBPF9FLUxf2izn6KS5a_2sOF3G2uhIwQ6a1L9ZZSZYRZ-1TqOFdHDD9mKlnsrkMpaoqeStfCd7k89wtbg_erVcU60_MnvW6xJvGZ-9rFoAYGV13nTjOBz7uz0zTStHqg1U8qJzFaOOgEn9msgdmiy32u7PnDWYbSYBb9TcrhF3H3gxtcKaNcJNfz1loRFjFLBHoUnowgwl435hH_Bf1wDCVD96D7uU1yz8Tz4_nE3Zjtt21Mxtuqebmwi7ylBC4Yu1sCGm3FpECzYtT1l35uc7mXiE5FQcwVhoANFfAwbDv5nxe-zNplqthuwofiNtZ1g5zY_sT5wDGMnkyqMh4rp8wF3_K5yd3oYhu-NnIVN94329yGBle1bIHIFcwSkl7XdossNRz5BRskQfSdO1Br8ns27TFBoCCLxVtJLdCxMAzE64rxePDfSPol6KZo6hJqENrnCxrbwmR4SML3-f7uKJJGiRwiUqsIw-nJneyCbpHg2-r4EbBPKye1T-oe9-tcopS0yW-XZVO0rfOyW0LNHKl8nkn0PCVekfhMeW3FE_pb_uzzMDR&zp=YeHRH_vOi9B7m_EGwg4VvjkVsYR4j6QWD1tW9BdjIeEEoUQR45dk7VsIQT1OLYm5a6vUwXvFCH2jxnhrhDt5ChQTPr-6ZmI5FMnRTtw-6--bmqcExc3TaxdsWmTNCX-2sOuRlGWfAv8VjwS7em9P0w7EU1JKCKbG5YTNLHDA6w0LX7IUl3x77Fw3TZEngOiKKRmh9685AxaGEKwW9FSHm1NaZo84lPfJtX5Ny6bC9zI00_dzzMYxYgqWeBSJJWxhULY899bJ9XFW6zhCC6IZbOijOff9fFTUMjNT5e0BoPm4vOEv7jSwz7N4I1UdymbRy6WHw-fvSErPYtf76w-PjDiO
+                              - generic [ref=e578]:
+                                - link "chipotle.app.link" [ref=e581] [cursor=pointer]:
+                                  - /url: https://alb.reddit.com/cr?za=Wr56doppIMbeV9EMaU9mladfL-lxIOKYUpKoexCWwVCQ3jtrV6HHMDG5u_hqd5HpdpsXG9VLTrY9sW1eql9I78yCbel2xyvqHTtXgaRDqoDIySsuM5DpmdRlaYHDGBZcxKweFaqNokERCRLLj0V20TKcC9QdF3ZGGxgQFrTmkAtUaY24D8ca51a6bXRNsZhNOMrE8v5drcqQIYnqir-qwUklYd4wBJUjdiuD-M3W2WrepvZTxH89RhewWxx_a5-WhbDWDntTaf9gQYrcjptoj_pcvYP_YN7enhI3OoyAnO95QWBN2dArDKMB2AYTDF861DySioJLu9b2k4GJW7xzxeFjJeX73NukOSfSTCleCjPHVDzIqZUm2rLxNByTu8-rST37A0xvWae_bWxm3TRxJ6w2_naSBbWHCynYX1HMlcRGz_br8UN9ttwiRntmgBOlnULpglN6g-McAmjc7lxlybf2hTE2r3kwKiJeSDrwUkyK7Bno9krH0zksgmJCvU_DDWsNUukaKsdgp-y-UbN6DOpVh46fHN-OfnpMSHnpuD4OjaWcXiTmRbmPIr9hdo50GzsWJwNKBMrgGe2YCYvx5JLA1Ovrg5ZlnOSlFH7zLFfhEx1bSU9uO_o50g2fSY7WJknp7_s9XV1fmeEkGePBxoEIzXdLMSUpIYRhsJz-KyrODlOgJT6JbFosP5JJUQP4wvBery8WW8XstWc3SyJSU9sWlICq9UwqPsUnf3gES5emcZ_eaL4XwzObLI72Lus7Twu41ZtcSb6GHem8JRwjkbvGGmQ1_ZR2IbnM9wbjuEMkNQ_n_9AFp2coPJqhshJfXf0qQvQabFFFLPPfmO9wWB0ZNzW8LxX-wt6yb5AvbnK1GYU8MbG7RBlv0AgWXmEIbYuuTiEojviDEKA8uCFo_IbZ60L6hop30yqV9s7SAlwZrL6ejrLkTV7xqzsaVYgDxVbJVzlJVc382VO_EcBPF9FLUxf2izn6KS5a_2sOF3G2uhIwQ6a1L9ZZSZYRZ-1TqOFdHDD9mKlnsrkMpaoqeStfCd7k89wtbg_erVcU60_MnvW6xJvGZ-9rFoAYGV13nTjOBz7uz0zTStHqg1U8qJzFaOOgEn9msgdmiy32u7PnDWYbSYBb9TcrhF3H3gxtcKaNcJNfz1loRFjFLBHoUnowgwl435hH_Bf1wDCVD96D7uU1yz8Tz4_nE3Zjtt21Mxtuqebmwi7ylBC4Yu1sCGm3FpECzYtT1l35uc7mXiE5FQcwVhoANFfAwbDv5nxe-zNplqthuwofiNtZ1g5zY_sT5wDGMnkyqMh4rp8wF3_K5yd3oYhu-NnIVN94329yGBle1bIHIFcwSkl7XdossNRz5BRskQfSdO1Br8ns27TFBoCCLxVtJLdCxMAzE64rxePDfSPol6KZo6hJqENrnCxrbwmR4SML3-f7uKJJGiRwiUqsIw-nJneyCbpHg2-r4EbBPKye1T-oe9-tcopS0yW-XZVO0rfOyW0LNHKl8nkn0PCVekfhMeW3FE_pb_uzzMDR&zp=YeHRH_vOi9B7m_EGwg4VvjkVsYR4j6QWD1tW9BdjIeEEoUQR45dk7VsIQT1OLYm5a6vUwXvFCH2jxnhrhDt5ChQTPr-6ZmI5FMnRTtw-6--bmqcExc3TaxdsWmTNCX-2sOuRlGWfAv8VjwS7em9P0w7EU1JKCKbG5YTNLHDA6w0LX7IUl3x77Fw3TZEngOiKKRmh9685AxaGEKwW9FSHm1NaZo84lPfJtX5Ny6bC9zI00_dzzMYxYgqWeBSJJWxhULY899bJ9XFW6zhCC6IZbOijOff9fFTUMjNT5e0BoPm4vOEv7jSwz7N4I1UdymbRy6WHw-fvSErPYtf76w-PjDiO
+                                  - generic: chipotle.app.link
+                                - link "Order Now" [ref=e583] [cursor=pointer]:
+                                  - /url: https://alb.reddit.com/cr?za=Wr56doppIMbeV9EMaU9mladfL-lxIOKYUpKoexCWwVCQ3jtrV6HHMDG5u_hqd5HpdpsXG9VLTrY9sW1eql9I78yCbel2xyvqHTtXgaRDqoDIySsuM5DpmdRlaYHDGBZcxKweFaqNokERCRLLj0V20TKcC9QdF3ZGGxgQFrTmkAtUaY24D8ca51a6bXRNsZhNOMrE8v5drcqQIYnqir-qwUklYd4wBJUjdiuD-M3W2WrepvZTxH89RhewWxx_a5-WhbDWDntTaf9gQYrcjptoj_pcvYP_YN7enhI3OoyAnO95QWBN2dArDKMB2AYTDF861DySioJLu9b2k4GJW7xzxeFjJeX73NukOSfSTCleCjPHVDzIqZUm2rLxNByTu8-rST37A0xvWae_bWxm3TRxJ6w2_naSBbWHCynYX1HMlcRGz_br8UN9ttwiRntmgBOlnULpglN6g-McAmjc7lxlybf2hTE2r3kwKiJeSDrwUkyK7Bno9krH0zksgmJCvU_DDWsNUukaKsdgp-y-UbN6DOpVh46fHN-OfnpMSHnpuD4OjaWcXiTmRbmPIr9hdo50GzsWJwNKBMrgGe2YCYvx5JLA1Ovrg5ZlnOSlFH7zLFfhEx1bSU9uO_o50g2fSY7WJknp7_s9XV1fmeEkGePBxoEIzXdLMSUpIYRhsJz-KyrODlOgJT6JbFosP5JJUQP4wvBery8WW8XstWc3SyJSU9sWlICq9UwqPsUnf3gES5emcZ_eaL4XwzObLI72Lus7Twu41ZtcSb6GHem8JRwjkbvGGmQ1_ZR2IbnM9wbjuEMkNQ_n_9AFp2coPJqhshJfXf0qQvQabFFFLPPfmO9wWB0ZNzW8LxX-wt6yb5AvbnK1GYU8MbG7RBlv0AgWXmEIbYuuTiEojviDEKA8uCFo_IbZ60L6hop30yqV9s7SAlwZrL6ejrLkTV7xqzsaVYgDxVbJVzlJVc382VO_EcBPF9FLUxf2izn6KS5a_2sOF3G2uhIwQ6a1L9ZZSZYRZ-1TqOFdHDD9mKlnsrkMpaoqeStfCd7k89wtbg_erVcU60_MnvW6xJvGZ-9rFoAYGV13nTjOBz7uz0zTStHqg1U8qJzFaOOgEn9msgdmiy32u7PnDWYbSYBb9TcrhF3H3gxtcKaNcJNfz1loRFjFLBHoUnowgwl435hH_Bf1wDCVD96D7uU1yz8Tz4_nE3Zjtt21Mxtuqebmwi7ylBC4Yu1sCGm3FpECzYtT1l35uc7mXiE5FQcwVhoANFfAwbDv5nxe-zNplqthuwofiNtZ1g5zY_sT5wDGMnkyqMh4rp8wF3_K5yd3oYhu-NnIVN94329yGBle1bIHIFcwSkl7XdossNRz5BRskQfSdO1Br8ns27TFBoCCLxVtJLdCxMAzE64rxePDfSPol6KZo6hJqENrnCxrbwmR4SML3-f7uKJJGiRwiUqsIw-nJneyCbpHg2-r4EbBPKye1T-oe9-tcopS0yW-XZVO0rfOyW0LNHKl8nkn0PCVekfhMeW3FE_pb_uzzMDR&zp=YeHRH_vOi9B7m_EGwg4VvjkVsYR4j6QWD1tW9BdjIeEEoUQR45dk7VsIQT1OLYm5a6vUwXvFCH2jxnhrhDt5ChQTPr-6ZmI5FMnRTtw-6--bmqcExc3TaxdsWmTNCX-2sOuRlGWfAv8VjwS7em9P0w7EU1JKCKbG5YTNLHDA6w0LX7IUl3x77Fw3TZEngOiKKRmh9685AxaGEKwW9FSHm1NaZo84lPfJtX5Ny6bC9zI00_dzzMYxYgqWeBSJJWxhULY899bJ9XFW6zhCC6IZbOijOff9fFTUMjNT5e0BoPm4vOEv7jSwz7N4I1UdymbRy6WHw-fvSErPYtf76w-PjDiO
+                                  - generic [ref=e585]:
+                                    - generic: Order Now
+                      - separator [ref=e586]
+                    - listitem [ref=e587]:
+                      - generic [ref=e588]:
+                        - generic [ref=e590]:
+                          - link "Share your best prompt" [ref=e591] [cursor=pointer]:
+                            - /url: /r/ChatGPTPromptGenius/comments/1pduhu3/share_your_best_prompt/
+                            - generic [ref=e592]:
+                              - generic: Share your best prompt
+                          - generic [ref=e595]:
+                            - generic [ref=e598]:
+                              - link "r/ChatGPTPromptGenius" [ref=e599] [cursor=pointer]:
+                                - /url: /r/ChatGPTPromptGenius/
+                                - generic [ref=e603]: r/ChatGPTPromptGenius
+                              - generic [ref=e604]: •
+                              - time [ref=e606]: 4mo ago
+                            - link "List item post - Share your best prompt" [ref=e608] [cursor=pointer]:
+                              - /url: /r/ChatGPTPromptGenius/comments/1pduhu3/share_your_best_prompt/
+                              - heading "List item post - Share your best prompt" [level=3] [ref=e611]: Share your best prompt
+                          - generic [ref=e613]:
+                            - generic [ref=e614]: "4"
+                            - text: upvotes ·
+                            - generic [ref=e615]: "7"
+                            - text: comments
+                        - separator [ref=e616]
+                    - listitem [ref=e617]:
+                      - generic [ref=e618]:
+                        - generic [ref=e620]:
+                          - link "I often rely on ChatGPT for UGC images, but they look fake, here’s how i fix my ChatGPT prompts" [ref=e621] [cursor=pointer]:
+                            - /url: /r/ChatGPTPromptGenius/comments/1noim3a/i_often_rely_on_chatgpt_for_ugc_images_but_they/
+                            - generic [ref=e622]:
+                              - generic: I often rely on ChatGPT for UGC images, but they look fake, here’s how i fix my ChatGPT prompts
+                          - generic [ref=e625]:
+                            - generic [ref=e628]:
+                              - link "r/ChatGPTPromptGenius" [ref=e629] [cursor=pointer]:
+                                - /url: /r/ChatGPTPromptGenius/
+                                - generic [ref=e633]: r/ChatGPTPromptGenius
+                              - generic [ref=e634]: •
+                              - time [ref=e636]: 6mo ago
+                            - link "List item post - I often rely on ChatGPT for UGC images, but they look fake,..." [ref=e638] [cursor=pointer]:
+                              - /url: /r/ChatGPTPromptGenius/comments/1noim3a/i_often_rely_on_chatgpt_for_ugc_images_but_they/
+                              - heading "List item post - I often rely on ChatGPT for UGC images, but they look fake,..." [level=3] [ref=e641]: I often rely on ChatGPT for UGC images, but they look fake, here’s how i fix my ChatGPT prompts
+                          - generic [ref=e643]:
+                            - generic [ref=e644]: "15"
+                            - text: upvotes ·
+                            - generic [ref=e645]: "15"
+                            - text: comments
+                        - separator [ref=e646]
+                    - listitem
+                    - listitem [ref=e647]:
+                      - generic [ref=e648]:
+                        - generic [ref=e650]:
+                          - link "Steal this prompt to GO VIRAL on ANY SOCIAL MEDIA 🤯" [ref=e651] [cursor=pointer]:
+                            - /url: /r/ChatGPTPromptGenius/comments/1mlzy24/steal_this_prompt_to_go_viral_on_any_social_media/
+                            - generic [ref=e652]:
+                              - generic: Steal this prompt to GO VIRAL on ANY SOCIAL MEDIA 🤯
+                          - generic [ref=e655]:
+                            - generic [ref=e658]:
+                              - link "r/ChatGPTPromptGenius" [ref=e659] [cursor=pointer]:
+                                - /url: /r/ChatGPTPromptGenius/
+                                - generic [ref=e663]: r/ChatGPTPromptGenius
+                              - generic [ref=e664]: •
+                              - time [ref=e666]: 8mo ago
+                            - link "List item post - Steal this prompt to GO VIRAL on ANY SOCIAL MEDIA 🤯" [ref=e668] [cursor=pointer]:
+                              - /url: /r/ChatGPTPromptGenius/comments/1mlzy24/steal_this_prompt_to_go_viral_on_any_social_media/
+                              - heading "List item post - Steal this prompt to GO VIRAL on ANY SOCIAL MEDIA 🤯" [level=3] [ref=e671]: Steal this prompt to GO VIRAL on ANY SOCIAL MEDIA 🤯
+                          - generic [ref=e673]:
+                            - generic [ref=e674]: "7"
+                            - text: comments
+                        - separator [ref=e675]
+                    - listitem [ref=e676]:
+                      - generic [ref=e677]:
+                        - generic [ref=e679]:
+                          - link "Bro I don't remember how was the creator of this prompt I saw in this subreddit bot all jus gotta say is bro u saved me" [ref=e680] [cursor=pointer]:
+                            - /url: /r/ChatGPTPromptGenius/comments/1nvpgdy/bro_i_dont_remember_how_was_the_creator_of_this/
+                            - generic [ref=e681]:
+                              - generic: Bro I don't remember how was the creator of this prompt I saw in this subreddit bot all jus gotta say is bro u saved me
+                          - generic [ref=e684]:
+                            - generic [ref=e687]:
+                              - link "r/ChatGPTPromptGenius" [ref=e688] [cursor=pointer]:
+                                - /url: /r/ChatGPTPromptGenius/
+                                - generic [ref=e692]: r/ChatGPTPromptGenius
+                              - generic [ref=e693]: •
+                              - time [ref=e695]: 6mo ago
+                            - link "List item post - Bro I don't remember how was the creator of this prompt I s..." [ref=e697] [cursor=pointer]:
+                              - /url: /r/ChatGPTPromptGenius/comments/1nvpgdy/bro_i_dont_remember_how_was_the_creator_of_this/
+                              - heading "List item post - Bro I don't remember how was the creator of this prompt I s..." [level=3] [ref=e700]: Bro I don't remember how was the creator of this prompt I saw in this subreddit bot all jus gotta say is bro u saved me
+                          - generic [ref=e702]:
+                            - generic [ref=e703]: "114"
+                            - text: upvotes ·
+                            - generic [ref=e704]: "22"
+                            - text: comments
+                        - separator [ref=e705]
+                    - listitem [ref=e706]:
+                      - generic [ref=e709]:
+                        - link "What’s the most original prompt you ever used?" [ref=e710] [cursor=pointer]:
+                          - /url: /r/ChatGPTPromptGenius/comments/1p6ynpk/whats_the_most_original_prompt_you_ever_used/
+                          - generic [ref=e711]:
+                            - generic: What’s the most original prompt you ever used?
+                        - generic [ref=e714]:
+                          - generic [ref=e717]:
+                            - link "r/ChatGPTPromptGenius" [ref=e718] [cursor=pointer]:
+                              - /url: /r/ChatGPTPromptGenius/
+                              - generic [ref=e722]: r/ChatGPTPromptGenius
+                            - generic [ref=e723]: •
+                            - time [ref=e725]: 4mo ago
+                          - link "List item post - What’s the most original prompt you ever used?" [ref=e727] [cursor=pointer]:
+                            - /url: /r/ChatGPTPromptGenius/comments/1p6ynpk/whats_the_most_original_prompt_you_ever_used/
+                            - heading "List item post - What’s the most original prompt you ever used?" [level=3] [ref=e730]: What’s the most original prompt you ever used?
+                        - generic [ref=e732]:
+                          - generic [ref=e733]: "45"
+                          - text: upvotes ·
+                          - generic [ref=e734]: "32"
+                          - text: comments
+                - separator [ref=e735]
+                - generic [ref=e736]:
+                  - heading "View Post in" [level=2] [ref=e738]:
+                    - generic [ref=e739]: View Post in
+                  - generic [ref=e740]:
+                    - link "Русский" [ref=e742] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/ChatGPTPromptGenius/comments/1mfezeb/the_json_remix_a_simple_prompt_trick_for_godmode/?tl=ru
+                    - link "日本語" [ref=e744] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/ChatGPTPromptGenius/comments/1mfezeb/the_json_remix_a_simple_prompt_trick_for_godmode/?tl=ja
+                    - link "Português (Brasil)" [ref=e746] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/ChatGPTPromptGenius/comments/1mfezeb/the_json_remix_a_simple_prompt_trick_for_godmode/?tl=pt-br
+                - complementary "Community information" [ref=e747]:
+                  - generic [ref=e749]:
+                    - heading "Community Info Section" [level=1] [ref=e750]
+                    - generic [ref=e751]:
+                      - link "r/ChatGPTPromptGenius" [ref=e753] [cursor=pointer]:
+                        - /url: /r/ChatGPTPromptGenius/
+                        - generic [ref=e754]: r/ChatGPTPromptGenius
+                      - button "Join" [ref=e758] [cursor=pointer]
+                    - generic [ref=e759]:
+                      - generic [ref=e760]: ChatGPTPromptGenius
+                      - generic [ref=e761]: "ChatGPTPromptGenius: Master the Art of Prompting Learn to engineer better AI prompts together. We analyze structure, tone, and technique to help you get consistently better results from LLMs. Share prompts. Get feedback. Improve your craft. New here? Check the Wiki & Community Guide."
+                      - button "Show more" [ref=e762] [cursor=pointer]:
+                        - generic [ref=e764]: Show more
+                      - generic [ref=e767]:
+                        - img [ref=e768]
+                        - text: Public
+                - generic [ref=e770]:
+                  - heading "Top Posts" [level=2] [ref=e771]
+                  - separator [ref=e772]
+                  - list [ref=e773]:
+                    - listitem [ref=e774]:
+                      - 'link "Reddit reReddit: Top posts of August 2, 2025" [ref=e775] [cursor=pointer]':
+                        - /url: https://www.reddit.com/posts/2025/august-2-1/global/
+                        - generic [ref=e776]:
+                          - img [ref=e777]
+                          - generic [ref=e790]: Reddit
+                        - generic [ref=e791]: "reReddit: Top posts of August 2, 2025"
+                        - separator [ref=e792]
+                    - listitem [ref=e793]:
+                      - 'link "Reddit reReddit: Top posts of August 2025" [ref=e794] [cursor=pointer]':
+                        - /url: https://www.reddit.com/posts/2025/august/global/
+                        - generic [ref=e795]:
+                          - img [ref=e796]
+                          - generic [ref=e809]: Reddit
+                        - generic [ref=e810]: "reReddit: Top posts of August 2025"
+                        - separator [ref=e811]
+                    - listitem [ref=e812]:
+                      - 'link "Reddit reReddit: Top posts of 2025" [ref=e813] [cursor=pointer]':
+                        - /url: https://www.reddit.com/posts/2025/global/
+                        - generic [ref=e814]:
+                          - img [ref=e815]
+                          - generic [ref=e828]: Reddit
+                        - generic [ref=e829]: "reReddit: Top posts of 2025"
+                        - separator [ref=e830]
+              - generic [ref=e832]:
+                - link "Reddit Rules" [ref=e835] [cursor=pointer]:
+                  - /url: https://www.redditinc.com/policies/content-policy
+                - link "Privacy Policy" [ref=e838] [cursor=pointer]:
+                  - /url: https://www.reddit.com/policies/privacy-policy
+                - link "User Agreement" [ref=e841] [cursor=pointer]:
+                  - /url: https://www.redditinc.com/policies/user-agreement
+                - link "Your Privacy Choices" [ref=e844] [cursor=pointer]:
+                  - /url: https://support.reddithelp.com/hc/articles/43980704794004
+                - link "Accessibility" [ref=e847] [cursor=pointer]:
+                  - /url: https://support.reddithelp.com/hc/sections/38303584022676-Accessibility
+                - link "Reddit, Inc. © 2026. All rights reserved." [ref=e849] [cursor=pointer]:
+                  - /url: https://redditinc.com
+        - generic [ref=e851]:
+          - button "Collapse Navigation" [ref=e854] [cursor=pointer]:
+            - img [ref=e857]
+            - generic [ref=e859]:
+              - generic: Collapse Navigation
+          - navigation "Primary" [ref=e864]:
+            - generic [ref=e866]:
+              - link "Home" [ref=e868] [cursor=pointer]:
+                - /url: /?feed=home
+                - generic [ref=e869]:
+                  - img [ref=e871]
+                  - generic [ref=e874]: Home
+              - link "Popular" [ref=e876] [cursor=pointer]:
+                - /url: /r/popular/
+                - generic [ref=e877]:
+                  - img [ref=e879]
+                  - generic [ref=e882]: Popular
+              - link "News" [ref=e883] [cursor=pointer]:
+                - /url: /news/
+                - generic [ref=e884]:
+                  - img [ref=e886]
+                  - generic [ref=e890]: News
+              - link "Explore" [ref=e892] [cursor=pointer]:
+                - /url: /explore/
+                - generic [ref=e893]:
+                  - img [ref=e895]
+                  - generic [ref=e898]: Explore
+            - separator [ref=e899]
+            - navigation "Reddit resources" [ref=e900]:
+              - group [ref=e902]:
+                - generic "RESOURCES" [ref=e903] [cursor=pointer]:
+                  - generic [ref=e905]:
+                    - generic [ref=e908]: RESOURCES
+                    - img [ref=e911]
+                - generic [ref=e914]:
+                  - link "About Reddit" [ref=e916] [cursor=pointer]:
+                    - /url: https://www.redditinc.com
+                    - generic [ref=e917]:
+                      - img [ref=e919]
+                      - generic [ref=e923]: About Reddit
+                  - link "Advertise" [ref=e925] [cursor=pointer]:
+                    - /url: https://ads.reddit.com/register?utm_source=web3x_consumer&utm_name=left_nav_cta
+                    - generic [ref=e926]:
+                      - img [ref=e928]
+                      - generic [ref=e932]: Advertise
+                  - link "Developer Platform" [ref=e934] [cursor=pointer]:
+                    - /url: https://developers.reddit.com/?utm_source=reddit&utm_medium=left_nav_resources
+                    - generic [ref=e935]:
+                      - img [ref=e937]
+                      - generic [ref=e941]: Developer Platform
+                  - link "Reddit Pro BETA" [ref=e943] [cursor=pointer]:
+                    - /url: /reddit-pro?utm_source=reddit&utm_medium=left_nav_resources
+                    - generic [ref=e944]:
+                      - img [ref=e946]
+                      - generic [ref=e950]:
+                        - generic [ref=e951]: Reddit Pro
+                        - generic [ref=e952]: BETA
+                  - link "Help" [ref=e954] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc?utm_source=reddit&utm_medium=footer&utm_campaign=evergreen
+                    - generic [ref=e955]:
+                      - img [ref=e957]
+                      - generic [ref=e961]: Help
+                  - link "Blog" [ref=e963] [cursor=pointer]:
+                    - /url: https://redditblog.com/
+                    - generic [ref=e964]:
+                      - img [ref=e966]
+                      - generic [ref=e970]: Blog
+                  - link "Careers" [ref=e972] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/careers
+                    - generic [ref=e973]:
+                      - img [ref=e975]
+                      - generic [ref=e979]: Careers
+                  - link "Press" [ref=e981] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/press
+                    - generic [ref=e982]:
+                      - img [ref=e984]
+                      - generic [ref=e988]: Press
+                  - separator [ref=e989]
+                  - link "Best of Reddit" [ref=e991] [cursor=pointer]:
+                    - /url: https://www.reddit.com/posts/2026/global/
+                    - generic [ref=e992]:
+                      - img [ref=e994]
+                      - generic [ref=e999]: Best of Reddit
+                  - separator [ref=e1000]
+                  - link "Reddit Rules" [ref=e1002] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/policies/content-policy
+                    - generic [ref=e1003]:
+                      - img [ref=e1005]
+                      - generic [ref=e1009]: Reddit Rules
+                  - link "Privacy Policy" [ref=e1011] [cursor=pointer]:
+                    - /url: https://www.reddit.com/policies/privacy-policy
+                    - generic [ref=e1012]:
+                      - img [ref=e1014]
+                      - generic [ref=e1018]: Privacy Policy
+                  - link "User Agreement" [ref=e1020] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/policies/user-agreement
+                    - generic [ref=e1021]:
+                      - img [ref=e1023]
+                      - generic [ref=e1027]: User Agreement
+                  - link "Your Privacy Choices" [ref=e1029] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc/articles/43980704794004
+                    - generic [ref=e1030]:
+                      - img [ref=e1032]
+                      - generic [ref=e1036]: Your Privacy Choices
+                  - link "Accessibility" [ref=e1038] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc/sections/38303584022676-Accessibility
+                    - generic [ref=e1039]:
+                      - img [ref=e1041]
+                      - generic [ref=e1046]: Accessibility
+            - link "Reddit, Inc. © 2026. All rights reserved." [ref=e1048] [cursor=pointer]:
+              - /url: https://redditinc.com

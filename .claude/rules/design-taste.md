@@ -41,13 +41,66 @@ These are components/screens Caleb has approved. Study their feel when building 
 - Shadows: `#323232` (never black)
 - No other gray values. No blue tints. No cool tones.
 
-## Fog Rules (from 2026-03-19 device review)
+## Fog Rules (updated 2026-03-19)
 
-- Fog must NEVER affect content before the user scrolls. If a page isn't scrollable, fog should basically not touch content at all.
-- Short + smooth > long + gradual. 60px of 15 micro-stops is better than 200px of 8 stops.
-- Screens with simple text headers (like "ARTICLES") expose gradient imperfections. Complex header modules (search bars, pills, cards) hide transitions naturally.
-- Some screens don't need fog at all — RateRidesScreen, LogbookLogSheet, CoasterSheet had it removed.
-- Approved fog examples: PerksScreen ("really good"), ArticleDetailScreen, ArticleSheet, LogbookScreen, CriteriaWeightEditorScreen.
+### Two fog systems in the app:
+
+**1. FogHeader (warm fog) — Main tab screens only**
+- Used on: HomeScreen, ParksScreen, CommunityScreen, LogbookScreen
+- Color: warm `rgba(240, 238, 235, ...)` — matches the main screen aesthetic
+- Fully opaque (0.97) through header, micro-stepped fade below
+- These are APPROVED and should NOT be changed
+
+**2. GlassHeader (clean fog) — Secondary/pushed screens**
+- Used on: Settings, Profile, Merch, Articles, all settings sub-screens
+- Color: page background `rgba(247, 247, 247, ...)` — clean white, no warm tint
+- APPROVED values (2026-03-19):
+  - Header zone: 0.88 opacity (content visible but foggy, NOT fully opaque)
+  - Fade distance: 60px
+  - Fade curve: 0.88 → 0.82 → 0.70 → 0.52 → 0.32 → 0.15 → 0.05 → 0.01 → transparent
+  - 10 gradient stops, smooth S-curve
+- Key principles:
+  - Content behind the header must ALWAYS be somewhat visible (foggy, not hidden)
+  - Fade must reach fully transparent (0.0) — no hard line at the bottom
+  - Header is translucent, not opaque — this is what makes it feel like iOS native
+
+### Scroll-Based Fog Crossfade (APPROVED pattern for screens with hero content)
+
+When a screen has content that starts near/under the header (like a profile avatar), the fog should NOT cover it at rest. Instead:
+
+1. Fog starts at `opacity: 0` (invisible)
+2. As user scrolls, fog crossfades in over the first ~80px of scroll
+3. Content is fully visible at top, fog gradually takes over
+
+Implementation:
+```tsx
+const scrollY = useSharedValue(0);
+const scrollHandler = useAnimatedScrollHandler({
+  onScroll: (event) => { scrollY.value = event.contentOffset.y; },
+});
+const fogAnimStyle = useAnimatedStyle(() => ({
+  opacity: interpolate(scrollY.value, [0, 80], [0, 1], 'clamp'),
+}));
+
+// Wrap GlassHeader in Animated.View with fogAnimStyle
+<Animated.View style={[{ position: 'absolute', top: 0, left: 0, right: 0 }, fogAnimStyle]}>
+  <GlassHeader headerHeight={topBarHeight} />
+</Animated.View>
+```
+
+Use this pattern on: ProfileScreen, ProfileView, and any screen where hero content (avatars, images, featured cards) sits directly below the header.
+
+Do NOT use on screens where content starts well below the header (Settings, sub-screens) — those use static GlassHeader at full opacity.
+
+### What was tried and rejected (2026-03-19):
+- **expo-blur + MaskedView**: Creates a hard line where blur exists vs doesn't. Blur opacity != blur intensity. Always visible and jarring.
+- **@callstack/liquid-glass (UIGlassEffect)**: Renders real Apple glass material but as a hard-edged rectangle. No feathered edge. Wrong use case for headers.
+- **React Navigation native header** (`headerShown: true` + `headerBlurEffect`): Sharp bottom edge, no feathered blur. react-native-screens doesn't produce the iOS 26 liquid glass feathered edge.
+- **BlurFogHeader (previous session)**: Wrong color base, wrong approach. Scrapped entirely.
+- **Fully opaque header (1.0)**: Content completely hidden behind header = wrong. Must be translucent.
+- **Gradient that stops at 0.30**: Creates a hard line at the bottom where 0.30 meets 0.0.
+
+### Lesson: The iOS 26 feathered-blur nav bar is SwiftUI-native and cannot be replicated in React Native. The approved GlassHeader gradient is the best approximation — clean, smooth, no hard lines.
 
 ## When Building New Game UIs
 
@@ -60,6 +113,12 @@ These are components/screens Caleb has approved. Study their feel when building 
 ## Iteration History
 
 This section grows with each iteration cycle. Format: what was tried, what was rejected, what worked, and why.
+
+### Header Fog — 6 iterations to approval (2026-03-19)
+- **Goal:** Replicate iOS 26 native feathered-blur navigation bar header
+- **Tried:** BlurFogHeader (custom gradient, wrong color), React Navigation native header (hard edge), expo-blur + MaskedView (hard blur line), @callstack/liquid-glass (glass material but hard rectangle), CleanFogHeader (fades to 0% = content disappears), gradient ending at 0.30 (hard line at bottom)
+- **Approved:** GlassHeader — 0.88 opacity header (translucent, not opaque), smooth S-curve fade to transparent over 60px. Clean `#F7F7F7` base color.
+- **Key insight:** The header must be TRANSLUCENT (content visible but foggy), not opaque. And the fade must reach fully transparent — any non-zero floor creates a hard line. The iOS native effect cannot be replicated in RN; this gradient is the best approximation.
 
 ### ProfileReady Onboarding — v1 rejected (2026-03-10)
 - **Built:** Particle convergence animation with character-by-character name reveal, glow ring, accent pulse, dark→light bg transition

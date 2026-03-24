@@ -1,0 +1,83 @@
+- generic [ref=e2]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - heading "ThemeParks.wiki" [level=6] [ref=e9]:
+        - link "ThemeParks.wiki" [ref=e10] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e11]:
+        - link "API" [ref=e12] [cursor=pointer]:
+          - /url: /api
+        - link "Parks" [ref=e13] [cursor=pointer]:
+          - /url: /browse
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+      - link "Login" [ref=e15] [cursor=pointer]:
+        - /url: /login
+        - text: Login
+  - navigation "breadcrumb" [ref=e18]:
+    - list [ref=e19]:
+      - listitem [ref=e20]:
+        - link "Home" [ref=e21] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e22]:
+        - img [ref=e23]
+      - listitem [ref=e25]:
+        - paragraph [ref=e26]: API Documentation
+  - generic [ref=e29]:
+    - generic [ref=e30]: API
+    - tablist "API navigation tabs" [ref=e33]:
+      - tab "General" [ref=e34] [cursor=pointer]:
+        - img [ref=e35]
+        - text: General
+      - tab "HTTP API" [ref=e37] [cursor=pointer]:
+        - img [ref=e38]
+        - text: HTTP API
+      - tab "OpenAPI" [selected] [ref=e40] [cursor=pointer]:
+        - img [ref=e41]
+        - text: OpenAPI
+      - tab "WebSockets (Coming Soon)" [ref=e43] [cursor=pointer]:
+        - img [ref=e44]
+        - text: WebSockets (Coming Soon)
+  - generic [ref=e47]:
+    - heading "OpenAPI Documentation" [level=1] [ref=e51]
+    - main [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - img [ref=e56]
+          - generic [ref=e58]:
+            - heading "OpenAPI Specification" [level=2] [ref=e59]
+            - heading "Standard API documentation format" [level=6] [ref=e60]
+        - separator [ref=e61]
+        - paragraph [ref=e62]: The ThemeParks.wiki API is documented using the OpenAPI Specification (formerly known as Swagger), providing information about the endpoints, parameters, response formats, and authentication requirements.
+        - link "View Interactive Documentation" [ref=e64] [cursor=pointer]:
+          - /url: https://api.themeparks.wiki/docs/v1/
+          - img [ref=e66]
+          - text: View Interactive Documentation
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - img [ref=e71]
+          - generic [ref=e73]:
+            - heading "Contributing" [level=2] [ref=e74]
+            - heading "Help improve our API and documentation" [level=6] [ref=e75]
+        - separator [ref=e76]
+        - paragraph [ref=e77]: "We welcome contributions to our API client libraries and documentation. If you've found a bug, have a feature request, or want to improve the documentation, please open an issue or pull request on the appropriate GitHub repository:"
+        - generic [ref=e78]:
+          - link "JavaScript SDK Repository" [ref=e80] [cursor=pointer]:
+            - /url: https://github.com/ThemeParks/ThemeParks_JavaScript
+            - img [ref=e82]
+            - text: JavaScript SDK Repository
+          - link "Python SDK Repository" [ref=e85] [cursor=pointer]:
+            - /url: https://github.com/ThemeParks/ThemeParks_Python
+            - img [ref=e87]
+            - text: Python SDK Repository
+        - paragraph [ref=e89]: "For issues related to the API itself (not the client libraries), please use the main repository:"
+        - link "Main ThemeParks API Repository" [ref=e91] [cursor=pointer]:
+          - /url: https://github.com/themeparks/parksapi
+          - img [ref=e93]
+          - text: Main ThemeParks API Repository
+  - contentinfo [ref=e95]:
+    - paragraph [ref=e96]:
+      - text: Built by
+      - link "@jamie.holdings" [ref=e97] [cursor=pointer]:
+        - /url: https://bsky.app/profile/jamie.holdings
+      - text: . © 2026 [57da671]

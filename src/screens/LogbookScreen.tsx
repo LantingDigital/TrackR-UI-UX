@@ -1161,7 +1161,7 @@ const styles = StyleSheet.create({
   segmentLabel: {
     fontSize: typography.sizes.caption,
     fontWeight: typography.weights.semibold,
-    color: colors.text.secondary, // base color; overridden by animated interpolation
+    color: colors.text.secondary,
   },
   pendingDot: {
     width: 6,

@@ -1,0 +1,279 @@
+- generic [ref=e2]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - heading "ThemeParks.wiki" [level=6] [ref=e9]:
+        - link "ThemeParks.wiki" [ref=e10] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e11]:
+        - link "API" [ref=e12] [cursor=pointer]:
+          - /url: /api
+        - link "Parks" [ref=e13] [cursor=pointer]:
+          - /url: /browse
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+      - link "Login" [ref=e15] [cursor=pointer]:
+        - /url: /login
+        - text: Login
+  - navigation "breadcrumb" [ref=e18]:
+    - list [ref=e19]:
+      - listitem [ref=e20]:
+        - link "Home" [ref=e21] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e22]:
+        - img [ref=e23]
+      - listitem [ref=e25]:
+        - paragraph [ref=e26]: API Documentation
+  - generic [ref=e29]:
+    - generic [ref=e30]: API
+    - tablist "API navigation tabs" [ref=e33]:
+      - tab "General" [ref=e34] [cursor=pointer]:
+        - img [ref=e35]
+        - text: General
+      - tab "HTTP API" [selected] [ref=e37] [cursor=pointer]:
+        - img [ref=e38]
+        - text: HTTP API
+      - tab "OpenAPI" [ref=e40] [cursor=pointer]:
+        - img [ref=e41]
+        - text: OpenAPI
+      - tab "WebSockets (Coming Soon)" [ref=e43] [cursor=pointer]:
+        - img [ref=e44]
+        - text: WebSockets (Coming Soon)
+  - generic [ref=e47]:
+    - generic [ref=e50]:
+      - heading "HTTP API" [level=1] [ref=e51]
+      - paragraph [ref=e52]: RESTful endpoints for accessing theme park data
+    - main [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - img [ref=e57]
+          - generic [ref=e59]:
+            - heading "Endpoint Overview" [level=2] [ref=e60]
+            - heading "Available HTTP API endpoints" [level=6] [ref=e61]
+        - separator [ref=e62]
+        - paragraph [ref=e63]: Our HTTP API provides a simple way to access theme park data. All endpoints return JSON and use standard HTTP methods and status codes.
+        - alert [ref=e64]:
+          - img [ref=e66]
+          - generic [ref=e68]:
+            - heading "Base URL" [level=6] [ref=e69]
+            - code [ref=e71]: https://api.themeparks.wiki/v1
+        - heading "Main Endpoints" [level=6] [ref=e72]
+        - table [ref=e74]:
+          - rowgroup [ref=e75]:
+            - row "Endpoint Description" [ref=e76]:
+              - columnheader "Endpoint" [ref=e77]
+              - columnheader "Description" [ref=e78]
+          - rowgroup [ref=e79]:
+            - row "https://api.themeparks.wiki/v1/destinations Get all destinations" [ref=e80]:
+              - cell "https://api.themeparks.wiki/v1/destinations" [ref=e81]:
+                - button "https://api.themeparks.wiki/v1/destinations" [ref=e82] [cursor=pointer]:
+                  - img [ref=e83]
+                  - generic [ref=e85]: https://api.themeparks.wiki/v1/destinations
+                  - img [ref=e86]
+              - cell "Get all destinations" [ref=e88]
+            - 'row "https://api.themeparks.wiki/v1/entity/{id} Get entity data" [ref=e89]':
+              - 'cell "https://api.themeparks.wiki/v1/entity/{id}" [ref=e90]':
+                - 'button "https://api.themeparks.wiki/v1/entity/{id}" [ref=e91] [cursor=pointer]':
+                  - img [ref=e92]
+                  - generic [ref=e94]: "https://api.themeparks.wiki/v1/entity/{id}"
+                  - img [ref=e95]
+              - cell "Get entity data" [ref=e97]
+            - 'row "https://api.themeparks.wiki/v1/entity/{id}/children Get entity children" [ref=e98]':
+              - 'cell "https://api.themeparks.wiki/v1/entity/{id}/children" [ref=e99]':
+                - 'button "https://api.themeparks.wiki/v1/entity/{id}/children" [ref=e100] [cursor=pointer]':
+                  - img [ref=e101]
+                  - generic [ref=e103]: "https://api.themeparks.wiki/v1/entity/{id}/children"
+                  - img [ref=e104]
+              - cell "Get entity children" [ref=e106]
+            - 'row "https://api.themeparks.wiki/v1/entity/{id}/live Get entity live data" [ref=e107]':
+              - 'cell "https://api.themeparks.wiki/v1/entity/{id}/live" [ref=e108]':
+                - 'button "https://api.themeparks.wiki/v1/entity/{id}/live" [ref=e109] [cursor=pointer]':
+                  - img [ref=e110]
+                  - generic [ref=e112]: "https://api.themeparks.wiki/v1/entity/{id}/live"
+                  - img [ref=e113]
+              - cell "Get entity live data" [ref=e115]
+            - 'row "https://api.themeparks.wiki/v1/entity/{id}/schedule Get entity calendar data" [ref=e116]':
+              - 'cell "https://api.themeparks.wiki/v1/entity/{id}/schedule" [ref=e117]':
+                - 'button "https://api.themeparks.wiki/v1/entity/{id}/schedule" [ref=e118] [cursor=pointer]':
+                  - img [ref=e119]
+                  - generic [ref=e121]: "https://api.themeparks.wiki/v1/entity/{id}/schedule"
+                  - img [ref=e122]
+              - cell "Get entity calendar data" [ref=e124]
+            - 'row "https://api.themeparks.wiki/v1/entity/{id}/schedule/{year}/{month} Get entity calendar data for a specific year & month" [ref=e125]':
+              - 'cell "https://api.themeparks.wiki/v1/entity/{id}/schedule/{year}/{month}" [ref=e126]':
+                - 'button "https://api.themeparks.wiki/v1/entity/{id}/schedule/{year}/{month}" [ref=e127] [cursor=pointer]':
+                  - img [ref=e128]
+                  - generic [ref=e130]: "https://api.themeparks.wiki/v1/entity/{id}/schedule/{year}/{month}"
+                  - img [ref=e131]
+              - cell "Get entity calendar data for a specific year & month" [ref=e133]
+        - alert [ref=e134]:
+          - img [ref=e136]
+          - generic [ref=e138]:
+            - heading "Navigation Aid" [level=6] [ref=e139]
+            - paragraph [ref=e140]:
+              - text: Throughout the ThemeParks.wiki website, you may see this symbol
+              - img [ref=e141]
+            - paragraph [ref=e143]: These URLs are the API calls used to generate the current page you are viewing. Clicking the URL will copy it to your clipboard.
+      - generic [ref=e144]:
+        - generic [ref=e145]:
+          - img [ref=e147]
+          - generic [ref=e149]:
+            - heading "Response Format" [level=2] [ref=e150]
+            - heading "Understanding the API responses" [level=6] [ref=e151]
+        - separator [ref=e152]
+        - paragraph [ref=e153]: All API responses are in JSON format and follow a consistent structure.
+        - heading "Example Response" [level=6] [ref=e154]
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - img [ref=e157]
+            - heading "Response from GET /destinations" [level=6] [ref=e159]
+          - generic [ref=e160]:
+            - generic [ref=e161]: "{"
+            - generic [ref=e162]: "\"destinations\": ["
+            - generic [ref=e163]: "{"
+            - generic [ref=e164]: "\"id\": \"e9dd929c-7ef4-4ddf-9a78-5ded2d968aa8\","
+            - generic [ref=e165]: "\"name\": \"Universal Orlando Resort\","
+            - generic [ref=e166]: "\"slug\": \"universalorlando\","
+            - generic [ref=e167]: "\"parks\": ["
+            - generic [ref=e168]: "{"
+            - generic [ref=e169]: "\"id\": \"2d305b4c-42b3-4745-8ce4-afb02f7ce0bc\","
+            - generic [ref=e170]: "\"name\": \"Universal's Islands of Adventure\""
+            - generic [ref=e171]: "},"
+            - generic [ref=e172]: "{"
+            - generic [ref=e173]: "\"id\": \"c4fe5a86-8553-445d-b456-b9a0131e0c79\","
+            - generic [ref=e174]: "\"name\": \"Universal Studios Florida\""
+            - generic [ref=e175]: "}"
+            - generic [ref=e176]: "]"
+            - generic [ref=e177]: "}"
+            - generic [ref=e178]: "]"
+            - generic [ref=e179]: "}"
+        - link "View more response types in OpenAPI docs" [ref=e181] [cursor=pointer]:
+          - /url: /api/openapi
+          - img [ref=e183]
+          - text: View more response types in OpenAPI docs
+        - heading "Status Codes" [level=6] [ref=e185]
+        - table [ref=e187]:
+          - rowgroup [ref=e188]:
+            - row "Status Code Description" [ref=e189]:
+              - columnheader "Status Code" [ref=e190]
+              - columnheader "Description" [ref=e191]
+          - rowgroup [ref=e192]:
+            - row "200 OK Request was successful" [ref=e193]:
+              - cell "200 OK" [ref=e194]
+              - cell "Request was successful" [ref=e195]
+            - row "400 Bad Request Request parameters are invalid" [ref=e196]:
+              - cell "400 Bad Request" [ref=e197]
+              - cell "Request parameters are invalid" [ref=e198]
+            - row "401 Unauthorized Authentication is required but was not provided" [ref=e199]:
+              - cell "401 Unauthorized" [ref=e200]
+              - cell "Authentication is required but was not provided" [ref=e201]
+            - row "403 Forbidden Authentication was provided but access is denied" [ref=e202]:
+              - cell "403 Forbidden" [ref=e203]
+              - cell "Authentication was provided but access is denied" [ref=e204]
+            - row "404 Not Found Requested resource does not exist" [ref=e205]:
+              - cell "404 Not Found" [ref=e206]
+              - cell "Requested resource does not exist" [ref=e207]
+            - row "429 Too Many Requests Rate limit exceeded" [ref=e208]:
+              - cell "429 Too Many Requests" [ref=e209]
+              - cell "Rate limit exceeded" [ref=e210]
+            - row "500 Internal Server Error Server encountered an error" [ref=e211]:
+              - cell "500 Internal Server Error" [ref=e212]
+              - cell "Server encountered an error" [ref=e213]
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - img [ref=e217]
+          - generic [ref=e219]:
+            - heading "Code Examples" [level=2] [ref=e220]
+            - heading "Sample API usage in different languages" [level=6] [ref=e221]
+        - separator [ref=e222]
+        - heading "JavaScript (Fetch)" [level=6] [ref=e223]
+        - generic [ref=e224]:
+          - generic [ref=e225]:
+            - img [ref=e226]
+            - heading "JavaScript Example" [level=6] [ref=e228]
+          - generic [ref=e229]:
+            - generic [ref=e230]: // Get all destinations
+            - generic [ref=e231]: fetch('https://api.themeparks.wiki/v1/destinations')
+            - generic [ref=e232]: .then(response => response.json())
+            - generic [ref=e233]: ".then(data => {"
+            - generic [ref=e234]: console.log(data);
+            - generic [ref=e235]: "})"
+            - generic [ref=e236]: ".catch(error => {"
+            - generic [ref=e237]: console.error('Error:', error);
+            - generic [ref=e238]: "});"
+        - heading "Python (Requests)" [level=6] [ref=e239]
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - img [ref=e242]
+            - heading "Python Example" [level=6] [ref=e244]
+          - generic [ref=e245]:
+            - generic [ref=e246]: import requests
+            - generic [ref=e248]: "# Get all destinations"
+            - generic [ref=e249]: response = requests.get('https://api.themeparks.wiki/v1/destinations')
+            - generic [ref=e250]: data = response.json()
+            - generic [ref=e251]: print(data)
+      - generic [ref=e252]:
+        - generic [ref=e253]:
+          - img [ref=e255]
+          - generic [ref=e257]:
+            - heading "Rate Limiting" [level=2] [ref=e258]
+            - heading "Understanding and handling rate limits" [level=6] [ref=e259]
+        - separator [ref=e260]
+        - paragraph [ref=e261]: To ensure fair usage and service stability, all API requests are subject to rate limiting.
+        - alert [ref=e262]:
+          - img [ref=e264]
+          - generic [ref=e266]:
+            - 'heading "Current Limit: 300 requests per minute" [level=6] [ref=e267]'
+            - paragraph [ref=e268]: This is a limit, not a target. Most applications can operate well under this limit.
+        - heading "Rate Limit Headers" [level=6] [ref=e269]
+        - table [ref=e271]:
+          - rowgroup [ref=e272]:
+            - row "Header Description" [ref=e273]:
+              - columnheader "Header" [ref=e274]
+              - columnheader "Description" [ref=e275]
+          - rowgroup [ref=e276]:
+            - row "X-RateLimit-Limit Maximum requests per minute" [ref=e277]:
+              - cell "X-RateLimit-Limit" [ref=e278]:
+                - code [ref=e279]: X-RateLimit-Limit
+              - cell "Maximum requests per minute" [ref=e280]
+            - row "X-RateLimit-Remaining Remaining requests in the current window" [ref=e281]:
+              - cell "X-RateLimit-Remaining" [ref=e282]:
+                - code [ref=e283]: X-RateLimit-Remaining
+              - cell "Remaining requests in the current window" [ref=e284]
+            - row "X-RateLimit-Reset Seconds until the rate limit resets" [ref=e285]:
+              - cell "X-RateLimit-Reset" [ref=e286]:
+                - code [ref=e287]: X-RateLimit-Reset
+              - cell "Seconds until the rate limit resets" [ref=e288]
+            - row "Retry-After Seconds to wait before making another request (only on 429 responses)" [ref=e289]:
+              - cell "Retry-After" [ref=e290]:
+                - code [ref=e291]: Retry-After
+              - cell "Seconds to wait before making another request (only on 429 responses)" [ref=e292]
+        - heading "Handling Rate Limits" [level=6] [ref=e293]
+        - generic [ref=e294]:
+          - generic [ref=e295]:
+            - img [ref=e296]
+            - heading "Rate Limit Handling Example" [level=6] [ref=e298]
+          - generic [ref=e299]:
+            - generic [ref=e300]: // Example of handling rate limits in JavaScript
+            - generic [ref=e301]: fetch('https://api.themeparks.wiki/v1/destinations')
+            - generic [ref=e302]: ".then(response => {"
+            - generic [ref=e303]: // Check if rate limited
+            - generic [ref=e304]: "if (response.status === 429) {"
+            - generic [ref=e305]: const retryAfter = response.headers.get('Retry-After');
+            - generic [ref=e306]: "console.log(`Rate limited. Retry after ${retryAfter} seconds`);"
+            - generic [ref=e307]: // Handle retry logic here
+            - generic [ref=e308]: return;
+            - generic [ref=e309]: "}"
+            - generic [ref=e310]: return response.json();
+            - generic [ref=e311]: "})"
+            - generic [ref=e312]: ".then(data => {"
+            - generic [ref=e313]: if (data) console.log(data);
+            - generic [ref=e314]: "})"
+            - generic [ref=e315]: ".catch(error => {"
+            - generic [ref=e316]: console.error('Error:', error);
+            - generic [ref=e317]: "});"
+  - contentinfo [ref=e318]:
+    - paragraph [ref=e319]:
+      - text: Built by
+      - link "@jamie.holdings" [ref=e320] [cursor=pointer]:
+        - /url: https://bsky.app/profile/jamie.holdings
+      - text: . © 2026 [57da671]

@@ -18,7 +18,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { GlassHeader } from '../components/GlassHeader';
 
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -72,14 +72,6 @@ const HEADER_SPRING = { damping: 18, stiffness: 180, mass: 0.8 };
 // paddingTop(8) + parkName line(~30) + location(~17) + marginTop(2) + paddingBottom(8) = ~65
 const HEADER_HEIGHT = 65;
 
-// Fog container extends to full screen — eliminates any compositing edge artifact
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const FOG_FADE_PX = 200; // Pixels of gradual fade below header
-const FOG_OFFSET = 56;   // Start fade this many pixels ABOVE header bottom
-
-// Page color in rgba for fog gradient
-// colors.background.page = #F7F7F7 = rgb(247, 247, 247)
-const PAGE_RGBA = 'rgba(247, 247, 247,';
 
 // ============================================
 // Staggered section wrapper
@@ -144,52 +136,18 @@ export function ParksScreen() {
     openPOI(poi.id);
   }, [route.params?.targetCoasterId, navigation, openPOI]);
 
-  // Fog only covers header + fade region — not full screen (reduces GPU compositing cost)
-  const fogTotalHeight = useMemo(
-    () => insets.top + HEADER_HEIGHT - FOG_OFFSET + FOG_FADE_PX,
-    [insets.top],
-  );
-
-  // Compute gradient stops from actual pixel positions (not fixed percentages)
-  const fogGradient = useMemo(() => {
-    const headerEnd = (insets.top + HEADER_HEIGHT - FOG_OFFSET) / fogTotalHeight;
-    const step = (FOG_FADE_PX / fogTotalHeight) / 10;
-    return {
-      colors: [
-        `${PAGE_RGBA} 0.97)`,
-        `${PAGE_RGBA} 0.97)`,
-        `${PAGE_RGBA} 0.97)`,
-        `${PAGE_RGBA} 0.82)`,
-        `${PAGE_RGBA} 0.65)`,
-        `${PAGE_RGBA} 0.45)`,
-        `${PAGE_RGBA} 0.28)`,
-        `${PAGE_RGBA} 0.15)`,
-        `${PAGE_RGBA} 0.06)`,
-        `${PAGE_RGBA} 0.02)`,
-        `${PAGE_RGBA} 0.005)`,
-        'transparent',
-      ],
-      locations: [
-        0,
-        headerEnd * 0.5,
-        headerEnd,
-        headerEnd + step * 1,
-        headerEnd + step * 2,
-        headerEnd + step * 3,
-        headerEnd + step * 4,
-        headerEnd + step * 5,
-        headerEnd + step * 6,
-        headerEnd + step * 7,
-        headerEnd + step * 8,
-        1,
-      ],
-    };
-  }, [insets.top, fogTotalHeight]);
+  const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
   // ---- Scroll-driven header animation ----
   // Pure distance-based: expanded at top, collapsed once scrolled past threshold
   const headerProgress = useSharedValue(1); // 1=expanded, 0=collapsed
   const isCollapsed = useSharedValue(0);
+  const scrollY = useSharedValue(0);
+
+  // Fog crossfade — invisible at top, fades in on scroll
+  const fogAnimStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(scrollY.value, [0, 80], [0, 1], 'clamp'),
+  }));
 
   const triggerCollapseHaptic = useCallback(() => haptics.tick(), []);
 
@@ -197,6 +155,7 @@ export function ParksScreen() {
     onScroll: (event) => {
       'worklet';
       const offsetY = event.contentOffset.y;
+      scrollY.value = offsetY;
 
       if (offsetY <= 5) {
         // At the top — always expanded
@@ -351,17 +310,6 @@ export function ParksScreen() {
     () => ({ height: insets.bottom + 100 }),
     [insets.bottom],
   );
-  const fogContainerStyle = useMemo(
-    () => ({
-      position: 'absolute' as const,
-      top: 0,
-      left: 0,
-      right: 0,
-      height: fogTotalHeight,
-      zIndex: 5,
-    }),
-    [fogTotalHeight],
-  );
   const headerWrapperStyle = useMemo(
     () => [styles.headerContainer, { paddingTop: insets.top }],
     [insets.top],
@@ -452,14 +400,10 @@ export function ParksScreen() {
         <View style={bottomSpacerStyle} />
       </Animated.ScrollView>
 
-      {/* Fog gradient overlay — translucent, content visible through it */}
-      <View style={fogContainerStyle} pointerEvents="none">
-        <LinearGradient
-          colors={fogGradient.colors as [string, string, ...string[]]}
-          locations={fogGradient.locations as [number, number, ...number[]]}
-          style={StyleSheet.absoluteFill}
-        />
-      </View>
+      {/* GlassHeader fog — crossfades in on scroll */}
+      <Animated.View style={[{ position: 'absolute', top: 0, left: 0, right: 0 }, fogAnimStyle]}>
+        <GlassHeader headerHeight={headerTotalHeight} />
+      </Animated.View>
 
       {/* Header — transparent, floats over content */}
       <View style={headerWrapperStyle}>

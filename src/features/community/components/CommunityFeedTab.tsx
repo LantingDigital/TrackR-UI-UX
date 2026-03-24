@@ -6,8 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
   withSpring,
   withDelay,
+  type SharedValue,
 } from 'react-native-reanimated';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
@@ -48,14 +50,21 @@ interface CommunityFeedTabProps {
   topInset?: number;
   onShowCompose?: () => void;
   onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
+  scrollY?: SharedValue<number>;
 }
 
 const keyExtractor = (item: FeedItem) => item.id;
 
-export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap }: CommunityFeedTabProps) => {
+export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap, scrollY }: CommunityFeedTabProps) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
   const { feed } = useCommunityStore();
+
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      if (scrollY) scrollY.value = event.contentOffset.y;
+    },
+  });
 
   const handleLike = useCallback((itemId: string) => {
     toggleLike(itemId);
@@ -124,7 +133,7 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap }: 
 
   return (
     <View style={styles.container}>
-      <FlatList
+      <Animated.FlatList
         data={feed}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
@@ -136,6 +145,8 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap }: 
         removeClippedSubviews
         maxToRenderPerBatch={5}
         windowSize={7}
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
       />
 
       {/* Floating Action Button */}

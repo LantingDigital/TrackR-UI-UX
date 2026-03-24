@@ -25,8 +25,10 @@ import { useNavigation } from '@react-navigation/native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
   withSpring,
   withDelay,
+  type SharedValue,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../../theme/colors';
@@ -91,6 +93,7 @@ function formatDaysAgo(days: number): string {
 interface CommunityFriendsTabProps {
   topInset?: number;
   onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
+  scrollY?: SharedValue<number>;
 }
 
 /**
@@ -222,9 +225,15 @@ const ActivityRow = React.memo(({ item, onPress, onCoasterTap }: { item: FriendA
 
 const activityKeyExtractor = (item: FriendActivity) => item.id;
 
-export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFriendsTabProps) => {
+export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap, scrollY }: CommunityFriendsTabProps) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
+
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      if (scrollY) scrollY.value = event.contentOffset.y;
+    },
+  });
 
   const {
     activity,
@@ -313,23 +322,15 @@ export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFri
 
   const listHeader = useMemo(() => (
     <>
-      {/* User Search */}
-      <StaggeredItem index={0}>
-        <UserSearchSection
-          onSearch={searchUsers}
-          onSendRequest={handleSendRequest}
-        />
-      </StaggeredItem>
-
       {/* Stories Section */}
-      <StaggeredItem index={1}>
+      <StaggeredItem index={0}>
         <Text style={styles.sectionTitle}>Stories</Text>
         <StoriesRow onStoryPress={handleStoryPress} />
       </StaggeredItem>
 
       {/* Friend Requests Section */}
       {pendingRequests.length > 0 && (
-        <StaggeredItem index={2}>
+        <StaggeredItem index={1}>
           <FriendRequestsSection
             requests={pendingRequests}
             onAccept={handleAcceptRequest}
@@ -339,11 +340,11 @@ export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFri
       )}
 
       {/* Activity Section */}
-      <StaggeredItem index={pendingRequests.length > 0 ? 3 : 2}>
+      <StaggeredItem index={pendingRequests.length > 0 ? 2 : 1}>
         <Text style={[styles.sectionTitle, styles.activitySectionTitle]}>Activity</Text>
       </StaggeredItem>
     </>
-  ), [handleStoryPress, pendingRequests, handleAcceptRequest, handleDeclineRequest, searchUsers, handleSendRequest]);
+  ), [handleStoryPress, pendingRequests, handleAcceptRequest, handleDeclineRequest]);
 
   const renderActivity = useCallback(({ item, index }: ListRenderItemInfo<FriendActivity>) => (
     <StaggeredItem index={index + (pendingRequests.length > 0 ? 4 : 3)}>
@@ -362,7 +363,7 @@ export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFri
   }, [loadingMore]);
 
   return (
-    <FlatList
+    <Animated.FlatList
       data={activity}
       renderItem={renderActivity}
       keyExtractor={activityKeyExtractor}
@@ -377,6 +378,8 @@ export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap }: CommunityFri
       windowSize={7}
       keyboardShouldPersistTaps="handled"
       keyboardDismissMode="on-drag"
+      onScroll={scrollHandler}
+      scrollEventThrottle={16}
       refreshControl={
         <RefreshControl
           refreshing={refreshing}

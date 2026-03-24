@@ -12,7 +12,7 @@ import Animated, {
   runOnJS,
   Easing,
 } from 'react-native-reanimated';
-import { LinearGradient } from 'expo-linear-gradient';
+import { GlassHeader } from '../components/GlassHeader';
 import { colors } from '../theme/colors';
 import { SPRINGS } from '../constants/animations';
 import { useTabBar } from '../contexts/TabBarContext';
@@ -34,11 +34,6 @@ const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const ENTER_SLIDE = SCREEN_HEIGHT * 0.15;
 const EXIT_DURATION = 300;
 const COMMUNITY_HEADER_HEIGHT = 60;
-const FOG_EXTENSION = 60; // short tail — smoothness from micro-stops, not distance
-
-// Fog base color — MUST match HomeScreen exactly
-// HomeScreen uses rgba(240, 238, 235, ...) for a warmer tone
-const FOG_BASE = 'rgba(240, 238, 235,';
 
 export const CommunityScreen = () => {
   const insets = useSafeAreaInsets();
@@ -57,7 +52,11 @@ export const CommunityScreen = () => {
   const [rideActionVisible, setRideActionVisible] = useState(false);
 
   const headerTotalHeight = insets.top + COMMUNITY_HEADER_HEIGHT;
-  const fogHeight = headerTotalHeight + FOG_EXTENSION;
+  // Scroll-driven fog crossfade — shared across all tabs
+  const tabScrollY = useSharedValue(0);
+  const fogAnimStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(tabScrollY.value, [0, 80], [0, 1], 'clamp'),
+  }));
 
   // Separate values for entrance slide-up and exit slide-down
   const enterProgress = useSharedValue(0); // 0→1 spring in
@@ -124,34 +123,6 @@ export const CommunityScreen = () => {
   // Fog gradient — solid through header, sharp drop below so titles (Games,
   // Featured, etc.) are readable, then a very long gradual tail to prevent
   // the hard-line edge that was visible ~1/5 down the screen.
-  const fogGradient = useMemo(() => {
-    const headerEnd = Math.min(headerTotalHeight / fogHeight, 0.55);
-    const fadeZone = 1 - headerEnd;
-    return {
-      colors: [
-        `${FOG_BASE} 0.97)`,   // Solid through full header (matches FogHeader approved opacity)
-        `${FOG_BASE} 0.88)`,   // Just above header edge — still covered
-        `${FOG_BASE} 0.32)`,   // Sharp drop right below header — titles readable
-        `${FOG_BASE} 0.14)`,   // Quickly fading out
-        `${FOG_BASE} 0.06)`,   // Subtle haze
-        `${FOG_BASE} 0.025)`,  // Very faint
-        `${FOG_BASE} 0.008)`,  // Near-zero — prevents hard bottom edge
-        `${FOG_BASE} 0.002)`,  // Imperceptible
-        'transparent',           // Gone
-      ] as [string, string, ...string[]],
-      locations: [
-        0,
-        Math.max(headerEnd - 0.02, 0),
-        Math.min(headerEnd + fadeZone * 0.06, 1),
-        Math.min(headerEnd + fadeZone * 0.18, 1),
-        Math.min(headerEnd + fadeZone * 0.35, 1),
-        Math.min(headerEnd + fadeZone * 0.55, 1),
-        Math.min(headerEnd + fadeZone * 0.75, 1),
-        Math.min(headerEnd + fadeZone * 0.90, 1),
-        1,
-      ] as [number, number, ...number[]],
-    };
-  }, [headerTotalHeight, fogHeight]);
 
   // Coaster cross-reference handler — opens RideActionSheet
   const handleCoasterTap = useCallback((coasterId: string, coasterName: string, parkName: string) => {
@@ -183,10 +154,11 @@ export const CommunityScreen = () => {
               topInset={headerTotalHeight}
               onShowCompose={() => setShowCompose(true)}
               onCoasterTap={handleCoasterTap}
+              scrollY={tabScrollY}
             />
           )}
-          {activeTab === 'friends' && <CommunityFriendsTab topInset={headerTotalHeight} onCoasterTap={handleCoasterTap} />}
-          {activeTab === 'rankings' && <CommunityRankingsTab topInset={headerTotalHeight} onCoasterTap={handleCoasterTap} />}
+          {activeTab === 'friends' && <CommunityFriendsTab topInset={headerTotalHeight} onCoasterTap={handleCoasterTap} scrollY={tabScrollY} />}
+          {activeTab === 'rankings' && <CommunityRankingsTab topInset={headerTotalHeight} onCoasterTap={handleCoasterTap} scrollY={tabScrollY} />}
           {activeTab === 'play' && (
             <CommunityPlayTab
               topInset={headerTotalHeight}
@@ -194,21 +166,15 @@ export const CommunityScreen = () => {
               onPlaySpeedSorter={() => navigation.navigate('SpeedSorter')}
               onPlayBlindRanking={() => navigation.navigate('BlindRanking')}
               onPlayTrivia={() => navigation.navigate('Trivia')}
+              scrollY={tabScrollY}
             />
           )}
         </View>
 
-        {/* Fog gradient overlay — translucent, content visible through it */}
-        <View
-          style={[styles.fogContainer, { height: fogHeight }]}
-          pointerEvents="none"
-        >
-          <LinearGradient
-            colors={fogGradient.colors}
-            locations={fogGradient.locations}
-            style={StyleSheet.absoluteFill}
-          />
-        </View>
+        {/* GlassHeader fog — crossfades in on scroll */}
+        <Animated.View style={[{ position: 'absolute', top: 0, left: 0, right: 0 }, fogAnimStyle]}>
+          <GlassHeader headerHeight={headerTotalHeight} />
+        </Animated.View>
 
         {/* Top bar — floats above fog */}
         <View style={[styles.topBarContainer, { top: insets.top }]}>
@@ -251,13 +217,6 @@ const styles = StyleSheet.create({
   },
   tabContent: {
     flex: 1,
-  },
-  fogContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 5,
   },
   topBarContainer: {
     position: 'absolute',

@@ -1,4 +1,28 @@
 {
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "Bash(*)",
+      "WebSearch",
+      "WebFetch",
+      "Agent",
+      "AskUserQuestion",
+      "Skill(*)",
+      "NotebookEdit",
+      "mcp__playwright__*",
+      "mcp__perplexity-web__*",
+      "mcp__plugin_firebase_firebase__*",
+      "mcp__cloudflare__*",
+      "mcp__github__*",
+      "mcp__perplexity__*",
+      "mcp__time__*",
+      "mcp__workspace-mcp__*"
+    ]
+  },
   "mcpServers": {
     "playwright": {
       "command": "npx",

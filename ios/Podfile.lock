@@ -1713,6 +1713,28 @@ PODS:
   - libwebp/sharpyuv (1.5.0)
   - libwebp/webp (1.5.0):
     - libwebp/sharpyuv
+  - LiquidGlass (0.7.0):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - lottie-ios (4.6.0)
   - lottie-react-native (7.3.6):
     - hermes-engine
@@ -3116,6 +3138,8 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
+  - react-native-segmented-control (2.5.7):
+    - React-Core
   - react-native-skia (2.2.12):
     - hermes-engine
     - RCTRequired
@@ -3822,7 +3846,7 @@ PODS:
     - ReactNativeDependencies
     - RNWorklets
     - Yoga
-  - RNScreens (4.16.0):
+  - RNScreens (4.24.0):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -3844,9 +3868,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
-    - RNScreens/common (= 4.16.0)
+    - RNScreens/common (= 4.24.0)
     - Yoga
-  - RNScreens/common (4.16.0):
+  - RNScreens/common (4.24.0):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -4048,6 +4072,7 @@ DEPENDENCIES:
   - FirebaseStorage
   - GoogleUtilities
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
+  - "LiquidGlass (from `../node_modules/@callstack/liquid-glass`)"
   - lottie-react-native (from `../node_modules/lottie-react-native`)
   - nanopb
   - NitroModules (from `../node_modules/react-native-nitro-modules`)
@@ -4087,6 +4112,7 @@ DEPENDENCIES:
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-barcode-creator (from `../node_modules/react-native-barcode-creator`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - "react-native-segmented-control (from `../node_modules/@react-native-segmented-control/segmented-control`)"
   - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-oscompat (from `../node_modules/react-native/ReactCommon/oscompat`)
@@ -4241,6 +4267,8 @@ EXTERNAL SOURCES:
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2025-07-07-RNv0.81.0-e0fc67142ec0763c6b6153ca2bf96df815539782
+  LiquidGlass:
+    :path: "../node_modules/@callstack/liquid-glass"
   lottie-react-native:
     :path: "../node_modules/lottie-react-native"
   NitroModules:
@@ -4315,6 +4343,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-barcode-creator"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-segmented-control:
+    :path: "../node_modules/@react-native-segmented-control/segmented-control"
   react-native-skia:
     :path: "../node_modules/@shopify/react-native-skia"
   React-NativeModulesApple:
@@ -4473,6 +4503,7 @@ SPEC CHECKSUMS:
   libavif: 5f8e715bea24debec477006f21ef9e95432e254d
   libdav1d: 23581a4d8ec811ff171ed5e2e05cd27bad64c39f
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
+  LiquidGlass: f4f3bc26923fb215efa7b972ced909b49fa6acd4
   lottie-ios: 8f959969761e9c45d70353667d00af0e5b9cadb3
   lottie-react-native: 04593e71e10b42fccb1ccacfbcf50c8ba4921c55
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
@@ -4513,6 +4544,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: f5972fb404f7c363ff34b2292e72a716956c590c
   react-native-barcode-creator: 0e7416f1157a16baf5fc1a94ecabbdb4b765257a
   react-native-safe-area-context: c5d42c4294aa175415947e23c2ac956253abfc7d
+  react-native-segmented-control: bf6e0032726727498e18dd437ae88afcdbc18e99
   react-native-skia: 5d024324ef7b19f8fd70868458b0d7b2cb6644b5
   React-NativeModulesApple: 8969913947d5b576de4ed371a939455a8daf28aa
   React-oscompat: ce47230ed20185e91de62d8c6d139ae61763d09c
@@ -4559,7 +4591,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: c3831b3b1b5014c6afab7fff7e4171394a3419ab
   RNGoogleSignin: 4590097b5c265e55e01bf2e824e0f5f5f66d2dfd
   RNReanimated: af769770552bf16c9b432a7883453917d2fab93f
-  RNScreens: 33bbd1d0f86ed957557620dc94054b71db0a94ee
+  RNScreens: ca829379d20b0d1ff41a0b87bc37bdc50276cef5
   RNSVG: ac3047fdd9c0ebac9d0b731a352bddf216af6242
   RNWorklets: eb8d899de8701d58c6a634b8468ce2a6db3113b2
   SDWebImage: e9fc87c1aab89a8ab1bbd74eba378c6f53be8abf

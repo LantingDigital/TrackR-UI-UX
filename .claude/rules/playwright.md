@@ -1,26 +1,18 @@
-# Playwright Rules (Project-Wide Standard)
+# Browser Rules (Project-Wide Standard)
 
-## HEADLESS MODE ONLY — NO EXCEPTIONS
+## Browser Slot System
 
-All Playwright automation in this project MUST run in **headless** mode. Never launch a headed browser.
+All browser automation in this project uses the **browser slot system**. Agents are assigned a browser slot by the team lead and use `mcp__browser-{N}__*` tools. Browsers are headed (visible) and already running when assigned. Do NOT launch your own browser. Do NOT use `mcp__playwright__*` tools.
 
-```js
-// CORRECT — always headless
-const browser = await chromium.launch({ headless: true });
-
-// WRONG — NEVER do this
-const browser = await chromium.launch({ headless: false });
-const browser = await chromium.launch(); // default might vary, always set explicitly
-```
+Refer to BROWSER-WORKFLOW.md in the EA project root for the full tool list and usage rules.
 
 ## Rules
 
-1. **Always set `headless: true` explicitly** when calling `chromium.launch()`, `firefox.launch()`, or `webkit.launch()`.
-2. **Never use headed mode** for any reason — debugging, demos, or "quick tests." Use screenshots and traces for debugging instead.
-3. **Use screenshots liberally** to see what the headless browser sees at each step.
-4. **Save screenshots** to `assets/card-art-pipeline/screenshots/` for card art workflows, or a temp directory for other tasks.
-5. **Respect rate limits** — add reasonable delays between requests (1-2s between page navigations).
-6. **Kill stale processes** — always wrap Playwright scripts in try/finally to ensure `browser.close()` runs.
+1. **Only use your assigned browser slot.** Use `mcp__browser-{N}__*` tools matching your assigned slot number. Never use a different slot.
+2. **Use screenshots liberally** to verify what the browser shows at each step.
+3. **Save screenshots** to `assets/card-art-pipeline/screenshots/` for card art workflows, or a temp directory for other tasks.
+4. **Respect rate limits** — add reasonable delays between requests (1-2s between page navigations).
+5. **If 2FA is needed, pause and notify the team lead.** Caleb handles 2FA manually.
 
 ## NanoBanana Card Art Workflow
 

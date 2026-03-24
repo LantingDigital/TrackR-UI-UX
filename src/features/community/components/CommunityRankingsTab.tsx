@@ -20,10 +20,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
   withTiming,
   withDelay,
   Easing,
   interpolate,
+  type SharedValue,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../../theme/colors';
@@ -237,9 +239,10 @@ function RankedEntry({
 interface CommunityRankingsTabProps {
   topInset?: number;
   onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void;
+  scrollY?: SharedValue<number>;
 }
 
-export const CommunityRankingsTab = ({ topInset = 0, onCoasterTap }: CommunityRankingsTabProps) => {
+export const CommunityRankingsTab = ({ topInset = 0, onCoasterTap, scrollY }: CommunityRankingsTabProps) => {
   const insets = useSafeAreaInsets();
   const { categories } = useRankingsStore();
   const [activeCategory, setActiveCategory] = useState(categories[0]?.id ?? 'overall');
@@ -279,14 +282,22 @@ export const CommunityRankingsTab = ({ topInset = 0, onCoasterTap }: CommunityRa
     );
   }
 
+  const rankingsScrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      if (scrollY) scrollY.value = event.contentOffset.y;
+    },
+  });
+
   return (
-    <ScrollView
+    <Animated.ScrollView
       style={s.container}
       contentContainerStyle={[
         s.content,
         { paddingTop: topInset + spacing.xxl, paddingBottom: insets.bottom + spacing.xxxl },
       ]}
       showsVerticalScrollIndicator={false}
+      onScroll={rankingsScrollHandler}
+      scrollEventThrottle={16}
     >
       {/* Category Chips — shadow-safe horizontal scroll */}
       <View style={s.chipSection}>
@@ -338,7 +349,7 @@ export const CommunityRankingsTab = ({ topInset = 0, onCoasterTap }: CommunityRa
           ))}
         </View>
       )}
-    </ScrollView>
+    </Animated.ScrollView>
   );
 };
 

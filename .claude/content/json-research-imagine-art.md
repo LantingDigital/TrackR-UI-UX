@@ -1,0 +1,1441 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - img [ref=e2]
+    - paragraph [ref=e17]: Try the New ImagineArt! 🎉 Smarter, Faster, Better!
+    - link "Try now" [ref=e18] [cursor=pointer]:
+      - /url: https://imagine.art
+      - text: Try now
+      - img [ref=e19]
+    - button [ref=e21] [cursor=pointer]:
+      - img [ref=e22]
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: "Exclusive Unlimited AI Creative Suite: Kling 3.0, Runway 4.5 & Luma — All in one place. Now 50% OFF!"
+        - link "Grab 50% Off" [ref=e29] [cursor=pointer]:
+          - /url: https://www.imagine.art/subscription
+          - text: Grab 50% Off
+          - img
+      - button "Close banner" [ref=e30] [cursor=pointer]:
+        - img [ref=e31]
+    - generic [ref=e34]:
+      - link [ref=e35] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e36]:
+          - img [ref=e37]
+          - img [ref=e39]
+      - navigation [ref=e41]:
+        - generic [ref=e42]:
+          - link "Blog" [ref=e43] [cursor=pointer]:
+            - /url: /blogs
+          - button "Tools" [ref=e44] [cursor=pointer]:
+            - text: Tools
+            - img [ref=e45]
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e50]: Editing Tools
+              - generic [ref=e51]:
+                - link "AI Video Editor Create and edit videos with AI transitions and effects." [ref=e52] [cursor=pointer]:
+                  - /url: /features/ai-video-editor
+                  - img [ref=e55]
+                  - generic [ref=e57]:
+                    - paragraph [ref=e58]: AI Video Editor
+                    - paragraph [ref=e59]: Create and edit videos with AI transitions and effects.
+                - link "AI Image Editor Edit, retouch, and transform images with AI tools." [ref=e60] [cursor=pointer]:
+                  - /url: /apps/ai-image-editor
+                  - img [ref=e63]
+                  - generic [ref=e66]:
+                    - paragraph [ref=e67]: AI Image Editor
+                    - paragraph [ref=e68]: Edit, retouch, and transform images with AI tools.
+                - link "Kling AI Motion Control Add dynamic motion to static images with AI-powered animation controls." [ref=e69] [cursor=pointer]:
+                  - /url: /apps/motion-control
+                  - img [ref=e72]
+                  - generic [ref=e74]:
+                    - paragraph [ref=e75]: Kling AI Motion Control
+                    - paragraph [ref=e76]: Add dynamic motion to static images with AI-powered animation controls.
+            - generic [ref=e78]:
+              - generic [ref=e79]:
+                - link "AI Image Generator" [ref=e80] [cursor=pointer]:
+                  - /url: /ai-image-generator
+                - generic [ref=e81]:
+                  - link "BG Remover" [ref=e83] [cursor=pointer]:
+                    - /url: /bg-remover
+                    - generic [ref=e84]: BG Remover
+                  - link "AI Logo Generator" [ref=e86] [cursor=pointer]:
+                    - /url: /ai-logo-generator
+                    - generic [ref=e87]: AI Logo Generator
+                  - link "AI Anime Generator" [ref=e89] [cursor=pointer]:
+                    - /url: /features/ai-anime-generator
+                    - generic [ref=e90]: AI Anime Generator
+                  - link "AI Image Combiner" [ref=e92] [cursor=pointer]:
+                    - /url: /apps/image-combiner
+                    - generic [ref=e93]: AI Image Combiner
+                  - link "AI Image Face Swap" [ref=e95] [cursor=pointer]:
+                    - /url: /apps/face-swap
+                    - generic [ref=e96]: AI Image Face Swap
+                  - link "AI Image Replace" [ref=e98] [cursor=pointer]:
+                    - /url: /apps/ai-replace
+                    - generic [ref=e99]: AI Image Replace
+              - generic [ref=e100]:
+                - link "AI Video Generator" [ref=e101] [cursor=pointer]:
+                  - /url: /ai-video-generator
+                - generic [ref=e102]:
+                  - link "AI Story Generator" [ref=e104] [cursor=pointer]:
+                    - /url: /shorts/ai-story-generator
+                    - generic [ref=e105]: AI Story Generator
+                  - link "AI Animation Generator" [ref=e107] [cursor=pointer]:
+                    - /url: /features/ai-animation-generator
+                    - generic [ref=e108]: AI Animation Generator
+                  - link "AI Product Video Maker" [ref=e110] [cursor=pointer]:
+                    - /url: /features/ai-product-video-generator
+                    - generic [ref=e111]: AI Product Video Maker
+                  - link "AI Video Object Removal" [ref=e113] [cursor=pointer]:
+                    - /url: /apps/video-object-removal
+                    - generic [ref=e114]: AI Video Object Removal
+                  - link "AI Video Recolor" [ref=e116] [cursor=pointer]:
+                    - /url: /apps/video-recolor
+                    - generic [ref=e117]: AI Video Recolor
+                  - link "AI Video background Changer" [ref=e119] [cursor=pointer]:
+                    - /url: /apps/video-background-changer
+                    - generic [ref=e120]: AI Video background Changer
+              - generic [ref=e121]:
+                - link "AI Models" [ref=e122] [cursor=pointer]:
+                  - /url: "#"
+                - generic [ref=e123]:
+                  - link "Seedance 2.0" [ref=e125] [cursor=pointer]:
+                    - /url: features/seedance-2-0
+                    - generic [ref=e126]: Seedance 2.0
+                  - link "Kling 3.0" [ref=e128] [cursor=pointer]:
+                    - /url: /features/kling-3-0
+                    - generic [ref=e129]: Kling 3.0
+                  - link "Seedream 5.0" [ref=e131] [cursor=pointer]:
+                    - /url: /features/seedream-5-0
+                    - generic [ref=e132]: Seedream 5.0
+                  - link "Recraft V4" [ref=e134] [cursor=pointer]:
+                    - /url: /features/recraft-v-4
+                    - generic [ref=e135]: Recraft V4
+                  - link "Runway Gen 4.5" [ref=e137] [cursor=pointer]:
+                    - /url: /features/runway-gen-4.5
+                    - generic [ref=e138]: Runway Gen 4.5
+                  - link "Imagen V3" [ref=e140] [cursor=pointer]:
+                    - /url: /features/imagen-v3
+                    - generic [ref=e141]: Imagen V3
+                  - link "Explore All" [ref=e142] [cursor=pointer]:
+                    - /url: /features
+                    - generic [ref=e143]: Explore All
+                    - img [ref=e145]
+          - button "Community" [ref=e148] [cursor=pointer]:
+            - text: Community
+            - img [ref=e149]
+          - generic [ref=e151]:
+            - generic [ref=e153]:
+              - generic [ref=e154]: Connect
+              - generic [ref=e155]: Unlock the future of creativity with our Generative AI community—where art, video, and images are born from the power of AI imagination!
+            - generic [ref=e157]:
+              - generic [ref=e159]:
+                - link "Discord" [ref=e161] [cursor=pointer]:
+                  - /url: https://discord.com/invite/z7kjUyvAbv
+                  - img [ref=e163]
+                  - generic [ref=e165]: Discord
+                - link "Facebook" [ref=e167] [cursor=pointer]:
+                  - /url: https://www.facebook.com/groups/imagineai
+                  - img [ref=e169]
+                  - generic [ref=e171]: Facebook
+                - link "Instagram" [ref=e173] [cursor=pointer]:
+                  - /url: https://www.instagram.com/imagineartofficial
+                  - img [ref=e175]
+                  - generic [ref=e177]: Instagram
+              - generic [ref=e179]:
+                - link "Pinterest" [ref=e181] [cursor=pointer]:
+                  - /url: https://www.pinterest.com/imagineart_/_created/
+                  - img [ref=e183]
+                  - generic [ref=e185]: Pinterest
+                - link "Reddit" [ref=e187] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/ImagineAiArt/
+                  - img [ref=e189]
+                  - generic [ref=e191]: Reddit
+                - link "Snapchat" [ref=e193] [cursor=pointer]:
+                  - /url: https://snapchat.com/add/imagine.art1
+                  - img [ref=e195]
+                  - generic [ref=e197]: Snapchat
+              - generic [ref=e199]:
+                - link "Twitter" [ref=e201] [cursor=pointer]:
+                  - /url: https://twitter.com/Imagine_aiart
+                  - img [ref=e203]
+                  - generic [ref=e205]: Twitter
+                - link "YouTube" [ref=e207] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@imagineartofficial
+                  - img [ref=e209]
+                  - generic [ref=e212]: YouTube
+                - link "WhatsApp" [ref=e214] [cursor=pointer]:
+                  - /url: https://chat.whatsapp.com/G5uXKiRk0RL5frRJ8oB5Xl
+                  - img [ref=e216]
+                  - generic [ref=e219]: WhatsApp
+          - link "Affiliate" [ref=e220] [cursor=pointer]:
+            - /url: /affiliate-program
+          - link "API" [ref=e221] [cursor=pointer]:
+            - /url: /gen-api
+          - link "Creators" [ref=e222] [cursor=pointer]:
+            - /url: /creators-program
+          - link "Careers" [ref=e223] [cursor=pointer]:
+            - /url: https://jobs.ashbyhq.com/vyro
+      - link "Launch App" [ref=e225] [cursor=pointer]:
+        - /url: /
+    - generic [ref=e226]:
+      - generic [ref=e227]:
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - link "Home" [ref=e231] [cursor=pointer]:
+              - /url: /
+            - generic [ref=e232]:
+              - img [ref=e233]
+              - link "Blogs" [ref=e235] [cursor=pointer]:
+                - /url: /blogs
+            - generic [ref=e236]:
+              - img [ref=e237]
+              - link "Json-prompting-for-ai-image-generation" [ref=e239] [cursor=pointer]:
+                - /url: /blogs/json-prompting-for-ai-image-generation
+          - generic [ref=e240]:
+            - img "JSON Prompting for AI Image Generation – A Complete Guide with Examples | ImagineArt" [ref=e242]
+            - generic [ref=e243]:
+              - heading "JSON Prompting for AI Image Generation – A Complete Guide with Examples | ImagineArt" [level=1] [ref=e244]
+              - paragraph [ref=e245]: Learn how to use JSON prompting for AI image generation with tools like Nano Banana, Seedream v4, ImagineArt 1.0, and Flux. Discover why structured prompts produce more consistent, high-quality AI images.
+              - link "Create AI Images on ImagineArt" [ref=e246] [cursor=pointer]:
+                - /url: https://www.imagine.art/image
+                - button "Create AI Images on ImagineArt" [ref=e247]:
+                  - paragraph [ref=e248]: Create AI Images on ImagineArt
+                  - img [ref=e249]
+          - generic [ref=e252]:
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - img "Tooba Siddiqui" [ref=e256]
+                - paragraph [ref=e257]: Tooba Siddiqui
+              - paragraph [ref=e259]: Mon Oct 20 2025
+            - paragraph [ref=e261]: 9 mins Read
+        - generic [ref=e262]:
+          - generic [ref=e264]:
+            - paragraph [ref=e265]: ON THIS PAGE
+            - generic [ref=e266]:
+              - button "Defining JSON Prompting" [ref=e267] [cursor=pointer]: Defining JSON Prompting
+              - button "Why JSON Prompting Matters in AI Image Generation" [ref=e269] [cursor=pointer]: Why JSON Prompting Matters in AI Image Generation
+              - button "The Framework of a JSON Prompt" [ref=e270] [cursor=pointer]: The Framework of a JSON Prompt
+              - button "JSON Prompt Examples for Popular AI Image Generators" [ref=e271] [cursor=pointer]: JSON Prompt Examples for Popular AI Image Generators
+              - button "Best Practices for JSON Prompting" [ref=e272] [cursor=pointer]: Best Practices for JSON Prompting
+              - button "Final Thoughts" [ref=e273] [cursor=pointer]: Final Thoughts
+          - generic [ref=e274]:
+            - paragraph [ref=e275]: Conventionally, prompting is all about typing a text blob in natural language and relying on AI abilities to interpret and produce results. However, at times, the results can be a tad bit off since AI can make mistakes. The output can have ambiguities, unclear elements, or straight up incorrect representation.
+            - paragraph [ref=e276]: With JSON prompting, you eliminate the inconsistencies and ensure output accuracy of each query. Think of JSON prompt as explaining to AI in its own language — the communication becomes clearer with more structured queries.
+            - heading "Defining JSON Prompting" [level=2] [ref=e277]
+            - paragraph [ref=e278]:
+              - text: JSON prompts consists of machine-readable inputs structured in a way that AI understand best. JSON (JavaScript Object Notation) is an easy-to-read format to represent structured data using key-value pairs. In
+              - link "AI image generation" [ref=e279] [cursor=pointer]:
+                - /url: https://www.imagine.art/ai-image-generator
+              - text: ", these prompts are used to define the multiple attributes or elements of the image, including character, background, lighting, camera, ratios, and more. The well-defined syntax makes sure the AI image model has clear instructions to generate accurate outputs."
+            - paragraph [ref=e280]: "For instance, a prompt in natural language will read something like this:"
+            - paragraph [ref=e281]:
+              - emphasis [ref=e282]: “A beach at sunset with a person walking along the shore.”
+            - paragraph [ref=e283]:
+              - generic [ref=e284]:
+                - img "Generated by ImagineArt 1.0 using natural language prompt" [ref=e285]
+                - generic [ref=e286]: Generated by ImagineArt 1.0 using natural language prompt
+            - paragraph [ref=e287]: "On the other hand, the JSON version of the same prompt will have clear breakdown of image elements/attributes:"
+            - code [ref=e290]:
+              - generic [ref=e291]: "1"
+              - text: "{"
+              - generic [ref=e292]: "2"
+              - text: "\"subject\": \"person\","
+              - generic [ref=e293]: "3"
+              - text: "\"action\": \"walking along the shore\","
+              - generic [ref=e294]: "4"
+              - text: "\"environment\": \"beach\","
+              - generic [ref=e295]: "5"
+              - text: "\"time_of_day\": \"sunset\""
+              - generic [ref=e296]: "6"
+              - text: "}"
+            - paragraph [ref=e297]:
+              - generic [ref=e298]:
+                - img "Improved realism and better detailing — same prompt, same AI model, better result." [ref=e299]
+                - generic [ref=e300]: Improved realism and better detailing — same prompt, same AI model, better result.
+            - paragraph [ref=e301]: This structure allows for added control over the AI image generation. Such clear JSON definition makes it simpler and faster for AI to interpret, process, and generate desired results.
+            - heading "Why JSON Prompting Matters in AI Image Generation" [level=2] [ref=e302]
+            - heading "1. Structured Input for AI Image Generators" [level=3] [ref=e303]
+            - paragraph [ref=e304]: Unlike the natural language, JSON prompt removes the inherent ambiguity that comes with natural language. Since each element is defined separately, it allows AI image generators to better understand and interpret the context, composition, and content of the required image. JSON prompts works better when your image generation requirements include multiple details such as a certain camera angle, mood, and lighting or even textural details. JSON prompt leaves no room for misinterpretation or guesswork, ensuring clarity.
+            - heading "2. Improved Consistency in AI Images" [level=3] [ref=e305]
+            - paragraph [ref=e306]: Consistency is one of the major challenges that most AI image generators face. While the more advanced AI image models demonstrate improved consistency, the results can sometimes differ and deviate when the prompts are vague. JSON prompting makes sure the prompt includes the same structure, resolving the prompt inaccuracy/misinterpretation in AI image generation.
+            - paragraph [ref=e307]: So, if you need you create multiple renders of your product campaign, use JSON prompt and save hours you would have spent on manual adjustments otherwise. It ensures visual consistency and helps with image repeatability.
+            - heading "3. Improved Flexibility" [level=3] [ref=e308]
+            - paragraph [ref=e309]: While natural prompting might require multiple reiteration to create the desired image, JSON prompting gives you added control over editing and fine-tuning. Define and edit the elements, actions, environments, moods, and ambiance explicitly and create different variations — without tweaking the prompt. You can customize one or more elements to experiment with different styles and settings all while keeping the main subject consistent.
+            - heading "4. Improved Reusability" [level=3] [ref=e310]
+            - paragraph [ref=e311]: JSON prompts come with a defined template and structure, making them easily reusable to create new AI images. This improves workflow efficiency and reduces the need to jot down new text prompts for every AI image generation.
+            - heading "5. Improved Model Understanding" [level=3] [ref=e312]
+            - paragraph [ref=e313]: AI image models are generally trained on large numbers of structured datasets, including natural language data, code, and APIs. JSON prompts bear syntactic similarity to these codes, making it easier for the AI image model to better understand and interpret the prompt.
+            - heading "The Framework of a JSON Prompt" [level=2] [ref=e314]
+            - paragraph [ref=e315]: "In order to create accurate results, you need to have clear understanding of JSON prompt structure. A basic JSON prompt has different components, playing a specific part in generating desired results. Here’s a breakdown of a JSON image prompt:"
+            - heading "1. Subject" [level=3] [ref=e316]
+            - paragraph [ref=e317]: "It includes details about the main human character, animal, scene or object of the image. You can mention it as:"
+            - code [ref=e320]:
+              - generic [ref=e321]: "1"
+              - text: "\"subject\": \"dog\""
+            - paragraph [ref=e322]: The AI image model will have clear instruction about creating an image of dog.
+            - heading "2. Environment/Background" [level=3] [ref=e323]
+            - paragraph [ref=e324]: "It includes details about the surrounding environment, ambiance, and background settings. This helps in creating a physical scene for the main subject:"
+            - code [ref=e327]:
+              - generic [ref=e328]: "1"
+              - text: "\"environment\": \"sunny beach\""
+            - paragraph [ref=e329]: The AI image generator will know where to place the main subject.
+            - heading "3. Style" [level=3] [ref=e330]
+            - paragraph [ref=e331]: It includes details about the visual aesthetics of the generated image. This could be a photorealistic portrait, abstract art, or artistic anime — pick whatever style aligns with your vision.
+            - code [ref=e334]:
+              - generic [ref=e335]: "1"
+              - text: "\"style\": \"realistic photography\""
+            - paragraph [ref=e336]: The AI image generator will ensure the generated image looks more life-like.
+            - heading "4. Lighting" [level=3] [ref=e337]
+            - paragraph [ref=e338]: It includes details about the overall lighting of the image. This helps accentuate visual and subject details — from natural lights to studio backlighting. You can include or remove shadows to enhance visual quality.
+            - code [ref=e341]:
+              - generic [ref=e342]: "1"
+              - text: "\"lighting\": \"soft, golden hour\""
+            - heading "5. Camera Settings" [level=3] [ref=e343]
+            - paragraph [ref=e344]: It includes details about camera angles, position, and movement, along with depth of field. This sets the overall perspective of the image. You can also include lens types, aperture, focal details, and more to create tailored images.
+            - code [ref=e347]:
+              - generic [ref=e348]: "1"
+              - text: "\"camera\": {"
+              - generic [ref=e349]: "2"
+              - text: "\"lens\": \"50mm\","
+              - generic [ref=e350]: "3"
+              - text: "\"aperture\": \"f/1.8\","
+              - generic [ref=e351]: "4"
+              - text: "\"angle\": \"low-angle shot\""
+              - generic [ref=e352]: "5"
+              - text: "}"
+            - heading "6. Mood/Emotion" [level=3] [ref=e353]
+            - paragraph [ref=e354]: It includes details about the emotional touch and overall mood of the image. This adds depth and sets a certain feeling about the image, such as dramatic, joyful, gloomy, dark. However, make sure not to use contradicting moods/emotions in the same prompt.
+            - code [ref=e357]:
+              - generic [ref=e358]: "1"
+              - text: "\"mood\": \"joyful, peaceful\""
+            - heading "7. Optional Details" [level=3] [ref=e359]
+            - paragraph [ref=e360]: You can specify more details about your image, such as weather conditions, props, a certain theme, and more to personalize the results.
+            - code [ref=e363]:
+              - generic [ref=e364]: "1"
+              - text: "\"weather\": \"clear sky, warm temperatures\""
+            - heading "JSON Prompt Examples for Popular AI Image Generators" [level=2] [ref=e365]
+            - heading "1. Nano Banana" [level=3] [ref=e366]
+            - paragraph [ref=e367]:
+              - link "Nano Banana" [ref=e368] [cursor=pointer]:
+                - /url: https://www.imagine.art/features/nano-banana
+              - text: "aka Gemini 2.5 Flash Image can create hyperrealistic images with refined textural details and smooth lighting. Here’s an example text-based and JSON prompt:"
+            - paragraph [ref=e369]:
+              - strong [ref=e370]: "Text-based prompt:"
+            - paragraph [ref=e371]: A hyperrealistic close-up of a ripe yellow banana resting on a reflective glass surface. The texture of the banana peel is detailed with natural imperfections and subtle bruises. Smooth, soft lighting from the left creates gentle shadows and highlights the surface texture. The background is softly blurred, emphasizing the subject.
+            - paragraph [ref=e372]:
+              - generic [ref=e373]:
+                - img "Generated on ImagineArt using Nano Banana" [ref=e374]
+                - generic [ref=e375]: Generated on ImagineArt using Nano Banana
+            - paragraph [ref=e376]:
+              - strong [ref=e377]: "JSON prompt:"
+            - code [ref=e380]:
+              - generic [ref=e381]: "1"
+              - text: "{"
+              - generic [ref=e382]: "2"
+              - text: "\"subject\": \"banana\","
+              - generic [ref=e383]: "3"
+              - text: "\"style\": \"hyperrealistic\","
+              - generic [ref=e384]: "4"
+              - text: "\"camera\": {"
+              - generic [ref=e385]: "5"
+              - text: "\"type\": \"close-up\","
+              - generic [ref=e386]: "6"
+              - text: "\"focus\": \"sharp on banana\","
+              - generic [ref=e387]: "7"
+              - text: "\"depth_of_field\": \"shallow\""
+              - generic [ref=e388]: "8"
+              - text: "},"
+              - generic [ref=e389]: "9"
+              - text: "\"lighting\": {"
+              - generic [ref=e390]: "10"
+              - text: "\"type\": \"soft\","
+              - generic [ref=e391]: "11"
+              - text: "\"direction\": \"left\","
+              - generic [ref=e392]: "12"
+              - text: "\"effects\": [\"smooth shadows\", \"subtle highlights\"]"
+              - generic [ref=e393]: "13"
+              - text: "},"
+              - generic [ref=e394]: "14"
+              - text: "\"surface\": {"
+              - generic [ref=e395]: "15"
+              - text: "\"type\": \"reflective glass\","
+              - generic [ref=e396]: "16"
+              - text: "\"reflection\": true},"
+              - generic [ref=e397]: "17"
+              - text: "\"banana\": {"
+              - generic [ref=e398]: "18"
+              - text: "\"ripeness\": \"ripe\","
+              - generic [ref=e399]: "19"
+              - text: "\"color\": \"yellow\","
+              - generic [ref=e400]: "20"
+              - text: "\"texture_details\": [\"natural imperfections\", \"subtle bruises\"]"
+              - generic [ref=e401]: "21"
+              - text: "},"
+              - generic [ref=e402]: "22"
+              - text: "\"background\": {"
+              - generic [ref=e403]: "23"
+              - text: "\"blur\": true,"
+              - generic [ref=e404]: "24"
+              - text: "\"contrast\": \"low\""
+              - generic [ref=e405]: "25"
+              - text: "}"
+              - generic [ref=e406]: "26"
+              - text: "}"
+            - paragraph [ref=e407]:
+              - link "Generated on ImagineArt using Nano Banana" [ref=e408] [cursor=pointer]:
+                - /url: https://blogs-cdn.imagine.art/Tooba_Siddiqui_subject_banana_style_hyperrealistic_camera_c53ecd02_dcf8_4413_a319_78d987c3d194_1322cfd038.jpg
+            - blockquote [ref=e409]:
+              - paragraph [ref=e410]:
+                - emphasis [ref=e411]: "My POV: The reflection and shadows in the second image add to the visual details, making the image more realistic."
+            - link "Try Nano Banana on ImagineArt" [ref=e413] [cursor=pointer]:
+              - /url: https://www.imagine.art/image
+              - button "Try Nano Banana on ImagineArt" [ref=e414]:
+                - paragraph [ref=e415]: Try Nano Banana on ImagineArt
+                - img [ref=e416]
+            - heading "2. Seedream v4" [level=3] [ref=e418]
+            - paragraph [ref=e419]:
+              - text: The direct competitor of Nano Banana,
+              - link "Seedream v4" [ref=e420] [cursor=pointer]:
+                - /url: https://www.imagine.art/features/seedream-4.0
+              - text: "offers diverse style variety, including realism, rich world building, fantasy, anime, and more. Here’s a JSON prompt to create surreal images using Seedream v4:"
+            - paragraph [ref=e421]:
+              - strong [ref=e422]: "Text-based prompt:"
+            - paragraph [ref=e423]: A majestic floating castle suspended in a cloud-filled sky, with a magical forest stretching out below. The scene is rendered in a fantasy, ethereal style, bathed in glowing ambient light. Captured with a wide-angle lens from a high-angle perspective, the composition evokes a dreamy, mystical atmosphere.
+            - paragraph [ref=e424]:
+              - link "Generated on ImagineArt using Seedream v4" [ref=e425] [cursor=pointer]:
+                - /url: https://blogs-cdn.imagine.art/Tooba_Siddiqui_A_majestic_floating_castle_suspended_in_a_cloud_filled_sky_with_cadbe2aa_7690_48a8_8af7_1a60fc3212cb_a80c906699.jpg
+            - paragraph [ref=e426]:
+              - strong [ref=e427]: "JSON prompt:"
+            - code [ref=e430]:
+              - generic [ref=e431]: "1"
+              - text: "{"
+              - generic [ref=e432]: "2"
+              - text: "\"subject\": \"floating castle\","
+              - generic [ref=e433]: "3"
+              - text: "\"environment\": \"cloud-filled sky, magical forest below\","
+              - generic [ref=e434]: "4"
+              - text: "\"style\": \"fantasy, ethereal\","
+              - generic [ref=e435]: "5"
+              - text: "\"lighting\": \"glowing ambient light\","
+              - generic [ref=e436]: "6"
+              - text: "\"camera\": {"
+              - generic [ref=e437]: "7"
+              - text: "\"lens\": \"wide-angle\","
+              - generic [ref=e438]: "8"
+              - text: "\"angle\": \"high-angle shot\""
+              - generic [ref=e439]: "9"
+              - text: "},"
+              - generic [ref=e440]: "10"
+              - text: "\"mood\": \"dreamy, mystical\""
+              - generic [ref=e441]: "11"
+              - text: "}"
+            - paragraph [ref=e442]:
+              - link "Generated on ImagineArt using Seedream v4" [ref=e443] [cursor=pointer]:
+                - /url: https://blogs-cdn.imagine.art/Tooba_Siddiqui_subject_floating_castle_environment_cloud_filled_79304882_3370_4286_8a85_30631e66f5c0_341150be66.jpg
+            - blockquote [ref=e444]:
+              - paragraph [ref=e445]:
+                - emphasis [ref=e446]: "My POV: The castle isn’t even floating in the first image that means we need to reiterate or refine the prompt. While the second image looks straight out of an animated fairytale."
+            - link "Try Seedream v4 on ImagineArt" [ref=e448] [cursor=pointer]:
+              - /url: https://www.imagine.art/image
+              - button "Try Seedream v4 on ImagineArt" [ref=e449]:
+                - paragraph [ref=e450]: Try Seedream v4 on ImagineArt
+                - img [ref=e451]
+            - heading "3. ImagineArt 1.0" [level=3] [ref=e453]
+            - paragraph [ref=e454]:
+              - link "ImagineArt 1.0" [ref=e455] [cursor=pointer]:
+                - /url: https://www.imagine.art/features/imagineart-1-0
+              - text: "produces incredibly realistic images with accurate detailing of different textures, surface, body languages, pose, and more. Here a JSON prompt for ImagineArt 1.0 AI image generator:"
+            - paragraph [ref=e456]:
+              - strong [ref=e457]: "Text-based prompt:"
+            - paragraph [ref=e458]: A young man sitting on a horse with a frown on his brows, captured in a half-body close-up shot. The scene is set on an ancient battlefield at dawn, with early morning mist and sunlight gently piercing through. Shot with a 24mm lens at mid-range focal length, the style is realistic, and the overall mood conveys bravery and determination.
+            - paragraph [ref=e459]:
+              - link "Generated by ImagineArt 1.0" [ref=e460] [cursor=pointer]:
+                - /url: https://blogs-cdn.imagine.art/Tooba_Siddiqui_A_young_man_sitting_on_a_horse_with_a_frown_on_his_brows_capture_1692be0d_2028_4580_8ed4_c92e1ed7eb0c_122791be10.jpg
+            - paragraph [ref=e461]:
+              - strong [ref=e462]: "JSON prompt:"
+            - code [ref=e465]:
+              - generic [ref=e466]: "1"
+              - text: "{"
+              - generic [ref=e467]: "2"
+              - text: "\"Subject\": {"
+              - generic [ref=e468]: "3"
+              - text: "\"Type\": \"Young man\","
+              - generic [ref=e469]: "4"
+              - text: "\"Pose\": \"Sitting on horse, brows frowned\","
+              - generic [ref=e470]: "5"
+              - text: "\"Framing\": \"Half-body close-up\""
+              - generic [ref=e471]: "6"
+              - text: "},"
+              - generic [ref=e472]: "7"
+              - text: "{"
+              - generic [ref=e473]: "8"
+              - text: "\"environment\": \"ancient battlefield at dawn\","
+              - generic [ref=e474]: "9"
+              - text: "\"style\": \"realism\","
+              - generic [ref=e475]: "10"
+              - text: "\"lighting\": \"early morning mist with sunlight peeking through\","
+              - generic [ref=e476]: "11"
+              - text: "\"camera\": {"
+              - generic [ref=e477]: "12"
+              - text: "\"lens\": \"24mm\","
+              - generic [ref=e478]: "13"
+              - text: "\"focal_length\": \"mid-range\""
+              - generic [ref=e479]: "14"
+              - text: "},"
+              - generic [ref=e480]: "15"
+              - text: "\"mood\": \"brave, determined\""
+              - generic [ref=e481]: "16"
+              - text: "}"
+            - paragraph [ref=e482]:
+              - link "Generated by ImagineArt 1.0" [ref=e483] [cursor=pointer]:
+                - /url: https://blogs-cdn.imagine.art/Tooba_Siddiqui_Subject_Type_Young_man_Pose_Sittin_8b0d9b41_edd4_4666_aa07_181d07d9257b_4077e8cc24.jpg
+            - blockquote [ref=e484]:
+              - paragraph [ref=e485]:
+                - emphasis [ref=e486]: "My POV: The soldier isn’t dressed right in the first image — no armor and also no frown."
+            - link "Try ImagineArt 1.0" [ref=e488] [cursor=pointer]:
+              - /url: https://www.imagine.art/image
+              - button "Try ImagineArt 1.0" [ref=e489]:
+                - paragraph [ref=e490]: Try ImagineArt 1.0
+                - img [ref=e491]
+            - heading "4. Qwen-Image" [level=3] [ref=e493]
+            - paragraph [ref=e494]:
+              - link "Qwen-Image" [ref=e495] [cursor=pointer]:
+                - /url: https://www.imagine.art/features/qwen-image
+              - text: "offers strong prompt adherence with capabilities to generate images in different styles, and aspect ratios, making it ideal for both professional and personal uses. Here’s a JSON prompt for product images for Qwen-Image:"
+            - paragraph [ref=e496]:
+              - strong [ref=e497]: "Text-based prompt:"
+            - paragraph [ref=e498]: A high-quality product shot of a sleek black wireless headset placed on a matte white surface. The image is styled with clean, minimalistic aesthetics and neutral tones. Captured in a studio environment with soft diffused lighting and a 4:5 aspect ratio. The headset is centered with a slight shadow cast below, emphasizing its contours and texture. Ideal for e-commerce or promotional use.
+            - paragraph [ref=e499]:
+              - generic [ref=e500]:
+                - img "Generated on ImagineArt using Qwen-Image" [ref=e501]
+                - generic [ref=e502]: Generated on ImagineArt using Qwen-Image
+            - code [ref=e505]:
+              - generic [ref=e506]: "1"
+              - text: "{"
+              - generic [ref=e507]: "2"
+              - text: "\"subject\": \"black wireless headset\","
+              - generic [ref=e508]: "3"
+              - text: "\"style\": \"minimalist, clean\","
+              - generic [ref=e509]: "4"
+              - text: "\"environment\": \"studio, matte white surface\","
+              - generic [ref=e510]: "5"
+              - text: "\"lighting\": \"soft, diffused\","
+              - generic [ref=e511]: "6"
+              - text: "\"camera\": {"
+              - generic [ref=e512]: "7"
+              - text: "\"angle\": \"eye-level\","
+              - generic [ref=e513]: "8"
+              - text: "\"focus\": \"sharp\","
+              - generic [ref=e514]: "9"
+              - text: "\"depth_of_field\": \"shallow\""
+              - generic [ref=e515]: "10"
+              - text: "},"
+              - generic [ref=e516]: "11"
+              - text: "\"composition\": {"
+              - generic [ref=e517]: "12"
+              - text: "\"position\": \"centered\","
+              - generic [ref=e518]: "13"
+              - text: "\"shadow\": \"subtle shadow beneath the product\""
+              - generic [ref=e519]: "14"
+              - text: "},"
+              - generic [ref=e520]: "15"
+              - text: "\"mood\": \"professional, modern\","
+              - generic [ref=e521]: "16"
+              - text: "\"use_case\": \"e-commerce, product showcase\""
+              - generic [ref=e522]: "17"
+              - text: "}"
+            - paragraph [ref=e523]:
+              - generic [ref=e524]:
+                - img "Generated on ImagineArt using Qwen-Image" [ref=e525]
+                - generic [ref=e526]: Generated on ImagineArt using Qwen-Image
+            - blockquote [ref=e527]:
+              - paragraph [ref=e528]:
+                - emphasis [ref=e529]: "My POV: The subtleties in the second image make it a whole lot better."
+            - link "Try Qwen-Image on ImagineArt" [ref=e531] [cursor=pointer]:
+              - /url: https://www.imagine.art/image
+              - button "Try Qwen-Image on ImagineArt" [ref=e532]:
+                - paragraph [ref=e533]: Try Qwen-Image on ImagineArt
+                - img [ref=e534]
+            - heading "5. Flux 1.1 Ultra" [level=3] [ref=e536]
+            - paragraph [ref=e537]:
+              - link "Flux 1.1 Ultra" [ref=e538] [cursor=pointer]:
+                - /url: https://www.imagine.art/features/flux-pro-1.1-ultra
+              - text: "excels at generating dynamic, realistic, and artistic content. Here’s a JSON prompt for Flux 1.1 Ultra:"
+            - paragraph [ref=e539]:
+              - strong [ref=e540]: "Text-based prompt:"
+            - paragraph [ref=e541]: A ballet dancer performing on an empty stage under dramatic lighting. Captured in the style of long-exposure photography, the dancer is illuminated by a focused spotlight, creating soft shadows in the background. Shot with a telephoto lens at f/2.8, the image evokes an elegant, fluid mood, highlighting the graceful motion and artistry of the performance.
+            - paragraph [ref=e542]:
+              - generic [ref=e543]:
+                - img "Generated on ImagineArt using Flux 1.1 Pro ultra" [ref=e544]
+                - generic [ref=e545]: Generated on ImagineArt using Flux 1.1 Pro ultra
+            - paragraph [ref=e546]:
+              - strong [ref=e547]: "JSON prompt:"
+            - code [ref=e550]:
+              - generic [ref=e551]: "1"
+              - text: "{"
+              - generic [ref=e552]: "2"
+              - text: "\"subject\": \"ballet dancer\","
+              - generic [ref=e553]: "3"
+              - text: "\"environment\": \"empty stage with dramatic lighting\","
+              - generic [ref=e554]: "4"
+              - text: "\"style\": \"long-exposure photography\","
+              - generic [ref=e555]: "5"
+              - text: "\"lighting\": \"spotlight on dancer, soft shadows in the background\","
+              - generic [ref=e556]: "6"
+              - text: "\"camera\": {"
+              - generic [ref=e557]: "7"
+              - text: "\"lens\": \"telephoto\","
+              - generic [ref=e558]: "8"
+              - text: "\"aperture\": \"f/2.8\""
+              - generic [ref=e559]: "9"
+              - text: "},"
+              - generic [ref=e560]: "10"
+              - text: "\"mood\": \"elegant, fluid\""
+              - generic [ref=e561]: "11"
+              - text: "}"
+            - paragraph [ref=e562]:
+              - generic [ref=e563]:
+                - img "Generated on ImagineArt using Flux 1.1 Pro Ultra" [ref=e564]
+                - generic [ref=e565]: Generated on ImagineArt using Flux 1.1 Pro Ultra
+            - blockquote [ref=e566]:
+              - paragraph [ref=e567]:
+                - emphasis [ref=e568]: "My POV: This is a close one — it is more about visual preference. If you like a more artistic touch to your images, then the first one aligns well."
+            - link "Try Flux 1.1 Pro Ultra on ImagineArt" [ref=e570] [cursor=pointer]:
+              - /url: https://www.imagine.art/image
+              - button "Try Flux 1.1 Pro Ultra on ImagineArt" [ref=e571]:
+                - paragraph [ref=e572]: Try Flux 1.1 Pro Ultra on ImagineArt
+                - img [ref=e573]
+            - heading "Best Practices for JSON Prompting" [level=2] [ref=e575]
+            - heading "1. Simple and Focused" [level=3] [ref=e576]
+            - paragraph [ref=e577]: When writing a text-based prompt, we usually add a ton of details to tailor the output to our needs. In JSON prompting, it is crucial to focus on necessary elements and attributes to avoid confusing the AI image generator.
+            - heading "2. Clear Terminology" [level=3] [ref=e578]
+            - paragraph [ref=e579]: Use simpler words and phrases to ensure better understanding. Avoid using different phrases to explain to the same concept. Don’t add a list of adjectives or phrases to prompt components as it can result into unwanted image elements and generations.
+            - heading "3. Experiment" [level=3] [ref=e580]
+            - paragraph [ref=e581]: Add, edit, and refine your JSON prompt with different attributes and experiment with the results before finalizing any image. Create variations with different background, appearances, and other details to optimize the AI images.
+            - heading "Final Thoughts" [level=2] [ref=e582]
+            - paragraph [ref=e583]: With clear structure and better results, JSON prompting offers improved consistency, creative freedom, and process automation. No matter which AI image generator you use, experimenting with JSON prompts can help you experiment with your creative visions — in a more efficient, quicker, and simpler way.
+            - paragraph [ref=e584]:
+              - strong [ref=e585]: "Looking for more JSON prompting guides? Read:"
+              - link "JSON prompting guide for Veo" [ref=e586] [cursor=pointer]:
+                - /url: https://www.imagine.art/blogs/veo-3-json-prompting-guide
+            - generic [ref=e588]:
+              - img "Tooba Siddiqui" [ref=e590]
+              - generic [ref=e591]:
+                - heading "Tooba Siddiqui" [level=3] [ref=e592]
+                - paragraph [ref=e593]: Tooba Siddiqui is a content marketer with a strong focus on AI trends and product innovation. She explores generative AI with a keen eye. At ImagineArt, she develops marketing content that translates cutting-edge innovation into engaging, search-driven narratives for the right audience.
+      - generic [ref=e595]:
+        - heading "More topic you may like" [level=2] [ref=e596]
+        - region [ref=e597]:
+          - generic [ref=e599]:
+            - group [ref=e600]:
+              - link "Thumbnail Prompt Guides 16 Camera Movements for Films and AI Videos avatar Saba Sohail" [ref=e601] [cursor=pointer]:
+                - /url: /blogs/camera-movements
+                - img "Thumbnail" [ref=e603]
+                - generic [ref=e604]:
+                  - paragraph [ref=e605]: Prompt Guides
+                  - heading "16 Camera Movements for Films and AI Videos" [level=2] [ref=e606]
+                  - generic [ref=e607]:
+                    - img "avatar" [ref=e609]
+                    - paragraph [ref=e610]: Saba Sohail
+            - group [ref=e611]:
+              - 'link "Thumbnail AI Image Generation ImagineArt 1.0: Use Cases and Creative Possibilities avatar Tooba Siddiqui" [ref=e612] [cursor=pointer]':
+                - /url: /blogs/imagineart-1-0-use-cases
+                - img "Thumbnail" [ref=e614]
+                - generic [ref=e615]:
+                  - paragraph [ref=e616]: AI Image Generation
+                  - 'heading "ImagineArt 1.0: Use Cases and Creative Possibilities" [level=2] [ref=e617]'
+                  - generic [ref=e618]:
+                    - img "avatar" [ref=e620]
+                    - paragraph [ref=e621]: Tooba Siddiqui
+            - group [ref=e622]:
+              - link "Thumbnail AI Image Generation Best AI Image Generators for Anime Style 2026 | ImagineArt avatar Tooba Siddiqui" [ref=e623] [cursor=pointer]:
+                - /url: /blogs/best-ai-image-generators-for-anime-style
+                - img "Thumbnail" [ref=e625]
+                - generic [ref=e626]:
+                  - paragraph [ref=e627]: AI Image Generation
+                  - heading "Best AI Image Generators for Anime Style 2026 | ImagineArt" [level=2] [ref=e628]
+                  - generic [ref=e629]:
+                    - img "avatar" [ref=e631]
+                    - paragraph [ref=e632]: Tooba Siddiqui
+            - group [ref=e633]:
+              - 'link "Thumbnail AI Image Generation ImagineArt 1.0 Overview: The Most Realistic AI Image Generator Yet avatar Tooba Siddiqui" [ref=e634] [cursor=pointer]':
+                - /url: /blogs/imagineart-1-0-overview
+                - img "Thumbnail" [ref=e636]
+                - generic [ref=e637]:
+                  - paragraph [ref=e638]: AI Image Generation
+                  - 'heading "ImagineArt 1.0 Overview: The Most Realistic AI Image Generator Yet" [level=2] [ref=e639]'
+                  - generic [ref=e640]:
+                    - img "avatar" [ref=e642]
+                    - paragraph [ref=e643]: Tooba Siddiqui
+            - group [ref=e644]:
+              - link "Thumbnail AI Image Generation ImagineArt 1.5 AI Image Generator Overview avatar Tooba Siddiqui" [ref=e645] [cursor=pointer]:
+                - /url: /blogs/imagineart-1-5-overview
+                - img "Thumbnail" [ref=e647]
+                - generic [ref=e648]:
+                  - paragraph [ref=e649]: AI Image Generation
+                  - heading "ImagineArt 1.5 AI Image Generator Overview" [level=2] [ref=e650]
+                  - generic [ref=e651]:
+                    - img "avatar" [ref=e653]
+                    - paragraph [ref=e654]: Tooba Siddiqui
+            - group [ref=e655]:
+              - link "Thumbnail AI Image Generation Best AI Image Generators for Cinematic Visuals avatar Tooba Siddiqui" [ref=e656] [cursor=pointer]:
+                - /url: /blogs/best-ai-image-generators-for-cinematic-visuals
+                - img "Thumbnail" [ref=e658]
+                - generic [ref=e659]:
+                  - paragraph [ref=e660]: AI Image Generation
+                  - heading "Best AI Image Generators for Cinematic Visuals" [level=2] [ref=e661]
+                  - generic [ref=e662]:
+                    - img "avatar" [ref=e664]
+                    - paragraph [ref=e665]: Tooba Siddiqui
+            - group [ref=e666]:
+              - 'link "Thumbnail AI Image Generation Imagen 4 Pricing: Free vs Paid Plans avatar Tooba Siddiqui" [ref=e667] [cursor=pointer]':
+                - /url: /blogs/imagen-4-pricing
+                - img "Thumbnail" [ref=e669]
+                - generic [ref=e670]:
+                  - paragraph [ref=e671]: AI Image Generation
+                  - 'heading "Imagen 4 Pricing: Free vs Paid Plans" [level=2] [ref=e672]'
+                  - generic [ref=e673]:
+                    - img "avatar" [ref=e675]
+                    - paragraph [ref=e676]: Tooba Siddiqui
+            - group [ref=e677]:
+              - link "Thumbnail AI Image Generation Nano Banana Pro — What Can We Expect? | ImagineArt avatar Tooba Siddiqui" [ref=e678] [cursor=pointer]:
+                - /url: /blogs/nano-banana-2-what-can-we-expect
+                - img "Thumbnail" [ref=e680]
+                - generic [ref=e681]:
+                  - paragraph [ref=e682]: AI Image Generation
+                  - heading "Nano Banana Pro — What Can We Expect? | ImagineArt" [level=2] [ref=e683]
+                  - generic [ref=e684]:
+                    - img "avatar" [ref=e686]
+                    - paragraph [ref=e687]: Tooba Siddiqui
+            - group [ref=e688]:
+              - link "Thumbnail Prompt Guides Prompt Guide for ImagineArt 1.0 AI Image Generator | ImagineArt avatar Tooba Siddiqui" [ref=e689] [cursor=pointer]:
+                - /url: /blogs/imagineart-1-0-prompt-guide
+                - img "Thumbnail" [ref=e691]
+                - generic [ref=e692]:
+                  - paragraph [ref=e693]: Prompt Guides
+                  - heading "Prompt Guide for ImagineArt 1.0 AI Image Generator | ImagineArt" [level=2] [ref=e694]
+                  - generic [ref=e695]:
+                    - img "avatar" [ref=e697]
+                    - paragraph [ref=e698]: Tooba Siddiqui
+            - group [ref=e699]:
+              - link "Thumbnail Marketing How AI-Generated Product Photos Can Increase Your Sales and Improve Customer Engagement avatar Tooba Siddiqui" [ref=e700] [cursor=pointer]:
+                - /url: /blogs/how-ai-generated-product-photos-can-increase-your-sales
+                - img "Thumbnail" [ref=e702]
+                - generic [ref=e703]:
+                  - paragraph [ref=e704]: Marketing
+                  - heading "How AI-Generated Product Photos Can Increase Your Sales and Improve Customer Engagement" [level=2] [ref=e705]
+                  - generic [ref=e706]:
+                    - img "avatar" [ref=e708]
+                    - paragraph [ref=e709]: Tooba Siddiqui
+            - group [ref=e710]:
+              - link "Thumbnail AI Image Generation Best AI Image Generators for Commercial Use | ImagineArt avatar Tooba Siddiqui" [ref=e711] [cursor=pointer]:
+                - /url: /blogs/best-ai-image-generators-for-commercial-use
+                - img "Thumbnail" [ref=e713]
+                - generic [ref=e714]:
+                  - paragraph [ref=e715]: AI Image Generation
+                  - heading "Best AI Image Generators for Commercial Use | ImagineArt" [level=2] [ref=e716]
+                  - generic [ref=e717]:
+                    - img "avatar" [ref=e719]
+                    - paragraph [ref=e720]: Tooba Siddiqui
+            - group [ref=e721]:
+              - link "Thumbnail AI Image Generation Best AI Image Generators for Marketers in 2026 avatar Tooba Siddiqui" [ref=e722] [cursor=pointer]:
+                - /url: /blogs/best-ai-image-generators-for-marketers
+                - img "Thumbnail" [ref=e724]
+                - generic [ref=e725]:
+                  - paragraph [ref=e726]: AI Image Generation
+                  - heading "Best AI Image Generators for Marketers in 2026" [level=2] [ref=e727]
+                  - generic [ref=e728]:
+                    - img "avatar" [ref=e730]
+                    - paragraph [ref=e731]: Tooba Siddiqui
+            - group [ref=e732]:
+              - link "Thumbnail AI Image Generation Best AI Image Generators for Commercials | ImagineArt avatar Tooba Siddiqui" [ref=e733] [cursor=pointer]:
+                - /url: /blogs/best-ai-image-generators-for-commercials
+                - img "Thumbnail" [ref=e735]
+                - generic [ref=e736]:
+                  - paragraph [ref=e737]: AI Image Generation
+                  - heading "Best AI Image Generators for Commercials | ImagineArt" [level=2] [ref=e738]
+                  - generic [ref=e739]:
+                    - img "avatar" [ref=e741]
+                    - paragraph [ref=e742]: Tooba Siddiqui
+            - group [ref=e743]:
+              - link "Thumbnail AI Image Generation Best AI Image Generators for Photorealistic Visuals avatar Tooba Siddiqui" [ref=e744] [cursor=pointer]:
+                - /url: /blogs/best-ai-image-generators-for-photorealistic-visuals
+                - img "Thumbnail" [ref=e746]
+                - generic [ref=e747]:
+                  - paragraph [ref=e748]: AI Image Generation
+                  - heading "Best AI Image Generators for Photorealistic Visuals" [level=2] [ref=e749]
+                  - generic [ref=e750]:
+                    - img "avatar" [ref=e752]
+                    - paragraph [ref=e753]: Tooba Siddiqui
+            - group [ref=e754]:
+              - link "Thumbnail AI Image Generation Google Imagen 4 Overview | ImagineArt avatar Tooba Siddiqui" [ref=e755] [cursor=pointer]:
+                - /url: /blogs/google-imagen-4-overview
+                - img "Thumbnail" [ref=e757]
+                - generic [ref=e758]:
+                  - paragraph [ref=e759]: AI Image Generation
+                  - heading "Google Imagen 4 Overview | ImagineArt" [level=2] [ref=e760]
+                  - generic [ref=e761]:
+                    - img "avatar" [ref=e763]
+                    - paragraph [ref=e764]: Tooba Siddiqui
+            - group [ref=e765]:
+              - 'link "Thumbnail AI Image Generation Qwen AI Image Generator: Full Review, Features & How to Use avatar Tooba Siddiqui" [ref=e766] [cursor=pointer]':
+                - /url: /blogs/qwen-ai-image-generator
+                - img "Thumbnail" [ref=e768]
+                - generic [ref=e769]:
+                  - paragraph [ref=e770]: AI Image Generation
+                  - 'heading "Qwen AI Image Generator: Full Review, Features & How to Use" [level=2] [ref=e771]'
+                  - generic [ref=e772]:
+                    - img "avatar" [ref=e774]
+                    - paragraph [ref=e775]: Tooba Siddiqui
+            - group [ref=e776]:
+              - link "Thumbnail AI Image Generation Ideogram vs. Midjourney vs. ImagineArt | ImagineArt avatar Tooba Siddiqui" [ref=e777] [cursor=pointer]:
+                - /url: /blogs/ideogram-vs-midjourney-vs-imagine-art
+                - img "Thumbnail" [ref=e779]
+                - generic [ref=e780]:
+                  - paragraph [ref=e781]: AI Image Generation
+                  - heading "Ideogram vs. Midjourney vs. ImagineArt | ImagineArt" [level=2] [ref=e782]
+                  - generic [ref=e783]:
+                    - img "avatar" [ref=e785]
+                    - paragraph [ref=e786]: Tooba Siddiqui
+            - group [ref=e787]:
+              - link "Thumbnail AI Image Generation Seedream 4.5 Guide For Image Generation | ImagineArt avatar Arooj Ishtiaq" [ref=e788] [cursor=pointer]:
+                - /url: /blogs/seedream-4-5-guide
+                - img "Thumbnail" [ref=e790]
+                - generic [ref=e791]:
+                  - paragraph [ref=e792]: AI Image Generation
+                  - heading "Seedream 4.5 Guide For Image Generation | ImagineArt" [level=2] [ref=e793]
+                  - generic [ref=e794]:
+                    - img "avatar" [ref=e796]
+                    - paragraph [ref=e797]: Arooj Ishtiaq
+            - group [ref=e798]:
+              - link "Thumbnail ImagineArt for Teams AI Filmmaking | Ilnar Vafin x ImagineArt Casestudy avatar Zahida Misher" [ref=e799] [cursor=pointer]:
+                - /url: /blogs/ai-filmmaking-ilnar-vafin-x-imagine-art-casestudy
+                - img "Thumbnail" [ref=e801]
+                - generic [ref=e802]:
+                  - paragraph [ref=e803]: ImagineArt for Teams
+                  - heading "AI Filmmaking | Ilnar Vafin x ImagineArt Casestudy" [level=2] [ref=e804]
+                  - generic [ref=e805]:
+                    - img "avatar" [ref=e807]
+                    - paragraph [ref=e808]: Zahida Misher
+            - group [ref=e809]:
+              - link "Thumbnail ImagineArt for Teams AI Filmmaking - D|Studio x ImagineArt Case Study avatar Zahida Misher" [ref=e810] [cursor=pointer]:
+                - /url: /blogs/ai-filmmaking-d-studio-x-imagine-art-case-study
+                - img "Thumbnail" [ref=e812]
+                - generic [ref=e813]:
+                  - paragraph [ref=e814]: ImagineArt for Teams
+                  - heading "AI Filmmaking - D|Studio x ImagineArt Case Study" [level=2] [ref=e815]
+                  - generic [ref=e816]:
+                    - img "avatar" [ref=e818]
+                    - paragraph [ref=e819]: Zahida Misher
+            - group [ref=e820]:
+              - link "Thumbnail AI Image Generation Crafting Engaging Social Media Posts with Text-to-Image Conversion avatar Sophia Felix" [ref=e821] [cursor=pointer]:
+                - /url: /blogs/crafting-engaging-social-media-posts-with-text-to-image-conversion
+                - img "Thumbnail" [ref=e823]
+                - generic [ref=e824]:
+                  - paragraph [ref=e825]: AI Image Generation
+                  - heading "Crafting Engaging Social Media Posts with Text-to-Image Conversion" [level=2] [ref=e826]
+                  - generic [ref=e827]:
+                    - img "avatar" [ref=e829]
+                    - paragraph [ref=e830]: Sophia Felix
+            - group [ref=e831]:
+              - 'link "Thumbnail MAI-Image-1 Overview: First Ever Microsoft AI Image Generator avatar" [ref=e832] [cursor=pointer]':
+                - /url: /blogs/mai-image-1-overview
+                - img "Thumbnail" [ref=e834]
+                - generic [ref=e835]:
+                  - paragraph
+                  - 'heading "MAI-Image-1 Overview: First Ever Microsoft AI Image Generator" [level=2] [ref=e836]'
+                  - generic [ref=e837]:
+                    - img "avatar" [ref=e839]
+                    - paragraph
+            - group [ref=e840]:
+              - link "Thumbnail AI Image Generation 10 Best AI Tools for E-Commerce | ImagineArt avatar Faisal Saeed" [ref=e841] [cursor=pointer]:
+                - /url: /blogs/best-ai-tools-for-e-commerce
+                - img "Thumbnail" [ref=e843]
+                - generic [ref=e844]:
+                  - paragraph [ref=e845]: AI Image Generation
+                  - heading "10 Best AI Tools for E-Commerce | ImagineArt" [level=2] [ref=e846]
+                  - generic [ref=e847]:
+                    - img "avatar" [ref=e849]
+                    - paragraph [ref=e850]: Faisal Saeed
+            - group [ref=e851]:
+              - link "Thumbnail ImagineArt for Teams Top Marketing Trends to Follow in 2026 avatar Zahida Misher" [ref=e852] [cursor=pointer]:
+                - /url: /blogs/top-marketing-trends-to-follow-in-2025
+                - img "Thumbnail" [ref=e854]
+                - generic [ref=e855]:
+                  - paragraph [ref=e856]: ImagineArt for Teams
+                  - heading "Top Marketing Trends to Follow in 2026" [level=2] [ref=e857]
+                  - generic [ref=e858]:
+                    - img "avatar" [ref=e860]
+                    - paragraph [ref=e861]: Zahida Misher
+            - group [ref=e862]:
+              - link "Thumbnail ImagineArt for Teams The Secret to Scaling Brand Consistency Across Teams avatar Zahida Misher" [ref=e863] [cursor=pointer]:
+                - /url: /blogs/scaling-brand-consistency-across-teams
+                - img "Thumbnail" [ref=e865]
+                - generic [ref=e866]:
+                  - paragraph [ref=e867]: ImagineArt for Teams
+                  - heading "The Secret to Scaling Brand Consistency Across Teams" [level=2] [ref=e868]
+                  - generic [ref=e869]:
+                    - img "avatar" [ref=e871]
+                    - paragraph [ref=e872]: Zahida Misher
+            - group [ref=e873]:
+              - link "Thumbnail AI Image Generation How to Use Imagen 4 AI Image Generator | ImagineArt avatar Tooba Siddiqui" [ref=e874] [cursor=pointer]:
+                - /url: /blogs/how-to-use-imagen-4
+                - img "Thumbnail" [ref=e876]
+                - generic [ref=e877]:
+                  - paragraph [ref=e878]: AI Image Generation
+                  - heading "How to Use Imagen 4 AI Image Generator | ImagineArt" [level=2] [ref=e879]
+                  - generic [ref=e880]:
+                    - img "avatar" [ref=e882]
+                    - paragraph [ref=e883]: Tooba Siddiqui
+            - group [ref=e884]:
+              - link "Thumbnail AI Image Generation How Much Does AI Image Generation Cost? avatar Saba Sohail" [ref=e885] [cursor=pointer]:
+                - /url: /blogs/ai-image-generation-cost
+                - img "Thumbnail" [ref=e887]
+                - generic [ref=e888]:
+                  - paragraph [ref=e889]: AI Image Generation
+                  - heading "How Much Does AI Image Generation Cost?" [level=2] [ref=e890]
+                  - generic [ref=e891]:
+                    - img "avatar" [ref=e893]
+                    - paragraph [ref=e894]: Saba Sohail
+            - group [ref=e895]:
+              - 'link "Thumbnail AI Image Generation Exploring the World of Text-to-Image AI: Applications and Examples avatar Sophia Felix" [ref=e896] [cursor=pointer]':
+                - /url: /blogs/exploring-the-world-of-text-to-image-ai-applications-and-examples
+                - img "Thumbnail" [ref=e898]
+                - generic [ref=e899]:
+                  - paragraph [ref=e900]: AI Image Generation
+                  - 'heading "Exploring the World of Text-to-Image AI: Applications and Examples" [level=2] [ref=e901]'
+                  - generic [ref=e902]:
+                    - img "avatar" [ref=e904]
+                    - paragraph [ref=e905]: Sophia Felix
+            - group [ref=e906]:
+              - link "Thumbnail Prompt Guides JSON Prompting for AI Video Generation | ImagineArt avatar Tooba Siddiqui" [ref=e907] [cursor=pointer]:
+                - /url: /blogs/json-prompting-for-ai-video-generation
+                - img "Thumbnail" [ref=e909]
+                - generic [ref=e910]:
+                  - paragraph [ref=e911]: Prompt Guides
+                  - heading "JSON Prompting for AI Video Generation | ImagineArt" [level=2] [ref=e912]
+                  - generic [ref=e913]:
+                    - img "avatar" [ref=e915]
+                    - paragraph [ref=e916]: Tooba Siddiqui
+            - group [ref=e917]:
+              - 'link "Thumbnail AI Image Generation How to Prompt AI to Create an Image: The Key to Stunning Digital Art avatar Sophia Felix" [ref=e918] [cursor=pointer]':
+                - /url: /blogs/how-to-prompt-ai-to-create-an-image-the-key-to-stunning-digital-art
+                - img "Thumbnail" [ref=e920]
+                - generic [ref=e921]:
+                  - paragraph [ref=e922]: AI Image Generation
+                  - 'heading "How to Prompt AI to Create an Image: The Key to Stunning Digital Art" [level=2] [ref=e923]'
+                  - generic [ref=e924]:
+                    - img "avatar" [ref=e926]
+                    - paragraph [ref=e927]: Sophia Felix
+            - group [ref=e928]:
+              - link "Thumbnail Prompt Guides Seedream 5.0 Lite Prompt Guide with 30 Ready-to-Use Prompts avatar Arooj Ishtiaq" [ref=e929] [cursor=pointer]:
+                - /url: /blogs/seedream-5-0-prompt-guide
+                - img "Thumbnail" [ref=e931]
+                - generic [ref=e932]:
+                  - paragraph [ref=e933]: Prompt Guides
+                  - heading "Seedream 5.0 Lite Prompt Guide with 30 Ready-to-Use Prompts" [level=2] [ref=e934]
+                  - generic [ref=e935]:
+                    - img "avatar" [ref=e937]
+                    - paragraph [ref=e938]: Arooj Ishtiaq
+            - group [ref=e939]:
+              - link "Thumbnail AI Image Generation 60 Vision Board Ideas to Spark Your 2026 Goals avatar Tooba Siddiqui" [ref=e940] [cursor=pointer]:
+                - /url: /blogs/vision-board-ideas
+                - img "Thumbnail" [ref=e942]
+                - generic [ref=e943]:
+                  - paragraph [ref=e944]: AI Image Generation
+                  - heading "60 Vision Board Ideas to Spark Your 2026 Goals" [level=2] [ref=e945]
+                  - generic [ref=e946]:
+                    - img "avatar" [ref=e948]
+                    - paragraph [ref=e949]: Tooba Siddiqui
+            - group [ref=e950]:
+              - link "Thumbnail ImagineArt for Teams AI Short Film | Rico x ImagineArt Case Study avatar Zahida Misher" [ref=e951] [cursor=pointer]:
+                - /url: /blogs/ai-filmmaking-rico-x-imagine-art-case-study
+                - img "Thumbnail" [ref=e953]
+                - generic [ref=e954]:
+                  - paragraph [ref=e955]: ImagineArt for Teams
+                  - heading "AI Short Film | Rico x ImagineArt Case Study" [level=2] [ref=e956]
+                  - generic [ref=e957]:
+                    - img "avatar" [ref=e959]
+                    - paragraph [ref=e960]: Zahida Misher
+            - group [ref=e961]:
+              - 'link "Thumbnail AI Image Generation MAI-Image-1 Overview: First Ever Microsoft AI Image Generator avatar Tooba Siddiqui" [ref=e962] [cursor=pointer]':
+                - /url: /blogs/mai-image-1-review
+                - img "Thumbnail" [ref=e964]
+                - generic [ref=e965]:
+                  - paragraph [ref=e966]: AI Image Generation
+                  - 'heading "MAI-Image-1 Overview: First Ever Microsoft AI Image Generator" [level=2] [ref=e967]'
+                  - generic [ref=e968]:
+                    - img "avatar" [ref=e970]
+                    - paragraph [ref=e971]: Tooba Siddiqui
+            - group [ref=e972]:
+              - link "Thumbnail AI Image Generation How to Create Adorable Anime Characters with an AI Image Generator avatar Sophia Felix" [ref=e973] [cursor=pointer]:
+                - /url: /blogs/how-to-create-adorable-anime-characters-with-an-ai-image-generator
+                - img "Thumbnail" [ref=e975]
+                - generic [ref=e976]:
+                  - paragraph [ref=e977]: AI Image Generation
+                  - heading "How to Create Adorable Anime Characters with an AI Image Generator" [level=2] [ref=e978]
+                  - generic [ref=e979]:
+                    - img "avatar" [ref=e981]
+                    - paragraph [ref=e982]: Sophia Felix
+            - group [ref=e983]:
+              - link "Thumbnail Imagine Apps Trending AI Photo Effects 2026 | ImagineArt avatar Tooba Siddiqui" [ref=e984] [cursor=pointer]:
+                - /url: /blogs/trending-ai-photo-effects
+                - img "Thumbnail" [ref=e986]
+                - generic [ref=e987]:
+                  - paragraph [ref=e988]: Imagine Apps
+                  - heading "Trending AI Photo Effects 2026 | ImagineArt" [level=2] [ref=e989]
+                  - generic [ref=e990]:
+                    - img "avatar" [ref=e992]
+                    - paragraph [ref=e993]: Tooba Siddiqui
+            - group [ref=e994]:
+              - link "Thumbnail AI Image Generation How to make a vision board - Guide 101 | ImagineArt avatar Tooba Siddiqui" [ref=e995] [cursor=pointer]:
+                - /url: /blogs/how-to-make-a-vision-board
+                - img "Thumbnail" [ref=e997]
+                - generic [ref=e998]:
+                  - paragraph [ref=e999]: AI Image Generation
+                  - heading "How to make a vision board - Guide 101 | ImagineArt" [level=2] [ref=e1000]
+                  - generic [ref=e1001]:
+                    - img "avatar" [ref=e1003]
+                    - paragraph [ref=e1004]: Tooba Siddiqui
+            - group [ref=e1005]:
+              - 'link "Thumbnail AI Image Generation Painting without Limits: Ideate & Imagine AI Art Generator avatar Sophia Felix" [ref=e1006] [cursor=pointer]':
+                - /url: /blogs/painting-without-limits-real-time-canvas-and-imagine-ai-art-generator
+                - img "Thumbnail" [ref=e1008]
+                - generic [ref=e1009]:
+                  - paragraph [ref=e1010]: AI Image Generation
+                  - 'heading "Painting without Limits: Ideate & Imagine AI Art Generator" [level=2] [ref=e1011]'
+                  - generic [ref=e1012]:
+                    - img "avatar" [ref=e1014]
+                    - paragraph [ref=e1015]: Sophia Felix
+            - group [ref=e1016]:
+              - 'link "Thumbnail AI Image Generation Remixing Through Time: Exploring Historical and Contemporary Examples of Image Remixing avatar Sophia Felix" [ref=e1017] [cursor=pointer]':
+                - /url: /blogs/remixing-through-time-exploring-historical-and-contemporary-examples-of-image-remixing
+                - img "Thumbnail" [ref=e1019]
+                - generic [ref=e1020]:
+                  - paragraph [ref=e1021]: AI Image Generation
+                  - 'heading "Remixing Through Time: Exploring Historical and Contemporary Examples of Image Remixing" [level=2] [ref=e1022]'
+                  - generic [ref=e1023]:
+                    - img "avatar" [ref=e1025]
+                    - paragraph [ref=e1026]: Sophia Felix
+            - group [ref=e1027]:
+              - link "Thumbnail AI Image Generation 15+ Vision Board Quotes | ImagineArt avatar Tooba Siddiqui" [ref=e1028] [cursor=pointer]:
+                - /url: /blogs/vision-board-quotes
+                - img "Thumbnail" [ref=e1030]
+                - generic [ref=e1031]:
+                  - paragraph [ref=e1032]: AI Image Generation
+                  - heading "15+ Vision Board Quotes | ImagineArt" [level=2] [ref=e1033]
+                  - generic [ref=e1034]:
+                    - img "avatar" [ref=e1036]
+                    - paragraph [ref=e1037]: Tooba Siddiqui
+            - group [ref=e1038]:
+              - link "Thumbnail AI Image Generation 2025 Vision Board – Design, Manifest, Repeat | ImagineArt avatar Tooba Siddiqui" [ref=e1039] [cursor=pointer]:
+                - /url: /blogs/2025-vision-board
+                - img "Thumbnail" [ref=e1041]
+                - generic [ref=e1042]:
+                  - paragraph [ref=e1043]: AI Image Generation
+                  - heading "2025 Vision Board – Design, Manifest, Repeat | ImagineArt" [level=2] [ref=e1044]
+                  - generic [ref=e1045]:
+                    - img "avatar" [ref=e1047]
+                    - paragraph [ref=e1048]: Tooba Siddiqui
+            - group [ref=e1049]:
+              - link "Thumbnail AI Image Generation Our Favorite Settings to Generate the Best Anime Art in Imagine avatar Ryan Hayden" [ref=e1050] [cursor=pointer]:
+                - /url: /blogs/our-favorite-settings-to-generate-the-best-anime-art-in-imagine
+                - img "Thumbnail" [ref=e1052]
+                - generic [ref=e1053]:
+                  - paragraph [ref=e1054]: AI Image Generation
+                  - heading "Our Favorite Settings to Generate the Best Anime Art in Imagine" [level=2] [ref=e1055]
+                  - generic [ref=e1056]:
+                    - img "avatar" [ref=e1058]
+                    - paragraph [ref=e1059]: Ryan Hayden
+            - group [ref=e1060]:
+              - 'link "Thumbnail AI Image Generation Google Imagen 3: Full Review, Features & Use Cases | ImagineArt avatar Tooba Siddiqui" [ref=e1061] [cursor=pointer]':
+                - /url: /blogs/google-imagen-3-features
+                - img "Thumbnail" [ref=e1063]
+                - generic [ref=e1064]:
+                  - paragraph [ref=e1065]: AI Image Generation
+                  - 'heading "Google Imagen 3: Full Review, Features & Use Cases | ImagineArt" [level=2] [ref=e1066]'
+                  - generic [ref=e1067]:
+                    - img "avatar" [ref=e1069]
+                    - paragraph [ref=e1070]: Tooba Siddiqui
+            - group [ref=e1071]:
+              - link "Thumbnail AI Image Generation Ideogram AI Features | ImagineArt avatar Tooba Siddiqui" [ref=e1072] [cursor=pointer]:
+                - /url: /blogs/ideogram-ai-features
+                - img "Thumbnail" [ref=e1074]
+                - generic [ref=e1075]:
+                  - paragraph [ref=e1076]: AI Image Generation
+                  - heading "Ideogram AI Features | ImagineArt" [level=2] [ref=e1077]
+                  - generic [ref=e1078]:
+                    - img "avatar" [ref=e1080]
+                    - paragraph [ref=e1081]: Tooba Siddiqui
+            - group [ref=e1082]:
+              - 'link "Thumbnail AI Image Generation Transform Your Images: A Step-by-Step Guide to Imagine AI Image Remix avatar Ryan Hayden" [ref=e1083] [cursor=pointer]':
+                - /url: /blogs/transform-your-images-a-step-by-step-guide-to-imagine-ai-image-remix
+                - img "Thumbnail" [ref=e1085]
+                - generic [ref=e1086]:
+                  - paragraph [ref=e1087]: AI Image Generation
+                  - 'heading "Transform Your Images: A Step-by-Step Guide to Imagine AI Image Remix" [level=2] [ref=e1088]'
+                  - generic [ref=e1089]:
+                    - img "avatar" [ref=e1091]
+                    - paragraph [ref=e1092]: Ryan Hayden
+            - group [ref=e1093]:
+              - link "Thumbnail AI Image Generation How to Create Realistic AI Images with ImagineArt 1.0 avatar Sophia Felix" [ref=e1094] [cursor=pointer]:
+                - /url: /blogs/how-to-create-realistic-ai-images-with-the-imagine-ai-image-generator
+                - img "Thumbnail" [ref=e1096]
+                - generic [ref=e1097]:
+                  - paragraph [ref=e1098]: AI Image Generation
+                  - heading "How to Create Realistic AI Images with ImagineArt 1.0" [level=2] [ref=e1099]
+                  - generic [ref=e1100]:
+                    - img "avatar" [ref=e1102]
+                    - paragraph [ref=e1103]: Sophia Felix
+            - group [ref=e1104]:
+              - link "Thumbnail AI Image Generation Harnessing the Creative Power of Imagine AI Art Generator in Visual Learning avatar Ryan Hayden" [ref=e1105] [cursor=pointer]:
+                - /url: /blogs/harnessing-the-creative-power-of-imagine-ai-art-generator-in-visual-learning
+                - img "Thumbnail" [ref=e1107]
+                - generic [ref=e1108]:
+                  - paragraph [ref=e1109]: AI Image Generation
+                  - heading "Harnessing the Creative Power of Imagine AI Art Generator in Visual Learning" [level=2] [ref=e1110]
+                  - generic [ref=e1111]:
+                    - img "avatar" [ref=e1113]
+                    - paragraph [ref=e1114]: Ryan Hayden
+            - group [ref=e1115]:
+              - link "Thumbnail AI Image Generation How AI Transforms Text into Visual Art avatar Sophia Felix" [ref=e1116] [cursor=pointer]:
+                - /url: /blogs/how-ai-transforms-text-into-visual-art-1
+                - img "Thumbnail" [ref=e1118]
+                - generic [ref=e1119]:
+                  - paragraph [ref=e1120]: AI Image Generation
+                  - heading "How AI Transforms Text into Visual Art" [level=2] [ref=e1121]
+                  - generic [ref=e1122]:
+                    - img "avatar" [ref=e1124]
+                    - paragraph [ref=e1125]: Sophia Felix
+            - group [ref=e1126]:
+              - link "Thumbnail AI Image Generation Best AI Image Generators for Artistic Visuals avatar Tooba Siddiqui" [ref=e1127] [cursor=pointer]:
+                - /url: /blogs/best-ai-image-generators-for-artistic-visuals
+                - img "Thumbnail" [ref=e1129]
+                - generic [ref=e1130]:
+                  - paragraph [ref=e1131]: AI Image Generation
+                  - heading "Best AI Image Generators for Artistic Visuals" [level=2] [ref=e1132]
+                  - generic [ref=e1133]:
+                    - img "avatar" [ref=e1135]
+                    - paragraph [ref=e1136]: Tooba Siddiqui
+            - group [ref=e1137]:
+              - link "Thumbnail AI Image Generation A Guide to Using Our AI Image Generator for Concept Art avatar Ryan Hayden" [ref=e1138] [cursor=pointer]:
+                - /url: /blogs/a-guide-to-using-our-ai-image-generator-for-concept-art
+                - img "Thumbnail" [ref=e1140]
+                - generic [ref=e1141]:
+                  - paragraph [ref=e1142]: AI Image Generation
+                  - heading "A Guide to Using Our AI Image Generator for Concept Art" [level=2] [ref=e1143]
+                  - generic [ref=e1144]:
+                    - img "avatar" [ref=e1146]
+                    - paragraph [ref=e1147]: Ryan Hayden
+            - group [ref=e1148]:
+              - link "Thumbnail AI Image Generation How to Write a Good Prompt Using ImagineArt avatar Sophia Felix" [ref=e1149] [cursor=pointer]:
+                - /url: /blogs/how-to-write-a-good-prompt-using-imagine
+                - img "Thumbnail" [ref=e1151]
+                - generic [ref=e1152]:
+                  - paragraph [ref=e1153]: AI Image Generation
+                  - heading "How to Write a Good Prompt Using ImagineArt" [level=2] [ref=e1154]
+                  - generic [ref=e1155]:
+                    - img "avatar" [ref=e1157]
+                    - paragraph [ref=e1158]: Sophia Felix
+            - group [ref=e1159]:
+              - 'link "Thumbnail AI Image Generation Remixing Nature: Creating Surreal Landscapes through Image Remixing avatar Sophia Felix" [ref=e1160] [cursor=pointer]':
+                - /url: /blogs/remixing-nature-creating-surreal-landscapes-through-image-remixing
+                - img "Thumbnail" [ref=e1162]
+                - generic [ref=e1163]:
+                  - paragraph [ref=e1164]: AI Image Generation
+                  - 'heading "Remixing Nature: Creating Surreal Landscapes through Image Remixing" [level=2] [ref=e1165]'
+                  - generic [ref=e1166]:
+                    - img "avatar" [ref=e1168]
+                    - paragraph [ref=e1169]: Sophia Felix
+            - group [ref=e1170]:
+              - 'link "Thumbnail AI Image Generation Mastering AI Artistry in Imagine: Your Creative Journey with Magical ''Seed'' avatar Ryan Hayden" [ref=e1171] [cursor=pointer]':
+                - /url: /blogs/mastering-ai-artistry-in-imagine-your-creative-journey-with-magical-seed
+                - img "Thumbnail" [ref=e1173]
+                - generic [ref=e1174]:
+                  - paragraph [ref=e1175]: AI Image Generation
+                  - 'heading "Mastering AI Artistry in Imagine: Your Creative Journey with Magical ''Seed''" [level=2] [ref=e1176]'
+                  - generic [ref=e1177]:
+                    - img "avatar" [ref=e1179]
+                    - paragraph [ref=e1180]: Ryan Hayden
+            - group [ref=e1181]:
+              - 'link "Thumbnail AI Image Generation Imagine AI Art Generator: All That You Need to Know Before You Start avatar Ryan Hayden" [ref=e1182] [cursor=pointer]':
+                - /url: /blogs/imagine-ai-art-generator-all-that-you-need-to-know-before-you-start
+                - img "Thumbnail" [ref=e1184]
+                - generic [ref=e1185]:
+                  - paragraph [ref=e1186]: AI Image Generation
+                  - 'heading "Imagine AI Art Generator: All That You Need to Know Before You Start" [level=2] [ref=e1187]'
+                  - generic [ref=e1188]:
+                    - img "avatar" [ref=e1190]
+                    - paragraph [ref=e1191]: Ryan Hayden
+            - group [ref=e1192]:
+              - 'link "Thumbnail AI Image Generation Reviving the Past: AI-Powered Artistic Exploration of Ancient Civilizations avatar Ryan Hayden" [ref=e1193] [cursor=pointer]':
+                - /url: /blogs/reviving-the-past-ai-powered-artistic-exploration-of-ancient-civilizations
+                - img "Thumbnail" [ref=e1195]
+                - generic [ref=e1196]:
+                  - paragraph [ref=e1197]: AI Image Generation
+                  - 'heading "Reviving the Past: AI-Powered Artistic Exploration of Ancient Civilizations" [level=2] [ref=e1198]'
+                  - generic [ref=e1199]:
+                    - img "avatar" [ref=e1201]
+                    - paragraph [ref=e1202]: Ryan Hayden
+            - group [ref=e1203]:
+              - link "Thumbnail AI Image Generation 36 Studio Ghibli Art Stunts in Marketing with ImagineArt avatar Sophia Felix" [ref=e1204] [cursor=pointer]:
+                - /url: /blogs/studio-ghibli-art
+                - img "Thumbnail" [ref=e1206]
+                - generic [ref=e1207]:
+                  - paragraph [ref=e1208]: AI Image Generation
+                  - heading "36 Studio Ghibli Art Stunts in Marketing with ImagineArt" [level=2] [ref=e1209]
+                  - generic [ref=e1210]:
+                    - img "avatar" [ref=e1212]
+                    - paragraph [ref=e1213]: Sophia Felix
+            - group [ref=e1214]:
+              - 'link "Thumbnail AI Image Generation Imagine AI Art Generator: Your Guide to Creating Your Own Disney Character avatar Sophia Felix" [ref=e1215] [cursor=pointer]':
+                - /url: /blogs/imagine-ai-art-generator-your-guide-to-creating-your-own-disney-character
+                - img "Thumbnail" [ref=e1217]
+                - generic [ref=e1218]:
+                  - paragraph [ref=e1219]: AI Image Generation
+                  - 'heading "Imagine AI Art Generator: Your Guide to Creating Your Own Disney Character" [level=2] [ref=e1220]'
+                  - generic [ref=e1221]:
+                    - img "avatar" [ref=e1223]
+                    - paragraph [ref=e1224]: Sophia Felix
+            - group [ref=e1225]:
+              - link "Thumbnail Design Design Your Perfect New Year Party with ImagineArt avatar" [ref=e1226] [cursor=pointer]:
+                - /url: /blogs/design-new-year-party
+                - img "Thumbnail" [ref=e1228]
+                - generic [ref=e1229]:
+                  - paragraph [ref=e1230]: Design
+                  - heading "Design Your Perfect New Year Party with ImagineArt" [level=2] [ref=e1231]
+                  - generic [ref=e1232]:
+                    - img "avatar" [ref=e1234]
+                    - paragraph
+            - group [ref=e1235]:
+              - 'link "Thumbnail AI Image Generation Types of AI Art: From Style Transfer to Generative Adversarial Networks (GANs) avatar Ryan Hayden" [ref=e1236] [cursor=pointer]':
+                - /url: /blogs/types-of-ai-art-from-style-transfer-to-generative-adversarial-networks-ga-ns
+                - img "Thumbnail" [ref=e1238]
+                - generic [ref=e1239]:
+                  - paragraph [ref=e1240]: AI Image Generation
+                  - 'heading "Types of AI Art: From Style Transfer to Generative Adversarial Networks (GANs)" [level=2] [ref=e1241]'
+                  - generic [ref=e1242]:
+                    - img "avatar" [ref=e1244]
+                    - paragraph [ref=e1245]: Ryan Hayden
+            - group [ref=e1246]:
+              - 'link "Thumbnail AI Image Generation The Future of Digital Art: Image Upscaler for High-Fidelity Graphics avatar Sophia Felix" [ref=e1247] [cursor=pointer]':
+                - /url: /blogs/the-future-of-digital-art-image-upscaler-for-high-fidelity-graphics
+                - img "Thumbnail" [ref=e1249]
+                - generic [ref=e1250]:
+                  - paragraph [ref=e1251]: AI Image Generation
+                  - 'heading "The Future of Digital Art: Image Upscaler for High-Fidelity Graphics" [level=2] [ref=e1252]'
+                  - generic [ref=e1253]:
+                    - img "avatar" [ref=e1255]
+                    - paragraph [ref=e1256]: Sophia Felix
+            - group [ref=e1257]:
+              - link "Thumbnail AI Image Generation How to Create the AI Graffiti Effect avatar Sophia Felix" [ref=e1258] [cursor=pointer]:
+                - /url: /blogs/how-to-create-the-ai-graffiti-effect
+                - img "Thumbnail" [ref=e1260]
+                - generic [ref=e1261]:
+                  - paragraph [ref=e1262]: AI Image Generation
+                  - heading "How to Create the AI Graffiti Effect" [level=2] [ref=e1263]
+                  - generic [ref=e1264]:
+                    - img "avatar" [ref=e1266]
+                    - paragraph [ref=e1267]: Sophia Felix
+            - group [ref=e1268]:
+              - 'link "Thumbnail AI Image Generation Building a Character Universe: Establishing Consistent Design Rules for Diverse Characters avatar Sophia Felix" [ref=e1269] [cursor=pointer]':
+                - /url: /blogs/building-a-character-universe-establishing-consistent-design-rules-for-diverse-characters
+                - img "Thumbnail" [ref=e1271]
+                - generic [ref=e1272]:
+                  - paragraph [ref=e1273]: AI Image Generation
+                  - 'heading "Building a Character Universe: Establishing Consistent Design Rules for Diverse Characters" [level=2] [ref=e1274]'
+                  - generic [ref=e1275]:
+                    - img "avatar" [ref=e1277]
+                    - paragraph [ref=e1278]: Sophia Felix
+            - group [ref=e1279]:
+              - 'link "Thumbnail AI Image Generation Character Consistency: The Secret Sauce Behind Compelling Storytelling avatar Sophia Felix" [ref=e1280] [cursor=pointer]':
+                - /url: /blogs/character-consistency-the-secret-sauce-behind-compelling-storytelling
+                - img "Thumbnail" [ref=e1282]
+                - generic [ref=e1283]:
+                  - paragraph [ref=e1284]: AI Image Generation
+                  - 'heading "Character Consistency: The Secret Sauce Behind Compelling Storytelling" [level=2] [ref=e1285]'
+                  - generic [ref=e1286]:
+                    - img "avatar" [ref=e1288]
+                    - paragraph [ref=e1289]: Sophia Felix
+            - group [ref=e1290]:
+              - 'link "Thumbnail AI Image Generation Transforming Story Concepts into Visual Art: A Guide for Writers avatar Sophia Felix" [ref=e1291] [cursor=pointer]':
+                - /url: /blogs/transforming-story-concepts-into-visual-art-a-guide-for-writers
+                - img "Thumbnail" [ref=e1293]
+                - generic [ref=e1294]:
+                  - paragraph [ref=e1295]: AI Image Generation
+                  - 'heading "Transforming Story Concepts into Visual Art: A Guide for Writers" [level=2] [ref=e1296]'
+                  - generic [ref=e1297]:
+                    - img "avatar" [ref=e1299]
+                    - paragraph [ref=e1300]: Sophia Felix
+            - group [ref=e1301]:
+              - 'link "Thumbnail AI Image Generation AI Image Enhancement: Bring your images to perfection with AI Image Upscaler avatar Ryan Hayden" [ref=e1302] [cursor=pointer]':
+                - /url: /blogs/ai-image-enhancement-bring-your-images-to-perfection-with-ai-image-upscaler
+                - img "Thumbnail" [ref=e1304]
+                - generic [ref=e1305]:
+                  - paragraph [ref=e1306]: AI Image Generation
+                  - 'heading "AI Image Enhancement: Bring your images to perfection with AI Image Upscaler" [level=2] [ref=e1307]'
+                  - generic [ref=e1308]:
+                    - img "avatar" [ref=e1310]
+                    - paragraph [ref=e1311]: Ryan Hayden
+            - group [ref=e1312]:
+              - 'link "Thumbnail AI Image Generation Beyond Upscaling: Creative Enhance - Your Personal AI Art Studio avatar Ryan Hayden" [ref=e1313] [cursor=pointer]':
+                - /url: /blogs/beyond-upscaling-creative-enhance-your-personal-ai-art-studio
+                - img "Thumbnail" [ref=e1315]
+                - generic [ref=e1316]:
+                  - paragraph [ref=e1317]: AI Image Generation
+                  - 'heading "Beyond Upscaling: Creative Enhance - Your Personal AI Art Studio" [level=2] [ref=e1318]'
+                  - generic [ref=e1319]:
+                    - img "avatar" [ref=e1321]
+                    - paragraph [ref=e1322]: Ryan Hayden
+            - group [ref=e1323]:
+              - 'link "Thumbnail AI Image Generation The Evolution of Character Consistency: From Sketch to Screen in Visual Storytelling avatar Sophia Felix" [ref=e1324] [cursor=pointer]':
+                - /url: /blogs/the-evolution-of-character-consistency-from-sketch-to-screen-in-visual-storytelling
+                - img "Thumbnail" [ref=e1326]
+                - generic [ref=e1327]:
+                  - paragraph [ref=e1328]: AI Image Generation
+                  - 'heading "The Evolution of Character Consistency: From Sketch to Screen in Visual Storytelling" [level=2] [ref=e1329]'
+                  - generic [ref=e1330]:
+                    - img "avatar" [ref=e1332]
+                    - paragraph [ref=e1333]: Sophia Felix
+            - group [ref=e1334]:
+              - 'link "Thumbnail AI Image Generation Marketing Magic: How Text-to-Image Tools Boost Branding Efforts avatar Sophia Felix" [ref=e1335] [cursor=pointer]':
+                - /url: /blogs/marketing-magic-how-text-to-image-tools-boost-branding-efforts
+                - img "Thumbnail" [ref=e1337]
+                - generic [ref=e1338]:
+                  - paragraph [ref=e1339]: AI Image Generation
+                  - 'heading "Marketing Magic: How Text-to-Image Tools Boost Branding Efforts" [level=2] [ref=e1340]'
+                  - generic [ref=e1341]:
+                    - img "avatar" [ref=e1343]
+                    - paragraph [ref=e1344]: Sophia Felix
+            - group [ref=e1345]:
+              - 'link "Thumbnail AI Image Generation Scaling New Heights: Exploring the Limitless Possibilities of AI Image Enhancement avatar Sophia Felix" [ref=e1346] [cursor=pointer]':
+                - /url: /blogs/scaling-new-heights-exploring-the-limitless-possibilities-of-ai-image-enhancement
+                - img "Thumbnail" [ref=e1348]
+                - generic [ref=e1349]:
+                  - paragraph [ref=e1350]: AI Image Generation
+                  - 'heading "Scaling New Heights: Exploring the Limitless Possibilities of AI Image Enhancement" [level=2] [ref=e1351]'
+                  - generic [ref=e1352]:
+                    - img "avatar" [ref=e1354]
+                    - paragraph [ref=e1355]: Sophia Felix
+            - group [ref=e1356]:
+              - 'link "Thumbnail AI Image Generation Collaborative Creativity: Ideate for Group Art Projects avatar Sophia Felix" [ref=e1357] [cursor=pointer]':
+                - /url: /blogs/collaborative-creativity-real-time-canvas-for-group-art-projects
+                - img "Thumbnail" [ref=e1359]
+                - generic [ref=e1360]:
+                  - paragraph [ref=e1361]: AI Image Generation
+                  - 'heading "Collaborative Creativity: Ideate for Group Art Projects" [level=2] [ref=e1362]'
+                  - generic [ref=e1363]:
+                    - img "avatar" [ref=e1365]
+                    - paragraph [ref=e1366]: Sophia Felix
+          - button "Next slide" [ref=e1367] [cursor=pointer]:
+            - img [ref=e1368]
+            - generic [ref=e1370]: Next slide
+    - generic [ref=e1372]:
+      - generic [ref=e1373]:
+        - generic [ref=e1374]:
+          - generic [ref=e1375]:
+            - img [ref=e1376]
+            - img [ref=e1378]
+          - generic [ref=e1380]: Endless Possibilities. Just Imagine.
+        - generic [ref=e1381]:
+          - generic [ref=e1383]:
+            - paragraph [ref=e1384]: Features
+            - list [ref=e1385]:
+              - listitem [ref=e1386]:
+                - link "AI Video Generator" [ref=e1387] [cursor=pointer]:
+                  - /url: /ai-video-generator
+              - listitem [ref=e1388]:
+                - link "AI Image Generator" [ref=e1389] [cursor=pointer]:
+                  - /url: /ai-image-generator
+              - listitem [ref=e1390]:
+                - link "AI Music Generator" [ref=e1391] [cursor=pointer]:
+                  - /url: /music-studio
+              - listitem [ref=e1392]:
+                - link "AI Avatar Generator" [ref=e1393] [cursor=pointer]:
+                  - /url: /avatars
+              - listitem [ref=e1394]:
+                - link "AI Shorts Generator" [ref=e1395] [cursor=pointer]:
+                  - /url: /shorts
+              - listitem [ref=e1396]:
+                - link "AI Voice Generator" [ref=e1397] [cursor=pointer]:
+                  - /url: /voice-studio
+          - generic [ref=e1399]:
+            - paragraph [ref=e1400]: Tools
+            - list [ref=e1401]:
+              - listitem [ref=e1402]:
+                - link "BG Remover" [ref=e1403] [cursor=pointer]:
+                  - /url: /bg-remover
+              - listitem [ref=e1404]:
+                - link "Ideate Studio" [ref=e1405] [cursor=pointer]:
+                  - /url: /ideate
+              - listitem [ref=e1406]:
+                - link "Text to Video AI" [ref=e1407] [cursor=pointer]:
+                  - /url: /features/text-to-video-ai
+              - listitem [ref=e1408]:
+                - link "Image to Video AI" [ref=e1409] [cursor=pointer]:
+                  - /url: /features/image-to-video-ai
+              - listitem [ref=e1410]:
+                - link "AI Logo Generator" [ref=e1411] [cursor=pointer]:
+                  - /url: /features/ai-logo-generator
+              - listitem [ref=e1412]:
+                - link "AI Story Generator" [ref=e1413] [cursor=pointer]:
+                  - /url: /shorts/ai-story-generator
+          - generic [ref=e1414]:
+            - generic [ref=e1415]:
+              - paragraph [ref=e1416]: Company
+              - list [ref=e1417]:
+                - listitem [ref=e1418]:
+                  - link "API" [ref=e1419] [cursor=pointer]:
+                    - /url: https://platform.imagine.art/
+                - listitem [ref=e1420]:
+                  - link "Affiliate Program" [ref=e1421] [cursor=pointer]:
+                    - /url: /affiliate-program
+                - listitem [ref=e1422]:
+                  - link "Contact Us" [ref=e1423] [cursor=pointer]:
+                    - /url: mailto:web.support@imagine.art
+            - generic [ref=e1424]:
+              - paragraph [ref=e1425]: Legal
+              - list [ref=e1426]:
+                - listitem [ref=e1427]:
+                  - link "Privacy Policy" [ref=e1428] [cursor=pointer]:
+                    - /url: /privacy-policy
+                - listitem [ref=e1429]:
+                  - link "Terms & Conditions" [ref=e1430] [cursor=pointer]:
+                    - /url: /terms-and-conditions
+          - generic [ref=e1432]:
+            - paragraph [ref=e1433]: ImagineArt
+            - list [ref=e1434]:
+              - listitem [ref=e1435]:
+                - link "Blogs" [ref=e1436] [cursor=pointer]:
+                  - /url: /blogs
+              - listitem [ref=e1437]:
+                - link "Community" [ref=e1438] [cursor=pointer]:
+                  - /url: https://discord.gg/z7kjUyvAbv
+              - listitem [ref=e1439]:
+                - link "Our Tools" [ref=e1440] [cursor=pointer]:
+                  - /url: /dashboard
+              - listitem [ref=e1441]:
+                - link "Mobile App" [ref=e1442] [cursor=pointer]:
+                  - /url: /apps
+      - generic [ref=e1443]:
+        - generic [ref=e1444]:
+          - link "Facebook" [ref=e1445] [cursor=pointer]:
+            - /url: " https://www.facebook.com/groups/imagineai"
+            - img [ref=e1446]
+          - link "Instagram" [ref=e1448] [cursor=pointer]:
+            - /url: https://www.instagram.com/imagineartofficial
+            - img [ref=e1449]
+          - link "Reddit" [ref=e1451] [cursor=pointer]:
+            - /url: https://www.reddit.com/r/ImagineAiArt/
+            - img [ref=e1452]
+          - link "Discord" [ref=e1454] [cursor=pointer]:
+            - /url: https://discord.com/invite/z7kjUyvAbv
+            - img [ref=e1455]
+        - paragraph [ref=e1457]: © 2026 Vyro AI. All rights reserved.
+  - alert [ref=e1458]
+  - button "chat-button" [ref=e1459] [cursor=pointer]:
+    - img [ref=e1461]

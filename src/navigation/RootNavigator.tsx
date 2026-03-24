@@ -44,6 +44,7 @@ import { POIActionProvider } from '../features/parks/context/POIActionContext';
 
 import { useSettingsStore } from '../stores/settingsStore';
 import { colors } from '../theme/colors';
+import { typography } from '../theme/typography';
 
 const navTheme = {
   ...DefaultTheme,
