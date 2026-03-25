@@ -97,7 +97,7 @@ export function FogHeader({
         `${FOG_BASE} 0.08)`,    // -7
         `${FOG_BASE} 0.03)`,    // -5
         `${FOG_BASE} 0.008)`,   // -2.2 (imperceptible)
-        'transparent',            // Gone
+        `${FOG_BASE} 0)`,          // Gone
       ] as [string, string, ...string[]],
       locations: [
         0,                                      // Top

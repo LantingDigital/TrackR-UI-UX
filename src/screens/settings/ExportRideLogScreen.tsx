@@ -33,7 +33,7 @@ import { shadows } from '../../theme/shadows';
 import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
-import { FogHeader } from '../../components/FogHeader';
+import { GlassHeader } from '../../components/GlassHeader';
 import { getAuthUser } from '../../stores/authStore';
 import { callExportRideLog } from '../../services/firebase/functions';
 
@@ -253,8 +253,8 @@ export function ExportRideLogScreen() {
         </Animated.View>
       </View>
 
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      {/* GlassHeader fog overlay */}
+      <GlassHeader headerHeight={headerTotalHeight} />
 
       {/* Header — floats above fog */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>

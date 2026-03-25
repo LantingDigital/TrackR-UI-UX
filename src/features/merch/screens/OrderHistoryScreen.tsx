@@ -29,7 +29,7 @@ import { shadows } from '../../../theme/shadows';
 import { typography } from '../../../theme/typography';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress } from '../../../hooks/useSpringPress';
-import { FogHeader } from '../../../components/FogHeader';
+import { GlassHeader } from '../../../components/GlassHeader';
 import { MOCK_ORDERS, type MerchOrder } from '../../../data/mockMerchData';
 
 // ─── Types ──────────────────────────────────────────────
@@ -271,8 +271,8 @@ export const OrderHistoryScreen: React.FC = () => {
 
   return (
     <View style={styles.screen}>
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      {/* GlassHeader fog overlay */}
+      <GlassHeader headerHeight={headerTotalHeight} />
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>

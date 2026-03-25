@@ -418,6 +418,7 @@ export const LogModal: React.FC<LogModalProps> = ({
             contentContainerStyle={[styles.contentContainer, { paddingTop: searchBarPadding }]}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
           >
             {/* Wrapper for discovery + autocomplete overlay */}
             <View style={{ position: 'relative' }}>

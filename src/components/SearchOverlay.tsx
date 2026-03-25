@@ -171,6 +171,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
           >
             {searchQuery.length === 0 ? (
               <>

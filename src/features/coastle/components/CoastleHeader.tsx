@@ -10,6 +10,7 @@ import { haptics } from '../../../services/haptics';
 import { MorphingPill, MorphingPillRef } from '../../../components/MorphingPill';
 import { CoastleSettingsContent } from './CoastleSettingsContent';
 import { CoastleStats, GameStatus } from '../types/coastle';
+import type { CoastleDifficulty } from '../stores/coastleStore';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -20,6 +21,8 @@ interface CoastleHeaderProps {
   onClose: () => void;
   stats: CoastleStats;
   gameStatus: GameStatus;
+  difficulty?: CoastleDifficulty;
+  onDifficultyChange?: (value: CoastleDifficulty) => void;
   onStatsOpen?: () => void;
   tuning?: {
     arcHeight?: number;
@@ -42,6 +45,8 @@ export const CoastleHeader: React.FC<CoastleHeaderProps> = ({
   onClose,
   stats,
   gameStatus,
+  difficulty,
+  onDifficultyChange,
   onStatsOpen,
   tuning,
 }) => {
@@ -96,6 +101,8 @@ export const CoastleHeader: React.FC<CoastleHeaderProps> = ({
           <CoastleSettingsContent
             stats={stats}
             close={close}
+            difficulty={difficulty}
+            onDifficultyChange={onDifficultyChange}
           />
         )}
         onOpen={handleOpen}

@@ -14,7 +14,6 @@ import {
   View,
   Text,
   Pressable,
-  Image,
   StyleSheet,
   Animated,
   Easing,
@@ -26,7 +25,8 @@ import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { shadows } from '../theme/shadows';
 import { haptics } from '../services/haptics';
-import { CardRarity, RARITY_COLORS, RARITY_GRADIENTS } from '../data/cardArt';
+import { FadeInImage } from './FadeInImage';
+import { CardRarity, RARITY_GRADIENTS } from '../data/cardArt';
 import type { CoasterRating } from '../types/rideLog';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -179,7 +179,6 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
     }
   }, [triggerFlip]);
 
-  const rarityColor = RARITY_COLORS[rarity];
   const [gradStart, gradEnd] = RARITY_GRADIENTS[rarity];
   const materialIcon = MATERIAL_ICONS[stats?.material ?? ''] ?? 'train-outline';
 
@@ -202,7 +201,7 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
     >
       {/* Art or placeholder */}
       {artSource ? (
-        <Image
+        <FadeInImage
           source={typeof artSource === 'string' ? { uri: artSource } : artSource}
           style={[styles.artImage, { width: cardWidth, height: cardHeight }]}
           resizeMode="cover"
@@ -224,7 +223,7 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
 
       {/* Bottom gradient overlay for text */}
       <LinearGradient
-        colors={['transparent', 'rgba(0,0,0,0.65)']}
+        colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.65)']}
         style={styles.textGradient}
       >
         <Text
@@ -240,9 +239,6 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
           {parkName}
         </Text>
       </LinearGradient>
-
-      {/* Rarity badge */}
-      <View style={[styles.rarityBadge, { backgroundColor: rarityColor }]} />
 
       {/* Locked overlay */}
       {!isUnlocked && (
@@ -276,7 +272,7 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
     >
       {/* Background art */}
       {artSource ? (
-        <Image
+        <FadeInImage
           source={typeof artSource === 'string' ? { uri: artSource } : artSource}
           style={styles.artImage}
           resizeMode="cover"
@@ -349,8 +345,6 @@ export const CoasterCard: React.FC<CoasterCardProps> = ({
         </View>
       </View>
 
-      {/* Rarity badge on back too */}
-      <View style={[styles.rarityBadge, { backgroundColor: rarityColor }]} />
     </Animated.View>
   );
 
@@ -437,16 +431,6 @@ const styles = StyleSheet.create({
   },
   frontParkSmall: {
     fontSize: 11,
-  },
-  rarityBadge: {
-    position: 'absolute',
-    top: spacing.base,
-    right: spacing.base,
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    borderWidth: 1.5,
-    borderColor: 'rgba(255,255,255,0.6)',
   },
   lockedOverlay: {
     ...StyleSheet.absoluteFillObject,

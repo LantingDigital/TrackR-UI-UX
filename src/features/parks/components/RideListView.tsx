@@ -345,7 +345,7 @@ export function RideListView({ visible, onClose, pois, waitTimes }: RideListView
             />
           ) : contentReady ? (
             <View style={styles.emptyState}>
-              <Text style={styles.emptyIcon}>🎢</Text>
+              <Ionicons name="train-outline" size={48} color={colors.text.meta} />
               <Text style={styles.emptyTitle}>
                 {searchQuery.length > 0 ? 'No rides found' : 'No ride data'}
               </Text>

@@ -10,6 +10,7 @@ import { haptics } from '../../../services/haptics';
 import { MorphingPill, MorphingPillRef } from '../../../components/MorphingPill';
 import { ParkleSettingsContent } from './ParkleSettingsContent';
 import { ParkleStats, GameStatus } from '../types/parkle';
+import type { ParkleDifficulty } from '../stores/parkleStore';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -20,12 +21,16 @@ interface ParkleHeaderProps {
   onClose: () => void;
   stats: ParkleStats;
   gameStatus: GameStatus;
+  difficulty?: ParkleDifficulty;
+  onDifficultyChange?: (value: ParkleDifficulty) => void;
 }
 
 export const ParkleHeader: React.FC<ParkleHeaderProps> = ({
   onClose,
   stats,
   gameStatus,
+  difficulty,
+  onDifficultyChange,
 }) => {
   const insets = useSafeAreaInsets();
   const morphRef = useRef<MorphingPillRef>(null);
@@ -73,6 +78,8 @@ export const ParkleHeader: React.FC<ParkleHeaderProps> = ({
           <ParkleSettingsContent
             stats={stats}
             close={close}
+            difficulty={difficulty}
+            onDifficultyChange={onDifficultyChange}
           />
         )}
         onOpen={handleOpen}

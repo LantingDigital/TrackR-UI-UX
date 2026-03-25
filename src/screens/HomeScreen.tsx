@@ -2174,7 +2174,7 @@ export const HomeScreen = () => {
             'rgba(240, 238, 235, 0.08)',   // Very light
             'rgba(240, 238, 235, 0.03)',   // Barely visible
             'rgba(240, 238, 235, 0.01)',   // Almost invisible
-            'transparent',                  // Fully clear
+            'rgba(240, 238, 235, 0)',       // Fully clear
           ]}
           locations={[0, 0.12, 0.24, 0.32, 0.38, 0.44, 0.50, 0.55, 0.60, 0.64, 0.68, 0.72]}
           style={{ flex: 1 }}

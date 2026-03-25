@@ -18,7 +18,6 @@ import {
   View,
   Text,
   TextInput,
-  Image,
   Pressable,
   StyleSheet,
   Dimensions,
@@ -55,6 +54,7 @@ import { SPRINGS, TIMING } from '../constants/animations';
 import { useSpringPress } from '../hooks/useSpringPress';
 import { useTabBar } from '../contexts/TabBarContext';
 import { haptics } from '../services/haptics';
+import { FadeInImage } from './FadeInImage';
 import { HalfPointSlider } from './HalfPointSlider';
 import ConfettiBurst from './feedback/ConfettiBurst';
 import {
@@ -480,7 +480,7 @@ export function RatingSheet({
             <View style={styles.heroSection}>
               {/* Blurred art / gradient background */}
               {localArt ? (
-                <Image
+                <FadeInImage
                   source={localArt}
                   style={styles.heroBgImage}
                   resizeMode="cover"
@@ -501,7 +501,7 @@ export function RatingSheet({
                 {/* Portrait card */}
                 <View style={styles.portraitCard}>
                   {localArt ? (
-                    <Image
+                    <FadeInImage
                       source={localArt}
                       style={styles.portraitImage}
                       resizeMode="cover"

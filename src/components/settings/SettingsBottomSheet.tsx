@@ -10,13 +10,15 @@
  *   - Warning: icon + message + cancel/confirm buttons
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   View,
   Text,
   Pressable,
+  TextInput,
   StyleSheet,
   Dimensions,
+  Keyboard,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -74,6 +76,12 @@ interface SettingsBottomSheetProps {
   confirmLabel?: string;
   cancelLabel?: string;
   onConfirm?: () => void;
+
+  // Text input mode
+  textInput?: boolean;
+  textInputPlaceholder?: string;
+  textInputDefaultValue?: string;
+  onTextSubmit?: (value: string) => void;
 }
 
 // ============================================
@@ -93,9 +101,15 @@ export function SettingsBottomSheet({
   confirmLabel = 'Confirm',
   cancelLabel = 'Cancel',
   onConfirm,
+  textInput,
+  textInputPlaceholder,
+  textInputDefaultValue = '',
+  onTextSubmit,
 }: SettingsBottomSheetProps) {
   const insets = useSafeAreaInsets();
   const [mounted, setMounted] = useState(false);
+  const [textValue, setTextValue] = useState(textInputDefaultValue);
+  const inputRef = useRef<TextInput>(null);
 
   const translateY = useSharedValue(SCREEN_HEIGHT);
   const backdropOpacity = useSharedValue(0);
@@ -107,6 +121,10 @@ export function SettingsBottomSheet({
     if (visible) {
       setMounted(true);
       haptics.select();
+      if (textInput) {
+        setTextValue(textInputDefaultValue);
+        setTimeout(() => inputRef.current?.focus(), 400);
+      }
       // withTiming slide-up entrance — no bouncy springs (no-jello rule)
       translateY.value = withTiming(0, {
         duration: 350,
@@ -114,6 +132,7 @@ export function SettingsBottomSheet({
       });
       backdropOpacity.value = withTiming(1, { duration: TIMING.backdrop });
     } else {
+      Keyboard.dismiss();
       backdropOpacity.value = withTiming(0, { duration: TIMING.backdrop });
       translateY.value = withTiming(SCREEN_HEIGHT, { duration: TIMING.normal });
       const timer = setTimeout(() => setMounted(false), TIMING.backdrop);
@@ -185,6 +204,14 @@ export function SettingsBottomSheet({
     onConfirm?.();
     dismiss();
   }, [onConfirm, dismiss]);
+
+  const handleTextSubmit = useCallback(() => {
+    if (textValue.trim()) {
+      haptics.success();
+      onTextSubmit?.(textValue.trim());
+      dismiss();
+    }
+  }, [textValue, onTextSubmit, dismiss]);
 
   const handleCancel = useCallback(() => {
     haptics.tap();
@@ -272,6 +299,46 @@ export function SettingsBottomSheet({
                 </Pressable>
               );
             })}
+          </View>
+        )}
+
+        {/* Text input mode */}
+        {textInput && (
+          <View style={styles.textInputContent}>
+            <TextInput
+              ref={inputRef}
+              style={styles.textInputField}
+              value={textValue}
+              onChangeText={setTextValue}
+              placeholder={textInputPlaceholder}
+              placeholderTextColor={colors.text.meta}
+              autoCapitalize="words"
+              autoCorrect={false}
+              returnKeyType="done"
+              onSubmitEditing={handleTextSubmit}
+            />
+            <View style={styles.warningButtons}>
+              <Pressable
+                style={({ pressed }) => [
+                  styles.cancelButton,
+                  pressed && styles.cancelButtonPressed,
+                ]}
+                onPress={handleCancel}
+              >
+                <Text style={styles.cancelButtonText}>Cancel</Text>
+              </Pressable>
+              <Pressable
+                style={({ pressed }) => [
+                  styles.confirmButton,
+                  pressed && styles.confirmButtonPressed,
+                  !textValue.trim() && styles.confirmButtonDisabled,
+                ]}
+                onPress={handleTextSubmit}
+                disabled={!textValue.trim()}
+              >
+                <Text style={styles.confirmButtonText}>{confirmLabel}</Text>
+              </Pressable>
+            </View>
           </View>
         )}
 
@@ -404,6 +471,25 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.regular,
     color: colors.text.secondary,
     marginTop: 2,
+  },
+
+  // -- Text input mode --
+  textInputContent: {
+    paddingHorizontal: spacing.xl,
+  },
+  textInputField: {
+    height: 48,
+    backgroundColor: colors.background.page,
+    borderRadius: radius.md,
+    paddingHorizontal: spacing.lg,
+    fontSize: typography.sizes.body,
+    color: colors.text.primary,
+    marginBottom: spacing.xxl,
+    borderWidth: 1,
+    borderColor: colors.border.subtle,
+  },
+  confirmButtonDisabled: {
+    opacity: 0.4,
   },
 
   // -- Warning mode --

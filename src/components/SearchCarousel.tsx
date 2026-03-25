@@ -63,6 +63,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ item, onPress }) => {
             contentFit="cover"
             cachePolicy="memory-disk"
             recyclingKey={item.id}
+            transition={250}
           />
         ) : (
           <View style={styles.cardPlaceholder}>
@@ -74,7 +75,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ item, onPress }) => {
           </View>
         )}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.7)']}
+          colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.7)']}
           style={styles.cardGradient}
         />
         <View style={styles.cardTextContainer}>

@@ -41,7 +41,7 @@ import { typography } from '../../../theme/typography';
 import { SPRINGS, TIMING } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress, useCardPress } from '../../../hooks/useSpringPress';
-import { FogHeader } from '../../../components/FogHeader';
+import { GlassHeader } from '../../../components/GlassHeader';
 import {
   getNewArrivals,
   getPopularProducts,
@@ -292,8 +292,8 @@ export const MerchStoreScreen: React.FC = () => {
 
   return (
     <View style={styles.screen}>
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} fogExtension={30} />
+      {/* GlassHeader fog overlay */}
+      <GlassHeader headerHeight={headerTotalHeight} />
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>

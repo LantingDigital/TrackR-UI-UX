@@ -122,7 +122,7 @@ export const PassPreviewCard: React.FC<PassPreviewCardProps> = ({
 
         {/* Gradient banner at bottom with park name */}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)']}
+          colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)']}
           locations={[0, 0.5, 1]}
           style={styles.gradientBanner}
         >

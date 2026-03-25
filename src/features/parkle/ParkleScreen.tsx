@@ -113,7 +113,7 @@ function CellBadge({ cell }: { cell: CellComparison }) {
 export const ParkleScreen: React.FC = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { game, stats, startGame, submitGuess, resetGame, generateShareText } = useParkleStore();
+  const { game, stats, difficulty, startGame, submitGuess, resetGame, generateShareText, setDifficulty } = useParkleStore();
 
   const hintButtonRef = useRef<ParkleHintButtonRef>(null);
   const [isRevealing, setIsRevealing] = useState(false);
@@ -283,6 +283,8 @@ export const ParkleScreen: React.FC = () => {
           onClose={handleClose}
           stats={stats}
           gameStatus={game.status}
+          difficulty={difficulty}
+          onDifficultyChange={setDifficulty}
         />
       </View>
 

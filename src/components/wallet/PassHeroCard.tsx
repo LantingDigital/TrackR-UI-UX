@@ -111,7 +111,7 @@ export const PassHeroCard: React.FC<PassHeroCardProps> = ({
 
         {/* Subtle darkening gradient for text readability */}
         <LinearGradient
-          colors={['rgba(0,0,0,0.4)', 'transparent', 'rgba(0,0,0,0.2)']}
+          colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0.2)']}
           locations={[0, 0.4, 1]}
           style={styles.heroOverlay}
         />
@@ -120,7 +120,7 @@ export const PassHeroCard: React.FC<PassHeroCardProps> = ({
         {hasLogo && (
           <View style={styles.logoWrapper}>
             <LinearGradient
-              colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.7)', 'transparent']}
+              colors={['rgba(255, 255, 255, 0.95)', 'rgba(255, 255, 255, 0.7)', 'rgba(255, 255, 255, 0)']}
               style={styles.logoGradientBg}
             />
             <Image
@@ -135,7 +135,7 @@ export const PassHeroCard: React.FC<PassHeroCardProps> = ({
         {!hasLogo && (
           <View style={styles.parkNameWrapper}>
             <LinearGradient
-              colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'transparent']}
+              colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0)']}
               style={styles.parkNameGradientBg}
             />
             <Text style={styles.parkNameText}>{ticket.parkName}</Text>

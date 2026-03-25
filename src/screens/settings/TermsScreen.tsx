@@ -24,10 +24,11 @@ import { colors } from '../../theme/colors';
 import { typography } from '../../theme/typography';
 import { spacing } from '../../theme/spacing';
 import { radius } from '../../theme/radius';
+import { shadows } from '../../theme/shadows';
 import { TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
-import { FogHeader } from '../../components/FogHeader';
+import { GlassHeader } from '../../components/GlassHeader';
 
 const HEADER_HEIGHT = 52;
 
@@ -115,15 +116,21 @@ export function TermsScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
-        {/* Last updated */}
-        <Text style={styles.lastUpdated}>Last updated: January 1, 2026</Text>
+        {/* Last updated pill */}
+        <View style={styles.lastUpdatedPill}>
+          <Ionicons name="time-outline" size={12} color={colors.text.meta} />
+          <Text style={styles.lastUpdated}>Last updated: January 1, 2026</Text>
+        </View>
 
-        {TERMS_SECTIONS.map((section, i) => (
-          <View key={i} style={styles.section}>
-            <Text style={styles.sectionTitle}>{section.title}</Text>
-            <Text style={styles.sectionBody}>{section.body}</Text>
-          </View>
-        ))}
+        {/* Section cards */}
+        <View style={styles.sectionsCard}>
+          {TERMS_SECTIONS.map((section, i) => (
+            <View key={i} style={[styles.section, i < TERMS_SECTIONS.length - 1 && styles.sectionBorder]}>
+              <Text style={styles.sectionTitle}>{section.title}</Text>
+              <Text style={styles.sectionBody}>{section.body}</Text>
+            </View>
+          ))}
+        </View>
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
@@ -132,8 +139,8 @@ export function TermsScreen() {
         </View>
       </ScrollView>
 
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} fogExtension={80} />
+      {/* GlassHeader fog overlay */}
+      <GlassHeader headerHeight={headerTotalHeight} />
 
       {/* Header — floats above fog */}
       <Animated.View style={[styles.header, { top: insets.top }, headerStyle]}>
@@ -193,16 +200,36 @@ const styles = StyleSheet.create({
     width: 36,
   },
   scrollContent: {
-    paddingHorizontal: spacing.xl,
+    paddingHorizontal: spacing.lg,
+  },
+  lastUpdatedPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: spacing.sm,
+    backgroundColor: colors.background.card,
+    borderRadius: radius.pill,
+    paddingHorizontal: spacing.base,
+    paddingVertical: spacing.sm,
+    marginBottom: spacing.lg,
+    ...shadows.small,
   },
   lastUpdated: {
     fontSize: typography.sizes.meta,
-    fontWeight: typography.weights.regular,
+    fontWeight: typography.weights.medium,
     color: colors.text.meta,
-    marginBottom: spacing.xxl,
+  },
+  sectionsCard: {
+    backgroundColor: colors.background.card,
+    borderRadius: radius.card,
+    ...shadows.section,
   },
   section: {
-    marginBottom: spacing.xxl,
+    padding: spacing.lg,
+  },
+  sectionBorder: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border.subtle,
   },
   sectionTitle: {
     fontSize: typography.sizes.body,

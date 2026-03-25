@@ -431,6 +431,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             contentContainerStyle={[styles.contentContainer, { paddingTop: searchBarPadding }]}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
             onScroll={handleScroll}
             scrollEventThrottle={16}
           >
@@ -742,6 +743,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
         >
           {showAutocomplete ? (
             // Autocomplete results

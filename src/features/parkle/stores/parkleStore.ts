@@ -22,6 +22,36 @@ import { submitParkleResult } from '../../../services/firebase/gameStatsSync';
 // ============================================
 const STORAGE_STATS = '@parkle_stats';
 const STORAGE_DAILY = '@parkle_daily';
+const STORAGE_DIFFICULTY = '@parkle_difficulty';
+
+// ============================================
+// Difficulty
+// ============================================
+export type ParkleDifficulty = 'easy' | 'hard';
+let difficulty: ParkleDifficulty = 'easy';
+
+async function loadDifficulty() {
+  try {
+    const raw = await AsyncStorage.getItem(STORAGE_DIFFICULTY);
+    if (raw === 'hard') difficulty = 'hard';
+  } catch {}
+}
+
+async function saveDifficulty() {
+  try {
+    await AsyncStorage.setItem(STORAGE_DIFFICULTY, difficulty);
+  } catch {}
+}
+
+function setDifficulty(value: ParkleDifficulty) {
+  difficulty = value;
+  saveDifficulty();
+  notify();
+}
+
+function getDifficultyValue(): ParkleDifficulty {
+  return difficulty;
+}
 
 // ============================================
 // Module-Level State
@@ -94,6 +124,7 @@ async function saveDaily() {
 async function init() {
   if (initialized) return;
   stats = await loadStats();
+  await loadDifficulty();
   initialized = true;
   notify();
 }
@@ -114,7 +145,7 @@ async function startGame(mode: GameMode) {
       notify();
       return;
     }
-    const target = getDailyPark();
+    const target = getDailyPark(undefined, difficulty);
     const today = new Date();
     game = {
       mode: 'daily',
@@ -240,9 +271,14 @@ const stableParkleActions = {
   submitGuess,
   resetGame,
   generateShareText,
+  setDifficulty,
 } as const;
 
-let cachedParkleSnapshot: { game: ReturnType<typeof getGame>; stats: ReturnType<typeof getStats> } | null = null;
+let cachedParkleSnapshot: {
+  game: ReturnType<typeof getGame>;
+  stats: ReturnType<typeof getStats>;
+  difficulty: ParkleDifficulty;
+} | null = null;
 
 export function useParkleStore() {
   const [, forceUpdate] = useReducer((x: number) => x + 1, 0);
@@ -253,10 +289,16 @@ export function useParkleStore() {
     return () => { listeners.delete(forceUpdate); };
   }, []);
 
-  const game = getGame();
-  const stats = getStats();
-  if (!cachedParkleSnapshot || cachedParkleSnapshot.game !== game || cachedParkleSnapshot.stats !== stats) {
-    cachedParkleSnapshot = { game, stats };
+  const currentGame = getGame();
+  const currentStats = getStats();
+  const currentDifficulty = getDifficultyValue();
+  if (
+    !cachedParkleSnapshot ||
+    cachedParkleSnapshot.game !== currentGame ||
+    cachedParkleSnapshot.stats !== currentStats ||
+    cachedParkleSnapshot.difficulty !== currentDifficulty
+  ) {
+    cachedParkleSnapshot = { game: currentGame, stats: currentStats, difficulty: currentDifficulty };
   }
 
   return {

@@ -1,0 +1,452 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - navigation "Main" [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e15]:
+          - link "Search ⌥⌘1" [ref=e16] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+            - generic [ref=e20]: Search
+            - generic [ref=e22]: ⌥⌘1
+          - link "Computer ⌥⌘2" [ref=e23] [cursor=pointer]:
+            - /url: /computer/new
+            - img [ref=e27]
+            - generic [ref=e31]: Computer
+            - generic [ref=e33]: ⌥⌘2
+        - generic [ref=e34]:
+          - button "New thread ⌘K" [ref=e36] [cursor=pointer]:
+            - generic [ref=e37]:
+              - img [ref=e43]
+              - generic [ref=e45]: New thread
+              - generic [ref=e47]: ⌘K
+          - generic [ref=e48]:
+            - generic [ref=e50]:
+              - link "History" [ref=e51] [cursor=pointer]:
+                - /url: /library
+                - generic [ref=e52]:
+                  - img [ref=e57]
+                  - generic [ref=e59]: History
+              - link "Discover" [ref=e60] [cursor=pointer]:
+                - /url: /discover
+                - generic [ref=e61]:
+                  - img [ref=e66]
+                  - generic [ref=e68]: Discover
+              - link "Spaces" [ref=e69] [cursor=pointer]:
+                - /url: /spaces
+                - generic [ref=e70]:
+                  - img [ref=e75]
+                  - generic [ref=e77]: Spaces
+              - link "Finance" [ref=e78] [cursor=pointer]:
+                - /url: /finance
+                - generic [ref=e79]:
+                  - img [ref=e84]
+                  - generic [ref=e86]: Finance
+              - link "Health" [ref=e87] [cursor=pointer]:
+                - /url: /health
+                - generic [ref=e88]:
+                  - img [ref=e93]
+                  - generic [ref=e95]: Health
+              - button "More" [ref=e96] [cursor=pointer]:
+                - generic [ref=e97]:
+                  - img [ref=e102]
+                  - generic [ref=e104]: More
+            - generic [ref=e110]:
+              - button "Recent Collapse" [ref=e111] [cursor=pointer]:
+                - link "Recent" [ref=e112]:
+                  - /url: /library
+                  - generic [ref=e114]:
+                    - generic [ref=e115]: Recent
+                    - img [ref=e116]
+                - button "Collapse" [ref=e120]:
+                  - img [ref=e123]
+              - generic [ref=e128]:
+                - generic [ref=e651]:
+                  - link "Write a cohesive article about the biggest roller coaster and theme park news stories from March 17-" [ref=e652] [cursor=pointer]:
+                    - /url: /search/write-a-cohesive-article-about-6meZt4lVRSq08UjWzczPXQ
+                    - generic [ref=e655]: Write a cohesive article about the biggest roller coaster and theme park news stories from March 17-
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e656]:
+                  - link "I am looking to create a content pipeline for my app. Here are all the categories and subcategories" [ref=e657] [cursor=pointer]:
+                    - /url: /search/i-am-looking-to-create-a-conte-q_wAloVoS_C86u3NoNTygg
+                    - generic [ref=e660]: I am looking to create a content pipeline for my app. Here are all the categories and subcategories
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e661]:
+                  - link "What is the best roller coaster in the world right now in 2026?" [ref=e662] [cursor=pointer]:
+                    - /url: /search/what-is-the-best-roller-coaste-sr6y1ulDRWOHLuGN2N47Kw
+                    - generic [ref=e665]: What is the best roller coaster in the world right now in 2026?
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e666]:
+                  - link "what season of big brother, accoridng to real people, is the best?" [ref=e667] [cursor=pointer]:
+                    - /url: /search/what-season-of-big-brother-acc-SP7G16nsRQGcvkhF9ewLOw
+                    - generic [ref=e670]: what season of big brother, accoridng to real people, is the best?
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e671]:
+                  - link "what is apples newest developer UIkit that has the gradient header that changes color dependant on w" [ref=e672] [cursor=pointer]:
+                    - /url: /search/what-is-apples-newest-develope-NJ.CGrCcRKS4WBCtMZfP_Q
+                    - generic [ref=e675]: what is apples newest developer UIkit that has the gradient header that changes color dependant on w
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e676]:
+                  - link "what is apples newest developer UIkit that has the liquid glass stuff and the gradient header that c" [ref=e677] [cursor=pointer]:
+                    - /url: /search/what-is-apples-newest-develope-SidGbCHDRzC07Ic1UiQmCA
+                    - generic [ref=e680]: what is apples newest developer UIkit that has the liquid glass stuff and the gradient header that c
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e681]:
+                  - link "what is the flow with apple and iap when it comes to digital vs physical goods and what can/can't yo" [ref=e682] [cursor=pointer]:
+                    - /url: /search/what-is-the-flow-with-apple-an-qfoTswsWTIadPjD3ZBXTGQ
+                    - generic [ref=e685]: what is the flow with apple and iap when it comes to digital vs physical goods and what can/can't yo
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e686]:
+                  - 'link "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details" [ref=e687] [cursor=pointer]':
+                    - /url: /search/rocky-mountain-construction-rm-WsgOpGk6TMi2Vul14JApYw
+                    - generic [ref=e690]: "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e691]:
+                  - 'link "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack" [ref=e692] [cursor=pointer]':
+                    - /url: /search/dollywood-nightflight-expediti-697Pm.fOT9SxDcFfluFvsQ
+                    - generic [ref=e695]: "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e696]:
+                  - 'link "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202" [ref=e697] [cursor=pointer]':
+                    - /url: /search/southern-california-theme-park-595pPipqSBWM8xDc0QiXlQ
+                    - generic [ref=e700]: "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e701]:
+                  - 'link "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c" [ref=e702] [cursor=pointer]':
+                    - /url: /search/tormenta-rampaging-run-six-fla-4A7LnKA8T6.roJytBAC64w
+                    - generic [ref=e705]: "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e706]:
+                  - link "What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202" [ref=e707] [cursor=pointer]:
+                    - /url: /search/what-are-the-biggest-roller-co-N7KmV85pShubda2GtMZmtQ
+                    - generic [ref=e710]: What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e711]:
+                  - 'link "using real research, address the following: Act as an expert software agency founder, enterprise Sa" [ref=e712] [cursor=pointer]':
+                    - /url: /search/using-real-research-address-th-Wcp1p8DDTp.OPref6qXXsg
+                    - generic [ref=e715]: "using real research, address the following: Act as an expert software agency founder, enterprise Sa"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e716]:
+                  - link "roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park" [ref=e717] [cursor=pointer]:
+                    - /url: /search/roller-coaster-and-theme-park-n9vJaevtT42.dHV_OUv7rw
+                    - generic [ref=e720]: roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+              - link "View All" [ref=e209] [cursor=pointer]:
+                - /url: /library
+        - generic [ref=e213] [cursor=pointer]:
+          - button "User avatar Caleb Lanting" [ref=e215]:
+            - generic [ref=e222]:
+              - generic [ref=e226]:
+                - img "User avatar" [ref=e227]
+                - img [ref=e230]
+              - generic [ref=e233]: Caleb Lanting
+          - button "Notifications" [ref=e242]:
+            - img [ref=e245]
+    - main [ref=e252]:
+      - generic [ref=e394]:
+        - generic:
+          - generic:
+            - tablist "Answer mode tabs" [ref=e396]:
+              - tab "Answer" [selected] [ref=e397] [cursor=pointer]:
+                - img [ref=e398]
+                - text: Answer
+              - tab "Links" [ref=e400] [cursor=pointer]:
+                - img [ref=e401]
+                - text: Links
+              - tab "Images" [ref=e403] [cursor=pointer]:
+                - img [ref=e404]
+                - text: Images
+            - generic [ref=e406]:
+              - button "Thread actions" [ref=e722] [cursor=pointer]:
+                - img [ref=e723]
+              - button "Share" [ref=e409] [cursor=pointer]:
+                - img [ref=e411]
+                - generic [ref=e413]: Share
+        - generic [ref=e416]:
+          - tabpanel "Answer" [ref=e424]:
+            - generic [ref=e425]:
+              - generic [ref=e430]:
+                - generic:
+                  - button "Edit query":
+                    - generic:
+                      - generic:
+                        - img
+                  - button "Copy query":
+                    - generic:
+                      - generic:
+                        - img
+                - generic [ref=e431]:
+                  - heading "Write a cohesive article about the biggest roller coaster and theme park news stories from March 17-24, 2026. Cover new ride announcements, construction updates, park openings, closures, industry business news, and any notable incidents. Use sources like Screamscape, Theme Park Insider, WDWNT, Attractions Magazine, Blooloop, and Reddit r/rollercoasters. Format as a narrative article with sections, not bullet points. Include specific dates, park names, and manufacturer details where available." [level=1] [ref=e436]:
+                    - generic [ref=e438]: Write a cohesive article about the biggest roller coaster and theme park news stories from March 17-24, 2026. Cover new ride announcements, construction updates, park openings, closures, industry business news, and any notable incidents. Use sources like Screamscape, Theme Park Insider, WDWNT, Attractions Magazine, Blooloop, and Reddit r/rollercoasters. Format as a narrative article with sections, not bullet points. Include specific dates, park names, and manufacturer details where available.
+                  - button "Show more" [ref=e441] [cursor=pointer]:
+                    - generic [ref=e442]: Show more
+                    - img [ref=e444]
+              - generic [ref=e447]:
+                - button "Completed 3 steps" [ref=e725] [cursor=pointer]:
+                  - text: Completed 3 steps
+                  - img [ref=e726]
+                - generic [ref=e735]:
+                  - paragraph [ref=e736]:
+                    - text: The week of March 17–24, 2026 was a busy one for roller coasters and theme parks, with major construction milestones, new attraction timelines, business shake‑ups, and more subtle signs of how quickly the industry is changing.
+                    - generic [ref=e741] [cursor=pointer]:
+                      - generic [ref=e742]: screamscape
+                      - generic [ref=e743]: "+2"
+                  - 'heading "Six Flags: Record coasters, new track, and corporate drama" [level=2] [ref=e744]'
+                  - paragraph [ref=e745]:
+                    - text: In Texas, Six Flags Over Texas quietly hit a huge milestone on March 13 when the final piece of track for Tormenta Rampaging Run was lifted into place, completing the layout of what is being billed as the world’s first “giga dive coaster.” Screamscape reports that the new attraction, manufactured as a record‑breaking dive coaster that will be the tallest, fastest, and longest of its type, is on track for a 2026 opening after topping off its massive vertical loop earlier in the year. Tormenta Rampaging Run is expected to break six world records when it debuts, making it one of the headline coasters of the decade for the Arlington park.
+                    - generic [ref=e750] [cursor=pointer]:
+                      - generic [ref=e751]: screamscape
+                      - generic [ref=e752]: "+1"
+                  - paragraph [ref=e753]:
+                    - text: Further east, Six Flags Great Adventure in New Jersey had two big coaster stories in the spotlight. Screamscape notes that on March 19 the park confirmed that vertical construction has begun on its new launched roller coaster slated for 2027, with the first pieces of blue track now rising over Jackson. At the same time, Theme Park Tribune highlighted a “surprise” additional coaster project for Great Adventure, separate from the delayed “Project Purple,” meaning the park is moving ahead with a 14th coaster even before the major launched coaster arrives in 2027. Screamscape adds that Great Adventure’s re‑imagined Boardwalk area, scheduled to open by late spring 2026 as part of a multi‑year investment plan, will likely serve as the gateway to that 2027 coaster.
+                    - generic [ref=e758] [cursor=pointer]:
+                      - generic [ref=e759]: facebook
+                      - generic [ref=e760]: "+4"
+                  - paragraph [ref=e761]:
+                    - text: Behind the scenes, Six Flags corporate continued to dominate industry business talk. A March 13 Screamscape update detailed how activist investor JANA Partners is already “starting up” pressure on Six Flags’ leadership, just days after the company announced the sale of seven parks to EPR Properties and signed NFL star Travis Kelce as a brand ambassador for 2026. Those park sales—first reported on March 5—have become a recurring topic among fans on r/rollercoasters, where posters are weighing how the change in ownership might alter their 2026 trip and pass plans.
+                    - generic [ref=e766] [cursor=pointer]:
+                      - generic [ref=e767]: reddit
+                      - generic [ref=e768]: "+1"
+                  - heading "Notable Six Flags developments (March 17–24 window)" [level=2] [ref=e769]
+                  - table [ref=e772]:
+                    - rowgroup [ref=e773]:
+                      - row "Park Development (timing)" [ref=e774]:
+                        - columnheader "Park" [ref=e775]
+                        - columnheader "Development (timing)" [ref=e776]
+                    - rowgroup [ref=e777]:
+                      - row "Six Flags Over Texas Tormenta Rampaging Run track fully installed by March 13; giga‑scale dive coaster for 2026. screamscape +1" [ref=e778]:
+                        - cell "Six Flags Over Texas" [ref=e779]
+                        - cell "Tormenta Rampaging Run track fully installed by March 13; giga‑scale dive coaster for 2026. screamscape +1" [ref=e780]:
+                          - text: Tormenta Rampaging Run track fully installed by March 13; giga‑scale dive coaster for 2026.
+                          - generic [ref=e785] [cursor=pointer]:
+                            - generic [ref=e786]: screamscape
+                            - generic [ref=e787]: "+1"
+                      - row "Six Flags Great Adventure 2027 launched coaster goes vertical by March 19; extra “surprise” coaster also in pipeline. screamscape +2" [ref=e788]:
+                        - cell "Six Flags Great Adventure" [ref=e789]
+                        - cell "2027 launched coaster goes vertical by March 19; extra “surprise” coaster also in pipeline. screamscape +2" [ref=e790]:
+                          - text: 2027 launched coaster goes vertical by March 19; extra “surprise” coaster also in pipeline.
+                          - generic [ref=e795] [cursor=pointer]:
+                            - generic [ref=e796]: screamscape
+                            - generic [ref=e797]: "+2"
+                      - row "Six Flags chain‑wide Ongoing fallout from March 5 sale of seven parks to EPR and activist investor pressure. screamscape +1" [ref=e798]:
+                        - cell "Six Flags chain‑wide" [ref=e799]
+                        - cell "Ongoing fallout from March 5 sale of seven parks to EPR and activist investor pressure. screamscape +1" [ref=e800]:
+                          - text: Ongoing fallout from March 5 sale of seven parks to EPR and activist investor pressure.
+                          - generic [ref=e805] [cursor=pointer]:
+                            - generic [ref=e806]: screamscape
+                            - generic [ref=e807]: "+1"
+                  - 'heading "Disney: Bluey, Muppets, and a park on the verge of transformation" [level=2] [ref=e808]'
+                  - paragraph [ref=e809]:
+                    - text: Disney’s parks used the week to firm up several 2026‑focused projects while also preparing guests for some disruptive closures.
+                    - generic [ref=e814] [cursor=pointer]:
+                      - generic [ref=e815]: themeparkinsider.substack
+                      - generic [ref=e816]: "+2"
+                  - paragraph [ref=e817]:
+                    - text: "On March 17, Screamscape reported that Disney’s Animal Kingdom has officially set May 26, 2026 as the opening date for Bluey’s Wild World at Conservation Station, a retheme of the former Rafiki’s Planet Watch area and Wildlife Express Train route that closed in late February. Theme Park Insider’s March 20 week‑in‑review noted that Bluey is becoming a true global park franchise character, with Disney World’s new offering joining Bluey’s Best Day Ever at Disneyland and the Bluey the Ride: Here Come the Grannies! family coaster debuting at Alton Towers later in the month."
+                    - generic [ref=e822] [cursor=pointer]:
+                      - generic [ref=e823]: screamscape
+                      - generic [ref=e824]: "+1"
+                  - paragraph [ref=e825]:
+                    - text: Over at EPCOT, Screamscape’s March 17 update confirmed that Soarin’ Across America will return with a firm reopening date, bringing the updated film back to The Land pavilion after a period of rotating films. Theme Park Insider’s calendar shows that Impressions de France remains closed with no announced reopening date, underscoring how EPCOT’s film lineup is still in flux as Disney reallocates capacity and content across the resort.
+                    - generic [ref=e830] [cursor=pointer]:
+                      - generic [ref=e831]: themeparkinsider.substack
+                      - generic [ref=e832]: "+1"
+                  - paragraph [ref=e833]:
+                    - text: "The most emotionally charged story continued to be the transition of Rock ‘n’ Roller Coaster at Disney’s Hollywood Studios. Disney confirmed that Rock ‘n’ Roller Coaster Starring Aerosmith would close on March 2, 2026, with March 1 as the last day of operation. WDWNT and other outlets reported that the ride will reopen by summer 2026 with a new Rock ‘n’ Roller Coaster Starring The Muppets overlay, which will be treated as a Tier 1 Lightning Lane Multi Pass attraction and included in Early Entry and Extended Evening Hours for resort guests. For Hollywood Studios, which already has a relatively small attraction lineup, r/rollercoasters users have been debating how the closure of this headliner, combined with extended downtime for Star Wars: Rise of the Resistance, might strain capacity through early 2026."
+                    - generic [ref=e838] [cursor=pointer]:
+                      - generic [ref=e839]: disneyfoodblog
+                      - generic [ref=e840]: "+4"
+                  - paragraph [ref=e841]:
+                    - text: "March also brought larger‑scale change for the company itself: Theme Park Insider reported that during Disney’s annual shareholders meeting, Bob Iger formally retired and Disney Parks chief Josh D’Amaro stepped into a larger leadership role over the experiences portfolio. At the same meeting, Disney Cruise Line announced the next Wish‑class ship would be named Disney Believe, underscoring how cruise and parks strategy are increasingly integrated."
+                    - generic "Bluey joins Anna and Elsa in the spotlight - Theme Park Insider" [ref=e843]:
+                      - link "themeparkinsider.substack" [ref=e845] [cursor=pointer]:
+                        - /url: https://themeparkinsider.substack.com/p/bluey-joins-anna-and-elsa-in-the
+                        - generic [ref=e848]: themeparkinsider.substack
+                  - heading "Universal, SeaWorld, and international expansions" [level=2] [ref=e849]
+                  - paragraph [ref=e850]:
+                    - text: Universal and SeaWorld spent much of the week celebrating construction progress and setting the stage for 2026 openings.
+                    - generic "Disney Announces Major Attraction Openings & Reopenings" [ref=e852]:
+                      - generic [ref=e855] [cursor=pointer]:
+                        - img [ref=e857]
+                        - generic [ref=e859]: YouTube
+                    - generic [ref=e864] [cursor=pointer]:
+                      - generic [ref=e865]: attractionsmagazine
+                      - generic [ref=e866]: "+1"
+                  - paragraph [ref=e867]:
+                    - text: "In Orlando, Screamscape’s March 22 update highlighted that the dueling Mack Rides coaster Stardust Racers at Universal’s Epic Universe has now begun testing, an important step toward the new park’s 2025 opening. However, earlier in March, Screamscape also noted that Stardust Racers had faced a brief refurbishment delay, a reminder of just how complex the project is. At Universal Studios Florida, construction continues on Fast & Furious: Hollywood Drift, an Intamin multi‑launch coaster set for a 2026 opening that was previewed at the 2025 IAAPA Expo with a focus on its 360‑degree drifting cars reaching speeds up to 72 mph."
+                    - generic [ref=e872] [cursor=pointer]:
+                      - generic [ref=e873]: allears
+                      - generic [ref=e874]: "+1"
+                  - paragraph [ref=e875]:
+                    - text: SeaWorld San Antonio made news on March 22 when Screamscape reported that the park will host six concerts during its Seven Seas Food Festival, reflecting how seasonal festivals have become crucial attendance drivers for regional parks. The same update mentioned that SeaWorld’s sister park Busch Gardens Tampa continues to wrestle with downtime on its classic B&M looper Kumba, which was closed again in March as crews work through an extended refurbishment. Earlier in the season, SeaWorld San Antonio also reached a construction milestone when its new multi‑launch coaster Barracuda Strike completed test runs, with Screamscape sharing fresh footage of the Premier Rides layout in action.
+                    - generic "Screamscape" [ref=e877]:
+                      - link "screamscape" [ref=e879] [cursor=pointer]:
+                        - /url: https://www.screamscape.com
+                        - generic [ref=e882]: screamscape
+                  - paragraph [ref=e883]:
+                    - text: Internationally, March 22 brought a surprising lifeline for Dutch park Toverland, as local government officials approved financial support aimed at helping fund future expansion phases. Screamscape’s global roundup also spotlighted Chessington World of Adventures’ confirmation of a full Minecraft World expansion for 2027, suggesting more deep IP‑driven lands are on the way beyond the usual movie franchises. Looking slightly ahead, Theme Park Insider previewed the March 29 re‑opening of Super Silly Fun Land’s wet zone at Universal Studios Hollywood, and flagged March 30 as the date Disneyland’s Monorail and Roger Rabbit’s Car Toon Spin will close for extended renovations with no announced reopening dates.
+                    - generic [ref=e888] [cursor=pointer]:
+                      - generic [ref=e889]: screamscape
+                      - generic [ref=e890]: "+1"
+                  - heading "New parks, closures, and the business of themed entertainment" [level=2] [ref=e891]
+                  - paragraph [ref=e892]:
+                    - text: Beyond coasters and big‑brand parks, the week’s news revealed a quieter but important reshaping of the North American attractions landscape.
+                    - generic [ref=e897] [cursor=pointer]:
+                      - generic [ref=e898]: screamscape
+                      - generic [ref=e899]: "+1"
+                  - paragraph [ref=e900]:
+                    - text: Screamscape’s USA development page continued to track several major regional and niche projects. In Kansas, a groundbreaking was recently held for Michael’s WonderWorld, an “accessible” theme park in Olathe designed so that guests with and without disabilities can experience attractions together as part of the larger Halo Ridge development. In Kentucky, the indoor Maui’s Theme Park in Owensboro is nearing opening in a former mall, with go‑karts, a 4D simulator, and a small SBF Visa spinning coaster called Twist‑n‑Shout, showing how FEC‑style parks are moving into bigger, more themed spaces.
+                    - generic "USA News - Screamscape" [ref=e902]:
+                      - link "screamscape" [ref=e904] [cursor=pointer]:
+                        - /url: https://www.screamscape.com/html/usa_news.htm
+                        - generic [ref=e907]: screamscape
+                  - paragraph [ref=e908]:
+                    - text: Not all news was expansion. Funland in Rehoboth Beach, Delaware confirmed that its long‑running Haunted Mansion dark ride will close permanently at the end of the 2026 season, after more than 45 years of operation, to be replaced by a newly built version targeted for summer 2028. Screamscape also noted that minimum‑wage legislation in San Diego is putting pressure on operators like SeaWorld San Diego, with potential ripple effects on staffing and seasonal operations for nearby Sesame Place San Diego.
+                    - generic "USA News - Screamscape" [ref=e910]:
+                      - link "screamscape" [ref=e912] [cursor=pointer]:
+                        - /url: https://www.screamscape.com/html/usa_news.htm
+                        - generic [ref=e915]: screamscape
+                  - paragraph [ref=e916]:
+                    - text: On the global business front, Screamscape’s March coverage touched on Brogent Technologies’ acquisition of a flying theater attraction chain, as well as the ongoing bankruptcy protection process for Glenwood Caverns Adventure Park in Colorado, where the operator is seeking a path to keep the mountaintop park open after years of financial and safety challenges. These stories, while less flashy than a new coaster, highlight the financial complexity behind keeping niche parks and specialized ride makers afloat.
+                    - generic [ref=e921] [cursor=pointer]:
+                      - generic [ref=e922]: screamscape
+                      - generic [ref=e923]: "+1"
+                  - heading "Safety incidents and community reaction" [level=2] [ref=e924]
+                  - paragraph [ref=e925]:
+                    - text: While no major new U.S. park incidents dominated headlines during March 17–24, coaster fans remained keenly aware of global safety issues. A widely shared r/CatastrophicFailure post earlier in February showed a “Top Spin”‑style ride collapsing at an Indian fair on February 7, killing a police officer and injuring a dozen riders, and discussion of that video was still circulating around coaster communities in March. Commenters contrasted India’s regulatory environment with OSHA‑style frameworks in the U.S., reiterating how ride inspection regimes differ dramatically by country.
+                    - generic [ref=e930] [cursor=pointer]:
+                      - generic [ref=e931]: wikipedia
+                      - generic [ref=e932]: "+1"
+                  - paragraph [ref=e933]:
+                    - text: On r/rollercoasters, much of the March discussion has instead centered on operational capacity and reliability, rather than accidents. Users swapped stories about delayed reopenings for major attractions, like the continually pushed‑back return of certain Universal and Disney rides, and debated how the sale of several Six Flags parks to EPR would affect maintenance budgets, staffing, and long‑term investment at those properties. In Canada, one widely upvoted photo thread showed Canada’s Wonderland blanketed in a March snowstorm, with coaster track barely peeking through, a reminder that weather remains one of the biggest “operational incidents” for seasonal parks even as they invest in ever‑more complex hardware.
+                    - generic [ref=e938] [cursor=pointer]:
+                      - generic [ref=e939]: reddit
+                      - generic [ref=e940]: "+3"
+                  - paragraph [ref=e941]:
+                    - text: "As the industry heads deeper into 2026, this week’s stories point in the same direction: bigger and more record‑breaking coasters, heavier reliance on franchises from Bluey to Minecraft, aggressive corporate restructuring, and a fan community that increasingly follows financial and regulatory news as closely as it tracks test runs and opening dates."
+                    - generic [ref=e946] [cursor=pointer]:
+                      - generic [ref=e947]: themeparks-us
+                      - generic [ref=e948]: "+3"
+                  - paragraph [ref=e949]: Would you prefer future coverage like this to focus more on deep‑dive coaster engineering details, or on the business and policy side of the parks industry?
+                - generic [ref=e950]:
+                  - generic [ref=e951]:
+                    - button "Share" [ref=e952] [cursor=pointer]:
+                      - img [ref=e955]
+                    - button "Download" [ref=e958] [cursor=pointer]:
+                      - img [ref=e959]
+                    - button "Copy" [ref=e961] [cursor=pointer]:
+                      - img [ref=e964]
+                    - button "Rewrite Thread" [ref=e967] [cursor=pointer]:
+                      - img [ref=e970]
+                    - button "29 sources" [ref=e974] [cursor=pointer]:
+                      - generic [ref=e976]:
+                        - img [ref=e977]
+                        - img [ref=e978]
+                        - generic [ref=e980]:
+                          - img [ref=e983]
+                          - img [ref=e988]
+                          - img [ref=e992]
+                        - text: 29 sources
+                  - generic [ref=e995]:
+                    - generic [ref=e997]:
+                      - button "Helpful" [ref=e998] [cursor=pointer]:
+                        - img [ref=e1001]
+                      - button "Not helpful" [ref=e1004] [cursor=pointer]:
+                        - img [ref=e1007]
+                    - button "More actions" [ref=e1011] [cursor=pointer]:
+                      - img [ref=e1012]
+                - generic [ref=e1014]:
+                  - generic [ref=e1019]: Follow-ups
+                  - generic [ref=e1020]:
+                    - button "Build a timeline dashboard of 2026 roller coaster announcements with filters for parks like Six Flags Great Adventure, Kentucky Kingdom, Disney World, and construction updates Computer" [ref=e1021] [cursor=pointer]:
+                      - img [ref=e1023]
+                      - generic [ref=e1025]:
+                        - generic [ref=e1026]: Build a timeline dashboard of 2026 roller coaster announcements with filters for parks like Six Flags Great Adventure, Kentucky Kingdom, Disney World, and construction updates
+                        - generic [ref=e1027]:
+                          - img [ref=e1028]
+                          - text: Computer
+                    - button "Detailed specs of Six Flags Great Adventure 2027 launched coaster" [ref=e1030] [cursor=pointer]:
+                      - img [ref=e1032]
+                      - generic [ref=e1035]: Detailed specs of Six Flags Great Adventure 2027 launched coaster
+                    - button "Rock n Roller Coaster Muppets retheme ride layout and features" [ref=e1036] [cursor=pointer]:
+                      - img [ref=e1038]
+                      - generic [ref=e1041]: Rock n Roller Coaster Muppets retheme ride layout and features
+                    - button "Flying Fox roller coaster height speed and target audience at Kentucky Kingdom" [ref=e1042] [cursor=pointer]:
+                      - img [ref=e1044]
+                      - generic [ref=e1047]: Flying Fox roller coaster height speed and target audience at Kentucky Kingdom
+                    - button "Timeline and impact of 2026 Disney World ride closures" [ref=e1048] [cursor=pointer]:
+                      - img [ref=e1050]
+                      - generic [ref=e1053]: Timeline and impact of 2026 Disney World ride closures
+          - generic [ref=e622]:
+            - generic [ref=e624]:
+              - textbox [active] [ref=e625]:
+                - paragraph [ref=e626]
+              - generic: Ask a follow-up
+            - button "Add files or tools" [ref=e629] [cursor=pointer]:
+              - img [ref=e632]
+            - generic [ref=e635]:
+              - button "Model" [ref=e636] [cursor=pointer]:
+                - generic [ref=e637]: Model
+                - img [ref=e639]
+              - button "Dictation" [ref=e1055] [cursor=pointer]:
+                - img [ref=e1058]
+              - button "Submit" [disabled]:
+                - generic:
+                  - generic:
+                    - img
+  - listbox "Typeahead menu"

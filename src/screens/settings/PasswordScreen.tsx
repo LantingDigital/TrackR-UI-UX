@@ -13,7 +13,6 @@ import {
   Text,
   TextInput,
   Pressable,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -33,7 +32,8 @@ import { shadows } from '../../theme/shadows';
 import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
-import { FogHeader } from '../../components/FogHeader';
+import { GlassHeader } from '../../components/GlassHeader';
+import { SettingsBottomSheet } from '../../components/settings/SettingsBottomSheet';
 
 const HEADER_HEIGHT = 52;
 
@@ -72,6 +72,8 @@ export function PasswordScreen() {
   const [showCurrent, setShowCurrent] = useState(false);
   const [showNew, setShowNew] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [forgotSheetVisible, setForgotSheetVisible] = useState(false);
+  const [updatedSheetVisible, setUpdatedSheetVisible] = useState(false);
 
   const headerAnim = useStagger(0);
   const formAnim = useStagger(1);
@@ -84,27 +86,19 @@ export function PasswordScreen() {
 
   const handleUpdate = useCallback(() => {
     haptics.success();
-    Alert.alert(
-      'Password Updated',
-      'Password management will be fully functional when accounts are connected.',
-      [{ text: 'OK' }],
-    );
+    setUpdatedSheetVisible(true);
   }, []);
 
   const handleForgotPassword = useCallback(() => {
     haptics.tap();
-    Alert.alert(
-      'Forgot Password',
-      'Password recovery will be available when accounts are connected. A reset link will be sent to your email.',
-      [{ text: 'OK' }],
-    );
+    setForgotSheetVisible(true);
   }, []);
 
   const headerTotalHeight = insets.top + HEADER_HEIGHT;
 
   return (
     <View style={styles.container}>
-      <View style={[styles.content, { paddingTop: headerTotalHeight + spacing.xxl, paddingBottom: insets.bottom + spacing.xxxl }]}>
+      <View style={[styles.content, { paddingTop: headerTotalHeight + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl }]}>
         {/* Form */}
         <Animated.View style={formAnim}>
           <View style={styles.formCard}>
@@ -220,6 +214,7 @@ export function PasswordScreen() {
           <Pressable
             onPress={handleForgotPassword}
             style={styles.forgotLink}
+            hitSlop={8}
           >
             <Text style={styles.forgotLinkText}>Forgot Password?</Text>
           </Pressable>
@@ -250,8 +245,8 @@ export function PasswordScreen() {
         </Animated.View>
       </View>
 
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} fogExtension={20} />
+      {/* GlassHeader fog overlay */}
+      <GlassHeader headerHeight={headerTotalHeight} fadeDistance={30} />
 
       {/* Header — floats above fog */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>
@@ -270,6 +265,30 @@ export function PasswordScreen() {
         <Text style={styles.headerTitle}>Password</Text>
         <View style={styles.headerSpacer} />
       </Animated.View>
+
+      {/* Forgot Password bottom sheet */}
+      <SettingsBottomSheet
+        visible={forgotSheetVisible}
+        onClose={() => setForgotSheetVisible(false)}
+        title="Forgot Password"
+        warning
+        warningMessage="Password recovery will be available when accounts are connected. A reset link will be sent to your email."
+        warningIcon="mail-outline"
+        confirmLabel="OK"
+        onConfirm={() => setForgotSheetVisible(false)}
+      />
+
+      {/* Password Updated bottom sheet */}
+      <SettingsBottomSheet
+        visible={updatedSheetVisible}
+        onClose={() => setUpdatedSheetVisible(false)}
+        title="Password Updated"
+        warning
+        warningMessage="Password management will be fully functional when accounts are connected."
+        warningIcon="checkmark-circle-outline"
+        confirmLabel="OK"
+        onConfirm={() => setUpdatedSheetVisible(false)}
+      />
     </View>
   );
 }
@@ -363,7 +382,7 @@ const styles = StyleSheet.create({
 
   // Forgot
   forgotLink: {
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
     marginTop: spacing.lg,
     paddingVertical: spacing.sm,
   },
@@ -383,7 +402,8 @@ const styles = StyleSheet.create({
     marginTop: spacing.xxl,
   },
   updateButtonDisabled: {
-    backgroundColor: colors.background.input,
+    backgroundColor: colors.accent.primary,
+    opacity: 0.4,
   },
   updateButtonText: {
     fontSize: typography.sizes.body,
@@ -391,7 +411,7 @@ const styles = StyleSheet.create({
     color: colors.text.inverse,
   },
   updateButtonTextDisabled: {
-    color: colors.text.meta,
+    color: colors.text.inverse,
   },
   placeholderNote: {
     fontSize: typography.sizes.meta,

@@ -23,6 +23,8 @@ import { radius } from '../../../theme/radius';
 import { haptics } from '../../../services/haptics';
 import { useSettingsStore } from '../../../stores/settingsStore';
 import { CoastleStats } from '../types/coastle';
+import { CoastleDifficulty } from '../stores/coastleStore';
+import { DifficultySelector } from '../../games/components/DifficultySelector';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = SCREEN_WIDTH - 64;
@@ -90,9 +92,11 @@ const SubScreenHeader: React.FC<{ title: string; onBack: () => void }> = ({ titl
 interface CoastleSettingsContentProps {
   stats: CoastleStats;
   close: () => void;
+  difficulty?: CoastleDifficulty;
+  onDifficultyChange?: (value: CoastleDifficulty) => void;
 }
 
-export const CoastleSettingsContent: React.FC<CoastleSettingsContentProps> = ({ stats, close }) => {
+export const CoastleSettingsContent: React.FC<CoastleSettingsContentProps> = ({ stats, close, difficulty = 'easy', onDifficultyChange }) => {
   const { hapticsEnabled, notificationsEnabled, setHapticsEnabled } = useSettingsStore();
 
   // Three independent offset values — zero React state changes during navigation
@@ -154,6 +158,15 @@ export const CoastleSettingsContent: React.FC<CoastleSettingsContentProps> = ({ 
         >
           <SectionHeader label="GAME" />
           <SettingsRow icon="bar-chart-outline" label="Statistics" onPress={() => navigateTo('stats')} showChevron />
+          {onDifficultyChange && (
+            <DifficultySelector
+              value={difficulty}
+              onChange={onDifficultyChange}
+              accentColor={colors.accent.primary}
+              easyDescription="Top 50 well-known coasters"
+              hardDescription="All 175+ coasters"
+            />
+          )}
 
           <View style={styles.separator} />
           <SectionHeader label="PREFERENCES" />

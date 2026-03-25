@@ -31,7 +31,8 @@ import { haptics } from '../../../services/haptics';
 import { useSpringPress } from '../../../hooks/useSpringPress';
 import { calculateCardPrice, MERCH_PRICING } from '../../../data/mockMerchData';
 import { useCartStore, type CartItem } from '../store/cartStore';
-import { FogHeader } from '../../../components/FogHeader';
+import { LinearGradient } from 'expo-linear-gradient';
+import { GlassHeader } from '../../../components/GlassHeader';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -298,8 +299,8 @@ export const CartScreen: React.FC = () => {
 
   return (
     <View style={styles.screen}>
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} />
+      {/* GlassHeader fog overlay */}
+      <GlassHeader headerHeight={headerTotalHeight} />
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
@@ -357,6 +358,14 @@ export const CartScreen: React.FC = () => {
 
             <View style={{ height: 100 }} />
           </ScrollView>
+
+          {/* Bottom fog for clean FAB separation */}
+          <LinearGradient
+            colors={['rgba(247, 247, 247, 0)', 'rgba(247, 247, 247, 0.8)', 'rgba(247, 247, 247, 1)']}
+            locations={[0, 0.4, 1]}
+            style={styles.bottomFog}
+            pointerEvents="none"
+          />
 
           {/* Checkout Button — floats at bottom on page background */}
           <View style={[styles.bottomBar, { paddingBottom: insets.bottom + spacing.base }]}>
@@ -446,6 +455,13 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.medium,
     flex: 1,
   },
+  bottomFog: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 120,
+  },
   bottomBar: {
     position: 'absolute',
     bottom: 0,
@@ -453,6 +469,7 @@ const styles = StyleSheet.create({
     right: 0,
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.lg,
+    backgroundColor: colors.background.page,
   },
   checkoutButton: {
     alignItems: 'center',

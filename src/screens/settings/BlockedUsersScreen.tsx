@@ -13,7 +13,6 @@ import {
   Text,
   FlatList,
   Pressable,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -34,7 +33,8 @@ import { shadows } from '../../theme/shadows';
 import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
-import { FogHeader } from '../../components/FogHeader';
+import { GlassHeader } from '../../components/GlassHeader';
+import { SettingsBottomSheet } from '../../components/settings/SettingsBottomSheet';
 
 const HEADER_HEIGHT = 52;
 
@@ -130,23 +130,22 @@ export function BlockedUsersScreen() {
   const navigation = useNavigation<any>();
   const backPress = useSpringPress();
   const [blockedUsers, setBlockedUsers] = useState<BlockedUser[]>(MOCK_BLOCKED_USERS);
+  const [unblockSheetVisible, setUnblockSheetVisible] = useState(false);
+  const [pendingUnblockId, setPendingUnblockId] = useState<string | null>(null);
 
   const handleUnblock = useCallback((id: string) => {
-    Alert.alert(
-      'Unblock User',
-      'Are you sure you want to unblock this user?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Unblock',
-          onPress: () => {
-            haptics.success();
-            setBlockedUsers((prev) => prev.filter((u) => u.id !== id));
-          },
-        },
-      ],
-    );
+    haptics.tap();
+    setPendingUnblockId(id);
+    setUnblockSheetVisible(true);
   }, []);
+
+  const handleUnblockConfirm = useCallback(() => {
+    if (pendingUnblockId) {
+      haptics.success();
+      setBlockedUsers((prev) => prev.filter((u) => u.id !== pendingUnblockId));
+      setPendingUnblockId(null);
+    }
+  }, [pendingUnblockId]);
 
   const headerAnim = useSharedValue(0);
   useEffect(() => {
@@ -185,8 +184,8 @@ export function BlockedUsersScreen() {
         />
       )}
 
-      {/* Fog gradient overlay */}
-      <FogHeader headerHeight={headerTotalHeight} fogExtension={20} />
+      {/* GlassHeader fog overlay */}
+      <GlassHeader headerHeight={headerTotalHeight} />
 
       {/* Header — floats above fog */}
       <Animated.View style={[styles.header, { top: insets.top }, headerStyle]}>
@@ -205,6 +204,19 @@ export function BlockedUsersScreen() {
         <Text style={styles.headerTitle}>Blocked Users</Text>
         <View style={styles.headerSpacer} />
       </Animated.View>
+
+      {/* Unblock confirmation bottom sheet */}
+      <SettingsBottomSheet
+        visible={unblockSheetVisible}
+        onClose={() => { setUnblockSheetVisible(false); setPendingUnblockId(null); }}
+        title="Unblock User"
+        warning
+        warningMessage="Are you sure you want to unblock this user? They will be able to see your profile and activity again."
+        warningIcon="person-add-outline"
+        confirmLabel="Unblock"
+        cancelLabel="Cancel"
+        onConfirm={handleUnblockConfirm}
+      />
     </View>
   );
 }

@@ -61,7 +61,7 @@ export function CleanFogHeader({
         `${PAGE_BASE} 0.28)`,
         `${PAGE_BASE} 0.12)`,
         `${PAGE_BASE} 0.03)`,
-        'transparent',
+        `${PAGE_BASE} 0)`,
       ] as [string, string, ...string[]],
       locations: [
         0,

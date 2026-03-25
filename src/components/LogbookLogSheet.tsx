@@ -308,6 +308,7 @@ export function LogbookLogSheet({ visible, onClose, onCoasterSelect }: LogbookLo
               contentContainerStyle={styles.resultsContent}
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="on-drag"
             >
               {searchQuery.length > 0 && searchResults.length === 0 && (
                 <View style={styles.noResults}>

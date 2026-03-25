@@ -15,18 +15,16 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-  withDelay,
   withSpring,
   interpolate,
   Easing,
-  runOnJS,
 } from 'react-native-reanimated';
+import type { SharedValue } from 'react-native-reanimated';
 
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
-import { shadows } from '../../../theme/shadows';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const ACCENT = colors.accent.primary;
@@ -57,10 +55,10 @@ const EASE_OUT = Easing.out(Easing.cubic);
 const SliderRow: React.FC<{
   criterion: Criterion;
   index: number;
-  weightValue: Animated.SharedValue<number>;
-  entranceValue: Animated.SharedValue<number>;
-  isLocked: Animated.SharedValue<number>; // 0 = unlocked, 1 = locked
-  lockPulse: Animated.SharedValue<number>; // 0 = normal, 1 = pulsing
+  weightValue: SharedValue<number>;
+  entranceValue: SharedValue<number>;
+  isLocked: SharedValue<number>; // 0 = unlocked, 1 = locked
+  lockPulse: SharedValue<number>; // 0 = normal, 1 = pulsing
 }> = ({ criterion, index, weightValue, entranceValue, isLocked, lockPulse }) => {
   const entranceStyle = useAnimatedStyle(() => {
     const delay = index * 0.12;
@@ -117,7 +115,7 @@ const SliderRow: React.FC<{
 
 // ── Animated percentage number ──
 const PercentageDisplay: React.FC<{
-  value: Animated.SharedValue<number>;
+  value: SharedValue<number>;
   color: string;
 }> = ({ value, color }) => {
   const [display, setDisplay] = React.useState(20);
@@ -141,8 +139,8 @@ const PercentageDisplay: React.FC<{
 
 // ── Ghost finger indicator ──
 const GhostFinger: React.FC<{
-  positionY: Animated.SharedValue<number>;
-  opacity: Animated.SharedValue<number>;
+  positionY: SharedValue<number>;
+  opacity: SharedValue<number>;
 }> = ({ positionY, opacity }) => {
   const style = useAnimatedStyle(() => ({
     opacity: opacity.value,

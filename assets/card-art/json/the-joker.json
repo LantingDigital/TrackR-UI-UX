@@ -1,0 +1,48 @@
+{
+  "subject": {
+    "type": "Roller Coaster",
+    "name": "Hybrid Roller Coaster Construction",
+    "description": "A complex wooden roller coaster support structure fitted with steel track rails in a twisted layout, with empty seats, no passengers.",
+    "key_features": ["Intricate wooden lattice supports", "Purple and green steel I-box track", "Banked curves and structural framing", "Gravel-covered ground underneath"],
+    "position": "Dominating the foreground and middle ground, sprawling across the frame from left to right."
+  },
+  "environment": {
+    "setting": "Amusement park",
+    "time_of_day": "Golden hour",
+    "weather": "Clear with soft haze",
+    "season": "Summer or dry season",
+    "background_elements": ["Palm trees", "Distant red roller coaster track", "Tall drop tower or observation tower with a spherical top"]
+  },
+  "lighting": {
+    "type": "Golden hour sunlight",
+    "direction": "Low angle from the side, casting long warm shadows",
+    "color_temperature": "Warm golden",
+    "intensity": "Soft and cinematic",
+    "shadows": "Soft, warm-tinted shadows from the dense wooden support structure"
+  },
+  "color_palette": {
+    "dominant_colors": ["Beige/Brown", "Peach/Salmon sky", "Reddish-Brown"],
+    "accent_colors": ["Muted Purple", "Soft Green", "Warm Red"],
+    "overall_temperature": "Warm golden shift"
+  },
+  "composition": {
+    "framing": "Wide landscape shot",
+    "camera_angle": "Eye-level from the ground",
+    "camera_distance": "Medium-wide to far",
+    "focal_point": "The low, swooping section of purple and green track in the lower center-right",
+    "depth_of_field": "Deep, with both the foreground track and background towers in sharp focus"
+  },
+  "mood": "Cinematic, warm, atmospheric, premium concept art",
+  "textures": ["Smooth wooden beams with clean surfaces", "Clean steel tracks with soft reflections", "Smooth gravel ground", "Soft gradient sky with subtle clouds"],
+  "notable_details": ["No people, no riders — empty train seats only", "No signs, text, logos, or watermarks", "No real-world identifiers"],
+  "artistic_treatment": {
+    "style": "Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon",
+    "rendering": "Simplified surface textures with clean edges. Structurally accurate and engineered-looking. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic",
+    "color_grading": "WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy",
+    "atmosphere": "Soft atmospheric haze throughout, especially where light filters through trees or around structures. Cinematic depth with atmospheric perspective — distant elements fade into warm haze",
+    "lighting_treatment": "Enhanced cinematic golden-hour warmth. Emphasize mood and composition over literal accuracy. Rim lighting on track edges. Soft volumetric light through foliage",
+    "edges": "Clean and defined on mechanical/structural elements (track, supports, train). Soft and painterly on organic elements (trees, foliage, sky, ground)",
+    "detail_level": "SIMPLIFIED — reduce surface complexity. Wooden beams are smooth, not grainy. Foliage is soft masses, not individual leaves. Steel is clean, not reflective. The overall feel should match Studio Ghibli-meets-architectural-rendering",
+    "negative_guidance": "Avoid photo grain, avoid hyperreal texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions, no bright saturated colors, no visible brush strokes, no flat blue sky, no cool color temperature"
+  }
+}

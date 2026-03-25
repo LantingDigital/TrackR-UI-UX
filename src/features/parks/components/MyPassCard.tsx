@@ -34,7 +34,7 @@ export const MyPassCard = memo(function MyPassCard({ parkName, onPress }: MyPass
           <>
             {/* Subtle accent gradient at top */}
             <LinearGradient
-              colors={[`${colors.accent.primary}08`, 'transparent']}
+              colors={[`${colors.accent.primary}08`, `${colors.accent.primary}00`]}
               style={styles.accentGradient}
             />
             <View style={styles.row}>

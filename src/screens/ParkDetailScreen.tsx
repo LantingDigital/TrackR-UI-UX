@@ -230,7 +230,7 @@ export function ParkDetailScreen() {
         )}
         {/* Gradient scrim at bottom of hero */}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.5)']}
+          colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)']}
           style={styles.heroScrim}
         />
       </Animated.View>

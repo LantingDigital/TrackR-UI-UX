@@ -23,7 +23,7 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { TIMING } from '../../../constants/animations';
-import { SheetFog } from '../../../components/SheetFog';
+
 import { CoastleCoaster } from '../../coastle/types/coastle';
 import { ChecklistRow } from '../components/ChecklistRow';
 import { usePOIAction } from '../context/POIActionContext';
@@ -218,9 +218,6 @@ export function ChecklistModal({
             </Text>
           </Pressable>
         </View>
-
-        {/* Fog gradient — fades content as it scrolls under the header/tabs */}
-        <SheetFog headerHeight={HEADER_AREA_HEIGHT} />
 
         {/* List */}
         {activeTab === 'today' ? (

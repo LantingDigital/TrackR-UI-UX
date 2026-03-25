@@ -34,7 +34,7 @@ const HINT_BACKDROP_CLOSE_DURATION = 470;
 export const CoastleScreen: React.FC = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { game, stats, startGame, submitGuess, resetGame, generateShareText } = useCoastleStore();
+  const { game, stats, difficulty, startGame, submitGuess, resetGame, generateShareText, setDifficulty } = useCoastleStore();
 
   const hintButtonRef = useRef<CoastleHintButtonRef>(null);
   const activeGridIndex = useSharedValue(0);
@@ -233,6 +233,8 @@ export const CoastleScreen: React.FC = () => {
           onClose={handleClose}
           stats={stats}
           gameStatus={game.status}
+          difficulty={difficulty}
+          onDifficultyChange={setDifficulty}
           tuning={DEFAULT_TUNING}
         />
       </View>

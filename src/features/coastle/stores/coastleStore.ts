@@ -289,10 +289,15 @@ const stableCoastleActions = {
   submitGuess,
   resetGame,
   generateShareText,
+  setDifficulty,
 } as const;
 
 // Cached snapshot — invalidated on notify().
-let cachedCoastleSnapshot: { game: ReturnType<typeof getGame>; stats: ReturnType<typeof getStats> } | null = null;
+let cachedCoastleSnapshot: {
+  game: ReturnType<typeof getGame>;
+  stats: ReturnType<typeof getStats>;
+  difficulty: CoastleDifficulty;
+} | null = null;
 
 export function useCoastleStore() {
   const [, forceUpdate] = useReducer((x: number) => x + 1, 0);
@@ -303,11 +308,16 @@ export function useCoastleStore() {
     return () => { listeners.delete(forceUpdate); };
   }, []);
 
-  // Rebuild snapshot only when store has notified (game/stats refs change)
-  const game = getGame();
-  const stats = getStats();
-  if (!cachedCoastleSnapshot || cachedCoastleSnapshot.game !== game || cachedCoastleSnapshot.stats !== stats) {
-    cachedCoastleSnapshot = { game, stats };
+  const currentGame = getGame();
+  const currentStats = getStats();
+  const currentDifficulty = getDifficulty();
+  if (
+    !cachedCoastleSnapshot ||
+    cachedCoastleSnapshot.game !== currentGame ||
+    cachedCoastleSnapshot.stats !== currentStats ||
+    cachedCoastleSnapshot.difficulty !== currentDifficulty
+  ) {
+    cachedCoastleSnapshot = { game: currentGame, stats: currentStats, difficulty: currentDifficulty };
   }
 
   return {

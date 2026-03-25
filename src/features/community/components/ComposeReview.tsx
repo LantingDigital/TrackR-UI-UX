@@ -47,6 +47,7 @@ export function ComposeReview({ onComplete }: ComposeReviewProps) {
       style={styles.container}
       contentContainerStyle={styles.content}
       keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
       showsVerticalScrollIndicator={false}
     >
       <Text style={styles.label}>Coaster</Text>

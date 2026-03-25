@@ -18,6 +18,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 import { GlassHeader } from '../components/GlassHeader';
 
 import { colors } from '../theme/colors';
@@ -320,7 +321,7 @@ export function ParksScreen() {
     return (
       <View style={[styles.container, { paddingTop: insets.top }]}>
         <View style={styles.emptyState}>
-          <Text style={styles.emptyIcon}>🎢</Text>
+          <Ionicons name="train-outline" size={48} color={colors.text.meta} />
           <Text style={styles.emptyTitle}>Welcome to Parks</Text>
           <Text style={styles.emptySubtitle}>
             Choose your home park to get started

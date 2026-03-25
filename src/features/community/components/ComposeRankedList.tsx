@@ -15,7 +15,20 @@ import { haptics } from '../../../services/haptics';
 import { ItemSearchInput } from './ItemSearchInput';
 import { createRankedListPost } from '../stores/communityStore';
 
-const EMOJI_PRESETS = ['🎢', '🏆', '⭐', '🔥', '💎', '🎯', '🌟', '👑', '🎪', '🎡', '🗺️', '🌎', '🎠', '💨', '⚡', '🏅'];
+const ICON_PRESETS: { name: keyof typeof import('@expo/vector-icons').Ionicons.glyphMap; label: string }[] = [
+  { name: 'train-outline', label: 'Coaster' },
+  { name: 'trophy-outline', label: 'Trophy' },
+  { name: 'star-outline', label: 'Star' },
+  { name: 'flame-outline', label: 'Fire' },
+  { name: 'diamond-outline', label: 'Diamond' },
+  { name: 'location-outline', label: 'Park' },
+  { name: 'ribbon-outline', label: 'Medal' },
+  { name: 'earth-outline', label: 'World' },
+  { name: 'flash-outline', label: 'Speed' },
+  { name: 'rocket-outline', label: 'Rocket' },
+  { name: 'heart-outline', label: 'Love' },
+  { name: 'map-outline', label: 'Map' },
+];
 
 interface ComposeRankedListProps {
   onComplete: () => void;
@@ -23,7 +36,7 @@ interface ComposeRankedListProps {
 
 export function ComposeRankedList({ onComplete }: ComposeRankedListProps) {
   const [title, setTitle] = useState('');
-  const [emoji, setEmoji] = useState('🎢');
+  const [icon, setIcon] = useState('train-outline');
   const [items, setItems] = useState<{ coasterId: string; name: string }[]>([]);
 
   const canPost = title.trim() && items.length >= 2;
@@ -56,17 +69,18 @@ export function ComposeRankedList({ onComplete }: ComposeRankedListProps) {
     haptics.success();
     createRankedListPost({
       title: title.trim(),
-      emoji,
+      emoji: icon,
       items,
     });
     onComplete();
-  }, [canPost, title, emoji, items, onComplete]);
+  }, [canPost, title, icon, items, onComplete]);
 
   return (
     <ScrollView
       style={styles.container}
       contentContainerStyle={styles.content}
       keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
       showsVerticalScrollIndicator={false}
     >
       <Text style={styles.label}>Title</Text>
@@ -78,15 +92,19 @@ export function ComposeRankedList({ onComplete }: ComposeRankedListProps) {
         placeholderTextColor={colors.text.meta}
       />
 
-      <Text style={[styles.label, { marginTop: spacing.xl }]}>Emoji</Text>
+      <Text style={[styles.label, { marginTop: spacing.xl }]}>Icon</Text>
       <View style={styles.emojiGrid}>
-        {EMOJI_PRESETS.map((e) => (
+        {ICON_PRESETS.map((item) => (
           <Pressable
-            key={e}
-            style={[styles.emojiBtn, emoji === e && styles.emojiBtnSelected]}
-            onPress={() => { haptics.tap(); setEmoji(e); }}
+            key={item.name}
+            style={[styles.emojiBtn, icon === item.name && styles.emojiBtnSelected]}
+            onPress={() => { haptics.tap(); setIcon(item.name); }}
           >
-            <Text style={styles.emojiText}>{e}</Text>
+            <Ionicons
+              name={item.name as any}
+              size={22}
+              color={icon === item.name ? colors.accent.primary : colors.text.secondary}
+            />
           </Pressable>
         ))}
       </View>
@@ -164,9 +182,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.accent.primaryLight,
     borderWidth: 2,
     borderColor: colors.accent.primary,
-  },
-  emojiText: {
-    fontSize: 20,
   },
   listPreview: {
     marginTop: spacing.lg,

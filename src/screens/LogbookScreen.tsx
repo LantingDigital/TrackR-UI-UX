@@ -17,7 +17,6 @@ import {
   FlatList,
   Pressable,
   Dimensions,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -65,6 +64,7 @@ import { LogbookLogSheet } from '../components/LogbookLogSheet';
 import { LogConfirmSheet } from '../components/LogConfirmSheet';
 import { FogHeader } from '../components/FogHeader';
 import { EmptyState } from '../components/EmptyState';
+import { useConfirmModal } from '../contexts/ConfirmModalContext';
 import type { RideLog, CoasterRating } from '../types/rideLog';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -618,6 +618,7 @@ const PendingView: React.FC<{
 export const LogbookScreen = () => {
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
+  const { confirm } = useConfirmModal();
   const [activeView, setActiveView] = useState<ViewMode>('Timeline');
   const headerProgress = useSharedValue(0);
   const { pressHandlers: fabPressHandlers, animatedStyle: fabAnimatedStyle } = useSpringPress({ scale: 0.9 });
@@ -908,18 +909,13 @@ export const LogbookScreen = () => {
   const handleTimelineDelete = useCallback((target: TimelineActionTarget) => {
     setTimelineActionVisible(false);
     setTimelineActionTarget(null);
-    Alert.alert(
-      'Delete Ride',
-      `Remove this ride on ${target.coasterName}? This cannot be undone.`,
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Delete',
-          style: 'destructive',
-          onPress: () => deleteLog(target.logId),
-        },
-      ],
-    );
+    confirm({
+      title: 'Delete Ride',
+      message: `Remove this ride on ${target.coasterName}? This cannot be undone.`,
+      confirmText: 'Delete',
+      destructive: true,
+      onConfirm: () => deleteLog(target.logId),
+    });
   }, []);
 
   return (

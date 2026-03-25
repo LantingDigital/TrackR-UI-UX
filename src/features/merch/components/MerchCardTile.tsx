@@ -76,7 +76,7 @@ export const MerchCardTile: React.FC<MerchCardTileProps> = ({
 
         {/* Name + park overlay — bottom */}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.65)']}
+          colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.65)']}
           style={styles.gradient}
         >
           <Text style={styles.name} numberOfLines={1}>{name}</Text>

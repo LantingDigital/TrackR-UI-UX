@@ -21,7 +21,6 @@ import {
   ScrollView,
   Pressable,
   Switch,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -51,6 +50,7 @@ import { haptics } from '../services/haptics';
 import { FogHeader } from '../components/FogHeader';
 import { RatingCriteria } from '../types/rideLog';
 import { getCriteriaConfig, updateCriteriaConfig } from '../stores/rideLogStore';
+import { useConfirmModal } from '../contexts/ConfirmModalContext';
 
 // ============================================
 // Constants
@@ -727,6 +727,7 @@ export function CriteriaWeightEditorScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
   const backPress = useSpringPress();
+  const { confirm } = useConfirmModal();
 
   const [criteria, setCriteria] = useState<RatingCriteria[]>(() =>
     getCriteriaConfig().criteria.map(c => ({ ...c, isLocked: c.isLocked ?? false }))
@@ -881,14 +882,14 @@ export function CriteriaWeightEditorScreen() {
 
   const handleBack = useCallback(() => {
     if (hasChanges) {
-      Alert.alert(
-        'Unsaved Changes',
-        'You have unsaved changes. Discard them?',
-        [
-          { text: 'Keep Editing', style: 'cancel' },
-          { text: 'Discard', style: 'destructive', onPress: () => navigation.goBack() },
-        ],
-      );
+      confirm({
+        title: 'Unsaved Changes',
+        message: 'You have unsaved changes. Discard them?',
+        cancelText: 'Keep Editing',
+        confirmText: 'Discard',
+        destructive: true,
+        onConfirm: () => navigation.goBack(),
+      });
     } else {
       navigation.goBack();
     }

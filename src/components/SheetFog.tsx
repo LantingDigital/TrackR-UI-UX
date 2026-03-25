@@ -75,7 +75,7 @@ export function SheetFog({
         `${fogBase} 0.12)`,    // -12
         `${fogBase} 0.04)`,    // -8
         `${fogBase} 0.01)`,    // -3 (imperceptible)
-        'transparent',           // Gone
+        `${fogBase} 0)`,          // Gone
       ] as [string, string, ...string[]],
       locations: [
         0,

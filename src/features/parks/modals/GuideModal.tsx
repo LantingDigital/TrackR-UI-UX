@@ -21,7 +21,7 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { TIMING } from '../../../constants/animations';
-import { SheetFog } from '../../../components/SheetFog';
+
 import { ParkGuide } from '../types';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -104,9 +104,6 @@ export function GuideModal({ visible, guide, onClose }: GuideModalProps) {
             </Text>
           </View>
         </View>
-
-        {/* Fog gradient — matches ArticleSheet: small dense zone, long smooth fade */}
-        <SheetFog headerHeight={HEADER_AREA_HEIGHT} fogExtension={60} />
 
         {/* Content */}
         <ScrollView

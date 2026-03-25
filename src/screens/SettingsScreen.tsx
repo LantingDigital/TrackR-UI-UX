@@ -30,13 +30,13 @@ import {
   ScrollView,
   Pressable,
   Switch,
-  Alert,
   Image,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import * as StoreReview from 'expo-store-review';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -76,6 +76,7 @@ import { useAuthStore } from '../stores/authStore';
 import { signOut as firebaseSignOut } from '../services/firebase/auth';
 import { callDeleteUserAccount } from '../services/firebase/functions';
 import { stopAllSync } from '../services/firebase/syncController';
+import { useConfirmModal } from '../contexts/ConfirmModalContext';
 
 // ============================================
 // Constants
@@ -259,6 +260,7 @@ const InfoRow = React.memo(({ icon, label, value, isLast }: InfoRowProps) => (
 export const SettingsScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
+  const { alert: showAlert } = useConfirmModal();
   const {
     hapticsEnabled,
     notificationsEnabled,
@@ -279,6 +281,12 @@ export const SettingsScreen = () => {
   const [riderTypeSheetVisible, setRiderTypeSheetVisible] = useState(false);
   const [visibilitySheetVisible, setVisibilitySheetVisible] = useState(false);
   const [clearCacheSheetVisible, setClearCacheSheetVisible] = useState(false);
+  const [friendsSheetVisible, setFriendsSheetVisible] = useState(false);
+  const [rateSheetVisible, setRateSheetVisible] = useState(false);
+  const [photoSheetVisible, setPhotoSheetVisible] = useState(false);
+  const [signOutModalVisible, setSignOutModalVisible] = useState(false);
+  const [displayNameSheetVisible, setDisplayNameSheetVisible] = useState(false);
+  const [usernameSheetVisible, setUsernameSheetVisible] = useState(false);
 
   // Modal states
   const [resetOnboardingModalVisible, setResetOnboardingModalVisible] = useState(false);
@@ -298,77 +306,63 @@ export const SettingsScreen = () => {
   // ── Handlers ──
 
   const handleEditName = useCallback(() => {
-    Alert.prompt(
-      'Display Name',
-      'Enter your display name',
-      (text) => {
-        if (text && text.trim()) {
-          storeSetDisplayName(text.trim());
-          haptics.success();
-        }
-      },
-      'plain-text',
-      displayName,
-    );
-  }, [displayName]);
+    haptics.tap();
+    setDisplayNameSheetVisible(true);
+  }, []);
+
+  const handleDisplayNameSubmit = useCallback((text: string) => {
+    storeSetDisplayName(text);
+  }, []);
 
   const handleEditUsername = useCallback(() => {
-    Alert.prompt(
-      'Username',
-      'Enter your username (include @)',
-      (text) => {
-        if (text && text.trim()) {
-          const formatted = text.trim().startsWith('@') ? text.trim() : `@${text.trim()}`;
-          storeSetUsername(formatted);
-          haptics.success();
-        }
-      },
-      'plain-text',
-      username,
-    );
-  }, [username]);
+    haptics.tap();
+    setUsernameSheetVisible(true);
+  }, []);
 
-  const handleChangePhoto = useCallback(async () => {
+  const handleUsernameSubmit = useCallback((text: string) => {
+    const formatted = text.startsWith('@') ? text : `@${text}`;
+    storeSetUsername(formatted);
+  }, []);
+
+  const handleChangePhoto = useCallback(() => {
     haptics.select();
-    Alert.alert('Profile Photo', 'Choose an option', [
-      {
-        text: 'Take Photo',
-        onPress: async () => {
-          const perm = await ImagePicker.requestCameraPermissionsAsync();
-          if (!perm.granted) return;
-          const result = await ImagePicker.launchCameraAsync({
-            mediaTypes: ['images'],
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 0.8,
-          });
-          if (!result.canceled && result.assets[0]) {
-            setProfileImageUri(result.assets[0].uri);
-          }
-        },
-      },
-      {
-        text: 'Choose from Library',
-        onPress: async () => {
-          const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-          if (!perm.granted) return;
-          const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ['images'],
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 0.8,
-          });
-          if (!result.canceled && result.assets[0]) {
-            setProfileImageUri(result.assets[0].uri);
-          }
-        },
-      },
-      ...(profileImageUri
-        ? [{ text: 'Remove Photo', style: 'destructive' as const, onPress: () => setProfileImageUri(null) }]
-        : []),
-      { text: 'Cancel', style: 'cancel' as const },
-    ]);
-  }, [profileImageUri]);
+    setPhotoSheetVisible(true);
+  }, []);
+
+  const handleTakePhoto = useCallback(async () => {
+    setPhotoSheetVisible(false);
+    const perm = await ImagePicker.requestCameraPermissionsAsync();
+    if (!perm.granted) return;
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ['images'],
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+    if (!result.canceled && result.assets[0]) {
+      setProfileImageUri(result.assets[0].uri);
+    }
+  }, []);
+
+  const handleChooseFromLibrary = useCallback(async () => {
+    setPhotoSheetVisible(false);
+    const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!perm.granted) return;
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+    if (!result.canceled && result.assets[0]) {
+      setProfileImageUri(result.assets[0].uri);
+    }
+  }, []);
+
+  const handleRemovePhoto = useCallback(() => {
+    setPhotoSheetVisible(false);
+    setProfileImageUri(null);
+  }, []);
 
   // Navigate to Email screen
   const handleChangeEmail = useCallback(() => {
@@ -381,19 +375,15 @@ export const SettingsScreen = () => {
   }, [navigation]);
 
   const handleSignOut = useCallback(() => {
-    Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Sign Out',
-        style: 'destructive',
-        onPress: async () => {
-          haptics.tap();
-          stopAllSync();
-          await firebaseSignOut();
-          resetOnboarding();
-        },
-      },
-    ]);
+    haptics.tap();
+    setSignOutModalVisible(true);
+  }, []);
+
+  const handleSignOutConfirm = useCallback(async () => {
+    haptics.tap();
+    stopAllSync();
+    await firebaseSignOut();
+    resetOnboarding();
   }, []);
 
   // Navigate to Parks tab and auto-open park switcher
@@ -419,7 +409,8 @@ export const SettingsScreen = () => {
   }, []);
 
   const handleFriendsList = useCallback(() => {
-    Alert.alert('Friends', 'Friends list coming soon.', [{ text: 'OK' }]);
+    haptics.tap();
+    setFriendsSheetVisible(true);
   }, []);
 
   // Navigate to Blocked Users screen
@@ -453,9 +444,8 @@ export const SettingsScreen = () => {
   }, []);
 
   const handleRateApp = useCallback(() => {
-    Alert.alert('Rate TrackR', 'Thank you for using TrackR! App Store rating coming soon.', [
-      { text: 'OK' },
-    ]);
+    haptics.tap();
+    setRateSheetVisible(true);
   }, []);
 
   // Navigate to Terms screen
@@ -497,8 +487,7 @@ export const SettingsScreen = () => {
   }, []);
 
   const handleClearCacheConfirm = useCallback(() => {
-    // Mock clear action
-    Alert.alert('Done', 'Cache cleared successfully.');
+    haptics.success();
   }, []);
 
   const handleResetOnboardingConfirm = useCallback(() => {
@@ -513,7 +502,7 @@ export const SettingsScreen = () => {
       stopAllSync();
       resetOnboarding();
     } catch {
-      Alert.alert('Error', 'Failed to delete account. Please try again.');
+      showAlert({ title: 'Error', message: 'Failed to delete account. Please try again.' });
     }
   }, []);
 
@@ -525,6 +514,12 @@ export const SettingsScreen = () => {
   const handleClearCacheSheetClose = useCallback(() => setClearCacheSheetVisible(false), []);
   const handleResetOnboardingModalClose = useCallback(() => setResetOnboardingModalVisible(false), []);
   const handleDeleteAccountModalClose = useCallback(() => setDeleteAccountModalVisible(false), []);
+  const handleSignOutModalClose = useCallback(() => setSignOutModalVisible(false), []);
+  const handleFriendsSheetClose = useCallback(() => setFriendsSheetVisible(false), []);
+  const handleRateSheetClose = useCallback(() => setRateSheetVisible(false), []);
+  const handlePhotoSheetClose = useCallback(() => setPhotoSheetVisible(false), []);
+  const handleDisplayNameSheetClose = useCallback(() => setDisplayNameSheetVisible(false), []);
+  const handleUsernameSheetClose = useCallback(() => setUsernameSheetVisible(false), []);
 
   const initials = displayName
     .split(' ')
@@ -779,8 +774,8 @@ export const SettingsScreen = () => {
         </View>
       </ScrollView>
 
-      {/* Liquid Glass header overlay */}
-      <GlassHeader headerHeight={headerHeight} />
+      {/* Liquid Glass header overlay — reduced fade to not cover profile card */}
+      <GlassHeader headerHeight={headerHeight} fadeDistance={60} />
 
       {/* Floating header */}
       <Animated.View style={[styles.header, { top: insets.top }, headerAnim]}>
@@ -842,7 +837,93 @@ export const SettingsScreen = () => {
         onConfirm={handleClearCacheConfirm}
       />
 
+      {/* Friends Coming Soon */}
+      <SettingsBottomSheet
+        visible={friendsSheetVisible}
+        onClose={handleFriendsSheetClose}
+        title="Friends"
+        warning
+        warningMessage="Friends list is coming soon. You'll be able to add friends, share rides, and compare rankings."
+        warningIcon="people-outline"
+        confirmLabel="OK"
+        onConfirm={handleFriendsSheetClose}
+      />
+
+      {/* Rate TrackR — pre-prompt then native review dialog */}
+      <SettingsBottomSheet
+        visible={rateSheetVisible}
+        onClose={handleRateSheetClose}
+        title="Enjoying TrackR?"
+        warning
+        warningMessage="If you're enjoying TrackR, would you mind leaving a quick rating on the App Store? It helps more coaster enthusiasts find the app."
+        warningIcon="star-outline"
+        confirmLabel="Rate TrackR"
+        cancelLabel="Not now"
+        onConfirm={async () => {
+          handleRateSheetClose();
+          const isAvailable = await StoreReview.isAvailableAsync();
+          if (isAvailable) {
+            await StoreReview.requestReview();
+          }
+        }}
+      />
+
+      {/* Profile Photo Picker */}
+      <SettingsBottomSheet
+        visible={photoSheetVisible}
+        onClose={handlePhotoSheetClose}
+        title="Profile Photo"
+        options={[
+          { key: 'camera', label: 'Take Photo', icon: 'camera-outline' },
+          { key: 'library', label: 'Choose from Library', icon: 'images-outline' },
+          ...(profileImageUri
+            ? [{ key: 'remove', label: 'Remove Photo', icon: 'trash-outline' as keyof typeof Ionicons.glyphMap }]
+            : []),
+        ]}
+        onSelect={(key) => {
+          if (key === 'camera') handleTakePhoto();
+          else if (key === 'library') handleChooseFromLibrary();
+          else if (key === 'remove') handleRemovePhoto();
+        }}
+      />
+
+      {/* Display Name */}
+      <SettingsBottomSheet
+        visible={displayNameSheetVisible}
+        onClose={handleDisplayNameSheetClose}
+        title="Display Name"
+        textInput
+        textInputPlaceholder="Enter your display name"
+        textInputDefaultValue={displayName}
+        confirmLabel="Save"
+        onTextSubmit={handleDisplayNameSubmit}
+      />
+
+      {/* Username */}
+      <SettingsBottomSheet
+        visible={usernameSheetVisible}
+        onClose={handleUsernameSheetClose}
+        title="Username"
+        textInput
+        textInputPlaceholder="Enter your username"
+        textInputDefaultValue={username}
+        confirmLabel="Save"
+        onTextSubmit={handleUsernameSubmit}
+      />
+
       {/* ── Dangerous Action Modals ── */}
+
+      {/* Sign Out */}
+      <DangerousActionModal
+        visible={signOutModalVisible}
+        onClose={handleSignOutModalClose}
+        title="Sign Out"
+        message="Are you sure you want to sign out? Your data will remain safe in the cloud."
+        confirmLabel="Sign Out"
+        cancelLabel="Cancel"
+        onConfirm={handleSignOutConfirm}
+        icon="log-out-outline"
+      />
 
       {/* Reset Onboarding */}
       <DangerousActionModal

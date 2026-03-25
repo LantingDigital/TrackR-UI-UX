@@ -1,0 +1,761 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - navigation "Main" [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e15]:
+          - link "Search ⌥⌘1" [ref=e16] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+            - generic [ref=e20]: Search
+            - generic [ref=e22]: ⌥⌘1
+          - link "Computer ⌥⌘2" [ref=e23] [cursor=pointer]:
+            - /url: /computer/new
+            - img [ref=e27]
+            - generic [ref=e31]: Computer
+            - generic [ref=e33]: ⌥⌘2
+        - generic [ref=e34]:
+          - button "New thread ⌘K" [ref=e36] [cursor=pointer]:
+            - generic [ref=e37]:
+              - img [ref=e43]
+              - generic [ref=e45]: New thread
+              - generic [ref=e47]: ⌘K
+          - generic [ref=e48]:
+            - generic [ref=e50]:
+              - link "History" [ref=e51] [cursor=pointer]:
+                - /url: /library
+                - generic [ref=e52]:
+                  - img [ref=e57]
+                  - generic [ref=e59]: History
+              - link "Discover" [ref=e60] [cursor=pointer]:
+                - /url: /discover
+                - generic [ref=e61]:
+                  - img [ref=e66]
+                  - generic [ref=e68]: Discover
+              - link "Spaces" [ref=e69] [cursor=pointer]:
+                - /url: /spaces
+                - generic [ref=e70]:
+                  - img [ref=e75]
+                  - generic [ref=e77]: Spaces
+              - link "Finance" [ref=e78] [cursor=pointer]:
+                - /url: /finance
+                - generic [ref=e79]:
+                  - img [ref=e84]
+                  - generic [ref=e86]: Finance
+              - link "Health" [ref=e87] [cursor=pointer]:
+                - /url: /health
+                - generic [ref=e88]:
+                  - img [ref=e93]
+                  - generic [ref=e95]: Health
+              - button "More" [ref=e96] [cursor=pointer]:
+                - generic [ref=e97]:
+                  - img [ref=e102]
+                  - generic [ref=e104]: More
+            - generic [ref=e110]:
+              - button "Recent Collapse" [ref=e111] [cursor=pointer]:
+                - link "Recent" [ref=e112]:
+                  - /url: /library
+                  - generic [ref=e114]:
+                    - generic [ref=e115]: Recent
+                    - img [ref=e116]
+                - button "Collapse" [ref=e120]:
+                  - img [ref=e123]
+              - generic [ref=e128]:
+                - generic [ref=e1268]:
+                  - link "Write a cohesive article about the biggest roller coaster and theme park news stories from March 17-" [ref=e1269] [cursor=pointer]:
+                    - /url: /search/write-a-cohesive-article-about-6meZt4lVRSq08UjWzczPXQ
+                    - generic [ref=e1272]: Write a cohesive article about the biggest roller coaster and theme park news stories from March 17-
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1273]:
+                  - link "I am looking to create a content pipeline for my app. Here are all the categories and subcategories" [ref=e1274] [cursor=pointer]:
+                    - /url: /search/i-am-looking-to-create-a-conte-q_wAloVoS_C86u3NoNTygg
+                    - generic [ref=e1277]: I am looking to create a content pipeline for my app. Here are all the categories and subcategories
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1278]:
+                  - link "What is the best roller coaster in the world right now in 2026?" [ref=e1279] [cursor=pointer]:
+                    - /url: /search/what-is-the-best-roller-coaste-sr6y1ulDRWOHLuGN2N47Kw
+                    - generic [ref=e1282]: What is the best roller coaster in the world right now in 2026?
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1283]:
+                  - link "what season of big brother, accoridng to real people, is the best?" [ref=e1284] [cursor=pointer]:
+                    - /url: /search/what-season-of-big-brother-acc-SP7G16nsRQGcvkhF9ewLOw
+                    - generic [ref=e1287]: what season of big brother, accoridng to real people, is the best?
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1288]:
+                  - link "what is apples newest developer UIkit that has the gradient header that changes color dependant on w" [ref=e1289] [cursor=pointer]:
+                    - /url: /search/what-is-apples-newest-develope-NJ.CGrCcRKS4WBCtMZfP_Q
+                    - generic [ref=e1292]: what is apples newest developer UIkit that has the gradient header that changes color dependant on w
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1293]:
+                  - link "what is apples newest developer UIkit that has the liquid glass stuff and the gradient header that c" [ref=e1294] [cursor=pointer]:
+                    - /url: /search/what-is-apples-newest-develope-SidGbCHDRzC07Ic1UiQmCA
+                    - generic [ref=e1297]: what is apples newest developer UIkit that has the liquid glass stuff and the gradient header that c
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1298]:
+                  - link "what is the flow with apple and iap when it comes to digital vs physical goods and what can/can't yo" [ref=e1299] [cursor=pointer]:
+                    - /url: /search/what-is-the-flow-with-apple-an-qfoTswsWTIadPjD3ZBXTGQ
+                    - generic [ref=e1302]: what is the flow with apple and iap when it comes to digital vs physical goods and what can/can't yo
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1303]:
+                  - 'link "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details" [ref=e1304] [cursor=pointer]':
+                    - /url: /search/rocky-mountain-construction-rm-WsgOpGk6TMi2Vul14JApYw
+                    - generic [ref=e1307]: "Rocky Mountain Construction RMC Raptor coaster at Family Kingdom Myrtle Beach 2026: complete details"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1308]:
+                  - 'link "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack" [ref=e1309] [cursor=pointer]':
+                    - /url: /search/dollywood-nightflight-expediti-697Pm.fOT9SxDcFfluFvsQ
+                    - generic [ref=e1312]: "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack"
+                  - button "Thread actions" [ref=e1314] [cursor=pointer]:
+                    - img [ref=e1317]
+                - generic [ref=e1320]:
+                  - 'link "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202" [ref=e1321] [cursor=pointer]':
+                    - /url: /search/southern-california-theme-park-595pPipqSBWM8xDc0QiXlQ
+                    - generic [ref=e1324]: "Southern California theme park coaster arms race 2026-2028: Six Flags Magic Mountain new coaster 202"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1325]:
+                  - 'link "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c" [ref=e1326] [cursor=pointer]':
+                    - /url: /search/tormenta-rampaging-run-six-fla-4A7LnKA8T6.roJytBAC64w
+                    - generic [ref=e1329]: "Tormenta Rampaging Run Six Flags Over Texas 2026: complete details on construction timeline, track c"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1330]:
+                  - link "What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202" [ref=e1331] [cursor=pointer]:
+                    - /url: /search/what-are-the-biggest-roller-co-N7KmV85pShubda2GtMZmtQ
+                    - generic [ref=e1334]: What are the biggest roller coaster and theme park news stories from the past week (March 11-18, 202
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1335]:
+                  - 'link "using real research, address the following: Act as an expert software agency founder, enterprise Sa" [ref=e1336] [cursor=pointer]':
+                    - /url: /search/using-real-research-address-th-Wcp1p8DDTp.OPref6qXXsg
+                    - generic [ref=e1339]: "using real research, address the following: Act as an expert software agency founder, enterprise Sa"
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+                - generic [ref=e1340]:
+                  - link "roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park" [ref=e1341] [cursor=pointer]:
+                    - /url: /search/roller-coaster-and-theme-park-n9vJaevtT42.dHV_OUv7rw
+                    - generic [ref=e1344]: roller coaster and theme park news from the past week March 10-16 2026. New ride announcements, park
+                  - generic:
+                    - button "Thread actions":
+                      - generic:
+                        - generic:
+                          - img
+              - link "View All" [ref=e209] [cursor=pointer]:
+                - /url: /library
+        - generic [ref=e213] [cursor=pointer]:
+          - button "User avatar Caleb Lanting" [ref=e215]:
+            - generic [ref=e222]:
+              - generic [ref=e226]:
+                - img "User avatar" [ref=e227]
+                - img [ref=e230]
+              - generic [ref=e233]: Caleb Lanting
+          - button "Notifications" [ref=e242]:
+            - img [ref=e245]
+    - main [ref=e252]:
+      - generic [ref=e1345]:
+        - generic:
+          - generic:
+            - tablist "Answer mode tabs" [ref=e1347]:
+              - tab "Answer" [selected] [ref=e1348] [cursor=pointer]:
+                - img [ref=e1349]
+                - text: Answer
+              - tab "Links" [ref=e1351] [cursor=pointer]:
+                - img [ref=e1352]
+                - text: Links
+              - tab "Images" [ref=e1354] [cursor=pointer]:
+                - img [ref=e1355]
+                - text: Images
+            - generic [ref=e1357]:
+              - button "Thread actions" [ref=e1359] [cursor=pointer]:
+                - img [ref=e1360]
+              - button "Share" [ref=e1364] [cursor=pointer]:
+                - img [ref=e1366]
+                - generic [ref=e1368]: Share
+              - button "Download Comet" [ref=e1371] [cursor=pointer]:
+                - img [ref=e1373]
+                - generic [ref=e1375]: Download Comet
+        - generic [ref=e1378]:
+          - tabpanel "Answer" [ref=e1386]:
+            - generic [ref=e1387]:
+              - generic [ref=e1392]:
+                - generic:
+                  - button "Edit query":
+                    - generic:
+                      - generic:
+                        - img
+                  - button "Copy query":
+                    - generic:
+                      - generic:
+                        - img
+                - generic [ref=e1393]:
+                  - 'heading "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack Rides manufacturer specs, Hidden Hollow Aviation theme, show building size, ride time, capacity, opening date, Wildwood Grove location, investment cost, queue theming, ride vehicles, dark ride elements, all media coverage from USA Today, Knoxville News Sentinel, blooloop, Amusement Today, Parade, Coaster101, Reddit, YouTube construction tours, and any other sources reporting on this attraction" [level=1] [ref=e1398]':
+                    - generic [ref=e1400]: "Dollywood NightFlight Expedition 2026: complete details on construction progress, ride systems, Mack Rides manufacturer specs, Hidden Hollow Aviation theme, show building size, ride time, capacity, opening date, Wildwood Grove location, investment cost, queue theming, ride vehicles, dark ride elements, all media coverage from USA Today, Knoxville News Sentinel, blooloop, Amusement Today, Parade, Coaster101, Reddit, YouTube construction tours, and any other sources reporting on this attraction"
+                  - button "Show more" [ref=e1403] [cursor=pointer]:
+                    - generic [ref=e1404]: Show more
+                    - img [ref=e1406]
+              - generic [ref=e1409]:
+                - button "Completed 2 steps" [ref=e1413] [cursor=pointer]:
+                  - text: Completed 2 steps
+                  - img [ref=e1414]
+                - generic [ref=e1423]:
+                  - paragraph [ref=e1424]:
+                    - text: Dollywood’s NightFlight Expedition is a $50+ million, Mack Rides–built indoor family hybrid coaster/river-rapids “four‑in‑one” attraction in a 44,000 sq ft show building at the back of Wildwood Grove, themed as Hidden Hollow Aviation and currently targeting a Spring 2026 opening (likely by mid‑June).
+                    - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1426]:
+                      - generic [ref=e1429] [cursor=pointer]:
+                        - img [ref=e1431]
+                        - generic [ref=e1433]: YouTube
+                    - generic [ref=e1438] [cursor=pointer]:
+                      - generic [ref=e1439]: knoxnews
+                      - generic [ref=e1440]: "+5"
+                  - heading "Location, building, investment, schedule" [level=2] [ref=e1441]
+                  - list [ref=e1442]:
+                    - listitem [ref=e1443]:
+                      - paragraph [ref=e1444]:
+                        - text: "Location: Expansion plot behind/beyond the existing Wildwood Grove midway, accessed past the Wildwood Tree area; the show building presents as a large “green aircraft hangar” from guest paths and the Dollywood Express."
+                        - generic [ref=e1449] [cursor=pointer]:
+                          - generic [ref=e1450]: knoxnews
+                          - generic [ref=e1451]: "+2"
+                    - listitem [ref=e1452]:
+                      - paragraph [ref=e1453]:
+                        - text: "Building size: Approximately 44,000 sq ft, fully enclosed and temperature‑controlled to allow year‑round operation independent of Smoky Mountain weather."
+                        - generic [ref=e1458] [cursor=pointer]:
+                          - generic [ref=e1459]: blooloop
+                          - generic [ref=e1460]: "+2"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1462]:
+                          - generic [ref=e1465] [cursor=pointer]:
+                            - img [ref=e1467]
+                            - generic [ref=e1469]: YouTube
+                    - listitem [ref=e1470]:
+                      - paragraph [ref=e1471]:
+                        - text: "Investment: Described by Dollywood and Herschend as “more than $50 million,” the largest single attraction investment in Dollywood history."
+                        - generic [ref=e1476] [cursor=pointer]:
+                          - generic [ref=e1477]: amusementtoday
+                          - generic [ref=e1478]: "+5"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1480]:
+                          - generic [ref=e1483] [cursor=pointer]:
+                            - img [ref=e1485]
+                            - generic [ref=e1487]: YouTube
+                    - listitem [ref=e1488]:
+                      - paragraph [ref=e1489]:
+                        - text: "Construction progress (March 2026): Building is enclosed with active interior work; Dollywood has stated they are working “seven days a week, two shifts a day” to hit a Spring 2026 opening, and the ride will not be ready for the March 13, 2026 park opening day."
+                        - generic [ref=e1494] [cursor=pointer]:
+                          - generic [ref=e1495]: idahonews
+                          - generic [ref=e1496]: "+3"
+                        - generic [ref=e1501] [cursor=pointer]:
+                          - img [ref=e1503]
+                          - generic [ref=e1505]: youtube
+                          - generic [ref=e1506]: "+2"
+                    - listitem [ref=e1507]:
+                      - paragraph [ref=e1508]:
+                        - text: "Opening window: Officially “Spring 2026”; internal comments in tours and enthusiast coverage suggest they are aiming before mid‑June 2026 but are publicly keeping the window broad."
+                        - generic [ref=e1513] [cursor=pointer]:
+                          - generic [ref=e1514]: dollywood
+                          - generic [ref=e1515]: "+5"
+                        - generic "Dollywood's NightFlight Expedition Construction Tour & NEW 2026 ..." [ref=e1517]:
+                          - generic [ref=e1520] [cursor=pointer]:
+                            - img [ref=e1522]
+                            - generic [ref=e1524]: YouTube
+                  - heading "Ride system, duration, capacity, vehicles" [level=2] [ref=e1525]
+                  - list [ref=e1526]:
+                    - listitem [ref=e1527]:
+                      - paragraph [ref=e1528]:
+                        - text: "Manufacturer: Mack Rides, working with Dollywood and Herschend Creative Studios; Mack’s ride system for NightFlight Expedition received the 2025 Amusement Today Golden Ticket for Best New Innovation."
+                        - generic [ref=e1533] [cursor=pointer]:
+                          - generic [ref=e1534]: dollywood
+                          - generic [ref=e1535]: "+4"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1537]:
+                          - generic [ref=e1540] [cursor=pointer]:
+                            - img [ref=e1542]
+                            - generic [ref=e1544]: YouTube
+                    - listitem [ref=e1545]:
+                      - paragraph [ref=e1546]:
+                        - text: "Ride type: Marketed as the world’s first indoor family hybrid coaster and whitewater river raft ride, combining four ride “modes” in a single experience."
+                        - generic [ref=e1551] [cursor=pointer]:
+                          - generic [ref=e1552]: dollywood
+                          - generic [ref=e1553]: "+5"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1555]:
+                          - generic [ref=e1558] [cursor=pointer]:
+                            - img [ref=e1560]
+                            - generic [ref=e1562]: YouTube
+                    - listitem [ref=e1563]:
+                      - paragraph [ref=e1564]: "Four experience segments:"
+                      - list [ref=e1565]:
+                        - listitem [ref=e1566]:
+                          - paragraph [ref=e1567]:
+                            - text: Nighttime flight over the Smoky Mountains (coaster‑style section with aerial visuals).
+                            - generic [ref=e1572] [cursor=pointer]:
+                              - generic [ref=e1573]: hfecorp
+                              - generic [ref=e1574]: "+4"
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1576]:
+                              - generic [ref=e1579] [cursor=pointer]:
+                                - img [ref=e1581]
+                                - generic [ref=e1583]: YouTube
+                        - listitem [ref=e1584]:
+                          - paragraph [ref=e1585]:
+                            - text: Whitewater rafting portion through more than 500,000 gallons of surging water.
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1587]:
+                              - generic [ref=e1590] [cursor=pointer]:
+                                - img [ref=e1592]
+                                - generic [ref=e1594]: YouTube
+                            - generic [ref=e1599] [cursor=pointer]:
+                              - generic [ref=e1600]: amusementtoday
+                              - generic [ref=e1601]: "+3"
+                        - listitem [ref=e1602]:
+                          - paragraph [ref=e1603]:
+                            - text: Mountain ridge coaster segment (more traditional coaster track traversal).
+                            - generic [ref=e1608] [cursor=pointer]:
+                              - generic [ref=e1609]: amusementtoday
+                              - generic [ref=e1610]: "+4"
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1612]:
+                              - generic [ref=e1615] [cursor=pointer]:
+                                - img [ref=e1617]
+                                - generic [ref=e1619]: YouTube
+                        - listitem [ref=e1620]:
+                          - paragraph [ref=e1621]:
+                            - text: Boat navigation across a mysterious shimmering lake.
+                            - generic [ref=e1626] [cursor=pointer]:
+                              - generic [ref=e1627]: blooloop
+                              - generic [ref=e1628]: "+4"
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1630]:
+                              - generic [ref=e1633] [cursor=pointer]:
+                                - img [ref=e1635]
+                                - generic [ref=e1637]: YouTube
+                    - listitem [ref=e1638]:
+                      - paragraph [ref=e1639]:
+                        - text: "Duration: Approximately 5½ minutes of ride time from dispatch to unload."
+                        - generic [ref=e1644] [cursor=pointer]:
+                          - generic [ref=e1645]: dollywood
+                          - generic [ref=e1646]: "+2"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1648]:
+                          - generic [ref=e1651] [cursor=pointer]:
+                            - img [ref=e1653]
+                            - generic [ref=e1655]: YouTube
+                    - listitem [ref=e1656]:
+                      - paragraph [ref=e1657]:
+                        - text: "Capacity: Targeted around 1,200 riders per hour, slightly higher than Big Bear Mountain according to local reporting."
+                        - generic "Dollywood's new NightFlight Expedition will surprise all coaster fans" [ref=e1659]:
+                          - link "knoxnews" [ref=e1661] [cursor=pointer]:
+                            - /url: https://www.knoxnews.com/story/entertainment/2026/02/28/preview-of-dollywoods-new-ride-nightflight-expedition-opening-in-2026/88858680007/
+                            - generic [ref=e1664]: knoxnews
+                    - listitem [ref=e1665]:
+                      - paragraph [ref=e1666]: "Vehicle design:"
+                      - list [ref=e1667]:
+                        - listitem [ref=e1668]:
+                          - paragraph [ref=e1669]:
+                            - text: Custom amphibious ride vehicles that can traverse coaster track and water channels, themed as the Oakley family’s experimental aircraft/raft/boat.
+                            - generic [ref=e1674] [cursor=pointer]:
+                              - generic [ref=e1675]: dollywood
+                              - generic [ref=e1676]: "+5"
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1678]:
+                              - generic [ref=e1681] [cursor=pointer]:
+                                - img [ref=e1683]
+                                - generic [ref=e1685]: YouTube
+                        - listitem [ref=e1686]:
+                          - paragraph [ref=e1687]:
+                            - text: Onboard systems include synchronized audio, interactivity with off‑board audio, integrated lighting, and interfaces with large‑format projection surfaces for the dark ride show scenes.
+                            - generic [ref=e1692] [cursor=pointer]:
+                              - generic [ref=e1693]: hfecorp
+                              - generic [ref=e1694]: "+4"
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1696]:
+                              - generic [ref=e1699] [cursor=pointer]:
+                                - img [ref=e1701]
+                                - generic [ref=e1703]: YouTube
+                        - listitem [ref=e1704]:
+                          - paragraph [ref=e1705]:
+                            - text: Height requirement is 39 inches, positioning this as a family‑accessible but substantial attraction.
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1707]:
+                              - generic [ref=e1710] [cursor=pointer]:
+                                - img [ref=e1712]
+                                - generic [ref=e1714]: YouTube
+                            - generic "NightFlight Expedition Ride Vehicle Unveiled - Dollywood" [ref=e1716]:
+                              - link "dollywood" [ref=e1718] [cursor=pointer]:
+                                - /url: https://www.dollywood.com/press/nightflight-expedition-ride-vehicle-unveiled/
+                                - generic [ref=e1721]: dollywood
+                  - heading "Theme, story, Hidden Hollow Aviation, queue and show" [level=2] [ref=e1722]
+                  - list [ref=e1723]:
+                    - listitem [ref=e1724]:
+                      - paragraph [ref=e1725]:
+                        - text: "Storyframe: Guests visit Hidden Hollow Aviation, a fictional hangar operation in Wildwood Grove run by twin scientists Cora and Jasper Oakley, niece and nephew of explorer Ned Oakley."
+                        - generic [ref=e1730] [cursor=pointer]:
+                          - generic [ref=e1731]: dollywood
+                          - generic [ref=e1732]: "+2"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1734]:
+                          - generic [ref=e1737] [cursor=pointer]:
+                            - img [ref=e1739]
+                            - generic [ref=e1741]: YouTube
+                    - listitem [ref=e1742]:
+                      - paragraph [ref=e1743]:
+                        - text: "Narrative goal: Using the twins’ invention, the"
+                        - strong [ref=e1744]: Bioluminator
+                        - text: ", riders search for Secret Lake, believed to feed the glowing roots of the Wildwood Tree and explain its bioluminescent canopy."
+                        - generic [ref=e1749] [cursor=pointer]:
+                          - generic [ref=e1750]: dollywood
+                          - generic [ref=e1751]: "+2"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1753]:
+                          - generic [ref=e1756] [cursor=pointer]:
+                            - img [ref=e1758]
+                            - generic [ref=e1760]: YouTube
+                    - listitem [ref=e1761]:
+                      - paragraph [ref=e1762]:
+                        - text: "Bioluminescence motif: The ride emphasizes the Smokies at night—fireflies, starlight, glowing roots and water—as a core visual and emotional hook, echoing Dolly’s comments about the mountains “coming to life” after dark."
+                        - generic [ref=e1767] [cursor=pointer]:
+                          - generic [ref=e1768]: idahonews
+                          - generic [ref=e1769]: "+4"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1771]:
+                          - generic [ref=e1774] [cursor=pointer]:
+                            - img [ref=e1776]
+                            - generic [ref=e1778]: YouTube
+                    - listitem [ref=e1779]:
+                      - paragraph [ref=e1780]: "Queue theming:"
+                      - list [ref=e1781]:
+                        - listitem [ref=e1782]:
+                          - paragraph [ref=e1783]:
+                            - text: Inside the hangar guests see lab spaces, aviation gear, and narrative set‑ups that explain Hidden Hollow Aviation, the Oakley family, and the Bioluminator before the track and vehicles are fully revealed in the load area.
+                            - generic [ref=e1788] [cursor=pointer]:
+                              - generic [ref=e1789]: knoxnews
+                              - generic [ref=e1790]: "+3"
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1792]:
+                              - generic [ref=e1795] [cursor=pointer]:
+                                - img [ref=e1797]
+                                - generic [ref=e1799]: YouTube
+                        - listitem [ref=e1800]:
+                          - paragraph [ref=e1801]:
+                            - text: Reports suggest an engaging indoor queue intended to make an expected ~55‑minute wait more entertaining, with story moments and scenic reveals as you approach load.
+                            - generic "Dollywood's new NightFlight Expedition will surprise all coaster fans" [ref=e1803]:
+                              - link "knoxnews" [ref=e1805] [cursor=pointer]:
+                                - /url: https://www.knoxnews.com/story/entertainment/2026/02/28/preview-of-dollywoods-new-ride-nightflight-expedition-opening-in-2026/88858680007/
+                                - generic [ref=e1808]: knoxnews
+                    - listitem [ref=e1809]:
+                      - paragraph [ref=e1810]: "Dark‑ride elements:"
+                      - list [ref=e1811]:
+                        - listitem [ref=e1812]:
+                          - paragraph [ref=e1813]:
+                            - text: Large sections of the experience occur in darkness with projection‑mapped environments, practical scenic rockwork and forest, special lighting simulating bioluminescent flora/fauna, and synchronized audio to blend coaster and water movements with story beats.
+                            - generic [ref=e1818] [cursor=pointer]:
+                              - img [ref=e1820]
+                              - generic [ref=e1822]: youtube
+                              - generic [ref=e1823]: "+1"
+                            - generic [ref=e1828] [cursor=pointer]:
+                              - generic [ref=e1829]: amusementtoday
+                              - generic [ref=e1830]: "+4"
+                        - listitem [ref=e1831]:
+                          - paragraph [ref=e1832]:
+                            - text: The four “chapters” (flight, rapids, ridge, lake) are structured as a single continuous storyline rather than discrete ride systems.
+                            - generic [ref=e1837] [cursor=pointer]:
+                              - generic [ref=e1838]: amusementtoday
+                              - generic [ref=e1839]: "+4"
+                            - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1841]:
+                              - generic [ref=e1844] [cursor=pointer]:
+                                - img [ref=e1846]
+                                - generic [ref=e1848]: YouTube
+                  - heading "Key technical and operational points table" [level=2] [ref=e1849]
+                  - table [ref=e1852]:
+                    - rowgroup [ref=e1853]:
+                      - row "Aspect Detail Source" [ref=e1854]:
+                        - columnheader "Aspect" [ref=e1855]
+                        - columnheader "Detail" [ref=e1856]
+                        - columnheader "Source" [ref=e1857]
+                    - rowgroup [ref=e1858]:
+                      - row "Ride maker Mack Rides with Dollywood & Herschend Creative Studios amusementtoday +4 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1859]:
+                        - cell "Ride maker" [ref=e1860]
+                        - cell "Mack Rides with Dollywood & Herschend Creative Studios" [ref=e1861]
+                        - cell "amusementtoday +4 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1862]:
+                          - generic [ref=e1867] [cursor=pointer]:
+                            - generic [ref=e1868]: amusementtoday
+                            - generic [ref=e1869]: "+4"
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1871]:
+                            - generic [ref=e1874] [cursor=pointer]:
+                              - img [ref=e1876]
+                              - generic [ref=e1878]: YouTube
+                      - row "Show building size ~44,000 sq ft, enclosed, climate‑controlled knoxnews +2 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1879]:
+                        - cell "Show building size" [ref=e1880]
+                        - cell "~44,000 sq ft, enclosed, climate‑controlled" [ref=e1881]
+                        - cell "knoxnews +2 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1882]:
+                          - generic [ref=e1887] [cursor=pointer]:
+                            - generic [ref=e1888]: knoxnews
+                            - generic [ref=e1889]: "+2"
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1891]:
+                            - generic [ref=e1894] [cursor=pointer]:
+                              - img [ref=e1896]
+                              - generic [ref=e1898]: YouTube
+                      - row "Investment “More than $50 million,” largest in park history amusementtoday +5 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1899]:
+                        - cell "Investment" [ref=e1900]
+                        - cell "“More than $50 million,” largest in park history" [ref=e1901]
+                        - cell "amusementtoday +5 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1902]:
+                          - generic [ref=e1907] [cursor=pointer]:
+                            - generic [ref=e1908]: amusementtoday
+                            - generic [ref=e1909]: "+5"
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1911]:
+                            - generic [ref=e1914] [cursor=pointer]:
+                              - img [ref=e1916]
+                              - generic [ref=e1918]: YouTube
+                      - row "Ride duration ~5.5 minutes Dolly Press Conference & Nightflight Expedition Construction Tour amusementtoday +2" [ref=e1919]:
+                        - cell "Ride duration" [ref=e1920]
+                        - cell "~5.5 minutes" [ref=e1921]
+                        - cell "Dolly Press Conference & Nightflight Expedition Construction Tour amusementtoday +2" [ref=e1922]:
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1924]:
+                            - generic [ref=e1927] [cursor=pointer]:
+                              - img [ref=e1929]
+                              - generic [ref=e1931]: YouTube
+                          - generic [ref=e1936] [cursor=pointer]:
+                            - generic [ref=e1937]: amusementtoday
+                            - generic [ref=e1938]: "+2"
+                      - row "Target hourly capacity ~1,200 riders per hour Dollywood's new NightFlight Expedition will surprise all coaster fans" [ref=e1939]:
+                        - cell "Target hourly capacity" [ref=e1940]
+                        - cell "~1,200 riders per hour" [ref=e1941]
+                        - cell "Dollywood's new NightFlight Expedition will surprise all coaster fans" [ref=e1942]:
+                          - generic "Dollywood's new NightFlight Expedition will surprise all coaster fans" [ref=e1944]:
+                            - link "knoxnews" [ref=e1946] [cursor=pointer]:
+                              - /url: https://www.knoxnews.com/story/entertainment/2026/02/28/preview-of-dollywoods-new-ride-nightflight-expedition-opening-in-2026/88858680007/
+                              - generic [ref=e1949]: knoxnews
+                      - row "Height requirement 39 inches Dolly Press Conference & Nightflight Expedition Construction Tour NightFlight Expedition Ride Vehicle Unveiled - Dollywood" [ref=e1950]:
+                        - cell "Height requirement" [ref=e1951]
+                        - cell "39 inches" [ref=e1952]
+                        - cell "Dolly Press Conference & Nightflight Expedition Construction Tour NightFlight Expedition Ride Vehicle Unveiled - Dollywood" [ref=e1953]:
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1955]:
+                            - generic [ref=e1958] [cursor=pointer]:
+                              - img [ref=e1960]
+                              - generic [ref=e1962]: YouTube
+                          - generic "NightFlight Expedition Ride Vehicle Unveiled - Dollywood" [ref=e1964]:
+                            - link "dollywood" [ref=e1966] [cursor=pointer]:
+                              - /url: https://www.dollywood.com/press/nightflight-expedition-ride-vehicle-unveiled/
+                              - generic [ref=e1969]: dollywood
+                      - row "Ride mix Indoor hybrid coaster + whitewater river raft (4 experiences in one) amusementtoday +5 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1970]:
+                        - cell "Ride mix" [ref=e1971]
+                        - cell "Indoor hybrid coaster + whitewater river raft (4 experiences in one)" [ref=e1972]
+                        - cell "amusementtoday +5 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1973]:
+                          - generic [ref=e1978] [cursor=pointer]:
+                            - generic [ref=e1979]: amusementtoday
+                            - generic [ref=e1980]: "+5"
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1982]:
+                            - generic [ref=e1985] [cursor=pointer]:
+                              - img [ref=e1987]
+                              - generic [ref=e1989]: YouTube
+                      - row "Water volume >500,000 gallons in rapids section Dolly Press Conference & Nightflight Expedition Construction Tour amusementtoday +3" [ref=e1990]:
+                        - cell "Water volume" [ref=e1991]
+                        - cell ">500,000 gallons in rapids section" [ref=e1992]
+                        - cell "Dolly Press Conference & Nightflight Expedition Construction Tour amusementtoday +3" [ref=e1993]:
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e1995]:
+                            - generic [ref=e1998] [cursor=pointer]:
+                              - img [ref=e2000]
+                              - generic [ref=e2002]: YouTube
+                          - generic [ref=e2007] [cursor=pointer]:
+                            - generic [ref=e2008]: amusementtoday
+                            - generic [ref=e2009]: "+3"
+                      - row "Location Wildwood Grove, new building themed as Hidden Hollow Aviation hangar knoxnews +4 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e2010]:
+                        - cell "Location" [ref=e2011]
+                        - cell "Wildwood Grove, new building themed as Hidden Hollow Aviation hangar" [ref=e2012]
+                        - cell "knoxnews +4 Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e2013]:
+                          - generic [ref=e2018] [cursor=pointer]:
+                            - generic [ref=e2019]: knoxnews
+                            - generic [ref=e2020]: "+4"
+                          - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e2022]:
+                            - generic [ref=e2025] [cursor=pointer]:
+                              - img [ref=e2027]
+                              - generic [ref=e2029]: YouTube
+                      - row "Opening timeframe Spring 2026 (not ready for March 13 opening; internal aim before mid‑June) Dollywood's NightFlight Expedition Construction Tour & NEW 2026 ... knoxnews +5" [ref=e2030]:
+                        - cell "Opening timeframe" [ref=e2031]
+                        - cell "Spring 2026 (not ready for March 13 opening; internal aim before mid‑June)" [ref=e2032]
+                        - cell "Dollywood's NightFlight Expedition Construction Tour & NEW 2026 ... knoxnews +5" [ref=e2033]:
+                          - generic "Dollywood's NightFlight Expedition Construction Tour & NEW 2026 ..." [ref=e2035]:
+                            - generic [ref=e2038] [cursor=pointer]:
+                              - img [ref=e2040]
+                              - generic [ref=e2042]: YouTube
+                          - generic [ref=e2047] [cursor=pointer]:
+                            - generic [ref=e2048]: knoxnews
+                            - generic [ref=e2049]: "+5"
+                  - heading "Media coverage roundup (outlets you listed)" [level=2] [ref=e2050]
+                  - list [ref=e2051]:
+                    - listitem [ref=e2052]:
+                      - paragraph [ref=e2053]:
+                        - text: "USA Today / national entertainment: Syndicated local coverage (Idaho News and similar) quote Dollywood officials on the $50 million cost, hybrid coaster/river positioning, and Dolly’s remarks about the ride and 2026 season launch."
+                        - generic [ref=e2058] [cursor=pointer]:
+                          - generic [ref=e2059]: blooloop
+                          - generic [ref=e2060]: "+4"
+                    - listitem [ref=e2061]:
+                      - paragraph [ref=e2062]:
+                        - text: "Knoxville News Sentinel: Detailed preview describing the building as a giant green aircraft hangar, gives the 44,000 sq ft figure, mentions 1,200 riders/hr capacity and about 55‑minute queue expectation, and reiterates Spring 2026 opening with accelerated construction schedule."
+                        - generic "Dollywood's new NightFlight Expedition will surprise all coaster fans" [ref=e2064]:
+                          - link "knoxnews" [ref=e2066] [cursor=pointer]:
+                            - /url: https://www.knoxnews.com/story/entertainment/2026/02/28/preview-of-dollywoods-new-ride-nightflight-expedition-opening-in-2026/88858680007/
+                            - generic [ref=e2069]: knoxnews
+                    - listitem [ref=e2070]:
+                      - paragraph [ref=e2071]:
+                        - text: "Blooloop: Focuses on industry/tech angle—world’s first indoor family hybrid coaster & whitewater river raft, 44,000 sq ft Wildwood Grove show building, $50 million budget, and four ride phases with 500,000+ gallons of water."
+                        - generic "Dollywood's NightFlight Expedition Construction Tour & NEW 2026 ..." [ref=e2073]:
+                          - generic [ref=e2076] [cursor=pointer]:
+                            - img [ref=e2078]
+                            - generic [ref=e2080]: YouTube
+                        - generic "Dollywood to open new $50m NightFlight Expedition ride in 2026" [ref=e2082]:
+                          - link "blooloop" [ref=e2084] [cursor=pointer]:
+                            - /url: https://blooloop.com/theme-park/news/dollywood-nightflight-expedition-ride-opening-2026/
+                            - generic [ref=e2087]: blooloop
+                    - listitem [ref=e2088]:
+                      - paragraph [ref=e2089]:
+                        - text: "Amusement Today: Runs the original press announcement, emphasizing “world’s first” positioning, >$50M budget, 5½‑minute length, 500,000‑gallon rapids section, 44,000 sq ft facility, Mack’s Best New Innovation Golden Ticket, and story/character details for Cora and Jasper Oakley and Secret Lake."
+                        - generic [ref=e2094] [cursor=pointer]:
+                          - generic [ref=e2095]: hfecorp
+                          - generic [ref=e2096]: "+1"
+                        - generic "Dolly Press Conference & Nightflight Expedition Construction Tour" [ref=e2098]:
+                          - generic [ref=e2101] [cursor=pointer]:
+                            - img [ref=e2103]
+                            - generic [ref=e2105]: YouTube
+                    - listitem [ref=e2106]:
+                      - paragraph [ref=e2107]:
+                        - text: "Parade / lifestyle coverage: Echoes Dollywood press release talking points around four‑in‑one experience, family appeal, and Dolly’s comments about the Smokies at night; details align closely with Dollywood’s own press copy."
+                        - generic [ref=e2112] [cursor=pointer]:
+                          - generic [ref=e2113]: idahonews
+                          - generic [ref=e2114]: "+3"
+                    - listitem [ref=e2115]:
+                      - paragraph [ref=e2116]:
+                        - text: "Coaster101: Multiple construction update pieces—notes building enclosure progress, track and flume installations, confirms ride not ready for March 13 opening and flags that “Spring 2026” could legally run to late June, plus fan‑analysis of layout using construction photos."
+                        - generic "NightFlight Expedition Takes Shape - Coaster101.com" [ref=e2118]:
+                          - link "coaster101" [ref=e2120] [cursor=pointer]:
+                            - /url: https://www.coaster101.com/2026/01/20/nightflight-expedition-takes-shape/
+                            - generic [ref=e2123]: coaster101
+                    - listitem [ref=e2124]:
+                      - paragraph [ref=e2125]:
+                        - text: "Reddit (r/Dollywood, r/rollercoasters): Threads sharing Dollywood construction tour videos and press materials, with user speculation on exact layout, pacing, and where coaster vs. water sections sit inside the building; no additional official stats beyond those above, but good for on‑the‑ground photo updates."
+                        - generic [ref=e2130] [cursor=pointer]:
+                          - img [ref=e2132]
+                          - generic [ref=e2134]: youtube
+                          - generic [ref=e2135]: "+1"
+                        - generic [ref=e2140] [cursor=pointer]:
+                          - generic [ref=e2141]: facebook
+                          - generic [ref=e2142]: "+2"
+                    - listitem [ref=e2143]:
+                      - paragraph [ref=e2144]: "YouTube construction tours:"
+                      - list [ref=e2145]:
+                        - listitem [ref=e2146]:
+                          - paragraph [ref=e2147]:
+                            - text: Official/hosted tours from Dollywood and media showing interior construction, confirming aggressive seven‑days‑a‑week scheduling and showing the amphibious vehicle maquettes or IAAPA vehicle on site.
+                            - generic "Dollywood reveals the construction progress on their upcoming ..." [ref=e2149]:
+                              - link "facebook" [ref=e2151] [cursor=pointer]:
+                                - /url: https://www.facebook.com/MarcusLeshock/posts/new-dollywood-reveals-the-construction-progress-on-their-upcoming-nightflight-ex/1439962467483112/
+                                - generic [ref=e2154]: facebook
+                            - generic [ref=e2159] [cursor=pointer]:
+                              - img [ref=e2161]
+                              - generic [ref=e2163]: youtube
+                              - generic [ref=e2164]: "+3"
+                        - listitem [ref=e2165]:
+                          - paragraph [ref=e2166]:
+                            - text: Enthusiast channels (e.g., Theme Park Brandon) cover building enclosure, façade, flume troughs, catwalks, and talk through opening‑date expectations (most guessing late spring rather than early).
+                            - generic [ref=e2171] [cursor=pointer]:
+                              - img [ref=e2173]
+                              - generic [ref=e2175]: youtube
+                              - generic [ref=e2176]: "+2"
+                            - generic "NightFlight Expedition Takes Shape - Coaster101.com" [ref=e2178]:
+                              - link "coaster101" [ref=e2180] [cursor=pointer]:
+                                - /url: https://www.coaster101.com/2026/01/20/nightflight-expedition-takes-shape/
+                                - generic [ref=e2183]: coaster101
+                  - paragraph [ref=e2184]: If you want, I can next pull together a speculative but clearly labeled layout and scene‑by‑scene pass based on all the construction photos and official narrative beats. What level of speculation vs. confirmed‑only detail are you comfortable with?
+                - generic [ref=e2185]:
+                  - generic [ref=e2186]:
+                    - button "Share" [ref=e2187] [cursor=pointer]:
+                      - img [ref=e2190]
+                    - button "Download" [ref=e2193] [cursor=pointer]:
+                      - img [ref=e2194]
+                    - button "Copy" [ref=e2196] [cursor=pointer]:
+                      - img [ref=e2199]
+                    - button "Rewrite Thread" [ref=e2202] [cursor=pointer]:
+                      - img [ref=e2205]
+                    - button "15 sources" [ref=e2209] [cursor=pointer]:
+                      - generic [ref=e2211]:
+                        - img [ref=e2212]
+                        - img [ref=e2213]
+                        - generic [ref=e2215]:
+                          - img [ref=e2218]
+                          - img [ref=e2222]
+                          - img [ref=e2226]
+                        - text: 15 sources
+                  - generic [ref=e2229]:
+                    - generic [ref=e2231]:
+                      - button "Helpful" [ref=e2232] [cursor=pointer]:
+                        - img [ref=e2235]
+                      - button "Not helpful" [ref=e2238] [cursor=pointer]:
+                        - img [ref=e2241]
+                    - button "More actions" [ref=e2245] [cursor=pointer]:
+                      - img [ref=e2246]
+                - generic [ref=e2248]:
+                  - generic [ref=e2253]: Follow-ups
+                  - generic [ref=e2254]:
+                    - button "How NightFlight Expedition's Mack Rides system stacks up against other multi-experience indoor rides worldwide and its potential industry impact Deep research" [ref=e2255] [cursor=pointer]:
+                      - img [ref=e2257]
+                      - generic [ref=e2259]:
+                        - generic [ref=e2260]: How NightFlight Expedition's Mack Rides system stacks up against other multi-experience indoor rides worldwide and its potential industry impact
+                        - generic [ref=e2261]:
+                          - img [ref=e2262]
+                          - text: Deep research
+                    - button "Latest construction photos from March 2026" [ref=e2264] [cursor=pointer]:
+                      - img [ref=e2266]
+                      - generic [ref=e2269]: Latest construction photos from March 2026
+                    - button "Detailed Mack Rides amphibious vehicle specs" [ref=e2270] [cursor=pointer]:
+                      - img [ref=e2272]
+                      - generic [ref=e2275]: Detailed Mack Rides amphibious vehicle specs
+                    - button "What is Hidden Hollow Aviation backstory" [ref=e2276] [cursor=pointer]:
+                      - img [ref=e2278]
+                      - generic [ref=e2281]: What is Hidden Hollow Aviation backstory
+                    - button "Expected exact opening date for NightFlight" [ref=e2282] [cursor=pointer]:
+                      - img [ref=e2284]
+                      - generic [ref=e2287]: Expected exact opening date for NightFlight
+          - generic [ref=e2299]:
+            - generic [ref=e2301]:
+              - textbox [active] [ref=e2302]:
+                - paragraph [ref=e2303]
+              - generic: Ask a follow-up
+            - button "Add files or tools" [ref=e2306] [cursor=pointer]:
+              - img [ref=e2309]
+            - generic [ref=e2312]:
+              - button "Model" [ref=e2313] [cursor=pointer]:
+                - generic [ref=e2314]: Model
+                - img [ref=e2316]
+              - button "Dictation" [ref=e2320] [cursor=pointer]:
+                - img [ref=e2323]
+              - button "Submit" [disabled]:
+                - generic:
+                  - generic:
+                    - img
+  - listbox "Typeahead menu"

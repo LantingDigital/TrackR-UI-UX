@@ -75,7 +75,7 @@ import { shadows } from '../../theme/shadows';
 import { typography } from '../../theme/typography';
 import { useKeyboardAvoidance } from '../../hooks/useKeyboardAvoidance';
 import { getCardArtForPark, getLogoForPark, getHeroUrlForPark } from '../../utils/parkAssets';
-import { FogHeader } from '../FogHeader';
+import { GlassHeader } from '../GlassHeader';
 
 const AnimatedIonicons = Animated.createAnimatedComponent(Ionicons);
 
@@ -2223,9 +2223,9 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       presentationStyle="fullScreen"
     >
       <View style={styles.container}>
-        {/* Fog gradient overlay (hidden during scan step) */}
+        {/* GlassHeader fog overlay (hidden during scan step) */}
         {displayedStep !== 'scan' && (
-          <FogHeader headerHeight={insets.top + 56} />
+          <GlassHeader headerHeight={insets.top + 56} />
         )}
 
         {/* Header (hidden during scan step) — absolute, above fog */}

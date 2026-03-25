@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RootNavigator } from './src/navigation';
 import { seedScreenshotData } from './src/config/screenshotSeed';
 import { initSync } from './src/services/firebase/syncController';
+import { ConfirmModalProvider } from './src/contexts/ConfirmModalContext';
 
 export default function App() {
   useEffect(() => {
@@ -18,7 +19,9 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <StatusBar style="auto" />
-        <RootNavigator />
+        <ConfirmModalProvider>
+          <RootNavigator />
+        </ConfirmModalProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

@@ -85,7 +85,7 @@ export const FeaturedParkCard = React.memo<FeaturedParkCardProps>(({
               <Image source={{ uri: data.imageUrl }} style={styles.heroImage} contentFit="cover" cachePolicy="memory-disk" onError={handleImageError} />
             )}
             <LinearGradient
-              colors={['transparent', 'rgba(0,0,0,0.7)']}
+              colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.7)']}
               style={styles.gradient}
             />
             <View style={styles.overlayContent}>

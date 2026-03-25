@@ -1,0 +1,988 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Turn off continuous scrolling" [ref=e3] [cursor=pointer]:
+        - /url: "#"
+      - link "Accessibility help" [ref=e4] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en
+      - link "Accessibility feedback" [ref=e5] [cursor=pointer]
+  - generic [ref=e10]:
+    - search [ref=e11]:
+      - generic [ref=e13]:
+        - link "Go to Google Home" [ref=e15] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQPAgK
+          - img [ref=e16]
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - combobox "Search" [ref=e27]: Wilderness Run roller coaster Cedar Point Wilderness Run roller coaster Cedar Point
+            - generic [ref=e28]:
+              - button "Clear" [ref=e30] [cursor=pointer]:
+                - img [ref=e32]
+              - generic [ref=e35]:
+                - button "Search by voice" [ref=e36] [cursor=pointer]:
+                  - img [ref=e37]
+                - button "Search by image" [ref=e39] [cursor=pointer]:
+                  - img [ref=e40]
+          - button "Search" [ref=e42] [cursor=pointer]:
+            - img [ref=e45]
+    - generic [ref=e48]:
+      - button "Google apps" [ref=e50] [cursor=pointer]:
+        - img [ref=e51]
+      - 'button "Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e55] [cursor=pointer]':
+        - img [ref=e56]
+  - generic [ref=e58]:
+    - generic [ref=e61]:
+      - navigation [ref=e64]:
+        - generic [ref=e65]:
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - link "AI Mode" [ref=e70] [cursor=pointer]:
+                - /url: /search?q=Wilderness+Run+roller+coaster+Cedar+Point&sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&udm=50&fbs=ADc_l-YIDyOa9njRppQkDyQFqQvysFahwxRkH3Kr3Q841_srcotGKaj3uVWhlFwsjLbKE_Rn97Ga3m5zjCeRh2_HJUFbshcLRfgF3OK_b3VmNvDeu_AoBv4LtbKn8nRk9UpkFQZUG05sqS9TScLGm2kbUc_hG23L1SofIn0SbZ4UjQfRKIuCSsWffhZS1nY4DEd3BnQYUCHJUC-eF--WOz_xEElg8vQZtgHstKuXche91y5pcdE_OtE&aep=1&ntc=1&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQ2J8OegQICRAD
+                - generic [ref=e73]: AI Mode
+            - listitem [ref=e74]:
+              - link "All" [ref=e75] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=Wilderness+Run+roller+coaster+Cedar+Point&source=lnms&fbs=ADc_l-YIDyOa9njRppQkDyQFqQvysFahwxRkH3Kr3Q841_srcotGKaj3uVWhlFwsjLbKE_Rn97Ga3m5zjCeRh2_HJUFbshcLRfgF3OK_b3VmNvDeu_AoBv4LtbKn8nRk9UpkFQZUG05sqS9TScLGm2kbUc_hG23L1SofIn0SbZ4UjQfRKIuCSsWffhZS1nY4DEd3BnQYUCHJUC-eF--WOz_xEElg8vQZtgHstKuXche91y5pcdE_OtE&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQ0pQJegQICxAB
+                - generic [ref=e77]: All
+            - listitem [ref=e78]:
+              - link "Images" [disabled] [ref=e79]:
+                - generic [ref=e81]: Images
+            - listitem [ref=e82]:
+              - link "Videos" [ref=e83] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&udm=7&fbs=ADc_l-YIDyOa9njRppQkDyQFqQvysFahwxRkH3Kr3Q841_srcotGKaj3uVWhlFwsjLbKE_Rn97Ga3m5zjCeRh2_HJUFbshcLRfgF3OK_b3VmNvDeu_AoBv4LtbKn8nRk9UpkFQZUG05sqS9TScLGm2kbUc_hG23L1SofIn0SbZ4UjQfRKIuCSsWffhZS1nY4DEd3BnQYUCHJUC-eF--WOz_xEElg8vQZtgHstKuXche91y5pcdE_OtE&q=Wilderness+Run+roller+coaster+Cedar+Point&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQtKgLegQIDxAB
+                - generic [ref=e85]: Videos
+            - listitem [ref=e86]:
+              - link "Maps" [ref=e87] [cursor=pointer]:
+                - /url: https://maps.google.com/maps?sca_esv=4b9c4fb793c57767&output=search&q=Wilderness+Run+roller+coaster+Cedar+Point&source=lnms&fbs=ADc_l-YIDyOa9njRppQkDyQFqQvysFahwxRkH3Kr3Q841_srcotGKaj3uVWhlFwsjLbKE_Rn97Ga3m5zjCeRh2_HJUFbshcLRfgF3OK_b3VmNvDeu_AoBv4LtbKn8nRk9UpkFQZUG05sqS9TScLGm2kbUc_hG23L1SofIn0SbZ4UjQfRKIuCSsWffhZS1nY4DEd3BnQYUCHJUC-eF--WOz_xEElg8vQZtgHstKuXche91y5pcdE_OtE&entry=mc&ved=1t:200715&ictx=111
+                - generic [ref=e89]: Maps
+            - listitem [ref=e90]:
+              - link "Forums" [ref=e91] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&udm=18&fbs=ADc_l-YIDyOa9njRppQkDyQFqQvysFahwxRkH3Kr3Q841_srcotGKaj3uVWhlFwsjLbKE_Rn97Ga3m5zjCeRh2_HJUFbshcLRfgF3OK_b3VmNvDeu_AoBv4LtbKn8nRk9UpkFQZUG05sqS9TScLGm2kbUc_hG23L1SofIn0SbZ4UjQfRKIuCSsWffhZS1nY4DEd3BnQYUCHJUC-eF--WOz_xEElg8vQZtgHstKuXche91y5pcdE_OtE&q=Wilderness+Run+roller+coaster+Cedar+Point&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQs6gLegQIDhAB
+                - generic [ref=e93]: Forums
+            - listitem [ref=e94]:
+              - link "Short videos" [ref=e95] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&udm=39&fbs=ADc_l-YIDyOa9njRppQkDyQFqQvysFahwxRkH3Kr3Q841_srcotGKaj3uVWhlFwsjLbKE_Rn97Ga3m5zjCeRh2_HJUFbshcLRfgF3OK_b3VmNvDeu_AoBv4LtbKn8nRk9UpkFQZUG05sqS9TScLGm2kbUc_hG23L1SofIn0SbZ4UjQfRKIuCSsWffhZS1nY4DEd3BnQYUCHJUC-eF--WOz_xEElg8vQZtgHstKuXche91y5pcdE_OtE&q=Wilderness+Run+roller+coaster+Cedar+Point&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQs6gLegQIDBAB
+                - generic [ref=e97]: Short videos
+            - listitem [ref=e98]:
+              - button "More filters" [ref=e99] [cursor=pointer]:
+                - generic "More filters" [ref=e100]:
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: More
+                    - img [ref=e104]
+          - button "Tools" [ref=e107] [cursor=pointer]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: Tools
+              - img [ref=e112]
+      - link "Saves" [ref=e115] [cursor=pointer]:
+        - /url: /save?sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQ7XV6BAgEEAA
+        - img [ref=e117]
+        - text: Saves
+    - navigation [ref=e120]:
+      - navigation [ref=e123]:
+        - list [ref=e131]:
+          - listitem [ref=e132]:
+            - link "Add Theme parks" [ref=e133] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=theme+parks+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-ZUNM7mtYny5rKDXe5Qj35xlRZx62YNLt_HS489YwAj05ndcP5uOXTVQmDeTEUnsVBQiNGHpYwwW3VXpmPjaAkE5vhfpVxLIxL2fZ1J9iMTO4QDAorIg6iC2imPHBQr9LkYy3WK28YlP_bGBjpQhcl6S7GQ0B4pTMAr7fy79EmjBnsd1x&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAB6BAgTEAE&ictx=0
+              - generic [ref=e139]: Theme parks
+          - listitem [ref=e140]:
+            - link "Add Amusement park" [ref=e141] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=amusement+park+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-J3sv1lfnPvABCMwdVDYvw9s0XkOan4k7_zbKNRwSzDal_ABeiGzaX4nLw0D_FmsccidxKev0Mw9G-IiQsQbpuXGRuvPy59aXrMWcK707McJlXRyYfFa9RzqXKFKqDjwDygPveV8ajgggMdEEum-guVhnnnOERlkojBTCvr2sOA1CnepRmGnI4JUqvc9DtIy5slTOuQ&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAF6BAgSEAE&ictx=0
+              - generic [ref=e147]: Amusement park
+          - listitem [ref=e148]:
+            - link "Add Camp snoopy" [ref=e149] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=camp+snoopy+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-ZUNM7mtYny5rKDXe5Qj35xlRZx62YNLt_HS489YwAj05ndcP5uOXTVQmDeTEUnsVTDukZj6rVOj1AfYHsoqEQp7p3pewdFEwRKK-3Q-Lu1_TJEdnFqOeO-aYxKyWlpJKinIgmH0Y08DxjhNz6MY7eM3K7Ns9tpqnHlojKjKTbWXx-fDt&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAJ6BAgREAE&ictx=0
+              - generic [ref=e155]: Camp snoopy
+          - listitem [ref=e156]:
+            - link "Add Ride" [ref=e157] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=ride+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-VhFv4HU-pZtb1rwMn1bzx-Fll9p5rUQcoFZmBNz7R6TEZTMPdQCXB2B0b__1ijBHyhl26F1dYBqxI55vnIcGHPxki79rQQoTrcwB6noW2G0-2pQn2t14SFgi84s-J8khVMEKfNdPqsanvNweOK6cY5f0oQY4KDgJesFouZocipX4EsIZ&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAN6BAgUEAE&ictx=0
+              - generic [ref=e163]: Ride
+          - listitem [ref=e164]:
+            - link "Add Attractions" [ref=e165] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=attractions+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-ZUNM7mtYny5rKDXe5Qj35xlRZx62YNLt_HS489YwAj05ndcP5uOXTVQmDeTEUnsVTDukZj6rVOj1AfYHsoqEQm-Wy8geboPxcQko-z9Sk3QvKekD68OGMZ-lczok45-JLyxT7tX8AODJEB4IFnUBuyODV_dRxLMGNwAb3SvEkiS7W58W&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAR6BAgQEAE&ictx=0
+              - generic [ref=e171]: Attractions
+          - listitem [ref=e1959]:
+            - link "Add Sandusky ohio" [ref=e1960] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=sandusky+ohio+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-K1fm-6MbHrVPgWC5v0Ha2jmHjUVr1A7d7lCEgDRGv1MRqhCn78pVFbnmsg6Yp6pI4ZRtpVEKO0HXV7QvBiMityg_00LBTNeAdmJZ9Gh-XKCZgOn0gqe4q1HG7aNLko813pP6diNCUmxfIy7mUiORogtPDPjnFygwjHn1uXEnYPTm6oDP&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAV6BQiTARAB&ictx=0
+              - generic [ref=e1966]: Sandusky ohio
+          - listitem [ref=e1967]:
+            - link "Add Wilderness express" [ref=e1968] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=wilderness+express+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-9374Zu-0QADT4DIeY78kEi80vqthh2_-pGEiPGKT914iLQPau9NDn_vbq5h8wcWZjDlHT0vsHWd8AImAWpIhwVWgrGGElFJkwG_DSGQMfbDQcap7j8Bc5fn1NsQadIr2wbM12bOYNOlY3-3XbSaybLgFEyno9Ppq7AB-M0cNBQBYszqR&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAZ6BQiRARAB&ictx=0
+              - generic [ref=e1974]: Wilderness express
+          - listitem [ref=e1975]:
+            - link "Add Junior gemini" [ref=e1976] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=junior+gemini+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-K1fm-6MbHrVPgWC5v0Ha2jmHjUVr1A7d7lCEgDRGv1MRqhCn78pVFbnmsg6Yp6pI4ZRtpVEKO0HXV7QvBiMit8Tr66X0bRiL-O5R2AKIYN9M4SenxjODAk3sbKjfz3Q7IMu1fvF9lZNT1_hfdkxh9zkRjaRlEtcDrnWI4MGa5zgZVscw&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAd6BQiQARAB&ictx=0
+              - generic [ref=e1982]: Junior gemini
+          - listitem [ref=e1983]:
+            - link "Add Adventure" [ref=e1984] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=adventure+Wilderness+Run+roller+coaster+Cedar+Point&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-lZXy4WXjCBs-WMfCmu8tISxsJ-I0ETA5JhMP6SVd3py6EKeTyipDO7K3ONAN3GamIpVFZ3VBLovxJY6kG44El9cuzINDZ1w19jihTXnjJEOvz9vHoUK2NtLF-6G9gQGIFI0-A5RmHuQz5zWDpAPobiCpQt9wWFbcd2KcqCgZhoDK-KtP&udm=2&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQxKsJKAh6BQiSARAB&ictx=0
+              - generic [ref=e1986]: Adventure
+    - heading "Search Results" [level=1] [ref=e172]
+    - main [ref=e174]:
+      - generic [ref=e180]:
+        - generic [ref=e183]:
+          - generic [ref=e184] [cursor=pointer]:
+            - heading "Wilderness Run - Wikipedia" [level=3] [ref=e186]:
+              - button "Wilderness Run - Wikipedia" [ref=e188]:
+                - img "Wilderness Run - Wikipedia" [ref=e191]
+            - link "Wikipedia Wilderness Run - Wikipedia" [ref=e193]:
+              - /url: https://en.wikipedia.org/wiki/Wilderness_Run
+              - generic [ref=e198]: Wikipedia
+              - generic [ref=e200]: Wilderness Run - Wikipedia
+          - generic [ref=e201] [cursor=pointer]:
+            - heading "Wilderness Run - Official POV - YouTube" [level=3] [ref=e203]:
+              - button "Wilderness Run - Official POV - YouTube" [ref=e205]:
+                - img "Wilderness Run - Official POV - YouTube" [ref=e208]
+            - link "YouTube Wilderness Run - Official POV - YouTube" [ref=e210]:
+              - /url: https://www.youtube.com/watch?v=gkVt5uryylQ
+              - generic [ref=e215]: YouTube
+              - generic [ref=e217]: Wilderness Run - Official POV - YouTube
+          - generic [ref=e218] [cursor=pointer]:
+            - heading "Wilderness Run - Insiders of the Point" [level=3] [ref=e220]:
+              - button "Wilderness Run - Insiders of the Point" [ref=e222]:
+                - img "Wilderness Run - Insiders of the Point" [ref=e225]
+            - link "Insiders of the Point Wilderness Run - Insiders of the Point" [ref=e227]:
+              - /url: http://www.insidersofthepoint.com/wilderness-run.html
+              - generic [ref=e232]: Insiders of the Point
+              - generic [ref=e234]: Wilderness Run - Insiders of the Point
+          - generic [ref=e235] [cursor=pointer]:
+            - heading "Wilderness Run | Kids Roller Coaster ..." [level=3] [ref=e237]:
+              - button "Wilderness Run | Kids Roller Coaster ..." [ref=e239]:
+                - img "Wilderness Run | Kids Roller Coaster ..." [ref=e242]
+            - link "Six Flags Wilderness Run | Kids Roller Coaster ..." [ref=e244]:
+              - /url: https://www.sixflags.com/cedarpoint/attractions/wilderness-run
+              - generic [ref=e249]: Six Flags
+              - generic [ref=e251]: Wilderness Run | Kids Roller Coaster ...
+          - generic [ref=e252] [cursor=pointer]:
+            - heading "Wilderness Run - Cedar Point (Sandusky ..." [level=3] [ref=e254]:
+              - button "Wilderness Run - Cedar Point (Sandusky ..." [ref=e256]:
+                - img "Wilderness Run - Cedar Point (Sandusky ..." [ref=e259]
+            - link "Roller Coaster DataBase Wilderness Run - Cedar Point (Sandusky ..." [ref=e261]:
+              - /url: https://rcdb.com/15.htm
+              - generic [ref=e266]: Roller Coaster DataBase
+              - generic [ref=e268]: Wilderness Run - Cedar Point (Sandusky ...
+          - generic [ref=e269] [cursor=pointer]:
+            - heading "Wilderness Run - Insiders of the Point" [level=3] [ref=e271]:
+              - button "Wilderness Run - Insiders of the Point" [ref=e273]:
+                - img "Wilderness Run - Insiders of the Point" [ref=e276]
+            - link "Insiders of the Point Wilderness Run - Insiders of the Point" [ref=e278]:
+              - /url: http://www.insidersofthepoint.com/wilderness-run.html
+              - generic [ref=e283]: Insiders of the Point
+              - generic [ref=e285]: Wilderness Run - Insiders of the Point
+          - generic [ref=e286] [cursor=pointer]:
+            - heading "Wilderness Run | The Unofficial Cedar ..." [level=3] [ref=e288]:
+              - button "Wilderness Run | The Unofficial Cedar ..." [ref=e290]:
+                - img "Wilderness Run | The Unofficial Cedar ..." [ref=e293]
+            - link "The Unofficial Cedar Point Wiki | Fandom Wilderness Run | The Unofficial Cedar ..." [ref=e295]:
+              - /url: https://unofficialcedarpoint.fandom.com/wiki/Wilderness_Run
+              - generic [ref=e300]: The Unofficial Cedar Point Wiki | Fandom
+              - generic [ref=e302]: Wilderness Run | The Unofficial Cedar ...
+          - generic [ref=e303] [cursor=pointer]:
+            - heading "riding Wilderness Run ..." [level=3] [ref=e305]:
+              - button "riding Wilderness Run ..." [ref=e307]:
+                - img "riding Wilderness Run ..." [ref=e310]
+            - link "Facebook riding Wilderness Run ..." [ref=e312]:
+              - /url: https://www.facebook.com/cedarpoint/posts/a-major-milestone-in-life-learning-what-butterflies-feel-like-in-your-stomach-wh/1110357807790140/
+              - generic [ref=e317]: Facebook
+              - generic [ref=e319]: riding Wilderness Run ...
+          - generic [ref=e320] [cursor=pointer]:
+            - heading "Wilderness Run - Insiders of the Point" [level=3] [ref=e322]:
+              - button "Wilderness Run - Insiders of the Point" [ref=e324]:
+                - img "Wilderness Run - Insiders of the Point" [ref=e327]
+            - link "Insiders of the Point Wilderness Run - Insiders of the Point" [ref=e329]:
+              - /url: http://www.insidersofthepoint.com/wilderness-run.html
+              - generic [ref=e334]: Insiders of the Point
+              - generic [ref=e336]: Wilderness Run - Insiders of the Point
+          - generic [ref=e337] [cursor=pointer]:
+            - heading "Wilderness Run - Cedar Point (Sandusky ..." [level=3] [ref=e339]:
+              - button "Wilderness Run - Cedar Point (Sandusky ..." [ref=e341]:
+                - img "Wilderness Run - Cedar Point (Sandusky ..." [ref=e344]
+            - link "Roller Coaster DataBase Wilderness Run - Cedar Point (Sandusky ..." [ref=e346]:
+              - /url: https://rcdb.com/15.htm
+              - generic [ref=e351]: Roller Coaster DataBase
+              - generic [ref=e353]: Wilderness Run - Cedar Point (Sandusky ...
+          - generic [ref=e354] [cursor=pointer]:
+            - generic [ref=e355]:
+              - heading "Wilderness Run - Cedar Point - First ..." [level=3] [ref=e356]:
+                - button "Wilderness Run - Cedar Point - First ..." [ref=e358]:
+                  - img "Wilderness Run - Cedar Point - First ..." [ref=e361]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Wilderness Run - Cedar Point - First ..." [ref=e363]:
+              - /url: https://www.youtube.com/watch?v=ruG1bNG9Nlw
+              - generic [ref=e368]: YouTube
+              - generic [ref=e370]: Wilderness Run - Cedar Point - First ...
+          - generic [ref=e371] [cursor=pointer]:
+            - heading "Camp Snoopy" [level=3] [ref=e373]:
+              - button "Camp Snoopy" [ref=e375]:
+                - img "Camp Snoopy" [ref=e378]
+            - link "Coaster Gallery Camp Snoopy" [ref=e380]:
+              - /url: https://www.coastergallery.com/CP/Wilderness_Run_5.html
+              - generic [ref=e385]: Coaster Gallery
+              - generic [ref=e387]: Camp Snoopy
+          - generic [ref=e388] [cursor=pointer]:
+            - heading "Cedar Point - Wilderness Run" [level=3] [ref=e390]:
+              - button "Cedar Point - Wilderness Run" [ref=e392]:
+                - img "Cedar Point - Wilderness Run" [ref=e395]
+            - link "Theme Park Review Cedar Point - Wilderness Run" [ref=e397]:
+              - /url: https://www.themeparkreview.com/parks/p_83_3987_cedar_point_wilderness_run
+              - generic [ref=e402]: Theme Park Review
+              - generic [ref=e404]: Cedar Point - Wilderness Run
+          - generic [ref=e405] [cursor=pointer]:
+            - generic [ref=e406]:
+              - heading "virtual ride on Wilderness Run ..." [level=3] [ref=e407]:
+                - button "virtual ride on Wilderness Run ..." [ref=e409]:
+                  - img "virtual ride on Wilderness Run ..." [ref=e412]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Facebook virtual ride on Wilderness Run ..." [ref=e414]:
+              - /url: https://www.facebook.com/cedarpoint/videos/wilderness-run-official-pov/10154152625801463/
+              - generic [ref=e419]: Facebook
+              - generic [ref=e421]: virtual ride on Wilderness Run ...
+          - generic [ref=e422] [cursor=pointer]:
+            - heading "Wilderness Run - Cedar Point (Sandusky ..." [level=3] [ref=e424]:
+              - button "Wilderness Run - Cedar Point (Sandusky ..." [ref=e426]:
+                - img "Wilderness Run - Cedar Point (Sandusky ..." [ref=e429]
+            - link "Roller Coaster DataBase Wilderness Run - Cedar Point (Sandusky ..." [ref=e431]:
+              - /url: https://rcdb.com/15.htm
+              - generic [ref=e436]: Roller Coaster DataBase
+              - generic [ref=e438]: Wilderness Run - Cedar Point (Sandusky ...
+          - generic [ref=e439] [cursor=pointer]:
+            - heading "Wilderness Run - Insiders of the Point" [level=3] [ref=e441]:
+              - button "Wilderness Run - Insiders of the Point" [ref=e443]:
+                - img "Wilderness Run - Insiders of the Point" [ref=e446]
+            - link "Insiders of the Point Wilderness Run - Insiders of the Point" [ref=e448]:
+              - /url: http://www.insidersofthepoint.com/wilderness-run.html
+              - generic [ref=e453]: Insiders of the Point
+              - generic [ref=e455]: Wilderness Run - Insiders of the Point
+          - generic [ref=e456] [cursor=pointer]:
+            - heading "Cedar Point - Wilderness Run" [level=3] [ref=e458]:
+              - button "Cedar Point - Wilderness Run" [ref=e460]:
+                - img "Cedar Point - Wilderness Run" [ref=e463]
+            - link "Theme Park Review Cedar Point - Wilderness Run" [ref=e465]:
+              - /url: https://www.themeparkreview.com/parks/p_83_3987_cedar_point_wilderness_run
+              - generic [ref=e470]: Theme Park Review
+              - generic [ref=e472]: Cedar Point - Wilderness Run
+          - generic [ref=e473] [cursor=pointer]:
+            - heading "Wilderness Run (Cedar Point) | Roller ..." [level=3] [ref=e475]:
+              - button "Wilderness Run (Cedar Point) | Roller ..." [ref=e477]:
+                - img "Wilderness Run (Cedar Point) | Roller ..." [ref=e480]
+            - link "Roller Coaster Wiki - Fandom Wilderness Run (Cedar Point) | Roller ..." [ref=e482]:
+              - /url: https://rollercoaster.fandom.com/wiki/Wilderness_Run_(Cedar_Point)
+              - generic [ref=e487]: Roller Coaster Wiki - Fandom
+              - generic [ref=e489]: Wilderness Run (Cedar Point) | Roller ...
+          - generic [ref=e490] [cursor=pointer]:
+            - heading "New Cedar Point coaster a real screamer" [level=3] [ref=e492]:
+              - button "New Cedar Point coaster a real screamer" [ref=e494]:
+                - img "New Cedar Point coaster a real screamer" [ref=e497]
+            - link "Detroit Free Press New Cedar Point coaster a real screamer" [ref=e499]:
+              - /url: https://www.freep.com/story/travel/2016/04/30/new-cedar-point-coaster-screamer-valravn/83383620/
+              - generic [ref=e504]: Detroit Free Press
+              - generic [ref=e506]: New Cedar Point coaster a real screamer
+          - generic [ref=e507] [cursor=pointer]:
+            - heading "Wilderness Run - Jr. Gemini" [level=3] [ref=e509]:
+              - button "Wilderness Run - Jr. Gemini" [ref=e511]:
+                - img "Wilderness Run - Jr. Gemini" [ref=e514]
+            - link "Coaster Gallery Wilderness Run - Jr. Gemini" [ref=e516]:
+              - /url: http://www.coastergallery.com/cp/31b.html
+              - generic [ref=e521]: Coaster Gallery
+              - generic [ref=e523]: Wilderness Run - Jr. Gemini
+          - generic [ref=e524] [cursor=pointer]:
+            - heading "roller coaster ..." [level=3] [ref=e526]:
+              - button "roller coaster ..." [ref=e528]:
+                - img "roller coaster ..." [ref=e531]
+            - link "Reddit roller coaster ..." [ref=e533]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/vzgvn8/wilderness_run_at_cedar_point_intamins_first_ever/
+              - generic [ref=e538]: Reddit
+              - generic [ref=e540]: roller coaster ...
+          - generic [ref=e541] [cursor=pointer]:
+            - 'heading "Wilderness Run at Cedar Point : Neil Tonge" [level=3] [ref=e543]':
+              - 'button "Wilderness Run at Cedar Point : Neil Tonge" [ref=e545]':
+                - 'img "Wilderness Run at Cedar Point : Neil Tonge" [ref=e548]'
+            - 'link "Neil Tonge Wilderness Run at Cedar Point : Neil Tonge" [ref=e550]':
+              - /url: https://neiltonge.co.uk/venues/cedar-point-sandusky/attractions/wilderness-run-cedar-point-sandusky
+              - generic [ref=e555]: Neil Tonge
+              - generic [ref=e557]: "Wilderness Run at Cedar Point : Neil Tonge"
+          - generic [ref=e558] [cursor=pointer]:
+            - heading "Wilderness Run | Cedar Point discount ..." [level=3] [ref=e560]:
+              - button "Wilderness Run | Cedar Point discount ..." [ref=e562]:
+                - img "Wilderness Run | Cedar Point discount ..." [ref=e565]
+            - link "Undercover Tourist Wilderness Run | Cedar Point discount ..." [ref=e567]:
+              - /url: https://www.undercovertourist.com/cleveland/cedar-point/wilderness-run/
+              - generic [ref=e572]: Undercover Tourist
+              - generic [ref=e574]: Wilderness Run | Cedar Point discount ...
+          - generic [ref=e575] [cursor=pointer]:
+            - heading "Wilderness Run | Kids Roller Coaster ..." [level=3] [ref=e577]:
+              - button "Wilderness Run | Kids Roller Coaster ..." [ref=e579]:
+                - img "Wilderness Run | Kids Roller Coaster ..." [ref=e582]
+            - link "Six Flags Wilderness Run | Kids Roller Coaster ..." [ref=e584]:
+              - /url: https://www.sixflags.com/cedarpoint/attractions/wilderness-run
+              - generic [ref=e589]: Six Flags
+              - generic [ref=e591]: Wilderness Run | Kids Roller Coaster ...
+          - generic [ref=e592]:
+            - heading "Related searches" [level=2] [ref=e593]
+            - link "scary cedar point rides" [ref=e594] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=scary+cedar+point+rides&stick=H4sIAAAAAAAAAFvEKl6cnFhUqZCcmpJYpFCQn5lXolCUmZJaDAAqRTipGgAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIMRAA
+              - generic [ref=e599]: scary cedar point rides
+            - link "woodstock express cedar point" [ref=e600] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=woodstock+express+cedar+point&stick=H4sIAAAAAAAAAFvEKluen59SXJKfnK2QWlFQlFpcrJCcmpJYpFCQn5lXAgB4HZaMIAAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIMhAA
+              - generic [ref=e605]: woodstock express cedar point
+            - link "gatekeeper cedar point" [ref=e606] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=gatekeeper+cedar+point&stick=H4sIAAAAAAAAAFvEKpaeWJKanZpakFqkkJyaklikUJCfmVcCAJht-pMZAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQINBAA
+              - generic [ref=e611]: gatekeeper cedar point
+          - generic [ref=e612] [cursor=pointer]:
+            - heading "Cedar Point - Wilderness Run" [level=3] [ref=e614]:
+              - button "Cedar Point - Wilderness Run" [ref=e616]:
+                - img "Cedar Point - Wilderness Run" [ref=e619]
+            - link "Theme Park Review Cedar Point - Wilderness Run" [ref=e621]:
+              - /url: https://www.themeparkreview.com/parks/p_83_3987_cedar_point_wilderness_run
+              - generic [ref=e626]: Theme Park Review
+              - generic [ref=e628]: Cedar Point - Wilderness Run
+          - generic [ref=e629] [cursor=pointer]:
+            - heading "Jr. Gemini (Wilderness Run) - 2006 Off ..." [level=3] [ref=e631]:
+              - button "Jr. Gemini (Wilderness Run) - 2006 Off ..." [ref=e633]:
+                - img "Jr. Gemini (Wilderness Run) - 2006 Off ..." [ref=e636]
+            - link "YouTube Jr. Gemini (Wilderness Run) - 2006 Off ..." [ref=e638]:
+              - /url: https://www.youtube.com/watch?v=NiU15mCP7FM
+              - generic [ref=e643]: YouTube
+              - generic [ref=e645]: Jr. Gemini (Wilderness Run) - 2006 Off ...
+          - generic [ref=e646] [cursor=pointer]:
+            - heading "Wilderness Run at Cedar Point | Theme ..." [level=3] [ref=e648]:
+              - button "Wilderness Run at Cedar Point | Theme ..." [ref=e650]:
+                - img "Wilderness Run at Cedar Point | Theme ..." [ref=e653]
+            - link "Theme Park Archive Wilderness Run at Cedar Point | Theme ..." [ref=e655]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/wilderness-run
+              - generic [ref=e660]: Theme Park Archive
+              - generic [ref=e662]: Wilderness Run at Cedar Point | Theme ...
+          - generic [ref=e663] [cursor=pointer]:
+            - heading "Wilderness Run | Kids Roller Coaster ..." [level=3] [ref=e665]:
+              - button "Wilderness Run | Kids Roller Coaster ..." [ref=e667]:
+                - img "Wilderness Run | Kids Roller Coaster ..." [ref=e670]
+            - link "Six Flags Wilderness Run | Kids Roller Coaster ..." [ref=e672]:
+              - /url: https://www.sixflags.com/cedarpoint/attractions/wilderness-run
+              - generic [ref=e677]: Six Flags
+              - generic [ref=e679]: Wilderness Run | Kids Roller Coaster ...
+          - generic [ref=e680] [cursor=pointer]:
+            - heading "Wilderness Run - Cedar Point (Sandusky ..." [level=3] [ref=e682]:
+              - button "Wilderness Run - Cedar Point (Sandusky ..." [ref=e684]:
+                - img "Wilderness Run - Cedar Point (Sandusky ..." [ref=e687]
+            - link "Roller Coaster DataBase Wilderness Run - Cedar Point (Sandusky ..." [ref=e689]:
+              - /url: https://rcdb.com/15.htm
+              - generic [ref=e694]: Roller Coaster DataBase
+              - generic [ref=e696]: Wilderness Run - Cedar Point (Sandusky ...
+          - generic [ref=e697] [cursor=pointer]:
+            - heading "How does a coaster work?" [level=3] [ref=e699]:
+              - button "How does a coaster work?" [ref=e701]:
+                - img "How does a coaster work?" [ref=e704]
+            - link "Coaster Gallery How does a coaster work?" [ref=e706]:
+              - /url: https://www.coastergallery.com/CP/Wilderness_Run_3.html
+              - generic [ref=e711]: Coaster Gallery
+              - generic [ref=e713]: How does a coaster work?
+          - generic [ref=e714] [cursor=pointer]:
+            - heading "Wilderness Run - Insiders of the Point" [level=3] [ref=e716]:
+              - button "Wilderness Run - Insiders of the Point" [ref=e718]:
+                - img "Wilderness Run - Insiders of the Point" [ref=e721]
+            - link "Insiders of the Point Wilderness Run - Insiders of the Point" [ref=e723]:
+              - /url: http://www.insidersofthepoint.com/wilderness-run.html
+              - generic [ref=e728]: Insiders of the Point
+              - generic [ref=e730]: Wilderness Run - Insiders of the Point
+          - generic [ref=e731] [cursor=pointer]:
+            - heading "Blue Streak (Cedar Point) - Wikipedia" [level=3] [ref=e733]:
+              - button "Blue Streak (Cedar Point) - Wikipedia" [ref=e735]:
+                - img "Blue Streak (Cedar Point) - Wikipedia" [ref=e738]
+            - link "Wikipedia Blue Streak (Cedar Point) - Wikipedia" [ref=e740]:
+              - /url: https://en.wikipedia.org/wiki/Blue_Streak_(Cedar_Point)
+              - generic [ref=e745]: Wikipedia
+              - generic [ref=e747]: Blue Streak (Cedar Point) - Wikipedia
+          - generic [ref=e748] [cursor=pointer]:
+            - heading "Wilderness Run | Kids Roller Coaster ..." [level=3] [ref=e750]:
+              - button "Wilderness Run | Kids Roller Coaster ..." [ref=e752]:
+                - img "Wilderness Run | Kids Roller Coaster ..." [ref=e755]
+            - link "Six Flags Wilderness Run | Kids Roller Coaster ..." [ref=e757]:
+              - /url: https://www.sixflags.com/cedarpoint/attractions/wilderness-run
+              - generic [ref=e762]: Six Flags
+              - generic [ref=e764]: Wilderness Run | Kids Roller Coaster ...
+          - generic [ref=e765] [cursor=pointer]:
+            - heading "Wilderness Run] at [Carowinds] throwing ..." [level=3] [ref=e767]:
+              - button "Wilderness Run] at [Carowinds] throwing ..." [ref=e769]:
+                - img "Wilderness Run] at [Carowinds] throwing ..." [ref=e772]
+            - link "Reddit Wilderness Run] at [Carowinds] throwing ..." [ref=e774]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/14g6kmg/wilderness_run_at_carowinds_throwing_some_serious/
+              - generic [ref=e779]: Reddit
+              - generic [ref=e781]: Wilderness Run] at [Carowinds] throwing ...
+          - generic [ref=e782] [cursor=pointer]:
+            - 'heading "Ohio: Cedar Point – Roller Coaster Ramble" [level=3] [ref=e784]':
+              - 'button "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e786]':
+                - 'img "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e789]'
+            - 'link "Roller Coaster Ramble Ohio: Cedar Point – Roller Coaster Ramble" [ref=e791]':
+              - /url: https://rollercoasterramble.com/ohio-cedar-point-2/
+              - generic [ref=e796]: Roller Coaster Ramble
+              - generic [ref=e798]: "Ohio: Cedar Point – Roller Coaster Ramble"
+          - generic [ref=e799] [cursor=pointer]:
+            - heading "Intamin coaster opened in 1979 ..." [level=3] [ref=e801]:
+              - button "Intamin coaster opened in 1979 ..." [ref=e803]:
+                - img "Intamin coaster opened in 1979 ..." [ref=e806]
+            - link "Facebook Intamin coaster opened in 1979 ..." [ref=e808]:
+              - /url: https://www.facebook.com/groups/446279452634367/posts/1158987484696890/
+              - generic [ref=e813]: Facebook
+              - generic [ref=e815]: Intamin coaster opened in 1979 ...
+          - generic [ref=e816] [cursor=pointer]:
+            - heading "Cedar Creek Mine Ride | Cedar Point ..." [level=3] [ref=e818]:
+              - button "Cedar Creek Mine Ride | Cedar Point ..." [ref=e820]:
+                - img "Cedar Creek Mine Ride | Cedar Point ..." [ref=e823]
+            - link "Undercover Tourist Cedar Creek Mine Ride | Cedar Point ..." [ref=e825]:
+              - /url: https://www.undercovertourist.com/cleveland/cedar-point/cedar-creek-mine-ride/
+              - generic [ref=e830]: Undercover Tourist
+              - generic [ref=e832]: Cedar Creek Mine Ride | Cedar Point ...
+          - generic [ref=e833] [cursor=pointer]:
+            - heading "A Day to Remember at Cedar Point ..." [level=3] [ref=e835]:
+              - button "A Day to Remember at Cedar Point ..." [ref=e837]:
+                - img "A Day to Remember at Cedar Point ..." [ref=e840]
+            - link "Coaster101.com A Day to Remember at Cedar Point ..." [ref=e842]:
+              - /url: https://www.coaster101.com/2023/07/05/a-day-to-remember-at-cedar-point/
+              - generic [ref=e847]: Coaster101.com
+              - generic [ref=e849]: A Day to Remember at Cedar Point ...
+          - generic [ref=e850] [cursor=pointer]:
+            - generic [ref=e851]:
+              - heading "Jr Gemini at Cedar Point. The First ..." [level=3] [ref=e852]:
+                - button "Jr Gemini at Cedar Point. The First ..." [ref=e854]:
+                  - img "Jr Gemini at Cedar Point. The First ..." [ref=e857]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Jr Gemini at Cedar Point. The First ..." [ref=e859]:
+              - /url: https://www.youtube.com/watch?v=hC2HpSTzk9s
+              - generic [ref=e864]: YouTube
+              - generic [ref=e866]: Jr Gemini at Cedar Point. The First ...
+          - generic [ref=e867] [cursor=pointer]:
+            - 'heading "Ohio: Cedar Point – Roller Coaster Ramble" [level=3] [ref=e869]':
+              - 'button "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e871]':
+                - 'img "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e874]'
+            - 'link "Roller Coaster Ramble Ohio: Cedar Point – Roller Coaster Ramble" [ref=e876]':
+              - /url: https://rollercoasterramble.com/ohio-cedar-point-2/
+              - generic [ref=e881]: Roller Coaster Ramble
+              - generic [ref=e883]: "Ohio: Cedar Point – Roller Coaster Ramble"
+          - generic [ref=e884] [cursor=pointer]:
+            - heading "Wilderness Run Cedar Point" [level=3] [ref=e886]:
+              - button "Wilderness Run Cedar Point" [ref=e888]:
+                - img "Wilderness Run Cedar Point" [ref=e891]
+            - link "Instagram Wilderness Run Cedar Point" [ref=e893]:
+              - /url: https://www.instagram.com/popular/wilderness-run-cedar-point/
+              - generic [ref=e898]: Instagram
+              - generic [ref=e900]: Wilderness Run Cedar Point
+          - generic [ref=e901] [cursor=pointer]:
+            - heading "Coaster Con 44 - American Coaster ..." [level=3] [ref=e903]:
+              - button "Coaster Con 44 - American Coaster ..." [ref=e905]:
+                - img "Coaster Con 44 - American Coaster ..." [ref=e908]
+            - link "American Coaster Enthusiasts Coaster Con 44 - American Coaster ..." [ref=e910]:
+              - /url: https://www.aceonline.org/m/event_details.asp?id=1632877
+              - generic [ref=e915]: American Coaster Enthusiasts
+              - generic [ref=e917]: Coaster Con 44 - American Coaster ...
+          - generic [ref=e918] [cursor=pointer]:
+            - heading "Cedar Point theme park announces new ..." [level=3] [ref=e920]:
+              - button "Cedar Point theme park announces new ..." [ref=e922]:
+                - img "Cedar Point theme park announces new ..." [ref=e925]
+            - link "Fox News Cedar Point theme park announces new ..." [ref=e927]:
+              - /url: https://www.foxnews.com/travel/cedar-point-theme-park-announces-new-rides-attractions
+              - generic [ref=e932]: Fox News
+              - generic [ref=e934]: Cedar Point theme park announces new ...
+          - generic [ref=e935] [cursor=pointer]:
+            - 'heading "Wilderness Run at Cedar Point : Neil Tonge" [level=3] [ref=e937]':
+              - 'button "Wilderness Run at Cedar Point : Neil Tonge" [ref=e939]':
+                - 'img "Wilderness Run at Cedar Point : Neil Tonge" [ref=e942]'
+            - 'link "Neil Tonge Wilderness Run at Cedar Point : Neil Tonge" [ref=e944]':
+              - /url: https://neiltonge.co.uk/venues/cedar-point-sandusky/attractions/wilderness-run-cedar-point-sandusky
+              - generic [ref=e949]: Neil Tonge
+              - generic [ref=e951]: "Wilderness Run at Cedar Point : Neil Tonge"
+          - generic [ref=e952] [cursor=pointer]:
+            - heading "Roller Coaster At Cedar Point ..." [level=3] [ref=e954]:
+              - button "Roller Coaster At Cedar Point ..." [ref=e956]:
+                - img "Roller Coaster At Cedar Point ..." [ref=e959]
+            - link "iHeart Roller Coaster At Cedar Point ..." [ref=e961]:
+              - /url: https://www.iheart.com/content/2022-05-16-this-is-the-least-popular-roller-coaster-at-cedar-point/
+              - generic [ref=e966]: iHeart
+              - generic [ref=e968]: Roller Coaster At Cedar Point ...
+          - generic [ref=e969] [cursor=pointer]:
+            - heading "first roller coaster [Wilderness Run ..." [level=3] [ref=e971]:
+              - button "first roller coaster [Wilderness Run ..." [ref=e973]:
+                - img "first roller coaster [Wilderness Run ..." [ref=e976]
+            - link "Reddit first roller coaster [Wilderness Run ..." [ref=e978]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/hlujv3/intimins_first_roller_coaster_wilderness_run/
+              - generic [ref=e983]: Reddit
+              - generic [ref=e985]: first roller coaster [Wilderness Run ...
+          - generic [ref=e986] [cursor=pointer]:
+            - heading "Wild Mouse • Cedar Point • Captain Coaster" [level=3] [ref=e988]:
+              - button "Wild Mouse • Cedar Point • Captain Coaster" [ref=e990]:
+                - img "Wild Mouse • Cedar Point • Captain Coaster" [ref=e993]
+            - link "Captain Coaster Wild Mouse • Cedar Point • Captain Coaster" [ref=e995]:
+              - /url: https://captaincoaster.com/en/coasters/5774/wild-mouse-cedar-point
+              - generic [ref=e1000]: Captain Coaster
+              - generic [ref=e1002]: Wild Mouse • Cedar Point • Captain Coaster
+          - generic [ref=e1003] [cursor=pointer]:
+            - heading "All the Cedar Point Roller Coasters ..." [level=3] [ref=e1005]:
+              - button "All the Cedar Point Roller Coasters ..." [ref=e1007]:
+                - img "All the Cedar Point Roller Coasters ..." [ref=e1010]
+            - link "Belle Brita All the Cedar Point Roller Coasters ..." [ref=e1012]:
+              - /url: https://bellebrita.com/2018/06/cedar-point-roller-coasters/
+              - generic [ref=e1017]: Belle Brita
+              - generic [ref=e1019]: All the Cedar Point Roller Coasters ...
+          - generic [ref=e1020]:
+            - heading "Related searches" [level=2] [ref=e1021]
+            - link "maverick cedar point" [ref=e1022] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=maverick+cedar+point&stick=H4sIAAAAAAAAAFvEKpKbWJZalJmcrZCcmpJYpFCQn5lXAgDVCGBiFwAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIMxAA
+              - generic [ref=e1027]: maverick cedar point
+            - link "iron dragon cedar point" [ref=e1028] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=iron+dragon+cedar+point&stick=H4sIAAAAAAAAAFvEKp5ZlJ-nkFKUmA6kklNTEosUCvIz80oA6xVe2xoAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIORAA
+              - generic [ref=e1033]: iron dragon cedar point
+            - link "cedar point rides list" [ref=e1034] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=cedar+point+rides+list&stick=H4sIAAAAAAAAAFvEKpacmpJYpFCQn5lXolCUmZJarJCTWVwCACAZO9IZAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIPhAA
+              - generic [ref=e1039]: cedar point rides list
+          - generic [ref=e1040] [cursor=pointer]:
+            - heading "Wilderness Run at Cedar Point Off-Ride ..." [level=3] [ref=e1042]:
+              - button "Wilderness Run at Cedar Point Off-Ride ..." [ref=e1044]:
+                - img "Wilderness Run at Cedar Point Off-Ride ..." [ref=e1047]
+            - link "YouTube Wilderness Run at Cedar Point Off-Ride ..." [ref=e1049]:
+              - /url: https://www.youtube.com/watch?v=5hIuEVou_QA
+              - generic [ref=e1054]: YouTube
+              - generic [ref=e1056]: Wilderness Run at Cedar Point Off-Ride ...
+          - generic [ref=e1057] [cursor=pointer]:
+            - heading "Wilderness Run | Peanuts Wiki | Fandom" [level=3] [ref=e1059]:
+              - button "Wilderness Run | Peanuts Wiki | Fandom" [ref=e1061]:
+                - img "Wilderness Run | Peanuts Wiki | Fandom" [ref=e1064]
+            - link "Peanuts Wiki - Fandom Wilderness Run | Peanuts Wiki | Fandom" [ref=e1066]:
+              - /url: https://peanuts.fandom.com/wiki/Wilderness_Run
+              - generic [ref=e1071]: Peanuts Wiki - Fandom
+              - generic [ref=e1073]: Wilderness Run | Peanuts Wiki | Fandom
+          - generic [ref=e1074] [cursor=pointer]:
+            - heading "Cedar Point" [level=3] [ref=e1076]:
+              - button "Cedar Point" [ref=e1078]:
+                - img "Cedar Point" [ref=e1081]
+            - link "coaster.cloud Cedar Point" [ref=e1083]:
+              - /url: https://coaster.cloud/en/parks/0266b21e-cedar-point
+              - generic [ref=e1088]: coaster.cloud
+              - generic [ref=e1090]: Cedar Point
+          - generic [ref=e1091] [cursor=pointer]:
+            - heading "Ranking of Every Cedar Point Roller Coaster" [level=3] [ref=e1093]:
+              - button "Ranking of Every Cedar Point Roller Coaster" [ref=e1095]:
+                - img "Ranking of Every Cedar Point Roller Coaster" [ref=e1098]
+            - link "Matador Network Ranking of Every Cedar Point Roller Coaster" [ref=e1100]:
+              - /url: https://matadornetwork.com/read/every-roller-coaster-cedar-point-ranked/
+              - generic [ref=e1105]: Matador Network
+              - generic [ref=e1107]: Ranking of Every Cedar Point Roller Coaster
+          - generic [ref=e1108] [cursor=pointer]:
+            - heading "Valravn | Cedar Point discount tickets ..." [level=3] [ref=e1110]:
+              - button "Valravn | Cedar Point discount tickets ..." [ref=e1112]:
+                - img "Valravn | Cedar Point discount tickets ..." [ref=e1115]
+            - link "Undercover Tourist Valravn | Cedar Point discount tickets ..." [ref=e1117]:
+              - /url: https://www.undercovertourist.com/cleveland/cedar-point/valravn/
+              - generic [ref=e1122]: Undercover Tourist
+              - generic [ref=e1124]: Valravn | Cedar Point discount tickets ...
+          - generic [ref=e1125] [cursor=pointer]:
+            - 'heading "Coaster Trips: Cedar Point" [level=3] [ref=e1127]':
+              - 'button "Coaster Trips: Cedar Point" [ref=e1129]':
+                - 'img "Coaster Trips: Cedar Point" [ref=e1132]'
+            - 'link "Richard Bannister Coaster Trips: Cedar Point" [ref=e1134]':
+              - /url: https://www.bannister.org/coasters/parks/cedar_point.htm
+              - generic [ref=e1139]: Richard Bannister
+              - generic [ref=e1141]: "Coaster Trips: Cedar Point"
+          - generic [ref=e1142] [cursor=pointer]:
+            - heading "Cedar Point – Coaster Kings' First ..." [level=3] [ref=e1144]:
+              - button "Cedar Point – Coaster Kings' First ..." [ref=e1146]:
+                - img "Cedar Point – Coaster Kings' First ..." [ref=e1149]
+            - link "Coaster Kings Cedar Point – Coaster Kings' First ..." [ref=e1151]:
+              - /url: https://thecoasterkings.com/cedar-point-coaster-kings-first-visit/
+              - generic [ref=e1156]: Coaster Kings
+              - generic [ref=e1158]: Cedar Point – Coaster Kings' First ...
+          - generic [ref=e1159] [cursor=pointer]:
+            - heading "Wilderness Run - Cedar Point (Sandusky ..." [level=3] [ref=e1161]:
+              - button "Wilderness Run - Cedar Point (Sandusky ..." [ref=e1163]:
+                - img "Wilderness Run - Cedar Point (Sandusky ..." [ref=e1166]
+            - link "Roller Coaster DataBase Wilderness Run - Cedar Point (Sandusky ..." [ref=e1168]:
+              - /url: https://rcdb.com/15.htm
+              - generic [ref=e1173]: Roller Coaster DataBase
+              - generic [ref=e1175]: Wilderness Run - Cedar Point (Sandusky ...
+          - generic [ref=e1176] [cursor=pointer]:
+            - 'heading "Ohio: Cedar Point – Roller Coaster Ramble" [level=3] [ref=e1178]':
+              - 'button "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1180]':
+                - 'img "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1183]'
+            - 'link "Roller Coaster Ramble Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1185]':
+              - /url: https://rollercoasterramble.com/ohio-cedar-point-2/
+              - generic [ref=e1190]: Roller Coaster Ramble
+              - generic [ref=e1192]: "Ohio: Cedar Point – Roller Coaster Ramble"
+          - generic [ref=e1193] [cursor=pointer]:
+            - heading "Wilderness Run at Cedar Point | Theme ..." [level=3] [ref=e1195]:
+              - button "Wilderness Run at Cedar Point | Theme ..." [ref=e1197]:
+                - img "Wilderness Run at Cedar Point | Theme ..." [ref=e1200]
+            - link "Theme Park Archive Wilderness Run at Cedar Point | Theme ..." [ref=e1202]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/wilderness-run
+              - generic [ref=e1207]: Theme Park Archive
+              - generic [ref=e1209]: Wilderness Run at Cedar Point | Theme ...
+          - generic [ref=e1210] [cursor=pointer]:
+            - heading "A Day to Remember at Cedar Point ..." [level=3] [ref=e1212]:
+              - button "A Day to Remember at Cedar Point ..." [ref=e1214]:
+                - img "A Day to Remember at Cedar Point ..." [ref=e1217]
+            - link "Coaster101.com A Day to Remember at Cedar Point ..." [ref=e1219]:
+              - /url: https://www.coaster101.com/2023/07/05/a-day-to-remember-at-cedar-point/
+              - generic [ref=e1224]: Coaster101.com
+              - generic [ref=e1226]: A Day to Remember at Cedar Point ...
+          - generic [ref=e1227] [cursor=pointer]:
+            - heading "What was your first roller coaster ride?" [level=3] [ref=e1229]:
+              - button "What was your first roller coaster ride?" [ref=e1231]:
+                - img "What was your first roller coaster ride?" [ref=e1234]
+            - link "Facebook What was your first roller coaster ride?" [ref=e1236]:
+              - /url: https://www.facebook.com/groups/446279452634367/posts/1758364491425850/
+              - generic [ref=e1241]: Facebook
+              - generic [ref=e1243]: What was your first roller coaster ride?
+          - generic [ref=e1244] [cursor=pointer]:
+            - heading "Man killed by coaster while looking for ..." [level=3] [ref=e1246]:
+              - button "Man killed by coaster while looking for ..." [ref=e1248]:
+                - img "Man killed by coaster while looking for ..." [ref=e1251]
+            - link "11Alive.com Man killed by coaster while looking for ..." [ref=e1253]:
+              - /url: https://www.11alive.com/article/news/nation-now/man-killed-by-coaster-while-looking-for-phone/85-129339657
+              - generic [ref=e1258]: 11Alive.com
+              - generic [ref=e1260]: Man killed by coaster while looking for ...
+          - generic [ref=e1261] [cursor=pointer]:
+            - heading "Cedar Point - Wilderness Run" [level=3] [ref=e1263]:
+              - button "Cedar Point - Wilderness Run" [ref=e1265]:
+                - img "Cedar Point - Wilderness Run" [ref=e1268]
+            - link "Theme Park Review Cedar Point - Wilderness Run" [ref=e1270]:
+              - /url: https://www.themeparkreview.com/parks/p_83_3987_cedar_point_wilderness_run
+              - generic [ref=e1275]: Theme Park Review
+              - generic [ref=e1277]: Cedar Point - Wilderness Run
+          - generic [ref=e1278] [cursor=pointer]:
+            - heading "Ranking of Every Cedar Point Roller Coaster" [level=3] [ref=e1280]:
+              - button "Ranking of Every Cedar Point Roller Coaster" [ref=e1282]:
+                - img "Ranking of Every Cedar Point Roller Coaster" [ref=e1285]
+            - link "Matador Network Ranking of Every Cedar Point Roller Coaster" [ref=e1287]:
+              - /url: https://matadornetwork.com/read/every-roller-coaster-cedar-point-ranked/
+              - generic [ref=e1292]: Matador Network
+              - generic [ref=e1294]: Ranking of Every Cedar Point Roller Coaster
+          - generic [ref=e1295] [cursor=pointer]:
+            - heading "Roller Coaster Coming to Cedar Point ..." [level=3] [ref=e1297]:
+              - button "Roller Coaster Coming to Cedar Point ..." [ref=e1299]:
+                - img "Roller Coaster Coming to Cedar Point ..." [ref=e1302]
+            - link "WGRD Roller Coaster Coming to Cedar Point ..." [ref=e1304]:
+              - /url: https://wgrd.com/new-roller-coaster-coming-to-cedar-point-in-2025/
+              - generic [ref=e1309]: WGRD
+              - generic [ref=e1311]: Roller Coaster Coming to Cedar Point ...
+          - generic [ref=e1312] [cursor=pointer]:
+            - heading "Valravn • Cedar Point • Captain Coaster" [level=3] [ref=e1314]:
+              - button "Valravn • Cedar Point • Captain Coaster" [ref=e1316]:
+                - img "Valravn • Cedar Point • Captain Coaster" [ref=e1319]
+            - link "Captain Coaster Valravn • Cedar Point • Captain Coaster" [ref=e1321]:
+              - /url: https://captaincoaster.com/en/coasters/2269/valravn-cedar-point
+              - generic [ref=e1326]: Captain Coaster
+              - generic [ref=e1328]: Valravn • Cedar Point • Captain Coaster
+          - generic [ref=e1329] [cursor=pointer]:
+            - heading "Rougarou" [level=3] [ref=e1331]:
+              - button "Rougarou" [ref=e1333]:
+                - img "Rougarou" [ref=e1336]
+            - link "Scream Machine Rougarou" [ref=e1338]:
+              - /url: https://www.screammachine.net/rideinfo.php?ridecode=135
+              - generic [ref=e1343]: Scream Machine
+              - generic [ref=e1345]: Rougarou
+          - generic [ref=e1346] [cursor=pointer]:
+            - 'heading "Coaster Trips: Cedar Point" [level=3] [ref=e1348]':
+              - 'button "Coaster Trips: Cedar Point" [ref=e1350]':
+                - 'img "Coaster Trips: Cedar Point" [ref=e1353]'
+            - 'link "Richard Bannister Coaster Trips: Cedar Point" [ref=e1355]':
+              - /url: https://www.bannister.org/coasters/parks/cedar_point.htm
+              - generic [ref=e1360]: Richard Bannister
+              - generic [ref=e1362]: "Coaster Trips: Cedar Point"
+          - generic [ref=e1363] [cursor=pointer]:
+            - heading "Wilderness Run] and [Thunder Striker ..." [level=3] [ref=e1365]:
+              - button "Wilderness Run] and [Thunder Striker ..." [ref=e1367]:
+                - img "Wilderness Run] and [Thunder Striker ..." [ref=e1370]
+            - link "Reddit Wilderness Run] and [Thunder Striker ..." [ref=e1372]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/1q2vkw1/wilderness_run_and_thunder_striker_at_carowinds/
+              - generic [ref=e1377]: Reddit
+              - generic [ref=e1379]: Wilderness Run] and [Thunder Striker ...
+          - generic [ref=e1380] [cursor=pointer]:
+            - heading "Coaster Con 44 - American Coaster ..." [level=3] [ref=e1382]:
+              - button "Coaster Con 44 - American Coaster ..." [ref=e1384]:
+                - img "Coaster Con 44 - American Coaster ..." [ref=e1387]
+            - link "American Coaster Enthusiasts Coaster Con 44 - American Coaster ..." [ref=e1389]:
+              - /url: https://www.aceonline.org/m/event_details.asp?id=1632877
+              - generic [ref=e1394]: American Coaster Enthusiasts
+              - generic [ref=e1396]: Coaster Con 44 - American Coaster ...
+          - generic [ref=e1397] [cursor=pointer]:
+            - heading "Visitors Guide to Cedar Point" [level=3] [ref=e1399]:
+              - button "Visitors Guide to Cedar Point" [ref=e1401]:
+                - img "Visitors Guide to Cedar Point" [ref=e1404]
+            - link "Theme Park Insider Visitors Guide to Cedar Point" [ref=e1406]:
+              - /url: https://www.themeparkinsider.com/reviews/cedar-point/
+              - generic [ref=e1411]: Theme Park Insider
+              - generic [ref=e1413]: Visitors Guide to Cedar Point
+          - generic [ref=e1414] [cursor=pointer]:
+            - heading "Wilderness Run at Cedar Point | Theme ..." [level=3] [ref=e1416]:
+              - button "Wilderness Run at Cedar Point | Theme ..." [ref=e1418]:
+                - img "Wilderness Run at Cedar Point | Theme ..." [ref=e1421]
+            - link "Theme Park Archive Wilderness Run at Cedar Point | Theme ..." [ref=e1423]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/wilderness-run
+              - generic [ref=e1428]: Theme Park Archive
+              - generic [ref=e1430]: Wilderness Run at Cedar Point | Theme ...
+          - generic [ref=e1431] [cursor=pointer]:
+            - 'heading "Ohio: Cedar Point – Roller Coaster Ramble" [level=3] [ref=e1433]':
+              - 'button "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1435]':
+                - 'img "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1438]'
+            - 'link "Roller Coaster Ramble Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1440]':
+              - /url: https://rollercoasterramble.com/ohio-cedar-point-2/
+              - generic [ref=e1445]: Roller Coaster Ramble
+              - generic [ref=e1447]: "Ohio: Cedar Point – Roller Coaster Ramble"
+          - generic [ref=e1448]:
+            - heading "Related searches" [level=2] [ref=e1449]
+            - link "siren's curse cedar point" [ref=e1450] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=siren's+curse+cedar+point&stick=H4sIAAAAAAAAAFvEKlmcWZSap16skFxaVJyqkJyaklikUJCfmVcCAJOwquIcAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIfxAA
+              - generic [ref=e1455]: siren's curse cedar point
+            - link "wilderness run cedar point" [ref=e1456] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=wilderness+run+cedar+point&stick=H4sIAAAAAAAAAFvEKlWemZOSWpSXWlysUFSap5CcmpJYpFCQn5lXAgBUZbYIHQAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegUIggEQAA
+              - generic [ref=e1461]: wilderness run cedar point
+            - link "corkscrew cedar point" [ref=e1462] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=corkscrew+cedar+point&stick=H4sIAAAAAAAAAFvEKpqcX5RdnFyUWq6QnJqSWKRQkJ-ZVwIApIVRXRgAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegUIhgEQAA
+              - generic [ref=e1467]: corkscrew cedar point
+          - generic [ref=e1468] [cursor=pointer]:
+            - heading "Wilderness Run | Cedar Point discount ..." [level=3] [ref=e1470]:
+              - button "Wilderness Run | Cedar Point discount ..." [ref=e1472]:
+                - img "Wilderness Run | Cedar Point discount ..." [ref=e1475]
+            - link "Undercover Tourist Wilderness Run | Cedar Point discount ..." [ref=e1477]:
+              - /url: https://www.undercovertourist.com/cleveland/cedar-point/wilderness-run/
+              - generic [ref=e1482]: Undercover Tourist
+              - generic [ref=e1484]: Wilderness Run | Cedar Point discount ...
+          - generic [ref=e1485] [cursor=pointer]:
+            - heading "Wilderness Run at Cedar Point - YouTube" [level=3] [ref=e1487]:
+              - button "Wilderness Run at Cedar Point - YouTube" [ref=e1489]:
+                - img "Wilderness Run at Cedar Point - YouTube" [ref=e1492]
+            - link "YouTube Wilderness Run at Cedar Point - YouTube" [ref=e1494]:
+              - /url: https://www.youtube.com/watch?v=07EL-o7i1Sc
+              - generic [ref=e1499]: YouTube
+              - generic [ref=e1501]: Wilderness Run at Cedar Point - YouTube
+          - generic [ref=e1502] [cursor=pointer]:
+            - heading "Cedar Point in Sandusky, Ohio ..." [level=3] [ref=e1504]:
+              - button "Cedar Point in Sandusky, Ohio ..." [ref=e1506]:
+                - img "Cedar Point in Sandusky, Ohio ..." [ref=e1509]
+            - link "Slay At Home Mother Cedar Point in Sandusky, Ohio ..." [ref=e1511]:
+              - /url: https://www.slayathomemother.com/our-family-trip-to-cedar-point-in-sandusky-ohio/
+              - generic [ref=e1516]: Slay At Home Mother
+              - generic [ref=e1518]: Cedar Point in Sandusky, Ohio ...
+          - generic [ref=e1519] [cursor=pointer]:
+            - heading "Ranking of Every Cedar Point Roller Coaster" [level=3] [ref=e1521]:
+              - button "Ranking of Every Cedar Point Roller Coaster" [ref=e1523]:
+                - img "Ranking of Every Cedar Point Roller Coaster" [ref=e1526]
+            - link "Matador Network Ranking of Every Cedar Point Roller Coaster" [ref=e1528]:
+              - /url: https://matadornetwork.com/read/every-roller-coaster-cedar-point-ranked/
+              - generic [ref=e1533]: Matador Network
+              - generic [ref=e1535]: Ranking of Every Cedar Point Roller Coaster
+          - generic [ref=e1536] [cursor=pointer]:
+            - heading "Cedar Point Roller Coasters, Ranked ..." [level=3] [ref=e1538]:
+              - button "Cedar Point Roller Coasters, Ranked ..." [ref=e1540]:
+                - img "Cedar Point Roller Coasters, Ranked ..." [ref=e1543]
+            - link "Thrillist Cedar Point Roller Coasters, Ranked ..." [ref=e1545]:
+              - /url: https://www.thrillist.com/lifestyle/cleveland/best-cedar-point-roller-coasters-rides
+              - generic [ref=e1550]: Thrillist
+              - generic [ref=e1552]: Cedar Point Roller Coasters, Ranked ...
+          - generic [ref=e1553] [cursor=pointer]:
+            - heading "A Day to Remember at Cedar Point ..." [level=3] [ref=e1555]:
+              - button "A Day to Remember at Cedar Point ..." [ref=e1557]:
+                - img "A Day to Remember at Cedar Point ..." [ref=e1560]
+            - link "Coaster101.com A Day to Remember at Cedar Point ..." [ref=e1562]:
+              - /url: https://www.coaster101.com/2023/07/05/a-day-to-remember-at-cedar-point/
+              - generic [ref=e1567]: Coaster101.com
+              - generic [ref=e1569]: A Day to Remember at Cedar Point ...
+          - generic [ref=e1570] [cursor=pointer]:
+            - heading "Cedar Creek Mine Ride • Cedar Point ..." [level=3] [ref=e1572]:
+              - button "Cedar Creek Mine Ride • Cedar Point ..." [ref=e1574]:
+                - img "Cedar Creek Mine Ride • Cedar Point ..." [ref=e1577]
+            - link "Captain Coaster Cedar Creek Mine Ride • Cedar Point ..." [ref=e1579]:
+              - /url: https://captaincoaster.com/en/coasters/428/cedar-creek-mine-ride-cedar-point
+              - generic [ref=e1584]: Captain Coaster
+              - generic [ref=e1586]: Cedar Creek Mine Ride • Cedar Point ...
+          - generic [ref=e1587] [cursor=pointer]:
+            - 'heading "Gemini: Cedar Point''s Racing Coaster ..." [level=3] [ref=e1589]':
+              - 'button "Gemini: Cedar Point''s Racing Coaster ..." [ref=e1591]':
+                - 'img "Gemini: Cedar Point''s Racing Coaster ..." [ref=e1594]'
+            - 'link "Theme Parks By Don Gemini: Cedar Point''s Racing Coaster ..." [ref=e1596]':
+              - /url: https://themeparksbydon.com/gemini-cedar-points-racing-coaster-that-redefined-thrills/
+              - generic [ref=e1601]: Theme Parks By Don
+              - generic [ref=e1603]: "Gemini: Cedar Point's Racing Coaster ..."
+          - generic [ref=e1604] [cursor=pointer]:
+            - heading "Mean Streak" [level=3] [ref=e1606]:
+              - button "Mean Streak" [ref=e1608]:
+                - img "Mean Streak" [ref=e1611]
+            - link "Scream Machine Mean Streak" [ref=e1613]:
+              - /url: https://screammachine.net/rideinfo.php?ridecode=136
+              - generic [ref=e1618]: Scream Machine
+              - generic [ref=e1620]: Mean Streak
+          - generic [ref=e1621] [cursor=pointer]:
+            - heading "Cedar Point Roller Coasters, Ranked ..." [level=3] [ref=e1623]:
+              - button "Cedar Point Roller Coasters, Ranked ..." [ref=e1625]:
+                - img "Cedar Point Roller Coasters, Ranked ..." [ref=e1628]
+            - link "Thrillist Cedar Point Roller Coasters, Ranked ..." [ref=e1630]:
+              - /url: https://www.thrillist.com/lifestyle/cleveland/best-cedar-point-roller-coasters-rides
+              - generic [ref=e1635]: Thrillist
+              - generic [ref=e1637]: Cedar Point Roller Coasters, Ranked ...
+          - generic [ref=e1638] [cursor=pointer]:
+            - generic [ref=e1639]:
+              - heading "Wilderness Run Alpine Coaster - Banner ..." [level=3] [ref=e1640]:
+                - button "Wilderness Run Alpine Coaster - Banner ..." [ref=e1642]:
+                  - img "Wilderness Run Alpine Coaster - Banner ..." [ref=e1645]
+              - generic:
+                - generic: 6 days ago
+            - link "Banner Elk Wilderness Run Alpine Coaster - Banner ..." [ref=e1647]:
+              - /url: https://www.bannerelk.com/attractions/wilderness-run-alpine-coaster/
+              - generic [ref=e1652]: Banner Elk
+              - generic [ref=e1654]: Wilderness Run Alpine Coaster - Banner ...
+          - generic [ref=e1655] [cursor=pointer]:
+            - heading "Cedar Point" [level=3] [ref=e1657]:
+              - button "Cedar Point" [ref=e1659]:
+                - img "Cedar Point" [ref=e1662]
+            - link "coaster.cloud Cedar Point" [ref=e1664]:
+              - /url: https://coaster.cloud/en/parks/0266b21e-cedar-point
+              - generic [ref=e1669]: coaster.cloud
+              - generic [ref=e1671]: Cedar Point
+          - generic [ref=e1672] [cursor=pointer]:
+            - 'heading "Blue Streak: Celebrating 60 years of ..." [level=3] [ref=e1674]':
+              - 'button "Blue Streak: Celebrating 60 years of ..." [ref=e1676]':
+                - 'img "Blue Streak: Celebrating 60 years of ..." [ref=e1679]'
+            - 'link "Sandusky Register Blue Streak: Celebrating 60 years of ..." [ref=e1681]':
+              - /url: https://sanduskyregister.com/news/512062/blue-streak-celebrating-60-years-of-thrills-at-cedar-point/
+              - generic [ref=e1686]: Sandusky Register
+              - generic [ref=e1688]: "Blue Streak: Celebrating 60 years of ..."
+          - generic [ref=e1689] [cursor=pointer]:
+            - heading "Steel Vengeance - Coasterpedia - The ..." [level=3] [ref=e1691]:
+              - button "Steel Vengeance - Coasterpedia - The ..." [ref=e1693]:
+                - img "Steel Vengeance - Coasterpedia - The ..." [ref=e1696]
+            - link "Coasterpedia Steel Vengeance - Coasterpedia - The ..." [ref=e1698]:
+              - /url: https://coasterpedia.net/wiki/Steel_Vengeance
+              - generic [ref=e1703]: Coasterpedia
+              - generic [ref=e1705]: Steel Vengeance - Coasterpedia - The ...
+          - generic [ref=e1706] [cursor=pointer]:
+            - heading "Coaster Con 44 - American Coaster ..." [level=3] [ref=e1708]:
+              - button "Coaster Con 44 - American Coaster ..." [ref=e1710]:
+                - img "Coaster Con 44 - American Coaster ..." [ref=e1713]
+            - link "American Coaster Enthusiasts Coaster Con 44 - American Coaster ..." [ref=e1715]:
+              - /url: https://www.aceonline.org/m/event_details.asp?id=1632877
+              - generic [ref=e1720]: American Coaster Enthusiasts
+              - generic [ref=e1722]: Coaster Con 44 - American Coaster ...
+          - generic [ref=e1723] [cursor=pointer]:
+            - heading "Cedar Point Roller Coasters Ranked ..." [level=3] [ref=e1725]:
+              - button "Cedar Point Roller Coasters Ranked ..." [ref=e1727]:
+                - img "Cedar Point Roller Coasters Ranked ..." [ref=e1730]
+            - link "SingleFlyer Cedar Point Roller Coasters Ranked ..." [ref=e1732]:
+              - /url: https://singleflyer.com/2025/08/11/cedar-point-roller-coasters-ranked/
+              - generic [ref=e1737]: SingleFlyer
+              - generic [ref=e1739]: Cedar Point Roller Coasters Ranked ...
+          - generic [ref=e1740] [cursor=pointer]:
+            - heading "Wilderness Run | Peanuts Wiki | Fandom" [level=3] [ref=e1742]:
+              - button "Wilderness Run | Peanuts Wiki | Fandom" [ref=e1744]:
+                - img "Wilderness Run | Peanuts Wiki | Fandom" [ref=e1747]
+            - link "Peanuts Wiki - Fandom Wilderness Run | Peanuts Wiki | Fandom" [ref=e1749]:
+              - /url: https://peanuts.fandom.com/wiki/Wilderness_Run
+              - generic [ref=e1754]: Peanuts Wiki - Fandom
+              - generic [ref=e1756]: Wilderness Run | Peanuts Wiki | Fandom
+          - generic [ref=e1757] [cursor=pointer]:
+            - 'heading "Blue Streak: Celebrating 60 years of ..." [level=3] [ref=e1759]':
+              - 'button "Blue Streak: Celebrating 60 years of ..." [ref=e1761]':
+                - 'img "Blue Streak: Celebrating 60 years of ..." [ref=e1764]'
+            - 'link "Advertiser-Tribune Blue Streak: Celebrating 60 years of ..." [ref=e1766]':
+              - /url: https://advertiser-tribune.com/news/512062/blue-streak-celebrating-60-years-of-thrills-at-cedar-point/
+              - generic [ref=e1771]: Advertiser-Tribune
+              - generic [ref=e1773]: "Blue Streak: Celebrating 60 years of ..."
+          - generic [ref=e1774] [cursor=pointer]:
+            - heading "My Experience at Cedar Point. On ..." [level=3] [ref=e1776]:
+              - button "My Experience at Cedar Point. On ..." [ref=e1778]:
+                - img "My Experience at Cedar Point. On ..." [ref=e1781]
+            - link "Medium My Experience at Cedar Point. On ..." [ref=e1783]:
+              - /url: https://medium.com/as-vast-as-space-and-as-timeless-as-infinity/my-experience-at-cedar-point-6979e931cdf5
+              - generic [ref=e1788]: Medium
+              - generic [ref=e1790]: My Experience at Cedar Point. On ...
+          - generic [ref=e1791] [cursor=pointer]:
+            - heading "Cedar Point adds two new family rides ..." [level=3] [ref=e1793]:
+              - button "Cedar Point adds two new family rides ..." [ref=e1795]:
+                - img "Cedar Point adds two new family rides ..." [ref=e1798]
+            - link "Cleveland.com Cedar Point adds two new family rides ..." [ref=e1800]:
+              - /url: https://www.cleveland.com/travel/2013/08/cedar_point_adds_two_new_famil.html
+              - generic [ref=e1805]: Cleveland.com
+              - generic [ref=e1807]: Cedar Point adds two new family rides ...
+          - generic [ref=e1808] [cursor=pointer]:
+            - heading "A Day to Remember at Cedar Point ..." [level=3] [ref=e1810]:
+              - button "A Day to Remember at Cedar Point ..." [ref=e1812]:
+                - img "A Day to Remember at Cedar Point ..." [ref=e1815]
+            - link "Coaster101.com A Day to Remember at Cedar Point ..." [ref=e1817]:
+              - /url: https://www.coaster101.com/2023/07/05/a-day-to-remember-at-cedar-point/
+              - generic [ref=e1822]: Coaster101.com
+              - generic [ref=e1824]: A Day to Remember at Cedar Point ...
+          - generic [ref=e1825] [cursor=pointer]:
+            - heading "Wilderness Run | Cedar Point discount ..." [level=3] [ref=e1827]:
+              - button "Wilderness Run | Cedar Point discount ..." [ref=e1829]:
+                - img "Wilderness Run | Cedar Point discount ..." [ref=e1832]
+            - link "Undercover Tourist Wilderness Run | Cedar Point discount ..." [ref=e1834]:
+              - /url: https://www.undercovertourist.com/cleveland/cedar-point/wilderness-run/
+              - generic [ref=e1839]: Undercover Tourist
+              - generic [ref=e1841]: Wilderness Run | Cedar Point discount ...
+          - generic [ref=e1842] [cursor=pointer]:
+            - generic [ref=e1843]:
+              - heading "Wilderness Run Alpine Coaster - Banner ..." [level=3] [ref=e1844]:
+                - button "Wilderness Run Alpine Coaster - Banner ..." [ref=e1846]:
+                  - img "Wilderness Run Alpine Coaster - Banner ..." [ref=e1849]
+              - generic:
+                - generic: 6 days ago
+            - link "Banner Elk Wilderness Run Alpine Coaster - Banner ..." [ref=e1851]:
+              - /url: https://www.bannerelk.com/attractions/wilderness-run-alpine-coaster/
+              - generic [ref=e1856]: Banner Elk
+              - generic [ref=e1858]: Wilderness Run Alpine Coaster - Banner ...
+          - generic [ref=e1859] [cursor=pointer]:
+            - heading "Valravn joins titans at Cedar Point ..." [level=3] [ref=e1861]:
+              - button "Valravn joins titans at Cedar Point ..." [ref=e1863]:
+                - img "Valravn joins titans at Cedar Point ..." [ref=e1866]
+            - link "The Courier Valravn joins titans at Cedar Point ..." [ref=e1868]:
+              - /url: https://thecourier.com/news/58294/valravn-joins-titans-at-cedar-point/
+              - generic [ref=e1873]: The Courier
+              - generic [ref=e1875]: Valravn joins titans at Cedar Point ...
+          - generic [ref=e1876]:
+            - heading "Related searches" [level=2] [ref=e1877]
+            - link "planet snoopy cedar point kids rides" [ref=e1878] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=planet+snoopy+cedar+point+kids+rides&stick=H4sIAAAAAAAAAFvEqlKQk5iXWqJQnJefX1CpkJyaklikUJCfmVeikJ2ZUqxQlJmSWgwA_5rKficAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIWRAA
+              - generic [ref=e1883]: planet snoopy cedar point kids rides
+            - link "blue streak cedar point" [ref=e1884] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=blue+streak+cedar+point&stick=H4sIAAAAAAAAAFvEKp6UU5qqUFxSlJqYrZCcmpJYpFCQn5lXAgC05IOuGgAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIXhAA
+              - generic [ref=e1889]: blue streak cedar point
+            - link "cedar point rides" [ref=e1890] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n4t6t-5T5iH_PJyb5JFQafCpGQviw:1774399734276&q=cedar+point+rides&stick=H4sIAAAAAAAAAFvEKpicmpJYpFCQn5lXolCUmZJaDABeNIOcFAAAAA&source=univ&sa=X&ved=2ahUKEwi-n-eO6rmTAxUbJEQIHTHTHUQQrNwCegQIYBAA
+              - generic [ref=e1895]: cedar point rides
+          - generic [ref=e1896] [cursor=pointer]:
+            - heading "Wilderness Run at Cedar Point | Theme ..." [level=3] [ref=e1898]:
+              - button "Wilderness Run at Cedar Point | Theme ..." [ref=e1900]:
+                - img "Wilderness Run at Cedar Point | Theme ..." [ref=e1903]
+            - link "Theme Park Archive Wilderness Run at Cedar Point | Theme ..." [ref=e1905]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/wilderness-run
+              - generic [ref=e1910]: Theme Park Archive
+              - generic [ref=e1912]: Wilderness Run at Cedar Point | Theme ...
+          - generic [ref=e1913] [cursor=pointer]:
+            - heading "Cedar Point" [level=3] [ref=e1915]:
+              - button "Cedar Point" [ref=e1917]:
+                - img "Cedar Point" [ref=e1920]
+            - link "coaster.cloud Cedar Point" [ref=e1922]:
+              - /url: https://coaster.cloud/en/parks/0266b21e-cedar-point
+              - generic [ref=e1927]: coaster.cloud
+              - generic [ref=e1929]: Cedar Point
+          - generic [ref=e1930] [cursor=pointer]:
+            - heading "Ranking of Every Cedar Point Roller Coaster" [level=3] [ref=e1932]:
+              - button "Ranking of Every Cedar Point Roller Coaster" [ref=e1934]:
+                - img "Ranking of Every Cedar Point Roller Coaster" [ref=e1937]
+            - link "Matador Network Ranking of Every Cedar Point Roller Coaster" [ref=e1939]:
+              - /url: https://matadornetwork.com/read/every-roller-coaster-cedar-point-ranked/
+              - generic [ref=e1944]: Matador Network
+              - generic [ref=e1946]: Ranking of Every Cedar Point Roller Coaster
+        - generic [ref=e1949]:
+          - heading "Page Navigation" [level=1] [ref=e1950]
+          - button "More results" [ref=e1951] [cursor=pointer]:
+            - generic [ref=e1952]:
+              - separator [ref=e1953]
+              - generic [ref=e1954]:
+                - generic [ref=e1955]: More results
+                - img [ref=e1957]
+      - navigation

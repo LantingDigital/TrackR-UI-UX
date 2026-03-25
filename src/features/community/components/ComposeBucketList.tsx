@@ -63,6 +63,7 @@ export function ComposeBucketList({ onComplete }: ComposeBucketListProps) {
       style={styles.container}
       contentContainerStyle={styles.content}
       keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
       showsVerticalScrollIndicator={false}
     >
       <Text style={styles.label}>Title</Text>

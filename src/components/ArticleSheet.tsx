@@ -36,7 +36,7 @@ import { SPRINGS, TIMING } from '../constants/animations';
 import { useTabBar } from '../contexts/TabBarContext';
 import { haptics } from '../services/haptics';
 import { NewsItem } from '../data/mockNews';
-import { SheetFog } from './SheetFog';
+
 import { isSaved, toggleSave } from '../stores/savedArticlesStore';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -242,9 +242,6 @@ export function ArticleSheet({ article, visible, onClose }: ArticleSheetProps) {
         >
           <Ionicons name="close" size={20} color={colors.text.secondary} />
         </Pressable>
-
-        {/* Fog gradient — fades content as it scrolls under the handle area */}
-        <SheetFog headerHeight={33} />
 
         {/* Scrollable content */}
         <ScrollView

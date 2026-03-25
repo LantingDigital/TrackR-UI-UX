@@ -23,6 +23,8 @@ import { radius } from '../../../theme/radius';
 import { haptics } from '../../../services/haptics';
 import { useSettingsStore } from '../../../stores/settingsStore';
 import { ParkleStats } from '../types/parkle';
+import type { ParkleDifficulty } from '../stores/parkleStore';
+import { DifficultySelector } from '../../games/components/DifficultySelector';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = SCREEN_WIDTH - 64;
@@ -81,9 +83,11 @@ const SubScreenHeader: React.FC<{ title: string; onBack: () => void }> = ({ titl
 interface ParkleSettingsContentProps {
   stats: ParkleStats;
   close: () => void;
+  difficulty?: ParkleDifficulty;
+  onDifficultyChange?: (value: ParkleDifficulty) => void;
 }
 
-export const ParkleSettingsContent: React.FC<ParkleSettingsContentProps> = ({ stats, close }) => {
+export const ParkleSettingsContent: React.FC<ParkleSettingsContentProps> = ({ stats, close, difficulty = 'easy', onDifficultyChange }) => {
   const { hapticsEnabled, setHapticsEnabled } = useSettingsStore();
 
   const screen0Offset = useSharedValue(0);
@@ -129,6 +133,15 @@ export const ParkleSettingsContent: React.FC<ParkleSettingsContentProps> = ({ st
         >
           <SectionHeader label="GAME" />
           <SettingsRow icon="bar-chart-outline" label="Statistics" onPress={navigateTo} showChevron />
+          {onDifficultyChange && (
+            <DifficultySelector
+              value={difficulty}
+              onChange={onDifficultyChange}
+              accentColor={colors.parkle.accent}
+              easyDescription="Major parks (10+ coasters)"
+              hardDescription="All parks with coasters"
+            />
+          )}
 
           <View style={styles.separator} />
           <SectionHeader label="PREFERENCES" />
