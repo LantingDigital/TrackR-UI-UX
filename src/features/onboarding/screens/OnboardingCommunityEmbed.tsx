@@ -23,6 +23,7 @@ import Animated, {
   interpolate,
   Easing as REasing,
 } from 'react-native-reanimated';
+import { FadeInImage } from '../../../components/FadeInImage';
 import { colors } from '../../../theme/colors';
 import { spacing } from '../../../theme/spacing';
 import { typography } from '../../../theme/typography';
@@ -108,15 +109,16 @@ interface DemoStory {
   id: string;
   name: string;
   initials: string;
+  image?: any;
 }
 
 const DEMO_STORIES: DemoStory[] = [
-  { id: 's1', name: 'You', initials: 'ME' },
-  { id: 's2', name: 'Jake', initials: 'JK' },
-  { id: 's3', name: 'Sarah', initials: 'SH' },
-  { id: 's4', name: 'Chris', initials: 'CR' },
-  { id: 's5', name: 'Emma', initials: 'EM' },
-  { id: 's6', name: 'Tyler', initials: 'TY' },
+  { id: 's1', name: 'You', initials: 'ME', image: require('../../../../assets/cards/steel-vengeance.webp') },
+  { id: 's2', name: 'Jake', initials: 'JK', image: require('../../../../assets/cards/fury-325.webp') },
+  { id: 's3', name: 'Sarah', initials: 'SH', image: require('../../../../assets/cards/iron-gwazi.webp') },
+  { id: 's4', name: 'Chris', initials: 'CR', image: require('../../../../assets/cards/maverick.webp') },
+  { id: 's5', name: 'Emma', initials: 'EM', image: require('../../../../assets/cards/el-toro.webp') },
+  { id: 's6', name: 'Tyler', initials: 'TY', image: require('../../../../assets/cards/millennium-force.webp') },
 ];
 
 interface DemoActivity {
@@ -186,7 +188,7 @@ const DEMO_GAME_ICONS: DemoGameIcon[] = [
   { id: 'sorter', label: 'Sorter', icon: 'swap-vertical-outline', active: false },
   { id: 'blind', label: 'Blind Rank', icon: 'eye-off-outline', active: false },
   { id: 'trivia', label: 'Trivia', icon: 'help-circle-outline', active: false },
-  { id: 'clash', label: 'Clash', icon: 'flash-outline', active: false },
+  { id: 'parkle', label: 'Parkle', icon: 'location-outline', active: false },
 ];
 
 // ─── Star Row ────────────────────────────────────────────
@@ -381,7 +383,7 @@ export const OnboardingCommunityEmbed: React.FC<Props> = ({ isActive }) => {
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
       tapOpacity.value = withTiming(0, { duration: 200 });
-      setLikedPostIndex(0);
+      setLikedPostIndex(1);
       setLikeCountBumped(true);
       heartOpacity.value = withTiming(1, { duration: 100 });
       heartScale.value = withSpring(1, { damping: 8, stiffness: 200, mass: 0.6 });
@@ -591,13 +593,13 @@ export const OnboardingCommunityEmbed: React.FC<Props> = ({ isActive }) => {
 
   const renderFeedPost = (post: DemoPost, index: number) => {
     const isLiked = likedPostIndex === index;
-    const displayLikes = likeCountBumped && index === 0 ? post.likeCount + 1 : post.likeCount;
+    const displayLikes = likeCountBumped && index === 1 ? post.likeCount + 1 : post.likeCount;
 
     return (
       <Animated.View key={post.id} style={[index > 0 && s.cardGap, feedItemStyles[index + 1]]}>
         <View style={s.card}>
-          {/* Tap ring + Heart burst overlay — only on first card */}
-          {index === 0 && (
+          {/* Tap ring + Heart burst overlay — on second card (fully visible after scroll) */}
+          {index === 1 && (
             <>
               <Animated.View style={[s.tapRingOverlay, tapRingStyle]} pointerEvents="none">
                 <View style={s.tapRing} />
@@ -680,7 +682,7 @@ export const OnboardingCommunityEmbed: React.FC<Props> = ({ isActive }) => {
               <View key={game.id} style={s.gameWrapper}>
                 <View style={[s.outerRing, game.active ? s.outerRingActive : s.outerRingInactive]}>
                   <View style={[s.innerCircle, game.active ? s.innerCircleActive : s.innerCircleInactive]}>
-                    <Ionicons name={game.icon as any} size={game.active ? 22 : 18} color={game.active ? ACCENT : colors.text.meta} />
+                    <Ionicons name={game.icon as any} size={game.active ? 26 : 22} color={game.active ? ACCENT : colors.text.meta} />
                   </View>
                 </View>
                 <Text style={[s.gameLabel, game.active ? s.gameLabelActive : s.gameLabelInactive]}>{game.label}</Text>
@@ -709,7 +711,11 @@ export const OnboardingCommunityEmbed: React.FC<Props> = ({ isActive }) => {
             <Animated.View key={story.id} style={[s.storyBubble, friendsItemStyles[Math.min(i + 1, 6)]]}>
               <View style={s.storyRing}>
                 <View style={s.storyAvatar}>
-                  <Text style={s.storyInitials}>{story.initials}</Text>
+                  {story.image ? (
+                    <FadeInImage source={story.image} style={s.storyAvatarImage} resizeMode="cover" />
+                  ) : (
+                    <Text style={s.storyInitials}>{story.initials}</Text>
+                  )}
                 </View>
               </View>
               <Text style={s.storyName}>{story.name}</Text>
@@ -1039,12 +1045,12 @@ const s = StyleSheet.create({
   },
   gameWrapper: {
     alignItems: 'center',
-    width: 58,
+    width: 68,
   },
   outerRing: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
+    width: 62,
+    height: 62,
+    borderRadius: 31,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1057,9 +1063,9 @@ const s = StyleSheet.create({
     borderColor: colors.border.subtle,
   },
   innerCircle: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1241,6 +1247,12 @@ const s = StyleSheet.create({
     borderRadius: 28,
     backgroundColor: ACCENT_LIGHT,
     alignItems: 'center',
+    overflow: 'hidden',
+  },
+  storyAvatarImage: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
     justifyContent: 'center',
   },
   storyInitials: {

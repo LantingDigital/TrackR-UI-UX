@@ -15,6 +15,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import Animated, {
   SharedValue,
   useSharedValue,
@@ -198,16 +199,16 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.58, 0.93, 1], [40, 40, 0, 0], Extrapolation.CLAMP) }],
   }));
 
-  // Section 2: start=0.66, end capped at 1.0
+  // Section 2: SAME timing as Section 1 — parks and rides appear together
   const sectionAnimStyle2 = useAnimatedStyle(() => ({
-    opacity: reanimatedInterpolate(morphProg.value, [0, 0.66, 1], [0, 0, 1], Extrapolation.CLAMP),
-    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.66, 1], [50, 50, 0], Extrapolation.CLAMP) }],
+    opacity: reanimatedInterpolate(morphProg.value, [0, 0.58, 0.93, 1], [0, 0, 1, 1], Extrapolation.CLAMP),
+    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.58, 0.93, 1], [40, 40, 0, 0], Extrapolation.CLAMP) }],
   }));
 
-  // Section 3: start=0.74, end capped at 1.0
+  // Section 3: start=0.65, end capped at 1.0
   const sectionAnimStyle3 = useAnimatedStyle(() => ({
-    opacity: reanimatedInterpolate(morphProg.value, [0, 0.74, 1], [0, 0, 1], Extrapolation.CLAMP),
-    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.74, 1], [60, 60, 0], Extrapolation.CLAMP) }],
+    opacity: reanimatedInterpolate(morphProg.value, [0, 0.65, 1], [0, 0, 1], Extrapolation.CLAMP),
+    transform: [{ translateY: reanimatedInterpolate(morphProg.value, [0, 0.65, 1], [50, 50, 0], Extrapolation.CLAMP) }],
   }));
 
   const sectionAnimatedStyles = [sectionAnimStyle0, sectionAnimStyle1, sectionAnimStyle2, sectionAnimStyle3];
@@ -695,6 +696,30 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             {/* Bottom padding for keyboard */}
             <View style={{ height: 100 }} />
           </ScrollView>
+
+          {/* Fog gradient — covers content scrolling behind search bar */}
+          <LinearGradient
+            colors={[
+              'rgba(240,238,235,1)',
+              'rgba(240,238,235,1)',
+              'rgba(240,238,235,0.97)',
+              'rgba(240,238,235,0.88)',
+              'rgba(240,238,235,0.70)',
+              'rgba(240,238,235,0.45)',
+              'rgba(240,238,235,0.20)',
+              'rgba(240,238,235,0.05)',
+              'rgba(240,238,235,0)',
+            ]}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 140,
+              zIndex: 40,
+              pointerEvents: 'none',
+            }}
+          />
         </KeyboardAvoidingView>
       );
     }

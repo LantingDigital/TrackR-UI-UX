@@ -33,6 +33,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { haptics } from '../../services/haptics';
 import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
@@ -497,6 +498,30 @@ export const ScanModal: React.FC<ScanModalProps> = ({
           visible={detailViewVisible}
           onClose={handleCloseDetailView}
           onSetDefault={onSetDefault}
+        />
+
+        {/* Fog gradient — covers content scrolling behind search bar */}
+        <LinearGradient
+          colors={[
+            'rgba(240,238,235,1)',
+            'rgba(240,238,235,1)',
+            'rgba(240,238,235,0.97)',
+            'rgba(240,238,235,0.88)',
+            'rgba(240,238,235,0.70)',
+            'rgba(240,238,235,0.45)',
+            'rgba(240,238,235,0.20)',
+            'rgba(240,238,235,0.05)',
+            'rgba(240,238,235,0)',
+          ]}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 140,
+            zIndex: 40,
+            pointerEvents: 'none',
+          }}
         />
       </KeyboardAvoidingView>
     );

@@ -235,18 +235,18 @@ export const POPULAR_RIDES: PopularRideEntry[] = [
 
 export const POPULAR_PARKS: PopularParkEntry[] = [
   {
-    "id": "unknown-park",
-    "name": "Unknown Park",
-    "city": "",
-    "country": "Spain",
-    "coasterCount": 32
+    "id": "kings-island",
+    "name": "Kings Island",
+    "city": "Mason, Ohio",
+    "country": "United States",
+    "coasterCount": 15
   },
   {
-    "id": "happy-valley",
-    "name": "Happy Valley",
-    "city": "",
-    "country": "China",
-    "coasterCount": 22
+    "id": "dollywood",
+    "name": "Dollywood",
+    "city": "Pigeon Forge, Tennessee",
+    "country": "United States",
+    "coasterCount": 10
   },
   {
     "id": "cedar-point",
@@ -260,21 +260,19 @@ export const POPULAR_PARKS: PopularParkEntry[] = [
     "name": "Six Flags Magic Mountain",
     "city": "26101 Magic Mountain Parkway\nValencia, California 91355",
     "country": "United States",
-    "coasterCount": 16,
-    "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Six_Flags_Magic_Mountain_(13208988393).jpg"
+    "coasterCount": 16
   },
   {
     "id": "hersheypark",
     "name": "Hersheypark",
     "city": "Hershey, Pennsylvania, U.S.",
     "country": "United States",
-    "coasterCount": 14,
-    "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Hersheypark_Entrance_10-2-2022.jpg"
+    "coasterCount": 14
   },
   {
-    "id": "canadas-wonderland",
-    "name": "Canada's Wonderland",
-    "city": "Vaughan",
+    "id": "busch-gardens-tampa",
+    "name": "Busch Gardens Tampa",
+    "city": "Tampa, Florida",
     "country": "United States",
     "coasterCount": 12
   },
@@ -283,8 +281,7 @@ export const POPULAR_PARKS: PopularParkEntry[] = [
     "name": "Carowinds",
     "city": "Charlotte, North Carolina and Fort Mill, South Carolina",
     "country": "United States",
-    "coasterCount": 11,
-    "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Carowinds_aerial_view%2C_September_2017.JPG"
+    "coasterCount": 11
   },
   {
     "id": "busch-gardens-williamsburg",
@@ -296,17 +293,8 @@ export const POPULAR_PARKS: PopularParkEntry[] = [
   {
     "id": "kings-dominion",
     "name": "Kings Dominion",
-    "city": "Doswell",
+    "city": "Doswell, Virginia",
     "country": "United States",
-    "coasterCount": 10,
-    "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Kings_Dominion_logo.svg"
-  },
-  {
-    "id": "kings-island",
-    "name": "Kings Island",
-    "city": "Mason, Ohio, U.S.",
-    "country": "United States",
-    "coasterCount": 10,
-    "imageUrl": "https://en.wikipedia.org/wiki/Special:FilePath/Kings_Island_International_Street.jpg"
+    "coasterCount": 10
   }
 ];

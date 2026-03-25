@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   StyleSheet,
   View,
   Text,
-  ScrollView,
+  FlatList,
   Pressable,
   Dimensions,
+  Image as RNImage,
 } from 'react-native';
 import { Image } from 'expo-image';
 import Animated from 'react-native-reanimated';
@@ -14,6 +15,19 @@ import { useSpringPress } from '../hooks/useSpringPress';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SearchableItem } from '../data/mockSearchData';
 import { CARD_ART } from '../data/cardArt';
+
+// Park → signature coaster card art mapping
+const PARK_SIGNATURE_ART: Record<string, string> = {
+  'cedar-point': 'steel-vengeance',
+  'six-flags-magic-mountain': 'twisted-colossus',
+  'hersheypark': 'candymonium',
+  'carowinds': 'fury-325',
+  'busch-gardens-williamsburg': 'apollos-chariot',
+  'kings-island': 'diamondback',
+  'dollywood': 'lightning-rod',
+  'busch-gardens-tampa': 'iron-gwazi',
+  'kings-dominion': 'dominator',
+};
 
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -43,10 +57,11 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ item, onPress }) => {
     opacity: 0.9,
   });
 
-  // Use NanoBanana card art for rides; fall back to placeholder (never real photos)
-  const cardArt = item.type === 'ride' ? CARD_ART[item.id] : undefined;
-  // Parks don't have card art -- use their image URL if available
-  const imageSource = cardArt ?? (item.type === 'park' && item.image ? { uri: item.image } : undefined);
+  // Use card art for rides; for parks use pre-warmed signature coaster art
+  const cardArt = item.type === 'ride'
+    ? CARD_ART[item.id]
+    : CARD_ART[PARK_SIGNATURE_ART[item.id] || ''];
+  const imageSource = cardArt ?? (item.image ? { uri: item.image } : undefined);
 
   return (
     <Animated.View style={[styles.cardContainer, animatedStyle]}>
@@ -57,14 +72,24 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ item, onPress }) => {
         style={styles.cardPressable}
       >
         {imageSource ? (
-          <Image
-            source={imageSource}
-            style={styles.cardImage}
-            contentFit="cover"
-            cachePolicy="memory-disk"
-            recyclingKey={item.id}
-            transition={250}
-          />
+          cardArt ? (
+            // Local require() asset — use RN Image for synchronous decode (no async queue)
+            <RNImage
+              source={imageSource}
+              style={styles.cardImage}
+              resizeMode="cover"
+            />
+          ) : (
+            // Remote URL — use expo-image for caching + transition
+            <Image
+              source={imageSource}
+              style={styles.cardImage}
+              contentFit="cover"
+              cachePolicy="memory-disk"
+              recyclingKey={item.id}
+              transition={250}
+            />
+          )
         ) : (
           <View style={styles.cardPlaceholder}>
             <Ionicons
@@ -93,24 +118,31 @@ export const SearchCarousel: React.FC<SearchCarouselProps> = ({
   items,
   onItemPress,
 }) => {
+  const renderItem = useCallback(({ item }: { item: SearchableItem }) => (
+    <CarouselCard
+      item={item}
+      onPress={() => onItemPress?.(item)}
+    />
+  ), [onItemPress]);
+
+  const keyExtractor = useCallback((item: SearchableItem) => item.id, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.sectionTitle}>{title}</Text>
-      <ScrollView
+      <FlatList
         horizontal
+        data={items}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
         decelerationRate="fast"
         snapToInterval={CARD_WIDTH + CARD_GAP}
-      >
-        {items.map(item => (
-          <CarouselCard
-            key={item.id}
-            item={item}
-            onPress={() => onItemPress?.(item)}
-          />
-        ))}
-      </ScrollView>
+        initialNumToRender={3}
+        maxToRenderPerBatch={3}
+        windowSize={5}
+      />
     </View>
   );
 };
