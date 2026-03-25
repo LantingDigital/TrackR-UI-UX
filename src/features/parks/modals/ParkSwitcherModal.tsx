@@ -14,6 +14,8 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
   Easing,
+  FadeIn,
+  Layout,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -92,29 +94,34 @@ export function ParkSwitcherModal({
   );
 
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<ParkData>) => (
-      <Pressable
-        onPress={() => handleSelect(item.name)}
-        style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+    ({ item, index }: ListRenderItemInfo<ParkData>) => (
+      <Animated.View
+        entering={FadeIn.duration(200).delay(Math.min(index, 8) * 40)}
+        layout={Layout.duration(200)}
       >
-        <View style={styles.rowText}>
-          <Text style={styles.parkName}>{item.name}</Text>
-          <Text style={styles.country}>{item.country}</Text>
-        </View>
-        <View style={styles.rowRight}>
-          <View style={styles.countBadge}>
-            <Text style={styles.countText}>{item.count}</Text>
+        <Pressable
+          onPress={() => handleSelect(item.name)}
+          style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+        >
+          <View style={styles.rowText}>
+            <Text style={styles.parkName}>{item.name}</Text>
+            <Text style={styles.country}>{item.location || item.country}</Text>
           </View>
-          {item.name === currentPark && (
-            <Ionicons
-              name="checkmark-circle"
-              size={20}
-              color={colors.accent.primary}
-              style={styles.checkIcon}
-            />
-          )}
-        </View>
-      </Pressable>
+          <View style={styles.rowRight}>
+            <View style={styles.countBadge}>
+              <Text style={styles.countText}>{item.count}</Text>
+            </View>
+            {item.name === currentPark && (
+              <Ionicons
+                name="checkmark-circle"
+                size={20}
+                color={colors.accent.primary}
+                style={styles.checkIcon}
+              />
+            )}
+          </View>
+        </Pressable>
+      </Animated.View>
     ),
     [currentPark, handleSelect],
   );

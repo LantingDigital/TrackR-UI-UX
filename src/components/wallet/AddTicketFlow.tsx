@@ -30,9 +30,9 @@ import {
   ScrollView,
   Modal,
   Platform,
-  Alert,
   Image,
   Dimensions,
+  Alert,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -76,6 +76,7 @@ import { typography } from '../../theme/typography';
 import { useKeyboardAvoidance } from '../../hooks/useKeyboardAvoidance';
 import { getCardArtForPark, getLogoForPark, getHeroUrlForPark } from '../../utils/parkAssets';
 import { GlassHeader } from '../GlassHeader';
+import { SettingsBottomSheet } from '../settings/SettingsBottomSheet';
 
 const AnimatedIonicons = Animated.createAnimatedComponent(Ionicons);
 
@@ -239,6 +240,15 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   const [manualBarcodeNumber, setManualBarcodeNumber] = useState('');
   const [manualBarcodeFormat, setManualBarcodeFormat] = useState<'qr' | '1d' | 'auto'>('auto');
   const [barcodeValidationError, setBarcodeValidationError] = useState('');
+
+  // Bottom sheet states for replacing Alert.alert
+  const [noBarcodeSheetVisible, setNoBarcodeSheetVisible] = useState(false);
+  const [noBarcodeImageUri, setNoBarcodeImageUri] = useState<string>('');
+  const [duplicateSheetVisible, setDuplicateSheetVisible] = useState(false);
+  const [duplicateParkName, setDuplicateParkName] = useState('');
+  const [errorSheetVisible, setErrorSheetVisible] = useState(false);
+  const [errorSheetMessage, setErrorSheetMessage] = useState('');
+  const [parkValidationError, setParkValidationError] = useState('');
 
   // Animated heights for date pickers
   const fromPickerHeight = useSharedValue(0);
@@ -481,24 +491,16 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         }
       }
 
-      // Step 3: If both failed, offer raw image fallback
+      // Step 3: If both failed, offer raw image fallback via bottom sheet
       if (!decoded) {
         haptics.warning();
-        Alert.alert(
-          'No Barcode Found',
-          'We could not detect a barcode in this image. Would you like to save it as an image-only pass?',
-          [
-            { text: 'Cancel', style: 'cancel' },
-            {
-              text: 'Use Original Image',
-              onPress: () => handleImageOnlyFallback(imageUri),
-            },
-          ],
-        );
+        setNoBarcodeImageUri(imageUri);
+        setNoBarcodeSheetVisible(true);
       }
     } catch (error) {
       console.error('Error picking image:', error);
-      Alert.alert('Error', 'Failed to pick image from library');
+      setErrorSheetMessage('Failed to pick image from library. Please try again.');
+      setErrorSheetVisible(true);
     }
   }, [handleScan, handleImageOnlyFallback]);
 
@@ -550,7 +552,8 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   // Handle form submission with duplicate detection
   const handleSubmit = useCallback(() => {
     if (!parkName.trim()) {
-      Alert.alert('Missing Info', 'Please enter a park name');
+      setParkValidationError('Please enter a park name');
+      haptics.error();
       return;
     }
 
@@ -565,14 +568,8 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
     if (qrData && qrFormat !== 'IMAGE_ONLY') {
       const duplicate = existingTickets.find(t => t.qrData === qrData);
       if (duplicate) {
-        Alert.alert(
-          'Duplicate Pass',
-          `This barcode matches an existing pass for ${duplicate.parkName}. Import anyway?`,
-          [
-            { text: 'Cancel', style: 'cancel' },
-            { text: 'Import Anyway', onPress: proceedWithSave },
-          ],
-        );
+        setDuplicateParkName(duplicate.parkName);
+        setDuplicateSheetVisible(true);
         return;
       }
     }
@@ -1370,10 +1367,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       <Pressable
         style={[styles.primaryButton, !parkName.trim() && styles.primaryButtonDisabled]}
         onPress={() => {
-          if (!parkName.trim()) {
-            Alert.alert('Missing Info', 'Please enter a park name');
-            return;
-          }
+          if (!parkName.trim()) return;
           haptics.select();
           navigateToStep('manual_details', true);
           setStep('manual_details');
@@ -2262,6 +2256,50 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
           )}
         </View>
       </View>
+
+      {/* No Barcode Found — bottom sheet */}
+      <SettingsBottomSheet
+        visible={noBarcodeSheetVisible}
+        onClose={() => setNoBarcodeSheetVisible(false)}
+        title="No Barcode Found"
+        warning
+        warningMessage="We could not detect a barcode in this image. Would you like to save it as an image-only pass?"
+        warningIcon="scan-outline"
+        confirmLabel="Use Original Image"
+        cancelLabel="Cancel"
+        onConfirm={() => {
+          setNoBarcodeSheetVisible(false);
+          if (noBarcodeImageUri) handleImageOnlyFallback(noBarcodeImageUri);
+        }}
+      />
+
+      {/* Duplicate Pass — bottom sheet */}
+      <SettingsBottomSheet
+        visible={duplicateSheetVisible}
+        onClose={() => setDuplicateSheetVisible(false)}
+        title="Duplicate Pass"
+        warning
+        warningMessage={`This barcode matches an existing pass for ${duplicateParkName}. Import anyway?`}
+        warningIcon="copy-outline"
+        confirmLabel="Import Anyway"
+        cancelLabel="Cancel"
+        onConfirm={() => {
+          setDuplicateSheetVisible(false);
+          proceedWithSave();
+        }}
+      />
+
+      {/* Error — bottom sheet */}
+      <SettingsBottomSheet
+        visible={errorSheetVisible}
+        onClose={() => setErrorSheetVisible(false)}
+        title="Error"
+        warning
+        warningMessage={errorSheetMessage}
+        warningIcon="alert-circle-outline"
+        confirmLabel="OK"
+        onConfirm={() => setErrorSheetVisible(false)}
+      />
     </Modal>
   );
 };
