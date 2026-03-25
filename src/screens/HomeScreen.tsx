@@ -1608,7 +1608,7 @@ export const HomeScreen = () => {
               sectionId={item.id}
               onActivityPress={handleFriendActivityPress}
               onFriendPostPress={handleFriendPostPress}
-              onSeeAll={handleNavigateCommunity}
+              onSeeAll={() => navigation.navigate('CommunityOverlay', { initialTab: 'friends' })}
             />
           </View>
         );

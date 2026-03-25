@@ -73,11 +73,16 @@ function prepareQuestion(raw: typeof TRIVIA_QUESTIONS[0], id: string, hardMode: 
   const correctAnswer = raw.answers[0];
   let answers = [...raw.answers];
 
-  // Hard mode: drop one wrong answer → 3 choices
-  if (hardMode && answers.length > 3) {
-    const wrong = answers.filter((a) => a !== correctAnswer);
-    wrong.splice(Math.floor(Math.random() * wrong.length), 1);
-    answers = [correctAnswer, ...wrong];
+  // Hard mode: ADD two extra plausible wrong answers → 6 choices (harder to guess)
+  if (hardMode) {
+    const extraWrong = [
+      'Bolliger & Mabillard', 'Intamin', 'Vekoma', 'Arrow Dynamics',
+      'Great Coasters International', 'Philadelphia Toboggan Coasters',
+      'Mack Rides', 'Zamperla', 'Premier Rides', 'S&S Worldwide',
+      'Rocky Mountain Construction', 'Schwarzkopf', 'Gravity Group',
+    ].filter(a => !answers.includes(a));
+    const shuffledExtra = shuffleArray(extraWrong);
+    answers = [...answers, ...shuffledExtra.slice(0, 2)];
   }
 
   const shuffled = shuffleArray(answers);

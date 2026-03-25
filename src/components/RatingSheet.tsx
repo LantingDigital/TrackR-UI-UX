@@ -18,6 +18,7 @@ import {
   View,
   Text,
   TextInput,
+  Image,
   Pressable,
   StyleSheet,
   Dimensions,
@@ -316,10 +317,16 @@ export function RatingSheet({
       celebTextOpacity.value = withTiming(0, { duration: 200 });
     }, 1600));
 
-    // T+1900ms: Restore tab bar + fire onComplete
+    // T+1900ms: Slide sheet down + restore tab bar + fire onComplete
     celebTimersRef.current.push(setTimeout(() => {
-      tabBar?.showTabBar();
-      onComplete(rating);
+      onDismissStart?.();
+      backdropOpacity.value = withTiming(0, { duration: 250 });
+      translateY.value = withTiming(sheetHeight, { duration: 300, easing: Easing.in(Easing.cubic) }, (finished) => {
+        if (finished) {
+          runOnJS(showTabBarJS)();
+          runOnJS(onComplete)(rating);
+        }
+      });
     }, 1900));
   }, [coasterId, coasterName, parkName, ratings, notes, onComplete]);
 
@@ -572,7 +579,8 @@ export function RatingSheet({
 
           </Animated.ScrollView>
 
-          {/* ── Full-screen celebration overlay (inside sheet) ── */}
+          {/* ── Full-screen celebration overlay ── */}
+          {/* TODO: Restyle to match onboarding — blurred coaster bg + white radial gradient + phased close */}
           {showSuccess && (
             <View style={styles.celebOverlay} pointerEvents="none">
               <Animated.View style={[styles.celebCenter, celebSlideStyle]}>

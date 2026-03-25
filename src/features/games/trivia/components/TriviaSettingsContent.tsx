@@ -107,7 +107,7 @@ export const TriviaSettingsContent: React.FC<TriviaSettingsContentProps> = ({
           <GameSettingsRow
             icon="flash-outline"
             label="Hard Mode"
-            sublabel="3 answer choices"
+            sublabel="6 answer choices"
             trailing={
               <Switch
                 value={settings.hardMode}
