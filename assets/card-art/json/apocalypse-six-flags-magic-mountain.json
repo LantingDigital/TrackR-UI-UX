@@ -1,0 +1,48 @@
+{
+  "subject": {
+    "type": "Wooden roller coaster",
+    "name": "GCI wooden coaster",
+    "description": "A large natural wood wooden roller coaster featuring a dramatic helical curve section with dense wooden lattice support structure, with empty train, no passengers.",
+    "key_features": ["Natural wood colored wooden structure", "Dense wooden lattice supports", "Steel track rails on wooden ties", "Helical turn section", "Observation tower in background"],
+    "position": "Filling the entire frame with the helical curve dominating center"
+  },
+  "environment": {
+    "setting": "Amusement park, arid California hills",
+    "time_of_day": "Golden hour",
+    "weather": "Clear with soft haze",
+    "season": "Summer",
+    "background_elements": ["Red/orange observation tower", "Distant hills", "Trees"]
+  },
+  "lighting": {
+    "type": "Golden hour sunlight",
+    "direction": "Low angle from behind, backlighting the structure",
+    "color_temperature": "Warm golden",
+    "intensity": "Soft and cinematic",
+    "shadows": "Soft, warm-tinted shadows within the dense wooden lattice"
+  },
+  "color_palette": {
+    "dominant_colors": ["Natural wood/tan", "Peach/Salmon sky", "Warm Brown"],
+    "accent_colors": ["Red-Orange (tower)", "Steel gray (track rails)"],
+    "overall_temperature": "Warm golden shift"
+  },
+  "composition": {
+    "framing": "Wide shot filling frame with wooden structure",
+    "camera_angle": "Low angle, looking up at the helical turn",
+    "camera_distance": "Medium distance",
+    "focal_point": "The sweeping helical curve of the wooden track",
+    "depth_of_field": "Deep, with both foreground structure and background tower in focus"
+  },
+  "mood": "Cinematic, warm, atmospheric, premium concept art",
+  "textures": ["Smooth wooden beams with clean surfaces", "Clean steel track rails", "Soft gradient sky with subtle clouds"],
+  "notable_details": ["No people, no riders — empty train seats only", "No signs, text, logos, or watermarks", "No real-world identifiers"],
+  "artistic_treatment": {
+    "style": "Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon",
+    "rendering": "Simplified surface textures with clean edges. Structurally accurate and engineered-looking. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic",
+    "color_grading": "WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy",
+    "atmosphere": "Soft atmospheric haze throughout, especially where light filters through trees or around structures. Cinematic depth with atmospheric perspective — distant elements fade into warm haze",
+    "lighting_treatment": "Enhanced cinematic golden-hour warmth. Emphasize mood and composition over literal accuracy. Rim lighting on track edges. Soft volumetric light through foliage",
+    "edges": "Clean and defined on mechanical/structural elements (track, supports, train). Soft and painterly on organic elements (trees, foliage, sky, ground)",
+    "detail_level": "SIMPLIFIED — reduce surface complexity. Wooden beams are smooth, not grainy. Foliage is soft masses, not individual leaves. Steel is clean, not reflective. The overall feel should match Studio Ghibli-meets-architectural-rendering",
+    "negative_guidance": "Avoid photo grain, avoid hyperreal texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions, no bright saturated colors, no visible brush strokes, no flat blue sky, no cool color temperature"
+  }
+}

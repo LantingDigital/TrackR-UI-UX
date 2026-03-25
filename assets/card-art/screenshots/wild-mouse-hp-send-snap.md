@@ -1,0 +1,184 @@
+- generic [ref=e1]:
+  - 'button "WORK, Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e8] [cursor=pointer]':
+    - img [ref=e10]
+  - main [ref=e12]:
+    - generic:
+      - button "Main menu" [ref=e14] [cursor=pointer]:
+        - img [ref=e15]: menu
+      - button "New chat" [ref=e19] [cursor=pointer]:
+        - generic [ref=e21]: Gemini
+    - generic [ref=e23]:
+      - generic [ref=e489]: Amusement Park Image Analysis JSON
+      - generic [ref=e24]:
+        - link "Upgrade" [ref=e170]:
+          - img [ref=e171]: spark
+          - generic [ref=e173]: Upgrade
+        - generic [ref=e26]:
+          - button "Open menu for conversation actions." [ref=e396] [cursor=pointer]:
+            - img [ref=e397]: more_vert
+          - generic [ref=e31]: WORK
+    - generic [ref=e33]:
+      - navigation [ref=e34]:
+        - generic [ref=e36]:
+          - button "Search" [ref=e38] [cursor=pointer]:
+            - img [ref=e39]: search
+          - generic [ref=e42]:
+            - group [ref=e43]:
+              - link "New chat" [ref=e45] [cursor=pointer]:
+                - /url: /app
+                - img [ref=e47]: edit_square
+                - generic [ref=e49]: New chat
+            - generic [ref=e50]:
+              - link "My stuff" [ref=e69] [cursor=pointer]:
+                - /url: mystuff
+                - img [ref=e71]: family_star
+                - generic [ref=e72]: My stuff
+              - generic [ref=e177]:
+                - link "Gems" [ref=e180] [cursor=pointer]:
+                  - /url: /gems/view
+                  - generic [ref=e181]: Gems
+                  - img [ref=e183]: keyboard_arrow_right
+                - region [ref=e184]:
+                  - generic [ref=e186]:
+                    - button "Career guide" [ref=e187] [cursor=pointer]:
+                      - img [ref=e188]: gem_spark
+                      - generic [ref=e189]: Career guide
+                    - button "More options for \"Career guide\" Gem" [ref=e191] [cursor=pointer]: more_vert
+                  - generic [ref=e195]:
+                    - button "Vivian Strickland" [ref=e196] [cursor=pointer]:
+                      - img [ref=e197]: gem_spark
+                      - generic [ref=e198]: Vivian Strickland
+                    - button "More options for \"Vivian Strickland\" Gem" [ref=e200] [cursor=pointer]: more_vert
+              - generic [ref=e203]:
+                - heading "Chats" [level=1] [ref=e205]
+                - region [ref=e206]:
+                  - button "Amusement Park Image Analysis JSON" [ref=e490] [cursor=pointer]:
+                    - generic [ref=e491]: Amusement Park Image Analysis JSON
+                  - button "Image Analysis JSON Output" [ref=e208] [cursor=pointer]:
+                    - generic [ref=e209]: Image Analysis JSON Output
+                  - button "JSON Analysis of Amusement Park Ride" [ref=e213] [cursor=pointer]:
+                    - generic [ref=e214]: JSON Analysis of Amusement Park Ride
+                  - button "Image Analysis JSON Output" [ref=e218] [cursor=pointer]:
+                    - generic [ref=e219]: Image Analysis JSON Output
+                  - button "Roller Coaster Image Analysis JSON" [ref=e223] [cursor=pointer]:
+                    - generic [ref=e224]: Roller Coaster Image Analysis JSON
+                  - button "Analyzing Amusement Park Ride Image" [ref=e228] [cursor=pointer]:
+                    - generic [ref=e229]: Analyzing Amusement Park Ride Image
+                  - button "Roller Coaster Image Analysis JSON" [ref=e233] [cursor=pointer]:
+                    - generic [ref=e234]: Roller Coaster Image Analysis JSON
+                  - button "Roller Coaster Image Analysis JSON" [ref=e238] [cursor=pointer]:
+                    - generic [ref=e239]: Roller Coaster Image Analysis JSON
+                  - button [ref=e243] [cursor=pointer]:
+                    - generic [ref=e244]: "Reimagine the exact roller coaster image that is attached as a stylized yet believable illustration. Preserve realistic layout of ride, train type, perspective of the shot, and depth, but simplify surface textures and enhance lighting for a cinematic, illustrated look. Use controlled color grading, soft atmospheric haze, and clean edges. The structure should feel engineered and physically possible, but clearly rendered as premium concept art rather than a photograph. Emphasize mood, lighting, and composition over literal detail. No real-world identifiers. Use a low angle, dramatic composition looking up at the structure. Soft gradient sky with subtle clouds. Portrait orientation, 2:3 aspect ratio. Negative / Guidance: Avoid photo grain, avoid hyperreal skin or texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions. Additionally, please remove any signs, people, or text from this photo, if applicable, and leave only an empty coaster train. Make sure to keep the EXACT layout of the ride, as seen in the image attached. Do not deviate from what you see. If there is no train visible on the track, do NOT add one. If there is snow, remove it and make it look like spring/summer."
+                  - button "Roller Coaster Image Analysis JSON" [ref=e248] [cursor=pointer]:
+                    - generic [ref=e249]: Roller Coaster Image Analysis JSON
+                  - button "Roller Coaster Image Analysis JSON" [ref=e253] [cursor=pointer]:
+                    - generic [ref=e254]: Roller Coaster Image Analysis JSON
+                  - button "World's Largest Vertical Loop Record" [ref=e258] [cursor=pointer]:
+                    - generic [ref=e259]: World's Largest Vertical Loop Record
+                  - button [ref=e263] [cursor=pointer]:
+                    - generic [ref=e264]: Reimagine the exact roller coaster image that is attached as a stylized yet believable illustration. Preserve realistic layout of ride, train type, perspective of the shot, and depth, but simplify surface textures and enhance lighting for a cinematic, illustrated look. Use controlled color grading, soft atmospheric haze, and clean edges. The structure should feel engineered and physically possible, but clearly rendered as premium concept art rather than a photograph. Emphasize mood, lighting, and composition over literal detail. No real-world identifiers. Use a low angle, dramatic composition looking up at the structure. Soft gradient sky with subtle clouds. Portrait orientation, 2:3 aspect ratio. Negative / Guidance Avoid photo grain, avoid hyperreal skin or texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions. Additionally, please remove any signs, people, or text from this photo, if applicable, and leave only an empty coaster train. Make sure to keep the EXACT layout of the ride, as seen in the image attached. Do not deviate from what you see. If there is no train visible on the track, do NOT add one. If there is snow, remove it and make it look like spring/summer.
+                  - button [ref=e268] [cursor=pointer]:
+                    - generic [ref=e269]: Reimagine the exact roller coaster image that is attached as a stylized yet believable illustration. Preserve realistic layout of ride, train type, perspective of the shot, and depth, but simplify surface textures and enhance lighting for a cinematic, illustrated look. Use controlled color grading, soft atmospheric haze, and clean edges. The structure should feel engineered and physically possible, but clearly rendered as premium concept art rather than a photograph. Emphasize mood, lighting, and composition over literal detail. No real-world identifiers. Use a low angle, dramatic composition looking up at the structure. Soft gradient sky with subtle clouds. Portrait orientation, 2:3 aspect ratio. Negative / Guidance Avoid photo grain, avoid hyperreal skin or texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions. Additionally, please remove any signs, people, or text from this photo, if applicable, and leave only an empty coaster train. Make sure to keep the EXACT layout of the ride, as seen in the image attached. Do not deviate from what you see. If there is no train visible on the track, do NOT add one. If there is snow, remove it and make it look like spring/summer.
+            - group [ref=e92]:
+              - button "Settings & help" [ref=e94] [cursor=pointer]:
+                - img [ref=e96]: settings_2
+                - generic [ref=e98]: Settings & help
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - heading "Conversation with Gemini" [level=1] [ref=e107]
+          - generic [ref=e403]:
+            - generic [ref=e407]:
+              - button "Show the uploaded image in a lightbox" [ref=e497] [cursor=pointer]:
+                - img "Uploaded image preview" [ref=e498]
+              - generic [ref=e416]:
+                - button "Copy prompt" [ref=e418] [cursor=pointer]:
+                  - img [ref=e419]: content_copy
+                - button "Edit" [ref=e499] [cursor=pointer]:
+                  - img [ref=e500]: edit
+                - generic [ref=e424]:
+                  - heading [level=2] [ref=e425]:
+                    - generic [ref=e426]: You said
+                    - paragraph [ref=e427]: "Output ONLY a JSON object. No explanation, no commentary, no markdown formatting, no code fences — just the raw JSON. Analyze this image and describe every visual element using this exact structure:"
+                    - paragraph [ref=e428]
+                    - paragraph [ref=e430]: "{"
+                    - paragraph [ref=e431]: "\"subject\": { \"type\": \"\", \"name\": \"\", \"description\": \"\", \"key_features\": [], \"position\": \"\" },"
+                    - paragraph [ref=e432]: "\"environment\": { \"setting\": \"\", \"time_of_day\": \"\", \"weather\": \"\", \"season\": \"\", \"background_elements\": [] },"
+                    - paragraph [ref=e433]: "\"lighting\": { \"type\": \"\", \"direction\": \"\", \"color_temperature\": \"\", \"intensity\": \"\", \"shadows\": \"\" },"
+                    - paragraph [ref=e434]: "\"color_palette\": { \"dominant_colors\": [], \"accent_colors\": [], \"overall_temperature\": \"\" },"
+                    - paragraph [ref=e435]: "\"composition\": { \"framing\": \"\", \"camera_angle\": \"\", \"camera_distance\": \"\", \"focal_point\": \"\", \"depth_of_field\": \"\" },"
+                    - paragraph [ref=e436]: "\"mood\": \"\","
+                    - paragraph [ref=e437]: "\"textures\": [],"
+                    - paragraph [ref=e438]: "\"notable_details\": []"
+                    - paragraph [ref=e439]: "}"
+                    - paragraph [ref=e440]
+                    - paragraph [ref=e441]: Fill in every field based on what you actually see. If a field doesn't apply, use "N/A" or describe what IS there instead. Be precise — this JSON will be used to recreate this image in a different artistic style.
+                  - button "Expand" [ref=e442] [cursor=pointer]:
+                    - img [ref=e443]: expand_more
+            - generic [ref=e449]:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - button "Listen":
+                          - img: volume_up
+                    - menu
+              - generic [ref=e450]:
+                - generic [ref=e455]:
+                  - generic:
+                    - generic:
+                      - img
+                - generic [ref=e457]:
+                  - button [ref=e464]:
+                    - generic [ref=e466]:
+                      - status:
+                        - generic: Show thinking
+                      - img [ref=e468]: expand_more
+                  - heading "Gemini said" [level=2] [ref=e476]
+                  - paragraph [ref=e505]:
+                    - text: "{ \"subject\": { \"type\": \"Amusement park ride\", \"name\": \"Wild Mouse Roller Coaster\", \"description\": \"A compact steel roller coaster featuring a blue track and support structure, characterized by sharp zigzag turns and small individual cars.\", \"key_features\": [ \"Blue steel tubular track and supports\", \"Zigzag switchback track layout at the top\", \"Single-car ride vehicles\", \"Diagonal lift hill\" ], \"position\": \"Center to right midground\" }, \"environment\": { \"setting\": \"Outdoor amusement park\", \"time_of_day\": \"Daytime\", \"weather\": \"Sunny with scattered fluffy white clouds\", \"season\": \"Summer\", \"background_elements\": [ \"Large Ferris wheel with colorful, petal-like spokes\", \"Expansive wooden roller coaster structure\", \"Building with a wood-shingled roof and blue dormers\", \"Paved pedestrian walkway\", \"Landscaped gardens with lush green trees, shrubs, and yellow flowers\", \"Park guests walking and sitting\" ] }, \"lighting\": { \"type\": \"Natural sunlight\", \"direction\": \"Overhead and slightly angled\", \"color_temperature\": \"Neutral daylight\", \"intensity\": \"Bright\", \"shadows\": \"Crisp and distinct, visible directly beneath trees, benches, and the coaster structure\" }, \"color_palette\": { \"dominant_colors\": [ \"Blue\", \"Green\", \"Light Grey\", \"White\" ], \"accent_colors\": [ \"Tan\", \"Brown\", \"Yellow\", \"Red\", \"Purple\" ], \"overall_temperature\": \"Warm and vibrant\" }, \"composition\": { \"framing\": \"Wide landscape shot\", \"camera_angle\": \"Slightly elevated high angle\", \"camera_distance\": \"Long shot\", \"focal_point\": \"The blue steel structure of the Wild Mouse coaster\", \"depth_of_field\": \"Deep, keeping foreground pedestrians, midground coaster, and background Ferris wheel all in sharp focus\" }, \"mood\": \"Cheerful, bustling, energetic, nostalgic summer atmosphere\", \"textures\": [ \"Smooth steel of the blue coaster tracks and supports\", \"Rough, leafy foliage of the trees and bushes\", \"Hard, flat paved walkway\", \"Textured wood shingles on the foreground building's roof\", \"Complex wooden lattice of the background roller coaster\" ], \"notable_details\": [ \"Copyright text '© 2000 Joel Rogers' and '"
+                    - link "www.CoasterGallery.com" [ref=e508] [cursor=pointer]:
+                      - /url: https://www.CoasterGallery.com
+                    - text: "' overlaid in the bottom left corner\", \"Text '1 / 5 Wild Mouse' overlaid in the top left corner\", \"White navigation icons (a grid and an X) overlaid in the top right corner\", \"Park guests wearing casual summer clothing like shorts and t-shirts\", \"Vintage-style green lamp posts adorned with hanging flower baskets\", \"Blue, mailbox-style trash cans located along the pathway\" ] }"
+              - generic [ref=e512]:
+                - button "Good response" [ref=e514] [cursor=pointer]:
+                  - img [ref=e515]: thumb_up
+                - button "Bad response" [ref=e519] [cursor=pointer]:
+                  - img [ref=e520]: thumb_down
+                - button "Redo" [ref=e525] [cursor=pointer]:
+                  - img [ref=e526]: refresh
+                - button "Copy" [ref=e530]:
+                  - img [ref=e531]: content_copy
+                - button "Show more options" [ref=e537]:
+                  - img [ref=e538]: more_vert
+        - generic [ref=e135]:
+          - group [ref=e136]:
+            - generic [ref=e139]:
+              - textbox "Enter a prompt for Gemini" [active] [ref=e144]:
+                - paragraph [ref=e479]: Output ONLY the image. No text, no explanation. Reimagine this scene as described in the JSON below. The artistic_treatment defines the EXACT style. Portrait orientation, 2:3 aspect ratio.
+                - paragraph [ref=e541]
+                - paragraph [ref=e542]: "{\"subject\":{\"type\":\"Wild mouse roller coaster\",\"name\":\"Compact wild mouse coaster\",\"description\":\"A compact wild mouse steel roller coaster with blue track and supports, featuring sharp hairpin turns and steep drops, with empty car, no passengers.\",\"key_features\":[\"Blue steel tubular track\",\"Blue steel support structure\",\"Compact wild mouse layout with sharp turns\",\"Single-car ride vehicles\"],\"position\":\"Center to right midground\"},\"environment\":{\"setting\":\"Amusement park midway area\",\"time_of_day\":\"Golden hour\",\"weather\":\"Clear with soft haze\",\"season\":\"Summer\",\"background_elements\":[\"Large Ferris wheel\",\"Wooden roller coaster structure\",\"Park buildings\",\"Landscaped gardens with trees\"]},\"lighting\":{\"type\":\"Golden hour sunlight\",\"direction\":\"From the side, low angle\",\"color_temperature\":\"Warm golden\",\"intensity\":\"Soft and cinematic\",\"shadows\":\"Soft, warm-tinted shadows from the track structure\"},\"color_palette\":{\"dominant_colors\":[\"Blue\",\"Peach/Salmon sky\",\"Warm Green\"],\"accent_colors\":[\"Warm Brown\",\"Soft Gold\"],\"overall_temperature\":\"Warm golden shift\"},\"composition\":{\"framing\":\"Wide elevated shot showing the full wild mouse layout\",\"camera_angle\":\"Slightly elevated high angle\",\"camera_distance\":\"Long shot\",\"focal_point\":\"The blue wild mouse track structure with its sharp turns\",\"depth_of_field\":\"Deep, keeping foreground, midground coaster, and background elements all in focus\"},\"mood\":\"Cinematic, warm, atmospheric, premium concept art\",\"textures\":[\"Smooth painted steel track and supports\",\"Soft leafy foliage masses\",\"Smooth park buildings\",\"Soft gradient sky with subtle clouds\"],\"notable_details\":[\"No people, no riders — empty train seats only\",\"No signs, text, logos, or watermarks\",\"No real-world identifiers\"],\"artistic_treatment\":{\"style\":\"Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon\",\"rendering\":\"Simplified surface textures with clean edges. Structurally accurate and engineered-looking. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic\",\"color_grading\":\"WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy\",\"atmosphere\":\"Soft atmospheric haze throughout, especially where light filters through trees or around structures. Cinematic depth with atmospheric perspective — distant elements fade into warm haze\",\"lighting_treatment\":\"Enhanced cinematic golden-hour warmth. Emphasize mood and composition over literal accuracy. Rim lighting on track edges. Soft volumetric light through foliage\",\"edges\":\"Clean and defined on mechanical/structural elements (track, supports, train). Soft and painterly on organic elements (trees, foliage, sky, ground)\",\"detail_level\":\"SIMPLIFIED — reduce surface complexity. Wooden beams are smooth, not grainy. Foliage is soft masses, not individual leaves. Steel is clean, not reflective. The overall feel should match Studio Ghibli-meets-architectural-rendering\",\"negative_guidance\":\"Avoid photo grain, avoid hyperreal texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions, no bright saturated colors, no visible brush strokes, no flat blue sky, no cool color temperature\"}}"
+              - generic [ref=e146]:
+                - button "Open upload file menu" [ref=e367] [cursor=pointer]:
+                  - img [ref=e368]: add_2
+                - button "Tools" [ref=e311]:
+                  - img [ref=e312]: page_info
+                  - generic [ref=e315]: Tools
+              - button "Expand input to Fullscreen" [ref=e545] [cursor=pointer]:
+                - img [ref=e546]: expand_content
+              - generic [ref=e147]:
+                - button "Open mode picker" [ref=e150]:
+                  - generic [ref=e152]:
+                    - generic [ref=e153]: Pro
+                    - img [ref=e154]: keyboard_arrow_down
+                - generic [ref=e157]:
+                  - text: mic
+                  - button "Send message" [ref=e549] [cursor=pointer]:
+                    - img [ref=e373]: send
+          - paragraph [ref=e483]:
+            - text: Your Lanting Digital LLC chats aren’t used to improve our models. Gemini is AI and can make mistakes.
+            - link "Your privacy & Gemini Opens in a new window" [ref=e484] [cursor=pointer]:
+              - /url: https://support.google.com/gemini/answer/14620100
+              - text: Your privacy & Gemini
+              - generic [ref=e485]: Opens in a new window

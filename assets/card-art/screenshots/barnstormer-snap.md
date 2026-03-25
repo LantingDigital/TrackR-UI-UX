@@ -1,0 +1,1018 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Turn off continuous scrolling" [ref=e3] [cursor=pointer]:
+        - /url: "#"
+      - link "Accessibility help" [ref=e4] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en
+      - link "Accessibility feedback" [ref=e5] [cursor=pointer]
+  - generic [ref=e10]:
+    - search [ref=e11]:
+      - generic [ref=e13]:
+        - link "Go to Google Home" [ref=e15] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQPAgK
+          - img [ref=e16]
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - combobox "Search" [ref=e27]: The Barnstormer Magic Kingdom roller coaster track The Barnstormer Magic Kingdom roller coaster track
+            - generic [ref=e28]:
+              - button "Clear" [ref=e30] [cursor=pointer]:
+                - img [ref=e32]
+              - generic [ref=e35]:
+                - button "Search by voice" [ref=e36] [cursor=pointer]:
+                  - img [ref=e37]
+                - button "Search by image" [ref=e39] [cursor=pointer]:
+                  - img [ref=e40]
+          - button "Search" [ref=e42] [cursor=pointer]:
+            - img [ref=e45]
+    - generic [ref=e48]:
+      - button "Google apps" [ref=e50] [cursor=pointer]:
+        - img [ref=e51]
+      - 'button "Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e55] [cursor=pointer]':
+        - img [ref=e56]
+  - generic [ref=e58]:
+    - generic [ref=e61]:
+      - navigation [ref=e64]:
+        - generic [ref=e65]:
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - link "AI Mode" [ref=e70] [cursor=pointer]:
+                - /url: /search?q=The+Barnstormer+Magic+Kingdom+roller+coaster+track&sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&udm=50&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-Is39HMOnZbYGcZtCSVjOWEQiRLxA37DHyKvdjTWHPwjXo2-jiCvZ8kSQF_Zv-dFa2tFhBuw1LGRQAXSiRdTtl_tt7J8A3m0Z4Dqb1hKDtHwBaomODx3tYiHXATT5hwgc5BEkvQwbjuxvfZlJoG0BWvZ3Hc4&aep=1&ntc=1&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQ2J8OegQICRAD
+                - generic [ref=e73]: AI Mode
+            - listitem [ref=e74]:
+              - link "All" [ref=e75] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=The+Barnstormer+Magic+Kingdom+roller+coaster+track&source=lnms&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-Is39HMOnZbYGcZtCSVjOWEQiRLxA37DHyKvdjTWHPwjXo2-jiCvZ8kSQF_Zv-dFa2tFhBuw1LGRQAXSiRdTtl_tt7J8A3m0Z4Dqb1hKDtHwBaomODx3tYiHXATT5hwgc5BEkvQwbjuxvfZlJoG0BWvZ3Hc4&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQ0pQJegQIChAB
+                - generic [ref=e77]: All
+            - listitem [ref=e78]:
+              - link "Images" [disabled] [ref=e79]:
+                - generic [ref=e81]: Images
+            - listitem [ref=e82]:
+              - link "Videos" [ref=e83] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&udm=7&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-Is39HMOnZbYGcZtCSVjOWEQiRLxA37DHyKvdjTWHPwjXo2-jiCvZ8kSQF_Zv-dFa2tFhBuw1LGRQAXSiRdTtl_tt7J8A3m0Z4Dqb1hKDtHwBaomODx3tYiHXATT5hwgc5BEkvQwbjuxvfZlJoG0BWvZ3Hc4&q=The+Barnstormer+Magic+Kingdom+roller+coaster+track&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQtKgLegQIDhAB
+                - generic [ref=e85]: Videos
+            - listitem [ref=e86]:
+              - link "Shopping" [ref=e87] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&udm=28&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-Is39HMOnZbYGcZtCSVjOWEQiRLxA37DHyKvdjTWHPwjXo2-jiCvZ8kSQF_Zv-dFa2tFhBuw1LGRQAXSiRdTtl_tt7J8A3m0Z4Dqb1hKDtHwBaomODx3tYiHXATT5hwgc5BEkvQwbjuxvfZlJoG0BWvZ3Hc4&q=The+Barnstormer+Magic+Kingdom+roller+coaster+track&ved=1t:220175&ictx=111
+                - generic [ref=e89]: Shopping
+            - listitem [ref=e90]:
+              - link "Forums" [ref=e91] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&udm=18&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-Is39HMOnZbYGcZtCSVjOWEQiRLxA37DHyKvdjTWHPwjXo2-jiCvZ8kSQF_Zv-dFa2tFhBuw1LGRQAXSiRdTtl_tt7J8A3m0Z4Dqb1hKDtHwBaomODx3tYiHXATT5hwgc5BEkvQwbjuxvfZlJoG0BWvZ3Hc4&q=The+Barnstormer+Magic+Kingdom+roller+coaster+track&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQs6gLegQIDxAB
+                - generic [ref=e93]: Forums
+            - listitem [ref=e94]:
+              - link "Short videos" [ref=e95] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&udm=39&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-Is39HMOnZbYGcZtCSVjOWEQiRLxA37DHyKvdjTWHPwjXo2-jiCvZ8kSQF_Zv-dFa2tFhBuw1LGRQAXSiRdTtl_tt7J8A3m0Z4Dqb1hKDtHwBaomODx3tYiHXATT5hwgc5BEkvQwbjuxvfZlJoG0BWvZ3Hc4&q=The+Barnstormer+Magic+Kingdom+roller+coaster+track&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQs6gLegQICxAB
+                - generic [ref=e97]: Short videos
+            - listitem [ref=e98]:
+              - button "More filters" [ref=e99] [cursor=pointer]:
+                - generic "More filters" [ref=e100]:
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: More
+                    - img [ref=e104]
+          - button "Tools" [ref=e107] [cursor=pointer]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: Tools
+              - img [ref=e112]
+      - link "Saves" [ref=e115] [cursor=pointer]:
+        - /url: /save?sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQ7XV6BAgEEAA
+        - img [ref=e117]
+        - text: Saves
+    - navigation [ref=e120]:
+      - navigation [ref=e123]:
+        - list [ref=e131]:
+          - listitem [ref=e132]:
+            - link "Add Goofy" [ref=e133] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=goofy+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-J3sv1lfnPvABCMwdVDYvw7jevGPxNQh1oWsdwZzN9Niw6uIMvMnq8yzu1fCJgZF7LldS2SaDRxUTB6KZ5fxekEXGsJUKv8hpHEI8NHA4zcMHiKQ7VlCFJEImgdLUQFvvhI47oRFTP6j0eJVPKTdWe9r4Jh-Wx_wawM-U62_4qLGBpgQEPlaKBLGwRDoGzJ3rc7ZfjA&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAB6BAgTEAE&ictx=0
+              - generic [ref=e139]: Goofy
+          - listitem [ref=e140]:
+            - link "Add Theme parks" [ref=e141] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=theme+parks+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-yMqHzrjvbiMfvj3E6DLF9eDtgncudtXg_TiJN5QrYNhD33dFyguoQzM_FQM8ST_Gq_MjIXCAwX4dXpIwdXuu6sZVbdFHC-dygw9HLssMu5SE5xVGcvdWL4lOZFlA0stVlXqSClUCwBdOxormKyXxspqZfHtna3YufANXHw3Kz3I5Xfd5FscBFrb_073soKdhISFj8A&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAF6BAgVEAE&ictx=0
+              - generic [ref=e147]: Theme parks
+          - listitem [ref=e148]:
+            - link "Add Goofy's wiseacre farm" [ref=e149] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=goofy%27s+wiseacre+farm+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-WUhztSZdSFJsO7cOFRX3K-zgw13k_kRr5xTTtLTL0QMIeS1b_Msu_gjq_IIZ9FrMnxNY-chjwzBJpMie5qqHkH77V_QOCFuV9JsXrAG3kwrl7RQzSBkx5SaVXz-0mh3hkYpfUGdI5N7AltFcwqlhLpJKrE2L5z3-4Fs17hE93ErbZrSRVGpbL1ZNK769_iD0COwz7djHZ1RWhkAc5Kvt7Y7StJc&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAJ6BAgUEAE&ictx=0
+              - generic [ref=e155]: Goofy's wiseacre farm
+          - listitem [ref=e156]:
+            - link "Add Disney goofy ride" [ref=e157] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=disney+goofy+ride+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-hs7D0M3tPuyY4BRVqpq9EWhj5SlCUAmtJXjVjg1KqYXTYLzcYca3kE0oAMZ4hjR6P7M--zjiglZtzs2dpNO1d0RTmF664C0fnarQuBY1t1DIWuJojWgN6rT1zexzv9hfPUHBMTVRG_-jBb9erqhSlSJjHvX7RrFF2f6JS8Gy6fm1zcm2jtxR3F_jyesFfO_dG4IYpA&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAN6BAgREAE&ictx=0
+              - generic [ref=e163]: Disney goofy ride
+          - listitem [ref=e164]:
+            - link "Add Great goofini" [ref=e165] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=great+goofini+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-A9sIJK4-zKrzqjKmPL8hisAadKJnMShVnB7cEu20KVCi17GOTSHFq1mUj8hkNJ7wHTzmOTXAhinXfPY8i4LA3vvSnG-5570VmSxI6xR16LPecX0fgMn71yiHlEAR2ZbpD80aE7bUlRjOLrQuOzUH9bbfEqEwW0f9y7UEa133Vgoe9kBywOPCndcfPYJ3MHuCdw1cEw&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAR6BAgSEAE&ictx=0
+              - generic [ref=e171]: Great goofini
+          - listitem [ref=e1959]:
+            - link "Add Walt disney" [ref=e1960] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=walt+disney+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-yMqHzrjvbiMfvj3E6DLF9eDtgncudtXg_TiJN5QrYNhD33dFyguoQzM_FQM8ST_Gq_MjIXCAwX4dXpIwdXuu6n5K3XUbmFQ6s7LHZbWz7dPSTX4q9kLN_rOtO2HMCGnt4P4G0OCHDM5naiQt--U5DfVhvQrjoW4HHv34xwu8_Ngbys5h6_MS9_R2-Xwv-nFrXyQevQ&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAV6BQiWARAB&ictx=0
+              - generic [ref=e1966]: Walt disney
+          - listitem [ref=e1967]:
+            - link "Add Goofy's barnstormer" [ref=e1968] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=goofy%27s+barnstormer+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-jKIEj2JllJopeCFtN2uDgA80SWxSRfjT7dgKKyqfqL4gldvZEgkKtnCdP-Se-f05GM6eeHFN-Pu7EQ9VS5ao0_b8Zfyr3pVisv3ksI9SqnkHcL8YaMJjirrX1LB0Ahg2Zw3sagWuepCNpbvjZfPd2M9p3Z3UCK6JoRRQHMgKcTdQykjhQD56aaRBz5Qr32-yykiH2g&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAZ6BQiVARAB&ictx=0
+              - generic [ref=e1974]: Goofy's barnstormer
+          - listitem [ref=e1975]:
+            - link "Add Goofy roller" [ref=e1976] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=goofy+roller+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-EsbckUHcZPP-f61p4qqGM8FwlHVeu4snM4g6LSK16EdgG8VRooTibggB9t8d0NorTDcM6YQrUs1ExlkR_qX2GsAUklSYdJjBWTsGIAVQpFcxSWsagsgeC7AXxzhjED92c_3LN7gUQJki9xth5iE-j0VbvkJ8bfheYnIJ5tmKbtCQgwMYqvMBiuVDZYYPYjVu77nHrA&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAd6BQiRARAB&ictx=0
+              - generic [ref=e1982]: Goofy roller
+          - listitem [ref=e1983]:
+            - link "Add Dreamstime" [ref=e1984] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=dreamstime+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-gLuHRcRFUipoqN-2EifHx-i07e_--30OOal5GI4Gz132VOz3tZXsH-HZlfffRTXYH383xeUgdmraK5v_cQJ8mD_rvZcqNdDiK98gQzLWVAZVPQoT6X1E2nl97W9DsAChV63Noaqhfv3K5CxhHTtEu_afo1Uu0jtTxAOp_YSJ3W7qlXeez2MN3zkdHzv-VeA7y1F5dA&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAh6BQiSARAB&ictx=0
+              - generic [ref=e1990]: Dreamstime
+          - listitem [ref=e1991]:
+            - link "Add Attractions" [ref=e1992] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=attractions+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-yMqHzrjvbiMfvj3E6DLF9eDtgncudtXg_TiJN5QrYNhD33dFyguoQzM_FQM8ST_Gq_MjIXCAwX4dXpIwdXuu6hegpoOKFDYBkxAG_lYYU8CtqIYLrhDN5xi7wVGpDeV4u_o9oR1hIVRwEqLzTvlexUP9tL6wBXSja2rEa8TVE3QQ2EEmIeviSLWDNN-hxiu7rQLMEQ&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAl6BQiUARAB&ictx=0
+              - generic [ref=e1998]: Attractions
+          - listitem [ref=e1999]:
+            - link "Add Lightning lane" [ref=e2000] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=lightning+lane+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c--j-8-rgrpNPCZhmSlXPgOAiSqwpfNGRv9KHhxhH31sNH12d_-mMof1Z2vPRzOR4joijOwPSqKXHHnNW9AR9kn6KZBAMFQ66c7tbpVpPbRTDbMEFtxegGoqVhnSSvROJsRVBBPnTqycZ-992AQeyN9X8-ZxAUBYABBLObrJxrbg-4umJSiuu1YAVZy-TKtEvHbsTjig&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAp6BQiQARAB&ictx=0
+              - generic [ref=e2006]: Lightning lane
+          - listitem [ref=e2007]:
+            - link "Add Disneyland" [ref=e2008] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=disneyland+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-gLuHRcRFUipoqN-2EifHx-i07e_--30OOal5GI4Gz132VOz3tZXsH-HZlfffRTXYH383xeUgdmraK5v_cQJ8mFSVankdNwhMJUb9gqnlgp_I6E01E4KqSh2eDg_vEqSkfJDyM_YFVErEKG_Dkn7zz6mYClWNl-7Rvu9N5_WnireS7TzM0hv5P6tnchDV8wpRfB0Q0w&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAt6BQiTARAB&ictx=0
+              - generic [ref=e2014]: Disneyland
+          - listitem [ref=e2015]:
+            - link "Add Amusement ride" [ref=e2016] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=amusement+ride+The+Barnstormer+Magic+Kingdom+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c--j-8-rgrpNPCZhmSlXPgOAiSqwpfNGRv9KHhxhH31sNH12d_-mMof1Z2vPRzOR4joijOwPSqKXHHnNW9AR9kn0b407U1CStVd7LiF9nZPgBVxR8lNuCdRhOJwAF0GfexNelZB34S2k7F1MTKECZjr5l7pb9vFkzGpZOX1wSB7B-jJ0ThxeaCUZFDBKg6onBRHmssHQ&udm=2&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQxKsJKAx6BQiPARAB&ictx=0
+              - generic [ref=e2022]: Amusement ride
+    - heading "Search Results" [level=1] [ref=e172]
+    - main [ref=e174]:
+      - generic [ref=e180]:
+        - generic [ref=e183]:
+          - generic [ref=e184] [cursor=pointer]:
+            - heading "The Barnstormer Attraction at Magic ..." [level=3] [ref=e186]:
+              - button "The Barnstormer Attraction at Magic ..." [ref=e188]:
+                - img "The Barnstormer Attraction at Magic ..." [ref=e191]
+            - link "Disney Parks The Barnstormer Attraction at Magic ..." [ref=e193]:
+              - /url: https://disneyparks.disney.go.com/au/disneyworld/attractions/barnstormer-starring-great-goofini/
+              - generic [ref=e198]: Disney Parks
+              - generic [ref=e200]: The Barnstormer Attraction at Magic ...
+          - generic [ref=e201] [cursor=pointer]:
+            - heading "Magic Kingdom (An Attraction Guide ..." [level=3] [ref=e203]:
+              - button "Magic Kingdom (An Attraction Guide ..." [ref=e205]:
+                - img "Magic Kingdom (An Attraction Guide ..." [ref=e208]
+            - link "Resorts Gal Magic Kingdom (An Attraction Guide ..." [ref=e210]:
+              - /url: https://www.resortsgal.com/blog/barnstormer/
+              - generic [ref=e215]: Resorts Gal
+              - generic [ref=e217]: Magic Kingdom (An Attraction Guide ...
+          - generic [ref=e218] [cursor=pointer]:
+            - heading "Magic Kingdom (An Attraction Guide ..." [level=3] [ref=e220]:
+              - button "Magic Kingdom (An Attraction Guide ..." [ref=e222]:
+                - img "Magic Kingdom (An Attraction Guide ..." [ref=e225]
+            - link "Resorts Gal Magic Kingdom (An Attraction Guide ..." [ref=e227]:
+              - /url: https://www.resortsgal.com/blog/barnstormer/
+              - generic [ref=e232]: Resorts Gal
+              - generic [ref=e234]: Magic Kingdom (An Attraction Guide ...
+          - generic [ref=e235] [cursor=pointer]:
+            - heading "Barnstormer (Walt Disney World ..." [level=3] [ref=e237]:
+              - button "Barnstormer (Walt Disney World ..." [ref=e239]:
+                - img "Barnstormer (Walt Disney World ..." [ref=e242]
+            - link "Roller Coaster Wiki - Fandom Barnstormer (Walt Disney World ..." [ref=e244]:
+              - /url: https://rollercoaster.fandom.com/wiki/Barnstormer_(Walt_Disney_World)
+              - generic [ref=e249]: Roller Coaster Wiki - Fandom
+              - generic [ref=e251]: Barnstormer (Walt Disney World ...
+          - generic [ref=e252] [cursor=pointer]:
+            - heading "Walt Disney World Magic Kingdom ..." [level=3] [ref=e254]:
+              - button "Walt Disney World Magic Kingdom ..." [ref=e256]:
+                - img "Walt Disney World Magic Kingdom ..." [ref=e259]
+            - link "YouTube Walt Disney World Magic Kingdom ..." [ref=e261]:
+              - /url: https://www.youtube.com/watch?v=BRTpVIAzhNQ
+              - generic [ref=e266]: YouTube
+              - generic [ref=e268]: Walt Disney World Magic Kingdom ...
+          - generic [ref=e269] [cursor=pointer]:
+            - heading "Barnstormer (Magic Kingdom ..." [level=3] [ref=e271]:
+              - button "Barnstormer (Magic Kingdom ..." [ref=e273]:
+                - img "Barnstormer (Magic Kingdom ..." [ref=e276]
+            - link "Coasterpedia Barnstormer (Magic Kingdom ..." [ref=e278]:
+              - /url: https://coasterpedia.net/wiki/Barnstormer_(Magic_Kingdom)
+              - generic [ref=e283]: Coasterpedia
+              - generic [ref=e285]: Barnstormer (Magic Kingdom ...
+          - generic [ref=e286] [cursor=pointer]:
+            - heading "The Barnstormer Roller Coaster On Ride ..." [level=3] [ref=e288]:
+              - button "The Barnstormer Roller Coaster On Ride ..." [ref=e290]:
+                - img "The Barnstormer Roller Coaster On Ride ..." [ref=e293]
+            - link "YouTube The Barnstormer Roller Coaster On Ride ..." [ref=e295]:
+              - /url: https://www.youtube.com/watch?v=Q9GQAT1QnDI
+              - generic [ref=e300]: YouTube
+              - generic [ref=e302]: The Barnstormer Roller Coaster On Ride ...
+          - generic [ref=e303] [cursor=pointer]:
+            - heading "Barnstormer - Walt Disney World - Magic ..." [level=3] [ref=e305]:
+              - button "Barnstormer - Walt Disney World - Magic ..." [ref=e307]:
+                - img "Barnstormer - Walt Disney World - Magic ..." [ref=e310]
+            - link "Pinterest Barnstormer - Walt Disney World - Magic ..." [ref=e312]:
+              - /url: https://www.pinterest.com/pin/barnstormer-walt-disney-world-magic-kingdom-lake-buena-vista-fl--189362359303578484/
+              - generic [ref=e317]: Pinterest
+              - generic [ref=e319]: Barnstormer - Walt Disney World - Magic ...
+          - generic [ref=e320] [cursor=pointer]:
+            - heading "Magic Kingdom Ride 2022 [4K POV ..." [level=3] [ref=e322]:
+              - button "Magic Kingdom Ride 2022 [4K POV ..." [ref=e324]:
+                - img "Magic Kingdom Ride 2022 [4K POV ..." [ref=e327]
+            - link "YouTube Magic Kingdom Ride 2022 [4K POV ..." [ref=e329]:
+              - /url: https://www.youtube.com/watch?v=nMLBxdsJxeY
+              - generic [ref=e334]: YouTube
+              - generic [ref=e336]: Magic Kingdom Ride 2022 [4K POV ...
+          - generic [ref=e337] [cursor=pointer]:
+            - heading "How about the Barnstormer, must-do or ..." [level=3] [ref=e339]:
+              - button "How about the Barnstormer, must-do or ..." [ref=e341]:
+                - img "How about the Barnstormer, must-do or ..." [ref=e344]
+            - link "Facebook How about the Barnstormer, must-do or ..." [ref=e346]:
+              - /url: https://www.facebook.com/disneyimagemakers/posts/how-about-the-barnstormer-must-do-or-just-for-the-kiddies-eric-wdw-waltdisneywor/1111831207771289/
+              - generic [ref=e351]: Facebook
+              - generic [ref=e353]: How about the Barnstormer, must-do or ...
+          - generic [ref=e354] [cursor=pointer]:
+            - 'heading "Roller Coaster Guide: Goofy''s ..." [level=3] [ref=e356]':
+              - 'button "Roller Coaster Guide: Goofy''s ..." [ref=e358]':
+                - 'img "Roller Coaster Guide: Goofy''s ..." [ref=e361]'
+            - 'link "Orlando Sentinel Roller Coaster Guide: Goofy''s ..." [ref=e363]':
+              - /url: https://www.orlandosentinel.com/2016/02/27/roller-coaster-guide-goofys-barnstormer/
+              - generic [ref=e368]: Orlando Sentinel
+              - generic [ref=e370]: "Roller Coaster Guide: Goofy's ..."
+          - generic [ref=e371] [cursor=pointer]:
+            - heading "Barnstormer Starring The Great Goofini ..." [level=3] [ref=e373]:
+              - button "Barnstormer Starring The Great Goofini ..." [ref=e375]:
+                - img "Barnstormer Starring The Great Goofini ..." [ref=e378]
+            - link "Disney World Barnstormer Starring The Great Goofini ..." [ref=e380]:
+              - /url: https://disneyworld.disney.go.com/attractions/magic-kingdom/barnstormer-starring-great-goofini/
+              - generic [ref=e385]: Disney World
+              - generic [ref=e387]: Barnstormer Starring The Great Goofini ...
+          - generic [ref=e388] [cursor=pointer]:
+            - 'heading "Yesterland: The Barnstormer at Goofy''s ..." [level=3] [ref=e390]':
+              - 'button "Yesterland: The Barnstormer at Goofy''s ..." [ref=e392]':
+                - 'img "Yesterland: The Barnstormer at Goofy''s ..." [ref=e395]'
+            - 'link "Yesterland Yesterland: The Barnstormer at Goofy''s ..." [ref=e397]':
+              - /url: https://www.yesterland.com/barnstormer.html
+              - generic [ref=e402]: Yesterland
+              - generic [ref=e404]: "Yesterland: The Barnstormer at Goofy's ..."
+          - generic [ref=e405] [cursor=pointer]:
+            - heading "Barnstormer (Magic Kingdom ..." [level=3] [ref=e407]:
+              - button "Barnstormer (Magic Kingdom ..." [ref=e409]:
+                - img "Barnstormer (Magic Kingdom ..." [ref=e412]
+            - link "Coasterpedia Barnstormer (Magic Kingdom ..." [ref=e414]:
+              - /url: https://coasterpedia.net/wiki/Barnstormer_(Magic_Kingdom)
+              - generic [ref=e419]: Coasterpedia
+              - generic [ref=e421]: Barnstormer (Magic Kingdom ...
+          - generic [ref=e422] [cursor=pointer]:
+            - heading "The Barnstormer (2026) - All You MUST ..." [level=3] [ref=e424]:
+              - button "The Barnstormer (2026) - All You MUST ..." [ref=e426]:
+                - img "The Barnstormer (2026) - All You MUST ..." [ref=e429]
+            - link "Tripadvisor The Barnstormer (2026) - All You MUST ..." [ref=e431]:
+              - /url: https://www.tripadvisor.com/Attraction_Review-g34515-d8563116-Reviews-The_Barnstormer-Orlando_Florida.html
+              - generic [ref=e436]: Tripadvisor
+              - generic [ref=e438]: The Barnstormer (2026) - All You MUST ...
+          - generic [ref=e439] [cursor=pointer]:
+            - heading "Celebrations Disney Magazine" [level=3] [ref=e441]:
+              - button "Celebrations Disney Magazine" [ref=e443]:
+                - img "Celebrations Disney Magazine" [ref=e446]
+            - link "Celebrations Magazine Celebrations Disney Magazine" [ref=e448]:
+              - /url: https://celebrationspress.com/2025/02/16/10-things-you-may-not-know-about-the-barnstormer/
+              - generic [ref=e453]: Celebrations Magazine
+              - generic [ref=e455]: Celebrations Disney Magazine
+          - generic [ref=e456] [cursor=pointer]:
+            - heading "The Barnstormer - Wikipedia" [level=3] [ref=e458]:
+              - button "The Barnstormer - Wikipedia" [ref=e460]:
+                - img "The Barnstormer - Wikipedia" [ref=e463]
+            - link "Wikipedia The Barnstormer - Wikipedia" [ref=e465]:
+              - /url: https://en.wikipedia.org/wiki/The_Barnstormer
+              - generic [ref=e470]: Wikipedia
+              - generic [ref=e472]: The Barnstormer - Wikipedia
+          - generic [ref=e473] [cursor=pointer]:
+            - generic [ref=e474]:
+              - heading "The Barnstormer Roller Coaster at Magic ..." [level=3] [ref=e475]:
+                - button "The Barnstormer Roller Coaster at Magic ..." [ref=e477]:
+                  - img "The Barnstormer Roller Coaster at Magic ..." [ref=e480]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Dreamstime.com The Barnstormer Roller Coaster at Magic ..." [ref=e482]:
+              - /url: https://www.dreamstime.com/barnstormer-roller-coaster-magic-kingdom-park-walt-disney-world-orlando-florida-usa-barnstormer-roller-coaster-image270876243
+              - generic [ref=e487]: Dreamstime.com
+              - generic [ref=e489]: The Barnstormer Roller Coaster at Magic ...
+          - generic [ref=e490] [cursor=pointer]:
+            - heading "The Barnstormer at Magic Kingdom might ..." [level=3] [ref=e492]:
+              - button "The Barnstormer at Magic Kingdom might ..." [ref=e494]:
+                - img "The Barnstormer at Magic Kingdom might ..." [ref=e497]
+            - link "Facebook The Barnstormer at Magic Kingdom might ..." [ref=e499]:
+              - /url: https://www.facebook.com/madisondoesdisney/posts/the-barnstormer-at-magic-kingdom-might-just-be-the-perfect-first-roller-coaster-/703193732744280/
+              - generic [ref=e504]: Facebook
+              - generic [ref=e506]: The Barnstormer at Magic Kingdom might ...
+          - generic [ref=e507] [cursor=pointer]:
+            - heading "File:Barnstormer at Magic Kingdom ..." [level=3] [ref=e509]:
+              - button "File:Barnstormer at Magic Kingdom ..." [ref=e511]:
+                - img "File:Barnstormer at Magic Kingdom ..." [ref=e514]
+            - link "Wikimedia Commons File:Barnstormer at Magic Kingdom ..." [ref=e516]:
+              - /url: https://commons.wikimedia.org/wiki/File:Barnstormer_at_Magic_Kingdom_-_turn.jpg
+              - generic [ref=e521]: Wikimedia Commons
+              - generic [ref=e523]: File:Barnstormer at Magic Kingdom ...
+          - generic [ref=e524] [cursor=pointer]:
+            - heading "The Barnstormer | Disney Discount ..." [level=3] [ref=e526]:
+              - button "The Barnstormer | Disney Discount ..." [ref=e528]:
+                - img "The Barnstormer | Disney Discount ..." [ref=e531]
+            - link "Undercover Tourist The Barnstormer | Disney Discount ..." [ref=e533]:
+              - /url: https://www.undercovertourist.com/orlando/magic-kingdom/barnstormer/
+              - generic [ref=e538]: Undercover Tourist
+              - generic [ref=e540]: The Barnstormer | Disney Discount ...
+          - generic [ref=e541] [cursor=pointer]:
+            - heading "Guide to The Barnstormer at Magic Kingdom" [level=3] [ref=e543]:
+              - button "Guide to The Barnstormer at Magic Kingdom" [ref=e545]:
+                - img "Guide to The Barnstormer at Magic Kingdom" [ref=e548]
+            - link "Mouse Hacking Guide to The Barnstormer at Magic Kingdom" [ref=e550]:
+              - /url: https://www.mousehacking.com/rides/guide-to-barnstormer-at-magic-kingdom
+              - generic [ref=e555]: Mouse Hacking
+              - generic [ref=e557]: Guide to The Barnstormer at Magic Kingdom
+          - generic [ref=e558] [cursor=pointer]:
+            - heading "deceptive roller coaster ..." [level=3] [ref=e560]:
+              - button "deceptive roller coaster ..." [ref=e562]:
+                - img "deceptive roller coaster ..." [ref=e565]
+            - link "Instagram deceptive roller coaster ..." [ref=e567]:
+              - /url: https://www.instagram.com/reel/DT-xg6MkT2j/
+              - generic [ref=e572]: Instagram
+              - generic [ref=e574]: deceptive roller coaster ...
+          - generic [ref=e575] [cursor=pointer]:
+            - heading "Great Goofini ..." [level=3] [ref=e577]:
+              - button "Great Goofini ..." [ref=e579]:
+                - img "Great Goofini ..." [ref=e582]
+            - link "Touring Plans Great Goofini ..." [ref=e584]:
+              - /url: https://touringplans.com/blog/five-things-to-know-about-the-barnstormer-starring-the-great-goofini/
+              - generic [ref=e589]: Touring Plans
+              - generic [ref=e591]: Great Goofini ...
+          - generic [ref=e592]:
+            - heading "Related searches" [level=2] [ref=e593]
+            - link "goofy's barnstormer roller coaster" [ref=e594] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=goofy's+barnstormer+roller+coaster&stick=H4sIAAAAAAAAAFvEqpSen59WqV6skJRYlFdckl-Um1qkUJSfkwOkkvMTi0tSiwDWLxhPJQAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegQIfxAA
+              - generic [ref=e599]: goofy's barnstormer roller coaster
+            - link "map magic kingdom rides" [ref=e600] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=map+magic+kingdom+rides&stick=H4sIAAAAAAAAAFvEKp6bWKCQm5iemayQnZmXnpKfq1CUmZJaDAA6emMiGgAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegUIgQEQAA
+              - generic [ref=e605]: map magic kingdom rides
+            - link "scary disney world roller coasters" [ref=e606] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=scary+disney+world+roller+coasters&stick=H4sIAAAAAAAAAFvEqlScnFhUqZCSWZyXWqlQnl-Uk6JQlJ-Tk1qkkJyfWFySWlQMABcV-FklAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegUIgwEQAA
+              - generic [ref=e611]: scary disney world roller coasters
+          - generic [ref=e612] [cursor=pointer]:
+            - heading "THE BARNSTORMER - Updated March 2026 ..." [level=3] [ref=e614]:
+              - button "THE BARNSTORMER - Updated March 2026 ..." [ref=e616]:
+                - img "THE BARNSTORMER - Updated March 2026 ..." [ref=e619]
+            - link "Yelp THE BARNSTORMER - Updated March 2026 ..." [ref=e621]:
+              - /url: https://m.yelp.com/biz/the-barnstormer-orlando
+              - generic [ref=e626]: Yelp
+              - generic [ref=e628]: THE BARNSTORMER - Updated March 2026 ...
+          - generic [ref=e629] [cursor=pointer]:
+            - heading "Barnstormer - Walt Disney World - Magic ..." [level=3] [ref=e631]:
+              - button "Barnstormer - Walt Disney World - Magic ..." [ref=e633]:
+                - img "Barnstormer - Walt Disney World - Magic ..." [ref=e636]
+            - link "Roller Coaster DataBase Barnstormer - Walt Disney World - Magic ..." [ref=e638]:
+              - /url: https://rcdb.com/274.htm
+              - generic [ref=e643]: Roller Coaster DataBase
+              - generic [ref=e645]: Barnstormer - Walt Disney World - Magic ...
+          - generic [ref=e646] [cursor=pointer]:
+            - heading "Goofy's Barnstormer at the Magic Kingdom" [level=3] [ref=e648]:
+              - button "Goofy's Barnstormer at the Magic Kingdom" [ref=e650]:
+                - img "Goofy's Barnstormer at the Magic Kingdom" [ref=e653]
+            - link "My Dreams of Disney Goofy's Barnstormer at the Magic Kingdom" [ref=e655]:
+              - /url: https://mydreamsofdisney.com/pictures-in-the-park-goofys-barnstormer-at-the-magic-kingdom/
+              - generic [ref=e660]: My Dreams of Disney
+              - generic [ref=e662]: Goofy's Barnstormer at the Magic Kingdom
+          - generic [ref=e663] [cursor=pointer]:
+            - heading "Complete Guide to The Barnstormer - WDW ..." [level=3] [ref=e665]:
+              - button "Complete Guide to The Barnstormer - WDW ..." [ref=e667]:
+                - img "Complete Guide to The Barnstormer - WDW ..." [ref=e670]
+            - link "WDW Prep School Complete Guide to The Barnstormer - WDW ..." [ref=e672]:
+              - /url: https://wdwprepschool.com/barnstormer/
+              - generic [ref=e677]: WDW Prep School
+              - generic [ref=e679]: Complete Guide to The Barnstormer - WDW ...
+          - generic [ref=e680] [cursor=pointer]:
+            - heading "Barnstormer Ride Review - Park Savers" [level=3] [ref=e682]:
+              - button "Barnstormer Ride Review - Park Savers" [ref=e684]:
+                - img "Barnstormer Ride Review - Park Savers" [ref=e687]
+            - link "Park Savers Barnstormer Ride Review - Park Savers" [ref=e689]:
+              - /url: https://www.parksavers.com/barnstormer-ride-review/
+              - generic [ref=e694]: Park Savers
+              - generic [ref=e696]: Barnstormer Ride Review - Park Savers
+          - generic [ref=e697] [cursor=pointer]:
+            - heading "Barnstormer - Walt Disney World - Magic ..." [level=3] [ref=e699]:
+              - button "Barnstormer - Walt Disney World - Magic ..." [ref=e701]:
+                - img "Barnstormer - Walt Disney World - Magic ..." [ref=e704]
+            - link "Roller Coaster DataBase Barnstormer - Walt Disney World - Magic ..." [ref=e706]:
+              - /url: https://rcdb.com/274.htm
+              - generic [ref=e711]: Roller Coaster DataBase
+              - generic [ref=e713]: Barnstormer - Walt Disney World - Magic ...
+          - generic [ref=e714] [cursor=pointer]:
+            - heading "The Barnstormer | Guide2WDW" [level=3] [ref=e716]:
+              - button "The Barnstormer | Guide2WDW" [ref=e718]:
+                - img "The Barnstormer | Guide2WDW" [ref=e721]
+            - link "Guide2WDW The Barnstormer | Guide2WDW" [ref=e723]:
+              - /url: https://guide2wdw.com/magic-kingdom/attractions/the-barnstormer/
+              - generic [ref=e728]: Guide2WDW
+              - generic [ref=e730]: The Barnstormer | Guide2WDW
+          - generic [ref=e731] [cursor=pointer]:
+            - heading "Barnstormer is a junior roller coaster ..." [level=3] [ref=e733]:
+              - button "Barnstormer is a junior roller coaster ..." [ref=e735]:
+                - img "Barnstormer is a junior roller coaster ..." [ref=e738]
+            - link "Instagram Barnstormer is a junior roller coaster ..." [ref=e740]:
+              - /url: https://www.instagram.com/p/DVB3qKGjyI7/
+              - generic [ref=e745]: Instagram
+              - generic [ref=e747]: Barnstormer is a junior roller coaster ...
+          - generic [ref=e748] [cursor=pointer]:
+            - heading "Celebrations Disney Magazine" [level=3] [ref=e750]:
+              - button "Celebrations Disney Magazine" [ref=e752]:
+                - img "Celebrations Disney Magazine" [ref=e755]
+            - link "Celebrations Magazine Celebrations Disney Magazine" [ref=e757]:
+              - /url: https://celebrationspress.com/2025/02/16/10-things-you-may-not-know-about-the-barnstormer/
+              - generic [ref=e762]: Celebrations Magazine
+              - generic [ref=e764]: Celebrations Disney Magazine
+          - generic [ref=e765] [cursor=pointer]:
+            - heading "Complete Guide to The Barnstormer - WDW ..." [level=3] [ref=e767]:
+              - button "Complete Guide to The Barnstormer - WDW ..." [ref=e769]:
+                - img "Complete Guide to The Barnstormer - WDW ..." [ref=e772]
+            - link "WDW Prep School Complete Guide to The Barnstormer - WDW ..." [ref=e774]:
+              - /url: https://wdwprepschool.com/barnstormer/
+              - generic [ref=e779]: WDW Prep School
+              - generic [ref=e781]: Complete Guide to The Barnstormer - WDW ...
+          - generic [ref=e782] [cursor=pointer]:
+            - heading "2022 wdw magic kingdom storybook circus ..." [level=3] [ref=e784]:
+              - button "2022 wdw magic kingdom storybook circus ..." [ref=e786]:
+                - img "2022 wdw magic kingdom storybook circus ..." [ref=e789]
+            - link "AllEars.Net 2022 wdw magic kingdom storybook circus ..." [ref=e791]:
+              - /url: https://allears.net/2022/03/05/wait-times-climb-into-the-weekend-at-disney-world/2022-wdw-magic-kingdom-storybook-circus-the-barnstormer-attraction-ride-photo-roller-coaster/
+              - generic [ref=e796]: AllEars.Net
+              - generic [ref=e798]: 2022 wdw magic kingdom storybook circus ...
+          - generic [ref=e799] [cursor=pointer]:
+            - heading "The Barnstormer at WDW's Magic Kingdom ..." [level=3] [ref=e801]:
+              - button "The Barnstormer at WDW's Magic Kingdom ..." [ref=e803]:
+                - img "The Barnstormer at WDW's Magic Kingdom ..." [ref=e806]
+            - link "Military Disney Tips The Barnstormer at WDW's Magic Kingdom ..." [ref=e808]:
+              - /url: https://www.militarydisneytips.com/blog/walt-disney-world-theme-parks/magic-kingdom/the-barnstormer-at-wdws-magic-kingdom/
+              - generic [ref=e813]: Military Disney Tips
+              - generic [ref=e815]: The Barnstormer at WDW's Magic Kingdom ...
+          - generic [ref=e816] [cursor=pointer]:
+            - generic [ref=e817]:
+              - heading "The Barnstormer Roller Coaster at Magic ..." [level=3] [ref=e818]:
+                - button "The Barnstormer Roller Coaster at Magic ..." [ref=e820]:
+                  - img "The Barnstormer Roller Coaster at Magic ..." [ref=e823]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Dreamstime.com The Barnstormer Roller Coaster at Magic ..." [ref=e825]:
+              - /url: https://www.dreamstime.com/barnstormer-roller-coaster-magic-kingdom-park-walt-disney-world-orlando-florida-usa-barnstormer-roller-coaster-image270876239
+              - generic [ref=e830]: Dreamstime.com
+              - generic [ref=e832]: The Barnstormer Roller Coaster at Magic ...
+          - generic [ref=e833] [cursor=pointer]:
+            - heading "Barnstormer (Magic Kingdom ..." [level=3] [ref=e835]:
+              - button "Barnstormer (Magic Kingdom ..." [ref=e837]:
+                - img "Barnstormer (Magic Kingdom ..." [ref=e840]
+            - link "Coasterpedia Barnstormer (Magic Kingdom ..." [ref=e842]:
+              - /url: https://coasterpedia.net/wiki/Barnstormer_(Magic_Kingdom)
+              - generic [ref=e847]: Coasterpedia
+              - generic [ref=e849]: Barnstormer (Magic Kingdom ...
+          - generic [ref=e850] [cursor=pointer]:
+            - heading "Guide to The Barnstormer at Magic Kingdom" [level=3] [ref=e852]:
+              - button "Guide to The Barnstormer at Magic Kingdom" [ref=e854]:
+                - img "Guide to The Barnstormer at Magic Kingdom" [ref=e857]
+            - link "Mouse Hacking Guide to The Barnstormer at Magic Kingdom" [ref=e859]:
+              - /url: https://www.mousehacking.com/rides/guide-to-barnstormer-at-magic-kingdom
+              - generic [ref=e864]: Mouse Hacking
+              - generic [ref=e866]: Guide to The Barnstormer at Magic Kingdom
+          - generic [ref=e867] [cursor=pointer]:
+            - generic [ref=e868]:
+              - heading "Magic Kingdom Ride at Walt Disney World ..." [level=3] [ref=e869]:
+                - button "Magic Kingdom Ride at Walt Disney World ..." [ref=e871]:
+                  - img "Magic Kingdom Ride at Walt Disney World ..." [ref=e874]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Magic Kingdom Ride at Walt Disney World ..." [ref=e876]:
+              - /url: https://www.youtube.com/watch?v=NvweaDkN02Y
+              - generic [ref=e881]: YouTube
+              - generic [ref=e883]: Magic Kingdom Ride at Walt Disney World ...
+          - generic [ref=e884] [cursor=pointer]:
+            - heading "The Barnstormer (Magic Kingdom ..." [level=3] [ref=e886]:
+              - button "The Barnstormer (Magic Kingdom ..." [ref=e888]:
+                - img "The Barnstormer (Magic Kingdom ..." [ref=e891]
+            - link "WDW Kingdom The Barnstormer (Magic Kingdom ..." [ref=e893]:
+              - /url: https://www.wdwkingdom.com/the-barnstormer-magic-kingdom-fantasyland/
+              - generic [ref=e898]: WDW Kingdom
+              - generic [ref=e900]: The Barnstormer (Magic Kingdom ...
+          - generic [ref=e901] [cursor=pointer]:
+            - heading "The Barnstormer - Disney World - Magic ..." [level=3] [ref=e903]:
+              - button "The Barnstormer - Disney World - Magic ..." [ref=e905]:
+                - img "The Barnstormer - Disney World - Magic ..." [ref=e908]
+            - link "Diz-Abled.com The Barnstormer - Disney World - Magic ..." [ref=e910]:
+              - /url: https://diz-abled.com/disney-world-rides-attractions/magic-kingdom-ride-and-attraction-descriptions/the-barnstormer-disney-world-magic-kingdom/
+              - generic [ref=e915]: Diz-Abled.com
+              - generic [ref=e917]: The Barnstormer - Disney World - Magic ...
+          - generic [ref=e918] [cursor=pointer]:
+            - heading "The Barnstormer (2026) - All You MUST ..." [level=3] [ref=e920]:
+              - button "The Barnstormer (2026) - All You MUST ..." [ref=e922]:
+                - img "The Barnstormer (2026) - All You MUST ..." [ref=e925]
+            - link "Tripadvisor The Barnstormer (2026) - All You MUST ..." [ref=e927]:
+              - /url: https://www.tripadvisor.com/Attraction_Review-g34515-d8563116-Reviews-The_Barnstormer-Orlando_Florida.html
+              - generic [ref=e932]: Tripadvisor
+              - generic [ref=e934]: The Barnstormer (2026) - All You MUST ...
+          - generic [ref=e935] [cursor=pointer]:
+            - 'heading "Magic Kingdom: The Barnstormer ..." [level=3] [ref=e937]':
+              - 'button "Magic Kingdom: The Barnstormer ..." [ref=e939]':
+                - 'img "Magic Kingdom: The Barnstormer ..." [ref=e942]'
+            - 'link "DisneyDayByDay Magic Kingdom: The Barnstormer ..." [ref=e944]':
+              - /url: https://www.disneydaybyday.com/magic-kingdom-the-barnstormer/
+              - generic [ref=e949]: DisneyDayByDay
+              - generic [ref=e951]: "Magic Kingdom: The Barnstormer ..."
+          - generic [ref=e952] [cursor=pointer]:
+            - heading "Magic Kingdom (An Attraction Guide ..." [level=3] [ref=e954]:
+              - button "Magic Kingdom (An Attraction Guide ..." [ref=e956]:
+                - img "Magic Kingdom (An Attraction Guide ..." [ref=e959]
+            - link "Resorts Gal Magic Kingdom (An Attraction Guide ..." [ref=e961]:
+              - /url: https://www.resortsgal.com/blog/barnstormer/
+              - generic [ref=e966]: Resorts Gal
+              - generic [ref=e968]: Magic Kingdom (An Attraction Guide ...
+          - generic [ref=e969] [cursor=pointer]:
+            - heading "The Barnstormer at Storybook Circus ..." [level=3] [ref=e971]:
+              - button "The Barnstormer at Storybook Circus ..." [ref=e973]:
+                - img "The Barnstormer at Storybook Circus ..." [ref=e976]
+            - link "yourfirstvisit.net The Barnstormer at Storybook Circus ..." [ref=e978]:
+              - /url: https://yourfirstvisit.net/2013/01/02/review-the-barnstormer-storybook-circus-magic-kingdom/
+              - generic [ref=e983]: yourfirstvisit.net
+              - generic [ref=e985]: The Barnstormer at Storybook Circus ...
+          - generic [ref=e986] [cursor=pointer]:
+            - heading "Barnstormer Starring The Great Goofini ..." [level=3] [ref=e988]:
+              - button "Barnstormer Starring The Great Goofini ..." [ref=e990]:
+                - img "Barnstormer Starring The Great Goofini ..." [ref=e993]
+            - link "Disney World Barnstormer Starring The Great Goofini ..." [ref=e995]:
+              - /url: https://disneyworld.disney.go.com/attractions/magic-kingdom/barnstormer-starring-great-goofini/
+              - generic [ref=e1000]: Disney World
+              - generic [ref=e1002]: Barnstormer Starring The Great Goofini ...
+          - generic [ref=e1003] [cursor=pointer]:
+            - heading "Barnstormer Goofy Roller Coaster ..." [level=3] [ref=e1005]:
+              - button "Barnstormer Goofy Roller Coaster ..." [ref=e1007]:
+                - img "Barnstormer Goofy Roller Coaster ..." [ref=e1010]
+            - link "Etsy Barnstormer Goofy Roller Coaster ..." [ref=e1012]:
+              - /url: https://www.etsy.com/listing/1161479025/barnstormer-goofy-roller-coaster
+              - generic [ref=e1017]: Etsy
+              - generic [ref=e1019]: Barnstormer Goofy Roller Coaster ...
+          - generic [ref=e1020]:
+            - heading "Related searches" [level=2] [ref=e1021]
+            - link "epcot disney world rides" [ref=e1022] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=epcot+disney+world+rides&stick=H4sIAAAAAAAAAFvEKpFakJxfopCSWZyXWqlQnl-Uk6JQlJmSWgwAeZFKnhsAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegQIMhAA
+              - generic [ref=e1027]: epcot disney world rides
+            - link "goofy barnstormer" [ref=e1028] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=goofy+barnstormer&stick=H4sIAAAAAAAAAFvEKpien59WqZCUWJRXXJJflJtaBADudwi0FAAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegQIMxAA
+              - generic [ref=e1033]: goofy barnstormer
+            - link "barnstormer ride magic kingdom" [ref=e1034] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=barnstormer+ride+magic+kingdom&stick=H4sIAAAAAAAAAFvEKpeUWJRXXJJflJtapFCUmZKqkJuYnpmskJ2Zl56SnwsACjg5SiEAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegQINBAA
+              - generic [ref=e1039]: barnstormer ride magic kingdom
+          - generic [ref=e1040] [cursor=pointer]:
+            - heading "Barnstormer Ride Review - Park Savers" [level=3] [ref=e1042]:
+              - button "Barnstormer Ride Review - Park Savers" [ref=e1044]:
+                - img "Barnstormer Ride Review - Park Savers" [ref=e1047]
+            - link "Park Savers Barnstormer Ride Review - Park Savers" [ref=e1049]:
+              - /url: https://www.parksavers.com/barnstormer-ride-review/
+              - generic [ref=e1054]: Park Savers
+              - generic [ref=e1056]: Barnstormer Ride Review - Park Savers
+          - generic [ref=e1057] [cursor=pointer]:
+            - heading "Barnstormer Roller Coaster in Magic Kingdom" [level=3] [ref=e1059]:
+              - button "Barnstormer Roller Coaster in Magic Kingdom" [ref=e1061]:
+                - img "Barnstormer Roller Coaster in Magic Kingdom" [ref=e1064]
+            - link "BlogMickey.com Barnstormer Roller Coaster in Magic Kingdom" [ref=e1066]:
+              - /url: https://blogmickey.com/2021/03/as-crowds-grow-disney-begins-loading-every-row-on-barnstormer-roller-coaster-in-magic-kingdom/
+              - generic [ref=e1071]: BlogMickey.com
+              - generic [ref=e1073]: Barnstormer Roller Coaster in Magic Kingdom
+          - generic [ref=e1074] [cursor=pointer]:
+            - heading "The Barnstormer at Magic Kingdom might ..." [level=3] [ref=e1076]:
+              - button "The Barnstormer at Magic Kingdom might ..." [ref=e1078]:
+                - img "The Barnstormer at Magic Kingdom might ..." [ref=e1081]
+            - link "Facebook The Barnstormer at Magic Kingdom might ..." [ref=e1083]:
+              - /url: https://www.facebook.com/madisondoesdisney/posts/the-barnstormer-at-magic-kingdom-might-just-be-the-perfect-first-roller-coaster-/703193732744280/
+              - generic [ref=e1088]: Facebook
+              - generic [ref=e1090]: The Barnstormer at Magic Kingdom might ...
+          - generic [ref=e1091] [cursor=pointer]:
+            - heading "Magic Kingdom at Walt Disney World ..." [level=3] [ref=e1093]:
+              - button "Magic Kingdom at Walt Disney World ..." [ref=e1095]:
+                - img "Magic Kingdom at Walt Disney World ..." [ref=e1098]
+            - link "Theme Park Review Magic Kingdom at Walt Disney World ..." [ref=e1100]:
+              - /url: https://www.themeparkreview.com/parks/p_116_2175_magic_kingdom_at_walt_disney_world_barnstormer
+              - generic [ref=e1105]: Theme Park Review
+              - generic [ref=e1107]: Magic Kingdom at Walt Disney World ...
+          - generic [ref=e1108] [cursor=pointer]:
+            - heading "The Barnstormer | Disney Discount ..." [level=3] [ref=e1110]:
+              - button "The Barnstormer | Disney Discount ..." [ref=e1112]:
+                - img "The Barnstormer | Disney Discount ..." [ref=e1115]
+            - link "Undercover Tourist The Barnstormer | Disney Discount ..." [ref=e1117]:
+              - /url: https://www.undercovertourist.com/orlando/magic-kingdom/barnstormer/
+              - generic [ref=e1122]: Undercover Tourist
+              - generic [ref=e1124]: The Barnstormer | Disney Discount ...
+          - generic [ref=e1125] [cursor=pointer]:
+            - heading "Barnstormer at Magic Kingdom Theme Park ..." [level=3] [ref=e1127]:
+              - button "Barnstormer at Magic Kingdom Theme Park ..." [ref=e1129]:
+                - img "Barnstormer at Magic Kingdom Theme Park ..." [ref=e1132]
+            - link "Magical Kingdoms Barnstormer at Magic Kingdom Theme Park ..." [ref=e1134]:
+              - /url: https://www.magicalkingdoms.com/wdw/parks/mk_barnstormer.html
+              - generic [ref=e1139]: Magical Kingdoms
+              - generic [ref=e1141]: Barnstormer at Magic Kingdom Theme Park ...
+          - generic [ref=e1142] [cursor=pointer]:
+            - heading "The Barnstormer - Disney World - Magic ..." [level=3] [ref=e1144]:
+              - button "The Barnstormer - Disney World - Magic ..." [ref=e1146]:
+                - img "The Barnstormer - Disney World - Magic ..." [ref=e1149]
+            - link "Diz-Abled.com The Barnstormer - Disney World - Magic ..." [ref=e1151]:
+              - /url: https://diz-abled.com/disney-world-rides-attractions/magic-kingdom-ride-and-attraction-descriptions/the-barnstormer-disney-world-magic-kingdom/
+              - generic [ref=e1156]: Diz-Abled.com
+              - generic [ref=e1158]: The Barnstormer - Disney World - Magic ...
+          - generic [ref=e1159] [cursor=pointer]:
+            - generic [ref=e1160]:
+              - heading "Barnstomer is a kids roller coaster ..." [level=3] [ref=e1161]:
+                - button "Barnstomer is a kids roller coaster ..." [ref=e1163]:
+                  - img "Barnstomer is a kids roller coaster ..." [ref=e1166]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Instagram Barnstomer is a kids roller coaster ..." [ref=e1168]:
+              - /url: https://www.instagram.com/reel/DQ4XWpCADdS/
+              - generic [ref=e1173]: Instagram
+              - generic [ref=e1175]: Barnstomer is a kids roller coaster ...
+          - generic [ref=e1176] [cursor=pointer]:
+            - heading "The Barnstormer Review" [level=3] [ref=e1178]:
+              - button "The Barnstormer Review" [ref=e1180]:
+                - img "The Barnstormer Review" [ref=e1183]
+            - link "Famvia Travel The Barnstormer Review" [ref=e1185]:
+              - /url: https://famvia.com/theme-parks/disney-world/reviews/the-barnstormer-review
+              - generic [ref=e1190]: Famvia Travel
+              - generic [ref=e1192]: The Barnstormer Review
+          - generic [ref=e1193] [cursor=pointer]:
+            - heading "The Barnstormer At Magic Kingdom" [level=3] [ref=e1195]:
+              - button "The Barnstormer At Magic Kingdom" [ref=e1197]:
+                - img "The Barnstormer At Magic Kingdom" [ref=e1200]
+            - link "buyandselldvc.com The Barnstormer At Magic Kingdom" [ref=e1202]:
+              - /url: https://buyandselldvc.com/2023/10/25/the-barnstormer-at-magic-kingdom/
+              - generic [ref=e1207]: buyandselldvc.com
+              - generic [ref=e1209]: The Barnstormer At Magic Kingdom
+          - generic [ref=e1210] [cursor=pointer]:
+            - heading "Barnstormer - Walt Disney World - Magic ..." [level=3] [ref=e1212]:
+              - button "Barnstormer - Walt Disney World - Magic ..." [ref=e1214]:
+                - img "Barnstormer - Walt Disney World - Magic ..." [ref=e1217]
+            - link "Roller Coaster DataBase Barnstormer - Walt Disney World - Magic ..." [ref=e1219]:
+              - /url: https://rcdb.com/274.htm
+              - generic [ref=e1224]: Roller Coaster DataBase
+              - generic [ref=e1226]: Barnstormer - Walt Disney World - Magic ...
+          - generic [ref=e1227] [cursor=pointer]:
+            - heading "THE BARNSTORMER - Updated March 2026 ..." [level=3] [ref=e1229]:
+              - button "THE BARNSTORMER - Updated March 2026 ..." [ref=e1231]:
+                - img "THE BARNSTORMER - Updated March 2026 ..." [ref=e1234]
+            - link "Yelp THE BARNSTORMER - Updated March 2026 ..." [ref=e1236]:
+              - /url: https://m.yelp.com/biz/the-barnstormer-orlando
+              - generic [ref=e1241]: Yelp
+              - generic [ref=e1243]: THE BARNSTORMER - Updated March 2026 ...
+          - generic [ref=e1244] [cursor=pointer]:
+            - 'heading "Magic Kingdom Roller Coasters: Your ..." [level=3] [ref=e1246]':
+              - 'button "Magic Kingdom Roller Coasters: Your ..." [ref=e1248]':
+                - 'img "Magic Kingdom Roller Coasters: Your ..." [ref=e1251]'
+            - 'link "Adventures in Pixie Dust Magic Kingdom Roller Coasters: Your ..." [ref=e1253]':
+              - /url: https://adventuresinpixiedust.com/magic-kingdom-roller-coasters/
+              - generic [ref=e1258]: Adventures in Pixie Dust
+              - generic [ref=e1260]: "Magic Kingdom Roller Coasters: Your ..."
+          - generic [ref=e1261] [cursor=pointer]:
+            - generic [ref=e1262]:
+              - heading "4K] The Barnstormer - Kid Friendly ..." [level=3] [ref=e1263]:
+                - button "4K] The Barnstormer - Kid Friendly ..." [ref=e1265]:
+                  - img "4K] The Barnstormer - Kid Friendly ..." [ref=e1268]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube 4K] The Barnstormer - Kid Friendly ..." [ref=e1270]:
+              - /url: https://www.youtube.com/watch?v=dGtTu_gMthY
+              - generic [ref=e1275]: YouTube
+              - generic [ref=e1277]: 4K] The Barnstormer - Kid Friendly ...
+          - generic [ref=e1278] [cursor=pointer]:
+            - 'heading "Yesterland: The Barnstormer at Goofy''s ..." [level=3] [ref=e1280]':
+              - 'button "Yesterland: The Barnstormer at Goofy''s ..." [ref=e1282]':
+                - 'img "Yesterland: The Barnstormer at Goofy''s ..." [ref=e1285]'
+            - 'link "Yesterland Yesterland: The Barnstormer at Goofy''s ..." [ref=e1287]':
+              - /url: https://www.yesterland.com/barnstormer.html
+              - generic [ref=e1292]: Yesterland
+              - generic [ref=e1294]: "Yesterland: The Barnstormer at Goofy's ..."
+          - generic [ref=e1295] [cursor=pointer]:
+            - heading "Best Disney World Roller Coasters Ranked" [level=3] [ref=e1297]:
+              - button "Best Disney World Roller Coasters Ranked" [ref=e1299]:
+                - img "Best Disney World Roller Coasters Ranked" [ref=e1302]
+            - link "Pixie Vacations Best Disney World Roller Coasters Ranked" [ref=e1304]:
+              - /url: https://pixievacations.com/best-disney-world-roller-coasters-ranked/
+              - generic [ref=e1309]: Pixie Vacations
+              - generic [ref=e1311]: Best Disney World Roller Coasters Ranked
+          - generic [ref=e1312] [cursor=pointer]:
+            - heading "Barnstormer (Walt Disney World ..." [level=3] [ref=e1314]:
+              - button "Barnstormer (Walt Disney World ..." [ref=e1316]:
+                - img "Barnstormer (Walt Disney World ..." [ref=e1319]
+            - link "Roller Coaster Wiki - Fandom Barnstormer (Walt Disney World ..." [ref=e1321]:
+              - /url: https://rollercoaster.fandom.com/wiki/Barnstormer_(Walt_Disney_World)
+              - generic [ref=e1326]: Roller Coaster Wiki - Fandom
+              - generic [ref=e1328]: Barnstormer (Walt Disney World ...
+          - generic [ref=e1329] [cursor=pointer]:
+            - heading "The Best Disney World Rides for Nervous ..." [level=3] [ref=e1331]:
+              - button "The Best Disney World Rides for Nervous ..." [ref=e1333]:
+                - img "The Best Disney World Rides for Nervous ..." [ref=e1336]
+            - link "Dad's Guide to WDW The Best Disney World Rides for Nervous ..." [ref=e1338]:
+              - /url: https://dadsguidetowdw.com/best-disney-world-rides-nervous-first-time-riders
+              - generic [ref=e1343]: Dad's Guide to WDW
+              - generic [ref=e1345]: The Best Disney World Rides for Nervous ...
+          - generic [ref=e1346] [cursor=pointer]:
+            - heading "Barnstormer (Magic Kingdom ..." [level=3] [ref=e1348]:
+              - button "Barnstormer (Magic Kingdom ..." [ref=e1350]:
+                - img "Barnstormer (Magic Kingdom ..." [ref=e1353]
+            - link "Coasterpedia Barnstormer (Magic Kingdom ..." [ref=e1355]:
+              - /url: https://coasterpedia.net/wiki/Barnstormer_(Magic_Kingdom)
+              - generic [ref=e1360]: Coasterpedia
+              - generic [ref=e1362]: Barnstormer (Magic Kingdom ...
+          - generic [ref=e1363] [cursor=pointer]:
+            - heading "Goofy's Barnstormer at the Magic Kingdom" [level=3] [ref=e1365]:
+              - button "Goofy's Barnstormer at the Magic Kingdom" [ref=e1367]:
+                - img "Goofy's Barnstormer at the Magic Kingdom" [ref=e1370]
+            - link "My Dreams of Disney Goofy's Barnstormer at the Magic Kingdom" [ref=e1372]:
+              - /url: https://mydreamsofdisney.com/pictures-in-the-park-goofys-barnstormer-at-the-magic-kingdom/
+              - generic [ref=e1377]: My Dreams of Disney
+              - generic [ref=e1379]: Goofy's Barnstormer at the Magic Kingdom
+          - generic [ref=e1380] [cursor=pointer]:
+            - heading "Barnstormer Roller Coaster in Magic Kingdom" [level=3] [ref=e1382]:
+              - button "Barnstormer Roller Coaster in Magic Kingdom" [ref=e1384]:
+                - img "Barnstormer Roller Coaster in Magic Kingdom" [ref=e1387]
+            - link "BlogMickey.com Barnstormer Roller Coaster in Magic Kingdom" [ref=e1389]:
+              - /url: https://blogmickey.com/2021/03/as-crowds-grow-disney-begins-loading-every-row-on-barnstormer-roller-coaster-in-magic-kingdom/
+              - generic [ref=e1394]: BlogMickey.com
+              - generic [ref=e1396]: Barnstormer Roller Coaster in Magic Kingdom
+          - generic [ref=e1397] [cursor=pointer]:
+            - heading "Barnstormer at Magic Kingdom Theme Park ..." [level=3] [ref=e1399]:
+              - button "Barnstormer at Magic Kingdom Theme Park ..." [ref=e1401]:
+                - img "Barnstormer at Magic Kingdom Theme Park ..." [ref=e1404]
+            - link "Magical Kingdoms Barnstormer at Magic Kingdom Theme Park ..." [ref=e1406]:
+              - /url: https://www.magicalkingdoms.com/wdw/parks/mk_barnstormer.html
+              - generic [ref=e1411]: Magical Kingdoms
+              - generic [ref=e1413]: Barnstormer at Magic Kingdom Theme Park ...
+          - generic [ref=e1414] [cursor=pointer]:
+            - 'heading "Magic Kingdom: The Barnstormer ..." [level=3] [ref=e1416]':
+              - 'button "Magic Kingdom: The Barnstormer ..." [ref=e1418]':
+                - 'img "Magic Kingdom: The Barnstormer ..." [ref=e1421]'
+            - 'link "DisneyDayByDay Magic Kingdom: The Barnstormer ..." [ref=e1423]':
+              - /url: https://www.disneydaybyday.com/magic-kingdom-the-barnstormer/
+              - generic [ref=e1428]: DisneyDayByDay
+              - generic [ref=e1430]: "Magic Kingdom: The Barnstormer ..."
+          - generic [ref=e1431] [cursor=pointer]:
+            - heading "Great Goofini ..." [level=3] [ref=e1433]:
+              - button "Great Goofini ..." [ref=e1435]:
+                - img "Great Goofini ..." [ref=e1438]
+            - link "Touring Plans Great Goofini ..." [ref=e1440]:
+              - /url: https://touringplans.com/blog/five-things-to-know-about-the-barnstormer-starring-the-great-goofini/
+              - generic [ref=e1445]: Touring Plans
+              - generic [ref=e1447]: Great Goofini ...
+          - generic [ref=e1448]:
+            - heading "Related searches" [level=2] [ref=e1449]
+            - link "the barnstormer at goofy's wiseacre farm" [ref=e1450] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=the+barnstormer+at+goofy's+wiseacre+farm&stick=H4sIAAAAAAAAAFvEqlGSkaqQlFiUV1ySX5SbWqSQWKKQnp-fVqlerFCeWZyamFyUqpCWWJQLAD5j7R4rAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegUIgAEQAA
+              - generic [ref=e1455]: the barnstormer at goofy's wiseacre farm
+            - link "the barnstormer disney" [ref=e1456] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=the+barnstormer+disney&stick=H4sIAAAAAAAAAFvEKlaSkaqQlFiUV1ySX5SbWqSQklmcl1oJAEJojlwZAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegUIhAEQAA
+              - generic [ref=e1461]: the barnstormer disney
+            - link "magic kingdom rides orlando" [ref=e1462] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=magic+kingdom+rides+orlando&stick=H4sIAAAAAAAAAFvEKp2bmJ6ZrJCdmZeekp-rUJSZklqskF-Uk5iXkg8A0urAZR4AAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegUIhwEQAA
+              - generic [ref=e1467]: magic kingdom rides orlando
+          - generic [ref=e1468] [cursor=pointer]:
+            - heading "Barnstomer is a kids roller coaster ..." [level=3] [ref=e1470]:
+              - button "Barnstomer is a kids roller coaster ..." [ref=e1472]:
+                - img "Barnstomer is a kids roller coaster ..." [ref=e1475]
+            - link "Instagram Barnstomer is a kids roller coaster ..." [ref=e1477]:
+              - /url: https://www.instagram.com/reel/DQ4XWpCADdS/
+              - generic [ref=e1482]: Instagram
+              - generic [ref=e1484]: Barnstomer is a kids roller coaster ...
+          - generic [ref=e1485] [cursor=pointer]:
+            - heading "The Barnstormer – Sensory Kids Guide" [level=3] [ref=e1487]:
+              - button "The Barnstormer – Sensory Kids Guide" [ref=e1489]:
+                - img "The Barnstormer – Sensory Kids Guide" [ref=e1492]
+            - link "Sensory Kids Guide The Barnstormer – Sensory Kids Guide" [ref=e1494]:
+              - /url: https://sensorykidsguide.com/the-barnstormer/
+              - generic [ref=e1499]: Sensory Kids Guide
+              - generic [ref=e1501]: The Barnstormer – Sensory Kids Guide
+          - generic [ref=e1502] [cursor=pointer]:
+            - generic [ref=e1503]:
+              - heading "The Barnstormer Roller Coaster at Magic ..." [level=3] [ref=e1504]:
+                - button "The Barnstormer Roller Coaster at Magic ..." [ref=e1506]:
+                  - img "The Barnstormer Roller Coaster at Magic ..." [ref=e1509]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Dreamstime.com The Barnstormer Roller Coaster at Magic ..." [ref=e1511]:
+              - /url: https://www.dreamstime.com/barnstormer-roller-coaster-magic-kingdom-park-walt-disney-world-orlando-florida-usa-barnstormer-roller-coaster-image270876245
+              - generic [ref=e1516]: Dreamstime.com
+              - generic [ref=e1518]: The Barnstormer Roller Coaster at Magic ...
+          - generic [ref=e1519] [cursor=pointer]:
+            - heading "The Barnstormer Review" [level=3] [ref=e1521]:
+              - button "The Barnstormer Review" [ref=e1523]:
+                - img "The Barnstormer Review" [ref=e1526]
+            - link "Famvia Travel The Barnstormer Review" [ref=e1528]:
+              - /url: https://famvia.com/theme-parks/disney-world/reviews/the-barnstormer-review
+              - generic [ref=e1533]: Famvia Travel
+              - generic [ref=e1535]: The Barnstormer Review
+          - generic [ref=e1536] [cursor=pointer]:
+            - heading "TRON Coaster Track in Magic Kingdom ..." [level=3] [ref=e1538]:
+              - button "TRON Coaster Track in Magic Kingdom ..." [ref=e1540]:
+                - img "TRON Coaster Track in Magic Kingdom ..." [ref=e1543]
+            - link "Ziggy Knows Disney TRON Coaster Track in Magic Kingdom ..." [ref=e1545]:
+              - /url: https://ziggyknowsdisney.com/tron-coaster-track-installation/
+              - generic [ref=e1550]: Ziggy Knows Disney
+              - generic [ref=e1552]: TRON Coaster Track in Magic Kingdom ...
+          - generic [ref=e1553] [cursor=pointer]:
+            - generic [ref=e1554]:
+              - heading "Barnstormer (On-Ride) Magic Kingdom ..." [level=3] [ref=e1555]:
+                - button "Barnstormer (On-Ride) Magic Kingdom ..." [ref=e1557]:
+                  - img "Barnstormer (On-Ride) Magic Kingdom ..." [ref=e1560]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Barnstormer (On-Ride) Magic Kingdom ..." [ref=e1562]:
+              - /url: https://www.youtube.com/watch?v=rqlgTT1S6II
+              - generic [ref=e1567]: YouTube
+              - generic [ref=e1569]: Barnstormer (On-Ride) Magic Kingdom ...
+          - generic [ref=e1570] [cursor=pointer]:
+            - heading "Walt Disney World - Magic Kingdom" [level=3] [ref=e1572]:
+              - button "Walt Disney World - Magic Kingdom" [ref=e1574]:
+                - img "Walt Disney World - Magic Kingdom" [ref=e1577]
+            - link "Coaster Gallery Walt Disney World - Magic Kingdom" [ref=e1579]:
+              - /url: https://www.coastergallery.com/disney-parks/walt-disney-world.html
+              - generic [ref=e1584]: Coaster Gallery
+              - generic [ref=e1586]: Walt Disney World - Magic Kingdom
+          - generic [ref=e1587] [cursor=pointer]:
+            - heading "Complete Guide to The Barnstormer - WDW ..." [level=3] [ref=e1589]:
+              - button "Complete Guide to The Barnstormer - WDW ..." [ref=e1591]:
+                - img "Complete Guide to The Barnstormer - WDW ..." [ref=e1594]
+            - link "WDW Prep School Complete Guide to The Barnstormer - WDW ..." [ref=e1596]:
+              - /url: https://wdwprepschool.com/barnstormer/
+              - generic [ref=e1601]: WDW Prep School
+              - generic [ref=e1603]: Complete Guide to The Barnstormer - WDW ...
+          - generic [ref=e1604] [cursor=pointer]:
+            - heading "Barnstormer Starring The Great Goofini ..." [level=3] [ref=e1606]:
+              - button "Barnstormer Starring The Great Goofini ..." [ref=e1608]:
+                - img "Barnstormer Starring The Great Goofini ..." [ref=e1611]
+            - link "Disney World Barnstormer Starring The Great Goofini ..." [ref=e1613]:
+              - /url: https://disneyworld.disney.go.com/attractions/magic-kingdom/barnstormer-starring-great-goofini/
+              - generic [ref=e1618]: Disney World
+              - generic [ref=e1620]: Barnstormer Starring The Great Goofini ...
+          - generic [ref=e1621] [cursor=pointer]:
+            - heading "Magic Kingdom at Walt Disney World ..." [level=3] [ref=e1623]:
+              - button "Magic Kingdom at Walt Disney World ..." [ref=e1625]:
+                - img "Magic Kingdom at Walt Disney World ..." [ref=e1628]
+            - link "Theme Park Review Magic Kingdom at Walt Disney World ..." [ref=e1630]:
+              - /url: https://www.themeparkreview.com/parks/p_116_2175_magic_kingdom_at_walt_disney_world_barnstormer
+              - generic [ref=e1635]: Theme Park Review
+              - generic [ref=e1637]: Magic Kingdom at Walt Disney World ...
+          - generic [ref=e1638] [cursor=pointer]:
+            - heading "Barnstormer Ride Review - Park Savers" [level=3] [ref=e1640]:
+              - button "Barnstormer Ride Review - Park Savers" [ref=e1642]:
+                - img "Barnstormer Ride Review - Park Savers" [ref=e1645]
+            - link "Park Savers Barnstormer Ride Review - Park Savers" [ref=e1647]:
+              - /url: https://www.parksavers.com/barnstormer-ride-review/
+              - generic [ref=e1652]: Park Savers
+              - generic [ref=e1654]: Barnstormer Ride Review - Park Savers
+          - generic [ref=e1655] [cursor=pointer]:
+            - heading "Magic Kingdom Roller Coasters ..." [level=3] [ref=e1657]:
+              - button "Magic Kingdom Roller Coasters ..." [ref=e1659]:
+                - img "Magic Kingdom Roller Coasters ..." [ref=e1662]
+            - link "Family Travel Magazine Magic Kingdom Roller Coasters ..." [ref=e1664]:
+              - /url: https://www.familytravelmagazine.com/guide-to-the-magic-kingdom-roller-coasters/
+              - generic [ref=e1669]: Family Travel Magazine
+              - generic [ref=e1671]: Magic Kingdom Roller Coasters ...
+          - generic [ref=e1672] [cursor=pointer]:
+            - heading "The Barnstormer Overview | Magic ..." [level=3] [ref=e1674]:
+              - button "The Barnstormer Overview | Magic ..." [ref=e1676]:
+                - img "The Barnstormer Overview | Magic ..." [ref=e1679]
+            - link "DVC Shop The Barnstormer Overview | Magic ..." [ref=e1681]:
+              - /url: https://dvcshop.com/the-barnstormer-overview/
+              - generic [ref=e1686]: DVC Shop
+              - generic [ref=e1688]: The Barnstormer Overview | Magic ...
+          - generic [ref=e1689] [cursor=pointer]:
+            - heading "Walt Disney World - Magic Kingdom" [level=3] [ref=e1691]:
+              - button "Walt Disney World - Magic Kingdom" [ref=e1693]:
+                - img "Walt Disney World - Magic Kingdom" [ref=e1696]
+            - link "Coaster Gallery Walt Disney World - Magic Kingdom" [ref=e1698]:
+              - /url: https://www.coastergallery.com/disney-parks/walt-disney-world.html
+              - generic [ref=e1703]: Coaster Gallery
+              - generic [ref=e1705]: Walt Disney World - Magic Kingdom
+          - generic [ref=e1706] [cursor=pointer]:
+            - heading "The Barnstormer at WDW's Magic Kingdom ..." [level=3] [ref=e1708]:
+              - button "The Barnstormer at WDW's Magic Kingdom ..." [ref=e1710]:
+                - img "The Barnstormer at WDW's Magic Kingdom ..." [ref=e1713]
+            - link "Military Disney Tips The Barnstormer at WDW's Magic Kingdom ..." [ref=e1715]:
+              - /url: https://www.militarydisneytips.com/blog/walt-disney-world-theme-parks/magic-kingdom/the-barnstormer-at-wdws-magic-kingdom/
+              - generic [ref=e1720]: Military Disney Tips
+              - generic [ref=e1722]: The Barnstormer at WDW's Magic Kingdom ...
+          - generic [ref=e1723] [cursor=pointer]:
+            - heading "Magic Kingdom (An Attraction Guide ..." [level=3] [ref=e1725]:
+              - button "Magic Kingdom (An Attraction Guide ..." [ref=e1727]:
+                - img "Magic Kingdom (An Attraction Guide ..." [ref=e1730]
+            - link "Resorts Gal Magic Kingdom (An Attraction Guide ..." [ref=e1732]:
+              - /url: https://www.resortsgal.com/blog/barnstormer/
+              - generic [ref=e1737]: Resorts Gal
+              - generic [ref=e1739]: Magic Kingdom (An Attraction Guide ...
+          - generic [ref=e1740] [cursor=pointer]:
+            - heading "Barnstormer In Walt Disney ..." [level=3] [ref=e1742]:
+              - button "Barnstormer In Walt Disney ..." [ref=e1744]:
+                - img "Barnstormer In Walt Disney ..." [ref=e1747]
+            - link "Historic Images Barnstormer In Walt Disney ..." [ref=e1749]:
+              - /url: https://historicimages.com/products/mva60091?srsltid=AfmBOopDJGUyZLVYi8tWoN7CDQMnlKXFXJbVFIZoe2IUjJXpfWbfx_VG
+              - generic [ref=e1754]: Historic Images
+              - generic [ref=e1756]: Barnstormer In Walt Disney ...
+          - generic [ref=e1757] [cursor=pointer]:
+            - heading "Magic Kingdom Roller Coaster ..." [level=3] [ref=e1759]:
+              - button "Magic Kingdom Roller Coaster ..." [ref=e1761]:
+                - img "Magic Kingdom Roller Coaster ..." [ref=e1764]
+            - link "Disney Food Blog Magic Kingdom Roller Coaster ..." [ref=e1766]:
+              - /url: https://www.disneyfoodblog.com/2024/05/13/our-mind-is-playing-tricks-on-us-because-this-magic-kingdom-roller-coaster-news-is-shocking/
+              - generic [ref=e1771]: Disney Food Blog
+              - generic [ref=e1773]: Magic Kingdom Roller Coaster ...
+          - generic [ref=e1774] [cursor=pointer]:
+            - heading "Disney World Roller Coasters ..." [level=3] [ref=e1776]:
+              - button "Disney World Roller Coasters ..." [ref=e1778]:
+                - img "Disney World Roller Coasters ..." [ref=e1781]
+            - link "ThemeParkHipster Disney World Roller Coasters ..." [ref=e1783]:
+              - /url: https://www.themeparkhipster.com/disney-world-roller-coasters/
+              - generic [ref=e1788]: ThemeParkHipster
+              - generic [ref=e1790]: Disney World Roller Coasters ...
+          - generic [ref=e1791] [cursor=pointer]:
+            - heading "Barnstormer - Walt Disney World - Magic ..." [level=3] [ref=e1793]:
+              - button "Barnstormer - Walt Disney World - Magic ..." [ref=e1795]:
+                - img "Barnstormer - Walt Disney World - Magic ..." [ref=e1798]
+            - link "Roller Coaster DataBase Barnstormer - Walt Disney World - Magic ..." [ref=e1800]:
+              - /url: https://rcdb.com/274.htm
+              - generic [ref=e1805]: Roller Coaster DataBase
+              - generic [ref=e1807]: Barnstormer - Walt Disney World - Magic ...
+          - generic [ref=e1808] [cursor=pointer]:
+            - heading "Great Goofini ..." [level=3] [ref=e1810]:
+              - button "Great Goofini ..." [ref=e1812]:
+                - img "Great Goofini ..." [ref=e1815]
+            - link "Touring Plans Great Goofini ..." [ref=e1817]:
+              - /url: https://touringplans.com/blog/five-things-to-know-about-the-barnstormer-starring-the-great-goofini/
+              - generic [ref=e1822]: Touring Plans
+              - generic [ref=e1824]: Great Goofini ...
+          - generic [ref=e1825] [cursor=pointer]:
+            - heading "How about the Barnstormer, must-do or ..." [level=3] [ref=e1827]:
+              - button "How about the Barnstormer, must-do or ..." [ref=e1829]:
+                - img "How about the Barnstormer, must-do or ..." [ref=e1832]
+            - link "Facebook How about the Barnstormer, must-do or ..." [ref=e1834]:
+              - /url: https://www.facebook.com/disneyimagemakers/posts/how-about-the-barnstormer-must-do-or-just-for-the-kiddies-eric-wdw-waltdisneywor/1111831207771289/
+              - generic [ref=e1839]: Facebook
+              - generic [ref=e1841]: How about the Barnstormer, must-do or ...
+          - generic [ref=e1842] [cursor=pointer]:
+            - heading "Magic Kingdom (An Attraction Guide ..." [level=3] [ref=e1844]:
+              - button "Magic Kingdom (An Attraction Guide ..." [ref=e1846]:
+                - img "Magic Kingdom (An Attraction Guide ..." [ref=e1849]
+            - link "Resorts Gal Magic Kingdom (An Attraction Guide ..." [ref=e1851]:
+              - /url: https://www.resortsgal.com/blog/barnstormer/
+              - generic [ref=e1856]: Resorts Gal
+              - generic [ref=e1858]: Magic Kingdom (An Attraction Guide ...
+          - generic [ref=e1859] [cursor=pointer]:
+            - heading "Barnstormer Roller Coaster in Magic Kingdom" [level=3] [ref=e1861]:
+              - button "Barnstormer Roller Coaster in Magic Kingdom" [ref=e1863]:
+                - img "Barnstormer Roller Coaster in Magic Kingdom" [ref=e1866]
+            - link "BlogMickey.com Barnstormer Roller Coaster in Magic Kingdom" [ref=e1868]:
+              - /url: https://blogmickey.com/2021/03/as-crowds-grow-disney-begins-loading-every-row-on-barnstormer-roller-coaster-in-magic-kingdom/
+              - generic [ref=e1873]: BlogMickey.com
+              - generic [ref=e1875]: Barnstormer Roller Coaster in Magic Kingdom
+          - generic [ref=e1876]:
+            - heading "Related searches" [level=2] [ref=e1877]
+            - link "barnstormer ride disney" [ref=e1878] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=barnstormer+ride+disney&stick=H4sIAAAAAAAAAFvEKp6UWJRXXJJflJtapFCUmZKqkJJZnJdaCQDO-jpiGgAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegQIVhAA
+              - generic [ref=e1883]: barnstormer ride disney
+            - link "roller coaster magic kingdom rides" [ref=e1884] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=roller+coaster+magic+kingdom+rides&stick=H4sIAAAAAAAAAFvEqlSUn5OTWqSQnJ9YXAKkcxPTM5MVsjPz0lPycxWKMlNSiwF_fJk5JQAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegQIWBAA
+              - generic [ref=e1889]: roller coaster magic kingdom rides
+            - link "space mountain magic kingdom" [ref=e1890] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n50uYQS2XkJi12g03UsN95Wzq9MUw:1774403758951&q=space+mountain+magic+kingdom&stick=H4sIAAAAAAAAAFvEKlNckJicqpCbX5pXkpiZp5CbmJ6ZrJCdmZeekp8LAEmJDsMfAAAA&source=univ&sa=X&ved=2ahUKEwiS9_WN-bmTAxX2BbwBHeUoCXkQrNwCegQIWxAA
+              - generic [ref=e1895]: space mountain magic kingdom
+          - generic [ref=e1896] [cursor=pointer]:
+            - heading "Barnstormer Roller Coaster Ride POV ..." [level=3] [ref=e1898]:
+              - button "Barnstormer Roller Coaster Ride POV ..." [ref=e1900]:
+                - img "Barnstormer Roller Coaster Ride POV ..." [ref=e1903]
+            - link "YouTube Barnstormer Roller Coaster Ride POV ..." [ref=e1905]:
+              - /url: https://www.youtube.com/watch?v=UqDKXVzgsuk
+              - generic [ref=e1910]: YouTube
+              - generic [ref=e1912]: Barnstormer Roller Coaster Ride POV ...
+          - generic [ref=e1913] [cursor=pointer]:
+            - heading "Disney World Roller Coasters ..." [level=3] [ref=e1915]:
+              - button "Disney World Roller Coasters ..." [ref=e1917]:
+                - img "Disney World Roller Coasters ..." [ref=e1920]
+            - link "ThemeParkHipster Disney World Roller Coasters ..." [ref=e1922]:
+              - /url: https://www.themeparkhipster.com/disney-world-roller-coasters/
+              - generic [ref=e1927]: ThemeParkHipster
+              - generic [ref=e1929]: Disney World Roller Coasters ...
+          - generic [ref=e1930] [cursor=pointer]:
+            - heading "The Barnstormer (2026) - All You MUST ..." [level=3] [ref=e1932]:
+              - button "The Barnstormer (2026) - All You MUST ..." [ref=e1934]:
+                - img "The Barnstormer (2026) - All You MUST ..." [ref=e1937]
+            - link "Tripadvisor The Barnstormer (2026) - All You MUST ..." [ref=e1939]:
+              - /url: https://www.tripadvisor.com/Attraction_Review-g34515-d8563116-Reviews-The_Barnstormer-Orlando_Florida.html
+              - generic [ref=e1944]: Tripadvisor
+              - generic [ref=e1946]: The Barnstormer (2026) - All You MUST ...
+        - generic [ref=e1949]:
+          - heading "Page Navigation" [level=1] [ref=e1950]
+          - button "More results" [ref=e1951] [cursor=pointer]:
+            - generic [ref=e1952]:
+              - separator [ref=e1953]
+              - generic [ref=e1954]:
+                - generic [ref=e1955]: More results
+                - img [ref=e1957]
+      - navigation

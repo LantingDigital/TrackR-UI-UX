@@ -1,0 +1,1080 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Turn off continuous scrolling" [ref=e3] [cursor=pointer]:
+        - /url: "#"
+      - link "Accessibility help" [ref=e4] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en
+      - link "Accessibility feedback" [ref=e5] [cursor=pointer]
+  - generic [ref=e10]:
+    - search [ref=e11]:
+      - generic [ref=e13]:
+        - link "Go to Google Home" [ref=e15] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQPAgK
+          - img [ref=e16]
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - combobox "Search" [ref=e27]: Apocalypse Six Flags Magic Mountain wooden coaster Apocalypse Six Flags Magic Mountain wooden coaster
+            - generic [ref=e28]:
+              - button "Clear" [ref=e30] [cursor=pointer]:
+                - img [ref=e32]
+              - generic [ref=e35]:
+                - button "Search by voice" [ref=e36] [cursor=pointer]:
+                  - img [ref=e37]
+                - button "Search by image" [ref=e39] [cursor=pointer]:
+                  - img [ref=e40]
+          - button "Search" [ref=e42] [cursor=pointer]:
+            - img [ref=e45]
+    - generic [ref=e48]:
+      - button "Google apps" [ref=e50] [cursor=pointer]:
+        - img [ref=e51]
+      - 'button "Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e55] [cursor=pointer]':
+        - img [ref=e56]
+  - generic [ref=e58]:
+    - generic [ref=e61]:
+      - navigation [ref=e64]:
+        - generic [ref=e65]:
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - link "AI Mode" [ref=e70] [cursor=pointer]:
+                - /url: /search?q=Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&udm=50&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppLSe-qHSJ3n6gn3T6KgsGdZbodO4VrZGnMIQwASakfxqhCPaVVdRwo9wAeS7srAwv-vmhdHQQL0cP8ZB3pAFA9yT0Nh4pzEJkWdWj2FrNlof4GJIrVo3tOGfSiRnsU0d1dyWy7ceQ3b5y3D6iiE-UCdfN4O9_ookwcriQnELkNm8BFWTA0&aep=1&ntc=1&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQ2J8OegQICRAD
+                - generic [ref=e73]: AI Mode
+            - listitem [ref=e74]:
+              - link "All" [ref=e75] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&source=lnms&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppLSe-qHSJ3n6gn3T6KgsGdZbodO4VrZGnMIQwASakfxqhCPaVVdRwo9wAeS7srAwv-vmhdHQQL0cP8ZB3pAFA9yT0Nh4pzEJkWdWj2FrNlof4GJIrVo3tOGfSiRnsU0d1dyWy7ceQ3b5y3D6iiE-UCdfN4O9_ookwcriQnELkNm8BFWTA0&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQ0pQJegQIChAB
+                - generic [ref=e77]: All
+            - listitem [ref=e78]:
+              - link "Images" [disabled] [ref=e79]:
+                - generic [ref=e81]: Images
+            - listitem [ref=e82]:
+              - link "Videos" [ref=e83] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&udm=7&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppLSe-qHSJ3n6gn3T6KgsGdZbodO4VrZGnMIQwASakfxqhCPaVVdRwo9wAeS7srAwv-vmhdHQQL0cP8ZB3pAFA9yT0Nh4pzEJkWdWj2FrNlof4GJIrVo3tOGfSiRnsU0d1dyWy7ceQ3b5y3D6iiE-UCdfN4O9_ookwcriQnELkNm8BFWTA0&q=Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQtKgLegQIDxAB
+                - generic [ref=e85]: Videos
+            - listitem [ref=e86]:
+              - link "Shopping" [ref=e87] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&udm=28&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppLSe-qHSJ3n6gn3T6KgsGdZbodO4VrZGnMIQwASakfxqhCPaVVdRwo9wAeS7srAwv-vmhdHQQL0cP8ZB3pAFA9yT0Nh4pzEJkWdWj2FrNlof4GJIrVo3tOGfSiRnsU0d1dyWy7ceQ3b5y3D6iiE-UCdfN4O9_ookwcriQnELkNm8BFWTA0&q=Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&ved=1t:220175&ictx=111
+                - generic [ref=e89]: Shopping
+            - listitem [ref=e90]:
+              - link "Forums" [ref=e91] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&udm=18&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppLSe-qHSJ3n6gn3T6KgsGdZbodO4VrZGnMIQwASakfxqhCPaVVdRwo9wAeS7srAwv-vmhdHQQL0cP8ZB3pAFA9yT0Nh4pzEJkWdWj2FrNlof4GJIrVo3tOGfSiRnsU0d1dyWy7ceQ3b5y3D6iiE-UCdfN4O9_ookwcriQnELkNm8BFWTA0&q=Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQs6gLegQIDRAB
+                - generic [ref=e93]: Forums
+            - listitem [ref=e94]:
+              - link "Short videos" [ref=e95] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&udm=39&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppLSe-qHSJ3n6gn3T6KgsGdZbodO4VrZGnMIQwASakfxqhCPaVVdRwo9wAeS7srAwv-vmhdHQQL0cP8ZB3pAFA9yT0Nh4pzEJkWdWj2FrNlof4GJIrVo3tOGfSiRnsU0d1dyWy7ceQ3b5y3D6iiE-UCdfN4O9_ookwcriQnELkNm8BFWTA0&q=Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQs6gLegQICxAB
+                - generic [ref=e97]: Short videos
+            - listitem [ref=e98]:
+              - button "More filters" [ref=e99] [cursor=pointer]:
+                - generic "More filters" [ref=e100]:
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: More
+                    - img [ref=e104]
+          - button "Tools" [ref=e107] [cursor=pointer]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: Tools
+              - img [ref=e112]
+      - link "Saves" [ref=e115] [cursor=pointer]:
+        - /url: /save?sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQ7XV6BAgEEAA
+        - img [ref=e117]
+        - text: Saves
+    - navigation [ref=e120]:
+      - navigation [ref=e123]:
+        - list [ref=e131]:
+          - listitem [ref=e132]:
+            - link "Add Coaster enthusiasts" [ref=e133] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=coaster+enthusiasts+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-jKIEj2JllJopeCFtN2uDgGwl8ltuHvctboTKWOJkPxzAQAIOpC4IaWeGaU9ydZeOMOe2RD-CXBHYclJRmQgHDqz63NshQ2KFPHbOypMFkb3V9_QNNq7n0z9xDha9ekNIJKN_IQqe1-OwySLnDM5iAmFHS0FdzvuWs4jSM2l0S0icQ36PZYs7JDYEjrj8iDQr0XIZCg&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAB6BAgQEAE&ictx=0
+              - generic [ref=e139]: Coaster enthusiasts
+          - listitem [ref=e140]:
+            - link "Add Ride" [ref=e141] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=ride+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-K1fm-6MbHrVPgWC5v0Ha2n9U9Ztptizj09HsEdVT3Jt9ptTCbV7MLS8d7IGa-HsVmiqmFH2FaGi__E_tOYlx77QaxiSPLQgvcIBrfBODAqmasBWjseocT3U6ahC1P4xmjmoMH83lc5XvquVFVHRP0jB1FFYTxrybTIS8iM61bxNjh2bsANAwcwlU7MzhtRPM5e_lKA&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAF6BAgVEAE&ictx=0
+              - generic [ref=e147]: Ride
+          - listitem [ref=e148]:
+            - link "Add Terminator salvation" [ref=e149] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=terminator+salvation+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-zicBFwnMy5mp_ocYtJoMVjlAYKZmTVzCMaDcYSRJJYh4U20rxEAx7eS6Ts8VKHAc5R69CtqqIw_7jj1Z71uXEqMQePD7LmnK4Q9lL4jCP2Ari7Z4tPBTjAmk7s-X9Qpc2XXPx6Tm7rdz-nnXPVzFgxa7Hvp-588pB7MeeHfB58JAM21hafQypfybrbfXtWsucRj8fz7T6GBFXPEMqNHSAucsr8Y&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAJ6BAgUEAE&ictx=0
+              - generic [ref=e155]: Terminator salvation
+          - listitem [ref=e156]:
+            - link "Add Apocalypse ride" [ref=e157] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+ride+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-8-RZjPtuKxwBHaQJAUAEMjNHTs6UcjBdo96t5Adxyd_lOGkVtP9zirhJsNDxXuNBaBHug7CjjBLGI-K2muqwIw9pnBuNocSprSIheSCGANZ9xkAt3akyQ4fK02UR7N464uiHJyWUUZhGOpmt8jL_Xds9mDBJ1AjfE78vzHwOLv0os2lUooPJ0Azowiwj01GqI-p_Wg&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAN6BAgSEAE&ictx=0
+              - generic [ref=e163]: Apocalypse ride
+          - listitem [ref=e164]:
+            - link "Add Jeremy thompson" [ref=e165] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=jeremy+thompson+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-8-RZjPtuKxwBHaQJAUAEMjNHTs6UcjBdo96t5Adxyd_lOGkVtP9zirhJsNDxXuNBaBHug7CjjBLGI-K2muqwI0TLhdfr2qePI-jtCKVjobxNLg5xhrNono2pgj20UEapPz8IP98W7fhwFLJu5eFLb_H2Ts6p_hEqRlp3grByqvwoqTryjTrOHZQQLm8lXzpbChcH5g&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAR6BAgTEAE&ictx=0
+              - generic [ref=e171]: Jeremy thompson
+          - listitem [ref=e1959]:
+            - link "Add Trains" [ref=e1960] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=trains+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-vtWgw14fk27IASKBwlXbuCLndI9qUTCmwtk8hhkIiSf5NyWeQBUGznTkz8KelidmZMudcMpWs4SQjfvuHNeNY3Bu5VOsOnJXBWefWov1ap99lYLtWkpbdeg2yuNU-SZeEwr2KD7doCI05dJ579NKuX57Q5Djnj7WL1mrjrrNkHLEF24vJkxGJHkksvvEJf1u1uRiWg&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAV6BQiZARAB&ictx=0
+              - generic [ref=e1966]: Trains
+          - listitem [ref=e1967]:
+            - link "Add Amusement" [ref=e1968] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=amusement+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-9374Zu-0QADT4DIeY78kEtkVTrsd8EIxiKfsw2d7wepLjqTBiWGJzQmo_astSns2toQXjN2ssxmIPAjR0Hl_3D6qdUh4FdZd1RfX2gEnnrGhYITdSKqa-Cui9wjNxnNc-ofOfjKeOLcSFb3dtw8BsqIioDFfLb6xs6hSc6LFmmVBH2NTtzRaZTpO20KZqWXrdS2mdg&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAZ6BQiYARAB&ictx=0
+              - generic [ref=e1974]: Amusement
+          - listitem [ref=e1975]:
+            - link "Add Wikimedia" [ref=e1976] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=wikimedia+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-9374Zu-0QADT4DIeY78kEtkVTrsd8EIxiKfsw2d7wepLjqTBiWGJzQmo_astSns2toQXjN2ssxmIPAjR0Hl_3IcuvabC9uc4jySaVJI6InFLOEmbuHNGMNY5IMlPat11zQHj84Bzb1QphsrAfZMc39GZAof-9r5xFTIvGsrrSo78JeHoSe508z9QVYMNxKKO2LHTJA&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAd6BQiXARAB&ictx=0
+              - generic [ref=e1982]: Wikimedia
+          - listitem [ref=e1983]:
+            - link "Add Theme park" [ref=e1984] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=theme+park+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-gLuHRcRFUipoqN-2EifHx1Qs5e3o1zATYFMgqshwg6zjcIOn_xiBE6CAr0XRayFs165bOaAda_-9Q7-Mr8Z5UekBu7zttkW3oz0qXrJ6qbAKtv1KCYtFTijDtSpIkVca9J-lkdWMUXJsbnbSYKD1BWhTHsoDt_n10njNgfRNPQbt_XjYzOGSj9RPZqnJx-n3PrsMRQ&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAh6BQiWARAB&ictx=0
+              - generic [ref=e1990]: Theme park
+          - listitem [ref=e1991]:
+            - link "Add Apocalypse sfmm" [ref=e1992] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+sfmm+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-8-RZjPtuKxwBHaQJAUAEMjNHTs6UcjBdo96t5Adxyd_lOGkVtP9zirhJsNDxXuNBaBHug7CjjBLGI-K2muqwIw9pnBuNocSprSIheSCGANYGgF5LrAhW1GWSEnnJxoxPPq3Z0OgaMC8YXkwS2OVbqU-whuIv_b6kd9HMDOrbU6okxH2yey1p9l6ySmrjvLqfUURKjw&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAl6BQiQARAB&ictx=0
+              - generic [ref=e1998]: Apocalypse sfmm
+          - listitem [ref=e1999]:
+            - link "Add Themepark" [ref=e2000] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=themepark+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-9374Zu-0QADT4DIeY78kEtkVTrsd8EIxiKfsw2d7wepLjqTBiWGJzQmo_astSns2toQXjN2ssxmIPAjR0Hl_3NGk8nx1pY6U89iSN6jtyOCA3a9gJluuYjNG77RpgEM1NFIes3j968a_pur6j6j0_tgV5z8fHyg-vcs2271L73oH5cHTxxqa5DOeQVJ93AAFT5eW3A&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAp6BQiUARAB&ictx=0
+              - generic [ref=e2006]: Themepark
+          - listitem [ref=e2007]:
+            - link "Add Amusement park" [ref=e2008] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=amusement+park+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c--j-8-rgrpNPCZhmSlXPgOLTffiqwW8iEBCV_yEdDmTnUuJKu4FG1hDlWeUnKV-0juB5WGDkmy06UzT2lv1D7872l0tKhN6cSfCfq0eNRpzPg6tDtMQ87dCEaXtDRFoBt_R99dgVfbXUGgEep4rEB327lIjLtJl2RiLwiqzZPTZHmM_fUxG9I8YoCNJ5J0gd2_eUEzA&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAt6BQiVARAB&ictx=0
+              - generic [ref=e2014]: Amusement park
+          - listitem [ref=e2015]:
+            - link "Add The ride" [ref=e2016] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=the+ride+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-Gu3cGWeU3vmo5LM_mPcpU-4AWji201j3pw438Co-7DQ1E9m3LdQR8_PggR05sxsCckATmmLAE6OialfzqHD3D8aaPgwta3IHdrUqX3Tru1ZxClUYu2nVmWPDurFxWtmaBZc0r3D9We2ciFr7HbNc9MTotm1Wd4owdtJTVhjasXMWwRRQKlD3Zrd7Bc3nfqwwwV7KMw&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKAx6BQiPARAB&ictx=0
+              - generic [ref=e2022]: The ride
+          - listitem [ref=e2023]:
+            - link "Add File apocalypse" [ref=e2024] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=file+apocalypse+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-8-RZjPtuKxwBHaQJAUAEMjNHTs6UcjBdo96t5Adxyd_lOGkVtP9zirhJsNDxXuNBaBHug7CjjBLGI-K2muqwI7Hflle7ZiubBxq-_VLptvPQmJOsAh62NRNQa9GJSKzRlfQbvRwpYfOT-ilTo4S6OUypqUCHgZhHHhZybBkRn_LaQvMqW2LlV_FdvzdVIZS7k7IkHw&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKA16BQiTARAB&ictx=0
+              - generic [ref=e2026]: File apocalypse
+          - listitem [ref=e2027]:
+            - link "Add Themepark amusementpark" [ref=e2028] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=themepark+amusementpark+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-MqDTgsF8-PzkvxWOh-0X3iDgAhBuCNfMpwvw6ocJlp3V5D2Rg8kloobZomVvUMsHiJ_XDLL_sN1BBf_0UtxJ9VSsfzoFnXq3ob6oxhwVEYgQtGmpMOKvwj8qxKJu-ge9HJrytr773oXJzpfQ2-z_hk8UZR7aKh1DiGakUy26WeYbuQMSiy-2xNCPDS4ZtQwKQfMOkef8SHf92KbHDCVrw_3VCOA&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKA56BQiSARAB&ictx=0
+              - generic [ref=e2034]: Themepark amusementpark
+          - listitem [ref=e2035]:
+            - link "Add Coaster studios" [ref=e2036] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=coaster+studios+Apocalypse+Six+Flags+Magic+Mountain+wooden+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-8-RZjPtuKxwBHaQJAUAEMjNHTs6UcjBdo96t5Adxyd_lOGkVtP9zirhJsNDxXuNBaBHug7CjjBLGI-K2muqwI5aP1DS5XbFCRCOJshbd17HELEAO2hN-byLWtqfd1CpdFJ9ybUq3pbQi5SyLkk9a5v8NNF8OCond2zurlHzT2_3ut1fiys-YJKDOh1PXS5SONL0TTQ&udm=2&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQxKsJKA96BQiRARAB&ictx=0
+              - generic [ref=e2042]: Coaster studios
+    - heading "Search Results" [level=1] [ref=e172]
+    - main [ref=e174]:
+      - generic [ref=e180]:
+        - generic [ref=e183]:
+          - generic [ref=e184] [cursor=pointer]:
+            - heading "Apocalypse, Six Flags Magic Mountain ..." [level=3] [ref=e186]:
+              - button "Apocalypse, Six Flags Magic Mountain ..." [ref=e188]:
+                - img "Apocalypse, Six Flags Magic Mountain ..." [ref=e191]
+            - link "Reddit Apocalypse, Six Flags Magic Mountain ..." [ref=e193]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/rgr7ry/apocalypse_six_flags_magic_mountain_is_a_solid/
+              - generic [ref=e198]: Reddit
+              - generic [ref=e200]: Apocalypse, Six Flags Magic Mountain ...
+          - generic [ref=e201] [cursor=pointer]:
+            - generic [ref=e202]:
+              - heading "Apocalypse Review Six Flags Magic ..." [level=3] [ref=e203]:
+                - button "Apocalypse Review Six Flags Magic ..." [ref=e205]:
+                  - img "Apocalypse Review Six Flags Magic ..." [ref=e208]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Apocalypse Review Six Flags Magic ..." [ref=e210]:
+              - /url: https://www.youtube.com/watch?v=nLYDfj2ZHZU
+              - generic [ref=e215]: YouTube
+              - generic [ref=e217]: Apocalypse Review Six Flags Magic ...
+          - generic [ref=e218] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain - Apocalypse ..." [level=3] [ref=e220]:
+              - button "Six Flags Magic Mountain - Apocalypse ..." [ref=e222]:
+                - img "Six Flags Magic Mountain - Apocalypse ..." [ref=e225]
+            - link "Six Flags Six Flags Magic Mountain - Apocalypse ..." [ref=e227]:
+              - /url: https://www.sixflags.com/magicmountain/attractions/apocalypse
+              - generic [ref=e232]: Six Flags
+              - generic [ref=e234]: Six Flags Magic Mountain - Apocalypse ...
+          - generic [ref=e235] [cursor=pointer]:
+            - 'heading "Apocalypse: The Ride - Wikipedia" [level=3] [ref=e237]':
+              - 'button "Apocalypse: The Ride - Wikipedia" [ref=e239]':
+                - 'img "Apocalypse: The Ride - Wikipedia" [ref=e242]'
+            - 'link "Wikipedia Apocalypse: The Ride - Wikipedia" [ref=e244]':
+              - /url: https://en.wikipedia.org/wiki/Apocalypse:_The_Ride
+              - generic [ref=e249]: Wikipedia
+              - generic [ref=e251]: "Apocalypse: The Ride - Wikipedia"
+          - generic [ref=e252] [cursor=pointer]:
+            - generic [ref=e253]:
+              - heading "Six Flags Magic Mountain ..." [level=3] [ref=e254]:
+                - button "Six Flags Magic Mountain ..." [ref=e256]:
+                  - img "Six Flags Magic Mountain ..." [ref=e259]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Six Flags Magic Mountain ..." [ref=e261]:
+              - /url: https://www.youtube.com/watch?v=D7XckX2ui2s
+              - generic [ref=e266]: YouTube
+              - generic [ref=e268]: Six Flags Magic Mountain ...
+          - generic [ref=e269] [cursor=pointer]:
+            - heading "Apocalypse (Six Flags Magic Mountain ..." [level=3] [ref=e271]:
+              - button "Apocalypse (Six Flags Magic Mountain ..." [ref=e273]:
+                - img "Apocalypse (Six Flags Magic Mountain ..." [ref=e276]
+            - link "Six Flags Wiki Six Flags Wiki - Fandom Apocalypse (Six Flags Magic Mountain ..." [ref=e278]:
+              - /url: https://sixflags.fandom.com/wiki/Apocalypse_(Six_Flags_Magic_Mountain)
+              - generic [ref=e283]: Six Flags Wiki Six Flags Wiki - Fandom
+              - generic [ref=e285]: Apocalypse (Six Flags Magic Mountain ...
+          - generic [ref=e286] [cursor=pointer]:
+            - generic [ref=e287]:
+              - heading "Six Flags Magic Mountain ..." [level=3] [ref=e288]:
+                - button "Six Flags Magic Mountain ..." [ref=e290]:
+                  - img "Six Flags Magic Mountain ..." [ref=e293]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok Six Flags Magic Mountain ..." [ref=e295]:
+              - /url: https://www.tiktok.com/@that_coasterdude/video/7258021252063956267
+              - generic [ref=e300]: TikTok
+              - generic [ref=e302]: Six Flags Magic Mountain ...
+          - generic [ref=e303] [cursor=pointer]:
+            - heading "The Ride is a wooden roller coaster ..." [level=3] [ref=e305]:
+              - button "The Ride is a wooden roller coaster ..." [ref=e307]:
+                - img "The Ride is a wooden roller coaster ..." [ref=e310]
+            - link "Facebook The Ride is a wooden roller coaster ..." [ref=e312]:
+              - /url: https://www.facebook.com/100083370039408/posts/apocalypse-the-ride-is-a-wooden-roller-coaster-located-at-six-flags-magic-mounta/623213040467692/
+              - generic [ref=e317]: Facebook
+              - generic [ref=e319]: The Ride is a wooden roller coaster ...
+          - generic [ref=e320] [cursor=pointer]:
+            - 'heading "Terminator Salvation: The Ride ..." [level=3] [ref=e322]':
+              - 'button "Terminator Salvation: The Ride ..." [ref=e324]':
+                - 'img "Terminator Salvation: The Ride ..." [ref=e327]'
+            - 'link "Terminator Wiki - Fandom Terminator Salvation: The Ride ..." [ref=e329]':
+              - /url: https://terminator.fandom.com/wiki/Terminator_Salvation:_The_Ride
+              - generic [ref=e334]: Terminator Wiki - Fandom
+              - generic [ref=e336]: "Terminator Salvation: The Ride ..."
+          - generic [ref=e337] [cursor=pointer]:
+            - heading "Apocalypse the Ride • Six Flags Magic ..." [level=3] [ref=e339]:
+              - button "Apocalypse the Ride • Six Flags Magic ..." [ref=e341]:
+                - img "Apocalypse the Ride • Six Flags Magic ..." [ref=e344]
+            - link "Captain Coaster Apocalypse the Ride • Six Flags Magic ..." [ref=e346]:
+              - /url: https://captaincoaster.com/en/coasters/1633/six-flags-magic-mountain-apocalypse-the-ride
+              - generic [ref=e351]: Captain Coaster
+              - generic [ref=e353]: Apocalypse the Ride • Six Flags Magic ...
+          - generic [ref=e354] [cursor=pointer]:
+            - heading "Apocalypse (Six Flags Magic Mountain ..." [level=3] [ref=e356]:
+              - button "Apocalypse (Six Flags Magic Mountain ..." [ref=e358]:
+                - img "Apocalypse (Six Flags Magic Mountain ..." [ref=e361]
+            - link "Incrediblecoasters Apocalypse (Six Flags Magic Mountain ..." [ref=e363]:
+              - /url: https://www.incrediblecoasters.com/TerminatorPhotos.html
+              - generic [ref=e368]: Incrediblecoasters
+              - generic [ref=e370]: Apocalypse (Six Flags Magic Mountain ...
+          - generic [ref=e371] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain has been ..." [level=3] [ref=e373]:
+              - button "Six Flags Magic Mountain has been ..." [ref=e375]:
+                - img "Six Flags Magic Mountain has been ..." [ref=e378]
+            - link "Instagram Six Flags Magic Mountain has been ..." [ref=e380]:
+              - /url: https://www.instagram.com/p/DIw8w24o3lV/
+              - generic [ref=e385]: Instagram
+              - generic [ref=e387]: Six Flags Magic Mountain has been ...
+          - generic [ref=e388] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain - Apocalypse ..." [level=3] [ref=e390]:
+              - button "Six Flags Magic Mountain - Apocalypse ..." [ref=e392]:
+                - img "Six Flags Magic Mountain - Apocalypse ..." [ref=e395]
+            - link "Six Flags Six Flags Magic Mountain - Apocalypse ..." [ref=e397]:
+              - /url: https://www.sixflags.com/magicmountain/attractions/apocalypse
+              - generic [ref=e402]: Six Flags
+              - generic [ref=e404]: Six Flags Magic Mountain - Apocalypse ...
+          - generic [ref=e405] [cursor=pointer]:
+            - heading "Apocalypse at [Six Flags Magic Mountain ..." [level=3] [ref=e407]:
+              - button "Apocalypse at [Six Flags Magic Mountain ..." [ref=e409]:
+                - img "Apocalypse at [Six Flags Magic Mountain ..." [ref=e412]
+            - link "Reddit Apocalypse at [Six Flags Magic Mountain ..." [ref=e414]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/szvit3/onesixth_of_californias_wood_coaster_collection/
+              - generic [ref=e419]: Reddit
+              - generic [ref=e421]: Apocalypse at [Six Flags Magic Mountain ...
+          - generic [ref=e422] [cursor=pointer]:
+            - 'heading "Apocalypse: The Ride at Six Flags Magic ..." [level=3] [ref=e424]':
+              - 'button "Apocalypse: The Ride at Six Flags Magic ..." [ref=e426]':
+                - 'img "Apocalypse: The Ride at Six Flags Magic ..." [ref=e429]'
+            - 'link "Facebook Apocalypse: The Ride at Six Flags Magic ..." [ref=e431]':
+              - /url: https://www.facebook.com/groups/1658855161026331/posts/3724823584429468/
+              - generic [ref=e436]: Facebook
+              - generic [ref=e438]: "Apocalypse: The Ride at Six Flags Magic ..."
+          - generic [ref=e439] [cursor=pointer]:
+            - heading "Apocalypse the Ride • Six Flags Magic ..." [level=3] [ref=e441]:
+              - button "Apocalypse the Ride • Six Flags Magic ..." [ref=e443]:
+                - img "Apocalypse the Ride • Six Flags Magic ..." [ref=e446]
+            - link "Captain Coaster Apocalypse the Ride • Six Flags Magic ..." [ref=e448]:
+              - /url: https://captaincoaster.com/en/coasters/1633/six-flags-magic-mountain-apocalypse-the-ride
+              - generic [ref=e453]: Captain Coaster
+              - generic [ref=e455]: Apocalypse the Ride • Six Flags Magic ...
+          - generic [ref=e456] [cursor=pointer]:
+            - generic [ref=e457]:
+              - heading "2022 Apocalypse The Ride Roller Coaster ..." [level=3] [ref=e458]:
+                - button "2022 Apocalypse The Ride Roller Coaster ..." [ref=e460]:
+                  - img "2022 Apocalypse The Ride Roller Coaster ..." [ref=e463]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube 2022 Apocalypse The Ride Roller Coaster ..." [ref=e465]:
+              - /url: https://www.youtube.com/watch?v=Tbz0z1fq-ho
+              - generic [ref=e470]: YouTube
+              - generic [ref=e472]: 2022 Apocalypse The Ride Roller Coaster ...
+          - generic [ref=e473] [cursor=pointer]:
+            - heading "Apocalypse - Six Flags Magic Mountain ..." [level=3] [ref=e475]:
+              - button "Apocalypse - Six Flags Magic Mountain ..." [ref=e477]:
+                - img "Apocalypse - Six Flags Magic Mountain ..." [ref=e480]
+            - link "Pinterest Apocalypse - Six Flags Magic Mountain ..." [ref=e482]:
+              - /url: https://in.pinterest.com/pin/apocalypse-six-flags-magic-mountain-los-angeles-us-fastest-wooden-coaster-been-there-don--489203578249425384/
+              - generic [ref=e487]: Pinterest
+              - generic [ref=e489]: Apocalypse - Six Flags Magic Mountain ...
+          - generic [ref=e490] [cursor=pointer]:
+            - generic [ref=e491]:
+              - heading "Six Flags Magic Mountain ..." [level=3] [ref=e492]:
+                - button "Six Flags Magic Mountain ..." [ref=e494]:
+                  - img "Six Flags Magic Mountain ..." [ref=e497]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Instagram Six Flags Magic Mountain ..." [ref=e499]:
+              - /url: https://www.instagram.com/reel/DKAegLzSgXm/
+              - generic [ref=e504]: Instagram
+              - generic [ref=e506]: Six Flags Magic Mountain ...
+          - generic [ref=e507] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain - Apocalypse ..." [level=3] [ref=e509]:
+              - button "Six Flags Magic Mountain - Apocalypse ..." [ref=e511]:
+                - img "Six Flags Magic Mountain - Apocalypse ..." [ref=e514]
+            - link "Six Flags Six Flags Magic Mountain - Apocalypse ..." [ref=e516]:
+              - /url: https://www.sixflags.com/magicmountain/attractions/apocalypse
+              - generic [ref=e521]: Six Flags
+              - generic [ref=e523]: Six Flags Magic Mountain - Apocalypse ...
+          - generic [ref=e524] [cursor=pointer]:
+            - heading "Apocalypse the Ride - Six Flags Magic ..." [level=3] [ref=e526]:
+              - button "Apocalypse the Ride - Six Flags Magic ..." [ref=e528]:
+                - img "Apocalypse the Ride - Six Flags Magic ..." [ref=e531]
+            - link "Roller Coaster DataBase Apocalypse the Ride - Six Flags Magic ..." [ref=e533]:
+              - /url: https://rcdb.com/4173.htm
+              - generic [ref=e538]: Roller Coaster DataBase
+              - generic [ref=e540]: Apocalypse the Ride - Six Flags Magic ...
+          - generic [ref=e541] [cursor=pointer]:
+            - heading "Apocalypse the Ride - Six Flags Magic ..." [level=3] [ref=e543]:
+              - button "Apocalypse the Ride - Six Flags Magic ..." [ref=e545]:
+                - img "Apocalypse the Ride - Six Flags Magic ..." [ref=e548]
+            - link "Roller Coaster DataBase Apocalypse the Ride - Six Flags Magic ..." [ref=e550]:
+              - /url: https://rcdb.com/4173.htm
+              - generic [ref=e555]: Roller Coaster DataBase
+              - generic [ref=e557]: Apocalypse the Ride - Six Flags Magic ...
+          - generic [ref=e558] [cursor=pointer]:
+            - heading "Apocalypse Rollercoaster at Six Flags ..." [level=3] [ref=e560]:
+              - button "Apocalypse Rollercoaster at Six Flags ..." [ref=e562]:
+                - img "Apocalypse Rollercoaster at Six Flags ..." [ref=e565]
+            - link "Facebook Apocalypse Rollercoaster at Six Flags ..." [ref=e567]:
+              - /url: https://www.facebook.com/groups/446279452634367/posts/1413787929216843/
+              - generic [ref=e572]: Facebook
+              - generic [ref=e574]: Apocalypse Rollercoaster at Six Flags ...
+          - generic [ref=e575] [cursor=pointer]:
+            - generic [ref=e576]:
+              - heading "Apocalypse at Six Flags Magic Mountain ..." [level=3] [ref=e577]:
+                - button "Apocalypse at Six Flags Magic Mountain ..." [ref=e579]:
+                  - img "Apocalypse at Six Flags Magic Mountain ..." [ref=e582]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Instagram Apocalypse at Six Flags Magic Mountain ..." [ref=e584]:
+              - /url: https://www.instagram.com/reel/C5KJnHkvRva/
+              - generic [ref=e589]: Instagram
+              - generic [ref=e591]: Apocalypse at Six Flags Magic Mountain ...
+          - generic [ref=e592]:
+            - heading "Related searches" [level=2] [ref=e593]
+            - link "apocalypse six flags drop" [ref=e594] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+six+flags+drop&stick=H4sIAAAAAAAAAFvEKplYkJ-cmFNZUJyqUJxZoZCWk5herJBSlF8AAGr5I3ocAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIfhAA
+              - generic [ref=e599]: apocalypse six flags drop
+            - link "apocalypse ride magic mountain" [ref=e600] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+ride+magic+mountain&stick=H4sIAAAAAAAAAFvEKpdYkJ-cmFNZUJyqUJSZkqqQm5iemayQm1-aV5KYmQcA3SWjhyEAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegUIggEQAA
+              - generic [ref=e605]: apocalypse ride magic mountain
+            - link "apocalypse ride six flags magic mountain" [ref=e606] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+ride+six+flags+magic+mountain&stick=H4sIAAAAAAAAAFvEqpFYkJ-cmFNZUJyqUJSZkqpQnFmhkJaTmF6skJuYnpmskJtfmleSmJkHAKyHM3wrAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegUIhgEQAA
+              - generic [ref=e611]: apocalypse ride six flags magic mountain
+          - generic [ref=e612] [cursor=pointer]:
+            - heading "Apocalypse Opens at Six Flags America ..." [level=3] [ref=e614]:
+              - button "Apocalypse Opens at Six Flags America ..." [ref=e616]:
+                - img "Apocalypse Opens at Six Flags America ..." [ref=e619]
+            - link "Coaster Critic Apocalypse Opens at Six Flags America ..." [ref=e621]:
+              - /url: https://coastercritic.com/2012/06/09/apocalypse-opens-at-six-flags-america-early-reviews/
+              - generic [ref=e626]: Coaster Critic
+              - generic [ref=e628]: Apocalypse Opens at Six Flags America ...
+          - generic [ref=e629] [cursor=pointer]:
+            - generic [ref=e630]:
+              - heading "Apocalypse the Ride 4K Front Seat POV ..." [level=3] [ref=e631]:
+                - button "Apocalypse the Ride 4K Front Seat POV ..." [ref=e633]:
+                  - img "Apocalypse the Ride 4K Front Seat POV ..." [ref=e636]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Apocalypse the Ride 4K Front Seat POV ..." [ref=e638]:
+              - /url: https://www.youtube.com/watch?v=dHz8OaHpRP4
+              - generic [ref=e643]: YouTube
+              - generic [ref=e645]: Apocalypse the Ride 4K Front Seat POV ...
+          - generic [ref=e646] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain - Apocalypse ..." [level=3] [ref=e648]:
+              - button "Six Flags Magic Mountain - Apocalypse ..." [ref=e650]:
+                - img "Six Flags Magic Mountain - Apocalypse ..." [ref=e653]
+            - link "Six Flags Six Flags Magic Mountain - Apocalypse ..." [ref=e655]:
+              - /url: https://www.sixflags.com/magicmountain/attractions/apocalypse
+              - generic [ref=e660]: Six Flags
+              - generic [ref=e662]: Six Flags Magic Mountain - Apocalypse ...
+          - generic [ref=e663] [cursor=pointer]:
+            - generic [ref=e664]:
+              - heading "File:Apocalypse (Six Flags Magic ..." [level=3] [ref=e665]:
+                - button "File:Apocalypse (Six Flags Magic ..." [ref=e667]:
+                  - img "File:Apocalypse (Six Flags Magic ..." [ref=e670]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Wikimedia Commons File:Apocalypse (Six Flags Magic ..." [ref=e672]:
+              - /url: https://commons.wikimedia.org/wiki/File:Apocalypse_(Six_Flags_Magic_Mountain)_2.jpg
+              - generic [ref=e677]: Wikimedia Commons
+              - generic [ref=e679]: File:Apocalypse (Six Flags Magic ...
+          - generic [ref=e680] [cursor=pointer]:
+            - heading "Six Flags relocating 2 coasters for ..." [level=3] [ref=e682]:
+              - button "Six Flags relocating 2 coasters for ..." [ref=e684]:
+                - img "Six Flags relocating 2 coasters for ..." [ref=e687]
+            - link "Coaster101.com Six Flags relocating 2 coasters for ..." [ref=e689]:
+              - /url: https://www.coaster101.com/2011/09/02/six-flags-relocating-2-coasters-for-2012/
+              - generic [ref=e694]: Coaster101.com
+              - generic [ref=e696]: Six Flags relocating 2 coasters for ...
+          - generic [ref=e697] [cursor=pointer]:
+            - heading "Apocalypse the Ride - Six Flags Magic ..." [level=3] [ref=e699]:
+              - button "Apocalypse the Ride - Six Flags Magic ..." [ref=e701]:
+                - img "Apocalypse the Ride - Six Flags Magic ..." [ref=e704]
+            - link "Roller Coaster DataBase Apocalypse the Ride - Six Flags Magic ..." [ref=e706]:
+              - /url: https://rcdb.com/4173.htm
+              - generic [ref=e711]: Roller Coaster DataBase
+              - generic [ref=e713]: Apocalypse the Ride - Six Flags Magic ...
+          - generic [ref=e714] [cursor=pointer]:
+            - generic [ref=e715]:
+              - heading "File:Apocalypse at Six Flags Magic ..." [level=3] [ref=e716]:
+                - button "File:Apocalypse at Six Flags Magic ..." [ref=e718]:
+                  - img "File:Apocalypse at Six Flags Magic ..." [ref=e721]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Wikimedia Commons File:Apocalypse at Six Flags Magic ..." [ref=e723]:
+              - /url: https://commons.wikimedia.org/wiki/File:Apocalypse_at_Six_Flags_Magic_Mountain_07.jpg
+              - generic [ref=e728]: Wikimedia Commons
+              - generic [ref=e730]: File:Apocalypse at Six Flags Magic ...
+          - generic [ref=e731] [cursor=pointer]:
+            - generic [ref=e732]:
+              - heading "tag someone you wanna ride this coaster ..." [level=3] [ref=e733]:
+                - button "tag someone you wanna ride this coaster ..." [ref=e735]:
+                  - img "tag someone you wanna ride this coaster ..." [ref=e738]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok tag someone you wanna ride this coaster ..." [ref=e740]:
+              - /url: https://www.tiktok.com/@sammydoesvlogs/video/7322677657865342250
+              - generic [ref=e745]: TikTok
+              - generic [ref=e747]: tag someone you wanna ride this coaster ...
+          - generic [ref=e748] [cursor=pointer]:
+            - heading "Apocalypse at [SFMM] is fantastic and ..." [level=3] [ref=e750]:
+              - button "Apocalypse at [SFMM] is fantastic and ..." [ref=e752]:
+                - img "Apocalypse at [SFMM] is fantastic and ..." [ref=e755]
+            - link "Reddit Apocalypse at [SFMM] is fantastic and ..." [ref=e757]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/1r4a9ny/apocalypse_at_sfmm_is_fantastic_and_its/
+              - generic [ref=e762]: Reddit
+              - generic [ref=e764]: Apocalypse at [SFMM] is fantastic and ...
+          - generic [ref=e765] [cursor=pointer]:
+            - heading "Apocalypse Wooden Roller Coaster On ..." [level=3] [ref=e767]:
+              - button "Apocalypse Wooden Roller Coaster On ..." [ref=e769]:
+                - img "Apocalypse Wooden Roller Coaster On ..." [ref=e772]
+            - link "YouTube Apocalypse Wooden Roller Coaster On ..." [ref=e774]:
+              - /url: https://www.youtube.com/watch?v=l1zHu78U-g8
+              - generic [ref=e779]: YouTube
+              - generic [ref=e781]: Apocalypse Wooden Roller Coaster On ...
+          - generic [ref=e782] [cursor=pointer]:
+            - heading "Apocalypse ride at Six Flags Magic Mountain" [level=3] [ref=e784]:
+              - button "Apocalypse ride at Six Flags Magic Mountain" [ref=e786]:
+                - img "Apocalypse ride at Six Flags Magic Mountain" [ref=e789]
+            - link "Facebook Apocalypse ride at Six Flags Magic Mountain" [ref=e791]:
+              - /url: https://www.facebook.com/groups/rollercoasterclub2014/posts/24882636264718979/
+              - generic [ref=e796]: Facebook
+              - generic [ref=e798]: Apocalypse ride at Six Flags Magic Mountain
+          - generic [ref=e799] [cursor=pointer]:
+            - heading "mayhem! Apocalypse rips ..." [level=3] [ref=e801]:
+              - button "mayhem! Apocalypse rips ..." [ref=e803]:
+                - img "mayhem! Apocalypse rips ..." [ref=e806]
+            - link "Instagram mayhem! Apocalypse rips ..." [ref=e808]:
+              - /url: https://www.instagram.com/p/DGld6gWJ7Te/
+              - generic [ref=e813]: Instagram
+              - generic [ref=e815]: mayhem! Apocalypse rips ...
+          - generic [ref=e816] [cursor=pointer]:
+            - heading "Magic Mountain Coasters" [level=3] [ref=e818]:
+              - button "Magic Mountain Coasters" [ref=e820]:
+                - img "Magic Mountain Coasters" [ref=e823]
+            - link "Coaster Gallery Magic Mountain Coasters" [ref=e825]:
+              - /url: http://www.coastergallery.com/2005/Six_Flags_Magic_Mountain_09.html
+              - generic [ref=e830]: Coaster Gallery
+              - generic [ref=e832]: Magic Mountain Coasters
+          - generic [ref=e833] [cursor=pointer]:
+            - heading "Psyclone (roller coaster) - Wikipedia" [level=3] [ref=e835]:
+              - button "Psyclone (roller coaster) - Wikipedia" [ref=e837]:
+                - img "Psyclone (roller coaster) - Wikipedia" [ref=e840]
+            - link "Wikipedia Psyclone (roller coaster) - Wikipedia" [ref=e842]:
+              - /url: https://en.wikipedia.org/wiki/Psyclone_(roller_coaster)
+              - generic [ref=e847]: Wikipedia
+              - generic [ref=e849]: Psyclone (roller coaster) - Wikipedia
+          - generic [ref=e850] [cursor=pointer]:
+            - heading "Apocalypse The Ride at Six Flags Magic ..." [level=3] [ref=e852]:
+              - button "Apocalypse The Ride at Six Flags Magic ..." [ref=e854]:
+                - img "Apocalypse The Ride at Six Flags Magic ..." [ref=e857]
+            - link "Theme Park Archive Apocalypse The Ride at Six Flags Magic ..." [ref=e859]:
+              - /url: https://www.themeparkarchive.com/parks/six-flags-magic-mountain/apocalypse-the-ride
+              - generic [ref=e864]: Theme Park Archive
+              - generic [ref=e866]: Apocalypse The Ride at Six Flags Magic ...
+          - generic [ref=e867] [cursor=pointer]:
+            - heading "Colossus (Six Flags Magic Mountain ..." [level=3] [ref=e869]:
+              - button "Colossus (Six Flags Magic Mountain ..." [ref=e871]:
+                - img "Colossus (Six Flags Magic Mountain ..." [ref=e874]
+            - link "Coasterpedia Colossus (Six Flags Magic Mountain ..." [ref=e876]:
+              - /url: https://coasterpedia.net/wiki/Colossus_(Six_Flags_Magic_Mountain)
+              - generic [ref=e881]: Coasterpedia
+              - generic [ref=e883]: Colossus (Six Flags Magic Mountain ...
+          - generic [ref=e884] [cursor=pointer]:
+            - heading "Building a better coaster - The ..." [level=3] [ref=e886]:
+              - button "Building a better coaster - The ..." [ref=e888]:
+                - img "Building a better coaster - The ..." [ref=e891]
+            - link "The Washington Post Building a better coaster - The ..." [ref=e893]:
+              - /url: https://www.washingtonpost.com/2018/08/16/building-a-better-coaster/
+              - generic [ref=e898]: The Washington Post
+              - generic [ref=e900]: Building a better coaster - The ...
+          - generic [ref=e901] [cursor=pointer]:
+            - generic [ref=e902]:
+              - heading "Apocalypse at Six Flags Magic Mountain ..." [level=3] [ref=e903]:
+                - button "Apocalypse at Six Flags Magic Mountain ..." [ref=e905]:
+                  - img "Apocalypse at Six Flags Magic Mountain ..." [ref=e908]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok Apocalypse at Six Flags Magic Mountain ..." [ref=e910]:
+              - /url: https://www.tiktok.com/@sammydoesvlogs/video/7393143419146685739
+              - generic [ref=e915]: TikTok
+              - generic [ref=e917]: Apocalypse at Six Flags Magic Mountain ...
+          - generic [ref=e918] [cursor=pointer]:
+            - heading "Coaster at Six Flags Magic Mountain ..." [level=3] [ref=e920]:
+              - button "Coaster at Six Flags Magic Mountain ..." [ref=e922]:
+                - img "Coaster at Six Flags Magic Mountain ..." [ref=e925]
+            - link "Coaster101.com Coaster at Six Flags Magic Mountain ..." [ref=e927]:
+              - /url: https://www.coaster101.com/2019/06/24/rating-every-coaster-at-six-flags-magic-mountain/
+              - generic [ref=e932]: Coaster101.com
+              - generic [ref=e934]: Coaster at Six Flags Magic Mountain ...
+          - generic [ref=e935] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain Update - May ..." [level=3] [ref=e937]:
+              - button "Six Flags Magic Mountain Update - May ..." [ref=e939]:
+                - img "Six Flags Magic Mountain Update - May ..." [ref=e942]
+            - link "Coaster Kings Six Flags Magic Mountain Update - May ..." [ref=e944]:
+              - /url: https://thecoasterkings.com/six-flags-magic-mountain-update-may-19th-2017/
+              - generic [ref=e949]: Coaster Kings
+              - generic [ref=e951]: Six Flags Magic Mountain Update - May ...
+          - generic [ref=e952] [cursor=pointer]:
+            - heading "The Thrill Capital of the World ..." [level=3] [ref=e954]:
+              - button "The Thrill Capital of the World ..." [ref=e956]:
+                - img "The Thrill Capital of the World ..." [ref=e959]
+            - link "Themeparkblogger The Thrill Capital of the World ..." [ref=e961]:
+              - /url: https://themeparkblogger.com/america/united-states/six-flags-magic-mountain/the-thrill-capital-of-the-world/62356/
+              - generic [ref=e966]: Themeparkblogger
+              - generic [ref=e968]: The Thrill Capital of the World ...
+          - generic [ref=e969] [cursor=pointer]:
+            - heading "Apocalypse The Ride at Six Flags Magic ..." [level=3] [ref=e971]:
+              - button "Apocalypse The Ride at Six Flags Magic ..." [ref=e973]:
+                - img "Apocalypse The Ride at Six Flags Magic ..." [ref=e976]
+            - link "Theme Park Archive Apocalypse The Ride at Six Flags Magic ..." [ref=e978]:
+              - /url: https://www.themeparkarchive.com/parks/six-flags-magic-mountain/apocalypse-the-ride
+              - generic [ref=e983]: Theme Park Archive
+              - generic [ref=e985]: Apocalypse The Ride at Six Flags Magic ...
+          - generic [ref=e986] [cursor=pointer]:
+            - heading "Apocalypse ride at Six Flags Magic Mountain" [level=3] [ref=e988]:
+              - button "Apocalypse ride at Six Flags Magic Mountain" [ref=e990]:
+                - img "Apocalypse ride at Six Flags Magic Mountain" [ref=e993]
+            - link "Facebook Apocalypse ride at Six Flags Magic Mountain" [ref=e995]:
+              - /url: https://www.facebook.com/groups/rollercoasterclub2014/posts/24882636264718979/
+              - generic [ref=e1000]: Facebook
+              - generic [ref=e1002]: Apocalypse ride at Six Flags Magic Mountain
+          - generic [ref=e1003] [cursor=pointer]:
+            - 'heading "Apocalypse: The Ride - Mountain | RouteYou" [level=3] [ref=e1005]':
+              - 'button "Apocalypse: The Ride - Mountain | RouteYou" [ref=e1007]':
+                - 'img "Apocalypse: The Ride - Mountain | RouteYou" [ref=e1010]'
+            - 'link "RouteYou Apocalypse: The Ride - Mountain | RouteYou" [ref=e1012]':
+              - /url: https://www.routeyou.com/en-us/location/view/51292029
+              - generic [ref=e1017]: RouteYou
+              - generic [ref=e1019]: "Apocalypse: The Ride - Mountain | RouteYou"
+          - generic [ref=e1020]:
+            - heading "Related searches" [level=2] [ref=e1021]
+            - link "twisted colossus six flags" [ref=e1022] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=twisted+colossus+six+flags&stick=H4sIAAAAAAAAAFvEKlVSnllckpqikJyfk19cXFqsUJxZoZCWk5heDABp2p8lHQAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIMxAA
+              - generic [ref=e1027]: twisted colossus six flags
+            - link "apocalypse ride six flags" [ref=e1028] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+ride+six+flags&stick=H4sIAAAAAAAAAFvEKplYkJ-cmFNZUJyqUJSZkqpQnFmhkJaTmF4MAN05IjwcAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIOxAA
+              - generic [ref=e1033]: apocalypse ride six flags
+            - link "scream six flags" [ref=e1034] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=scream+six+flags&stick=H4sIAAAAAAAAAFvEKlCcXJSamKtQnFmhkJaTmF4MAEE-3igTAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIPBAA
+              - generic [ref=e1039]: scream six flags
+          - generic [ref=e1040] [cursor=pointer]:
+            - heading "Apocalypse at six flags magic mountain ..." [level=3] [ref=e1042]:
+              - button "Apocalypse at six flags magic mountain ..." [ref=e1044]:
+                - img "Apocalypse at six flags magic mountain ..." [ref=e1047]
+            - link "Reddit Apocalypse at six flags magic mountain ..." [ref=e1049]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/e1jsdm/apocalypse_at_six_flags_magic_mountain_is_an/
+              - generic [ref=e1054]: Reddit
+              - generic [ref=e1056]: Apocalypse at six flags magic mountain ...
+          - generic [ref=e1057] [cursor=pointer]:
+            - generic [ref=e1058]:
+              - heading "Apocalypse Off-Ride Footage, Six Flags ..." [level=3] [ref=e1059]:
+                - button "Apocalypse Off-Ride Footage, Six Flags ..." [ref=e1061]:
+                  - img "Apocalypse Off-Ride Footage, Six Flags ..." [ref=e1064]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Apocalypse Off-Ride Footage, Six Flags ..." [ref=e1066]:
+              - /url: https://www.youtube.com/watch?v=6fjUlK3GXG0
+              - generic [ref=e1071]: YouTube
+              - generic [ref=e1073]: Apocalypse Off-Ride Footage, Six Flags ...
+          - generic [ref=e1074] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain - Apocalypse ..." [level=3] [ref=e1076]:
+              - button "Six Flags Magic Mountain - Apocalypse ..." [ref=e1078]:
+                - img "Six Flags Magic Mountain - Apocalypse ..." [ref=e1081]
+            - link "Six Flags Six Flags Magic Mountain - Apocalypse ..." [ref=e1083]:
+              - /url: https://www.sixflags.com/magicmountain/attractions/apocalypse
+              - generic [ref=e1088]: Six Flags
+              - generic [ref=e1090]: Six Flags Magic Mountain - Apocalypse ...
+          - generic [ref=e1091] [cursor=pointer]:
+            - generic [ref=e1092]:
+              - heading "underrated rollercoaster at Sixflags ..." [level=3] [ref=e1093]:
+                - button "underrated rollercoaster at Sixflags ..." [ref=e1095]:
+                  - img "underrated rollercoaster at Sixflags ..." [ref=e1098]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok underrated rollercoaster at Sixflags ..." [ref=e1100]:
+              - /url: https://www.tiktok.com/@themeparkexcitment/video/7411042817100811563
+              - generic [ref=e1105]: TikTok
+              - generic [ref=e1107]: underrated rollercoaster at Sixflags ...
+          - generic [ref=e1108] [cursor=pointer]:
+            - heading "Building a better coaster - The ..." [level=3] [ref=e1110]:
+              - button "Building a better coaster - The ..." [ref=e1112]:
+                - img "Building a better coaster - The ..." [ref=e1115]
+            - link "The Washington Post Building a better coaster - The ..." [ref=e1117]:
+              - /url: https://www.washingtonpost.com/2018/08/16/building-a-better-coaster/
+              - generic [ref=e1122]: The Washington Post
+              - generic [ref=e1124]: Building a better coaster - The ...
+          - generic [ref=e1125] [cursor=pointer]:
+            - heading "trainlesstuesday! Apocalypse ..." [level=3] [ref=e1127]:
+              - button "trainlesstuesday! Apocalypse ..." [ref=e1129]:
+                - img "trainlesstuesday! Apocalypse ..." [ref=e1132]
+            - link "Instagram trainlesstuesday! Apocalypse ..." [ref=e1134]:
+              - /url: https://www.instagram.com/p/DUlzmCzkaiT/
+              - generic [ref=e1139]: Instagram
+              - generic [ref=e1141]: trainlesstuesday! Apocalypse ...
+          - generic [ref=e1142] [cursor=pointer]:
+            - 'heading "APOCALYPSE: THE RIDE - Updated March ..." [level=3] [ref=e1144]':
+              - 'button "APOCALYPSE: THE RIDE - Updated March ..." [ref=e1146]':
+                - 'img "APOCALYPSE: THE RIDE - Updated March ..." [ref=e1149]'
+            - 'link "Yelp APOCALYPSE: THE RIDE - Updated March ..." [ref=e1151]':
+              - /url: https://m.yelp.com/biz/apocalypse-the-ride-valencia
+              - generic [ref=e1156]: Yelp
+              - generic [ref=e1158]: "APOCALYPSE: THE RIDE - Updated March ..."
+          - generic [ref=e1159] [cursor=pointer]:
+            - heading "Apocalypse the Ride" [level=3] [ref=e1161]:
+              - button "Apocalypse the Ride" [ref=e1163]:
+                - img "Apocalypse the Ride" [ref=e1166]
+            - link "Scream Machine Apocalypse the Ride" [ref=e1168]:
+              - /url: https://www.screammachine.net/rideinfo.php?ridecode=11875
+              - generic [ref=e1173]: Scream Machine
+              - generic [ref=e1175]: Apocalypse the Ride
+          - generic [ref=e1176] [cursor=pointer]:
+            - heading "Apocalypse The Ride at Six Flags Magic ..." [level=3] [ref=e1178]:
+              - button "Apocalypse The Ride at Six Flags Magic ..." [ref=e1180]:
+                - img "Apocalypse The Ride at Six Flags Magic ..." [ref=e1183]
+            - link "Theme Park Archive Apocalypse The Ride at Six Flags Magic ..." [ref=e1185]:
+              - /url: https://www.themeparkarchive.com/parks/six-flags-magic-mountain/apocalypse-the-ride
+              - generic [ref=e1190]: Theme Park Archive
+              - generic [ref=e1192]: Apocalypse The Ride at Six Flags Magic ...
+          - generic [ref=e1193] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain - Apocalypse ..." [level=3] [ref=e1195]:
+              - button "Six Flags Magic Mountain - Apocalypse ..." [ref=e1197]:
+                - img "Six Flags Magic Mountain - Apocalypse ..." [ref=e1200]
+            - link "Theme Park Review Six Flags Magic Mountain - Apocalypse ..." [ref=e1202]:
+              - /url: https://www.themeparkreview.com/parks/p_23_4042_six_flags_magic_mountain_apocalypse_the_ride
+              - generic [ref=e1207]: Theme Park Review
+              - generic [ref=e1209]: Six Flags Magic Mountain - Apocalypse ...
+          - generic [ref=e1210] [cursor=pointer]:
+            - heading "Apocalypse (Six Flag America) - NamuWiki" [level=3] [ref=e1212]:
+              - button "Apocalypse (Six Flag America) - NamuWiki" [ref=e1214]:
+                - img "Apocalypse (Six Flag America) - NamuWiki" [ref=e1217]
+            - link "NamuWiki Apocalypse (Six Flag America) - NamuWiki" [ref=e1219]:
+              - /url: https://en.namu.wiki/w/%EC%95%84%ED%8F%AC%EC%B9%BC%EB%A6%BD%EC%8A%A4(%EC%8B%9D%EC%8A%A4%20%ED%94%8C%EB%9E%98%EA%B7%B8%20%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4)
+              - generic [ref=e1224]: NamuWiki
+              - generic [ref=e1226]: Apocalypse (Six Flag America) - NamuWiki
+          - generic [ref=e1227] [cursor=pointer]:
+            - heading "Apocalypse Rollercoaster at Six Flags ..." [level=3] [ref=e1229]:
+              - button "Apocalypse Rollercoaster at Six Flags ..." [ref=e1231]:
+                - img "Apocalypse Rollercoaster at Six Flags ..." [ref=e1234]
+            - link "Facebook Apocalypse Rollercoaster at Six Flags ..." [ref=e1236]:
+              - /url: https://www.facebook.com/groups/446279452634367/posts/1413787929216843/
+              - generic [ref=e1241]: Facebook
+              - generic [ref=e1243]: Apocalypse Rollercoaster at Six Flags ...
+          - generic [ref=e1244] [cursor=pointer]:
+            - heading "File:Apocalypse at Six Flags Magic ..." [level=3] [ref=e1246]:
+              - button "File:Apocalypse at Six Flags Magic ..." [ref=e1248]:
+                - img "File:Apocalypse at Six Flags Magic ..." [ref=e1251]
+            - link "Wikimedia Commons File:Apocalypse at Six Flags Magic ..." [ref=e1253]:
+              - /url: https://commons.wikimedia.org/wiki/File:Apocalypse_at_Six_Flags_Magic_Mountain_26.jpg
+              - generic [ref=e1258]: Wikimedia Commons
+              - generic [ref=e1260]: File:Apocalypse at Six Flags Magic ...
+          - generic [ref=e1261] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain – Roller ..." [level=3] [ref=e1263]:
+              - button "Six Flags Magic Mountain – Roller ..." [ref=e1265]:
+                - img "Six Flags Magic Mountain – Roller ..." [ref=e1268]
+            - link "Roller Coaster Traveller Six Flags Magic Mountain – Roller ..." [ref=e1270]:
+              - /url: https://rollercoastertraveller.com/six-flags-magic-mountain/
+              - generic [ref=e1275]: Roller Coaster Traveller
+              - generic [ref=e1277]: Six Flags Magic Mountain – Roller ...
+          - generic [ref=e1278] [cursor=pointer]:
+            - heading "Apocalypse" [level=3] [ref=e1280]:
+              - button "Apocalypse" [ref=e1282]:
+                - img "Apocalypse" [ref=e1285]
+            - link "coaster.cloud Apocalypse" [ref=e1287]:
+              - /url: https://coaster.cloud/en/attractions/77763e82-apocalypse
+              - generic [ref=e1292]: coaster.cloud
+              - generic [ref=e1294]: Apocalypse
+          - generic [ref=e1295] [cursor=pointer]:
+            - heading "Apocalypse (Six Flag Magic Mountain ..." [level=3] [ref=e1297]:
+              - button "Apocalypse (Six Flag Magic Mountain ..." [ref=e1299]:
+                - img "Apocalypse (Six Flag Magic Mountain ..." [ref=e1302]
+            - link "NamuWiki Apocalypse (Six Flag Magic Mountain ..." [ref=e1304]:
+              - /url: https://en.namu.wiki/w/%EC%95%84%ED%8F%AC%EC%B9%BC%EB%A6%BD%EC%8A%A4(%EC%8B%9D%EC%8A%A4%20%ED%94%8C%EB%9E%98%EA%B7%B8%20%EB%A7%A4%EC%A7%81%20%EB%A7%88%EC%9A%B4%ED%8B%B4)
+              - generic [ref=e1309]: NamuWiki
+              - generic [ref=e1311]: Apocalypse (Six Flag Magic Mountain ...
+          - generic [ref=e1312] [cursor=pointer]:
+            - heading "Apocalypse The Ride" [level=3] [ref=e1314]:
+              - button "Apocalypse The Ride" [ref=e1316]:
+                - img "Apocalypse The Ride" [ref=e1319]
+            - link "CoasterGallery.com Apocalypse The Ride" [ref=e1321]:
+              - /url: http://www.coastergallery.com/2005/Six_Flags_Magic_Mountain_15.html
+              - generic [ref=e1326]: CoasterGallery.com
+              - generic [ref=e1328]: Apocalypse The Ride
+          - generic [ref=e1329] [cursor=pointer]:
+            - heading "Amusement ride relocation" [level=3] [ref=e1331]:
+              - button "Amusement ride relocation" [ref=e1333]:
+                - img "Amusement ride relocation" [ref=e1336]
+            - link "Amusement Ride Repair Amusement ride relocation" [ref=e1338]:
+              - /url: https://www.amuserides.com/apocalypse-six-flags-magic-mountain
+              - generic [ref=e1343]: Amusement Ride Repair
+              - generic [ref=e1345]: Amusement ride relocation
+          - generic [ref=e1346] [cursor=pointer]:
+            - heading "The park with the most roller coasters ..." [level=3] [ref=e1348]:
+              - button "The park with the most roller coasters ..." [ref=e1350]:
+                - img "The park with the most roller coasters ..." [ref=e1353]
+            - link "CNN The park with the most roller coasters ..." [ref=e1355]:
+              - /url: https://www.cnn.com/travel/article/most-roller-coasters-six-flags-magic-mountain-california
+              - generic [ref=e1360]: CNN
+              - generic [ref=e1362]: The park with the most roller coasters ...
+          - generic [ref=e1363] [cursor=pointer]:
+            - 'heading "apocalypse #westcoastracers #sfmm ..." [level=3] [ref=e1365]':
+              - 'button "apocalypse #westcoastracers #sfmm ..." [ref=e1367]':
+                - 'img "apocalypse #westcoastracers #sfmm ..." [ref=e1370]'
+            - 'link "Instagram apocalypse #westcoastracers #sfmm ..." [ref=e1372]':
+              - /url: https://www.instagram.com/p/C49BfHkuD_7/
+              - generic [ref=e1377]: Instagram
+              - generic [ref=e1379]: "apocalypse #westcoastracers #sfmm ..."
+          - generic [ref=e1380] [cursor=pointer]:
+            - heading "Apocalypse | Six Flags Magic Mountain ..." [level=3] [ref=e1382]:
+              - button "Apocalypse | Six Flags Magic Mountain ..." [ref=e1384]:
+                - img "Apocalypse | Six Flags Magic Mountain ..." [ref=e1387]
+            - link "Six Flags Magic Mountain Wiki - Fandom Apocalypse | Six Flags Magic Mountain ..." [ref=e1389]:
+              - /url: https://six-flags-magic-mountain.fandom.com/wiki/Apocalypse
+              - generic [ref=e1394]: Six Flags Magic Mountain Wiki - Fandom
+              - generic [ref=e1396]: Apocalypse | Six Flags Magic Mountain ...
+          - generic [ref=e1397] [cursor=pointer]:
+            - generic [ref=e1398]:
+              - 'heading "Apocalypse Review: Best Wooden Coaster ..." [level=3] [ref=e1399]':
+                - 'button "Apocalypse Review: Best Wooden Coaster ..." [ref=e1401]':
+                  - 'img "Apocalypse Review: Best Wooden Coaster ..." [ref=e1404]'
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - 'link "YouTube Apocalypse Review: Best Wooden Coaster ..." [ref=e1406]':
+              - /url: https://www.youtube.com/watch?v=NSizTWzfYKw
+              - generic [ref=e1411]: YouTube
+              - generic [ref=e1413]: "Apocalypse Review: Best Wooden Coaster ..."
+          - generic [ref=e1414] [cursor=pointer]:
+            - heading "West Coast Racers" [level=3] [ref=e1416]:
+              - button "West Coast Racers" [ref=e1418]:
+                - img "West Coast Racers" [ref=e1421]
+            - link "Screamscape West Coast Racers" [ref=e1423]:
+              - /url: https://screamscape.com/features/html/west_coast_racers.html
+              - generic [ref=e1428]: Screamscape
+              - generic [ref=e1430]: West Coast Racers
+          - generic [ref=e1431] [cursor=pointer]:
+            - heading "Apocalypse (Six Flags Magic Mountain ..." [level=3] [ref=e1433]:
+              - button "Apocalypse (Six Flags Magic Mountain ..." [ref=e1435]:
+                - img "Apocalypse (Six Flags Magic Mountain ..." [ref=e1438]
+            - link "Coasterpedia Apocalypse (Six Flags Magic Mountain ..." [ref=e1440]:
+              - /url: https://coasterpedia.net/wiki/Apocalypse_(Six_Flags_Magic_Mountain)
+              - generic [ref=e1445]: Coasterpedia
+              - generic [ref=e1447]: Apocalypse (Six Flags Magic Mountain ...
+          - generic [ref=e1448]:
+            - heading "Related searches" [level=2] [ref=e1449]
+            - link "viper six flags magic mountain" [ref=e1450] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=viper+six+flags+magic+mountain&stick=H4sIAAAAAAAAAFvEKleWWZBapFCcWaGQlpOYXqyQm5iemayQm1-aV5KYmQcAy26uPCEAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIfRAA
+              - generic [ref=e1455]: viper six flags magic mountain
+            - link "apocalypse six flags speed" [ref=e1456] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+six+flags+speed&stick=H4sIAAAAAAAAAFvEKpVYkJ-cmFNZUJyqUJxZoZCWk5herFBckJqaAgBrLL_EHQAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegUIhAEQAA
+              - generic [ref=e1461]: apocalypse six flags speed
+            - link "apocalypse magic mountain" [ref=e1462] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+magic+mountain&stick=H4sIAAAAAAAAAFvEKplYkJ-cmFNZUJyqkJuYnpmskJtfmleSmJkHABWj-TccAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegUIhwEQAA
+              - generic [ref=e1467]: apocalypse magic mountain
+          - generic [ref=e1468] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain adds new ..." [level=3] [ref=e1470]:
+              - button "Six Flags Magic Mountain adds new ..." [ref=e1472]:
+                - img "Six Flags Magic Mountain adds new ..." [ref=e1475]
+            - link "Los Angeles Daily News Six Flags Magic Mountain adds new ..." [ref=e1477]:
+              - /url: https://www.dailynews.com/2022/04/15/six-flags-magic-mountain-adds-new-single-rider-lines-to-shorten-wait-times/
+              - generic [ref=e1482]: Los Angeles Daily News
+              - generic [ref=e1484]: Six Flags Magic Mountain adds new ...
+          - generic [ref=e1485] [cursor=pointer]:
+            - generic [ref=e1486]:
+              - 'heading "Experience Apocalypse: A Thrilling Ride ..." [level=3] [ref=e1487]':
+                - 'button "Experience Apocalypse: A Thrilling Ride ..." [ref=e1489]':
+                  - 'img "Experience Apocalypse: A Thrilling Ride ..." [ref=e1492]'
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - 'link "TikTok Experience Apocalypse: A Thrilling Ride ..." [ref=e1494]':
+              - /url: https://www.tiktok.com/@singleriderreak/video/7550569979259768077
+              - generic [ref=e1499]: TikTok
+              - generic [ref=e1501]: "Experience Apocalypse: A Thrilling Ride ..."
+          - generic [ref=e1502] [cursor=pointer]:
+            - heading "Roller Coasters of Six Flags Magic Mountain" [level=3] [ref=e1504]:
+              - button "Roller Coasters of Six Flags Magic Mountain" [ref=e1506]:
+                - img "Roller Coasters of Six Flags Magic Mountain" [ref=e1509]
+            - link "Laughing Place Roller Coasters of Six Flags Magic Mountain" [ref=e1511]:
+              - /url: https://www.laughingplace.com/w/articles/2021/12/22/ranked-the-roller-coasters-of-six-flags-magic-mountain/
+              - generic [ref=e1516]: Laughing Place
+              - generic [ref=e1518]: Roller Coasters of Six Flags Magic Mountain
+          - generic [ref=e1519] [cursor=pointer]:
+            - heading "Amusement ride relocation" [level=3] [ref=e1521]:
+              - button "Amusement ride relocation" [ref=e1523]:
+                - img "Amusement ride relocation" [ref=e1526]
+            - link "Amusement Ride Repair Amusement ride relocation" [ref=e1528]:
+              - /url: https://www.amuserides.com/apocalypse-six-flags-magic-mountain
+              - generic [ref=e1533]: Amusement Ride Repair
+              - generic [ref=e1535]: Amusement ride relocation
+          - generic [ref=e1536] [cursor=pointer]:
+            - heading "Six Flags' Colossus wood roller coaster ..." [level=3] [ref=e1538]:
+              - button "Six Flags' Colossus wood roller coaster ..." [ref=e1540]:
+                - img "Six Flags' Colossus wood roller coaster ..." [ref=e1543]
+            - link "Los Angeles Times Six Flags' Colossus wood roller coaster ..." [ref=e1545]:
+              - /url: https://www.latimes.com/business/la-fi-colossus-closes-20140814-story.html
+              - generic [ref=e1550]: Los Angeles Times
+              - generic [ref=e1552]: Six Flags' Colossus wood roller coaster ...
+          - generic [ref=e1553] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain" [level=3] [ref=e1555]:
+              - button "Six Flags Magic Mountain" [ref=e1557]:
+                - img "Six Flags Magic Mountain" [ref=e1560]
+            - link "TripBucket Six Flags Magic Mountain" [ref=e1562]:
+              - /url: https://tripbucket.com/dreams/dream/visit-six-flags-magic-mountain
+              - generic [ref=e1567]: TripBucket
+              - generic [ref=e1569]: Six Flags Magic Mountain
+          - generic [ref=e1570] [cursor=pointer]:
+            - heading "Apocalypse The Ride at Six Flags Magic ..." [level=3] [ref=e1572]:
+              - button "Apocalypse The Ride at Six Flags Magic ..." [ref=e1574]:
+                - img "Apocalypse The Ride at Six Flags Magic ..." [ref=e1577]
+            - link "Theme Park Archive Apocalypse The Ride at Six Flags Magic ..." [ref=e1579]:
+              - /url: https://www.themeparkarchive.com/parks/six-flags-magic-mountain/apocalypse-the-ride
+              - generic [ref=e1584]: Theme Park Archive
+              - generic [ref=e1586]: Apocalypse The Ride at Six Flags Magic ...
+          - generic [ref=e1587] [cursor=pointer]:
+            - heading "The Apocalypse roller coaster at Six ..." [level=3] [ref=e1589]:
+              - button "The Apocalypse roller coaster at Six ..." [ref=e1591]:
+                - img "The Apocalypse roller coaster at Six ..." [ref=e1594]
+            - link "Facebook The Apocalypse roller coaster at Six ..." [ref=e1596]:
+              - /url: https://www.facebook.com/100083370039408/posts/the-apocalypse-roller-coaster-at-six-flags-magic-mountain-in-valencia-california/571453202310343/
+              - generic [ref=e1601]: Facebook
+              - generic [ref=e1603]: The Apocalypse roller coaster at Six ...
+          - generic [ref=e1604] [cursor=pointer]:
+            - heading "SCV News | Twisted Colossus on Track ..." [level=3] [ref=e1606]:
+              - button "SCV News | Twisted Colossus on Track ..." [ref=e1608]:
+                - img "SCV News | Twisted Colossus on Track ..." [ref=e1611]
+            - link "SCVNews.com SCV News | Twisted Colossus on Track ..." [ref=e1613]:
+              - /url: https://scvnews.com/twisted-colossus-on-track-for-spring-opening/
+              - generic [ref=e1618]: SCVNews.com
+              - generic [ref=e1620]: SCV News | Twisted Colossus on Track ...
+          - generic [ref=e1621] [cursor=pointer]:
+            - heading "Six Flags America to Close Apocalypse ..." [level=3] [ref=e1623]:
+              - button "Six Flags America to Close Apocalypse ..." [ref=e1625]:
+                - img "Six Flags America to Close Apocalypse ..." [ref=e1628]
+            - link "Coaster101.com Six Flags America to Close Apocalypse ..." [ref=e1630]:
+              - /url: https://www.coaster101.com/2018/08/16/six-flags-america-to-close-apocalypse-stand-up-coaster/
+              - generic [ref=e1635]: Coaster101.com
+              - generic [ref=e1637]: Six Flags America to Close Apocalypse ...
+          - generic [ref=e1638] [cursor=pointer]:
+            - heading "⚠️☣️☢️APOCALYPSE☢️☣️⚠️ ..." [level=3] [ref=e1640]:
+              - button "⚠️☣️☢️APOCALYPSE☢️☣️⚠️ ..." [ref=e1642]:
+                - img "⚠️☣️☢️APOCALYPSE☢️☣️⚠️ ..." [ref=e1645]
+            - link "Instagram ⚠️☣️☢️APOCALYPSE☢️☣️⚠️ ..." [ref=e1647]:
+              - /url: https://www.instagram.com/p/DQIfaP3kUj6/
+              - generic [ref=e1652]: Instagram
+              - generic [ref=e1654]: ⚠️☣️☢️APOCALYPSE☢️☣️⚠️ ...
+          - generic [ref=e1655] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain - Apocalypse ..." [level=3] [ref=e1657]:
+              - button "Six Flags Magic Mountain - Apocalypse ..." [ref=e1659]:
+                - img "Six Flags Magic Mountain - Apocalypse ..." [ref=e1662]
+            - link "Six Flags Six Flags Magic Mountain - Apocalypse ..." [ref=e1664]:
+              - /url: https://www.sixflags.com/magicmountain/attractions/apocalypse
+              - generic [ref=e1669]: Six Flags
+              - generic [ref=e1671]: Six Flags Magic Mountain - Apocalypse ...
+          - generic [ref=e1672] [cursor=pointer]:
+            - heading "Six Flags Magic Mountain – Roller ..." [level=3] [ref=e1674]:
+              - button "Six Flags Magic Mountain – Roller ..." [ref=e1676]:
+                - img "Six Flags Magic Mountain – Roller ..." [ref=e1679]
+            - link "Roller Coaster Traveller Six Flags Magic Mountain – Roller ..." [ref=e1681]:
+              - /url: https://rollercoastertraveller.com/six-flags-magic-mountain/
+              - generic [ref=e1686]: Roller Coaster Traveller
+              - generic [ref=e1688]: Six Flags Magic Mountain – Roller ...
+          - generic [ref=e1689] [cursor=pointer]:
+            - heading "Apocalypse the Ride - Six Flags Magic ..." [level=3] [ref=e1691]:
+              - button "Apocalypse the Ride - Six Flags Magic ..." [ref=e1693]:
+                - img "Apocalypse the Ride - Six Flags Magic ..." [ref=e1696]
+            - link "Roller Coaster DataBase Apocalypse the Ride - Six Flags Magic ..." [ref=e1698]:
+              - /url: https://rcdb.com/4173.htm
+              - generic [ref=e1703]: Roller Coaster DataBase
+              - generic [ref=e1705]: Apocalypse the Ride - Six Flags Magic ...
+          - generic [ref=e1706] [cursor=pointer]:
+            - generic [ref=e1707]:
+              - heading "File:Apocalypse (Six Flags Magic ..." [level=3] [ref=e1708]:
+                - button "File:Apocalypse (Six Flags Magic ..." [ref=e1710]:
+                  - img "File:Apocalypse (Six Flags Magic ..." [ref=e1713]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Wikimedia Commons File:Apocalypse (Six Flags Magic ..." [ref=e1715]:
+              - /url: https://commons.wikimedia.org/wiki/File:Apocalypse_(Six_Flags_Magic_Mountain)_4.jpg
+              - generic [ref=e1720]: Wikimedia Commons
+              - generic [ref=e1722]: File:Apocalypse (Six Flags Magic ...
+          - generic [ref=e1723] [cursor=pointer]:
+            - heading "Apocalypse Review, Six Flags Magic ..." [level=3] [ref=e1725]:
+              - button "Apocalypse Review, Six Flags Magic ..." [ref=e1727]:
+                - img "Apocalypse Review, Six Flags Magic ..." [ref=e1730]
+            - link "YouTube Apocalypse Review, Six Flags Magic ..." [ref=e1732]:
+              - /url: https://www.youtube.com/watch?v=COnvcJ8F7OM
+              - generic [ref=e1737]: YouTube
+              - generic [ref=e1739]: Apocalypse Review, Six Flags Magic ...
+          - generic [ref=e1740] [cursor=pointer]:
+            - heading "Ode To Magic Mountain - Tough Cookie Travel" [level=3] [ref=e1742]:
+              - button "Ode To Magic Mountain - Tough Cookie Travel" [ref=e1744]:
+                - img "Ode To Magic Mountain - Tough Cookie Travel" [ref=e1747]
+            - link "Tough Cookie Travel Ode To Magic Mountain - Tough Cookie Travel" [ref=e1749]:
+              - /url: https://toughcookietravel.com/ode-to-magic-mountain/
+              - generic [ref=e1754]: Tough Cookie Travel
+              - generic [ref=e1756]: Ode To Magic Mountain - Tough Cookie Travel
+          - generic [ref=e1757] [cursor=pointer]:
+            - heading "Six Flags America roller coaster to ..." [level=3] [ref=e1759]:
+              - button "Six Flags America roller coaster to ..." [ref=e1761]:
+                - img "Six Flags America roller coaster to ..." [ref=e1764]
+            - link "WBAL-TV Six Flags America roller coaster to ..." [ref=e1766]:
+              - /url: https://www.wbaltv.com/article/six-flags-america-roller-coaster-to-close-for-good/22759650
+              - generic [ref=e1771]: WBAL-TV
+              - generic [ref=e1773]: Six Flags America roller coaster to ...
+          - generic [ref=e1774] [cursor=pointer]:
+            - heading "Six Flags' Colossus wood roller coaster ..." [level=3] [ref=e1776]:
+              - button "Six Flags' Colossus wood roller coaster ..." [ref=e1778]:
+                - img "Six Flags' Colossus wood roller coaster ..." [ref=e1781]
+            - link "Los Angeles Times Six Flags' Colossus wood roller coaster ..." [ref=e1783]:
+              - /url: https://www.latimes.com/business/la-fi-colossus-closes-20140814-story.html
+              - generic [ref=e1788]: Los Angeles Times
+              - generic [ref=e1790]: Six Flags' Colossus wood roller coaster ...
+          - generic [ref=e1791] [cursor=pointer]:
+            - 'heading "Six Flags Magic Mountain: Theme Park ..." [level=3] [ref=e1793]':
+              - 'button "Six Flags Magic Mountain: Theme Park ..." [ref=e1795]':
+                - 'img "Six Flags Magic Mountain: Theme Park ..." [ref=e1798]'
+            - 'link "Now Go See It - A Worldwide Travel Blog Six Flags Magic Mountain: Theme Park ..." [ref=e1800]':
+              - /url: https://www.nowgoseeit.com/blog/six-flags-magic-mountain
+              - generic [ref=e1805]: Now Go See It - A Worldwide Travel Blog
+              - generic [ref=e1807]: "Six Flags Magic Mountain: Theme Park ..."
+          - generic [ref=e1808] [cursor=pointer]:
+            - heading "Apocalypse • Six Flags America ..." [level=3] [ref=e1810]:
+              - button "Apocalypse • Six Flags America ..." [ref=e1812]:
+                - img "Apocalypse • Six Flags America ..." [ref=e1815]
+            - link "Captain Coaster Apocalypse • Six Flags America ..." [ref=e1817]:
+              - /url: https://captaincoaster.com/en/coasters/2066/apocalypse-six-flags-america
+              - generic [ref=e1822]: Captain Coaster
+              - generic [ref=e1824]: Apocalypse • Six Flags America ...
+          - generic [ref=e1825] [cursor=pointer]:
+            - heading "Apocalypse (Six Flags Magic Mountain ..." [level=3] [ref=e1827]:
+              - button "Apocalypse (Six Flags Magic Mountain ..." [ref=e1829]:
+                - img "Apocalypse (Six Flags Magic Mountain ..." [ref=e1832]
+            - link "Coasterpedia Apocalypse (Six Flags Magic Mountain ..." [ref=e1834]:
+              - /url: https://coasterpedia.net/wiki/Apocalypse_(Six_Flags_Magic_Mountain)
+              - generic [ref=e1839]: Coasterpedia
+              - generic [ref=e1841]: Apocalypse (Six Flags Magic Mountain ...
+          - generic [ref=e1842] [cursor=pointer]:
+            - heading "Psyclone (roller coaster) - Alchetron ..." [level=3] [ref=e1844]:
+              - button "Psyclone (roller coaster) - Alchetron ..." [ref=e1846]:
+                - img "Psyclone (roller coaster) - Alchetron ..." [ref=e1849]
+            - link "Alchetron Psyclone (roller coaster) - Alchetron ..." [ref=e1851]:
+              - /url: https://alchetron.com/Psyclone-(roller-coaster)
+              - generic [ref=e1856]: Alchetron
+              - generic [ref=e1858]: Psyclone (roller coaster) - Alchetron ...
+          - generic [ref=e1859] [cursor=pointer]:
+            - heading "Twisted Colossus | Ride ..." [level=3] [ref=e1861]:
+              - button "Twisted Colossus | Ride ..." [ref=e1863]:
+                - img "Twisted Colossus | Ride ..." [ref=e1866]
+            - link "Six Flags Twisted Colossus | Ride ..." [ref=e1868]:
+              - /url: https://www.sixflags.com/magicmountain/attractions/twisted-colossus
+              - generic [ref=e1873]: Six Flags
+              - generic [ref=e1875]: Twisted Colossus | Ride ...
+          - generic [ref=e1876]:
+            - heading "Related searches" [level=2] [ref=e1877]
+            - link "batman six flags magic mountain" [ref=e1878] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=batman+six+flags+magic+mountain&stick=H4sIAAAAAAAAAFvEKp-UWJKbmKdQnFmhkJaTmF6skJuYnpmskJtfmleSmJkHAIdVkHMiAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIWBAA
+              - generic [ref=e1883]: batman six flags magic mountain
+            - link "west coast racers magic mountain" [ref=e1884] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=west+coast+racers+magic+mountain&stick=H4sIAAAAAAAAAFvEqlCeWlyikJyfCCSLEpNTi4oVchPTM5MVcvNL80oSM_MAhHgHqyMAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIXxAA
+              - generic [ref=e1889]: west coast racers magic mountain
+            - link "apocalypse roller coaster six flags" [ref=e1890] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7h5MQirHHvFULFbWsyCEK7RqHhag:1774403211467&q=apocalypse+roller+coaster+six+flags&stick=H4sIAAAAAAAAAFvEqpxYkJ-cmFNZUJyqUJSfk5NapJCcn1hcAqSLMysU0nIS04sBme10ciYAAAA&source=univ&sa=X&ved=2ahUKEwjgjO6I97mTAxWjlu4BHUKPO2YQrNwCegQIYhAA
+              - generic [ref=e1895]: apocalypse roller coaster six flags
+          - generic [ref=e1896] [cursor=pointer]:
+            - heading "Magic Mountain Fall 2021 ..." [level=3] [ref=e1898]:
+              - button "Magic Mountain Fall 2021 ..." [ref=e1900]:
+                - img "Magic Mountain Fall 2021 ..." [ref=e1903]
+            - link "Coaster Kings Magic Mountain Fall 2021 ..." [ref=e1905]:
+              - /url: https://thecoasterkings.com/magic-mountain-fall-2021/
+              - generic [ref=e1910]: Coaster Kings
+              - generic [ref=e1912]: Magic Mountain Fall 2021 ...
+          - generic [ref=e1913] [cursor=pointer]:
+            - generic [ref=e1914]:
+              - heading "Apocalypse the Ride en Six Flags ..." [level=3] [ref=e1915]:
+                - button "Apocalypse the Ride en Six Flags ..." [ref=e1917]:
+                  - img "Apocalypse the Ride en Six Flags ..." [ref=e1920]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok Apocalypse the Ride en Six Flags ..." [ref=e1922]:
+              - /url: https://www.tiktok.com/@125rollercoaster/video/7440079944434093355
+              - generic [ref=e1927]: TikTok
+              - generic [ref=e1929]: Apocalypse the Ride en Six Flags ...
+          - generic [ref=e1930] [cursor=pointer]:
+            - heading "☣️TAKE A RIDE ON THE ESCAPE TRAIN☣️ ..." [level=3] [ref=e1932]:
+              - button "☣️TAKE A RIDE ON THE ESCAPE TRAIN☣️ ..." [ref=e1934]:
+                - img "☣️TAKE A RIDE ON THE ESCAPE TRAIN☣️ ..." [ref=e1937]
+            - link "Instagram ☣️TAKE A RIDE ON THE ESCAPE TRAIN☣️ ..." [ref=e1939]:
+              - /url: https://www.instagram.com/reel/DR0BEomEuyr/
+              - generic [ref=e1944]: Instagram
+              - generic [ref=e1946]: ☣️TAKE A RIDE ON THE ESCAPE TRAIN☣️ ...
+        - generic [ref=e1949]:
+          - heading "Page Navigation" [level=1] [ref=e1950]
+          - button "More results" [ref=e1951] [cursor=pointer]:
+            - generic [ref=e1952]:
+              - separator [ref=e1953]
+              - generic [ref=e1954]:
+                - generic [ref=e1955]: More results
+                - img [ref=e1957]
+      - navigation

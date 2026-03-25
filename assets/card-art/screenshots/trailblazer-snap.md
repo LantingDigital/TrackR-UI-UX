@@ -1,0 +1,1052 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Turn off continuous scrolling" [ref=e3] [cursor=pointer]:
+        - /url: "#"
+      - link "Accessibility help" [ref=e4] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en
+      - link "Accessibility feedback" [ref=e5] [cursor=pointer]
+  - generic [ref=e10]:
+    - search [ref=e11]:
+      - generic [ref=e13]:
+        - link "Go to Google Home" [ref=e15] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQPAgK
+          - img [ref=e16]
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - combobox "Search" [ref=e27]: Trailblazer Hersheypark roller coaster track Trailblazer Hersheypark roller coaster track
+            - generic [ref=e28]:
+              - button "Clear" [ref=e30] [cursor=pointer]:
+                - img [ref=e32]
+              - generic [ref=e35]:
+                - button "Search by voice" [ref=e36] [cursor=pointer]:
+                  - img [ref=e37]
+                - button "Search by image" [ref=e39] [cursor=pointer]:
+                  - img [ref=e40]
+          - button "Search" [ref=e42] [cursor=pointer]:
+            - img [ref=e45]
+    - generic [ref=e48]:
+      - button "Google apps" [ref=e50] [cursor=pointer]:
+        - img [ref=e51]
+      - 'button "Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e55] [cursor=pointer]':
+        - img [ref=e56]
+  - generic [ref=e58]:
+    - generic [ref=e61]:
+      - navigation [ref=e64]:
+        - generic [ref=e65]:
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - link "AI Mode" [ref=e70] [cursor=pointer]:
+                - /url: /search?q=Trailblazer+Hersheypark+roller+coaster+track&sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&udm=50&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-N1yM8IWMAW38KJpFf7pPKYUlZBRWD_C_uyPKS6e7ZKan2sOdpl75hfQrTrUMnNaj6q7WbgDdtAs4JLulNjExvgzrhBdp49m6epi5KsmsPdHQD23491PmsqFspI7wVC3LL_FQLYPpLnr39HSMXkebmKYaoNc&aep=1&ntc=1&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQ2J8OegQICRAD
+                - generic [ref=e73]: AI Mode
+            - listitem [ref=e74]:
+              - link "All" [ref=e75] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=Trailblazer+Hersheypark+roller+coaster+track&source=lnms&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-N1yM8IWMAW38KJpFf7pPKYUlZBRWD_C_uyPKS6e7ZKan2sOdpl75hfQrTrUMnNaj6q7WbgDdtAs4JLulNjExvgzrhBdp49m6epi5KsmsPdHQD23491PmsqFspI7wVC3LL_FQLYPpLnr39HSMXkebmKYaoNc&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQ0pQJegQIChAB
+                - generic [ref=e77]: All
+            - listitem [ref=e78]:
+              - link "Images" [disabled] [ref=e79]:
+                - generic [ref=e81]: Images
+            - listitem [ref=e82]:
+              - link "Shopping" [ref=e83] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&udm=28&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-N1yM8IWMAW38KJpFf7pPKYUlZBRWD_C_uyPKS6e7ZKan2sOdpl75hfQrTrUMnNaj6q7WbgDdtAs4JLulNjExvgzrhBdp49m6epi5KsmsPdHQD23491PmsqFspI7wVC3LL_FQLYPpLnr39HSMXkebmKYaoNc&q=Trailblazer+Hersheypark+roller+coaster+track&ved=1t:220175&ictx=111
+                - generic [ref=e85]: Shopping
+            - listitem [ref=e86]:
+              - link "Videos" [ref=e87] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&udm=7&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-N1yM8IWMAW38KJpFf7pPKYUlZBRWD_C_uyPKS6e7ZKan2sOdpl75hfQrTrUMnNaj6q7WbgDdtAs4JLulNjExvgzrhBdp49m6epi5KsmsPdHQD23491PmsqFspI7wVC3LL_FQLYPpLnr39HSMXkebmKYaoNc&q=Trailblazer+Hersheypark+roller+coaster+track&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQtKgLegQIDhAB
+                - generic [ref=e89]: Videos
+            - listitem [ref=e90]:
+              - link "Forums" [ref=e91] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&udm=18&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-N1yM8IWMAW38KJpFf7pPKYUlZBRWD_C_uyPKS6e7ZKan2sOdpl75hfQrTrUMnNaj6q7WbgDdtAs4JLulNjExvgzrhBdp49m6epi5KsmsPdHQD23491PmsqFspI7wVC3LL_FQLYPpLnr39HSMXkebmKYaoNc&q=Trailblazer+Hersheypark+roller+coaster+track&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQs6gLegQICxAB
+                - generic [ref=e93]: Forums
+            - listitem [ref=e94]:
+              - link "Short videos" [ref=e95] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&udm=39&fbs=ADc_l-aHJKCxetkbp8HihrVlWP2E1iNtw1c6Bqm2EL8gFYaWSYxrIPO0Uw9d1XjTJ7RJppJ4S3sTm2_NMP0rEHzmSr_-N1yM8IWMAW38KJpFf7pPKYUlZBRWD_C_uyPKS6e7ZKan2sOdpl75hfQrTrUMnNaj6q7WbgDdtAs4JLulNjExvgzrhBdp49m6epi5KsmsPdHQD23491PmsqFspI7wVC3LL_FQLYPpLnr39HSMXkebmKYaoNc&q=Trailblazer+Hersheypark+roller+coaster+track&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQs6gLegQIDxAB
+                - generic [ref=e97]: Short videos
+            - listitem [ref=e98]:
+              - button "More filters" [ref=e99] [cursor=pointer]:
+                - generic "More filters" [ref=e100]:
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: More
+                    - img [ref=e104]
+          - button "Tools" [ref=e107] [cursor=pointer]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: Tools
+              - img [ref=e112]
+      - link "Saves" [ref=e115] [cursor=pointer]:
+        - /url: /save?sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQ7XV6BAgGEAA
+        - img [ref=e117]
+        - text: Saves
+    - navigation [ref=e120]:
+      - navigation [ref=e123]:
+        - list [ref=e131]:
+          - listitem [ref=e132]:
+            - link "Add Laff trakk" [ref=e133] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=laff+trakk+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-K1fm-6MbHrVPgWC5v0Ha2vqzVUeNB44AC9SUELZhXl_E6x4cDTu0P_MEXpDYxJDaGZp4IuHKjG8tozwW-ewHIWjJp7TwTwQMGExlTRWLyMJBPsc28Gtt4lMNU7jrvKM3ywglPI_j2JxVEjYWaIHAYVVk6ZHbjFQZ9Lcl3lKNxHnjT3H5&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAB6BAgQEAE&ictx=0
+              - generic [ref=e139]: Laff trakk
+          - listitem [ref=e140]:
+            - link "Add Laff track" [ref=e141] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=laff+track+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-K1fm-6MbHrVPgWC5v0Ha2vqzVUeNB44AC9SUELZhXl_E6x4cDTu0P_MEXpDYxJDaGZp4IuHKjG8tozwW-ewHIeOR1-hkTgwaOW3IK9WUwehWTGdRx3UffH-3ULl5bGWPOz591areMm1I_mMrGITWnr6qKvJAvfq_DS_NzSuBYHggOfxs&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAF6BAgSEAE&ictx=0
+              - generic [ref=e147]: Laff track
+          - listitem [ref=e148]:
+            - link "Add Laugh track" [ref=e149] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=laugh+track+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-J3sv1lfnPvABCMwdVDYvw2ON6L-9YF803BSyuluzH2FzjT7X8Sa0PtUF6BniCkPINQFeDejxkoxqNWmiJsJUAI2wGeg7bqzEQE0NG3nGNpfq85gZbw0sNbFPrEuJ6YhRgSRW5bVcme1khLIrqGMOPPZFkvFDeZJsfxS5RdUnXVVNmPrS&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAJ6BAgTEAE&ictx=0
+              - generic [ref=e151]: Laugh track
+          - listitem [ref=e152]:
+            - link "Add Amusement park" [ref=e153] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=amusement+park+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-Gu3cGWeU3vmo5LM_mPcpUxoMnOa64FvVr80GMRwKKE8JLyfwhgkNX3HpQ_96BsjanvdPAgyODMgrMlGk2i1DqK_ORj-dwR5nYu0iVr1nJC97SXb3LOq7K03lF0PTsmmtoGy0Sdqj-dIs7gtNRAd2eY9JTh-iLT6OjBmkpn0YMNAN4SQ_15fMyGXnqvLyAvKiuqP_Zg&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAN6BAgUEAE&ictx=0
+              - generic [ref=e159]: Amusement park
+          - listitem [ref=e160]:
+            - link "Add Park map" [ref=e161] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=park+map+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-ZUNM7mtYny5rKDXe5Qj35zpY80URGPpr1IDX7NUhiFCiJS2P1ycyzHOksonXMUV6a-7WxuEbzTjt1K63antWVqO7ema2FTXElP70HjqB41SJHwel9vr-U610jhKD2zNgkHXbaHStd0AqG5vTmyiLXD3aaQ7Lqw-MrpK5IZIl4EWcSk2w&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAR6BAgVEAE&ictx=0
+              - generic [ref=e167]: Park map
+          - listitem [ref=e1955]:
+            - link "Add Trailblazer trains" [ref=e1956] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=trailblazer+trains+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-EsbckUHcZPP-f61p4qqGM20sdi5okzmc-HsPj_D5wLly5XMiSOlAby046pnb78Wxh42RtT1odoRwryfpHqMrP4blCDUiqrCpla7gU4FETqL7VokneXghLiqIE8Nbo_NNSHjKm2CbRi9mj7pISsIyl6E6au-Yevgj8J7AedNrGPgG1PNU&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAV6BQiXARAB&ictx=0
+              - generic [ref=e1962]: Trailblazer trains
+          - listitem [ref=e1963]:
+            - link "Add Pov hersheypark" [ref=e1964] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=pov+hersheypark+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-9374Zu-0QADT4DIeY78kEq2IiBR6ytabtpob0qVFR1r1MkIzhywEIZERiQj1cd1G-a0lgGPQsas64JqFgq1FUctbuVveP0IYeksQ_5w_yzWWx8emvKFd9lAqNLmRJ5KVlyJ4J7W363UzxvU8sF6mNBz18HhypAYSDVssR40nuIy1eoQy&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAZ6BQiWARAB&ictx=0
+              - generic [ref=e1970]: Pov hersheypark
+          - listitem [ref=e1971]:
+            - link "Add Theme park" [ref=e1972] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=theme+park+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-K1fm-6MbHrVPgWC5v0Ha2vqzVUeNB44AC9SUELZhXl_E6x4cDTu0P_MEXpDYxJDaGZp4IuHKjG8tozwW-ewHIaQEDQg1qWj1Zj3mXBkM4JWssd9h6xcThnZ5CCmdq4ftwWMnnJYo6n29BBUcPPzLN_1h_Wcr-bCPxwWtzuFr1eTlBQyy&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAd6BQiPARAB&ictx=0
+              - generic [ref=e1978]: Theme park
+          - listitem [ref=e1979]:
+            - link "Add Hershey pennsylvania" [ref=e1980] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hershey+pennsylvania+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c--j-8-rgrpNPCZhmSlXPgOIVe9FzDsqmxhxGPdcTzQkfW0j9O2_lgYc4hGPb8Z0uEpygqVJ1EUHEaUQKVh-3Ny1vXB-h4QspcfhufXGOTfbhTbDclwfBRoQKi7baxbkRprS88Z3mI_X7YzfDofOGadomNrj_nZ5du5eICJXUXCMlUXzWWsZCZLacKxhWSI4y3_uqLHA&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAh6BQiRARAB&ictx=0
+              - generic [ref=e1986]: Hershey pennsylvania
+          - listitem [ref=e1987]:
+            - link "Add Six flags" [ref=e1988] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=six+flags+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-JaQUCHPjKSMgcjMla-aoiwjuGeSB0TwNiw-s5Lq7EYKZwvyHNckZEjvDo-3TW25vkT_cz0MbvpM7OEhH79Hnv_tHRJoG4i5rjF1L7uHbk1ZJCAyhmVhUHTDI_eU2apLEK8uDAyskG8bMULHdPqEs3_KSXoexnIvkV5ic4HgZklx2zV33&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAl6BQiTARAB&ictx=0
+              - generic [ref=e1994]: Six flags
+          - listitem [ref=e1995]:
+            - link "Add Youtube" [ref=e1996] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=youtube+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-KV7hWfxLE_Vp1DUBDsK6so0t68ichR2Ms0rScGrV3tDAd6W2ECYBHLyb8R71wGwVF-7GXyYSLp0PA8mk4GC2BeozN3oOfjwIB_1tgt6rGKPEHML9M1n2t9BGIq-vHD2PQAkOTSLZKczyTVKO7hf73mc30iPy0ALZzIigCrpbJWedl-_K&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAp6BQiUARAB&ictx=0
+              - generic [ref=e2002]: Youtube
+          - listitem [ref=e2003]:
+            - link "Add Hersheypa" [ref=e2004] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hersheypa+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-JaQUCHPjKSMgcjMla-aoiwjuGeSB0TwNiw-s5Lq7EYKZwvyHNckZEjvDo-3TW25vkT_cz0MbvpM7OEhH79HnvxaboA4ki7b9iWQj8V_rMnWHioxcwhGBcLOGtgoJ0qWulpGm5enw-7UMUfBFAV8lL9s1KbuQKJyvig4E6nI2jmkaHszL&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAt6BQiQARAB&ictx=0
+              - generic [ref=e2010]: Hersheypa
+          - listitem [ref=e2011]:
+            - link "Add Hersheypark connoisseurs" [ref=e2012] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hersheypark+connoisseurs+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-XLpDVSgFnFrzJ_rA2wYKPYVNE9Nj4c3wHhatiDykF6IM3V-BLeRyUV4hJU-UrBU0CTrFkawcL5RuHB-fMSQvSp3j8DTAaligxI6N7rfJPcadOjrxKJDtHpwp-niBGi0pOQkIT2UeudBekhB7vtJjWcfSs5LWr7bfDrlQhWez-7Ls_8oEX7yh1kZ9Zsmm7ub_1-I5iQ&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKAx6BQiVARAB&ictx=0
+              - generic [ref=e2018]: Hersheypark connoisseurs
+          - listitem [ref=e2019]:
+            - link "Add Runaway train" [ref=e2020] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=runaway+train+Trailblazer+Hersheypark+roller+coaster+track&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-xflvf2lwpG_Q1DPXMZZP3LF-TW4T1BqtO1pfQxbfz4mg40epBKIf5y8e1h8OamUG9PX_vrey04xuf8Zv7-cv4usjzN_pL8eCex30LSsiuo8sbeL23kwFcIVsjGmuGE-Wd5_KDYrDFK1dIJnQWikThlJxbB-G_ufGbE99ZKVIIPeyXplsk34rlSxJSef9yo2RrjkzTg&udm=2&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQxKsJKA16BQiSARAB&ictx=0
+              - generic [ref=e2026]: Runaway train
+    - heading "Search Results" [level=1] [ref=e168]
+    - main [ref=e170]:
+      - generic [ref=e176]:
+        - generic [ref=e179]:
+          - generic [ref=e180] [cursor=pointer]:
+            - heading "Amusement Park ..." [level=3] [ref=e182]:
+              - button "Amusement Park ..." [ref=e184]:
+                - img "Amusement Park ..." [ref=e187]
+            - link "Hershey Park Amusement Park ..." [ref=e189]:
+              - /url: https://www.hersheypark.com/things-to-do/rides-and-attractions/trailblazer
+              - generic [ref=e194]: Hershey Park
+              - generic [ref=e196]: Amusement Park ...
+          - generic [ref=e197] [cursor=pointer]:
+            - heading "Trailblazer (roller coaster) - Wikipedia" [level=3] [ref=e199]:
+              - button "Trailblazer (roller coaster) - Wikipedia" [ref=e201]:
+                - img "Trailblazer (roller coaster) - Wikipedia" [ref=e204]
+            - link "Wikipedia Trailblazer (roller coaster) - Wikipedia" [ref=e206]:
+              - /url: https://en.wikipedia.org/wiki/Trailblazer_(roller_coaster)
+              - generic [ref=e211]: Wikipedia
+              - generic [ref=e213]: Trailblazer (roller coaster) - Wikipedia
+          - generic [ref=e214] [cursor=pointer]:
+            - heading "Trailblazer, Hersheypark] she's no ..." [level=3] [ref=e216]:
+              - button "Trailblazer, Hersheypark] she's no ..." [ref=e218]:
+                - img "Trailblazer, Hersheypark] she's no ..." [ref=e221]
+            - link "Reddit Trailblazer, Hersheypark] she's no ..." [ref=e223]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/ibreb4/trailblazer_hersheypark_shes_no_thriller_but_damn/
+              - generic [ref=e228]: Reddit
+              - generic [ref=e230]: Trailblazer, Hersheypark] she's no ...
+          - generic [ref=e231] [cursor=pointer]:
+            - heading "Trailblazer Roller Coaster Hersheypark ..." [level=3] [ref=e233]:
+              - button "Trailblazer Roller Coaster Hersheypark ..." [ref=e235]:
+                - img "Trailblazer Roller Coaster Hersheypark ..." [ref=e238]
+            - link "Theme Parks and Entertainment Trailblazer Roller Coaster Hersheypark ..." [ref=e240]:
+              - /url: https://www.themeparksandentertainment.com/2021/12/trailblazer-roller-coaster-hersheypark.html
+              - generic [ref=e245]: Theme Parks and Entertainment
+              - generic [ref=e247]: Trailblazer Roller Coaster Hersheypark ...
+          - generic [ref=e248] [cursor=pointer]:
+            - generic [ref=e249]:
+              - heading "Trailblazer Roller Coaster! Hersheypark ..." [level=3] [ref=e250]:
+                - button "Trailblazer Roller Coaster! Hersheypark ..." [ref=e252]:
+                  - img "Trailblazer Roller Coaster! Hersheypark ..." [ref=e255]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Trailblazer Roller Coaster! Hersheypark ..." [ref=e257]:
+              - /url: https://www.youtube.com/watch?v=K4c72qiLMig
+              - generic [ref=e262]: YouTube
+              - generic [ref=e264]: Trailblazer Roller Coaster! Hersheypark ...
+          - generic [ref=e265] [cursor=pointer]:
+            - heading "Trailblazer at Hersheypark | The ..." [level=3] [ref=e267]:
+              - button "Trailblazer at Hersheypark | The ..." [ref=e269]:
+                - img "Trailblazer at Hersheypark | The ..." [ref=e272]
+            - link "The Amusement Parkives Trailblazer at Hersheypark | The ..." [ref=e274]:
+              - /url: https://amusementparkives.com/hersheypark/anthology/rides-list/hp-coasters-list/trailblazer-hp/
+              - generic [ref=e279]: The Amusement Parkives
+              - generic [ref=e281]: Trailblazer at Hersheypark | The ...
+          - generic [ref=e282] [cursor=pointer]:
+            - heading "Trailblazer • Hersheypark • Captain Coaster" [level=3] [ref=e284]:
+              - button "Trailblazer • Hersheypark • Captain Coaster" [ref=e286]:
+                - img "Trailblazer • Hersheypark • Captain Coaster" [ref=e289]
+            - link "Captain Coaster Trailblazer • Hersheypark • Captain Coaster" [ref=e291]:
+              - /url: https://captaincoaster.com/en/coasters/847/trailblazer-hersheypark
+              - generic [ref=e296]: Captain Coaster
+              - generic [ref=e298]: Trailblazer • Hersheypark • Captain Coaster
+          - generic [ref=e299] [cursor=pointer]:
+            - heading "Amusement Park ..." [level=3] [ref=e301]:
+              - button "Amusement Park ..." [ref=e303]:
+                - img "Amusement Park ..." [ref=e306]
+            - link "Hershey Park Amusement Park ..." [ref=e308]:
+              - /url: https://www.hersheypark.com/things-to-do/rides-and-attractions/trailblazer
+              - generic [ref=e313]: Hershey Park
+              - generic [ref=e315]: Amusement Park ...
+          - generic [ref=e316] [cursor=pointer]:
+            - heading "roller coaster Trailblazer ..." [level=3] [ref=e318]:
+              - button "roller coaster Trailblazer ..." [ref=e320]:
+                - img "roller coaster Trailblazer ..." [ref=e323]
+            - link "Facebook roller coaster Trailblazer ..." [ref=e325]:
+              - /url: https://www.facebook.com/Hersheypark/posts/this-2024-hersheypark-season-were-celebrating-multiple-anniversaries-on-coasters/800642795428920/
+              - generic [ref=e330]: Facebook
+              - generic [ref=e332]: roller coaster Trailblazer ...
+          - generic [ref=e333] [cursor=pointer]:
+            - heading "Trailblazer Roller Coaster ..." [level=3] [ref=e335]:
+              - button "Trailblazer Roller Coaster ..." [ref=e337]:
+                - img "Trailblazer Roller Coaster ..." [ref=e340]
+            - link "Hershey Community Archives Trailblazer Roller Coaster ..." [ref=e342]:
+              - /url: https://hersheyarchives.org/encyclopedia/a-new-ride-for-a-new-park-trailblazer-roller-coaster/
+              - generic [ref=e347]: Hershey Community Archives
+              - generic [ref=e349]: Trailblazer Roller Coaster ...
+          - generic [ref=e350] [cursor=pointer]:
+            - heading "When it opened, Trailblazer was the ..." [level=3] [ref=e352]:
+              - button "When it opened, Trailblazer was the ..." [ref=e354]:
+                - img "When it opened, Trailblazer was the ..." [ref=e357]
+            - link "x.com When it opened, Trailblazer was the ..." [ref=e359]:
+              - /url: https://x.com/Hersheypark/status/1030212706090016773
+              - generic [ref=e364]: x.com
+              - generic [ref=e366]: When it opened, Trailblazer was the ...
+          - generic [ref=e367] [cursor=pointer]:
+            - 'heading "Hersheypark: 15 roller coasters, one ..." [level=3] [ref=e369]':
+              - 'button "Hersheypark: 15 roller coasters, one ..." [ref=e371]':
+                - 'img "Hersheypark: 15 roller coasters, one ..." [ref=e374]'
+            - 'link "ABC27 Hersheypark: 15 roller coasters, one ..." [ref=e376]':
+              - /url: https://www.abc27.com/hershey/hersheypark-15-roller-coasters-one-sweet-time/
+              - generic [ref=e381]: ABC27
+              - generic [ref=e383]: "Hersheypark: 15 roller coasters, one ..."
+          - generic [ref=e384] [cursor=pointer]:
+            - heading "Trailblazer at Hersheypark celebrates ..." [level=3] [ref=e386]:
+              - button "Trailblazer at Hersheypark celebrates ..." [ref=e388]:
+                - img "Trailblazer at Hersheypark celebrates ..." [ref=e391]
+            - link "Instagram Trailblazer at Hersheypark celebrates ..." [ref=e393]:
+              - /url: https://www.instagram.com/p/C7SGZk1polr/
+              - generic [ref=e398]: Instagram
+              - generic [ref=e400]: Trailblazer at Hersheypark celebrates ...
+          - generic [ref=e401] [cursor=pointer]:
+            - generic [ref=e402]:
+              - heading "Trailblazer - Hersheypark (Hershey, PA ..." [level=3] [ref=e403]:
+                - button "Trailblazer - Hersheypark (Hershey, PA ..." [ref=e405]:
+                  - img "Trailblazer - Hersheypark (Hershey, PA ..." [ref=e408]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Trailblazer - Hersheypark (Hershey, PA ..." [ref=e410]:
+              - /url: https://www.youtube.com/watch?v=4m5nj3w-3LY
+              - generic [ref=e415]: YouTube
+              - generic [ref=e417]: Trailblazer - Hersheypark (Hershey, PA ...
+          - generic [ref=e418] [cursor=pointer]:
+            - heading "Trailblazer at Hersheypark in Hershey ..." [level=3] [ref=e420]:
+              - button "Trailblazer at Hersheypark in Hershey ..." [ref=e422]:
+                - img "Trailblazer at Hersheypark in Hershey ..." [ref=e425]
+            - link "Flickr Trailblazer at Hersheypark in Hershey ..." [ref=e427]:
+              - /url: https://www.flickr.com/photos/canobiefan/3353857246
+              - generic [ref=e432]: Flickr
+              - generic [ref=e434]: Trailblazer at Hersheypark in Hershey ...
+          - generic [ref=e435] [cursor=pointer]:
+            - heading "roller coaster at Hersheypark ..." [level=3] [ref=e437]:
+              - button "roller coaster at Hersheypark ..." [ref=e439]:
+                - img "roller coaster at Hersheypark ..." [ref=e442]
+            - link "Facebook roller coaster at Hersheypark ..." [ref=e444]:
+              - /url: https://www.facebook.com/Hersheypark/posts/trailblazer-turns-50-this-summer-added-in-1974-trailblazer-is-the-second-oldest-/865461035613762/
+              - generic [ref=e449]: Facebook
+              - generic [ref=e451]: roller coaster at Hersheypark ...
+          - generic [ref=e452] [cursor=pointer]:
+            - generic [ref=e453]:
+              - heading "Front Seat 60 FPS (HD POV) Hersheypark ..." [level=3] [ref=e454]:
+                - button "Front Seat 60 FPS (HD POV) Hersheypark ..." [ref=e456]:
+                  - img "Front Seat 60 FPS (HD POV) Hersheypark ..." [ref=e459]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Front Seat 60 FPS (HD POV) Hersheypark ..." [ref=e461]:
+              - /url: https://www.youtube.com/watch?v=kObvmMW0hhM
+              - generic [ref=e466]: YouTube
+              - generic [ref=e468]: Front Seat 60 FPS (HD POV) Hersheypark ...
+          - generic [ref=e469] [cursor=pointer]:
+            - heading "Trailblazer (roller coaster) - Wikipedia" [level=3] [ref=e471]:
+              - button "Trailblazer (roller coaster) - Wikipedia" [ref=e473]:
+                - img "Trailblazer (roller coaster) - Wikipedia" [ref=e476]
+            - link "Wikipedia Trailblazer (roller coaster) - Wikipedia" [ref=e478]:
+              - /url: https://en.wikipedia.org/wiki/Trailblazer_(roller_coaster)
+              - generic [ref=e483]: Wikipedia
+              - generic [ref=e485]: Trailblazer (roller coaster) - Wikipedia
+          - generic [ref=e486] [cursor=pointer]:
+            - heading "roller coaster at Hersheypark ..." [level=3] [ref=e488]:
+              - button "roller coaster at Hersheypark ..." [ref=e490]:
+                - img "roller coaster at Hersheypark ..." [ref=e493]
+            - link "Facebook roller coaster at Hersheypark ..." [ref=e495]:
+              - /url: https://www.facebook.com/Hersheypark/posts/trailblazer-turns-50-this-summer-added-in-1974-trailblazer-is-the-second-oldest-/865461035613762/
+              - generic [ref=e500]: Facebook
+              - generic [ref=e502]: roller coaster at Hersheypark ...
+          - generic [ref=e503] [cursor=pointer]:
+            - heading "Trailblazer - Hersheypark (Hershey ..." [level=3] [ref=e505]:
+              - button "Trailblazer - Hersheypark (Hershey ..." [ref=e507]:
+                - img "Trailblazer - Hersheypark (Hershey ..." [ref=e510]
+            - link "Roller Coaster DataBase Trailblazer - Hersheypark (Hershey ..." [ref=e512]:
+              - /url: https://rcdb.com/107.htm
+              - generic [ref=e517]: Roller Coaster DataBase
+              - generic [ref=e519]: Trailblazer - Hersheypark (Hershey ...
+          - generic [ref=e520] [cursor=pointer]:
+            - generic [ref=e521]:
+              - heading "Hershey Park rollercoaster coaster ..." [level=3] [ref=e522]:
+                - button "Hershey Park rollercoaster coaster ..." [ref=e524]:
+                  - img "Hershey Park rollercoaster coaster ..." [ref=e527]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Hershey Park rollercoaster coaster ..." [ref=e529]:
+              - /url: https://www.youtube.com/watch?v=2GVez8Lrgz4
+              - generic [ref=e534]: YouTube
+              - generic [ref=e536]: Hershey Park rollercoaster coaster ...
+          - generic [ref=e537] [cursor=pointer]:
+            - heading "roller coaster at Hersheypark ..." [level=3] [ref=e539]:
+              - button "roller coaster at Hersheypark ..." [ref=e541]:
+                - img "roller coaster at Hersheypark ..." [ref=e544]
+            - link "Facebook roller coaster at Hersheypark ..." [ref=e546]:
+              - /url: https://www.facebook.com/groups/hersheyparkconnoisseurs/posts/2857420577731134/
+              - generic [ref=e551]: Facebook
+              - generic [ref=e553]: roller coaster at Hersheypark ...
+          - generic [ref=e554] [cursor=pointer]:
+            - heading "Trailblazer at Hersheypark celebrates ..." [level=3] [ref=e556]:
+              - button "Trailblazer at Hersheypark celebrates ..." [ref=e558]:
+                - img "Trailblazer at Hersheypark celebrates ..." [ref=e561]
+            - link "Instagram Trailblazer at Hersheypark celebrates ..." [ref=e563]:
+              - /url: https://www.instagram.com/p/C7SGZk1polr/
+              - generic [ref=e568]: Instagram
+              - generic [ref=e570]: Trailblazer at Hersheypark celebrates ...
+          - generic [ref=e571] [cursor=pointer]:
+            - heading "Trailblazer - Hersheypark (Hershey ..." [level=3] [ref=e573]:
+              - button "Trailblazer - Hersheypark (Hershey ..." [ref=e575]:
+                - img "Trailblazer - Hersheypark (Hershey ..." [ref=e578]
+            - link "Roller Coaster DataBase Trailblazer - Hersheypark (Hershey ..." [ref=e580]:
+              - /url: https://rcdb.com/107.htm
+              - generic [ref=e585]: Roller Coaster DataBase
+              - generic [ref=e587]: Trailblazer - Hersheypark (Hershey ...
+          - generic [ref=e588]:
+            - heading "Related searches" [level=2] [ref=e589]
+            - link "hersheypark map 2025" [ref=e590] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hersheypark+map+2025&stick=H4sIAAAAAAAAAFvEKpKRWlSckVpZkFiUrZCbWKBgZGBkCgCRibeKFwAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQILxAA
+              - generic [ref=e595]: hersheypark map 2025
+            - link "laff track hershey park" [ref=e596] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=laff+track+hershey+park&stick=H4sIAAAAAAAAAFvEKp6TmJamUFKUmJytkJFaVJyRWqlQkFiUDQCuGa4dGgAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQIMhAA
+              - generic [ref=e601]: laff track hershey park
+            - link "hershey park map 2024" [ref=e602] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hershey+park+map+2024&stick=H4sIAAAAAAAAAFvEKpqRWlSckVqpUJBYlK2Qm1igYGRgZAIAJsZYrBgAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQIMxAA
+              - generic [ref=e607]: hershey park map 2024
+          - generic [ref=e608] [cursor=pointer]:
+            - heading "Trailblazer roller coaster at Hersheypark" [level=3] [ref=e610]:
+              - button "Trailblazer roller coaster at Hersheypark" [ref=e612]:
+                - img "Trailblazer roller coaster at Hersheypark" [ref=e615]
+            - link "Hershey Blog - Hershey, PA Trailblazer roller coaster at Hersheypark" [ref=e617]:
+              - /url: https://stories.hersheypa.com/asset/226297/hp.rides.coasters.trailblazer.01
+              - generic [ref=e622]: Hershey Blog - Hershey, PA
+              - generic [ref=e624]: Trailblazer roller coaster at Hersheypark
+          - generic [ref=e625] [cursor=pointer]:
+            - generic [ref=e626]:
+              - heading "Trailblazer (On-Ride) Hersheypark - YouTube" [level=3] [ref=e627]:
+                - button "Trailblazer (On-Ride) Hersheypark - YouTube" [ref=e629]:
+                  - img "Trailblazer (On-Ride) Hersheypark - YouTube" [ref=e632]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Trailblazer (On-Ride) Hersheypark - YouTube" [ref=e634]:
+              - /url: https://www.youtube.com/watch?v=ZhuIh85BnRw
+              - generic [ref=e639]: YouTube
+              - generic [ref=e641]: Trailblazer (On-Ride) Hersheypark - YouTube
+          - generic [ref=e642] [cursor=pointer]:
+            - heading "Trailblazer - Hershey Park" [level=3] [ref=e644]:
+              - button "Trailblazer - Hershey Park" [ref=e646]:
+                - img "Trailblazer - Hershey Park" [ref=e649]
+            - link "Coaster Gallery Trailblazer - Hershey Park" [ref=e651]:
+              - /url: http://www.coastergallery.com/2000/hp36.html
+              - generic [ref=e656]: Coaster Gallery
+              - generic [ref=e658]: Trailblazer - Hershey Park
+          - generic [ref=e659] [cursor=pointer]:
+            - heading "Hersheypark - Trailblazer" [level=3] [ref=e661]:
+              - button "Hersheypark - Trailblazer" [ref=e663]:
+                - img "Hersheypark - Trailblazer" [ref=e666]
+            - link "Theme Park Review Hersheypark - Trailblazer" [ref=e668]:
+              - /url: https://www.themeparkreview.com/parks/p_198_4003_hersheypark_trailblazer
+              - generic [ref=e673]: Theme Park Review
+              - generic [ref=e675]: Hersheypark - Trailblazer
+          - generic [ref=e676] [cursor=pointer]:
+            - generic [ref=e677]:
+              - heading "Would you take a Ride on Trailblazer ..." [level=3] [ref=e678]:
+                - button "Would you take a Ride on Trailblazer ..." [ref=e680]:
+                  - img "Would you take a Ride on Trailblazer ..." [ref=e683]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok Would you take a Ride on Trailblazer ..." [ref=e685]:
+              - /url: https://www.tiktok.com/@thehersheyguy/video/7374880281783979310
+              - generic [ref=e690]: TikTok
+              - generic [ref=e692]: Would you take a Ride on Trailblazer ...
+          - generic [ref=e693] [cursor=pointer]:
+            - heading "Trailblazer • Hersheypark • Captain Coaster" [level=3] [ref=e695]:
+              - button "Trailblazer • Hersheypark • Captain Coaster" [ref=e697]:
+                - img "Trailblazer • Hersheypark • Captain Coaster" [ref=e700]
+            - link "Captain Coaster Trailblazer • Hersheypark • Captain Coaster" [ref=e702]:
+              - /url: https://captaincoaster.com/en/coasters/847/trailblazer-hersheypark
+              - generic [ref=e707]: Captain Coaster
+              - generic [ref=e709]: Trailblazer • Hersheypark • Captain Coaster
+          - generic [ref=e710] [cursor=pointer]:
+            - heading "The Trailblazer at Hersheypark ..." [level=3] [ref=e712]:
+              - button "The Trailblazer at Hersheypark ..." [ref=e714]:
+                - img "The Trailblazer at Hersheypark ..." [ref=e717]
+            - link "Facebook The Trailblazer at Hersheypark ..." [ref=e719]:
+              - /url: https://www.facebook.com/groups/446279452634367/posts/1899842493944715/
+              - generic [ref=e724]: Facebook
+              - generic [ref=e726]: The Trailblazer at Hersheypark ...
+          - generic [ref=e727] [cursor=pointer]:
+            - generic [ref=e728]:
+              - heading "Trailblazer at Hersheypark! Off-Ride ..." [level=3] [ref=e729]:
+                - button "Trailblazer at Hersheypark! Off-Ride ..." [ref=e731]:
+                  - img "Trailblazer at Hersheypark! Off-Ride ..." [ref=e734]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Trailblazer at Hersheypark! Off-Ride ..." [ref=e736]:
+              - /url: https://www.youtube.com/watch?v=A-Ki9-SrFVQ
+              - generic [ref=e741]: YouTube
+              - generic [ref=e743]: Trailblazer at Hersheypark! Off-Ride ...
+          - generic [ref=e744] [cursor=pointer]:
+            - heading "The 11 Best Thrill Rides at Hersheypark ..." [level=3] [ref=e746]:
+              - button "The 11 Best Thrill Rides at Hersheypark ..." [ref=e748]:
+                - img "The 11 Best Thrill Rides at Hersheypark ..." [ref=e751]
+            - link "Disney The 11 Best Thrill Rides at Hersheypark ..." [ref=e753]:
+              - /url: https://www.sandandorsnow.com/best-thrill-rides-at-hersheypark/
+              - generic [ref=e758]: Disney
+              - generic [ref=e760]: The 11 Best Thrill Rides at Hersheypark ...
+          - generic [ref=e761] [cursor=pointer]:
+            - heading "Hersheypark - Trailblazer" [level=3] [ref=e763]:
+              - button "Hersheypark - Trailblazer" [ref=e765]:
+                - img "Hersheypark - Trailblazer" [ref=e768]
+            - link "Theme Park Review Hersheypark - Trailblazer" [ref=e770]:
+              - /url: https://www.themeparkreview.com/parks/p_198_4003_hersheypark_trailblazer
+              - generic [ref=e775]: Theme Park Review
+              - generic [ref=e777]: Hersheypark - Trailblazer
+          - generic [ref=e778] [cursor=pointer]:
+            - heading "The Trailblazer at Hersheypark ..." [level=3] [ref=e780]:
+              - button "The Trailblazer at Hersheypark ..." [ref=e782]:
+                - img "The Trailblazer at Hersheypark ..." [ref=e785]
+            - link "Facebook The Trailblazer at Hersheypark ..." [ref=e787]:
+              - /url: https://www.facebook.com/groups/446279452634367/posts/1899842493944715/
+              - generic [ref=e792]: Facebook
+              - generic [ref=e794]: The Trailblazer at Hersheypark ...
+          - generic [ref=e795] [cursor=pointer]:
+            - heading "Trailblazer - Hersheypark (Hershey ..." [level=3] [ref=e797]:
+              - button "Trailblazer - Hersheypark (Hershey ..." [ref=e799]:
+                - img "Trailblazer - Hersheypark (Hershey ..." [ref=e802]
+            - link "Roller Coaster DataBase Trailblazer - Hersheypark (Hershey ..." [ref=e804]:
+              - /url: https://rcdb.com/107.htm
+              - generic [ref=e809]: Roller Coaster DataBase
+              - generic [ref=e811]: Trailblazer - Hersheypark (Hershey ...
+          - generic [ref=e812] [cursor=pointer]:
+            - heading "Celebrating National Roller Coaster ..." [level=3] [ref=e814]:
+              - button "Celebrating National Roller Coaster ..." [ref=e816]:
+                - img "Celebrating National Roller Coaster ..." [ref=e819]
+            - link "Hershey Blog - Hershey, PA Celebrating National Roller Coaster ..." [ref=e821]:
+              - /url: https://stories.hersheypa.com/were-celebrating--national-roller-coaster-day/
+              - generic [ref=e826]: Hershey Blog - Hershey, PA
+              - generic [ref=e828]: Celebrating National Roller Coaster ...
+          - generic [ref=e829] [cursor=pointer]:
+            - heading "Take a ride with us as we celebrate 20 ..." [level=3] [ref=e831]:
+              - button "Take a ride with us as we celebrate 20 ..." [ref=e833]:
+                - img "Take a ride with us as we celebrate 20 ..." [ref=e836]
+            - link "Instagram Take a ride with us as we celebrate 20 ..." [ref=e838]:
+              - /url: https://www.instagram.com/reel/C6tmP3jpU-W/
+              - generic [ref=e843]: Instagram
+              - generic [ref=e845]: Take a ride with us as we celebrate 20 ...
+          - generic [ref=e846] [cursor=pointer]:
+            - heading "Trailblazer at Hersheypark! Off-Ride ..." [level=3] [ref=e848]:
+              - button "Trailblazer at Hersheypark! Off-Ride ..." [ref=e850]:
+                - img "Trailblazer at Hersheypark! Off-Ride ..." [ref=e853]
+            - link "YouTube Trailblazer at Hersheypark! Off-Ride ..." [ref=e855]:
+              - /url: https://www.youtube.com/watch?v=3ElKAZ1KF-E
+              - generic [ref=e860]: YouTube
+              - generic [ref=e862]: Trailblazer at Hersheypark! Off-Ride ...
+          - generic [ref=e863] [cursor=pointer]:
+            - heading "roller coaster Trailblazer ..." [level=3] [ref=e865]:
+              - button "roller coaster Trailblazer ..." [ref=e867]:
+                - img "roller coaster Trailblazer ..." [ref=e870]
+            - link "Facebook roller coaster Trailblazer ..." [ref=e872]:
+              - /url: https://www.facebook.com/Hersheypark/posts/this-2024-hersheypark-season-were-celebrating-multiple-anniversaries-on-coasters/800642795428920/
+              - generic [ref=e877]: Facebook
+              - generic [ref=e879]: roller coaster Trailblazer ...
+          - generic [ref=e880] [cursor=pointer]:
+            - heading "Trailblazer Roller Coaster Hersheypark ..." [level=3] [ref=e882]:
+              - button "Trailblazer Roller Coaster Hersheypark ..." [ref=e884]:
+                - img "Trailblazer Roller Coaster Hersheypark ..." [ref=e887]
+            - link "Theme Parks and Entertainment Trailblazer Roller Coaster Hersheypark ..." [ref=e889]:
+              - /url: https://www.themeparksandentertainment.com/2021/12/trailblazer-roller-coaster-hersheypark.html
+              - generic [ref=e894]: Theme Parks and Entertainment
+              - generic [ref=e896]: Trailblazer Roller Coaster Hersheypark ...
+          - generic [ref=e897] [cursor=pointer]:
+            - heading "Celebrate National Roller Coaster Day ..." [level=3] [ref=e899]:
+              - button "Celebrate National Roller Coaster Day ..." [ref=e901]:
+                - img "Celebrate National Roller Coaster Day ..." [ref=e904]
+            - link "The Jersey Momma Celebrate National Roller Coaster Day ..." [ref=e906]:
+              - /url: https://www.thejerseymomma.com/2024/08/celebrate-national-roller-coaster-day.html
+              - generic [ref=e911]: The Jersey Momma
+              - generic [ref=e913]: Celebrate National Roller Coaster Day ...
+          - generic [ref=e914] [cursor=pointer]:
+            - heading "Trailblazer (roller coaster ..." [level=3] [ref=e916]:
+              - button "Trailblazer (roller coaster ..." [ref=e918]:
+                - img "Trailblazer (roller coaster ..." [ref=e921]
+            - link "Alchetron Trailblazer (roller coaster ..." [ref=e923]:
+              - /url: https://alchetron.com/Trailblazer-(roller-coaster)
+              - generic [ref=e928]: Alchetron
+              - generic [ref=e930]: Trailblazer (roller coaster ...
+          - generic [ref=e931] [cursor=pointer]:
+            - generic [ref=e932]:
+              - heading "Hersheypark Trailblazer 60FPS POV HD ..." [level=3] [ref=e933]:
+                - button "Hersheypark Trailblazer 60FPS POV HD ..." [ref=e935]:
+                  - img "Hersheypark Trailblazer 60FPS POV HD ..." [ref=e938]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Hersheypark Trailblazer 60FPS POV HD ..." [ref=e940]:
+              - /url: https://www.youtube.com/watch?v=Qs3qSk7R_gM
+              - generic [ref=e945]: YouTube
+              - generic [ref=e947]: Hersheypark Trailblazer 60FPS POV HD ...
+          - generic [ref=e948] [cursor=pointer]:
+            - heading "Trailblazer Roller Coaster ..." [level=3] [ref=e950]:
+              - button "Trailblazer Roller Coaster ..." [ref=e952]:
+                - img "Trailblazer Roller Coaster ..." [ref=e955]
+            - link "Hershey Community Archives Trailblazer Roller Coaster ..." [ref=e957]:
+              - /url: https://hersheyarchives.org/encyclopedia/a-new-ride-for-a-new-park-trailblazer-roller-coaster/
+              - generic [ref=e962]: Hershey Community Archives
+              - generic [ref=e964]: Trailblazer Roller Coaster ...
+          - generic [ref=e965] [cursor=pointer]:
+            - heading "Trailblazer (roller coaster ..." [level=3] [ref=e967]:
+              - button "Trailblazer (roller coaster ..." [ref=e969]:
+                - img "Trailblazer (roller coaster ..." [ref=e972]
+            - link "Alchetron Trailblazer (roller coaster ..." [ref=e974]:
+              - /url: https://alchetron.com/Trailblazer-(roller-coaster)
+              - generic [ref=e979]: Alchetron
+              - generic [ref=e981]: Trailblazer (roller coaster ...
+          - generic [ref=e982] [cursor=pointer]:
+            - heading "Mine Train coaster 50th anniversary ..." [level=3] [ref=e984]:
+              - button "Mine Train coaster 50th anniversary ..." [ref=e986]:
+                - img "Mine Train coaster 50th anniversary ..." [ref=e989]
+            - link "Facebook Mine Train coaster 50th anniversary ..." [ref=e991]:
+              - /url: https://www.facebook.com/groups/parkhistory/posts/7328895593854775/
+              - generic [ref=e996]: Facebook
+              - generic [ref=e998]: Mine Train coaster 50th anniversary ...
+          - generic [ref=e999] [cursor=pointer]:
+            - heading "Visit Laff Trakk at Pennsylvania's ..." [level=3] [ref=e1001]:
+              - button "Visit Laff Trakk at Pennsylvania's ..." [ref=e1003]:
+                - img "Visit Laff Trakk at Pennsylvania's ..." [ref=e1006]
+            - link "Hershey Park Visit Laff Trakk at Pennsylvania's ..." [ref=e1008]:
+              - /url: https://www.hersheypark.com/things-to-do/rides-and-attractions/laff-trakk
+              - generic [ref=e1013]: Hershey Park
+              - generic [ref=e1015]: Visit Laff Trakk at Pennsylvania's ...
+          - generic [ref=e1016]:
+            - heading "Related searches" [level=2] [ref=e1017]
+            - link "hersheypark map of rides" [ref=e1018] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hersheypark+map+of+rides&stick=H4sIAAAAAAAAAFvEKpGRWlSckVpZkFiUrZCbWKCQn6ZQlJmSWgwAnYueSRsAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQINBAA
+              - generic [ref=e1023]: hersheypark map of rides
+            - link "trailblazer roller coaster" [ref=e1024] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=trailblazer+roller+coaster&stick=H4sIAAAAAAAAAFvEKlVSlJiZk5STWJVapFCUn5MDpJLzE4tLUosAjlGnvx0AAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQINxAA
+              - generic [ref=e1029]: trailblazer roller coaster
+            - link "laff trakk" [ref=e1030] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=laff+trakk&stick=H4sIAAAAAAAAAFvEypWTmJamUFKUmJ0NAMCTpacNAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQIPhAA
+              - generic [ref=e1035]: laff trakk
+          - generic [ref=e1036] [cursor=pointer]:
+            - generic [ref=e1037]:
+              - heading "Trailblazer Front Row (HD POV ..." [level=3] [ref=e1038]:
+                - button "Trailblazer Front Row (HD POV ..." [ref=e1040]:
+                  - img "Trailblazer Front Row (HD POV ..." [ref=e1043]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Trailblazer Front Row (HD POV ..." [ref=e1045]:
+              - /url: https://www.youtube.com/watch?v=e7vDt1m6U-o
+              - generic [ref=e1050]: YouTube
+              - generic [ref=e1052]: Trailblazer Front Row (HD POV ...
+          - generic [ref=e1053] [cursor=pointer]:
+            - heading "Roller Coaster Photography" [level=3] [ref=e1055]:
+              - button "Roller Coaster Photography" [ref=e1057]:
+                - img "Roller Coaster Photography" [ref=e1060]
+            - link "Coaster Gallery Roller Coaster Photography" [ref=e1062]:
+              - /url: https://www.coastergallery.com/2000/Hersheypark_Trailblazer5.html
+              - generic [ref=e1067]: Coaster Gallery
+              - generic [ref=e1069]: Roller Coaster Photography
+          - generic [ref=e1070] [cursor=pointer]:
+            - heading "What's the best ride at Hersheypark ..." [level=3] [ref=e1072]:
+              - button "What's the best ride at Hersheypark ..." [ref=e1074]:
+                - img "What's the best ride at Hersheypark ..." [ref=e1077]
+            - link "PennLive.com What's the best ride at Hersheypark ..." [ref=e1079]:
+              - /url: https://www.pennlive.com/life/2019/08/ranking-hersheyparks-best-rollercoasters-and-thrill-rides-from-1-15.html
+              - generic [ref=e1084]: PennLive.com
+              - generic [ref=e1086]: What's the best ride at Hersheypark ...
+          - generic [ref=e1087] [cursor=pointer]:
+            - heading "Upcoming Hersheypark Group Visit ..." [level=3] [ref=e1089]:
+              - button "Upcoming Hersheypark Group Visit ..." [ref=e1091]:
+                - img "Upcoming Hersheypark Group Visit ..." [ref=e1094]
+            - link "Hershey Park Upcoming Hersheypark Group Visit ..." [ref=e1096]:
+              - /url: https://www.hersheypark.com/tickets-and-passes/groups/upcoming-events
+              - generic [ref=e1101]: Hershey Park
+              - generic [ref=e1103]: Upcoming Hersheypark Group Visit ...
+          - generic [ref=e1104] [cursor=pointer]:
+            - heading "Wildcat's Revenge roller coaster opens ..." [level=3] [ref=e1106]:
+              - button "Wildcat's Revenge roller coaster opens ..." [ref=e1108]:
+                - img "Wildcat's Revenge roller coaster opens ..." [ref=e1111]
+            - link "PhillyVoice Wildcat's Revenge roller coaster opens ..." [ref=e1113]:
+              - /url: https://www.phillyvoice.com/hersheypark-wildcats-revenge-open-roller-coaster-62-mph/
+              - generic [ref=e1118]: PhillyVoice
+              - generic [ref=e1120]: Wildcat's Revenge roller coaster opens ...
+          - generic [ref=e1121] [cursor=pointer]:
+            - heading "Trailblazer at Hersheypark celebrates ..." [level=3] [ref=e1123]:
+              - button "Trailblazer at Hersheypark celebrates ..." [ref=e1125]:
+                - img "Trailblazer at Hersheypark celebrates ..." [ref=e1128]
+            - link "Instagram Trailblazer at Hersheypark celebrates ..." [ref=e1130]:
+              - /url: https://www.instagram.com/p/C7SGZk1polr/
+              - generic [ref=e1135]: Instagram
+              - generic [ref=e1137]: Trailblazer at Hersheypark celebrates ...
+          - generic [ref=e1138] [cursor=pointer]:
+            - heading "Fall Coaster Rides of 2024 at Hersheypark" [level=3] [ref=e1140]:
+              - button "Fall Coaster Rides of 2024 at Hersheypark" [ref=e1142]:
+                - img "Fall Coaster Rides of 2024 at Hersheypark" [ref=e1145]
+            - link "Hershey Blog - Hershey, PA Fall Coaster Rides of 2024 at Hersheypark" [ref=e1147]:
+              - /url: https://stories.hersheypa.com/last-fall-coaster-rides-of-2024-at-hersheypark/
+              - generic [ref=e1152]: Hershey Blog - Hershey, PA
+              - generic [ref=e1154]: Fall Coaster Rides of 2024 at Hersheypark
+          - generic [ref=e1155] [cursor=pointer]:
+            - heading "Hersheypark – To Go, Or Not To Go? | We ..." [level=3] [ref=e1157]:
+              - button "Hersheypark – To Go, Or Not To Go? | We ..." [ref=e1159]:
+                - img "Hersheypark – To Go, Or Not To Go? | We ..." [ref=e1162]
+            - link "WeWereInverted.com Hersheypark – To Go, Or Not To Go? | We ..." [ref=e1164]:
+              - /url: https://www.wewereinverted.com/hersheypark-to-go-or-not-to-go/
+              - generic [ref=e1169]: WeWereInverted.com
+              - generic [ref=e1171]: Hersheypark – To Go, Or Not To Go? | We ...
+          - generic [ref=e1172] [cursor=pointer]:
+            - heading "2021 Trailblazer Roller Coaster On Ride ..." [level=3] [ref=e1174]:
+              - button "2021 Trailblazer Roller Coaster On Ride ..." [ref=e1176]:
+                - img "2021 Trailblazer Roller Coaster On Ride ..." [ref=e1179]
+            - link "YouTube 2021 Trailblazer Roller Coaster On Ride ..." [ref=e1181]:
+              - /url: https://www.youtube.com/watch?v=6yGvozH4K74
+              - generic [ref=e1186]: YouTube
+              - generic [ref=e1188]: 2021 Trailblazer Roller Coaster On Ride ...
+          - generic [ref=e1189] [cursor=pointer]:
+            - generic [ref=e1190]:
+              - heading "Hersheypark Trailblazer" [level=3] [ref=e1191]:
+                - button "Hersheypark Trailblazer" [ref=e1193]:
+                  - img "Hersheypark Trailblazer" [ref=e1196]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Instagram Hersheypark Trailblazer" [ref=e1198]:
+              - /url: https://www.instagram.com/popular/hersheypark-trailblazer/
+              - generic [ref=e1203]: Instagram
+              - generic [ref=e1205]: Hersheypark Trailblazer
+          - generic [ref=e1206] [cursor=pointer]:
+            - heading "Hersheypark Coaster Ranking from a ..." [level=3] [ref=e1208]:
+              - button "Hersheypark Coaster Ranking from a ..." [ref=e1210]:
+                - img "Hersheypark Coaster Ranking from a ..." [ref=e1213]
+            - link "Coaster101.com Hersheypark Coaster Ranking from a ..." [ref=e1215]:
+              - /url: https://www.coaster101.com/2017/07/02/ranking-hersheyparks-roller-coasters-first-timer/
+              - generic [ref=e1220]: Coaster101.com
+              - generic [ref=e1222]: Hersheypark Coaster Ranking from a ...
+          - generic [ref=e1223] [cursor=pointer]:
+            - generic [ref=e1224]:
+              - heading "POV Ride on Trailblazer Roller Coaster ..." [level=3] [ref=e1225]:
+                - button "POV Ride on Trailblazer Roller Coaster ..." [ref=e1227]:
+                  - img "POV Ride on Trailblazer Roller Coaster ..." [ref=e1230]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok POV Ride on Trailblazer Roller Coaster ..." [ref=e1232]:
+              - /url: https://www.tiktok.com/@coastermadness99/video/7046056893235727622
+              - generic [ref=e1237]: TikTok
+              - generic [ref=e1239]: POV Ride on Trailblazer Roller Coaster ...
+          - generic [ref=e1240] [cursor=pointer]:
+            - heading "roller coaster at Hersheypark ..." [level=3] [ref=e1242]:
+              - button "roller coaster at Hersheypark ..." [ref=e1244]:
+                - img "roller coaster at Hersheypark ..." [ref=e1247]
+            - link "Facebook roller coaster at Hersheypark ..." [ref=e1249]:
+              - /url: https://www.facebook.com/groups/hersheyparkconnoisseurs/posts/2857420577731134/
+              - generic [ref=e1254]: Facebook
+              - generic [ref=e1256]: roller coaster at Hersheypark ...
+          - generic [ref=e1257] [cursor=pointer]:
+            - heading "Roller Coaster Day 2019 at Hersheypark" [level=3] [ref=e1259]:
+              - button "Roller Coaster Day 2019 at Hersheypark" [ref=e1261]:
+                - img "Roller Coaster Day 2019 at Hersheypark" [ref=e1264]
+            - link "Hershey, PA Stories Roller Coaster Day 2019 at Hersheypark" [ref=e1266]:
+              - /url: https://stories.hersheypa.com/national-roller-coaster-day-2019-hersheypark/
+              - generic [ref=e1271]: Hershey, PA Stories
+              - generic [ref=e1273]: Roller Coaster Day 2019 at Hersheypark
+          - generic [ref=e1274] [cursor=pointer]:
+            - heading "These are the 15 roller coasters" [level=3] [ref=e1276]:
+              - button "These are the 15 roller coasters" [ref=e1278]:
+                - img "These are the 15 roller coasters" [ref=e1281]
+            - link "WGAL These are the 15 roller coasters" [ref=e1283]:
+              - /url: https://www.wgal.com/article/hersheypark-list-of-15-roller-coasters/44739472
+              - generic [ref=e1288]: WGAL
+              - generic [ref=e1290]: These are the 15 roller coasters
+          - generic [ref=e1291] [cursor=pointer]:
+            - heading "Trailblazer Review - Incrediblecoasters" [level=3] [ref=e1293]:
+              - button "Trailblazer Review - Incrediblecoasters" [ref=e1295]:
+                - img "Trailblazer Review - Incrediblecoasters" [ref=e1298]
+            - link "Incrediblecoasters Trailblazer Review - Incrediblecoasters" [ref=e1300]:
+              - /url: https://www.incrediblecoasters.com/TrailblazerPhotos.html
+              - generic [ref=e1305]: Incrediblecoasters
+              - generic [ref=e1307]: Trailblazer Review - Incrediblecoasters
+          - generic [ref=e1308] [cursor=pointer]:
+            - heading "Trailblazer (roller coaster ..." [level=3] [ref=e1310]:
+              - button "Trailblazer (roller coaster ..." [ref=e1312]:
+                - img "Trailblazer (roller coaster ..." [ref=e1315]
+            - link "Alchetron Trailblazer (roller coaster ..." [ref=e1317]:
+              - /url: https://alchetron.com/Trailblazer-(roller-coaster)
+              - generic [ref=e1322]: Alchetron
+              - generic [ref=e1324]: Trailblazer (roller coaster ...
+          - generic [ref=e1325] [cursor=pointer]:
+            - heading "Hersheypark – Roller Coaster Traveller" [level=3] [ref=e1327]:
+              - button "Hersheypark – Roller Coaster Traveller" [ref=e1329]:
+                - img "Hersheypark – Roller Coaster Traveller" [ref=e1332]
+            - link "Roller Coaster Traveller Hersheypark – Roller Coaster Traveller" [ref=e1334]:
+              - /url: https://rollercoastertraveller.com/hersheypark/
+              - generic [ref=e1339]: Roller Coaster Traveller
+              - generic [ref=e1341]: Hersheypark – Roller Coaster Traveller
+          - generic [ref=e1342] [cursor=pointer]:
+            - heading "Trailblazer - Hersheypark (Hershey ..." [level=3] [ref=e1344]:
+              - button "Trailblazer - Hersheypark (Hershey ..." [ref=e1346]:
+                - img "Trailblazer - Hersheypark (Hershey ..." [ref=e1349]
+            - link "Roller Coaster DataBase Trailblazer - Hersheypark (Hershey ..." [ref=e1351]:
+              - /url: https://rcdb.com/107.htm
+              - generic [ref=e1356]: Roller Coaster DataBase
+              - generic [ref=e1358]: Trailblazer - Hersheypark (Hershey ...
+          - generic [ref=e1359] [cursor=pointer]:
+            - heading "Hersheypark coaster trains return to ..." [level=3] [ref=e1361]:
+              - button "Hersheypark coaster trains return to ..." [ref=e1363]:
+                - img "Hersheypark coaster trains return to ..." [ref=e1366]
+            - link "Yahoo Hersheypark coaster trains return to ..." [ref=e1368]:
+              - /url: https://www.yahoo.com/lifestyle/hersheypark-coaster-trains-return-tracks-162925497.html
+              - generic [ref=e1373]: Yahoo
+              - generic [ref=e1375]: Hersheypark coaster trains return to ...
+          - generic [ref=e1376] [cursor=pointer]:
+            - heading "Monorail at- Hershey Park" [level=3] [ref=e1378]:
+              - button "Monorail at- Hershey Park" [ref=e1380]:
+                - img "Monorail at- Hershey Park" [ref=e1383]
+            - link "Coaster Gallery Monorail at- Hershey Park" [ref=e1385]:
+              - /url: http://www.coastergallery.com/2000/hp37.html
+              - generic [ref=e1390]: Coaster Gallery
+              - generic [ref=e1392]: Monorail at- Hershey Park
+          - generic [ref=e1393] [cursor=pointer]:
+            - heading "Celebrate National Roller Coaster Day ..." [level=3] [ref=e1395]:
+              - button "Celebrate National Roller Coaster Day ..." [ref=e1397]:
+                - img "Celebrate National Roller Coaster Day ..." [ref=e1400]
+            - link "The Jersey Momma Celebrate National Roller Coaster Day ..." [ref=e1402]:
+              - /url: https://www.thejerseymomma.com/2024/08/celebrate-national-roller-coaster-day.html
+              - generic [ref=e1407]: The Jersey Momma
+              - generic [ref=e1409]: Celebrate National Roller Coaster Day ...
+          - generic [ref=e1410] [cursor=pointer]:
+            - heading "The classic Trailblazer at Hersheypark." [level=3] [ref=e1412]:
+              - button "The classic Trailblazer at Hersheypark." [ref=e1414]:
+                - img "The classic Trailblazer at Hersheypark." [ref=e1417]
+            - link "Facebook The classic Trailblazer at Hersheypark." [ref=e1419]:
+              - /url: https://www.facebook.com/groups/446279452634367/posts/1473111903284445/
+              - generic [ref=e1424]: Facebook
+              - generic [ref=e1426]: The classic Trailblazer at Hersheypark.
+          - generic [ref=e1427] [cursor=pointer]:
+            - generic [ref=e1428]:
+              - heading "Trailblazer Off-Ride Footage ..." [level=3] [ref=e1429]:
+                - button "Trailblazer Off-Ride Footage ..." [ref=e1431]:
+                  - img "Trailblazer Off-Ride Footage ..." [ref=e1434]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Trailblazer Off-Ride Footage ..." [ref=e1436]:
+              - /url: https://www.youtube.com/watch?v=t-mNZhdrUks
+              - generic [ref=e1441]: YouTube
+              - generic [ref=e1443]: Trailblazer Off-Ride Footage ...
+          - generic [ref=e1444]:
+            - heading "Related searches" [level=2] [ref=e1445]
+            - link "storm runner hersheypark" [ref=e1446] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=storm+runner+hersheypark&stick=H4sIAAAAAAAAAFvEKlFckl-Uq1BUmpeXWqSQkVpUnJFaWZBYlA0A-yW4uBsAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegUIgAEQAA
+              - generic [ref=e1451]: storm runner hersheypark
+            - link "hersheypark map" [ref=e1452] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hersheypark+map&stick=H4sIAAAAAAAAAFvEyp-RWlSckVpZkFiUrZCbWAAAJa6NgxIAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegUIhAEQAA
+              - generic [ref=e1457]: hersheypark map
+            - link "cocoa cruiser hershey park" [ref=e1458] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=cocoa+cruiser+hershey+park&stick=H4sIAAAAAAAAAFvEKpWcn5yfqJBcVJpZnFqkkJFaVJyRWqlQkFiUDQCROEG5HQAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegUIiQEQAA
+              - generic [ref=e1463]: cocoa cruiser hershey park
+          - generic [ref=e1464] [cursor=pointer]:
+            - heading "Ultimate Hersheypark Roller Coaster Route" [level=3] [ref=e1466]:
+              - button "Ultimate Hersheypark Roller Coaster Route" [ref=e1468]:
+                - img "Ultimate Hersheypark Roller Coaster Route" [ref=e1471]
+            - link "Hershey Blog - Hershey, PA Ultimate Hersheypark Roller Coaster Route" [ref=e1473]:
+              - /url: https://stories.hersheypa.com/ultimate-roller-coaster-route-at-hersheypark/
+              - generic [ref=e1478]: Hershey Blog - Hershey, PA
+              - generic [ref=e1480]: Ultimate Hersheypark Roller Coaster Route
+          - generic [ref=e1481] [cursor=pointer]:
+            - heading "Trailblazer Hershey Park Pov | TikTok" [level=3] [ref=e1483]:
+              - button "Trailblazer Hershey Park Pov | TikTok" [ref=e1485]:
+                - img "Trailblazer Hershey Park Pov | TikTok" [ref=e1488]
+            - link "TikTok Trailblazer Hershey Park Pov | TikTok" [ref=e1490]:
+              - /url: https://www.tiktok.com/discover/trailblazer-hershey-park-pov
+              - generic [ref=e1495]: TikTok
+              - generic [ref=e1497]: Trailblazer Hershey Park Pov | TikTok
+          - generic [ref=e1498] [cursor=pointer]:
+            - heading "Hersheypark" [level=3] [ref=e1500]:
+              - button "Hersheypark" [ref=e1502]:
+                - img "Hersheypark" [ref=e1505]
+            - link "Scream Machine Hersheypark" [ref=e1507]:
+              - /url: https://www.screammachine.net/parkinfo.php?parkcode=HERS
+              - generic [ref=e1512]: Scream Machine
+              - generic [ref=e1514]: Hersheypark
+          - generic [ref=e1515] [cursor=pointer]:
+            - generic [ref=e1516]:
+              - 'heading "HersheyparkHappy #HersheyparkEats ..." [level=3] [ref=e1517]':
+                - 'button "HersheyparkHappy #HersheyparkEats ..." [ref=e1519]':
+                  - 'img "HersheyparkHappy #HersheyparkEats ..." [ref=e1522]'
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - 'link "Instagram HersheyparkHappy #HersheyparkEats ..." [ref=e1524]':
+              - /url: https://www.instagram.com/reel/DQFVxN0D-Ss/
+              - generic [ref=e1529]: Instagram
+              - generic [ref=e1531]: "HersheyparkHappy #HersheyparkEats ..."
+          - generic [ref=e1532] [cursor=pointer]:
+            - heading "Hersheypark's Laff Trakk coaster spins ..." [level=3] [ref=e1534]:
+              - button "Hersheypark's Laff Trakk coaster spins ..." [ref=e1536]:
+                - img "Hersheypark's Laff Trakk coaster spins ..." [ref=e1539]
+            - link "Pittsburgh Post-Gazette Hersheypark's Laff Trakk coaster spins ..." [ref=e1541]:
+              - /url: https://www.post-gazette.com/life/recreation/2015/07/19/hersheypark-s-laff-trakk-coaster-spins-and-glows-for-a-family-friendly-ride/stories/201507190015
+              - generic [ref=e1546]: Pittsburgh Post-Gazette
+              - generic [ref=e1548]: Hersheypark's Laff Trakk coaster spins ...
+          - generic [ref=e1549] [cursor=pointer]:
+            - heading "The 11 Best Thrill Rides at Hersheypark ..." [level=3] [ref=e1551]:
+              - button "The 11 Best Thrill Rides at Hersheypark ..." [ref=e1553]:
+                - img "The 11 Best Thrill Rides at Hersheypark ..." [ref=e1556]
+            - link "Disney The 11 Best Thrill Rides at Hersheypark ..." [ref=e1558]:
+              - /url: https://www.sandandorsnow.com/best-thrill-rides-at-hersheypark/
+              - generic [ref=e1563]: Disney
+              - generic [ref=e1565]: The 11 Best Thrill Rides at Hersheypark ...
+          - generic [ref=e1566] [cursor=pointer]:
+            - heading "10 Hersheypark Tips from a First-Time ..." [level=3] [ref=e1568]:
+              - button "10 Hersheypark Tips from a First-Time ..." [ref=e1570]:
+                - img "10 Hersheypark Tips from a First-Time ..." [ref=e1573]
+            - link "Coaster101.com 10 Hersheypark Tips from a First-Time ..." [ref=e1575]:
+              - /url: https://www.coaster101.com/2017/07/05/hersheypark-tips-from-first-time-visitor/
+              - generic [ref=e1580]: Coaster101.com
+              - generic [ref=e1582]: 10 Hersheypark Tips from a First-Time ...
+          - generic [ref=e1583] [cursor=pointer]:
+            - heading "Is Hersheypark Fast Track Unlimited ..." [level=3] [ref=e1585]:
+              - button "Is Hersheypark Fast Track Unlimited ..." [ref=e1587]:
+                - img "Is Hersheypark Fast Track Unlimited ..." [ref=e1590]
+            - link "Coasters & Coffee Is Hersheypark Fast Track Unlimited ..." [ref=e1592]:
+              - /url: https://coastersncoffee.com/hersheypark-fast-track-unlimited-review/
+              - generic [ref=e1597]: Coasters & Coffee
+              - generic [ref=e1599]: Is Hersheypark Fast Track Unlimited ...
+          - generic [ref=e1600] [cursor=pointer]:
+            - heading "Celebrate National Roller Coaster Day ..." [level=3] [ref=e1602]:
+              - button "Celebrate National Roller Coaster Day ..." [ref=e1604]:
+                - img "Celebrate National Roller Coaster Day ..." [ref=e1607]
+            - link "The Jersey Momma Celebrate National Roller Coaster Day ..." [ref=e1609]:
+              - /url: https://www.thejerseymomma.com/2024/08/celebrate-national-roller-coaster-day.html
+              - generic [ref=e1614]: The Jersey Momma
+              - generic [ref=e1616]: Celebrate National Roller Coaster Day ...
+          - generic [ref=e1617] [cursor=pointer]:
+            - heading "Hersheypark Halloween is the last ..." [level=3] [ref=e1619]:
+              - button "Hersheypark Halloween is the last ..." [ref=e1621]:
+                - img "Hersheypark Halloween is the last ..." [ref=e1624]
+            - link "Instagram Hersheypark Halloween is the last ..." [ref=e1626]:
+              - /url: https://www.instagram.com/reel/DQMhGn7CBh7/
+              - generic [ref=e1631]: Instagram
+              - generic [ref=e1633]: Hersheypark Halloween is the last ...
+          - generic [ref=e1634] [cursor=pointer]:
+            - heading "Trailblazer (roller coaster ..." [level=3] [ref=e1636]:
+              - button "Trailblazer (roller coaster ..." [ref=e1638]:
+                - img "Trailblazer (roller coaster ..." [ref=e1641]
+            - link "Alchetron Trailblazer (roller coaster ..." [ref=e1643]:
+              - /url: https://alchetron.com/Trailblazer-(roller-coaster)
+              - generic [ref=e1648]: Alchetron
+              - generic [ref=e1650]: Trailblazer (roller coaster ...
+          - generic [ref=e1651] [cursor=pointer]:
+            - heading "Six Flags, Busch Gardens, Disney World ..." [level=3] [ref=e1653]:
+              - button "Six Flags, Busch Gardens, Disney World ..." [ref=e1655]:
+                - img "Six Flags, Busch Gardens, Disney World ..." [ref=e1658]
+            - link "RYAN'S FORTRESS Six Flags, Busch Gardens, Disney World ..." [ref=e1660]:
+              - /url: http://www.ryansfortress.com/uncategorized/all-36-rollercoasters-ive-ridden-ranked-hersheypark-six-flags-busch-gardens-disney-world-universal-orlando/
+              - generic [ref=e1665]: RYAN'S FORTRESS
+              - generic [ref=e1667]: Six Flags, Busch Gardens, Disney World ...
+          - generic [ref=e1668] [cursor=pointer]:
+            - heading "Back Seat | POV | Hersheypark | 2019 ..." [level=3] [ref=e1670]:
+              - button "Back Seat | POV | Hersheypark | 2019 ..." [ref=e1672]:
+                - img "Back Seat | POV | Hersheypark | 2019 ..." [ref=e1675]
+            - link "YouTube Back Seat | POV | Hersheypark | 2019 ..." [ref=e1677]:
+              - /url: https://www.youtube.com/watch?v=uHrXHQeaBVo
+              - generic [ref=e1682]: YouTube
+              - generic [ref=e1684]: Back Seat | POV | Hersheypark | 2019 ...
+          - generic [ref=e1685] [cursor=pointer]:
+            - heading "Trailblazer, Laff Trakk ..." [level=3] [ref=e1687]:
+              - button "Trailblazer, Laff Trakk ..." [ref=e1689]:
+                - img "Trailblazer, Laff Trakk ..." [ref=e1692]
+            - link "Facebook Trailblazer, Laff Trakk ..." [ref=e1694]:
+              - /url: https://www.facebook.com/Hersheypark/posts/its-mondaymatchup-pick-your-favorite-family-fun-coaster-trailblazer-laff-trakk-s/10156234992754357/
+              - generic [ref=e1699]: Facebook
+              - generic [ref=e1701]: Trailblazer, Laff Trakk ...
+          - generic [ref=e1702] [cursor=pointer]:
+            - heading "Hersheypark Review & Rankings ..." [level=3] [ref=e1704]:
+              - button "Hersheypark Review & Rankings ..." [ref=e1706]:
+                - img "Hersheypark Review & Rankings ..." [ref=e1709]
+            - link "Roadtrips & Rollercoasters Hersheypark Review & Rankings ..." [ref=e1711]:
+              - /url: https://www.roadtripsandrollercoasters.com/hersheypark-review-rankings/
+              - generic [ref=e1716]: Roadtrips & Rollercoasters
+              - generic [ref=e1718]: Hersheypark Review & Rankings ...
+          - generic [ref=e1719] [cursor=pointer]:
+            - heading "Visit Wild Mouse at Pennsylvania's ..." [level=3] [ref=e1721]:
+              - button "Visit Wild Mouse at Pennsylvania's ..." [ref=e1723]:
+                - img "Visit Wild Mouse at Pennsylvania's ..." [ref=e1726]
+            - link "Hershey Park Visit Wild Mouse at Pennsylvania's ..." [ref=e1728]:
+              - /url: https://www.hersheypark.com/things-to-do/rides-and-attractions/wild-mouse
+              - generic [ref=e1733]: Hershey Park
+              - generic [ref=e1735]: Visit Wild Mouse at Pennsylvania's ...
+          - generic [ref=e1736] [cursor=pointer]:
+            - heading "Roller Coaster Guide for Hersheypark 2025" [level=3] [ref=e1738]:
+              - button "Roller Coaster Guide for Hersheypark 2025" [ref=e1740]:
+                - img "Roller Coaster Guide for Hersheypark 2025" [ref=e1743]
+            - link "Hershey, PA Stories Roller Coaster Guide for Hersheypark 2025" [ref=e1745]:
+              - /url: https://stories.hersheypa.com/hersheypark-roller-coaster-guide-2025/
+              - generic [ref=e1750]: Hershey, PA Stories
+              - generic [ref=e1752]: Roller Coaster Guide for Hersheypark 2025
+          - generic [ref=e1753] [cursor=pointer]:
+            - heading "Trailblazer Review - Incrediblecoasters" [level=3] [ref=e1755]:
+              - button "Trailblazer Review - Incrediblecoasters" [ref=e1757]:
+                - img "Trailblazer Review - Incrediblecoasters" [ref=e1760]
+            - link "Incrediblecoasters Trailblazer Review - Incrediblecoasters" [ref=e1762]:
+              - /url: https://www.incrediblecoasters.com/TrailblazerPhotos.html
+              - generic [ref=e1767]: Incrediblecoasters
+              - generic [ref=e1769]: Trailblazer Review - Incrediblecoasters
+          - generic [ref=e1770] [cursor=pointer]:
+            - heading "Dad sues Hersheypark over son's ..." [level=3] [ref=e1772]:
+              - button "Dad sues Hersheypark over son's ..." [ref=e1774]:
+                - img "Dad sues Hersheypark over son's ..." [ref=e1777]
+            - link "PhillyVoice Dad sues Hersheypark over son's ..." [ref=e1779]:
+              - /url: https://www.phillyvoice.com/hersheypark-storm-runner-lawsuit-pennsylvania-denoto-dad-son-roller-coaster/
+              - generic [ref=e1784]: PhillyVoice
+              - generic [ref=e1786]: Dad sues Hersheypark over son's ...
+          - generic [ref=e1787] [cursor=pointer]:
+            - heading "Storm Runner | Hershey Park Wiki | Fandom" [level=3] [ref=e1789]:
+              - button "Storm Runner | Hershey Park Wiki | Fandom" [ref=e1791]:
+                - img "Storm Runner | Hershey Park Wiki | Fandom" [ref=e1794]
+            - link "Hershey Park Wiki - Fandom Storm Runner | Hershey Park Wiki | Fandom" [ref=e1796]:
+              - /url: https://hersheypark.fandom.com/wiki/Storm_Runner
+              - generic [ref=e1801]: Hershey Park Wiki - Fandom
+              - generic [ref=e1803]: Storm Runner | Hershey Park Wiki | Fandom
+          - generic [ref=e1804] [cursor=pointer]:
+            - heading "T-Minus 50 days til Hersheypark opens ..." [level=3] [ref=e1806]:
+              - button "T-Minus 50 days til Hersheypark opens ..." [ref=e1808]:
+                - img "T-Minus 50 days til Hersheypark opens ..." [ref=e1811]
+            - link "Instagram T-Minus 50 days til Hersheypark opens ..." [ref=e1813]:
+              - /url: https://www.instagram.com/p/DUqnjZbju2v/
+              - generic [ref=e1818]: Instagram
+              - generic [ref=e1820]: T-Minus 50 days til Hersheypark opens ...
+          - generic [ref=e1821] [cursor=pointer]:
+            - heading "Visit Great Bear at Pennsylvania's ..." [level=3] [ref=e1823]:
+              - button "Visit Great Bear at Pennsylvania's ..." [ref=e1825]:
+                - img "Visit Great Bear at Pennsylvania's ..." [ref=e1828]
+            - link "Hershey Park Visit Great Bear at Pennsylvania's ..." [ref=e1830]:
+              - /url: https://www.hersheypark.com/things-to-do/rides-and-attractions/great-bear
+              - generic [ref=e1835]: Hershey Park
+              - generic [ref=e1837]: Visit Great Bear at Pennsylvania's ...
+          - generic [ref=e1838] [cursor=pointer]:
+            - heading "Hersheypark – Roller Coaster Traveller" [level=3] [ref=e1840]:
+              - button "Hersheypark – Roller Coaster Traveller" [ref=e1842]:
+                - img "Hersheypark – Roller Coaster Traveller" [ref=e1845]
+            - link "Roller Coaster Traveller Hersheypark – Roller Coaster Traveller" [ref=e1847]:
+              - /url: https://rollercoastertraveller.com/hersheypark/
+              - generic [ref=e1852]: Roller Coaster Traveller
+              - generic [ref=e1854]: Hersheypark – Roller Coaster Traveller
+          - generic [ref=e1855] [cursor=pointer]:
+            - heading "Trailblazer Hershey Park Pov | TikTok" [level=3] [ref=e1857]:
+              - button "Trailblazer Hershey Park Pov | TikTok" [ref=e1859]:
+                - img "Trailblazer Hershey Park Pov | TikTok" [ref=e1862]
+            - link "TikTok Trailblazer Hershey Park Pov | TikTok" [ref=e1864]:
+              - /url: https://www.tiktok.com/discover/trailblazer-hershey-park-pov
+              - generic [ref=e1869]: TikTok
+              - generic [ref=e1871]: Trailblazer Hershey Park Pov | TikTok
+          - generic [ref=e1872]:
+            - heading "Related searches" [level=2] [ref=e1873]
+            - link "jolly rancher remix hersheypark" [ref=e1874] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=jolly+rancher+remix+hersheypark&stick=H4sIAAAAAAAAAFvEKp-Vn5NTqVCUmJeckVqkUJSam1mhAGQVZ6RWFiQWZQMAdeYxPSIAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQIWhAA
+              - generic [ref=e1879]: jolly rancher remix hersheypark
+            - link "hersheypark roller coasters" [ref=e1880] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=hersheypark+roller+coasters&stick=H4sIAAAAAAAAAFvEKp2RWlSckVpZkFiUrVCUn5OTWqSQnJ9YXAIUBgCWYrmgHgAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQIXRAA
+              - generic [ref=e1885]: hersheypark roller coasters
+            - link "trailblazer roller coaster great america" [ref=e1886] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7VMGfwvlL_aD29HC2zTi_8csbw1w:1774402167006&q=trailblazer+roller+coaster+great+america&stick=H4sIAAAAAAAAAFvEqlFSlJiZk5STWJVapFCUn5MDpJLzE4tLgHR6UWpiiUJibmpRZnIiAFzZOW4rAAAA&source=univ&sa=X&ved=2ahUKEwj8oumW87mTAxW7KkQIHXhnD7gQrNwCegQIYBAA
+              - generic [ref=e1891]: trailblazer roller coaster great america
+          - generic [ref=e1892] [cursor=pointer]:
+            - 'heading "Hersheypark: 15 roller coasters, one ..." [level=3] [ref=e1894]':
+              - 'button "Hersheypark: 15 roller coasters, one ..." [ref=e1896]':
+                - 'img "Hersheypark: 15 roller coasters, one ..." [ref=e1899]'
+            - 'link "ABC27 Hersheypark: 15 roller coasters, one ..." [ref=e1901]':
+              - /url: https://www.abc27.com/hershey/hersheypark-15-roller-coasters-one-sweet-time/
+              - generic [ref=e1906]: ABC27
+              - generic [ref=e1908]: "Hersheypark: 15 roller coasters, one ..."
+          - generic [ref=e1909] [cursor=pointer]:
+            - heading "Trailblazer Front Seat POV 2014 FULL HD ..." [level=3] [ref=e1911]:
+              - button "Trailblazer Front Seat POV 2014 FULL HD ..." [ref=e1913]:
+                - img "Trailblazer Front Seat POV 2014 FULL HD ..." [ref=e1916]
+            - link "YouTube Trailblazer Front Seat POV 2014 FULL HD ..." [ref=e1918]:
+              - /url: https://www.youtube.com/watch?v=ZPGuOxouQSE
+              - generic [ref=e1923]: YouTube
+              - generic [ref=e1925]: Trailblazer Front Seat POV 2014 FULL HD ...
+          - generic [ref=e1926] [cursor=pointer]:
+            - heading "Amusement Park ..." [level=3] [ref=e1928]:
+              - button "Amusement Park ..." [ref=e1930]:
+                - img "Amusement Park ..." [ref=e1933]
+            - link "Hershey Park Amusement Park ..." [ref=e1935]:
+              - /url: https://www.hersheypark.com/things-to-do/rides-and-attractions/candymonium
+              - generic [ref=e1940]: Hershey Park
+              - generic [ref=e1942]: Amusement Park ...
+        - generic [ref=e1945]:
+          - heading "Page Navigation" [level=1] [ref=e1946]
+          - button "More results" [ref=e1947] [cursor=pointer]:
+            - generic [ref=e1948]:
+              - separator [ref=e1949]
+              - generic [ref=e1950]:
+                - generic [ref=e1951]: More results
+                - img [ref=e1953]
+      - navigation

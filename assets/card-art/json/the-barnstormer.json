@@ -1,0 +1,48 @@
+{
+  "subject": {
+    "type": "Junior roller coaster",
+    "name": "Themed biplane junior coaster",
+    "description": "A red/orange biplane-themed roller coaster train on a green steel track, with empty seats, no passengers. The train has a vintage biplane nose with a propeller.",
+    "key_features": ["Red/orange biplane-themed train", "Green steel tubular track", "Propeller on the nose of the lead car", "Vintage barnstorming theme"],
+    "position": "Center of frame, train descending on the track"
+  },
+  "environment": {
+    "setting": "Themed amusement park area with rustic barn structures and trees",
+    "time_of_day": "Golden hour",
+    "weather": "Clear with soft haze",
+    "season": "Summer",
+    "background_elements": ["Rustic barn building", "Trees and foliage", "Themed wooden structures"]
+  },
+  "lighting": {
+    "type": "Golden hour sunlight",
+    "direction": "From the side, warm backlighting",
+    "color_temperature": "Warm golden",
+    "intensity": "Soft and cinematic",
+    "shadows": "Soft, warm-tinted shadows from the track structure and themed buildings"
+  },
+  "color_palette": {
+    "dominant_colors": ["Green (track)", "Peach/Salmon sky", "Red-Orange (train)"],
+    "accent_colors": ["Warm Brown (buildings)", "Soft White"],
+    "overall_temperature": "Warm golden shift"
+  },
+  "composition": {
+    "framing": "Close-up action shot of the train on the track",
+    "camera_angle": "Slightly below, looking up at the train",
+    "camera_distance": "Medium close-up",
+    "focal_point": "The biplane-themed train on the green track",
+    "depth_of_field": "Medium, with foreground train sharp and background softened"
+  },
+  "mood": "Cinematic, warm, atmospheric, premium concept art",
+  "textures": ["Smooth painted steel track", "Clean themed train body", "Soft leafy foliage masses", "Smooth rustic building surfaces", "Soft gradient sky with subtle clouds"],
+  "notable_details": ["No people, no riders — empty train seats only", "No signs, text, logos, or watermarks", "No real-world identifiers", "No copyrighted characters"],
+  "artistic_treatment": {
+    "style": "Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon",
+    "rendering": "Simplified surface textures with clean edges. Structurally accurate and engineered-looking. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic",
+    "color_grading": "WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy",
+    "atmosphere": "Soft atmospheric haze throughout, especially where light filters through trees or around structures. Cinematic depth with atmospheric perspective — distant elements fade into warm haze",
+    "lighting_treatment": "Enhanced cinematic golden-hour warmth. Emphasize mood and composition over literal accuracy. Rim lighting on track edges. Soft volumetric light through foliage",
+    "edges": "Clean and defined on mechanical/structural elements (track, supports, train). Soft and painterly on organic elements (trees, foliage, sky, ground)",
+    "detail_level": "SIMPLIFIED — reduce surface complexity. Wooden beams are smooth, not grainy. Foliage is soft masses, not individual leaves. Steel is clean, not reflective. The overall feel should match Studio Ghibli-meets-architectural-rendering",
+    "negative_guidance": "Avoid photo grain, avoid hyperreal texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions, no bright saturated colors, no visible brush strokes, no flat blue sky, no cool color temperature, no copyrighted characters"
+  }
+}
