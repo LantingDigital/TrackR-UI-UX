@@ -130,8 +130,8 @@ export const LogModal: React.FC<LogModalProps> = ({
         );
         setLastParkName(sortedLogs[0].parkName);
       } else {
-        // Default to Busch Gardens Tampa for demo
-        setLastParkName('Busch Gardens Tampa');
+        // No logs — don't show park-specific section
+        setLastParkName(null);
       }
 
       // 3. Most Ridden - aggregate by coaster and sum ride counts

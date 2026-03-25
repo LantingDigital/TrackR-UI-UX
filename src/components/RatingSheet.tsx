@@ -28,6 +28,7 @@ import Animated, {
   useAnimatedStyle,
   useAnimatedProps,
   useAnimatedScrollHandler,
+  useAnimatedKeyboard,
   withSpring,
   withTiming,
   withDelay,
@@ -162,7 +163,6 @@ export function RatingSheet({
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const [notes, setNotes] = useState('');
   const [showNotes, setShowNotes] = useState(false);
-  const [keyboardHeight, setKeyboardHeight] = useState(0);
   const scrollRef = useRef<Animated.ScrollView>(null);
 
   // Criteria
@@ -319,18 +319,14 @@ export function RatingSheet({
     }, 1900));
   }, [coasterId, coasterName, parkName, ratings, notes, onComplete]);
 
-  // Keyboard tracking — instant state change, scrollToEnd provides the visual smoothness
+  // Scroll to end when keyboard opens so notes input is fully visible above keyboard
   useEffect(() => {
-    const showSub = Keyboard.addListener('keyboardWillShow', (e) => {
-      setKeyboardHeight(e.endCoordinates.height);
+    const sub = Keyboard.addListener('keyboardDidShow', () => {
       setTimeout(() => {
         scrollRef.current?.scrollToEnd({ animated: true });
-      }, 50);
+      }, 100);
     });
-    const hideSub = Keyboard.addListener('keyboardWillHide', () => {
-      setKeyboardHeight(0);
-    });
-    return () => { showSub.remove(); hideSub.remove(); };
+    return () => sub.remove();
   }, []);
 
   const handleCriterionDragEnd = useCallback((criterionId: string, value: number) => {
@@ -393,6 +389,7 @@ export function RatingSheet({
   const sheetAnimStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: translateY.value }],
   }));
+
 
   const backdropAnimStyle = useAnimatedStyle(() => ({
     opacity: backdropOpacity.value,
@@ -473,6 +470,7 @@ export function RatingSheet({
             scrollEnabled={scrollEnabled}
             keyboardShouldPersistTaps="handled"
             keyboardDismissMode="interactive"
+            automaticallyAdjustKeyboardInsets
             onScroll={scrollHandler}
             scrollEventThrottle={16}
           >
@@ -568,8 +566,6 @@ export function RatingSheet({
               onSubmit={handleSubmit}
             />
 
-            {/* Keyboard spacer — instant height, scrollToEnd animates */}
-            <View style={{ height: keyboardHeight }} />
           </Animated.ScrollView>
 
           {/* ── Full-screen celebration overlay (inside sheet) ── */}
@@ -943,6 +939,7 @@ const styles = StyleSheet.create({
   // ── Hero section (inside scroll, scrolls naturally) ──
   heroSection: {
     marginHorizontal: -spacing.lg, // full bleed
+    marginTop: -spacing.lg, // pull up behind drag handle — no gap
     overflow: 'hidden',
     marginBottom: spacing.lg,
   },
