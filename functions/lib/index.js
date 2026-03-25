@@ -6,7 +6,7 @@
  * Deploy: firebase deploy --only functions --project trackr-coaster-app
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.proxyWaitTimes = exports.setAdminClaim = exports.unblockUser = exports.blockUser = exports.reportUser = exports.deleteArticle = exports.unpublishArticle = exports.publishArticle = exports.createArticle = exports.getWeeklyChallenge = exports.submitGameScore = exports.handleSubscriptionEvent = exports.verifyPurchase = exports.generatePKPass = exports.registerFCMToken = exports.removeFriend = exports.declineFriendRequest = exports.acceptFriendRequest = exports.sendFriendRequest = exports.migrateLocalData = exports.computeRankings = exports.onRatingWrite = exports.exportRideLog = exports.onRideLogUpdate = exports.onRideLogDelete = exports.onRideLogCreate = exports.deleteUserAccount = exports.onUserCreated = exports.validateUsername = void 0;
+exports.refreshParkHoursManual = exports.refreshParkHoursScheduled = exports.populateParks = exports.matchCoasterNames = exports.processImportFile = exports.getOrderStatus = exports.confirmCardOrder = exports.createCardOrder = exports.proxyWaitTimes = exports.setAdminClaim = exports.unblockUser = exports.blockUser = exports.reportUser = exports.deleteArticle = exports.unpublishArticle = exports.publishArticle = exports.createArticle = exports.getWeeklyChallenge = exports.submitGameScore = exports.handleSubscriptionEvent = exports.verifyPurchase = exports.generatePKPass = exports.registerFCMToken = exports.removeFriend = exports.declineFriendRequest = exports.acceptFriendRequest = exports.sendFriendRequest = exports.migrateLocalData = exports.computeRankings = exports.onRatingWrite = exports.exportRideLog = exports.onRideLogUpdate = exports.onRideLogDelete = exports.onRideLogCreate = exports.deleteUserAccount = exports.onUserCreated = exports.validateUsername = void 0;
 const app_1 = require("firebase-admin/app");
 // Initialize Firebase Admin SDK (uses default credentials in Cloud Functions environment)
 (0, app_1.initializeApp)();
@@ -73,4 +73,22 @@ Object.defineProperty(exports, "setAdminClaim", { enumerable: true, get: functio
 // Wait Times (Queue-Times.com proxy)
 var proxyWaitTimes_1 = require("./waitTimes/proxyWaitTimes");
 Object.defineProperty(exports, "proxyWaitTimes", { enumerable: true, get: function () { return proxyWaitTimes_1.proxyWaitTimes; } });
+// Merch Store (physical card purchases via Stripe + QPMN fulfillment)
+var createCardOrder_1 = require("./merch/createCardOrder");
+Object.defineProperty(exports, "createCardOrder", { enumerable: true, get: function () { return createCardOrder_1.createCardOrder; } });
+var confirmCardOrder_1 = require("./merch/confirmCardOrder");
+Object.defineProperty(exports, "confirmCardOrder", { enumerable: true, get: function () { return confirmCardOrder_1.confirmCardOrder; } });
+var getOrderStatus_1 = require("./merch/getOrderStatus");
+Object.defineProperty(exports, "getOrderStatus", { enumerable: true, get: function () { return getOrderStatus_1.getOrderStatus; } });
+// Import (ride data import from other apps / spreadsheets)
+var processImportFile_1 = require("./import/processImportFile");
+Object.defineProperty(exports, "processImportFile", { enumerable: true, get: function () { return processImportFile_1.processImportFile; } });
+var matchCoasterNames_1 = require("./import/matchCoasterNames");
+Object.defineProperty(exports, "matchCoasterNames", { enumerable: true, get: function () { return matchCoasterNames_1.matchCoasterNames; } });
+// Park Data (ThemeParks.wiki — populate parks, attractions, restaurants, shows, hours, geofences)
+var populateParks_1 = require("./parkData/populateParks");
+Object.defineProperty(exports, "populateParks", { enumerable: true, get: function () { return populateParks_1.populateParks; } });
+var refreshParkHours_1 = require("./parkData/refreshParkHours");
+Object.defineProperty(exports, "refreshParkHoursScheduled", { enumerable: true, get: function () { return refreshParkHours_1.refreshParkHoursScheduled; } });
+Object.defineProperty(exports, "refreshParkHoursManual", { enumerable: true, get: function () { return refreshParkHours_1.refreshParkHoursManual; } });
 //# sourceMappingURL=index.js.map

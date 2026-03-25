@@ -8,6 +8,7 @@ import { useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { BlindRankingGameState, BlindRankingStats, BlindRankingCategory, BlindRankingItem } from '../types/blindRanking';
 import { COASTER_INDEX } from '../../../../data/coasterIndex';
+import { submitBlindRankingResult } from '../../../../services/firebase/gameStatsSync';
 
 const STATS_KEY = '@trackr:blind_ranking_stats';
 const SETTINGS_KEY = '@trackr:blind_ranking_settings';
@@ -254,6 +255,11 @@ export function placeInSlot(slotIndex: number): void {
     stats.gamesPlayed += 1;
     stats.categoryPlays[gameState.category!.id] = (stats.categoryPlays[gameState.category!.id] ?? 0) + 1;
     saveStats();
+    submitBlindRankingResult({
+      accuracy: 100, // Blind ranking is subjective — no "wrong" answers
+      category: gameState.category?.id ?? 'unknown',
+      gamesPlayed: stats.gamesPlayed,
+    }).catch(() => {});
 
     gameState = {
       ...gameState,

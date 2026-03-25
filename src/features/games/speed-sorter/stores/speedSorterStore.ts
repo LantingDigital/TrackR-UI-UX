@@ -4,6 +4,7 @@ import { useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { SpeedSorterGameState, SpeedSorterStats, SpeedSorterRound, SortCategory, SpeedSorterCoaster } from '../types/speedSorter';
 import { COASTER_INDEX } from '../../../../data/coasterIndex';
+import { submitSpeedSorterResult } from '../../../../services/firebase/gameStatsSync';
 
 const STATS_KEY = '@trackr:speed_sorter_stats';
 const SETTINGS_KEY = '@trackr:speed_sorter_settings';
@@ -202,6 +203,12 @@ export function nextRound(): void {
     if (totalScore > stats.bestScore) stats.bestScore = totalScore;
     if (stats.bestTime === 0 || totalTime < stats.bestTime) stats.bestTime = totalTime;
     saveStats();
+    submitSpeedSorterResult({
+      accuracy: totalScore,
+      time: totalTime,
+      gamesPlayed: stats.gamesPlayed,
+      bestTime: stats.bestTime,
+    }).catch(() => {});
     gameState = { ...gameState, status: 'results', totalScore, totalTime };
   } else {
     const nextRnd = gameState.rounds[nextIdx];

@@ -1,31 +1,16 @@
 /**
  * OnboardingRankings — "Rate Your Way" onboarding slide.
- * Embeds a stripped-down CriteriaWeightEditor inside a phone frame.
- * Auto-demos slider adjustment and template switching on a loop.
+ * Full-width Slider Symphony demo (no phone frame).
+ * Auto-demos: slider adjustment, lock mechanic, redistribute, seamless loop.
  * Nothing is tappable.
  */
 import React from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { colors } from '../../../theme/colors';
-import { shadows } from '../../../theme/shadows';
-import { OnboardingRankingsEmbed } from './OnboardingRankingsEmbed';
-
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
-// Phone frame dimensions
-const PHONE_WIDTH = SCREEN_WIDTH * 0.62;
-const PHONE_HEIGHT = PHONE_WIDTH * 2.0;
-const PHONE_RADIUS = 40;
-const PHONE_BORDER = 3;
-
-// Scale factor: phone interior maps to full screen dimensions
-const PHONE_INNER_W = PHONE_WIDTH - PHONE_BORDER * 2;
-const PHONE_INNER_H = PHONE_HEIGHT - PHONE_BORDER * 2;
-const SCALE = PHONE_INNER_W / SCREEN_WIDTH;
-const FULL_H = PHONE_INNER_H / SCALE;
+import { OnboardingCriteriaDemo } from './OnboardingCriteriaDemo';
 
 interface OnboardingScreenProps {
   isActive: boolean;
@@ -40,32 +25,12 @@ export const OnboardingRankings: React.FC<OnboardingScreenProps> = ({ isActive }
       <View style={[styles.textRegion, { paddingTop: insets.top + spacing.xxxl + spacing.lg }]}>
         <Text style={styles.title}>Rate Your Way</Text>
         <Text style={[styles.desc, { marginTop: spacing.md }]}>
-          Customize what matters to you.{'\n'}Adjust criteria weights to build{'\n'}your perfect rating system.
+          Customize what matters to you.{'\n'}Your criteria, your weights, your rankings.
         </Text>
       </View>
 
-      {/* Phone frame with embedded criteria editor demo */}
-      <View style={styles.phoneContainer}>
-        <View style={styles.phoneFrame}>
-          {/* Dynamic Island notch */}
-          <View style={styles.dynamicIsland} />
-
-          {/* Clip container */}
-          <View style={styles.phoneInner}>
-            <View
-              style={{
-                width: SCREEN_WIDTH,
-                height: FULL_H,
-                transform: [{ scale: SCALE }],
-                transformOrigin: 'top left',
-              }}
-              pointerEvents="none"
-            >
-              <OnboardingRankingsEmbed isActive={isActive} />
-            </View>
-          </View>
-        </View>
-      </View>
+      {/* Full-width criteria demo */}
+      <OnboardingCriteriaDemo isActive={isActive} />
     </View>
   );
 };
@@ -74,7 +39,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-    alignItems: 'center',
   },
   textRegion: {
     alignItems: 'center',
@@ -95,37 +59,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: typography.sizes.body * typography.lineHeights.relaxed,
     letterSpacing: 0.2,
-  },
-  phoneContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: spacing.xxxl,
-  },
-  phoneFrame: {
-    width: PHONE_WIDTH,
-    height: PHONE_HEIGHT,
-    borderRadius: PHONE_RADIUS,
-    borderWidth: PHONE_BORDER,
-    borderColor: '#2C2C2E',
-    backgroundColor: colors.background.page,
-    overflow: 'hidden',
-    ...shadows.section,
-  },
-  dynamicIsland: {
-    position: 'absolute',
-    top: spacing.base,
-    alignSelf: 'center',
-    width: 90,
-    height: 28,
-    borderRadius: 14,
-    backgroundColor: '#1A1A1C',
-    zIndex: 50,
-  },
-  phoneInner: {
-    width: PHONE_INNER_W,
-    height: PHONE_INNER_H,
-    overflow: 'hidden',
-    borderRadius: PHONE_RADIUS - PHONE_BORDER,
   },
 });

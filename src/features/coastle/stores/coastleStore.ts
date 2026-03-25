@@ -15,12 +15,43 @@ import {
   getRandomCoaster,
   generateHint,
 } from '../data/coastleComparison';
+import { submitCoastleResult } from '../../../services/firebase/gameStatsSync';
 
 // ============================================
 // AsyncStorage Keys
 // ============================================
 const STORAGE_STATS = '@coastle_stats';
 const STORAGE_DAILY = '@coastle_daily';
+const STORAGE_DIFFICULTY = '@coastle_difficulty';
+
+// ============================================
+// Difficulty
+// ============================================
+export type CoastleDifficulty = 'easy' | 'hard';
+let difficulty: CoastleDifficulty = 'easy';
+
+async function loadDifficulty() {
+  try {
+    const raw = await AsyncStorage.getItem(STORAGE_DIFFICULTY);
+    if (raw === 'hard') difficulty = 'hard';
+  } catch {}
+}
+
+async function saveDifficulty() {
+  try {
+    await AsyncStorage.setItem(STORAGE_DIFFICULTY, difficulty);
+  } catch {}
+}
+
+function setDifficulty(value: CoastleDifficulty) {
+  difficulty = value;
+  saveDifficulty();
+  notify();
+}
+
+function getDifficulty(): CoastleDifficulty {
+  return difficulty;
+}
 
 // ============================================
 // Module-Level State
@@ -95,6 +126,7 @@ async function saveDaily() {
 async function init() {
   if (initialized) return;
   stats = await loadStats();
+  await loadDifficulty();
   initialized = true;
   notify();
 }
@@ -117,7 +149,7 @@ async function startGame(mode: GameMode) {
       return;
     }
     // New daily
-    const target = getDailyCoaster();
+    const target = getDailyCoaster(undefined, difficulty);
     const today = new Date();
     game = {
       mode: 'daily',
@@ -164,6 +196,15 @@ function submitGuess(coaster: CoastleCoaster): boolean {
     ];
     saveStats();
     if (game.mode === 'daily') saveDaily();
+    // Fire-and-forget Firestore sync
+    submitCoastleResult({
+      won: true,
+      guesses: game.guesses.length,
+      currentStreak: stats.currentStreak,
+      bestStreak: stats.maxStreak,
+      gamesPlayed: stats.gamesPlayed,
+      gamesWon: stats.gamesWon,
+    }).catch(() => {});
     notify();
     return true;
   }
@@ -179,6 +220,15 @@ function submitGuess(coaster: CoastleCoaster): boolean {
     ];
     saveStats();
     if (game.mode === 'daily') saveDaily();
+    // Fire-and-forget Firestore sync
+    submitCoastleResult({
+      won: false,
+      guesses: game.guesses.length,
+      currentStreak: 0,
+      bestStreak: stats.maxStreak,
+      gamesPlayed: stats.gamesPlayed,
+      gamesWon: stats.gamesWon,
+    }).catch(() => {});
     notify();
     return false;
   }

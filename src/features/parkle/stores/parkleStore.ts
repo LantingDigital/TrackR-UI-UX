@@ -15,6 +15,7 @@ import {
   getRandomPark,
   generateHint,
 } from '../data/parkleComparison';
+import { submitParkleResult } from '../../../services/firebase/gameStatsSync';
 
 // ============================================
 // AsyncStorage Keys
@@ -156,6 +157,14 @@ function submitGuess(park: ParklePark): boolean {
     ];
     saveStats();
     if (game.mode === 'daily') saveDaily();
+    submitParkleResult({
+      won: true,
+      guesses: game.guesses.length,
+      currentStreak: stats.currentStreak,
+      bestStreak: stats.maxStreak,
+      gamesPlayed: stats.gamesPlayed,
+      gamesWon: stats.gamesWon,
+    }).catch(() => {});
     notify();
     return true;
   }
@@ -170,6 +179,14 @@ function submitGuess(park: ParklePark): boolean {
     ];
     saveStats();
     if (game.mode === 'daily') saveDaily();
+    submitParkleResult({
+      won: false,
+      guesses: game.guesses.length,
+      currentStreak: 0,
+      bestStreak: stats.maxStreak,
+      gamesPlayed: stats.gamesPlayed,
+      gamesWon: stats.gamesWon,
+    }).catch(() => {});
     notify();
     return false;
   }

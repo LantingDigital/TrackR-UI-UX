@@ -6,6 +6,7 @@ import { useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { TriviaGameState, TriviaStats, TriviaQuestion, TriviaCategory } from '../types/trivia';
 import { TRIVIA_QUESTIONS } from '../data/triviaQuestions';
+import { submitTriviaResult } from '../../../../services/firebase/gameStatsSync';
 
 const STATS_KEY = '@trackr:trivia_stats';
 const SETTINGS_KEY = '@trackr:trivia_settings';
@@ -187,6 +188,16 @@ export function nextQuestion(): void {
     // Game over
     stats.gamesPlayed += 1;
     saveStats();
+    const correctPct = stats.totalQuestions > 0
+      ? Math.round((stats.totalCorrect / stats.totalQuestions) * 100)
+      : 0;
+    submitTriviaResult({
+      score: gameState.score,
+      total: gameState.questions.length,
+      gamesPlayed: stats.gamesPlayed,
+      highScore: Math.max(gameState.score, stats.bestStreak),
+      correctPercentage: correctPct,
+    }).catch(() => {});
     gameState = { ...gameState, status: 'results' };
   } else {
     gameState = {
