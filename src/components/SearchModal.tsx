@@ -701,7 +701,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         </KeyboardAvoidingView>
 
         {/* Fog — real GlassHeader, sibling to KAV like Settings does it */}
-        <GlassHeader headerHeight={insets.top + 52} fadeDistance={60} zIndex={40} />
+        <GlassHeader headerHeight={insets.top + 20} fadeDistance={60} zIndex={40} />
         </View>
       );
     }
@@ -1159,5 +1159,6 @@ const styles = StyleSheet.create({
   },
   sectionsOnlyContainer: {
     flex: 1,
+    backgroundColor: colors.background.page,
   },
 });

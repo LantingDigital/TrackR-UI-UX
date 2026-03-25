@@ -2413,7 +2413,7 @@ export const HomeScreen = () => {
         <Reanimated.View
           style={[{
             position: 'absolute',
-            top: insets.top, // Start from top of safe area
+            top: 0, // Extend under status bar — GlassHeader handles the fog
             left: 0,
             right: 0,
             bottom: 0,
