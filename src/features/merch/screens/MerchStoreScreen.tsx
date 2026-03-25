@@ -282,7 +282,7 @@ export const MerchStoreScreen: React.FC = () => {
   const allProducts = useMemo(() => getMerchProducts(), []);
   const isSearching = searchQuery.trim().length > 0;
   const filteredProducts = useMemo(() => {
-    if (!isSearching) return allProducts.slice(0, 20);
+    if (!isSearching) return allProducts;
     const q = searchQuery.toLowerCase().trim();
     return allProducts.filter(
       (p) => p.name.toLowerCase().includes(q) || p.parkName.toLowerCase().includes(q)
