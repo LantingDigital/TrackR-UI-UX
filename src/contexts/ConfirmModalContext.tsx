@@ -143,12 +143,12 @@ export function ConfirmModalProvider({ children }: { children: React.ReactNode }
   return (
     <ConfirmModalContext.Provider value={{ confirm, alert }}>
       {children}
-      <Modal
+      {options && <Modal
         visible={visible}
         transparent
         animationType="none"
         statusBarTranslucent
-        onRequestClose={options?.mode === 'confirm' ? handleCancel : handleAlertDismiss}
+        onRequestClose={options.mode === 'confirm' ? handleCancel : handleAlertDismiss}
       >
         <View style={styles.overlay}>
           <Animated.View style={[StyleSheet.absoluteFill, overlayStyle]}>
@@ -205,7 +205,7 @@ export function ConfirmModalProvider({ children }: { children: React.ReactNode }
             </View>
           </Animated.View>
         </View>
-      </Modal>
+      </Modal>}
     </ConfirmModalContext.Provider>
   );
 }
