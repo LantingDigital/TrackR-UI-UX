@@ -166,6 +166,7 @@ export const CommunityScreen = () => {
               onPlaySpeedSorter={() => navigation.navigate('SpeedSorter')}
               onPlayBlindRanking={() => navigation.navigate('BlindRanking')}
               onPlayTrivia={() => navigation.navigate('Trivia')}
+              onPlayParkle={() => navigation.navigate('Parkle')}
               scrollY={tabScrollY}
             />
           )}

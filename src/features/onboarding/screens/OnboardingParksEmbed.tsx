@@ -20,7 +20,6 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -28,7 +27,6 @@ import Animated, {
   withDelay,
   withSpring,
   interpolate,
-  interpolateColor,
   Extrapolation,
   Easing,
   SharedValue,
@@ -39,6 +37,7 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
+import { MorphingPill, MorphingPillRef } from '../../../components/MorphingPill';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -92,9 +91,9 @@ const PARK_LIST = [
 
 // Park guides
 const PARK_GUIDES = [
-  { id: 'g1', icon: '🍽️', title: 'Best Food Spots', preview: 'Top rated restaurants and snack stands', category: 'FOOD', readTime: '3 min' },
-  { id: 'g2', icon: '⏱️', title: 'Beat the Lines', preview: 'Pro tips for minimizing wait times', category: 'TIPS', readTime: '5 min' },
-  { id: 'g3', icon: '👨‍👩‍👧‍👦', title: 'Family Guide', preview: 'Best rides for families with kids', category: 'FAMILY', readTime: '4 min' },
+  { id: 'g1', icon: 'restaurant-outline' as const, title: 'Best Food Spots', preview: 'Top rated restaurants and snack stands', category: 'FOOD', readTime: '3 min' },
+  { id: 'g2', icon: 'timer-outline' as const, title: 'Beat the Lines', preview: 'Pro tips for minimizing wait times', category: 'TIPS', readTime: '5 min' },
+  { id: 'g3', icon: 'people-outline' as const, title: 'Family Guide', preview: 'Best rides for families with kids', category: 'FAMILY', readTime: '4 min' },
 ];
 
 // Demo food items
@@ -130,6 +129,7 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
   const allTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const demoActiveRef = useRef(false);
   const wtScrollRef = useRef<ScrollView>(null);
+  const morphPillRef = useRef<MorphingPillRef>(null);
 
   const clearAllTimers = useCallback(() => {
     allTimersRef.current.forEach(t => clearTimeout(t));
@@ -166,11 +166,6 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
   const wt6 = useSharedValue(0);
   const wt7 = useSharedValue(0);
   const wtValues = [wt0, wt1, wt2, wt3, wt4, wt5, wt6, wt7];
-
-  // Morph animation (transform-based, arc trajectory)
-  const morphProgress = useSharedValue(0); // 0=pill, 1=expanded
-  const morphContentOpacity = useSharedValue(0);
-  const morphBackdropOpacity = useSharedValue(0);
 
   // Park switcher highlight
   const highlightIndex = useSharedValue(-1);
@@ -215,47 +210,6 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
     }))
   );
 
-  // ── Morph animated styles ──
-  // Transform-based morph: pill → expanded using translateX/Y + scale
-  // Pill is positioned top-right of header. Expanded is centered below.
-  // Arc: pill moves UP first (parabolic), then DOWN to center while expanding.
-
-  const morphContainerStyle = useAnimatedStyle(() => {
-    const p = morphProgress.value;
-
-    // Size: width and height interpolate
-    const w = interpolate(p, [0, 0.35, 1], [PILL_W, PILL_W, EXPANDED_W], Extrapolation.CLAMP);
-    const h = interpolate(p, [0, 0.35, 1], [PILL_H, PILL_H, EXPANDED_H], Extrapolation.CLAMP);
-    const br = interpolate(p, [0, 0.35, 1], [radius.pill, radius.pill, radius.card], Extrapolation.CLAMP);
-
-    // Position: pill starts at origin (0,0), moves to centered expanded
-    // X: move left to center
-    const tx = interpolate(p, [0, 0.35, 1], [0, 0, -(EXPANDED_W - PILL_W) / 2], Extrapolation.CLAMP);
-    // Y: parabolic arc — up first (negative), then down to expanded position
-    const arcUp = interpolate(p, [0, 0.2], [0, -45], Extrapolation.CLAMP);
-    const arcDown = interpolate(p, [0.2, 0.5, 1], [-45, 20, 50], Extrapolation.CLAMP);
-    const ty = p <= 0.2 ? arcUp : arcDown;
-
-    return {
-      width: w,
-      height: h,
-      borderRadius: br,
-      transform: [{ translateX: tx }, { translateY: ty }],
-    };
-  });
-
-  const morphPillTextStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(morphProgress.value, [0, 0.2], [1, 0], Extrapolation.CLAMP),
-  }));
-
-  const morphExpandedContentStyle = useAnimatedStyle(() => ({
-    opacity: morphContentOpacity.value,
-  }));
-
-  const morphBackdropStyle = useAnimatedStyle(() => ({
-    opacity: morphBackdropOpacity.value,
-  }));
-
   // ── Overlay styles ──
   const foodOverlayStyle = useAnimatedStyle(() => ({
     opacity: foodOverlay.value,
@@ -293,10 +247,8 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
     guidesEntrance.value = 0;
     qa0.value = 0; qa1.value = 0; qa2.value = 0; qa3.value = 0;
     wtValues.forEach(sv => { sv.value = 0; });
-    morphProgress.value = 0;
-    morphContentOpacity.value = 0;
-    morphBackdropOpacity.value = 0;
     highlightIndex.value = -1;
+    morphPillRef.current?.reset();
     foodOverlay.value = 0;
     passOverlay.value = 0;
     guideOverlay.value = 0;
@@ -333,18 +285,18 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
 
     t = 1800;
 
-    // ── Phase 2: Wait time carousel scroll (1.8-3.8s) ──
+    // ── Phase 2: Wait time carousel scroll (slow with pause at each end) ──
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
       wtScrollRef.current?.scrollTo({ x: 250, animated: true });
     }, t);
-    t += 1500;
+    t += 2500; // pause at scrolled position
 
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
       wtScrollRef.current?.scrollTo({ x: 0, animated: true });
     }, t);
-    t += 1000;
+    t += 1500;
 
     // ── Phase 3: Tap "Food" quick action → food overlay (4.3s) ──
     scheduleTimer(() => {
@@ -397,14 +349,10 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
     }, t);
     t += 600;
 
-    // ── Phase 6: Change pill morph → park switcher (12.4s) ──
+    // ── Phase 6: Change pill morph → park switcher (real MorphingPill) ──
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
-      // Open morph: arc-based expand
-      morphBackdropOpacity.value = withTiming(1, { duration: 500, easing: Easing.out(Easing.cubic) });
-      morphProgress.value = withTiming(1, { duration: 620, easing: Easing.bezier(0.25, 0.4, 0.4, 1.0) });
-      // Content fades in after morph settles
-      morphContentOpacity.value = withDelay(400, withTiming(1, { duration: 250, easing: Easing.out(Easing.cubic) }));
+      morphPillRef.current?.open();
     }, t);
     t += 1500;
 
@@ -418,17 +366,10 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
     // Close morph
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
-      morphContentOpacity.value = withTiming(0, { duration: 150, easing: Easing.in(Easing.cubic) });
-    }, t);
-    t += 200;
-
-    scheduleTimer(() => {
-      if (!demoActiveRef.current) return;
-      morphProgress.value = withTiming(0, { duration: 380, easing: Easing.in(Easing.cubic) });
-      morphBackdropOpacity.value = withTiming(0, { duration: 380, easing: Easing.in(Easing.cubic) });
       highlightIndex.value = -1;
+      morphPillRef.current?.close();
     }, t);
-    t += 600;
+    t += 1000;
 
     // ── Phase 7: Brief hold then loop ──
     scheduleTimer(() => {
@@ -465,11 +406,6 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
 
   return (
     <View style={styles.container}>
-      {/* Morph backdrop overlay */}
-      <Animated.View style={[styles.morphBackdrop, morphBackdropStyle]} pointerEvents="none">
-        <BlurView intensity={15} tint="systemChromeMaterialLight" style={StyleSheet.absoluteFill} />
-      </Animated.View>
-
       {/* ── Header (ParkHubHeader recreation) ── */}
       <Animated.View style={[styles.headerContainer, headerStyle]}>
         <View style={styles.headerRow}>
@@ -479,18 +415,22 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
             <Text style={styles.hoursText}>Open Today: 10:00 AM – 10:00 PM</Text>
           </View>
 
-          {/* Change pill + morph target */}
-          <Animated.View style={[styles.morphPillBase, morphContainerStyle]}>
-            {/* Pill label (visible when collapsed) */}
-            <Animated.View style={[styles.morphPillLabelWrap, morphPillTextStyle]}>
-              <Text style={styles.changePillText}>Change</Text>
-            </Animated.View>
-
-            {/* Expanded content (visible when morphed open) */}
-            <Animated.View style={[styles.morphExpandedContent, morphExpandedContentStyle]}>
-              <SwitcherContent highlightIndex={highlightIndex} />
-            </Animated.View>
-          </Animated.View>
+          {/* Change pill — real MorphingPill component */}
+          <MorphingPill
+            ref={morphPillRef}
+            pillContent={<Text style={styles.changePillText}>Change</Text>}
+            pillWidth={PILL_W}
+            pillHeight={PILL_H}
+            pillBorderRadius={radius.pill}
+            pillStyle={{ backgroundColor: colors.accent.primary }}
+            expandedContent={<SwitcherContent highlightIndex={highlightIndex} />}
+            expandedWidth={SCREEN_WIDTH - 32}
+            expandedHeight={420}
+            expandedBorderRadius={radius.card}
+            expandedStyle={{ backgroundColor: colors.background.card }}
+            backdropType="blur"
+            blurIntensity={15}
+          />
         </View>
       </Animated.View>
 
@@ -549,7 +489,7 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
       <Animated.View style={[styles.passCardContainer, passStyle]}>
         <View style={styles.passCard}>
           <LinearGradient
-            colors={[`${colors.accent.primary}08`, 'transparent']}
+            colors={[`${colors.accent.primary}08`, 'rgba(207,103,105,0)']}
             style={styles.passGradient}
           />
           <View style={styles.passRow}>
@@ -593,7 +533,7 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
             <View key={guide.id} style={styles.guideCardWrapper}>
               <View style={styles.guideCardShadow} />
               <View style={styles.guideCard}>
-                <Text style={styles.guideEmoji}>{guide.icon}</Text>
+                <Ionicons name={guide.icon} size={18} color={colors.accent.primary} style={{ marginBottom: spacing.xs }} />
                 <Text style={styles.guideTitle} numberOfLines={1}>{guide.title}</Text>
                 <Text style={styles.guidePreview} numberOfLines={1}>{guide.preview}</Text>
                 <View style={styles.guideFooter}>
@@ -668,7 +608,7 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
       <Animated.View style={[styles.overlayContainer, guideOverlayStyle]}>
         <View style={styles.overlaySheet}>
           <View style={styles.overlayDragHandle} />
-          <Text style={styles.guideOverlayIcon}>🍽️</Text>
+          <Ionicons name="restaurant-outline" size={28} color={colors.accent.primary} style={{ marginBottom: spacing.sm }} />
           <Text style={styles.overlayTitle}>Best Food Spots</Text>
           <View style={styles.guideOverlayMeta}>
             <View style={styles.guideCategoryPill}>
@@ -753,7 +693,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background.page,
     overflow: 'hidden',
-    paddingTop: 48, // space for dynamic island
+    paddingTop: 60, // space for dynamic island + breathing room below notch
   },
 
   // ── Header ──
@@ -790,30 +730,11 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
 
-  // ── Morph pill / expanded ──
-  morphPillBase: {
-    backgroundColor: colors.accent.primary,
-    overflow: 'hidden',
-    zIndex: 30,
-  },
-  morphPillLabelWrap: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  // ── Change pill text ──
   changePillText: {
     fontSize: typography.sizes.caption,
     fontWeight: typography.weights.semibold,
     color: colors.text.inverse,
-  },
-  morphExpandedContent: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: colors.background.card,
-    borderRadius: radius.card,
-  },
-  morphBackdrop: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 15,
   },
 
   // ── Quick Actions ──
@@ -824,11 +745,11 @@ const styles = StyleSheet.create({
   },
   qaPill: {
     flex: 1,
+    aspectRatio: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: colors.background.card,
     borderRadius: radius.lg,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.xs,
     ...shadows.small,
   },
   qaIconCircle: {
@@ -905,7 +826,8 @@ const styles = StyleSheet.create({
     gap: spacing.md,
     paddingTop: spacing.sm,
     paddingBottom: spacing.lg,
-    paddingHorizontal: spacing.xl,
+    paddingLeft: spacing.xl,
+    paddingRight: spacing.xxxl,
   },
   wtPill: {
     width: 100,
@@ -1045,10 +967,6 @@ const styles = StyleSheet.create({
     padding: spacing.base,
     overflow: 'hidden',
   },
-  guideEmoji: {
-    fontSize: 18,
-    marginBottom: spacing.xs,
-  },
   guideTitle: {
     fontSize: typography.sizes.label,
     fontWeight: typography.weights.bold,
@@ -1096,7 +1014,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingBottom: spacing.xxxl,
     paddingTop: spacing.md,
-    maxHeight: '75%',
+    maxHeight: '92%',
     ...shadows.modal,
   },
   overlayDragHandle: {
@@ -1208,10 +1126,6 @@ const styles = StyleSheet.create({
   },
 
   // ── Guide overlay ──
-  guideOverlayIcon: {
-    fontSize: 32,
-    marginBottom: spacing.sm,
-  },
   guideOverlayMeta: {
     flexDirection: 'row',
     alignItems: 'center',

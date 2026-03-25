@@ -194,11 +194,14 @@ const Streak = React.memo(({
 interface ProfileReadyScreenProps {
   onComplete: () => void;
   displayName?: string;
+  /** 'new' shows "Welcome," — 'returning' shows "Welcome back," */
+  variant?: 'new' | 'returning';
 }
 
 export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
   onComplete,
   displayName,
+  variant = 'new',
 }) => {
   const [isPageBg, setIsPageBg] = useState(false);
   const [showCanvas, setShowCanvas] = useState(true);
@@ -403,7 +406,7 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
               colors={[
                 'rgba(180,90,92,0.22)',
                 'rgba(120,60,62,0.08)',
-                'transparent',
+                'rgba(120,60,62,0)',
               ]}
               positions={[0, 0.4, 1]}
             />
@@ -418,7 +421,7 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
                 'rgba(255,245,245,0.9)',
                 'rgba(240,195,195,0.4)',
                 'rgba(180,100,102,0.1)',
-                'transparent',
+                'rgba(180,100,102,0)',
               ]}
               positions={[0, 0.15, 0.4, 1]}
             />
@@ -499,7 +502,7 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
               <RadialGradient
                 c={vec(CX, CY)}
                 r={overexR}
-                colors={['rgba(255,255,255,0.6)', 'rgba(255,248,245,0.2)', 'transparent']}
+                colors={['rgba(255,255,255,0.6)', 'rgba(255,248,245,0.2)', 'rgba(255,248,245,0)']}
                 positions={[0, 0.4, 1]}
               />
             </Rect>
@@ -526,7 +529,7 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
       {/* Text */}
       <View style={styles.textContainer} pointerEvents="none">
         <Animated.Text style={[styles.welcomeLabel, welcomeStyle]}>
-          Welcome,
+          {variant === 'returning' ? 'Welcome back,' : 'Welcome,'}
         </Animated.Text>
         <Animated.View style={nameStyle}>
           <Text
@@ -539,7 +542,7 @@ export const ProfileReadyScreen: React.FC<ProfileReadyScreenProps> = ({
           </Text>
         </Animated.View>
         <Animated.Text style={[styles.subtitle, subtitleStyle]}>
-          Your adventure starts now
+          {variant === 'returning' ? 'Good to see you again' : 'Your adventure starts now'}
         </Animated.Text>
       </View>
     </View>

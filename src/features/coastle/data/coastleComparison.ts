@@ -85,10 +85,10 @@ export function createGuess(guess: CoastleCoaster, target: CoastleCoaster): Coas
   return { coaster: guess, cells, isCorrect };
 }
 
-/** Deterministic daily coaster selection based on date */
-export function getDailyCoaster(date?: Date): CoastleCoaster {
+/** Deterministic daily coaster selection based on date and difficulty */
+export function getDailyCoaster(date?: Date, difficulty: 'easy' | 'hard' = 'easy'): CoastleCoaster {
   const d = date || new Date();
-  const dateStr = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+  const dateStr = `coastle-${difficulty}-${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
   // Simple hash
   let hash = 0;
   for (let i = 0; i < dateStr.length; i++) {
@@ -96,8 +96,9 @@ export function getDailyCoaster(date?: Date): CoastleCoaster {
     hash = ((hash << 5) - hash) + char;
     hash = hash & hash; // Convert to 32-bit integer
   }
-  const index = Math.abs(hash) % DAILY_ANSWER_POOL.length;
-  const id = DAILY_ANSWER_POOL[index];
+  const pool = difficulty === 'easy' ? DAILY_ANSWER_POOL : COASTER_DATABASE.map((c) => c.id);
+  const index = Math.abs(hash) % pool.length;
+  const id = pool[index];
   return COASTER_DATABASE.find((c) => c.id === id) || COASTER_DATABASE[0];
 }
 

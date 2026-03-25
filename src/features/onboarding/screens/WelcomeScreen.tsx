@@ -118,7 +118,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onContinue }) => {
       {/* Background glow behind logo */}
       <Animated.View style={[styles.glowContainer, glowStyle]}>
         <LinearGradient
-          colors={[ONBOARDING.accentGlow, 'transparent']}
+          colors={[ONBOARDING.accentGlow, 'rgba(207,103,105,0)']}
           style={styles.glowGradient}
           start={{ x: 0.5, y: 0.3 }}
           end={{ x: 0.5, y: 0.7 }}
@@ -128,7 +128,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onContinue }) => {
       {/* Top accent fade */}
       <Animated.View style={[styles.topFade, topFadeStyle]}>
         <LinearGradient
-          colors={['rgba(207,103,105,0.08)', 'transparent']}
+          colors={['rgba(207,103,105,0.08)', 'rgba(207,103,105,0)']}
           style={StyleSheet.absoluteFill}
           start={{ x: 0.5, y: 0 }}
           end={{ x: 0.5, y: 1 }}
@@ -144,7 +144,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onContinue }) => {
         {/* Accent line */}
         <Animated.View style={[styles.accentLine, accentLineStyle]}>
           <LinearGradient
-            colors={['transparent', ONBOARDING.accent, 'transparent']}
+            colors={['rgba(207,103,105,0)', ONBOARDING.accent, 'rgba(207,103,105,0)']}
             style={styles.accentLineInner}
             start={{ x: 0, y: 0.5 }}
             end={{ x: 1, y: 0.5 }}

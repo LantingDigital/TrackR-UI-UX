@@ -81,10 +81,11 @@ const DISMISS_VELOCITY = 500;
 const HANDLE_AREA = 33;
 const IMAGE_MARGIN = 12;
 const STATS_MARGIN = 12;
-const ACTION_MARGIN = 10;
+const ACTION_MARGIN = 20;
 
 // How far content lifts (translateY) — single lift for celebration
-const LIFT_AMOUNT = -60;
+// Increased from -60 to -90 so celebration card fully covers ride title
+const LIFT_AMOUNT = -90;
 
 // Mini stat card size — 4 across within sheet padding (compact for onboarding)
 const STAT_CARD_SIZE = Math.floor((SCREEN_WIDTH - spacing.xl * 2 - spacing.sm * 3) / 4) - 4;
@@ -991,7 +992,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    top: '65%', // starts below where stats end after lift — centers in the revealed gap
+    top: '55%', // starts below where stats end after lift — centers in the revealed gap
     justifyContent: 'center',
     alignItems: 'center',
   },

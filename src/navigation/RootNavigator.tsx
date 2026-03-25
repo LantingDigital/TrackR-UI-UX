@@ -17,8 +17,10 @@ import { ProfileView } from '../features/community/components/ProfileView';
 import { TriviaScreen } from '../features/games/trivia/TriviaScreen';
 import { SpeedSorterScreen } from '../features/games/speed-sorter/SpeedSorterScreen';
 import { BlindRankingScreen } from '../features/games/blind-ranking/BlindRankingScreen';
+import { ParkleScreen } from '../features/parkle/ParkleScreen';
 import { BlockedUsersScreen } from '../screens/settings/BlockedUsersScreen';
 import { ExportRideLogScreen } from '../screens/settings/ExportRideLogScreen';
+import { ImportRideDataScreen } from '../screens/settings/ImportRideDataScreen';
 import { EmailScreen } from '../screens/settings/EmailScreen';
 import { PasswordScreen } from '../screens/settings/PasswordScreen';
 import { TermsScreen } from '../screens/settings/TermsScreen';
@@ -43,6 +45,7 @@ import { ToastProvider } from '../components/feedback/ToastProvider';
 import { POIActionProvider } from '../features/parks/context/POIActionContext';
 
 import { useSettingsStore } from '../stores/settingsStore';
+import { useAuthStore } from '../stores/authStore';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 
@@ -58,11 +61,22 @@ const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
   const { hasCompletedOnboarding, initialized } = useSettingsStore();
+  const { user, isAuthenticated, isLoading: isAuthLoading } = useAuthStore();
 
-  // Wait for AsyncStorage hydration to prevent flash
-  if (!initialized) {
+  // Wait for both AsyncStorage hydration AND Firebase auth state check
+  if (!initialized || isAuthLoading) {
     return <View style={{ flex: 1, backgroundColor: colors.background.page }} />;
   }
+
+  // Email users who haven't verified must go through onboarding (verification screen)
+  const hasUnverifiedEmail =
+    isAuthenticated &&
+    user?.authProvider === 'email' &&
+    !user?.emailVerified;
+
+  // Skip onboarding if user is authenticated with verified email (or OAuth)
+  // OR if they previously completed onboarding (browse-without-account mode)
+  const showApp = (hasCompletedOnboarding || isAuthenticated) && !hasUnverifiedEmail;
 
   return (
     <NavigationContainer theme={navTheme}>
@@ -70,7 +84,7 @@ export const RootNavigator = () => {
         <TabBarProvider>
           <ToastProvider>
             <POIActionProvider>
-                {hasCompletedOnboarding ? (
+                {showApp ? (
                   <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="Tabs" component={TabNavigator} />
                     <Stack.Screen
@@ -186,6 +200,15 @@ export const RootNavigator = () => {
                       }}
                     />
                     <Stack.Screen
+                      name="Parkle"
+                      component={ParkleScreen}
+                      options={{
+                        presentation: 'fullScreenModal',
+                        animation: 'slide_from_bottom',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
                       name="BlockedUsers"
                       component={BlockedUsersScreen}
                       options={{
@@ -196,6 +219,14 @@ export const RootNavigator = () => {
                     <Stack.Screen
                       name="ExportRideLog"
                       component={ExportRideLogScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="ImportRideData"
+                      component={ImportRideDataScreen}
                       options={{
                         animation: 'slide_from_right',
                         gestureEnabled: true,

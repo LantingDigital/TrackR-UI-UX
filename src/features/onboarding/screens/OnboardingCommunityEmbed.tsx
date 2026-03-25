@@ -363,7 +363,7 @@ export const OnboardingCommunityEmbed: React.FC<Props> = ({ isActive }) => {
     // 3. Auto-scroll Feed down slightly
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
-      feedScrollY.value = withTiming(200, { duration: 1500, easing: REasing.inOut(REasing.cubic) });
+      feedScrollY.value = withTiming(120, { duration: 1500, easing: REasing.inOut(REasing.cubic) });
     }, t);
     t += 1800;
 
@@ -904,10 +904,19 @@ export const OnboardingCommunityEmbed: React.FC<Props> = ({ isActive }) => {
         {renderRankingsTab()}
         {renderPlayTab()}
 
-        {/* Fog gradient — visual separation between nav and content */}
+        {/* Fog gradient — matches GlassHeader S-curve from design-taste.md */}
         <LinearGradient
-          colors={['#F7F7F7', 'rgba(247,247,247,0.6)', 'rgba(247,247,247,0)']}
-          locations={[0, 0.4, 1]}
+          colors={[
+            'rgba(247,247,247,0.88)',
+            'rgba(247,247,247,0.82)',
+            'rgba(247,247,247,0.70)',
+            'rgba(247,247,247,0.52)',
+            'rgba(247,247,247,0.32)',
+            'rgba(247,247,247,0.15)',
+            'rgba(247,247,247,0.05)',
+            'rgba(247,247,247,0.01)',
+            'rgba(247,247,247,0)',
+          ]}
           style={s.fogGradient}
           pointerEvents="none"
         />
@@ -923,14 +932,14 @@ const s = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background.page,
     overflow: 'hidden',
-    paddingTop: 54, // clear dynamic island
+    paddingTop: 46, // clear dynamic island — reduced to fill under status bar
   },
 
   // ── Top bar ──
   topBar: {
     paddingBottom: spacing.sm,
     zIndex: 10,
-    backgroundColor: colors.background.page,
+    backgroundColor: 'rgba(247, 247, 247, 0.88)',
   },
   topBarRow: {
     flexDirection: 'row',
@@ -977,7 +986,7 @@ const s = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: 28,
+    height: 60,
     zIndex: 5,
   },
 
@@ -1213,34 +1222,34 @@ const s = StyleSheet.create({
   },
   storyBubble: {
     alignItems: 'center',
-    width: 48,
+    width: 64,
   },
   storyRing: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: 64,
+    height: 64,
+    borderRadius: 32,
     borderWidth: 2,
     borderColor: ACCENT,
     alignItems: 'center',
     justifyContent: 'center',
   },
   storyAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
     backgroundColor: ACCENT_LIGHT,
     alignItems: 'center',
     justifyContent: 'center',
   },
   storyInitials: {
-    fontSize: 12,
+    fontSize: 15,
     fontWeight: typography.weights.bold,
     color: ACCENT,
   },
   storyName: {
-    fontSize: 10,
+    fontSize: 11,
     color: colors.text.secondary,
-    marginTop: 3,
+    marginTop: 4,
     textAlign: 'center',
   },
 

@@ -17,6 +17,7 @@ import Animated, {
   withTiming,
   withRepeat,
   withSequence,
+  interpolate,
   Easing,
   cancelAnimation,
 } from 'react-native-reanimated';
@@ -34,6 +35,7 @@ import { OnboardingRate } from './screens/OnboardingRate';
 import { OnboardingParks } from './screens/OnboardingParks';
 import { OnboardingRankings } from './screens/OnboardingRankings';
 import { OnboardingCommunity } from './screens/OnboardingCommunity';
+import { OnboardingAuthSection } from './screens/OnboardingAuthSection';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -49,6 +51,7 @@ const SCREEN_PULSE_COLORS: (string | null)[] = [
   'rgb(70, 160, 140)',         // Parks — teal
   'rgb(150, 100, 200)',        // Rankings — deep purple
   'rgb(220, 150, 60)',         // Community — warm amber
+  'rgb(207, 103, 105)',        // Auth — coral (app accent, bookend with Search)
 ];
 
 // Circle must cover the full screen diagonal
@@ -76,9 +79,10 @@ const WHOOSH_PLAYER = Platform.OS === 'ios' ? new Player({ Pattern: [
 interface ScreenDef {
   name: string;
   Component: React.FC<{ isActive: boolean }>;
+  isAuth?: boolean;
 }
 
-const SCREENS: ScreenDef[] = [
+const SHOWCASE_SCREENS: ScreenDef[] = [
   { name: 'Card Art Landing', Component: OnboardingCardLanding },
   { name: 'Search', Component: OnboardingSearch },
   { name: 'Log', Component: OnboardingLog },
@@ -89,16 +93,33 @@ const SCREENS: ScreenDef[] = [
   { name: 'Community', Component: OnboardingCommunity },
 ];
 
+// Auth is always appended last — a placeholder in the data array.
+// The actual OnboardingAuthSection is rendered specially in renderItem.
+const AUTH_SCREEN: ScreenDef = {
+  name: 'Auth',
+  Component: () => null, // Placeholder — real component rendered in renderItem
+  isAuth: true,
+};
+
+const SCREENS: ScreenDef[] = [...SHOWCASE_SCREENS, AUTH_SCREEN];
+const AUTH_INDEX = SCREENS.length - 1;
+
 interface LandingDesignSamplerProps {
-  onDismiss: () => void;
+  /** Called when auth succeeds. needsEmailVerification = true for email sign-up. */
+  onDismiss: (needsEmailVerification: boolean) => void;
+  /** Called when user taps "Browse without an account" — separate from auth success */
+  onBrowseWithoutAccount?: () => void;
 }
 
-export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDismiss }) => {
+export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDismiss, onBrowseWithoutAccount }) => {
   const insets = useSafeAreaInsets();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const activeIndexRef = useRef(0);
   const flatListRef = useRef<FlatList>(null);
   const isFirstRender = useRef(true);
+
+  // ── Scroll position tracking for overlay fade ──
+  const scrollY = useSharedValue(0);
 
   // ── Radial pulse ──
   const pulseScale = useSharedValue(0);
@@ -150,14 +171,61 @@ export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDi
     transform: [{ translateY: chevronY.value }],
   }));
 
+  // ── Skip button + bottom overlay: fade out as auth section comes into view ──
+  // The auth section starts at AUTH_INDEX * SCREEN_HEIGHT.
+  // Fade begins when the PREVIOUS screen is ~50% scrolled past (auth section coming into view).
+  const authScrollStart = (AUTH_INDEX - 1) * SCREEN_HEIGHT + SCREEN_HEIGHT * 0.5;
+  const authScrollEnd = AUTH_INDEX * SCREEN_HEIGHT;
+
+  const skipFadeStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      scrollY.value,
+      [authScrollStart, authScrollEnd],
+      [1, 0],
+      'clamp',
+    ),
+  }));
+
+  const bottomFadeStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      scrollY.value,
+      [authScrollStart, authScrollEnd],
+      [1, 0],
+      'clamp',
+    ),
+  }));
+
   const handleScroll = useCallback((event: any) => {
     const offset = event.nativeEvent.contentOffset.y;
+    scrollY.value = offset;
     const index = Math.round(offset / SCREEN_HEIGHT);
     if (index !== activeIndexRef.current && index >= 0 && index < SCREENS.length) {
       activeIndexRef.current = index;
       setActiveIndex(index);
     }
   }, []);
+
+  // ── Skip button scrolls to auth section ──
+  const handleSkip = useCallback(() => {
+    haptics.tap();
+    flatListRef.current?.scrollToIndex({
+      index: AUTH_INDEX,
+      animated: true,
+    });
+  }, []);
+
+  // ── Auth completion ──
+  const handleAuthComplete = useCallback((needsEmailVerification: boolean) => {
+    onDismiss(needsEmailVerification);
+  }, [onDismiss]);
+
+  const handleBrowseWithoutAccount = useCallback(() => {
+    if (onBrowseWithoutAccount) {
+      onBrowseWithoutAccount();
+    } else {
+      onDismiss(false);
+    }
+  }, [onBrowseWithoutAccount, onDismiss]);
 
   return (
     <View style={styles.container}>
@@ -196,32 +264,42 @@ export const LandingDesignSampler: React.FC<LandingDesignSamplerProps> = ({ onDi
                 }]} />
               </Animated.View>
             )}
-            <item.Component isActive={index === activeIndex} />
+            {item.isAuth ? (
+              <OnboardingAuthSection
+                isActive={index === activeIndex}
+                onAuthComplete={handleAuthComplete}
+                onBrowseWithoutAccount={handleBrowseWithoutAccount}
+              />
+            ) : (
+              <item.Component isActive={index === activeIndex} />
+            )}
           </View>
         )}
       />
 
-      {/* Skip button — top right */}
-      <Pressable
-        onPress={() => { haptics.tap(); onDismiss(); }}
-        style={[styles.skipButton, { top: insets.top + spacing.lg }]}
-      >
-        <Text style={styles.skipText}>Skip</Text>
-      </Pressable>
+      {/* Skip button — top right, fades out when auth is visible */}
+      <Animated.View style={[styles.skipButtonWrapper, { top: insets.top + spacing.lg }, skipFadeStyle]}>
+        <Pressable
+          onPress={handleSkip}
+          style={styles.skipButton}
+        >
+          <Text style={styles.skipText}>Skip</Text>
+        </Pressable>
+      </Animated.View>
 
-      {/* Bottom: static hint + bouncing chevron */}
-      <View
-        style={[styles.bottomOverlay, { paddingBottom: insets.bottom + spacing.lg }]}
+      {/* Bottom: static hint + bouncing chevron, fades out when auth is visible */}
+      <Animated.View
+        style={[styles.bottomOverlay, { paddingBottom: insets.bottom + spacing.lg }, bottomFadeStyle]}
         pointerEvents="box-none"
       >
         <Text style={styles.hint} pointerEvents="none">SCROLL TO EXPLORE</Text>
 
-        <Pressable onLongPress={onDismiss} delayLongPress={1500}>
+        <Pressable onLongPress={() => onDismiss(false)} delayLongPress={1500}>
           <Animated.View style={chevronStyle}>
             <Ionicons name="chevron-down" size={20} color={colors.text.meta} />
           </Animated.View>
         </Pressable>
-      </View>
+      </Animated.View>
     </View>
   );
 };
@@ -256,10 +334,12 @@ const styles = StyleSheet.create({
     color: colors.text.meta,
     letterSpacing: 1.5,
   },
-  skipButton: {
+  skipButtonWrapper: {
     position: 'absolute',
     right: spacing.xl,
     zIndex: 100,
+  },
+  skipButton: {
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,
   },

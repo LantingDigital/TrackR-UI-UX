@@ -36,11 +36,12 @@ import {
   View,
   Text,
   TextInput,
-  Image,
   Pressable,
   StyleSheet,
   Dimensions,
+  Image,
 } from 'react-native';
+import { FadeInImage } from '../../../components/FadeInImage';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -536,7 +537,7 @@ export const OnboardingRatingSheet = forwardRef<OnboardingRatingSheetRef, Onboar
                   {/* Portrait card */}
                   <View style={styles.portraitCard}>
                     {localArt ? (
-                      <Image
+                      <FadeInImage
                         source={localArt}
                         style={styles.portraitImage}
                         resizeMode="cover"
@@ -1092,7 +1093,7 @@ const styles = StyleSheet.create({
   },
   celebWhiteOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(255, 255, 255, 0.45)',
+    backgroundColor: 'rgba(255, 255, 255, 0.65)',
   },
   celebCenter: {
     alignItems: 'center',

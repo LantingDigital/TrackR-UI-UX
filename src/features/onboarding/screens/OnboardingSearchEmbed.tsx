@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef, useMemo, useEffect, memo } from 'react';
-import { StyleSheet, View, Dimensions, Text, ScrollView, Image, Platform } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, ScrollView, Platform } from 'react-native';
+import { FadeInImage } from '../../../components/FadeInImage';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
@@ -146,7 +147,7 @@ const LogbookGridCard = memo(function LogbookGridCard({ card, isHighlighted }: L
     >
       <View style={styles.logbookCard}>
         {cardArt ? (
-          <Image
+          <FadeInImage
             source={cardArt}
             style={styles.logbookCardImage}
             resizeMode="cover"
@@ -155,7 +156,7 @@ const LogbookGridCard = memo(function LogbookGridCard({ card, isHighlighted }: L
           <View style={[styles.logbookCardImage, { backgroundColor: '#E0E0E0' }]} />
         )}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.7)']}
+          colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.7)']}
           style={styles.logbookCardGradient}
         />
         <View style={styles.logbookCardInfo}>
@@ -417,6 +418,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
   const pillMorphProgress = useSharedValue(0);
   const backdropOpacity = useSharedValue(0);
   const searchContentFade = useSharedValue(0);
+  const searchContentSlideY = useSharedValue(16);
 
   // Action buttons visibility during morph
   const actionButtonsOpacity = useSharedValue(1);
@@ -662,6 +664,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
 
   const sectionCardsContainerStyle = useAnimatedStyle(() => ({
     opacity: searchContentFade.value,
+    transform: [{ translateY: searchContentSlideY.value }],
   }));
 
   const actionButtonsAnimatedStyle = useAnimatedStyle(() => ({
@@ -892,6 +895,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       pillMorphProgress.value = 0;
       backdropOpacity.value = 0;
       searchContentFade.value = 0;
+      searchContentSlideY.value = 16;
       actionButtonsOpacity.value = 1;
       actionButtonsScale.value = 1;
       searchBarMorphOpacity.value = 1;
@@ -1977,7 +1981,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
               'rgba(240, 238, 235, 0.08)',
               'rgba(240, 238, 235, 0.03)',
               'rgba(240, 238, 235, 0.01)',
-              'transparent',
+              'rgba(240, 238, 235, 0)',
             ]}
             locations={[0, 0.12, 0.24, 0.32, 0.38, 0.44, 0.50, 0.55, 0.60, 0.64, 0.68, 0.72]}
             style={{ flex: 1 }}
@@ -2163,7 +2167,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                 'rgba(240, 238, 235, 0.08)',
                 'rgba(240, 238, 235, 0.03)',
                 'rgba(240, 238, 235, 0.01)',
-                'transparent',
+                'rgba(240, 238, 235, 0)',
               ]}
               locations={[0, 0.10, 0.22, 0.30, 0.36, 0.42, 0.48, 0.53, 0.58, 0.62, 0.66, 0.70]}
               style={StyleSheet.absoluteFill}
@@ -2242,7 +2246,11 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                       >
                         <View style={styles.richResultHeader}>
                           <View style={styles.richResultIconWrap}>
-                            <Ionicons name="flash" size={16} color={colors.accent.primary} />
+                            {CARD_ART[topResult.id] ? (
+                              <FadeInImage source={CARD_ART[topResult.id]} style={styles.richResultImage} resizeMode="cover" />
+                            ) : (
+                              <Ionicons name="flash" size={16} color={colors.accent.primary} />
+                            )}
                           </View>
                           <View style={{ flex: 1 }}>
                             <Text style={styles.richResultName}>{topResult.name}</Text>
@@ -2295,7 +2303,11 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                       ]}
                     >
                       <View style={styles.demoSearchIcon}>
-                        <Ionicons name="flash" size={18} color={colors.accent.primary} />
+                        {CARD_ART[coaster.id] ? (
+                          <FadeInImage source={CARD_ART[coaster.id]} style={styles.demoSearchImage} resizeMode="cover" />
+                        ) : (
+                          <Ionicons name="flash" size={18} color={colors.accent.primary} />
+                        )}
                       </View>
                       <View style={{ flex: 1 }}>
                         <Text style={styles.demoSearchName}>{coaster.name}</Text>
@@ -2338,7 +2350,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                         return (
                           <View key={ride.id} style={styles.popularRideCard}>
                             {cardArt ? (
-                              <Image
+                              <FadeInImage
                                 source={cardArt}
                                 style={styles.popularRideImage}
                                 resizeMode="cover"
@@ -2347,7 +2359,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
                               <View style={[styles.popularRideImage, { backgroundColor: '#E0E0E0' }]} />
                             )}
                             <LinearGradient
-                              colors={['transparent', 'rgba(0,0,0,0.7)']}
+                              colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.7)']}
                               style={styles.popularRideGradient}
                             />
                             <Text style={styles.popularRideName} numberOfLines={2}>{ride.name}</Text>
@@ -2612,6 +2624,7 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
           showBackdrop={false}
           onOpen={() => {
             searchContentFade.value = 0;
+            searchContentSlideY.value = 16;
             backdropOpacity.value = 0;
 
             setSearchVisible(true);
@@ -2648,10 +2661,12 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
             pillMorphProgress.value = 1;
             backdropOpacity.value = withTiming(1, { duration: 510 });
             searchContentFade.value = withDelay(425, withTiming(1, { duration: 280 }));
+            searchContentSlideY.value = withDelay(425, withSpring(0, { damping: 22, stiffness: 200, mass: 0.9 }));
           }}
           onClose={() => {
             searchIsClosing.value = 1;
             searchContentFade.value = withTiming(0, { duration: 300 });
+            searchContentSlideY.value = withTiming(16, { duration: 300, easing: ReanimatedEasing.in(ReanimatedEasing.cubic) });
             backdropOpacity.value = withTiming(0, { duration: 435 });
             pillMorphProgress.value = withTiming(0, {
               duration: 485,
@@ -2799,6 +2814,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
+    overflow: 'hidden',
+  },
+  demoSearchImage: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
   },
   demoSearchName: {
     fontSize: 16,
@@ -2904,6 +2925,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
+    overflow: 'hidden',
+  },
+  richResultImage: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
   },
   richResultName: {
     fontSize: 16,

@@ -17,6 +17,20 @@ import {
   calculateWeightedScore,
   generateLogId,
 } from '../types/rideLog';
+import { getAuthUser } from './authStore';
+import {
+  addRideLog as fsAddRideLog,
+  updateRideLogTimestamp as fsUpdateTimestamp,
+  updateRideLogNotes as fsUpdateNotes,
+  deleteRideLog as fsDeleteRideLog,
+} from '../services/firebase/rideLogSync';
+import {
+  upsertRating as fsUpsertRating,
+  deleteRating as fsDeleteRating,
+} from '../services/firebase/ratingsSync';
+import {
+  saveCriteriaConfig as fsSaveCriteriaConfig,
+} from '../services/firebase/criteriaSync';
 
 // ============================================
 // Store Definition
@@ -272,15 +286,164 @@ export function hasLogForCoaster(coasterId: string): boolean {
 // Raw store access (for sync layer only — not for UI)
 export const _rideLogStoreInternal = useStore;
 
-// Standalone action wrappers (for use outside React)
-export const addQuickLog = useStore.getState().addQuickLog;
-export const upsertCoasterRating = useStore.getState().upsertCoasterRating;
-export const deleteRating = useStore.getState().deleteRating;
-export const updateLogTimestamp = useStore.getState().updateLogTimestamp;
-export const updateLogNotes = useStore.getState().updateLogNotes;
-export const deleteLog = useStore.getState().deleteLog;
-export const updateCriteria = useStore.getState().updateCriteria;
-export const updateCriteriaConfig = useStore.getState().updateCriteriaConfig;
+// ============================================
+// Firestore-Aware Action Wrappers
+// ============================================
+//
+// When a user is authenticated, these route writes through Firestore
+// (which does optimistic local updates internally). When not authenticated,
+// they fall back to in-memory-only store operations.
+
+/**
+ * Log a ride. Routes to Firestore when authenticated.
+ * Returns the new RideLog synchronously.
+ *
+ * When not authenticated, uses the local-only store action.
+ * When authenticated, uses fsAddRideLog which handles both the
+ * optimistic local update (via _setLogs) AND the Firestore write.
+ * The local store addQuickLog is skipped to avoid creating a
+ * duplicate log with a different ID.
+ */
+export function addQuickLog(
+  coaster: { id: string; name: string; parkName: string },
+  seat?: SeatPosition,
+): RideLog {
+  const user = getAuthUser();
+  if (!user) {
+    // Anonymous/offline-only: local store only
+    return useStore.getState().addQuickLog(coaster, seat);
+  }
+  // Authenticated: fsAddRideLog handles optimistic update + Firestore write.
+  // Build a synchronous return value for the caller, then fire-and-forget.
+  const logs = useStore.getState().logs;
+  const today = new Date().toDateString();
+  const todayCount = logs.filter(
+    (l) =>
+      l.coasterId === coaster.id &&
+      new Date(l.timestamp).toDateString() === today,
+  ).length;
+  const returnLog: RideLog = {
+    id: generateLogId(),
+    coasterId: coaster.id,
+    coasterName: coaster.name,
+    parkName: coaster.parkName,
+    timestamp: new Date().toISOString(),
+    seat,
+    rideCount: todayCount + 1,
+  };
+  fsAddRideLog(user.uid, coaster, seat).catch((e) =>
+    console.warn('[addQuickLog] Firestore write failed (will retry):', e),
+  );
+  return returnLog;
+}
+
+/**
+ * Upsert a coaster rating. Routes to Firestore when authenticated.
+ * fsUpsertRating calls store.upsertCoasterRating internally (optimistic),
+ * so when authenticated we only call the Firestore function.
+ */
+export function upsertCoasterRating(
+  coaster: { id: string; name: string; parkName: string },
+  criteriaRatings: Record<string, number>,
+  notes?: string,
+): CoasterRating {
+  const user = getAuthUser();
+  // Always do local update first (needed for synchronous return value)
+  const rating = useStore.getState().upsertCoasterRating(coaster, criteriaRatings, notes);
+  if (user) {
+    // fsUpsertRating also calls store.upsertCoasterRating — the second call
+    // is a no-op since the data is identical. Then it writes to Firestore.
+    fsUpsertRating(user.uid, coaster, criteriaRatings, notes).catch((e) =>
+      console.warn('[upsertCoasterRating] Firestore write failed:', e),
+    );
+  }
+  return rating;
+}
+
+/**
+ * Delete a rating. Routes to Firestore when authenticated.
+ * fsDeleteRating calls store.deleteRating internally (optimistic).
+ */
+export function deleteRating(coasterId: string): void {
+  const user = getAuthUser();
+  useStore.getState().deleteRating(coasterId);
+  if (user) {
+    fsDeleteRating(user.uid, coasterId).catch((e) =>
+      console.warn('[deleteRating] Firestore write failed:', e),
+    );
+  }
+}
+
+/**
+ * Update a log's timestamp. Routes to Firestore when authenticated.
+ * fsUpdateTimestamp calls store.updateLogTimestamp internally (optimistic).
+ */
+export function updateLogTimestamp(logId: string, timestamp: string): void {
+  const user = getAuthUser();
+  useStore.getState().updateLogTimestamp(logId, timestamp);
+  if (user) {
+    fsUpdateTimestamp(user.uid, logId, timestamp).catch((e) =>
+      console.warn('[updateLogTimestamp] Firestore write failed:', e),
+    );
+  }
+}
+
+/**
+ * Update a log's notes. Routes to Firestore when authenticated.
+ * fsUpdateNotes calls store.updateLogNotes internally (optimistic).
+ */
+export function updateLogNotes(logId: string, notes: string): void {
+  const user = getAuthUser();
+  useStore.getState().updateLogNotes(logId, notes);
+  if (user) {
+    fsUpdateNotes(user.uid, logId, notes).catch((e) =>
+      console.warn('[updateLogNotes] Firestore write failed:', e),
+    );
+  }
+}
+
+/**
+ * Delete a ride log. Routes to Firestore when authenticated.
+ * fsDeleteRideLog calls store.deleteLog internally (optimistic).
+ */
+export function deleteLog(logId: string): void {
+  const user = getAuthUser();
+  useStore.getState().deleteLog(logId);
+  if (user) {
+    fsDeleteRideLog(user.uid, logId).catch((e) =>
+      console.warn('[deleteLog] Firestore write failed:', e),
+    );
+  }
+}
+
+/**
+ * Update criteria. Routes to Firestore when authenticated.
+ */
+export function updateCriteria(criteria: RatingCriteria[]): void {
+  const user = getAuthUser();
+  useStore.getState().updateCriteria(criteria);
+  if (user) {
+    fsSaveCriteriaConfig(user.uid, criteria).catch((e) =>
+      console.warn('[updateCriteria] Firestore write failed:', e),
+    );
+  }
+}
+
+/**
+ * Update criteria config. Routes to Firestore when authenticated.
+ */
+export function updateCriteriaConfig(
+  config: Partial<RideLogState['criteriaConfig']>,
+): void {
+  const user = getAuthUser();
+  useStore.getState().updateCriteriaConfig(config);
+  if (user && config.criteria) {
+    fsSaveCriteriaConfig(user.uid, config.criteria).catch((e) =>
+      console.warn('[updateCriteriaConfig] Firestore write failed:', e),
+    );
+  }
+}
+
 export const completeCriteriaSetup = useStore.getState().completeCriteriaSetup;
 export const resetStore = useStore.getState().resetStore;
 export const subscribe = useStore.subscribe;
@@ -307,16 +470,17 @@ export function useRideLogStore() {
     unratedCoasters,
     criteria: state.criteriaConfig.criteria,
     hasCompletedCriteriaSetup: state.criteriaConfig.hasCompletedSetup,
-    addQuickLog: state.addQuickLog,
-    updateLogNotes: state.updateLogNotes,
-    deleteLog: state.deleteLog,
-    upsertCoasterRating: state.upsertCoasterRating,
+    // Firestore-aware wrappers (route to Firestore when authenticated)
+    addQuickLog,
+    updateLogNotes,
+    deleteLog,
+    upsertCoasterRating,
     getRatingForCoaster,
-    deleteRating: state.deleteRating,
+    deleteRating,
     hasLogForCoaster,
-    updateCriteria: state.updateCriteria,
-    completeCriteriaSetup: state.completeCriteriaSetup,
-    resetStore: state.resetStore,
+    updateCriteria,
+    completeCriteriaSetup,
+    resetStore,
     subscribe: useStore.subscribe,
   };
 }

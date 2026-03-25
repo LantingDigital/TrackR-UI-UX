@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="15">
+<title>TrackR V1 — Team Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif; background: #F7F7F7; color: #1a1a1a; padding: 24px; max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  .subtitle { color: #666; font-size: 14px; margin-bottom: 24px; }
+  .accent { color: #CF6769; }
+
+  .alerts { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
+  .alerts h3 { font-size: 14px; font-weight: 600; color: #E65100; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .alerts li { font-size: 14px; color: #333; margin-bottom: 6px; line-height: 1.5; }
+  .alerts ul { padding-left: 20px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .card { background: #fff; border-radius: 14px; padding: 20px; box-shadow: 0 2px 12px rgba(50,50,50,0.06); }
+  .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .agent-name { font-size: 16px; font-weight: 700; }
+  .status-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .status-building { background: #E8F5E9; color: #2E7D32; }
+  .status-done { background: #E3F2FD; color: #1565C0; }
+  .status-idle { background: #F5F5F5; color: #999; }
+  .status-assessing { background: #FFF8E1; color: #F9A825; }
+  .status-blocked { background: #FFEBEE; color: #C62828; }
+
+  .color-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+  .dot-blue { background: #4285f4; }
+  .dot-green { background: #34a853; }
+  .dot-yellow { background: #f9ab00; }
+  .dot-purple { background: #9c27b0; }
+  .dot-orange { background: #ff9800; }
+  .dot-pink { background: #e91e63; }
+  .dot-cyan { background: #00bcd4; }
+  .dot-red { background: #f44336; }
+
+  .task-desc { font-size: 13px; color: #666; margin-bottom: 12px; line-height: 1.4; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { font-size: 13px; padding: 3px 0; color: #333; line-height: 1.5; }
+  .checklist li.done { color: #999; text-decoration: line-through; }
+  .check { color: #34a853; margin-right: 4px; }
+  .pending { color: #ccc; margin-right: 4px; }
+
+  .stats-bar { display: flex; gap: 24px; margin-bottom: 24px; }
+  .stat { background: #fff; border-radius: 12px; padding: 16px 24px; box-shadow: 0 2px 12px rgba(50,50,50,0.06); flex: 1; text-align: center; }
+  .stat-number { font-size: 32px; font-weight: 800; color: #CF6769; }
+  .stat-label { font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+  .footer { text-align: center; color: #ccc; font-size: 12px; margin-top: 32px; }
+</style>
+</head>
+<body>
+
+<h1>TrackR V1 <span class="accent">Team Dashboard</span></h1>
+<p class="subtitle">trackr-v1 team &middot; Target: End of April 2026 &middot; Auto-refreshes every 15s</p>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-number">8</div><div class="stat-label">Agents</div></div>
+  <div class="stat"><div class="stat-number">5</div><div class="stat-label">Building</div></div>
+  <div class="stat"><div class="stat-number">3</div><div class="stat-label">Done/Idle</div></div>
+  <div class="stat"><div class="stat-number">258</div><div class="stat-label">Cards</div></div>
+</div>
+
+<div class="alerts">
+  <h3>Action Needed from Caleb</h3>
+  <ul>
+    <li><strong>2FA on browser slot 2 (Desktop 2)</strong> — Perplexity done. Gemini (browser 2) still needs auth for image generation.</li>
+    <li><strong>Firebase CLI reauth (BLOCKING 3 AGENTS)</strong> — Run <code>firebase login --reauth</code> in terminal. Park-data can't deploy 122 parks, content can't publish articles, import CFs can't deploy. Everything is built and waiting.</li>
+  </ul>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-blue"></span><span class="agent-name">auth-agent</span></div>
+      <span class="status-badge status-done">Complete</span>
+    </div>
+    <div class="task-desc">Firebase Auth, onboarding auth section, profile setup, browse mode</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> Auth section in LandingDesignSampler</li>
+      <li class="done"><span class="check">✓</span> Sign-in/sign-up toggle + Apple/Google/Email</li>
+      <li class="done"><span class="check">✓</span> LandingDesignSampler is default onboarding</li>
+      <li class="done"><span class="check">✓</span> Auth state persistence (skip onboarding)</li>
+      <li class="done"><span class="check">✓</span> Profile Setup (name, username validation, avatar)</li>
+      <li class="done"><span class="check">✓</span> Email verification flow</li>
+      <li class="done"><span class="check">✓</span> OnboardingScreen state machine rewrite</li>
+      <li class="done"><span class="check">✓</span> Browse-only mode + useAuthGate hook</li>
+      <li class="done"><span class="check">✓</span> AuthNudgeSheet (8 feature contexts)</li>
+      <li class="done"><span class="check">✓</span> Settings: Sign Out, Delete Account, Create Account</li>
+      <li class="done"><span class="check">✓</span> Celebration screen (new/returning variants)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-green"></span><span class="agent-name">core-data-agent</span></div>
+      <span class="status-badge status-done">Complete</span>
+    </div>
+    <div class="task-desc">Firestore sync wiring, ride logs, ratings, criteria, export</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> SeatPosition type fix</li>
+      <li class="done"><span class="check">✓</span> ALL UI writes → Firestore (zero import changes)</li>
+      <li class="done"><span class="check">✓</span> initSync() verified wired in App.tsx</li>
+      <li class="done"><span class="check">✓</span> Batch logging service</li>
+      <li class="done"><span class="check">✓</span> Weight revert system</li>
+      <li class="done"><span class="check">✓</span> Export screen wired to CF</li>
+      <li class="done"><span class="check">✓</span> Security rules verified correct</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-yellow"></span><span class="agent-name">polish-onboarding</span></div>
+      <span class="status-badge status-building">Building</span>
+    </div>
+    <div class="task-desc">38+ onboarding showcase screen fixes</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> FadeInImage component (10 instances)</li>
+      <li class="done"><span class="check">✓</span> 18 transparent gradient bugs fixed</li>
+      <li class="done"><span class="check">✓</span> "Your Park Day" complete makeover</li>
+      <li class="done"><span class="check">✓</span> "Log Every Ride" fixes</li>
+      <li class="done"><span class="check">✓</span> Wallet / Scan Modal fixes</li>
+      <li class="done"><span class="check">✓</span> "Rate What Matters" fixes</li>
+      <li class="done"><span class="check">✓</span> Community Tabs fixes</li>
+      <li class="done"><span class="check">✓</span> "Ride Together" partial (fog, stories, scroll, 4/7)</li>
+      <li class="done"><span class="check">✓</span> "Search for Anything" (inherits from app-wide fixes)</li>
+      <li><span class="pending">○</span> Criteria Distribution redesign (proposing concepts)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-orange"></span><span class="agent-name">games-agent</span></div>
+      <span class="status-badge status-building">Building</span>
+    </div>
+    <div class="task-desc">Parkle, game persistence, leaderboards, SpeedSorter rebuild</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> Assessment complete</li>
+      <li class="done"><span class="check">✓</span> Parkle built (11 files, daily puzzles, blue accent)</li>
+      <li class="done"><span class="check">✓</span> SpeedSorter rebuilt (reanimated gestures, real-time reflow)</li>
+      <li><span class="pending">○</span> Wire game stats to Firestore</li>
+      <li><span class="pending">○</span> Daily puzzle system</li>
+      <li><span class="pending">○</span> Leaderboards</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-pink"></span><span class="agent-name">park-data-agent</span></div>
+      <span class="status-badge status-building">Building</span>
+    </div>
+    <div class="task-desc">ThemeParks.wiki API consumer, 122 parks, restaurant menus</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> Full API consumer (6 endpoints, rate limiting)</li>
+      <li class="done"><span class="check">✓</span> 35-park Queue-Times→TW mapping complete</li>
+      <li class="done"><span class="check">✓</span> populateParks CF (writes 122 parks to Firestore)</li>
+      <li class="done"><span class="check">✓</span> refreshParkHours CF (daily 5am schedule)</li>
+      <li class="done"><span class="check">✓</span> Geofence service + Maps deep links</li>
+      <li><span class="pending">○</span> Deploy + populate (BLOCKED: firebase reauth)</li>
+      <li><span class="pending">○</span> Google Maps menu scraping</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-cyan"></span><span class="agent-name">content-agent</span></div>
+      <span class="status-badge status-building">Building</span>
+    </div>
+    <div class="task-desc">Article pipeline — research, write, humanize, images, publish</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> Assessment: 5 mock articles, massive category gaps</li>
+      <li><span class="pending">○</span> Article drafts (local, 5 target)</li>
+      <li><span class="pending">○</span> Hero images via Gemini (browser 2 ready)</li>
+      <li><span class="pending">○</span> Publish to Firestore (needs firebase reauth)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-red"></span><span class="agent-name">import-agent</span></div>
+      <span class="status-badge status-done">Complete</span>
+    </div>
+    <div class="task-desc">Ride data import — any format, AI field mapping, fuzzy match</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> processImportFile CF (format detect + parse + map)</li>
+      <li class="done"><span class="check">✓</span> matchCoasterNames CF (fuzzy match, 3,135 coasters)</li>
+      <li class="done"><span class="check">✓</span> importService + importStore (client side)</li>
+      <li class="done"><span class="check">✓</span> ImportRideDataScreen (5-step flow with progress)</li>
+      <li class="done"><span class="check">✓</span> ImportProgressBanner component</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><span class="color-dot dot-purple"></span><span class="agent-name">card-art-agent</span></div>
+      <span class="status-badge status-building">Building</span>
+    </div>
+    <div class="task-desc">NEW TARGET: Every coaster at every major US park (full deck completion for merch)</div>
+    <ul class="checklist">
+      <li class="done"><span class="check">✓</span> v3 directory structure created</li>
+      <li class="done"><span class="check">✓</span> 28 rejected legacy cards deleted</li>
+      <li class="done"><span class="check">✓</span> style-override.json saved</li>
+      <li><span class="pending">○</span> Gap analysis (cards per park vs total coasters)</li>
+      <li><span class="pending">○</span> Generate missing cards — batch by batch</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">TrackR V1 Agent Team &middot; Last manual update: Session 2026-03-24</div>
+
+</body>
+</html>

@@ -12,6 +12,8 @@ import {
   Text,
   Pressable,
   Alert,
+  Linking,
+  ActivityIndicator,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -32,6 +34,8 @@ import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
 import { FogHeader } from '../../components/FogHeader';
+import { getAuthUser } from '../../stores/authStore';
+import { callExportRideLog } from '../../services/firebase/functions';
 
 const HEADER_HEIGHT = 52;
 
@@ -86,21 +90,57 @@ export function ExportRideLogScreen() {
 
   const [format, setFormat] = useState<ExportFormat>('csv');
   const [dateRange, setDateRange] = useState<DateRange>('all');
+  const [isExporting, setIsExporting] = useState(false);
 
   const headerAnim = useStagger(0);
   const formatAnim = useStagger(1);
   const dateAnim = useStagger(2);
   const buttonAnim = useStagger(3);
 
-  const handleExport = useCallback(() => {
-    haptics.success();
-    Alert.alert(
-      'Export Started',
-      `Your ride log will be exported as ${format.toUpperCase()} for ${
-        DATE_RANGE_OPTIONS.find((d) => d.key === dateRange)?.label ?? 'All Time'
-      }. This feature will be fully functional when connected to your account.`,
-      [{ text: 'OK' }],
-    );
+  const handleExport = useCallback(async () => {
+    const user = getAuthUser();
+    if (!user) {
+      haptics.error();
+      Alert.alert('Sign in required', 'Please sign in to export your ride log.');
+      return;
+    }
+
+    haptics.tap();
+    setIsExporting(true);
+
+    try {
+      // Compute date range for the CF
+      let dateRangeParam: { start: string; end: string } | undefined;
+      if (dateRange !== 'all') {
+        const end = new Date().toISOString();
+        const start = new Date();
+        if (dateRange === 'last-7') start.setDate(start.getDate() - 7);
+        else if (dateRange === 'last-30') start.setDate(start.getDate() - 30);
+        else if (dateRange === 'this-year') { start.setMonth(0); start.setDate(1); }
+        dateRangeParam = { start: start.toISOString(), end };
+      }
+
+      const result = await callExportRideLog({
+        format,
+        dateRange: dateRangeParam,
+      });
+
+      haptics.success();
+      Alert.alert(
+        'Export Ready',
+        `${result.recordCount} rides exported as ${format.toUpperCase()}. The download link expires in 24 hours.`,
+        [
+          { text: 'Open', onPress: () => Linking.openURL(result.downloadUrl) },
+          { text: 'OK' },
+        ],
+      );
+    } catch (error) {
+      haptics.error();
+      Alert.alert('Export Failed', 'Something went wrong. Please try again.');
+      console.error('[ExportRideLog] Failed:', error);
+    } finally {
+      setIsExporting(false);
+    }
   }, [format, dateRange]);
 
   const headerTotalHeight = insets.top + HEADER_HEIGHT;
@@ -199,9 +239,15 @@ export function ExportRideLogScreen() {
             {...exportPress.pressHandlers}
             onPress={handleExport}
           >
-            <Animated.View style={[styles.exportButton, exportPress.animatedStyle]}>
-              <Ionicons name="download-outline" size={20} color={colors.text.inverse} />
-              <Text style={styles.exportButtonText}>Export Ride Log</Text>
+            <Animated.View style={[styles.exportButton, exportPress.animatedStyle, isExporting && styles.exportButtonDisabled]}>
+              {isExporting ? (
+                <ActivityIndicator size="small" color={colors.text.inverse} />
+              ) : (
+                <Ionicons name="download-outline" size={20} color={colors.text.inverse} />
+              )}
+              <Text style={styles.exportButtonText}>
+                {isExporting ? 'Exporting...' : 'Export Ride Log'}
+              </Text>
             </Animated.View>
           </Pressable>
         </Animated.View>
@@ -380,6 +426,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: spacing.md,
     ...shadows.small,
+  },
+  exportButtonDisabled: {
+    opacity: 0.7,
   },
   exportButtonText: {
     fontSize: typography.sizes.input,

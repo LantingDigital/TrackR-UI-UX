@@ -2,25 +2,27 @@
  * SpeedSorterScreen — Drag-and-drop sorting game with timer
  *
  * Full-screen modal. 5 rounds of 5 coasters each.
- * Drag cards to reorder, beat the clock.
+ * Rebuilt drag-and-drop using reanimated + gesture handler.
+ * Cards move fluidly with finger, others reflow smoothly in real-time.
  *
  * Animation philosophy: Coastle-style controlled motion.
- * withTiming for entrances (no bouncy springs), subtle scales,
- * stiff spring only on drag release for direct snap-back.
+ * withTiming for entrances, stiff spring on drag release (no jello).
  */
 
-import React, { useEffect, useCallback, useRef, useMemo } from 'react';
+import React, { useEffect, useCallback, useRef, useMemo, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable, Dimensions } from 'react-native';
 import { PageDots } from '../../../components/PageDots';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedReaction,
   withTiming,
   withDelay,
   withSpring,
   runOnJS,
   useFrameCallback,
   Easing,
+  SharedValue,
 } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -31,7 +33,6 @@ import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
-import { SPRINGS } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import {
   useSpeedSorterStore,
@@ -44,7 +45,6 @@ import {
 import { SpeedSorterHeader } from './components/SpeedSorterHeader';
 
 const EASE_OUT = Easing.out(Easing.ease);
-const EASE_IN_OUT = Easing.inOut(Easing.ease);
 
 const CARD_HEIGHT = 68;
 const CARD_GAP = 10;
@@ -54,8 +54,6 @@ const CARD_STEP = CARD_HEIGHT + CARD_GAP;
 const DRAG_SETTLE = { damping: 22, stiffness: 220, mass: 0.8 };
 
 // ─── Timer Display ──────────────────────────────────────────
-// Uses useFrameCallback + setNativeProps to update on UI thread,
-// avoiding 10 JS re-renders/sec from setInterval + useState.
 
 const Timer = React.memo(function Timer({ startTime, active }: { startTime: number; active: boolean }) {
   const textRef = useRef<TextInput>(null);
@@ -82,23 +80,83 @@ const Timer = React.memo(function Timer({ startTime, active }: { startTime: numb
   );
 });
 
-// ─── Draggable Card ─────────────────────────────────────────
+// ─── Sortable List ──────────────────────────────────────────
 
-const DraggableCard = React.memo(function DraggableCard({ name, park, index, totalCards, isCorrectPos, isChecking, onReorder }: {
+interface SortableItem {
+  id: string;
   name: string;
   park: string;
+}
+
+interface SortableListProps {
+  items: SortableItem[];
+  isChecking: boolean;
+  correctOrder: string[];
+  onReorder: (from: number, to: number) => void;
+  roundKey: number;
+}
+
+function SortableList({ items, isChecking, correctOrder, onReorder, roundKey }: SortableListProps) {
+  // Positions array: positions[i] = visual slot index for item at data index i
+  const positions = useSharedValue<number[]>(items.map((_, i) => i));
+
+  // Reset positions when items change (new round)
+  useEffect(() => {
+    positions.value = items.map((_, i) => i);
+  }, [roundKey]);
+
+  return (
+    <View style={[styles.cardList, { height: items.length * CARD_STEP }]}>
+      {items.map((item, index) => {
+        const correctPos = isChecking
+          ? correctOrder.indexOf(item.id) === index
+          : null;
+
+        return (
+          <SortableCard
+            key={`${roundKey}-${item.id}`}
+            item={item}
+            index={index}
+            positions={positions}
+            totalCards={items.length}
+            isCorrectPos={correctPos}
+            isChecking={isChecking}
+            onReorder={onReorder}
+          />
+        );
+      })}
+    </View>
+  );
+}
+
+// ─── Sortable Card ──────────────────────────────────────────
+
+interface SortableCardProps {
+  item: SortableItem;
   index: number;
+  positions: SharedValue<number[]>;
   totalCards: number;
   isCorrectPos: boolean | null;
   isChecking: boolean;
   onReorder: (from: number, to: number) => void;
-}) {
-  const translateY = useSharedValue(0);
-  const scale = useSharedValue(1);
+}
+
+function SortableCard({
+  item,
+  index,
+  positions,
+  totalCards,
+  isCorrectPos,
+  isChecking,
+  onReorder,
+}: SortableCardProps) {
+  const isDragging = useSharedValue(false);
+  const dragY = useSharedValue(0);
   const zIndex = useSharedValue(0);
+  const scale = useSharedValue(1);
   const entrance = useSharedValue(0);
 
-  // Staggered entrance — controlled withTiming, not bouncy
+  // Staggered entrance
   useEffect(() => {
     entrance.value = withDelay(
       index * 50,
@@ -106,11 +164,9 @@ const DraggableCard = React.memo(function DraggableCard({ name, park, index, tot
     );
   }, []);
 
-  // Checking feedback — subtle opacity transition, no bounce
-  const checkOpacity = useSharedValue(1);
+  // Checking feedback
   useEffect(() => {
     if (isChecking && isCorrectPos !== null) {
-      // Quick subtle pulse — 4% scale up, settle back
       scale.value = withTiming(1.02, { duration: 100 });
       setTimeout(() => {
         scale.value = withTiming(1, { duration: 150 });
@@ -121,38 +177,97 @@ const DraggableCard = React.memo(function DraggableCard({ name, park, index, tot
   const panGesture = Gesture.Pan()
     .enabled(!isChecking)
     .onStart(() => {
-      scale.value = withTiming(1.03, { duration: 100 });
+      isDragging.value = true;
       zIndex.value = 100;
+      scale.value = withTiming(1.04, { duration: 100 });
     })
     .onUpdate((e) => {
-      translateY.value = e.translationY;
+      dragY.value = e.translationY;
+
+      // Calculate how many positions the card has moved
+      const currentPos = positions.value[index];
+      const movedPositions = Math.round(dragY.value / CARD_STEP);
+      const newPos = Math.max(0, Math.min(totalCards - 1, currentPos + movedPositions));
+
+      if (newPos !== currentPos) {
+        // Update positions for all affected cards
+        const newPositions = [...positions.value];
+        const direction = newPos > currentPos ? 1 : -1;
+
+        for (let i = 0; i < newPositions.length; i++) {
+          if (i === index) continue;
+          const pos = newPositions[i];
+          if (direction > 0 && pos > currentPos && pos <= newPos) {
+            newPositions[i] = pos - 1;
+          } else if (direction < 0 && pos < currentPos && pos >= newPos) {
+            newPositions[i] = pos + 1;
+          }
+        }
+        newPositions[index] = newPos;
+        positions.value = newPositions;
+
+        // Adjust dragY so the card feels like it's in the right position
+        dragY.value = dragY.value - (movedPositions * CARD_STEP);
+
+        // Haptic on each swap
+        runOnJS(haptics.tick)();
+      }
     })
     .onEnd(() => {
-      // Stiff spring settle — direct, no jello
+      isDragging.value = false;
+      dragY.value = withSpring(0, DRAG_SETTLE);
       scale.value = withSpring(1, DRAG_SETTLE);
       zIndex.value = 0;
 
-      const movedPositions = Math.round(translateY.value / CARD_STEP);
-      const newIndex = Math.max(0, Math.min(totalCards - 1, index + movedPositions));
-
-      // Stiff spring back to origin — direct snap, not bouncy
-      translateY.value = withSpring(0, DRAG_SETTLE);
-
-      if (newIndex !== index) {
-        runOnJS(onReorder)(index, newIndex);
-        runOnJS(haptics.tap)();
+      // Commit the final order to the store
+      const finalPositions = [...positions.value];
+      // Build the reorder mapping: find items that moved
+      const orderPairs: [number, number][] = [];
+      for (let i = 0; i < finalPositions.length; i++) {
+        if (finalPositions[i] !== i) {
+          orderPairs.push([i, finalPositions[i]]);
+        }
+      }
+      // Apply the new order to the store
+      if (orderPairs.length > 0) {
+        // Build new order array from positions
+        const newOrder = new Array(totalCards);
+        for (let i = 0; i < finalPositions.length; i++) {
+          newOrder[finalPositions[i]] = i;
+        }
+        // Apply moves sequentially — the store's moveItem does splice
+        // Instead, apply the complete reorder at once
+        runOnJS(applyFullReorder)(newOrder, onReorder);
       }
     });
 
-  const animStyle = useAnimatedStyle(() => ({
-    opacity: entrance.value,
-    transform: [
-      { translateX: (1 - entrance.value) * 30 },
-      { translateY: translateY.value },
-      { scale: scale.value },
-    ],
-    zIndex: zIndex.value,
-  }));
+  const animStyle = useAnimatedStyle(() => {
+    const pos = positions.value[index];
+    const baseY = pos * CARD_STEP;
+
+    return {
+      opacity: entrance.value,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: isDragging.value ? 100 : zIndex.value,
+      transform: [
+        { translateX: (1 - entrance.value) * 30 },
+        {
+          translateY: isDragging.value
+            ? baseY + dragY.value
+            : withTiming(baseY, { duration: 180, easing: EASE_OUT }),
+        },
+        { scale: scale.value },
+      ],
+    };
+  });
+
+  // Get the visual rank based on position
+  const rankStyle = useAnimatedStyle(() => {
+    return {};
+  });
 
   return (
     <GestureDetector gesture={panGesture}>
@@ -165,10 +280,10 @@ const DraggableCard = React.memo(function DraggableCard({ name, park, index, tot
           <View style={styles.cardDragHandle}>
             <Ionicons name="reorder-three" size={20} color={colors.text.meta} />
           </View>
-          <Text style={styles.cardRank}>{index + 1}</Text>
+          <PositionLabel positions={positions} index={index} />
           <View style={styles.cardInfo}>
-            <Text style={styles.cardName} numberOfLines={1}>{name}</Text>
-            <Text style={styles.cardPark} numberOfLines={1}>{park}</Text>
+            <Text style={styles.cardName} numberOfLines={1}>{item.name}</Text>
+            <Text style={styles.cardPark} numberOfLines={1}>{item.park}</Text>
           </View>
           {isChecking && isCorrectPos && (
             <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
@@ -180,7 +295,45 @@ const DraggableCard = React.memo(function DraggableCard({ name, park, index, tot
       </Animated.View>
     </GestureDetector>
   );
-});
+}
+
+// ─── Position Label (reactive to position changes) ──────────
+
+function PositionLabel({ positions, index }: { positions: SharedValue<number[]>; index: number }) {
+  const [rank, setRank] = useState(index + 1);
+
+  useAnimatedReaction(
+    () => positions.value[index],
+    (pos) => {
+      runOnJS(setRank)(pos + 1);
+    },
+    [index],
+  );
+
+  return <Text style={styles.cardRank}>{rank}</Text>;
+}
+
+// ─── Apply reorder to store ─────────────────────────────────
+
+function applyFullReorder(newOrder: number[], onReorder: (from: number, to: number) => void) {
+  // newOrder[position] = dataIndex — we need to convert to move operations
+  // Build target: for each current data index, what position should it be in?
+  // The store uses splice-based moves, so we rebuild the order
+  const total = newOrder.length;
+  const current = Array.from({ length: total }, (_, i) => i);
+
+  for (let targetPos = 0; targetPos < total; targetPos++) {
+    const dataIdx = newOrder[targetPos];
+    const currentPos = current.indexOf(dataIdx);
+    if (currentPos !== targetPos) {
+      // Move from currentPos to targetPos
+      onReorder(currentPos, targetPos);
+      // Update our tracking of current
+      current.splice(currentPos, 1);
+      current.splice(targetPos, 0, dataIdx);
+    }
+  }
+}
 
 // ─── Format time ────────────────────────────────────────────
 
@@ -280,7 +433,6 @@ export function SpeedSorterScreen() {
           <Text style={styles.resultsScore}>{game.totalScore}%</Text>
           <Text style={styles.resultsSubtitle}>Average Accuracy</Text>
 
-          {/* Total time */}
           <View style={styles.resultsTotalTime}>
             <Ionicons name="timer-outline" size={18} color={colors.accent.primary} />
             <Text style={styles.resultsTotalTimeText}>
@@ -288,7 +440,6 @@ export function SpeedSorterScreen() {
             </Text>
           </View>
 
-          {/* Round breakdown */}
           <View style={styles.roundBreakdown}>
             {game.roundScores.map((score, i) => (
               <View key={i} style={styles.roundScoreRow}>
@@ -315,7 +466,10 @@ export function SpeedSorterScreen() {
   // ─── Playing / Checking ─────────────────────────────
 
   const round = game.rounds[game.currentRoundIndex];
-  const coasterMap = useMemo(() => new Map(round.coasters.map((c) => [c.id, c])), [round.coasters]);
+  const sortableItems: SortableItem[] = game.userOrder.map((id) => {
+    const coaster = round.coasters.find((c) => c.id === id)!;
+    return { id: coaster.id, name: coaster.name, park: coaster.park };
+  });
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -345,34 +499,22 @@ export function SpeedSorterScreen() {
         </Text>
       </View>
 
-      {/* Cards */}
-      <View style={styles.cardList}>
-        {game.userOrder.map((id, i) => {
-          const coaster = coasterMap.get(id)!;
-          const isCorrectPos = game.status === 'checking'
-            ? round.correctOrder[i] === id
-            : null;
-
-          return (
-            <DraggableCard
-              key={`${game.currentRoundIndex}-${id}`}
-              name={coaster.name}
-              park={coaster.park}
-              index={i}
-              totalCards={game.userOrder.length}
-              isCorrectPos={isCorrectPos}
-              isChecking={game.status === 'checking'}
-              onReorder={handleReorder}
-            />
-          );
-        })}
+      {/* Sortable card list */}
+      <View style={styles.cardListWrapper}>
+        <SortableList
+          items={sortableItems}
+          isChecking={game.status === 'checking'}
+          correctOrder={round.correctOrder}
+          onReorder={handleReorder}
+          roundKey={game.currentRoundIndex}
+        />
 
         {/* Correct answer reveal when checking */}
         {game.status === 'checking' && (
-          <View style={styles.correctReveal}>
+          <View style={[styles.correctReveal, { marginTop: sortableItems.length * CARD_STEP + spacing.lg }]}>
             <Text style={styles.correctTitle}>Correct Order:</Text>
             {round.correctOrder.map((id, i) => {
-              const c = coasterMap.get(id)!;
+              const c = round.coasters.find((co) => co.id === id)!;
               return (
                 <Text key={id} style={styles.correctItem}>
                   {i + 1}. {c.name} — {c.value}{round.unit ? ` ${round.unit}` : ''}
@@ -383,7 +525,7 @@ export function SpeedSorterScreen() {
         )}
       </View>
 
-      {/* Round progress dots — bottom-positioned like Coastle */}
+      {/* Round progress dots */}
       <View style={styles.pageDots}>
         <PageDots
           current={game.currentRoundIndex}
@@ -405,7 +547,7 @@ export function SpeedSorterScreen() {
         <Animated.View style={[styles.bottomBar, { paddingBottom: insets.bottom + spacing.lg }, bottomBarStyle]}>
           <Text style={styles.accuracyText}>
             {game.roundScores[game.roundScores.length - 1]}% Accurate
-            {' · '}
+            {' \u00B7 '}
             {formatTime(game.roundTimes[game.roundTimes.length - 1])}
           </Text>
           <Pressable style={styles.submitBtn} onPress={handleNext}>
@@ -429,27 +571,6 @@ const styles = StyleSheet.create({
   headerWrapper: {
     zIndex: 200,
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: spacing.lg,
-    height: 52,
-  },
-  backBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerTitle: {
-    flex: 1,
-    textAlign: 'center',
-    fontSize: typography.sizes.title,
-    fontWeight: typography.weights.semibold,
-    color: colors.text.primary,
-  },
-  headerSpacer: { width: 36 },
 
   // Timer
   timerContainer: {
@@ -494,10 +615,12 @@ const styles = StyleSheet.create({
   },
 
   // Cards
-  cardList: {
+  cardListWrapper: {
     flex: 1,
     paddingHorizontal: spacing.xl,
-    gap: CARD_GAP,
+  },
+  cardList: {
+    position: 'relative',
   },
   card: {
     flexDirection: 'row',
@@ -546,7 +669,6 @@ const styles = StyleSheet.create({
 
   // Correct reveal
   correctReveal: {
-    marginTop: spacing.lg,
     backgroundColor: colors.background.card,
     borderRadius: radius.card,
     padding: spacing.lg,

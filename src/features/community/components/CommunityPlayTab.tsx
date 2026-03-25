@@ -52,6 +52,7 @@ interface CommunityPlayTabProps {
   onPlaySpeedSorter?: () => void;
   onPlayBlindRanking?: () => void;
   onPlayTrivia?: () => void;
+  onPlayParkle?: () => void;
   scrollY?: SharedValue<number>;
 }
 
@@ -135,16 +136,23 @@ const ALL_GAMES: GameDef[] = [
     ],
     ctaText: 'Play Trivia',
   },
+  {
+    id: 'parkle',
+    title: 'Parkle',
+    subtitle: 'Guess the park from clues',
+    icon: 'location',
+    iconColor: '#7BA3C9',
+    dailyLabel: 'Daily',
+    dailyNumber: 42,
+    streak: 0,
+    stats: [
+      { value: '0', label: 'Played' },
+      { value: '0%', label: 'Win Rate' },
+      { value: '0', label: 'Streak' },
+    ],
+    ctaText: "Play Today's Parkle",
+  },
 ];
-
-// 5th game — styled like all others, not yet playable
-const PLACEHOLDER_GAME = {
-  id: 'coaster-clash',
-  title: 'Coaster Clash',
-  subtitle: 'Head-to-head battles',
-  icon: 'flash',
-  iconColor: '#D94545',
-};
 
 // ─── Daily rotation helper ──────────────────────────────────
 
@@ -265,7 +273,7 @@ function CarouselGameCard({
   game,
   onPress,
 }: {
-  game: GameDef | typeof PLACEHOLDER_GAME;
+  game: GameDef;
   onPress: () => void;
 }) {
   const press = useCardPress();
@@ -280,10 +288,10 @@ function CarouselGameCard({
     >
       <Animated.View style={[styles.carouselCard, press.animatedStyle]}>
         {/* Streak badge (top-right) */}
-        {'streak' in game && (game as GameDef).streak > 0 && (
+        {game.streak > 0 && (
           <View style={styles.carouselStreakBadge}>
             <Ionicons name="flame" size={11} color="#E07A5F" />
-            <Text style={styles.carouselStreakText}>{(game as GameDef).streak}</Text>
+            <Text style={styles.carouselStreakText}>{game.streak}</Text>
           </View>
         )}
 
@@ -403,7 +411,7 @@ function MoreGamesCarousel({
   games,
   onGamePress,
 }: {
-  games: (GameDef | typeof PLACEHOLDER_GAME)[];
+  games: GameDef[];
   onGamePress: (id: string) => void;
 }) {
   const entrance = useSharedValue(0);
@@ -457,6 +465,7 @@ export const CommunityPlayTab = ({
   onPlaySpeedSorter,
   onPlayBlindRanking,
   onPlayTrivia,
+  onPlayParkle,
   scrollY,
 }: CommunityPlayTabProps) => {
   const insets = useSafeAreaInsets();
@@ -470,10 +479,9 @@ export const CommunityPlayTab = ({
   const featuredIndex = useMemo(() => getFeaturedIndex(), []);
   const featuredGame = ALL_GAMES[featuredIndex];
 
-  // Build carousel items: all games except featured + placeholder
+  // Build carousel items: all games except featured
   const carouselGames = useMemo(() => {
-    const others = ALL_GAMES.filter((_, i) => i !== featuredIndex);
-    return [...others, PLACEHOLDER_GAME as any];
+    return ALL_GAMES.filter((_, i) => i !== featuredIndex);
   }, [featuredIndex]);
 
   const handleGamePress = useCallback((id: string) => {
@@ -490,8 +498,11 @@ export const CommunityPlayTab = ({
       case 'trivia':
         onPlayTrivia?.();
         break;
+      case 'parkle':
+        onPlayParkle?.();
+        break;
     }
-  }, [onPlayCoastle, onPlaySpeedSorter, onPlayBlindRanking, onPlayTrivia]);
+  }, [onPlayCoastle, onPlaySpeedSorter, onPlayBlindRanking, onPlayTrivia, onPlayParkle]);
 
   return (
     <Animated.ScrollView

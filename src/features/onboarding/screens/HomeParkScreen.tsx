@@ -98,12 +98,12 @@ const AnimatedParkItem: React.FC<{
     backgroundColor: interpolateColor(
       selectionProgress.value,
       [0, 1],
-      ['transparent', `${ACCENT}14`],
+      [`${ACCENT}00`, `${ACCENT}14`],
     ),
     borderColor: interpolateColor(
       selectionProgress.value,
       [0, 1],
-      ['transparent', `${ACCENT}40`],
+      [`${ACCENT}00`, `${ACCENT}40`],
     ),
   }));
 

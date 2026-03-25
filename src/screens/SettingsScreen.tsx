@@ -72,6 +72,10 @@ import { SettingsBottomSheet } from '../components/settings/SettingsBottomSheet'
 import { DangerousActionModal } from '../components/settings/DangerousActionModal';
 import type { SettingsSheetOption } from '../components/settings/SettingsBottomSheet';
 import { GlassHeader } from '../components/GlassHeader';
+import { useAuthStore } from '../stores/authStore';
+import { signOut as firebaseSignOut } from '../services/firebase/auth';
+import { callDeleteUserAccount } from '../services/firebase/functions';
+import { stopAllSync } from '../services/firebase/syncController';
 
 // ============================================
 // Constants
@@ -268,6 +272,7 @@ export const SettingsScreen = () => {
     setHapticsEnabled,
     setNotificationsEnabled,
   } = useSettingsStore();
+  const { isAuthenticated, user: authUser } = useAuthStore();
 
   // Bottom sheet states
   const [unitsSheetVisible, setUnitsSheetVisible] = useState(false);
@@ -376,11 +381,17 @@ export const SettingsScreen = () => {
   }, [navigation]);
 
   const handleSignOut = useCallback(() => {
-    Alert.alert('Sign Out', 'Sign out functionality will be available when accounts are connected.', [
+    Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
       { text: 'Cancel', style: 'cancel' },
       {
-        text: 'OK',
-        onPress: () => haptics.tap(),
+        text: 'Sign Out',
+        style: 'destructive',
+        onPress: async () => {
+          haptics.tap();
+          stopAllSync();
+          await firebaseSignOut();
+          resetOnboarding();
+        },
       },
     ]);
   }, []);
@@ -429,6 +440,11 @@ export const SettingsScreen = () => {
   // Navigate to Export Ride Log screen
   const handleExportData = useCallback(() => {
     navigation.navigate('ExportRideLog');
+  }, [navigation]);
+
+  // Navigate to Import Ride Data screen
+  const handleImportData = useCallback(() => {
+    navigation.navigate('ImportRideData');
   }, [navigation]);
 
   // Open Delete Account modal
@@ -490,8 +506,15 @@ export const SettingsScreen = () => {
     resetFirstSessionCards();
   }, []);
 
-  const handleDeleteAccountConfirm = useCallback(() => {
-    Alert.alert('Account Deletion', 'Account deletion will be available when accounts are connected.');
+  const handleDeleteAccountConfirm = useCallback(async () => {
+    try {
+      await callDeleteUserAccount();
+      // If the CF didn't throw, deletion succeeded
+      stopAllSync();
+      resetOnboarding();
+    } catch {
+      Alert.alert('Error', 'Failed to delete account. Please try again.');
+    }
   }, []);
 
   // ── Bottom sheet close callbacks ──
@@ -558,35 +581,48 @@ export const SettingsScreen = () => {
         <Animated.View style={accountAnim}>
           <SectionHeader label="Account" />
           <View style={styles.sectionCard}>
-            <TappableRow
-              icon="person-outline"
-              label="Display Name"
-              value={displayName}
-              onPress={handleEditName}
-            />
-            <TappableRow
-              icon="at-outline"
-              label="Username"
-              value={username}
-              onPress={handleEditUsername}
-            />
-            <TappableRow
-              icon="mail-outline"
-              label="Email"
-              value="Not set"
-              onPress={handleChangeEmail}
-            />
-            <TappableRow
-              icon="lock-closed-outline"
-              label="Password"
-              onPress={handleChangePassword}
-            />
-            <TappableRow
-              icon="log-out-outline"
-              label="Sign Out"
-              onPress={handleSignOut}
-              isLast
-            />
+            {isAuthenticated ? (
+              <>
+                <TappableRow
+                  icon="person-outline"
+                  label="Display Name"
+                  value={displayName}
+                  onPress={handleEditName}
+                />
+                <TappableRow
+                  icon="at-outline"
+                  label="Username"
+                  value={username}
+                  onPress={handleEditUsername}
+                />
+                <TappableRow
+                  icon="mail-outline"
+                  label="Email"
+                  value={authUser?.email ?? 'Not set'}
+                  onPress={handleChangeEmail}
+                />
+                {authUser?.authProvider === 'email' && (
+                  <TappableRow
+                    icon="lock-closed-outline"
+                    label="Password"
+                    onPress={handleChangePassword}
+                  />
+                )}
+                <TappableRow
+                  icon="log-out-outline"
+                  label="Sign Out"
+                  onPress={handleSignOut}
+                  isLast
+                />
+              </>
+            ) : (
+              <TappableRow
+                icon="person-add-outline"
+                label="Create Account"
+                onPress={() => { haptics.tap(); resetOnboarding(); }}
+                isLast
+              />
+            )}
           </View>
         </Animated.View>
 
@@ -675,18 +711,26 @@ export const SettingsScreen = () => {
               onPress={handleExportData}
             />
             <TappableRow
+              icon="push-outline"
+              label="Import Ride Data"
+              onPress={handleImportData}
+            />
+            <TappableRow
               icon="refresh-outline"
               label="Reset Onboarding"
               onPress={handleResetOnboarding}
               destructive
+              isLast={!isAuthenticated}
             />
-            <TappableRow
-              icon="close-circle-outline"
-              label="Delete Account"
-              onPress={handleDeleteAccount}
-              destructive
-              isLast
-            />
+            {isAuthenticated && (
+              <TappableRow
+                icon="close-circle-outline"
+                label="Delete Account"
+                onPress={handleDeleteAccount}
+                destructive
+                isLast
+              />
+            )}
           </View>
         </Animated.View>
 

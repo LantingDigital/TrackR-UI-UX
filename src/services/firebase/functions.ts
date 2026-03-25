@@ -472,6 +472,80 @@ async function callUnblockUser(
 }
 
 // ============================================
+// Import (ride data import from other apps)
+// ============================================
+
+interface ImportedRide {
+  rawCoasterName: string;
+  rawParkName: string | null;
+  rawDate: string | null;
+  parsedDate: string | null;
+  rawRating: string | null;
+  rawSeat: string | null;
+  rawNotes: string | null;
+  rawRideCount: number;
+  rowIndex: number;
+}
+
+interface ImportParseResult {
+  rides: ImportedRide[];
+  fieldMapping: Record<string, string>;
+  warnings: string[];
+  sourceFormat: 'csv' | 'excel' | 'json' | 'tsv' | 'unknown';
+}
+
+interface ProcessImportFileInput {
+  fileBase64: string;
+  fileExtension: string;
+  fileName: string;
+}
+
+interface CoasterMatch {
+  coasterId: string;
+  coasterName: string;
+  parkName: string;
+  confidence: number;
+}
+
+interface CoasterMatchResult {
+  rawName: string;
+  bestMatch: CoasterMatch | null;
+  alternatives: CoasterMatch[];
+}
+
+interface MatchCoasterNamesInput {
+  names: Array<{
+    rawName: string;
+    rawParkName: string | null;
+  }>;
+  coasterDatabase: Array<{
+    id: string;
+    name: string;
+    park: string;
+  }>;
+}
+
+interface MatchCoasterNamesResult {
+  results: CoasterMatchResult[];
+}
+
+async function callProcessImportFile(
+  data: ProcessImportFileInput,
+): Promise<ImportParseResult> {
+  const callable = functions().httpsCallable('processImportFile');
+  const result = await callable(data);
+  return result.data as ImportParseResult;
+}
+
+async function callMatchCoasterNames(
+  data: MatchCoasterNamesInput,
+): Promise<MatchCoasterNamesResult> {
+  const callable = functions().httpsCallable('matchCoasterNames');
+  const result = await callable(data);
+  return result.data as MatchCoasterNamesResult;
+}
+
+// ============================================
 // Exports
 // ============================================
 
@@ -497,6 +571,8 @@ export {
   callReportUser,
   callBlockUser,
   callUnblockUser,
+  callProcessImportFile,
+  callMatchCoasterNames,
 };
 export type {
   OnUserCreatedResult,
@@ -528,4 +604,11 @@ export type {
   ReportUserInput,
   ReportUserResult,
   BlockUserInput,
+  ImportedRide,
+  ImportParseResult,
+  ProcessImportFileInput,
+  CoasterMatch,
+  CoasterMatchResult,
+  MatchCoasterNamesInput,
+  MatchCoasterNamesResult,
 };

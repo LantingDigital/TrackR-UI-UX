@@ -75,3 +75,11 @@ export { proxyWaitTimes } from './waitTimes/proxyWaitTimes';
 export { createCardOrder } from './merch/createCardOrder';
 export { confirmCardOrder } from './merch/confirmCardOrder';
 export { getOrderStatus } from './merch/getOrderStatus';
+
+// Import (ride data import from other apps / spreadsheets)
+export { processImportFile } from './import/processImportFile';
+export { matchCoasterNames } from './import/matchCoasterNames';
+
+// Park Data (ThemeParks.wiki — populate parks, attractions, restaurants, shows, hours, geofences)
+export { populateParks } from './parkData/populateParks';
+export { refreshParkHoursScheduled, refreshParkHoursManual } from './parkData/refreshParkHours';

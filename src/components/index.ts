@@ -11,3 +11,4 @@ export { SearchResultRow, SimpleSearchRow } from './SearchResultRow';
 export { LogModal } from './LogModal';
 export { Toast, ToastProvider, useToast, SuccessAnimation } from './feedback';
 export { PageDots } from './PageDots';
+export { FadeInImage } from './FadeInImage';

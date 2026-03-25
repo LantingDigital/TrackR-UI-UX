@@ -341,6 +341,38 @@ async function deleteAccount(): Promise<AuthResult> {
 }
 
 /**
+ * Send a verification email to the currently signed-in user.
+ */
+async function sendEmailVerification(): Promise<AuthResult> {
+  try {
+    const user = auth().currentUser;
+    if (!user) {
+      return {
+        success: false,
+        error: { code: 'auth/no-current-user', message: 'No user is signed in.' },
+      };
+    }
+    await user.sendEmailVerification();
+    return { success: true, data: undefined };
+  } catch (error) {
+    return { success: false, error: toAuthError(error) };
+  }
+}
+
+/**
+ * Reload the current Firebase user to get fresh state (e.g. emailVerified).
+ * Returns the refreshed AuthUser or null.
+ */
+async function reloadCurrentUser(): Promise<AuthUser | null> {
+  const user = auth().currentUser;
+  if (!user) return null;
+  await user.reload();
+  // Re-fetch after reload to get updated fields
+  const refreshed = auth().currentUser;
+  return refreshed ? toAuthUser(refreshed) : null;
+}
+
+/**
  * Subscribe to auth state changes.
  * Returns an unsubscribe function.
  */
@@ -373,6 +405,8 @@ export {
   signOut,
   resetPassword,
   deleteAccount,
+  sendEmailVerification,
+  reloadCurrentUser,
   onAuthStateChanged,
   getCurrentUser,
   toAuthUser,

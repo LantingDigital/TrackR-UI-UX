@@ -20,6 +20,7 @@ import {
   Pressable,
   Image,
 } from 'react-native';
+import { FadeInImage } from '../../../components/FadeInImage';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -383,7 +384,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
                           {/* Hero section — card art image or gradient fallback */}
                           <View style={[styles.heroSection, { height: CARD_HEIGHT * HERO_HEIGHT_RATIO }]}>
                             {tCardArt ? (
-                              <Image
+                              <FadeInImage
                                 source={tCardArt}
                                 style={StyleSheet.absoluteFill}
                                 resizeMode="cover"
@@ -399,7 +400,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
 
                             {/* Darkening overlay for text readability */}
                             <LinearGradient
-                              colors={['rgba(0,0,0,0.4)', 'transparent', 'rgba(0,0,0,0.2)']}
+                              colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0.2)']}
                               locations={[0, 0.4, 1]}
                               style={StyleSheet.absoluteFill}
                             />
@@ -407,7 +408,7 @@ export const OnboardingPassDetail = forwardRef<OnboardingPassDetailRef, Onboardi
                             {/* Park name at top */}
                             <View style={styles.parkNameWrapper}>
                               <LinearGradient
-                                colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'transparent']}
+                                colors={['rgba(255, 255, 255, 0.9)', 'rgba(255, 255, 255, 0.6)', 'rgba(255,255,255,0)']}
                                 style={styles.parkNameGradientBg}
                               />
                               <Text style={styles.parkNameText}>{t.parkName}</Text>

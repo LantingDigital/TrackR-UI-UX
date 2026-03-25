@@ -7,7 +7,8 @@
  */
 
 import React, { useEffect, useCallback } from 'react';
-import { StyleSheet, View, Text, Pressable, Dimensions, Image } from 'react-native';
+import { StyleSheet, View, Text, Pressable, Dimensions } from 'react-native';
+import { FadeInImage } from '../../../components/FadeInImage';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
@@ -128,7 +129,7 @@ export const OnboardingAuthEmbed: React.FC<OnboardingAuthEmbedProps> = ({
           const offsetX = -100 + i * 50;
           const offsetY = -40 + (i % 3) * 35;
           return (
-            <Image
+            <FadeInImage
               key={`collage-${i}`}
               source={source}
               style={[

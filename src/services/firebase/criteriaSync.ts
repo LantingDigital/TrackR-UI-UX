@@ -112,7 +112,69 @@ async function ensureCriteriaConfig(uid: string): Promise<void> {
 }
 
 // ============================================
+// Weight Revert System
+// ============================================
+
+/**
+ * Doc ref for the previous weight snapshot (one-step undo).
+ * Path: users/{userId}/criteriaConfig/previousConfig
+ */
+const previousConfigRef = (uid: string) =>
+  firestore()
+    .collection('users')
+    .doc(uid)
+    .collection('criteriaConfig')
+    .doc('previousConfig');
+
+/**
+ * Save the current criteria config as the "previous" snapshot
+ * before applying new weights. Enables one-step revert.
+ */
+async function savePreviousWeightConfig(uid: string): Promise<void> {
+  const currentConfig = _rideLogStoreInternal.getState().criteriaConfig;
+  await previousConfigRef(uid).set(toFirestore(currentConfig));
+}
+
+/**
+ * Revert to the previously saved weight config (one-step undo).
+ * Returns true if revert succeeded, false if no previous config exists.
+ */
+async function revertWeightConfig(uid: string): Promise<boolean> {
+  const snap = await previousConfigRef(uid).get();
+  if (!snap.exists()) return false;
+
+  const previousData = snap.data() as CriteriaConfigDoc;
+  const previousConfig = fromFirestore(previousData);
+
+  // Optimistic update
+  _rideLogStoreInternal.getState()._setCriteriaConfig(previousConfig);
+
+  // Write the reverted config as the active config
+  await criteriaDocRef(uid).set(toFirestore(previousConfig));
+
+  // Clear the previous snapshot (consumed)
+  await previousConfigRef(uid).delete();
+
+  return true;
+}
+
+/**
+ * Check if a previous weight config exists (for showing revert button).
+ */
+async function hasPreviousWeightConfig(uid: string): Promise<boolean> {
+  const snap = await previousConfigRef(uid).get();
+  return snap.exists();
+}
+
+// ============================================
 // Exports
 // ============================================
 
-export { startCriteriaSync, saveCriteriaConfig, ensureCriteriaConfig };
+export {
+  startCriteriaSync,
+  saveCriteriaConfig,
+  ensureCriteriaConfig,
+  savePreviousWeightConfig,
+  revertWeightConfig,
+  hasPreviousWeightConfig,
+};

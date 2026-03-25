@@ -37,7 +37,7 @@ function fromFirestore(doc: RideLogDoc): RideLog {
     parkName: doc.parkName,
     timestamp: doc.timestamp,
     seat: doc.seat
-      ? { row: Number(doc.seat.row) || 0, col: 0 }
+      ? { row: doc.seat.row, position: doc.seat.position }
       : undefined,
     notes: doc.notes ?? undefined,
     rideCount: doc.rideCount,
@@ -57,7 +57,7 @@ function toFirestore(
     parkName: log.parkName,
     timestamp: log.timestamp,
     seat: log.seat
-      ? { row: String(log.seat.row), position: 'middle' }
+      ? { row: log.seat.row, position: log.seat.position }
       : null,
     rideCount: log.rideCount,
     notes: log.notes ?? null,
@@ -143,7 +143,7 @@ async function addRideLog(
     coasterName: coaster.name,
     parkName: coaster.parkName,
     timestamp: new Date().toISOString(),
-    seat: seat ? { row: String(seat.row), position: 'middle' } : null,
+    seat: seat ? { row: seat.row, position: seat.position } : null,
     rideCount: todayCount + 1,
     notes: null,
     createdAt: now,
@@ -205,13 +205,97 @@ async function deleteRideLog(uid: string, logId: string): Promise<void> {
 }
 
 // ============================================
+// Batch Operations
+// ============================================
+
+/**
+ * Seat configuration for batch logging.
+ * sameForAll=true: one seat for all rides.
+ * sameForAll=false: individual seats per ride (array length must match quantity).
+ */
+type BatchSeatConfig =
+  | { sameForAll: true; seat: SeatPosition }
+  | { sameForAll: false; seats: SeatPosition[] };
+
+/**
+ * Log N rides of the same coaster in a single Firestore batch.
+ * Each ride gets a unique timestamp offset by 1 second for ordering.
+ * Returns the array of created log IDs.
+ */
+async function createBatchRideLogs(
+  uid: string,
+  coaster: { id: string; name: string; parkName: string },
+  quantity: number,
+  seatConfig?: BatchSeatConfig,
+): Promise<string[]> {
+  const batch = firestore().batch();
+  const now = new Date();
+  const fsNow = firestore.Timestamp.now();
+  const currentLogs = _rideLogStoreInternal.getState().logs;
+
+  const today = now.toDateString();
+  const todayCount = currentLogs.filter(
+    (l) =>
+      l.coasterId === coaster.id &&
+      new Date(l.timestamp).toDateString() === today,
+  ).length;
+
+  const logIds: string[] = [];
+  const optimisticLogs: RideLog[] = [];
+
+  for (let i = 0; i < quantity; i++) {
+    const logId = generateLogId();
+    logIds.push(logId);
+
+    // Offset each timestamp by 1 second to maintain ordering
+    const timestamp = new Date(now.getTime() + i * 1000).toISOString();
+
+    // Resolve seat for this ride
+    let seat: SeatPosition | undefined;
+    if (seatConfig) {
+      seat = seatConfig.sameForAll
+        ? seatConfig.seat
+        : seatConfig.seats[i];
+    }
+
+    const logDoc: RideLogDoc = {
+      id: logId,
+      coasterId: coaster.id,
+      coasterName: coaster.name,
+      parkName: coaster.parkName,
+      timestamp,
+      seat: seat ? { row: seat.row, position: seat.position } : null,
+      rideCount: todayCount + i + 1,
+      notes: null,
+      createdAt: fsNow,
+      updatedAt: fsNow,
+    };
+
+    batch.set(logsRef(uid).doc(logId), logDoc);
+    optimisticLogs.push(fromFirestore(logDoc));
+  }
+
+  // Optimistic: add all logs to store immediately
+  _rideLogStoreInternal
+    .getState()
+    ._setLogs([...optimisticLogs.reverse(), ...currentLogs]);
+
+  // Write batch to Firestore
+  await batch.commit();
+
+  return logIds;
+}
+
+// ============================================
 // Exports
 // ============================================
 
 export {
   startRideLogSync,
   addRideLog,
+  createBatchRideLogs,
   updateRideLogTimestamp,
   updateRideLogNotes,
   deleteRideLog,
 };
+export type { BatchSeatConfig };

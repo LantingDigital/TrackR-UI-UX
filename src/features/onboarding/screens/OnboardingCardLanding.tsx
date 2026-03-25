@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Image, Pressable, Platform } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Pressable, Platform } from 'react-native';
+import { FadeInImage } from '../../../components/FadeInImage';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
@@ -458,7 +459,7 @@ const CardView = ({ card, w, h, canFlip }: { card: CardData; w: number; h: numbe
 
   if (!canFlip) {
     // Tiers 0-2: no shadow, just clipped image
-    return (<View style={{ width: w, height: h, borderRadius: w * 0.12, overflow: 'hidden', backgroundColor: colors.background.card }}><Image source={card.source} style={{ width: w, height: h }} resizeMode="cover" /></View>);
+    return (<View style={{ width: w, height: h, borderRadius: w * 0.12, overflow: 'hidden', backgroundColor: colors.background.card }}><FadeInImage source={card.source} style={{ width: w, height: h }} resizeMode="cover" /></View>);
   }
   // Tiers 3-4: shadow wrapper (no overflow:hidden) → inner clip (overflow:hidden, no shadow)
   return (
@@ -466,7 +467,7 @@ const CardView = ({ card, w, h, canFlip }: { card: CardData; w: number; h: numbe
       <Animated.View style={[{ width: w, height: h, position: 'absolute' }, frontStyle]}>
         <View style={{ flex: 1, borderRadius: w * 0.12, backgroundColor: colors.background.card, ...shadows.small }}>
           <View style={{ flex: 1, borderRadius: w * 0.12, overflow: 'hidden' }}>
-            <Image source={card.source} style={{ width: w, height: h }} resizeMode="cover" />
+            <FadeInImage source={card.source} style={{ width: w, height: h }} resizeMode="cover" />
           </View>
         </View>
       </Animated.View>

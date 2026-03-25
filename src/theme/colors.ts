@@ -52,4 +52,17 @@ export const colors = {
     emptyText: '#A09895',
     cellBorder: '#CEC8C5',
   },
+  parkle: {
+    accent: '#7BA3C9',
+    accentLight: '#7BA3C915',
+    correct: '#6AAA64',
+    correctText: '#FFFFFF',
+    close: '#C9B458',
+    closeText: '#FFFFFF',
+    wrong: '#EDEBEA',
+    wrongText: '#666666',
+    empty: '#DDD8D5',
+    emptyText: '#A09895',
+    cellBorder: '#CEC8C5',
+  },
 };

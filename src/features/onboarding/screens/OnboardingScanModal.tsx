@@ -12,9 +12,9 @@ import {
   StyleSheet,
   ScrollView,
   Pressable,
-  Image,
   ImageSourcePropType,
 } from 'react-native';
+import { FadeInImage } from '../../../components/FadeInImage';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -28,6 +28,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Ticket, PASS_TYPE_LABELS } from '../../../types/wallet';
 import { colors } from '../../../theme/colors';
+import { spacing } from '../../../theme/spacing';
 import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { CARD_ART } from '../../../data/cardArt';
@@ -186,7 +187,7 @@ const DemoPassCard: React.FC<{
     >
       <Animated.View style={[demoCardStyles.container, pressAnimStyle]}>
         {cardArtSource ? (
-          <Image
+          <FadeInImage
             source={cardArtSource}
             style={demoCardStyles.cardArt}
             resizeMode="cover"
@@ -202,7 +203,7 @@ const DemoPassCard: React.FC<{
         )}
 
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)']}
+          colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)']}
           locations={[0, 0.5, 1]}
           style={demoCardStyles.banner}
         >
@@ -408,10 +409,9 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
             ref={passesScrollRef}
             horizontal
             showsHorizontalScrollIndicator={false}
+            scrollEnabled={false}
             style={styles.carouselScrollView}
             contentContainerStyle={styles.carouselContent}
-            decelerationRate="fast"
-            snapToInterval={CARD_WIDTH + CARD_GAP}
           >
             {DEMO_TICKETS.map((ticket) => (
               <DemoPassCard
@@ -447,7 +447,7 @@ const styles = StyleSheet.create({
   section: {
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
-    marginHorizontal: 8,
+    marginHorizontal: spacing.lg,
     paddingVertical: 16,
     shadowColor: '#323232',
     shadowOffset: { width: 0, height: 6 },

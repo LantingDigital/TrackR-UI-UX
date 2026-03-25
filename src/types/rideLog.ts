@@ -10,13 +10,14 @@
  */
 
 /**
- * Seat position on a coaster
+ * Seat position on a coaster.
+ * Matches Firestore schema: row as string, position as left/middle/right.
  */
 export interface SeatPosition {
-  /** Row number (1-indexed) */
-  row: number;
-  /** Column/seat number (1-indexed) */
-  col: number;
+  /** Row identifier — 'front' | 'back' | 'middle' or a specific row number as string */
+  row: string;
+  /** Seat position within the row */
+  position: 'left' | 'middle' | 'right';
 }
 
 /**
