@@ -886,15 +886,15 @@ const styles = StyleSheet.create({
   },
   dragHandleArea: {
     alignItems: 'center',
-    paddingTop: spacing.md,
-    paddingBottom: spacing.xs,
+    paddingTop: spacing.sm,
+    paddingBottom: spacing.sm,
     zIndex: 20,
   },
   dragHandle: {
     width: 36,
     height: 5,
     borderRadius: 3,
-    backgroundColor: colors.border.subtle,
+    backgroundColor: 'rgba(255,255,255,0.6)',
   },
 
   // ── Close button — positioned within hero section, below the drag handle ──

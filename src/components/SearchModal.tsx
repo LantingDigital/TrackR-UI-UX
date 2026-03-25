@@ -697,17 +697,17 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             <View style={{ height: 100 }} />
           </ScrollView>
 
-          {/* Fog gradient — covers content scrolling behind search bar */}
+          {/* Fog gradient — approved GlassHeader S-curve */}
           <LinearGradient
             colors={[
-              'rgba(240,238,235,1)',
-              'rgba(240,238,235,1)',
-              'rgba(240,238,235,0.97)',
               'rgba(240,238,235,0.88)',
+              'rgba(240,238,235,0.82)',
               'rgba(240,238,235,0.70)',
-              'rgba(240,238,235,0.45)',
-              'rgba(240,238,235,0.20)',
+              'rgba(240,238,235,0.52)',
+              'rgba(240,238,235,0.32)',
+              'rgba(240,238,235,0.15)',
               'rgba(240,238,235,0.05)',
+              'rgba(240,238,235,0.01)',
               'rgba(240,238,235,0)',
             ]}
             style={{
@@ -715,7 +715,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
               top: 0,
               left: 0,
               right: 0,
-              height: 140,
+              height: 120,
               zIndex: 40,
               pointerEvents: 'none',
             }}

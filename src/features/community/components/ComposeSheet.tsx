@@ -136,9 +136,18 @@ export function ComposeSheet({ visible, onClose }: ComposeSheetProps) {
     opacity: backdropOpacity.value,
   }));
 
+  const contentOpacity = useSharedValue(1);
+  const contentFadeStyle = useAnimatedStyle(() => ({
+    opacity: contentOpacity.value,
+  }));
+
   const handleTypeSelect = useCallback((type: PostType) => {
     haptics.tap();
-    setSelectedType(type);
+    // Crossfade: fade out → swap → fade in
+    contentOpacity.value = withTiming(0, { duration: 120 }, () => {
+      runOnJS(setSelectedType)(type);
+      contentOpacity.value = withTiming(1, { duration: 180 });
+    });
   }, []);
 
   const handleComplete = useCallback(() => {
@@ -147,7 +156,10 @@ export function ComposeSheet({ visible, onClose }: ComposeSheetProps) {
 
   const handleBack = useCallback(() => {
     haptics.tap();
-    setSelectedType(null);
+    contentOpacity.value = withTiming(0, { duration: 120 }, () => {
+      runOnJS(setSelectedType)(null);
+      contentOpacity.value = withTiming(1, { duration: 180 });
+    });
   }, []);
 
   const stepTitle = selectedType
@@ -194,8 +206,8 @@ export function ComposeSheet({ visible, onClose }: ComposeSheetProps) {
 
           {/* Divider removed — clean header */}
 
-          {/* Content */}
-          <View style={[styles.body, { paddingBottom: insets.bottom + spacing.lg }]}>
+          {/* Content — crossfade between type selector and compose form */}
+          <Animated.View style={[styles.body, { paddingBottom: insets.bottom + spacing.lg }, contentFadeStyle]}>
             {!selectedType ? (
               /* Step 1: Type selector */
               <View style={styles.typeGrid}>
@@ -216,7 +228,7 @@ export function ComposeSheet({ visible, onClose }: ComposeSheetProps) {
                 {selectedType === 'bucket_list' && <ComposeBucketList onComplete={handleComplete} />}
               </>
             )}
-          </View>
+          </Animated.View>
         </KeyboardAvoidingView>
       </Animated.View>
     </View>

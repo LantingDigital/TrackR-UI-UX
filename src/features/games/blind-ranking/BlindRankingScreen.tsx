@@ -15,14 +15,19 @@ import { PageDots } from '../../../components/PageDots';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
   withTiming,
   withDelay,
   withSequence,
+  interpolate,
+  Extrapolation,
   Easing,
+  FadeIn,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../../../theme/colors';
 import { typography } from '../../../theme/typography';
 import { spacing } from '../../../theme/spacing';
@@ -94,9 +99,12 @@ const SlotRow = React.memo(function SlotRow({ index, slot, isAvailable, onPress 
 
   useEffect(() => {
     if (slot) {
-      // Controlled fade-in + subtle scale — no bounce
-      fillOpacity.value = withTiming(1, { duration: 180 });
-      fillScale.value = withTiming(1, { duration: 180, easing: EASE_OUT });
+      // Pop-in: scale up slightly then settle, with quick fade
+      fillOpacity.value = withTiming(1, { duration: 150 });
+      fillScale.value = withSequence(
+        withTiming(1.06, { duration: 150, easing: EASE_OUT }),
+        withTiming(1, { duration: 120, easing: Easing.inOut(Easing.ease) }),
+      );
     }
   }, [slot]);
 
@@ -141,9 +149,10 @@ const ComparisonRow = React.memo(function ComparisonRow({ yourRank, item, commun
   const entrance = useSharedValue(0);
 
   useEffect(() => {
+    // 600ms initial delay (drum roll) + staggered reveal per row
     entrance.value = withDelay(
-      index * 40,
-      withTiming(1, { duration: 200, easing: EASE_OUT }),
+      600 + index * 80,
+      withTiming(1, { duration: 250, easing: EASE_OUT }),
     );
   }, []);
 
@@ -187,6 +196,15 @@ export function BlindRankingScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const { game, stats, settings, categories } = useBlindRankingStore();
+
+  // Scroll-driven fog for results — must be before any early returns (Rules of Hooks)
+  const resultsScrollY = useSharedValue(0);
+  const resultsScrollHandler = useAnimatedScrollHandler({
+    onScroll: (e) => { resultsScrollY.value = e.contentOffset.y; },
+  });
+  const resultsFogStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(resultsScrollY.value, [0, 60], [0, 1], Extrapolation.CLAMP),
+  }));
 
   const handleClose = useCallback(() => {
     haptics.tap();
@@ -245,9 +263,36 @@ export function BlindRankingScreen() {
         <View style={styles.headerWrapper}>
           <BlindRankingHeader onClose={handleClose} stats={stats} settings={settings} />
         </View>
-        <ScrollView contentContainerStyle={[styles.resultsContent, { paddingBottom: insets.bottom + spacing.xxl }]}>
-          {/* Hero */}
-          <View style={styles.resultsHero}>
+
+        {/* Fog — approved GlassHeader S-curve, scroll-driven crossfade */}
+        <Animated.View style={[{ position: 'absolute', top: insets.top + 52, left: 0, right: 0, height: 60, zIndex: 5, pointerEvents: 'none' }, resultsFogStyle]}>
+          <LinearGradient
+            colors={[
+              'rgba(247,247,247,0.88)',
+              'rgba(247,247,247,0.82)',
+              'rgba(247,247,247,0.70)',
+              'rgba(247,247,247,0.52)',
+              'rgba(247,247,247,0.32)',
+              'rgba(247,247,247,0.15)',
+              'rgba(247,247,247,0.05)',
+              'rgba(247,247,247,0.01)',
+              'rgba(247,247,247,0)',
+            ]}
+            style={{ flex: 1 }}
+          />
+        </Animated.View>
+
+        <Animated.ScrollView
+          contentContainerStyle={[styles.resultsContent, { paddingBottom: insets.bottom + spacing.xxl }]}
+          onScroll={resultsScrollHandler}
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Hero — fades in after brief pause */}
+          <Animated.View
+            entering={FadeIn.duration(300).delay(200)}
+            style={styles.resultsHero}
+          >
             <View style={[styles.resultsIconCircle, { backgroundColor: (game.category?.color ?? colors.accent.primary) + '18' }]}>
               <Ionicons
                 name={game.category?.icon as any ?? 'trophy-outline'}
@@ -257,14 +302,14 @@ export function BlindRankingScreen() {
             </View>
             <Text style={styles.resultsTitle}>{game.category?.title}</Text>
             <Text style={styles.resultsSub}>Here's how you ranked them</Text>
-          </View>
+          </Animated.View>
 
-          {/* Ranking comparison */}
+          {/* Ranking comparison — column headers fade in before rows */}
           <View style={styles.compSection}>
-            <View style={styles.compHeader}>
+            <Animated.View entering={FadeIn.duration(200).delay(450)} style={styles.compHeader}>
               <Text style={styles.compHeaderYour}>Your Rank</Text>
               {hasCommunityData && <Text style={styles.compHeaderComm}>vs Community</Text>}
-            </View>
+            </Animated.View>
             {game.slots.map((item, i) => {
               if (!item) return null;
               return (
@@ -272,7 +317,7 @@ export function BlindRankingScreen() {
                   key={item.id}
                   yourRank={i + 1}
                   item={item}
-                  communityRank={item.communityRank}
+                  communityRank={hasCommunityData ? item.communityRank : undefined}
                   index={i}
                 />
               );
@@ -288,7 +333,7 @@ export function BlindRankingScreen() {
               <Text style={styles.doneText}>Done</Text>
             </Pressable>
           </View>
-        </ScrollView>
+        </Animated.ScrollView>
       </View>
     );
   }
@@ -555,6 +600,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: spacing.lg,
     marginBottom: spacing.xl,
+    zIndex: 10, // sits above fog for crossfade exception
   },
   resultsIconCircle: {
     width: 64,

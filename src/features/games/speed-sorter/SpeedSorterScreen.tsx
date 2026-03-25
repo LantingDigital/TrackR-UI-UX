@@ -9,8 +9,8 @@
  * stiff spring only on drag release for direct snap-back.
  */
 
-import React, { useEffect, useCallback, useRef, useMemo } from 'react';
-import { View, Text, TextInput, StyleSheet, Pressable, Dimensions } from 'react-native';
+import React, { useEffect, useCallback, useRef, useMemo, useState } from 'react';
+import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
 import { PageDots } from '../../../components/PageDots';
 import Animated, {
   useSharedValue,
@@ -19,7 +19,6 @@ import Animated, {
   withDelay,
   withSpring,
   runOnJS,
-  useFrameCallback,
   Easing,
 } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -54,29 +53,26 @@ const CARD_STEP = CARD_HEIGHT + CARD_GAP;
 const DRAG_SETTLE = { damping: 22, stiffness: 220, mass: 0.8 };
 
 // ─── Timer Display ──────────────────────────────────────────
-// Uses useFrameCallback + setNativeProps to update on UI thread,
-// avoiding 10 JS re-renders/sec from setInterval + useState.
+// 100ms interval updates — lightweight for a timer display.
 
 const Timer = React.memo(function Timer({ startTime, active }: { startTime: number; active: boolean }) {
-  const textRef = useRef<TextInput>(null);
+  const [display, setDisplay] = useState('0.0s');
 
-  useFrameCallback(() => {
+  useEffect(() => {
     if (!active || startTime <= 0) return;
-    const elapsed = Date.now() - startTime;
-    const seconds = Math.floor(elapsed / 1000);
-    const tenths = Math.floor((elapsed % 1000) / 100);
-    textRef.current?.setNativeProps({ text: `${seconds}.${tenths}s` });
-  });
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const seconds = Math.floor(elapsed / 1000);
+      const tenths = Math.floor((elapsed % 1000) / 100);
+      setDisplay(`${seconds}.${tenths}s`);
+    }, 100);
+    return () => clearInterval(interval);
+  }, [active, startTime]);
 
   return (
     <View style={styles.timerContainer}>
       <Ionicons name="timer-outline" size={16} color={colors.accent.primary} />
-      <TextInput
-        ref={textRef}
-        style={styles.timerText}
-        defaultValue="0.0s"
-        editable={false}
-        pointerEvents="none"
+      <Text style={styles.timerText}>{display}</Text>
       />
     </View>
   );
@@ -219,6 +215,13 @@ export function SpeedSorterScreen() {
     }
   }, [game.status, game.currentRoundIndex]);
 
+  // Must be before any early returns (Rules of Hooks)
+  const currentRound = game.rounds[game.currentRoundIndex] ?? game.rounds[0];
+  const coasterMap = useMemo(
+    () => currentRound ? new Map(currentRound.coasters.map((c) => [c.id, c])) : new Map(),
+    [currentRound?.coasters],
+  );
+
   const bottomBarStyle = useAnimatedStyle(() => ({
     opacity: bottomBarOpacity.value,
     transform: [{ translateY: bottomBarY.value }],
@@ -314,9 +317,6 @@ export function SpeedSorterScreen() {
 
   // ─── Playing / Checking ─────────────────────────────
 
-  const round = game.rounds[game.currentRoundIndex];
-  const coasterMap = useMemo(() => new Map(round.coasters.map((c) => [c.id, c])), [round.coasters]);
-
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.headerWrapper}>
@@ -328,7 +328,7 @@ export function SpeedSorterScreen() {
         <View style={styles.roundInfoTop}>
           <View>
             <Text style={styles.categoryLabel}>
-              Sort by: {round.categoryLabel} {round.unit ? `(${round.unit})` : ''}
+              Sort by: {currentRound.categoryLabel} {currentRound.unit ? `(${currentRound.unit})` : ''}
             </Text>
           </View>
           {settings.showTimer && (
@@ -350,7 +350,7 @@ export function SpeedSorterScreen() {
         {game.userOrder.map((id, i) => {
           const coaster = coasterMap.get(id)!;
           const isCorrectPos = game.status === 'checking'
-            ? round.correctOrder[i] === id
+            ? currentRound.correctOrder[i] === id
             : null;
 
           return (
@@ -371,11 +371,11 @@ export function SpeedSorterScreen() {
         {game.status === 'checking' && (
           <View style={styles.correctReveal}>
             <Text style={styles.correctTitle}>Correct Order:</Text>
-            {round.correctOrder.map((id, i) => {
+            {currentRound.correctOrder.map((id, i) => {
               const c = coasterMap.get(id)!;
               return (
                 <Text key={id} style={styles.correctItem}>
-                  {i + 1}. {c.name} — {c.value}{round.unit ? ` ${round.unit}` : ''}
+                  {i + 1}. {c.name} — {c.value}{currentRound.unit ? ` ${currentRound.unit}` : ''}
                 </Text>
               );
             })}
