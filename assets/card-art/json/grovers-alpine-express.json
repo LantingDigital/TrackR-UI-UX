@@ -1,0 +1,22 @@
+{
+  "subject": {
+    "type": "Kiddie roller coaster",
+    "name": "Grover's Alpine Express",
+    "description": "A small green steel tubular track kiddie roller coaster with a colorful Alpine railway car train winding through an Alpine village themed area. Empty train, no passengers.",
+    "key_features": ["Green steel tubular track", "Colorful Alpine-themed train cars", "Low-to-ground layout with gentle hills"],
+    "position": "Center of frame, track winding through themed area"
+  },
+  "environment": {
+    "setting": "Alpine/Bavarian themed area of amusement park",
+    "time_of_day": "Golden hour",
+    "weather": "Clear with soft haze",
+    "season": "Summer",
+    "background_elements": ["Half-timber buildings", "Flower boxes", "Green trees"]
+  },
+  "mood": "Cinematic, warm, atmospheric, premium concept art",
+  "artistic_treatment": {
+    "style": "Anime-realism hybrid, Studio Ghibli-meets-architectural-rendering",
+    "color_grading": "WARM golden-hour, peach/salmon sky"
+  },
+  "note": "Generated using text-only prompt (no source image — kiddie coaster with well-known Alpine theming)"
+}

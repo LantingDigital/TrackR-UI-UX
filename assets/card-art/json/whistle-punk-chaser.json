@@ -1,0 +1,16 @@
+{
+  "subject": {
+    "type": "Kiddie roller coaster",
+    "name": "Whistle Punk Chaser",
+    "description": "A small green steel kiddie coaster with a logging car-themed train winding through a rustic logging camp in the Smoky Mountains. Empty train, no passengers.",
+    "key_features": ["Green steel tubular track", "Logging car themed train", "Low-to-ground layout", "Logging camp theming"],
+    "position": "Center of frame"
+  },
+  "environment": {
+    "setting": "Dollywood, Smoky Mountains of Tennessee, logging camp theme area",
+    "time_of_day": "Golden hour",
+    "season": "Summer"
+  },
+  "mood": "Cinematic, warm, atmospheric, premium concept art",
+  "note": "Generated using text-only prompt (Vekoma kiddie coaster at Dollywood)"
+}

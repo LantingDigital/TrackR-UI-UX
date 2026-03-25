@@ -1,0 +1,16 @@
+{
+  "subject": {
+    "type": "Family launch roller coaster",
+    "name": "FireChaser Express",
+    "description": "A red and yellow fire engine-themed roller coaster train on silver steel track launching through a Smoky Mountain forest. Empty seats, no passengers.",
+    "key_features": ["Fire truck themed train", "Silver steel track", "Launch coaster", "Rustic fire station theming"],
+    "position": "Center of frame"
+  },
+  "environment": {
+    "setting": "Dollywood, Smoky Mountains of Tennessee",
+    "time_of_day": "Golden hour",
+    "season": "Summer"
+  },
+  "mood": "Cinematic, warm, atmospheric, premium concept art",
+  "note": "Generated using text-only prompt (Gerstlauer family launch coaster)"
+}

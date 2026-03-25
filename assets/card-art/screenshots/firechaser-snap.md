@@ -1,0 +1,132 @@
+- generic [ref=e1]:
+  - 'button "WORK, Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e8] [cursor=pointer]':
+    - img [ref=e10]
+  - main [ref=e12]:
+    - generic:
+      - button "Main menu" [ref=e14] [cursor=pointer]:
+        - img [ref=e15]: menu
+      - button "New chat" [disabled] [ref=e168]:
+        - generic [ref=e170]: Gemini
+    - generic [ref=e20]:
+      - link "Upgrade" [ref=e172]:
+        - img [ref=e173]: spark
+        - generic [ref=e175]: Upgrade
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - button "PRO" [disabled]:
+            - generic: PRO
+        - generic [ref=e27]: WORK
+    - generic [ref=e29]:
+      - navigation [ref=e30]:
+        - generic [ref=e32]:
+          - button "Search" [ref=e34] [cursor=pointer]:
+            - img [ref=e35]: search
+          - generic [ref=e38]:
+            - group [ref=e39]:
+              - link "New chat" [ref=e41] [cursor=pointer]:
+                - /url: /app
+                - img [ref=e43]: edit_square
+                - generic [ref=e46]: New chat
+            - generic [ref=e47]:
+              - link "My stuff" [ref=e66] [cursor=pointer]:
+                - /url: mystuff
+                - img [ref=e68]: family_star
+                - generic [ref=e69]: My stuff
+              - generic [ref=e178]:
+                - link "Gems" [ref=e181] [cursor=pointer]:
+                  - /url: /gems/view
+                  - generic [ref=e182]: Gems
+                  - img [ref=e184]: keyboard_arrow_right
+                - region [ref=e185]:
+                  - generic [ref=e187]:
+                    - button "Career guide" [ref=e188] [cursor=pointer]:
+                      - img [ref=e189]: gem_spark
+                      - generic [ref=e190]: Career guide
+                    - button "More options for \"Career guide\" Gem" [ref=e192] [cursor=pointer]: more_vert
+                  - generic [ref=e196]:
+                    - button "Vivian Strickland" [ref=e197] [cursor=pointer]:
+                      - img [ref=e198]: gem_spark
+                      - generic [ref=e199]: Vivian Strickland
+                    - button "More options for \"Vivian Strickland\" Gem" [ref=e201] [cursor=pointer]: more_vert
+              - generic [ref=e204]:
+                - heading "Chats" [level=1] [ref=e206]
+                - region [ref=e207]:
+                  - button [ref=e209] [cursor=pointer]:
+                    - generic [ref=e210]: "Output ONLY the image. No text, no explanation. Create a stylized illustration of a suspended family roller coaster. Subject: A blue steel suspended roller coaster with dragonfly-wing shaped cars hanging below the track, soaring through a lush Smoky Mountain forest setting. The cars are blue and green themed. Empty seats, no passengers. The track swoops and dips among the trees. Environment: Outdoor amusement park nestled in the Smoky Mountains of Tennessee. Dense green forest, mountain ridges visible in the background through atmospheric haze. Golden hour. Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Structurally accurate. Surfaces smooth and almost low-poly. WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy. Soft atmospheric haze throughout, especially where light filters through trees and around mountain ridges. Cinematic depth with atmospheric perspective — distant mountains fade into warm haze. Clean and defined on mechanical elements. Soft and painterly on organic elements. Studio Ghibli-meets-architectural-rendering feel. Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks. Avoid photo grain, hyperreal textures, cartoon exaggeration, bright saturated colors, flat blue sky."
+                  - button [ref=e214] [cursor=pointer]:
+                    - generic [ref=e215]: "Output ONLY the image. No text, no explanation. Create a stylized illustration of a small Alpine-themed kiddie roller coaster. Subject: A small green steel tubular track kiddie roller coaster with a colorful train shaped like a small Alpine railway car (blue and red), winding through an Alpine village themed area. Empty train, no passengers. The track is low to the ground with gentle hills and turns. Environment: Outdoor amusement park with Alpine/Bavarian themed buildings — half-timber structures, flower boxes, cobblestone paths. Lush green trees and flowers surrounding the ride. Golden hour. Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Structurally accurate. Surfaces smooth and almost low-poly. WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy. Soft atmospheric haze throughout. Cinematic depth. Clean and defined on mechanical elements. Soft and painterly on organic elements. Studio Ghibli-meets-architectural-rendering feel. Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks, no copyrighted characters. Avoid photo grain, hyperreal textures, cartoon exaggeration, bright saturated colors, flat blue sky."
+                  - button [ref=e219] [cursor=pointer]:
+                    - generic [ref=e220]: "Output ONLY the image. No text, no explanation. Based on the reference photos of InvadR visible in this search results page, create a stylized illustration of this wooden roller coaster. Subject: A natural wood GCI wooden roller coaster with a Viking-themed brown wooden train on wooden track among tall deciduous trees. Empty train seats, no passengers. The track features sharp turns and airtime hills typical of a GCI woodie. Environment: Outdoor amusement park set in Virginia woods among tall trees. Golden hour. Trees beginning to leaf out in spring. Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Structurally accurate and engineered-looking. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic. WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy. Soft atmospheric haze throughout, especially where light filters through trees. Cinematic depth with atmospheric perspective. Clean and defined on mechanical/structural elements. Soft and painterly on organic elements. Studio Ghibli-meets-architectural-rendering feel. Wooden beams are smooth, not grainy. Foliage is soft masses, not individual leaves. Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks."
+                  - button [ref=e224] [cursor=pointer]:
+                    - generic [ref=e225]: "Output ONLY the image. No text, no explanation. Generate an image based on the reference photos of DarKoaster visible in this search results page. Create a stylized illustration of an indoor dark ride coaster with the following specifications: Subject: A sleek black indoor roller coaster car with bat-wing themed design on dark steel track inside a dimly lit gothic/vampire themed building. Empty seats, no passengers. Environment: Interior of a dark ride building with gothic architectural details, stone walls, dramatic purple and blue accent lighting, with warm golden light filtering through high windows. Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic. WARM golden-hour color grading mixed with purple/blue accent lighting. Sky visible through windows must be peach/salmon gradient. Soft atmospheric haze throughout. Cinematic depth. Clean and defined on mechanical elements, soft on organic elements. Studio Ghibli-meets-architectural-rendering feel. Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks. Avoid photo grain, hyperreal textures, cartoon exaggeration, bright saturated colors, flat blue sky, cool color temperature."
+                  - 'button "Image Analysis: Roller Coaster JSON" [ref=e229] [cursor=pointer]':
+                    - generic [ref=e230]: "Image Analysis: Roller Coaster JSON"
+                  - button "Image Analysis JSON Output" [ref=e234] [cursor=pointer]:
+                    - generic [ref=e235]: Image Analysis JSON Output
+                  - button "Amusement Park Image Analysis JSON" [ref=e239] [cursor=pointer]:
+                    - generic [ref=e240]: Amusement Park Image Analysis JSON
+                  - button "Image Analysis JSON Output" [ref=e244] [cursor=pointer]:
+                    - generic [ref=e245]: Image Analysis JSON Output
+                  - button "JSON Analysis of Amusement Park Ride" [ref=e249] [cursor=pointer]:
+                    - generic [ref=e250]: JSON Analysis of Amusement Park Ride
+                  - button "Image Analysis JSON Output" [ref=e254] [cursor=pointer]:
+                    - generic [ref=e255]: Image Analysis JSON Output
+                  - button "Roller Coaster Image Analysis JSON" [ref=e259] [cursor=pointer]:
+                    - generic [ref=e260]: Roller Coaster Image Analysis JSON
+                  - button "Analyzing Amusement Park Ride Image" [ref=e264] [cursor=pointer]:
+                    - generic [ref=e265]: Analyzing Amusement Park Ride Image
+                  - button "Roller Coaster Image Analysis JSON" [ref=e269] [cursor=pointer]:
+                    - generic [ref=e270]: Roller Coaster Image Analysis JSON
+            - group [ref=e89]:
+              - button "Settings & help" [ref=e91] [cursor=pointer]:
+                - img [ref=e93]: settings_2
+                - generic [ref=e96]: Settings & help
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - heading "Conversation with Gemini" [level=1] [ref=e105]
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - generic [ref=e274]: Hi Caleb
+              - heading "Where should we start?" [level=1] [ref=e277]
+            - generic [ref=e284]:
+              - button "🖼️ Create image, button, tap to use tool" [ref=e286] [cursor=pointer]:
+                - generic [ref=e287]: 🖼️ Create image
+              - button "🎸 Create music, button, tap to use tool" [ref=e289] [cursor=pointer]:
+                - generic [ref=e290]: 🎸 Create music
+              - button "Boost my day, button, tap to use tool" [ref=e292] [cursor=pointer]:
+                - generic [ref=e293]: Boost my day
+              - button "Help me learn, button, tap to use tool" [ref=e295] [cursor=pointer]:
+                - generic [ref=e296]: Help me learn
+              - button "Write anything, button, tap to use tool" [ref=e298] [cursor=pointer]:
+                - generic [ref=e299]: Write anything
+        - generic [ref=e133]:
+          - group [ref=e134]:
+            - generic [ref=e137]:
+              - textbox "Enter a prompt for Gemini" [active] [ref=e142]:
+                - paragraph [ref=e143]: Output ONLY the image. No text, no explanation. Create a stylized illustration of a family launch roller coaster themed to a fire station.
+                - paragraph [ref=e318]
+                - paragraph [ref=e319]: "Subject: A red and yellow fire engine-themed roller coaster train on silver steel track, launching forward through a Smoky Mountain forest setting. The train has a fire truck nose design. Empty seats, no passengers. The track has mild hills and turns, passing through a rustic fire station building."
+                - paragraph [ref=e320]
+                - paragraph [ref=e321]: "Environment: Outdoor amusement park in the Smoky Mountains of Tennessee. Rustic mountain village buildings, pine and deciduous trees, mountain ridges in the distance. Golden hour."
+                - paragraph [ref=e322]
+                - paragraph [ref=e323]: "Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Structurally accurate. Surfaces smooth and almost low-poly. WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy. Soft atmospheric haze throughout, especially where light filters through trees and around mountain ridges. Cinematic depth with atmospheric perspective. Clean and defined on mechanical elements. Soft and painterly on organic elements. Studio Ghibli-meets-architectural-rendering feel."
+                - paragraph [ref=e324]
+                - paragraph [ref=e325]: Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks. Avoid photo grain, hyperreal textures, cartoon exaggeration, bright saturated colors, flat blue sky.
+              - generic [ref=e144]:
+                - button "Open upload file menu" [ref=e304] [cursor=pointer]:
+                  - img [ref=e305]: add_2
+                - button "Tools" [ref=e311]:
+                  - img [ref=e312]: page_info
+                  - generic [ref=e315]: Tools
+              - button "Expand input to Fullscreen" [ref=e328] [cursor=pointer]:
+                - img [ref=e329]: expand_content
+              - generic [ref=e145]:
+                - button "Open mode picker" [ref=e148]:
+                  - generic [ref=e150]:
+                    - generic [ref=e151]: Pro
+                    - img [ref=e152]: keyboard_arrow_down
+                - generic [ref=e155]:
+                  - text: mic
+                  - button "Send message" [ref=e333] [cursor=pointer]:
+                    - img [ref=e334]: send
+          - paragraph [ref=e165]

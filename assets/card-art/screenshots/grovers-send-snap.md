@@ -1,0 +1,132 @@
+- generic [ref=e1]:
+  - 'button "WORK, Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e8] [cursor=pointer]':
+    - img [ref=e10]
+  - main [ref=e12]:
+    - generic:
+      - button "Main menu" [ref=e14] [cursor=pointer]:
+        - img [ref=e15]: menu
+      - button "New chat" [disabled] [ref=e19]:
+        - generic [ref=e21]: Gemini
+    - generic [ref=e24]:
+      - link "Upgrade" [ref=e212]:
+        - img [ref=e213]: spark
+        - generic [ref=e215]: Upgrade
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - button "PRO" [disabled]:
+            - generic: PRO
+        - generic [ref=e31]: WORK
+    - generic [ref=e33]:
+      - navigation [ref=e34]:
+        - generic [ref=e36]:
+          - button "Search" [ref=e38] [cursor=pointer]:
+            - img [ref=e39]: search
+          - generic [ref=e42]:
+            - group [ref=e43]:
+              - link "New chat" [ref=e45] [cursor=pointer]:
+                - /url: /app
+                - img [ref=e47]: edit_square
+                - generic [ref=e50]: New chat
+            - generic [ref=e51]:
+              - link "My stuff" [ref=e70] [cursor=pointer]:
+                - /url: mystuff
+                - img [ref=e72]: family_star
+                - generic [ref=e73]: My stuff
+              - generic [ref=e218]:
+                - link "Gems" [ref=e221] [cursor=pointer]:
+                  - /url: /gems/view
+                  - generic [ref=e222]: Gems
+                  - img [ref=e224]: keyboard_arrow_right
+                - region [ref=e225]:
+                  - generic [ref=e227]:
+                    - button "Career guide" [ref=e228] [cursor=pointer]:
+                      - img [ref=e229]: gem_spark
+                      - generic [ref=e230]: Career guide
+                    - button "More options for \"Career guide\" Gem" [ref=e232] [cursor=pointer]: more_vert
+                  - generic [ref=e236]:
+                    - button "Vivian Strickland" [ref=e237] [cursor=pointer]:
+                      - img [ref=e238]: gem_spark
+                      - generic [ref=e239]: Vivian Strickland
+                    - button "More options for \"Vivian Strickland\" Gem" [ref=e241] [cursor=pointer]: more_vert
+              - generic [ref=e77]:
+                - heading "Chats" [level=1] [ref=e79]
+                - region [ref=e80]:
+                  - button [ref=e82] [cursor=pointer]:
+                    - generic [ref=e83]: "Output ONLY the image. No text, no explanation. Based on the reference photos of InvadR visible in this search results page, create a stylized illustration of this wooden roller coaster. Subject: A natural wood GCI wooden roller coaster with a Viking-themed brown wooden train on wooden track among tall deciduous trees. Empty train seats, no passengers. The track features sharp turns and airtime hills typical of a GCI woodie. Environment: Outdoor amusement park set in Virginia woods among tall trees. Golden hour. Trees beginning to leaf out in spring. Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Structurally accurate and engineered-looking. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic. WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy. Soft atmospheric haze throughout, especially where light filters through trees. Cinematic depth with atmospheric perspective. Clean and defined on mechanical/structural elements. Soft and painterly on organic elements. Studio Ghibli-meets-architectural-rendering feel. Wooden beams are smooth, not grainy. Foliage is soft masses, not individual leaves. Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks."
+                  - button [ref=e86] [cursor=pointer]:
+                    - generic [ref=e87]: "Output ONLY the image. No text, no explanation. Generate an image based on the reference photos of DarKoaster visible in this search results page. Create a stylized illustration of an indoor dark ride coaster with the following specifications: Subject: A sleek black indoor roller coaster car with bat-wing themed design on dark steel track inside a dimly lit gothic/vampire themed building. Empty seats, no passengers. Environment: Interior of a dark ride building with gothic architectural details, stone walls, dramatic purple and blue accent lighting, with warm golden light filtering through high windows. Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Surfaces should feel smooth and almost low-poly, NOT metallic or photorealistic. WARM golden-hour color grading mixed with purple/blue accent lighting. Sky visible through windows must be peach/salmon gradient. Soft atmospheric haze throughout. Cinematic depth. Clean and defined on mechanical elements, soft on organic elements. Studio Ghibli-meets-architectural-rendering feel. Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks. Avoid photo grain, hyperreal textures, cartoon exaggeration, bright saturated colors, flat blue sky, cool color temperature."
+                  - 'button "Image Analysis: Roller Coaster JSON" [ref=e90] [cursor=pointer]':
+                    - generic [ref=e91]: "Image Analysis: Roller Coaster JSON"
+                  - button "Image Analysis JSON Output" [ref=e94] [cursor=pointer]:
+                    - generic [ref=e95]: Image Analysis JSON Output
+                  - button "Amusement Park Image Analysis JSON" [ref=e98] [cursor=pointer]:
+                    - generic [ref=e99]: Amusement Park Image Analysis JSON
+                  - button "Image Analysis JSON Output" [ref=e102] [cursor=pointer]:
+                    - generic [ref=e103]: Image Analysis JSON Output
+                  - button "JSON Analysis of Amusement Park Ride" [ref=e106] [cursor=pointer]:
+                    - generic [ref=e107]: JSON Analysis of Amusement Park Ride
+                  - button "Image Analysis JSON Output" [ref=e110] [cursor=pointer]:
+                    - generic [ref=e111]: Image Analysis JSON Output
+                  - button "Roller Coaster Image Analysis JSON" [ref=e114] [cursor=pointer]:
+                    - generic [ref=e115]: Roller Coaster Image Analysis JSON
+                  - button "Analyzing Amusement Park Ride Image" [ref=e118] [cursor=pointer]:
+                    - generic [ref=e119]: Analyzing Amusement Park Ride Image
+                  - button "Roller Coaster Image Analysis JSON" [ref=e122] [cursor=pointer]:
+                    - generic [ref=e123]: Roller Coaster Image Analysis JSON
+                  - button "Roller Coaster Image Analysis JSON" [ref=e126] [cursor=pointer]:
+                    - generic [ref=e127]: Roller Coaster Image Analysis JSON
+                  - button [ref=e130] [cursor=pointer]:
+                    - generic [ref=e131]: "Reimagine the exact roller coaster image that is attached as a stylized yet believable illustration. Preserve realistic layout of ride, train type, perspective of the shot, and depth, but simplify surface textures and enhance lighting for a cinematic, illustrated look. Use controlled color grading, soft atmospheric haze, and clean edges. The structure should feel engineered and physically possible, but clearly rendered as premium concept art rather than a photograph. Emphasize mood, lighting, and composition over literal detail. No real-world identifiers. Use a low angle, dramatic composition looking up at the structure. Soft gradient sky with subtle clouds. Portrait orientation, 2:3 aspect ratio. Negative / Guidance: Avoid photo grain, avoid hyperreal skin or texture detail, no cartoon exaggeration, no logos or text, no square or landscape compositions. Additionally, please remove any signs, people, or text from this photo, if applicable, and leave only an empty coaster train. Make sure to keep the EXACT layout of the ride, as seen in the image attached. Do not deviate from what you see. If there is no train visible on the track, do NOT add one. If there is snow, remove it and make it look like spring/summer."
+            - group [ref=e133]:
+              - button "Settings & help" [ref=e135] [cursor=pointer]:
+                - img [ref=e137]: settings_2
+                - generic [ref=e140]: Settings & help
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - heading "Conversation with Gemini" [level=1] [ref=e149]
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - generic [ref=e258]: Hi Caleb
+              - heading "Where should we start?" [level=1] [ref=e261]
+            - generic [ref=e268]:
+              - button "🖼️ Create image, button, tap to use tool" [ref=e270] [cursor=pointer]:
+                - generic [ref=e271]: 🖼️ Create image
+              - button "🎸 Create music, button, tap to use tool" [ref=e273] [cursor=pointer]:
+                - generic [ref=e274]: 🎸 Create music
+              - button "Help me learn, button, tap to use tool" [ref=e276] [cursor=pointer]:
+                - generic [ref=e277]: Help me learn
+              - button "Write anything, button, tap to use tool" [ref=e279] [cursor=pointer]:
+                - generic [ref=e280]: Write anything
+              - button "Boost my day, button, tap to use tool" [ref=e282] [cursor=pointer]:
+                - generic [ref=e283]: Boost my day
+        - generic [ref=e177]:
+          - group [ref=e178]:
+            - generic [ref=e181]:
+              - textbox "Enter a prompt for Gemini" [active] [ref=e186]:
+                - paragraph [ref=e187]: Output ONLY the image. No text, no explanation. Create a stylized illustration of a small Alpine-themed kiddie roller coaster.
+                - paragraph [ref=e302]
+                - paragraph [ref=e303]: "Subject: A small green steel tubular track kiddie roller coaster with a colorful train shaped like a small Alpine railway car (blue and red), winding through an Alpine village themed area. Empty train, no passengers. The track is low to the ground with gentle hills and turns."
+                - paragraph [ref=e304]
+                - paragraph [ref=e305]: "Environment: Outdoor amusement park with Alpine/Bavarian themed buildings — half-timber structures, flower boxes, cobblestone paths. Lush green trees and flowers surrounding the ride. Golden hour."
+                - paragraph [ref=e306]
+                - paragraph [ref=e307]: "Style: Stylized yet believable illustration. Anime-realism hybrid. Premium concept art, NOT a photograph, NOT a cartoon. Simplified surface textures with clean edges. Structurally accurate. Surfaces smooth and almost low-poly. WARM golden-hour color grading on EVERYTHING. Sky must be peach/salmon/soft orange gradient with subtle clouds — NEVER flat blue. All colors shift warm. Controlled and muted, NOT vibrant or punchy. Soft atmospheric haze throughout. Cinematic depth. Clean and defined on mechanical elements. Soft and painterly on organic elements. Studio Ghibli-meets-architectural-rendering feel."
+                - paragraph [ref=e308]
+                - paragraph [ref=e309]: Portrait orientation, 2:3 aspect ratio. No people, no text, no logos, no watermarks, no copyrighted characters. Avoid photo grain, hyperreal textures, cartoon exaggeration, bright saturated colors, flat blue sky.
+              - generic [ref=e188]:
+                - button "Open upload file menu" [ref=e288] [cursor=pointer]:
+                  - img [ref=e289]: add_2
+                - button "Tools" [ref=e295]:
+                  - img [ref=e296]: page_info
+                  - generic [ref=e299]: Tools
+              - button "Expand input to Fullscreen" [ref=e312] [cursor=pointer]:
+                - img [ref=e313]: expand_content
+              - generic [ref=e189]:
+                - button "Open mode picker" [ref=e192]:
+                  - generic [ref=e194]:
+                    - generic [ref=e195]: Pro
+                    - img [ref=e196]: keyboard_arrow_down
+                - generic [ref=e199]:
+                  - text: mic
+                  - button "Send message" [ref=e317] [cursor=pointer]:
+                    - img [ref=e318]: send
+          - paragraph [ref=e209]
