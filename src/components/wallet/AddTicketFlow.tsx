@@ -49,7 +49,7 @@ import Animated, {
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '../../services/haptics';
 import * as ImagePicker from 'expo-image-picker';
 import { Camera } from 'expo-camera';
 import { CameraScanner } from './CameraScanner';
@@ -430,7 +430,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
 
   // Handle photo library import directly from method step
   const handlePickFromLibrary = useCallback(async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
 
     try {
       const pickerResult = await ImagePicker.launchImageLibraryAsync({
@@ -452,7 +452,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
 
         if (scanResults && scanResults.length > 0) {
           const firstResult = scanResults[0];
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          haptics.success();
 
           const formatMap: Record<string, BarcodeFormat> = {
             qr: 'QR_CODE', aztec: 'AZTEC', pdf417: 'PDF417', datamatrix: 'DATA_MATRIX',
@@ -472,7 +472,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         try {
           const jsResult = await decodeFromImageUri(imageUri);
           if (jsResult) {
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            haptics.success();
             handleScan(jsResult.data, jsResult.format);
             decoded = true;
           }
@@ -483,7 +483,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
 
       // Step 3: If both failed, offer raw image fallback
       if (!decoded) {
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+        haptics.warning();
         Alert.alert(
           'No Barcode Found',
           'We could not detect a barcode in this image. Would you like to save it as an image-only pass?',
@@ -514,7 +514,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       finalValidUntil = toISODate(annualExpiry);
     }
 
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    haptics.success();
 
     let savedOriginalUri = originalImageUri;
     if (originalImageUri) {
@@ -557,7 +557,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
     // Validate barcode number for manual entry
     if (isManualEntry && !manualBarcodeNumber.trim()) {
       setBarcodeValidationError('Barcode number is required');
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      haptics.error();
       return;
     }
 
@@ -582,7 +582,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
 
   // Go back to previous step
   const goBack = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     const currentStep = displayedStep;
     switch (currentStep) {
       case 'method':
@@ -662,12 +662,13 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         Choose how you want to import your pass
       </Text>
 
-      <View style={styles.methodOptions}>
+      {/* Two main cards side by side */}
+      <View style={styles.methodPrimaryRow}>
         {/* Camera scan option */}
         <Pressable
+          style={{ flex: 1 }}
           onPress={() => {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-            // Jump to scan (fullscreen camera) without slide animation
+            haptics.tap();
             setDisplayedStep('scan');
             setStep('scan');
             setPreviousStepState(null);
@@ -676,60 +677,55 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
           onPressIn={() => { cameraCardScale.value = withSpring(0.97, PRESS_SPRING); }}
           onPressOut={() => { cameraCardScale.value = withSpring(1, PRESS_SPRING); }}
         >
-          <Animated.View style={[styles.methodCard, cameraCardStyle]}>
-            <View style={styles.methodIcon}>
-              <Ionicons name="camera" size={32} color={colors.accent.primary} />
+          <Animated.View style={[styles.methodPrimaryCard, cameraCardStyle]}>
+            <View style={styles.methodPrimaryIcon}>
+              <Ionicons name="camera" size={36} color={colors.accent.primary} />
             </View>
-            <Text style={styles.methodTitle}>Scan with Camera</Text>
-            <Text style={styles.methodDescription}>
-              Point your camera at the barcode or QR code on your pass
+            <Text style={styles.methodPrimaryTitle}>Scan with Camera</Text>
+            <Text style={styles.methodPrimaryDesc}>
+              Point at your barcode or QR code
             </Text>
           </Animated.View>
         </Pressable>
 
         {/* Photo library option */}
         <Pressable
+          style={{ flex: 1 }}
           onPress={() => {
             handlePickFromLibrary();
           }}
           onPressIn={() => { libraryCardScale.value = withSpring(0.97, PRESS_SPRING); }}
           onPressOut={() => { libraryCardScale.value = withSpring(1, PRESS_SPRING); }}
         >
-          <Animated.View style={[styles.methodCard, libraryCardStyle]}>
-            <View style={styles.methodIcon}>
-              <Ionicons name="images" size={32} color={colors.accent.primary} />
+          <Animated.View style={[styles.methodPrimaryCard, libraryCardStyle]}>
+            <View style={styles.methodPrimaryIcon}>
+              <Ionicons name="images" size={36} color={colors.accent.primary} />
             </View>
-            <Text style={styles.methodTitle}>Import from Photos</Text>
-            <Text style={styles.methodDescription}>
-              Pick a screenshot or photo of your pass from your library
+            <Text style={styles.methodPrimaryTitle}>Upload from Photos</Text>
+            <Text style={styles.methodPrimaryDesc}>
+              Pick a screenshot or photo of your pass
             </Text>
           </Animated.View>
         </Pressable>
-
-        {/* Manual entry option — now goes to multi-step manual flow */}
-        <Pressable
-          onPress={() => {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-            setQrData('');
-            setQrFormat('IMAGE_ONLY');
-            setOriginalImageUri(undefined);
-            setDetectionResult(null);
-            setIsManualEntry(true);
-            navigateToStep('manual_barcode', true);
-            setStep('manual_barcode');
-          }}
-        >
-          <View style={styles.methodCard}>
-            <View style={styles.methodIcon}>
-              <Ionicons name="create" size={32} color={colors.accent.primary} />
-            </View>
-            <Text style={styles.methodTitle}>Enter Manually</Text>
-            <Text style={styles.methodDescription}>
-              Type in your pass details without scanning
-            </Text>
-          </View>
-        </Pressable>
       </View>
+
+      {/* Tertiary manual entry — de-emphasized text button */}
+      <Pressable
+        style={styles.methodManualButton}
+        onPress={() => {
+          haptics.tap();
+          setQrData('');
+          setQrFormat('IMAGE_ONLY');
+          setOriginalImageUri(undefined);
+          setDetectionResult(null);
+          setIsManualEntry(true);
+          navigateToStep('manual_barcode', true);
+          setStep('manual_barcode');
+        }}
+      >
+        <Ionicons name="create-outline" size={16} color={colors.text.secondary} />
+        <Text style={styles.methodManualText}>Enter manually instead</Text>
+      </Pressable>
     </View>
   );
 
@@ -882,7 +878,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
             option={option}
             index={index}
             onSelect={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              haptics.tap();
               setSelectedType(option.type);
               setPassType(option.type);
               selectedTypeIndex.value = index;
@@ -897,7 +893,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         <Pressable
           onPress={() => {
             if (!selectedType) return;
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            haptics.select();
             navigateToStep('method', true);
             setStep('method');
           }}
@@ -1065,7 +1061,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         <Pressable
           style={styles.primaryButton}
           onPress={() => {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            haptics.tap();
             navigateToStep('form', true);
             setStep('form');
           }}
@@ -1081,7 +1077,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
 
   // Helper: toggle date picker with animated expand/collapse
   const toggleFromPicker = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     const opening = !showFromPicker;
     setShowFromPicker(opening);
     fromPickerHeight.value = withTiming(opening ? 216 : 0, {
@@ -1095,7 +1091,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   }, [showFromPicker, showUntilPicker]);
 
   const toggleUntilPicker = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     const opening = !showUntilPicker;
     setShowUntilPicker(opening);
     untilPickerHeight.value = withTiming(opening ? 216 : 0, {
@@ -1116,7 +1112,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   }, []);
 
   const handleParkSelect = useCallback((name: string) => {
-    Haptics.selectionAsync();
+    haptics.tick();
     setParkName(name);
     setParkQuery(name);
     setShowParkSuggestions(false);
@@ -1201,7 +1197,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
               <Pressable
                 key={fmt.key}
                 onPress={() => {
-                  Haptics.selectionAsync();
+                  haptics.tick();
                   setManualBarcodeFormat(fmt.key);
                   if (manualBarcodeNumber.trim()) {
                     if (fmt.key === 'qr') setQrFormat('QR_CODE');
@@ -1254,7 +1250,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       <Pressable
         style={styles.primaryButton}
         onPress={() => {
-          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          haptics.select();
           navigateToStep('manual_park', true);
           setStep('manual_park');
         }}
@@ -1340,7 +1336,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
               <Pressable
                 key={chain}
                 onPress={() => {
-                  Haptics.selectionAsync();
+                  haptics.tick();
                   setParkChain(chain);
                 }}
               >
@@ -1379,7 +1375,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
             Alert.alert('Missing Info', 'Please enter a park name');
             return;
           }
-          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          haptics.select();
           navigateToStep('manual_details', true);
           setStep('manual_details');
         }}
@@ -1437,7 +1433,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
               <Pressable
                 key={type}
                 onPress={() => {
-                  Haptics.selectionAsync();
+                  haptics.tick();
                   setPassType(type);
                   if (showFromPicker) {
                     setShowFromPicker(false);
@@ -1701,7 +1697,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       <Pressable
         style={styles.primaryButton}
         onPress={() => {
-          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          haptics.select();
           navigateToStep('manual_review', true);
           setStep('manual_review');
         }}
@@ -1921,7 +1917,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
                   parkChain === chain && { backgroundColor: PARK_BRAND_COLORS[chain], borderColor: PARK_BRAND_COLORS[chain] },
                 ]}
                 onPress={() => {
-                  Haptics.selectionAsync();
+                  haptics.tick();
                   setParkChain(chain);
                 }}
               >
@@ -1954,7 +1950,7 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
                   passType === type && styles.chipSelected,
                 ]}
                 onPress={() => {
-                  Haptics.selectionAsync();
+                  haptics.tick();
                   setPassType(type);
                   // Close any open date pickers when switching type
                   if (showFromPicker) {
@@ -2343,40 +2339,61 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
 
-  // Method step
-  methodOptions: {
-    gap: spacing.lg,
+  // Method step — two primary cards side by side + tertiary manual button
+  methodPrimaryRow: {
+    flexDirection: 'row',
+    gap: spacing.base,
   },
-  methodCard: {
+  methodPrimaryCard: {
     backgroundColor: colors.background.card,
     borderRadius: radius.card,
-    padding: spacing.xl,
+    paddingVertical: spacing.xxl,
+    paddingHorizontal: spacing.lg,
     alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 200,
     shadowColor: '#323232',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.08,
     shadowRadius: 12,
     elevation: 4,
+    borderWidth: 1.5,
+    borderColor: colors.border.subtle,
   },
-  methodIcon: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: colors.accent.primary + '15',
+  methodPrimaryIcon: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: colors.accent.primaryLight,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: spacing.base,
+    marginBottom: spacing.lg,
   },
-  methodTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+  methodPrimaryTitle: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.bold as any,
     color: colors.text.primary,
+    textAlign: 'center',
     marginBottom: spacing.xs,
   },
-  methodDescription: {
-    fontSize: 14,
+  methodPrimaryDesc: {
+    fontSize: typography.sizes.caption,
     color: colors.text.secondary,
     textAlign: 'center',
+    lineHeight: typography.sizes.caption * 1.4,
+  },
+  methodManualButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.sm,
+    marginTop: spacing.xxl,
+    paddingVertical: spacing.base,
+  },
+  methodManualText: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.medium as any,
+    color: colors.text.secondary,
   },
   // Disclaimer banner (persistent on manual entry form)
   disclaimerBanner: {

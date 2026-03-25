@@ -23,8 +23,6 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
   withTiming,
-  withRepeat,
-  withSequence,
   Easing,
 } from 'react-native-reanimated';
 import type { SharedValue } from 'react-native-reanimated';
@@ -33,7 +31,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '../../services/haptics';
 import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { radius } from '../../theme/radius';
@@ -89,22 +87,6 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
   const cancelScale = useSharedValue(1);
   const flashScale = useSharedValue(1);
   const libraryScale = useSharedValue(1);
-  const scanLinePosition = useSharedValue(0);
-
-  // Scan line animation — loop up and down
-  React.useEffect(() => {
-    scanLinePosition.value = withRepeat(
-      withSequence(
-        withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.ease) }),
-        withTiming(0, { duration: 2000, easing: Easing.inOut(Easing.ease) }),
-      ),
-      -1, // infinite
-    );
-  }, []);
-
-  const scanLineStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: scanLinePosition.value * (SCANNER_SIZE - 4) }],
-  }));
 
   // Button animated styles
   const cancelAnimStyle = useAnimatedStyle(() => ({
@@ -122,7 +104,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
     if (isScanned) return;
 
     setIsScanned(true);
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    haptics.success();
 
     const format = mapExpoFormat(result.type);
     onScan(result.data, format);
@@ -157,14 +139,14 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
         if (scanResults && scanResults.length > 0) {
           // Found a barcode — use the first result
           const firstResult = scanResults[0];
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          haptics.success();
           setIsScanned(true);
 
           const format = mapExpoFormat(firstResult.type);
           onScan(firstResult.data, format);
         } else {
           // No barcode found in the image
-          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+          haptics.warning();
 
           if (onImageOnlyFallback) {
             Alert.alert(
@@ -188,7 +170,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
         }
       } catch (scanError) {
         console.error('Error scanning image for barcodes:', scanError);
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+        haptics.error();
 
         if (onImageOnlyFallback) {
           Alert.alert(
@@ -271,33 +253,27 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
 
       {/* Dark overlay with scanner cutout */}
       <View style={styles.overlay}>
-        {/* Top section */}
-        <View style={[styles.overlaySection, { paddingTop: insets.top + spacing.lg }]}>
+        {/* Top section — flex 1 for equal centering */}
+        <View style={[styles.overlaySection, styles.topSection, { paddingTop: insets.top + spacing.lg }]}>
           <Text style={styles.instructionText}>
             Position the barcode within the frame
           </Text>
         </View>
 
-        {/* Middle section with scanner */}
+        {/* Middle section with scanner — centered */}
         <View style={styles.middleSection}>
           <View style={styles.sideOverlay} />
 
-          {/* Scanner frame */}
+          {/* Scanner frame — clean, no gimmicky corner brackets or scan line */}
           <View style={styles.scannerFrame}>
-            {/* Corner decorations */}
-            <View style={[styles.corner, styles.topLeft]} />
-            <View style={[styles.corner, styles.topRight]} />
-            <View style={[styles.corner, styles.bottomLeft]} />
-            <View style={[styles.corner, styles.bottomRight]} />
-
-            {/* Animated scan line */}
-            <Animated.View style={[styles.scanLine, scanLineStyle]} />
+            {/* Subtle white border */}
+            <View style={styles.scannerBorder} />
           </View>
 
           <View style={styles.sideOverlay} />
         </View>
 
-        {/* Bottom section with controls */}
+        {/* Bottom section with controls — flex 1 for equal centering */}
         <View style={[styles.overlaySection, styles.bottomSection, { paddingBottom: insets.bottom + spacing.lg }]}>
           <View style={styles.controlsRow}>
             {/* Cancel button */}
@@ -315,7 +291,7 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
             {/* Flash toggle */}
             <Pressable
               onPress={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                haptics.tap();
                 setFlashEnabled(!flashEnabled);
               }}
               onPressIn={createPressIn(flashScale)}
@@ -462,6 +438,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
+  topSection: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
   bottomSection: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -471,56 +451,21 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center',
     fontWeight: '500',
+    marginBottom: spacing.lg,
   },
 
-  // Scanner frame
+  // Scanner frame — clean border, no corners or scan line
   scannerFrame: {
     width: SCANNER_SIZE,
     height: SCANNER_SIZE,
     backgroundColor: 'transparent',
     position: 'relative',
   },
-  corner: {
-    position: 'absolute',
-    width: 40,
-    height: 40,
-    borderColor: colors.accent.primary,
-  },
-  topLeft: {
-    top: 0,
-    left: 0,
-    borderTopWidth: 4,
-    borderLeftWidth: 4,
-    borderTopLeftRadius: 8,
-  },
-  topRight: {
-    top: 0,
-    right: 0,
-    borderTopWidth: 4,
-    borderRightWidth: 4,
-    borderTopRightRadius: 8,
-  },
-  bottomLeft: {
-    bottom: 0,
-    left: 0,
-    borderBottomWidth: 4,
-    borderLeftWidth: 4,
-    borderBottomLeftRadius: 8,
-  },
-  bottomRight: {
-    bottom: 0,
-    right: 0,
-    borderBottomWidth: 4,
-    borderRightWidth: 4,
-    borderBottomRightRadius: 8,
-  },
-  scanLine: {
-    position: 'absolute',
-    left: 8,
-    right: 8,
-    height: 2,
-    backgroundColor: colors.accent.primary,
-    opacity: 0.8,
+  scannerBorder: {
+    ...StyleSheet.absoluteFillObject,
+    borderWidth: 2,
+    borderColor: 'rgba(255, 255, 255, 0.5)',
+    borderRadius: 16,
   },
 
   // Controls

@@ -342,6 +342,7 @@ const TimelineView: React.FC<{
         subtitle="Start tracking your coaster adventures and build your ride history"
         ctaLabel="Log Your First Ride"
         onCtaPress={onLogRide}
+        fillParent
       />
     );
   }
@@ -403,6 +404,7 @@ const CollectionView: React.FC<{
         subtitle="Log rides to unlock collectible cards for every coaster you experience"
         ctaLabel="Log Your First Ride"
         onCtaPress={onLogRide}
+        fillParent
       />
     );
   }
@@ -490,19 +492,21 @@ const StatsView: React.FC<{
   mostRidden: { name: string; count: number }[];
   onLogRide?: () => void;
 }> = ({ creditCount, totalRides, parksVisited, topRating, mostRidden, onLogRide }) => (
-  <View>
-    {/* Stats grid */}
-    <View style={styles.statsGrid}>
-      <StatCard icon="trophy-outline" value={creditCount} label="Credits" index={0} />
-      <StatCard icon="repeat-outline" value={totalRides} label="Total Rides" index={1} />
-      <StatCard icon="map-outline" value={parksVisited} label="Parks" index={2} />
-      <StatCard
-        icon="star-outline"
-        value={topRating != null ? (topRating / 10).toFixed(1) : '—'}
-        label="Top Rating"
-        index={3}
-      />
-    </View>
+  <View style={creditCount === 0 ? { flex: 1 } : undefined}>
+    {/* Stats grid — hidden when all zero */}
+    {creditCount > 0 && (
+      <View style={styles.statsGrid}>
+        <StatCard icon="trophy-outline" value={creditCount} label="Credits" index={0} />
+        <StatCard icon="repeat-outline" value={totalRides} label="Total Rides" index={1} />
+        <StatCard icon="map-outline" value={parksVisited} label="Parks" index={2} />
+        <StatCard
+          icon="star-outline"
+          value={topRating != null ? (topRating / 10).toFixed(1) : '—'}
+          label="Top Rating"
+          index={3}
+        />
+      </View>
+    )}
 
     {/* Most ridden */}
     {mostRidden.length > 0 && (
@@ -533,6 +537,7 @@ const StatsView: React.FC<{
         subtitle="Log rides and rate coasters to build your personal statistics"
         ctaLabel="Log Your First Ride"
         onCtaPress={onLogRide}
+        fillParent
       />
     )}
   </View>

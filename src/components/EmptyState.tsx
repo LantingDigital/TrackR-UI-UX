@@ -31,6 +31,8 @@ interface EmptyStateProps {
   onCtaPress?: () => void;
   /** CTA icon (left of label) — defaults to 'add' */
   ctaIcon?: keyof typeof Ionicons.glyphMap;
+  /** When true, fills parent and vertically centers content */
+  fillParent?: boolean;
 }
 
 export function EmptyState({
@@ -41,9 +43,10 @@ export function EmptyState({
   ctaLabel,
   onCtaPress,
   ctaIcon = 'add',
+  fillParent = false,
 }: EmptyStateProps) {
   return (
-    <Animated.View entering={FadeIn.duration(300)} style={styles.container}>
+    <Animated.View entering={FadeIn.duration(300)} style={[styles.container, fillParent && styles.fillParent]}>
       {/* Icon */}
       <View style={[styles.iconCircle, { borderColor: `${iconColor}20` }]}>
         <Ionicons name={icon} size={36} color={iconColor} />
@@ -78,6 +81,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: spacing.xxxl * 1.5,
     paddingHorizontal: spacing.xxl,
+  },
+  fillParent: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingVertical: 0,
   },
   iconCircle: {
     width: 72,

@@ -29,7 +29,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Brightness from 'expo-brightness';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '../../services/haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
 import { QRCodeDisplay } from './QRCodeDisplay';
@@ -158,7 +158,7 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
 
   // Handle close
   const handleClose = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     onClose();
   }, [onClose]);
 
@@ -267,7 +267,7 @@ export const GateModeOverlay: React.FC<GateModeOverlayProps> = ({
                 style={styles.viewOriginalButton}
                 onPress={(e) => {
                   e.stopPropagation();
-                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  haptics.tap();
                   setShowOriginalImage(true);
                 }}
               >

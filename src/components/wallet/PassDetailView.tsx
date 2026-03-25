@@ -27,7 +27,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '../../services/haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
 import { PassHeroCard } from './PassHeroCard';
@@ -220,7 +220,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
       }
     }
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     Animated.parallel([
       Animated.spring(translateY, {
         toValue: SCREEN_HEIGHT,
@@ -246,7 +246,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
     const ticket = tickets[currentIndexRef.current];
     if (!ticket) return;
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    haptics.heavy();
 
     // Start the flip
     setIsFlipped(true);
@@ -297,7 +297,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
   const handleFlipBack = useCallback(async () => {
     if (!isFlippedRef.current) return;
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
 
     if (originalBrightness.current !== null) {
       try {
@@ -473,7 +473,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
           newIndex = Math.max(0, Math.min(newIndex, maxIndex));
 
           if (newIndex !== current) {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            haptics.tap();
           }
 
           currentIndexRef.current = newIndex;
@@ -534,7 +534,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
     if (index === currentIndexRef.current || isFlippedRef.current) return;
     if (index < 0 || index >= ticketsLengthRef.current) return;
 
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     currentIndexRef.current = index;
     setCurrentIndex(index);
     animateDots(index);
@@ -742,7 +742,7 @@ export const PassDetailView: React.FC<PassDetailViewProps> = ({
                         <Pressable
                           style={styles.viewOriginalButton}
                           onPress={() => {
-                            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                            haptics.tap();
                             setShowOriginalImage(true);
                           }}
                         >

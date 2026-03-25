@@ -114,6 +114,7 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap, sc
       ctaLabel="Create a Post"
       ctaIcon="create-outline"
       onCtaPress={onShowCompose}
+      fillParent
     />
   ), [onShowCompose]);
 

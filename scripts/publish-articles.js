@@ -17,8 +17,21 @@ const path = require('path');
 const https = require('https');
 
 const PROJECT_ID = 'trackr-coaster-app';
-const ARTICLES_DIR = path.join(__dirname, '..', 'docs', 'articles');
+const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articles');
 const DRY_RUN = process.argv.includes('--dry-run');
+
+// Articles already in Firestore (skip these)
+const SKIP_IDS = new Set([
+  '2026-03-18-nightflight-expedition',
+  '2026-03-18-rmc-goes-small',
+  '2026-03-18-socal-coaster-arms-race',
+  '2026-03-18-tormenta-rampaging-run',
+  'article-cedar-point-2025',
+  'article-hidden-gems',
+  'article-rmc-conversion',
+  'article-sf-cf-merger',
+  'article-weekly-digest-march-10-16',
+]);
 
 // Get Firebase CLI access token
 function getAccessToken() {
@@ -144,75 +157,93 @@ function writeDocument(accessToken, collection, docId, fields) {
   });
 }
 
+// Parse YAML frontmatter from markdown file
+function parseFrontmatter(content) {
+  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!match) return null;
+
+  const fm = {};
+  const lines = match[1].split('\n');
+  for (const line of lines) {
+    // Match key: "value" or key: value
+    const kvMatch = line.match(/^(\w+):\s*"?(.*?)"?\s*$/);
+    if (kvMatch && kvMatch[1] && kvMatch[2]) {
+      fm[kvMatch[1]] = kvMatch[2];
+    }
+  }
+
+  return { frontmatter: fm, body: match[2].trim() };
+}
+
 // Parse an article markdown file into Firestore schema
 function parseArticle(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   const fileName = path.basename(filePath, '.md');
 
-  // Extract title (first # heading)
-  const titleMatch = content.match(/^# (.+)$/m);
-  const title = titleMatch ? titleMatch[1] : fileName;
+  const parsed = parseFrontmatter(content);
 
-  // Extract subtitle (first bold line after title, before ---)
-  const subtitleMatch = content.match(/^\*\*(.+)\*\*$/m);
-  const subtitle = subtitleMatch ? subtitleMatch[1] : '';
+  let title, subtitle, body, category, subcategory, readTimeMinutes, publishDate, excerpt, authorName;
+  let tags = [];
+  let sources = [];
 
-  // Extract metadata line at bottom
-  const categoryMatch = content.match(/\*\*Category:\*\*\s*([^|]+)/);
-  const category = categoryMatch ? categoryMatch[1].trim() : 'News';
+  if (parsed) {
+    // YAML frontmatter format (new articles)
+    const fm = parsed.frontmatter;
+    title = fm.title || fileName;
+    subtitle = fm.subtitle || '';
+    body = parsed.body;
+    category = fm.category || 'uncategorized';
+    subcategory = fm.subcategory || '';
+    readTimeMinutes = parseInt(fm.readTimeMinutes) || 5;
+    publishDate = fm.publishedAt || new Date().toISOString();
+    excerpt = fm.excerpt || body.substring(0, 200);
+    authorName = fm.author || 'TrackR Community';
 
-  const readTimeMatch = content.match(/\*\*Read time:\*\*\s*(\d+)/);
-  const readTimeMinutes = readTimeMatch ? parseInt(readTimeMatch[1]) : 5;
-
-  const publishDateMatch = content.match(/\*\*Publish date:\*\*\s*(.+)/);
-  const publishDate = publishDateMatch ? publishDateMatch[1].trim() : new Date().toISOString().split('T')[0];
-
-  // Extract sources
-  const sources = [];
-  const sourceRegex = /^- \[(.+?)\]\((.+?)\)$/gm;
-  let sourceMatch;
-  while ((sourceMatch = sourceRegex.exec(content)) !== null) {
-    sources.push({ name: sourceMatch[1], url: sourceMatch[2] });
-  }
-
-  // Extract body (everything between --- markers, excluding metadata footer)
-  const parts = content.split('---');
-  let body = '';
-  if (parts.length >= 3) {
-    // Body is between first and last ---
-    body = parts.slice(1, -1).join('---').trim();
+    // Parse tags from frontmatter
+    if (fm.tags) {
+      tags = fm.tags.replace(/[\[\]"]/g, '').split(',').map(t => t.trim()).filter(Boolean);
+    }
   } else {
+    // Legacy format (older articles)
+    const titleMatch = content.match(/^# (.+)$/m);
+    title = titleMatch ? titleMatch[1] : fileName;
+    subtitle = '';
     body = content;
+    category = 'uncategorized';
+    subcategory = '';
+    readTimeMinutes = 5;
+    publishDate = new Date().toISOString();
+    excerpt = body.substring(0, 200);
+    authorName = 'TrackR Community';
   }
 
-  // Generate article ID from filename
-  const articleId = fileName;
-
-  // Determine tags from content
-  const tags = [];
-  if (content.toLowerCase().includes('six flags')) tags.push('Six Flags');
-  if (content.toLowerCase().includes('dollywood')) tags.push('Dollywood');
-  if (content.toLowerCase().includes('universal')) tags.push('Universal');
-  if (content.toLowerCase().includes("knott's")) tags.push("Knott's Berry Farm");
-  if (content.toLowerCase().includes('rmc') || content.toLowerCase().includes('rocky mountain')) tags.push('RMC');
-  if (content.toLowerCase().includes('b&m')) tags.push('B&M');
-  if (content.toLowerCase().includes('mack rides')) tags.push('Mack Rides');
-  if (content.toLowerCase().includes('vekoma')) tags.push('Vekoma');
+  // Extract sources from body (markdown links in Sources section)
+  const sourcesSection = body.match(/## Sources\n([\s\S]*?)$/);
+  if (sourcesSection) {
+    const sourceRegex = /- \[(.+?)\]\((.+?)\)/g;
+    let sourceMatch;
+    while ((sourceMatch = sourceRegex.exec(sourcesSection[1])) !== null) {
+      sources.push({ name: sourceMatch[1], url: sourceMatch[2] });
+    }
+  }
 
   return {
-    articleId,
+    articleId: fileName,
     fields: {
       title,
       subtitle,
       body,
-      bannerImageUrl: '', // Will be filled after hero art is generated
+      bannerImageUrl: '',
       category,
+      subcategory,
       tags,
       readTimeMinutes,
       sources,
-      authorId: 'system', // TrackR editorial, not a user
-      publishedAt: `${publishDate}T12:00:00Z`,
+      authorId: 'system',
+      authorName,
+      publishedAt: publishDate.includes('T') ? publishDate : `${publishDate}T12:00:00Z`,
       status: 'draft',
+      excerpt,
     }
   };
 }
@@ -222,9 +253,9 @@ async function main() {
   console.log(`Project: ${PROJECT_ID}`);
   console.log(`Articles dir: ${ARTICLES_DIR}\n`);
 
-  // Find article files
+  // Find article files (all .md files, skip research/ subdirectory)
   const files = fs.readdirSync(ARTICLES_DIR)
-    .filter(f => f.startsWith('2026-') && f.endsWith('.md'))
+    .filter(f => f.endsWith('.md'))
     .map(f => path.join(ARTICLES_DIR, f));
 
   if (files.length === 0) {
@@ -234,18 +265,21 @@ async function main() {
 
   console.log(`Found ${files.length} articles:\n`);
 
-  // Parse all articles
-  const articles = files.map(f => {
+  // Parse all articles, skip existing ones
+  const articles = [];
+  for (const f of files) {
     const article = parseArticle(f);
+    if (SKIP_IDS.has(article.articleId)) {
+      console.log(`  SKIP ${article.articleId} (already in Firestore)`);
+      continue;
+    }
     console.log(`  ${article.articleId}`);
     console.log(`    Title: ${article.fields.title}`);
     console.log(`    Category: ${article.fields.category}`);
-    console.log(`    Read time: ${article.fields.readTimeMinutes} min`);
     console.log(`    Sources: ${article.fields.sources.length}`);
-    console.log(`    Tags: ${article.fields.tags.join(', ')}`);
     console.log('');
-    return article;
-  });
+    articles.push(article);
+  }
 
   if (DRY_RUN) {
     console.log('Dry run complete. No data written.');

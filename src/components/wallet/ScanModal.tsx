@@ -34,7 +34,7 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '../../services/haptics';
 import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
 import { PassPreviewCard, PREVIEW_CARD_SIZES } from './PassPreviewCard';
 import { PassDetailView } from './PassDetailView';
@@ -178,7 +178,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
 
   // Handle ticket press - show detail view
   const handleTicketPress = useCallback((ticket: Ticket, ticketList: Ticket[]) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     const index = ticketList.findIndex(t => t.id === ticket.id);
     setSelectedTicketIndex(index >= 0 ? index : 0);
     setDetailTicketList(ticketList);
@@ -188,7 +188,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
 
   // Handle long press - trigger quick actions
   const handleLongPress = useCallback((ticket: Ticket) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    haptics.select();
     onTicketLongPress?.(ticket);
   }, [onTicketLongPress]);
 
@@ -199,7 +199,7 @@ export const ScanModal: React.FC<ScanModalProps> = ({
 
   // Handle add ticket
   const handleAddTicket = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     onAddTicket?.();
   }, [onAddTicket]);
 

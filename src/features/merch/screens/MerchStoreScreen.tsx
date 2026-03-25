@@ -28,6 +28,8 @@ import Animated, {
   Layout,
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
+  interpolate,
   withSpring,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -290,10 +292,21 @@ export const MerchStoreScreen: React.FC = () => {
   const HEADER_ROW_HEIGHT = 60; // 12 + 36 + 12
   const headerTotalHeight = insets.top + HEADER_ROW_HEIGHT;
 
+  // Scroll-based fog crossfade — hero is visible at rest, fog fades in on scroll
+  const scrollY = useSharedValue(0);
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => { scrollY.value = event.contentOffset.y; },
+  });
+  const fogAnimStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(scrollY.value, [0, 80], [0, 1], 'clamp'),
+  }));
+
   return (
     <View style={styles.screen}>
-      {/* GlassHeader fog overlay */}
-      <GlassHeader headerHeight={headerTotalHeight} />
+      {/* GlassHeader fog overlay — crossfades in on scroll */}
+      <Animated.View style={[{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 5 }, fogAnimStyle]}>
+        <GlassHeader headerHeight={headerTotalHeight} zIndex={undefined} />
+      </Animated.View>
 
       {/* Header — absolute, above fog */}
       <View style={[styles.header, { top: insets.top, zIndex: 10 }]}>
@@ -311,9 +324,11 @@ export const MerchStoreScreen: React.FC = () => {
         </Pressable>
       </View>
 
-      <ScrollView
+      <Animated.ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base }]}
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
       >
         {/* Hero Banner */}
         <HeroBanner
@@ -348,19 +363,19 @@ export const MerchStoreScreen: React.FC = () => {
           </>
         )}
 
+        {/* Build Your Pack CTA — prominent, right after first carousel */}
+        {!isSearching && (
+          <View style={styles.ctaWrapper}>
+            <PackBuilderCTA onPress={onOpenPackBuilder} />
+          </View>
+        )}
+
         {/* Popular */}
         {!isSearching && (
           <>
             <SectionHeader title="Popular" subtitle="Fan favorites" />
             <HorizontalCardStrip products={popular} onSelectProduct={onSelectProduct} />
           </>
-        )}
-
-        {/* Build Your Pack CTA */}
-        {!isSearching && (
-          <View style={styles.ctaWrapper}>
-            <PackBuilderCTA onPress={onOpenPackBuilder} />
-          </View>
         )}
 
         {/* Browse Grid */}
@@ -372,7 +387,7 @@ export const MerchStoreScreen: React.FC = () => {
 
         {/* Bottom padding for tab bar */}
         <View style={{ height: 100 }} />
-      </ScrollView>
+      </Animated.ScrollView>
     </View>
   );
 };

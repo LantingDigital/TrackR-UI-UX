@@ -24,7 +24,7 @@ import {
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '../../services/haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { Ticket } from '../../types/wallet';
 import { WalletCard, CARD_WIDTH, CARD_HEIGHT } from './WalletCard';
@@ -340,7 +340,7 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
   // =========================================
   const goToNextCard = useCallback(() => {
     if (currentIndex < tickets.length - 1) {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      haptics.tap();
       Animated.spring(cardSwipePositions[currentIndex], {
         toValue: -1,
         damping: 20,
@@ -354,7 +354,7 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
 
   const goToPrevCard = useCallback(() => {
     if (currentIndex > 0) {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      haptics.tap();
       Animated.spring(cardSwipePositions[currentIndex - 1], {
         toValue: 0,
         damping: 20,
@@ -367,7 +367,7 @@ export const WalletCardStack: React.FC<WalletCardStackProps> = ({
   }, [currentIndex, cardSwipePositions]);
 
   const handleCardPress = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    haptics.select();
     setGateMode((prev) => {
       const newGateMode = !prev;
       if (newGateMode && onTicketUsed && tickets[currentIndex]) {

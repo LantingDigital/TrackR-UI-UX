@@ -35,7 +35,7 @@ import Animated, {
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
+import { haptics } from '../../services/haptics';
 import { Ticket, PASS_TYPE_LABELS } from '../../types/wallet';
 import { colors } from '../../theme/colors';
 import { typography } from '../../theme/typography';
@@ -98,7 +98,7 @@ export const QuickActionsMenu: React.FC<QuickActionsMenuProps> = ({
   }, [visible, ticket]);
 
   const dismiss = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 }, (finished) => {
       if (finished) runOnJS(onClose)();
     });
@@ -106,7 +106,7 @@ export const QuickActionsMenu: React.FC<QuickActionsMenuProps> = ({
   }, [onClose]);
 
   const handleAction = useCallback((action: () => void) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    haptics.tap();
     translateY.value = withTiming(SHEET_DISMISS_OFFSET, { duration: 250 }, (finished) => {
       if (finished) {
         runOnJS(action)();

@@ -17,7 +17,6 @@ import {
   Pressable,
   ScrollView,
   ActivityIndicator,
-  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -44,6 +43,7 @@ import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
 import { GlassHeader } from '../../components/GlassHeader';
+import { useConfirmModal } from '../../contexts/ConfirmModalContext';
 import { getAuthUser } from '../../stores/authStore';
 import {
   callProcessImportFile,
@@ -69,6 +69,7 @@ export const ImportRideDataScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const store = useImportStore();
+  const { alert: showAlert } = useConfirmModal();
 
   const topBarHeight = insets.top + HEADER_HEIGHT;
 
@@ -612,6 +613,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
 
 const PreviewStep: React.FC = () => {
   const store = useImportStore();
+  const { alert: showAlert } = useConfirmModal();
   const { pressHandlers: importPress, animatedStyle: importAnim } = useSpringPress();
 
   const selectedCount = store.resolvedRides.filter((r) => r.selected).length;
@@ -621,7 +623,7 @@ const PreviewStep: React.FC = () => {
   const handleStartImport = useCallback(async () => {
     const user = getAuthUser();
     if (!user) {
-      Alert.alert('Sign In Required', 'You need to be signed in to import ride data.');
+      showAlert({ title: 'Sign In Required', message: 'You need to be signed in to import ride data.' });
       return;
     }
 

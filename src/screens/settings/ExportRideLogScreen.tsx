@@ -11,7 +11,6 @@ import {
   View,
   Text,
   Pressable,
-  Alert,
   Linking,
   ActivityIndicator,
 } from 'react-native';
@@ -34,6 +33,7 @@ import { SPRINGS, TIMING } from '../../constants/animations';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import { haptics } from '../../services/haptics';
 import { GlassHeader } from '../../components/GlassHeader';
+import { SettingsBottomSheet } from '../../components/settings/SettingsBottomSheet';
 import { getAuthUser } from '../../stores/authStore';
 import { callExportRideLog } from '../../services/firebase/functions';
 
@@ -91,6 +91,10 @@ export function ExportRideLogScreen() {
   const [format, setFormat] = useState<ExportFormat>('csv');
   const [dateRange, setDateRange] = useState<DateRange>('all');
   const [isExporting, setIsExporting] = useState(false);
+  const [signInSheetVisible, setSignInSheetVisible] = useState(false);
+  const [resultSheetVisible, setResultSheetVisible] = useState(false);
+  const [errorSheetVisible, setErrorSheetVisible] = useState(false);
+  const [exportResult, setExportResult] = useState<{ recordCount: number; downloadUrl: string } | null>(null);
 
   const headerAnim = useStagger(0);
   const formatAnim = useStagger(1);
@@ -101,7 +105,7 @@ export function ExportRideLogScreen() {
     const user = getAuthUser();
     if (!user) {
       haptics.error();
-      Alert.alert('Sign in required', 'Please sign in to export your ride log.');
+      setSignInSheetVisible(true);
       return;
     }
 
@@ -126,17 +130,11 @@ export function ExportRideLogScreen() {
       });
 
       haptics.success();
-      Alert.alert(
-        'Export Ready',
-        `${result.recordCount} rides exported as ${format.toUpperCase()}. The download link expires in 24 hours.`,
-        [
-          { text: 'Open', onPress: () => Linking.openURL(result.downloadUrl) },
-          { text: 'OK' },
-        ],
-      );
+      setExportResult(result);
+      setResultSheetVisible(true);
     } catch (error) {
       haptics.error();
-      Alert.alert('Export Failed', 'Something went wrong. Please try again.');
+      setErrorSheetVisible(true);
       console.error('[ExportRideLog] Failed:', error);
     } finally {
       setIsExporting(false);
@@ -273,6 +271,47 @@ export function ExportRideLogScreen() {
         <Text style={styles.headerTitle}>Export Ride Log</Text>
         <View style={styles.headerSpacer} />
       </Animated.View>
+
+      {/* Sign in required */}
+      <SettingsBottomSheet
+        visible={signInSheetVisible}
+        onClose={() => setSignInSheetVisible(false)}
+        title="Sign In Required"
+        warning
+        warningMessage="Please sign in to export your ride log."
+        warningIcon="log-in-outline"
+        confirmLabel="OK"
+        onConfirm={() => setSignInSheetVisible(false)}
+      />
+
+      {/* Export success */}
+      <SettingsBottomSheet
+        visible={resultSheetVisible}
+        onClose={() => { setResultSheetVisible(false); setExportResult(null); }}
+        title="Export Ready"
+        warning
+        warningMessage={exportResult ? `${exportResult.recordCount} rides exported as ${format.toUpperCase()}. The download link expires in 24 hours.` : ''}
+        warningIcon="checkmark-circle-outline"
+        confirmLabel="Open"
+        cancelLabel="Done"
+        onConfirm={() => {
+          if (exportResult?.downloadUrl) Linking.openURL(exportResult.downloadUrl);
+          setResultSheetVisible(false);
+          setExportResult(null);
+        }}
+      />
+
+      {/* Export error */}
+      <SettingsBottomSheet
+        visible={errorSheetVisible}
+        onClose={() => setErrorSheetVisible(false)}
+        title="Export Failed"
+        warning
+        warningMessage="Something went wrong. Please try again."
+        warningIcon="alert-circle-outline"
+        confirmLabel="OK"
+        onConfirm={() => setErrorSheetVisible(false)}
+      />
     </View>
   );
 }
