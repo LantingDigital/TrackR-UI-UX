@@ -1,0 +1,1034 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Turn off continuous scrolling" [ref=e3] [cursor=pointer]:
+        - /url: "#"
+      - link "Accessibility help" [ref=e4] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en
+      - link "Accessibility feedback" [ref=e5] [cursor=pointer]
+  - generic [ref=e10]:
+    - search [ref=e11]:
+      - generic [ref=e13]:
+        - link "Go to Google Home" [ref=e15] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QPAgK
+          - img [ref=e16]
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - combobox "Search" [ref=e27]: Woodstock Express Cedar Point roller coaster Woodstock Express Cedar Point roller coaster
+            - generic [ref=e28]:
+              - button "Clear" [ref=e30] [cursor=pointer]:
+                - img [ref=e32]
+              - generic [ref=e35]:
+                - button "Search by voice" [ref=e36] [cursor=pointer]:
+                  - img [ref=e37]
+                - button "Search by image" [ref=e39] [cursor=pointer]:
+                  - img [ref=e40]
+          - button "Search" [ref=e42] [cursor=pointer]:
+            - img [ref=e45]
+    - generic [ref=e48]:
+      - button "Google apps" [ref=e50] [cursor=pointer]:
+        - img [ref=e51]
+      - 'button "Google Account: Caleb Lanting (caleb@lantingdigital.com)" [ref=e55] [cursor=pointer]':
+        - img [ref=e56]
+  - generic [ref=e58]:
+    - generic [ref=e61]:
+      - navigation [ref=e64]:
+        - generic [ref=e65]:
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - link "AI Mode" [ref=e70] [cursor=pointer]:
+                - /url: /search?q=Woodstock+Express+Cedar+Point+roller+coaster&sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&udm=50&fbs=ADc_l-ZMtfrlQ0SU6L2D0-D344flK_W5FpVHTGLgFEbOlDFdXSwaj5EyGe2VAau3V-uITQvSAsFraKqzWtnfJxR5AbNUYzftQ7uGb17gdzV9pTfCUXUYDePNHDzWu13jIxDO4XpPjLJ6NHTnDNl8mPbevttyxHuUUP_G4JaIpovQ2CvOJMq7or410zS-eIA4dbBZZdcuUMnopZgHJopdLJd6TBJDxM8qqXl5sf2f8kEP5JnC2HkETiQ&aep=1&ntc=1&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4Q2J8OegQICRAD&cshid=1774400326895357
+                - generic [ref=e73]: AI Mode
+            - listitem [ref=e74]:
+              - link "All" [ref=e75] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=Woodstock+Express+Cedar+Point+roller+coaster&source=lnms&fbs=ADc_l-ZMtfrlQ0SU6L2D0-D344flK_W5FpVHTGLgFEbOlDFdXSwaj5EyGe2VAau3V-uITQvSAsFraKqzWtnfJxR5AbNUYzftQ7uGb17gdzV9pTfCUXUYDePNHDzWu13jIxDO4XpPjLJ6NHTnDNl8mPbevttyxHuUUP_G4JaIpovQ2CvOJMq7or410zS-eIA4dbBZZdcuUMnopZgHJopdLJd6TBJDxM8qqXl5sf2f8kEP5JnC2HkETiQ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4Q0pQJegQICxAB&cshid=1774400326895357
+                - generic [ref=e77]: All
+            - listitem [ref=e78]:
+              - link "Images" [disabled] [ref=e79]:
+                - generic [ref=e81]: Images
+            - listitem [ref=e82]:
+              - link "Videos" [ref=e83] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&udm=7&fbs=ADc_l-ZMtfrlQ0SU6L2D0-D344flK_W5FpVHTGLgFEbOlDFdXSwaj5EyGe2VAau3V-uITQvSAsFraKqzWtnfJxR5AbNUYzftQ7uGb17gdzV9pTfCUXUYDePNHDzWu13jIxDO4XpPjLJ6NHTnDNl8mPbevttyxHuUUP_G4JaIpovQ2CvOJMq7or410zS-eIA4dbBZZdcuUMnopZgHJopdLJd6TBJDxM8qqXl5sf2f8kEP5JnC2HkETiQ&q=Woodstock+Express+Cedar+Point+roller+coaster&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QtKgLegQIDhAB&cshid=1774400326895357
+                - generic [ref=e85]: Videos
+            - listitem [ref=e86]:
+              - link "Forums" [ref=e87] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&udm=18&fbs=ADc_l-ZMtfrlQ0SU6L2D0-D344flK_W5FpVHTGLgFEbOlDFdXSwaj5EyGe2VAau3V-uITQvSAsFraKqzWtnfJxR5AbNUYzftQ7uGb17gdzV9pTfCUXUYDePNHDzWu13jIxDO4XpPjLJ6NHTnDNl8mPbevttyxHuUUP_G4JaIpovQ2CvOJMq7or410zS-eIA4dbBZZdcuUMnopZgHJopdLJd6TBJDxM8qqXl5sf2f8kEP5JnC2HkETiQ&q=Woodstock+Express+Cedar+Point+roller+coaster&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4Qs6gLegQIDBAB&cshid=1774400326895357
+                - generic [ref=e89]: Forums
+            - listitem [ref=e90]:
+              - link "Short videos" [ref=e91] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&udm=39&fbs=ADc_l-ZMtfrlQ0SU6L2D0-D344flK_W5FpVHTGLgFEbOlDFdXSwaj5EyGe2VAau3V-uITQvSAsFraKqzWtnfJxR5AbNUYzftQ7uGb17gdzV9pTfCUXUYDePNHDzWu13jIxDO4XpPjLJ6NHTnDNl8mPbevttyxHuUUP_G4JaIpovQ2CvOJMq7or410zS-eIA4dbBZZdcuUMnopZgHJopdLJd6TBJDxM8qqXl5sf2f8kEP5JnC2HkETiQ&q=Woodstock+Express+Cedar+Point+roller+coaster&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4Qs6gLegQIDxAB&cshid=1774400326895357
+                - generic [ref=e93]: Short videos
+            - listitem [ref=e94]:
+              - link "Web" [ref=e95] [cursor=pointer]:
+                - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&udm=web&fbs=ADc_l-ZMtfrlQ0SU6L2D0-D344flK_W5FpVHTGLgFEbOlDFdXSwaj5EyGe2VAau3V-uITQvSAsFraKqzWtnfJxR5AbNUYzftQ7uGb17gdzV9pTfCUXUYDePNHDzWu13jIxDO4XpPjLJ6NHTnDNl8mPbevttyxHuUUP_G4JaIpovQ2CvOJMq7or410zS-eIA4dbBZZdcuUMnopZgHJopdLJd6TBJDxM8qqXl5sf2f8kEP5JnC2HkETiQ&q=Woodstock+Express+Cedar+Point+roller+coaster&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4Qs6gLegQIChAB&cshid=1774400326895357
+                - generic [ref=e97]: Web
+            - listitem [ref=e98]:
+              - button "More filters" [ref=e99] [cursor=pointer]:
+                - generic "More filters" [ref=e100]:
+                  - generic [ref=e101]:
+                    - generic [ref=e102]: More
+                    - img [ref=e104]
+          - button "Tools" [ref=e107] [cursor=pointer]:
+            - generic [ref=e109]:
+              - generic [ref=e110]: Tools
+              - img [ref=e112]
+      - link "Saves" [ref=e115] [cursor=pointer]:
+        - /url: /save?sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4Q7XV6BAgEEAA
+        - img [ref=e117]
+        - text: Saves
+    - navigation [ref=e120]:
+      - navigation [ref=e123]:
+        - list [ref=e131]:
+          - listitem [ref=e132]:
+            - link "Add Theme parks" [ref=e133] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=theme+parks+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-J3sv1lfnPvABCMwdVDYvw-4lQuh8Wp9ZE3XyP_lR-ZiEBWiUZILHyNOKuXsGE6Wj87IHX-L28Bmn8IwfYDB74HkKQVSgqOyX_AGlBpxNWrLisBlDdBChpNMYsifjjxY8ZkrxX073FSFu8Eyy7SjGdOwQY4Q8lHu__V1xqs8yn9YfpiVrHHTURhIKAffY4qVSTiRl5w&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAB6BAgREAE&ictx=0&cshid=1774400326895357
+              - generic [ref=e139]: Theme parks
+          - listitem [ref=e140]:
+            - link "Add Kings dominion" [ref=e141] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=kings+dominion+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-Gu3cGWeU3vmo5LM_mPcpU3w9zaA_2Zs4U3LcN3i8rb-_Ms5ImOWj4-14sqX8ChSRD6Hp3w7piK1wwdvt3vt4ozVgtbi88t71puvTdMnxwgXizVgW4QcKey6P3W9lYAkSqbosU2Nj6OUaEppKlVnxEm20psoWc2HLmPwvesr85bj--u-vzze7QQsjDJPNb_GEbQYA6A&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAF6BAgSEAE&ictx=0&cshid=1774400326895357
+              - generic [ref=e147]: Kings dominion
+          - listitem [ref=e148]:
+            - link "Add Amusement park" [ref=e149] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=amusement+park+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-Gu3cGWeU3vmo5LM_mPcpU3w9zaA_2Zs4U3LcN3i8rb-_Ms5ImOWj4-14sqX8ChSRD6Hp3w7piK1wwdvt3vt4o2TCZr49uRnoqk2fA35cTQOL1q3c661D7qlWDk9kqyh5x-O0hr-cgfuaxBLjv_241Kf-sIwqaAwhjsXDxyTEAqFi5GODN4dmad25-XJfmgDV837VBA&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAJ6BAgVEAE&ictx=0&cshid=1774400326895357
+              - generic [ref=e155]: Amusement park
+          - listitem [ref=e156]:
+            - link "Add Park rides" [ref=e157] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=park+rides+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-K1fm-6MbHrVPgWC5v0Ha2nN9h_z8fYI_Brg-KwpSw9HDybecYDaJUbcqneyppKp3d78JxyIV8Al_eHK6rSb_hzEX5omPqYxitP96MFtKWicscOug7isQFDB0od4PRQpzcrkefcEHcX511EL6Tv5ryeqIL8ipNJ4_TEIF9Sgh_dwQnVvgtZKSO-fh-Jok5hFnj1FUkA&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAN6BAgTEAE&ictx=0&cshid=1774400326895357
+              - generic [ref=e163]: Park rides
+          - listitem [ref=e164]:
+            - link "Add Train" [ref=e165] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=train+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-IIbmuN17vZnJaP4VY6fO-HRUNN71VC9uX6E4avClPXtfWhZIkCXLKy55fvthue8Hkpr0v8ekFPdQlys-1dTjIBBdgOAyzOE8MjeEvOc-6edhrtH51IVSGTMVH1I1HUXDwxPOgmSc61QrIwEGkuNG26-AZ8ydHRqB2bsATW_w0kzY4pWM&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAR6BAgUEAE&ictx=0&cshid=1774400326895357
+              - generic [ref=e171]: Train
+          - listitem [ref=e1960]:
+            - link "Add Sandusky ohio" [ref=e1961] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=sandusky+ohio+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-xflvf2lwpG_Q1DPXMZZP3HNsay92wgSJDvyc0OQIKCIGSrvxCvM3we8CFPVQfACBEI2v8k7txAy0o9MeOcyK7yoACFBiqZyoWypQMkftGUaXZPurOpjSTiddnNI43P-FRAys7qPPZUYDOQMGOJAwtTIZFjWThdlguqcEIbZj_VXRdNJ-XUFbTDH8A8f9TZ0RDMiU-w&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAV6BQiQARAB&ictx=0
+              - generic [ref=e1967]: Sandusky ohio
+          - listitem [ref=e1968]:
+            - link "Add Youtube" [ref=e1969] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=youtube+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-KV7hWfxLE_Vp1DUBDsK6srRN9z27QXDbG0XeqElY5232ksUBFqIXZ0AiEtZ8O6sU_CIRAjtbK8CsF7fhtDLPE3J3LL2RAzO3Anrbh-TGnqVH5gtVkVCLdB2XKbX32ylDrvC_q_u6JC5To9fnmrCiBnO5i87KNM4xwns2vYAm73XrcjIa&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAZ6BQiVARAB&ictx=0
+              - generic [ref=e1975]: Youtube
+          - listitem [ref=e1976]:
+            - link "Add Camp snoopy" [ref=e1977] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=camp+snoopy+Woodstock+Express+Cedar+Point+roller+coaster&uds=ALYpb_ncDc7jTlmw6Mmq7NjuX5c-J3sv1lfnPvABCMwdVDYvw-4lQuh8Wp9ZE3XyP_lR-ZiEBWiUZILHyNOKuXsGE6Wj87IHX-L28Bmn8IwfYDB74OzGEzt1r4MJCmLPOUzuFsS0XjsqrXLTxV0751FfG4_AM--oDxU5u9FIwQefNrmmfzRQmO03KxJHHuAqp21Vgip_Y41LGXOaaGdBXwvCYQQv3UiVpA&udm=2&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QxKsJKAd6BQiUARAB&ictx=0
+              - generic [ref=e1983]: Camp snoopy
+    - heading "Search Results" [level=1] [ref=e172]
+    - main [ref=e174]:
+      - generic [ref=e180]:
+        - generic [ref=e183]:
+          - generic [ref=e184] [cursor=pointer]:
+            - heading "Woodstock Express (Cedar Point) - Wikipedia" [level=3] [ref=e186]:
+              - button "Woodstock Express (Cedar Point) - Wikipedia" [ref=e188]:
+                - img "Woodstock Express (Cedar Point) - Wikipedia" [ref=e191]
+            - link "Wikipedia Woodstock Express (Cedar Point) - Wikipedia" [ref=e193]:
+              - /url: https://en.wikipedia.org/wiki/Woodstock_Express_(Cedar_Point)
+              - generic [ref=e198]: Wikipedia
+              - generic [ref=e200]: Woodstock Express (Cedar Point) - Wikipedia
+          - generic [ref=e201] [cursor=pointer]:
+            - heading "Woodstock Express | The Unofficial ..." [level=3] [ref=e203]:
+              - button "Woodstock Express | The Unofficial ..." [ref=e205]:
+                - img "Woodstock Express | The Unofficial ..." [ref=e208]
+            - link "The Unofficial Cedar Point Wiki | Fandom Woodstock Express | The Unofficial ..." [ref=e210]:
+              - /url: https://unofficialcedarpoint.fandom.com/wiki/Woodstock_Express
+              - generic [ref=e215]: The Unofficial Cedar Point Wiki | Fandom
+              - generic [ref=e217]: Woodstock Express | The Unofficial ...
+          - generic [ref=e218] [cursor=pointer]:
+            - generic [ref=e219]:
+              - heading "2024 Woodstock Express Roller Coaster ..." [level=3] [ref=e220]:
+                - button "2024 Woodstock Express Roller Coaster ..." [ref=e222]:
+                  - img "2024 Woodstock Express Roller Coaster ..." [ref=e225]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube 2024 Woodstock Express Roller Coaster ..." [ref=e227]:
+              - /url: https://www.youtube.com/watch?v=BhgJwinem2A
+              - generic [ref=e232]: YouTube
+              - generic [ref=e234]: 2024 Woodstock Express Roller Coaster ...
+          - generic [ref=e235] [cursor=pointer]:
+            - heading "Woodstock Express" [level=3] [ref=e237]:
+              - button "Woodstock Express" [ref=e239]:
+                - img "Woodstock Express" [ref=e242]
+            - link "Scream Machine Woodstock Express" [ref=e244]:
+              - /url: https://www.screammachine.net/rideinfo.php?ridecode=141
+              - generic [ref=e249]: Scream Machine
+              - generic [ref=e251]: Woodstock Express
+          - generic [ref=e252] [cursor=pointer]:
+            - generic [ref=e253]:
+              - heading "Woodstock Express - Official POV - YouTube" [level=3] [ref=e254]:
+                - button "Woodstock Express - Official POV - YouTube" [ref=e256]:
+                  - img "Woodstock Express - Official POV - YouTube" [ref=e259]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Woodstock Express - Official POV - YouTube" [ref=e261]:
+              - /url: https://www.youtube.com/watch?v=fDBydpPplzQ
+              - generic [ref=e266]: YouTube
+              - generic [ref=e268]: Woodstock Express - Official POV - YouTube
+          - generic [ref=e269] [cursor=pointer]:
+            - heading "Woodstock Express - Insiders of the Point" [level=3] [ref=e271]:
+              - button "Woodstock Express - Insiders of the Point" [ref=e273]:
+                - img "Woodstock Express - Insiders of the Point" [ref=e276]
+            - link "Insiders of the Point Woodstock Express - Insiders of the Point" [ref=e278]:
+              - /url: http://www.insidersofthepoint.com/woodstock-express.html
+              - generic [ref=e283]: Insiders of the Point
+              - generic [ref=e285]: Woodstock Express - Insiders of the Point
+          - generic [ref=e286] [cursor=pointer]:
+            - heading "Woodstock Express - Cedar Point ..." [level=3] [ref=e288]:
+              - button "Woodstock Express - Cedar Point ..." [ref=e290]:
+                - img "Woodstock Express - Cedar Point ..." [ref=e293]
+            - link "Roller Coaster DataBase Woodstock Express - Cedar Point ..." [ref=e295]:
+              - /url: https://rcdb.com/553.htm
+              - generic [ref=e300]: Roller Coaster DataBase
+              - generic [ref=e302]: Woodstock Express - Cedar Point ...
+          - generic [ref=e303] [cursor=pointer]:
+            - heading "Woodstock Express - Insiders of the Point" [level=3] [ref=e305]:
+              - button "Woodstock Express - Insiders of the Point" [ref=e307]:
+                - img "Woodstock Express - Insiders of the Point" [ref=e310]
+            - link "Insiders of the Point Woodstock Express - Insiders of the Point" [ref=e312]:
+              - /url: http://www.insidersofthepoint.com/woodstock-express.html
+              - generic [ref=e317]: Insiders of the Point
+              - generic [ref=e319]: Woodstock Express - Insiders of the Point
+          - generic [ref=e320] [cursor=pointer]:
+            - heading "wooden roller coaster ..." [level=3] [ref=e322]:
+              - button "wooden roller coaster ..." [ref=e324]:
+                - img "wooden roller coaster ..." [ref=e327]
+            - link "Facebook wooden roller coaster ..." [ref=e329]:
+              - /url: https://www.facebook.com/100083370039408/posts/woodstock-express-is-a-wooden-roller-coaster-located-in-the-planet-snoopy-sectio/637209475734715/
+              - generic [ref=e334]: Facebook
+              - generic [ref=e336]: wooden roller coaster ...
+          - generic [ref=e337] [cursor=pointer]:
+            - heading "Woodstock Express | Kids Roller Coaster ..." [level=3] [ref=e339]:
+              - button "Woodstock Express | Kids Roller Coaster ..." [ref=e341]:
+                - img "Woodstock Express | Kids Roller Coaster ..." [ref=e344]
+            - link "Six Flags Woodstock Express | Kids Roller Coaster ..." [ref=e346]:
+              - /url: https://www.sixflags.com/cedarpoint/attractions/woodstock-express
+              - generic [ref=e351]: Six Flags
+              - generic [ref=e353]: Woodstock Express | Kids Roller Coaster ...
+          - generic [ref=e354] [cursor=pointer]:
+            - heading "Woodstock Express, Cedar Point ..." [level=3] [ref=e356]:
+              - button "Woodstock Express, Cedar Point ..." [ref=e358]:
+                - img "Woodstock Express, Cedar Point ..." [ref=e361]
+            - link "Reddit Woodstock Express, Cedar Point ..." [ref=e363]:
+              - /url: https://www.reddit.com/r/rollercoasterjerk/comments/pifr8k/woodstock_express_cedar_point_deserves_every/
+              - generic [ref=e368]: Reddit
+              - generic [ref=e370]: Woodstock Express, Cedar Point ...
+          - generic [ref=e371] [cursor=pointer]:
+            - heading "Woodstock Express - Insiders of the Point" [level=3] [ref=e373]:
+              - button "Woodstock Express - Insiders of the Point" [ref=e375]:
+                - img "Woodstock Express - Insiders of the Point" [ref=e378]
+            - link "Insiders of the Point Woodstock Express - Insiders of the Point" [ref=e380]:
+              - /url: http://www.insidersofthepoint.com/woodstock-express.html
+              - generic [ref=e385]: Insiders of the Point
+              - generic [ref=e387]: Woodstock Express - Insiders of the Point
+          - generic [ref=e388] [cursor=pointer]:
+            - generic [ref=e389]:
+              - heading "2019 Woodstock Express Roller Coaster ..." [level=3] [ref=e390]:
+                - button "2019 Woodstock Express Roller Coaster ..." [ref=e392]:
+                  - img "2019 Woodstock Express Roller Coaster ..." [ref=e395]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube 2019 Woodstock Express Roller Coaster ..." [ref=e397]:
+              - /url: https://www.youtube.com/watch?v=yXzgevHmtRE
+              - generic [ref=e402]: YouTube
+              - generic [ref=e404]: 2019 Woodstock Express Roller Coaster ...
+          - generic [ref=e405] [cursor=pointer]:
+            - heading "Woodstock Express by Vekoma" [level=3] [ref=e407]:
+              - button "Woodstock Express by Vekoma" [ref=e409]:
+                - img "Woodstock Express by Vekoma" [ref=e412]
+            - link "Coaster Gallery Woodstock Express by Vekoma" [ref=e414]:
+              - /url: https://www.coastergallery.com/cp/84.html
+              - generic [ref=e419]: Coaster Gallery
+              - generic [ref=e421]: Woodstock Express by Vekoma
+          - generic [ref=e422] [cursor=pointer]:
+            - heading "Woodstock Express at Cedar Point ..." [level=3] [ref=e424]:
+              - button "Woodstock Express at Cedar Point ..." [ref=e426]:
+                - img "Woodstock Express at Cedar Point ..." [ref=e429]
+            - link "CoasterBuzz Woodstock Express at Cedar Point ..." [ref=e431]:
+              - /url: https://coasterbuzz.com/RollerCoasters/woodstock-express
+              - generic [ref=e436]: CoasterBuzz
+              - generic [ref=e438]: Woodstock Express at Cedar Point ...
+          - generic [ref=e439] [cursor=pointer]:
+            - heading "Cedar Point Off-Ride Footage ..." [level=3] [ref=e441]:
+              - button "Cedar Point Off-Ride Footage ..." [ref=e443]:
+                - img "Cedar Point Off-Ride Footage ..." [ref=e446]
+            - link "YouTube Cedar Point Off-Ride Footage ..." [ref=e448]:
+              - /url: https://www.youtube.com/watch?v=a4QTPDii0I8
+              - generic [ref=e453]: YouTube
+              - generic [ref=e455]: Cedar Point Off-Ride Footage ...
+          - generic [ref=e456] [cursor=pointer]:
+            - heading "Cedar Point - Woodstock Express" [level=3] [ref=e458]:
+              - button "Cedar Point - Woodstock Express" [ref=e460]:
+                - img "Cedar Point - Woodstock Express" [ref=e463]
+            - link "Theme Park Review Cedar Point - Woodstock Express" [ref=e465]:
+              - /url: https://www.themeparkreview.com/parks/p_83_3983_cedar_point_woodstock_express
+              - generic [ref=e470]: Theme Park Review
+              - generic [ref=e472]: Cedar Point - Woodstock Express
+          - generic [ref=e473] [cursor=pointer]:
+            - heading "Woodstock Express - Insiders of the Point" [level=3] [ref=e475]:
+              - button "Woodstock Express - Insiders of the Point" [ref=e477]:
+                - img "Woodstock Express - Insiders of the Point" [ref=e480]
+            - link "Insiders of the Point Woodstock Express - Insiders of the Point" [ref=e482]:
+              - /url: http://www.insidersofthepoint.com/woodstock-express.html
+              - generic [ref=e487]: Insiders of the Point
+              - generic [ref=e489]: Woodstock Express - Insiders of the Point
+          - generic [ref=e490] [cursor=pointer]:
+            - heading "Woodstock Express - Cedar Point ..." [level=3] [ref=e492]:
+              - button "Woodstock Express - Cedar Point ..." [ref=e494]:
+                - img "Woodstock Express - Cedar Point ..." [ref=e497]
+            - link "Roller Coaster DataBase Woodstock Express - Cedar Point ..." [ref=e499]:
+              - /url: https://rcdb.com/553.htm
+              - generic [ref=e504]: Roller Coaster DataBase
+              - generic [ref=e506]: Woodstock Express - Cedar Point ...
+          - generic [ref=e507] [cursor=pointer]:
+            - heading "Woodstock Express (Cedar Point ..." [level=3] [ref=e509]:
+              - button "Woodstock Express (Cedar Point ..." [ref=e511]:
+                - img "Woodstock Express (Cedar Point ..." [ref=e514]
+            - link "Roller Coaster Wiki - Fandom Woodstock Express (Cedar Point ..." [ref=e516]:
+              - /url: https://rollercoaster.fandom.com/wiki/Woodstock_Express_(Cedar_Point)
+              - generic [ref=e521]: Roller Coaster Wiki - Fandom
+              - generic [ref=e523]: Woodstock Express (Cedar Point ...
+          - generic [ref=e524] [cursor=pointer]:
+            - generic [ref=e525]:
+              - heading "Woodstock Express (off-ride) - YouTube" [level=3] [ref=e526]:
+                - button "Woodstock Express (off-ride) - YouTube" [ref=e528]:
+                  - img "Woodstock Express (off-ride) - YouTube" [ref=e531]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Woodstock Express (off-ride) - YouTube" [ref=e533]:
+              - /url: https://www.youtube.com/watch?v=5hFcBeWWIF8
+              - generic [ref=e538]: YouTube
+              - generic [ref=e540]: Woodstock Express (off-ride) - YouTube
+          - generic [ref=e541] [cursor=pointer]:
+            - heading "Woodstock Express (Carowinds) - Wikipedia" [level=3] [ref=e543]:
+              - button "Woodstock Express (Carowinds) - Wikipedia" [ref=e545]:
+                - img "Woodstock Express (Carowinds) - Wikipedia" [ref=e548]
+            - link "Wikipedia Woodstock Express (Carowinds) - Wikipedia" [ref=e550]:
+              - /url: https://en.wikipedia.org/wiki/Woodstock_Express_(Carowinds)
+              - generic [ref=e555]: Wikipedia
+              - generic [ref=e557]: Woodstock Express (Carowinds) - Wikipedia
+          - generic [ref=e558] [cursor=pointer]:
+            - heading "Roller coasters of Cedar Point" [level=3] [ref=e560]:
+              - button "Roller coasters of Cedar Point" [ref=e562]:
+                - img "Roller coasters of Cedar Point" [ref=e565]
+            - link "USA Today Roller coasters of Cedar Point" [ref=e567]:
+              - /url: https://www.usatoday.com/picture-gallery/travel/destinations/2013/05/13/roller-coasters-of-cedar-point/2141997/
+              - generic [ref=e572]: USA Today
+              - generic [ref=e574]: Roller coasters of Cedar Point
+          - generic [ref=e575] [cursor=pointer]:
+            - heading "Woodstock Express by Vekoma" [level=3] [ref=e577]:
+              - button "Woodstock Express by Vekoma" [ref=e579]:
+                - img "Woodstock Express by Vekoma" [ref=e582]
+            - link "Coaster Gallery Woodstock Express by Vekoma" [ref=e584]:
+              - /url: https://www.coastergallery.com/CP/woodstock_express_4.html
+              - generic [ref=e589]: Coaster Gallery
+              - generic [ref=e591]: Woodstock Express by Vekoma
+          - generic [ref=e592]:
+            - heading "Related searches" [level=2] [ref=e593]
+            - link "woodstock express" [ref=e594] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=woodstock+express&stick=H4sIAAAAAAAAAFvEKlien59SXJKfnK2QWlFQlFpcDACBKfBAFAAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQILRAA&cshid=1774400326895357
+              - generic [ref=e599]: woodstock express
+            - link "pipe scream cedar point" [ref=e600] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=pipe+scream+cedar+point&stick=H4sIAAAAAAAAAFvEKl6QWZCqUJxclJqYq5CcmpJYpFCQn5lXAgAf--sTGgAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQIMhAA&cshid=1774400326895357
+              - generic [ref=e605]: pipe scream cedar point
+            - link "iron dragon cedar point" [ref=e606] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=iron+dragon+cedar+point&stick=H4sIAAAAAAAAAFvEKp5ZlJ-nkFKUmA6kklNTEosUCvIz80oA6xVe2xoAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQINRAA&cshid=1774400326895357
+              - generic [ref=e611]: iron dragon cedar point
+          - generic [ref=e612] [cursor=pointer]:
+            - heading "Woodstock Express - Insiders of the Point" [level=3] [ref=e614]:
+              - button "Woodstock Express - Insiders of the Point" [ref=e616]:
+                - img "Woodstock Express - Insiders of the Point" [ref=e619]
+            - link "Insiders of the Point Woodstock Express - Insiders of the Point" [ref=e621]:
+              - /url: http://www.insidersofthepoint.com/woodstock-express.html
+              - generic [ref=e626]: Insiders of the Point
+              - generic [ref=e628]: Woodstock Express - Insiders of the Point
+          - generic [ref=e629] [cursor=pointer]:
+            - heading "Ranking of Every Cedar Point Roller Coaster" [level=3] [ref=e631]:
+              - button "Ranking of Every Cedar Point Roller Coaster" [ref=e633]:
+                - img "Ranking of Every Cedar Point Roller Coaster" [ref=e636]
+            - link "Matador Network Ranking of Every Cedar Point Roller Coaster" [ref=e638]:
+              - /url: https://matadornetwork.com/read/every-roller-coaster-cedar-point-ranked/
+              - generic [ref=e643]: Matador Network
+              - generic [ref=e645]: Ranking of Every Cedar Point Roller Coaster
+          - generic [ref=e646] [cursor=pointer]:
+            - heading "Woodstock Express - Cedar Point ..." [level=3] [ref=e648]:
+              - button "Woodstock Express - Cedar Point ..." [ref=e650]:
+                - img "Woodstock Express - Cedar Point ..." [ref=e653]
+            - link "Roller Coaster DataBase Woodstock Express - Cedar Point ..." [ref=e655]:
+              - /url: https://rcdb.com/553.htm
+              - generic [ref=e660]: Roller Coaster DataBase
+              - generic [ref=e662]: Woodstock Express - Cedar Point ...
+          - generic [ref=e663] [cursor=pointer]:
+            - heading "Woodstock Express | Cedar Point ..." [level=3] [ref=e665]:
+              - button "Woodstock Express | Cedar Point ..." [ref=e667]:
+                - img "Woodstock Express | Cedar Point ..." [ref=e670]
+            - link "Undercover Tourist Woodstock Express | Cedar Point ..." [ref=e672]:
+              - /url: https://www.undercovertourist.com/cleveland/cedar-point/woodstock-express/
+              - generic [ref=e677]: Undercover Tourist
+              - generic [ref=e679]: Woodstock Express | Cedar Point ...
+          - generic [ref=e680] [cursor=pointer]:
+            - heading "Woodstock Express ..." [level=3] [ref=e682]:
+              - button "Woodstock Express ..." [ref=e684]:
+                - img "Woodstock Express ..." [ref=e687]
+            - link "Facebook Woodstock Express ..." [ref=e689]:
+              - /url: https://www.facebook.com/KDFanatics75/posts/some-rides-just-stick-with-youtucked-away-in-planet-snoopy-woodstock-express-has/1517974373666381/
+              - generic [ref=e694]: Facebook
+              - generic [ref=e696]: Woodstock Express ...
+          - generic [ref=e697] [cursor=pointer]:
+            - heading "Woodstock Express at Cedar Point ..." [level=3] [ref=e699]:
+              - button "Woodstock Express at Cedar Point ..." [ref=e701]:
+                - img "Woodstock Express at Cedar Point ..." [ref=e704]
+            - link "Theme Park Archive Woodstock Express at Cedar Point ..." [ref=e706]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/woodstock-express
+              - generic [ref=e711]: Theme Park Archive
+              - generic [ref=e713]: Woodstock Express at Cedar Point ...
+          - generic [ref=e714] [cursor=pointer]:
+            - heading "New Cedar Point coaster a real screamer" [level=3] [ref=e716]:
+              - button "New Cedar Point coaster a real screamer" [ref=e718]:
+                - img "New Cedar Point coaster a real screamer" [ref=e721]
+            - link "Detroit Free Press New Cedar Point coaster a real screamer" [ref=e723]:
+              - /url: https://www.freep.com/story/travel/2016/04/30/new-cedar-point-coaster-screamer-valravn/83383620/
+              - generic [ref=e728]: Detroit Free Press
+              - generic [ref=e730]: New Cedar Point coaster a real screamer
+          - generic [ref=e731] [cursor=pointer]:
+            - heading "Woodstock Express - Insiders of the Point" [level=3] [ref=e733]:
+              - button "Woodstock Express - Insiders of the Point" [ref=e735]:
+                - img "Woodstock Express - Insiders of the Point" [ref=e738]
+            - link "Insiders of the Point Woodstock Express - Insiders of the Point" [ref=e740]:
+              - /url: http://www.insidersofthepoint.com/woodstock-express.html
+              - generic [ref=e745]: Insiders of the Point
+              - generic [ref=e747]: Woodstock Express - Insiders of the Point
+          - generic [ref=e748] [cursor=pointer]:
+            - heading "Woodstock Express is undergoing a ..." [level=3] [ref=e750]:
+              - button "Woodstock Express is undergoing a ..." [ref=e752]:
+                - img "Woodstock Express is undergoing a ..." [ref=e755]
+            - link "Instagram Woodstock Express is undergoing a ..." [ref=e757]:
+              - /url: https://www.instagram.com/p/DVqyNr9lPhN/
+              - generic [ref=e762]: Instagram
+              - generic [ref=e764]: Woodstock Express is undergoing a ...
+          - generic [ref=e765] [cursor=pointer]:
+            - heading "Woodstock Express at Cedar Point ..." [level=3] [ref=e767]:
+              - button "Woodstock Express at Cedar Point ..." [ref=e769]:
+                - img "Woodstock Express at Cedar Point ..." [ref=e772]
+            - link "Theme Park Archive Woodstock Express at Cedar Point ..." [ref=e774]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/woodstock-express
+              - generic [ref=e779]: Theme Park Archive
+              - generic [ref=e781]: Woodstock Express at Cedar Point ...
+          - generic [ref=e782] [cursor=pointer]:
+            - generic [ref=e783]:
+              - heading "Woodstock Express (2001 Off-Ride ..." [level=3] [ref=e784]:
+                - button "Woodstock Express (2001 Off-Ride ..." [ref=e786]:
+                  - img "Woodstock Express (2001 Off-Ride ..." [ref=e789]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Woodstock Express (2001 Off-Ride ..." [ref=e791]:
+              - /url: https://www.youtube.com/watch?v=ZDOVDu7lc3o
+              - generic [ref=e796]: YouTube
+              - generic [ref=e798]: Woodstock Express (2001 Off-Ride ...
+          - generic [ref=e799] [cursor=pointer]:
+            - heading "Woodstock Express (Cedar Point) Review ..." [level=3] [ref=e801]:
+              - button "Woodstock Express (Cedar Point) Review ..." [ref=e803]:
+                - img "Woodstock Express (Cedar Point) Review ..." [ref=e806]
+            - link "Incrediblecoasters Woodstock Express (Cedar Point) Review ..." [ref=e808]:
+              - /url: https://www.incrediblecoasters.com/WoodstockExpressCPPhotos.html
+              - generic [ref=e813]: Incrediblecoasters
+              - generic [ref=e815]: Woodstock Express (Cedar Point) Review ...
+          - generic [ref=e816] [cursor=pointer]:
+            - generic [ref=e817]:
+              - heading "DVD Peanuts 2005 rollercoaster footage ..." [level=3] [ref=e818]:
+                - button "DVD Peanuts 2005 rollercoaster footage ..." [ref=e820]:
+                  - img "DVD Peanuts 2005 rollercoaster footage ..." [ref=e823]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "eBay · In stock DVD Peanuts 2005 rollercoaster footage ..." [ref=e825]:
+              - /url: https://www.ebay.com/itm/404475119950
+              - generic [ref=e830]: eBay · In stock
+              - generic [ref=e833]: DVD Peanuts 2005 rollercoaster footage ...
+          - generic [ref=e834] [cursor=pointer]:
+            - heading "Woodstock Express photo from Cedar ..." [level=3] [ref=e836]:
+              - button "Woodstock Express photo from Cedar ..." [ref=e838]:
+                - img "Woodstock Express photo from Cedar ..." [ref=e841]
+            - link "CoasterBuzz Woodstock Express photo from Cedar ..." [ref=e843]:
+              - /url: https://coasterbuzz.com/RollerCoasters/Photo/5112
+              - generic [ref=e848]: CoasterBuzz
+              - generic [ref=e850]: Woodstock Express photo from Cedar ...
+          - generic [ref=e851] [cursor=pointer]:
+            - heading "Roller Coasters - Cedar Point News" [level=3] [ref=e853]:
+              - button "Roller Coasters - Cedar Point News" [ref=e855]:
+                - img "Roller Coasters - Cedar Point News" [ref=e858]
+            - link "Cedar Point News - Weebly Roller Coasters - Cedar Point News" [ref=e860]:
+              - /url: https://cedarnewspoint.weebly.com/roller-coasters.html
+              - generic [ref=e865]: Cedar Point News - Weebly
+              - generic [ref=e867]: Roller Coasters - Cedar Point News
+          - generic [ref=e868] [cursor=pointer]:
+            - generic [ref=e869]:
+              - heading "Woodstock Express Wooden Roller ..." [level=3] [ref=e870]:
+                - button "Woodstock Express Wooden Roller ..." [ref=e872]:
+                  - img "Woodstock Express Wooden Roller ..." [ref=e875]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok Woodstock Express Wooden Roller ..." [ref=e877]:
+              - /url: https://www.tiktok.com/@carowindsfansonly/video/7214312457697824042
+              - generic [ref=e882]: TikTok
+              - generic [ref=e884]: Woodstock Express Wooden Roller ...
+          - generic [ref=e885] [cursor=pointer]:
+            - generic [ref=e886]:
+              - heading "25th Anniversary Tribute ..." [level=3] [ref=e887]:
+                - button "25th Anniversary Tribute ..." [ref=e889]:
+                  - img "25th Anniversary Tribute ..." [ref=e892]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube 25th Anniversary Tribute ..." [ref=e894]:
+              - /url: https://www.youtube.com/watch?v=NvKZLd8zHMI
+              - generic [ref=e899]: YouTube
+              - generic [ref=e901]: 25th Anniversary Tribute ...
+          - generic [ref=e902] [cursor=pointer]:
+            - heading "Woodstock Express | Kids Roller Coaster ..." [level=3] [ref=e904]:
+              - button "Woodstock Express | Kids Roller Coaster ..." [ref=e906]:
+                - img "Woodstock Express | Kids Roller Coaster ..." [ref=e909]
+            - link "Six Flags Woodstock Express | Kids Roller Coaster ..." [ref=e911]:
+              - /url: https://www.sixflags.com/cedarpoint/attractions/woodstock-express
+              - generic [ref=e916]: Six Flags
+              - generic [ref=e918]: Woodstock Express | Kids Roller Coaster ...
+          - generic [ref=e919] [cursor=pointer]:
+            - heading "Woodstock Express - Insiders of the Point" [level=3] [ref=e921]:
+              - button "Woodstock Express - Insiders of the Point" [ref=e923]:
+                - img "Woodstock Express - Insiders of the Point" [ref=e926]
+            - link "Insiders of the Point Woodstock Express - Insiders of the Point" [ref=e928]:
+              - /url: http://www.insidersofthepoint.com/woodstock-express.html
+              - generic [ref=e933]: Insiders of the Point
+              - generic [ref=e935]: Woodstock Express - Insiders of the Point
+          - generic [ref=e936] [cursor=pointer]:
+            - heading "Woodstock Express (Kings Island ..." [level=3] [ref=e938]:
+              - button "Woodstock Express (Kings Island ..." [ref=e940]:
+                - img "Woodstock Express (Kings Island ..." [ref=e943]
+            - link "Coasterpedia Woodstock Express (Kings Island ..." [ref=e945]:
+              - /url: https://coasterpedia.net/wiki/Woodstock_Express_(Kings_Island)
+              - generic [ref=e950]: Coasterpedia
+              - generic [ref=e952]: Woodstock Express (Kings Island ...
+          - generic [ref=e953] [cursor=pointer]:
+            - heading "Woodstock Express (Kings Island ..." [level=3] [ref=e955]:
+              - button "Woodstock Express (Kings Island ..." [ref=e957]:
+                - img "Woodstock Express (Kings Island ..." [ref=e960]
+            - link "Wikipedia Woodstock Express (Kings Island ..." [ref=e962]:
+              - /url: https://en.wikipedia.org/wiki/Woodstock_Express_(Kings_Island)
+              - generic [ref=e967]: Wikipedia
+              - generic [ref=e969]: Woodstock Express (Kings Island ...
+          - generic [ref=e970] [cursor=pointer]:
+            - generic [ref=e971]:
+              - 'heading "Woodstock Express! #woodstockexpress ..." [level=3] [ref=e972]':
+                - 'button "Woodstock Express! #woodstockexpress ..." [ref=e974]':
+                  - 'img "Woodstock Express! #woodstockexpress ..." [ref=e977]'
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - 'link "TikTok Woodstock Express! #woodstockexpress ..." [ref=e979]':
+              - /url: https://www.tiktok.com/@colleen_tv/video/7259117392691727659
+              - generic [ref=e984]: TikTok
+              - generic [ref=e986]: "Woodstock Express! #woodstockexpress ..."
+          - generic [ref=e987] [cursor=pointer]:
+            - heading "Woodstock Express • Dorney Park ..." [level=3] [ref=e989]:
+              - button "Woodstock Express • Dorney Park ..." [ref=e991]:
+                - img "Woodstock Express • Dorney Park ..." [ref=e994]
+            - link "Captain Coaster Woodstock Express • Dorney Park ..." [ref=e996]:
+              - /url: https://captaincoaster.com/en/coasters/598/woodstock-express-dorney-park
+              - generic [ref=e1001]: Captain Coaster
+              - generic [ref=e1003]: Woodstock Express • Dorney Park ...
+          - generic [ref=e1004] [cursor=pointer]:
+            - heading "The oldest roller coaster in Virginia ..." [level=3] [ref=e1006]:
+              - button "The oldest roller coaster in Virginia ..." [ref=e1008]:
+                - img "The oldest roller coaster in Virginia ..." [ref=e1011]
+            - link "Reddit The oldest roller coaster in Virginia ..." [ref=e1013]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/1bn0fth/the_oldest_roller_coaster_in_virginia_turns_50/
+              - generic [ref=e1018]: Reddit
+              - generic [ref=e1020]: The oldest roller coaster in Virginia ...
+          - generic [ref=e1021]:
+            - heading "Related searches" [level=2] [ref=e1022]
+            - link "maverick cedar point" [ref=e1023] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=maverick+cedar+point&stick=H4sIAAAAAAAAAFvEKpKbWJZalJmcrZCcmpJYpFCQn5lXAgDVCGBiFwAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQINhAA&cshid=1774400326895357
+              - generic [ref=e1028]: maverick cedar point
+            - link "rougarou cedar point" [ref=e1029] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=rougarou+cedar+point&stick=H4sIAAAAAAAAAFvEKlKUX5qeCCQUklNTEosUCvIz80oAeACTZRcAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQIPRAA&cshid=1774400326895357
+              - generic [ref=e1034]: rougarou cedar point
+            - link "camp snoopy cedar point" [ref=e1035] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=camp+snoopy+cedar+point&stick=H4sIAAAAAAAAAFvEKp6cmFugUJyXn19QqZCcmpJYpFCQn5lXAgB-NpngGgAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQIPxAA&cshid=1774400326895357
+              - generic [ref=e1040]: camp snoopy cedar point
+          - generic [ref=e1041] [cursor=pointer]:
+            - generic [ref=e1042]:
+              - heading "Cedar Point 2006 - Woodstock Express ..." [level=3] [ref=e1043]:
+                - button "Cedar Point 2006 - Woodstock Express ..." [ref=e1045]:
+                  - img "Cedar Point 2006 - Woodstock Express ..." [ref=e1048]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Flickr Cedar Point 2006 - Woodstock Express ..." [ref=e1050]:
+              - /url: https://www.flickr.com/photos/trainsandstuff/3035277576
+              - generic [ref=e1055]: Flickr
+              - generic [ref=e1057]: Cedar Point 2006 - Woodstock Express ...
+          - generic [ref=e1058] [cursor=pointer]:
+            - generic [ref=e1059]:
+              - heading "Is Woodstock Express slept on ..." [level=3] [ref=e1060]:
+                - button "Is Woodstock Express slept on ..." [ref=e1062]:
+                  - img "Is Woodstock Express slept on ..." [ref=e1065]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "Instagram Is Woodstock Express slept on ..." [ref=e1067]:
+              - /url: https://www.instagram.com/reel/DO_9GfVEc-7/
+              - generic [ref=e1072]: Instagram
+              - generic [ref=e1074]: Is Woodstock Express slept on ...
+          - generic [ref=e1075] [cursor=pointer]:
+            - heading "Woodstock Express at Cedar Point ..." [level=3] [ref=e1077]:
+              - button "Woodstock Express at Cedar Point ..." [ref=e1079]:
+                - img "Woodstock Express at Cedar Point ..." [ref=e1082]
+            - link "Theme Park Archive Woodstock Express at Cedar Point ..." [ref=e1084]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/woodstock-express
+              - generic [ref=e1089]: Theme Park Archive
+              - generic [ref=e1091]: Woodstock Express at Cedar Point ...
+          - generic [ref=e1092] [cursor=pointer]:
+            - heading "Woodstock Express (Carowinds) | Roller ..." [level=3] [ref=e1094]:
+              - button "Woodstock Express (Carowinds) | Roller ..." [ref=e1096]:
+                - img "Woodstock Express (Carowinds) | Roller ..." [ref=e1099]
+            - link "Roller Coaster Wiki - Fandom Woodstock Express (Carowinds) | Roller ..." [ref=e1101]:
+              - /url: https://rollercoaster.fandom.com/wiki/Woodstock_Express_(Carowinds)
+              - generic [ref=e1106]: Roller Coaster Wiki - Fandom
+              - generic [ref=e1108]: Woodstock Express (Carowinds) | Roller ...
+          - generic [ref=e1109] [cursor=pointer]:
+            - 'heading "Coaster Trips: Cedar Point" [level=3] [ref=e1111]':
+              - 'button "Coaster Trips: Cedar Point" [ref=e1113]':
+                - 'img "Coaster Trips: Cedar Point" [ref=e1116]'
+            - 'link "Richard Bannister Coaster Trips: Cedar Point" [ref=e1118]':
+              - /url: https://www.bannister.org/coasters/parks/cedar_point.htm
+              - generic [ref=e1123]: Richard Bannister
+              - generic [ref=e1125]: "Coaster Trips: Cedar Point"
+          - generic [ref=e1126] [cursor=pointer]:
+            - heading "Woodstock Express, King's Dominion ..." [level=3] [ref=e1128]:
+              - button "Woodstock Express, King's Dominion ..." [ref=e1130]:
+                - img "Woodstock Express, King's Dominion ..." [ref=e1133]
+            - link "Reddit Woodstock Express, King's Dominion ..." [ref=e1135]:
+              - /url: https://www.reddit.com/r/rollercoasters/comments/ps3lxj/woodstock_express_kings_dominion_doing_its_best/
+              - generic [ref=e1140]: Reddit
+              - generic [ref=e1142]: Woodstock Express, King's Dominion ...
+          - generic [ref=e1143] [cursor=pointer]:
+            - heading "Woodstock Express - Roller Coaster ..." [level=3] [ref=e1145]:
+              - button "Woodstock Express - Roller Coaster ..." [ref=e1147]:
+                - img "Woodstock Express - Roller Coaster ..." [ref=e1150]
+            - link "Roller Coaster Philosophy Woodstock Express - Roller Coaster ..." [ref=e1152]:
+              - /url: https://www.rollercoasterphilosophy.com/tag/woodstock-express/
+              - generic [ref=e1157]: Roller Coaster Philosophy
+              - generic [ref=e1159]: Woodstock Express - Roller Coaster ...
+          - generic [ref=e1160] [cursor=pointer]:
+            - heading "Woodstock Express - Cedar Point ..." [level=3] [ref=e1162]:
+              - button "Woodstock Express - Cedar Point ..." [ref=e1164]:
+                - img "Woodstock Express - Cedar Point ..." [ref=e1167]
+            - link "YouTube Woodstock Express - Cedar Point ..." [ref=e1169]:
+              - /url: https://www.youtube.com/watch?v=6JoQKYG-gDo
+              - generic [ref=e1174]: YouTube
+              - generic [ref=e1176]: Woodstock Express - Cedar Point ...
+          - generic [ref=e1177] [cursor=pointer]:
+            - heading "Cedar Point Has Great Add-On Options ..." [level=3] [ref=e1179]:
+              - button "Cedar Point Has Great Add-On Options ..." [ref=e1181]:
+                - img "Cedar Point Has Great Add-On Options ..." [ref=e1184]
+            - link "US 103.1 Cedar Point Has Great Add-On Options ..." [ref=e1186]:
+              - /url: https://us103.com/cedar-point-extras-to-try/
+              - generic [ref=e1191]: US 103.1
+              - generic [ref=e1193]: Cedar Point Has Great Add-On Options ...
+          - generic [ref=e1194] [cursor=pointer]:
+            - generic [ref=e1195]:
+              - heading "Woodstock Express | Roller Coaster at ..." [level=3] [ref=e1196]:
+                - button "Woodstock Express | Roller Coaster at ..." [ref=e1198]:
+                  - img "Woodstock Express | Roller Coaster at ..." [ref=e1201]
+              - generic:
+                - generic: 2 days ago
+            - link "Parkz Woodstock Express | Roller Coaster at ..." [ref=e1203]:
+              - /url: https://www1.parkz.com.au/attraction/woodstock-express-kings-island
+              - generic [ref=e1208]: Parkz
+              - generic [ref=e1210]: Woodstock Express | Roller Coaster at ...
+          - generic [ref=e1211] [cursor=pointer]:
+            - heading "Woodstock Express - Kings Island (Mason ..." [level=3] [ref=e1213]:
+              - button "Woodstock Express - Kings Island (Mason ..." [ref=e1215]:
+                - img "Woodstock Express - Kings Island (Mason ..." [ref=e1218]
+            - link "Pinterest Woodstock Express - Kings Island (Mason ..." [ref=e1220]:
+              - /url: https://www.pinterest.com/pin/woodstock-express-kings-island--399483429453534930/
+              - generic [ref=e1225]: Pinterest
+              - generic [ref=e1227]: Woodstock Express - Kings Island (Mason ...
+          - generic [ref=e1228] [cursor=pointer]:
+            - heading "Woodstock Express Kiddie Coaster Dorney ..." [level=3] [ref=e1230]:
+              - button "Woodstock Express Kiddie Coaster Dorney ..." [ref=e1232]:
+                - img "Woodstock Express Kiddie Coaster Dorney ..." [ref=e1235]
+            - link "Theme Parks and Entertainment Woodstock Express Kiddie Coaster Dorney ..." [ref=e1237]:
+              - /url: https://www.themeparksandentertainment.com/2022/01/woodstock-express-kiddie-coaster-dorney.html
+              - generic [ref=e1242]: Theme Parks and Entertainment
+              - generic [ref=e1244]: Woodstock Express Kiddie Coaster Dorney ...
+          - generic [ref=e1245] [cursor=pointer]:
+            - heading "Kings Dominion - Woodstock Express" [level=3] [ref=e1247]:
+              - button "Kings Dominion - Woodstock Express" [ref=e1249]:
+                - img "Kings Dominion - Woodstock Express" [ref=e1252]
+            - link "Theme Park Review Kings Dominion - Woodstock Express" [ref=e1254]:
+              - /url: https://www.themeparkreview.com/parks/p_199_1975_kings_dominion_woodstock_express
+              - generic [ref=e1259]: Theme Park Review
+              - generic [ref=e1261]: Kings Dominion - Woodstock Express
+          - generic [ref=e1262] [cursor=pointer]:
+            - heading "Woodstock Express at Cedar Point ..." [level=3] [ref=e1264]:
+              - button "Woodstock Express at Cedar Point ..." [ref=e1266]:
+                - img "Woodstock Express at Cedar Point ..." [ref=e1269]
+            - link "Theme Park Archive Woodstock Express at Cedar Point ..." [ref=e1271]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/woodstock-express
+              - generic [ref=e1276]: Theme Park Archive
+              - generic [ref=e1278]: Woodstock Express at Cedar Point ...
+          - generic [ref=e1279] [cursor=pointer]:
+            - heading "Woodstock Express | Dorney Park ..." [level=3] [ref=e1281]:
+              - button "Woodstock Express | Dorney Park ..." [ref=e1283]:
+                - img "Woodstock Express | Dorney Park ..." [ref=e1286]
+            - link "Undercover Tourist Woodstock Express | Dorney Park ..." [ref=e1288]:
+              - /url: https://www.undercovertourist.com/philadelphia/dorney-park/woodstock-express/
+              - generic [ref=e1293]: Undercover Tourist
+              - generic [ref=e1295]: Woodstock Express | Dorney Park ...
+          - generic [ref=e1296] [cursor=pointer]:
+            - heading "Woodstock Express (Cedar Point ..." [level=3] [ref=e1298]:
+              - button "Woodstock Express (Cedar Point ..." [ref=e1300]:
+                - img "Woodstock Express (Cedar Point ..." [ref=e1303]
+            - link "Roller Coaster Wiki - Fandom Woodstock Express (Cedar Point ..." [ref=e1305]:
+              - /url: https://rollercoaster.fandom.com/wiki/Woodstock_Express_(Cedar_Point)
+              - generic [ref=e1310]: Roller Coaster Wiki - Fandom
+              - generic [ref=e1312]: Woodstock Express (Cedar Point ...
+          - generic [ref=e1313] [cursor=pointer]:
+            - generic [ref=e1314]:
+              - heading "Woodstock Express at Michigan's ..." [level=3] [ref=e1315]:
+                - button "Woodstock Express at Michigan's ..." [ref=e1317]:
+                  - img "Woodstock Express at Michigan's ..." [ref=e1320]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "TikTok Woodstock Express at Michigan's ..." [ref=e1322]:
+              - /url: https://www.tiktok.com/@aftrtravelvlog/video/7100404661496122666
+              - generic [ref=e1327]: TikTok
+              - generic [ref=e1329]: Woodstock Express at Michigan's ...
+          - generic [ref=e1330] [cursor=pointer]:
+            - heading "Woodstock Express by Vekoma" [level=3] [ref=e1332]:
+              - button "Woodstock Express by Vekoma" [ref=e1334]:
+                - img "Woodstock Express by Vekoma" [ref=e1337]
+            - link "Coaster Gallery Woodstock Express by Vekoma" [ref=e1339]:
+              - /url: https://www.coastergallery.com/CP/woodstock_express_2.html
+              - generic [ref=e1344]: Coaster Gallery
+              - generic [ref=e1346]: Woodstock Express by Vekoma
+          - generic [ref=e1347] [cursor=pointer]:
+            - heading "Woodstock Express Front-Row POV at ..." [level=3] [ref=e1349]:
+              - button "Woodstock Express Front-Row POV at ..." [ref=e1351]:
+                - img "Woodstock Express Front-Row POV at ..." [ref=e1354]
+            - link "YouTube Woodstock Express Front-Row POV at ..." [ref=e1356]:
+              - /url: https://www.youtube.com/watch?v=5OkHYGs6ha0
+              - generic [ref=e1361]: YouTube
+              - generic [ref=e1363]: Woodstock Express Front-Row POV at ...
+          - generic [ref=e1364] [cursor=pointer]:
+            - heading "Anyone Woodstock Express fans? Make ..." [level=3] [ref=e1366]:
+              - button "Anyone Woodstock Express fans? Make ..." [ref=e1368]:
+                - img "Anyone Woodstock Express fans? Make ..." [ref=e1371]
+            - link "Facebook Anyone Woodstock Express fans? Make ..." [ref=e1373]:
+              - /url: https://www.facebook.com/cprundown/posts/anyone-woodstock-express-fans-make-sure-to-share-and-like-each-day-of-the-countd/1689783445679686/
+              - generic [ref=e1378]: Facebook
+              - generic [ref=e1380]: Anyone Woodstock Express fans? Make ...
+          - generic [ref=e1381] [cursor=pointer]:
+            - heading "Happy Birthday, Woodstock Express! The ..." [level=3] [ref=e1383]:
+              - button "Happy Birthday, Woodstock Express! The ..." [ref=e1385]:
+                - img "Happy Birthday, Woodstock Express! The ..." [ref=e1388]
+            - link "X Happy Birthday, Woodstock Express! The ..." [ref=e1390]:
+              - /url: https://x.com/KingsIslandPR/status/1520025171360370690
+              - generic [ref=e1395]: X
+              - generic [ref=e1397]: Happy Birthday, Woodstock Express! The ...
+          - generic [ref=e1398] [cursor=pointer]:
+            - heading "Woodstock Express • Dorney Park ..." [level=3] [ref=e1400]:
+              - button "Woodstock Express • Dorney Park ..." [ref=e1402]:
+                - img "Woodstock Express • Dorney Park ..." [ref=e1405]
+            - link "Captain Coaster Woodstock Express • Dorney Park ..." [ref=e1407]:
+              - /url: https://captaincoaster.com/en/coasters/598/woodstock-express-dorney-park
+              - generic [ref=e1412]: Captain Coaster
+              - generic [ref=e1414]: Woodstock Express • Dorney Park ...
+          - generic [ref=e1415] [cursor=pointer]:
+            - heading "kids and families ..." [level=3] [ref=e1417]:
+              - button "kids and families ..." [ref=e1419]:
+                - img "kids and families ..." [ref=e1422]
+            - link "Akron Ohio Moms kids and families ..." [ref=e1424]:
+              - /url: https://www.akronohiomoms.com/activities/is-cedar-point-a-good-place-for-young-kids-and-families/
+              - generic [ref=e1429]: Akron Ohio Moms
+              - generic [ref=e1431]: kids and families ...
+          - generic [ref=e1432] [cursor=pointer]:
+            - heading "Woodstock Express (Kings Dominion ..." [level=3] [ref=e1434]:
+              - button "Woodstock Express (Kings Dominion ..." [ref=e1436]:
+                - img "Woodstock Express (Kings Dominion ..." [ref=e1439]
+            - link "Coasterpedia Woodstock Express (Kings Dominion ..." [ref=e1441]:
+              - /url: https://coasterpedia.net/wiki/Woodstock_Express_(Kings_Dominion)
+              - generic [ref=e1446]: Coasterpedia
+              - generic [ref=e1448]: Woodstock Express (Kings Dominion ...
+          - generic [ref=e1449]:
+            - heading "Related searches" [level=2] [ref=e1450]
+            - link "cedar point rides" [ref=e1451] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=cedar+point+rides&stick=H4sIAAAAAAAAAFvEKpicmpJYpFCQn5lXolCUmZJaDABeNIOcFAAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegUIgAEQAA&cshid=1774400326895357
+              - generic [ref=e1456]: cedar point rides
+            - link "woodstock express roller coaster" [ref=e1457] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=woodstock+express+roller+coaster&stick=H4sIAAAAAAAAAFvEqlCen59SXJKfnK2QWlFQlFpcrFCUn5OTWqSQnJ9YXJJaBAB3A99IIwAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegUIhQEQAA&cshid=1774400326895357
+              - generic [ref=e1462]: woodstock express roller coaster
+            - link "blue streak cedar point" [ref=e1463] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=blue+streak+cedar+point&stick=H4sIAAAAAAAAAFvEKp6UU5qqUFxSlJqYrZCcmpJYpFCQn5lXAgC05IOuGgAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegUIiQEQAA&cshid=1774400326895357
+              - generic [ref=e1468]: blue streak cedar point
+          - generic [ref=e1469] [cursor=pointer]:
+            - generic [ref=e1470]:
+              - heading "Is Woodstock Express slept on ..." [level=3] [ref=e1471]:
+                - button "Is Woodstock Express slept on ..." [ref=e1473]:
+                  - img "Is Woodstock Express slept on ..." [ref=e1476]
+              - generic:
+                - generic: 4 days ago
+            - link "Instagram Is Woodstock Express slept on ..." [ref=e1478]:
+              - /url: https://www.instagram.com/reel/DO_9GfVEc-7/
+              - generic [ref=e1483]: Instagram
+              - generic [ref=e1485]: Is Woodstock Express slept on ...
+          - generic [ref=e1486] [cursor=pointer]:
+            - heading "Woodstock Express - Kings Island (Mason ..." [level=3] [ref=e1488]:
+              - button "Woodstock Express - Kings Island (Mason ..." [ref=e1490]:
+                - img "Woodstock Express - Kings Island (Mason ..." [ref=e1493]
+            - link "Roller Coaster DataBase Woodstock Express - Kings Island (Mason ..." [ref=e1495]:
+              - /url: https://rcdb.com/72.htm
+              - generic [ref=e1500]: Roller Coaster DataBase
+              - generic [ref=e1502]: Woodstock Express - Kings Island (Mason ...
+          - generic [ref=e1503] [cursor=pointer]:
+            - heading "Cedar Point" [level=3] [ref=e1505]:
+              - button "Cedar Point" [ref=e1507]:
+                - img "Cedar Point" [ref=e1510]
+            - link "OoCities.org Cedar Point" [ref=e1512]:
+              - /url: https://www.oocities.org/midwestamusementparks/Cedar.htm
+              - generic [ref=e1517]: OoCities.org
+              - generic [ref=e1519]: Cedar Point
+          - generic [ref=e1520] [cursor=pointer]:
+            - heading "Adventure - Woodstock Express | Ride ..." [level=3] [ref=e1522]:
+              - button "Adventure - Woodstock Express | Ride ..." [ref=e1524]:
+                - img "Adventure - Woodstock Express | Ride ..." [ref=e1527]
+            - link "Six Flags Adventure - Woodstock Express | Ride ..." [ref=e1529]:
+              - /url: https://www.sixflags.com/miadventure/attractions/woodstock-express
+              - generic [ref=e1534]: Six Flags
+              - generic [ref=e1536]: Adventure - Woodstock Express | Ride ...
+          - generic [ref=e1537] [cursor=pointer]:
+            - heading "Woodstock Express - Carowinds ..." [level=3] [ref=e1539]:
+              - button "Woodstock Express - Carowinds ..." [ref=e1541]:
+                - img "Woodstock Express - Carowinds ..." [ref=e1544]
+            - link "Pinterest Woodstock Express - Carowinds ..." [ref=e1546]:
+              - /url: https://www.pinterest.com/pin/woodstock-express-roller-coaster-carowinds-charlotte-north-carolina-usa--359162139046511050/
+              - generic [ref=e1551]: Pinterest
+              - generic [ref=e1553]: Woodstock Express - Carowinds ...
+          - generic [ref=e1554] [cursor=pointer]:
+            - heading "USA 06/22 – Cedar Point | Heartline Coaster" [level=3] [ref=e1556]:
+              - button "USA 06/22 – Cedar Point | Heartline Coaster" [ref=e1558]:
+                - img "USA 06/22 – Cedar Point | Heartline Coaster" [ref=e1561]
+            - link "Heartline Coaster USA 06/22 – Cedar Point | Heartline Coaster" [ref=e1563]:
+              - /url: https://heartlinecoaster.com/2022/07/usa-06-22-cedar-point/
+              - generic [ref=e1568]: Heartline Coaster
+              - generic [ref=e1570]: USA 06/22 – Cedar Point | Heartline Coaster
+          - generic [ref=e1571] [cursor=pointer]:
+            - heading "Cedar Point Amusement Park in Ohio - We ..." [level=3] [ref=e1573]:
+              - button "Cedar Point Amusement Park in Ohio - We ..." [ref=e1575]:
+                - img "Cedar Point Amusement Park in Ohio - We ..." [ref=e1578]
+            - link "We Go With Kids! Cedar Point Amusement Park in Ohio - We ..." [ref=e1580]:
+              - /url: https://wegowithkids.com/cedar-point-amusement-park-in-ohio/
+              - generic [ref=e1585]: We Go With Kids!
+              - generic [ref=e1587]: Cedar Point Amusement Park in Ohio - We ...
+          - generic [ref=e1588] [cursor=pointer]:
+            - heading "A Day to Remember at Cedar Point ..." [level=3] [ref=e1590]:
+              - button "A Day to Remember at Cedar Point ..." [ref=e1592]:
+                - img "A Day to Remember at Cedar Point ..." [ref=e1595]
+            - link "Coaster101.com A Day to Remember at Cedar Point ..." [ref=e1597]:
+              - /url: https://www.coaster101.com/2023/07/05/a-day-to-remember-at-cedar-point/
+              - generic [ref=e1602]: Coaster101.com
+              - generic [ref=e1604]: A Day to Remember at Cedar Point ...
+          - generic [ref=e1605] [cursor=pointer]:
+            - 'heading "rollercoaster #rollercoasters #coast ..." [level=3] [ref=e1607]':
+              - 'button "rollercoaster #rollercoasters #coast ..." [ref=e1609]':
+                - 'img "rollercoaster #rollercoasters #coast ..." [ref=e1612]'
+            - 'link "TikTok rollercoaster #rollercoasters #coast ..." [ref=e1614]':
+              - /url: https://www.tiktok.com/@roller_coaster_man/video/7245346093398035755
+              - generic [ref=e1619]: TikTok
+              - generic [ref=e1621]: "rollercoaster #rollercoasters #coast ..."
+          - generic [ref=e1622] [cursor=pointer]:
+            - heading "Woodstock Express at Cedar Point ..." [level=3] [ref=e1624]:
+              - button "Woodstock Express at Cedar Point ..." [ref=e1626]:
+                - img "Woodstock Express at Cedar Point ..." [ref=e1629]
+            - link "Theme Park Archive Woodstock Express at Cedar Point ..." [ref=e1631]:
+              - /url: https://www.themeparkarchive.com/parks/cedar-point/woodstock-express
+              - generic [ref=e1636]: Theme Park Archive
+              - generic [ref=e1638]: Woodstock Express at Cedar Point ...
+          - generic [ref=e1639] [cursor=pointer]:
+            - heading "Roller Coast ..." [level=3] [ref=e1641]:
+              - button "Roller Coast ..." [ref=e1643]:
+                - img "Roller Coast ..." [ref=e1646]
+            - link "Theme Park Review Roller Coast ..." [ref=e1648]:
+              - /url: https://themeparkreview.com/forum/topic/27277-photo-tr-tofts-amp-americas-roller-coast/
+              - generic [ref=e1653]: Theme Park Review
+              - generic [ref=e1655]: Roller Coast ...
+          - generic [ref=e1656] [cursor=pointer]:
+            - heading "Woodstock Express Family Coaster ..." [level=3] [ref=e1658]:
+              - button "Woodstock Express Family Coaster ..." [ref=e1660]:
+                - img "Woodstock Express Family Coaster ..." [ref=e1663]
+            - link "Instagram Woodstock Express Family Coaster ..." [ref=e1665]:
+              - /url: https://www.instagram.com/reel/DTvy4RTjVu5/
+              - generic [ref=e1670]: Instagram
+              - generic [ref=e1672]: Woodstock Express Family Coaster ...
+          - generic [ref=e1673] [cursor=pointer]:
+            - heading "Woodstock Express | Cedar Point ..." [level=3] [ref=e1675]:
+              - button "Woodstock Express | Cedar Point ..." [ref=e1677]:
+                - img "Woodstock Express | Cedar Point ..." [ref=e1680]
+            - link "Undercover Tourist Woodstock Express | Cedar Point ..." [ref=e1682]:
+              - /url: https://www.undercovertourist.com/cleveland/cedar-point/woodstock-express/
+              - generic [ref=e1687]: Undercover Tourist
+              - generic [ref=e1689]: Woodstock Express | Cedar Point ...
+          - generic [ref=e1690] [cursor=pointer]:
+            - generic [ref=e1691]:
+              - heading "Woodstock Express at Cedar Point - YouTube" [level=3] [ref=e1692]:
+                - button "Woodstock Express at Cedar Point - YouTube" [ref=e1694]:
+                  - img "Woodstock Express at Cedar Point - YouTube" [ref=e1697]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+            - link "YouTube Woodstock Express at Cedar Point - YouTube" [ref=e1699]:
+              - /url: https://www.youtube.com/watch?v=QeB4hKeV8G0
+              - generic [ref=e1704]: YouTube
+              - generic [ref=e1706]: Woodstock Express at Cedar Point - YouTube
+          - generic [ref=e1707] [cursor=pointer]:
+            - heading "American Coaster Enthusiasts (ACE)" [level=3] [ref=e1709]:
+              - button "American Coaster Enthusiasts (ACE)" [ref=e1711]:
+                - img "American Coaster Enthusiasts (ACE)" [ref=e1714]
+            - link "American Coaster Enthusiasts (ACE) American Coaster Enthusiasts (ACE)" [ref=e1716]:
+              - /url: https://www.aceonline.org/events/register.aspx?id=1632877
+              - generic [ref=e1721]: American Coaster Enthusiasts (ACE)
+              - generic [ref=e1723]: American Coaster Enthusiasts (ACE)
+          - generic [ref=e1724] [cursor=pointer]:
+            - heading "Woodstock Express (Kings Dominion ..." [level=3] [ref=e1726]:
+              - button "Woodstock Express (Kings Dominion ..." [ref=e1728]:
+                - img "Woodstock Express (Kings Dominion ..." [ref=e1731]
+            - link "Incrediblecoasters Woodstock Express (Kings Dominion ..." [ref=e1733]:
+              - /url: https://www.incrediblecoasters.com/WoodstockExpressKDPhotos.html
+              - generic [ref=e1738]: Incrediblecoasters
+              - generic [ref=e1740]: Woodstock Express (Kings Dominion ...
+          - generic [ref=e1741] [cursor=pointer]:
+            - 'heading "Ohio: Cedar Point – Roller Coaster Ramble" [level=3] [ref=e1743]':
+              - 'button "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1745]':
+                - 'img "Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1748]'
+            - 'link "Roller Coaster Ramble Ohio: Cedar Point – Roller Coaster Ramble" [ref=e1750]':
+              - /url: https://rollercoasterramble.com/ohio-cedar-point-2/
+              - generic [ref=e1755]: Roller Coaster Ramble
+              - generic [ref=e1757]: "Ohio: Cedar Point – Roller Coaster Ramble"
+          - generic [ref=e1758] [cursor=pointer]:
+            - heading "Cedar Point" [level=3] [ref=e1760]:
+              - button "Cedar Point" [ref=e1762]:
+                - img "Cedar Point" [ref=e1765]
+            - link "Coaster Gallery Cedar Point" [ref=e1767]:
+              - /url: https://www.coastergallery.com/CP/cedarpoint.html
+              - generic [ref=e1772]: Coaster Gallery
+              - generic [ref=e1774]: Cedar Point
+          - generic [ref=e1775] [cursor=pointer]:
+            - heading "Wild Mouse • Cedar Point • Captain Coaster" [level=3] [ref=e1777]:
+              - button "Wild Mouse • Cedar Point • Captain Coaster" [ref=e1779]:
+                - img "Wild Mouse • Cedar Point • Captain Coaster" [ref=e1782]
+            - link "Captain Coaster Wild Mouse • Cedar Point • Captain Coaster" [ref=e1784]:
+              - /url: https://captaincoaster.com/en/coasters/5774/wild-mouse-cedar-point
+              - generic [ref=e1789]: Captain Coaster
+              - generic [ref=e1791]: Wild Mouse • Cedar Point • Captain Coaster
+          - generic [ref=e1792] [cursor=pointer]:
+            - heading "Woodstock Express Map - Roller coaster ..." [level=3] [ref=e1794]:
+              - button "Woodstock Express Map - Roller coaster ..." [ref=e1796]:
+                - img "Woodstock Express Map - Roller coaster ..." [ref=e1799]
+            - link "Mapcarta Woodstock Express Map - Roller coaster ..." [ref=e1801]:
+              - /url: https://mapcarta.com/W107162424
+              - generic [ref=e1806]: Mapcarta
+              - generic [ref=e1808]: Woodstock Express Map - Roller coaster ...
+          - generic [ref=e1809] [cursor=pointer]:
+            - heading "Woodstock's Express (Dorney Park ..." [level=3] [ref=e1811]:
+              - button "Woodstock's Express (Dorney Park ..." [ref=e1813]:
+                - img "Woodstock's Express (Dorney Park ..." [ref=e1816]
+            - link "Coasterpedia Woodstock's Express (Dorney Park ..." [ref=e1818]:
+              - /url: https://coasterpedia.net/wiki/Woodstock%27s_Express_(Dorney_Park_%26_Wildwater_Kingdom)
+              - generic [ref=e1823]: Coasterpedia
+              - generic [ref=e1825]: Woodstock's Express (Dorney Park ...
+          - generic [ref=e1826] [cursor=pointer]:
+            - heading "Woodstock Express - Roller Coaster ..." [level=3] [ref=e1828]:
+              - button "Woodstock Express - Roller Coaster ..." [ref=e1830]:
+                - img "Woodstock Express - Roller Coaster ..." [ref=e1833]
+            - link "Roller Coaster Philosophy Woodstock Express - Roller Coaster ..." [ref=e1835]:
+              - /url: https://www.rollercoasterphilosophy.com/tag/woodstock-express/
+              - generic [ref=e1840]: Roller Coaster Philosophy
+              - generic [ref=e1842]: Woodstock Express - Roller Coaster ...
+          - generic [ref=e1843] [cursor=pointer]:
+            - heading "Kings Dominion (Doswell, Virginia ..." [level=3] [ref=e1845]:
+              - button "Kings Dominion (Doswell, Virginia ..." [ref=e1847]:
+                - img "Kings Dominion (Doswell, Virginia ..." [ref=e1850]
+            - link "Roller Coaster DataBase Kings Dominion (Doswell, Virginia ..." [ref=e1852]:
+              - /url: https://rcdb.com/89.htm
+              - generic [ref=e1857]: Roller Coaster DataBase
+              - generic [ref=e1859]: Kings Dominion (Doswell, Virginia ...
+          - generic [ref=e1860] [cursor=pointer]:
+            - heading "Roller coasters of Cedar Point" [level=3] [ref=e1862]:
+              - button "Roller coasters of Cedar Point" [ref=e1864]:
+                - img "Roller coasters of Cedar Point" [ref=e1867]
+            - link "USA Today Roller coasters of Cedar Point" [ref=e1869]:
+              - /url: https://www.usatoday.com/picture-gallery/travel/destinations/2013/05/13/roller-coasters-of-cedar-point/2141997/
+              - generic [ref=e1874]: USA Today
+              - generic [ref=e1876]: Roller coasters of Cedar Point
+          - generic [ref=e1877]:
+            - heading "Related searches" [level=2] [ref=e1878]
+            - link "woodstock express logo" [ref=e1879] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=woodstock+express+logo&stick=H4sIAAAAAAAAAFvEKlaen59SXJKfnK2QWlFQlFpcrJCTn54PAPtAkaAZAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQIWRAA&cshid=1774400326895357
+              - generic [ref=e1884]: woodstock express logo
+            - link "corkscrew cedar point" [ref=e1885] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=corkscrew+cedar+point&stick=H4sIAAAAAAAAAFvEKpqcX5RdnFyUWq6QnJqSWKRQkJ-ZVwIApIVRXRgAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQIXBAA&cshid=1774400326895357
+              - generic [ref=e1890]: corkscrew cedar point
+            - link "wilderness run cedar point" [ref=e1891] [cursor=pointer]:
+              - /url: /search?sca_esv=4b9c4fb793c57767&udm=2&sxsrf=ANbL-n7uva96QTXnUvGK7EQt_CQnRiwVEg:1774400298892&q=wilderness+run+cedar+point&stick=H4sIAAAAAAAAAFvEKlWemZOSWpSXWlysUFSap5CcmpJYpFCQn5lXAgBUZbYIHQAAAA&source=univ&sa=X&ved=2ahUKEwi20YSc7LmTAxXol-4BHbI1JM4QrNwCegQIYRAA&cshid=1774400326895357
+              - generic [ref=e1896]: wilderness run cedar point
+          - generic [ref=e1897] [cursor=pointer]:
+            - heading "Ohio amusement park tickets ..." [level=3] [ref=e1899]:
+              - button "Ohio amusement park tickets ..." [ref=e1901]:
+                - img "Ohio amusement park tickets ..." [ref=e1904]
+            - link "IndyStar Ohio amusement park tickets ..." [ref=e1906]:
+              - /url: https://www.indystar.com/story/entertainment/2024/05/16/cedar-point-2024-amusement-park-ohio-tickets-pass-rides-top-thrill-2-dragster-roller-coasters-hours/73703231007/
+              - generic [ref=e1911]: IndyStar
+              - generic [ref=e1913]: Ohio amusement park tickets ...
+          - generic [ref=e1914] [cursor=pointer]:
+            - heading "Cedar Point" [level=3] [ref=e1916]:
+              - button "Cedar Point" [ref=e1918]:
+                - img "Cedar Point" [ref=e1921]
+            - link "coaster.cloud Cedar Point" [ref=e1923]:
+              - /url: https://coaster.cloud/en/parks/0266b21e-cedar-point
+              - generic [ref=e1928]: coaster.cloud
+              - generic [ref=e1930]: Cedar Point
+          - generic [ref=e1931] [cursor=pointer]:
+            - heading "Mean Streak" [level=3] [ref=e1933]:
+              - button "Mean Streak" [ref=e1935]:
+                - img "Mean Streak" [ref=e1938]
+            - link "Scream Machine Mean Streak" [ref=e1940]:
+              - /url: https://screammachine.net/rideinfo.php?ridecode=136
+              - generic [ref=e1945]: Scream Machine
+              - generic [ref=e1947]: Mean Streak
+        - generic [ref=e1950]:
+          - heading "Page Navigation" [level=1] [ref=e1951]
+          - button "More results" [ref=e1952] [cursor=pointer]:
+            - generic [ref=e1953]:
+              - separator [ref=e1954]
+              - generic [ref=e1955]:
+                - generic [ref=e1956]: More results
+                - img [ref=e1958]
+      - navigation

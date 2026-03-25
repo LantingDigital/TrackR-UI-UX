@@ -293,7 +293,7 @@ export const CommunityRankingsTab = ({ topInset = 0, onCoasterTap, scrollY }: Co
       style={s.container}
       contentContainerStyle={[
         s.content,
-        { paddingTop: topInset + spacing.xxl, paddingBottom: insets.bottom + spacing.xxxl },
+        { paddingTop: topInset + spacing.xxl, paddingBottom: insets.bottom + spacing.lg },
       ]}
       showsVerticalScrollIndicator={false}
       onScroll={rankingsScrollHandler}

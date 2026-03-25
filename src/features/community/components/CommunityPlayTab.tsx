@@ -509,7 +509,7 @@ export const CommunityPlayTab = ({
       style={styles.container}
       contentContainerStyle={[
         styles.content,
-        { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
+        { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.lg },
       ]}
       showsVerticalScrollIndicator={false}
       onScroll={playScrollHandler}

@@ -40,6 +40,7 @@ import { shadows } from '../../theme/shadows';
 import { typography } from '../../theme/typography';
 import { SPRINGS, TIMING } from '../../constants/animations';
 import { haptics } from '../../services/haptics';
+import { TrackRLogo } from '../../components/TrackRLogo';
 import { useSpringPress } from '../../hooks/useSpringPress';
 import {
   useProStore,
@@ -341,7 +342,7 @@ export const ProPaywallSheet: React.FC<ProPaywallSheetProps> = ({
           bounces={false}
         >
           {/* Title */}
-          <Text style={styles.title}>TrackR Pro</Text>
+          <TrackRLogo style={styles.title} suffix=" Pro" />
           <Text style={styles.subtitle}>
             {triggerFeature
               ? `Unlock ${triggerFeature} and more`

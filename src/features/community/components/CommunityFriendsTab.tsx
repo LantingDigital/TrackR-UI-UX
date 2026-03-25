@@ -306,7 +306,7 @@ export const CommunityFriendsTab = ({ topInset = 0, onCoasterTap, scrollY }: Com
   const contentContainerStyle = useMemo(
     () => [
       styles.content,
-      { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.xxxl },
+      { paddingTop: topInset + spacing.lg, paddingBottom: insets.bottom + spacing.lg },
       activity.length === 0 ? styles.emptyContentContainer : undefined,
     ],
     [topInset, insets.bottom, activity.length],

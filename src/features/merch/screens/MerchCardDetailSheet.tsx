@@ -23,6 +23,7 @@ import Animated, {
   FadeIn,
   FadeInDown,
 } from 'react-native-reanimated';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -309,6 +310,9 @@ export const MerchCardDetailSheet: React.FC = () => {
             onToggle={() => setGoldFoil(prev => !prev)}
             isFree={product.hasGoldVerified}
           />
+          <Text style={styles.goldProText}>
+            Gold border is free for TrackR Pro members.
+          </Text>
         </Animated.View>
 
         {/* Quantity + Price */}
@@ -326,7 +330,15 @@ export const MerchCardDetailSheet: React.FC = () => {
         <View style={{ height: spacing.xxxl }} />
       </ScrollView>
 
-      {/* Bottom Action Bar */}
+      {/* Bottom fog for FAB separation */}
+      <LinearGradient
+        colors={['rgba(247, 247, 247, 0)', 'rgba(247, 247, 247, 0.8)', 'rgba(247, 247, 247, 1)']}
+        locations={[0, 0.4, 1]}
+        style={styles.bottomFog}
+        pointerEvents="none"
+      />
+
+      {/* Bottom Action Bar — FAB style */}
       <View style={[styles.bottomBar, { paddingBottom: insets.bottom + spacing.base }]}>
         <Pressable
           onPress={handleAddToCart}
@@ -447,6 +459,12 @@ const styles = StyleSheet.create({
     marginHorizontal: spacing.lg,
     marginBottom: spacing.lg,
   },
+  goldProText: {
+    fontSize: typography.sizes.meta,
+    color: colors.text.meta,
+    marginTop: spacing.sm,
+    marginLeft: spacing.xs,
+  },
 
   // Price
   priceRow: {
@@ -469,14 +487,23 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
 
-  // Bottom Bar
+  // Bottom fog + FAB bar
+  bottomFog: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 120,
+  },
   bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.base,
-    backgroundColor: colors.background.card,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.border.subtle,
+    backgroundColor: colors.background.page,
   },
   addToCartButton: {
     flexDirection: 'row',
@@ -484,8 +511,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 52,
     borderRadius: radius.button,
-    backgroundColor: colors.background.input,
+    backgroundColor: colors.background.card,
     gap: spacing.sm,
+    ...shadows.card,
   },
   addToCartText: {
     fontSize: typography.sizes.subtitle,
@@ -498,6 +526,7 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: radius.button,
     backgroundColor: colors.accent.primary,
+    ...shadows.card,
   },
   buyNowText: {
     fontSize: typography.sizes.subtitle,

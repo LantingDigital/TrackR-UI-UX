@@ -35,6 +35,7 @@ import { typography } from '../../../theme/typography';
 import { SPRINGS, TIMING } from '../../../constants/animations';
 import { haptics } from '../../../services/haptics';
 import { useSpringPress } from '../../../hooks/useSpringPress';
+import { LinearGradient } from 'expo-linear-gradient';
 import { FogHeader } from '../../../components/FogHeader';
 import {
   getMerchProducts,
@@ -71,10 +72,10 @@ const PackSizePill: React.FC<{
         isSelected && pillStyles.pillSelected,
       ]}
     >
-      <Text style={[pillStyles.size, isSelected && pillStyles.textSelected]}>
+      <Text style={[pillStyles.size, isSelected && pillStyles.textSelected]} numberOfLines={1}>
         {option.label}
       </Text>
-      <Text style={[pillStyles.discount, isSelected && pillStyles.textSelected]}>
+      <Text style={[pillStyles.discount, isSelected && pillStyles.textSelected]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
         {option.savingsLabel}
       </Text>
     </Pressable>
@@ -86,6 +87,7 @@ const pillStyles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingVertical: spacing.base,
+    paddingHorizontal: spacing.sm,
     borderRadius: radius.md,
     backgroundColor: colors.background.card,
     borderWidth: 1.5,
@@ -323,19 +325,20 @@ export const CustomPackBuilderScreen: React.FC = () => {
         showsVerticalScrollIndicator={false}
       />
 
-      {/* Bottom Bar */}
+      {/* Bottom fog for FAB separation */}
+      <LinearGradient
+        colors={['rgba(247, 247, 247, 0)', 'rgba(247, 247, 247, 0.8)', 'rgba(247, 247, 247, 1)']}
+        locations={[0, 0.4, 1]}
+        style={styles.bottomFog}
+        pointerEvents="none"
+      />
+
+      {/* Full-width FAB with integrated price */}
       <View style={[styles.bottomBar, { paddingBottom: insets.bottom + spacing.base }]}>
-        <View style={styles.priceInfo}>
-          <Text style={styles.priceValue}>${discountedPrice.toFixed(2)}</Text>
-          {savings > 0 && (
-            <Text style={styles.savingsText}>Save ${savings.toFixed(2)}</Text>
-          )}
-        </View>
         <Pressable
           onPress={handleAddPack}
           disabled={selectedIds.size < maxCards}
           {...checkoutPress.pressHandlers}
-          style={{ flex: 1 }}
         >
           <Animated.View style={[
             styles.addPackButton,
@@ -347,6 +350,12 @@ export const CustomPackBuilderScreen: React.FC = () => {
                 ? `Select ${maxCards - selectedIds.size} more`
                 : 'Add Pack to Cart'}
             </Text>
+            {selectedIds.size > 0 && (
+              <Text style={styles.addPackPrice}>
+                ${discountedPrice.toFixed(2)}
+                {savings > 0 ? `  ·  Save $${savings.toFixed(2)}` : ''}
+              </Text>
+            )}
           </Animated.View>
         </Pressable>
       </View>
@@ -413,36 +422,30 @@ const styles = StyleSheet.create({
   gridRow: {
     gap: TILE_GAP,
   },
+  bottomFog: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 120,
+  },
   bottomBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing.base,
-    backgroundColor: colors.background.card,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.border.subtle,
-    gap: spacing.lg,
-  },
-  priceInfo: {
-    alignItems: 'flex-start',
-  },
-  priceValue: {
-    fontSize: typography.sizes.heading,
-    fontWeight: typography.weights.bold,
-    color: colors.text.primary,
-  },
-  savingsText: {
-    fontSize: typography.sizes.meta,
-    fontWeight: typography.weights.medium,
-    color: colors.status.success,
-    marginTop: 1,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingHorizontal: spacing.xl,
+    paddingTop: spacing.lg,
+    backgroundColor: colors.background.page,
   },
   addPackButton: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: 52,
+    paddingVertical: spacing.base,
+    minHeight: 52,
     borderRadius: radius.button,
     backgroundColor: colors.accent.primary,
+    ...shadows.card,
   },
   addPackButtonDisabled: {
     opacity: 0.5,
@@ -451,5 +454,11 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.subtitle,
     fontWeight: typography.weights.bold,
     color: colors.text.inverse,
+  },
+  addPackPrice: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.medium,
+    color: 'rgba(255, 255, 255, 0.85)',
+    marginTop: 2,
   },
 });

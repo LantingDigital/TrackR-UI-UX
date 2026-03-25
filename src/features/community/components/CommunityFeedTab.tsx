@@ -100,7 +100,7 @@ export const CommunityFeedTab = ({ topInset = 0, onShowCompose, onCoasterTap, sc
   const contentContainerStyle = useMemo(
     () => [
       styles.content,
-      { paddingTop: topInset, paddingBottom: insets.bottom + spacing.xxxl },
+      { paddingTop: topInset, paddingBottom: insets.bottom + spacing.lg },
       feed.length === 0 ? styles.emptyContentContainer : undefined,
     ],
     [topInset, insets.bottom, feed.length],

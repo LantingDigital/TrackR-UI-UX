@@ -34,6 +34,7 @@ import { useSpringPress } from '../hooks/useSpringPress';
 import { haptics } from '../services/haptics';
 import { useToast } from '../components/feedback/useToast';
 import { FogHeader } from '../components/FogHeader';
+import { TrackRLogo } from '../components/TrackRLogo';
 
 const HEADER_HEIGHT = 52;
 import {
@@ -370,7 +371,7 @@ export const PerksScreen = () => {
           <View style={styles.proCardInner}>
             <View style={styles.proHeader}>
               <Ionicons name="rocket" size={24} color={colors.accent.primary} />
-              <Text style={styles.proTitle}>TrackR Pro</Text>
+              <TrackRLogo style={styles.proTitle} suffix=" Pro" />
             </View>
             <Text style={styles.proDescription}>
               Unlock the full experience with advanced stats, AI insights, and more.

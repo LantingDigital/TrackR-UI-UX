@@ -56,6 +56,7 @@ import {
   subscribe as subscribeRideLog,
 } from '../stores/rideLogStore';
 import { GlassHeader } from '../components/GlassHeader';
+import { TrackRLogo } from '../components/TrackRLogo';
 
 // ============================================
 // Constants
@@ -583,7 +584,7 @@ export const ProfileScreen = () => {
                   <Text style={styles.proBadgeText}>PRO</Text>
                 </View>
               </View>
-              <Text style={styles.proTitle}>Upgrade to TrackR Pro</Text>
+              <Text style={styles.proTitle}>Upgrade to <TrackRLogo suffix=" Pro" /></Text>
               <Text style={styles.proDescription}>
                 Unlimited ride stats, advanced analytics, custom badges, and ad-free experience.
               </Text>

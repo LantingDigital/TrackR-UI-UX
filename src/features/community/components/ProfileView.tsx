@@ -189,7 +189,7 @@ export function ProfileView() {
       </View>
 
       <ScrollView
-        contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base, paddingBottom: insets.bottom + spacing.xxxl }]}
+        contentContainerStyle={[styles.scrollContent, { paddingTop: headerTotalHeight + spacing.base, paddingBottom: insets.bottom + spacing.lg }]}
         showsVerticalScrollIndicator={false}
       >
         {/* Profile hero */}

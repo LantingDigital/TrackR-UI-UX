@@ -928,7 +928,7 @@ export const LogbookScreen = () => {
       <Animated.ScrollView
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingTop: insets.top + spacing.lg, paddingBottom: insets.bottom + 49 + spacing.xxxl },
+          { paddingTop: insets.top + spacing.lg, paddingBottom: insets.bottom + 49 + spacing.lg },
         ]}
         showsVerticalScrollIndicator={false}
       >
@@ -1049,20 +1049,24 @@ export const LogbookScreen = () => {
 
       {/* Card Shop FAB — bottom left, opposite the log FAB */}
       {activeView === 'Collection' && !anySheetOpen && (
-        <Pressable
-          onPress={() => {
-            haptics.select();
-            navigation.navigate('MerchStore');
-          }}
+        <Animated.View
+          entering={FadeIn.duration(200)}
           style={[
             styles.shopFab,
             { bottom: TAB_BAR_HEIGHT + insets.bottom + spacing.lg },
           ]}
         >
-          <View style={styles.shopFabInner}>
-            <Ionicons name="bag-outline" size={24} color={colors.accent.primary} />
-          </View>
-        </Pressable>
+          <Pressable
+            onPress={() => {
+              haptics.select();
+              navigation.navigate('MerchStore');
+            }}
+          >
+            <View style={styles.shopFabInner}>
+              <Ionicons name="bag-outline" size={24} color={colors.accent.primary} />
+            </View>
+          </Pressable>
+        </Animated.View>
       )}
 
       {/* Log Ride FAB — hidden when any sheet is open */}
