@@ -261,15 +261,9 @@ export function ProfileView() {
           <View style={styles.sectionCard}>
             {profile.recentRatings.map((rating, i) => (
               <View key={`${rating.name}-${i}`} style={[styles.rideRow, i > 0 && styles.rideRowBorder]}>
-                <View style={styles.starsRow}>
-                  {[0, 1, 2, 3, 4].map((s) => (
-                    <Ionicons
-                      key={s}
-                      name={s < rating.rating ? 'star' : 'star-outline'}
-                      size={12}
-                      color={s < rating.rating ? colors.accent.primary : colors.border.subtle}
-                    />
-                  ))}
+                <View style={styles.ratingBadgeSmall}>
+                  <Text style={styles.ratingScoreSmall}>{(rating.rating * 2).toFixed(1)}</Text>
+                  <Text style={styles.ratingMaxSmall}>/10</Text>
                 </View>
                 <Text style={[styles.rideName, { flex: 1, marginLeft: spacing.sm }]}>{rating.name}</Text>
               </View>
@@ -439,9 +433,20 @@ const styles = StyleSheet.create({
     color: colors.text.meta,
   },
 
-  // Stars
-  starsRow: {
+  // Rating badge (replaces stars)
+  ratingBadgeSmall: {
     flexDirection: 'row',
-    gap: 1,
+    alignItems: 'baseline',
+  },
+  ratingScoreSmall: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
+  },
+  ratingMaxSmall: {
+    fontSize: typography.sizes.small,
+    fontWeight: typography.weights.medium,
+    color: colors.text.meta,
+    marginLeft: 1,
   },
 });

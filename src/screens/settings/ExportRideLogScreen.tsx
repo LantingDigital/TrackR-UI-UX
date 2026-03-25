@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
     ...shadows.small,
   },
   exportButtonDisabled: {
-    opacity: 0.7,
+    opacity: 0.4,
   },
   exportButtonText: {
     fontSize: typography.sizes.input,

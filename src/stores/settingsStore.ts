@@ -17,10 +17,18 @@ export type RiderType = 'thrills' | 'data' | 'planner' | 'newbie' | null;
 export type UnitSystem = 'imperial' | 'metric';
 export type PrivacyLevel = 'everyone' | 'friends' | 'private';
 
+export interface NotificationPreferences {
+  reminders: boolean;
+  orders: boolean;
+  social: boolean;
+  marketing: boolean;
+}
+
 interface SettingsState {
   // Device prefs (local only)
   hapticsEnabled: boolean;
   notificationsEnabled: boolean;
+  notificationPrefs: NotificationPreferences;
   hasCompletedOnboarding: boolean;
   designSamplerMode: boolean;
   unitSystem: UnitSystem;
@@ -37,6 +45,7 @@ interface SettingsState {
 interface SettingsActions {
   setHapticsEnabled: (value: boolean) => void;
   setNotificationsEnabled: (value: boolean) => void;
+  setNotificationPref: (key: keyof NotificationPreferences, value: boolean) => void;
   setOnboardingComplete: () => void;
   setRiderType: (type: RiderType) => void;
   setHomeParkName: (name: string | null) => void;
@@ -65,6 +74,7 @@ const useStore = create<SettingsStore>()(
       // Defaults
       hapticsEnabled: true,
       notificationsEnabled: false,
+      notificationPrefs: { reminders: true, orders: true, social: true, marketing: false },
       hasCompletedOnboarding: false,
       designSamplerMode: false,
       unitSystem: 'imperial' as UnitSystem,
@@ -78,6 +88,9 @@ const useStore = create<SettingsStore>()(
       // Actions
       setHapticsEnabled: (value) => set({ hapticsEnabled: value }),
       setNotificationsEnabled: (value) => set({ notificationsEnabled: value }),
+      setNotificationPref: (key, value) => set((state) => ({
+        notificationPrefs: { ...state.notificationPrefs, [key]: value },
+      })),
       setOnboardingComplete: () => set({ hasCompletedOnboarding: true }),
       setRiderType: (type) => set({ riderType: type }),
       setHomeParkName: (name) => set({ homeParkName: name }),
@@ -103,6 +116,7 @@ const useStore = create<SettingsStore>()(
       partialize: (state) => ({
         hapticsEnabled: state.hapticsEnabled,
         notificationsEnabled: state.notificationsEnabled,
+        notificationPrefs: state.notificationPrefs,
         hasCompletedOnboarding: state.hasCompletedOnboarding,
         designSamplerMode: state.designSamplerMode,
         unitSystem: state.unitSystem,
@@ -187,6 +201,7 @@ export function useSettingsStore() {
     initialized: true,
     hapticsEnabled: state.hapticsEnabled,
     notificationsEnabled: state.notificationsEnabled,
+    notificationPrefs: state.notificationPrefs,
     hasCompletedOnboarding: state.hasCompletedOnboarding,
     designSamplerMode: state.designSamplerMode,
     riderType: state.riderType,
@@ -199,6 +214,7 @@ export function useSettingsStore() {
     // Actions
     setHapticsEnabled: state.setHapticsEnabled,
     setNotificationsEnabled: state.setNotificationsEnabled,
+    setNotificationPref: state.setNotificationPref,
     setOnboardingComplete: state.setOnboardingComplete,
     setRiderType: state.setRiderType,
     setHomeParkName: state.setHomeParkName,

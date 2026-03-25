@@ -288,12 +288,13 @@ const styles = StyleSheet.create({
     marginTop: spacing.xxl,
   },
   changeButtonDisabled: {
-    backgroundColor: colors.background.input,
+    backgroundColor: colors.accent.primary,
+    opacity: 0.4,
   },
   changeButtonTextDisabled: {
     fontSize: typography.sizes.body,
     fontWeight: typography.weights.semibold,
-    color: colors.text.meta,
+    color: colors.text.inverse,
   },
   disabledHint: {
     fontSize: typography.sizes.meta,

@@ -129,15 +129,9 @@ function FullPostContent({ item }: { item: FeedItem }) {
     case 'review':
       return (
         <View style={styles.postContent}>
-          <View style={styles.starRow}>
-            {[0, 1, 2, 3, 4].map((i) => (
-              <Ionicons
-                key={i}
-                name={i < item.rating ? 'star' : 'star-outline'}
-                size={16}
-                color={i < item.rating ? colors.accent.primary : colors.border.subtle}
-              />
-            ))}
+          <View style={styles.ratingBadge}>
+            <Text style={styles.ratingScore}>{(item.rating * 2).toFixed(1)}</Text>
+            <Text style={styles.ratingMax}>/10</Text>
           </View>
           <Text style={styles.postCoasterName}>{item.coasterName}</Text>
           <Text style={styles.postParkName}>{item.parkName}</Text>
@@ -429,9 +423,21 @@ const styles = StyleSheet.create({
   postContent: {
     marginTop: spacing.xl,
   },
-  starRow: {
+  ratingBadge: {
     flexDirection: 'row',
-    gap: 3,
+    alignItems: 'baseline',
+    marginBottom: spacing.sm,
+  },
+  ratingScore: {
+    fontSize: typography.sizes.hero,
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
+  },
+  ratingMax: {
+    fontSize: typography.sizes.body,
+    fontWeight: typography.weights.medium,
+    color: colors.text.meta,
+    marginLeft: 2,
   },
   postCoasterName: {
     fontSize: typography.sizes.heading,

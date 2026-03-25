@@ -77,6 +77,7 @@ import { signOut as firebaseSignOut } from '../services/firebase/auth';
 import { callDeleteUserAccount } from '../services/firebase/functions';
 import { stopAllSync } from '../services/firebase/syncController';
 import { useConfirmModal } from '../contexts/ConfirmModalContext';
+import { TrackRLogo } from '../components/TrackRLogo';
 
 // ============================================
 // Constants
@@ -637,11 +638,11 @@ export const SettingsScreen = () => {
               value={hapticsEnabled}
               onValueChange={setHapticsEnabled}
             />
-            <ToggleRow
+            <TappableRow
               icon="notifications-outline"
               label="Notifications"
-              value={notificationsEnabled}
-              onValueChange={setNotificationsEnabled}
+              value={notificationsEnabled ? 'On' : 'Off'}
+              onPress={() => navigation.navigate('NotificationPreferences')}
             />
             <TappableRow
               icon="swap-horizontal-outline"
@@ -769,7 +770,7 @@ export const SettingsScreen = () => {
 
         {/* ── Footer ── */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>TrackR v{APP_VERSION}</Text>
+          <Text style={styles.footerText}><TrackRLogo baseColor={colors.text.meta} /> v{APP_VERSION}</Text>
           <Text style={styles.footerText}>Made with care by Lanting Digital</Text>
         </View>
       </ScrollView>

@@ -64,22 +64,20 @@ interface FeedPostProps {
 
 // ─── Content Renderers ──────────────────────────────────────
 
-const StarRow = ({ rating }: { rating: number }) => (
-  <View style={styles.starRow}>
-    {[0, 1, 2, 3, 4].map((i) => (
-      <Ionicons
-        key={i}
-        name={i < rating ? 'star' : 'star-outline'}
-        size={14}
-        color={i < rating ? colors.accent.primary : colors.border.subtle}
-      />
-    ))}
-  </View>
-);
+const RatingBadge = ({ rating }: { rating: number }) => {
+  // Convert 1-5 star scale to X.X/10 display
+  const score = (rating * 2).toFixed(1);
+  return (
+    <View style={styles.ratingBadge}>
+      <Text style={styles.ratingScore}>{score}</Text>
+      <Text style={styles.ratingMax}>/10</Text>
+    </View>
+  );
+};
 
 const ReviewContent = ({ item, expanded, onMore, onCoasterTap }: { item: ReviewFeedItem; expanded: boolean; onMore: () => void; onCoasterTap?: (coasterId: string, coasterName: string, parkName: string) => void }) => (
   <View style={styles.contentArea}>
-    <StarRow rating={item.rating} />
+    <RatingBadge rating={item.rating} />
     <Pressable
       onPress={() => {
         if (onCoasterTap) {
@@ -365,9 +363,20 @@ const styles = StyleSheet.create({
   },
 
   // Review
-  starRow: {
+  ratingBadge: {
     flexDirection: 'row',
-    gap: 2,
+    alignItems: 'baseline',
+  },
+  ratingScore: {
+    fontSize: typography.sizes.title,
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
+  },
+  ratingMax: {
+    fontSize: typography.sizes.caption,
+    fontWeight: typography.weights.medium,
+    color: colors.text.meta,
+    marginLeft: 1,
   },
   coasterName: {
     fontSize: typography.sizes.body,

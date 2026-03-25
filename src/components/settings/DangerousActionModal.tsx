@@ -21,13 +21,14 @@ import {
   Pressable,
   StyleSheet,
   Dimensions,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedKeyboard,
+  KeyboardState,
   withTiming,
+  interpolate,
   Easing,
   runOnJS,
 } from 'react-native-reanimated';
@@ -131,10 +132,25 @@ export function DangerousActionModal({
     dismiss();
   }, [canConfirm, onConfirm, dismiss]);
 
-  const cardStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-    opacity: opacity.value,
-  }));
+  // Smooth keyboard-driven animation (replaces KeyboardAvoidingView)
+  const keyboard = useAnimatedKeyboard();
+
+  const cardStyle = useAnimatedStyle(() => {
+    // Move card up by half the keyboard height so it stays centered above keyboard
+    const kbTranslate = interpolate(
+      keyboard.height.value,
+      [0, 300],
+      [0, -150],
+      'clamp',
+    );
+    return {
+      transform: [
+        { scale: scale.value },
+        { translateY: kbTranslate },
+      ],
+      opacity: opacity.value,
+    };
+  });
 
   const backdropStyle = useAnimatedStyle(() => ({
     opacity: backdropOpacity.value,
@@ -157,11 +173,7 @@ export function DangerousActionModal({
         </BlurView>
       </Animated.View>
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        style={styles.centerWrap}
-        pointerEvents="box-none"
-      >
+      <View style={styles.centerWrap} pointerEvents="box-none">
         <Animated.View style={[styles.card, cardStyle]}>
           {/* Icon */}
           <View style={[styles.iconCircle, { backgroundColor: iconBgColor }]}>
@@ -230,7 +242,7 @@ export function DangerousActionModal({
             </Pressable>
           </View>
         </Animated.View>
-      </KeyboardAvoidingView>
+      </View>
     </View>
   );
 }

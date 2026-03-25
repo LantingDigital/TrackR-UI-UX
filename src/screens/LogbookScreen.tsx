@@ -23,11 +23,13 @@ import { useNavigation } from '@react-navigation/native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedScrollHandler,
   withTiming,
   withDelay,
   withSpring,
   interpolate,
   interpolateColor,
+  Easing,
   FadeIn,
   type SharedValue,
 } from 'react-native-reanimated';
@@ -626,6 +628,9 @@ export const LogbookScreen = () => {
   const { confirm } = useConfirmModal();
   const [activeView, setActiveView] = useState<ViewMode>('Timeline');
   const headerProgress = useSharedValue(0);
+  const scrollY = useSharedValue(0);
+  const lastScrollY = useSharedValue(0);
+  const headerCollapsed = useSharedValue(0); // 0 = expanded, 1 = collapsed
   const { pressHandlers: fabPressHandlers, animatedStyle: fabAnimatedStyle } = useSpringPress({ scale: 0.9 });
 
   // Rating sheet state
@@ -669,6 +674,36 @@ export const LogbookScreen = () => {
     transform: [
       { translateY: interpolate(headerProgress.value, [0, 1], [-8, 0]) },
     ],
+  }));
+
+  // Scroll-based stats header collapse (direction-aware)
+  const COLLAPSE_THRESHOLD = 40; // px of scroll before collapsing
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      const y = event.contentOffset.y;
+      const dy = y - lastScrollY.value;
+      lastScrollY.value = y;
+      scrollY.value = y;
+
+      // Scrolling down past threshold → collapse stats header
+      if (dy > 2 && y > COLLAPSE_THRESHOLD) {
+        if (headerCollapsed.value !== 1) {
+          headerCollapsed.value = withTiming(1, { duration: 250, easing: Easing.out(Easing.cubic) });
+        }
+      }
+      // Scrolling up → expand stats header
+      else if (dy < -2) {
+        if (headerCollapsed.value !== 0) {
+          headerCollapsed.value = withTiming(0, { duration: 250, easing: Easing.out(Easing.cubic) });
+        }
+      }
+    },
+  });
+
+  const statsCollapseStyle = useAnimatedStyle(() => ({
+    height: interpolate(headerCollapsed.value, [0, 1], [56, 0]),
+    opacity: interpolate(headerCollapsed.value, [0, 1], [1, 0]),
+    overflow: 'hidden' as const,
   }));
 
   // ── Derived data ──
@@ -931,9 +966,12 @@ export const LogbookScreen = () => {
           { paddingTop: insets.top + spacing.lg, paddingBottom: insets.bottom + 49 + spacing.lg },
         ]}
         showsVerticalScrollIndicator={false}
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
+        stickyHeaderIndices={[1]}
       >
-        {/* Stats summary header — no redundant title */}
-        <Animated.View style={[styles.header, headerAnimStyle]}>
+        {/* Stats summary header — collapses on scroll down */}
+        <Animated.View style={[styles.header, headerAnimStyle, statsCollapseStyle]}>
           <View style={styles.headerStats}>
             <View style={styles.headerStatItem}>
               <Text style={styles.headerStatValue}>{creditCount}</Text>
@@ -952,8 +990,10 @@ export const LogbookScreen = () => {
           </View>
         </Animated.View>
 
-        {/* Segmented Control */}
-        <SegmentedControl selected={activeView} onSelect={(v: ViewMode) => { setActiveView(v); }} unratedCount={unratedCount} />
+        {/* Segmented Control — sticky when scrolling */}
+        <View style={styles.segmentedControlSticky}>
+          <SegmentedControl selected={activeView} onSelect={(v: ViewMode) => { setActiveView(v); }} unratedCount={unratedCount} />
+        </View>
 
         {/* View content */}
         {activeView === 'Timeline' && (
@@ -1100,6 +1140,11 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: spacing.xl,
+  },
+  segmentedControlSticky: {
+    backgroundColor: colors.background.page,
+    paddingBottom: spacing.base,
+    zIndex: 10,
   },
 
   // ── Header ──

@@ -13,6 +13,7 @@ import {
   ScrollView,
   Pressable,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -105,18 +106,31 @@ export function CreditsScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
-        {/* Hero Card */}
+        {/* Hero Card — premium branded design */}
         <Animated.View style={heroAnim}>
           <View style={styles.heroCard}>
-            <View style={styles.heroIconCircle}>
-              <Ionicons name="heart" size={32} color={colors.accent.primary} />
+            {/* Accent gradient bar at top */}
+            <LinearGradient
+              colors={[colors.accent.primary, '#E08A8C']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.heroAccentBar}
+            />
+            <View style={styles.heroContent}>
+              {/* TrackR branding — Track in black, R in red */}
+              <Text style={styles.heroTitle}>
+                <Text style={styles.heroTitleTrack}>Track</Text>
+                <Text style={styles.heroTitleR}>R</Text>
+              </Text>
+              <Text style={styles.heroVersion}>Version 1.0.0</Text>
+              <View style={styles.heroDivider} />
+              <Text style={styles.heroBuilt}>Designed and built by</Text>
+              <Text style={styles.heroCompany}>Lanting Digital LLC</Text>
+              <View style={styles.heroLocationRow}>
+                <Ionicons name="location-outline" size={13} color={colors.text.meta} />
+                <Text style={styles.heroLocation}>Riverside, California</Text>
+              </View>
             </View>
-            <Text style={styles.heroTitle}>TrackR</Text>
-            <Text style={styles.heroVersion}>Version 1.0.0</Text>
-            <View style={styles.heroDivider} />
-            <Text style={styles.heroBuilt}>Built with love by</Text>
-            <Text style={styles.heroCompany}>Lanting Digital LLC</Text>
-            <Text style={styles.heroLocation}>Riverside, California</Text>
           </View>
         </Animated.View>
 
@@ -229,28 +243,32 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
   },
 
-  // Hero
+  // Hero — premium branded card
   heroCard: {
     backgroundColor: colors.background.card,
     borderRadius: radius.card,
-    padding: spacing.xxl,
-    alignItems: 'center',
+    overflow: 'hidden',
     ...shadows.section,
   },
-  heroIconCircle: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: colors.accent.primaryLight,
+  heroAccentBar: {
+    height: 4,
+    width: '100%',
+  },
+  heroContent: {
+    padding: spacing.xxl,
     alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: spacing.lg,
   },
   heroTitle: {
     fontSize: typography.sizes.display,
+    letterSpacing: -0.5,
+  },
+  heroTitleTrack: {
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
-    letterSpacing: -0.5,
+  },
+  heroTitleR: {
+    fontWeight: typography.weights.bold,
+    color: colors.accent.primary,
   },
   heroVersion: {
     fontSize: typography.sizes.caption,
@@ -276,11 +294,16 @@ const styles = StyleSheet.create({
     color: colors.accent.primary,
     marginTop: spacing.xs,
   },
+  heroLocationRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    marginTop: spacing.sm,
+  },
   heroLocation: {
     fontSize: typography.sizes.caption,
     fontWeight: typography.weights.regular,
     color: colors.text.meta,
-    marginTop: spacing.xs,
   },
 
   // Section

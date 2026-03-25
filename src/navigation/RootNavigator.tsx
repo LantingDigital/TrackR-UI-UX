@@ -26,6 +26,7 @@ import { PasswordScreen } from '../screens/settings/PasswordScreen';
 import { TermsScreen } from '../screens/settings/TermsScreen';
 import { PrivacyPolicyScreen } from '../screens/settings/PrivacyPolicyScreen';
 import { CreditsScreen } from '../screens/settings/CreditsScreen';
+import { NotificationPreferencesScreen } from '../screens/settings/NotificationPreferencesScreen';
 import { SavedArticlesScreen } from '../screens/SavedArticlesScreen';
 import { PerksScreen } from '../screens/PerksScreen';
 import { ParkDetailScreen } from '../screens/ParkDetailScreen';
@@ -267,6 +268,14 @@ export const RootNavigator = () => {
                     <Stack.Screen
                       name="Credits"
                       component={CreditsScreen}
+                      options={{
+                        animation: 'slide_from_right',
+                        gestureEnabled: true,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="NotificationPreferences"
+                      component={NotificationPreferencesScreen}
                       options={{
                         animation: 'slide_from_right',
                         gestureEnabled: true,

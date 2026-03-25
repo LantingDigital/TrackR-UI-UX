@@ -26,6 +26,7 @@ import { colors } from '../../../../theme/colors';
 import { typography } from '../../../../theme/typography';
 import { spacing } from '../../../../theme/spacing';
 import { haptics } from '../../../../services/haptics';
+import { TrackRLogo } from '../../../../components/TrackRLogo';
 import {
   SubScreenHeader,
   GameSectionHeader,
@@ -146,7 +147,7 @@ export const BlindRankingSettingsContent: React.FC<BlindRankingSettingsContentPr
       <Reanimated.View style={[StyleSheet.absoluteFill, styles.subScreenOverlay, aboutStyle]}>
         <SubScreenHeader title="About" onBack={navigateBack} />
         <View style={styles.aboutContent}>
-          <Text style={styles.aboutAppName}>TrackR</Text>
+          <TrackRLogo style={styles.aboutAppName} />
           <Text style={styles.aboutTagline}>Your pocket companion for roller coaster enthusiasts.</Text>
           <View style={styles.aboutVersionRow}>
             <Text style={styles.aboutVersionLabel}>Version</Text>

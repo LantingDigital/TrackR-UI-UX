@@ -733,10 +733,10 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
   // Step 1: Pass type selection (vertical card list)
   // =============================================
   const TYPE_SELECT_OPTIONS: { type: PassType; label: string; icon: keyof typeof Ionicons.glyphMap; description: string }[] = [
-    { type: 'annual_pass', label: 'Annual Pass', icon: 'calendar', description: 'Year-round park access' },
-    { type: 'season_pass', label: 'Season Pass', icon: 'sunny', description: 'Specific season or date range' },
-    { type: 'day_pass', label: 'Day Pass', icon: 'ticket', description: 'Single day admission' },
-    { type: 'express', label: 'Express / VIP', icon: 'flash', description: 'Skip-the-line or premium add-on' },
+    { type: 'annual_pass', label: 'Annual Pass', icon: 'calendar', description: 'Calendar year (Jan-Dec) or 365 days from purchase' },
+    { type: 'season_pass', label: 'Season Pass', icon: 'sunny', description: 'Specific operating season with set start/end dates' },
+    { type: 'day_pass', label: 'Day Pass', icon: 'ticket', description: 'Single day or multi-day admission ticket' },
+    { type: 'express', label: 'Express / VIP', icon: 'flash', description: 'Skip-the-line, FastPass, or premium add-on' },
   ];
 
   // Track which card is selected (user must tap Continue to advance)
@@ -1136,9 +1136,6 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       keyboardDismissMode="interactive"
     >
       <View style={styles.manualStepHeader}>
-        <View style={styles.manualStepNumberBadge}>
-          <Text style={styles.manualStepNumberText}>1</Text>
-        </View>
         <Text style={styles.manualStepTitle}>Barcode Information</Text>
         <Text style={styles.manualStepSubtitle}>
           Enter the number from your pass barcode
@@ -1246,10 +1243,15 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         </Text>
       </View>
 
-      {/* Continue button */}
+      {/* Continue button — validates barcode before proceeding */}
       <Pressable
         style={styles.primaryButton}
         onPress={() => {
+          if (!manualBarcodeNumber.trim()) {
+            setBarcodeValidationError('Please enter a barcode or pass number');
+            haptics.error();
+            return;
+          }
           haptics.select();
           navigateToStep('manual_park', true);
           setStep('manual_park');
@@ -1278,9 +1280,6 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       keyboardDismissMode="interactive"
     >
       <View style={styles.manualStepHeader}>
-        <View style={styles.manualStepNumberBadge}>
-          <Text style={styles.manualStepNumberText}>2</Text>
-        </View>
         <Text style={styles.manualStepTitle}>Select Your Park</Text>
         <Text style={styles.manualStepSubtitle}>
           Search for your park and select the chain
@@ -1404,9 +1403,6 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       keyboardDismissMode="interactive"
     >
       <View style={styles.manualStepHeader}>
-        <View style={styles.manualStepNumberBadge}>
-          <Text style={styles.manualStepNumberText}>3</Text>
-        </View>
         <Text style={styles.manualStepTitle}>Pass Details</Text>
         <Text style={styles.manualStepSubtitle}>
           Select the pass type and date information
@@ -1722,9 +1718,6 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
         contentContainerStyle={styles.manualStepContent}
       >
         <View style={styles.manualStepHeader}>
-          <View style={[styles.manualStepNumberBadge, { backgroundColor: colors.status.success }]}>
-            <Ionicons name="checkmark" size={16} color="#FFFFFF" />
-          </View>
           <Text style={styles.manualStepTitle}>Review Your Pass</Text>
           <Text style={styles.manualStepSubtitle}>
             Make sure everything looks right before saving

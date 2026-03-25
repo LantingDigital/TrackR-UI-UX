@@ -32,6 +32,8 @@ interface TabBarContextValue {
   tabBarTranslateY: SharedValue<number>;
   hideTabBar: (duration?: number) => void;
   showTabBar: (duration?: number) => void;
+  /** Force-show the tab bar, resetting all hide state. Use as safety net. */
+  forceShowTabBar: (duration?: number) => void;
 
   // Screen reset
   registerResetHandler: (screenName: string, handler: ScreenResetHandler) => void;
@@ -68,6 +70,11 @@ export const TabBarProvider: React.FC<TabBarProviderProps> = ({ children }) => {
     }
   }, [tabBarTranslateY]);
 
+  const forceShowTabBar = useCallback((duration: number = 150) => {
+    hideCount.current = 0;
+    tabBarTranslateY.value = withTiming(0, { duration });
+  }, [tabBarTranslateY]);
+
   const registerResetHandler = useCallback((screenName: string, handler: ScreenResetHandler) => {
     resetHandlers.current.set(screenName, handler);
   }, []);
@@ -92,6 +99,7 @@ export const TabBarProvider: React.FC<TabBarProviderProps> = ({ children }) => {
       tabBarTranslateY,
       hideTabBar,
       showTabBar,
+      forceShowTabBar,
       registerResetHandler,
       unregisterResetHandler,
       resetScreen,
@@ -101,6 +109,7 @@ export const TabBarProvider: React.FC<TabBarProviderProps> = ({ children }) => {
       tabBarTranslateY,
       hideTabBar,
       showTabBar,
+      forceShowTabBar,
       registerResetHandler,
       unregisterResetHandler,
       resetScreen,
@@ -135,21 +144,33 @@ export const useTabBarContext = (): TabBarContextValue => {
 /**
  * Hook to auto-hide/show the tab bar when a bottom sheet is visible.
  * Hides on open (300ms), shows on dismiss (150ms — snappy return).
+ * Includes unmount cleanup to prevent orphaned hides.
  *
  * Usage:
  *   useSheetTabBar(sheetVisible);
  */
 export function useSheetTabBar(visible: boolean) {
   const ctx = useContext(TabBarContext);
-  const wasVisible = useRef(false);
+  const isHiding = useRef(false);
 
   useEffect(() => {
     if (!ctx) return;
-    if (visible && !wasVisible.current) {
+    if (visible && !isHiding.current) {
+      isHiding.current = true;
       ctx.hideTabBar(300);
-    } else if (!visible && wasVisible.current) {
+    } else if (!visible && isHiding.current) {
+      isHiding.current = false;
       ctx.showTabBar(150);
     }
-    wasVisible.current = visible;
   }, [visible, ctx]);
+
+  // Safety: on unmount, always restore tab bar if we were hiding it
+  useEffect(() => {
+    return () => {
+      if (isHiding.current && ctx) {
+        ctx.showTabBar(0);
+        isHiding.current = false;
+      }
+    };
+  }, [ctx]);
 }

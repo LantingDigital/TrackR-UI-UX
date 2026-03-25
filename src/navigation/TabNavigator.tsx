@@ -90,6 +90,8 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
 
         const onPress = () => {
           haptics.tap();
+          // Safety: force-show tab bar on any tab press (fixes orphaned hides)
+          tabBarContext.forceShowTabBar(0);
           if (name === 'Community') {
             // Open as transparent modal overlay (so Home stays visible behind)
             navigation.navigate('CommunityOverlay');
@@ -129,11 +131,20 @@ const AnimatedTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
  * Tab navigator using React Navigation v7 with fade animation
  */
 export const TabNavigator = () => {
+  const tabBarCtx = useTabBar();
+
   return (
     <Tab.Navigator
       tabBar={(props) => <AnimatedTabBar {...props} />}
       screenOptions={{
         headerShown: false,
+      }}
+      screenListeners={{
+        focus: () => {
+          // Safety: whenever a tab screen gains focus, ensure tab bar is visible.
+          // Catches cases where a pushed screen hid the tab bar but didn't restore it.
+          tabBarCtx?.forceShowTabBar(150);
+        },
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
