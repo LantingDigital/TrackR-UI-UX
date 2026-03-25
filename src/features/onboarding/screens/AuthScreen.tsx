@@ -5,7 +5,6 @@ import {
   Text,
   Pressable,
   ActivityIndicator,
-  Alert,
   Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -28,6 +27,7 @@ import {
   signInWithGoogle,
   signInWithApple,
 } from '../../../services/firebase/auth';
+import { useConfirmModal } from '../../../contexts/ConfirmModalContext';
 
 const ACCENT = colors.accent.primary;
 const ACCENT_DARK = '#B85557';
@@ -49,6 +49,7 @@ interface AuthScreenProps {
 
 export const AuthScreen: React.FC<AuthScreenProps> = ({ onComplete, onSkip }) => {
   const insets = useSafeAreaInsets();
+  const { alert: showAlert } = useConfirmModal();
   const [loadingProvider, setLoadingProvider] = useState<'apple' | 'google' | null>(null);
 
   const applePress = useStrongPress({ disabled: loadingProvider !== null });
@@ -149,10 +150,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onComplete, onSkip }) =>
         result.error?.code !== 'auth/apple-cancelled' &&
         result.error?.code !== 'auth/apple-not-supported'
       ) {
-        Alert.alert('Sign In Error', result.error?.message ?? 'Something went wrong.');
+        showAlert({ title: 'Sign In Error', message: result.error?.message ?? 'Something went wrong.' });
       }
     } catch {
-      Alert.alert('Sign In Error', 'An unexpected error occurred.');
+      showAlert({ title: 'Sign In Error', message: 'An unexpected error occurred.' });
     } finally {
       setLoadingProvider(null);
     }
@@ -166,10 +167,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onComplete, onSkip }) =>
       if (result.success) {
         onComplete();
       } else if (result.error?.code !== 'auth/google-cancelled') {
-        Alert.alert('Sign In Error', result.error?.message ?? 'Something went wrong.');
+        showAlert({ title: 'Sign In Error', message: result.error?.message ?? 'Something went wrong.' });
       }
     } catch {
-      Alert.alert('Sign In Error', 'An unexpected error occurred.');
+      showAlert({ title: 'Sign In Error', message: 'An unexpected error occurred.' });
     } finally {
       setLoadingProvider(null);
     }

@@ -15,7 +15,6 @@ import {
   StyleSheet,
   Pressable,
   Dimensions,
-  Alert,
   ActivityIndicator,
 } from 'react-native';
 import Animated, {
@@ -36,6 +35,7 @@ import { colors } from '../../theme/colors';
 import { spacing } from '../../theme/spacing';
 import { radius } from '../../theme/radius';
 import { BarcodeFormat } from '../../types/wallet';
+import { SettingsBottomSheet } from '../settings/SettingsBottomSheet';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const SCANNER_SIZE = SCREEN_WIDTH * 0.75;
@@ -82,6 +82,11 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
   const [isScanned, setIsScanned] = useState(false);
   const [flashEnabled, setFlashEnabled] = useState(false);
   const [isProcessingImage, setIsProcessingImage] = useState(false);
+  const [noBarcodeSheet, setNoBarcodeSheet] = useState(false);
+  const [scanFailedSheet, setScanFailedSheet] = useState(false);
+  const [errorSheet, setErrorSheet] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [pendingImageUri, setPendingImageUri] = useState('');
 
   // Reanimated shared values
   const cancelScale = useSharedValue(1);
@@ -147,45 +152,23 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
         } else {
           // No barcode found in the image
           haptics.warning();
-
+          setPendingImageUri(imageUri);
           if (onImageOnlyFallback) {
-            Alert.alert(
-              'No Barcode Found',
-              'We could not detect a barcode in this image. Would you like to save it as an image-only pass?',
-              [
-                { text: 'Cancel', style: 'cancel' },
-                {
-                  text: 'Save as Image',
-                  onPress: () => onImageOnlyFallback(imageUri),
-                },
-              ],
-            );
+            setNoBarcodeSheet(true);
           } else {
-            Alert.alert(
-              'No Barcode Found',
-              'We could not detect a barcode in this image. Try a clearer photo or scan directly with the camera.',
-              [{ text: 'OK' }],
-            );
+            setErrorMessage('We could not detect a barcode in this image. Try a clearer photo or scan directly with the camera.');
+            setErrorSheet(true);
           }
         }
       } catch (scanError) {
         console.error('Error scanning image for barcodes:', scanError);
         haptics.error();
-
+        setPendingImageUri(imageUri);
         if (onImageOnlyFallback) {
-          Alert.alert(
-            'Scan Failed',
-            'Could not process this image. Would you like to save it as an image-only pass?',
-            [
-              { text: 'Cancel', style: 'cancel' },
-              {
-                text: 'Save as Image',
-                onPress: () => onImageOnlyFallback(imageUri),
-              },
-            ],
-          );
+          setScanFailedSheet(true);
         } else {
-          Alert.alert('Scan Failed', 'Could not process this image. Try a different photo.');
+          setErrorMessage('Could not process this image. Try a different photo.');
+          setErrorSheet(true);
         }
       } finally {
         setIsProcessingImage(false);
@@ -193,7 +176,8 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
     } catch (error) {
       console.error('Error picking image:', error);
       setIsProcessingImage(false);
-      Alert.alert('Error', 'Failed to pick image from library');
+      setErrorMessage('Failed to pick image from library.');
+      setErrorSheet(true);
     }
   }, [onScan, onImageOnlyFallback]);
 
@@ -358,6 +342,50 @@ export const CameraScanner: React.FC<CameraScannerProps> = ({
           </View>
         </View>
       )}
+
+      {/* No Barcode Found — save as image? */}
+      <SettingsBottomSheet
+        visible={noBarcodeSheet}
+        onClose={() => setNoBarcodeSheet(false)}
+        title="No Barcode Found"
+        warning
+        warningMessage="We could not detect a barcode in this image. Would you like to save it as an image-only pass?"
+        warningIcon="scan-outline"
+        confirmLabel="Save as Image"
+        cancelLabel="Cancel"
+        onConfirm={() => {
+          setNoBarcodeSheet(false);
+          if (pendingImageUri && onImageOnlyFallback) onImageOnlyFallback(pendingImageUri);
+        }}
+      />
+
+      {/* Scan Failed — save as image? */}
+      <SettingsBottomSheet
+        visible={scanFailedSheet}
+        onClose={() => setScanFailedSheet(false)}
+        title="Scan Failed"
+        warning
+        warningMessage="Could not process this image. Would you like to save it as an image-only pass?"
+        warningIcon="alert-circle-outline"
+        confirmLabel="Save as Image"
+        cancelLabel="Cancel"
+        onConfirm={() => {
+          setScanFailedSheet(false);
+          if (pendingImageUri && onImageOnlyFallback) onImageOnlyFallback(pendingImageUri);
+        }}
+      />
+
+      {/* Generic error */}
+      <SettingsBottomSheet
+        visible={errorSheet}
+        onClose={() => setErrorSheet(false)}
+        title="Error"
+        warning
+        warningMessage={errorMessage}
+        warningIcon="alert-circle-outline"
+        confirmLabel="OK"
+        onConfirm={() => setErrorSheet(false)}
+      />
     </View>
   );
 };

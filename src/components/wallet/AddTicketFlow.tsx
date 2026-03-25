@@ -385,6 +385,10 @@ export const AddTicketFlow: React.FC<AddTicketFlowProps> = ({
       setManualBarcodeNumber('');
       setManualBarcodeFormat('auto');
       setBarcodeValidationError('');
+      setParkValidationError('');
+      setNoBarcodeSheetVisible(false);
+      setDuplicateSheetVisible(false);
+      setErrorSheetVisible(false);
       setSelectedType(null);
       selectedTypeIndex.value = -1;
       continueButtonAnim.value = 0;
