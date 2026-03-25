@@ -196,23 +196,27 @@ export const RateRidesScreen: React.FC = () => {
     haptics.tap();
     setRatingTarget(item);
     setSheetVisible(true);
-  }, []);
+    fadeContentOut();
+  }, [fadeContentOut]);
 
   const handleRatingClose = useCallback(() => {
-    // Let RatingSheet animate out and call showTabBar internally
+    // Fade content back in IMMEDIATELY — runs during sheet close animation
+    fadeContentIn();
     setSheetVisible(false);
     // Clear target after RatingSheet has time to unmount cleanly
     setTimeout(() => setRatingTarget(null), 400);
-  }, []);
+  }, [fadeContentIn]);
 
   const handleRatingComplete = useCallback((_rating: CoasterRating) => {
-    // Close sheet + rebuild items (celebration already played inside RatingSheet)
+    // Fade content back in during sheet close animation
+    fadeContentIn();
     setSheetVisible(false);
+    // Rebuild items AFTER fade-in completes so FlatList doesn't re-render mid-fade
     setTimeout(() => {
       setRatingTarget(null);
       setItems(buildItems());
-    }, 400);
-  }, [buildItems]);
+    }, 750);
+  }, [buildItems, fadeContentIn]);
 
   // ── Auto-close when all caught up ──
   useEffect(() => {
@@ -284,9 +288,22 @@ export const RateRidesScreen: React.FC = () => {
   const SUBTITLE_HEIGHT = pendingCount > 0 ? 32 : 0;
   const headerTotalHeight = insets.top + 52 + SUBTITLE_HEIGHT;
 
+  // Simple opacity fade — content hides/shows when sheet opens/closes
+  const contentOpacity = useSharedValue(1);
+  const fadeContentOut = useCallback(() => {
+    contentOpacity.value = withTiming(0, { duration: 200 });
+  }, []);
+  const fadeContentIn = useCallback(() => {
+    contentOpacity.value = withTiming(1, { duration: 400 });
+  }, []);
+  const contentFadeStyle = useAnimatedStyle(() => ({
+    opacity: contentOpacity.value,
+  }));
+
   return (
     <View style={styles.container}>
       {/* ── Grid or Empty State ── */}
+      <Animated.View style={[{ flex: 1 }, contentFadeStyle]}>
       {pendingCount === 0 ? (
         <EmptyState />
       ) : (
@@ -328,6 +345,7 @@ export const RateRidesScreen: React.FC = () => {
           </Text>
         </Animated.View>
       )}
+      </Animated.View>
 
       {/* ── Rating Sheet (kept mounted, visibility controlled via prop) ── */}
       {ratingTarget && (
@@ -339,6 +357,7 @@ export const RateRidesScreen: React.FC = () => {
           existingRating={getRatingForCoaster(ratingTarget.coasterId)}
           onClose={handleRatingClose}
           onComplete={handleRatingComplete}
+          onDismissStart={fadeContentIn}
         />
       )}
     </View>

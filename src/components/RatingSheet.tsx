@@ -140,6 +140,8 @@ interface RatingSheetProps {
   existingRating?: CoasterRating;
   onClose: () => void;
   onComplete: (rating: CoasterRating) => void;
+  /** Fires immediately when dismiss animation BEGINS (not when it finishes) */
+  onDismissStart?: () => void;
 }
 
 // ============================================
@@ -152,6 +154,7 @@ export function RatingSheet({
   coasterName,
   parkName,
   existingRating,
+  onDismissStart,
   onClose,
   onComplete,
 }: RatingSheetProps) {
@@ -260,6 +263,7 @@ export function RatingSheet({
     Keyboard.dismiss();
     setIsDismissing(true);
     tabBar?.showTabBar();
+    onDismissStart?.();
     translateY.value = withTiming(sheetHeight, { duration: 300 }, (finished) => {
       if (finished) runOnJS(onClose)();
     });
@@ -321,10 +325,10 @@ export function RatingSheet({
 
   // Scroll to end when keyboard opens so notes input is fully visible above keyboard
   useEffect(() => {
-    const sub = Keyboard.addListener('keyboardDidShow', () => {
+    const sub = Keyboard.addListener('keyboardWillShow', () => {
       setTimeout(() => {
         scrollRef.current?.scrollToEnd({ animated: true });
-      }, 100);
+      }, 200);
     });
     return () => sub.remove();
   }, []);
