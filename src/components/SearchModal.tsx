@@ -15,7 +15,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { GlassHeader } from './GlassHeader';
 import Animated, {
   SharedValue,
   useSharedValue,
@@ -423,9 +423,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       const searchBarPadding = 60 + 56 + 16;
 
       return (
+        <View style={styles.sectionsOnlyContainer}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={styles.sectionsOnlyContainer}
+          style={{ flex: 1 }}
         >
           <ScrollView
             style={styles.embeddedContent}
@@ -697,30 +698,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             <View style={{ height: 100 }} />
           </ScrollView>
 
-          {/* Fog gradient — approved GlassHeader S-curve */}
-          <LinearGradient
-            colors={[
-              'rgba(240,238,235,0.88)',
-              'rgba(240,238,235,0.82)',
-              'rgba(240,238,235,0.70)',
-              'rgba(240,238,235,0.52)',
-              'rgba(240,238,235,0.32)',
-              'rgba(240,238,235,0.15)',
-              'rgba(240,238,235,0.05)',
-              'rgba(240,238,235,0.01)',
-              'rgba(240,238,235,0)',
-            ]}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: 120,
-              zIndex: 40,
-              pointerEvents: 'none',
-            }}
-          />
         </KeyboardAvoidingView>
+
+        {/* Fog — real GlassHeader, sibling to KAV like Settings does it */}
+        <GlassHeader headerHeight={insets.top + 52} fadeDistance={60} zIndex={40} />
+        </View>
       );
     }
 

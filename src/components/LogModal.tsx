@@ -12,7 +12,7 @@ import {
   Keyboard,
   Image,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { GlassHeader } from './GlassHeader';
 import Animated, {
   SharedValue,
   useSharedValue,
@@ -652,29 +652,8 @@ export const LogModal: React.FC<LogModalProps> = ({
             <View style={{ height: 100 }} />
           </ScrollView>
 
-          {/* Fog gradient — approved GlassHeader S-curve */}
-          <LinearGradient
-            colors={[
-              'rgba(240,238,235,0.88)',
-              'rgba(240,238,235,0.82)',
-              'rgba(240,238,235,0.70)',
-              'rgba(240,238,235,0.52)',
-              'rgba(240,238,235,0.32)',
-              'rgba(240,238,235,0.15)',
-              'rgba(240,238,235,0.05)',
-              'rgba(240,238,235,0.01)',
-              'rgba(240,238,235,0)',
-            ]}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: 120,
-              zIndex: 40,
-              pointerEvents: 'none',
-            }}
-          />
+          {/* Fog — real GlassHeader component */}
+          <GlassHeader headerHeight={50} fadeDistance={60} zIndex={40} />
         </KeyboardAvoidingView>
       );
     }
