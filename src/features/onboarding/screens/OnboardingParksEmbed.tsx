@@ -61,6 +61,10 @@ const CEDAR_POINT_WAIT_TIMES: WaitTimeEntry[] = [
   { id: 'val', name: 'Valravn', waitMinutes: 25, isOpen: true },
   { id: 'gem', name: 'Gemini', waitMinutes: 10, isOpen: true },
   { id: 'gk', name: 'GateKeeper', waitMinutes: 20, isOpen: true },
+  { id: 'mag', name: 'Magnum XL-200', waitMinutes: 5, isOpen: true },
+  { id: 'rg', name: 'Rougarou', waitMinutes: 10, isOpen: true },
+  { id: 'wm', name: 'Wild Mouse', waitMinutes: 15, isOpen: true },
+  { id: 'iron', name: 'Iron Dragon', waitMinutes: 5, isOpen: true },
 ];
 
 function getWaitColor(minutes: number, isOpen: boolean): string {
@@ -285,12 +289,19 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
 
     t = 1800;
 
-    // ── Phase 2: Wait time carousel scroll (slow with pause at each end) ──
+    // ── Phase 2: Wait time carousel scroll (slow scroll with pauses) ──
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
-      wtScrollRef.current?.scrollTo({ x: 250, animated: true });
+      wtScrollRef.current?.scrollTo({ x: 200, animated: true });
     }, t);
-    t += 2500; // pause at scrolled position
+    t += 2000;
+
+    // Second scroll — show more rides
+    scheduleTimer(() => {
+      if (!demoActiveRef.current) return;
+      wtScrollRef.current?.scrollTo({ x: 450, animated: true });
+    }, t);
+    t += 3000; // longer pause at end
 
     scheduleTimer(() => {
       if (!demoActiveRef.current) return;
@@ -424,8 +435,8 @@ export const OnboardingParksEmbed: React.FC<OnboardingParksEmbedProps> = ({ isAc
             pillBorderRadius={radius.pill}
             pillStyle={{ backgroundColor: colors.accent.primary }}
             expandedContent={<SwitcherContent highlightIndex={highlightIndex} />}
-            expandedWidth={SCREEN_WIDTH - 32}
-            expandedHeight={420}
+            expandedWidth={SCREEN_WIDTH - 48}
+            expandedHeight={350}
             expandedBorderRadius={radius.card}
             expandedStyle={{ backgroundColor: colors.background.card }}
             backdropType="blur"
@@ -693,7 +704,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background.page,
     overflow: 'hidden',
-    paddingTop: 60, // space for dynamic island + breathing room below notch
+    paddingTop: 74, // generous space below dynamic island/notch
   },
 
   // ── Header ──
@@ -772,7 +783,7 @@ const styles = StyleSheet.create({
 
   // ── Wait Times ──
   waitTimesContainer: {
-    paddingHorizontal: spacing.xl,
+    paddingHorizontal: spacing.lg,
   },
   waitTimesCardBg: {
     ...StyleSheet.absoluteFillObject,
@@ -1014,7 +1025,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingBottom: spacing.xxxl,
     paddingTop: spacing.md,
-    maxHeight: '92%',
+    maxHeight: '100%',
+    flex: 1,
     ...shadows.modal,
   },
   overlayDragHandle: {

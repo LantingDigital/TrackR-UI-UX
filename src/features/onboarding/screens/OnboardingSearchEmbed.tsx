@@ -1252,30 +1252,16 @@ export const OnboardingSearchEmbed: React.FC<OnboardingSearchEmbedProps> = ({ is
       t = runLogSequence('maverick', 'Maverick', 'logPill', t);
 
       // === BETWEEN SEQUENCES: Header collapse + feed scroll ===
-      // Collapse uses withTiming (decisive, no bounce) with staggered buttons
+      // Collapse uses withSpring with staggered buttons — subtle overshoot like real MorphingPill
       scheduleTimer(() => {
         if (!demoActiveRef.current) return;
-        reanimatedProgress.value = withTiming(0, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
-        buttonProgress0.value = withTiming(0, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
-        buttonProgress1.value = withDelay(60, withTiming(0, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        }));
-        buttonProgress2.value = withDelay(120, withTiming(0, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        }));
+        const collapseSpring = { damping: 20, stiffness: 200, mass: 0.9 };
+        reanimatedProgress.value = withSpring(0, collapseSpring);
+        buttonProgress0.value = withSpring(0, collapseSpring);
+        buttonProgress1.value = withDelay(60, withSpring(0, collapseSpring));
+        buttonProgress2.value = withDelay(120, withSpring(0, collapseSpring));
         // Simulate feed scrolling up slightly
-        feedScrollTranslateY.value = withTiming(-40, {
-          duration: 500,
-          easing: ReanimatedEasing.out(ReanimatedEasing.cubic),
-        });
+        feedScrollTranslateY.value = withSpring(-40, collapseSpring);
       }, t);
 
       // Wait 2500ms between sequences (header collapse + pause)
@@ -2809,7 +2795,7 @@ const styles = StyleSheet.create({
   demoSearchIcon: {
     width: 36,
     height: 36,
-    borderRadius: 18,
+    borderRadius: 6,
     backgroundColor: 'rgba(207, 103, 105, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -2819,7 +2805,7 @@ const styles = StyleSheet.create({
   demoSearchImage: {
     width: 36,
     height: 36,
-    borderRadius: 18,
+    borderRadius: 6,
   },
   demoSearchName: {
     fontSize: 16,
@@ -2920,7 +2906,7 @@ const styles = StyleSheet.create({
   richResultIconWrap: {
     width: 30,
     height: 30,
-    borderRadius: 15,
+    borderRadius: 5,
     backgroundColor: 'rgba(207, 103, 105, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -2930,7 +2916,7 @@ const styles = StyleSheet.create({
   richResultImage: {
     width: 30,
     height: 30,
-    borderRadius: 15,
+    borderRadius: 5,
   },
   richResultName: {
     fontSize: 16,

@@ -903,24 +903,26 @@ export const OnboardingCommunityEmbed: React.FC<Props> = ({ isActive }) => {
         {renderFriendsTab()}
         {renderRankingsTab()}
         {renderPlayTab()}
-
-        {/* Fog gradient — matches GlassHeader S-curve from design-taste.md */}
-        <LinearGradient
-          colors={[
-            'rgba(247,247,247,0.88)',
-            'rgba(247,247,247,0.82)',
-            'rgba(247,247,247,0.70)',
-            'rgba(247,247,247,0.52)',
-            'rgba(247,247,247,0.32)',
-            'rgba(247,247,247,0.15)',
-            'rgba(247,247,247,0.05)',
-            'rgba(247,247,247,0.01)',
-            'rgba(247,247,247,0)',
-          ]}
-          style={s.fogGradient}
-          pointerEvents="none"
-        />
       </View>
+
+      {/* Fog gradient — covers from top of screen (status bar) through header, absolute on container */}
+      <LinearGradient
+        colors={[
+          'rgba(247,247,247,1)',
+          'rgba(247,247,247,1)',
+          'rgba(247,247,247,1)',
+          'rgba(247,247,247,0.97)',
+          'rgba(247,247,247,0.93)',
+          'rgba(247,247,247,0.85)',
+          'rgba(247,247,247,0.65)',
+          'rgba(247,247,247,0.30)',
+          'rgba(247,247,247,0.08)',
+          'rgba(247,247,247,0.02)',
+          'rgba(247,247,247,0)',
+        ]}
+        style={s.fogGradient}
+        pointerEvents="none"
+      />
     </View>
   );
 };
@@ -932,14 +934,14 @@ const s = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background.page,
     overflow: 'hidden',
-    paddingTop: 46, // clear dynamic island — reduced to fill under status bar
+    paddingTop: 0, // no padding — fog covers status bar area, topBar handles its own top offset
   },
 
   // ── Top bar ──
   topBar: {
+    paddingTop: 72, // generous clearance below dynamic island
     paddingBottom: spacing.sm,
     zIndex: 10,
-    backgroundColor: 'rgba(247, 247, 247, 0.88)',
   },
   topBarRow: {
     flexDirection: 'row',
@@ -980,13 +982,13 @@ const s = StyleSheet.create({
     backgroundColor: ACCENT,
   },
 
-  // ── Fog gradient ──
+  // ── Fog gradient — absolute on container, covers from top of screen through header + fade
   fogGradient: {
     position: 'absolute',
-    top: 0,
+    top: 14, // shifted down to match lowered header
     left: 0,
     right: 0,
-    height: 60,
+    height: 180,
     zIndex: 5,
   },
 

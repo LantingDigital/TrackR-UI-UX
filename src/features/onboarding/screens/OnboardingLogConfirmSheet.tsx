@@ -992,7 +992,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    top: '55%', // starts below where stats end after lift — centers in the revealed gap
+    top: '62%', // centered in the gap revealed by content lift — lower to account for -90 LIFT_AMOUNT
     justifyContent: 'center',
     alignItems: 'center',
   },

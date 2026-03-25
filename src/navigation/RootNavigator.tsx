@@ -75,9 +75,11 @@ export const RootNavigator = () => {
     user?.authProvider === 'email' &&
     !user?.emailVerified;
 
-  // Skip onboarding if user is authenticated with verified email (or OAuth)
-  // OR if they previously completed onboarding (browse-without-account mode)
-  const showApp = (hasCompletedOnboarding || isAuthenticated) && !hasUnverifiedEmail;
+  // hasCompletedOnboarding is the primary gate. When dev tools (rocket button,
+  // reset onboarding) set it to false, onboarding MUST show regardless of auth state.
+  // Auth state is used ONLY to auto-complete onboarding on first launch when
+  // a returning user's Firebase session is restored on a new device.
+  const showApp = hasCompletedOnboarding && !hasUnverifiedEmail;
 
   return (
     <NavigationContainer theme={navTheme}>

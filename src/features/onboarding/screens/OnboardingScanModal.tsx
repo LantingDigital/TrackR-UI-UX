@@ -13,6 +13,7 @@ import {
   ScrollView,
   Pressable,
   ImageSourcePropType,
+  Dimensions,
 } from 'react-native';
 import { FadeInImage } from '../../../components/FadeInImage';
 import Animated, {
@@ -33,10 +34,9 @@ import { radius } from '../../../theme/radius';
 import { shadows } from '../../../theme/shadows';
 import { CARD_ART } from '../../../data/cardArt';
 
-// Card dimensions — match real ScanModal (120px for favorites/tickets/passes)
-const CARD_WIDTH = 120;
-const CARD_HEIGHT = 120;
-const CARD_GAP = 8; // spacing.md
+// Card dimensions — SQUARE, scaled down for onboarding frame
+const CARD_SIZE = 100;
+const CARD_GAP = 8;
 
 // ============================================
 // Card Art Mapping (ticket id -> card art asset)
@@ -218,8 +218,8 @@ const DemoPassCard: React.FC<{
 
 const demoCardStyles = StyleSheet.create({
   container: {
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
+    width: CARD_SIZE,
+    height: CARD_SIZE,
     borderRadius: radius.card,
     backgroundColor: '#E8E8E8',
     overflow: 'hidden',
@@ -261,7 +261,7 @@ const demoCardStyles = StyleSheet.create({
     paddingHorizontal: 6,
   },
   parkName: {
-    fontSize: CARD_WIDTH * 0.11,
+    fontSize: CARD_SIZE * 0.11,
     fontWeight: '600',
     color: '#FFFFFF',
     textAlign: 'center',
@@ -280,8 +280,8 @@ const ImportCard: React.FC<{ label: string }> = ({ label }) => (
 
 const importCardStyles = StyleSheet.create({
   container: {
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
+    width: CARD_SIZE,
+    height: CARD_SIZE,
     borderRadius: radius.card,
     borderWidth: 2,
     borderColor: colors.accent.primary,
@@ -333,7 +333,7 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
         const passIndex = DEMO_TICKETS.findIndex(t => t.id === ticket.id);
         if (passIndex >= 0) {
           passesScrollRef.current?.scrollTo({
-            x: passIndex * (CARD_WIDTH + CARD_GAP),
+            x: passIndex * (CARD_SIZE + CARD_GAP),
             animated: true,
           });
         }
@@ -368,14 +368,9 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Favorites</Text>
           </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.carouselScrollView}
-            contentContainerStyle={styles.carouselContent}
-          >
+          <View style={styles.carouselRow}>
             <DemoPassCard ticket={DEMO_FAVORITE} />
-          </ScrollView>
+          </View>
         </Animated.View>
 
         <View style={styles.frostedGap} />
@@ -386,33 +381,21 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
             <Text style={styles.sectionTitle}>Tickets</Text>
             <Text style={styles.addButton}>+ Add</Text>
           </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.carouselScrollView}
-            contentContainerStyle={styles.carouselContent}
-          >
+          <View style={styles.carouselRow}>
             <DemoPassCard ticket={DEMO_TICKET_1} />
-            <ImportCard label="Import Ticket" />
-          </ScrollView>
+            <ImportCard label="Import" />
+          </View>
         </Animated.View>
 
         <View style={styles.frostedGap} />
 
-        {/* ========== PASSES SECTION (season passes + Import) ========== */}
+        {/* ========== PASSES SECTION (season passes + Import — NO SCROLL) ========== */}
         <Animated.View style={[styles.section, passesStyle]}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Passes</Text>
             <Text style={styles.addButton}>+ Add</Text>
           </View>
-          <ScrollView
-            ref={passesScrollRef}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={false}
-            style={styles.carouselScrollView}
-            contentContainerStyle={styles.carouselContent}
-          >
+          <View style={styles.carouselRow}>
             {DEMO_TICKETS.map((ticket) => (
               <DemoPassCard
                 key={ticket.id}
@@ -420,8 +403,8 @@ export const OnboardingScanModal = forwardRef<OnboardingScanModalRef, Onboarding
                 onPress={() => handlePassPress(ticket)}
               />
             ))}
-            <ImportCard label="Import Pass" />
-          </ScrollView>
+            <ImportCard label="Import" />
+          </View>
         </Animated.View>
 
         <View style={{ height: 100 }} />
@@ -443,12 +426,12 @@ const styles = StyleSheet.create({
     paddingTop: 0,
   },
 
-  // Section Card — matches real ScanModal
+  // Section Card — matches real ScanModal exactly (marginHorizontal: 8)
   section: {
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
-    marginHorizontal: spacing.lg,
-    paddingVertical: 16,
+    marginHorizontal: -8,
+    paddingVertical: 12,
     shadowColor: '#323232',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.14,
@@ -476,13 +459,12 @@ const styles = StyleSheet.create({
     color: colors.accent.primary,
   },
 
-  // Carousel
-  carouselScrollView: {
-    overflow: 'visible',
-  },
-  carouselContent: {
-    paddingHorizontal: 16,
+  // Card row (static, no scrolling)
+  carouselRow: {
+    flexDirection: 'row',
+    paddingHorizontal: 12,
     gap: CARD_GAP,
+    flexWrap: 'wrap',
   },
 
   // Section Empty States

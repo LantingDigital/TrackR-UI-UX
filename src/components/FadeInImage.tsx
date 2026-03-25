@@ -27,6 +27,8 @@ interface FadeInImageProps extends Omit<ImageProps, 'onLoad'> {
   targetOpacity?: number;
   /** Fade duration in ms (defaults to 250). */
   fadeDuration?: number;
+  /** Skip the fade-in — render at full opacity immediately. Use when parent handles visibility. */
+  skipFade?: boolean;
   /** Style — accepts both regular and animated image styles. */
   style?: StyleProp<ImageStyle>;
 }
@@ -34,17 +36,19 @@ interface FadeInImageProps extends Omit<ImageProps, 'onLoad'> {
 export const FadeInImage: React.FC<FadeInImageProps> = ({
   targetOpacity = 1,
   fadeDuration = FADE_DURATION,
+  skipFade = false,
   style,
   ...imageProps
 }) => {
-  const opacity = useSharedValue(0);
+  const opacity = useSharedValue(skipFade ? targetOpacity : 0);
 
   const onLoad = useCallback(() => {
+    if (skipFade) return;
     opacity.value = withTiming(targetOpacity, {
       duration: fadeDuration,
       easing: Easing.out(Easing.cubic),
     });
-  }, [targetOpacity, fadeDuration]);
+  }, [targetOpacity, fadeDuration, skipFade]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,

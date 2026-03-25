@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, Pressable, Platform } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Pressable, Platform, Image } from 'react-native';
 import { FadeInImage } from '../../../components/FadeInImage';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
@@ -127,6 +127,14 @@ const ALL_CARDS: CardData[] = [
   { id: 'do-dodonpa', source: require('../../../../assets/cards/do-dodonpa.webp'), name: 'Do-Dodonpa', park: 'Fuji-Q Highland', heightFt: 161, speedMph: 112, lengthFt: 3901, yearOpened: 2001, manufacturer: 'S&S' },
 ];
 
+// Pre-warm image cache on module load — resolves all card assets so the
+// native image decoder has them ready before any card renders. Prevents
+// the "blank then pop" issue on cold start.
+ALL_CARDS.forEach(card => {
+  const resolved = Image.resolveAssetSource(card.source);
+  if (resolved?.uri) Image.prefetch(resolved.uri).catch(() => {});
+});
+
 // ── Position pool ──
 // Each position has a tier (0-4). Cards are locked to their tier permanently.
 interface ScatterPos {
@@ -201,9 +209,9 @@ const POSITION_POOL: ScatterPos[] = [
   P(0.42, 0.42, LG_W, LG_H, -5, 0.90, 7, true, 4),
 ];
 
-// Fixed card count per tier: micro=5, tiny=5, small=5, mid=5, front=4 = 24
-const TIER_COUNTS = [5, 5, 5, 5, 4];
-const NUM_CARDS = TIER_COUNTS.reduce((a, b) => a + b, 0); // 24
+// Fixed card count per tier: micro=5, tiny=6, small=6, mid=7, front=5 = 29
+const TIER_COUNTS = [5, 6, 6, 7, 5];
+const NUM_CARDS = TIER_COUNTS.reduce((a, b) => a + b, 0); // 29
 
 // Distance check using actual card dimensions (prevents visual overlap)
 const cardDist = (a: ScatterPos, b: ScatterPos): number => {
@@ -459,15 +467,15 @@ const CardView = ({ card, w, h, canFlip }: { card: CardData; w: number; h: numbe
 
   if (!canFlip) {
     // Tiers 0-2: no shadow, just clipped image
-    return (<View style={{ width: w, height: h, borderRadius: w * 0.12, overflow: 'hidden', backgroundColor: colors.background.card }}><FadeInImage source={card.source} style={{ width: w, height: h }} resizeMode="cover" /></View>);
+    return (<View style={{ width: w, height: h, borderRadius: w * 0.12, overflow: 'hidden' }}><FadeInImage source={card.source} style={{ width: w, height: h }} resizeMode="cover" skipFade /></View>);
   }
   // Tiers 3-4: shadow wrapper (no overflow:hidden) → inner clip (overflow:hidden, no shadow)
   return (
     <Pressable onPress={handlePress} style={{ width: w, height: h }}>
       <Animated.View style={[{ width: w, height: h, position: 'absolute' }, frontStyle]}>
-        <View style={{ flex: 1, borderRadius: w * 0.12, backgroundColor: colors.background.card, ...shadows.small }}>
+        <View style={{ flex: 1, borderRadius: w * 0.12, ...shadows.small }}>
           <View style={{ flex: 1, borderRadius: w * 0.12, overflow: 'hidden' }}>
-            <FadeInImage source={card.source} style={{ width: w, height: h }} resizeMode="cover" />
+            <FadeInImage source={card.source} style={{ width: w, height: h }} resizeMode="cover" skipFade />
           </View>
         </View>
       </Animated.View>

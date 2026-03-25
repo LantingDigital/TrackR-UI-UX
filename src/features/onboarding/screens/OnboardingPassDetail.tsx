@@ -561,12 +561,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
 
-  // Card area — centered, with extra top margin to push card into visible center of phone frame
+  // Card area — lifted up for better positioning within phone frame
   cardContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 60,
+    marginTop: 20,
   },
   cardFace: {
     backfaceVisibility: 'hidden',
@@ -758,13 +758,13 @@ const styles = StyleSheet.create({
     alignItems: 'center' as const,
   },
 
-  // Animated dot indicators
+  // Animated dot indicators — pushed down to restore gap from card lift
   dotIndicatorRow: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 6,
-    marginTop: 12,
+    marginTop: 52,
   },
   dotIndicator: {
     height: 8,
